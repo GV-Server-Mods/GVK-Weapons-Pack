@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Sounds>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>MXA_Archer_Fire</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>250</MaxDistance>
+			<VolumeVariation>0.05</VolumeVariation>
+			<PreventSynchronization>0</PreventSynchronization>
+			<SoundLimit>10</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>0.15</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\MXA\ArcherMissile_Fire1.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\MXA\ArcherMissile_Fire2.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\MXA\ArcherMissile_Fire3.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\MXA\ArcherMissile_Fire4.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>MXA_Archer_Travel</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<Loopable>true</Loopable>
+			<MaxDistance>200</MaxDistance>
+			<VolumeVariation>0.05</VolumeVariation>
+			<Pitch>1</Pitch>
+			<PitchVariation>2</PitchVariation>
+			<PreventSynchronization>0</PreventSynchronization>
+			<SoundLimit>10</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>0.7</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Loop>Audio\MXA\ArcherMissile_Travel.xwm</Loop>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>Torpedo_launch</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>500</MaxDistance>
+			<VolumeVariation>0.1</VolumeVariation>
+			<PreventSynchronization>0</PreventSynchronization>
+			<SoundLimit>5</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>1</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\MD\Torpedo_launch_flames.wav</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>Torpedo_reload</SubtypeId>
+			</Id>
+			<Category>RELOAD</Category>
+			<MaxDistance>100</MaxDistance>
+			<VolumeVariation>0.1</VolumeVariation>
+			<PreventSynchronization>0</PreventSynchronization>
+			<SoundLimit>5</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>0.5</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\MD\Torpedo_reload.wav</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+	</Sounds>
+</Definitions>

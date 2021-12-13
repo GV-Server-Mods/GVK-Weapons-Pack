@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<CubeBlocks>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXFlakTurret</SubtypeId>
+			</Id>
+			<DisplayName>[Flak] Large Riptide Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxRiptideFlak.dds</Icon>
+			<Description>Riptide delivers proximity-fused explosive shells. Used en-mass can provide an effective anti-strike and anti-missile screen, but yields poor damage against armoured targets. Designed by ARYX Weapon Enterprises.
+				[1500m Auto Range]
+				[Uses 100mm HE]</Description>
+			<CubeSize>Large</CubeSize>
+			<GuiVisible>true</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Flak\LG_ARYX_FlakBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="20"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="Construction" Count="100"/>
+				<Component Subtype="SmallTube" Count="24"/>
+				<Component Subtype="Motor" Count="32"/>
+				<Component Subtype="Computer" Count="40"/>
+				<Component Subtype="MetalGrid" Count="60"/>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="SteelPlate" Count="60"/>
+			</Components>
+			<BuildTimeSeconds>15</BuildTimeSeconds>
+			<PCU>2000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Flak\LG_ARYX_FlakBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Flak\LG_ARYX_FlakBase_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Flak\LG_ARYX_FlakBase_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ARYXFlakTurret</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="Ballistics_Flak"/>
+			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXFlakTurret_small</SubtypeId>
+			</Id>
+			<DisplayName>[Flak] Small Riptide Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxRiptideFlak.dds</Icon>
+			<Description>Riptide delivers proximity-fused explosive shells. Used en-mass can provide an effective anti-strike and anti-missile screen, but yields poor damage against armoured targets. Designed by ARYX Weapon Enterprises.
+				[1500m Auto Range]
+				[Uses 100mm HE]</Description>
+			<CubeSize>Small</CubeSize>
+			<GuiVisible>true</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Flak\LG_ARYX_FlakBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="20"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="Construction" Count="100"/>
+				<Component Subtype="SmallTube" Count="24"/>
+				<Component Subtype="Motor" Count="32"/>
+				<Component Subtype="Computer" Count="40"/>
+				<Component Subtype="MetalGrid" Count="60"/>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="SteelPlate" Count="60"/>
+			</Components>
+			<BuildTimeSeconds>15</BuildTimeSeconds>
+			<PCU>2000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="5.0" EndY="5.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Flak\LG_ARYX_FlakBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Flak\LG_ARYX_FlakBase_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Flak\LG_ARYX_FlakBase_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ARYXFlakTurret</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="Ballistics_Flak"/>
+			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+		</Definition>
+	</CubeBlocks>
+</Definitions>

@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Blueprints>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>NATO_25x184mmMagazine</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] 25mm KE x30</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Ammo_Box.dds</Icon>
+			<Prerequisites>
+				<Item Amount="8" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="2" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="0.3" TypeId="Ingot" SubtypeId="Magnesium"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>11</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="NATO_25x184mm"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>NATO_5p56x45mmMagazine</SubtypeId>
+			</Id>
+			<DisplayName>[Interior] 5.56mm KE x30</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Rifle_Ammo.dds</Icon>
+			<Prerequisites>
+				<Item Amount="4.8" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="1.2" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="0.18" TypeId="Ingot" SubtypeId="Magnesium"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>7</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="NATO_5p56x45mm"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Ballistics_Flak</SubtypeId>
+			</Id>
+			<DisplayName>[Flak] 100mm HE x8</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWEFlak.dds</Icon>
+			<Prerequisites>
+				<Item Amount="56" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="14" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="2.1" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="8.5" TypeId="Ingot" SubtypeId="Cobalt"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>45</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_Flak"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Ballistics_Cannon</SubtypeId>
+			</Id>
+			<DisplayName>[Cannon] 155mm AP x4</DisplayName>
+			<Icon>Textures\GUI\Icons\MXA_AmmoBoxL.png</Icon>
+			<Prerequisites>
+				<Item Amount="41" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="10" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="1.5" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="6.2" TypeId="Ingot" SubtypeId="Cobalt"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>36</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_Cannon"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Ballistics_Railgun</SubtypeId>
+			</Id>
+			<DisplayName>[Railgun] 200mm SABOT</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWERailgunAmmo.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_Railgun"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Ballistics_MAC</SubtypeId>
+			</Id>
+			<DisplayName>[MAC] 1000mm KE</DisplayName>
+			<Icon>Textures\GUI\Icons\MXA_MACL_Ammo.png</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_MAC"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Missile200mm</SubtypeId>
+			</Id>
+			<DisplayName>[Rocket] Hydra HE</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Small_Rocket.dds</Icon>
+			<Prerequisites>
+				<Item Amount="20" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="2.9" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="0.54" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="1.4" TypeId="Ingot" SubtypeId="Silicon"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>14</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Missiles_Missile</SubtypeId>
+			</Id>
+			<DisplayName>[Missile] Archer HE</DisplayName>
+			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
+            <Prerequisites>
+                <Item Amount="13" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="1.9" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.36" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="0.96" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="0.06" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>12</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Missile"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Missiles_Torpedo</SubtypeId>
+			</Id>
+			<DisplayName>[Torpedo] Crusader EMP</DisplayName>
+			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
+		</Blueprint>
+		<!-- <Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Others_Mine</SubtypeId>
+			</Id>
+			<DisplayName>[Mine] Moray Homing</DisplayName>
+			<Icon>Textures\GUI\Icons\MXA_Moray_Mine.png</Icon>
+            <Prerequisites>
+                <Item Amount="100" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="15" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="2.8" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="7.4" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="0.46" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>58</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Others_Mine"/>
+		</Blueprint> -->
+	</Blueprints>
+</Definitions>

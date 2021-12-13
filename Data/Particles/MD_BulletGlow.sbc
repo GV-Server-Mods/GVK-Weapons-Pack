@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<ParticleEffects>
+		<ParticleEffect xsi:type="MyObjectBuilder_ParticleEffect">
+			<Id>
+				<TypeId>ParticleEffect</TypeId>
+				<SubtypeId>MD_BulletGlowMedRed</SubtypeId>
+			</Id>
+			<Version>0</Version>
+			<ParticleId>928340</ParticleId>
+			<Length>1</Length>
+			<DurationMin>0.2</DurationMin>
+			<DurationMax>0</DurationMax>
+			<DistanceMax>2000</DistanceMax>
+			<Loop>true</Loop>
+			<ParticleLights>
+				<ParticleLight Name="BulletLight" Version="0">
+					<Properties>
+						<Property Name="Position" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Position var" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Color" AnimationType="Animated" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector4>
+										<X>1</X>
+										<Y>0.2</Y>
+										<Z>0.1</Z>
+										<W>1</W>
+									</ValueVector4>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Color var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Range" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>30</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Range var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Intensity" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>50</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Intensity var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property Name="Gravity Displacement" AnimationType="Const" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property Name="Falloff" AnimationType="Const" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property Name="Variance Timeout" AnimationType="Const" Type="Float">
+							<ValueFloat>0.1</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleLight>
+			</ParticleLights>
+		</ParticleEffect>
+		<ParticleEffect xsi:type="MyObjectBuilder_ParticleEffect">
+			<Id>
+				<TypeId>ParticleEffect</TypeId>
+				<SubtypeId>MD_BulletGlowBigBlue</SubtypeId>
+			</Id>
+			<Version>0</Version>
+			<ParticleId>928341</ParticleId>
+			<Length>1</Length>
+			<DurationMin>0.2</DurationMin>
+			<DurationMax>0</DurationMax>
+			<DistanceMax>2000</DistanceMax>
+			<Loop>true</Loop>
+			<ParticleLights>
+				<ParticleLight Name="BulletLight" Version="0">
+					<Properties>
+						<Property Name="Position" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Position var" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Color" AnimationType="Animated" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector4>
+										<X>0.2</X>
+										<Y>0.4</Y>
+										<Z>1</Z>
+										<W>1</W>
+									</ValueVector4>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Color var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Range" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>50</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Range var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Intensity" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>200</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Intensity var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property Name="Gravity Displacement" AnimationType="Const" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property Name="Falloff" AnimationType="Const" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property Name="Variance Timeout" AnimationType="Const" Type="Float">
+							<ValueFloat>0.1</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleLight>
+			</ParticleLights>
+		</ParticleEffect>
+		<ParticleEffect xsi:type="MyObjectBuilder_ParticleEffect">
+			<Id>
+				<TypeId>ParticleEffect</TypeId>
+				<SubtypeId>MD_BulletGlowMedYellow</SubtypeId>
+			</Id>
+			<Version>0</Version>
+			<ParticleId>928342</ParticleId>
+			<Length>1</Length>
+			<DurationMin>0.2</DurationMin>
+			<DurationMax>0</DurationMax>
+			<DistanceMax>2000</DistanceMax>
+			<Loop>true</Loop>
+			<ParticleLights>
+				<ParticleLight Name="BulletLight" Version="0">
+					<Properties>
+						<Property Name="Position" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Position var" AnimationType="Animated" Type="Vector3">
+							<Keys/>
+						</Property>
+						<Property Name="Color" AnimationType="Animated" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector4>
+										<X>1</X>
+										<Y>0.6</Y>
+										<Z>0.3</Z>
+										<W>1</W>
+									</ValueVector4>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Color var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Range" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>30</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Range var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Intensity" AnimationType="Animated" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>50</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property Name="Intensity var" AnimationType="Animated" Type="Float">
+							<Keys/>
+						</Property>
+						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property Name="Gravity Displacement" AnimationType="Const" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property Name="Falloff" AnimationType="Const" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property Name="Variance Timeout" AnimationType="Const" Type="Float">
+							<ValueFloat>0.1</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleLight>
+			</ParticleLights>
+		</ParticleEffect>
+	</ParticleEffects>
+</Definitions>

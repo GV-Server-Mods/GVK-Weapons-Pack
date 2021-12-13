@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<BlockVariantGroups>
+		<!-- Ship Weapons -->
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Gatlings"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_Gatlings</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype=""/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingGun_Gimbal"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype=""/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeGatlingTurretBasic"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Cannons"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_Cannons</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MXA_CoilgunL"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="OKI122mmSGfixed"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKI122mmVT"/>
+				<!-- <Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="OKI230mmBCfixed"/> -->
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Flaks"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_Flaks</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXFlakTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXFlakTurret_small"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Railguns"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_Railguns</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXRailgunTurret"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXRailgun"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_MACs"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_MACs</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_MACL"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Interiors"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Ballistic_Interiors</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Rockets"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Missiles_Rockets</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype=""/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype=""/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Missiles"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Missiles_Missiles</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_ArcherPods"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Torpedoes"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Missiles_Torpedoes</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_Laser"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Laser Weapons</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_T2PDX"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2"/>
+				<!-- <Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2_Naked"/> -->
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ReceptorTurret"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ReceptorCoilGun"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_AMS"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Laser Weapons</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDT"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDT_sm"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<!-- <BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_JumpNull"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Laser Weapons</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="JumpDriveDisruptorTurret"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="JumpDriveDisruptorTurretSM"/>
+			</Blocks>
+		</BlockVariantGroup> -->
+		<!-- <BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Others_Mines"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Mines</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_Moray"/>
+			</Blocks>
+		</BlockVariantGroup> -->
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Others_Radars"/>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<DisplayName>Target Sensors</DisplayName>
+			<Description></Description>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXLargeRadar"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/>
+			</Blocks>
+		</BlockVariantGroup>
+	</BlockVariantGroups>
+</Definitions>

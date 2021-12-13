@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<CubeBlocks>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXRailgunTurret</SubtypeId>
+			</Id>
+			<DisplayName>[Railgun] Apollo</DisplayName>
+			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
+			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
+				[2500m Auto Range]
+				[Uses 200mm SABOT + 42MW]</Description>
+			<CubeSize>Large</CubeSize>
+			<GuiVisible>true</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWERailTurret\LG_ARYXRailgunTurret_Base.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="415" />
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+				    <DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                <Component Subtype="MetalGrid" Count="125" />
+                <Component Subtype="PowerCell" Count="42" />
+                <Component Subtype="Superconductor" Count="83" />
+                <Component Subtype="Motor" Count="83" />
+                <Component Subtype="Reactor" Count="104" />
+                <Component Subtype="Computer" Count="311" />
+                <Component Subtype="SteelPlate" Count="622" />
+            </Components>
+			<BuildTimeSeconds>115</BuildTimeSeconds>
+			<PCU>8000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="4.0"/>
+				<MountPoint Side="Bottom" StartX="2.0" StartY="1.6" EndX="2.5" EndY="4.0"/>
+				<MountPoint Side="Bottom" StartX="0.5" StartY="1.6" EndX="1.0" EndY="4.0"/>
+			</MountPoints>
+			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<BlockPairName>ARYXRailgunTurret</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="Ballistics_Railgun"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.284</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<AiEnabled>false</AiEnabled>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ARYXRailgun</SubtypeId>
+			</Id>
+			<DisplayName>[Railgun] Artemis</DisplayName>
+			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
+				[2700m Manual Range]
+				[Uses 200mm SABOT + 42MW]</Description>
+			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
+			<GuiVisible>true</GuiVisible>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="5"/>
+			<Center x="0" y="0" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWERailgun\LG_Railgun.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="142" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+				    <DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                <Component Subtype="MetalGrid" Count="43" />
+                <Component Subtype="PowerCell" Count="15" />
+                <Component Subtype="Superconductor" Count="29" />
+                <Component Subtype="Motor" Count="29" />
+                <Component Subtype="Reactor" Count="36" />
+                <Component Subtype="Computer" Count="107" />
+                <Component Subtype="SteelPlate" Count="213" />
+            </Components>
+			<BuildTimeSeconds>39</BuildTimeSeconds>
+			<PCU>5000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="3.0" StartY="0.0" EndX="5.0" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="2.0" EndY="1"/>
+				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="1.0" EndY="2.0"/>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="3.0" EndX="1.0" EndY="5.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWERailgun\LG_Railgun_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\LG_Railgun_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\LG_Railgun_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ARYXRailgun</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<InventoryMaxVolume>0.284</InventoryMaxVolume>
+			<DamageEffectId>213</DamageEffectId>
+			<!--<WeaponDefinitionId Subtype="Ballistics_Railgun"/>-->
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+		</Definition>
+	</CubeBlocks>
+</Definitions>
