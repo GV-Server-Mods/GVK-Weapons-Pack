@@ -181,8 +181,8 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
-                    InventorySize = 1.5f,
+                    FixedOffset = false,
+                    InventorySize = 0.76f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -234,7 +234,7 @@ namespace Scripts
             // Don't edit below this line
         };
 
-        /*WeaponDefinition LargeMissileTurret => new WeaponDefinition {
+        WeaponDefinition LargeMissileTurret => new WeaponDefinition {
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
@@ -284,7 +284,7 @@ namespace Scripts
                     MinElevation = -5,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 1.3f,
+                    InventorySize = 0.48f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -307,7 +307,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 480, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -334,7 +334,7 @@ namespace Scripts
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line
-        };*/
+        };
 
         WeaponDefinition SmallMissileLauncher => new WeaponDefinition {
             Assignments = new ModelAssignmentsDef
@@ -384,8 +384,8 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
-                    InventorySize = 0.6f,
+                    FixedOffset = false,
+                    InventorySize = 0.32f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -461,7 +461,24 @@ namespace Scripts
                 },
             },
 
-			Targeting = Missiles_Rocket_Targeting, //shared targeting def
+			Targeting = new TargetingDef {
+				Threats = new[] {
+					Grids,
+				},
+				SubSystems = new[] {
+					Any,
+				},
+				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+				MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
+				MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+				MaxTargetDistance = 500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+				TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
+			}, //shared targeting def
 
             HardPoint = new HardPointDef
             {
@@ -484,7 +501,7 @@ namespace Scripts
                     MinElevation = -8,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.6f,
+                    InventorySize = 0.32f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.

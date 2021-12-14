@@ -73,8 +73,8 @@
 				<Y>0.4</Y>
 				<Z>0.4</Z>
 			</Size>
-			<Mass>390</Mass>
-			<Volume>310</Volume>
+			<Mass>490</Mass>
+			<Volume>390</Volume>
             <Model>Models\AWE_Ammo\AryxAtlas40mm.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>8</Capacity>
@@ -112,8 +112,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>880</Mass>
-			<Volume>500</Volume>
+			<Mass>750</Mass>
+			<Volume>430</Volume>
 			<Model>Models\AWE_Ammo\AryxFerrous500mm.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -151,8 +151,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>40</Mass>
-			<Volume>80</Volume>
+			<Mass>30</Mass>
+			<Volume>40</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -172,7 +172,7 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>40</Mass>
+			<Mass>38</Mass>
 			<Volume>50</Volume>
 			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
 			<Capacity>1</Capacity>
@@ -190,7 +190,7 @@
 				<Y>5.0</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>1630</Mass>
+			<Mass>2440</Mass>
 			<Volume>3250</Volume>
 			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
 			<Capacity>1</Capacity>

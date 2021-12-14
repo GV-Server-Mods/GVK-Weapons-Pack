@@ -90,7 +90,7 @@
 				<Component Subtype="SteelPlate" Count="389"/>
 			</Components>
 			<BuildTimeSeconds>108</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>

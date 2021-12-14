@@ -38,7 +38,7 @@
                 <Component Subtype="SteelPlate" Count="622" />
             </Components>
 			<BuildTimeSeconds>115</BuildTimeSeconds>
-			<PCU>8000</PCU>
+			<PCU>6000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="Ballistics_MAC"/>

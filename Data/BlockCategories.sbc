@@ -19,9 +19,10 @@
 				<string>SmallGatlingTurretAutoGatling</string>
 				<string>LargeWarhead</string>
 				<string>LargeInteriorTurret</string>
+				<string>SmallInteriorTurret</string>
 				<string>LargeGatlingTurret/(null)</string>
 				<string>LargeGatlingTurret/LargeGatlingTurretBasic</string>
-				<!-- <string>LargeMissileTurret/(null)</string> -->
+				<string>LargeMissileTurret/(null)</string>
 				<string>SmallGatlingTurret</string>
 				<string>SmallMissileTurret</string>
 				<string>LargeMissileLauncher</string>

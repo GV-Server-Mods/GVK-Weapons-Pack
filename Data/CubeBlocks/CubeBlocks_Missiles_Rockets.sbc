@@ -6,9 +6,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>[Rocket] Large Hydra Turret *BANNED*</DisplayName>
+			<DisplayName>[Rocket] Large Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\LGMissileBase.dds</Icon>
-			<Description>This weapon has been banned for use in Deserts of Kharak</Description>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[700m Auto Range]
+				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>false</GuiVisible>
 			<Public>false</Public>
@@ -19,18 +21,17 @@
 			<Model>Models\Cubes\Large\Missile\LGMissileBase.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="GVK_Unobtanium" Count="1"/>
-				<Component Subtype="SteelPlate" Count="101"/>
-				<Component Subtype="Construction" Count="602"/>
-				<Component Subtype="MetalGrid" Count="101"/>
-				<Component Subtype="LargeTube" Count="121"/>
-				<Component Subtype="Motor" Count="321"/>
-				<Component Subtype="Computer" Count="241"/>
-				<Component Subtype="Construction" Count="201"/>
-				<Component Subtype="SteelPlate" Count="301"/>
+				<Component Subtype="SteelPlate" Count="98"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="MetalGrid" Count="98"/>
+				<Component Subtype="LargeTube" Count="117"/>
+				<Component Subtype="Motor" Count="312"/>
+				<Component Subtype="Computer" Count="234"/>
+				<Component Subtype="Construction" Count="780"/>
+				<Component Subtype="SteelPlate" Count="293"/>
 			</Components>
-			<BuildTimeSeconds>99999</BuildTimeSeconds>
-			<PCU>9999999</PCU>
+			<BuildTimeSeconds>85</BuildTimeSeconds>
+			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -93,8 +94,8 @@
 			</Id>
 			<DisplayName>[Rocket] Small Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket. High acceleration and explosive damage, but poor accuracy making them useless outside short range engagements.
-				[700m Auto Range]
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[500m Auto Range]
 				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>true</GuiVisible>
@@ -106,6 +107,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="13"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1"/>
 				<Component Subtype="Construction" Count="76"/>
 				<Component Subtype="MetalGrid" Count="13"/>
 				<Component Subtype="LargeTube" Count="16"/>
@@ -115,7 +117,7 @@
 				<Component Subtype="SteelPlate" Count="38"/>
 			</Components>
 			<BuildTimeSeconds>11</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
@@ -180,7 +182,7 @@
 			</Id>
 			<DisplayName>[Rocket] Large Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket. High acceleration and explosive damage, but poor accuracy making them useless outside short range engagements.
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[900m Manual Range]
 				[Uses Hydra HE x19]</Description>
 			<CubeSize>Large</CubeSize>
@@ -234,7 +236,7 @@
 			</Id>
 			<DisplayName>[Rocket] Small Hydra launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket. High acceleration and explosive damage, but poor accuracy making them useless outside short range engagements. This Hydra launcher is manual reload only but holds 8 shots.
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[900m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>

@@ -74,7 +74,7 @@ namespace Scripts {
                     MinElevation = -10,
                     MaxElevation = 25,
                     FixedOffset = false,
-                    InventorySize = 2.5f,
+                    InventorySize = 2.15f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -216,7 +216,7 @@ namespace Scripts {
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = true,
-                    InventorySize = 2.5f,
+                    InventorySize = 2.15f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.

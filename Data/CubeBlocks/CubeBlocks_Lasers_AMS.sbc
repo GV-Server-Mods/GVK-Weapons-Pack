@@ -114,7 +114,7 @@
 				<Component Subtype="SteelPlate" Count="48"/>
 			</Components>
 			<BuildTimeSeconds>6</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.04" StartY="0.04" EndX="0.96" EndY="0.96"/>
