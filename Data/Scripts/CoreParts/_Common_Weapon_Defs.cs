@@ -118,7 +118,7 @@ namespace Scripts
 		};
 
 		private OtherDef Common_Weapons_Hardpoint_Other_Large = new OtherDef {
-			ConstructPartCap = 20,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 0,
 			EnergyPriority = 0,
 			MuzzleCheck = false,
@@ -129,7 +129,7 @@ namespace Scripts
 		};
 
 		private OtherDef Common_Weapons_Hardpoint_Other_Small = new OtherDef {
-			ConstructPartCap = 20,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 0,
 			EnergyPriority = 0,
 			MuzzleCheck = false,

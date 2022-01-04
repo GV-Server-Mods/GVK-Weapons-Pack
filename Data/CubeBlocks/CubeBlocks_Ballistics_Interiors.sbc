@@ -85,7 +85,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 		</Definition>
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+		<!--<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>InteriorTurret</TypeId>
 				<SubtypeId>SmallInteriorTurret</SubtypeId>
@@ -124,7 +124,6 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\InteriorTurretConstruction_3.mwm"/>
 			</BuildProgressModels>
 			<VoxelPlacement>
-				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
 					<PlacementMode>OutsideVoxel</PlacementMode>
 					<MaxAllowed>0.2</MaxAllowed>
@@ -168,6 +167,6 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-		</Definition>
+		</Definition> -->
 	</CubeBlocks>
 </Definitions>

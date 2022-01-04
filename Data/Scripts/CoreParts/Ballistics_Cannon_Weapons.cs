@@ -155,7 +155,7 @@ namespace Scripts
                 
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 6,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -294,7 +294,7 @@ namespace Scripts
                 
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 6,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -401,7 +401,7 @@ namespace Scripts
 
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 5,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -475,7 +475,7 @@ namespace Scripts
             HardPoint = new HardPointDef 
             {
                 PartName = "122mm Fixed Assault Cannon", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.2f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -510,7 +510,7 @@ namespace Scripts
 
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 5,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -521,18 +521,18 @@ namespace Scripts
                 },
 
                 Loading = new LoadingDef {
-                    RateOfFire = 40,
+                    RateOfFire = 50, //180 // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 72, // Measured in game ticks (use 3600/ROF for consistant fire rate).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    Cooldown = 0, //percent of max heat to be under to start firing again after overheat accepts .2-.95
                     HeatSinkRate = 0, //amount of heat lost per second
                     DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-                    ShotsInBurst = 1,
+                    ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
                     GiveUpAfter = false,

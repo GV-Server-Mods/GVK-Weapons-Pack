@@ -54,7 +54,7 @@ namespace Scripts {
 		};
 
 		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef {
-			ConstructPartCap = 20,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 3,
 			EnergyPriority = 0,
 			MuzzleCheck = false,
@@ -213,7 +213,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 20,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -300,7 +300,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -387,7 +387,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -436,7 +436,7 @@ namespace Scripts {
                 },
             },
 
-            Targeting = Ballistics_Gatlings_Targeting_T1,
+            Targeting = Ballistics_Gatlings_Targeting_T2,
 
             HardPoint = new HardPointDef
             {
@@ -476,7 +476,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -486,7 +486,7 @@ namespace Scripts {
 					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 				},
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T1,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				

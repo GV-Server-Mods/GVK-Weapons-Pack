@@ -68,7 +68,16 @@ namespace Scripts
 
 				Ui = Common_Weapons_Hardpoint_Ui_GuidanceOnly,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking, //Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn
+                Ai = new AiDef 
+				{
+					TrackTargets = true,
+					TurretAttached = false,
+					TurretController = false,
+					PrimaryTracking = false,
+					LockOnFocus = true,
+					SuppressFire = true,
+					OverrideLeads = false, // Override default behavior for target leads
+				},
 				
                 HardWare = new HardwareDef
                 {
@@ -94,7 +103,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 2,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -268,7 +277,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 2,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,

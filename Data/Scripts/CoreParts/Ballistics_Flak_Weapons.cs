@@ -67,7 +67,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "100mm Flak Turret", // name of weapon in terminal
-                DeviateShotAngle = 1.5f,
+                DeviateShotAngle = 0.75f,
                 AimingTolerance = 2f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -102,7 +102,7 @@ namespace Scripts
 				
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 20,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,

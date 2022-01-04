@@ -29,8 +29,9 @@
 				<string>SmallGatlingGun_Gimbal</string>
 				<string>SmallGatlingGun/(null)</string>
 				<string>SmallMissileLauncher/(null)</string>
-				
 				<string>SmallRocketLauncherReload</string>
+				<string>MA_PDT</string>				
+				<string>MA_PDT_sm</string>
 				<string>MA_T2PDX</string>
 				<string>ReceptorCoilGun</string>
 				<string>ReceptorTurret</string>

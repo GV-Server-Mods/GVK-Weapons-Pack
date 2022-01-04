@@ -66,7 +66,7 @@ namespace Scripts
 		};
 
 		private OtherDef Missiles_Rocket_Hardpoint_Other = new OtherDef {
-			ConstructPartCap = 10,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 0,
 			EnergyPriority = 0,
 			MuzzleCheck = false,

@@ -8,14 +8,17 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.AreaEffectType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef.PushPullDef.Force;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.PushPullDef.Force;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
+
 
 namespace Scripts
 { // Don't edit above this line
@@ -92,35 +95,6 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-			AreaEffect = new AreaDamageDef
-			{
-				AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-				Base = new AreaInfluence
-				{
-					//Radius = 5f, // the sphere of influence of area effects
-					//EffectStrength = 500f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-					Radius = 0f, // the sphere of influence of area effects
-					EffectStrength = 0f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-				},
-				Explosions = new ExplosionDef //Currently only works with Explosive, or if DetonateOnEnd = true
-				{
-					NoVisuals = false,
-					NoSound = false,
-					NoShrapnel = false,
-					NoDeformation = false,
-					Scale = 1f,
-					CustomParticle = "",
-					CustomSound = "",
-				},
-				Detonation = new DetonateDef //Explosive type damage independent of Base = new AreaInfluence. Only works with non-Explosive AreaEffect if DetonateOnEnd = true.
-				{
-					DetonateOnEnd = false, 
-					ArmOnlyOnHit = false,
-					DetonationDamage = 0,
-					DetonationRadius = 0,
-					MinArmingTime = 99, //Min time in ticks before projectile will arm for detonation (will also affect shrapnel spawning)
-				},
-			},
             Trajectory = new TrajectoryDef
             {
                 Guidance = None,
@@ -274,7 +248,7 @@ namespace Scripts
                 Grids = new GridSizeDef
                 {
                     Large = -1f,
-                    Small = 0.75f,
+                    Small = 0.008f, // 1/125
                 },
                 Armor = new ArmorDef
                 {
@@ -300,7 +274,7 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-			AreaEffect = new AreaDamageDef
+			/*AreaEffect = new AreaDamageDef
 			{
 				AreaEffect = Explosive, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
 				Base = new AreaInfluence
@@ -326,7 +300,89 @@ namespace Scripts
 					DetonationRadius = 4,
 					MinArmingTime = 0, //Min time in ticks before projectile will arm for detonation (will also affect shrapnel spawning)
 				},
-			},
+			},*/
+            AreaOfDamage = new AreaOfDamageDef
+            {
+                ByBlockHit = new ByBlockHitDef
+                {
+                    Enable = true,
+                    Radius = 4f,
+                    Damage = 1500f,
+                    Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    MaxAbsorb = 0f,
+                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    //.Linear drops evenly by distance from center out to max radius
+                    //.Curve drops off damage sharply as it approaches the max radius
+                    //.InvCurve drops off sharply from the middle and tapers to max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                },
+                EndOfLife = new EndOfLifeDef
+                {
+                    Enable = false,
+                    Radius = 5f,
+                    Damage = 600f,
+                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    MaxAbsorb = 0f,
+                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    //.Linear drops evenly by distance from center out to max radius
+                    //.Curve drops off damage sharply as it approaches the max radius
+                    //.InvCurve drops off sharply from the middle and tapers to max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                    ArmOnlyOnHit = true,
+                    MinArmingTime = 00,
+                    NoVisuals = false,
+                    NoSound = false,
+                    ParticleScale = 1,
+                    CustomParticle = "particleName",
+                    CustomSound = "soundName",
+                },
+            },
+            Ewar = new EwarDef
+            {
+                Enable = false,
+                Type = EnergySink,
+                Mode = Effect,
+                Strength = 10000f,
+                Radius = 100f,
+                Duration = 100,
+                StackDuration = true,
+                Depletable = true,
+                MaxStacks = 10,
+                NoHitParticle = false,
+                Force = new PushPullDef
+                {
+                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
+                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
+                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
+                    DisableRelativeMass = false,
+                    TractorRange = 0,
+                    ShooterFeelsForce = false,
+                },
+                Field = new FieldDef
+                {
+                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
+                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
+                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
+                    HideModel = false, // Hide the projectile model if it has one.
+                    ShowParticle = false, // Deprecated.
+                    Particle = new ParticleDef // Particle effect to generate at the field's position.
+                    {
+                        Name = "", // SubtypeId of field particle effect.
+                        ShrinkByDistance = false, // Deprecated.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Deprecated, set this in particle sbc.
+                            Restart = false, // Not used.
+                            MaxDistance = 5000, // Not used.
+                            MaxDuration = 1, // Not used.
+                            Scale = 1, // Scale of effect.
+                        },
+                    },
+                },
+            },
             Trajectory = new TrajectoryDef
             {
                 Guidance = Smart,

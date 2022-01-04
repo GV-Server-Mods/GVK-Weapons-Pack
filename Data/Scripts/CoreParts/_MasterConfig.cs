@@ -22,7 +22,6 @@ namespace Scripts
 							SmallRocketLauncherReload,
 							AryxRailgunTurret, 
 							AryxFlakTurret, 
-							AryxFlakTurret_Small, 
 							AryxRailgun,
 							SmallCannon122mm,
 							VehicleTurret122mm,

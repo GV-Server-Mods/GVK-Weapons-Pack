@@ -110,7 +110,7 @@ namespace Scripts
                 },
 
                 Other = new OtherDef {
-					ConstructPartCap = 20,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 0,
 					EnergyPriority = 0,
 					MuzzleCheck = false,

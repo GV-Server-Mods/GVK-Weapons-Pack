@@ -8,14 +8,16 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.AreaEffectType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef.PushPullDef.Force;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
+
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.AreaEffectType;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef.PushPullDef.Force;
+
 
 namespace Scripts
 { // Don't edit above this line
@@ -42,10 +44,10 @@ namespace Scripts
             Fragment = new FragmentDef
             {
                 AmmoRound = "Ballistics_Flak_Shrapnel",
-                Fragments = 25,
+                Fragments = 50,
                 Degrees = 120,
                 Reverse = false,
-                RandomizeDir = true, // randomzie between forward and backward directions
+                RandomizeDir = false, // randomzie between forward and backward directions
             },
             DamageScales = new DamageScaleDef
             {
@@ -99,13 +101,13 @@ namespace Scripts
                 },                
                 Explosions = new ExplosionDef
                 {
-                    NoVisuals = false,
-                    NoSound = false,
+                    NoVisuals = true,
+                    NoSound = true,
                     NoShrapnel = false,
                     NoDeformation = false,
                     Scale = 1,
-                    CustomParticle = "MD_FlakExplosion",
-                    CustomSound = "HWR_FlakExplosion",//HWR_FlakExplosion
+                    CustomParticle = "", //MD_FlakExplosion
+                    CustomSound = "",//HWR_FlakExplosion
                 },
                 Detonation = new DetonateDef
                 {
@@ -128,7 +130,7 @@ namespace Scripts
                 FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: -25f, end: 25), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 50f, end: 75f), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 40f, end: 60f), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
             },
             AmmoGraphics = new GraphicDef
@@ -175,6 +177,17 @@ namespace Scripts
                     },
                 },
             },
+            AmmoAudio = new AmmoAudioDef
+            {
+                TravelSound = "",
+                HitSound = "HWR_FlakExplosion",  //MXA_ImpactExplosion
+                ShieldHitSound = "",
+                PlayerHitSound = "",
+                VoxelHitSound = "",
+                FloatingHitSound = "",
+                HitPlayChance = 1f,
+                HitPlayShield = true,
+            }, // Don't edit below this line
         };
 
         private AmmoDef Ballistics_Flak_Shrapnel => new AmmoDef
@@ -183,7 +196,7 @@ namespace Scripts
             AmmoRound = "Ballistics_Flak_Shrapnel",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 275f,
+            BaseDamage = 500f,
             Mass = 100, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 0f,
@@ -213,8 +226,8 @@ namespace Scripts
                 Characters = 0.1f,
                 FallOff = new FallOffDef
                 {
-                    Distance = 0f, // Distance at which max damage begins falling off.
-                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 1f, // Distance at which max damage begins falling off.
+                    MinMultipler = 0.5f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -256,12 +269,12 @@ namespace Scripts
                 Explosions = new ExplosionDef
                 {
                     NoVisuals = false,
-                    NoSound = false,
+                    NoSound = true,
                     NoShrapnel = false,
                     NoDeformation = false,
                     Scale = 1,
                     CustomParticle = "MD_FlakExplosion",
-                    CustomSound = "HWR_FlakExplosion",//HWR_FlakExplosion
+                    CustomSound = "",//HWR_FlakExplosion
                 },
                 Detonation = new DetonateDef
                 {
@@ -283,7 +296,7 @@ namespace Scripts
                 FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 200, end: 0), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 25, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
             },
             AmmoGraphics = new GraphicDef
@@ -330,6 +343,17 @@ namespace Scripts
                     },
                 },
             },
+            AmmoAudio = new AmmoAudioDef
+            {
+                TravelSound = "",
+                HitSound = "",
+                ShieldHitSound = "",
+                PlayerHitSound = "",
+                VoxelHitSound = "",
+                FloatingHitSound = "",
+                HitPlayChance = 1f,
+                HitPlayShield = true,
+            }, // Don't edit below this line
         };
 
     }
