@@ -3,13 +3,18 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
@@ -30,8 +35,8 @@ namespace Scripts
             AmmoRound = "Missiles_Missile",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 200f,
-            Mass = 500f, // in kilograms
+            BaseDamage = 1f,
+            Mass = 200f, // in kilograms
             Health = 1f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             DecayPerShot = 0f,
@@ -44,13 +49,39 @@ namespace Scripts
                 Shape = LineShape,
                 Diameter = 0,
             },
-			Fragment = new FragmentDef //
+			/*Fragment = new FragmentDef //
             {
                 AmmoRound = "Missiles_Missile_HomingPhase",
                 Fragments = 1,
                 Degrees = 0,
                 Reverse = false,
                 RandomizeDir = false,
+            },*/
+            Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
+            {
+                AmmoRound = "Missiles_Missile_HomingPhase", // AmmoRound field of the ammo to spawn.
+                Fragments = 1, // Number of projectiles to spawn.
+                Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
+                Reverse = false, // Spawn projectiles backward instead of forward.
+                DropVelocity = false, // fragments will not inherit velocity from parent.
+                Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
+                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
+                MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
+                IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
+                FireSound = false, // Play fire/shoot sound
+                TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
+                {
+                    Enable = false, // Enables TimedSpawns mechanism
+                    Interval = 0, // Time between spawning fragments, in ticks
+                    StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
+                    MaxSpawns = 1, // Max number of fragment children to spawn
+                    Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    ParentDies = true, // Parent dies once after it spawns its last child.
+                    PointAtTarget = true, // Start fragment direction pointing at Target
+                    PointType = Predict, // Point accuracy, Direct, Lead (always fire), Predict (only fire if it can hit)
+                    GroupSize = 5, // Number of spawns in each group
+                    GroupDelay = 120, // Delay between each group.
+                },
             },
             DamageScales = new DamageScaleDef
             {
@@ -69,7 +100,7 @@ namespace Scripts
                 Grids = new GridSizeDef
                 {
                     Large = -1f,
-                    Small = 0.75f,
+                    Small = -1f,
                 },
                 Armor = new ArmorDef
                 {

@@ -3,13 +3,18 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
@@ -18,7 +23,6 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
-
 
 namespace Scripts
 { // Don't edit above this line
@@ -48,14 +52,6 @@ namespace Scripts
             {
                 MaxObjectsHit = 0, // 0 = disabled
                 CountBlocks = false, // counts gridBlocks and not just entities hit
-            },
-            Fragment = new FragmentDef
-            {
-                AmmoRound = "",//Ballistics_MAC_Shrapnel
-                Fragments = 0,
-                Degrees = 0,
-                Reverse = false,
-                RandomizeDir = false, // randomzie between forward and backward directions
             },
             DamageScales = new DamageScaleDef
             {
@@ -123,7 +119,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 10f,
-                    Damage = 0f, 
+                    Damage = 250000f, 
                     //Depth = 5, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled , //.NoFalloff applies the same damage to all blocks in radius
@@ -198,6 +194,11 @@ namespace Scripts
                         },
                     },
                 },
+            },
+            Beams = new BeamDef
+            {
+                Enable = true,
+                OneParticle = true, // Only spawn one particle hit per beam weapon.
             },
             Trajectory = new TrajectoryDef
             {

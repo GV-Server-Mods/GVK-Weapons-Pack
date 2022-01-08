@@ -3,13 +3,18 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
@@ -18,11 +23,6 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
-
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.AreaEffectType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaDamageDef.EwarFieldsDef.PushPullDef.Force;
 
 
 namespace Scripts
@@ -51,14 +51,6 @@ namespace Scripts
             {
                 MaxObjectsHit = 0, // 0 = disabled
                 CountBlocks = false, // counts gridBlocks and not just entities hit
-            },
-            Fragment = new FragmentDef
-            {
-                AmmoRound = "",
-                Fragments = 200,
-                Degrees = 360,
-                Reverse = false,
-                RandomizeDir = true, // randomzie between forward and backward directions
             },
             Pattern = new PatternDef
             {
@@ -108,58 +100,6 @@ namespace Scripts
 					AreaEffect = Energy,
 					Detonation = Energy,
 					Shield = Energy,
-                },
-            },
-            AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Disabled, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                AreaEffectDamage = 0f, // 0 = use spillover from BaseDamage, otherwise use this value.
-                AreaEffectRadius = 0f,
-                Pulse = new PulseDef // interval measured in game ticks (60 == 1 second), pulseChance chance (0 - 100) that an entity in field will be hit
-                {
-                    Interval = 60,
-                    PulseChance = 100,
-                    GrowTime = 100,
-                    HideModel = false,
-                    ShowParticle = false,
-                    Particle = new ParticleDef
-                    {
-                        Name = "", //ShipWelderArc
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 8f, blue: 10f, alpha: 1),
-                        Offset = Vector(x: 0, y: -1, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 1,
-                            Scale = 1,
-                        },
-                    },
-                },
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = false,
-                    Scale = 1,
-                    CustomParticle = "",
-                    CustomSound = "",
-                },
-                Detonation = new DetonateDef
-                {
-                    DetonateOnEnd = false,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 1000000,
-                    DetonationRadius = 75,
-                },
-                EwarFields = new EwarFieldsDef
-                {
-                    Duration = 0,
-                    StackDuration = false,
-                    Depletable = false,
-                    MaxStacks = 10,
-                    TriggerRange = 5f,
                 },
             },
             Beams = new BeamDef

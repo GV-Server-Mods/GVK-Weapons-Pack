@@ -561,6 +561,8 @@ namespace Scripts
                 [ProtoMember(23)] internal bool IgnoreWater;
                 [ProtoMember(24)] internal AreaOfDamageDef AreaOfDamage;
                 [ProtoMember(25)] internal EwarDef Ewar;
+                [ProtoMember(26)] internal bool IgnoreVoxels;
+                [ProtoMember(27)] internal bool Synchronize;
 
                 [ProtoContract]
                 public struct DamageScaleDef
@@ -605,8 +607,16 @@ namespace Scripts
                     [ProtoContract]
                     public struct CustomScalesDef
                     {
+                        internal enum SkipMode
+                        {
+                            NoSkip,
+                            Inclusive,
+                            Exclusive,
+                        }
+
                         [ProtoMember(1)] internal CustomBlocksDef[] Types;
                         [ProtoMember(2)] internal bool IgnoreAllOthers;
+                        [ProtoMember(3)] internal SkipMode SkipOthers;
                     }
 
                     [ProtoContract]
@@ -633,7 +643,7 @@ namespace Scripts
                             Default,
                             Heal,
                             Bypass,
-                            Emp,
+                            EmpRetired,
                         }
 
                         [ProtoMember(1)] internal float Modifier;
@@ -777,12 +787,38 @@ namespace Scripts
                 {
                     [ProtoMember(1)] internal string AmmoRound;
                     [ProtoMember(2)] internal int Fragments;
-                    [ProtoMember(3)] internal float ForwardDegrees;
+                    [ProtoMember(3)] internal float Radial;
                     [ProtoMember(4)] internal float BackwardDegrees;
                     [ProtoMember(5)] internal float Degrees;
                     [ProtoMember(6)] internal bool Reverse;
-                    [ProtoMember(7)] internal bool RandomizeDir;
+                    [ProtoMember(7)] internal bool IgnoreArming;
                     [ProtoMember(8)] internal bool DropVelocity;
+                    [ProtoMember(9)] internal float Offset;
+                    [ProtoMember(10)] internal int MaxChildren;
+                    [ProtoMember(11)] internal TimedSpawnDef TimedSpawns;
+                    [ProtoMember(12)] internal bool FireSound;
+
+                    [ProtoContract]
+                    public struct TimedSpawnDef
+                    {
+                        public enum PointTypes
+                        {
+                            Direct,
+                            Lead,
+                            Predict,
+                        }
+
+                        [ProtoMember(1)] internal bool Enable;
+                        [ProtoMember(2)] internal int Interval;
+                        [ProtoMember(3)] internal int StartTime;
+                        [ProtoMember(4)] internal int MaxSpawns;
+                        [ProtoMember(5)] internal double Proximity;
+                        [ProtoMember(6)] internal bool ParentDies;
+                        [ProtoMember(7)] internal bool PointAtTarget;
+                        [ProtoMember(8)] internal int GroupSize;
+                        [ProtoMember(9)] internal int GroupDelay;
+                        [ProtoMember(10)] internal PointTypes PointType;
+                    }
                 }
 
                 [ProtoContract]
@@ -832,6 +868,12 @@ namespace Scripts
                         InvCurve,
                         Squeeze,
                         Pooled,
+                        Exponential,
+                    }
+                    public enum AoeShape
+                    {
+                        Round,
+                        Diamond,
                     }
 
                     [ProtoMember(1)] internal ByBlockHitDef ByBlockHit;
@@ -846,6 +888,7 @@ namespace Scripts
                         [ProtoMember(4)] internal float Depth;
                         [ProtoMember(5)] internal float MaxAbsorb;
                         [ProtoMember(6)] internal Falloff Falloff;
+                        [ProtoMember(7)] internal AoeShape Shape;
                     }
 
                     [ProtoContract]
@@ -864,6 +907,7 @@ namespace Scripts
                         [ProtoMember(11)] internal float ParticleScale;
                         [ProtoMember(12)] internal string CustomParticle;
                         [ProtoMember(13)] internal string CustomSound;
+                        [ProtoMember(14)] internal AoeShape Shape;
                     }
                 }
 

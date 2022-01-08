@@ -103,7 +103,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 4,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -183,6 +183,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Missiles_Torpedo,
+				Missiles_Torpedo_HomingPhase,
                 Missiles_Torpedo_Shrapnel,
             },
             Animations = Crusader_Fire,
@@ -277,7 +278,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 4,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -357,6 +358,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Missiles_Torpedo,
+				Missiles_Torpedo_HomingPhase,
                 Missiles_Torpedo_Shrapnel,
             },
             Animations = Crusader_Fire_Small,

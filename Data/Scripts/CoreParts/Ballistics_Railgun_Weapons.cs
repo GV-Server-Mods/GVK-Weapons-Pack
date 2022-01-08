@@ -90,7 +90,7 @@ namespace Scripts {
 				
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 4,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -232,7 +232,7 @@ namespace Scripts {
 				
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 4,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
