@@ -30,6 +30,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallInteriorTurret",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "InteriorTurretBase2",
+                        AzimuthPartId = "InteriorTurretBase1",
+                        ElevationPartId = "InteriorTurretBase2",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
 
                 },
                 Muzzles = new []
@@ -41,7 +51,7 @@ namespace Scripts
             {
                 Threats = new[]
                 {
-                    Grids, Characters,
+                    Characters,
                 },
                 SubSystems = new[]
                 {
@@ -100,7 +110,7 @@ namespace Scripts
                 },
 
                 Other = new OtherDef {
-					ConstructPartCap = 20,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 0,
 					EnergyPriority = 0,
 					MuzzleCheck = false,

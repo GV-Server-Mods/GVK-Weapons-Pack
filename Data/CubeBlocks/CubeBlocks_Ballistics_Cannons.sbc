@@ -48,7 +48,7 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="2.0" Default="true"/>
+				<MountPoint Side="Bottom" StartX="0.5" StartY="0.5" EndX="2.5" EndY="2.5" Default="true"/>
 			</MountPoints>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.33" File="Models\Coilguns\MXA_Sentry_BS1.mwm"/>
@@ -90,7 +90,7 @@
 				<Component Subtype="SteelPlate" Count="389"/>
 			</Components>
 			<BuildTimeSeconds>108</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>

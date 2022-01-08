@@ -19,20 +19,17 @@
 			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Cubes\Large\Gatling\14mmLGBase.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="113" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="113"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
-                <Component Subtype="MetalGrid" Count="339" />
-                <Component Subtype="SmallTube" Count="136" />
-                <Component Subtype="Motor" Count="181" />
-                <Component Subtype="Computer" Count="226" />
-                <Component Subtype="Construction" Count="677" />
-                <Component Subtype="SteelPlate" Count="339" />
-            </Components>
-
-
-
-            <BuildTimeSeconds>85</BuildTimeSeconds>
+				<Component Subtype="MetalGrid" Count="339"/>
+				<Component Subtype="SmallTube" Count="136"/>
+				<Component Subtype="Motor" Count="181"/>
+				<Component Subtype="Computer" Count="226"/>
+				<Component Subtype="Construction" Count="677"/>
+				<Component Subtype="SteelPlate" Count="339"/>
+			</Components>
+			<BuildTimeSeconds>85</BuildTimeSeconds>
 			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -89,7 +86,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 		</Definition>
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+		<!-- <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeGatlingTurretBasic</SubtypeId>
@@ -131,7 +128,6 @@
 				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\GatlingTurretConstruction_2.mwm"/>
 			</BuildProgressModels>
 			<VoxelPlacement>
-				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
 					<PlacementMode>OutsideVoxel</PlacementMode>
 					<MaxAllowed>0.2</MaxAllowed>
@@ -174,7 +170,7 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-		</Definition>
+		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeGatlingTurret</TypeId>
@@ -193,16 +189,17 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="15" />
-                <Component Subtype="MetalGrid" Count="44" />
-                <Component Subtype="SmallTube" Count="18" />
-                <Component Subtype="Motor" Count="24" />
-                <Component Subtype="Computer" Count="30" />
-                <Component Subtype="Construction" Count="88" />
-                <Component Subtype="SteelPlate" Count="44" />
-            </Components>
-            <BuildTimeSeconds>11</BuildTimeSeconds>
+			<Components>
+				<Component Subtype="SteelPlate" Count="15"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="MetalGrid" Count="44"/>
+				<Component Subtype="SmallTube" Count="18"/>
+				<Component Subtype="Motor" Count="24"/>
+				<Component Subtype="Computer" Count="30"/>
+				<Component Subtype="Construction" Count="88"/>
+				<Component Subtype="SteelPlate" Count="44"/>
+			</Components>
+			<BuildTimeSeconds>11</BuildTimeSeconds>
 			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -277,15 +274,15 @@
 			<GuiVisible>true</GuiVisible>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="3" />
-                <Component Subtype="MetalGrid" Count="8" />
-                <Component Subtype="SmallTube" Count="4" />
-                <Component Subtype="Motor" Count="5" />
-                <Component Subtype="Computer" Count="6" />
-                <Component Subtype="Construction" Count="16" />
-                <Component Subtype="SteelPlate" Count="8" />
-            </Components>
+			<Components>
+				<Component Subtype="SteelPlate" Count="3"/>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="5"/>
+				<Component Subtype="Computer" Count="6"/>
+				<Component Subtype="Construction" Count="16"/>
+				<Component Subtype="SteelPlate" Count="8"/>
+			</Components>
 			<BuildTimeSeconds>2</BuildTimeSeconds>
 			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -322,7 +319,7 @@
 			<DisplayName>[Gatling] Small 25mm Autocannon Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
-				[700m Auto Range]
+				[1200m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
@@ -332,16 +329,16 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\GatlingTurretAutoGatling\GatlingTurretAutoGatling_Small.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="3" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="3"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
-                <Component Subtype="MetalGrid" Count="8" />
-                <Component Subtype="SmallTube" Count="4" />
-                <Component Subtype="Motor" Count="5" />
-                <Component Subtype="Computer" Count="6" />
-                <Component Subtype="Construction" Count="16" />
-                <Component Subtype="SteelPlate" Count="8" />
-            </Components>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="5"/>
+				<Component Subtype="Computer" Count="6"/>
+				<Component Subtype="Construction" Count="16"/>
+				<Component Subtype="SteelPlate" Count="8"/>
+			</Components>
 			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

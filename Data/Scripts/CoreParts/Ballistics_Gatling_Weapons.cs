@@ -54,7 +54,7 @@ namespace Scripts {
 		};
 
 		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef {
-			ConstructPartCap = 20,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 3,
 			EnergyPriority = 0,
 			MuzzleCheck = false,
@@ -64,7 +64,7 @@ namespace Scripts {
 			CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef {
+		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T2 = new LoadingDef {
 			RateOfFire = 1200,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
@@ -87,7 +87,7 @@ namespace Scripts {
 			StayCharged = false, // Will start recharging whenever power cap is not full
 		};
 
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_Techless = new LoadingDef {
+		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T1 = new LoadingDef {
 			RateOfFire = 800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
@@ -180,7 +180,7 @@ namespace Scripts {
                 PartName = "LargeGatlingTurret", // name of weapon in terminal
                 DeviateShotAngle = 0.4f,
                 AimingTolerance = 4f, // 0 - 180 firing angle
-                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 10, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
@@ -213,7 +213,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 20,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -223,7 +223,7 @@ namespace Scripts {
 					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 				},
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -253,17 +253,6 @@ namespace Scripts {
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
-                    new MountPointDef
-                    {
-                        SubtypeId = "LargeGatlingTurretBasic",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "GatlingBarrel",
-                        AzimuthPartId = "GatlingTurretBase1",
-                        ElevationPartId = "GatlingTurretBase2",
-                        DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
-                    },
-
                 },
                 Muzzles = new []
                 {
@@ -278,7 +267,7 @@ namespace Scripts {
                 PartName = "SmallGatlingTurret", // name of weapon in terminal
                 DeviateShotAngle = 0.7f,
                 AimingTolerance = 4f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
@@ -311,7 +300,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -321,7 +310,7 @@ namespace Scripts {
 					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 				},
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_Techless,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T1,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -398,7 +387,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -408,7 +397,7 @@ namespace Scripts {
 					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 				},
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_Techless,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -447,7 +436,7 @@ namespace Scripts {
                 },
             },
 
-            Targeting = Ballistics_Gatlings_Targeting_T1,
+            Targeting = Ballistics_Gatlings_Targeting_T2,
 
             HardPoint = new HardPointDef
             {
@@ -487,7 +476,7 @@ namespace Scripts {
                 },
 				
                 Other = new OtherDef {
-					ConstructPartCap = 10,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 3,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
@@ -497,7 +486,7 @@ namespace Scripts {
 					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 				},
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_Techless,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				

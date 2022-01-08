@@ -4,7 +4,7 @@
 		<!--Torp Blast-->
 		<ParticleEffect xsi:type="ParticleEffect">
 			<Id Type="MyObjectBuilder_ParticleEffect" Subtype="MD_InstallationExplosion"/>
-			<ParticleId>1276323</ParticleId>
+			<ParticleId>1279323</ParticleId>
 			<Length>11</Length>
 			<Preload>0</Preload>
 			<LowRes>false</LowRes>

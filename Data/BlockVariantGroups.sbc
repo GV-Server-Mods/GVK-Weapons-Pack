@@ -63,6 +63,7 @@
 			<Description></Description>
 			<Blocks>
 				<Block Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret"/>
+				<Block Type="MyObjectBuilder_InteriorTurret" Subtype="SmallInteriorTurret"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

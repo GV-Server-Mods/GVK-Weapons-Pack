@@ -101,7 +101,7 @@
                 <Component Subtype="SteelPlate" Count="17" />
             </Components>
 			<BuildTimeSeconds>3</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>3000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>

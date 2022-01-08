@@ -301,7 +301,7 @@
 			<Category>WEP_EXPL</Category>
 			<MaxDistance>2000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
-			<PreventSynchronization>0</PreventSynchronization>
+			<PreventSynchronization>20</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<SoundLimit>20</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
@@ -640,10 +640,10 @@
 				<SubtypeId>MD_Artillary_shell_fly</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>1000</MaxDistance>
-			<PitchVariation>50</PitchVariation>
+			<MaxDistance>500</MaxDistance>
+			<PitchVariation>100</PitchVariation>
 			<PreventSynchronization>0</PreventSynchronization>
-			<Volume>1</Volume>
+			<Volume>0.25</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
 				<Wave Type="D3">

@@ -56,7 +56,7 @@ namespace Scripts
 		};
 
 		private OtherDef Missiles_Missile_Hardpoint_Other = new OtherDef {
-			ConstructPartCap = 6,
+			ConstructPartCap = 21,
 			RotateBarrelAxis = 0,
 			EnergyPriority = 0,
 			MuzzleCheck = false,
@@ -316,7 +316,7 @@ namespace Scripts
                 },
                 
 				Other = new OtherDef {
-					ConstructPartCap = 5,
+					ConstructPartCap = 21,
 					RotateBarrelAxis = 0,
 					EnergyPriority = 0,
 					MuzzleCheck = false,
