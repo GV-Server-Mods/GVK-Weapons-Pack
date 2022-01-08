@@ -18,6 +18,7 @@ namespace Scripts
 							SmallGatlingGun_Gimbal,
 							LargeInteriorTurret,
 							SmallMissileLauncher,
+							LargeMissileTurret,
 							SmallGatlingTurret,
 							SmallRocketLauncherReload,
 							AryxRailgunTurret, 

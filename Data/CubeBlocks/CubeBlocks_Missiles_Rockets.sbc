@@ -108,12 +108,11 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="13"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1"/>
-				<Component Subtype="Construction" Count="76"/>
 				<Component Subtype="MetalGrid" Count="13"/>
 				<Component Subtype="LargeTube" Count="16"/>
 				<Component Subtype="Motor" Count="41"/>
 				<Component Subtype="Computer" Count="31"/>
-				<Component Subtype="Construction" Count="26"/>
+				<Component Subtype="Construction" Count="102"/>
 				<Component Subtype="SteelPlate" Count="38"/>
 			</Components>
 			<BuildTimeSeconds>11</BuildTimeSeconds>
@@ -194,12 +193,11 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="27"/>
 				<Component Subtype="GVK_Missile_Tech" Count="2"/>
-				<Component Subtype="Construction" Count="157"/>
 				<Component Subtype="MetalGrid" Count="27"/>
 				<Component Subtype="LargeTube" Count="32"/>
 				<Component Subtype="Motor" Count="84"/>
 				<Component Subtype="Computer" Count="63"/>
-				<Component Subtype="Construction" Count="53"/>
+				<Component Subtype="Construction" Count="210"/>
 				<Component Subtype="SteelPlate" Count="79"/>
 			</Components>
 			<BuildTimeSeconds>23</BuildTimeSeconds>
@@ -247,12 +245,11 @@
 			<Model>Models\Cubes\Small\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="Construction" Count="14"/>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="3"/>
 				<Component Subtype="Motor" Count="7"/>
 				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="5"/>
+				<Component Subtype="Construction" Count="19"/>
 				<Component Subtype="SteelPlate" Count="7"/>
 			</Components>
 			<BuildTimeSeconds>2</BuildTimeSeconds>
