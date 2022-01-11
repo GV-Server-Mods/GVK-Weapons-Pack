@@ -24,7 +24,7 @@
 			</Effects>
 			<AmmoMagazines>
 				<AmmoMagazine Subtype="AutomaticRifleGun_Mag_20rd"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
+				<!-- <AmmoMagazine Subtype="NATO_5p56x45mm"/> -->
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>15</RecoilJetpackVertical>
@@ -81,7 +81,7 @@
 			</Effects>
 			<AmmoMagazines>
 				<AmmoMagazine Subtype="PreciseAutomaticRifleGun_Mag_5rd"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
+				<!-- <AmmoMagazine Subtype="NATO_5p56x45mm"/> -->
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>20</RecoilJetpackVertical>
@@ -138,7 +138,7 @@
 			</Effects>
 			<AmmoMagazines>
 				<AmmoMagazine Subtype="RapidFireAutomaticRifleGun_Mag_50rd"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
+				<!-- <AmmoMagazine Subtype="NATO_5p56x45mm"/> -->
 			</AmmoMagazines>
 			<RecoilJetpackVertical>15</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>8</RecoilJetpackHorizontal>
@@ -193,7 +193,7 @@
 			</Effects>
 			<AmmoMagazines>
 				<AmmoMagazine Subtype="UltimateAutomaticRifleGun_Mag_30rd"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
+				<!-- <AmmoMagazine Subtype="NATO_5p56x45mm"/> -->
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>12</RecoilJetpackVertical>

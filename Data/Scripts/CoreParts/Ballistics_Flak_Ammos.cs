@@ -36,7 +36,7 @@ namespace Scripts
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 100f,
-            Mass = 100, // in kilograms
+            Mass = 20, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 1000f,
             DecayPerShot = 0,
@@ -47,18 +47,10 @@ namespace Scripts
                 Shape = LineShape,
                 Diameter = 1,
             },
-            /*Fragment = new FragmentDef
-            {
-                AmmoRound = "Ballistics_Flak_Shrapnel",
-                Fragments = 50,
-                Degrees = 120,
-                Reverse = false,
-                RandomizeDir = false, // randomzie between forward and backward directions
-            },*/
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
                 AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
-                Fragments = 50, // Number of projectiles to spawn.
+                Fragments = 40, // Number of projectiles to spawn.
                 Degrees = 120, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
@@ -86,7 +78,7 @@ namespace Scripts
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
-                HealthHitModifier = 1, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                HealthHitModifier = 0.75, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 VoxelHitModifier = -1,
                 Characters = 0.1f,
                 FallOff = new FallOffDef
@@ -96,8 +88,8 @@ namespace Scripts
                 },
                 Grids = new GridSizeDef
                 {
-                    Large = -1f,
-                    Small = -1f,
+                    Large = 0f,
+                    Small = 0f,
                 },
                 Armor = new ArmorDef
                 {
@@ -123,33 +115,6 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = AntiSmart, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
-                {
-                    Radius = 350f, // the sphere of influence of area effects
-                    EffectStrength = 2f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-                },                
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = true,
-                    NoSound = true,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "", //MD_FlakExplosion
-                    CustomSound = "",//HWR_FlakExplosion
-                },
-                Detonation = new DetonateDef
-                {
-                    DetonateOnEnd = true,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 0,
-                    DetonationRadius = 10,
-					MinArmingTime = 10,
-                },
-            },*/
             AreaOfDamage = new AreaOfDamageDef
             {
                 ByBlockHit = new ByBlockHitDef
@@ -168,10 +133,10 @@ namespace Scripts
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = false,
-                    Radius = 5f,
-                    Damage = 600f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Enable = true,
+                    Radius = 50f,
+                    Damage = 1f,
+                    Depth = 50f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -179,8 +144,8 @@ namespace Scripts
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                    ArmOnlyOnHit = true,
-                    MinArmingTime = 00,
+                    ArmOnlyOnHit = false,
+                    MinArmingTime = 10,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
@@ -190,13 +155,13 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = true,
+                Enable = false,
                 Type = AntiSmart, //AntiSmart, JumpNull, EnergySink, Anchor, Emp, Offense, Nav, Dot, Push, Pull, Tractor,
                 Mode = Effect,
                 Strength = 2f,
                 Radius = 350f,
                 Duration = 0,
-                StackDuration = true,
+                StackDuration = false,
                 Depletable = true,
                 MaxStacks = 0,
                 NoHitParticle = false,
@@ -310,7 +275,7 @@ namespace Scripts
             AmmoRound = "Ballistics_Flak_Shrapnel",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 500f,
+            BaseDamage = 250f,
             Mass = 100, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 0f,
@@ -337,12 +302,12 @@ namespace Scripts
                 },
                 Grids = new GridSizeDef
                 {
-                    Large = -1f,
+                    Large = 0.75f,
                     Small = -1f,
                 },
                 Armor = new ArmorDef
                 {
-                    Armor = 0.5f,
+                    Armor = -1f,
                     Light = -1f,
                     Heavy = -1f,
                     NonArmor = -1f,
@@ -364,32 +329,6 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Explosive, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
-                {
-                    Radius = 0, // the sphere of influence of area effects
-                    EffectStrength = 0, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-                },                
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = true,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "MD_FlakExplosion",
-                    CustomSound = "",//HWR_FlakExplosion
-                },
-                Detonation = new DetonateDef
-                {
-                    DetonateOnEnd = true,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 0,
-                    DetonationRadius = 0,
-                },
-            },*/
             AreaOfDamage = new AreaOfDamageDef
             {
                 ByBlockHit = new ByBlockHitDef
@@ -411,9 +350,9 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 5f, // Meters
-                    Damage = 1f,
-                    Depth = 1f,
+                    Radius = 0f, // Meters
+                    Damage = 0f,
+                    Depth = 0f,
                     MaxAbsorb = 0f,
                     Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -444,20 +383,19 @@ namespace Scripts
                 Depletable = true,
                 MaxStacks = 10, // Max Debuffs at once
                 NoHitParticle = false,
-                /*
-                EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
-                Emp : Targets & Shutdown any Block capable of being powered
-                Offense : Targets & Shutdowns Weaponry
-                Nav : Targets & Shutdown Gyros, Thrusters, or Locks them down
-                Dot : Deals Damage to Blocks in radius
-                AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
-                JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
-                Tractor : Affects target with Physics
-                Pull : Affects target with Physics
-                Push : Affects target with Physics
-                Anchor : Affects target with Physics
+				
+                //EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
+                //Emp : Targets & Shutdown any Block capable of being powered
+                //Offense : Targets & Shutdowns Weaponry
+                //Nav : Targets & Shutdown Gyros, Thrusters, or Locks them down
+                //Dot : Deals Damage to Blocks in radius
+                //AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
+                //JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
+                //Tractor : Affects target with Physics
+                //Pull : Affects target with Physics
+                //Push : Affects target with Physics
+                //Anchor : Affects target with Physics
                 
-                */
                 Force = new PushPullDef
                 {
                     ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
@@ -511,15 +449,9 @@ namespace Scripts
                     {
                         Name = "",
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 3000,
-                            MaxDuration = 0,
                             Scale = 1,
                             HitPlayChance = 1f,
                         },
@@ -556,6 +488,5 @@ namespace Scripts
                 HitPlayShield = true,
             }, // Don't edit below this line
         };
-
     }
 }

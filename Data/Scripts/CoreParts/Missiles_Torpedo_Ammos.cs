@@ -246,7 +246,7 @@ namespace Scripts
             AmmoRound = "Missiles_Torpedo_HomingPhase",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 99999999f,
+            BaseDamage = 1f,
             Mass = 3000f, // in kilograms
             Health = 50f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
@@ -260,14 +260,6 @@ namespace Scripts
                 Shape = LineShape,
                 Diameter = 0,
             },
-            /*Fragment = new FragmentDef
-            {
-                AmmoRound = "Missiles_Torpedo_Shrapnel",
-                Fragments = 1,
-                Degrees = 0,
-                Reverse = false,
-                RandomizeDir = false, // randomzie between forward and backward directions
-            },*/
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
                 AmmoRound = "Missiles_Torpedo_Shrapnel", // AmmoRound field of the ammo to spawn.
@@ -370,23 +362,24 @@ namespace Scripts
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = false,
-                    Radius = 4f,
-                    Damage = 1500f,
-                    Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Radius = 250f,
+                    Damage = 1f,
+                    Depth = 1f,
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+					Shape = Diamond, // Round or Diamond
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = false,
-                    Radius = 5f,
-                    Damage = 600f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Enable = true,
+                    Radius = 15f,
+                    Damage = 5000f,
+                    Depth = 4f,
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -394,27 +387,28 @@ namespace Scripts
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                    ArmOnlyOnHit = true,
-                    MinArmingTime = 00,
+                    ArmOnlyOnHit = false,
+                    MinArmingTime = 0,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "particleName",
-                    CustomSound = "soundName",
+                    CustomParticle = "",
+                    CustomSound = "",
+					Shape = Diamond, // Round or Diamond
                 },
             },
             Ewar = new EwarDef
             {
-                Enable = true, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
-                Type = Emp, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
-                Mode = Effect, // Effect , Field
-                Strength = 500000f,
-                Radius = 1000f, // Meters
+                Enable = false, // Enables the EWAR , Electronic-Warfare System
+                Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
+                Mode = Field, // Effect , Field
+                Strength = 2500000000f,
+                Radius = 100f, // Meters
                 Duration = 1800, // In Ticks
                 StackDuration = false, // Combined Durations
                 Depletable = true,
-                MaxStacks = 0, // Max Debuffs at once
-                NoHitParticle = false,
+                MaxStacks = 1, // Max Debuffs at once
+                NoHitParticle = true,
                 /*
                 EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
                 Emp : Targets & Shutdown any Block capable of being powered
@@ -427,7 +421,6 @@ namespace Scripts
                 Pull : Affects target with Physics
                 Push : Affects target with Physics
                 Anchor : Affects target with Physics
-                
                 */
                 Force = new PushPullDef
                 {
@@ -440,12 +433,12 @@ namespace Scripts
                 },
                 Field = new FieldDef
                 {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
+                    Interval = 1, // Time between each pulse, in game ticks (60 == 1 second).
+                    PulseChance = 100, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
                     GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = true, // Show Block damage effect.
-                    TriggerRange = 250f, //range at which fields are triggered
+                    HideModel = true, // Hide the field bubble model.
+                    ShowParticle = false, // Show Block damage effect.
+                    TriggerRange = 1f, //range at which fields are triggered
                     Particle = new ParticleDef // Particle effect to generate at the field's position.
                     {
                         Name = "", // SubtypeId of field particle effect.
@@ -508,7 +501,7 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "MD_TorpedoSlowBlast",
+                        Name = "MD_TorpedoSlowBlast", //MD_TorpedoSlowBlast
                         ApplyToShield = true,
                         ShrinkByDistance = false,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
@@ -638,82 +631,71 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-				Base = new AreaInfluence
-				{
-					Radius = 0, // the sphere of influence of area effects
-					EffectStrength = 0, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-				},
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = false,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "MD_FlakExplosion",
-                    CustomSound = "HWR_FlakExplosion",//HWR_FlakExplosion
-                },
-                Detonation = new DetonateDef
-                {
-                    DetonateOnEnd = true,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 2000,
-                    DetonationRadius = 15,
-                },
-            },*/
             AreaOfDamage = new AreaOfDamageDef
             {
                 ByBlockHit = new ByBlockHitDef
                 {
-                    Enable = true,
-                    Radius = 15f,
-                    Damage = 5000f,
-                    Depth = 0.4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Enable = false,
+                    Radius = 250f,
+                    Damage = 1f,
+                    Depth = 1f,
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+					Shape = Round, // Round or Diamond
                 },
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = false,
-                    Radius = 5f,
-                    Damage = 600f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Radius = 1f,
+                    Damage = 1f,
+                    Depth = 1f,
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                    ArmOnlyOnHit = true,
-                    MinArmingTime = 00,
+                    ArmOnlyOnHit = false,
+                    MinArmingTime = 0,
                     NoVisuals = false,
                     NoSound = false,
-                    ParticleScale = 1,
-                    CustomParticle = "particleName",
-                    CustomSound = "soundName",
+                    ParticleScale = 10,
+                    CustomParticle = "EMP_Field_Lightning",
+                    CustomSound = "",
+					Shape = Round, // Round or Diamond
                 },
             },
             Ewar = new EwarDef
             {
-                Enable = false,
-                Type = Emp, //AntiSmart, JumpNull, EnergySink, Anchor, Emp, Offense, Nav, Dot, Push, Pull, Tractor,
-                Mode = Effect,
-                Strength = 10000f,
-                Radius = 100f,
-                Duration = 100,
-                StackDuration = true,
+                Enable = true, // Enables the EWAR , Electronic-Warfare System
+                Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
+                Mode = Field, // Effect , Field
+                Strength = 2500000000f,
+                Radius = 100f, // Meters
+                Duration = 1800, // In Ticks
+                StackDuration = false, // Combined Durations
                 Depletable = true,
-                MaxStacks = 10,
-                NoHitParticle = false,
+                MaxStacks = 1, // Max Debuffs at once
+                NoHitParticle = true,
+                /*
+                EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
+                Emp : Targets & Shutdown any Block capable of being powered
+                Offense : Targets & Shutdowns Weaponry
+                Nav : Targets & Shutdown Gyros, Thrusters, or Locks them down
+                Dot : Deals Damage to Blocks in radius
+                AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
+                JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
+                Tractor : Affects target with Physics
+                Pull : Affects target with Physics
+                Push : Affects target with Physics
+                Anchor : Affects target with Physics
+                */
                 Force = new PushPullDef
                 {
                     ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
@@ -725,22 +707,17 @@ namespace Scripts
                 },
                 Field = new FieldDef
                 {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
+                    Interval = 1, // Time between each pulse, in game ticks (60 == 1 second).
+                    PulseChance = 100, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
                     GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
+                    HideModel = true, // Hide the field bubble model.
+                    ShowParticle = false, // Show Block damage effect.
+                    TriggerRange = 1f, //range at which fields are triggered
                     Particle = new ParticleDef // Particle effect to generate at the field's position.
                     {
                         Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
                             Scale = 1, // Scale of effect.
                         },
                     },
@@ -751,12 +728,62 @@ namespace Scripts
                 MaxLifeTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 DesiredSpeed = 1,
                 MaxTrajectory = 1f,
+                FieldTime = 600, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
             },
-            AmmoGraphics = new GraphicDef
+            AmmoGraphics = new GraphicDef 
             {
                 ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
+                Particles = new AmmoParticleDef
+                {
+                    Ammo = new ParticleDef
+                    {
+                        Name = "EMP_Field_Lightning", // Polaron_Explosion MA_Damage_Electrical_Damaged
+                        ShrinkByDistance = false,
+                        Color = Color(red: 1, green: 1, blue: 5, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Restart = false,
+                            MaxDistance = 10000,
+                            MaxDuration = 20,
+                            Scale = 10,
+                        },
+                    },
+                    Hit = new ParticleDef
+                    {
+                        Name = "",
+                        ApplyToShield = true,
+                        ShrinkByDistance = false,
+                        Color = Color(red: 3, green: 1.9f, blue: 1f, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Restart = false,
+                            MaxDistance = 5000,
+                            MaxDuration = 0,
+                            Scale = 1,
+                            HitPlayChance = 1f,
+                        },
+                    },
+                    Eject = new ParticleDef
+                    {
+                        Name = "",
+                        ApplyToShield = true,
+                        ShrinkByDistance = false,
+                        Color = Color(red: 3, green: 1.9f, blue: 1f, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Restart = false,
+                            MaxDistance = 5000,
+                            MaxDuration = 30,
+                            Scale = 1,
+                            HitPlayChance = 1f,
+                        },
+                    },
+                },
                 Lines = new LineDef
                 {
                     Tracer = new TracerBaseDef
