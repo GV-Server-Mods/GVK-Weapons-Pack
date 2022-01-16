@@ -141,7 +141,7 @@ namespace Scripts
             },
             Ewar = new EwarDef
             {
-                Enable = true,
+                Enable = false,
                 Type = Emp,
                 Mode = Effect,
                 Strength = 500000f,
