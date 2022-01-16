@@ -66,12 +66,12 @@ namespace Scripts
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			SkipBarrels = 0,
 			ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 2, //heat generated per shot
 			MaxHeat = 600, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 22, //amount of heat lost per second
-			DegradeRof = true, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+			HeatSinkRate = 30, //amount of heat lost per second
+			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
 			ShotsInBurst = 0,
 			DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			FireFull = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
@@ -220,7 +220,7 @@ namespace Scripts
                 DeviateShotAngle = 0f,
                 AimingTolerance = 0.1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 
@@ -270,7 +270,8 @@ namespace Scripts
             },
        
 			Ammos = new[] {
-                Lasers_Laser_Large
+                Lasers_Laser_Large,
+				Lasers_Laser_Shrapnel_OffenseField
             },
             //Animations = PDX_Animations,
             // Don't edit below this line
@@ -308,7 +309,7 @@ namespace Scripts
                 DeviateShotAngle = 0f,
                 AimingTolerance = 0.1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 
@@ -338,6 +339,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Large,
+				Lasers_Laser_Shrapnel_OffenseField
             },
 
             // Don't edit below this line
@@ -459,6 +461,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Small,
+				Lasers_Laser_Shrapnel_OffenseField
             },
             //Animations= Receptor_Emissive
             //Upgrades = UpgradeModules,
@@ -544,6 +547,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Small,
+				Lasers_Laser_Shrapnel_OffenseField
             },
             //Animations= Receptor_Emissive
             //Upgrades = UpgradeModules,
