@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXLightCoilgun</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Onager Mass Driver</DisplayName>
+			<DisplayName>[MAC] Heavy Onager</DisplayName>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Only suitable for the largest ships, and damage drops with range. Designed by Aryx Weapon Enterprises.
 				[3000m Manual Range]
 				[Uses 1000mm KE]
@@ -21,27 +21,28 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
-            <Components>
-                <Component Subtype="SteelPlate" Count="415" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="415"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
-                <Component Subtype="MetalGrid" Count="125" />
-                <Component Subtype="PowerCell" Count="42" />
-                <Component Subtype="Superconductor" Count="83" />
-                <Component Subtype="Motor" Count="83" />
-                <Component Subtype="Reactor" Count="104" />
-                <Component Subtype="Computer" Count="311" />
-                <Component Subtype="SteelPlate" Count="622" />
-            </Components>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="125"/>
+				<Component Subtype="PowerCell" Count="42"/>
+				<Component Subtype="Superconductor" Count="83"/>
+				<Component Subtype="Motor" Count="83"/>
+				<Component Subtype="Reactor" Count="104"/>
+				<Component Subtype="Computer" Count="311"/>
+				<Component Subtype="SteelPlate" Count="622"/>
+			</Components>
 			<BuildTimeSeconds>115</BuildTimeSeconds>
 			<PCU>6000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="Ballistics_MAC"/>
+			<WeaponDefinitionId Subtype="LargeRailgun"/>
 			<InventoryMaxVolume>5</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
@@ -67,6 +68,137 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Coilgun\ARYX_LightCoilgun_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>AWELightCoilgun</BlockPairName>
+		</Definition> -->
+		<Definition Enabled="false">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>LargeRailgun</SubtypeId>
+			</Id>
+			<DisplayName>[MAC] Large 500mm</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
+			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Only suitable for the largest ships, and damage drops with range.
+				[3000m Manual Range]
+				[Uses 200mm SABOT]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="8"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\RailGun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="50"/>
+				<Component Subtype="Construction" Count="150"/>
+				<Component Subtype="Superconductor" Count="150"/>
+				<Component Subtype="LargeTube" Count="60"/>
+				<Component Subtype="PowerCell" Count="100"/>
+				<Component Subtype="Computer" Count="100"/>
+				<Component Subtype="SteelPlate" Count="300"/>
+			</Components>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>
+				<MountPoint Side="Top" StartX="0.2" StartY="0.2" EndX="0.8" EndY="3.3"/>
+				<MountPoint Side="Bottom" StartX="0.3" StartY="4.9" EndX="0.7" EndY="6.5"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="1" EndX="3.3" EndY="1.8"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="0.6" EndX="2.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="4.7" StartY="1" EndX="7.9" EndY="1.8"/>
+				<MountPoint Side="Left" StartX="5.9" StartY="0.6" EndX="7.9" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\RailGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\RailGunConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\RailGunConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>Railgun</BlockPairName>
+			<Center x="0" y="1" z="6"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BuildTimeSeconds>100</BuildTimeSeconds>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeRailgun"/>
+			<ResourceSinkGroup>DefenseAdative</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<StandbyPowerConsumption>0.0001</StandbyPowerConsumption>
+			<DamageEffectName>Damage_Railgun_Large</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+			<DestroySound>PoofExplosionCat3</DestroySound>
+			<PCU>80</PCU>
+			<IsAirTight>false</IsAirTight>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>LargeRailgun</SubtypeId>
+			</Id>
+			<DisplayName>[MAC] Light Coil</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
+			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage.
+				[3000m Manual Range]
+				[Uses 200mm DU]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="8"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\RailGun.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="285" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+                <Component Subtype="MetalGrid" Count="86" />
+                <Component Subtype="PowerCell" Count="29" />
+                <Component Subtype="Superconductor" Count="57" />
+                <Component Subtype="Motor" Count="57" />
+                <Component Subtype="Reactor" Count="72" />
+                <Component Subtype="Computer" Count="214" />
+                <Component Subtype="SteelPlate" Count="427" />
+            </Components>
+            <BuildTimeSeconds>79</BuildTimeSeconds>
+			<PCU>6000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>
+				<MountPoint Side="Top" StartX="0.2" StartY="0.2" EndX="0.8" EndY="3.3"/>
+				<MountPoint Side="Bottom" StartX="0.3" StartY="4.9" EndX="0.7" EndY="6.5"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="1" EndX="3.3" EndY="1.8"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="0.6" EndX="2.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="4.7" StartY="1" EndX="7.9" EndY="1.8"/>
+				<MountPoint Side="Left" StartX="5.9" StartY="0.6" EndX="7.9" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\RailGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\RailGunConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\RailGunConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>LightMAC</BlockPairName>
+			<Center x="0" y="1" z="6"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BuildTimeSeconds>100</BuildTimeSeconds>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeRailgun"/>
+			<ResourceSinkGroup>DefenseAdative</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<StandbyPowerConsumption>0.0001</StandbyPowerConsumption>
+			<DamageEffectName>Damage_Railgun_Large</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+			<DestroySound>PoofExplosionCat3</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

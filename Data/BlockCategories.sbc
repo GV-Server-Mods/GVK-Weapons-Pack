@@ -8,11 +8,10 @@
 			</Id>
 			<DisplayName>DisplayName_Category_ShipWeapons</DisplayName>
 			<Name>Weapons</Name>
+			<StrictSearch>true</StrictSearch>
 			<ItemIds>
-				<string>ARYXFlakTurret</string>
 				<string>ARYXRailgun</string>
 				<string>ARYXRailgunTurret</string>
-				<string>ARYXLightCoilgun</string>
 				<string>MXA_ArcherPods</string>
 				<string>Missile_Torpedo_Large</string>
 				<string>Missile_Torpedo_Small</string>
@@ -37,14 +36,21 @@
 				<string>ReceptorTurret</string>
 				<string>OKI122mmSGfixed</string>
 				<string>OKI122mmVT</string>
-				<string>MXA_CoilgunL</string>
-				<!-- <string>OKI230mmBCfixed</string> -->
-				<!-- <string>JumpDriveDisruptorTurret</string> -->
 				<string>MA_Fixed_T2</string>
-				<!-- <string>MA_Fixed_T2_Naked</string> -->
-				<!-- <string>MXA_Moray</string> -->
 				<string>ARYXLargeRadar</string>
 				<string>ARYXSmallRadar</string>
+				<string>LargeBlockMediumCalibreTurret</string>
+				<string>SmallBlockMediumCalibreTurret</string>
+				<string>LargeCalibreTurret</string>
+				<string>LargeBlockLargeCalibreGun</string>
+				<string>SmallBlockMediumCalibreGun</string>
+				<string>SmallRailgun</string>
+				<string>LargeRailgun</string>
+				<string>SmallMissileLauncherWarfare2</string>
+				<string>SmallGatlingGunWarfare2</string>
+				<string>AutoCannonTurret</string>
+				<string>OKIObserverSM</string>
+				<string>OKIDesignator</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>

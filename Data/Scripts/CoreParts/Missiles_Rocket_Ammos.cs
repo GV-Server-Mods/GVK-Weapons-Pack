@@ -92,7 +92,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 10f,
-                    Damage = 2000f,
+                    Damage = 4000f,
                     Depth = 0.4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
@@ -177,7 +177,6 @@ namespace Scripts
 				AccelPerSec = 800f,
 				DesiredSpeed = 800,
 				MaxTrajectory = 900f,
-				FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
 				SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed
 				RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
 				Smarts = new SmartsDef

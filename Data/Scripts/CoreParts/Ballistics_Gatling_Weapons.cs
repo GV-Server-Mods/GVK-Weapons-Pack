@@ -27,7 +27,7 @@ namespace Scripts {
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 1200, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -46,7 +46,7 @@ namespace Scripts {
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 700, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 900, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -65,14 +65,14 @@ namespace Scripts {
 		};
 
 		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T2 = new LoadingDef {
-			RateOfFire = 1200,
+			RateOfFire = 2100,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			SkipBarrels = 0,
 			ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 3, //heat generated per shot
+			HeatPerShot = 1, //heat generated per shot
 			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
 			HeatSinkRate = 25, //amount of heat lost per second
@@ -80,22 +80,22 @@ namespace Scripts {
 			ShotsInBurst = 0,
 			DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			FireFull = false,
-			GiveUpAfter = false,
+			GiveUpAfter = true,
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-			MagsToLoad = 1, // Number of physical magazines to consume on reload.
+			MagsToLoad = 4, // Number of physical magazines to consume on reload.
 			SpinFree = true, // Spin barrel while not firing
 			StayCharged = false, // Will start recharging whenever power cap is not full
 		};
 
 		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T1 = new LoadingDef {
-			RateOfFire = 800,
+			RateOfFire = 1800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			SkipBarrels = 0,
 			ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 4, //heat generated per shot
+			HeatPerShot = 2, //heat generated per shot
 			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
 			HeatSinkRate = 25, //amount of heat lost per second
@@ -103,17 +103,17 @@ namespace Scripts {
 			ShotsInBurst = 0,
 			DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			FireFull = false,
-			GiveUpAfter = false,
+			GiveUpAfter = true,
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-			MagsToLoad = 1, // Number of physical magazines to consume on reload.
+			MagsToLoad = 2, // Number of physical magazines to consume on reload.
 			SpinFree = true, // Spin barrel while not firing
 			StayCharged = false, // Will start recharging whenever power cap is not full
 		};
 
 		private HardPointAudioDef Ballistics_Gatlings_Hardpoint_Audio = new HardPointAudioDef {
-			PreFiringSound = "",
-			FiringSound = "MD_GatlingBlisterFire", // WM_Lightning, WepTurretInteriorFire, ArcWepShipGatlingShot, MD_GatlingLoop
-			FiringSoundPerShot = true,
+			PreFiringSound = "", 
+			FiringSound = "MD_GatlingLoopFire", // MD_GatlingBlisterFire, WepTurretInteriorFire, ArcWepShipGatlingShot, MD_GatlingLoop
+			FiringSoundPerShot = false,
 			ReloadSound = "",
 			NoAmmoSound = "WepShipGatlingNoAmmo", 
 			HardPointRotationSound = "WepTurretGatlingRotate", 
@@ -178,38 +178,32 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "LargeGatlingTurret", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
-                AimingTolerance = 4f, // 0 - 180 firing angle
+                DeviateShotAngle = 0.5f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 10, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
                 Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.03f,
-                    ElevateRate = 0.02f,
+                    RotateRate = 0.05f,
+                    ElevateRate = 0.03f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.8f,
+                    InventorySize = 0.6f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
+					
+					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
                 },
 				
                 Other = new OtherDef {
@@ -227,14 +221,40 @@ namespace Scripts {
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 2f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "Smoke_LargeGunShot_WC",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 2f,
+                        },
+                    },
+                },
 				
             },
        
 			Ammos = new[] {
-                Ballistics_Gatling,
+                NATO_25x184mm,
             },
-            Animations = MD_Gatling_Animations,
+            //Animations = MD_Gatling_Animations,
             // Don't edit below this line
         };
 
@@ -274,7 +294,7 @@ namespace Scripts {
 				
                 Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef
                 {
@@ -285,18 +305,12 @@ namespace Scripts {
                     MinElevation = -10,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.4f,
+                    InventorySize = 0.3f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
+					
+					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
                 },
 				
                 Other = new OtherDef {
@@ -314,12 +328,38 @@ namespace Scripts {
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "Smoke_LargeGunShot_WC",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
 
 			Ammos = new[] {
-                Ballistics_Gatling_Basic,
+                NATO_25x184mm,
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line
@@ -333,6 +373,16 @@ namespace Scripts {
                     new MountPointDef
                     {
                         SubtypeId = "SmallGatlingGun",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "Barrel",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallGatlingGunWarfare2",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "Barrel",
                         ElevationPartId = "None",
@@ -372,18 +422,12 @@ namespace Scripts {
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = true,
-                    InventorySize = 0.2f,
+                    InventorySize = 0.15f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
+					
+					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
                 },
 				
                 Other = new OtherDef {
@@ -401,12 +445,38 @@ namespace Scripts {
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "Smoke_LargeGunShot_WC",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
 
 			Ammos = new[] {
-                Ballistics_Gatling,
+                NATO_25x184mm,
 
             },
             //Animations = AdvancedAnimation,
@@ -450,7 +520,7 @@ namespace Scripts {
 				
                 Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef
                 {
@@ -461,19 +531,13 @@ namespace Scripts {
                     MinElevation = -15,
                     MaxElevation = 15,
                     FixedOffset = false,
-                    InventorySize = 0.2f,
+                    InventorySize = 0.15f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
-                },
+					
+					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
+				},
 				
                 Other = new OtherDef {
 					ConstructPartCap = 21,
@@ -490,12 +554,38 @@ namespace Scripts {
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "Smoke_LargeGunShot_WC",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
 
 			Ammos = new[] {
-                Ballistics_Gatling,
+                NATO_25x184mm,
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line

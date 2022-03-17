@@ -1299,80 +1299,106 @@
 				</ParticleGeneration>
 			</ParticleGenerations>
 			<ParticleLights>
-				<ParticleLight Name="ExplosionLight" Version="0">
+				<ParticleLight Name="ParticleLight" Version="0">
 					<Properties>
-						<Property Name="Position" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
+						<Property AnimationType="Animated" Name="Position" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>0</X>
+										<Y>0</Y>
+										<Z>-2</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>0.3036169</Time>
+									<ValueVector3>
+										<X>0</X>
+										<Y>0</Y>
+										<Z>-13</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
 						</Property>
-						<Property Name="Position var" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Position var" Type="Vector3">
 							<Keys/>
 						</Property>
-						<Property Name="Color" AnimationType="Animated" Type="Vector4">
+						<Property AnimationType="Animated" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
 									<ValueVector4>
 										<X>1</X>
-										<Y>0.7893137</Y>
-										<Z>0.4534565</Z>
+										<Y>0.7742273</Y>
+										<Z>0.3736151</Z>
 										<W>1</W>
 									</ValueVector4>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Color var" Type="Float">
 							<Keys/>
 						</Property>
-						<Property Name="Range" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Range" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>100</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Range var" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Animated" Name="Intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0.00203769724</Time>
+									<ValueFloat>200</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>0.1569027</Time>
+									<ValueFloat>200</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>0.5073867</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Intensity var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
 									<ValueFloat>50</ValueFloat>
 									<Value2D/>
 								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Range var" AnimationType="Animated" Type="Float">
-							<Keys/>
-						</Property>
-						<Property Name="Intensity" AnimationType="Animated" Type="Float">
-							<Keys>
 								<Key>
-									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.01</Time>
-									<ValueFloat>1000</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1</Time>
+									<Time>0.5033113</Time>
 									<ValueFloat>0</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Intensity var" AnimationType="Animated" Type="Float">
-							<Keys/>
-						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Gravity Displacement" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity Displacement" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Falloff" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Variance Timeout" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Falloff" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Variance Timeout" Type="Float">
+							<ValueFloat>0.005</ValueFloat>
 						</Property>
 					</Properties>
 				</ParticleLight>

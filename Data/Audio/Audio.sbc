@@ -27,9 +27,9 @@
 				<SubtypeId>MD_GatlingBlisterFire</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>500</MaxDistance>
-			<PitchVariation>50</PitchVariation>
-			<SoundLimit>60</SoundLimit>
+			<MaxDistance>1500</MaxDistance>
+			<PitchVariation>10</PitchVariation>
+			<SoundLimit>300</SoundLimit>
 			<PreventSynchronization>3</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
@@ -50,7 +50,7 @@
 				<SubtypeId>MD_GatlingBlisterFire_Distant</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>3000</MaxDistance>
+			<MaxDistance>1500</MaxDistance>
 			<PitchVariation>50</PitchVariation>
 			<PreventSynchronization>3</PreventSynchronization>
 			<Volume>0.6</Volume>
@@ -64,12 +64,56 @@
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>MD_GatlingLoopFire</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>1500</MaxDistance>
+			<PitchVariation>10</PitchVariation>
+			<SoundLimit>20</SoundLimit>
+			<PreventSynchronization>7</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DistantSounds>
+				<DistantSound DistanceCrossfade="1" Distance="300" Sound="MD_GatlingLoopFire_Distant"/>
+			</DistantSounds>
+			<Volume>0.7</Volume>
+			<Loopable>true</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\MD\GatlingStart.wav</Start>
+					<Loop>Audio\MD\GatlingLoop.wav</Loop>
+					<End>Audio\MD\GatlingEnd.wav</End>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>MD_GatlingLoopFire_Distant</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>1500</MaxDistance>
+			<PitchVariation>50</PitchVariation>
+			<PreventSynchronization>3</PreventSynchronization>
+			<Volume>1</Volume>
+			<Loopable>true</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\MD\GatlingStartDistant.wav</Start>
+					<Loop>Audio\MD\GatlingLoopDistant.wav</Loop>
+					<End>Audio\MD\GatlingEndDistant.wav</End>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>HWR_MediumLaserPreFiring</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
 			<MaxDistance>200</MaxDistance>
 			<PitchVariation>15</PitchVariation>
-			<PreventSynchronization>0</PreventSynchronization>
+			<PreventSynchronization>5</PreventSynchronization>
 			<Volume>1</Volume>
 			<Loopable>true</Loopable>
 			<Waves>
@@ -127,14 +171,14 @@
 				<SubtypeId>HWR_SmallExplosion</SubtypeId>
 			</Id>
 			<Category>WEP_EXPL</Category>
-			<MaxDistance>1000</MaxDistance>
+			<MaxDistance>2000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>0</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<SoundLimit>20</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
-				<DistantSound DistanceCrossfade="500" Distance="1000" Sound="HWR_ExplosionDistant"/>
+				<DistantSound DistanceCrossfade="500" Distance="2000" Sound="HWR_ExplosionDistant"/>
 			</DistantSounds>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>
@@ -181,7 +225,7 @@
 			<SoundLimit>20</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
-				<DistantSound DistanceCrossfade="500" Distance="1000" Sound="HWR_ExplosionDistant"/>
+				<DistantSound DistanceCrossfade="500" Distance="5000" Sound="HWR_ExplosionDistant"/>
 			</DistantSounds>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>
@@ -645,6 +689,7 @@
 			<PreventSynchronization>0</PreventSynchronization>
 			<Volume>0.25</Volume>
 			<Loopable>false</Loopable>
+            <RealisticFilter>FadeIn</RealisticFilter>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\MD\Artillary_shell_fly_1.wav</Start>
@@ -679,7 +724,7 @@
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
-				<SubtypeId>MD_RadarHit</SubtypeId> 
+				<SubtypeId>MD_RadarHit</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
 			<MaxDistance>600</MaxDistance>
@@ -694,6 +739,158 @@
 				<Wave Type="D3">
 					<Start>Audio\MD\Radar_Hit_1.wav</Start>
 					<Loop>Audio\MD\Radar_Hit_1_Loop.wav</Loop>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>AutocannonFire</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>2000</MaxDistance>
+			<PitchVariation>100</PitchVariation>
+			<PreventSynchronization>5</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<SoundLimit>30</SoundLimit>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DistantSounds>
+				<DistantSound DistanceCrossfade="1" Distance="500" Sound="AutocannonFireDistant1"/>
+			</DistantSounds>
+			<Volume>2</Volume>
+			<Loopable>false</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP\ArcWepTurretGatlingFire3d01.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP\ArcWepTurretGatlingFire3d02.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP\ArcWepTurretGatlingFire3d03.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP\ArcWepTurretGatlingFire3d06.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP\ArcWepTurretGatlingFire3d07.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>AutocannonFireDistant1</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>2000</MaxDistance>
+			<PitchVariation>100</PitchVariation>
+			<PreventSynchronization>1</PreventSynchronization>
+			<Volume>1</Volume>
+			<Loopable>false</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d01.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d02.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d03.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d04.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d05.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d06.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\ARC\WEP_DIST\ArcWepTurretGatlingFireDistA3d07.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>AutocannonReload</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>150</MaxDistance>
+			<PitchVariation>100</PitchVariation>
+			<PreventSynchronization>3</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>1</Volume>
+			<Loopable>false</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterReload3D01.wav</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>AutocannonExplosion</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>2000</MaxDistance>
+			<PreventSynchronization>5</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>25</DynamicMusicAmount>
+			<SoundLimit>20</SoundLimit>
+			<DistantSounds>
+				<DistantSound DistanceCrossfade="50" Distance="500" Sound="AutocannonExplosionDistA"/>
+			</DistantSounds>
+			<Volume>1</Volume>
+			<VolumeVariation>0.1</VolumeVariation>
+			<PitchVariation>200</PitchVariation>
+            <Waves>
+                <Wave Type="D3">
+                    <Start>Audio\ARC\EXPL\ArcWepExplSmall3d01.wav</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\ARC\EXPL\ArcWepExplSmall3d02.wav</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\ARC\EXPL\ArcWepExplSmall3d03.wav</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\ARC\EXPL\ArcWepExplSmall3d04.wav</Start>
+                </Wave>
+            </Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>AutocannonExplosionDistA</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>2000</MaxDistance>
+			<PitchVariation>50</PitchVariation>
+			<PreventSynchronization>5</PreventSynchronization>
+			<Volume>3.0</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC01.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC02.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC03.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC04.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC05.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Bushmaster Mk44\BushmasterExplode3DC06.wav</Start>
 				</Wave>
 			</Waves>
 		</Sound>

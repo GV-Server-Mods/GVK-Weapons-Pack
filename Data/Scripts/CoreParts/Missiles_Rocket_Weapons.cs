@@ -343,7 +343,17 @@ namespace Scripts
                 {
                     new MountPointDef
                     {
-                        SubtypeId = "SmallMissileLauncher",
+                        SubtypeId = "SmallMissileLauncher", //SmallMissileLauncherWarfare2
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileLauncherWarfare2",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",

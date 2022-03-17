@@ -25,11 +25,12 @@
                 <Component Subtype="SteelPlate" Count="92" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_Missile_Tech" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>Scrap</SubtypeId>
                     </DeconstructId>
+				</Component>
                 <Component Subtype="MetalGrid" Count="37" />
                 <Component Subtype="LargeTube" Count="19" />
                 <Component Subtype="Motor" Count="183" />
@@ -92,6 +93,12 @@
             <Components>
                 <Component Subtype="SteelPlate" Count="5" />
 				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+				    <DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+				</Component>
                 <Component Subtype="MetalGrid" Count="2" />
                 <Component Subtype="LargeTube" Count="1" />
                 <Component Subtype="Motor" Count="9" />
@@ -101,7 +108,7 @@
                 <Component Subtype="SteelPlate" Count="17" />
             </Components>
 			<BuildTimeSeconds>3</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>

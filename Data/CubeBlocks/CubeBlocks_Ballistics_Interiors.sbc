@@ -8,7 +8,7 @@
 			</Id>
 			<DisplayName>[Interior] Large Anti-personnel Carbine Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\interior_turret.dds</Icon>
-			<Description>The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not good for much else.
+			<Description>The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.
 				[700m Auto Range]
 				[Uses 5.56mm KE (Manual Reload)]</Description>
 			<CubeSize>Large</CubeSize>
@@ -66,7 +66,7 @@
 			<MaxElevationDegrees>90</MaxElevationDegrees>
 			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
 			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
-			<IdleRotation>true</IdleRotation>
+			<IdleRotation>false</IdleRotation>
 			<MaxRangeMeters>800</MaxRangeMeters>
 			<RotationSpeed>0.002</RotationSpeed>
 			<ElevationSpeed>0.002 </ElevationSpeed>

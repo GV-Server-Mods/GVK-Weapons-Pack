@@ -27,7 +27,7 @@ namespace Scripts
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 2200, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 20, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -46,80 +46,42 @@ namespace Scripts
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 1500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 1700, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 10, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
-		private HardPointAudioDef Ballistics_Cannons_Hardpoint_Audio = new HardPointAudioDef {
-			PreFiringSound = "",
-			FiringSound = "MD_Cannon_Fire", // subtype name from sbc
-			FiringSoundPerShot = true,
-			ReloadSound = "MD_Cannon_Reload",
-			NoAmmoSound = "ArcWepShipGatlingNoAmmo",
-			HardPointRotationSound = "WepTurretGatlingRotate",
-			BarrelRotationSound = "",
-		};
 
-		private HardPointParticleDef Ballistics_Cannons_Hardpoint_Graphics = new HardPointParticleDef {
-			Effect1 = new ParticleDef
-			{
-				Name = "", // OKI_230mm_Muzzle_Flash   MXA_SmallCoilgunMuzzleFlash
-				Color = new Vector4(1f,1f,1f,1f), //RGBA
-				Offset = new Vector3D(0f,0f,1f), //XYZ
-				Extras = new ParticleOptionDef
-				{
-					Loop = false,
-					Restart = false,
-					MaxDistance = 800,
-					MaxDuration = 0,
-					Scale = 1.0f,
-				}
-			},
-			Effect2 = new ParticleDef
-			{
-				Name = "MD_CannonMuzzleFlash", // OKI_230mm_Muzzle_Flash   MXA_SmallCoilgunMuzzleFlash
-				Color = new Vector4(1f,1f,1f,1f), //RGBA
-				Offset = new Vector3D(0f,0f,1f), //XYZ
-				Extras = new ParticleOptionDef
-				{
-					Loop = false,
-					Restart = false,
-					MaxDistance = 800,
-					MaxDuration = 0,
-					Scale = 1.0f,
-				}
-			},
-		};
+        WeaponDefinition LargeBlockArtilleryTurret => new WeaponDefinition {
 
-        WeaponDefinition MXA_CoilgunL => new WeaponDefinition {
-
-            Assignments = new ModelAssignmentsDef {
+            Assignments = new ModelAssignmentsDef
+            {
                 MountPoints = new[] {
                     new MountPointDef {
-                        SubtypeId = "MXA_CoilgunL",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f, //this is the GeneralDamageMultiplier of the weapon
-                        IconName = ""
+                        SubtypeId = "LargeCalibreTurret", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "MissileTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "MissileTurretBarrels",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                },
+                    
+                 },
                 Muzzles = new[] {
-                    "muzzle_projectile_1",
-                    "muzzle_projectile_2",
+                    "muzzle_missile_001", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
+                    "muzzle_missile_002",
                 },
-                Ejector = "",
-                Scope = "scope", //Where line of sight checks are performed from must be clear of block collision
+                Ejector = "", // Optional; empty from which to eject "shells" if specified.
+                Scope = "camera", // Where line of sight checks are performed from. Must be clear of block collision.
             },
 
             Targeting = Ballistics_Cannons_Targeting_LargeTurret,
 			
             HardPoint = new HardPointDef {
-                PartName = "M66 Sentry", // name of weapon in terminal
+                PartName = "155mm Artillery Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.6f,
                 AimingTolerance = 0.8f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -129,17 +91,17 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef {
                     RotateRate = 0.005f,
                     ElevateRate = 0.0025f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -5,
+                    MinElevation = -10,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 1.0f,
+                    InventorySize = 0.64f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -166,11 +128,11 @@ namespace Scripts
                 },
 				
                 Loading = new LoadingDef {
-                    RateOfFire = 80, //180 // visual only, 0 disables and uses RateOfFire
+                    RateOfFire = 240, //180 // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 45, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -180,7 +142,7 @@ namespace Scripts
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
-                    GiveUpAfter = false,
+                    GiveUpAfter = true,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 2, // Number of physical magazines to consume on reload.
@@ -188,71 +150,85 @@ namespace Scripts
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
 
-                Audio = new HardPointAudioDef {
-					PreFiringSound = "",
-					FiringSound = "MD_Cannon_Fire_Click", // subtype name from sbc
-					FiringSoundPerShot = true,
-					ReloadSound = "MD_Cannon_Reload",
-					NoAmmoSound = "ArcWepShipGatlingNoAmmo",
-					HardPointRotationSound = "WepTurretGatlingRotate",
-					BarrelRotationSound = "",
-				},
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "", // Audio for warmup effect.
+                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
+                },
 				
-                Graphics = Ballistics_Cannons_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
             Ammos = new[] {
-                Ballistics_Cannon,
+                LargeCalibreAmmo,
             },
-            Animations = MXA_CoilgunL_Animation,
             //Upgrades = UpgradeModules,
             // Don't edit below this line
         };
 
-        WeaponDefinition Ballistics_Cannon_Turret_Dumb => new WeaponDefinition {
+        WeaponDefinition LargeBlockArtillery => new WeaponDefinition {
 
-            Assignments = new ModelAssignmentsDef {
+            Assignments = new ModelAssignmentsDef
+            {
                 MountPoints = new[] {
                     new MountPointDef {
-                        SubtypeId = "Ballistics_Cannon_Turret_Dumb",
-                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
-                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
+                        SubtypeId = "LargeBlockLargeCalibreGun", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                },
+                    
+                 },
                 Muzzles = new[] {
-                    "muzzle_projectile_1",
+                    "muzzle_missile_001", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
                 },
-                Ejector = "",
-                Scope = "", //Where line of sight checks are performed from must be clear of block collision
+                Ejector = "", // Optional; empty from which to eject "shells" if specified.
+                Scope = "muzzle_missile_001", // Where line of sight checks are performed from. Must be clear of block collision.
             },
 
-            Targeting = new TargetingDef {
-				Threats = new[] {
-					Other,
-				},
-				SubSystems = new[] {
-					Any,
-				},
-				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
-				MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-				MaxTargetDistance = 1, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-				MinTargetDistance = 1, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-				TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
-				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			},
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
 			
-            HardPoint = new HardPointDef {
-                PartName = "122mm Overwatch", // name of weapon in terminal
+            HardPoint = new HardPointDef 
+            {
+                PartName = "155mm Fixed Cannon", // name of weapon in terminal
                 DeviateShotAngle = 0.2f,
-                AimingTolerance = 0.8f, // 0 - 180 firing angle
+                AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -260,27 +236,19 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
-                Ai = new AiDef {
-					TrackTargets = true,
-					TurretAttached = true, //seems to affect player ability to control manually.
-					TurretController = false, //seems to affects manual and painter, also turrets don't return to center
-					PrimaryTracking = false, //seems to make no difference
-					LockOnFocus = false,
-					SuppressFire = true,
-					OverrideLeads = false, // Override default behavior for target leads
-				},
-				
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+
                 HardWare = new HardwareDef {
-                    RotateRate = 0.005f,
-                    ElevateRate = 0.0025f,
-                    MinAzimuth = -180,
-                    MaxAzimuth = 180,
-                    MinElevation = -15,
-                    MaxElevation = 90,
+                    RotateRate = 0f,
+                    ElevateRate = 0f,
+                    MinAzimuth = 0,
+                    MaxAzimuth = 0,
+                    MinElevation = 0,
+                    MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 1.0f,
+                    InventorySize = 0.64f,
                     Offset = Vector(x: 0, y: 0, z: 0),
-                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
+                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
@@ -291,7 +259,7 @@ namespace Scripts
 						AmmoRound = "", // name of ammo upon explosion
 					},
                 },
-                
+
                 Other = new OtherDef
                 {
                     ConstructPartCap = 21,
@@ -299,17 +267,17 @@ namespace Scripts
                     EnergyPriority = 0,
                     MuzzleCheck = false,
                     Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
-				
+
                 Loading = new LoadingDef {
-                    RateOfFire = 50, //180 // visual only, 0 disables and uses RateOfFire
+                    RateOfFire = 40, //180 // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 72, // Measured in game ticks (use 3600/ROF for consistant fire rate).
+                    ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -319,22 +287,60 @@ namespace Scripts
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
-                    GiveUpAfter = false,
+                    GiveUpAfter = true,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-					MagsToLoad = 1, // Number of physical magazines to consume on reload.
+					MagsToLoad = 4, // Number of physical magazines to consume on reload.
 					SpinFree = true, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
 
-                Audio = Ballistics_Cannons_Hardpoint_Audio,
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "", // Audio for warmup effect.
+                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
+                },
 				
-                Graphics = Ballistics_Cannons_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
             Ammos = new[] {
-                Ballistics_Cannon,
+                LargeCalibreAmmo,
             },
+            //Animations = AdvancedAnimation,
             //Upgrades = UpgradeModules,
             // Don't edit below this line
         };
@@ -375,7 +381,7 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 
                 HardWare = new HardwareDef {
                     RotateRate = 0.015f,
@@ -385,7 +391,7 @@ namespace Scripts
                     MinElevation = -15,
                     MaxElevation = 45,
                     FixedOffset = false,
-                    InventorySize = 0.8f,
+                    InventorySize = 0.32f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -412,7 +418,7 @@ namespace Scripts
                 },
 
                 Loading = new LoadingDef {
-                    RateOfFire = 40,
+                    RateOfFire = 30,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
@@ -426,7 +432,7 @@ namespace Scripts
                     ShotsInBurst = 1,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,  // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
+                    GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
@@ -434,13 +440,50 @@ namespace Scripts
 					StayCharged = false, // Will start recharging whenever power cap is not full
 				},
 
-                Audio = Ballistics_Cannons_Hardpoint_Audio,
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "", // Audio for warmup effect.
+                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
+                },
 				
-                Graphics = Ballistics_Cannons_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
             Ammos = new[] {
-                Ballistics_Cannon,
+                LargeCalibreAmmo,
             },
             //Animations = AdvancedAnimation,
             //Upgrades = UpgradeModules,
@@ -494,7 +537,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.44f,
+                    InventorySize = 0.18f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -521,7 +564,7 @@ namespace Scripts
                 },
 
                 Loading = new LoadingDef {
-                    RateOfFire = 50, //180 // visual only, 0 disables and uses RateOfFire
+                    RateOfFire = 30, //180 // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
@@ -535,7 +578,7 @@ namespace Scripts
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
-                    GiveUpAfter = false,
+                    GiveUpAfter = true,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
@@ -543,13 +586,50 @@ namespace Scripts
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
 
-                Audio = Ballistics_Cannons_Hardpoint_Audio,
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "", // Audio for warmup effect.
+                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
+                },
 				
-                Graphics = Ballistics_Cannons_Hardpoint_Graphics,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "",
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            Scale = 1f,
+                        },
+                    },
+                },
 				
             },
             Ammos = new[] {
-                Ballistics_Cannon,
+                LargeCalibreAmmo,
             },
             //Animations = AdvancedAnimation,
             //Upgrades = UpgradeModules,

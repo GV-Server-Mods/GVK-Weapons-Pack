@@ -3,13 +3,20 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
@@ -19,18 +26,17 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Trace
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
 
-
 namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Ballistics_Cannon => new AmmoDef
+        private AmmoDef LargeCalibreAmmo => new AmmoDef
         {
-            AmmoMagazine = "Ballistics_Cannon",
-            AmmoRound = "Ballistics_Cannon",
+            AmmoMagazine = "LargeCalibreAmmo",
+            AmmoRound = "LargeCalibreAmmo",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 2750f, //5000f
+            BaseDamage = 4000f, //5000f
             Mass = 200f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 200000f,
@@ -61,8 +67,8 @@ namespace Scripts
                 // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
                 FallOff = new FallOffDef
                 {
-                    Distance = 2000f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.5f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0f, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -90,36 +96,9 @@ namespace Scripts
 					Shield = Kinetic,
                 },
 				
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+                //Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
-                {
-                    Radius = 2f, // the sphere of influence of area effects
-                    EffectStrength = 0f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-                },
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = false,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "",
-                    CustomSound = "",
-                },
-                Detonation = new DetonateDef
-                {
-                    DetonateOnEnd = false,
-                    ArmOnlyOnHit = false,
-                    DetonationDamage = 0,
-                    DetonationRadius = 0,
-                    MinArmingTime = 0, //Min time in ticks before projectile will arm for detonation (will also affect shrapnel spawning)
-                },
-            },*/
 			AreaOfDamage = new AreaOfDamageDef
             {
                 ByBlockHit = new ByBlockHitDef
@@ -138,7 +117,7 @@ namespace Scripts
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = false,
+                    Enable = true,
                     Radius = 5f,
                     Damage = 0f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
@@ -150,11 +129,11 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 00,
+                    MinArmingTime = 0,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "particleName",
+                    CustomParticle = "Explosion_AmmunitionSmall", //Explosion_AmmunitionLarge, MD_FlakExplosion
                     CustomSound = "soundName",
                 },
             },
@@ -217,10 +196,10 @@ namespace Scripts
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
-                DesiredSpeed = 700f, // DO NOT SET HIGHER THAN 4100
-                MaxTrajectory = 2200f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
+                DesiredSpeed = 600f, // DO NOT SET HIGHER THAN 4100
+                MaxTrajectory = 2400f,
+                DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
+                GravityMultiplier = 1f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
@@ -250,7 +229,7 @@ namespace Scripts
             },
             AmmoGraphics = new GraphicDef
             {
-                ModelName = "\\Models\\Coilguns\\MXA_Coil155HEAmmo.mwm",
+                ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
                 Particles = new AmmoParticleDef
@@ -272,7 +251,7 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Collision_Sparks",
+                        Name = "Collision_Sparks", 
                         ApplyToShield = true,
                         ShrinkByDistance = false,
                         Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
@@ -312,8 +291,8 @@ namespace Scripts
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 15f,
-                        Width = 0.3f,
+                        Length = 16f,
+                        Width = 0.45f,
                         Color = Color(red: 60, green: 20, blue: 5, alpha: 10),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
@@ -345,7 +324,7 @@ namespace Scripts
                             "WeaponLaser",
                         },
                         TextureMode = Normal,
-                        DecayTime = 10,
+                        DecayTime = 40,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Back = false,
                         CustomWidth = 0,
@@ -365,8 +344,8 @@ namespace Scripts
                 TravelSound = "MD_Artillary_shell_fly",
                 HitSound = "HWR_SmallExplosion",
                 ShieldHitSound = "",
-                PlayerHitSound = "",
-                VoxelHitSound = "",
+                PlayerHitSound = "HWR_SmallExplosion",
+                VoxelHitSound = "ArcHeavyImpactSoil",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,

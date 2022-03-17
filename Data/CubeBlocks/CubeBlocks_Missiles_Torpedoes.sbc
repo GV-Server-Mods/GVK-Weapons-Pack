@@ -23,11 +23,12 @@
 				<Component Subtype="SteelPlate" Count="216"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_Missile_Tech" Count="4"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>Scrap</SubtypeId>
                     </DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="108"/>
 				<Component Subtype="MetalGrid" Count="22"/>
 				<Component Subtype="LargeTube" Count="11"/>
@@ -96,6 +97,12 @@
 				<Component Subtype="SteelPlate" Count="83"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+				    <DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="42"/>
 				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="LargeTube" Count="5"/>
@@ -106,7 +113,7 @@
 				<Component Subtype="SteelPlate" Count="21"/>
 			</Components>
 			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>5000</PCU>
+			<PCU>6000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>

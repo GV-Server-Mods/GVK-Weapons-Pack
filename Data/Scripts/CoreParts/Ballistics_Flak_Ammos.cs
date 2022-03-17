@@ -7,6 +7,8 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomSca
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
@@ -30,11 +32,11 @@ namespace Scripts
     {
         private AmmoDef Ballistics_Flak => new AmmoDef
         {
-            AmmoMagazine = "Ballistics_Flak",
+            AmmoMagazine = "MediumCalibreAmmo",
             AmmoRound = "Ballistics_Flak",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 100f,
+            BaseDamage = 1f,
             Mass = 100, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 1000f,
@@ -50,7 +52,7 @@ namespace Scripts
             {
                 AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
                 Fragments = 40, // Number of projectiles to spawn.
-                Degrees = 120, // Cone in which to randomize direction of spawned projectiles.
+                Degrees = 90, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
@@ -133,11 +135,11 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 50f,
+                    Radius = 100f,
                     Damage = 1f,
-                    Depth = 50f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 100f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -149,7 +151,7 @@ namespace Scripts
                     NoSound = false,
                     ParticleScale = 1,
                     CustomParticle = "particleName",
-                    CustomSound = "soundName",
+                    CustomSound = "HWR_FlakExplosion",
                 },
             },
             Ewar = new EwarDef
@@ -204,11 +206,10 @@ namespace Scripts
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
                 DesiredSpeed = 800,
-                MaxTrajectory = 1600f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
+                MaxTrajectory = 2000f,
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: -25f, end: 25), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 40f, end: 60f), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 60f, end: 80f), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
             },
             AmmoGraphics = new GraphicDef
@@ -243,8 +244,8 @@ namespace Scripts
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 5f,
-                        Width = 0.25f,
+                        Length = 10f,
+                        Width = 0.4f,
                         Color = Color(red: 80, green: 40, blue: 8, alpha: 1),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
@@ -258,7 +259,7 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef
             {
                 TravelSound = "",
-                HitSound = "HWR_FlakExplosion",  //MXA_ImpactExplosion
+                HitSound = "",  //MXA_ImpactExplosion
                 ShieldHitSound = "",
                 PlayerHitSound = "",
                 VoxelHitSound = "",
@@ -274,7 +275,7 @@ namespace Scripts
             AmmoRound = "Ballistics_Flak_Shrapnel",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 250f,
+            BaseDamage = 400f,
             Mass = 50, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 0f,
@@ -430,12 +431,19 @@ namespace Scripts
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
                 DesiredSpeed = 800,
-                MaxTrajectory = 50f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
+                MaxTrajectory = 70f,
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 200, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 25, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+            },
+            Beams = new BeamDef
+            {
+                Enable = true, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
+                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
+                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
+                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
+                OneParticle = false, // Only spawn one particle hit per beam weapon.
             },
             AmmoGraphics = new GraphicDef
             {
@@ -459,7 +467,7 @@ namespace Scripts
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 1f), // adds random value to default width (negatives shrinks width)
+                    WidthVariance = Random(start: 0f, end: -0.25f), // adds random value to default width (negatives shrinks width)
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
@@ -469,7 +477,7 @@ namespace Scripts
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                            "AryxBallisticTracer",
+                            "WeaponLaser",
                         },
                         TextureMode = Normal, // Normal, Cycle, Chaos, Wave
                     },

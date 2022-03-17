@@ -45,7 +45,7 @@ namespace Scripts
 
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
-                AmmoRound = "Lasers_Laser_Shrapnel_OffenseField", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "", // Lasers_Laser_Shrapnel_OffenseField AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -120,7 +120,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef
             {
                 Guidance = None,
-				MaxTrajectory = 800f,
+				MaxTrajectory = 1100f,
                 RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
 				MaxTrajectoryTime = 10, // How long the weapon must fire before it reaches MaxTrajectory.
             },
@@ -204,7 +204,7 @@ namespace Scripts
 
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
-                AmmoRound = "Lasers_Laser_Shrapnel_OffenseField", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "", // Lasers_Laser_Shrapnel_OffenseField AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -278,7 +278,7 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef
             {
-                MaxTrajectory = 1300f,
+                MaxTrajectory = 1800f,
                 RangeVariance = Random(start: 0, end: 200), // subtracts value from MaxTrajectory
 				MaxTrajectoryTime = 10, // How long the weapon must fire before it reaches MaxTrajectory.
             },

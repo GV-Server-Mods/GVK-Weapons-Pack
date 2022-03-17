@@ -40,10 +40,10 @@ namespace Scripts
 		};
 
 		private UiDef Common_Weapons_Hardpoint_Ui_FullDisable = new UiDef {
-			RateOfFire = false,
-			DamageModifier = false,
-			ToggleGuidance = false,
-			EnableOverload =  false,
+			RateOfFire = false, // Enables terminal slider for changing rate of fire.
+			DamageModifier = false, // Enables terminal slider for changing damage per shot.
+			ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
+			EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
 		};
 		
 		private UiDef Common_Weapons_Hardpoint_Ui_ROFOnly = new UiDef {
@@ -67,34 +67,14 @@ namespace Scripts
 			EnableOverload =  false, //only works on energy
 		};
 
-		private AiDef Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn = new AiDef {
-			TrackTargets = true, //This Weapon will know there are targets in range
-			TurretAttached = true, // This enables the ability for players to manually control
-			TurretController = true, //The turret in this WeaponDefinition has control over where other turrets aim.
-			PrimaryTracking = true, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-			LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
-			SuppressFire = false, //prevent automatic firing
-			OverrideLeads = false, // Override default behavior for target leads
-		};
-
-		private AiDef Common_Weapons_Hardpoint_Ai_RequiresRadar_LockOn = new AiDef {
-			TrackTargets = false, //This Weapon will know there are targets in range
-			TurretAttached = true, // This enables the ability for players to manually control
-			TurretController = true, //The turret in this WeaponDefinition has control over where other turrets aim.
-			PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-			LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
-			SuppressFire = false, //prevent automatic firing
-			OverrideLeads = false, // Override default behavior for target leads
-		};
-
-		private AiDef Common_Weapons_Hardpoint_Ai_BasicTurret_NoLockOn = new AiDef {
-			TrackTargets = true, //This Weapon will know there are targets in range
-			TurretAttached = true, // This enables the ability for players to manually control
-			TurretController = true, //The turret in this WeaponDefinition has control over where other turrets aim.
-			PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-			LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
-			SuppressFire = false, //prevent automatic firing
-			OverrideLeads = false, // Override default behavior for target leads
+		private AiDef Common_Weapons_Hardpoint_Ai_BasicTurret = new AiDef {
+			TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
+			TurretAttached = true, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
+			TurretController = true, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
+			PrimaryTracking = true, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
+			LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
+			SuppressFire = false, // If enabled, weapon can only be fired manually.
+			OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
 		};
 
 		private AiDef Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking = new AiDef {
@@ -102,7 +82,7 @@ namespace Scripts
 			TurretAttached = false,
 			TurretController = true,
 			PrimaryTracking = false,
-			LockOnFocus = true,
+			LockOnFocus = false,
 			SuppressFire = false,
 			OverrideLeads = false, // Override default behavior for target leads
 		};
@@ -117,6 +97,37 @@ namespace Scripts
 			OverrideLeads = false, // Override default behavior for target leads
 		};
 
+		private CriticalDef Common_Weapons_Hardpoint_Hardware_CriticalReaction_None = new CriticalDef
+		{
+			Enable = false, // Enables Warhead behaviour.
+			DefaultArmedTimer = 0, // Sets default countdown duration.
+			PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
+			TerminalControls = false, // Whether the warhead should have terminal controls for arming and detonation.
+			AmmoRound = "", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
+		};
+
+		private OtherDef Common_Weapons_Hardpoint_Other_21CapOnly = new OtherDef {
+			ConstructPartCap = 21,
+			RotateBarrelAxis = 0,
+			EnergyPriority = 0,
+			MuzzleCheck = false,
+			Debug = false,
+			RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+			CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+		};
+
+		private OtherDef Common_Weapons_Hardpoint_Other_11CapOnly = new OtherDef {
+			ConstructPartCap = 11,
+			RotateBarrelAxis = 0,
+			EnergyPriority = 0,
+			MuzzleCheck = false,
+			Debug = false,
+			RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+			CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+		};
+
 		private OtherDef Common_Weapons_Hardpoint_Other_Large = new OtherDef {
 			ConstructPartCap = 21,
 			RotateBarrelAxis = 0,
@@ -128,13 +139,24 @@ namespace Scripts
 			CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 
-		private OtherDef Common_Weapons_Hardpoint_Other_Small = new OtherDef {
-			ConstructPartCap = 21,
+		private OtherDef Common_Weapons_Hardpoint_Other_Small_Turret = new OtherDef {
+			ConstructPartCap = 11,
 			RotateBarrelAxis = 0,
 			EnergyPriority = 0,
 			MuzzleCheck = false,
 			Debug = false,
 			RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
+			CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+		};
+
+		private OtherDef Common_Weapons_Hardpoint_Other_Small_Fixed = new OtherDef {
+			ConstructPartCap = 21,
+			RotateBarrelAxis = 0,
+			EnergyPriority = 0,
+			MuzzleCheck = false,
+			Debug = false,
+			RestrictionRadius = 0.25f, // Meters, radius of sphere disable this gun if another is present
 			CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
 			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};

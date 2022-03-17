@@ -4,121 +4,9 @@
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>MXA_CoilgunL</SubtypeId>
-			</Id>
-			<DisplayName>[Cannon] 155mm Sentry Turret</DisplayName>
-			<Description>The Sentry Turret is an automated rapid-firing naval coilgun. Effective against heavy armor frigates and cruisers. Designed by MXA-UNSC.
-				[2000m Auto Range]
-				[Uses 155mm AP]</Description>
-			<Icon>Textures\GUI\Icons\MXA_CoilgunL.png</Icon>
-			<GuiVisible>true</GuiVisible>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="2" z="3"/>
-			<ModelOffset x="0" y="1.25" z="0"/>
-			<Model>Models\Coilguns\MXA_Sentry.mwm</Model>
-			<UseModelIntersection>true</UseModelIntersection>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<Components>
-				<Component Subtype="SteelPlate" Count="389"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="Construction" Count="130"/>
-				<Component Subtype="MetalGrid" Count="52"/>
-				<Component Subtype="SmallTube" Count="78"/>
-				<Component Subtype="LargeTube" Count="259"/>
-				<Component Subtype="Motor" Count="117"/>
-				<Component Subtype="Computer" Count="65"/>
-				<Component Subtype="Construction" Count="130"/>
-				<Component Subtype="SteelPlate" Count="389"/>
-			</Components>
-			<BuildTimeSeconds>108</BuildTimeSeconds>
-			<PCU>3000</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<WeaponDefinitionId Subtype="Ballistics_Cannon"/>
-			<InventoryMaxVolume>4.0</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<NavigationDefinition>Default</NavigationDefinition>
-			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<IsAirTight>false</IsAirTight>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.5" StartY="0.5" EndX="2.5" EndY="2.5" Default="true"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Coilguns\MXA_Sentry_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Coilguns\MXA_Sentry_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Coilguns\MXA_Sentry_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>Ballistics_Cannon_Turret</BlockPairName>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
-			<Id>
-				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>Ballistics_Cannon_Turret_Dumb</SubtypeId>
-			</Id>
-			<DisplayName>[Cannon] 155mm Overwatch Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\Cubes\OKI122mmASG_Turret.dds</Icon>
-			<Description>The Overwatch Turret is an manually controlled 155mm Cannon. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
-				[2200m Manual Range]
-				[Uses 155mm AP]</Description>
-			<CubeSize>Large</CubeSize>
-			<Public>true</Public>
-			<GuiVisible>true</GuiVisible>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="2" z="3"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\122mmTurret.mwm</Model>
-			<UseModelIntersection>true</UseModelIntersection>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<Components>
-				<Component Subtype="SteelPlate" Count="389"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
-				<Component Subtype="Construction" Count="130"/>
-				<Component Subtype="MetalGrid" Count="52"/>
-				<Component Subtype="SmallTube" Count="78"/>
-				<Component Subtype="LargeTube" Count="259"/>
-				<Component Subtype="Motor" Count="117"/>
-				<Component Subtype="Computer" Count="65"/>
-				<Component Subtype="Construction" Count="130"/>
-				<Component Subtype="SteelPlate" Count="389"/>
-			</Components>
-			<BuildTimeSeconds>108</BuildTimeSeconds>
-			<PCU>2000</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<WeaponDefinitionId Subtype="Ballistics_Cannon"/>
-			<InventoryMaxVolume>4.0</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<NavigationDefinition>Default</NavigationDefinition>
-			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<IsAirTight>false</IsAirTight>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="2.0" Default="true"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\122mmTurret_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\Large\122mmTurret_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\122mmTurret_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>Ballistics_Cannon_Turret</BlockPairName>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
-			<Id>
-				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKI122mmVT</SubtypeId>
 			</Id>
-			<DisplayName>[Cannon] Small 155mm Vehicle Gun Turret</DisplayName>
+			<DisplayName>[Cannon] Small 155mm Artillery Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mm_VehicleTurret.dds</Icon>
 			<Description>Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[1500m Auto Range]
@@ -143,7 +31,7 @@
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
 			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>6000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5"/>
@@ -157,12 +45,12 @@
 				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\Small\122mmBase_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\122mmBase_BS3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>Ballistics_Cannon_Turret</BlockPairName>
+			<BlockPairName>LargeCalibreTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Heavy</EdgeType>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<WeaponDefinitionId Subtype="Ballistics_Cannon"/>
+			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
 			<InventoryMaxVolume>0.720</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<DamageEffectId>213</DamageEffectId>
@@ -178,69 +66,12 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<GeneralDamageMultiplier>0.8</GeneralDamageMultiplier>
 		</Definition>
-		<!-- <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition" Enabled="false">
-			<Id>
-				<TypeId>SmallMissileLauncher</TypeId>
-				<SubtypeId>OKI230mmBCfixed</SubtypeId>
-			</Id>
-			<DisplayName>[Cannon] 155mm Fixed Battlecannon</DisplayName>
-			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
-				[Range 3km]
-				[Uses 155mm AP]</Description>
-			<Icon>Textures\GUI\Icons\Cubes\OKI50mmGAT_Fixed.dds</Icon>
-			<GuiVisible>true</GuiVisible>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="5"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\Stormgun.mwm</Model>
-			<Components>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="SteelPlate" Count="120"/>
-				<Component Subtype="Construction" Count="40"/>
-				<Component Subtype="MetalGrid" Count="16"/>
-				<Component Subtype="SmallTube" Count="24"/>
-				<Component Subtype="LargeTube" Count="80"/>
-				<Component Subtype="Motor" Count="36"/>
-				<Component Subtype="Computer" Count="20"/>
-				<Component Subtype="Construction" Count="40"/>
-				<Component Subtype="SteelPlate" Count="120"/>
-			</Components>
-			<BuildTimeSeconds>27</BuildTimeSeconds>
-			<PCU>1690</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
-				<MountPoint Side="Left" StartX="3.0" StartY="0.0" EndX="5.0" EndY="1.0"/>
-				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="2.0" EndY="1.0"/>
-				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="1.0" EndY="2.0"/>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="3.0" EndX="1.0" EndY="4.0"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Stormgun_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Stormgun_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Large\Stormgun_BS3.mwm"/>
-			</BuildProgressModels>
-			<StandbyPowerConsumption>0.001</StandbyPowerConsumption>
-			<OperationalPowerConsumption>0.2</OperationalPowerConsumption>
-			<BlockPairName>Ballistics_Cannon_Fixed</BlockPairName>
-			<Center x="0" y="0" z="4"/>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<EdgeType>Heavy</EdgeType>
-			<WeaponDefinitionId Subtype="Ballistics_Cannon"/>
-			<InventoryMaxVolume>0.960</InventoryMaxVolume>
-			<InventoryFillFactorMin>0.1</InventoryFillFactorMin>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<DamageEffectId>213</DamageEffectId>
-			<DeformationRatio>0.2</DeformationRatio>
-		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>OKI122mmSGfixed</SubtypeId>
 			</Id>
-			<DisplayName>[Cannon] Small 155mm Field Gun</DisplayName>
+			<DisplayName>[Cannon] Small 155mm Artillery Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mmASG_fixed.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[2200m Manual Range]
@@ -264,7 +95,7 @@
 				<Component Subtype="SteelPlate" Count="37"/>
 			</Components>
 			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>3000</PCU>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -277,17 +108,187 @@
 				<Model BuildPercentUpperBound="0.5" File="Models\Cubes\Small\122mmFixed_BS1.mwm"/>
 				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\122mmFixed_BS2.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>Ballistics_Cannon_Fixed</BlockPairName>
+			<BlockPairName>LargeCalibreGun</BlockPairName>
 			<Center x="0" y="1" z="8"/>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="Ballistics_Cannon"/>
+			<WeaponDefinitionId Subtype="LargeCalibreGun"/>
 			<InventoryMaxVolume>0.30</InventoryMaxVolume>
 			<InventoryFillFactorMin>0.1</InventoryFillFactorMin>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<DamageEffectId>213</DamageEffectId>
 			<DeformationRatio>0.2</DeformationRatio>
 		</Definition>
+        <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+            <Id>
+                <TypeId>SmallMissileLauncher</TypeId>
+                <SubtypeId>LargeBlockLargeCalibreGun</SubtypeId>
+            </Id>
+            <DisplayName>[Cannon] Large 155mm Artillery Gun</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\HeavyCalibreGun.dds</Icon>
+			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
+				[2200m Manual Range]
+				[Uses 155mm AP]</Description>
+            <CubeSize>Large</CubeSize>
+            <GuiVisible>false</GuiVisible>
+            <BlockTopology>TriangleMesh</BlockTopology>
+            <Size x="1" y="1" z="4" />
+            <ModelOffset x="0" y="0" z="0" />
+            <Model>Models\Cubes\Large\HeavyCalibreGun.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="124" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+                <Component Subtype="MetalGrid" Count="17" />
+                <Component Subtype="SmallTube" Count="25" />
+                <Component Subtype="LargeTube" Count="83" />
+                <Component Subtype="Motor" Count="38" />
+                <Component Subtype="Computer" Count="21" />
+                <Component Subtype="Construction" Count="83" />
+                <Component Subtype="SteelPlate" Count="124" />
+            </Components>
+            <BuildTimeSeconds>34</BuildTimeSeconds>
+			<PCU>3000</PCU>
+            <CriticalComponent Subtype="Computer" Index="0" />
+            <MountPoints>
+                <MountPoint Side="Left" StartX="3.2" StartY="0.2" EndX="3.8" EndY="0.8" />
+                <MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4" />
+                <MountPoint Side="Right" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" />
+                <MountPoint Side="Back" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" Default="true" />
+            </MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HeavyCalibreGunConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\HeavyCalibreGunConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HeavyCalibreGunConstruction_3.mwm" />
+            </BuildProgressModels>
+            <MirroringY>Z</MirroringY>
+            <MirroringZ>Y</MirroringZ>
+            <BlockPairName>LargeCalibreGun</BlockPairName>
+            <Center x="0" y="0" z="3" />
+            <EdgeType>Light</EdgeType>
+            <WeaponDefinitionId Subtype="LargeCalibreGun" />
+            <ResourceSinkGroup>Defense</ResourceSinkGroup>
+            <InventoryMaxVolume>0.3</InventoryMaxVolume>
+            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+            <DamagedSound>ParticleWeapExpl</DamagedSound>
+            <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+            <DestroySound>WepSmallWarheadExpl</DestroySound>
+            <IsAirTight>false</IsAirTight>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+            <DestroyEffectOffset>
+                <X>0</X>
+                <Y>0</Y>
+                <Z>4</Z>
+            </DestroyEffectOffset>
+            <DamageEffectOffset>
+                <X>0</X>
+                <Y>0</Y>
+                <Z>4</Z>
+            </DamageEffectOffset>
+        </Definition>
+        <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+            <Id>
+                <TypeId>LargeMissileTurret</TypeId>
+                <SubtypeId>LargeCalibreTurret</SubtypeId>
+            </Id>
+            <DisplayName>[Cannon] Dual 155mm Artillery Turret</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
+			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
+				[2000m Auto Range]
+				[Uses 155mm AP]</Description>
+            <CubeSize>Large</CubeSize>
+            <GuiVisible>false</GuiVisible>
+            <PlaceDecals>false</PlaceDecals>
+            <BlockTopology>TriangleMesh</BlockTopology>
+            <Size x="3" y="3" z="3" />
+            <ModelOffset x="0" y="0" z="0" />
+            <Model>Models\Cubes\Large\HeavyCalibreTurret.mwm</Model>
+            <UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="389"/>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+				<Component Subtype="Construction" Count="130"/>
+				<Component Subtype="MetalGrid" Count="52"/>
+				<Component Subtype="SmallTube" Count="78"/>
+				<Component Subtype="LargeTube" Count="259"/>
+				<Component Subtype="Motor" Count="117"/>
+				<Component Subtype="Computer" Count="65"/>
+				<Component Subtype="Construction" Count="130"/>
+				<Component Subtype="SteelPlate" Count="389"/>
+			</Components>
+			<BuildTimeSeconds>108</BuildTimeSeconds>
+			<PCU>3000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+            <MountPoints>
+                <MountPoint Side="Bottom" StartX="0.5" StartY="1" EndX="2.5" EndY="2" />
+                <MountPoint Side="Bottom" StartX="1" StartY="0.5" EndX="2" EndY="1" />
+                <MountPoint Side="Bottom" StartX="1" StartY="2" EndX="2" EndY="2.5" />
+            </MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\HeavyCalibreTurretConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\HeavyCalibreTurretConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\HeavyCalibreTurretConstruction_3.mwm" />
+            </BuildProgressModels>
+            <VoxelPlacement>
+                <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+                <StaticMode>
+                    <PlacementMode>OutsideVoxel</PlacementMode>
+                    <MaxAllowed>0.2</MaxAllowed>
+                    <MinAllowed>0</MinAllowed>
+                </StaticMode>
+                <DynamicMode>
+                    <PlacementMode>OutsideVoxel</PlacementMode>
+                    <MaxAllowed>0.2</MaxAllowed>
+                    <MinAllowed>0.01</MinAllowed>
+                </DynamicMode>
+            </VoxelPlacement>
+            <BlockPairName>LargeCalibreTurret</BlockPairName>
+            <MirroringY>Z</MirroringY>
+            <MirroringZ>Y</MirroringZ>
+            <EdgeType>Light</EdgeType>
+            <OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+            <WeaponDefinitionId Subtype="LargeCalibreTurret" />
+            <EnabledTargetingOptions>LargeShips Stations Enemies</EnabledTargetingOptions>
+            <HiddenTargetingOptions>Players Asteroids Missiles Friends</HiddenTargetingOptions>
+            <InventoryMaxVolume>0.6</InventoryMaxVolume>
+            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+            <DamagedSound>ParticleWeapExpl</DamagedSound>
+            <ResourceSinkGroup>Defense</ResourceSinkGroup>
+            <MinElevationDegrees>-15</MinElevationDegrees>
+            <MaxElevationDegrees>60</MaxElevationDegrees>
+            <MinAzimuthDegrees>-180</MinAzimuthDegrees>
+            <MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+            <IdleRotation>true</IdleRotation>
+            <MaxRangeMeters>800</MaxRangeMeters>
+            <RotationSpeed>0.0002</RotationSpeed>
+            <ElevationSpeed>0.0002 </ElevationSpeed>
+            <EmissiveColorPreset>Default</EmissiveColorPreset>
+            <MinFov>0.1</MinFov>
+            <MaxFov>1.04719755</MaxFov>
+            <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+            <DestroySound>WepSmallWarheadExpl</DestroySound>
+            <IsAirTight>false</IsAirTight>
+            <AmmoPullAmountPerTick>2</AmmoPullAmountPerTick>
+            <InventoryFillFactorMin>.25</InventoryFillFactorMin>
+            <InventoryFillFactorMax>.5</InventoryFillFactorMax>
+            <TieredUpdateTimes>
+                <unsignedInt>10</unsignedInt>
+                <unsignedInt>0</unsignedInt>
+            </TieredUpdateTimes>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+            <UpCameraOffset>1.0</UpCameraOffset>
+            <ForwardCameraOffset>0.5</ForwardCameraOffset>
+            <AimingOffset>
+                <X>0</X>
+                <Y>-2</Y>
+                <Z>0</Z>
+            </AimingOffset>
+			<AiEnabled>false</AiEnabled>
+        </Definition>
 	</CubeBlocks>
 </Definitions>

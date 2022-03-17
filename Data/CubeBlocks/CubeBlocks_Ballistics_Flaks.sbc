@@ -4,104 +4,246 @@
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>ARYXFlakTurret</SubtypeId>
+				<SubtypeId>LargeBlockMediumCalibreTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Large Riptide Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\AryxRiptideFlak.dds</Icon>
-			<Description>Riptide delivers proximity-fused explosive shells. Used en-mass can provide an effective anti-strike and anti-missile screen, but yields poor damage against armoured targets. Designed by ARYX Weapon Enterprises.
-				[1500m Auto Range]
-				[Uses 100mm HE]</Description>
+			<DisplayName>[Flak] Large Assault Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurretLarge.dds</Icon>
+			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
+				[1800m Auto Range (100m min)]
+				[Uses 100mm PROX]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
+			<GuiVisible>false</GuiVisible>
+			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
+			<Size x="3" y="2" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Flak\LG_ARYX_FlakBase.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="20"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
-				<Component Subtype="Construction" Count="100"/>
-				<Component Subtype="SmallTube" Count="24"/>
-				<Component Subtype="Motor" Count="32"/>
-				<Component Subtype="Computer" Count="40"/>
-				<Component Subtype="MetalGrid" Count="60"/>
-				<Component Subtype="Construction" Count="20"/>
-				<Component Subtype="SteelPlate" Count="60"/>
-			</Components>
-			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<Model>Models\Cubes\Large\MediumCalibreTurret.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+            <Components>
+                <Component Subtype="SteelPlate" Count="113" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+                <Component Subtype="Construction" Count="677" />
+                <Component Subtype="SmallTube" Count="136" />
+                <Component Subtype="Motor" Count="181" />
+                <Component Subtype="Computer" Count="226" />
+                <Component Subtype="MetalGrid" Count="339" />
+                <Component Subtype="SteelPlate" Count="339" />
+            </Components>
+            <BuildTimeSeconds>85</BuildTimeSeconds>
+			<PCU>2000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Bottom" StartX="0.8" StartY="1" EndX="2.2" EndY="2"/>
+				<MountPoint Side="Bottom" StartX="1" StartY="0.8" EndX="2" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="1" StartY="2" EndX="2" EndY="2.2"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Flak\LG_ARYX_FlakBase_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Flak\LG_ARYX_FlakBase_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Flak\LG_ARYX_FlakBase_BS3.mwm"/>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MediumCalibreTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MediumCalibreTurretConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MediumCalibreTurretConstruction_3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>ARYXFlakTurret</BlockPairName>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MediumCalibreTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="Ballistics_Flak"/>
+			<BuildTimeSeconds>80</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<WeaponDefinitionId Subtype="MediumCalibreTurret"/>
+			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.18</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-20</MinElevationDegrees>
+			<MaxElevationDegrees>75</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>800</MaxRangeMeters>
+			<RotationSpeed>0.0004</RotationSpeed>
+			<ElevationSpeed>0.0004 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>2</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>0.5</ForwardCameraOffset>
+			<AiEnabled>false</AiEnabled>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>ARYXFlakTurret_small</SubtypeId>
+				<SubtypeId>SmallBlockMediumCalibreTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Small Riptide Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\AryxRiptideFlak.dds</Icon>
-			<Description>Riptide delivers proximity-fused explosive shells. Used en-mass can provide an effective anti-strike and anti-missile screen, but yields poor damage against armoured targets. Designed by ARYX Weapon Enterprises.
-				[1500m Auto Range]
-				[Uses 100mm HE]</Description>
+			<DisplayName>[Flak] Small Assault Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurret_Small.dds</Icon>
+			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
+				[1300m Auto Range (100m min)]
+				[Uses 100mm PROX]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
+			<GuiVisible>false</GuiVisible>
+			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="5" y="5" z="5"/>
+			<Size x="7" y="5" z="7"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Flak\LG_ARYX_FlakBase.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="20"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
-				<Component Subtype="Construction" Count="100"/>
-				<Component Subtype="SmallTube" Count="24"/>
-				<Component Subtype="Motor" Count="32"/>
-				<Component Subtype="Computer" Count="40"/>
-				<Component Subtype="MetalGrid" Count="60"/>
-				<Component Subtype="Construction" Count="20"/>
-				<Component Subtype="SteelPlate" Count="60"/>
-			</Components>
-			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<Model>Models\Cubes\Small\MediumCalibreTurret_Base.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+            <Components>
+                <Component Subtype="SteelPlate" Count="30" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+                <Component Subtype="Construction" Count="179" />
+                <Component Subtype="SmallTube" Count="36" />
+                <Component Subtype="Motor" Count="48" />
+                <Component Subtype="Computer" Count="60" />
+                <Component Subtype="MetalGrid" Count="90" />
+                <Component Subtype="SteelPlate" Count="90" />
+            </Components>
+			<PCU>4000</PCU>
+            <BuildTimeSeconds>22</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="5.0" EndY="5.0"/>
+				<MountPoint Side="Bottom" StartX="2" StartY="2" EndX="5" EndY="5" Default="true"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Flak\LG_ARYX_FlakBase_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Flak\LG_ARYX_FlakBase_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Flak\LG_ARYX_FlakBase_BS3.mwm"/>
+				<Model BuildPercentUpperBound="0.43" File="Models\Cubes\Small\MediumCalibreTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\MediumCalibreTurretConstruction_2.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>ARYXFlakTurret</BlockPairName>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MediumCalibreTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="Ballistics_Flak"/>
+			<BuildTimeSeconds>40</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<WeaponDefinitionId Subtype="SmallMediumCalibreTurret"/>
+			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.09</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-10</MinElevationDegrees>
+			<MaxElevationDegrees>50</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>600</MaxRangeMeters>
+			<RotationSpeed>0.0008</RotationSpeed>
+			<ElevationSpeed>0.0008 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>2</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>0.5</ForwardCameraOffset>
+			<AiEnabled>false</AiEnabled>
 		</Definition>
+        <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+            <Id>
+                <TypeId>SmallMissileLauncherReload</TypeId>
+                <SubtypeId>SmallBlockMediumCalibreGun</SubtypeId>
+            </Id>
+            <DisplayName>[Flak] Small Assault Gun</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\MediumCaliberGun.dds</Icon>
+			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
+				[2000m Manual Range (100m min)]
+				[Uses 100mm PROX]</Description>
+            <CubeSize>Small</CubeSize>
+            <GuiVisible>false</GuiVisible>
+            <BlockTopology>TriangleMesh</BlockTopology>
+            <Size x="1" y="1" z="9" />
+            <ModelOffset x="0" y="0" z="0" />
+            <Model>Models\Cubes\Small\MediumCaliberGun.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="5" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+                <Component Subtype="Construction" Count="25" />
+                <Component Subtype="SmallTube" Count="5" />
+                <Component Subtype="Motor" Count="7" />
+                <Component Subtype="Computer" Count="9" />
+                <Component Subtype="MetalGrid" Count="13" />
+                <Component Subtype="SteelPlate" Count="13" />
+            </Components>
+            <BuildTimeSeconds>3</BuildTimeSeconds>
+			<PCU>2000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+            <MountPoints>
+                <MountPoint Side="Left" StartX="6" StartY="0" EndX="9" EndY="1" />
+                <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3" />
+                <MountPoint Side="Bottom" StartX="0" StartY="6" EndX="1" EndY="9" />
+                <MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="1" />
+                <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true" />
+            </MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\MediumCaliberGunConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\MediumCaliberGunConstruction_2.mwm" />
+            </BuildProgressModels>
+            <MirroringY>Z</MirroringY>
+            <MirroringZ>Y</MirroringZ>
+            <BlockPairName>MediumCalibreGun</BlockPairName>
+            <Center x="0" y="0" z="7" />
+            <BuildTimeSeconds>26</BuildTimeSeconds>
+            <EdgeType>Light</EdgeType>
+            <WeaponDefinitionId Subtype="SmallMediumCalibreGun" />
+            <ResourceSinkGroup>Defense</ResourceSinkGroup>
+            <InventoryMaxVolume>0.09</InventoryMaxVolume>
+            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+            <DamagedSound>ParticleWeapExpl</DamagedSound>
+            <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+            <DestroySound>WepSmallWarheadExpl</DestroySound>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+        </Definition>
 	</CubeBlocks>
 </Definitions>

@@ -9,7 +9,7 @@
 			<DisplayName>[Rocket] Large Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\LGMissileBase.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[700m Auto Range]
+				[900m Auto Range]
 				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>false</GuiVisible>
@@ -95,7 +95,7 @@
 			<DisplayName>[Rocket] Small Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[500m Auto Range]
+				[600m Auto Range]
 				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>true</GuiVisible>
@@ -182,7 +182,7 @@
 			<DisplayName>[Rocket] Large Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[900m Manual Range]
+				[1000m Manual Range]
 				[Uses Hydra HE x19]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>true</GuiVisible>
@@ -201,7 +201,7 @@
 				<Component Subtype="SteelPlate" Count="79"/>
 			</Components>
 			<BuildTimeSeconds>23</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>1000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
@@ -278,5 +278,60 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 		</Definition>
+        <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+            <Id>
+                <TypeId>SmallMissileLauncher</TypeId>
+                <SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
+            </Id>
+            <DisplayName>[Rocket] Small Hydra launcher (Warfare)</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[900m Manual Range]
+				[Uses Hydra HE x8 (Manual Reload)]</Description>
+            <CubeSize>Small</CubeSize>
+            <GuiVisible>false</GuiVisible>
+            <BlockTopology>TriangleMesh</BlockTopology>
+            <Size x="1" y="1" z="4" />
+            <ModelOffset x="0" y="0" z="0" />
+            <Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="3"/>
+				<Component Subtype="MetalGrid" Count="3"/>
+				<Component Subtype="LargeTube" Count="3"/>
+				<Component Subtype="Motor" Count="7"/>
+				<Component Subtype="Computer" Count="6"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="7"/>
+			</Components>
+			<BuildTimeSeconds>2</BuildTimeSeconds>
+			<PCU>1000</PCU>
+            <CriticalComponent Subtype="Computer" Index="0" />
+            <MountPoints>
+                <MountPoint Side="Top" StartX="0" StartY="1" EndX="1" EndY="4" />
+                <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3" />
+                <MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1" />
+                <MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="1" />
+            </MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RocketLauncherReskinConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RocketLauncherReskinConstruction_1.mwm" />
+            </BuildProgressModels>
+            <MirroringY>Z</MirroringY>
+            <MirroringZ>Y</MirroringZ>
+            <BlockPairName>RocketLauncherWarfare2</BlockPairName>
+            <Center x="0" y="0" z="2" />
+            <EdgeType>Light</EdgeType>
+            <WeaponDefinitionId Subtype="SmallMissileLauncher" />
+            <ResourceSinkGroup>Defense</ResourceSinkGroup>
+            <InventoryMaxVolume>0.24</InventoryMaxVolume>
+            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+            <DamagedSound>ParticleWeapExpl</DamagedSound>
+            <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+            <DestroySound>WepSmallWarheadExpl</DestroySound>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+            <DLC>Warfare2</DLC>
+        </Definition>
 	</CubeBlocks>
 </Definitions>

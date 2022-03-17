@@ -10,9 +10,10 @@
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
 			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
 				[2500m Auto Range]
-				[Uses 200mm SABOT + 42MW]</Description>
+				[Uses 50mm FeW + 42MW]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
+			<Public>true</Public>
+			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -20,12 +21,13 @@
             <Components>
                 <Component Subtype="SteelPlate" Count="415" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>Scrap</SubtypeId>
                     </DeconstructId>
+				</Component>
                 <Component Subtype="MetalGrid" Count="125" />
                 <Component Subtype="PowerCell" Count="42" />
                 <Component Subtype="Superconductor" Count="83" />
@@ -48,7 +50,7 @@
 			  <Model BuildPercentUpperBound="1.00" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS3.mwm"/>
 		  </BuildProgressModels>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
-			<BlockPairName>ARYXRailgunTurret</BlockPairName>
+			<BlockPairName>RailgunTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -69,9 +71,10 @@
 			<DisplayName>[Railgun] Artemis</DisplayName>
 			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
 				[2700m Manual Range]
-				[Uses 200mm SABOT + 42MW]</Description>
+				[Uses 50mm FeW + 42MW]</Description>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
-			<GuiVisible>true</GuiVisible>
+			<Public>true</Public>
+			<GuiVisible>false</GuiVisible>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
@@ -80,12 +83,13 @@
 			<Model>Models\AWERailgun\LG_Railgun.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="142" />
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>Scrap</SubtypeId>
                     </DeconstructId>
+				</Component>
                 <Component Subtype="MetalGrid" Count="43" />
                 <Component Subtype="PowerCell" Count="15" />
                 <Component Subtype="Superconductor" Count="29" />
@@ -95,7 +99,7 @@
                 <Component Subtype="SteelPlate" Count="213" />
             </Components>
 			<BuildTimeSeconds>39</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>5000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
@@ -109,7 +113,7 @@
 				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\LG_Railgun_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\LG_Railgun_BS3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>ARYXRailgun</BlockPairName>
+			<BlockPairName>Railgun</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -119,6 +123,132 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
+		</Definition>
+		<Definition Enabled="false">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>SmallRailgun</SubtypeId>
+			</Id>
+			<DisplayName>[Railgun] 200mm Ares</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
+			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
+				[2300m Manual Range]
+				[Uses 50mm FeW + 24MW]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="8"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RailGun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="Superconductor" Count="20"/>
+				<Component Subtype="LargeTube" Count="6"/>
+				<Component Subtype="PowerCell" Count="10"/>
+				<Component Subtype="Computer" Count="20"/>
+				<Component Subtype="SteelPlate" Count="20"/>
+			</Components>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>
+				<MountPoint Side="Top" StartX="0.2" StartY="0.2" EndX="0.8" EndY="3.3"/>
+				<MountPoint Side="Bottom" StartX="0.3" StartY="4.9" EndX="0.7" EndY="6.5"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="1" EndX="3.3" EndY="1.8"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="0.6" EndX="2.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="4.7" StartY="1" EndX="7.9" EndY="1.8"/>
+				<MountPoint Side="Left" StartX="5.9" StartY="0.6" EndX="7.9" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RailGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RailGunConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>Railgun</BlockPairName>
+			<Center x="0" y="1" z="6"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallRailgun"/>
+			<ResourceSinkGroup>DefenseAdative</ResourceSinkGroup>
+			<InventoryMaxVolume>0.048</InventoryMaxVolume>
+			<DamageEffectName>Damage_Railgun_Large</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+			<DestroySound>PoofExplosionCat3</DestroySound>
+			<PCU>80</PCU>
+			<IsAirTight>false</IsAirTight>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>SmallRailgun</SubtypeId>
+			</Id>
+			<DisplayName>[Railgun] Ares</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
+			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
+				[2300m Manual Range]
+				[Uses 50mm FeW + 24MW]</Description>
+			<CubeSize>Small</CubeSize>
+			<Public>true</Public>
+			<GuiVisible>false</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="8"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RailGun.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="16" />
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
+				    <DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+				</Component>
+                <Component Subtype="MetalGrid" Count="5" />
+                <Component Subtype="PowerCell" Count="2" />
+                <Component Subtype="Superconductor" Count="4" />
+                <Component Subtype="Motor" Count="4" />
+                <Component Subtype="Reactor" Count="4" />
+                <Component Subtype="Computer" Count="12" />
+                <Component Subtype="SteelPlate" Count="24" />
+            </Components>
+            <BuildTimeSeconds>4</BuildTimeSeconds>
+			<PCU>4000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>
+				<MountPoint Side="Top" StartX="0.2" StartY="0.2" EndX="0.8" EndY="3.3"/>
+				<MountPoint Side="Bottom" StartX="0.3" StartY="4.9" EndX="0.7" EndY="6.5"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="1" EndX="3.3" EndY="1.8"/>
+				<MountPoint Side="Right" StartX="0.1" StartY="0.6" EndX="2.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="4.7" StartY="1" EndX="7.9" EndY="1.8"/>
+				<MountPoint Side="Left" StartX="5.9" StartY="0.6" EndX="7.9" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RailGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RailGunConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>Railgun</BlockPairName>
+			<Center x="0" y="1" z="6"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallRailgun"/>
+			<ResourceSinkGroup>DefenseAdative</ResourceSinkGroup>
+			<InventoryMaxVolume>0.048</InventoryMaxVolume>
+			<DamageEffectName>Damage_Railgun_Large</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+			<DestroySound>PoofExplosionCat3</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

@@ -175,7 +175,15 @@ namespace Scripts
 
 				Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn, //Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn, Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking
+                Ai = new AiDef {
+					TrackTargets = true, //This Weapon will know there are targets in range
+					TurretAttached = true, // This enables the ability for players to manually control
+					TurretController = true, //The turret in this WeaponDefinition has control over where other turrets aim.
+					PrimaryTracking = true, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
+					SuppressFire = true, //prevent automatic firing
+					OverrideLeads = false, // Override default behavior for target leads
+				},
 				
                 HardWare = new HardwareDef
                 {
@@ -287,7 +295,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = true, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
@@ -300,7 +308,7 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
+                    FixedOffset = false,
                     InventorySize = 0.4f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 

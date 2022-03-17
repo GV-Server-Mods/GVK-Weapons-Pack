@@ -135,7 +135,6 @@ namespace Scripts
                 AccelPerSec = 0f,
                 DesiredSpeed = 30,
                 MaxTrajectory = 3300f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 15), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
@@ -377,9 +376,9 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 15f,
-                    Damage = 5000f,
-                    Depth = 4f,
+                    Radius = 25f,
+                    Damage = 100000f, //10000
+                    Depth = 25f,
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -458,7 +457,6 @@ namespace Scripts
                 AccelPerSec = 25f,
                 DesiredSpeed = 350,
                 MaxTrajectory = 3300f,
-                FieldTime = 0, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 15), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
@@ -591,7 +589,7 @@ namespace Scripts
             AmmoRound = "Missiles_Torpedo_Shrapnel",
             BaseDamage = 1,
             Mass = 0, // in kilograms
-            Health = 1, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            Health = 10000000, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 0f,
             HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             DamageScales = new DamageScaleDef
@@ -651,7 +649,7 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = false,
-                    Radius = 1f,
+                    Radius = 500f,
                     Damage = 1f,
                     Depth = 1f,
                     MaxAbsorb = 0f,
@@ -676,13 +674,13 @@ namespace Scripts
                 Enable = true, // Enables the EWAR , Electronic-Warfare System
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Field, // Effect , Field
-                Strength = 2500000000f,
-                Radius = 100f, // Meters
-                Duration = 1800, // In Ticks
+                Strength = 250000f,
+                Radius = 50f, // Meters
+                Duration = 1200, // In Ticks
                 StackDuration = false, // Combined Durations
                 Depletable = true,
                 MaxStacks = 1, // Max Debuffs at once
-                NoHitParticle = true,
+                NoHitParticle = false,
                 /*
                 EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
                 Emp : Targets & Shutdown any Block capable of being powered
@@ -710,9 +708,9 @@ namespace Scripts
                     Interval = 1, // Time between each pulse, in game ticks (60 == 1 second).
                     PulseChance = 100, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
                     GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = true, // Hide the field bubble model.
+                    HideModel = false, // Hide the field bubble model.
                     ShowParticle = false, // Show Block damage effect.
-                    TriggerRange = 1f, //range at which fields are triggered
+                    TriggerRange = 10f, //range at which fields are triggered
                     Particle = new ParticleDef // Particle effect to generate at the field's position.
                     {
                         Name = "", // SubtypeId of field particle effect.
@@ -728,7 +726,6 @@ namespace Scripts
                 MaxLifeTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 DesiredSpeed = 1,
                 MaxTrajectory = 1f,
-                FieldTime = 600, // 0 is disabled, a value causes the projectile to come to rest, spawn a field and remain for a time (Measured in game ticks, 60 = 1 second)
             },
             AmmoGraphics = new GraphicDef 
             {

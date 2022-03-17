@@ -31,7 +31,7 @@ namespace Scripts
 			LockedSmartOnly = false,
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 1200,
+			MaxTargetDistance = 1600,
 			MinTargetDistance = 0,
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -52,7 +52,7 @@ namespace Scripts
 			LockedSmartOnly = false,
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 700,
+			MaxTargetDistance = 900,
 			MinTargetDistance = 0,
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -226,7 +226,7 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
 
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef
                 {
@@ -503,7 +503,7 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
 
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret_LockOn,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 
                 HardWare = new HardwareDef {
                     RotateRate = 0.015f,
