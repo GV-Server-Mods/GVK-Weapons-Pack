@@ -53,7 +53,7 @@
 				<SubtypeId>MediumCalibreAmmo</SubtypeId>
 			</Id>
 			<DisplayName>[Flak] 100mm HE</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\AWEFlak.dds</Icon>
+			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
 			<Prerequisites>
 				<Item Amount="97" TypeId="Ingot" SubtypeId="Iron"/>
 				<Item Amount="24" TypeId="Ingot" SubtypeId="Nickel"/>
@@ -69,7 +69,7 @@
 				<SubtypeId>LargeCalibreAmmo</SubtypeId>
 			</Id>
 			<DisplayName>[Cannon] 155mm AP</DisplayName>
-			<Icon>Textures\GUI\Icons\MXA_AmmoBoxL.png</Icon>
+			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
 			<Prerequisites>
 				<Item Amount="26" TypeId="Ingot" SubtypeId="Iron"/>
 				<Item Amount="6.4" TypeId="Ingot" SubtypeId="Nickel"/>
@@ -86,7 +86,7 @@
 				<SubtypeId>SmallRailgunAmmo</SubtypeId>
 			</Id>
 			<DisplayName>[Railgun] 50mm FeW</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\AWERailgunAmmo.dds</Icon>
+			<Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
 			<Prerequisites>
 				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
 			</Prerequisites>

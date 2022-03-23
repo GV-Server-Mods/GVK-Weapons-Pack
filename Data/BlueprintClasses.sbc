@@ -4,10 +4,11 @@
 		<!--AMMOS-->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_Flak"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_Cannon"/>
-		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_Railgun"/>  -->
-		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_MAC"/>  -->
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="MediumCalibreAmmo"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="LargeCalibreAmmo"/>
+		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="SmallRailgunAmmo"/>  -->
+		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="LargeRailgunAmmo"/>  -->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Missile"/>
 		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/> -->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
