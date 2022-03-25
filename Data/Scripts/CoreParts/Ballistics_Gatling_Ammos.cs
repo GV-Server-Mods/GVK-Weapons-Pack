@@ -36,7 +36,7 @@ namespace Scripts
             AmmoRound = "NATO_25x184mm", 
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 80f,
+            BaseDamage = 50f,
             Mass = 4f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 100f,
