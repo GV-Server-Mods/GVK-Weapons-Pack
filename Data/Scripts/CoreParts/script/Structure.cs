@@ -438,6 +438,9 @@ namespace Scripts
                     [ProtoMember(18)] internal bool SpinFree;
                     [ProtoMember(19)] internal bool StayCharged;
                     [ProtoMember(20)] internal int MagsToLoad;
+                    [ProtoMember(21)] internal int MaxActiveProjectiles;
+                    [ProtoMember(22)] internal int MaxReloads;
+
                 }
 
 
@@ -821,6 +824,7 @@ namespace Scripts
                         [ProtoMember(8)] internal int GroupSize;
                         [ProtoMember(9)] internal int GroupDelay;
                         [ProtoMember(10)] internal PointTypes PointType;
+                        [ProtoMember(11)] internal float DirectAimCone;
                     }
                 }
 
@@ -1158,6 +1162,7 @@ namespace Scripts
                         [ProtoMember(10)] internal bool KeepAliveAfterTargetLoss;
                         [ProtoMember(11)] internal float OffsetRatio;
                         [ProtoMember(12)] internal int OffsetTime;
+                        [ProtoMember(13)] internal bool CheckFutureIntersection;
                     }
 
                     [ProtoContract]

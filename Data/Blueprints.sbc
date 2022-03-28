@@ -168,5 +168,20 @@
 			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
 		</Blueprint>
+        <Blueprint>
+            <Id>
+                <TypeId>BlueprintDefinition</TypeId>
+                <SubtypeId>ExplosivesComponent</SubtypeId>
+            </Id>
+            <DisplayName>DisplayName_Item_Explosives</DisplayName>
+            <Icon>Textures\GUI\Icons\component\ExplosivesComponent.dds</Icon>
+            <Prerequisites>
+                <Item Amount="0.5" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="2.0" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="0.1" TypeId="Ingot" SubtypeId="Uranium" />
+            </Prerequisites>
+            <Result Amount="1" TypeId="Component" SubtypeId="Explosives" />
+            <BaseProductionTimeInSeconds>6</BaseProductionTimeInSeconds>
+        </Blueprint>
 	</Blueprints>
 </Definitions>

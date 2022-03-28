@@ -45,7 +45,9 @@ namespace Scripts
 							ReceptorTurret,
 							MA_Fixed_T2,
 							AryxRadar,
-							Other_Radar_Large);
+							Other_Radar_Large,
+							Other_Warheads_RegularWarhead_LG_Weapon, 
+							Other_Warheads_RegularWarhead_SG_Weapon);
             // ArmorDefinitions(Armor1, Armor2);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
