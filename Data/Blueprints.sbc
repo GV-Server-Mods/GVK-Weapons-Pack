@@ -54,12 +54,12 @@
 			</Id>
 			<DisplayName>[Flak] 100mm HE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
-			<Prerequisites>
-				<Item Amount="97" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="24" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="3.7" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="15" TypeId="Ingot" SubtypeId="Cobalt"/>
-			</Prerequisites>
+            <Prerequisites>
+                <Item Amount="19" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="4.7" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.7" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="2.8" TypeId="Ingot" SubtypeId="Cobalt" />
+            </Prerequisites>
 			<BaseProductionTimeInSeconds>20</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="MediumCalibreAmmo"/>
 		</Blueprint>
