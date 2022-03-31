@@ -218,7 +218,7 @@ namespace Scripts
             {
                 PartName = "XFEL Laser", // name of weapon in terminal
                 DeviateShotAngle = 0f,
-                AimingTolerance = 0.1f, // 0 - 180 firing angle
+                AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -271,7 +271,7 @@ namespace Scripts
        
 			Ammos = new[] {
                 Lasers_Laser_Large,
-				Lasers_Laser_Shrapnel_OffenseField
+				Lasers_Laser_Large_Shrapnel
             },
             //Animations = PDX_Animations,
             // Don't edit below this line
@@ -306,8 +306,8 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "XFEL Laser", // name of weapon in terminal
-                DeviateShotAngle = 0f,
-                AimingTolerance = 0.1f, // 0 - 180 firing angle
+                DeviateShotAngle = 0.00f,
+                AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -315,9 +315,29 @@ namespace Scripts
 
                 Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
 
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 
-                HardWare = Lasers_Laser_Hardware_Fixed,
+                HardWare = new HardwareDef {
+					RotateRate = 0.01f,
+					ElevateRate = 0.01f,
+					MinAzimuth = 0,
+					MaxAzimuth = 15,
+					MinElevation = 0,
+					MaxElevation = 15,
+					FixedOffset = false,
+					InventorySize = 0f,
+					Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = true,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+				},
 
                 Other = new OtherDef
                 {
@@ -339,7 +359,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Large,
-				Lasers_Laser_Shrapnel_OffenseField
+				Lasers_Laser_Large_Shrapnel
             },
 
             // Don't edit below this line
@@ -431,7 +451,7 @@ namespace Scripts
                 DeviateShotAngle = 0,
                 AimingTolerance = 0, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 
@@ -461,7 +481,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Small,
-				Lasers_Laser_Shrapnel_OffenseField
+				Lasers_Laser_Small_Shrapnel
             },
             //Animations= Receptor_Emissive
             //Upgrades = UpgradeModules,
@@ -499,7 +519,7 @@ namespace Scripts
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 AddToleranceToTracking = false,
-                DelayCeaseFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 
                 Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
 
@@ -547,7 +567,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Lasers_Laser_Small,
-				Lasers_Laser_Shrapnel_OffenseField
+				Lasers_Laser_Small_Shrapnel
             },
             //Animations= Receptor_Emissive
             //Upgrades = UpgradeModules,
