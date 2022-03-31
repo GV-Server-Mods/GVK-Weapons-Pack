@@ -180,7 +180,7 @@ namespace Scripts
                         Enable = true,
                         Length = 5f,
                         Width = .15f,
-                        Color = Color(red: 2, green: 5, blue: 20, alpha: .9f),
+                        Color = Color(red: 2, green: 5, blue: 20, alpha: 1f),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
