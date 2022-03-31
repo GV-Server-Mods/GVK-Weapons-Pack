@@ -205,7 +205,7 @@ namespace Scripts {
             Targeting = new TargetingDef
             {
 				Threats = new[] {
-					Characters, Grids,   // threats percieved automatically without changing menu settings
+					Grids,   // threats percieved automatically without changing menu settings
 				},
 				SubSystems = new[] {
 					Any, // subsystems the gun targets
@@ -279,7 +279,7 @@ namespace Scripts {
             Targeting = new TargetingDef
             {
 				Threats = new[] {
-					Characters, Grids,   // threats percieved automatically without changing menu settings
+					Grids,   // threats percieved automatically without changing menu settings
 				},
 				SubSystems = new[] {
 					Any, // subsystems the gun targets
