@@ -19,7 +19,8 @@
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
-			<CanPlayerOrder>true</CanPlayerOrder>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>false</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -39,6 +40,7 @@
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>30</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
@@ -60,6 +62,7 @@
 			<Capacity>30</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="SmallCaliber"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
         <AmmoMagazine>
@@ -81,6 +84,7 @@
             <Capacity>6</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
             <AmmoDefinitionId Subtype="AutocannonShell" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
         </AmmoMagazine>
         <AmmoMagazine>
@@ -102,6 +106,7 @@
             <Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
             <AmmoDefinitionId Subtype="LargeCalibreShell" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
         </AmmoMagazine>
         <AmmoMagazine>
@@ -123,6 +128,7 @@
             <Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
             <AmmoDefinitionId Subtype="MediumCalibreShell" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
         </AmmoMagazine>
 		<!-- <AmmoMagazine>
@@ -143,6 +149,7 @@
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine> -->
         <AmmoMagazine>
@@ -164,6 +171,7 @@
             <Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
             <AmmoDefinitionId Subtype="LargeRailgunSlug" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
         </AmmoMagazine>
         <AmmoMagazine>
@@ -185,6 +193,7 @@
             <Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
             <AmmoDefinitionId Subtype="SmallRailgunSlug" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
         </AmmoMagazine>
 		<AmmoMagazine>
@@ -206,6 +215,7 @@
 			<Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="Missile"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
@@ -226,6 +236,7 @@
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
@@ -246,6 +257,7 @@
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 	</AmmoMagazines>

@@ -31,8 +31,8 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 2300, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 5, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -50,8 +50,8 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 2, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -167,7 +167,7 @@ namespace Scripts
             {
                 PartName = "Large Archer Missile Pod", // name of weapon in terminal
                 DeviateShotAngle = 1f,
-                AimingTolerance = 179f, // 0 - 180 firing angle
+                AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
@@ -177,11 +177,11 @@ namespace Scripts
 				
                 Ai = new AiDef {
 					TrackTargets = true, //This Weapon will know there are targets in range
-					TurretAttached = true, // This enables the ability for players to manually control
-					TurretController = true, //The turret in this WeaponDefinition has control over where other turrets aim.
-					PrimaryTracking = true, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
+					TurretAttached = false, // This enables the ability for players to manually control
+					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
+					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
 					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
-					SuppressFire = true, //prevent automatic firing
+					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
 				
@@ -193,7 +193,7 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
+                    FixedOffset = false,
                     InventorySize = 7.5f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
@@ -203,7 +203,7 @@ namespace Scripts
 						Enable = false, // Enables Warhead behaviour
 						DefaultArmedTimer = 120,
 						PreArmed = false,
-						TerminalControls = true,
+						TerminalControls = false,
 						AmmoRound = "", // name of ammo upon explosion
 					},
                 },
