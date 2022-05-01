@@ -22,7 +22,7 @@ namespace Scripts
 				Grids, // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] {
-				Any, // subsystems the gun targets
+				Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
 			},
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -41,7 +41,7 @@ namespace Scripts
 				Grids, // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] {
-				Any, // subsystems the gun targets
+				Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
 			},
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -318,7 +318,7 @@ namespace Scripts
 						Enable = false, // Enables Warhead behaviour
 						DefaultArmedTimer = 120,
 						PreArmed = false,
-						TerminalControls = true,
+						TerminalControls = false,
 						AmmoRound = "", // name of ammo upon explosion
 					},
                 },

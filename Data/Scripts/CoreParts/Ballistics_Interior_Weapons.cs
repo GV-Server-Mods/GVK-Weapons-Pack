@@ -53,9 +53,8 @@ namespace Scripts
                 {
                     Characters,
                 },
-                SubSystems = new[]
-                {
-                    Any, // subsystems the gun targets
+                SubSystems = new[] {
+                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
                 },
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
