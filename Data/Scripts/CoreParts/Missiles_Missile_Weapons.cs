@@ -50,7 +50,7 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
+			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 2, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
@@ -168,7 +168,7 @@ namespace Scripts
                 PartName = "Large Archer Missile Pod", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
@@ -180,7 +180,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
@@ -241,7 +241,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 Missiles_Missile,
-				Missiles_Missile_HomingPhase
+				Missiles_Missile_HomingPhase,
             },
             Animations = MXA_ArcherPods_Animation,
             //Upgrades = UpgradeModules,
@@ -283,7 +283,7 @@ namespace Scripts
                 PartName = "SmallRocketLauncherReload", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
@@ -295,8 +295,8 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
-					SuppressFire = true, //prevent automatic firing
+					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
 				
@@ -365,7 +365,7 @@ namespace Scripts
             },
 			Ammos = new[] {
                 Missiles_Missile,
-				Missiles_Missile_HomingPhase
+				Missiles_Missile_HomingPhase,
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line

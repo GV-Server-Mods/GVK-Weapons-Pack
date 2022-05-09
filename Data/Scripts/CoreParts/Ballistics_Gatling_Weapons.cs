@@ -288,7 +288,7 @@ namespace Scripts {
                 DeviateShotAngle = 0.7f,
                 AimingTolerance = 4f, // 0 - 180 firing angle
                 AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
@@ -298,7 +298,7 @@ namespace Scripts {
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.04f,
+                    RotateRate = 0.05f,
                     ElevateRate = 0.03f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,

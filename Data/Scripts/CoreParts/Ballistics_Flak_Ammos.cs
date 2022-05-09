@@ -200,17 +200,42 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = TravelTo,  //TravelTo
-                TargetLossDegree = 0f,
-                TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AccelPerSec = 0f,
-                DesiredSpeed = 800,
-                MaxTrajectory = 2000f,
-                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
+                Guidance = TravelTo, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                TargetLossDegree = 80f, // Degrees, Is pointed forward
+                TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                AccelPerSec = 2000f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
+                DesiredSpeed = 800, // voxel phasing if you go above 5100
+                MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
+                DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
+                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
                 SpeedVariance = Random(start: -25f, end: 25), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 60f, end: 80f), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                Smarts = new SmartsDef
+                {
+                    Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
+                    Aggressiveness = 3f, // controls how responsive tracking is.
+                    MaxLateralThrust = 0.02f, // controls how sharp the trajectile may turn
+                    TrackingDelay = 0, // Measured in Shape diameter units traveled.
+                    MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
+                    CheckFutureIntersection = false, // Utilize obstacle avoidance?
+                    MaxTargets = 1, // Number of targets allowed before ending, 0 = unlimited
+                    NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
+                    Roam = false, // Roam current area after target loss
+                    KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
+                    OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
+                    OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
+                },
+                Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.
+                {
+                    DetectRadius = 0,
+                    DeCloakRadius = 0,
+                    FieldTime = 0,
+                    Cloak = false,
+                    Persist = false,
+                },
             },
             AmmoGraphics = new GraphicDef
             {
@@ -425,16 +450,16 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = None,  //TravelTo
+                Guidance = TravelTo,  //TravelTo
                 TargetLossDegree = 0f,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
                 DesiredSpeed = 800,
-                MaxTrajectory = 70f,
+                MaxTrajectory = 80f,
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 200, end: 0), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 25, end: 0), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 20, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
             },
             Beams = new BeamDef

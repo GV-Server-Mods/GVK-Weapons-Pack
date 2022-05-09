@@ -175,7 +175,7 @@ namespace Scripts
 				TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				AccelPerSec = 800f,
-				DesiredSpeed = 800,
+				DesiredSpeed = 1500,
 				MaxTrajectory = 900f,
 				SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed
 				RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory

@@ -32,7 +32,7 @@ namespace Scripts
         private AmmoDef Missiles_Missile => new AmmoDef
         {
             AmmoMagazine = "Missiles_Missile",
-            AmmoRound = "Missiles_Missile",
+            AmmoRound = "2-Stage", 
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 1f,
@@ -49,14 +49,6 @@ namespace Scripts
                 Shape = LineShape,
                 Diameter = 0,
             },
-			/*Fragment = new FragmentDef //
-            {
-                AmmoRound = "Missiles_Missile_HomingPhase",
-                Fragments = 1,
-                Degrees = 0,
-                Reverse = false,
-                RandomizeDir = false,
-            },*/
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
                 AmmoRound = "Missiles_Missile_HomingPhase", // AmmoRound field of the ammo to spawn.
@@ -500,6 +492,5 @@ namespace Scripts
                 HitPlayShield = true,
             }, // Don't edit below this line
         };
-
     }
 }
