@@ -32,7 +32,7 @@ namespace Scripts
         private AmmoDef Missiles_Missile => new AmmoDef
         {
             AmmoMagazine = "Missiles_Missile",
-            AmmoRound = "2-Stage", 
+            AmmoRound = "Missiles_Missile", 
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 1f,

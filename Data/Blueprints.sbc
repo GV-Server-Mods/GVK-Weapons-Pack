@@ -54,12 +54,12 @@
 			</Id>
 			<DisplayName>[Flak] 100mm HE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
-            <Prerequisites>
-                <Item Amount="19" TypeId="Ingot" SubtypeId="Iron" />
-                <Item Amount="4.7" TypeId="Ingot" SubtypeId="Nickel" />
-                <Item Amount="0.7" TypeId="Ingot" SubtypeId="Magnesium" />
-                <Item Amount="2.8" TypeId="Ingot" SubtypeId="Cobalt" />
-            </Prerequisites>
+			<Prerequisites>
+				<Item Amount="19" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="4.7" TypeId="Ingot" SubtypeId="Nickel"/>
+				<Item Amount="0.7" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="2.8" TypeId="Ingot" SubtypeId="Cobalt"/>
+			</Prerequisites>
 			<BaseProductionTimeInSeconds>20</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="MediumCalibreAmmo"/>
 		</Blueprint>
@@ -168,20 +168,62 @@
 			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
 		</Blueprint>
-        <Blueprint>
-            <Id>
-                <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>ExplosivesComponent</SubtypeId>
-            </Id>
-            <DisplayName>DisplayName_Item_Explosives</DisplayName>
-            <Icon>Textures\GUI\Icons\component\ExplosivesComponent.dds</Icon>
-            <Prerequisites>
-                <Item Amount="0.5" TypeId="Ingot" SubtypeId="Silicon" />
-                <Item Amount="2.0" TypeId="Ingot" SubtypeId="Magnesium" />
-                <Item Amount="0.1" TypeId="Ingot" SubtypeId="Uranium" />
-            </Prerequisites>
-            <Result Amount="1" TypeId="Component" SubtypeId="Explosives" />
-            <BaseProductionTimeInSeconds>6</BaseProductionTimeInSeconds>
-        </Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>ExplosivesComponent</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_Explosives</DisplayName>
+			<Icon>Textures\GUI\Icons\component\ExplosivesComponent.dds</Icon>
+			<Prerequisites>
+				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Silicon"/>
+				<Item Amount="2.0" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="0.1" TypeId="Ingot" SubtypeId="Uranium"/>
+			</Prerequisites>
+			<Result Amount="1" TypeId="Component" SubtypeId="Explosives"/>
+			<BaseProductionTimeInSeconds>6</BaseProductionTimeInSeconds>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWESidekickDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Sidekick" Machine Gun Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Sidekick.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_SidekickDroneMag"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWEFalconDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Falcon" Cannon Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_FalconDroneMag"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWEStormriderDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Stormrider" Cannon Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Stormrider.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_StormriderDroneMag"/>
+		</Blueprint>
 	</Blueprints>
 </Definitions>

@@ -192,6 +192,180 @@ namespace Scripts
             },
         };
 
+        private AmmoDef Lasers_Laser_SmallDrone => new AmmoDef //Blue Receptor laser
+        {
+            AmmoMagazine = "Energy",
+            AmmoRound = "Lasers_Laser_Small",
+            HybridRound = false, //AmmoMagazine based weapon with energy cost
+            EnergyCost = 0.00001f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
+            BaseDamage = 1f,
+            Mass = 0f, // in kilograms
+            Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            BackKickForce = 0f,
+			DecayPerShot = 0f,            
+            HardPointUsable = false,
+            EnergyMagazineSize = 0,
+            IgnoreWater = false,
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
+            Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
+            {
+                AmmoRound = "Lasers_Laser_Small_Shrapnel", // AmmoRound field of the ammo to spawn.
+                Fragments = 1, // Number of projectiles to spawn.
+                Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
+                Reverse = false, // Spawn projectiles backward instead of forward.
+                DropVelocity = false, // fragments will not inherit velocity from parent.
+                Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards), value is read from parent ammo type.
+                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
+                MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
+                IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
+                AdvOffset = Vector(x: 0, y: 0, z: 0), // advanced offsets the fragment by xyz coordinates relative to parent, value is read from fragment ammo type.
+                TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
+                {
+                    Enable = false, // Enables TimedSpawns mechanism
+                    Interval = 0, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
+                    StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
+                    MaxSpawns = 1, // Max number of fragment children to spawn
+                    Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    ParentDies = true, // Parent dies once after it spawns its last child.
+                    PointAtTarget = true, // Start fragment direction pointing at Target
+                    PointType = Predict, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
+                    DirectAimCone = 0f, //Aim cone used for Direct fire, in degrees
+                    GroupSize = 5, // Number of spawns in each group
+                    GroupDelay = 120, // Delay between each group.
+                },
+            },
+            DamageScales = new DamageScaleDef
+            {
+                MaxIntegrity = 0f, // Blocks with integrity higher than this value will be immune to damage from this projectile; 0 = disabled.
+                DamageVoxels = false, // Whether to damage voxels.
+                SelfDamage = false, // Whether to damage the weapon's own grid.
+                HealthHitModifier = -1, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
+                VoxelHitModifier = -1, // Voxel damage multiplier; defaults to 1 if zero or less.
+                Characters = 0.25f, // Character damage multiplier; defaults to 1 if zero or less.
+                // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
+                FallOff = new FallOffDef
+                {
+                    Distance = 0f, // Distance at which damage begins falling off.
+                    MinMultipler = 1f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
+                },
+                Grids = new GridSizeDef
+                {
+                    Large = -1f, // Multiplier for damage against large grids.
+                    Small = 0.75f, // Multiplier for damage against small grids.
+                },
+                Armor = new ArmorDef
+                {
+                    Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
+                    Light = 0.8f, // Multiplier for damage against light armor.
+                    Heavy = 0.6f, // Multiplier for damage against heavy armor.
+                    NonArmor = -1f, // Multiplier for damage against every else.
+                },
+                Shields = new ShieldDef
+                {
+                    Modifier = 1f, // Multiplier for damage against shields.
+                    Type = Default, // Damage vs healing against shields; Default, Heal
+                    BypassModifier = -1f, // If greater than zero, the percentage of damage that will penetrate the shield.
+                },
+                DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
+                {
+                    Base = Energy, // Base Damage uses this
+                    AreaEffect = Energy,
+                    Detonation = Energy,
+                    Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
+                },
+                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+            },
+            Beams = new BeamDef
+            {
+                Enable = true,
+                OneParticle = true, // Only spawn one particle hit per beam weapon.
+            },
+            Trajectory = new TrajectoryDef
+            {
+                Guidance = None,
+				MaxTrajectory = 1100f,
+                RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
+				MaxTrajectoryTime = 10, // How long the weapon must fire before it reaches MaxTrajectory.
+            },
+            AmmoGraphics = new GraphicDef
+            {
+                ModelName = "",
+                VisualProbability = 1f,
+                ShieldHitDraw = true,
+                Particles = new AmmoParticleDef
+                {
+                    Ammo = new ParticleDef
+                    {
+                        Name = "MD_BulletGlowBigBlue", //Archer_MissileSmokeTrail
+                        ShrinkByDistance = false,
+                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0f),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true,
+                            Restart = false,
+                            MaxDistance = 2000,
+                            MaxDuration = 0,
+                            Scale = 1f,
+                        },
+                    },
+                    Hit = new ParticleDef
+                    {
+                        Name = "Lasers_Laser_BlueHit",//MD_BulletGlowBigBlue
+                        ApplyToShield = true,
+                        ShrinkByDistance = true,
+                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1f),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true,
+                            Restart = false,
+                            MaxDistance = 500,
+                            MaxDuration = 0,
+                            Scale = 1,
+                            HitPlayChance = 1,
+                        },
+                    },
+                },
+                Lines = new LineDef
+                {
+                    TracerMaterial = "WeaponLaser", // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                    ColorVariance = Random(start: -50f, end: 50f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
+
+                    Tracer = new TracerBaseDef
+                    {
+                        Enable = true,
+                        Length = 5f,
+                        Width = .15f,
+                        Color = Color(red: 2, green: 5, blue: 20, alpha: 1f),
+                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
+                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
+                        Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                            "WeaponLaser",
+                        },
+                        TextureMode = Normal, // Normal, Cycle, Chaos, Wave
+                    },
+                },
+            },
+            AmmoAudio = new AmmoAudioDef
+            {
+                TravelSound = "", 
+                HitSound = "",
+				ShotSound = "MD_SmallLaserFire",
+                ShieldHitSound = "",
+                PlayerHitSound = "",
+                VoxelHitSound = "",
+                FloatingHitSound = "",
+                HitPlayChance = 0.15f,
+                HitPlayShield = true,
+			}, // Don't edit below this line
+        };
+
         private AmmoDef Lasers_Laser_Large => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.

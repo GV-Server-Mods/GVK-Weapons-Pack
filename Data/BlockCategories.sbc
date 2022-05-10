@@ -51,6 +51,7 @@
 				<string>AutoCannonTurret</string>
 				<string>OKIObserverSM</string>
 				<string>OKIDesignator</string>
+				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>
