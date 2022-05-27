@@ -98,7 +98,7 @@ namespace Scripts
                     ElevateRate = 0.0025f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -10,
+                    MinElevation = -15,
                     MaxElevation = 90,
                     FixedOffset = false,
                     InventorySize = 0.64f,
