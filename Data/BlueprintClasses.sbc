@@ -7,10 +7,10 @@
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="MediumCalibreAmmo"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="LargeCalibreAmmo"/>
-		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="SmallRailgunAmmo"/>  -->
-		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="LargeRailgunAmmo"/>  -->
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="SmallRailgunAmmo"/>  
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="LargeRailgunAmmo"/>  
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Missile"/>
-		<!-- <Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/> -->
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
 		<!--LARGE BLOCKS-->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
@@ -18,23 +18,18 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXRailgunTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXRailgun"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MXA_CoilgunL"/>
-		<!-- <Entry Class="LargeBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI230mmBCfixed"/> -->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXLightCoilgun"/>
-		<!-- <Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/JumpDriveDisruptorTurret"/> -->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXLargeRadar"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_T2PDX"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MXA_ArcherPods"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Large"/>
-		<!-- <Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MXA_Moray"/> -->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_Fixed_T2"/>
-		<!-- <Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_Fixed_T2_Naked"/> -->
 		<!--SMALL BLOCKS-->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret_small"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="InteriorTurret/SmallInteriorTurret"/>
-		<!-- <Entry Class="SmallBlocks" BlueprintSubtypeId="LargeGatlingTurret/JumpDriveDisruptorTurretSM"/> -->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXSmallRadar"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeGatlingTurret/SmallGatlingGun_Gimbal"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT_sm"/>
