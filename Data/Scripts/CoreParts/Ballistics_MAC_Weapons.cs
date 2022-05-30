@@ -289,7 +289,7 @@ namespace Scripts
                     BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
                     SpinFree = false, // Spin barrel while not firing.
-                    StayCharged = false, // Will start recharging whenever power cap is not full.
+                    StayCharged = true, // Will start recharging whenever power cap is not full.
                 },
                 Audio = new HardPointAudioDef
                 {
