@@ -47,7 +47,8 @@ namespace Scripts
 							AryxRadar,
 							Other_Radar_Large,
 							Other_Warheads_RegularWarhead_LG_Weapon, 
-							Other_Warheads_RegularWarhead_SG_Weapon);
+							Other_Warheads_RegularWarhead_SG_Weapon,
+							AryxLongswordMissileBattery);
             // ArmorDefinitions(Armor1, Armor2);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);

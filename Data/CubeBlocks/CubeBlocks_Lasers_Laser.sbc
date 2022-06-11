@@ -33,7 +33,7 @@
 				<Component Subtype="SteelPlate" Count="413"/>
 			</Components>
 			<BuildTimeSeconds>52</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="2.0" EndY="2.0"/>
@@ -115,7 +115,7 @@
 				<Component Subtype="SteelPlate" Count="180"/>
 			</Components>
 			<BuildTimeSeconds>23</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MirroringX>None</MirroringX>
 			<MirroringY>Z</MirroringY>
@@ -175,7 +175,7 @@
 				<Component Subtype="SteelPlate" Count="119"/>
 			</Components>
 			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.00" EndX="5" EndY="5" Default="true"/>
@@ -265,7 +265,7 @@
 				<Component Subtype="SteelPlate" Count="20"/>
 			</Components>
 			<BuildTimeSeconds>2</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="3" EndX="1.0" EndY="4"/>

@@ -92,7 +92,7 @@
 				<Item Amount="240" TypeId="Ingot" SubtypeId="Nickel"/>
 				<Item Amount="4.7" TypeId="Ingot" SubtypeId="Uranium"/>
 				<Item Amount="140" TypeId="Ingot" SubtypeId="Cobalt"/>
-                <Item Amount="1" TypeId="Component" SubtypeId="GVK_Relic_Tech" />
+                <Item Amount="1" TypeId="Ingot" SubtypeId="GVK_Relic_Tech" />
 			</Prerequisites>
 			<BaseProductionTimeInSeconds>580</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="SmallRailgunAmmo"/>
@@ -124,7 +124,7 @@
 				<Item Amount="950" TypeId="Ingot" SubtypeId="Nickel"/>
 				<Item Amount="19" TypeId="Ingot" SubtypeId="Uranium"/>
 				<Item Amount="570" TypeId="Ingot" SubtypeId="Cobalt"/>
-                <Item Amount="4" TypeId="Component" SubtypeId="GVK_Relic_Tech" />
+                <Item Amount="4" TypeId="Ingot" SubtypeId="GVK_Relic_Tech" />
 			</Prerequisites>
 			<BaseProductionTimeInSeconds>2390</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="LargeRailgunAmmo"/>
@@ -176,7 +176,7 @@
 				<Item Amount="19" TypeId="Ingot" SubtypeId="Platinum"/>
 				<Item Amount="500" TypeId="Ingot" SubtypeId="Silicon"/>
 				<Item Amount="31" TypeId="Ingot" SubtypeId="Gold"/>
-                <Item Amount="4" TypeId="Component" SubtypeId="GVK_Relic_Tech" />
+                <Item Amount="4" TypeId="Ingot" SubtypeId="GVK_Relic_Tech" />
 			</Prerequisites>
 			<BaseProductionTimeInSeconds>3180</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>

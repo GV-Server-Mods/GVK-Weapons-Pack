@@ -260,5 +260,47 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
+        <AmmoMagazine>
+            <Id>
+                <TypeId>AmmoMagazine</TypeId>
+                <SubtypeId>AWESabreMissileMagDef</SubtypeId>
+            </Id>
+            <DisplayName>Sabre Missile</DisplayName>
+            <Icon>Textures\GUI\Icons\ammo\AWESabreMissile.dds</Icon>
+            <Size>
+                <X>4</X>
+                <Y>1</Y>
+                <Z>1</Z>
+            </Size>
+            <Mass>60</Mass>
+            <Volume>5</Volume>
+            <Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
+            <PhysicalMaterial>Ammo</PhysicalMaterial>
+            <Capacity>1</Capacity>
+            <AmmoDefinitionId Subtype="Blank" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+            <CanPlayerOrder>true</CanPlayerOrder>
+        </AmmoMagazine>		
+        <AmmoMagazine>
+            <Id>
+                <TypeId>AmmoMagazine</TypeId>
+                <SubtypeId>AWELancerMissileMagDef</SubtypeId>
+            </Id>
+            <DisplayName>Lancer Missile</DisplayName>
+            <Icon>Textures\GUI\Icons\ammo\AWELancerMissile.dds</Icon>
+            <Size>
+                <X>4</X>
+                <Y>1</Y>
+                <Z>1</Z>
+            </Size>
+            <Mass>60</Mass>
+            <Volume>5</Volume>
+            <Model>Models\AWE_Ammo\AryxLancerMissile.mwm</Model>
+            <PhysicalMaterial>Ammo</PhysicalMaterial>
+            <Capacity>1</Capacity>
+            <AmmoDefinitionId Subtype="Blank" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+            <CanPlayerOrder>true</CanPlayerOrder>
+        </AmmoMagazine>			
 	</AmmoMagazines>
 </Definitions>

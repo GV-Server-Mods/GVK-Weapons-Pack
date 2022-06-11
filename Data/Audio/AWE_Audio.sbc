@@ -4,50 +4,6 @@
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
-				<SubtypeId>ArcWepShipARYXFlak_Fire</SubtypeId>
-			</Id>
-			<Category>SHOT</Category>
-			<MaxDistance>300</MaxDistance>
-			<PitchVariation>50</PitchVariation>
-			<PreventSynchronization>0</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
-			<DistantSounds>
-				<DistantSound DistanceCrossfade="1" Distance="300" Sound="ArcWepShipARYXFlak_FireDistant"/>
-			</DistantSounds>
-			<Volume>0.5</Volume>
-			<Waves>
-				<Wave Type="D3">
-					<Start>Audio\Aryx\aryx_flak_cannon_fire_01.wav</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\Aryx\aryx_flak_cannon_fire_02.wav</Start>
-				</Wave>
-			</Waves>
-		</Sound>
-		<Sound>
-			<Id>
-				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
-				<SubtypeId>ArcWepShipARYXFlak_FireDistant</SubtypeId>
-			</Id>
-			<Category>SHOT</Category>
-			<MaxDistance>1500</MaxDistance>
-			<PitchVariation>50</PitchVariation>
-			<PreventSynchronization>3</PreventSynchronization>
-			<Volume>0.4</Volume>
-			<Loopable>false</Loopable>
-			<Waves>
-				<Wave Type="D3">
-					<Start>Audio\Aryx\aryx_flak_cannon_fire_01Distant.wav</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\Aryx\aryx_flak_cannon_fire_02Distant.wav</Start>
-				</Wave>
-			</Waves>
-		</Sound>
-		<Sound>
-			<Id>
-				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>ArcWepShipARYXRailgun_Windup</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>

@@ -37,7 +37,7 @@
                 <Component Subtype="SteelPlate" Count="622" />
             </Components>
 			<BuildTimeSeconds>115</BuildTimeSeconds>
-			<PCU>6000</PCU>
+			<PCU>60000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="4.0"/>
@@ -80,7 +80,7 @@
 			<Size x="1" y="1" z="5"/>
 			<Center x="0" y="0" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWERailgun\LG_Railgun.mwm</Model>
+			<Model>Models\AWERailgun\ARYX_Railgun.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="142" />
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
@@ -99,7 +99,7 @@
                 <Component Subtype="SteelPlate" Count="213" />
             </Components>
 			<BuildTimeSeconds>39</BuildTimeSeconds>
-			<PCU>5000</PCU>
+			<PCU>50000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
@@ -109,9 +109,9 @@
 				<MountPoint Side="Bottom" StartX="0.0" StartY="3.0" EndX="1.0" EndY="5.0"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\AWERailgun\LG_Railgun_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\LG_Railgun_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\LG_Railgun_BS3.mwm"/>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWERailgun\ARYX_Railgun_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\ARYX_Railgun_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\ARYX_Railgun_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>Railgun</BlockPairName>
 			<MirroringY>Z</MirroringY>
@@ -217,7 +217,7 @@
                 <Component Subtype="SteelPlate" Count="24" />
             </Components>
             <BuildTimeSeconds>4</BuildTimeSeconds>
-			<PCU>4000</PCU>
+			<PCU>40000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>

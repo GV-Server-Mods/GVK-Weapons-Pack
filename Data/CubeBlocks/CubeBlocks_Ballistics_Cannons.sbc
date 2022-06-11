@@ -31,7 +31,7 @@
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
 			<BuildTimeSeconds>15</BuildTimeSeconds>
-			<PCU>6000</PCU>
+			<PCU>60000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5"/>
@@ -95,7 +95,7 @@
 				<Component Subtype="SteelPlate" Count="37"/>
 			</Components>
 			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>30000</PCU>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -148,7 +148,7 @@
                 <Component Subtype="SteelPlate" Count="124" />
             </Components>
             <BuildTimeSeconds>34</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>30000</PCU>
             <CriticalComponent Subtype="Computer" Index="0" />
             <MountPoints>
                 <MountPoint Side="Left" StartX="3.2" StartY="0.2" EndX="3.8" EndY="0.8" />
@@ -220,7 +220,7 @@
 				<Component Subtype="SteelPlate" Count="389"/>
 			</Components>
 			<BuildTimeSeconds>108</BuildTimeSeconds>
-			<PCU>3000</PCU>
+			<PCU>30000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
             <MountPoints>
                 <MountPoint Side="Bottom" StartX="0.5" StartY="1" EndX="2.5" EndY="2" />
