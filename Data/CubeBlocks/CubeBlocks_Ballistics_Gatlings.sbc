@@ -2,89 +2,12 @@
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
 		<!-- Large Sentinel Turret -->
-<!--		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
-			<Id>
-				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>SentinelTurret</SubtypeId>
-			</Id>
-			<DisplayName>Sentinel Turret</DisplayName>
-			<Description>A modified variant of the Raptor Gatling, the Sentinel is designed to secure bases and large capital ships from incoming projectiles.
-			Range: 2.5km
-			Requires: 30mm Raptor Ammo Containers
-			</Description>
-			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="2" z="3"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
-			<Components>
-				<Component Count="40" Subtype="Motor"/>
-				<Component Count="10" Subtype="LargeTube"/>
-				<Component Count="20" Subtype="MetalGrid"/>
-				<Component Count="10" Subtype="Computer"/>
-				<Component Count="30" Subtype="Construction"/>
-				<Component Count="20" Subtype="SteelPlate"/>
-			</Components>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="2.0"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\SentinelTurretBase_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.7" File="Models\Akiad\Small\SentinelTurretBase_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\SentinelTurretBase_BS3.mwm"/>
-			</BuildProgressModels>
-			<VoxelPlacement>
-				<StaticMode>
-					<PlacementMode>OutsideVoxel</PlacementMode>
-					<MaxAllowed>0.2</MaxAllowed>
-					<MinAllowed>0</MinAllowed>
-				</StaticMode>
-				<DynamicMode>
-					<PlacementMode>OutsideVoxel</PlacementMode>
-					<MaxAllowed>0.2</MaxAllowed>
-					<MinAllowed>0.01</MinAllowed>
-				</DynamicMode>
-			</VoxelPlacement>
-			<BlockPairName>SentinelTurret</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>25</BuildTimeSeconds>
-			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
-			<InventoryMaxVolume>0.5</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<MinElevationDegrees>-8</MinElevationDegrees>
-			<MaxElevationDegrees>180</MaxElevationDegrees>
-			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
-			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
-			<IdleRotation>true</IdleRotation>
-			<MaxRangeMeters>600</MaxRangeMeters>
-			<RotationSpeed>0.002</RotationSpeed>
-			<ElevationSpeed>0.002 </ElevationSpeed>
-			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<MinFov>0.1</MinFov>
-			<MaxFov>1.04719755</MaxFov>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>100</PCU>
-			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
-			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
-			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
-			<TieredUpdateTimes>
-				<unsignedInt>10</unsignedInt>
-				<unsignedInt>0</unsignedInt>
-			</TieredUpdateTimes>
-		</Definition>-->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SentinelTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Large 25mm Sentinel Turret</DisplayName>
+			<DisplayName>[Gatling] Large Sentinel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1400m Auto Range]
@@ -174,13 +97,14 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>[Gatling] Large 25mm CIWS Turret</DisplayName>
+			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI14mmCIWS_Turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1400m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -221,7 +145,7 @@
 					<MinAllowed>0.01</MinAllowed>
 				</DynamicMode>
 			</VoxelPlacement>
-			<BlockPairName>GatlingTurret</BlockPairName>
+			<BlockPairName>GatlingTurret_Old</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -264,7 +188,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm CIWS Turret</DisplayName>
+			<DisplayName>[Gatling] Small CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
 				[900m Auto Range]
@@ -354,7 +278,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm CIWS Fixed</DisplayName>
+			<DisplayName>[Gatling] Small 25mm Fixed</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Hard-mounted six-barrel multi-role rotary cannon.
 				[1600m Manual Range]
@@ -407,7 +331,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingGun_Gimbal</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm CIWS Gimbal</DisplayName>
+			<DisplayName>[Gatling] Small 25mm Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
 				[1400m Auto Range]
@@ -494,7 +418,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGunWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm CIWS Fixed (Warfare)</DisplayName>
+			<DisplayName>[Gatling] Small 25mm Fixed (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
 				[1600m Manual Range]

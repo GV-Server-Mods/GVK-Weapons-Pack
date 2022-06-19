@@ -14,7 +14,30 @@
 			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
-					<Start>Audio\Aryx\aryx_railgun_windup_01.wav</Start>
+					<Start>Audio\Aryx\aryx_railgun_windup_01.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>ArcWepShipARYX_FireMissilesA</SubtypeId>
+			</Id>
+			<Category>SHOT</Category>
+			<MaxDistance>400</MaxDistance>
+			<PreventSynchronization>0</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>2</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\Aryx\missiles\aryx_missile_fire_A_01.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Aryx\missiles\aryx_missile_fire_A_02.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\Aryx\missiles\aryx_missile_fire_A_03.xwm</Start>
 				</Wave>
 			</Waves>
 		</Sound>

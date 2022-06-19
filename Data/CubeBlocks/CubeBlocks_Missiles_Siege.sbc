@@ -2,7 +2,7 @@
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
 		<!-- Longsword Siege Turret -->
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+		<!--<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery</SubtypeId>
@@ -41,7 +41,7 @@
 			<BuildTimeSeconds>85</BuildTimeSeconds>
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
 			<EdgeType>Light</EdgeType>
-			<!--WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /-->
+			<!{1}**WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /**{1}>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.48</InventoryMaxVolume>
@@ -53,6 +53,6 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
-		</Definition>
+		</Definition>-->
 	</CubeBlocks>
 </Definitions>

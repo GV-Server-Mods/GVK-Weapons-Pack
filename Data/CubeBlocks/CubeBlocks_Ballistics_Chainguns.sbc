@@ -7,25 +7,29 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>KhopeshTurret</SubtypeId>
 			</Id>
-			<DisplayName>Khopesh Turret</DisplayName>
-			<Description>A highly accurate, fast firing defensive turret meant to engage incoming projectiles, fighters, and biologicals.
-				Range: 2.5km
-				Requires: 50mm Armor Piercing.
-				</Description>
+			<DisplayName>[Chaingun] Large Khopesh Turret</DisplayName>
+			<Description>Small caliber medium rate of fire weapon with a that helps small craft punch above their weight class.
+				[1800m Auto Range]
+				[Uses 30mm API]
+			</Description>
 			<Icon>Textures\GUI\Icons\KhopeshBase.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="2" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Akiad\Small\KhopeshBase.mwm</Model>
 			<Components>
-				<Component Count="40" Subtype="Motor"/>
-				<Component Count="10" Subtype="LargeTube"/>
-				<Component Count="20" Subtype="MetalGrid"/>
-				<Component Count="10" Subtype="Computer"/>
-				<Component Count="30" Subtype="Construction"/>
-				<Component Count="20" Subtype="SteelPlate"/>
+				<Component Subtype="SteelPlate" Count="20"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
+				<Component Subtype="MetalGrid" Count="60"/>
+				<Component Subtype="SmallTube" Count="24"/>
+				<Component Subtype="Motor" Count="32"/>
+				<Component Subtype="Computer" Count="40"/>
+				<Component Subtype="Construction" Count="120"/>
+				<Component Subtype="SteelPlate" Count="60"/>
 			</Components>
+			<BuildTimeSeconds>15</BuildTimeSeconds>
+			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="2.0" EndY="2.0"/>
@@ -52,7 +56,6 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>25</BuildTimeSeconds>
 			<WeaponDefinitionId Subtype="AutocannonTurret"/>
 			<InventoryMaxVolume>0.5</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -71,7 +74,6 @@
 			<MaxFov>1.04719755</MaxFov>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>100</PCU>
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
 			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
@@ -347,7 +349,7 @@
 			<DisplayName>[Chaingun] Large Autocannon Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\RB_CompactTurretGatlingT1.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon with a that helps small craft punch above their weight class.
-				[1800m Auto Range]
+				[1600m Auto Range]
 				[Uses 30mm API]
 			</Description>
 			<CubeSize>Large</CubeSize>
@@ -359,7 +361,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="20"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
 				<Component Subtype="MetalGrid" Count="60"/>
 				<Component Subtype="SmallTube" Count="24"/>
 				<Component Subtype="Motor" Count="32"/>
@@ -423,6 +425,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 			<AiEnabled>false</AiEnabled>
 		</Definition>
 	</CubeBlocks>

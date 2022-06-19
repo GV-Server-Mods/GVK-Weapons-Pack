@@ -67,8 +67,8 @@ namespace Scripts {
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef {
-                    RotateRate = 0.0025f,
-                    ElevateRate = 0.0015f,
+                    RotateRate = 0.003f,
+                    ElevateRate = 0.0025f,
                     MinAzimuth = -180,
                     MaxAzimuth =180,
                     MinElevation = -10,

@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<BlueprintClassEntries>
+		<!--BASIC AMMOS-->
+		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
+		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
 		<!--AMMOS-->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
@@ -12,6 +16,7 @@
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Missile"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Siege"/>
 		<!--LARGE BLOCKS-->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret"/>

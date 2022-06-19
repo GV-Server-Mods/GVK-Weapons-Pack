@@ -82,7 +82,7 @@ namespace Scripts
 			
             HardPoint = new HardPointDef {
                 PartName = "155mm Artillery Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.6f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 0.8f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -227,7 +227,7 @@ namespace Scripts
             HardPoint = new HardPointDef 
             {
                 PartName = "155mm Fixed Cannon", // name of weapon in terminal
-                DeviateShotAngle = 0.2f,
+                DeviateShotAngle = 0.1f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -372,7 +372,7 @@ namespace Scripts
             HardPoint = new HardPointDef 
             {
                 PartName = "Vehicle 122mm Assault Gun Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.2f,
                 AimingTolerance = 0.5f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -518,7 +518,7 @@ namespace Scripts
             HardPoint = new HardPointDef 
             {
                 PartName = "122mm Fixed Assault Cannon", // name of weapon in terminal
-                DeviateShotAngle = 0.2f,
+                DeviateShotAngle = 0.1f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
