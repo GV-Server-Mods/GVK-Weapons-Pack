@@ -52,7 +52,7 @@ namespace Scripts
 			LockedSmartOnly = false,
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 900,
+			MaxTargetDistance = 1100,
 			MinTargetDistance = 0,
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -240,7 +240,7 @@ namespace Scripts
                     InventorySize = 0f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour
@@ -320,15 +320,15 @@ namespace Scripts
                 HardWare = new HardwareDef {
 					RotateRate = 0.01f,
 					ElevateRate = 0.01f,
-					MinAzimuth = 0,
+					MinAzimuth = -15,
 					MaxAzimuth = 15,
-					MinElevation = 0,
+					MinElevation = -15,
 					MaxElevation = 15,
 					FixedOffset = false,
 					InventorySize = 0f,
 					Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.005f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour
@@ -536,7 +536,7 @@ namespace Scripts
                     InventorySize = 0f,
                     Offset = Vector(x: 0, y: 0, z:0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour

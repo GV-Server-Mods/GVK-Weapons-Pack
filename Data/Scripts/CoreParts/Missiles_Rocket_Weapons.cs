@@ -119,6 +119,224 @@ namespace Scripts
 
 		//Weapon Definitions
 
+        WeaponDefinition LargeMissileTurret => new WeaponDefinition {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileTurret",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                },
+                Muzzles = new []
+                {
+					"muzzle_missile_001",
+					"muzzle_missile_002",
+					"muzzle_missile_003",
+					"muzzle_missile_004",
+					"muzzle_missile_005",
+					"muzzle_missile_006",
+                },
+            },
+
+			Targeting = Missiles_Rocket_Targeting, //shared targeting def
+
+            HardPoint = new HardPointDef
+            {
+                PartName = "LargeMissileTurret", // name of weapon in terminal
+                DeviateShotAngle = 3f,
+                AimingTolerance = 4f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+
+                Ui = Missiles_Rocket_Hardpoint_Ui,
+
+                Ai = Missiles_Rocket_Hardpoint_Ai_Turret,
+
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.02f,
+                    ElevateRate = 0.01f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -5,
+                    MaxElevation = 90,
+                    FixedOffset = false,
+                    InventorySize = 1.040f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = true,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+                },
+				
+                Other = Missiles_Rocket_Hardpoint_Other,
+				
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 480,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 480, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 6, // Number of physical magazines to consume on reload.
+					SpinFree = true, // Spin barrel while not firing
+					StayCharged = false, // Will start recharging whenever power cap is not full
+                },
+
+                Audio = Missiles_Rocket_Hardpoint_Audio,
+				
+                Graphics = Missiles_Rocket_Hardpoint_Graphics,
+
+            },
+
+			Ammos = new[] {
+                Missiles_Rocket,
+            },
+            //Animations = AdvancedAnimation,
+            // Don't edit below this line
+        };
+
+        WeaponDefinition SmallMissileTurret => new WeaponDefinition {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileTurret",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+
+                },
+                Muzzles = new []
+                {
+                    "muzzle_missile_001",
+					"muzzle_missile_002",
+                },
+            },
+
+			Targeting = new TargetingDef {
+				Threats = new[] {
+					Grids,
+				},
+                SubSystems = new[] {
+                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                },
+				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+				MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
+				MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+				MaxTargetDistance = 600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+				TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
+			}, //shared targeting def
+
+            HardPoint = new HardPointDef
+            {
+                PartName = "SmallMissileTurret", // name of weapon in terminal
+                DeviateShotAngle = 3f,
+                AimingTolerance = 4f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+
+                Ui = Missiles_Rocket_Hardpoint_Ui,
+
+                Ai = Missiles_Rocket_Hardpoint_Ai_Turret,
+
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.02f,
+                    ElevateRate = 0.01f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -8,
+                    MaxElevation = 90,
+                    FixedOffset = false,
+                    InventorySize = 0.520f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = true,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+                },
+				
+                Other = Missiles_Rocket_Hardpoint_Other,
+				
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 320,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 260, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 2, // Number of physical magazines to consume on reload.
+					SpinFree = true, // Spin barrel while not firing
+					StayCharged = false, // Will start recharging whenever power cap is not full
+                },
+
+                Audio = Missiles_Rocket_Hardpoint_Audio,
+				
+                Graphics = Missiles_Rocket_Hardpoint_Graphics,
+
+            },
+
+			Ammos = new[] {
+                Missiles_Rocket,
+            },
+            //Animations = AdvancedAnimation,
+            // Don't edit below this line
+        };
+
         WeaponDefinition LargeMissileLauncher => new WeaponDefinition {
             Assignments = new ModelAssignmentsDef
             {
@@ -182,7 +400,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.76f,
+                    InventorySize = 2.470f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -234,108 +452,6 @@ namespace Scripts
             // Don't edit below this line
         };
 
-        WeaponDefinition LargeMissileTurret => new WeaponDefinition {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
-                {
-                    new MountPointDef
-                    {
-                        SubtypeId = "LargeMissileTurret",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
-                    },
-                },
-                Muzzles = new []
-                {
-					"muzzle_missile_001",
-					"muzzle_missile_002",
-					"muzzle_missile_003",
-					"muzzle_missile_004",
-					"muzzle_missile_005",
-					"muzzle_missile_006",
-                },
-            },
-
-			Targeting = Missiles_Rocket_Targeting, //shared targeting def
-
-            HardPoint = new HardPointDef
-            {
-                PartName = "LargeMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 3f,
-                AimingTolerance = 3f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-
-                Ui = Missiles_Rocket_Hardpoint_Ui,
-
-                Ai = Missiles_Rocket_Hardpoint_Ai_Turret,
-
-                HardWare = new HardwareDef
-                {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.01f,
-                    MinAzimuth = -180,
-                    MaxAzimuth = 180,
-                    MinElevation = -5,
-                    MaxElevation = 90,
-                    FixedOffset = false,
-                    InventorySize = 0.48f,
-                    Offset = Vector(x: 0, y: 0, z: 0),
-					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
-                },
-				
-                Other = Missiles_Rocket_Hardpoint_Other,
-				
-                Loading = new LoadingDef
-                {
-                    RateOfFire = 480,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 1,
-                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    SkipBarrels = 0,
-                    ReloadTime = 480, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, //heat generated per shot
-                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 0, //amount of heat lost per second
-                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-                    ShotsInBurst = 0,
-                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false,
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-					MagsToLoad = 6, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
-					StayCharged = false, // Will start recharging whenever power cap is not full
-                },
-
-                Audio = Missiles_Rocket_Hardpoint_Audio,
-				
-                Graphics = Missiles_Rocket_Hardpoint_Graphics,
-
-            },
-
-			Ammos = new[] {
-                Missiles_Rocket,
-            },
-            //Animations = AdvancedAnimation,
-            // Don't edit below this line
-        };
-
         WeaponDefinition SmallMissileLauncher => new WeaponDefinition {
             Assignments = new ModelAssignmentsDef
             {
@@ -378,7 +494,7 @@ namespace Scripts
             {
                 PartName = "SmallMissileLauncher", // name of weapon in terminal
                 DeviateShotAngle = 4f,
-                AimingTolerance = 4f, // 0 - 180 firing angle
+                AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 
@@ -395,7 +511,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.32f,
+                    InventorySize = 0.520f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -430,122 +546,6 @@ namespace Scripts
                     FireFull = false,
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
-					StayCharged = false, // Will start recharging whenever power cap is not full
-                },
-
-                Audio = Missiles_Rocket_Hardpoint_Audio,
-				
-                Graphics = Missiles_Rocket_Hardpoint_Graphics,
-
-            },
-
-			Ammos = new[] {
-                Missiles_Rocket,
-            },
-            //Animations = AdvancedAnimation,
-            // Don't edit below this line
-        };
-
-        WeaponDefinition SmallMissileTurret => new WeaponDefinition {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
-                {
-                    new MountPointDef
-                    {
-                        SubtypeId = "SmallMissileTurret",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
-                    },
-
-                },
-                Muzzles = new []
-                {
-                    "muzzle_missile_001",
-					"muzzle_missile_002",
-                },
-            },
-
-			Targeting = new TargetingDef {
-				Threats = new[] {
-					Grids,
-				},
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
-                },
-				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
-				MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-				MaxTargetDistance = 500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-				TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
-				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			}, //shared targeting def
-
-            HardPoint = new HardPointDef
-            {
-                PartName = "SmallMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 5f,
-                AimingTolerance = 4f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 10, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-
-                Ui = Missiles_Rocket_Hardpoint_Ui,
-
-                Ai = Missiles_Rocket_Hardpoint_Ai_Turret,
-
-                HardWare = new HardwareDef
-                {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.01f,
-                    MinAzimuth = -180,
-                    MaxAzimuth = 180,
-                    MinElevation = -8,
-                    MaxElevation = 90,
-                    FixedOffset = false,
-                    InventorySize = 0.32f,
-                    Offset = Vector(x: 0, y: 0, z: 0),
-					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
-                },
-				
-                Other = Missiles_Rocket_Hardpoint_Other,
-				
-                Loading = new LoadingDef
-                {
-                    RateOfFire = 320,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 1,
-                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    SkipBarrels = 0,
-                    ReloadTime = 260, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, //heat generated per shot
-                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 0, //amount of heat lost per second
-                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-                    ShotsInBurst = 0,
-                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false,
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-					MagsToLoad = 2, // Number of physical magazines to consume on reload.
 					SpinFree = true, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },

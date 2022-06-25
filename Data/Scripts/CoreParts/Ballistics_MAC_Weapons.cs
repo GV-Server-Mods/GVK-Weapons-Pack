@@ -202,15 +202,15 @@ namespace Scripts
                 MaximumDiameter = 0, // Maximum radius of threat to engage; 0 = unlimited.
                 MaxTargetDistance = 0, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 MinTargetDistance = 0, // Minimum distance at which targets will be automatically shot at.
-                TopTargets = 2, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 4, // Maximum number of blocks to randomize between; 0 = unlimited.
-                StopTrackingSpeed = 500, // Do not track threats traveling faster than this speed; 0 = unlimited.
+                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
+                StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef
             {
                 PartName = "Large Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
+                AimingTolerance = 0f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
@@ -243,7 +243,7 @@ namespace Scripts
                     MaxElevation = 0,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 5.5f, // Inventory capacity in kL.
+                    InventorySize = 6.600f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.

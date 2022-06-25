@@ -53,7 +53,7 @@ namespace Scripts {
                     Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
                 },
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
@@ -89,7 +89,7 @@ namespace Scripts {
                     InventorySize = 0f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.002f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour

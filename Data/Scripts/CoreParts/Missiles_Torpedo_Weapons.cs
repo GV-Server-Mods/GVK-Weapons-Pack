@@ -48,10 +48,10 @@ namespace Scripts
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 20, // 0 = unlimited, Minimum radius of threat to engage.
+                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-                MinTargetDistance = 200, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+                MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
                 TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
                 TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
@@ -88,7 +88,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = true,
-                    InventorySize = 8.25f,
+                    InventorySize = 7.330f,
                     Offset = Vector(x: 0, y: 0, z: 5),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -223,10 +223,10 @@ namespace Scripts
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 20, // 0 = unlimited, Minimum radius of threat to engage.
+                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-                MinTargetDistance = 150, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+                MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
                 TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
                 TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
@@ -263,7 +263,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = true,
-                    InventorySize = 3.75f,
+                    InventorySize = 3.330f,
                     Offset = Vector(x: 0, y: 0, z: 1),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.

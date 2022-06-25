@@ -70,7 +70,7 @@ namespace Scripts {
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			SkipBarrels = 0,
-			ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			ReloadTime = 2, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 1, //heat generated per shot
 			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
@@ -93,7 +93,7 @@ namespace Scripts {
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			SkipBarrels = 0,
-			ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			ReloadTime = 2, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 2, //heat generated per shot
 			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
@@ -152,6 +152,121 @@ namespace Scripts {
 
 		//Weapon Definitions
 
+		WeaponDefinition SentinelTurret => new WeaponDefinition {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "SentinelTurret",
+                        SpinPartId = "SentinelBarrel", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "SentinelBarrel",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "None",
+                    },
+                },
+                Muzzles = new []
+                {
+					//"SentinelBarrel",
+					"Sentinelmuzzle_1",
+					"Sentinelmuzzle_2",
+					"Sentinelmuzzle_3",
+					"Sentinelmuzzle_4",
+					"Sentinelmuzzle_5",
+					"Sentinelmuzzle_6",
+					"Sentinelmuzzle_7",
+					"Sentinelmuzzle_8",
+                },
+				Ejector = "ejector",
+				Scope = "camera", // Where line of sight checks are performed from. Must be clear of block collision.
+            },
+            Targeting = Ballistics_Gatlings_Targeting_T2,
+            HardPoint = new HardPointDef
+            {
+                PartName = "LargeGatlingTurret", // name of weapon in terminal
+                DeviateShotAngle = 0.5f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = false,
+                CanShootSubmerged = false,
+				
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+				
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+				
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.05f,
+                    ElevateRate = 0.03f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -10,
+                    MaxElevation = 90,
+                    FixedOffset = false,
+                    InventorySize = 0.6f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					
+					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
+                },
+				
+                Other = new OtherDef {
+					ConstructPartCap = 21,
+					RotateBarrelAxis = 3,
+					EnergyPriority = 0,
+					MuzzleCheck = false,
+					Debug = false,
+					RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+					CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+				},
+				
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                
+				Audio = Ballistics_Gatlings_Hardpoint_Audio,
+				
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            Scale = 2f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "Smoke_Construction", //Smoke_LargeGunShot_WC
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = true,
+                            Scale = 2f,
+                        },
+                    },
+                },
+				
+            },
+       
+            Ammos = new [] {
+                NATO_25x184mm,
+            },
+             //Animations= Lancer_Recoil
+            // Don't edit below this line
+        };
+
         WeaponDefinition LargeGatlingTurret => new WeaponDefinition {
             Assignments = new ModelAssignmentsDef
             {
@@ -201,7 +316,7 @@ namespace Scripts {
                     InventorySize = 0.6f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					
 					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
                 },
@@ -286,7 +401,7 @@ namespace Scripts {
             {
                 PartName = "SmallGatlingTurret", // name of weapon in terminal
                 DeviateShotAngle = 0.7f,
-                AimingTolerance = 4f, // 0 - 180 firing angle
+                AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -308,7 +423,7 @@ namespace Scripts {
                     InventorySize = 0.3f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					
 					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
                 },
@@ -403,7 +518,7 @@ namespace Scripts {
             {
                 PartName = "SmallGatlingGun", // name of weapon in terminal
                 DeviateShotAngle = 0.6f,
-                AimingTolerance = 4f, // 0 - 180 firing angle
+                AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -534,7 +649,7 @@ namespace Scripts {
                     InventorySize = 0.15f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.005f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					
 					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
 				},
@@ -593,119 +708,5 @@ namespace Scripts {
 
         };
 
-		WeaponDefinition SentinelTurret => new WeaponDefinition {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
-                {
-                    new MountPointDef
-                    {
-                        SubtypeId = "SentinelTurret",
-                        SpinPartId = "SentinelBarrel", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "SentinelBarrel",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,
-                        IconName = "None",
-                    },
-                },
-                Muzzles = new []
-                {
-					//"SentinelBarrel",
-					"Sentinelmuzzle_1",
-					"Sentinelmuzzle_2",
-					"Sentinelmuzzle_3",
-					"Sentinelmuzzle_4",
-					"Sentinelmuzzle_5",
-					"Sentinelmuzzle_6",
-					"Sentinelmuzzle_7",
-					"Sentinelmuzzle_8",
-                },
-				Ejector = "ejector",
-				Scope = "camera", // Where line of sight checks are performed from. Must be clear of block collision.
-            },
-            Targeting = Ballistics_Gatlings_Targeting_T2,
-            HardPoint = new HardPointDef
-            {
-                PartName = "LargeGatlingTurret", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
-                AimingTolerance = 30f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AddToleranceToTracking = false,
-                CanShootSubmerged = false,
-				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
-				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
-				
-                HardWare = new HardwareDef
-                {
-                    RotateRate = 0.05f,
-                    ElevateRate = 0.03f,
-                    MinAzimuth = -180,
-                    MaxAzimuth = 180,
-                    MinElevation = -10,
-                    MaxElevation = 90,
-                    FixedOffset = false,
-                    InventorySize = 0.6f,
-                    Offset = Vector(x: 0, y: 0, z: 0),
-					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					
-					CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
-                },
-				
-                Other = new OtherDef {
-					ConstructPartCap = 21,
-					RotateBarrelAxis = 3,
-					EnergyPriority = 0,
-					MuzzleCheck = false,
-					Debug = false,
-					RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-					CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-				},
-				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
-                
-				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-				
-                Graphics = new HardPointParticleDef
-                {
-                    Effect1 = new ParticleDef
-                    {
-                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
-                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true, // Set this to the same as in the particle sbc!
-                            Restart = true, // Whether to end a looping effect instantly when firing stops.
-                            Scale = 2f, // Scale of effect.
-                        },
-                    },
-                    Effect2 = new ParticleDef
-                    {
-                        Name = "Smoke_Construction", //Smoke_LargeGunShot_WC
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Set this to the same as in the particle sbc!
-                            Restart = true,
-                            Scale = 2f,
-                        },
-                    },
-                },
-				
-            },
-       
-            Ammos = new [] {
-                NATO_25x184mm,
-            },
-             //Animations= Lancer_Recoil
-            // Don't edit below this line
-        };
     }
 }

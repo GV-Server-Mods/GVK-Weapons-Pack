@@ -168,7 +168,7 @@ namespace Scripts
                 PartName = "Large Archer Missile Pod", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
@@ -194,7 +194,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 7.5f,
+                    InventorySize = 14.100f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -309,7 +309,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.4f,
+                    InventorySize = 0.380f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -336,8 +336,8 @@ namespace Scripts
 				
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 240, // 240 Pre Rebalance // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 1,
+                    RateOfFire = 240, // 240 Pre Rebalance 
+                    BarrelsPerShot = 1, 
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
                     ReloadTime = 480, //3600 // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -354,7 +354,7 @@ namespace Scripts
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
+					SpinFree = false, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
 				

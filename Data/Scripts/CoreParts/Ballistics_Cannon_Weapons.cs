@@ -95,16 +95,16 @@ namespace Scripts
 				
                 HardWare = new HardwareDef {
                     RotateRate = 0.005f,
-                    ElevateRate = 0.0025f,
+                    ElevateRate = 0.004f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.64f,
+                    InventorySize = 0.880f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour
@@ -246,7 +246,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.64f,
+                    InventorySize = 0.880f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -277,7 +277,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -386,15 +386,15 @@ namespace Scripts
                 HardWare = new HardwareDef {
                     RotateRate = 0.015f,
                     ElevateRate = 0.01f,
-                    MinAzimuth = -120,
-                    MaxAzimuth = 120,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation = 45,
                     FixedOffset = false,
-                    InventorySize = 0.32f,
+                    InventorySize = 0.440f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 					CriticalReaction = new CriticalDef
 					{
 						Enable = false, // Enables Warhead behaviour
@@ -418,7 +418,7 @@ namespace Scripts
                 },
 
                 Loading = new LoadingDef {
-                    RateOfFire = 30,
+                    RateOfFire = 40,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
@@ -537,7 +537,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.18f,
+                    InventorySize = 0.220f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -564,11 +564,11 @@ namespace Scripts
                 },
 
                 Loading = new LoadingDef {
-                    RateOfFire = 30, //180 // visual only, 0 disables and uses RateOfFire
+                    RateOfFire = 40, //180 // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 72, // Measured in game ticks (use 3600/ROF for consistant fire rate).
+                    ReloadTime = 90, // Measured in game ticks (use 3600/ROF for consistant fire rate).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)

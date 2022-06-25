@@ -106,6 +106,8 @@ namespace Scripts
                     FixedOffset = false,
                     InventorySize = 0.6f,
                     Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
 
                 Other = new OtherDef {

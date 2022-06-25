@@ -3,9 +3,11 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
@@ -33,7 +35,7 @@ namespace Scripts
             AmmoMagazine = "LargeRailgunAmmo",
             AmmoRound = "Ballistics_MAC",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.08f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.09648f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 250000f,
             Mass = 20000f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -64,8 +66,8 @@ namespace Scripts
                 // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
                 FallOff = new FallOffDef
                 {
-                    Distance = 2000f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.5f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0f, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -339,8 +341,8 @@ namespace Scripts
             AmmoMagazine = "LargeRailgunAmmo", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Large Railgun Slug", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = true, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 0.08f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 50000f, // Direct damage; one steel plate is worth 100.
+            EnergyCost = 0.2898f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
+            BaseDamage = 100000f, // Direct damage; one steel plate is worth 100.
             Mass = 20000f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 30000000f, // Recoil. This is applied to the Parent Grid.

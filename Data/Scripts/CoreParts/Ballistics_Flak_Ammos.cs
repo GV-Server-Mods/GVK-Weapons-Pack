@@ -59,19 +59,20 @@ namespace Scripts
                 Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
                 IgnoreArming = false, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
-                FireSound = false, // Play fire/shoot sound
+                AdvOffset = Vector(x: 0, y: 0, z: 0), // advanced offsets the fragment by xyz coordinates relative to parent, value is read from fragment ammo type.
                 TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
-                    Enable = false, // Enables TimedSpawns mechanism
-                    Interval = 0, // Time between spawning fragments, in ticks
+                    Enable = true, // Enables TimedSpawns mechanism
+                    Interval = 0, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    Proximity = 80, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
-                    PointType = Predict, // Point accuracy, Direct, Lead (always fire), Predict (only fire if it can hit)
-                    GroupSize = 5, // Number of spawns in each group
-                    GroupDelay = 120, // Delay between each group.
+                    PointType = Lead, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
+                    DirectAimCone = 0f, //Aim cone used for Direct fire, in degrees
+                    GroupSize = 1, // Number of spawns in each group
+                    GroupDelay = 1, // Delay between each group.
                 },
             },
             DamageScales = new DamageScaleDef
@@ -89,8 +90,8 @@ namespace Scripts
                 },
                 Grids = new GridSizeDef
                 {
-                    Large = 0f,
-                    Small = 0f,
+                    Large = -1f,
+                    Small = -1f,
                 },
                 Armor = new ArmorDef
                 {
@@ -204,13 +205,13 @@ namespace Scripts
                 TargetLossDegree = 80f, // Degrees, Is pointed forward
                 TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                AccelPerSec = 2000f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
+                AccelPerSec = 0f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 800, // voxel phasing if you go above 5100
                 MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
                 DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
                 SpeedVariance = Random(start: -25f, end: 25), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 60f, end: 80f), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
                 Smarts = new SmartsDef
                 {
@@ -322,12 +323,12 @@ namespace Scripts
                 Characters = 0.1f,
                 FallOff = new FallOffDef
                 {
-                    Distance = 1f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.5f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0f, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
-                    Large = 0.75f,
+                    Large = -1f,
                     Small = -1f,
                 },
                 Armor = new ArmorDef
@@ -458,7 +459,7 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = TravelTo, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 0, // Degrees, Is pointed forward
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 120, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.

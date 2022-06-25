@@ -21,16 +21,16 @@
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="113"/>
+				<Component Subtype="SteelPlate" Count="90"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
-				<Component Subtype="MetalGrid" Count="339"/>
-				<Component Subtype="SmallTube" Count="136"/>
-				<Component Subtype="Motor" Count="181"/>
-				<Component Subtype="Computer" Count="226"/>
-				<Component Subtype="Construction" Count="677"/>
-				<Component Subtype="SteelPlate" Count="339"/>
+				<Component Subtype="MetalGrid" Count="270"/>
+				<Component Subtype="SmallTube" Count="110"/>
+				<Component Subtype="Motor" Count="150"/>
+				<Component Subtype="Computer" Count="180"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="270"/>
 			</Components>
-			<BuildTimeSeconds>85</BuildTimeSeconds>
+			<BuildTimeSeconds>90</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -112,16 +112,16 @@
 			<Model>Models\Cubes\Large\Gatling\14mmLGBase.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="113"/>
+				<Component Subtype="SteelPlate" Count="90"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
-				<Component Subtype="MetalGrid" Count="339"/>
-				<Component Subtype="SmallTube" Count="136"/>
-				<Component Subtype="Motor" Count="181"/>
-				<Component Subtype="Computer" Count="226"/>
-				<Component Subtype="Construction" Count="677"/>
-				<Component Subtype="SteelPlate" Count="339"/>
+				<Component Subtype="MetalGrid" Count="270"/>
+				<Component Subtype="SmallTube" Count="110"/>
+				<Component Subtype="Motor" Count="150"/>
+				<Component Subtype="Computer" Count="180"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="270"/>
 			</Components>
-			<BuildTimeSeconds>85</BuildTimeSeconds>
+			<BuildTimeSeconds>90</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -202,16 +202,16 @@
 			<Model>Models\Cubes\Small\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="15"/>
+				<Component Subtype="SteelPlate" Count="9"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
-				<Component Subtype="MetalGrid" Count="44"/>
-				<Component Subtype="SmallTube" Count="18"/>
-				<Component Subtype="Motor" Count="24"/>
-				<Component Subtype="Computer" Count="30"/>
-				<Component Subtype="Construction" Count="88"/>
-				<Component Subtype="SteelPlate" Count="44"/>
+				<Component Subtype="MetalGrid" Count="25"/>
+				<Component Subtype="SmallTube" Count="10"/>
+				<Component Subtype="Motor" Count="14"/>
+				<Component Subtype="Computer" Count="17"/>
+				<Component Subtype="Construction" Count="50"/>
+				<Component Subtype="SteelPlate" Count="25"/>
 			</Components>
-			<BuildTimeSeconds>11</BuildTimeSeconds>
+			<BuildTimeSeconds>8</BuildTimeSeconds>
 			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -291,14 +291,14 @@
 			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="5"/>
 				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="16"/>
-				<Component Subtype="SteelPlate" Count="8"/>
+				<Component Subtype="Construction" Count="18"/>
+				<Component Subtype="SteelPlate" Count="9"/>
 			</Components>
-			<BuildTimeSeconds>2</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -347,14 +347,14 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
-				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="5"/>
 				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="16"/>
-				<Component Subtype="SteelPlate" Count="8"/>
+				<Component Subtype="Construction" Count="18"/>
+				<Component Subtype="SteelPlate" Count="9"/>
 			</Components>
-			<BuildTimeSeconds>2</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -430,14 +430,14 @@
 			<Model>Models\Cubes\Small\GatlingGunReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="5"/>
 				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="16"/>
-				<Component Subtype="SteelPlate" Count="8"/>
+				<Component Subtype="Construction" Count="18"/>
+				<Component Subtype="SteelPlate" Count="9"/>
 			</Components>
-			<BuildTimeSeconds>2</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

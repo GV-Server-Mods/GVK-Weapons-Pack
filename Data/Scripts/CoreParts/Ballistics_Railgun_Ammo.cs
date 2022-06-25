@@ -36,7 +36,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.05f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.1606015038f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -59,8 +59,8 @@ namespace Scripts
                 Characters = -1f,
                 FallOff = new FallOffDef
                 {
-                    Distance = 2000f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.75f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0f, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -295,7 +295,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.05f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.1822556391f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -318,8 +318,8 @@ namespace Scripts
                 Characters = -1f,
                 FallOff = new FallOffDef
                 {
-                    Distance = 2000f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.75f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -451,7 +451,7 @@ namespace Scripts
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 0f,
-                DesiredSpeed = 1500, //1500
+                DesiredSpeed = 1200, //1500
                 MaxTrajectory = 2300,
                 GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed

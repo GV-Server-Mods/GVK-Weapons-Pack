@@ -36,8 +36,8 @@ namespace Scripts
 			EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
 			BaseDamage = 1f,
 			Mass = 200f, // in kilograms
-			Health = 4, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
-			BackKickForce = 5f,
+			Health = 1, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+			BackKickForce = 100f,
             DecayPerShot = 0f,
 			HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
 			EnergyMagazineSize = 0,
@@ -92,7 +92,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 10f,
-                    Damage = 4000f,
+                    Damage = 3000f,
                     Depth = 0.4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius

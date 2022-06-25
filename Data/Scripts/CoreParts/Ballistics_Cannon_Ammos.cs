@@ -37,7 +37,7 @@ namespace Scripts
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 5500f, // breaks 1 HA or 1 LA cubes in 1 round
-            Mass = 200f, // in kilograms
+            Mass = 300f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 200000f,
             DecayPerShot = 0f,
@@ -117,7 +117,7 @@ namespace Scripts
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = true,
+                    Enable = false,
                     Radius = 5f,
                     Damage = 0f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance

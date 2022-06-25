@@ -114,7 +114,7 @@ namespace Scripts
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    RotateRate = 0.02f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
                     ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
@@ -122,7 +122,7 @@ namespace Scripts
                     MaxElevation = 75,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.56f, // Inventory capacity in kL.
+                    InventorySize = 0.960f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
@@ -234,8 +234,8 @@ namespace Scripts
                     MaxElevation = 50,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.28f, // Inventory capacity in kL.
-                    IdlePower = 0.005f, // Constant base power draw in MW.
+                    InventorySize = 0.640f, // Inventory capacity in kL.
+                    IdlePower = 0.01f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -346,7 +346,7 @@ namespace Scripts
                     MaxElevation = 0,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.16f, // Inventory capacity in kL.
+                    InventorySize = 0.320f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.

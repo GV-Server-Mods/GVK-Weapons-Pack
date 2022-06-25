@@ -42,8 +42,8 @@ namespace Scripts {
 			MaxElevation = 90,
 			HomeAzimuth = 0, // Default resting rotation angle
 			HomeElevation = 0, // Default resting elevation
-			InventorySize = 0.32f, // Inventory capacity in kL.
-			IdlePower = 0.005f, // Constant base power draw in MW.
+			InventorySize = 0.240f, // Inventory capacity in kL.
+			IdlePower = 0.01f, // Constant base power draw in MW.
 			FixedOffset = false, // Deprecated.
 			//Offset = new Vector3D(0f,0f,0f), // XYZ Offsets the aiming/firing line of the weapon, in metres.
 			Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -203,6 +203,83 @@ namespace Scripts {
             //Upgrades = UpgradeModules,
         };
 
+		WeaponDefinition KhopeshTurret => new WeaponDefinition {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "KhopeshTurret",
+                        
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 1f,
+                        IconName = "None",
+                    },
+
+                },
+                Muzzles = new []
+                {
+					"muzzle_missile_1",
+                },
+            },
+
+            Targeting = new TargetingDef
+            {
+				Threats = new[] {
+					Grids,   // threats percieved automatically without changing menu settings
+				},
+                SubSystems = new[] {
+                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                },
+				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+				MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
+				MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+				MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+				TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
+            },
+			
+            HardPoint = new HardPointDef
+            {
+                PartName = "Khopesh Turret", // name of weapon in terminal
+                DeviateShotAngle = 0.15f, // Projectile inaccuracy in degrees.
+                AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
+                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
+                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
+                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
+
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+				
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+							
+                HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
+				
+                Other = Common_Weapons_Hardpoint_Other_Large,
+				
+                Loading = Ballistics_Chaingun_Hardpoint_Loading_T2,
+
+                Audio = Ballistics_Chaingun_Hardpoint_Audio,
+				
+                Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
+				
+            },
+
+			Ammos = new [] {
+                AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
+				AutocannonClip_Ricochet,
+            },
+            Animations = KhopeshTurret_Recoil
+            // Don't edit below this line
+        };
+
         WeaponDefinition AutoCannonTurret => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
@@ -247,9 +324,9 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.25f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.2f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Accurate, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
                 CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
@@ -322,7 +399,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.05f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.1f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 0f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
@@ -343,7 +420,7 @@ namespace Scripts {
                     MaxElevation = 0,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.16f, // Inventory capacity in kL.
+                    InventorySize = 0.120f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
@@ -369,63 +446,6 @@ namespace Scripts {
             //Upgrades = UpgradeModules,
         };
 
-		WeaponDefinition KhopeshTurret => new WeaponDefinition {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
-                {
-                    new MountPointDef
-                    {
-                        SubtypeId = "KhopeshTurret",
-                        
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 1f,
-                        IconName = "None",
-                    },
-
-                },
-                Muzzles = new []
-                {
-					"muzzle_missile_1",
-                },
-            },
-            Targeting = Ballistics_Chaingun_Targeting_Large,
-			
-            HardPoint = new HardPointDef
-            {
-                PartName = "Khopesh Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.15f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
-                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
-                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-				
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
-							
-                HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
-				
-                Other = Common_Weapons_Hardpoint_Other_11CapOnly,
-				
-                Loading = Ballistics_Chaingun_Hardpoint_Loading_T2,
-
-                Audio = Ballistics_Chaingun_Hardpoint_Audio,
-				
-                Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
-				
-            },
-
-			Ammos = new [] {
-                AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
-            },
-            Animations = KhopeshTurret_Recoil
-            // Don't edit below this line
-        };
 
         // Don't edit below this line.
     }
