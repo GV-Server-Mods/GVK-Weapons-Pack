@@ -34,6 +34,7 @@
 			</Components>
 			<BuildTimeSeconds>40</BuildTimeSeconds>
 			<PCU>20000</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="2.0" EndY="2.0"/>
@@ -117,6 +118,7 @@
 			<BuildTimeSeconds>13</BuildTimeSeconds>
 			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<MirroringX>None</MirroringX>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
@@ -206,7 +208,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_Laser"/>
 			<InventoryMaxVolume>0.12</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>

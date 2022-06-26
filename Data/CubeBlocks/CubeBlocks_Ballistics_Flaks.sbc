@@ -61,7 +61,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>80</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="MediumCalibreTurret"/>
 			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
 			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>
@@ -154,7 +154,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>40</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="SmallMediumCalibreTurret"/>
 			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
 			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>

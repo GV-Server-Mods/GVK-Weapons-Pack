@@ -61,7 +61,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
 			<EnabledTargetingOptions>LargeShips Stations Enemies</EnabledTargetingOptions>
 			<HiddenTargetingOptions>Players Asteroids Missiles Friends</HiddenTargetingOptions>
@@ -131,6 +131,7 @@
 			</Components>
 			<BuildTimeSeconds>20</BuildTimeSeconds>
 			<PCU>30000</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Left" StartX="3.2" StartY="0.2" EndX="3.8" EndY="0.8"/>
@@ -217,7 +218,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Heavy</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
 			<InventoryMaxVolume>0.720</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
@@ -263,7 +264,7 @@
 			</Components>
 			<BuildTimeSeconds>8</BuildTimeSeconds>
 			<PCU>30000</PCU>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Top" StartX="0" StartY="2" EndX="2" EndY="6"/>

@@ -60,7 +60,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_AMS"/>
 			<InventoryMaxVolume>0.5</InventoryMaxVolume>
 			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
@@ -141,7 +141,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_AMS"/>
 			<InventoryMaxVolume>0.5</InventoryMaxVolume>
 			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>

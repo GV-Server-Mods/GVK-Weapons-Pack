@@ -42,7 +42,7 @@
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
 			<EdgeType>Light</EdgeType>
 			<!{1}**WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /**{1}>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.48</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>

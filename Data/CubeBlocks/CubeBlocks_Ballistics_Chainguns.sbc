@@ -30,6 +30,7 @@
 			</Components>
 			<BuildTimeSeconds>90</BuildTimeSeconds>
 			<PCU>20000</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="2.0" EndY="2.0"/>
@@ -138,7 +139,7 @@
 			</VoxelPlacement>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>30</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="AutocannonTurret"/>
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -165,8 +166,8 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<GuiVisible>true</GuiVisible>
+			<Public>true</Public>
 			<AiEnabled>false</AiEnabled>
 		</Definition>
 		<Definition Enabled="false">
@@ -224,7 +225,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="AutocannonTurret"/>
 			<HiddenTargetingOptions>Friends</HiddenTargetingOptions>
 			<InventoryMaxVolume>0.072</InventoryMaxVolume>
@@ -325,7 +326,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="AutocannonTurret"/>
 			<HiddenTargetingOptions>Friends</HiddenTargetingOptions>
 			<InventoryMaxVolume>0.072</InventoryMaxVolume>
@@ -400,6 +401,7 @@
 			</Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>10000</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Left" StartX="4" StartY="0" EndX="5" EndY="1"/>
