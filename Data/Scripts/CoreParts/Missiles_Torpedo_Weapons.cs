@@ -52,32 +52,32 @@ namespace Scripts
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef
             {
                 PartName = "Crusader Torpedo", // name of weapon in terminal
                 DeviateShotAngle = 0f,
-                AimingTolerance = 0f, // 0 - 180 firing angle
+                AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
 
-				Ui = Common_Weapons_Hardpoint_Ui_GuidanceOnly,
+				Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
-                Ai = new AiDef 
-				{
-					TrackTargets = true,
-					TurretAttached = false,
-					TurretController = false,
-					PrimaryTracking = false,
-					LockOnFocus = true,
-					SuppressFire = true,
-					OverrideLeads = false, // Override default behavior for target leads
-				},
+                Ai = new AiDef
+                {
+                    TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
+                    TurretAttached = false, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
+                    TurretController = false, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
+                    PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
+                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
+                    SuppressFire = false, // If enabled, weapon can only be fired manually.
+                    OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
+                },
 				
                 HardWare = new HardwareDef
                 {
@@ -87,7 +87,7 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
+                    FixedOffset = false, //deprecated
                     InventorySize = 7.330f,
                     Offset = Vector(x: 0, y: 0, z: 5),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
@@ -154,13 +154,10 @@ namespace Scripts
                         Name = "", // Smoke_LargeGunShot
                         Color = Color(red: .05f, green: .05f, blue: .05f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
-
                         Extras = new ParticleOptionDef
                         {
                             Loop = false,
                             Restart = false,
-                            MaxDistance = 300,
-                            MaxDuration = 0,
                             Scale = .75f,
                         },
                     },
@@ -169,13 +166,10 @@ namespace Scripts
                         Name = "",//Muzzle_Flash_Large
                         Color = Color(red: 20, green: 20, blue: 20, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
-
                         Extras = new ParticleOptionDef
                         {
                             Loop = false,
                             Restart = false,
-                            MaxDistance = 300,
-                            MaxDuration = 0,
                             Scale = 10f,
                         },
                     },
@@ -249,8 +243,8 @@ namespace Scripts
 					TurretAttached = false,
 					TurretController = false,
 					PrimaryTracking = false,
-					LockOnFocus = true,
-					SuppressFire = true,
+					LockOnFocus = false,
+					SuppressFire = false,
 					OverrideLeads = false, // Override default behavior for target leads
 				},
 				
@@ -262,7 +256,7 @@ namespace Scripts
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
+                    FixedOffset = false,
                     InventorySize = 3.330f,
                     Offset = Vector(x: 0, y: 0, z: 1),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 

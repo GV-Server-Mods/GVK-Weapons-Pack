@@ -180,7 +180,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
@@ -295,7 +295,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},

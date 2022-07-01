@@ -83,7 +83,7 @@ namespace Scripts {
                     TurretAttached = false,
                     TurretController = false,
                     PrimaryTracking = false,
-                    LockOnFocus = true,
+                    LockOnFocus = false,
                 },
                 HardWare = new HardwareDef {
                     RotateRate = 0f,
