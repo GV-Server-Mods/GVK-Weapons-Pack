@@ -4,7 +4,7 @@
 		<!--BASIC AMMOS-->
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
+		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
 		<!--AMMOS-->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
