@@ -46,6 +46,7 @@ namespace Scripts {
 			IdlePower = 0.01f, // Constant base power draw in MW.
 			FixedOffset = false, // Deprecated.
 			//Offset = new Vector3D(0f,0f,0f), // XYZ Offsets the aiming/firing line of the weapon, in metres.
+			Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
 			Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
             
 			CriticalReaction = new CriticalDef
@@ -67,9 +68,9 @@ namespace Scripts {
 			MagsToLoad = 4, // Number of physical magazines to consume on reload.
 			DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 0, // Heat generated per shot.
-			MaxHeat = 100, // Max heat before weapon enters cooldown (70% of max heat).
-			Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-			HeatSinkRate = 1, // Amount of heat lost per second.
+			MaxHeat = 0, // Max heat before weapon enters cooldown (70% of max heat).
+			Cooldown = 0f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
+			HeatSinkRate = 0, // Amount of heat lost per second.
 			DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
 			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -79,6 +80,8 @@ namespace Scripts {
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 			SpinFree = false, // Spin barrel while not firing.
 			StayCharged = false, // Will start recharging whenever power cap is not full.
+			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+			MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
 		};
 
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T2 = new LoadingDef {
@@ -90,9 +93,9 @@ namespace Scripts {
 			MagsToLoad = 1, // Number of physical magazines to consume on reload.
 			DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 0, // Heat generated per shot.
-			MaxHeat = 100, // Max heat before weapon enters cooldown (70% of max heat).
-			Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-			HeatSinkRate = 1, // Amount of heat lost per second.
+			MaxHeat = 0, // Max heat before weapon enters cooldown (70% of max heat).
+			Cooldown = 0f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
+			HeatSinkRate = 0, // Amount of heat lost per second.
 			DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
 			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -102,6 +105,8 @@ namespace Scripts {
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 			SpinFree = false, // Spin barrel while not firing.
 			StayCharged = false, // Will start recharging whenever power cap is not full.
+			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+			MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
 		};
 		
 		private HardPointAudioDef Ballistics_Chaingun_Hardpoint_Audio = new HardPointAudioDef {

@@ -33,7 +33,7 @@
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="2.0" EndY="2.0"/>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
 			</MountPoints>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\KhopeshBase_BS1.mwm"/>
@@ -82,6 +82,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -169,6 +172,9 @@
 			<GuiVisible>true</GuiVisible>
 			<Public>true</Public>
 			<AiEnabled>false</AiEnabled>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
 		</Definition>
 		<Definition Enabled="false">
 			<Id>

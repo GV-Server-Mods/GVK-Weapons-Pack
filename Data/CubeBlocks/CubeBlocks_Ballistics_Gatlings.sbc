@@ -13,13 +13,10 @@
 				[1400m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
-			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
-			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="90"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
@@ -32,6 +29,7 @@
 			</Components>
 			<BuildTimeSeconds>90</BuildTimeSeconds>
 			<PCU>10000</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
@@ -58,7 +56,6 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -72,7 +69,6 @@
 			<ElevationSpeed>0.002 </ElevationSpeed>
 			<IdleRotation>true</IdleRotation>
 			<MaxRangeMeters>2000</MaxRangeMeters>
-			<AiEnabled>false</AiEnabled>
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
@@ -82,15 +78,16 @@
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
 			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<GuiVisible>true</GuiVisible>
+			<Public>true</Public>
+			<AiEnabled>false</AiEnabled>
 			<TieredUpdateTimes>
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
-			<UpCameraOffset>0</UpCameraOffset>
-			<ForwardCameraOffset>3.5</ForwardCameraOffset>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -177,9 +174,6 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
 			<UpCameraOffset>0</UpCameraOffset>
 			<ForwardCameraOffset>3.5</ForwardCameraOffset>
 		</Definition>
@@ -269,9 +263,6 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -325,6 +316,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<GuiVisible>true</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -464,9 +457,6 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
 			<DLC>Warfare2</DLC>
 		</Definition>
 	</CubeBlocks>
