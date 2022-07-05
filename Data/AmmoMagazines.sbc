@@ -230,8 +230,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>94</Mass>
-			<Volume>141</Volume>
+			<Mass>141</Mass>
+			<Volume>94</Volume>
 			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
