@@ -46,7 +46,6 @@ namespace Scripts {
 			IdlePower = 0.01f, // Constant base power draw in MW.
 			FixedOffset = false, // Deprecated.
 			//Offset = new Vector3D(0f,0f,0f), // XYZ Offsets the aiming/firing line of the weapon, in metres.
-			Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
 			Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
             
 			CriticalReaction = new CriticalDef

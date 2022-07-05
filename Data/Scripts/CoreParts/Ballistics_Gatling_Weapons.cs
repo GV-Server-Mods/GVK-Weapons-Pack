@@ -62,11 +62,17 @@ namespace Scripts {
 			MaxElevation = 90,
 			FixedOffset = false,
 			InventorySize = 0.6f,
-			Offset = Vector(x: 0, y: 0, z: 0),
+			//Offset = Vector(x: 0, y: 0, z: 0),
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-			
-			CriticalReaction = Common_Weapons_Hardpoint_Hardware_CriticalReaction_None,
+			CriticalReaction = new CriticalDef
+			{
+				Enable = false, // Enables Warhead behaviour.
+				DefaultArmedTimer = 120, // Sets default countdown duration.
+				PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
+				TerminalControls = true, // Whether the warhead should have terminal controls for arming and detonation.
+				AmmoRound = "AmmoType2", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
+			},
 		};
 
 		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef {
@@ -219,7 +225,7 @@ namespace Scripts {
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2;
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
@@ -275,7 +281,7 @@ namespace Scripts {
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2;
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
