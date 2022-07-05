@@ -209,7 +209,7 @@
 				<Z>0.2</Z>
 			</Size>
 			<Mass>100</Mass>
-			<Volume>140</Volume>
+			<Volume>130</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
