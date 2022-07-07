@@ -120,7 +120,7 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef
             {
-                Guidance = None,
+                Guidance = Smart,
                 TargetLossDegree = 0,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 100, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
