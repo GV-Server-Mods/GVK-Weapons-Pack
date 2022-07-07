@@ -266,7 +266,17 @@ namespace Scripts {
 							
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
 				
-                Other = Common_Weapons_Hardpoint_Other_Large,
+                Other = new OtherDef
+                {
+                    ConstructPartCap = 21,
+                    RotateBarrelAxis = 0,
+                    EnergyPriority = 0,
+                    MuzzleCheck = false,
+                    Debug = false,
+                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                },
 				
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T2,
 
@@ -341,7 +351,17 @@ namespace Scripts {
 				
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
 				
-                Other = Common_Weapons_Hardpoint_Other_11CapOnly,
+                Other = new OtherDef
+                {
+                    ConstructPartCap = 11,
+                    RotateBarrelAxis = 0,
+                    EnergyPriority = 0,
+                    MuzzleCheck = false,
+                    Debug = false,
+                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                },
 				
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T1,
 				
