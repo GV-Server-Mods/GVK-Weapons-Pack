@@ -55,7 +55,7 @@ namespace Scripts
 							//AryxLongswordMissileBattery,
 							KhopeshTurret,
 							SentinelTurret);
-            // ArmorDefinitions(Armor1, Armor2);
+            ArmorDefinitions(BusterArmor);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
         }
