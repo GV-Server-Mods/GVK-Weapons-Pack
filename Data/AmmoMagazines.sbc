@@ -260,26 +260,26 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
-        <!--<AmmoMagazine>
+        <AmmoMagazine>
             <Id>
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>Missiles_Siege</SubtypeId>
             </Id>
-            <DisplayName>[Siege] Sabre Cluster</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\AWESabreMissile.dds</Icon>
+            <DisplayName>[SRBM] Longsword MRV</DisplayName>
+            <Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
             <Size>
                 <X>4</X>
                 <Y>1</Y>
                 <Z>1</Z>
             </Size>
-            <Mass>60</Mass>
-            <Volume>5</Volume>
+            <Mass>1106</Mass>
+            <Volume>737</Volume>
             <Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>1</Capacity>
             <AmmoDefinitionId Subtype="Blank" />
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>	-->	
+        </AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>

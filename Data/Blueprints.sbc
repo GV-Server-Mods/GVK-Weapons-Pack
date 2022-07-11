@@ -183,6 +183,24 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Missiles_Siege</SubtypeId>
+			</Id>
+			<DisplayName>[SRBM] Longsword MRV</DisplayName>
+			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
+            <Prerequisites>
+                <Item Amount="620" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="90" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="1.7" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="1.1" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="45" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="2.8" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>197</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Siege"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>ExplosivesComponent</SubtypeId>
 			</Id>
 			<DisplayName>DisplayName_Item_Explosives</DisplayName>

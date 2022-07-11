@@ -53,6 +53,7 @@
 				<string>KhopeshTurret</string>
 				<string>OKIObserverSM</string>
 				<string>OKIDesignator</string>
+				<string>ARYXMissileBattery</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>

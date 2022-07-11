@@ -52,7 +52,7 @@ namespace Scripts
 							Other_Radar_Large,
 							Other_Warheads_RegularWarhead_LG_Weapon, 
 							Other_Warheads_RegularWarhead_SG_Weapon,
-							//AryxLongswordMissileBattery,
+							AryxLongswordMissileBattery,
 							KhopeshTurret,
 							SentinelTurret);
             ArmorDefinitions(BusterArmor);

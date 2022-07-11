@@ -112,6 +112,15 @@
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Siege"/>
+			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
+			<DisplayName>Missiles_Siege</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXMissileBattery"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_Laser"/>
 			<Icon>Textures\GUI\Icons\Cubes\MA_T2PDX.png</Icon>
 			<DisplayName>Laser Weapons</DisplayName>
