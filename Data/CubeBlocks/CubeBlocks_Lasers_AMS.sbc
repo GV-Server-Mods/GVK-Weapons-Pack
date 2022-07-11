@@ -11,7 +11,7 @@
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]
-				[Uses 5MW Energy]</Description>
+				[Uses 9MW Energy]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
@@ -92,7 +92,7 @@
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]
-				[Uses 5MW Energy]</Description>
+				[Uses 9MW Energy]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
