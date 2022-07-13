@@ -7,10 +7,10 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword Battery</DisplayName>
+			<DisplayName>[SRBM] Longsword Battery (Static only)</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
-			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, firing 8 powerful rockets in quick succession.
-				[4000m Auto Range]
+			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, firing 8 powerful rockets in quick succession. Developed by AWE.
+				[500-4000m Auto Range]
 				[Uses Longswoard MRV]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
