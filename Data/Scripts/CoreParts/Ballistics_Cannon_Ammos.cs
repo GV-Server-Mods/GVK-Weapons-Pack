@@ -237,48 +237,30 @@ namespace Scripts
                     Ammo = new ParticleDef
                     {
                         Name = "MD_BulletGlowMedRed", //ShipWelderArc
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2000,
-                            MaxDuration = 1,
                             Scale = 1,
                         },
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Collision_Sparks", 
+                        Name = "Explosion_AmmunitionSmall", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 0,
-                            Scale = 1,
+                            Scale = 1.5f,
                             HitPlayChance = 1f,
                         },
                     },
                     Eject = new ParticleDef
                     {
-                        Name = "MaterialHit_Metal_GatlingGun",
+                        Name = "",
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 3, green: 1.9f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 30,
                             Scale = 1,
                             HitPlayChance = 1f,
                         },

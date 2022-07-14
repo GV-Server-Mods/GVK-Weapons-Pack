@@ -153,7 +153,7 @@ namespace Scripts
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSound = "MD_VanillaCannonShot", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "WepShipGatlingNoAmmo",
@@ -298,7 +298,7 @@ namespace Scripts
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSound = "MD_VanillaCannonShot", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "WepShipGatlingNoAmmo",
@@ -443,7 +443,7 @@ namespace Scripts
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSound = "MD_VanillaCannonShot", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "WepShipGatlingNoAmmo",
@@ -589,7 +589,7 @@ namespace Scripts
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "WepLargeCalibreShot", // Audio for firing.
+                    FiringSound = "MD_VanillaCannonShot", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "WepShipGatlingNoAmmo",
