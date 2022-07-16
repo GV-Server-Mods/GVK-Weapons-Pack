@@ -46,7 +46,7 @@
             <EmissiveColorPreset>Timer</EmissiveColorPreset>
             <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
             <DestroySound>WepSmallWarheadExpl</DestroySound>
-            <PCU>100</PCU>
+            <PCU>0</PCU>
             <MirroringY>Z</MirroringY>
             <MirroringZ>Y</MirroringZ>
             <IsAirTight>false</IsAirTight>
@@ -151,7 +151,7 @@
             <EmissiveColorPreset>Timer</EmissiveColorPreset>
             <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
             <DestroySound>WepSmallWarheadExpl</DestroySound>
-            <PCU>50</PCU>
+            <PCU>0</PCU>
             <IsAirTight>false</IsAirTight>
             <TargetingGroups>
                 <string>Weapons</string>

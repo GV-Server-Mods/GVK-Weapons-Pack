@@ -36,8 +36,8 @@ namespace Scripts
             AmmoRound = "LargeCalibreAmmo",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 4000f, //5000f
-            Mass = 200f, // in kilograms
+            BaseDamage = 5500f, // breaks 1 HA or 1 LA cubes in 1 round
+            Mass = 300f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 200000f,
             DecayPerShot = 0f,
@@ -117,7 +117,7 @@ namespace Scripts
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = true,
+                    Enable = false,
                     Radius = 5f,
                     Damage = 0f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
@@ -199,7 +199,7 @@ namespace Scripts
                 DesiredSpeed = 600f, // DO NOT SET HIGHER THAN 4100
                 MaxTrajectory = 2400f,
                 DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 1f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
+                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable.
                 SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
@@ -237,48 +237,30 @@ namespace Scripts
                     Ammo = new ParticleDef
                     {
                         Name = "MD_BulletGlowMedRed", //ShipWelderArc
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2000,
-                            MaxDuration = 1,
                             Scale = 1,
                         },
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Collision_Sparks", 
+                        Name = "Explosion_AmmunitionSmall", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 0,
-                            Scale = 1,
+                            Scale = 1.5f,
                             HitPlayChance = 1f,
                         },
                     },
                     Eject = new ParticleDef
                     {
-                        Name = "MaterialHit_Metal_GatlingGun",
+                        Name = "",
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 3, green: 1.9f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 30,
                             Scale = 1,
                             HitPlayChance = 1f,
                         },

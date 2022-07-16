@@ -44,7 +44,7 @@ namespace Scripts {
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 10, // 0 = unlimited, Minimum radius of threat to engage.
+                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 2500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 50, // 0 = unlimited, Min target distance that targets will be automatically shot at.
@@ -67,14 +67,14 @@ namespace Scripts {
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef {
-                    RotateRate = 0.0025f,
-                    ElevateRate = 0.0015f,
+                    RotateRate = 0.003f,
+                    ElevateRate = 0.003f,
                     MinAzimuth = -180,
                     MaxAzimuth =180,
                     MinElevation = -10,
                     MaxElevation = 25,
                     FixedOffset = false,
-                    InventorySize = 1.32f,
+                    InventorySize = 1.320f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -199,7 +199,7 @@ namespace Scripts {
             {
                 PartName = "Artemis 250mm Railgun", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
-                AimingTolerance = 1f, // 0 - 180 firing angle
+                AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -215,8 +215,8 @@ namespace Scripts {
                     MaxAzimuth = 0,
                     MinElevation = 0,
                     MaxElevation = 0,
-                    FixedOffset = true,
-                    InventorySize = 1.32f,
+                    FixedOffset = false,
+                    InventorySize = 1.320f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -358,7 +358,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Small Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.02f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.01f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 0f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
@@ -392,7 +392,7 @@ namespace Scripts {
                     MaxElevation = 0,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.73f, // Inventory capacity in kL.
+                    InventorySize = 0.730f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.

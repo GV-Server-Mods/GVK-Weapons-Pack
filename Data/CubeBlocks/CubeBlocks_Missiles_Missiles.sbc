@@ -21,26 +21,26 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<MirroringX>X</MirroringX>
-            <Components>
-                <Component Subtype="SteelPlate" Count="92" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="62"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_Missile_Tech" Count="3"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="37" />
-                <Component Subtype="LargeTube" Count="19" />
-                <Component Subtype="Motor" Count="183" />
-                <Component Subtype="InteriorPlate" Count="22" />
-                <Component Subtype="Computer" Count="365" />
-                <Component Subtype="Construction" Count="365" />
-                <Component Subtype="SteelPlate" Count="365" />
-            </Components>
-			<BuildTimeSeconds>67</BuildTimeSeconds>
-			<PCU>3000</PCU>
+				<Component Subtype="MetalGrid" Count="25"/>
+				<Component Subtype="LargeTube" Count="13"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="InteriorPlate" Count="15"/>
+				<Component Subtype="Computer" Count="250"/>
+				<Component Subtype="Construction" Count="250"/>
+				<Component Subtype="SteelPlate" Count="250"/>
+			</Components>
+			<BuildTimeSeconds>60</BuildTimeSeconds>
+			<PCU>30000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<!--<WeaponDefinitionId Subtype="Missiles_Missile"/>-->
@@ -90,25 +90,162 @@
 				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
 				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
 			</MountPoints>
-            <Components>
-                <Component Subtype="SteelPlate" Count="5" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
 				<Component Subtype="GVK_Missile_Tech" Count="2"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="2" />
-                <Component Subtype="LargeTube" Count="1" />
-                <Component Subtype="Motor" Count="9" />
-                <Component Subtype="InteriorPlate" Count="2" />
-                <Component Subtype="Computer" Count="17" />
-                <Component Subtype="Construction" Count="17" />
-                <Component Subtype="SteelPlate" Count="17" />
-            </Components>
-			<BuildTimeSeconds>3</BuildTimeSeconds>
-			<PCU>2000</PCU>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="9"/>
+				<Component Subtype="InteriorPlate" Count="1"/>
+				<Component Subtype="Computer" Count="17"/>
+				<Component Subtype="Construction" Count="17"/>
+				<Component Subtype="SteelPlate" Count="17"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>20000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<Center x="0" y="0" z="1"/>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<WeaponDefinitionId Subtype="Missiles_Missile"/>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MirroringZ>Y</MirroringZ>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>MXA_ArcherPods_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Missile] Large Archer Pod NPC</DisplayName>
+			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. Designed by MXA-UNSC.
+				[2300 Semi-Auto Range]
+				[Uses Archer HE x150]
+			</Description>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="2"/>
+			<ModelOffset x="0" y="0" z="1.25"/>
+			<Model>Models\Missiles\MXA_ArcherPods.mwm</Model>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MirroringX>X</MirroringX>
+			<Components>
+				<Component Subtype="SteelPlate" Count="62"/>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="25"/>
+				<Component Subtype="LargeTube" Count="13"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="InteriorPlate" Count="15"/>
+				<Component Subtype="GVK_Unobtanium" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Computer" Count="250"/>
+				<Component Subtype="Construction" Count="250"/>
+				<Component Subtype="SteelPlate" Count="250"/>
+			</Components>
+			<BuildTimeSeconds>60</BuildTimeSeconds>
+			<PCU>30000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<EdgeType>Light</EdgeType>
+			<!--<WeaponDefinitionId Subtype="Missiles_Missile"/>-->
+			<InventoryMaxVolume>0.250</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="3.0" EndY="2.0" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="2" EndY="2.0" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="1" EndY="2.0" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="3.0" EndY="0.95" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="1" EndX="3.0" EndY="2" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Missiles\MXA_ArcherPods_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Missiles\MXA_ArcherPods_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>SmallRocketLauncherReload_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Missile] Small Archer Pod NPC</DisplayName>
+			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
+			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. 
+				[1800m Semi-Auto Range]
+				[Uses Archer HE x4]</Description>
+			<CubeSize>Small</CubeSize>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReload.mwm</Model>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
+			</MountPoints>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="9"/>
+				<Component Subtype="InteriorPlate" Count="1"/>
+				<Component Subtype="GVK_Unobtanium" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Computer" Count="17"/>
+				<Component Subtype="Construction" Count="17"/>
+				<Component Subtype="SteelPlate" Count="17"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>

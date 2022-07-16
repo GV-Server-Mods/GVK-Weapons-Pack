@@ -9,6 +9,8 @@
 			<DisplayName>DisplayName_Category_ShipWeapons</DisplayName>
 			<Name>Weapons</Name>
 			<StrictSearch>true</StrictSearch>
+			<IsBlockCategory>false</IsBlockCategory>
+			<SearchCategory>true</SearchCategory>
 			<ItemIds>
 				<string>ARYXRailgun</string>
 				<string>ARYXRailgunTurret</string>
@@ -19,8 +21,7 @@
 				<string>LargeWarhead</string>
 				<string>LargeInteriorTurret</string>
 				<string>SmallInteriorTurret</string>
-				<string>LargeGatlingTurret/(null)</string>
-				<string>LargeGatlingTurret/LargeGatlingTurretBasic</string>
+				<string>SentinelTurret</string>
 				<string>LargeMissileTurret/(null)</string>
 				<string>SmallGatlingTurret</string>
 				<string>SmallMissileTurret</string>
@@ -49,8 +50,10 @@
 				<string>SmallMissileLauncherWarfare2</string>
 				<string>SmallGatlingGunWarfare2</string>
 				<string>AutoCannonTurret</string>
+				<string>KhopeshTurret</string>
 				<string>OKIObserverSM</string>
 				<string>OKIDesignator</string>
+				<string>ARYXMissileBattery</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>

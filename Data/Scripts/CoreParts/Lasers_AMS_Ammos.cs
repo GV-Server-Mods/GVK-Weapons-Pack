@@ -27,7 +27,7 @@ namespace Scripts
         {
             AmmoMagazine = "Energy",
             AmmoRound = "Lasers_AMS",
-            EnergyCost = 0.1f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
+            EnergyCost = 0.63f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
             BaseDamage = 50f,
             HardPointUsable = true,
             DamageScales = new DamageScaleDef
@@ -35,8 +35,8 @@ namespace Scripts
                 HealthHitModifier = 0.5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 FallOff = new FallOffDef
                 {
-                    Distance = 500f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.75f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 0f, // Distance at which max damage begins falling off.
+                    MinMultipler = 1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
 				DamageType = new DamageTypes
 				{

@@ -10,7 +10,7 @@
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
 			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
 				[2500m Auto Range]
-				[Uses 50mm FeW + 42MW]</Description>
+				[Uses 50mm FeW + 89MW]</Description>
 			<CubeSize>Large</CubeSize>
 			<Public>true</Public>
 			<GuiVisible>false</GuiVisible>
@@ -18,38 +18,39 @@
 			<Size x="3" y="2" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWERailTurret\LG_ARYXRailgunTurret_Base.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="415" />
+			<!-- added grind to scrap because WC weapons can weld with loaded ammo from projection -->
+			<Components>
+				<Component Subtype="SteelPlate" Count="410"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="125" />
-                <Component Subtype="PowerCell" Count="42" />
-                <Component Subtype="Superconductor" Count="83" />
-                <Component Subtype="Motor" Count="83" />
-                <Component Subtype="Reactor" Count="104" />
-                <Component Subtype="Computer" Count="311" />
-                <Component Subtype="SteelPlate" Count="622" />
-            </Components>
-			<BuildTimeSeconds>115</BuildTimeSeconds>
-			<PCU>6000</PCU>
+				<Component Subtype="MetalGrid" Count="130"/>
+				<Component Subtype="PowerCell" Count="41"/>
+				<Component Subtype="Superconductor" Count="81"/>
+				<Component Subtype="Motor" Count="81"/>
+				<Component Subtype="Reactor" Count="110"/>
+				<Component Subtype="Computer" Count="310"/>
+				<Component Subtype="SteelPlate" Count="610"/>
+			</Components>
+			<BuildTimeSeconds>150</BuildTimeSeconds>
+			<PCU>60000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="4.0"/>
 				<MountPoint Side="Bottom" StartX="2.0" StartY="1.6" EndX="2.5" EndY="4.0"/>
 				<MountPoint Side="Bottom" StartX="0.5" StartY="1.6" EndX="1.0" EndY="4.0"/>
 			</MountPoints>
-		  <BuildProgressModels>
-			  <Model BuildPercentUpperBound="0.33" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS1.mwm"/>
-			  <Model BuildPercentUpperBound="0.67" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS2.mwm"/>
-			  <Model BuildPercentUpperBound="1.00" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS3.mwm"/>
-		  </BuildProgressModels>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWERailTurret\LG_ARYXRailgunTurret_Base_BS3.mwm"/>
+			</BuildProgressModels>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<BlockPairName>RailgunTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
@@ -71,7 +72,7 @@
 			<DisplayName>[Railgun] Artemis</DisplayName>
 			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
 				[2700m Manual Range]
-				[Uses 50mm FeW + 42MW]</Description>
+				[Uses 50mm FeW + 89MW]</Description>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
 			<Public>true</Public>
 			<GuiVisible>false</GuiVisible>
@@ -80,26 +81,26 @@
 			<Size x="1" y="1" z="5"/>
 			<Center x="0" y="0" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWERailgun\LG_Railgun.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="142" />
+			<Model>Models\AWERailgun\ARYX_Railgun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="68"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="43" />
-                <Component Subtype="PowerCell" Count="15" />
-                <Component Subtype="Superconductor" Count="29" />
-                <Component Subtype="Motor" Count="29" />
-                <Component Subtype="Reactor" Count="36" />
-                <Component Subtype="Computer" Count="107" />
-                <Component Subtype="SteelPlate" Count="213" />
-            </Components>
-			<BuildTimeSeconds>39</BuildTimeSeconds>
-			<PCU>5000</PCU>
+				<Component Subtype="MetalGrid" Count="21"/>
+				<Component Subtype="PowerCell" Count="7"/>
+				<Component Subtype="Superconductor" Count="14"/>
+				<Component Subtype="Motor" Count="14"/>
+				<Component Subtype="Reactor" Count="17"/>
+				<Component Subtype="Computer" Count="51"/>
+				<Component Subtype="SteelPlate" Count="110"/>
+			</Components>
+			<BuildTimeSeconds>25</BuildTimeSeconds>
+			<PCU>50000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0"/>
@@ -109,9 +110,9 @@
 				<MountPoint Side="Bottom" StartX="0.0" StartY="3.0" EndX="1.0" EndY="5.0"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\AWERailgun\LG_Railgun_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\LG_Railgun_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\LG_Railgun_BS3.mwm"/>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWERailgun\ARYX_Railgun_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\AWERailgun\ARYX_Railgun_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\AWERailgun\ARYX_Railgun_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>Railgun</BlockPairName>
 			<MirroringY>Z</MirroringY>
@@ -133,7 +134,7 @@
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
 				[2300m Manual Range]
-				[Uses 50mm FeW + 24MW]</Description>
+				[Uses 50mm FeW + 50MW]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="2" z="8"/>
@@ -199,25 +200,25 @@
 			<Size x="1" y="2" z="8"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\RailGun.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="16" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="14"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="5" />
-                <Component Subtype="PowerCell" Count="2" />
-                <Component Subtype="Superconductor" Count="4" />
-                <Component Subtype="Motor" Count="4" />
-                <Component Subtype="Reactor" Count="4" />
-                <Component Subtype="Computer" Count="12" />
-                <Component Subtype="SteelPlate" Count="24" />
-            </Components>
-            <BuildTimeSeconds>4</BuildTimeSeconds>
-			<PCU>4000</PCU>
+				<Component Subtype="MetalGrid" Count="4"/>
+				<Component Subtype="PowerCell" Count="2"/>
+				<Component Subtype="Superconductor" Count="3"/>
+				<Component Subtype="Motor" Count="3"/>
+				<Component Subtype="Reactor" Count="4"/>
+				<Component Subtype="Computer" Count="10"/>
+				<Component Subtype="SteelPlate" Count="20"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>40000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>

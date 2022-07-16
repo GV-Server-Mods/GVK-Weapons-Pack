@@ -21,17 +21,17 @@
 			<Model>Models\Cubes\Large\Missile\LGMissileBase.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="98"/>
+				<Component Subtype="SteelPlate" Count="78"/>
 				<Component Subtype="GVK_Missile_Tech" Count="2"/>
-				<Component Subtype="MetalGrid" Count="98"/>
-				<Component Subtype="LargeTube" Count="117"/>
-				<Component Subtype="Motor" Count="312"/>
-				<Component Subtype="Computer" Count="234"/>
-				<Component Subtype="Construction" Count="780"/>
-				<Component Subtype="SteelPlate" Count="293"/>
+				<Component Subtype="MetalGrid" Count="78"/>
+				<Component Subtype="LargeTube" Count="93"/>
+				<Component Subtype="Motor" Count="250"/>
+				<Component Subtype="Computer" Count="190"/>
+				<Component Subtype="Construction" Count="620"/>
+				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>85</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<BuildTimeSeconds>90</BuildTimeSeconds>
+			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -58,7 +58,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Missiles_Rocket"/>
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -106,17 +106,17 @@
 			<Model>Models\Cubes\Small\MissileTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="13"/>
+				<Component Subtype="SteelPlate" Count="8"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1"/>
-				<Component Subtype="MetalGrid" Count="13"/>
-				<Component Subtype="LargeTube" Count="16"/>
-				<Component Subtype="Motor" Count="41"/>
-				<Component Subtype="Computer" Count="31"/>
-				<Component Subtype="Construction" Count="102"/>
-				<Component Subtype="SteelPlate" Count="38"/>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="LargeTube" Count="9"/>
+				<Component Subtype="Motor" Count="24"/>
+				<Component Subtype="Computer" Count="18"/>
+				<Component Subtype="Construction" Count="58"/>
+				<Component Subtype="SteelPlate" Count="22"/>
 			</Components>
-			<BuildTimeSeconds>11</BuildTimeSeconds>
-			<PCU>2000</PCU>
+			<BuildTimeSeconds>8</BuildTimeSeconds>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
@@ -146,7 +146,7 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Missiles_Rocket"/>
 			<InventoryMaxVolume>0.12</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -191,17 +191,17 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\RocketLauncher.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="27"/>
+				<Component Subtype="SteelPlate" Count="11"/>
 				<Component Subtype="GVK_Missile_Tech" Count="2"/>
-				<Component Subtype="MetalGrid" Count="27"/>
-				<Component Subtype="LargeTube" Count="32"/>
-				<Component Subtype="Motor" Count="84"/>
-				<Component Subtype="Computer" Count="63"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SteelPlate" Count="79"/>
+				<Component Subtype="MetalGrid" Count="11"/>
+				<Component Subtype="LargeTube" Count="14"/>
+				<Component Subtype="Motor" Count="36"/>
+				<Component Subtype="Computer" Count="27"/>
+				<Component Subtype="Construction" Count="88"/>
+				<Component Subtype="SteelPlate" Count="33"/>
 			</Components>
-			<BuildTimeSeconds>23</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<BuildTimeSeconds>13</BuildTimeSeconds>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
@@ -246,14 +246,14 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
 				<Component Subtype="MetalGrid" Count="3"/>
-				<Component Subtype="LargeTube" Count="3"/>
-				<Component Subtype="Motor" Count="7"/>
-				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="19"/>
-				<Component Subtype="SteelPlate" Count="7"/>
+				<Component Subtype="LargeTube" Count="4"/>
+				<Component Subtype="Motor" Count="9"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="Construction" Count="21"/>
+				<Component Subtype="SteelPlate" Count="8"/>
 			</Components>
-			<BuildTimeSeconds>2</BuildTimeSeconds>
-			<PCU>1000</PCU>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>10000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
@@ -278,60 +278,60 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 		</Definition>
-        <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
-            <Id>
-                <TypeId>SmallMissileLauncher</TypeId>
-                <SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
-            </Id>
-            <DisplayName>[Rocket] Small Hydra launcher (Warfare)</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
+			</Id>
+			<DisplayName>[Rocket] Small Hydra launcher (Warfare)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[900m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
-            <CubeSize>Small</CubeSize>
-            <GuiVisible>false</GuiVisible>
-            <BlockTopology>TriangleMesh</BlockTopology>
-            <Size x="1" y="1" z="4" />
-            <ModelOffset x="0" y="0" z="0" />
-            <Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
+			<CubeSize>Small</CubeSize>
+			<GuiVisible>false</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
 				<Component Subtype="MetalGrid" Count="3"/>
-				<Component Subtype="LargeTube" Count="3"/>
-				<Component Subtype="Motor" Count="7"/>
-				<Component Subtype="Computer" Count="6"/>
-				<Component Subtype="Construction" Count="19"/>
-				<Component Subtype="SteelPlate" Count="7"/>
+				<Component Subtype="LargeTube" Count="4"/>
+				<Component Subtype="Motor" Count="9"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="Construction" Count="21"/>
+				<Component Subtype="SteelPlate" Count="8"/>
 			</Components>
-			<BuildTimeSeconds>2</BuildTimeSeconds>
-			<PCU>1000</PCU>
-            <CriticalComponent Subtype="Computer" Index="0" />
-            <MountPoints>
-                <MountPoint Side="Top" StartX="0" StartY="1" EndX="1" EndY="4" />
-                <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3" />
-                <MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1" />
-                <MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="1" />
-            </MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RocketLauncherReskinConstruction_2.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RocketLauncherReskinConstruction_1.mwm" />
-            </BuildProgressModels>
-            <MirroringY>Z</MirroringY>
-            <MirroringZ>Y</MirroringZ>
-            <BlockPairName>RocketLauncherWarfare2</BlockPairName>
-            <Center x="0" y="0" z="2" />
-            <EdgeType>Light</EdgeType>
-            <WeaponDefinitionId Subtype="SmallMissileLauncher" />
-            <ResourceSinkGroup>Defense</ResourceSinkGroup>
-            <InventoryMaxVolume>0.24</InventoryMaxVolume>
-            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-            <DamagedSound>ParticleWeapExpl</DamagedSound>
-            <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
-            <DestroySound>WepSmallWarheadExpl</DestroySound>
-            <TargetingGroups>
-                <string>Weapons</string>
-            </TargetingGroups>
-            <DLC>Warfare2</DLC>
-        </Definition>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>10000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="1" EndX="1" EndY="4"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RocketLauncherReskinConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RocketLauncherReskinConstruction_1.mwm"/>
+			</BuildProgressModels>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BlockPairName>RocketLauncherWarfare2</BlockPairName>
+			<Center x="0" y="0" z="2"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallMissileLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DLC>Warfare2</DLC>
+		</Definition>
 	</CubeBlocks>
 </Definitions>

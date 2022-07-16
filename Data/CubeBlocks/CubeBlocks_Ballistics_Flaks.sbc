@@ -19,18 +19,19 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\MediumCalibreTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="113" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="140"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
-                <Component Subtype="Construction" Count="677" />
-                <Component Subtype="SmallTube" Count="136" />
-                <Component Subtype="Motor" Count="181" />
-                <Component Subtype="Computer" Count="226" />
-                <Component Subtype="MetalGrid" Count="339" />
-                <Component Subtype="SteelPlate" Count="339" />
-            </Components>
-            <BuildTimeSeconds>85</BuildTimeSeconds>
-			<PCU>2000</PCU>
+				<Component Subtype="Construction" Count="210"/>
+				<Component Subtype="SmallTube" Count="83"/>
+				<Component Subtype="LargeTube" Count="69"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="69"/>
+				<Component Subtype="MetalGrid" Count="110"/>
+				<Component Subtype="SteelPlate" Count="350"/>
+			</Components>
+			<BuildTimeSeconds>90</BuildTimeSeconds>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.8" StartY="1" EndX="2.2" EndY="2"/>
@@ -60,7 +61,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>80</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="MediumCalibreTurret"/>
 			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
 			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>
@@ -114,18 +115,19 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\MediumCalibreTurret_Base.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="30" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="20"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
-                <Component Subtype="Construction" Count="179" />
-                <Component Subtype="SmallTube" Count="36" />
-                <Component Subtype="Motor" Count="48" />
-                <Component Subtype="Computer" Count="60" />
-                <Component Subtype="MetalGrid" Count="90" />
-                <Component Subtype="SteelPlate" Count="90" />
-            </Components>
-			<PCU>4000</PCU>
-            <BuildTimeSeconds>22</BuildTimeSeconds>
+				<Component Subtype="Construction" Count="29"/>
+				<Component Subtype="SmallTube" Count="12"/>
+				<Component Subtype="LargeTube" Count="10"/>
+				<Component Subtype="Motor" Count="18"/>
+				<Component Subtype="Computer" Count="10"/>
+				<Component Subtype="MetalGrid" Count="15"/>
+				<Component Subtype="SteelPlate" Count="49"/>
+			</Components>
+			<BuildTimeSeconds>13</BuildTimeSeconds>
+			<PCU>40000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="2" StartY="2" EndX="5" EndY="5" Default="true"/>
@@ -152,7 +154,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>40</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="SmallMediumCalibreTurret"/>
 			<EnabledTargetingOptions>LargeShips SmallShips Stations Enemies</EnabledTargetingOptions>
 			<HiddenTargetingOptions>Asteroids Missiles Friends</HiddenTargetingOptions>
@@ -188,62 +190,63 @@
 			<ForwardCameraOffset>0.5</ForwardCameraOffset>
 			<AiEnabled>false</AiEnabled>
 		</Definition>
-        <Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
-            <Id>
-                <TypeId>SmallMissileLauncherReload</TypeId>
-                <SubtypeId>SmallBlockMediumCalibreGun</SubtypeId>
-            </Id>
-            <DisplayName>[Flak] Small Assault Gun</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\MediumCaliberGun.dds</Icon>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>SmallBlockMediumCalibreGun</SubtypeId>
+			</Id>
+			<DisplayName>[Flak] Small Assault Gun</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\MediumCaliberGun.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[2000m Manual Range (100m min)]
 				[Uses 100mm PROX]</Description>
-            <CubeSize>Small</CubeSize>
-            <GuiVisible>false</GuiVisible>
-            <BlockTopology>TriangleMesh</BlockTopology>
-            <Size x="1" y="1" z="9" />
-            <ModelOffset x="0" y="0" z="0" />
-            <Model>Models\Cubes\Small\MediumCaliberGun.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="5" />
+			<CubeSize>Small</CubeSize>
+			<GuiVisible>false</GuiVisible>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="9"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\MediumCaliberGun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="7"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
-                <Component Subtype="Construction" Count="25" />
-                <Component Subtype="SmallTube" Count="5" />
-                <Component Subtype="Motor" Count="7" />
-                <Component Subtype="Computer" Count="9" />
-                <Component Subtype="MetalGrid" Count="13" />
-                <Component Subtype="SteelPlate" Count="13" />
-            </Components>
-            <BuildTimeSeconds>3</BuildTimeSeconds>
-			<PCU>2000</PCU>
+				<Component Subtype="Construction" Count="10"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="LargeTube" Count="4"/>
+				<Component Subtype="Motor" Count="6"/>
+				<Component Subtype="Computer" Count="4"/>
+				<Component Subtype="MetalGrid" Count="5"/>
+				<Component Subtype="SteelPlate" Count="16"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>20000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
-            <MountPoints>
-                <MountPoint Side="Left" StartX="6" StartY="0" EndX="9" EndY="1" />
-                <MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3" />
-                <MountPoint Side="Bottom" StartX="0" StartY="6" EndX="1" EndY="9" />
-                <MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="1" />
-                <MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true" />
-            </MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\MediumCaliberGunConstruction_1.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\MediumCaliberGunConstruction_2.mwm" />
-            </BuildProgressModels>
-            <MirroringY>Z</MirroringY>
-            <MirroringZ>Y</MirroringZ>
-            <BlockPairName>MediumCalibreGun</BlockPairName>
-            <Center x="0" y="0" z="7" />
-            <BuildTimeSeconds>26</BuildTimeSeconds>
-            <EdgeType>Light</EdgeType>
-            <WeaponDefinitionId Subtype="SmallMediumCalibreGun" />
-            <ResourceSinkGroup>Defense</ResourceSinkGroup>
-            <InventoryMaxVolume>0.09</InventoryMaxVolume>
-            <DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-            <DamagedSound>ParticleWeapExpl</DamagedSound>
-            <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-            <DestroySound>WepSmallWarheadExpl</DestroySound>
-            <TargetingGroups>
-                <string>Weapons</string>
-            </TargetingGroups>
-        </Definition>
+			<MountPoints>
+				<MountPoint Side="Left" StartX="6" StartY="0" EndX="9" EndY="1"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="6" EndX="1" EndY="9"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="1"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\MediumCaliberGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\MediumCaliberGunConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BlockPairName>MediumCalibreGun</BlockPairName>
+			<Center x="0" y="0" z="7"/>
+			<BuildTimeSeconds>26</BuildTimeSeconds>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallMediumCalibreGun"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.09</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+		</Definition>
 	</CubeBlocks>
 </Definitions>

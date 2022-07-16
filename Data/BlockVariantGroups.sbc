@@ -4,24 +4,23 @@
 		<!-- Ship Weapons -->
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Gatlings"/>
-			<Icon>Textures\GUI\Icons\Cubes\OKI14mmCIWS_Turret.dds</Icon>
 			<DisplayName>Ballistic_Gatlings</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret"/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype=""/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingGun_Gimbal"/>
-				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype=""/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallGatlingGunWarfare2"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Chainguns"/>
-			<Icon>Textures\GUI\Icons\Cubes\AutocannonTurret_icon.dds</Icon>
 			<DisplayName>Ballistic_Chainguns</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="AutoCannonTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="KhopeshTurret"/> 
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="AutoCannonTurret"/> 
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannon"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeAutoCannonTurret"/>
 			</Blocks>
@@ -110,6 +109,15 @@
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Siege"/>
+			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
+			<DisplayName>Missiles_Siege</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXMissileBattery"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

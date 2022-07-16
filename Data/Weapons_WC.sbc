@@ -64,6 +64,16 @@
 		<Weapon>
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
+				<SubtypeId>Missiles_Siege</SubtypeId>
+			</Id>
+			<ProjectileAmmoData/>
+			<AmmoMagazines>
+				<AmmoMagazine Subtype="Energy"/>
+			</AmmoMagazines>
+		</Weapon>
+		<Weapon>
+			<Id>
+				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>Lasers_Laser</SubtypeId>
 			</Id>
 			<ProjectileAmmoData/>

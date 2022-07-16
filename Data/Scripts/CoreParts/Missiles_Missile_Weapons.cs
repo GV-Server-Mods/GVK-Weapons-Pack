@@ -168,7 +168,7 @@ namespace Scripts
                 PartName = "Large Archer Missile Pod", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
@@ -180,7 +180,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
@@ -194,7 +194,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 7.5f,
+                    InventorySize = 14.100f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -240,7 +240,7 @@ namespace Scripts
 				
             },
             Ammos = new[] {
-                Missiles_Missile,
+                //Missiles_Missile,
 				Missiles_Missile_HomingPhase,
             },
             Animations = MXA_ArcherPods_Animation,
@@ -283,7 +283,7 @@ namespace Scripts
                 PartName = "SmallRocketLauncherReload", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Basic, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
                 CanShootSubmerged = false,
@@ -295,7 +295,7 @@ namespace Scripts
 					TurretAttached = false, // This enables the ability for players to manually control
 					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
 					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
-					LockOnFocus = true, // fires this weapon when something is locked using the WC hud reticle
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
 					SuppressFire = false, //prevent automatic firing
 					OverrideLeads = false, // Override default behavior for target leads
 				},
@@ -309,7 +309,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.4f,
+                    InventorySize = 0.380f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -336,8 +336,8 @@ namespace Scripts
 				
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 240, // 240 Pre Rebalance // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 1,
+                    RateOfFire = 240, // 240 Pre Rebalance 
+                    BarrelsPerShot = 1, 
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
                     ReloadTime = 480, //3600 // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -354,7 +354,7 @@ namespace Scripts
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
+					SpinFree = false, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
 				
@@ -364,12 +364,272 @@ namespace Scripts
 				
             },
 			Ammos = new[] {
-                Missiles_Missile,
+                //Missiles_Missile,
 				Missiles_Missile_HomingPhase,
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line
         };
 
+        WeaponDefinition MXA_ArcherPods_NPC => new WeaponDefinition {
+
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] {
+                    new MountPointDef {
+                        SubtypeId = "MXA_ArcherPods_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = ""
+                    },
+                },
+                Muzzles = new[] {
+                    "subpart_ArcherPod1_Missile_1", "subpart_ArcherPod2_Missile_1", "subpart_ArcherPod3_Missile_1", "subpart_ArcherPod4_Missile_1", "subpart_ArcherPod5_Missile_1",
+                    "subpart_ArcherPod1_Missile_2", "subpart_ArcherPod2_Missile_2", "subpart_ArcherPod3_Missile_2", "subpart_ArcherPod4_Missile_2", "subpart_ArcherPod5_Missile_2",
+                    "subpart_ArcherPod1_Missile_3", "subpart_ArcherPod2_Missile_3", "subpart_ArcherPod3_Missile_3", "subpart_ArcherPod4_Missile_3", "subpart_ArcherPod5_Missile_3",
+                    "subpart_ArcherPod1_Missile_4", "subpart_ArcherPod2_Missile_4", "subpart_ArcherPod3_Missile_4", "subpart_ArcherPod4_Missile_4", "subpart_ArcherPod5_Missile_4",
+                    "subpart_ArcherPod1_Missile_5", "subpart_ArcherPod2_Missile_5", "subpart_ArcherPod3_Missile_5", "subpart_ArcherPod4_Missile_5", "subpart_ArcherPod5_Missile_5",
+                    "subpart_ArcherPod1_Missile_6", "subpart_ArcherPod2_Missile_6", "subpart_ArcherPod3_Missile_6", "subpart_ArcherPod4_Missile_6", "subpart_ArcherPod5_Missile_6",
+                    "subpart_ArcherPod1_Missile_7", "subpart_ArcherPod2_Missile_7", "subpart_ArcherPod3_Missile_7", "subpart_ArcherPod4_Missile_7", "subpart_ArcherPod5_Missile_7",
+                    "subpart_ArcherPod1_Missile_8", "subpart_ArcherPod2_Missile_8", "subpart_ArcherPod3_Missile_8", "subpart_ArcherPod4_Missile_8", "subpart_ArcherPod5_Missile_8",
+                    "subpart_ArcherPod1_Missile_9", "subpart_ArcherPod2_Missile_9", "subpart_ArcherPod3_Missile_9", "subpart_ArcherPod4_Missile_9", "subpart_ArcherPod5_Missile_9",
+                    "subpart_ArcherPod1_Missile_10", "subpart_ArcherPod2_Missile_10", "subpart_ArcherPod3_Missile_10", "subpart_ArcherPod4_Missile_10", "subpart_ArcherPod5_Missile_10",
+                    "subpart_ArcherPod1_Missile_11", "subpart_ArcherPod2_Missile_11", "subpart_ArcherPod3_Missile_11", "subpart_ArcherPod4_Missile_11", "subpart_ArcherPod5_Missile_11",
+                    "subpart_ArcherPod1_Missile_12", "subpart_ArcherPod2_Missile_12", "subpart_ArcherPod3_Missile_12", "subpart_ArcherPod4_Missile_12", "subpart_ArcherPod5_Missile_12",
+                    "subpart_ArcherPod1_Missile_13", "subpart_ArcherPod2_Missile_13", "subpart_ArcherPod3_Missile_13", "subpart_ArcherPod4_Missile_13", "subpart_ArcherPod5_Missile_13",
+                    "subpart_ArcherPod1_Missile_14", "subpart_ArcherPod2_Missile_14", "subpart_ArcherPod3_Missile_14", "subpart_ArcherPod4_Missile_14", "subpart_ArcherPod5_Missile_14",
+                    "subpart_ArcherPod1_Missile_15", "subpart_ArcherPod2_Missile_15", "subpart_ArcherPod3_Missile_15", "subpart_ArcherPod4_Missile_15", "subpart_ArcherPod5_Missile_15",
+                    "subpart_ArcherPod1_Missile_16", "subpart_ArcherPod2_Missile_16", "subpart_ArcherPod3_Missile_16", "subpart_ArcherPod4_Missile_16", "subpart_ArcherPod5_Missile_16",
+                    "subpart_ArcherPod1_Missile_17", "subpart_ArcherPod2_Missile_17", "subpart_ArcherPod3_Missile_17", "subpart_ArcherPod4_Missile_17", "subpart_ArcherPod5_Missile_17",
+                    "subpart_ArcherPod1_Missile_18", "subpart_ArcherPod2_Missile_18", "subpart_ArcherPod3_Missile_18", "subpart_ArcherPod4_Missile_18", "subpart_ArcherPod5_Missile_18",
+                    "subpart_ArcherPod1_Missile_19", "subpart_ArcherPod2_Missile_19", "subpart_ArcherPod3_Missile_19", "subpart_ArcherPod4_Missile_19", "subpart_ArcherPod5_Missile_19",
+                    "subpart_ArcherPod1_Missile_20", "subpart_ArcherPod2_Missile_20", "subpart_ArcherPod3_Missile_20", "subpart_ArcherPod4_Missile_20", "subpart_ArcherPod5_Missile_20",
+                    "subpart_ArcherPod1_Missile_21", "subpart_ArcherPod2_Missile_21", "subpart_ArcherPod3_Missile_21", "subpart_ArcherPod4_Missile_21", "subpart_ArcherPod5_Missile_21",
+                    "subpart_ArcherPod1_Missile_22", "subpart_ArcherPod2_Missile_22", "subpart_ArcherPod3_Missile_22", "subpart_ArcherPod4_Missile_22", "subpart_ArcherPod5_Missile_22",
+                    "subpart_ArcherPod1_Missile_23", "subpart_ArcherPod2_Missile_23", "subpart_ArcherPod3_Missile_23", "subpart_ArcherPod4_Missile_23", "subpart_ArcherPod5_Missile_23",
+                    "subpart_ArcherPod1_Missile_24", "subpart_ArcherPod2_Missile_24", "subpart_ArcherPod3_Missile_24", "subpart_ArcherPod4_Missile_24", "subpart_ArcherPod5_Missile_24",
+                    "subpart_ArcherPod1_Missile_25", "subpart_ArcherPod2_Missile_25", "subpart_ArcherPod3_Missile_25", "subpart_ArcherPod4_Missile_25", "subpart_ArcherPod5_Missile_25",
+                    "subpart_ArcherPod1_Missile_26", "subpart_ArcherPod2_Missile_26", "subpart_ArcherPod3_Missile_26", "subpart_ArcherPod4_Missile_26", "subpart_ArcherPod5_Missile_26",
+                    "subpart_ArcherPod1_Missile_27", "subpart_ArcherPod2_Missile_27", "subpart_ArcherPod3_Missile_27", "subpart_ArcherPod4_Missile_27", "subpart_ArcherPod5_Missile_27",
+                    "subpart_ArcherPod1_Missile_28", "subpart_ArcherPod2_Missile_28", "subpart_ArcherPod3_Missile_28", "subpart_ArcherPod4_Missile_28", "subpart_ArcherPod5_Missile_28",
+                    "subpart_ArcherPod1_Missile_29", "subpart_ArcherPod2_Missile_29", "subpart_ArcherPod3_Missile_29", "subpart_ArcherPod4_Missile_29", "subpart_ArcherPod5_Missile_29",
+                    "subpart_ArcherPod1_Missile_30", "subpart_ArcherPod2_Missile_30", "subpart_ArcherPod3_Missile_30", "subpart_ArcherPod4_Missile_30", "subpart_ArcherPod5_Missile_30",
+                },
+                Ejector = "",
+                Scope = "subpart_ArcherPod2_Missile_16", //Where line of sight checks are performed from must be clear of block collision
+            },
+			
+            Targeting = Missiles_Missile_Targeting_Large,
+			
+            HardPoint = new HardPointDef
+            {
+                PartName = "Large Archer Missile Pod", // name of weapon in terminal
+                DeviateShotAngle = 1f,
+                AimingTolerance = 180f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = true,
+                CanShootSubmerged = false,
+
+				Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+				
+                Ai = new AiDef {
+					TrackTargets = true, //This Weapon will know there are targets in range
+					TurretAttached = false, // This enables the ability for players to manually control
+					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
+					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
+					SuppressFire = false, //prevent automatic firing
+					OverrideLeads = false, // Override default behavior for target leads
+				},
+				
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0f,
+                    ElevateRate = 0f,
+                    MinAzimuth = 0,
+                    MaxAzimuth = 0,
+                    MinElevation = 0,
+                    MaxElevation = 0,
+                    FixedOffset = false,
+                    InventorySize = 14.100f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = false,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+                },
+				
+                Other = Missiles_Missile_Hardpoint_Other,
+				
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 480, // 240 Pre Rebalance // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 2700, //1200-420 for animation reload delay // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 10,
+                    DelayAfterBurst = 480, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    GiveUpAfter = false,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 150, // Number of physical magazines to consume on reload.
+					SpinFree = true, // Spin barrel while not firing
+					StayCharged = false, // Will start recharging whenever power cap is not full
+                },
+                
+				Audio = Missiles_Missile_Hardpoint_Audio,
+				
+                Graphics = Missiles_Missile_Hardpoint_Graphics,
+				
+            },
+            Ammos = new[] {
+                //Missiles_Missile,
+				Missiles_Missile_NPC,
+            },
+            Animations = MXA_ArcherPods_Animation,
+            //Upgrades = UpgradeModules,
+            // Don't edit below this line
+        };
+
+        WeaponDefinition SmallRocketLauncherReload_NPC => new WeaponDefinition {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallRocketLauncherReload_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+
+                },
+                Muzzles = new []
+                {
+                    "muzzle_missile_001",
+					"muzzle_missile_002",
+					"muzzle_missile_003",
+					"muzzle_missile_004",
+                },
+                Ejector = "",
+                Scope = "muzzle_missile_002", //Where line of sight checks are performed from must be clear of block collision
+            },
+			
+            Targeting = Missiles_Missile_Targeting_Small,
+			
+            HardPoint = new HardPointDef
+            {
+                PartName = "SmallRocketLauncherReload", // name of weapon in terminal
+                DeviateShotAngle = 1f,
+                AimingTolerance = 180f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = true,
+                CanShootSubmerged = false,
+
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+				
+                Ai = new AiDef {
+					TrackTargets = true, //This Weapon will know there are targets in range
+					TurretAttached = false, // This enables the ability for players to manually control
+					TurretController = false, //The turret in this WeaponDefinition has control over where other turrets aim.
+					PrimaryTracking = false, //The turret in this WeaponDefinition selects targets for other turrets that do not have tracking capabilities.
+					LockOnFocus = false, // fires this weapon when something is locked using the WC hud reticle
+					SuppressFire = false, //prevent automatic firing
+					OverrideLeads = false, // Override default behavior for target leads
+				},
+				
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0f,
+                    ElevateRate = 0f,
+                    MinAzimuth = 0,
+                    MaxAzimuth = 0,
+                    MinElevation = 0,
+                    MaxElevation = 0,
+                    FixedOffset = false,
+                    InventorySize = 0.380f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = false,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+                },
+                
+				Other = new OtherDef {
+					ConstructPartCap = 21,
+					RotateBarrelAxis = 0,
+					EnergyPriority = 0,
+					MuzzleCheck = false,
+					Debug = false,
+					RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+					CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+					CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+				},
+				
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 240, // 240 Pre Rebalance 
+                    BarrelsPerShot = 1, 
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 480, //3600 // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    GiveUpAfter = false,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 4, // Number of physical magazines to consume on reload.
+					SpinFree = false, // Spin barrel while not firing
+					StayCharged = false, // Will start recharging whenever power cap is not full
+                },
+				
+                Audio = Missiles_Missile_Hardpoint_Audio,
+				
+                Graphics = Missiles_Missile_Hardpoint_Graphics,
+				
+            },
+			Ammos = new[] {
+                //Missiles_Missile,
+				Missiles_Missile_NPC,
+            },
+            //Animations = AdvancedAnimation,
+            // Don't edit below this line
+        };
     }
 }

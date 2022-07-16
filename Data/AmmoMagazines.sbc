@@ -78,7 +78,7 @@
                 <Z>0.2</Z>
             </Size>
             <Mass>50</Mass>
-            <Volume>40</Volume>
+            <Volume>30</Volume>
             <Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>6</Capacity>
@@ -99,8 +99,8 @@
                 <Y>0.3</Y>
                 <Z>0.3</Z>
             </Size>
-            <Mass>800</Mass>
-            <Volume>80</Volume>
+            <Mass>1100</Mass>
+            <Volume>110</Volume>
             <Model>Models\Weapons\LargeCalibreShell.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>1</Capacity>
@@ -121,8 +121,8 @@
                 <Y>0.2</Y>
                 <Z>0.2</Z>
             </Size>
-            <Mass>490</Mass>
-            <Volume>70</Volume>
+            <Mass>560</Mass>
+            <Volume>80</Volume>
             <Model>Models\Weapons\MediumCalibreShell.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>1</Capacity>
@@ -164,8 +164,8 @@
                 <Y>0.3</Y>
                 <Z>0.3</Z>
             </Size>
-			<Mass>25000</Mass>
-			<Volume>2500</Volume>
+			<Mass>30000</Mass>
+			<Volume>3000</Volume>
             <Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>1</Capacity>
@@ -208,8 +208,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>30</Mass>
-			<Volume>40</Volume>
+			<Mass>100</Mass>
+			<Volume>130</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -230,8 +230,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>75</Mass>
-			<Volume>50</Volume>
+			<Mass>141</Mass>
+			<Volume>94</Volume>
 			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -251,8 +251,8 @@
 				<Y>5.0</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>5630</Mass>
-			<Volume>3750</Volume>
+			<Mass>5000</Mass>
+			<Volume>3330</Volume>
 			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -260,5 +260,26 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
             <CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
+        <AmmoMagazine>
+            <Id>
+                <TypeId>AmmoMagazine</TypeId>
+                <SubtypeId>Missiles_Siege</SubtypeId>
+            </Id>
+            <DisplayName>[SRBM] Longsword MRV</DisplayName>
+            <Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
+            <Size>
+                <X>4</X>
+                <Y>1</Y>
+                <Z>1</Z>
+            </Size>
+            <Mass>1106</Mass>
+            <Volume>737</Volume>
+            <Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
+            <PhysicalMaterial>Ammo</PhysicalMaterial>
+            <Capacity>1</Capacity>
+            <AmmoDefinitionId Subtype="Blank" />
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+            <CanPlayerOrder>true</CanPlayerOrder>
+        </AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>
