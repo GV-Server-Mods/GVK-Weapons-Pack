@@ -459,5 +459,61 @@
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<DLC>Warfare2</DLC>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXVulcanTurret</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Large Vulcan Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Aryx_AWE_VulcanCannon.dds</Icon>	  
+			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Vulcan. Designed by Aryx Weapon Enterprises.
+				[1400m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3" />
+			<ModelOffset x="0" y="0" z="0" />
+				<Model>Models\AWE_Vulcan\ARYXVulcanBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="90"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="5"/>
+				<Component Subtype="MetalGrid" Count="270"/>
+				<Component Subtype="SmallTube" Count="110"/>
+				<Component Subtype="Motor" Count="150"/>
+				<Component Subtype="Computer" Count="180"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="270"/>
+			</Components>
+			<BuildTimeSeconds>90</BuildTimeSeconds>
+			<PCU>20000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0" />
+				<MountPoints>
+					<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+					<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+					<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+					<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+					<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+				</MountPoints>
+				<BuildProgressModels>
+					<Model BuildPercentUpperBound="0.33" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
+					<Model BuildPercentUpperBound="0.67" File="Models\AWE_Vulcan\ARYXVulcanBase_BS2.mwm"/>
+					<Model BuildPercentUpperBound="1.00" File="Models\AWE_Vulcan\ARYXVulcanBase_BS3.mwm"/>
+				</BuildProgressModels>
+				<BlockPairName>ARYXVulcanBase</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.144</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+			<string>Weapons</string>
+		  </TargetingGroups>      
+		</Definition>
 	</CubeBlocks>
 </Definitions>

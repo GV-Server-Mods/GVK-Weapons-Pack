@@ -54,7 +54,8 @@ namespace Scripts
 							Other_Warheads_RegularWarhead_SG_Weapon,
 							AryxLongswordMissileBattery,
 							KhopeshTurret,
-							SentinelTurret);
+							SentinelTurret,
+							AryxVulcanTurret);
             ArmorDefinitions(BusterArmor);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);

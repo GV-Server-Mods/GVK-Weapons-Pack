@@ -526,8 +526,178 @@ namespace Scripts {
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line
+        };
+		
+        WeaponDefinition AryxVulcanTurret => new WeaponDefinition
+        {
 
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] {
+                    new MountPointDef {
+                        SubtypeId = "ARYXVulcanTurret",
+                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.2f,	 
+					},
+                },
+                Muzzles = new[] {
+                    "muzzle_projectile_1",
+                    "muzzle_projectile_2",
 
+                },
+                Ejector = "",
+				Scope = "dummy_camera",
+            },
+            Targeting = new TargetingDef
+            {
+                Threats = new[] {
+					Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
+                },
+                SubSystems = new[] {
+					Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                },
+                ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
+                MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+                MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+                MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+                TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+                StopTrackingSpeed = 1000f, // do not track target threats traveling faster than this speed
+            },
+            HardPoint = new HardPointDef
+            {
+                PartName = "Vulcan Turret", // name of weapon in terminal
+                DeviateShotAngle = 0.6f, // Inaccuracy in degrees
+                AimingTolerance = 40f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = false,
+				CanShootSubmerged = false,
+
+                Ui = new UiDef
+                {
+                    RateOfFire = false,
+                    DamageModifier = false,
+                    ToggleGuidance = false,
+                    EnableOverload = false,
+                },
+                Ai = new AiDef
+                {
+                    TrackTargets = true,
+                    TurretAttached = true,
+                    TurretController = true,
+                    PrimaryTracking = true,
+                    LockOnFocus = false,
+                },
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.03f,
+                    ElevateRate = 0.02f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -10,
+                    MaxElevation = 90,
+                    HomeAzimuth = 0, // Default resting rotation angle
+                    HomeElevation = 0, // Default resting elevation
+                    FixedOffset = false,
+                    InventorySize = 1.2f,
+                    //Offset = Vector(x: 0, y: 0, z: 0),
+                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+                    CriticalReaction = new CriticalDef
+                    {
+                        Enable = false, // Enables Warhead behaviour
+                        DefaultArmedTimer = 120,
+                        PreArmed = true,
+                        TerminalControls = true,
+                    },
+                },
+                Other = new OtherDef
+                {
+                    ConstructPartCap = 21,
+                    RotateBarrelAxis = 0,
+                    EnergyPriority = 0,
+                    MuzzleCheck = false,
+                    Debug = false,
+                    RestrictionRadius = 0, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                },
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 4200,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 2,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 1, //heat generated per shot
+                    MaxHeat = 480, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 50, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    GiveUpAfter = false,
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 16, // Number of physical magazines to consume on reload.
+                    SpinFree = true, // Spin while not firing
+                    StayCharged = false, // Will start recharging whenever power cap is not full					
+					MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+					MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
+                },
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "",
+                    FiringSound = "MD_LargeGatlingLoopFire", // WepShipGatlingShot
+                    FiringSoundPerShot = false,
+                    ReloadSound = "",
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate",
+                    BarrelRotationSound = "MD_GatlingBarrelLoop",
+                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = false,
+                },
+                Graphics = new HardPointParticleDef
+                {
+					Effect1 = new ParticleDef
+					{
+						Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
+						Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
+						Offset = new Vector3D(0f,0f,0f), //XYZ
+						Extras = new ParticleOptionDef
+						{
+							Loop = true, // Set this to the same as in the particle sbc!
+							Restart = true, // Whether to end a looping effect instantly when firing stops.
+							Scale = 2f, // Scale of effect.
+						},
+					},
+					Effect2 = new ParticleDef
+					{
+						Name = "Smoke_LargeGunShot_WC",
+						Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
+						Offset = new Vector3D(0f,0f,0f), //XYZ
+						Extras = new ParticleOptionDef
+						{
+							Loop = true, // Set this to the same as in the particle sbc!
+							Restart = false,
+							Scale = 2f,
+						},
+					},
+                },
+            },
+            Ammos = new[] {
+                NATO_25x184mm,
+            },
+            Animations = AryxVulcanAnimations,
+            // Don't edit below this line
         };
 
     }
