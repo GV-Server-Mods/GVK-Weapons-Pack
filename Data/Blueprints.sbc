@@ -94,7 +94,7 @@
 				<Item Amount="140" TypeId="Ingot" SubtypeId="Cobalt"/>
 				<Item Amount="1" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
 			</Prerequisites>
-			<BaseProductionTimeInSeconds>1030</BaseProductionTimeInSeconds>
+			<BaseProductionTimeInSeconds>103</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="SmallRailgunAmmo"/>
 		</Blueprint>
 		<!-- Ammo only discoverable -->
@@ -126,7 +126,7 @@
 				<Item Amount="690" TypeId="Ingot" SubtypeId="Cobalt"/>
 				<Item Amount="5" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
 			</Prerequisites>
-			<BaseProductionTimeInSeconds>6050</BaseProductionTimeInSeconds>
+			<BaseProductionTimeInSeconds>605</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="LargeRailgunAmmo"/>
 		</Blueprint>
 		<Blueprint>
@@ -177,7 +177,7 @@
 				<Item Amount="21" TypeId="Ingot" SubtypeId="Gold"/>
 				<Item Amount="3" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
 			</Prerequisites>
-			<BaseProductionTimeInSeconds>6580</BaseProductionTimeInSeconds>
+			<BaseProductionTimeInSeconds>658</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
 		</Blueprint>
 		<Blueprint>

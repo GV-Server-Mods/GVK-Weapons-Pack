@@ -573,7 +573,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Vulcan Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.6f, // Inaccuracy in degrees
+                DeviateShotAngle = 0.5f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -597,16 +597,16 @@ namespace Scripts {
                 },
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.03f,
-                    ElevateRate = 0.02f,
+                    RotateRate = 0.02f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -10,
+                    MinElevation = -20,
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     FixedOffset = false,
-                    InventorySize = 1.2f,
+                    InventorySize = 2.4f,
                     //Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
                     CriticalReaction = new CriticalDef
@@ -630,25 +630,25 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 4200,
+                    RateOfFire = 5500,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 1, //heat generated per shot
-                    MaxHeat = 480, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 50, //amount of heat lost per second
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
                     DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
                     GiveUpAfter = false,
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-					MagsToLoad = 16, // Number of physical magazines to consume on reload.
-                    SpinFree = true, // Spin while not firing
+					MagsToLoad = 32, // Number of physical magazines to consume on reload.
+                    SpinFree = false, // Spin while not firing
                     StayCharged = false, // Will start recharging whenever power cap is not full					
 					MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
 					MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon

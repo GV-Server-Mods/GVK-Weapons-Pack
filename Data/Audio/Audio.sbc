@@ -11,7 +11,7 @@
 			<PitchVariation>20</PitchVariation>
 			<SoundLimit>5</SoundLimit>
 			<PreventSynchronization>0</PreventSynchronization>
-			<Volume>0.5</Volume>
+			<Volume>1</Volume>
 			<Loopable>true</Loopable>
 			<Waves>
 				<Wave Type="D3">
@@ -112,7 +112,7 @@
 			</Id>
 			<Category>SHOT</Category>
 			<MaxDistance>3000</MaxDistance>
-			<PitchVariation>10</PitchVariation>
+			<PitchVariation>20</PitchVariation>
 			<SoundLimit>10</SoundLimit>
 			<PreventSynchronization>7</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
@@ -139,7 +139,7 @@
 			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>50</PitchVariation>
 			<PreventSynchronization>3</PreventSynchronization>
-			<Volume>1</Volume>
+			<Volume>1.5</Volume>
 			<Loopable>true</Loopable>
 			<Waves>
 				<Wave Type="D3">
