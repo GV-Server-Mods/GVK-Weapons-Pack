@@ -87,7 +87,7 @@ namespace Scripts {
 		};
 
 		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T2 = new LoadingDef {
-			RateOfFire = 2100,
+			RateOfFire = 1800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
@@ -97,7 +97,7 @@ namespace Scripts {
 			HeatPerShot = 1, //heat generated per shot
 			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 25, //amount of heat lost per second
+			HeatSinkRate = 18, //amount of heat lost per second
 			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
 			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -105,31 +105,6 @@ namespace Scripts {
 			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 			MagsToLoad = 4, // Number of physical magazines to consume on reload.
-			SpinFree = true, // Spin barrel while not firing
-			StayCharged = false, // Will start recharging whenever power cap is not full
-			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
-			MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
-		};
-
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T1 = new LoadingDef {
-			RateOfFire = 1800,
-			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-			BarrelsPerShot = 1,
-			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-			SkipBarrels = 0,
-			ReloadTime = 2, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 2, //heat generated per shot
-			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
-			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 25, //amount of heat lost per second
-			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-			ShotsInBurst = 0,
-			DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			FireFull = false,
-			GiveUpAfter = true,
-			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-			MagsToLoad = 2, // Number of physical magazines to consume on reload.
 			SpinFree = true, // Spin barrel while not firing
 			StayCharged = false, // Will start recharging whenever power cap is not full
 			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
@@ -214,7 +189,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Sentinel Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -270,7 +245,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CIWS Large", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -327,7 +302,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CWIS Small", // name of weapon in terminal
-                DeviateShotAngle = 0.7f,
+                DeviateShotAngle = 0.5f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -357,7 +332,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T1,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -409,7 +384,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Fixed", // name of weapon in terminal
-                DeviateShotAngle = 0.6f,
+                DeviateShotAngle = 0.5f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -573,7 +548,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Vulcan Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.5f, // Inaccuracy in degrees
+                DeviateShotAngle = 0.4f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -630,7 +605,7 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 5500,
+                    RateOfFire = 3600,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
@@ -647,7 +622,7 @@ namespace Scripts {
                     FireFull = false,
                     GiveUpAfter = false,
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-					MagsToLoad = 32, // Number of physical magazines to consume on reload.
+					MagsToLoad = 16, // Number of physical magazines to consume on reload.
                     SpinFree = false, // Spin while not firing
                     StayCharged = false, // Will start recharging whenever power cap is not full					
 					MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
