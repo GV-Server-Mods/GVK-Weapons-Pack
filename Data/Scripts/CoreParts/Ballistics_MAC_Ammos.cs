@@ -342,10 +342,10 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef
             {
                 TravelSound = "",
-                HitSound = "MXA_ImpactExplosion",
+                HitSound = "HWR_FireyExplosion",
                 ShieldHitSound = "",
                 PlayerHitSound = "",
-                VoxelHitSound = "",
+                VoxelHitSound = "HWR_FireyExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
@@ -523,7 +523,7 @@ namespace Scripts
                     NoSound = false,
                     ParticleScale = 1,
                     CustomParticle = "MD_InstallationExplosion",
-                    CustomSound = "MXA_ImpactExplosion",
+                    CustomSound = "HWR_FireyExplosion",
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
@@ -725,11 +725,11 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef
             {
                 TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "MXA_ImpactExplosion",
+                HitSound = "HWR_FireyExplosion",
                 ShotSound = "",
                 ShieldHitSound = "",
                 PlayerHitSound = "",
-                VoxelHitSound = "MXA_ImpactExplosion",
+                VoxelHitSound = "HWR_FireyExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
@@ -1109,11 +1109,11 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef
             {
                 TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "MXA_ImpactExplosion",
+                HitSound = "HWR_FireyExplosion",
                 ShotSound = "",
                 ShieldHitSound = "",
                 PlayerHitSound = "",
-                VoxelHitSound = "MXA_ImpactExplosion",
+                VoxelHitSound = "HWR_FireyExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
