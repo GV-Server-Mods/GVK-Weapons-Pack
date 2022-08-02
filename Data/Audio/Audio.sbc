@@ -838,14 +838,14 @@
 				<SubtypeId>AutocannonFire</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>2000</MaxDistance>
+			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>100</PitchVariation>
 			<PreventSynchronization>5</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>20</SoundLimit>
+			<SoundLimit>40</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
-				<DistantSound DistanceCrossfade="1" Distance="500" Sound="AutocannonFireDistant1"/>
+				<DistantSound DistanceCrossfade="1" Distance="800" Sound="AutocannonFireDistant1"/>
 			</DistantSounds>
 			<Volume>2</Volume>
 			<Loopable>false</Loopable>
@@ -873,11 +873,11 @@
 				<SubtypeId>AutocannonFireDistant1</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>2000</MaxDistance>
+			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>100</PitchVariation>
-			<SoundLimit>20</SoundLimit>
+			<SoundLimit>40</SoundLimit>
 			<PreventSynchronization>1</PreventSynchronization>
-			<Volume>1</Volume>
+			<Volume>2</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
 				<Wave Type="D3">
@@ -928,7 +928,7 @@
 				<SubtypeId>AutocannonExplosion</SubtypeId>
 			</Id>
 			<Category>WEP_EXPL</Category>
-			<MaxDistance>2000</MaxDistance>
+			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>5</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>25</DynamicMusicAmount>
@@ -960,7 +960,7 @@
 				<SubtypeId>AutocannonExplosionDistA</SubtypeId>
 			</Id>
 			<Category>WEP_EXPL</Category>
-			<MaxDistance>2000</MaxDistance>
+			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>50</PitchVariation>
 			<SoundLimit>20</SoundLimit>
 			<PreventSynchronization>5</PreventSynchronization>
