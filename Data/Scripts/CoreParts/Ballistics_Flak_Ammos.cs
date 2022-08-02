@@ -160,8 +160,8 @@ namespace Scripts
                 Enable = false,
                 Type = AntiSmart, //AntiSmart, JumpNull, EnergySink, Anchor, Emp, Offense, Nav, Dot, Push, Pull, Tractor,
                 Mode = Effect,
-                Strength = 2f,
-                Radius = 350f,
+                Strength = 0.5f,
+                Radius = 250f,
                 Duration = 0,
                 StackDuration = false,
                 Depletable = true,
@@ -352,7 +352,7 @@ namespace Scripts
 					Shield = Kinetic,
                 },
 				
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+                Custom = Common_Ammos_DamageScales_WheelsandCockpits_SmallNerf,
 				
             },
             AreaOfDamage = new AreaOfDamageDef
