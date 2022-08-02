@@ -92,10 +92,10 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 10f,
-                    Damage = 3000f,
+                    Damage = 9000f,
                     Depth = 0.4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -248,7 +248,7 @@ namespace Scripts
                         Enable = true,
                         Length = 10f,
                         Width = 0.3f,
-                        Color = Color(red: 30f, green: 22f, blue: 1.5f, alpha: 1f),
+                        Color = Color(red: 30f, green: 25f, blue: 1.5f, alpha: 1f),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..

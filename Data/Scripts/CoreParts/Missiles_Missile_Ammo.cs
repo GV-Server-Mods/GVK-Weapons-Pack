@@ -7,6 +7,8 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomSca
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
@@ -98,10 +100,10 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 4f,
-                    Damage = 2000f,
+                    Damage = 6000f,
                     Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -128,6 +130,7 @@ namespace Scripts
                     ParticleScale = 1,
                     CustomParticle = "particleName",
                     CustomSound = "soundName",
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
             Ewar = new EwarDef
@@ -357,10 +360,10 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 4f,
-                    Damage = 2000f,
+                    Damage = 6000f,
                     Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
