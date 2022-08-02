@@ -189,7 +189,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Sentinel Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -245,7 +245,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CIWS Large", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -302,7 +302,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CWIS Small", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -384,7 +384,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Fixed", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -458,7 +458,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Gimbal", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 7f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
