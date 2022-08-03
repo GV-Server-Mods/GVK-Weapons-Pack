@@ -55,7 +55,13 @@ namespace Scripts
 							AryxLongswordMissileBattery,
 							KhopeshTurret,
 							SentinelTurret,
-							AryxVulcanTurret);
+							AryxVulcanTurret,
+							AryxHurricaneTurret,
+							ThrasherTurret,
+							tukkaLauncher01,
+							lokiCannon1_def,
+							AryxSpartanTurret
+							);
             ArmorDefinitions(BusterArmor);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
