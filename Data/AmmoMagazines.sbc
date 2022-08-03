@@ -65,72 +65,72 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>AutocannonClip</SubtypeId>
-            </Id>
-            <DisplayName>[Chaingun] 30mm API x6</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
-            <Size>
-                <X>0.25</X>
-                <Y>0.2</Y>
-                <Z>0.2</Z>
-            </Size>
-            <Mass>50</Mass>
-            <Volume>30</Volume>
-            <Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>6</Capacity>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>AutocannonClip</SubtypeId>
+			</Id>
+			<DisplayName>[Chaingun] 30mm API x6</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>50</Mass>
+			<Volume>30</Volume>
+			<Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>6</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
-            <AmmoDefinitionId Subtype="AutocannonShell" />
+			<AmmoDefinitionId Subtype="AutocannonShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>LargeCalibreAmmo</SubtypeId>
-            </Id>
-            <DisplayName>[Cannon] 155mm AP</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
-            <Size>
-                <X>1.2</X>
-                <Y>0.3</Y>
-                <Z>0.3</Z>
-            </Size>
-            <Mass>1100</Mass>
-            <Volume>110</Volume>
-            <Model>Models\Weapons\LargeCalibreShell.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>LargeCalibreAmmo</SubtypeId>
+			</Id>
+			<DisplayName>[Cannon] 155mm AP</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.3</Y>
+				<Z>0.3</Z>
+			</Size>
+			<Mass>1100</Mass>
+			<Volume>110</Volume>
+			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
-            <AmmoDefinitionId Subtype="LargeCalibreShell" />
+			<AmmoDefinitionId Subtype="LargeCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>MediumCalibreAmmo</SubtypeId>
-            </Id>
-            <DisplayName>[Flak] 100mm PROX</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
-            <Size>
-                <X>0.25</X>
-                <Y>0.2</Y>
-                <Z>0.2</Z>
-            </Size>
-            <Mass>560</Mass>
-            <Volume>80</Volume>
-            <Model>Models\Weapons\MediumCalibreShell.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>MediumCalibreAmmo</SubtypeId>
+			</Id>
+			<DisplayName>[Flak] 100mm PROX</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>560</Mass>
+			<Volume>80</Volume>
+			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
-            <AmmoDefinitionId Subtype="MediumCalibreShell" />
+			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
 		<!-- <AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
@@ -152,50 +152,50 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine> -->
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>LargeRailgunAmmo</SubtypeId>
-            </Id>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>LargeRailgunAmmo</SubtypeId>
+			</Id>
 			<DisplayName>[MAC] 200mm DU</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
-            <Size>
-                <X>1.0</X>
-                <Y>0.3</Y>
-                <Z>0.3</Z>
-            </Size>
+			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
+			<Size>
+				<X>1.0</X>
+				<Y>0.3</Y>
+				<Z>0.3</Z>
+			</Size>
 			<Mass>30000</Mass>
 			<Volume>3000</Volume>
-            <Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
+			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
-            <AmmoDefinitionId Subtype="LargeRailgunSlug" />
+			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>SmallRailgunAmmo</SubtypeId>
-            </Id>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>SmallRailgunAmmo</SubtypeId>
+			</Id>
 			<DisplayName>[Railgun] 50mm FeW</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
-            <Size>
-                <X>0.25</X>
-                <Y>0.1</Y>
-                <Z>0.1</Z>
-            </Size>
+			<Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.1</Y>
+				<Z>0.1</Z>
+			</Size>
 			<Mass>3300</Mass>
 			<Volume>330</Volume>
-            <Model>Models\Weapons\RailgunAmmo.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
+			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
 			<!-- AmmoDefinitionId causes a critical error -->
-            <AmmoDefinitionId Subtype="SmallRailgunSlug" />
+			<AmmoDefinitionId Subtype="SmallRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
@@ -216,7 +216,7 @@
 			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="Missile"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
+			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -233,11 +233,11 @@
 			<Mass>141</Mass>
 			<Volume>94</Volume>
 			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
+			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -254,32 +254,98 @@
 			<Mass>5000</Mass>
 			<Volume>3330</Volume>
 			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
+			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>Missiles_Siege</SubtypeId>
-            </Id>
-            <DisplayName>[SRBM] Longsword MRV</DisplayName>
-            <Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
-            <Size>
-                <X>4</X>
-                <Y>1</Y>
-                <Z>1</Z>
-            </Size>
-            <Mass>1106</Mass>
-            <Volume>737</Volume>
-            <Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
-            <AmmoDefinitionId Subtype="Blank" />
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Missiles_Siege</SubtypeId>
+			</Id>
+			<DisplayName>[SRBM] Longsword MRV</DisplayName>
+			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
+			<Size>
+				<X>4</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Size>
+			<Mass>1106</Mass>
+			<Volume>737</Volume>
+			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </AmmoMagazine>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
+			</Id>
+			<DisplayName>480mm Heavy Shell</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
+			<Size>
+				<X>0.8</X>
+				<Y>0.4</Y>
+				<Z>0.4</Z>
+			</Size>
+			<Mass>120</Mass>
+			<Volume>24</Volume>
+			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimumOfferAmount>10</MinimumOfferAmount>
+			<MaximumOfferAmount>100</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
+			</Id>
+			<DisplayName>[Cruise Missile] Tuukka HE</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+			<Size>
+				<X>4</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Size>
+			<Mass>141</Mass>
+			<Volume>94</Volume>
+			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Lasers_Plasma</SubtypeId>
+			</Id>
+			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+			<Size>
+				<X>4</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Size>
+			<Mass>141</Mass>
+			<Volume>94</Volume>
+			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>
