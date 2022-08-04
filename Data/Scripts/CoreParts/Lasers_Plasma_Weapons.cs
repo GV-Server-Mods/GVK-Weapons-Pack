@@ -122,7 +122,7 @@ namespace Scripts {
                     SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
-                    DelayUntilFire = 60, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, // Heat generated per shot.
                     MaxHeat = 0, // Max heat before weapon enters cooldown (70% of max heat).
                     Cooldown = 0f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
@@ -153,16 +153,31 @@ namespace Scripts {
                     Effect1 = new ParticleDef
                     {
                         Name = "", // SubtypeId of muzzle particle effect.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
 
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false, // Set this to the same as in the particle sbc!
+                            Loop = true, // Deprecated, set this in particle sbc.
                             Restart = false, // Whether to end the previous effect early and spawn a new one.
-                            MaxDistance = 50, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
-                            MaxDuration = 5, // How many ticks the effect should be ended after, if it's still running.
+                            MaxDistance = 250, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
+                            MaxDuration = 1, // How many ticks the effect should be ended after, if it's still running.
                             Scale = 1f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+                        Name = "",
+                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                        Offset = Vector(x: 0, y: 0, z: 0),
+
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Deprecated, set this in particle sbc.
+                            Restart = false,
+                            MaxDistance = 250,
+                            MaxDuration = 1,
+                            Scale = 1f,
                         },
                     },
                 },
@@ -170,7 +185,7 @@ namespace Scripts {
             Ammos = new[] {
                 Lasers_Plasma, // Must list all primary, shrapnel, and pattern ammos.
             },
-            //Animations = Weapon75_Animation,
+            Animations = Lasers_Plasma_Animations_Loki,
             //Upgrades = UpgradeModules,
         };
         // Don't edit below this line.
