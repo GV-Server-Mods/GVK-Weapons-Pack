@@ -200,7 +200,7 @@ namespace Scripts
                     OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     MaxTargets = 2, // Number of targets allowed before ending, 0 = unlimited
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
-					OffsetRatio = 0.46f, // The ratio to offset the random dir (0 to 1) 
+					OffsetRatio = 0.5f, // The ratio to offset the random dir (0 to 1) 
 					OffsetTime = 30, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     Roam = false, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss

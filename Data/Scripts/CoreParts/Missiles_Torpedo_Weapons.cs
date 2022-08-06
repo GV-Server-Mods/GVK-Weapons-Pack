@@ -59,7 +59,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Crusader Torpedo", // name of weapon in terminal
-                DeviateShotAngle = 0f,
+                DeviateShotAngle = 0.1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

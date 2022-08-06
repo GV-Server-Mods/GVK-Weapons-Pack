@@ -22,7 +22,7 @@ namespace Scripts {
                         MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.2f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                 },
@@ -146,13 +146,13 @@ namespace Scripts {
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "ArcWepShipARYX_FireMissilesA", // Audio for firing.
+                    FiringSound = "DOK_SiegeMissileFire", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "",
                     NoAmmoSound = "",
                     HardPointRotationSound = "", // Audio played when turret is moving.
                     BarrelRotationSound = "",
-                    FireSoundEndDelay = 200, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
                 Graphics = new HardPointParticleDef
                 {

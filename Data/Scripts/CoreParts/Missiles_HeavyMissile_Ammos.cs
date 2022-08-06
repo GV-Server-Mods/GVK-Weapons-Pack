@@ -268,10 +268,10 @@ namespace Scripts
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     CheckFutureIntersection = false, // Utilize obstacle avoidance for drones
-                    MaxTargets = 1, // Number of targets allowed before ending, 0 = unlimited
+                    MaxTargets = 2, // Number of targets allowed before ending, 0 = unlimited
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = false, // Roam current area after target loss
-                    KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
+                    KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
                     OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                 },
@@ -381,7 +381,7 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef
             {
                 TravelSound = "MXA_Archer_Travel", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "",
+                HitSound = "DOK_MissileExplosion",
                 ShotSound = "",
                 ShieldHitSound = "",
                 PlayerHitSound = "",

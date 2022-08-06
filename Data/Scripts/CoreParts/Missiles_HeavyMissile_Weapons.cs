@@ -76,8 +76,8 @@ namespace Scripts
             {
                 PartName = "Tuukka MLRS", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 1f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 15, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                AimingTolerance = 30, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
+                AimLeadingPrediction = Basic, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = false, // Allows turret to only track to the edge of the AimingTolerance cone instead of dead centre.
                 CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
@@ -86,7 +86,7 @@ namespace Scripts
                 {
                     RateOfFire = false, // Enables terminal slider for changing rate of fire.
                     DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = true, // Enables terminal option to disable smart projectile guidance.
+                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
                     EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
                 },
                 Ai = new AiDef
@@ -105,8 +105,8 @@ namespace Scripts
                     ElevateRate = 0.015f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = 0,
-                    MaxElevation = 45,
+                    MinElevation = -15,
+                    MaxElevation = 50,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     InventorySize = 0.19f, // Inventory capacity in kL.
@@ -125,7 +125,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+                    ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
                     EnergyPriority = 0, // Deprecated.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
@@ -139,7 +139,7 @@ namespace Scripts
                     RateOfFire = 240, // Set this to 3600 for beam weapons.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
+                    SkipBarrels = 4, // Number of muzzles to skip after each fire event.
                     ReloadTime = 800, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 19, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 60, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -157,7 +157,17 @@ namespace Scripts
                     SpinFree = false, // Spin barrel while not firing.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
                 },
-                Audio = Missiles_Rocket_Hardpoint_Audio,
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "", // Audio for warmup effect.
+                    FiringSound = "ArcWepShipARYX_FireMissilesA", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    ReloadSound = "",
+                    NoAmmoSound = "",
+                    HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                },
 
                 Graphics = new HardPointParticleDef
                 {

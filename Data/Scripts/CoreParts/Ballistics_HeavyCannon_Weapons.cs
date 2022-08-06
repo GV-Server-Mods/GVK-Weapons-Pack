@@ -73,8 +73,8 @@ namespace Scripts
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.0025f,
-                    ElevateRate = 0.0025f,
+                    RotateRate = 0.0015f,
+                    ElevateRate = 0.0015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -5,
@@ -125,7 +125,7 @@ namespace Scripts
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "",
-                    FiringSound = "ArcWepShipARYXHurricane_Fire", // WepShipGatlingShot
+                    FiringSound = "HeavyCannon_Fire", // WepShipGatlingShot
                     FiringSoundPerShot = true,
                     ReloadSound = "",
                     NoAmmoSound = "",

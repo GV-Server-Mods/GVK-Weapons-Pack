@@ -139,9 +139,9 @@ namespace Scripts {
                 },
                 Audio = new HardPointAudioDef
                 {
-                    PreFiringSound = "ArcLokiBeamPrefire", // Audio for warmup effect.
-                    FiringSound = "ArcLokiBeamNormal", // Audio for firing.
-                    FiringSoundPerShot = false, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
+                    PreFiringSound = "PlasmaLauncher_Windup", // Audio for warmup effect.
+                    FiringSound = "PlasmaLauncher_Fire", // Audio for firing.
+                    FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "",
                     NoAmmoSound = "",
                     HardPointRotationSound = "WepTurretGatlingRotate", // Audio played when turret is moving.
