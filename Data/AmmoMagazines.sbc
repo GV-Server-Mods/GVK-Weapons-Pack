@@ -60,7 +60,6 @@
 			<Model>Models\Weapons\Rifle_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>30</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="SmallCaliber"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
@@ -82,7 +81,6 @@
 			<Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>6</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="AutocannonShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
@@ -104,7 +102,6 @@
 			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="LargeCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
@@ -126,32 +123,10 @@
 			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
-		<!-- <AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Ballistics_MAC</SubtypeId>
-			</Id>
-			<DisplayName>[MAC] 200mm SABOT</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\AWEGaussAmmo.dds</Icon>
-			<Size>
-				<X>0.25</X>
-				<Y>1.2</Y>
-				<Z>0.2</Z>
-			</Size>
-			<Mass>5000</Mass>
-			<Volume>2500</Volume>
-			<Model>Models\AWE_Ammo\AryxFerrous1200mm.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-		</AmmoMagazine> -->
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
@@ -169,7 +144,6 @@
 			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
@@ -191,7 +165,6 @@
 			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="SmallRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
@@ -213,7 +186,6 @@
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<!-- AmmoDefinitionId causes a critical error -->
 			<AmmoDefinitionId Subtype="Missile"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
