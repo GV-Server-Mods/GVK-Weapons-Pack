@@ -35,8 +35,8 @@ namespace Scripts
             AmmoMagazine = "LargeRailgunAmmo", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Large Railgun Slug", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = true, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 0.2898f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 100000f, // Direct damage; one steel plate is worth 100.
+            EnergyCost = 0.02f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
+            BaseDamage = 500000f, // Direct damage; one steel plate is worth 100.
             Mass = 20000f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 30000000f, // Recoil. This is applied to the Parent Grid.
@@ -50,7 +50,10 @@ namespace Scripts
 
             Shape = Common_Ammos_Shape_None,
 			
-            ObjectsHit = Common_Ammos_ObjectsHit_None,
+            ObjectsHit = new ObjectsHitDef {
+                MaxObjectsHit = 6, // 0 = disabled
+                CountBlocks = true, // counts gridBlocks and not just entities hit
+            },
 			
             Fragment = Common_Ammos_Fragment_None,
 			
@@ -66,8 +69,8 @@ namespace Scripts
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
                 FallOff = new FallOffDef
                 {
-                    Distance = 0f, // Distance at which damage begins falling off.
-                    MinMultipler = 1f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
+                    Distance = 2000f, // Distance at which damage begins falling off.
+                    MinMultipler = 0.25f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
                 },
                 Grids = new GridSizeDef
                 {
@@ -83,7 +86,7 @@ namespace Scripts
                 },
                 Shields = new ShieldDef
                 {
-                    Modifier = 5f, // Multiplier for damage against shields.
+                    Modifier = 1f, // Multiplier for damage against shields.
                     Type = Default, // Damage vs healing against shields; Default, Heal
                     BypassModifier = -1f, // If greater than zero, the percentage of damage that will penetrate the shield.
                 },
@@ -118,11 +121,11 @@ namespace Scripts
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
-                    Radius = 10f,
-                    Damage = 200000f, 
-                    //Depth = 5, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Radius = 5f,
+                    Damage = 20000f, 
+                    Depth = 5,
                     MaxAbsorb = 0f,
-                    Falloff = Pooled , //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = NoFalloff , //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -135,7 +138,7 @@ namespace Scripts
                     Enable = false,
                     Radius = 5f,
                     Damage = 600f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 5f,
                     MaxAbsorb = 0f,
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -193,15 +196,9 @@ namespace Scripts
                     Ammo = new ParticleDef
                     {
                         Name = "", //MD_BulletGlowMedYellow
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: -1, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2000,
-                            MaxDuration = 1,
                             Scale = 1,
                         },
                     },
@@ -209,15 +206,9 @@ namespace Scripts
                     {
                         Name = "MD_InstallationExplosion",
                         ApplyToShield = true,
-                        ShrinkByDistance = false,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 9,
                             Scale = 1,
                             HitPlayChance = 1f,
                         },
@@ -232,7 +223,7 @@ namespace Scripts
                         Enable = true,
                         Length = 75f,
                         Width = .5f,
-                        Color = Color(red: 60f, green: 50f, blue: 45f, alpha: 1f),
+                        Color = Color(red: 60f, green: 60f, blue: 60f, alpha: 1f),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
