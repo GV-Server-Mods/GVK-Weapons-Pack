@@ -16,19 +16,19 @@
 			<Size x="5" y="3" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="420"/>
+            <Components>
+                <Component Subtype="SteelPlate" Count="1200" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SmallTube" Count="84"/>
-				<Component Subtype="LargeTube" Count="140"/>
-				<Component Subtype="Motor" Count="130"/>
-				<Component Subtype="Computer" Count="70"/>
-				<Component Subtype="MetalGrid" Count="140"/>
-				<Component Subtype="SteelPlate" Count="350"/>
-			</Components>
-			<BuildTimeSeconds>135</BuildTimeSeconds>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="7"/>
+                <Component Subtype="Construction" Count="580" />
+                <Component Subtype="SmallTube" Count="240" />
+                <Component Subtype="LargeTube" Count="390" />
+                <Component Subtype="Motor" Count="350" />
+                <Component Subtype="Computer" Count="200" />
+                <Component Subtype="MetalGrid" Count="390" />
+                <Component Subtype="SteelPlate" Count="970" />
+            </Components>
+            <BuildTimeSeconds>375</BuildTimeSeconds>
 			<PCU>70000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

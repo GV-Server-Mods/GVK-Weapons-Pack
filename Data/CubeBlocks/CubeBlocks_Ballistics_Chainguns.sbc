@@ -16,17 +16,17 @@
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Flak\ARYX_LargeFlakCannon.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="90"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="6"/>
-				<Component Subtype="MetalGrid" Count="270"/>
-				<Component Subtype="SmallTube" Count="110"/>
-				<Component Subtype="Motor" Count="150"/>
-				<Component Subtype="Computer" Count="180"/>
-				<Component Subtype="Construction" Count="540"/>
-				<Component Subtype="SteelPlate" Count="270"/>
-			</Components>
-			<BuildTimeSeconds>90</BuildTimeSeconds>
+            <Components>
+                <Component Subtype="SteelPlate" Count="140" />
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="7"/>
+                <Component Subtype="Construction" Count="810" />
+                <Component Subtype="SmallTube" Count="170" />
+                <Component Subtype="Motor" Count="220" />
+                <Component Subtype="Computer" Count="270" />
+                <Component Subtype="MetalGrid" Count="410" />
+                <Component Subtype="SteelPlate" Count="410" />
+            </Components>
+            <BuildTimeSeconds>135</BuildTimeSeconds>
 			<PCU>40000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -36,11 +36,11 @@
 				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="3.0" EndY="3.0"/>
 			</MountPoints>
-			<BuildProgressModels>
+			<!-- <BuildProgressModels>
 				<Model BuildPercentUpperBound="0.33" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS1.mwm"/>
 				<Model BuildPercentUpperBound="0.66" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.0" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS3.mwm"/>
-			</BuildProgressModels>
+			</BuildProgressModels> -->
 			<BlockPairName>AryxHeavyFlak</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>

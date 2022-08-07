@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Sounds>
+		<!-- Sounds with attached DistantSounds must have a MaxDistance equal to the DistantSounds' -->
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
@@ -956,10 +957,10 @@
 			</Id>
 			<Category>SHOT</Category>
 			<MaxDistance>3000</MaxDistance>
-			<PitchVariation>100</PitchVariation>
+			<PitchVariation>20</PitchVariation>
 			<PreventSynchronization>5</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>40</SoundLimit>
+			<SoundLimit>50</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="1" Distance="800" Sound="AutocannonFireDistant1"/>
@@ -991,8 +992,8 @@
 			</Id>
 			<Category>SHOT</Category>
 			<MaxDistance>3000</MaxDistance>
-			<PitchVariation>100</PitchVariation>
-			<SoundLimit>40</SoundLimit>
+			<PitchVariation>20</PitchVariation>
+			<SoundLimit>50</SoundLimit>
 			<PreventSynchronization>1</PreventSynchronization>
 			<Volume>2</Volume>
 			<Loopable>false</Loopable>

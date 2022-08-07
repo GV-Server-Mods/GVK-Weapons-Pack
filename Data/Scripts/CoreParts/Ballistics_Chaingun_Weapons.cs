@@ -34,11 +34,11 @@ namespace Scripts {
 			StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
 		};
 		private HardwareDef Ballistics_Chaingun_Hardpoint_Hardware = new HardwareDef {
-			RotateRate = 0.03f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+			RotateRate = 0.025f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
 			ElevateRate = 0.02f, // Max traversal speed of elevation subpart in radians per tick.
 			MinAzimuth = -180,
 			MaxAzimuth = 180,
-			MinElevation = -10,
+			MinElevation = -20,
 			MaxElevation = 90,
 			HomeAzimuth = 0, // Default resting rotation angle
 			HomeElevation = 0, // Default resting elevation
@@ -59,7 +59,7 @@ namespace Scripts {
 		};
 		
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T1 = new LoadingDef {
-			RateOfFire = 120, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 150, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			SkipBarrels = 0, // Number of muzzles to skip after each fire event.
@@ -84,7 +84,7 @@ namespace Scripts {
 		};
 
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T2 = new LoadingDef {
-			RateOfFire = 300, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 360, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			SkipBarrels = 0, // Number of muzzles to skip after each fire event.
@@ -523,11 +523,11 @@ namespace Scripts {
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.015f,
+                    RotateRate = 0.0125f,
+                    ElevateRate = 0.01f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -5,
+                    MinElevation = -6,
                     MaxElevation = 80,
                     FixedOffset = false,
                     InventorySize = 0.480f,
@@ -554,12 +554,12 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 600,
+                    RateOfFire = 720,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)

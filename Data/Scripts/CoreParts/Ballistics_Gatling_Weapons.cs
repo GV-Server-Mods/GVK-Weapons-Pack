@@ -54,11 +54,11 @@ namespace Scripts {
 		};
 
 		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef {
-			RotateRate = 0.05f,
-			ElevateRate = 0.03f,
+			RotateRate = 0.03f,
+			ElevateRate = 0.02f,
 			MinAzimuth = -180,
 			MaxAzimuth = 180,
-			MinElevation = -10,
+			MinElevation = -20,
 			MaxElevation = 90,
 			FixedOffset = false,
 			InventorySize = 0.6f,
@@ -315,8 +315,8 @@ namespace Scripts {
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.05f,
-                    ElevateRate = 0.03f,
+                    RotateRate = 0.03f,
+                    ElevateRate = 0.02f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
@@ -561,12 +561,12 @@ namespace Scripts {
 								
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.015f,
+                    RotateRate = 0.015f,
+                    ElevateRate = 0.01f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -20,
-                    MaxElevation = 90,
+                    MinElevation = -15,
+                    MaxElevation = 80,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     FixedOffset = false,

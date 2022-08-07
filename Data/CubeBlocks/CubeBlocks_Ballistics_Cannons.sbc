@@ -9,7 +9,7 @@
 			<DisplayName>[Cannon] Dual 155mm Artillery Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
-				[2000m Auto Range]
+				[2200m Auto Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>false</GuiVisible>
@@ -110,7 +110,7 @@
 			<DisplayName>[Cannon] Large 155mm Artillery Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreGun.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
-				[2200m Manual Range]
+				[2400m Manual Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Large</CubeSize>
 			<GuiVisible>false</GuiVisible>
@@ -179,7 +179,7 @@
 			<DisplayName>[Cannon] Small 155mm Artillery Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mm_VehicleTurret.dds</Icon>
 			<Description>Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
-				[1500m Auto Range]
+				[1700m Auto Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>true</GuiVisible>
@@ -243,7 +243,7 @@
 			<DisplayName>[Cannon] Small 155mm Artillery Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mmASG_fixed.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
-				[2200m Manual Range]
+				[2400m Manual Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>true</GuiVisible>

@@ -61,7 +61,7 @@ namespace Scripts
             {
                 PartName = "Hurricane Heavy Cannon", // name of weapon in terminal
                 DeviateShotAngle = 0.25f,
-                AimingTolerance = 1f, // 0 - 180 firing angle
+                AimingTolerance = 0.5f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -73,8 +73,8 @@ namespace Scripts
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.0015f,
-                    ElevateRate = 0.0015f,
+                    RotateRate = 0.002f,
+                    ElevateRate = 0.002f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -5,
@@ -83,6 +83,7 @@ namespace Scripts
                     InventorySize = 1.576f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     CriticalReaction = new CriticalDef
                     {
                         Enable = false, // Enables Warhead behaviour
@@ -93,7 +94,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 0,
+                    ConstructPartCap = 21,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
