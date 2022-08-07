@@ -244,8 +244,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>1334</Mass>
-			<Volume>667</Volume>
+            <Mass>1106</Mass>
+            <Volume>737</Volume>
 			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
