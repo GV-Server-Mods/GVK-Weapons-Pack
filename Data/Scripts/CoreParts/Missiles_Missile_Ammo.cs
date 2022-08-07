@@ -101,9 +101,9 @@ namespace Scripts
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = false,
-                    Radius = 4f,
-                    Damage = 6000f,
-                    Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Radius = 0f,
+                    Damage = 0,
+                    Depth = 0f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -116,7 +116,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 5f,
-                    Damage = 7000f,
+                    Damage = 10000f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
@@ -345,7 +345,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 5f,
-                    Damage = 7000f,
+                    Damage = 10000f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
