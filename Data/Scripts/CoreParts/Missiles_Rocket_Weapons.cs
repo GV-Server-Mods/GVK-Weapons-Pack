@@ -151,7 +151,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "LargeMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 3f,
+                DeviateShotAngle = 2f,
                 AimingTolerance = 4f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -162,8 +162,8 @@ namespace Scripts
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.01f,
+                    RotateRate = 0.03f,
+                    ElevateRate = 0.02f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -5,
@@ -267,7 +267,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 3f,
+                DeviateShotAngle = 2f,
                 AimingTolerance = 4f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -278,8 +278,8 @@ namespace Scripts
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f,
-                    ElevateRate = 0.01f,
+                    RotateRate = 0.03f,
+                    ElevateRate = 0.02f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -8,
@@ -493,7 +493,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 4f,
+                DeviateShotAngle = 3f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

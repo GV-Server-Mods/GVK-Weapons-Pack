@@ -106,7 +106,7 @@ namespace Scripts
                 },
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = false,
+                    Enable = true,
                     Radius = 5f,
                     Damage = 9000f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
