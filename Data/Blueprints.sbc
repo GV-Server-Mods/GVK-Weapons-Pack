@@ -8,12 +8,12 @@
 			</Id>
 			<DisplayName>[Gatling] 25mm KE x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Ammo_Box.dds</Icon>
-			<Prerequisites>
-				<Item Amount="20" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="5" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="0.75" TypeId="Ingot" SubtypeId="Magnesium"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>15</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="20" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="5" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.75" TypeId="Ingot" SubtypeId="Magnesium" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>19</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="NATO_25x184mm"/>
 		</Blueprint>
 		<Blueprint>
@@ -23,13 +23,13 @@
 			</Id>
 			<DisplayName>[Chaingun] 30mm API</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
-			<Prerequisites>
-				<Item Amount="29" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="7.3" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="1.1" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="4.4" TypeId="Ingot" SubtypeId="Cobalt"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>15</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="26" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="6.6" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="1" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="4" TypeId="Ingot" SubtypeId="Cobalt" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>19</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AutocannonClip"/>
 		</Blueprint>
 		<Blueprint>
@@ -54,13 +54,13 @@
 			</Id>
 			<DisplayName>[Flak] 100mm HE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
-			<Prerequisites>
-				<Item Amount="47" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="12" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="1.8" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="7.1" TypeId="Ingot" SubtypeId="Cobalt"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>33</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="84" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="21" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="3.1" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="13" TypeId="Ingot" SubtypeId="Cobalt" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>72</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="MediumCalibreAmmo"/>
 		</Blueprint>
 		<Blueprint>
@@ -70,13 +70,13 @@
 			</Id>
 			<DisplayName>[Cannon] 155mm AP</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
-			<Prerequisites>
-				<Item Amount="70" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="17" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="2.6" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="10" TypeId="Ingot" SubtypeId="Cobalt"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>43</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="55" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="14" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="2.1" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="8.3" TypeId="Ingot" SubtypeId="Cobalt" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>46</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="LargeCalibreAmmo"/>
 		</Blueprint>
 		<!-- Ammo only discoverable -->
@@ -87,31 +87,17 @@
 			</Id>
 			<DisplayName>[Railgun] 50mm FeW</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
-			<Prerequisites>
-				<Item Amount="950" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="240" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="4.7" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="140" TypeId="Ingot" SubtypeId="Cobalt"/>
+            <Prerequisites>
+                <Item Amount="1300" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="330" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="6.5" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="200" TypeId="Ingot" SubtypeId="Cobalt" />
+                <Item Amount="33" TypeId="Ingot" SubtypeId="Silver" />
 				<Item Amount="1" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>103</BaseProductionTimeInSeconds>
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>182</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="SmallRailgunAmmo"/>
 		</Blueprint>
-		<!-- Ammo only discoverable -->
-		<!-- <Blueprint>
-			<Id>
-				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>Ballistics_MAC</SubtypeId>
-			</Id>
-			<DisplayName>[MAC] 1000mm KE</DisplayName>
-			<Icon>Textures\GUI\Icons\MXA_MACL_Ammo.png</Icon>
-			<Prerequisites>
-				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
-			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_MAC"/>
-		</Blueprint> -->
-		<!-- Ammo only discoverable -->
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
@@ -119,14 +105,15 @@
 			</Id>
 			<DisplayName>[MAC] 200mm DU</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
-			<Prerequisites>
-				<Item Amount="4600" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="1100" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="23" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="690" TypeId="Ingot" SubtypeId="Cobalt"/>
+            <Prerequisites>
+                <Item Amount="23000" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="5800" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="120" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="3500" TypeId="Ingot" SubtypeId="Cobalt" />
+                <Item Amount="580" TypeId="Ingot" SubtypeId="Silver" />
 				<Item Amount="5" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>605</BaseProductionTimeInSeconds>
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>728</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="LargeRailgunAmmo"/>
 		</Blueprint>
 		<Blueprint>
@@ -135,13 +122,13 @@
 				<SubtypeId>Missile200mm</SubtypeId>
 			</Id>
 			<DisplayName>[Rocket] Hydra HE</DisplayName>
-			<Prerequisites>
-				<Item Amount="260" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="38" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="0.47" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="19" TypeId="Ingot" SubtypeId="Silicon"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>49</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="74" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="11" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.13" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="5.4" TypeId="Ingot" SubtypeId="Silicon" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>23</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
 		</Blueprint>
 		<Blueprint>
@@ -151,14 +138,14 @@
 			</Id>
 			<DisplayName>[Missile] Archer HE</DisplayName>
 			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
-			<Prerequisites>
-				<Item Amount="220" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="33" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="0.41" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="16" TypeId="Ingot" SubtypeId="Silicon"/>
-				<Item Amount="1" TypeId="Ingot" SubtypeId="Gold"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>38</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="58" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="8.4" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.11" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="4.2" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="0.26" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>20</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Missile"/>
 		</Blueprint>
 		<!-- Ammo only discoverable -->
@@ -183,20 +170,73 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
+			</Id>
+			<DisplayName>[Heavy Cannon] 480mm HE</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
+            <Prerequisites>
+                <Item Amount="300" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="76" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="11" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="45" TypeId="Ingot" SubtypeId="Cobalt" />
+                <Item Amount="7.6" TypeId="Ingot" SubtypeId="Silver" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>189</BaseProductionTimeInSeconds>			
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_HeavyCannon"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missiles_Siege</SubtypeId>
 			</Id>
 			<DisplayName>[SRBM] Longsword MRV</DisplayName>
 			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
             <Prerequisites>
-                <Item Amount="620" TypeId="Ingot" SubtypeId="Iron" />
-                <Item Amount="90" TypeId="Ingot" SubtypeId="Nickel" />
-                <Item Amount="1.7" TypeId="Ingot" SubtypeId="Platinum" />
-                <Item Amount="1.1" TypeId="Ingot" SubtypeId="Uranium" />
-                <Item Amount="45" TypeId="Ingot" SubtypeId="Silicon" />
-                <Item Amount="2.8" TypeId="Ingot" SubtypeId="Gold" />
+                <Item Amount="2400" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="350" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="6.6" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="4.4" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="180" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="11" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>182</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Siege"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
+			</Id>
+			<DisplayName>[Heavy Missile] Tuukka HE</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+            <Prerequisites>
+                <Item Amount="280" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="41" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.5" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="20" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="1.3" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>69</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_HeavyMissile"/>
+		</Blueprint>
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>Lasers_Plasma</SubtypeId>
+			</Id>
+			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+            <Prerequisites>
+                <Item Amount="6500" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="940" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="18" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="12" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="470" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="30" TypeId="Ingot" SubtypeId="Gold" />
+				<Item Amount="2" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
             </Prerequisites>
 			<BaseProductionTimeInSeconds>197</BaseProductionTimeInSeconds>
-			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Siege"/>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Lasers_Plasma"/>
 		</Blueprint>
 		<Blueprint>
 			<Id>

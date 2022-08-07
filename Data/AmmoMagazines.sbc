@@ -272,8 +272,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>1106</Mass>
-			<Volume>737</Volume>
+			<Mass>1334</Mass>
+			<Volume>667</Volume>
 			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -286,23 +286,20 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
 			</Id>
-			<DisplayName>480mm Heavy Shell</DisplayName>
+			<DisplayName>[Heavy Cannon] 480mm HE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
 			<Size>
 				<X>0.8</X>
 				<Y>0.4</Y>
 				<Z>0.4</Z>
 			</Size>
-			<Mass>120</Mass>
-			<Volume>24</Volume>
+			<Mass>7000</Mass>
+			<Volume>700</Volume>
 			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimumOfferAmount>10</MinimumOfferAmount>
-			<MaximumOfferAmount>100</MaximumOfferAmount>
-			<MinimumOrderAmount>10</MinimumOrderAmount>
-			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
 		<AmmoMagazine>
@@ -310,15 +307,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[Cruise Missile] Tuukka HE</DisplayName>
+			<DisplayName>[Heavy Missile] Tuukka HE</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Size>
 				<X>4</X>
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>141</Mass>
-			<Volume>94</Volume>
+			<Mass>400</Mass>
+			<Volume>200</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -334,12 +331,12 @@
 			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Size>
-				<X>4</X>
+				<X>1</X>
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>141</Mass>
-			<Volume>94</Volume>
+			<Mass>1110</Mass>
+			<Volume>740</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
