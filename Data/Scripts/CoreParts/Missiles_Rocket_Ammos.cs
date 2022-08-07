@@ -92,10 +92,10 @@ namespace Scripts
             AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
-                    Enable = true,
-                    Radius = 10f,
+                    Enable = false,
+                    Radius = 7f,
                     Damage = 9000f,
-                    Depth = 0.4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 10f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -108,22 +108,23 @@ namespace Scripts
                 {
                     Enable = false,
                     Radius = 5f,
-                    Damage = 600f,
+                    Damage = 9000f,
                     Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 00,
+                    MinArmingTime = 15,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
                     CustomParticle = "particleName",
                     CustomSound = "soundName",
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
 			

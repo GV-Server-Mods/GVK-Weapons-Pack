@@ -425,7 +425,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.001</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -853,7 +853,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.001</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1276,7 +1276,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.001</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1719,7 +1719,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.001</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -2132,7 +2132,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.001</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>

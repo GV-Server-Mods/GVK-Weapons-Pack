@@ -90,7 +90,7 @@ namespace Scripts {
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     InventorySize = 1f, // Inventory capacity in kL.
-                    IdlePower = 2.2f, // Constant base power draw in MW.
+                    IdlePower = 0.01f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -105,7 +105,7 @@ namespace Scripts {
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+                    ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
                     EnergyPriority = 0, // Deprecated.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
@@ -183,7 +183,8 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                Lasers_Plasma, // Must list all primary, shrapnel, and pattern ammos.
+                Lasers_Plasma,
+				Lasers_Plasma_Shrapnel,// Must list all primary, shrapnel, and pattern ammos.
             },
             Animations = Lasers_Plasma_Animations_Loki,
             //Upgrades = UpgradeModules,

@@ -375,7 +375,7 @@
               <Keys />
             </Property>
             <Property AnimationType="Const" Name="Camera bias" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
               <Keys>
@@ -430,7 +430,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0.002</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -803,7 +803,7 @@
               <Keys />
             </Property>
             <Property AnimationType="Const" Name="Camera bias" Type="Float">
-              <ValueFloat>-3</ValueFloat>
+              <ValueFloat>-1</ValueFloat>
             </Property>
             <Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
               <Keys>
@@ -858,7 +858,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0.002</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1231,7 +1231,7 @@
               <Keys />
             </Property>
             <Property AnimationType="Const" Name="Camera bias" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
               <Keys>
@@ -1286,7 +1286,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0.002</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1714,7 +1714,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0.002</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -2142,7 +2142,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.002</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
