@@ -35,7 +35,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.1606015038f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.08030075188f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -191,9 +191,9 @@ namespace Scripts
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 50f,
+                        Length = 100f,
                         Width = 0.01f,
-                        Color = Color(red: 11, green: 16, blue: 25, alpha: 1),
+                        Color = Color(red: 22, green: 32, blue: 50, alpha: 1),
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
@@ -209,7 +209,7 @@ namespace Scripts
                         },
                         TextureMode = Normal,
                         DecayTime = 50,
-                        Color = Color(red: 11, green: 16, blue: 25, alpha: 1),
+                        Color = Color(red: 22, green: 32, blue: 50, alpha: 1),
                         Back = false,
                         CustomWidth = 0.25f,
                         UseWidthVariance = true,
@@ -217,9 +217,9 @@ namespace Scripts
                     },
                     OffsetEffect = new OffsetEffectDef
                     {
-                        MaxOffset = 3,// 0 offset value disables this effect
+                        MaxOffset = 5,// 0 offset value disables this effect
                         MinLength = 0.2f,
-                        MaxLength = 10,
+                        MaxLength = 5,
                     },
                 },
             },
@@ -244,7 +244,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.1822556391f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.09067669173f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.

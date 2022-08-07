@@ -9,7 +9,7 @@
 			<DisplayName>[Railgun] Apollo</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
 			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
-				[2500m Auto Range]
+				[3000m Auto Range]
 				[Uses 50mm FeW + 89MW]</Description>
 			<CubeSize>Large</CubeSize>
 			<Public>true</Public>
@@ -71,7 +71,7 @@
 			</Id>
 			<DisplayName>[Railgun] Artemis</DisplayName>
 			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
-				[2700m Manual Range]
+				[3300m Manual Range]
 				[Uses 50mm FeW + 89MW]</Description>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
 			<Public>true</Public>
