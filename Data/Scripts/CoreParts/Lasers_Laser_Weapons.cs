@@ -586,7 +586,7 @@ namespace Scripts
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.2f,
+                        DurabilityMod = 0.5f,
                     },
                 },
                 Muzzles = new[] {
@@ -602,7 +602,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Spartan Laser Cannon", // name of weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons)
-                DeviateShotAngle = 0.05f,
+                DeviateShotAngle = 0f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -620,7 +620,7 @@ namespace Scripts
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
-                    MaxElevation = 85,
+                    MaxElevation = 80,
                     FixedOffset = false,
                     InventorySize = 0f,
                     Offset = Vector(x: 0, y: 0, z: 0),

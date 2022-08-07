@@ -355,11 +355,11 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true, //purely visual for this ammo
-                    Radius = 10f, // Meters
-                    Damage = 7500f,
-                    Depth = 10f,
+                    Radius = 5f, // Meters
+                    Damage = 20000f,
+                    Depth = 5f,
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
