@@ -1,6 +1,77 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- HONIR DESIGNATOR -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>honir_designator_01</SubtypeId>
+			</Id>
+			<DisplayName>LRD-100 Designator HONIR</DisplayName>
+			<Description>L.Y.N.X Industries presents - Never lose your foes! If you can't see them, you can't conquer them. Change that with this specimen.</Description>
+			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0" />
+			<ShowEdges>false</ShowEdges>
+			<GuiVisible>true</GuiVisible>
+			<Model>Models\Cubes\Large\honir_designator_01\HONIR_DESIGNATOR_01.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="50" />
+				<Component Subtype="Construction" Count="15" />
+				<Component Subtype="MetalGrid" Count="5" />
+				<Component Subtype="LargeTube" Count="5" />
+				<Component Subtype="Motor" Count="8" />
+				<Component Subtype="Superconductor" Count="30" />
+				<Component Subtype="Computer" Count="25" />
+				<Component Subtype="Construction" Count="50" />
+				<Component Subtype="SteelPlate" Count="100" />
+			</Components>
+			<CriticalComponent Subtype="SteelPlate" Index="0" />
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.19" StartY="0.19" EndX="0.81" EndY="0.81"/>
+			</MountPoints>
+			<BlockPairName>honir_designator_01</BlockPairName>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>40</BuildTimeSeconds>
+			<!--OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture-->
+			<WeaponDefinitionId Subtype="Others_Radar" />
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<MinElevationDegrees>-30</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>8000</MaxRangeMeters>
+			<RotationSpeed>0.007</RotationSpeed>
+			<ElevationSpeed>0.005 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<ShowEdges>false</ShowEdges>
+			<AiEnabled>false</AiEnabled>
+			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>100</PCU>
+		</Definition>
 		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>

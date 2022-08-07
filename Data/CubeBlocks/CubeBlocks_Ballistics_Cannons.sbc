@@ -8,7 +8,7 @@
 			</Id>
 			<DisplayName>[Cannon] Dual 155mm Artillery Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
-			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
+			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
 				[2000m Auto Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Large</CubeSize>
