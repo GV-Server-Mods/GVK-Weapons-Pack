@@ -201,7 +201,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>20</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Others_Radar"/>
 			<InventoryMaxVolume>0.001</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
@@ -255,7 +255,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>20</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Others_Radar"/>
 			<InventoryMaxVolume>0.01</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>

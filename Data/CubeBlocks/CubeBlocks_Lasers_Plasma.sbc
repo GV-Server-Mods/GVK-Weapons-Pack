@@ -53,7 +53,7 @@
 				</DynamicMode>
 			</VoxelPlacement>
 			<EdgeType>Light</EdgeType>
-			<!--OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture-->
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_Laser" />
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<MinElevationDegrees>-30</MinElevationDegrees>

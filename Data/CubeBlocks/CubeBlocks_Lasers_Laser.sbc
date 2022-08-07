@@ -48,7 +48,7 @@
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="Lasers_Laser"/>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.144</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
