@@ -30,10 +30,10 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Missiles_Torpedo_HomingPhase => new AmmoDef // Your ID, for slotting into the Weapon CS
+        private AmmoDef Missiles_Torpedo => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
             AmmoMagazine = "Missiles_Torpedo", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
-            AmmoRound = "Missiles_Torpedo_HomingPhase", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            AmmoRound = "Missiles_Torpedo", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
             BaseDamage = 100f, // Direct damage; one steel plate is worth 100.
@@ -49,18 +49,12 @@ namespace Scripts
             IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
             Synchronize = false, // For future use
             HeatModifier = -1f, // Allows this ammo to modify the amount of heat the weapon produces per shot.
-            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
-            {
-                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
-            },
-            ObjectsHit = new ObjectsHitDef
-            {
-                MaxObjectsHit = 0, // Limits the number of entities (grids, players, projectiles) the projectile can penetrate; 0 = unlimited.
-                CountBlocks = false, // Counts individual blocks, not just entities hit.
-            },
-            Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
-            {
+
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = new FragmentDef {
                 AmmoRound = "Missiles_Torpedo_Shrapnel2", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
@@ -86,21 +80,10 @@ namespace Scripts
                     GroupDelay = 0, // Delay between each group.
                 },
             },
-            Pattern = new PatternDef
-            {
-                Patterns = new[] { // If enabled, set of multiple ammos to fire in order instead of the main ammo.
-                    "",
-                },
-                Mode = Fragment, // Select when to activate this pattern, options: Never, Weapon, Fragment, Both 
-                TriggerChance = 1f, // This is %
-                Random = false, // This randomizes the number spawned at once, NOT the list order.
-                RandomMin = 1, 
-                RandomMax = 1,
-                SkipParent = false, // Skip the Ammo itself, in the list
-                PatternSteps = 1, // Number of Ammos activated per round, will progress in order and loop. Ignored if Random = true.
-            },
-            DamageScales = new DamageScaleDef
-            {
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // Blocks with integrity higher than this value will be immune to damage from this projectile; 0 = disabled.
                 DamageVoxels = false, // Whether to damage voxels.
                 SelfDamage = false, // Whether to damage the weapon's own grid.
@@ -140,8 +123,8 @@ namespace Scripts
                 },
 				Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = false,
@@ -182,69 +165,12 @@ namespace Scripts
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 }, 
             },
-            Ewar = new EwarDef
-            {
-                Enable = false, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
-                Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
-                Mode = Effect, // Effect , Field
-                Strength = 100f,
-                Radius = 5f, // Meters
-                Duration = 100, // In Ticks
-                StackDuration = true, // Combined Durations
-                Depletable = true,
-                MaxStacks = 10, // Max Debuffs at once
-                NoHitParticle = false,
-                /*
-                EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
-                Emp : Targets & Shutdown any Block capable of being powered
-                Offense : Targets & Shutdowns Weaponry
-                Nav : Targets & Shutdown Gyros or Locks them down
-                Dot : Deals Damage to Blocks in radius
-                AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
-                JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
-                Tractor : Affects target with Physics
-                Pull : Affects target with Physics
-                Push : Affects target with Physics
-                Anchor : Targets & Shutdowns Thrusters
-                
-                */
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the default bubble, or other model if specified.
-                    ShowParticle = true, // Show Block damage effect.
-                    TriggerRange = 250f, //range at which fields are triggered
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Beams = new BeamDef
-            {
-                Enable = false, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
-                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
-                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
-                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
-                OneParticle = false, // Only spawn one particle hit per beam weapon.
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+            Trajectory = new TrajectoryDef {
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 0f, // Degrees, Is pointed forward
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -273,17 +199,12 @@ namespace Scripts
                     OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                 },
-                Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.
-                {
-                    DetectRadius = 0,
-                    DeCloakRadius = 0,
-                    FieldTime = 0,
-                    Cloak = false,
-                    Persist = false,
-                },
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "\\Models\\Akiad\\Small\\CrusaderMissile.mwm",
                 VisualProbability = 1f, // %
                 ShieldHitDraw = false,
@@ -376,8 +297,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+
+            AmmoAudio = new AmmoAudioDef {
                 TravelSound = "MXA_Archer_Travel", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
                 HitSound = "HWR_FireyExplosion",
                 ShotSound = "",
@@ -388,18 +309,9 @@ namespace Scripts
                 HitPlayChance = 1f,
                 HitPlayShield = true,
             },
-            Ejection = new EjectionDef // Optional Component, allows generation of Particle or Item (Typically magazine), on firing, to simulate Tank shell ejection
-            {
-                Type = Particle, // Particle or Item (Inventory Component)
-                Speed = 100f, // Speed inventory is ejected from in dummy direction
-                SpawnChance = 0.5f, // chance of triggering effect (0 - 1)
-                CompDef = new ComponentDef
-                {
-                    ItemName = "", //InventoryComponent name
-                    ItemLifeTime = 0, // how long item should exist in world
-                    Delay = 0, // delay in ticks after shot before ejected
-                }
-            }, // Don't edit below this line
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
 
         private AmmoDef Missiles_Torpedo_NPC => new AmmoDef // Your ID, for slotting into the Weapon CS
@@ -421,18 +333,12 @@ namespace Scripts
             IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
             Synchronize = false, // For future use
             HeatModifier = -1f, // Allows this ammo to modify the amount of heat the weapon produces per shot.
-            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
-            {
-                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
-            },
-            ObjectsHit = new ObjectsHitDef
-            {
-                MaxObjectsHit = 0, // Limits the number of entities (grids, players, projectiles) the projectile can penetrate; 0 = unlimited.
-                CountBlocks = false, // Counts individual blocks, not just entities hit.
-            },
-            Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
-            {
+
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = new FragmentDef {
                 AmmoRound = "Missiles_Torpedo_Shrapnel2", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
@@ -458,21 +364,10 @@ namespace Scripts
                     GroupDelay = 0, // Delay between each group.
                 },
             },
-            Pattern = new PatternDef
-            {
-                Patterns = new[] { // If enabled, set of multiple ammos to fire in order instead of the main ammo.
-                    "",
-                },
-                Mode = Fragment, // Select when to activate this pattern, options: Never, Weapon, Fragment, Both 
-                TriggerChance = 1f, // This is %
-                Random = false, // This randomizes the number spawned at once, NOT the list order.
-                RandomMin = 1, 
-                RandomMax = 1,
-                SkipParent = false, // Skip the Ammo itself, in the list
-                PatternSteps = 1, // Number of Ammos activated per round, will progress in order and loop. Ignored if Random = true.
-            },
-            DamageScales = new DamageScaleDef
-            {
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // Blocks with integrity higher than this value will be immune to damage from this projectile; 0 = disabled.
                 DamageVoxels = false, // Whether to damage voxels.
                 SelfDamage = false, // Whether to damage the weapon's own grid.
@@ -512,8 +407,8 @@ namespace Scripts
                 },
 				Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = false,
@@ -554,67 +449,11 @@ namespace Scripts
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 }, 
             },
-            Ewar = new EwarDef
-            {
-                Enable = false, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
-                Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
-                Mode = Effect, // Effect , Field
-                Strength = 100f,
-                Radius = 5f, // Meters
-                Duration = 100, // In Ticks
-                StackDuration = true, // Combined Durations
-                Depletable = true,
-                MaxStacks = 10, // Max Debuffs at once
-                NoHitParticle = false,
-                /*
-                EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
-                Emp : Targets & Shutdown any Block capable of being powered
-                Offense : Targets & Shutdowns Weaponry
-                Nav : Targets & Shutdown Gyros or Locks them down
-                Dot : Deals Damage to Blocks in radius
-                AntiSmart : Effects & Scrambles the Targeting List of Affected Missiles
-                JumpNull : Shutdown & Stops any Active Jumps, or JumpDrive Units in radius
-                Tractor : Affects target with Physics
-                Pull : Affects target with Physics
-                Push : Affects target with Physics
-                Anchor : Targets & Shutdowns Thrusters
-                
-                */
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the default bubble, or other model if specified.
-                    ShowParticle = true, // Show Block damage effect.
-                    TriggerRange = 250f, //range at which fields are triggered
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Beams = new BeamDef
-            {
-                Enable = false, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
-                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
-                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
-                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
-                OneParticle = false, // Only spawn one particle hit per beam weapon.
-            },
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
             Trajectory = new TrajectoryDef
             {
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
@@ -645,14 +484,9 @@ namespace Scripts
                     OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                 },
-                Mines = new MinesDef  // Note: This is being investigated. Please report to Github, any issues.
-                {
-                    DetectRadius = 0,
-                    DeCloakRadius = 0,
-                    FieldTime = 0,
-                    Cloak = false,
-                    Persist = false,
-                },
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
             AmmoGraphics = new GraphicDef
             {

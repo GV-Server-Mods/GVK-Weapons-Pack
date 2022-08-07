@@ -59,12 +59,12 @@ namespace Scripts {
 		};
 		
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T1 = new LoadingDef {
-			RateOfFire = 150, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 120, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			SkipBarrels = 0, // Number of muzzles to skip after each fire event.
-			ReloadTime = 18, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			MagsToLoad = 4, // Number of physical magazines to consume on reload.
+			ReloadTime = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			MagsToLoad = 2, // Number of physical magazines to consume on reload.
 			DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			HeatPerShot = 0, // Heat generated per shot.
 			MaxHeat = 0, // Max heat before weapon enters cooldown (70% of max heat).
@@ -201,7 +201,6 @@ namespace Scripts {
             },
             Ammos = new[] {
                 AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
             },
             //Animations = Weapon75_Animation,
             //Upgrades = UpgradeModules,
@@ -288,7 +287,6 @@ namespace Scripts {
 
 			Ammos = new [] {
                 AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
             },
             Animations = KhopeshTurret_Recoil
             // Don't edit below this line
@@ -372,7 +370,6 @@ namespace Scripts {
             },
             Ammos = new[] {
                 AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
             },
             //Animations = Weapon75_Animation,
             //Upgrades = UpgradeModules,
@@ -464,7 +461,6 @@ namespace Scripts {
             },
             Ammos = new[] {
                 AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
             },
             //Animations = Weapon75_Animation,
             //Upgrades = UpgradeModules,
@@ -513,7 +509,7 @@ namespace Scripts {
             },
             HardPoint = new HardPointDef
             {
-                PartName = "Thrasher Heavy Autocannon", // name of weapon in terminal
+                PartName = "Thrasher Autocannon", // name of weapon in terminal
                 DeviateShotAngle = 0.15f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
@@ -567,14 +563,19 @@ namespace Scripts {
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
                     HeatSinkRate = 0, //amount of heat lost per second
                     DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
                     GiveUpAfter = false,
-                    MagsToLoad = 2,
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 2, // Number of physical magazines to consume on reload.
+                    SpinFree = false, // Spin while not firing
+                    StayCharged = false, // Will start recharging whenever power cap is not full					
+					MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+					MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
                 },
 
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
@@ -584,7 +585,6 @@ namespace Scripts {
             },
             Ammos = new[] {
                 AutocannonClip, // Must list all primary, shrapnel, and pattern ammos.
-				AutocannonClip_Ricochet,
             },
             //Animations = AryxRiptideAnims,
             // Don't edit below this line

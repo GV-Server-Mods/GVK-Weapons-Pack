@@ -53,7 +53,7 @@ namespace Scripts {
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
-		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare_T2 = new HardwareDef {
+		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef {
 			RotateRate = 0.05f,
 			ElevateRate = 0.03f,
 			MinAzimuth = -180,
@@ -62,7 +62,7 @@ namespace Scripts {
 			MaxElevation = 90,
 			FixedOffset = false,
 			InventorySize = 0.6f,
-			//Offset = Vector(x: 0, y: 0, z: 0),
+			//Offset = new Vector3D(0f,0f,0f),
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 			CriticalReaction = new CriticalDef
@@ -86,7 +86,7 @@ namespace Scripts {
 			CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
 		};
 
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T2 = new LoadingDef {
+		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef {
 			RateOfFire = 1800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
@@ -188,7 +188,7 @@ namespace Scripts {
 
             HardPoint = new HardPointDef
             {
-                PartName = "Sentinel Turret", // name of weapon in terminal
+                PartName = "Sentinel Gatling", // name of weapon in terminal
                 DeviateShotAngle = 0.3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -196,15 +196,15 @@ namespace Scripts {
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -252,15 +252,15 @@ namespace Scripts {
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -309,7 +309,7 @@ namespace Scripts {
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
@@ -332,7 +332,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -391,7 +391,7 @@ namespace Scripts {
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
 				
@@ -414,7 +414,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -465,7 +465,7 @@ namespace Scripts {
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
@@ -488,7 +488,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -547,7 +547,7 @@ namespace Scripts {
             },
             HardPoint = new HardPointDef
             {
-                PartName = "Vulcan Turret", // name of weapon in terminal
+                PartName = "Vulcan Gatling", // name of weapon in terminal
                 DeviateShotAngle = 0.4f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -555,21 +555,10 @@ namespace Scripts {
                 AddToleranceToTracking = false,
 				CanShootSubmerged = false,
 
-                Ui = new UiDef
-                {
-                    RateOfFire = false,
-                    DamageModifier = false,
-                    ToggleGuidance = false,
-                    EnableOverload = false,
-                },
-                Ai = new AiDef
-                {
-                    TrackTargets = true,
-                    TurretAttached = true,
-                    TurretController = true,
-                    PrimaryTracking = true,
-                    LockOnFocus = false,
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+				
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+								
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.02f,
@@ -592,6 +581,7 @@ namespace Scripts {
                         TerminalControls = true,
                     },
                 },
+
                 Other = new OtherDef
                 {
                     ConstructPartCap = 21,
@@ -603,14 +593,15 @@ namespace Scripts {
                     CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
                     CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
+
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 3600,
+                    RateOfFire = 1800,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -640,33 +631,8 @@ namespace Scripts {
                     FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                     FireSoundNoBurst = false,
                 },
-                Graphics = new HardPointParticleDef
-                {
-					Effect1 = new ParticleDef
-					{
-						Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
-						Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
-						Offset = new Vector3D(0f,0f,0f), //XYZ
-						Extras = new ParticleOptionDef
-						{
-							Loop = true, // Set this to the same as in the particle sbc!
-							Restart = true, // Whether to end a looping effect instantly when firing stops.
-							Scale = 2f, // Scale of effect.
-						},
-					},
-					Effect2 = new ParticleDef
-					{
-						Name = "Smoke_LargeGunShot_WC",
-						Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
-						Offset = new Vector3D(0f,0f,0f), //XYZ
-						Extras = new ParticleOptionDef
-						{
-							Loop = true, // Set this to the same as in the particle sbc!
-							Restart = false,
-							Scale = 2f,
-						},
-					},
-                },
+                
+				Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
             },
             Ammos = new[] {
                 NATO_25x184mm,

@@ -30,8 +30,16 @@ namespace Scripts
             EnergyCost = 0.63f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
             BaseDamage = 50f,
             HardPointUsable = true,
-            DamageScales = new DamageScaleDef
-            {
+
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 HealthHitModifier = 0.5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 FallOff = new FallOffDef
                 {
@@ -49,21 +57,27 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            Beams = new BeamDef
-            {
-                Enable = true,
-                OneParticle = true, // Only spawn one particle hit per beam weapon.
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			AreaOfDamage = Common_Ammos_AreaOfDamage_None,
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+            Trajectory = new TrajectoryDef {
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 DesiredSpeed = 0,
                 Guidance = None,
                 MaxTrajectory = 1200f,
                 RangeVariance = Random(start: 0, end: 100), // subtracts value from MaxTrajectory
+                
+				Smarts = Common_Ammos_Trajectory_Smarts_None,
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -119,6 +133,11 @@ namespace Scripts
                     },
                 },
             },
+
+            AmmoAudio = Common_Ammos_AmmoAudio_None,
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         }; 
     }
 }

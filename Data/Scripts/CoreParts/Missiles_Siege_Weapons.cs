@@ -189,10 +189,8 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                //Missiles_Siege_Test,
-				//Missiles_Siege_Test_Shrapnel,
-                Missiles_Siege_Test2,
-				Missiles_Siege_Test_Shrapnel2,
+                Missiles_Siege,
+				Missiles_Siege_Shrapnel,
             },
             Animations = AryxMissileBatteryAnims,
             //Upgrades = UpgradeModules,

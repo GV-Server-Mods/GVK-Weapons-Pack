@@ -31,10 +31,10 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Missiles_Missile_HomingPhase => new AmmoDef
+        private AmmoDef Missiles_Missile => new AmmoDef
         {
             AmmoMagazine = "Missiles_Missile",
-            AmmoRound = "Missiles_Missile_HomingPhase",
+            AmmoRound = "Missiles_Missile",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 1f,
@@ -46,13 +46,15 @@ namespace Scripts
             EnergyMagazineSize = 0,
             IgnoreWater = false,
 
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 0,
-            },
-            DamageScales = new DamageScaleDef
-            {
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
@@ -94,8 +96,8 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
@@ -133,52 +135,12 @@ namespace Scripts
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
-            Ewar = new EwarDef
-            {
-                Enable = false,
-                Type = EnergySink,
-                Mode = Effect,
-                Strength = 10000f,
-                Radius = 100f,
-                Duration = 100,
-                StackDuration = true,
-                Depletable = true,
-                MaxStacks = 10,
-                NoHitParticle = false,
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+            Trajectory = new TrajectoryDef {
                 Guidance = Smart,
                 TargetLossDegree = 30,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -205,9 +167,12 @@ namespace Scripts
                     Roam = false, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
                 },
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -279,8 +244,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+
+            AmmoAudio = new AmmoAudioDef {
                 TravelSound = "MXA_Archer_Travel",
                 HitSound = "HWR_SmallExplosion",
                 ShieldHitSound = "",
@@ -289,8 +254,12 @@ namespace Scripts
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
-            }, // Don't edit below this line
+            },
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
+
         private AmmoDef Missiles_Missile_NPC => new AmmoDef
         {
             AmmoMagazine = "Missiles_Missile",
@@ -306,13 +275,15 @@ namespace Scripts
             EnergyMagazineSize = 0,
             IgnoreWater = false,
 
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 0,
-            },
-            DamageScales = new DamageScaleDef
-            {
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
@@ -354,8 +325,8 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
@@ -390,54 +361,15 @@ namespace Scripts
                     ParticleScale = 1,
                     CustomParticle = "particleName",
                     CustomSound = "soundName",
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
-            Ewar = new EwarDef
-            {
-                Enable = false,
-                Type = EnergySink,
-                Mode = Effect,
-                Strength = 10000f,
-                Radius = 100f,
-                Duration = 100,
-                StackDuration = true,
-                Depletable = true,
-                MaxStacks = 10,
-                NoHitParticle = false,
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+			Trajectory = new TrajectoryDef {
                 Guidance = Smart,
                 TargetLossDegree = 30,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -464,9 +396,12 @@ namespace Scripts
                     Roam = false, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
                 },
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -538,8 +473,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+
+            AmmoAudio = new AmmoAudioDef {
                 TravelSound = "MXA_Archer_Travel",
                 HitSound = "HWR_SmallExplosion",
                 ShieldHitSound = "",
@@ -548,7 +483,10 @@ namespace Scripts
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
-            }, // Don't edit below this line
+            },
+			
+			Ejection = Common_Ammos_Ejection_None,
+
         };
     }
 }

@@ -51,7 +51,19 @@ namespace Scripts
 							new RelMove
 							{
 								CenterEmpty = "",
-								TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
+								TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
+								MovementType = Linear,
+								LinearPoints = new[]
+								{
+									Transformation(0, 0, 1f), //linear movement
+								},
+								Rotation = Transformation(0, 0, 0), //degrees
+								RotAroundCenter = Transformation(0, 0, 0), //degrees
+							},
+							new RelMove
+							{
+								CenterEmpty = "",
+								TicksToMove = 600, //number of ticks to complete motion, 60 = 1 second
 								MovementType = Delay,
 								LinearPoints = new XYZ[0],
 								Rotation = Transformation(0, 0, 0), //degrees
@@ -66,6 +78,18 @@ namespace Scripts
 								LinearPoints = new[]
 								{
 									Transformation(0, 0, 0), //linear movement
+								},
+								Rotation = Transformation(0, 0, 0), //degrees
+								RotAroundCenter = Transformation(0, 0, 0), //degrees
+							},
+							new RelMove
+							{
+								CenterEmpty = "",
+								TicksToMove = 180, //number of ticks to complete motion, 60 = 1 second
+								MovementType = Linear, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
+								LinearPoints = new[]
+								{
+									Transformation(0, 0, -1f), //linear movement
 								},
 								Rotation = Transformation(0, 0, 0), //degrees
 								RotAroundCenter = Transformation(0, 0, 0), //degrees
@@ -133,28 +157,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -180,28 +182,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -241,28 +221,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -288,28 +246,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -349,28 +285,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -396,28 +310,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -457,28 +349,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -504,28 +374,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -565,28 +413,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -612,28 +438,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -673,28 +477,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -720,28 +502,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -781,28 +541,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -828,28 +566,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -889,28 +605,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -936,28 +630,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement
@@ -997,28 +669,6 @@ namespace Scripts
                                     Rotation = Transformation(0, 0, 0), //degrees
                                     RotAroundCenter = Transformation(0, 0, 0), //degrees
                                 },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
                             },
                         
                     }
@@ -1044,28 +694,6 @@ namespace Scripts
                                     CenterEmpty = "",
                                     TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
                                     MovementType = Hide, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
-                                    LinearPoints = new[]
-                                    {
-                                        Transformation(0, 0, 0), //linear movement
-                                    },
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 700, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Delay,
-                                    LinearPoints = new XYZ[0],
-                                    Rotation = Transformation(0, 0, 0), //degrees
-                                    RotAroundCenter = Transformation(0, 0, 0), //degrees
-                                },
-                                
-                                new RelMove
-                                {
-                                    CenterEmpty = "",
-                                    TicksToMove = 1, //number of ticks to complete motion, 60 = 1 second
-                                    MovementType = Show, //Linear,ExpoDecay,ExpoGrowth,Delay,Show, //instant or fade Hide, //instant or fade
                                     LinearPoints = new[]
                                     {
                                         Transformation(0, 0, 0), //linear movement

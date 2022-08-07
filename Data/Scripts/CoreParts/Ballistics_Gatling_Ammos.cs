@@ -37,7 +37,7 @@ namespace Scripts
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 75f,
-            Mass = 5f, // in kilograms
+            Mass = 2f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 100f,
             DecayPerShot = 0f,
@@ -45,18 +45,15 @@ namespace Scripts
             EnergyMagazineSize = 0,
             IgnoreWater = true,
 
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 0,
-            },
-            ObjectsHit = new ObjectsHitDef
-            {
-                MaxObjectsHit = 0, // 0 = disabled
-                CountBlocks = false, // counts gridBlocks and not just entities hit
-            },
-            DamageScales = new DamageScaleDef
-            {
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
@@ -98,16 +95,14 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
             },
-            Beams = new BeamDef
-            {
-                Enable = false,
-                VirtualBeams = false, // Only one hot beam, but with the effectiveness of the virtual beams combined (better performace)
-                ConvergeBeams = false, // When using virtual beams this option visually converges the beams to the location of the real beam.
-                RotateRealBeam = false, // The real (hot beam) is rotated between all virtual beams, instead of centered between them.
-                OneParticle = false, // Only spawn one particle hit per beam weapon.
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			AreaOfDamage = Common_Ammos_AreaOfDamage_None,
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+            Trajectory = new TrajectoryDef {
                 Guidance = None,
                 TargetLossDegree = 0,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -120,32 +115,14 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 10), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 300), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
-                Smarts = new SmartsDef
-                {
-                    Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-                    Aggressiveness = 0f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0, // controls how sharp the trajectile may turn
-                    TrackingDelay = 0, // Measured in Shape diameter units traveled.
-                    MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
-                    MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
-                    NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
-                    Roam = false, // Roam current area after target loss
-                    KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
-                    OffsetRatio = 0f, // The ratio to offset the random dir (0 to 1) 
-                    OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                },
-                Mines = new MinesDef
-                {
-                    DetectRadius = 0,
-                    DeCloakRadius = 0,
-                    FieldTime = 0,
-                    Cloak = false,
-                    Persist = false,
-                },
+                
+				Smarts = Common_Ammos_Trajectory_Smarts_None,
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -183,8 +160,7 @@ namespace Scripts
                         },
                     },
                 },
-                Lines = new LineDef
-                {
+                Lines = new LineDef {
                     ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
                     WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
                     Tracer = new TracerBaseDef
@@ -208,8 +184,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+
+            AmmoAudio = new AmmoAudioDef {
                 TravelSound = "",
                 HitSound = "MD_BulletHit",
                 ShieldHitSound = "",
@@ -218,19 +194,10 @@ namespace Scripts
                 FloatingHitSound = "",
                 HitPlayChance = 0.15f,
                 HitPlayShield = true,
-			}, // Don't edit below this line
-            Ejection = new EjectionDef // Optional Component, allows generation of Particle or Item (Typically magazine), on firing, to simulate Tank shell ejection
-            {
-                Type = Particle, // Particle or Item (Inventory Component)
-                Speed = 100f, // Speed inventory is ejected from in dummy direction
-                SpawnChance = 0.5f, // chance of triggering effect (0 - 1)
-                CompDef = new ComponentDef
-                {
-                    ItemName = "", //InventoryComponent name
-                    ItemLifeTime = 0, // how long item should exist in world
-                    Delay = 0, // delay in ticks after shot before ejected
-                }
-            }, // Don't edit below this line
+			},
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
     }
 }

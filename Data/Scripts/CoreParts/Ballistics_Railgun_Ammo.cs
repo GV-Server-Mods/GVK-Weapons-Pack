@@ -26,7 +26,6 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Trace
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
 
-
 namespace Scripts
 { // Don't edit above this line
     partial class Parts
@@ -44,13 +43,15 @@ namespace Scripts
             DecayPerShot = 0,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
 
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 0,
-            },
-            DamageScales = new DamageScaleDef
-            {
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
@@ -84,27 +85,8 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
 
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
-                {
-                    Radius = 0.5f, // the sphere of influence of area effects
-                    EffectStrength = 0f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-                },
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = false,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "",
-                    CustomSound = "",
-                },
-            },*/
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
@@ -141,52 +123,10 @@ namespace Scripts
                     CustomSound = "soundName",
                 },
             },
-            Ewar = new EwarDef
-            {
-                Enable = false,
-                Type = Emp,
-                Mode = Effect,
-                Strength = 500000f,
-                Radius = 100f,
-                Duration = 1800,
-                StackDuration = true,
-                Depletable = true,
-                MaxStacks = 4,
-                NoHitParticle = false,
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Trajectory = new TrajectoryDef
-            {
+
+			Ewar = Common_Ammos_Ewar_None,
+			
+            Trajectory = new TrajectoryDef {
                 Guidance = None,
                 TargetLossDegree = 0f,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -198,9 +138,14 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                
+				Smarts = Common_Ammos_Trajectory_Smarts_None,
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -278,8 +223,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+            
+			AmmoAudio = new AmmoAudioDef {
                 TravelSound = "",
                 HitSound = "HWR_LargeExplosion",
                 ShieldHitSound = "",
@@ -289,7 +234,11 @@ namespace Scripts
                 HitPlayChance = 1,
                 HitPlayShield = true,
             }, // Don't edit below this line
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
+
         private AmmoDef SmallRailgunAmmo_Ares => new AmmoDef
         {
             AmmoMagazine = "SmallRailgunAmmo",
@@ -302,14 +251,18 @@ namespace Scripts
             BackKickForce = 200000f,
             DecayPerShot = 0,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            EnergyMagazineSize = 0,
+            IgnoreWater = true,
 
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 0,
-            },
-            DamageScales = new DamageScaleDef
-            {
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+            DamageScales = new DamageScaleDef {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
                 SelfDamage = false, // true = allow self damage.
@@ -343,27 +296,8 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
 
             },
-            /*AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = Radiant, // Disabled = do not use area effect at all, Explosive, Radiant, AntiSmart, JumpNullField, JumpNullField, EnergySinkField, AnchorField, EmpField, OffenseField, NavField, DotField.
-                Base = new AreaInfluence
-                {
-                    Radius = 0.5f, // the sphere of influence of area effects
-                    EffectStrength = 0f, // For ewar it applies this amount per pulse/hit, non-ewar applies this as damage per tick per entity in area of influence. For radiant 0 == use spillover from BaseDamage, otherwise use this value.
-                },
-                Explosions = new ExplosionDef
-                {
-                    NoVisuals = false,
-                    NoSound = false,
-                    NoShrapnel = false,
-                    NoDeformation = false,
-                    Scale = 1,
-                    CustomParticle = "",
-                    CustomSound = "",
-                },
-            },*/
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
@@ -400,52 +334,10 @@ namespace Scripts
                     CustomSound = "soundName",
                 },
             },
-            Ewar = new EwarDef
-            {
-                Enable = false,
-                Type = Emp,
-                Mode = Effect,
-                Strength = 500000f,
-                Radius = 100f,
-                Duration = 1800,
-                StackDuration = true,
-                Depletable = true,
-                MaxStacks = 4,
-                NoHitParticle = false,
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Trajectory = new TrajectoryDef
-            {
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Trajectory = new TrajectoryDef {
                 Guidance = None,
                 TargetLossDegree = 0f,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -457,9 +349,14 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
+                
+				Smarts = Common_Ammos_Trajectory_Smarts_None,
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
             },
-            AmmoGraphics = new GraphicDef
-            {
+
+            AmmoGraphics = new GraphicDef {
                 ModelName = "",
                 VisualProbability = 1f,
                 ShieldHitDraw = true,
@@ -537,8 +434,8 @@ namespace Scripts
                     },
                 },
             },
-            AmmoAudio = new AmmoAudioDef
-            {
+
+            AmmoAudio = new AmmoAudioDef {
                 TravelSound = "",
                 HitSound = "HWR_LargeExplosion",
                 ShieldHitSound = "",
@@ -548,6 +445,9 @@ namespace Scripts
                 HitPlayChance = 1,
                 HitPlayShield = true,
             }, // Don't edit below this line
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
     }
 }

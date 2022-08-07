@@ -43,13 +43,15 @@ namespace Scripts
 			EnergyMagazineSize = 0,
 			IgnoreWater = false,
 
-			Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-			{
-				Shape = LineShape,
-				Diameter = 0,
-			},
-			DamageScales = new DamageScaleDef
-			{
+            Shape = Common_Ammos_Shape_None,
+			
+            ObjectsHit = Common_Ammos_ObjectsHit_None,
+			
+            Fragment = Common_Ammos_Fragment_None,
+			
+            Pattern = Common_Ammos_Pattern_None,
+						
+			DamageScales = new DamageScaleDef {
 				MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
 				DamageVoxels = false, // true = voxels are vulnerable to this weapon
 				SelfDamage = false, // true = allow self damage.
@@ -86,8 +88,8 @@ namespace Scripts
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 				
 			},
-            AreaOfDamage = new AreaOfDamageDef
-            {
+
+            AreaOfDamage = new AreaOfDamageDef {
                 ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
@@ -124,52 +126,12 @@ namespace Scripts
                     CustomSound = "soundName",
                 },
             },
-            Ewar = new EwarDef
-            {
-                Enable = false,
-                Type = EnergySink,
-                Mode = Effect,
-                Strength = 10000f,
-                Radius = 100f,
-                Duration = 100,
-                StackDuration = true,
-                Depletable = true,
-                MaxStacks = 10,
-                NoHitParticle = false,
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the projectile model if it has one.
-                    ShowParticle = false, // Deprecated.
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        ShrinkByDistance = false, // Deprecated.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 0), // Deprecated, set color in particle sbc.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Deprecated, set this in particle sbc.
-                            Restart = false, // Not used.
-                            MaxDistance = 5000, // Not used.
-                            MaxDuration = 1, // Not used.
-                            Scale = 1, // Scale of effect.
-                        },
-                    },
-                },
-            },
-			Trajectory = new TrajectoryDef
-			{
+			
+			Ewar = Common_Ammos_Ewar_None,
+
+            Beams = Common_Ammos_Beams_None,
+
+			Trajectory = new TrajectoryDef {
 				Guidance = None,
 				TargetLossDegree = 1f,
 				TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -179,28 +141,14 @@ namespace Scripts
 				MaxTrajectory = 900f,
 				SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed
 				RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
-				Smarts = new SmartsDef
-				{
-					Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-					Aggressiveness = 3f, // controls how responsive tracking is.
-					MaxLateralThrust = 0.5f, // controls how sharp the trajectile may turn
-					TrackingDelay = 250, // Measured in Shape diameter units traveled.
-					MaxChaseTime = 2000, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
-					OffsetRatio = 0.25f, // The ratio to offset the random dir (0 to 1) 
-					OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
-				},
-				Mines = new MinesDef
-				{
-					DetectRadius =  0,
-					DeCloakRadius = 0,
-					FieldTime = 0,
-					Cloak = false,
-					Persist = false,
-				},
+                
+				Smarts = Common_Ammos_Trajectory_Smarts_None,
+                
+				Mines = Common_Ammos_Trajectory_Mines_None,
+				
 			},
-			AmmoGraphics = new GraphicDef
-			{
+
+			AmmoGraphics = new GraphicDef {
 				ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
 				VisualProbability = 1f,
 				ShieldHitDraw = true,
@@ -272,8 +220,8 @@ namespace Scripts
 					},
 				},
 			},
-			AmmoAudio = new AmmoAudioDef
-			{
+
+			AmmoAudio = new AmmoAudioDef {
 				TravelSound = "MXA_Archer_Travel",
 				HitSound = "HWR_LargeExplosion",
                 ShieldHitSound = "",
@@ -283,6 +231,9 @@ namespace Scripts
                 HitPlayChance = 1f,
                 HitPlayShield = true,
 			}, // Don't edit below this line
+			
+			Ejection = Common_Ammos_Ejection_None,
+			
         };
     }
 }
