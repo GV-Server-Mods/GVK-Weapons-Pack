@@ -301,15 +301,15 @@
 				<SubtypeId>Lasers_Plasma</SubtypeId>
 			</Id>
 			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
-			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+			<Icon>Textures\Icons\MD_Ammo.dds</Icon>
 			<Size>
-				<X>1</X>
-				<Y>1</Y>
-				<Z>1</Z>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
 			</Size>
 			<Mass>1110</Mass>
 			<Volume>740</Volume>
-			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
+			<Model>Models\Ammo\MD_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
