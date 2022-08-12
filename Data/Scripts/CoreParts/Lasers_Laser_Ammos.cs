@@ -535,7 +535,7 @@ namespace Scripts
                 VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
                 ConvergeBeams = true, // When using virtual beams, converge the visual beams to the location of the real beam.
                 RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
-                OneParticle = true, // Only spawn one particle hit per beam weapon.
+                OneParticle = false, // Only spawn one particle hit per beam weapon.
             },
 
             Trajectory = new TrajectoryDef {
@@ -575,7 +575,7 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Lasers_Laser_RedHit",
+                        Name = "",
                         ApplyToShield = true,
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
@@ -599,13 +599,13 @@ namespace Scripts
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0.5f, end: 1f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
+                    WidthVariance = Random(start: -0.3f, end: 0.01f), // adds random value to default width (negatives shrinks width)
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
                         Length = 10f, //
                         Width = 0.5f, //
-                        Color = Color(red: 10, green: 8, blue: 50f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Color = Color(red: 20, green: 16, blue: 50f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
@@ -631,16 +631,16 @@ namespace Scripts
                     },
                     Trail = new TrailDef
                     {
-                        Enable = false,
+                        Enable = true,
                         Textures = new[] {
-                            "", // Please always have this Line set, if this Section is enabled.
+                            "WeaponLaser", // Please always have this Line set, if this Section is enabled.
                         },
                         TextureMode = Normal,
-                        DecayTime = 3, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
-                        Color = Color(red: 0, green: 0, blue: 1, alpha: 1),
+                        DecayTime = 60, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
+                        Color = Color(red: 5, green: 4, blue: 10f, alpha: 0.5f), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         Back = false,
                         CustomWidth = 0,
-                        UseWidthVariance = false,
+                        UseWidthVariance = true,
                         UseColorFade = true,
                     },
                     OffsetEffect = new OffsetEffectDef

@@ -64,8 +64,8 @@ namespace Scripts {
 
                 Ui = new UiDef
                 {
-                    RateOfFire = true, // Enables terminal slider for changing rate of fire.
-                    DamageModifier = true, // Enables terminal slider for changing damage per shot.
+                    RateOfFire = false, // Enables terminal slider for changing rate of fire.
+                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
                     ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
                     EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
                 },
@@ -81,8 +81,8 @@ namespace Scripts {
                 },
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
+                    RotateRate = 0.004f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    ElevateRate = 0.004f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
@@ -120,7 +120,7 @@ namespace Scripts {
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
                     SkipBarrels = 0, // Number of muzzles to skip after each fire event.
-                    ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 1200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, // Heat generated per shot.
@@ -135,7 +135,7 @@ namespace Scripts {
                     BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
                     DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
                     SpinFree = false, // Spin barrel while not firing.
-                    StayCharged = false, // Will start recharging whenever power cap is not full.
+                    StayCharged = true, // Will start recharging whenever power cap is not full.
                 },
                 Audio = new HardPointAudioDef
                 {

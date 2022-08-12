@@ -95,7 +95,7 @@ namespace Scripts
 				
                 HardWare = new HardwareDef {
                     RotateRate = 0.005f,
-                    ElevateRate = 0.004f,
+                    ElevateRate = 0.005f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
@@ -385,7 +385,7 @@ namespace Scripts
 
                 HardWare = new HardwareDef {
                     RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,

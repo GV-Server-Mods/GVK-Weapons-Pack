@@ -328,7 +328,7 @@ namespace Scripts
             Shape = Common_Ammos_Shape_None,
 			
             ObjectsHit = new ObjectsHitDef {
-                MaxObjectsHit = 6, // 0 = disabled
+                MaxObjectsHit = 5, // 0 = disabled
                 CountBlocks = true, // counts gridBlocks and not just entities hit
             },
 			

@@ -55,7 +55,7 @@ namespace Scripts {
 
 		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef {
 			RotateRate = 0.03f,
-			ElevateRate = 0.02f,
+			ElevateRate = 0.03f,
 			MinAzimuth = -180,
 			MaxAzimuth = 180,
 			MinElevation = -20,
@@ -316,7 +316,7 @@ namespace Scripts {
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.03f,
-                    ElevateRate = 0.02f,
+                    ElevateRate = 0.03f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
@@ -562,7 +562,7 @@ namespace Scripts {
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,

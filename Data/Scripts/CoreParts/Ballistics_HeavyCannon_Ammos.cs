@@ -36,7 +36,7 @@ namespace Scripts
             AmmoRound = "Ballistics_HeavyCannon",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 100f, // breaks 1 HA or 1 LA cubes in 1 round
+            BaseDamage = 10000f, // breaks 1 HA or 1 LA cubes in 1 round
             Mass = 500f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 500000f,

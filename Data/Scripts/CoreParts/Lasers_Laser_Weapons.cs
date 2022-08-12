@@ -231,7 +231,7 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -20,
@@ -615,8 +615,8 @@ namespace Scripts
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.010f,
-                    ElevateRate = 0.010f,
+                    RotateRate = 0.0075f,
+                    ElevateRate = 0.0075f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
@@ -676,7 +676,7 @@ namespace Scripts
 
             },
             Ammos = new[] {
-                Lasers_Laser_Dual,
+                Lasers_Laser_Large,
 				Lasers_Laser_Large_Shrapnel
             },
             //Animations = Weapon75_Animation,

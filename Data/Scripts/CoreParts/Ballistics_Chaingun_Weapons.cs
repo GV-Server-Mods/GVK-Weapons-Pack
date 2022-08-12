@@ -35,7 +35,7 @@ namespace Scripts {
 		};
 		private HardwareDef Ballistics_Chaingun_Hardpoint_Hardware = new HardwareDef {
 			RotateRate = 0.025f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-			ElevateRate = 0.02f, // Max traversal speed of elevation subpart in radians per tick.
+			ElevateRate = 0.025f, // Max traversal speed of elevation subpart in radians per tick.
 			MinAzimuth = -180,
 			MaxAzimuth = 180,
 			MinElevation = -20,
@@ -524,7 +524,7 @@ namespace Scripts {
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.0125f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.0125f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -6,
