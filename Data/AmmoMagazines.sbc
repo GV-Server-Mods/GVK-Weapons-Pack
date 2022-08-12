@@ -258,7 +258,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] 480mm HE</DisplayName>
+			<DisplayName>[Heavy Cannon] 480mm APHE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
 			<Size>
 				<X>0.8</X>

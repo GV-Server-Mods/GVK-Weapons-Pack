@@ -21,7 +21,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>AutocannonClip</SubtypeId>
 			</Id>
-			<DisplayName>[Chaingun] 30mm API</DisplayName>
+			<DisplayName>[Chaingun] 30mm API x6</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
             <Prerequisites>
                 <Item Amount="26" TypeId="Ingot" SubtypeId="Iron" />
@@ -52,7 +52,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>MediumCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] 100mm HE</DisplayName>
+			<DisplayName>[Flak] 100mm HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
             <Prerequisites>
                 <Item Amount="84" TypeId="Ingot" SubtypeId="Iron" />
@@ -68,7 +68,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>LargeCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Cannon] 155mm AP</DisplayName>
+			<DisplayName>[Cannon] 155mm AP x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
             <Prerequisites>
                 <Item Amount="55" TypeId="Ingot" SubtypeId="Iron" />
@@ -85,7 +85,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>SmallRailgunAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Railgun] 50mm FeW</DisplayName>
+			<DisplayName>[Railgun] 50mm FeW x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
             <Prerequisites>
                 <Item Amount="1300" TypeId="Ingot" SubtypeId="Iron" />
@@ -103,7 +103,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>LargeRailgunAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] 200mm DU</DisplayName>
+			<DisplayName>[MAC] 200mm DU x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
             <Prerequisites>
                 <Item Amount="23000" TypeId="Ingot" SubtypeId="Iron" />
@@ -121,7 +121,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missile200mm</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Hydra HE</DisplayName>
+			<DisplayName>[Rocket] Hydra HE x1</DisplayName>
             <Prerequisites>
                 <Item Amount="74" TypeId="Ingot" SubtypeId="Iron" />
                 <Item Amount="11" TypeId="Ingot" SubtypeId="Nickel" />
@@ -136,7 +136,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missiles_Missile</SubtypeId>
 			</Id>
-			<DisplayName>[Missile] Archer HE</DisplayName>
+			<DisplayName>[Missile] Archer HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
             <Prerequisites>
                 <Item Amount="58" TypeId="Ingot" SubtypeId="Iron" />
@@ -154,7 +154,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missiles_Torpedo</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Crusader EMP</DisplayName>
+			<DisplayName>[Torpedo] Crusader EMP x1</DisplayName>
 			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
 			<Prerequisites>
 				<Item Amount="4600" TypeId="Ingot" SubtypeId="Iron"/>
@@ -172,7 +172,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] 480mm HE</DisplayName>
+			<DisplayName>[Heavy Cannon] 480mm APHE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
             <Prerequisites>
                 <Item Amount="300" TypeId="Ingot" SubtypeId="Iron" />
@@ -189,7 +189,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missiles_Siege</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword MRV</DisplayName>
+			<DisplayName>[SRBM] Longsword MRV x1</DisplayName>
 			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
             <Prerequisites>
                 <Item Amount="2400" TypeId="Ingot" SubtypeId="Iron" />
@@ -207,7 +207,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Missile] Tuukka HE</DisplayName>
+			<DisplayName>[Heavy Missile] Tuukka HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
             <Prerequisites>
                 <Item Amount="280" TypeId="Ingot" SubtypeId="Iron" />
@@ -224,7 +224,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Lasers_Plasma</SubtypeId>
 			</Id>
-			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
+			<DisplayName>[Plasma] Plasma Bomb x1</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
             <Prerequisites>
                 <Item Amount="6500" TypeId="Ingot" SubtypeId="Iron" />
