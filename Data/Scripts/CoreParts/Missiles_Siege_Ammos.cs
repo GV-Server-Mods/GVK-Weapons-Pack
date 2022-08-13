@@ -54,7 +54,7 @@ namespace Scripts
 			
             Fragment = new FragmentDef {
                 AmmoRound = "Missiles_Siege_Shrapnel", // AmmoRound field of the ammo to spawn.
-                Fragments = 10, // Number of projectiles to spawn.
+                Fragments = 8, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = true, // fragments will not inherit velocity from parent.
@@ -356,7 +356,7 @@ namespace Scripts
                 {
                     Enable = true, //purely visual for this ammo
                     Radius = 5f, // Meters
-                    Damage = 20000f,
+                    Damage = 17000f,
                     Depth = 5f,
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius

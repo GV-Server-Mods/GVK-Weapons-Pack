@@ -41,7 +41,7 @@ namespace Scripts
             BackKickForce = 0f,
             DecayPerShot = 0,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 1,
+            EnergyMagazineSize = 120,
             Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
             {
                 Shape = LineShape,
@@ -211,8 +211,8 @@ namespace Scripts
                         Length = 5f,
                         Width = 0.07f,
                         Color = Color(red: 0, green: 10, blue: 0, alpha: 0.1f),
-                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
-                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
+                        VisualFadeStart = 1, // Number of ticks the weapon has been firing before projectiles begin to fade their color
+                        VisualFadeEnd = 60, // How many ticks after fade began before it will be invisible.
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                             "WeaponLaser",
                         },
