@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>missileBattery01</SubtypeId>
 			</Id>
-			<DisplayName>Missile Battery "Tuukka" MMB-202</DisplayName>
+			<DisplayName>[Heavy Missile] Tuukka Missile Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<Description>The Tuukka is a ship-to-ship cruise missile effective against moving large targets. Designed by L.Y.N.X.
 				[2000 Auto Range]
