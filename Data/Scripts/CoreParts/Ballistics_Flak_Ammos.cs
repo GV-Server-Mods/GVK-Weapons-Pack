@@ -51,7 +51,7 @@ namespace Scripts
 			
             Fragment = new FragmentDef {
                 AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
-                Fragments = 40, // Number of projectiles to spawn.
+                Fragments = 30, // Number of projectiles to spawn.
                 Degrees = 60, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = false, // fragments will not inherit velocity from parent.

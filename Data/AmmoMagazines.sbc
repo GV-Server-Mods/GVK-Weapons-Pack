@@ -97,7 +97,7 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>1100</Mass>
+			<Mass>1200</Mass>
 			<Volume>110</Volume>
 			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
@@ -118,7 +118,7 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>560</Mass>
+			<Mass>1120</Mass>
 			<Volume>80</Volume>
 			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
@@ -139,7 +139,7 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>30000</Mass>
+			<Mass>61000</Mass>
 			<Volume>3000</Volume>
 			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
@@ -160,7 +160,7 @@
 				<Y>0.1</Y>
 				<Z>0.1</Z>
 			</Size>
-			<Mass>3300</Mass>
+			<Mass>6700</Mass>
 			<Volume>330</Volume>
 			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
@@ -181,8 +181,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>100</Mass>
-			<Volume>130</Volume>
+			<Mass>80</Mass>
+			<Volume>100</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -202,8 +202,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>141</Mass>
-			<Volume>94</Volume>
+			<Mass>90</Mass>
+			<Volume>60</Volume>
 			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -223,8 +223,8 @@
 				<Y>5.0</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>5000</Mass>
-			<Volume>3330</Volume>
+			<Mass>3750</Mass>
+			<Volume>2500</Volume>
 			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -265,8 +265,8 @@
 				<Y>0.4</Y>
 				<Z>0.4</Z>
 			</Size>
-			<Mass>7000</Mass>
-			<Volume>700</Volume>
+			<Mass>10000</Mass>
+			<Volume>1000</Volume>
 			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
