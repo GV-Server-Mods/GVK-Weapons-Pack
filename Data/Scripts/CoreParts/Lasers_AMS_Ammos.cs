@@ -62,7 +62,13 @@ namespace Scripts
 			
 			Ewar = Common_Ammos_Ewar_None,
 
-            Beams = Common_Ammos_Beams_None,
+            Beams = new BeamDef {
+                Enable = true, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
+                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
+                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
+                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
+                OneParticle = true, // Only spawn one particle hit per beam weapon.
+            },
 
             Trajectory = new TrajectoryDef {
                 MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
