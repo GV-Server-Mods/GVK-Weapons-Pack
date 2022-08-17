@@ -241,7 +241,7 @@ namespace Scripts
             },
             Ammos = new[] {
                 //Missiles_Missile,
-				Missiles_Missile_HomingPhase,
+				Missiles_Missile,
             },
             Animations = MXA_ArcherPods_Animation,
             //Upgrades = UpgradeModules,
@@ -365,7 +365,7 @@ namespace Scripts
             },
 			Ammos = new[] {
                 //Missiles_Missile,
-				Missiles_Missile_HomingPhase,
+				Missiles_Missile,
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line

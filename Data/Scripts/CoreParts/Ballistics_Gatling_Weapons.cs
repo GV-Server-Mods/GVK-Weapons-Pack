@@ -53,16 +53,16 @@ namespace Scripts {
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
-		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare_T2 = new HardwareDef {
-			RotateRate = 0.05f,
+		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef {
+			RotateRate = 0.03f,
 			ElevateRate = 0.03f,
 			MinAzimuth = -180,
 			MaxAzimuth = 180,
-			MinElevation = -10,
+			MinElevation = -20,
 			MaxElevation = 90,
 			FixedOffset = false,
-			InventorySize = 0.6f,
-			//Offset = Vector(x: 0, y: 0, z: 0),
+			InventorySize = 0.8f,
+			//Offset = new Vector3D(0f,0f,0f),
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 			CriticalReaction = new CriticalDef
@@ -86,32 +86,7 @@ namespace Scripts {
 			CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
 		};
 
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T2 = new LoadingDef {
-			RateOfFire = 2100,
-			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-			BarrelsPerShot = 1,
-			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-			SkipBarrels = 0,
-			ReloadTime = 2, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 1, //heat generated per shot
-			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
-			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 25, //amount of heat lost per second
-			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-			MagsToLoad = 4, // Number of physical magazines to consume on reload.
-			SpinFree = true, // Spin barrel while not firing
-			StayCharged = false, // Will start recharging whenever power cap is not full
-			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
-			MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
-		};
-
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading_T1 = new LoadingDef {
+		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef {
 			RateOfFire = 1800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
@@ -119,17 +94,17 @@ namespace Scripts {
 			SkipBarrels = 0,
 			ReloadTime = 2, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 2, //heat generated per shot
-			MaxHeat = 240, //max heat before weapon enters cooldown (70% of max heat)
+			HeatPerShot = 1, //heat generated per shot
+			MaxHeat = 80, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 25, //amount of heat lost per second
+			HeatSinkRate = 18, //amount of heat lost per second
 			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-			ShotsInBurst = 0,
-			DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			FireFull = false,
-			GiveUpAfter = true,
+			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
+			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
+			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
 			DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-			MagsToLoad = 2, // Number of physical magazines to consume on reload.
+			MagsToLoad = 4, // Number of physical magazines to consume on reload.
 			SpinFree = true, // Spin barrel while not firing
 			StayCharged = false, // Will start recharging whenever power cap is not full
 			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
@@ -213,23 +188,23 @@ namespace Scripts {
 
             HardPoint = new HardPointDef
             {
-                PartName = "Sentinel Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                PartName = "Sentinel Gatling", // name of weapon in terminal
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -270,22 +245,22 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CIWS Large", // name of weapon in terminal
-                DeviateShotAngle = 0.5f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare_T2,
+                HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 				
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -327,27 +302,27 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "CWIS Small", // name of weapon in terminal
-                DeviateShotAngle = 0.7f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.05f,
+                    RotateRate = 0.03f,
                     ElevateRate = 0.03f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.3f,
+                    InventorySize = 0.4f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -357,7 +332,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T1,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -409,14 +384,14 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Fixed", // name of weapon in terminal
-                DeviateShotAngle = 0.6f,
+                DeviateShotAngle = 0.4f,
                 AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
 				
@@ -429,7 +404,7 @@ namespace Scripts {
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.15f,
+                    InventorySize = 0.2f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -439,7 +414,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -483,14 +458,14 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Gimbal", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.3f,
                 AimingTolerance = 7f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = false,
 				
-                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
 				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
 				
@@ -503,7 +478,7 @@ namespace Scripts {
                     MinElevation = -15,
                     MaxElevation = 15,
                     FixedOffset = false,
-                    InventorySize = 0.15f,
+                    InventorySize = 0.2f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.005f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -513,7 +488,7 @@ namespace Scripts {
 				
                 Other = Ballistics_Gatlings_Hardpoint_Other,
 
-                Loading = Ballistics_Gatlings_Hardpoint_Loading_T2,
+                Loading = Ballistics_Gatlings_Hardpoint_Loading,
                 
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
 				
@@ -526,8 +501,144 @@ namespace Scripts {
             },
             //Animations = AdvancedAnimation,
             // Don't edit below this line
+        };
+		
+        WeaponDefinition AryxVulcanTurret => new WeaponDefinition
+        {
 
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] {
+                    new MountPointDef {
+                        SubtypeId = "ARYXVulcanTurret",
+                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,	 
+					},
+                },
+                Muzzles = new[] {
+                    "muzzle_projectile_1",
+                    "muzzle_projectile_2",
 
+                },
+                Ejector = "",
+				Scope = "dummy_camera",
+            },
+            Targeting = new TargetingDef
+            {
+                Threats = new[] {
+					Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
+                },
+                SubSystems = new[] {
+					Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                },
+                ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
+                MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
+                MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+                MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+                TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+                StopTrackingSpeed = 1000f, // do not track target threats traveling faster than this speed
+            },
+            HardPoint = new HardPointDef
+            {
+                PartName = "Vulcan Gatling", // name of weapon in terminal
+                DeviateShotAngle = 0.4f, // Inaccuracy in degrees
+                AimingTolerance = 40f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = false,
+				CanShootSubmerged = false,
+
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+				
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+								
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.015f,
+                    ElevateRate = 0.015f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -15,
+                    MaxElevation = 80,
+                    HomeAzimuth = 0, // Default resting rotation angle
+                    HomeElevation = 0, // Default resting elevation
+                    FixedOffset = false,
+                    InventorySize = 2.4f,
+                    //Offset = Vector(x: 0, y: 0, z: 0),
+                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+                    CriticalReaction = new CriticalDef
+                    {
+                        Enable = false, // Enables Warhead behaviour
+                        DefaultArmedTimer = 120,
+                        PreArmed = true,
+                        TerminalControls = true,
+                    },
+                },
+
+                Other = new OtherDef
+                {
+                    ConstructPartCap = 21,
+                    RotateBarrelAxis = 0,
+                    EnergyPriority = 0,
+                    MuzzleCheck = false,
+                    Debug = false,
+                    RestrictionRadius = 0, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                },
+
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 1800,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 2,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    HeatPerShot = 0, //heat generated per shot
+                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
+                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+                    HeatSinkRate = 0, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    GiveUpAfter = false,
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+					MagsToLoad = 16, // Number of physical magazines to consume on reload.
+                    SpinFree = false, // Spin while not firing
+                    StayCharged = false, // Will start recharging whenever power cap is not full					
+					MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+					MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
+                },
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "",
+                    FiringSound = "MD_LargeGatlingLoopFire", // WepShipGatlingShot
+                    FiringSoundPerShot = false,
+                    ReloadSound = "",
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate",
+                    BarrelRotationSound = "MD_GatlingBarrelLoop",
+                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = false,
+                },
+                
+				Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+            },
+            Ammos = new[] {
+                NATO_25x184mm,
+            },
+            Animations = AryxVulcanAnimations,
+            // Don't edit below this line
         };
 
     }

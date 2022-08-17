@@ -22,7 +22,7 @@ namespace Scripts {
                         MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.2f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                 },
@@ -122,7 +122,7 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 60, // Set this to 3600 for beam weapons.
+                    RateOfFire = 30, // Set this to 3600 for beam weapons.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
                     SkipBarrels = 0, // Number of muzzles to skip after each fire event.
@@ -146,13 +146,13 @@ namespace Scripts {
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
-                    FiringSound = "ArcWepShipARYX_FireMissilesA", // Audio for firing.
+                    FiringSound = "DOK_SiegeMissileFire", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "",
                     NoAmmoSound = "",
                     HardPointRotationSound = "", // Audio played when turret is moving.
                     BarrelRotationSound = "",
-                    FireSoundEndDelay = 200, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
                 Graphics = new HardPointParticleDef
                 {
@@ -189,10 +189,8 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                //Missiles_Siege_Test,
-				//Missiles_Siege_Test_Shrapnel,
-                Missiles_Siege_Test2,
-				Missiles_Siege_Test_Shrapnel2,
+                Missiles_Siege,
+				Missiles_Siege_Shrapnel,
             },
             Animations = AryxMissileBatteryAnims,
             //Upgrades = UpgradeModules,

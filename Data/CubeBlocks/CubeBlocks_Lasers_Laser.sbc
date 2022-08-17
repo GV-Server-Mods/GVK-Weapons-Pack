@@ -1,6 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXSpartanTurret</SubtypeId>
+			</Id>
+			<DisplayName>[Laser] Spartan Dual XFEL-Heavy Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
+			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
+				[1600m Auto Range]
+				[Uses 156MW Energy]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="-1.25" z="0"/>
+			<Model>Models\AWE_Spartan\LG_ARYXSpartan_Base.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="93" />
+				<Component Subtype="GVK_Laser_Tech" Count="7"/>
+                <Component Subtype="SmallTube" Count="130" />
+                <Component Subtype="Motor" Count="99" />
+                <Component Subtype="Superconductor" Count="310" />
+                <Component Subtype="BulletproofGlass" Count="62" />
+                <Component Subtype="Computer" Count="74" />
+                <Component Subtype="MetalGrid" Count="31" />
+                <Component Subtype="SteelPlate" Count="810" />
+            </Components>
+            <BuildTimeSeconds>135</BuildTimeSeconds>
+			<PCU>40000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWE_Spartan\LG_ARYXSpartan_Base_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\AWE_Spartan\LG_ARYXSpartan_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Spartan\LG_ARYXSpartan_Base_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>AryxSpartanCannon</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="Lasers_Laser"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.144</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+		</Definition>
 		<!-- MA_T2PDX -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>

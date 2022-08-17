@@ -4,9 +4,10 @@
 		<!-- Ship Weapons -->
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Gatlings"/>
-			<DisplayName>Ballistic_Gatlings</DisplayName>
+			<DisplayName>Gatling Weapons</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXVulcanTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret"/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype=""/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret"/>
@@ -16,9 +17,10 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Chainguns"/>
-			<DisplayName>Ballistic_Chainguns</DisplayName>
+			<DisplayName>Autocannon Weapons</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXHeavyFlakTurret"/> 
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="KhopeshTurret"/> 
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="AutoCannonTurret"/> 
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannon"/>
@@ -28,7 +30,7 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Cannons"/>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
-			<DisplayName>Ballistic_Cannons</DisplayName>
+			<DisplayName>Artillery Cannon Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurret"/>
@@ -38,9 +40,17 @@
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_HeavyCannons"/>
+			<DisplayName>Heavy Cannon Weapons</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXHurricaneCannon"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Flaks"/>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurretLarge.dds</Icon>
-			<DisplayName>Ballistic_Flaks</DisplayName>
+			<DisplayName>Flak Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeBlockMediumCalibreTurret"/>
@@ -51,7 +61,7 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Railguns"/>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
-			<DisplayName>Ballistic_Railguns</DisplayName>
+			<DisplayName>Railgun Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXRailgunTurret"/>
@@ -62,17 +72,16 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_MACs"/>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<DisplayName>Ballistic_MACs</DisplayName>
+			<DisplayName>MAC Weapons</DisplayName>
 			<Description/>
 			<Blocks>
-				<!-- <Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_MACL"/> -->
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeRailgun"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Interiors"/>
 			<Icon>Textures\GUI\Icons\Cubes\interior_turret.dds</Icon>
-			<DisplayName>Ballistic_Interiors</DisplayName>
+			<DisplayName>Anti-Personnel Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret"/>
@@ -81,7 +90,7 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Rockets"/>
 			<Icon>Textures\GUI\Icons\Cubes\LGMissileBase.dds</Icon>
-			<DisplayName>Missiles_Rockets</DisplayName>
+			<DisplayName>Rocket Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype=""/>
@@ -94,7 +103,7 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Missiles"/>
 			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
-			<DisplayName>Missiles_Missiles</DisplayName>
+			<DisplayName>Missile Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_ArcherPods"/>
@@ -102,9 +111,18 @@
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_HeavyMissiles"/>
+			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<DisplayName>Heavy Missile Weapons</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="missileBattery01"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Torpedoes"/>
-			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
-			<DisplayName>Missiles_Torpedoes</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
+			<DisplayName>Torpedo Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large"/>
@@ -114,7 +132,7 @@
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Siege"/>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
-			<DisplayName>Missiles_Siege</DisplayName>
+			<DisplayName>SRBM Weapons</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXMissileBattery"/>
@@ -122,21 +140,28 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_Laser"/>
-			<Icon>Textures\GUI\Icons\Cubes\MA_T2PDX.png</Icon>
 			<DisplayName>Laser Weapons</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXSpartanTurret"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_T2PDX"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2"/>
-				<!-- <Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2_Naked"/> -->
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ReceptorTurret"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ReceptorCoilGun"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_Plasma"/>
+			<DisplayName>Plasma Weapons</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="lokiCannon1"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Lasers_AMS"/>
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
-			<DisplayName>Laser Weapons</DisplayName>
+			<DisplayName>AMS Lasers</DisplayName>
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDT"/>

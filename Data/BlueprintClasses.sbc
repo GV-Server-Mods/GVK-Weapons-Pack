@@ -17,9 +17,11 @@
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Siege"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_HeavyCannon"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_HeavyMissile"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Lasers_Plasma"/>
 		<!--LARGE BLOCKS-->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXRailgunTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXRailgun"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MXA_CoilgunL"/>
@@ -31,6 +33,12 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Large"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_Fixed_T2"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXMissileBattery"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/missileBattery01"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/lokiCannon1"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXSpartanTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHurricaneCannon"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXVulcanTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHeavyFlakTurret"/>
 		<!--SMALL BLOCKS-->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>

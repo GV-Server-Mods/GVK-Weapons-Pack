@@ -27,7 +27,7 @@ namespace Scripts
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 2200, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 2400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 20, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
@@ -95,13 +95,13 @@ namespace Scripts
 				
                 HardWare = new HardwareDef {
                     RotateRate = 0.005f,
-                    ElevateRate = 0.004f,
+                    ElevateRate = 0.005f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation = 90,
                     FixedOffset = false,
-                    InventorySize = 0.880f,
+                    InventorySize = 0.960f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -167,7 +167,7 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Name = "Muzzle_Flash_MediumCalibre", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef
@@ -246,7 +246,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.880f,
+                    InventorySize = 0.960f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -312,7 +312,7 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Name = "Muzzle_Flash_MediumCalibre", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef
@@ -385,13 +385,13 @@ namespace Scripts
 
                 HardWare = new HardwareDef {
                     RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation = 45,
                     FixedOffset = false,
-                    InventorySize = 0.440f,
+                    InventorySize = 0.480f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -457,7 +457,7 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Name = "Muzzle_Flash_MediumCalibre", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef
@@ -537,7 +537,7 @@ namespace Scripts
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 0.220f,
+                    InventorySize = 0.270f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -603,7 +603,7 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Muzzle_Flash_LargeCalibre", // SubtypeId of muzzle particle effect.
+                        Name = "Muzzle_Flash_MediumCalibre", // SubtypeId of muzzle particle effect.
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef

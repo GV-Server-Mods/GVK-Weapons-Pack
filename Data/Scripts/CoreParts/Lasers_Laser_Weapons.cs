@@ -231,7 +231,7 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    ElevateRate = 0.015f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -20,
@@ -570,6 +570,116 @@ namespace Scripts
 				Lasers_Laser_Small_Shrapnel
             },
             //Animations= Receptor_Emissive
+            //Upgrades = UpgradeModules,
+            // Don't edit below this line
+        };
+
+        WeaponDefinition AryxSpartanTurret => new WeaponDefinition
+        {
+
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] {
+                    new MountPointDef {
+                        SubtypeId = "ARYXSpartanTurret",
+                        SpinPartId = "",
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                    },
+                },
+                Muzzles = new[] {
+                    "muzzle_projectile_1",
+                    "muzzle_projectile_2",
+
+                },
+                Ejector = "",
+                Scope = "scope", //Where line of sight checks are performed from must be clear of block collision
+            },
+            Targeting = Lasers_Laser_Targeting_Turret_Large,
+			
+            HardPoint = new HardPointDef
+            {
+                PartName = "Spartan Laser Cannon", // name of weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons)
+                DeviateShotAngle = 0f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = false,
+                CanShootSubmerged = false,
+
+                Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
+
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+				
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.0075f,
+                    ElevateRate = 0.0075f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -10,
+                    MaxElevation = 80,
+                    FixedOffset = false,
+                    InventorySize = 0f,
+                    Offset = Vector(x: 0, y: 0, z: 0),
+					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+					CriticalReaction = new CriticalDef
+					{
+						Enable = false, // Enables Warhead behaviour
+						DefaultArmedTimer = 120,
+						PreArmed = false,
+						TerminalControls = true,
+						AmmoRound = "", // name of ammo upon explosion
+					},
+                },
+                Other = new OtherDef
+                {
+                    ConstructPartCap = 21,
+                    RotateBarrelAxis = 0,
+                    EnergyPriority = 0,
+                    MuzzleCheck = false,
+                    Debug = false,
+                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                },
+				
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 3600,
+                    BarrelsPerShot = 2,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					HeatPerShot = 2, //heat generated per shot
+					MaxHeat = 1200, //max heat before weapon enters cooldown (70% of max heat)
+					Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+					HeatSinkRate = 60, //amount of heat lost per second
+                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
+                    ShotsInBurst = 0,
+                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false,
+                    GiveUpAfter = false,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
+                    SpinFree = false, // Spin while not firing
+                    StayCharged = false, // Will start recharging whenever power cap is not full
+                },
+				
+                Audio = Lasers_Laser_Audio_Large,
+				
+                Graphics = Lasers_Laser_Hardpoint_Graphics_Large,
+
+            },
+            Ammos = new[] {
+                Lasers_Laser_Large,
+				Lasers_Laser_Large_Shrapnel
+            },
+            //Animations = Weapon75_Animation,
             //Upgrades = UpgradeModules,
             // Don't edit below this line
         };

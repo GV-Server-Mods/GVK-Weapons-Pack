@@ -115,14 +115,14 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.02f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
+                    ElevateRate = 0.02f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -20,
                     MaxElevation = 75,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.960f, // Inventory capacity in kL.
+                    InventorySize = 1.960f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
@@ -135,12 +135,12 @@ namespace Scripts
 				
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 180,
+                    RateOfFire = 120,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -226,15 +226,15 @@ namespace Scripts
 				
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.02f, // Max traversal speed of elevation subpart in radians per tick.
+                    RotateRate = 0.03f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    ElevateRate = 0.03f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
                     MaxElevation = 50,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.640f, // Inventory capacity in kL.
+                    InventorySize = 0.960f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
@@ -247,12 +247,12 @@ namespace Scripts
 				
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 90,
+                    RateOfFire = 60,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
@@ -292,7 +292,7 @@ namespace Scripts
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
                         AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
                         ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
-                        DurabilityMod = 0.25f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                     
@@ -346,7 +346,7 @@ namespace Scripts
                     MaxElevation = 0,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.320f, // Inventory capacity in kL.
+                    InventorySize = 0.480f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
@@ -359,12 +359,12 @@ namespace Scripts
 				
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 90,
+                    RateOfFire = 60,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     HeatPerShot = 0, //heat generated per shot
                     MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)

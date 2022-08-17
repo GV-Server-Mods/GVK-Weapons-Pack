@@ -54,6 +54,12 @@
 				<string>OKIObserverSM</string>
 				<string>OKIDesignator</string>
 				<string>ARYXMissileBattery</string>
+				<string>ARYXHeavyFlakTurret</string>
+				<string>ARYXVulcanTurret</string>
+				<string>ARYXHurricaneCannon</string>
+				<string>ARYXSpartanTurret</string>
+				<string>lokiCannon1</string>
+				<string>missileBattery01</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>
