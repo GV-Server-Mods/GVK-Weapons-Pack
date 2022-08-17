@@ -61,7 +61,7 @@ namespace Scripts
 							lokiCannon1_def,
 							AryxSpartanTurret
 							);
-            ArmorDefinitions(BusterArmor);
+            ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
         }

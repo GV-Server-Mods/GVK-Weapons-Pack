@@ -205,7 +205,7 @@ namespace Scripts
 				Smarts = Common_Ammos_Trajectory_Smarts_None,
                 
 				Mines = Common_Ammos_Trajectory_Mines_None,
-				
+
             },
             
 			AmmoGraphics = new GraphicDef {
@@ -290,14 +290,14 @@ namespace Scripts
                     },
                 },
             },
-            
-			AmmoAudio = new AmmoAudioDef {
-                TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "MXA_ImpactExplosion",
-                ShotSound = "",
+
+            AmmoAudio = new AmmoAudioDef
+            {
+                TravelSound = "",
+                HitSound = "HWR_FireyExplosion",
                 ShieldHitSound = "",
                 PlayerHitSound = "",
-                VoxelHitSound = "MXA_ImpactExplosion",
+                VoxelHitSound = "HWR_FireyExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
@@ -448,12 +448,12 @@ namespace Scripts
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 0, // Degrees, Is pointed forward
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                MaxLifeTime = 300, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 0f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 2000, // voxel phasing if you go above 5100
                 MaxTrajectory = 300f, // Max Distance the projectile or beam can Travel.
                 DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0.5f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
+                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
@@ -531,8 +531,8 @@ namespace Scripts
 							"WeaponLaser",
                         },
                         TextureMode = Normal,
-                        DecayTime = 120,
-                        Color = Color(red: 45f, green: 37.5f, blue: 34.5f, alpha: 1),
+                        DecayTime = 180,
+                        Color = Color(red: 60f, green: 50f, blue: 45f, alpha: 1),
                         Back = false,
                         CustomWidth = .7f,
                         UseWidthVariance = false,
@@ -549,11 +549,11 @@ namespace Scripts
             
 			AmmoAudio = new AmmoAudioDef {
                 TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "MXA_ImpactExplosion",
+                HitSound = "HWR_FireyExplosion",
                 ShotSound = "",
                 ShieldHitSound = "",
                 PlayerHitSound = "",
-                VoxelHitSound = "MXA_ImpactExplosion",
+                VoxelHitSound = "HWR_FireyExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,
