@@ -7,6 +7,9 @@ using static Scripts.Structure.WeaponDefinition.HardPointDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.Prediction;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.BlockTypes;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
+using static Scripts.Structure.WeaponDefinition.TargetingDef;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.Comms;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.SecurityMode;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
@@ -25,12 +28,10 @@ namespace Scripts {
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
-			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -39,17 +40,15 @@ namespace Scripts {
 				 Characters, Projectiles, Grids,   // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] {
-				Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+				Any,
 			},
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
-			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 900, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -60,27 +59,20 @@ namespace Scripts {
 			MaxAzimuth = 180,
 			MinElevation = -20,
 			MaxElevation = 90,
-			FixedOffset = false,
+			HomeAzimuth = 0, // Default resting rotation angle
+			HomeElevation = 0, // Default resting elevation
 			InventorySize = 0.8f,
-			//Offset = new Vector3D(0f,0f,0f),
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-			CriticalReaction = new CriticalDef
-			{
-				Enable = false, // Enables Warhead behaviour.
-				DefaultArmedTimer = 120, // Sets default countdown duration.
-				PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
-				TerminalControls = true, // Whether the warhead should have terminal controls for arming and detonation.
-				AmmoRound = "AmmoType2", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
-			},
 		};
 
 		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef {
 			ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
 			RotateBarrelAxis = 3, // For spinning barrels, which axis to spin the barrel around; 0 = none.
-			EnergyPriority = 0, // Deprecated.
 			MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
-			Debug = false, // Force enables debug mode.
+			DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
+			NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
+ 			Debug = false, // Force enables debug mode.
 			RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
 			CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
 			CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
@@ -109,8 +101,9 @@ namespace Scripts {
 			StayCharged = false, // Will start recharging whenever power cap is not full
 			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
 			MaxReloads = 0, // Maximum number of reloads in the LIFETIME of a weapon
+			GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
+			DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
 		};
-
 		private HardPointAudioDef Ballistics_Gatlings_Hardpoint_Audio = new HardPointAudioDef {
 			PreFiringSound = "", 
 			FiringSound = "MD_GatlingLoopFire", // MD_GatlingBlisterFire, WepTurretInteriorFire, ArcWepShipGatlingShot, MD_GatlingLoop
@@ -542,7 +535,7 @@ namespace Scripts {
                 MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
                 TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000f, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef

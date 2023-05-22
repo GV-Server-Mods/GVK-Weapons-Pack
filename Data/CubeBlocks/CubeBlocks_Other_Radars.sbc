@@ -55,6 +55,7 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -109,6 +110,7 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

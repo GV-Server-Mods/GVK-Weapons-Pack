@@ -49,7 +49,7 @@
             <PCU>0</PCU>
             <MirroringY>Z</MirroringY>
             <MirroringZ>Y</MirroringZ>
-            <IsAirTight>false</IsAirTight>
+            <IsAirTight>true</IsAirTight>
             <TargetingGroups>
                 <string>Weapons</string>
             </TargetingGroups>
@@ -114,6 +114,7 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+            <IsAirTight>true</IsAirTight>
 		</Definition>
 		<Definition Enabled="false">
             <Id>
@@ -152,10 +153,11 @@
             <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
             <DestroySound>WepSmallWarheadExpl</DestroySound>
             <PCU>0</PCU>
-            <IsAirTight>false</IsAirTight>
+            <IsAirTight>true</IsAirTight>
             <TargetingGroups>
                 <string>Weapons</string>
             </TargetingGroups>
+            <IsAirTight>true</IsAirTight>
         </Definition>
  		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<!-- Standard Warhead-->
@@ -202,6 +204,7 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+            <IsAirTight>true</IsAirTight>
 		</Definition>
 	</CubeBlocks>
 </Definitions>
