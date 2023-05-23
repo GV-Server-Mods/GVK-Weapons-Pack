@@ -111,7 +111,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart,
-                TargetLossDegree = 0,
+                TargetLossDegree = 80,
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 1200, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 300f,
@@ -130,7 +130,7 @@ namespace Scripts
                     TrackingDelay = 60, // Measured in Shape diameter units traveled.
                     AccelClearance = false, // Setting this to true will prevent smart acceleration until it is clear of the grid and tracking delay has been met (free fall).
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
+                    OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     CheckFutureIntersection = false, // Utilize obstacle avoidance for drones/smarts
                     FutureIntersectionRange = 0, // Range in front of the projectile at which it will detect obstacle.  If set to zero it defaults to DesiredSpeed + Shape Diameter
                     MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
@@ -140,7 +140,7 @@ namespace Scripts
                     OffsetRatio = 0.5f, // The ratio to offset the random direction (0 to 1) 
                     OffsetTime = 30, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
                     OffsetMinRange = 200, // The range from target at which offsets are no longer active
-                    FocusOnly = true, // only target the constructs Ai's focus target. Don't use with OverideTarget.
+                    FocusOnly = false, // only target the constructs Ai's focus target. Don't use with OverideTarget.
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 1200, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = false, // this disables target follow and instead travel straight ahead (but will respect offsets).

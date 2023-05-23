@@ -83,7 +83,7 @@ namespace Scripts
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 1800, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
@@ -92,10 +92,21 @@ namespace Scripts
                 PartName = "Large Assault Cannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.75f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
-				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                AimLeadingPrediction = Accurate, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+                Ai = new AiDef
+                {
+                    TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
+                    TurretAttached = true, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
+                    TurretController = true, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
+                    PrimaryTracking = true, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
+                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
+                    SuppressFire = false, // If enabled, weapon can only be fired manually.
+                    OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
+                    DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
+                    TargetGridCenter = true, // Does not target blocks, instead it targets grid center.
+				},
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.02f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
@@ -118,8 +129,9 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					MagsToLoad = 8, // Number of physical magazines to consume on reload.
+					DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 },
 				Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,
@@ -169,7 +181,7 @@ namespace Scripts
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 1300, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
@@ -250,15 +262,11 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                    Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 0, // Minimum radius of threat to engage.
-                MaximumDiameter = 0, // Maximum radius of threat to engage; 0 = unlimited.
-                MaxTargetDistance = 0, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                MinTargetDistance = 0, // Minimum distance at which targets will be automatically shot at.
                 TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.

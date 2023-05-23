@@ -79,7 +79,7 @@ namespace Scripts
 			{
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
-                HealthHitModifier = 2, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                HealthHitModifier = 5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 Characters = 0.1f,
                 Grids = new GridSizeDef
                 {
@@ -102,16 +102,16 @@ namespace Scripts
                 },
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef 
+            AreaOfDamage = new AreaOfDamageDef //This also applies HealthHitModifier damage to projectiles in the area
 			{
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 100f,
+                    Radius = 80f,
                     Damage = 1f,
-                    Depth = 100f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 0f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -122,15 +122,15 @@ namespace Scripts
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "particleName",
+                    CustomParticle = "MD_FlakExplosion",
                     CustomSound = "HWR_FlakExplosion",
                 },
             },
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                TargetLossDegree = 80f, // Degrees, Is pointed forward
-                TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                TargetLossDegree = 30f, // Degrees, Is pointed forward
+                TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 800, // voxel phasing if you go above 5100
                 MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
@@ -138,9 +138,11 @@ namespace Scripts
                 RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
                 Smarts = new SmartsDef
                 {
-                    OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
+                    MaxTargets = 1, // Number of targets allowed before ending, 0 = unlimited
+					OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     ScanRange = 0, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = true, // this disables target follow and instead travel straight ahead (but will respect offsets).
+					KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
                 },
             },
             AmmoGraphics = new GraphicDef 
@@ -152,16 +154,12 @@ namespace Scripts
                 {
                     Hit = new ParticleDef
                     {
-                        Name = "MD_FlakExplosion",
+                        Name = "",
                         ApplyToShield = false,
                         Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 0,
                             Scale = 1,
                             HitPlayChance = 1f,
                         },
@@ -265,9 +263,9 @@ namespace Scripts
             {
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 120, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                DesiredSpeed = 800, // voxel phasing if you go above 5100
+                DesiredSpeed = 1200, // voxel phasing if you go above 5100
                 MaxTrajectory = 120f, // Max Distance the projectile or beam can Travel.
-                SpeedVariance = Random(start: 200, end: 0), // subtracts value from DesiredSpeed
+                SpeedVariance = Random(start: 400, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 80, end: 0), // subtracts value from MaxTrajectory
 			},
             AmmoGraphics = new GraphicDef
