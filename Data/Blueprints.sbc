@@ -210,14 +210,14 @@
 			</Id>
 			<DisplayName>[Heavy Missile] Tuukka HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
-			<Prerequisites>
-				<Item Amount="280" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="41" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="20" TypeId="Ingot" SubtypeId="Silicon"/>
-				<Item Amount="1.3" TypeId="Ingot" SubtypeId="Gold"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>69</BaseProductionTimeInSeconds>
+            <Prerequisites>
+                <Item Amount="220" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="33" TypeId="Ingot" SubtypeId="Nickel" />
+                <Item Amount="0.41" TypeId="Ingot" SubtypeId="Uranium" />
+                <Item Amount="16" TypeId="Ingot" SubtypeId="Silicon" />
+                <Item Amount="1" TypeId="Ingot" SubtypeId="Gold" />
+            </Prerequisites>
+			<BaseProductionTimeInSeconds>58</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_HeavyMissile"/>
 		</Blueprint>
 		<Blueprint>
