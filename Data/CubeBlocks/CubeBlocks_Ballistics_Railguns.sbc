@@ -22,7 +22,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>

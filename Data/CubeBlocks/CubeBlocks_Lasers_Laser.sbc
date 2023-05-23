@@ -6,7 +6,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXSpartanTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Spartan Dual XFEL-Heavy Turret</DisplayName>
+			<DisplayName>[Laser] Spartan</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
 			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
 				[1600m Auto Range]
@@ -65,7 +65,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_T2PDX</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-Heavy Turret</DisplayName>
+			<DisplayName>[Laser] Large XFEL-H Turret</DisplayName>
 			<Description>A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
 				[1600m Auto Range]
 				[Uses 78MW Energy]
@@ -134,7 +134,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_Fixed_T2</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-Heavy Gimbal </DisplayName>
+			<DisplayName>[Laser] Large XFEL-H Gimbal </DisplayName>
 			<Description>An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.
 				[1800m Semi-Auto Range]
 				[Uses 78MW Energy]
@@ -211,7 +211,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ReceptorTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Small XFEL-Lite Turret</DisplayName>
+			<DisplayName>[Laser] Small XFEL-L Turret</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.
 				[900m Auto Range]
 				[Uses 39MW Energy]
@@ -301,7 +301,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ReceptorCoilGun</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Small XFEL-Lite Fixed Mount</DisplayName>
+			<DisplayName>[Laser] Small XFEL-L Gun</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.
 				[1100m Manual Range]
 				[Uses 39MW Energy]

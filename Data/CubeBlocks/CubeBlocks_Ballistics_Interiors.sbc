@@ -6,7 +6,7 @@
 				<TypeId>InteriorTurret</TypeId>
 				<SubtypeId>LargeInteriorTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Interior] Large Anti-personnel Carbine Turret</DisplayName>
+			<DisplayName>[Interior] Large Anti-personnel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\interior_turret.dds</Icon>
 			<Description>The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.
 				[700m Auto Range]

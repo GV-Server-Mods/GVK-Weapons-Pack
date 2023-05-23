@@ -6,7 +6,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] Hurricane 480mm Turret</DisplayName>
+			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
 			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
 				[3000m Auto Range]

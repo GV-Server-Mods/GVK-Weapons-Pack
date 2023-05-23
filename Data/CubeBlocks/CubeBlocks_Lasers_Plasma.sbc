@@ -7,7 +7,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>lokiCannon1</SubtypeId>
 			</Id>
-			<DisplayName>[Plasma] Particle Accelerator LOKI</DisplayName>
+			<DisplayName>[Plasma] LOKI</DisplayName>
 			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
 				[2600m Auto Range]
 				[Uses Plasma Cells + 156MW Energy]</Description>

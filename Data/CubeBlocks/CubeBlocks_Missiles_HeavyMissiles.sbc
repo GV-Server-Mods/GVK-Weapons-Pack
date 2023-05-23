@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>missileBattery01</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Missile] Tuukka Missile Turret</DisplayName>
+			<DisplayName>[MLRS] Tuukka</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<Description>The Tuukka is a ship-to-ship cruise missile effective against moving large targets. Designed by L.Y.N.X.
 				[2000 Auto Range]
@@ -20,6 +20,7 @@
 
             <Components>
                 <Component Subtype="SteelPlate" Count="140" />
+				<Component Subtype="GVK_Data_Core" Count="1"/>
 				<Component Subtype="GVK_Missile_Tech" Count="5"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 					<DeconstructId>
