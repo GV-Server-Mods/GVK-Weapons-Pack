@@ -168,6 +168,48 @@
 			<BaseProductionTimeInSeconds>523</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
 		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWESidekickDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Sidekick" Machine Gun Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Sidekick.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_SidekickDroneMag"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWEFalconDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Falcon" Cannon Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_FalconDroneMag"/>
+		</Blueprint>
+		<!-- Ammo only discoverable -->
+		<Blueprint>
+			<Id>
+				<TypeId>BlueprintDefinition</TypeId>
+				<SubtypeId>AWEStormriderDroneBP</SubtypeId>
+			</Id>
+			<DisplayName>"Stormrider" Cannon Drone</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Stormrider.dds</Icon>
+			<Prerequisites>
+				<Item Amount="1" TypeId="Component" SubtypeId="ZoneChip"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>99999</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="AWE_StormriderDroneMag"/>
+		</Blueprint>
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
