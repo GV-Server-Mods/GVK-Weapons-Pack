@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CubeBlocks>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
+			</Id>
+			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
+			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
+				[3000m Auto Range]
+				[Uses 480mm HE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="3" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="1200" />
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="7"/>
+                <Component Subtype="Construction" Count="580" />
+                <Component Subtype="SmallTube" Count="240" />
+                <Component Subtype="LargeTube" Count="390" />
+                <Component Subtype="Motor" Count="350" />
+                <Component Subtype="Computer" Count="200" />
+                <Component Subtype="MetalGrid" Count="390" />
+                <Component Subtype="SteelPlate" Count="970" />
+            </Components>
+            <BuildTimeSeconds>375</BuildTimeSeconds>
+			<PCU>70000</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
+			</MountPoints>
+			<!-- <BuildProgressModels>
+					<Model BuildPercentUpperBound="0.33" File="Models\AWE_HeavyCannon\ARYX_CycloneCannonBase_BS1.mwm"/>
+					<Model BuildPercentUpperBound="0.66" File="Models\AWE_HeavyCannon\ARYX_CycloneCannonBase_BS2.mwm"/>
+					<Model BuildPercentUpperBound="1.0" File="Models\AWE_HeavyCannon\ARYX_CycloneCannonBase_BS3.mwm"/>
+				</BuildProgressModels>	-->
+			<BlockPairName>AryxHurricaneCannon</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.576</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+		</Definition>
+	</CubeBlocks>
+</Definitions>

@@ -1347,7 +1347,7 @@
 							<Keys>
 								<Key>
 									<Time>0</Time>
-									<ValueFloat>100</ValueFloat>
+									<ValueFloat>30</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>

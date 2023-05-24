@@ -1,107 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
-		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>ARYXLargeRadar</SubtypeId>
-			</Id>
-			<DisplayName>[Sensor] Large Aegis System</DisplayName>
-			<Icon>Textures\GUI\Icons\Aryx_AWE_LargeRadar.dds</Icon>
-			<Description>The Aegis sensor suite is a long-range targeting system for external weapons. Designed by Aryx Weapon Enterprises.
-				[3.5km Range]</Description>
-			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWE_Radars\ARYX_LargeRadar.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="25"/>
-				<Component Subtype="Construction" Count="20"/>
-				<Component Subtype="Detector" Count="10"/>
-				<Component Subtype="LargeTube" Count="5"/>
-				<Component Subtype="Computer" Count="40"/>
-				<Component Subtype="SteelPlate" Count="25"/>
-			</Components>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="1.00" EndY="1.00"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\AWE_Radars\ARYX_LargeRadar_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\AWE_Radars\ARYX_LargeRadar_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Radars\ARYX_LargeRadar_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>AryxRadar</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<BuildTimeSeconds>25</BuildTimeSeconds>
-			<EdgeType>Light</EdgeType>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>0</PCU>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>ARYXSmallRadar</SubtypeId>
-			</Id>
-			<DisplayName>[Sensor] Small Aegis System</DisplayName>
-			<Icon>Textures\GUI\Icons\Aryx_AWE_SmallRadar.dds</Icon>
-			<Description>The Aegis sensor suite is a long-range targeting system for external weapons. Designed by Aryx Weapon Enterprises.
-				[3.5km Range]</Description>
-			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="2" y="4" z="2"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWE_Radars\ARYX_SmallRadar.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="Construction" Count="5"/>
-				<Component Subtype="Detector" Count="5"/>
-				<Component Subtype="LargeTube" Count="1"/>
-				<Component Subtype="Computer" Count="20"/>
-				<Component Subtype="SteelPlate" Count="10"/>
-			</Components>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="2.00" EndY="2.00"/>
-				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="2.00" EndY="2.00"/>
-				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="2.00" EndY="2.00"/>
-				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="2.00" EndY="2.00"/>
-				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="2.00" EndY="2.00"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.5" File="Models\AWE_Radars\ARYX_SmallRadar_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Radars\ARYX_SmallRadar_BS2.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>AryxRadar</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<EdgeType>Light</EdgeType>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>0</PCU>
-		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKIObserverSM</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Small Long Range Search Radar</DisplayName>
+			<DisplayName>[Sensor] Small Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
-				[3.5km Range]</Description>
+				[5km Range]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\OKIObserverSM.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -130,7 +37,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>20</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Others_Radar"/>
 			<InventoryMaxVolume>0.001</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
@@ -148,15 +55,16 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKIDesignator</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Large Long Range Search Radar</DisplayName>
+			<DisplayName>[Sensor] Large Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
-				[3.5km Range]</Description>
+				[5km Range]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\OKIDesignator.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -184,7 +92,7 @@
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
 			<BuildTimeSeconds>20</BuildTimeSeconds>
-			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Others_Radar"/>
 			<InventoryMaxVolume>0.01</InventoryMaxVolume>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
@@ -202,6 +110,7 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

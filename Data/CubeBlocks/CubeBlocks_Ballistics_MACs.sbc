@@ -74,7 +74,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>LargeRailgun</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Large 500mm</DisplayName>
+			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Only suitable for the largest ships, and damage drops with range.
 				[3000m Manual Range]
@@ -135,11 +135,11 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>LargeRailgun</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Light Coil</DisplayName>
+			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage.
+			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Max damage up to 2km, 25% damage at max range.
 				[3000m Manual Range]
-				[Uses 200mm DU]
+				[Uses 200mm DU + 167MW]
 			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -147,24 +147,27 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\RailGun.mwm</Model>
             <Components>
-                <Component Subtype="SteelPlate" Count="285" />
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+                <Component Subtype="SteelPlate" Count="220" />
+				<Component Subtype="GVK_Laser_Tech" Count="3"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
 						<SubtypeId>Scrap</SubtypeId>
 					</DeconstructId>
 				</Component>
-                <Component Subtype="MetalGrid" Count="86" />
-                <Component Subtype="PowerCell" Count="29" />
-                <Component Subtype="Superconductor" Count="57" />
-                <Component Subtype="Motor" Count="57" />
-                <Component Subtype="Reactor" Count="72" />
-                <Component Subtype="Computer" Count="214" />
-                <Component Subtype="SteelPlate" Count="427" />
+                <Component Subtype="MetalGrid" Count="65" />
+                <Component Subtype="PowerCell" Count="22" />
+                <Component Subtype="Superconductor" Count="44" />
+                <Component Subtype="Motor" Count="44" />
+                <Component Subtype="Reactor" Count="54" />
+                <Component Subtype="Computer" Count="170" />
+                <Component Subtype="SteelPlate" Count="330" />
             </Components>
-            <BuildTimeSeconds>79</BuildTimeSeconds>
-			<PCU>6000</PCU>
+
+
+            <BuildTimeSeconds>80</BuildTimeSeconds>
+			<PCU>60000</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.1" StartY="0.6" EndX="0.9" EndY="1.9" Default="true"/>

@@ -20,7 +20,6 @@ namespace Scripts
 							SmallMissileLauncher,
 							LargeMissileTurret,
 							SmallGatlingTurret,
-							SmallRocketLauncherReload,
 							AryxRailgunTurret, 
 							AryxRailgun,
 							SmallBlockRailgun,
@@ -37,19 +36,33 @@ namespace Scripts
 							//ARYXLightCoilgun,
 							LargeBlockRailgun,
 							MXA_ArcherPods,
+							MXA_ArcherPods_NPC,
+							SmallRocketLauncherReload,
+							SmallRocketLauncherReload_NPC,
 							Torpedo_Crusader_Large,
 							Torpedo_Crusader_Small,
+							Torpedo_Crusader_Large_NPC,
+							Torpedo_Crusader_Small_NPC,
 							MA_PDT,
 							MA_PDX_T2,
 							ReceptorCoilGun,
 							ReceptorTurret,
 							MA_Fixed_T2,
-							AryxRadar,
 							Other_Radar_Large,
 							Other_Warheads_RegularWarhead_LG_Weapon, 
 							Other_Warheads_RegularWarhead_SG_Weapon,
 							AryxSmallFighterHangar);
-            // ArmorDefinitions(Armor1, Armor2);
+							AryxLongswordMissileBattery,
+							KhopeshTurret,
+							SentinelTurret,
+							AryxVulcanTurret,
+							AryxHurricaneTurret,
+							ThrasherTurret,
+							tukkaLauncher01,
+							lokiCannon1_def,
+							AryxSpartanTurret
+							);
+            ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
         }

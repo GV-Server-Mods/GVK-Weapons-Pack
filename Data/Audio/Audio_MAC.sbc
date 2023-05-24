@@ -72,30 +72,5 @@
 				</Wave>
 			</Waves>
 		</Sound>
-		<Sound>
-			<Id>
-				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
-				<SubtypeId>MXA_ImpactExplosion</SubtypeId>
-			</Id>
-			<Category>SHOT</Category>
-			<MaxDistance>1500</MaxDistance>
-			<VolumeVariation>0.05</VolumeVariation>
-			<PreventSynchronization>0</PreventSynchronization>
-			<SoundLimit>10</SoundLimit>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
-			<Volume>1</Volume>
-			<Waves>
-				<Wave Type="D3">
-					<Start>Audio\MXA\ImpactExplosion1.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\MXA\ImpactExplosion2.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\MXA\ImpactExplosion3.xwm</Start>
-				</Wave>
-			</Waves>
-		</Sound>
 	</Sounds>
 </Definitions>

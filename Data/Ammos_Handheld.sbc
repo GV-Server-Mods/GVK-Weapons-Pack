@@ -60,12 +60,15 @@
 			</BasicProperties>
 			<MissileProperties>
 				<MissileMass>45</MissileMass>
-				<MissileExplosionRadius>4</MissileExplosionRadius>
+				<MissileExplosionRadius>1.75</MissileExplosionRadius>
 				<MissileModelName>Models\Weapons\Projectile_Missile.mwm</MissileModelName>
 				<MissileAcceleration>600</MissileAcceleration>
-				<MissileInitialSpeed>100</MissileInitialSpeed>
+				<MissileInitialSpeed>200</MissileInitialSpeed>
 				<MissileSkipAcceleration>false</MissileSkipAcceleration>
-				<MissileExplosionDamage>250</MissileExplosionDamage>
+				<MissileExplosionDamage>7000</MissileExplosionDamage>
+                <MissileHealthPool>561</MissileHealthPool>
+                <MissileTrailEffect>Smoke_Missile</MissileTrailEffect>
+                <MissileGravityEnabled>true</MissileGravityEnabled>
 			</MissileProperties>
 		</Ammo>
 	</Ammos>

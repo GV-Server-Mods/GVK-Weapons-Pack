@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<ParticleEffects>
-		<!--Torp Blast-->
 		<ParticleEffect xsi:type="ParticleEffect">
 			<Id Type="MyObjectBuilder_ParticleEffect" Subtype="MD_TorpedoSlowBlast"/>
 			<ParticleId>12309299</ParticleId>
@@ -10,26 +9,26 @@
 			<LowRes>false</LowRes>
 			<Loop>false</Loop>
 			<DurationMin>7</DurationMin>
-			<DurationMax>9</DurationMax>
+			<DurationMax>0</DurationMax>
 			<Version>0</Version>
 			<ParticleGenerations>
 				<ParticleGeneration Name="Sparks" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
 								<X>16</X>
 								<Y>16</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
-							<ValueInt>33</ValueInt>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>5</ValueInt>
 						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
 							<ValueInt>1</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -70,7 +69,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -82,18 +81,18 @@
 												<Value2D/>
 											</Key>
 											<Key>
-												<Time>0.0506617</Time>
+												<Time>0.008506617</Time>
 												<ValueFloat>0</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
-												<Time>0.101323</Time>
-												<ValueFloat>2000</ValueFloat>
+												<Time>0.01701323</Time>
+												<ValueFloat>800</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
 												<Time>1</Time>
-												<ValueFloat>1000</ValueFloat>
+												<ValueFloat>100</ValueFloat>
 												<Value2D/>
 											</Key>
 										</Keys>
@@ -101,10 +100,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -117,7 +116,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -126,32 +125,37 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
 									<ValueFloat>150</ValueFloat>
 									<Value2D/>
 								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
-							<Keys>
 								<Key>
-									<Time>0</Time>
-									<ValueFloat>50</ValueFloat>
+									<Time>0.1627339</Time>
+									<ValueFloat>0</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>75</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -160,7 +164,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -169,14 +173,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -207,10 +211,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -218,12 +222,22 @@
 										<Keys>
 											<Key>
 												<Time>0</Time>
-												<ValueFloat>0</ValueFloat>
+												<ValueFloat>0.25</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.003709592</Time>
+												<ValueFloat>0.25</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9962904</Time>
+												<ValueFloat>0.25</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
 												<Time>1</Time>
-												<ValueFloat>2</ValueFloat>
+												<ValueFloat>0.25</ValueFloat>
 												<Value2D/>
 											</Key>
 										</Keys>
@@ -231,91 +245,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
-							<ValueFloat>4</ValueFloat>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>3</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>10</ValueFloat>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
 							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_AryxAWEBlue_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
-							<ValueFloat>0.05</ValueFloat>
-						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
-							<ValueFloat>1.5</ValueFloat>
-						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0.01</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>1.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -346,24 +360,250 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0.002126528</Time>
-									<ValueFloat>25</ValueFloat>
+									<ValueFloat>500</ValueFloat>
 									<Value2D/>
 								</Key>
 								<Key>
 									<Time>0.2551834</Time>
+									<ValueFloat>100</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleGeneration>
+				<ParticleGeneration Name="Sparks" Version="0">
+					<GenerationType>GPU</GenerationType>
+					<Properties>
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
+							<ValueVector3>
+								<X>16</X>
+								<Y>16</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>137</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>1</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9683821</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>1000</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.333333343</Time>
+												<ValueFloat>1000</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.6666667</Time>
+												<ValueFloat>1000</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1000</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0.1</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>0</X>
+										<Y>0</Y>
+										<Z>0</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
 									<ValueFloat>0</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>-1</Z>
+							</ValueVector3>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>100</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>50</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>360</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -394,34 +634,226 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
-							<ValueInt>0</ValueInt>
-						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0.5</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>4</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>100</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
+							<ValueFloat>0.3</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
+							<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+						</Property>
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0.05</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>1.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0.002126528</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>0.2551834</Time>
+									<ValueFloat>25</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>0.4</Time>
+									<ValueFloat>10</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
@@ -429,20 +861,20 @@
 				<ParticleGeneration Name="Ashes" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
 								<X>16</X>
 								<Y>16</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
 							<ValueInt>128</ValueInt>
 						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
 							<ValueInt>96</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -493,7 +925,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -524,10 +956,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
 							<ValueFloat>0.5</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -540,7 +972,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -549,14 +981,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -565,7 +997,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -574,7 +1006,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -583,7 +1015,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -592,14 +1024,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -630,10 +1062,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>2</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -664,91 +1096,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life" Type="Float">
 							<ValueFloat>7</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>0.03</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
 							<ValueFloat>0.03</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
 							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_E_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Light" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
 							<ValueFloat>20</ValueFloat>
 						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
 							<ValueFloat>0.05</ValueFloat>
 						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life var" Type="Float">
 							<ValueFloat>3</ValueFloat>
 						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -779,7 +1211,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0.002126528</Time>
@@ -808,10 +1240,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -842,34 +1274,34 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
 							<ValueFloat>5</ValueFloat>
 						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
@@ -877,20 +1309,20 @@
 				<ParticleGeneration Name="Bloom" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
 								<X>4</X>
 								<Y>4</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
 							<ValueInt>7</ValueInt>
 						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
 							<ValueInt>1</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -931,7 +1363,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -939,7 +1371,7 @@
 										<Keys>
 											<Key>
 												<Time>0</Time>
-												<ValueFloat>000</ValueFloat>
+												<ValueFloat>0</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
@@ -967,10 +1399,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
 							<ValueFloat>0.5</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -983,7 +1415,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -992,14 +1424,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1008,7 +1440,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1017,7 +1449,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1026,7 +1458,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1035,14 +1467,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1073,10 +1505,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1102,91 +1534,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1000</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>4</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
 							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_E_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Light" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
 							<ValueFloat>0.05</ValueFloat>
 						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life var" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
-							<ValueBool>true</ValueBool>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1217,7 +1649,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1231,10 +1663,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
 							<ValueFloat>10</ValueFloat>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1265,34 +1697,34 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
-							<ValueInt>0</ValueInt>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
@@ -1300,20 +1732,20 @@
 				<ParticleGeneration Name="ShockWave" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
 								<X>4</X>
 								<Y>4</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
 							<ValueInt>6</ValueInt>
 						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
 							<ValueInt>1</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1340,7 +1772,7 @@
 												<Value2D/>
 											</Key>
 											<Key>
-												<Time>0.01205857</Time>
+												<Time>0.288656235</Time>
 												<ValueVector4>
 													<X>0.3</X>
 													<Y>0.7</Y>
@@ -1355,7 +1787,7 @@
 													<X>0.3</X>
 													<Y>0.7</Y>
 													<Z>1</Z>
-													<W>0.5</W>
+													<W>0</W>
 												</ValueVector4>
 												<Value2D/>
 											</Key>
@@ -1364,7 +1796,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1381,7 +1813,7 @@
 												<Value2D/>
 											</Key>
 											<Key>
-												<Time>0.01205857</Time>
+												<Time>0.8049718</Time>
 												<ValueFloat>1</ValueFloat>
 												<Value2D/>
 											</Key>
@@ -1395,10 +1827,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
 							<ValueFloat>0.5</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1411,7 +1843,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1420,14 +1852,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1436,7 +1868,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1445,7 +1877,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1454,7 +1886,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1463,14 +1895,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1501,10 +1933,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1527,7 +1959,7 @@
 											</Key>
 											<Key>
 												<Time>1</Time>
-												<ValueFloat>200</ValueFloat>
+												<ValueFloat>300</ValueFloat>
 												<Value2D/>
 											</Key>
 										</Keys>
@@ -1535,92 +1967,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
-							<ValueFloat>5</ValueFloat>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>6</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1000</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>4</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
-							<Keys>
-							</Keys>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_E_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Light" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
-							<ValueFloat>0.05</ValueFloat>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0.089</ValueFloat>
 						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>1</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>360</X>
 								<Y>360</Y>
 								<Z>360</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>360</X>
 								<Y>360</Y>
 								<Z>360</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1651,7 +2082,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0.01</Time>
@@ -1665,10 +2096,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
 							<ValueFloat>10</ValueFloat>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -1699,492 +2130,34 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
 							<ValueFloat>2</ValueFloat>
 						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-					</Properties>
-				</ParticleGeneration>
-				<ParticleGeneration Name="Smoke" Version="0">
-					<GenerationType>GPU</GenerationType>
-					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>16</X>
-								<Y>16</Y>
-								<Z>1</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
-							<ValueInt>128</ValueInt>
-						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
-							<ValueInt>96</ValueInt>
-						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
-													<Z>1</Z>
-													<W>0.9</W>
-												</ValueVector4>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.09750928</Time>
-												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
-													<Z>1</Z>
-													<W>0.9</W>
-												</ValueVector4>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueVector4>
-													<X>0.01</X>
-													<Y>0.01</Y>
-													<Z>0.01</Z>
-													<W>0</W>
-												</ValueVector4>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueFloat>1000</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.01112878</Time>
-												<ValueFloat>500</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.15</Time>
-												<ValueFloat>10</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
-							<ValueFloat>0.5</ValueFloat>
-						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueVector3>
-										<X>15</X>
-										<Y>15</Y>
-										<Z>15</Z>
-									</ValueVector3>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>-1</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>12</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>5</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>180</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.33</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.66</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueFloat>0.5</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.006359301</Time>
-												<ValueFloat>15</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueFloat>60</ValueFloat>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
-							<ValueFloat>3</ValueFloat>
-						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>0.25</ValueFloat>
-						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
-							<ValueFloat>0.08</ValueFloat>
-						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
-							<ValueBool>true</ValueBool>
-						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
-							<Keys/>
-						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-							<ValueString>Atlas_E_01</ValueString>
-						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
-							<ValueFloat>2</ValueFloat>
-						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
-							<ValueFloat>0.025</ValueFloat>
-						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
-							<ValueBool>true</ValueBool>
-						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
-							<ValueInt>0</ValueInt>
-						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
-							<ValueVector3>
-								<X>0</X>
-								<Y>0</Y>
-								<Z>0</Z>
-							</ValueVector3>
-						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueFloat>1</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.33</Time>
-												<ValueFloat>1</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.66</Time>
-												<ValueFloat>1</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueFloat>1</ValueFloat>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>15</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.2</Time>
-									<ValueFloat>10</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.4</Time>
-									<ValueFloat>9</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.6</Time>
-									<ValueFloat>8</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.8</Time>
-									<ValueFloat>7</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1</Time>
-									<ValueFloat>6</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1.2</Time>
-									<ValueFloat>5</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1.4</Time>
-									<ValueFloat>4</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1.6</Time>
-									<ValueFloat>3</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>1.8</Time>
-									<ValueFloat>2</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<Value2D>
-										<Keys>
-											<Key>
-												<Time>0</Time>
-												<ValueFloat>40</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.33</Time>
-												<ValueFloat>20</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.66</Time>
-												<ValueFloat>10</ValueFloat>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>1</Time>
-												<ValueFloat>0</ValueFloat>
-												<Value2D/>
-											</Key>
-										</Keys>
-									</Value2D>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
-							<ValueFloat>0.5</ValueFloat>
-						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
-						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
-							<ValueInt>0</ValueInt>
-						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
-							<ValueBool>true</ValueBool>
-						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
@@ -2192,20 +2165,20 @@
 				<ParticleGeneration Name="BlueExplosion" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
 								<X>16</X>
 								<Y>16</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
 							<ValueInt>32</ValueInt>
 						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
 							<ValueInt>32</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2256,7 +2229,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2287,10 +2260,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
 							<ValueFloat>0.5</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2303,7 +2276,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2312,23 +2285,23 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
-									<ValueFloat>15</ValueFloat>
+									<ValueFloat>20</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2337,7 +2310,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2346,7 +2319,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2355,14 +2328,14 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2393,10 +2366,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2414,7 +2387,7 @@
 											</Key>
 											<Key>
 												<Time>1</Time>
-												<ValueFloat>40</ValueFloat>
+												<ValueFloat>80</ValueFloat>
 												<Value2D/>
 											</Key>
 										</Keys>
@@ -2422,91 +2395,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
-							<ValueFloat>1.04</ValueFloat>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>1.56</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>1</ValueFloat>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1000</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>0.25</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
-							<ValueFloat>0.037</ValueFloat>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>0.0555</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
 							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_AryxAWEBlue_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Light" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
 							<ValueFloat>0.05</ValueFloat>
 						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life var" Type="Float">
 							<ValueFloat>0.2</ValueFloat>
 						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2537,7 +2510,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2566,10 +2539,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
 							<ValueFloat>10</ValueFloat>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2600,95 +2573,85 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
-							<ValueFloat>0.5</ValueFloat>
-						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
 				</ParticleGeneration>
-				<ParticleGeneration Name="LensFlare" Version="0">
+				<ParticleGeneration Name="Plasma" Version="0">
 					<GenerationType>GPU</GenerationType>
 					<Properties>
-						<Property Name="Array size" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
 							<ValueVector3>
-								<X>4</X>
-								<Y>8</Y>
+								<X>16</X>
+								<Y>16</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Array offset" AnimationType="Const" Type="Int">
-							<ValueInt>9</ValueInt>
-						</Property>
-						<Property Name="Array modulo" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Color" AnimationType="Animated2D" Type="Vector4">
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>64</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
 									<Value2D>
 										<Keys>
 											<Key>
-												<Time>0.01</Time>
+												<Time>0</Time>
 												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
+													<X>1</X>
+													<Y>1</Y>
 													<Z>1</Z>
-													<W>0.25</W>
+													<W>1</W>
 												</ValueVector4>
 												<Value2D/>
 											</Key>
 											<Key>
-												<Time>0.009992863</Time>
+												<Time>0.1</Time>
 												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
+													<X>0.7</X>
+													<Y>0.9</Y>
 													<Z>1</Z>
-													<W>0.125</W>
-												</ValueVector4>
-												<Value2D/>
-											</Key>
-											<Key>
-												<Time>0.5085796</Time>
-												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
-													<Z>1</Z>
-													<W>0.0625</W>
+													<W>1</W>
 												</ValueVector4>
 												<Value2D/>
 											</Key>
 											<Key>
 												<Time>1</Time>
 												<ValueVector4>
-													<X>0.3</X>
-													<Y>0.7</Y>
+													<X>0.2</X>
+													<Y>0.3</Y>
 													<Z>1</Z>
 													<W>0</W>
 												</ValueVector4>
@@ -2699,7 +2662,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color intensity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2707,12 +2670,12 @@
 										<Keys>
 											<Key>
 												<Time>0</Time>
-												<ValueFloat>0</ValueFloat>
+												<ValueFloat>8000</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
 												<Time>0.1</Time>
-												<ValueFloat>1</ValueFloat>
+												<ValueFloat>500</ValueFloat>
 												<Value2D/>
 											</Key>
 											<Key>
@@ -2725,23 +2688,23 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Bounciness" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0.5</ValueFloat>
 						</Property>
-						<Property Name="Emitter size" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
 							<Keys>
 								<Key>
 									<Time>0</Time>
 									<ValueVector3>
-										<X>0</X>
-										<Y>0</Y>
-										<Z>0</Z>
+										<X>20</X>
+										<Y>20</Y>
+										<Z>20</Z>
 									</ValueVector3>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Emitter inner size" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2750,14 +2713,32 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
-								<Z>1</Z>
+								<Z>-1</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Velocity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>40</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>10</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2766,41 +2747,23 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Velocity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
+									<ValueFloat>360</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Direction inner cone" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Direction cone" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>0</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
-						</Property>
-						<Property Name="Acceleration" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Acceleration factor [m/s^2]" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2831,10 +2794,433 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Rotation velocity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Radius" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0.5</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.001</Time>
+												<ValueFloat>50</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>300</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1000</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
+							<ValueFloat>0.25</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>0.03</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>15</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>4</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
+							<ValueString>Atlas_F_01</ValueString>
+						</Property>
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0.1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>0.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>40</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>20</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>10</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleGeneration>
+				<ParticleGeneration Name="LensFlare" Version="0">
+					<GenerationType>GPU</GenerationType>
+					<Properties>
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
+							<ValueVector3>
+								<X>4</X>
+								<Y>8</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>9</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0.125</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.181781724</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0.25</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.645422637</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0.0625</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueVector4>
+													<X>0.3</X>
+													<Y>0.7</Y>
+													<Z>1</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.485295743</Time>
+												<ValueFloat>2</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>0</X>
+										<Y>0</Y>
+										<Z>0</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>1</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2865,92 +3251,91 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Life" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life" Type="Float">
 							<ValueFloat>5</ValueFloat>
 						</Property>
-						<Property Name="Soft particle distance scale" AnimationType="Const" Type="Float">
-							<ValueFloat>10</ValueFloat>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1000</ValueFloat>
 						</Property>
-						<Property Name="Streak multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Animation frame time" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Particles per second" AnimationType="Animated" Type="Float">
-							<Keys>
-							</Keys>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
 						</Property>
-						<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
 							<ValueString>Atlas_AryxAWEBlue_01</ValueString>
 						</Property>
-						<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collide" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="SleepState" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Light" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Light" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="VolumetricLight" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Target coverage" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Gravity" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Offset" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Rotation velocity var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Hue var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
 							<ValueFloat>0.01</ValueFloat>
 						</Property>
-						<Property Name="Rotation enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Motion inheritance" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Life var" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Life var" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
-						<Property Name="Streaks" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
 							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Rotation reference" AnimationType="Const" Type="Int">
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
 							<ValueInt>0</ValueInt>
 						</Property>
-						<Property Name="Angle" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Angle var" AnimationType="Const" Type="Vector3">
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
 							<ValueVector3>
 								<X>0</X>
 								<Y>0</Y>
 								<Z>0</Z>
 							</ValueVector3>
 						</Property>
-						<Property Name="Thickness" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -2981,7 +3366,7 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Particles per frame" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0.05</Time>
@@ -3010,10 +3395,10 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Camera bias" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Emissivity" AnimationType="Animated2D" Type="Float">
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -3044,35 +3429,1319 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Shadow alpha multiplier" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Use Emissivity Channel" AnimationType="Const" Type="Bool">
-							<ValueBool>false</ValueBool>
-						</Property>
-						<Property Name="Use Alpha Anisotropy" AnimationType="Const" Type="Bool">
-							<ValueBool>true</ValueBool>
-						</Property>
-						<Property Name="Ambient light factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0</ValueFloat>
-						</Property>
-						<Property Name="Radius var" AnimationType="Const" Type="Float">
-							<ValueFloat>1.5</ValueFloat>
-						</Property>
-						<Property Name="Rotation velocity collision multiplier" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Collision count to kill particle" AnimationType="Const" Type="Int">
-							<ValueInt>0</ValueInt>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
 						</Property>
-						<Property Name="Distance scaling factor" AnimationType="Const" Type="Float">
-							<ValueFloat>0.0001</ValueFloat>
-						</Property>
-						<Property Name="Motion interpolation" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Camera Soft Radius" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>1.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0.0001</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
 							<ValueFloat>10</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleGeneration>
+				<ParticleGeneration Name="Debris_Trail" Version="0">
+					<GenerationType>GPU</GenerationType>
+					<Properties>
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
+							<ValueVector3>
+								<X>32</X>
+								<Y>16</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>480</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>16</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueVector4>
+													<X>0.9469329</X>
+													<Y>0.9210556</Y>
+													<Z>0.5143444</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.199788</Time>
+												<ValueVector4>
+													<X>0.06439257</X>
+													<Y>0.02925363</Y>
+													<Z>0.004834226</Z>
+													<W>0.2196078</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.4822469</Time>
+												<ValueVector4>
+													<X>0.01085598</X>
+													<Y>0.01085598</Y>
+													<Z>0.01085598</Z>
+													<W>0.2196078</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueVector4>
+													<X>0</X>
+													<Y>0</Y>
+													<Z>0</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>30</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9904611</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9957604</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>0</X>
+										<Y>0</Y>
+										<Z>0</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>-1</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>60</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>30</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>180</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0.1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.1472868</Time>
+												<ValueFloat>0.8</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9922481</Time>
+												<ValueFloat>0.7</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0.6</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>1.3</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
+							<ValueFloat>0.36</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>0.01</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
+							<ValueString>Atlas_D_01</ValueString>
+						</Property>
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>0.5</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>2</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>3</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>4</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>4</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0.01701223</Time>
+									<ValueFloat>15</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleGeneration>
+				<ParticleGeneration Name="Debris" Version="0">
+					<GenerationType>GPU</GenerationType>
+					<Properties>
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
+							<ValueVector3>
+								<X>32</X>
+								<Y>32</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>800</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>32</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueVector4>
+													<X>0.1975164</X>
+													<Y>0.147998</Y>
+													<Z>0.06003161</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.1595124</Time>
+												<ValueVector4>
+													<X>0.02537128</X>
+													<Y>0.02537128</Y>
+													<Z>0.02537128</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.6216217</Time>
+												<ValueVector4>
+													<X>0.02422294</X>
+													<Y>0.02422294</Y>
+													<Z>0.02422294</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueVector4>
+													<X>0</X>
+													<Y>0</Y>
+													<Z>0</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>10</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.1568628</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.5431902</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9994701</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0.2</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>25</X>
+										<Y>25</Y>
+										<Z>25</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>-1</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>50</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>20</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>180</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
+							<ValueFloat>-1</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0.5</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.006359301</Time>
+												<ValueFloat>1.5</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9922481</Time>
+												<ValueFloat>1.5</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1.5</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>6</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>25</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
+							<ValueFloat>0.25</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>0.05</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
+							<ValueString>Atlas_D_01</ValueString>
+						</Property>
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>-1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>100</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>10</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+					</Properties>
+				</ParticleGeneration>
+				<ParticleGeneration Name="DebrisLarge" Version="0">
+					<GenerationType>GPU</GenerationType>
+					<Properties>
+						<Property AnimationType="Const" Name="Array size" Type="Vector3">
+							<ValueVector3>
+								<X>32</X>
+								<Y>32</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Array offset" Type="Int">
+							<ValueInt>832</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Array modulo" Type="Int">
+							<ValueInt>64</ValueInt>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color" Type="Vector4">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueVector4>
+													<X>0.1975164</X>
+													<Y>0.147998</Y>
+													<Z>0.06003161</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.1595124</Time>
+												<ValueVector4>
+													<X>0.02537128</X>
+													<Y>0.02537128</Y>
+													<Z>0.02537128</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.6216217</Time>
+												<ValueVector4>
+													<X>0.02422294</X>
+													<Y>0.02422294</Y>
+													<Z>0.02422294</Z>
+													<W>1</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueVector4>
+													<X>0</X>
+													<Y>0</Y>
+													<Z>0</Z>
+													<W>0</W>
+												</ValueVector4>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Color intensity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>10</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.1568628</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.5431902</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9994701</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Bounciness" Type="Float">
+							<ValueFloat>0.2</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter size" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>25</X>
+										<Y>25</Y>
+										<Z>25</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Emitter inner size" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Direction" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>-1</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>30</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Velocity var" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>15</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction inner cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>0</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Direction cone" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>180</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Acceleration" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Acceleration factor [m/s^2]" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity" Type="Float">
+							<ValueFloat>-1</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Radius" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0.5</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.006359301</Time>
+												<ValueFloat>3</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.9922481</Time>
+												<ValueFloat>3</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1.5</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Life" Type="Float">
+							<ValueFloat>6</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
+							<ValueFloat>10</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streak multiplier" Type="Float">
+							<ValueFloat>0.25</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Animation frame time" Type="Float">
+							<ValueFloat>0.05</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per second" Type="Float">
+							<Keys/>
+						</Property>
+						<Property AnimationType="Const" Name="Material" Type="MyTransparentMaterial">
+							<ValueString>Atlas_D_01</ValueString>
+						</Property>
+						<Property AnimationType="Const" Name="OIT weight factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collide" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="SleepState" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Light" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="VolumetricLight" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Target coverage" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Gravity" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Offset" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
+							<ValueFloat>-1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Hue var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Motion inheritance" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Life var" Type="Float">
+							<ValueFloat>2</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Streaks" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation reference" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Angle" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Const" Name="Angle var" Type="Vector3">
+							<ValueVector3>
+								<X>0</X>
+								<Y>0</Y>
+								<Z>0</Z>
+							</ValueVector3>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Thickness" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>1</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Animated" Name="Particles per frame" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueFloat>12</ValueFloat>
+									<Value2D/>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Camera bias" Type="Float">
+							<ValueFloat>10</ValueFloat>
+						</Property>
+						<Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<Value2D>
+										<Keys>
+											<Key>
+												<Time>0</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.33</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>0.66</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+											<Key>
+												<Time>1</Time>
+												<ValueFloat>0</ValueFloat>
+												<Value2D/>
+											</Key>
+										</Keys>
+									</Value2D>
+								</Key>
+							</Keys>
+						</Property>
+						<Property AnimationType="Const" Name="Shadow alpha multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Use Emissivity Channel" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Use Alpha Anisotropy" Type="Bool">
+							<ValueBool>false</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Ambient light factor" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Radius var" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
+							<ValueFloat>1</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Collision count to kill particle" Type="Int">
+							<ValueInt>0</ValueInt>
+						</Property>
+						<Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
+							<ValueFloat>0</ValueFloat>
+						</Property>
+						<Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
+							<ValueBool>true</ValueBool>
+						</Property>
+						<Property AnimationType="Const" Name="Camera Soft Radius" Type="Float">
+							<ValueFloat>0</ValueFloat>
 						</Property>
 					</Properties>
 				</ParticleGeneration>
@@ -3080,13 +4749,23 @@
 			<ParticleLights>
 				<ParticleLight Name="ParticleLight" Version="0">
 					<Properties>
-						<Property Name="Position" AnimationType="Animated" Type="Vector3">
+						<Property AnimationType="Animated" Name="Position" Type="Vector3">
 							<Keys/>
 						</Property>
-						<Property Name="Position var" AnimationType="Animated" Type="Vector3">
-							<Keys/>
+						<Property AnimationType="Animated" Name="Position var" Type="Vector3">
+							<Keys>
+								<Key>
+									<Time>0</Time>
+									<ValueVector3>
+										<X>10</X>
+										<Y>10</Y>
+										<Z>10</Z>
+									</ValueVector3>
+									<Value2D/>
+								</Key>
+							</Keys>
 						</Property>
-						<Property Name="Color" AnimationType="Animated" Type="Vector4">
+						<Property AnimationType="Animated" Name="Color" Type="Vector4">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -3110,34 +4789,28 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Color var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Color var" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
-									<ValueFloat>0.01</ValueFloat>
+									<ValueFloat>0.1</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Range" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Range" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
-									<ValueFloat>150</ValueFloat>
+									<ValueFloat>1000</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Range var" AnimationType="Animated" Type="Float">
-							<Keys>
-								<Key>
-									<Time>0</Time>
-									<ValueFloat>10</ValueFloat>
-									<Value2D/>
-								</Key>
-							</Keys>
+						<Property AnimationType="Animated" Name="Range var" Type="Float">
+							<Keys/>
 						</Property>
-						<Property Name="Intensity" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Intensity" Type="Float">
 							<Keys>
 								<Key>
 									<Time>0</Time>
@@ -3145,12 +4818,17 @@
 									<Value2D/>
 								</Key>
 								<Key>
-									<Time>0.01</Time>
+									<Time>1</Time>
 									<ValueFloat>200</ValueFloat>
 									<Value2D/>
 								</Key>
 								<Key>
-									<Time>1</Time>
+									<Time>2</Time>
+									<ValueFloat>100</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>3</Time>
 									<ValueFloat>10</ValueFloat>
 									<Value2D/>
 								</Key>
@@ -3161,40 +4839,35 @@
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Intensity var" AnimationType="Animated" Type="Float">
+						<Property AnimationType="Animated" Name="Intensity var" Type="Float">
 							<Keys>
 								<Key>
-									<Time>0</Time>
-									<ValueFloat>200</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
-									<Time>0.3</Time>
-									<ValueFloat>200</ValueFloat>
-									<Value2D/>
-								</Key>
-								<Key>
 									<Time>1</Time>
+									<ValueFloat>10</ValueFloat>
+									<Value2D/>
+								</Key>
+								<Key>
+									<Time>3</Time>
 									<ValueFloat>1</ValueFloat>
 									<Value2D/>
 								</Key>
 								<Key>
-									<Time>6</Time>
+									<Time>5</Time>
 									<ValueFloat>0</ValueFloat>
 									<Value2D/>
 								</Key>
 							</Keys>
 						</Property>
-						<Property Name="Enabled" AnimationType="Const" Type="Bool">
+						<Property AnimationType="Const" Name="Enabled" Type="Bool">
 							<ValueBool>true</ValueBool>
 						</Property>
-						<Property Name="Gravity Displacement" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Gravity Displacement" Type="Float">
 							<ValueFloat>0</ValueFloat>
 						</Property>
-						<Property Name="Falloff" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Falloff" Type="Float">
 							<ValueFloat>1</ValueFloat>
 						</Property>
-						<Property Name="Variance Timeout" AnimationType="Const" Type="Float">
+						<Property AnimationType="Const" Name="Variance Timeout" Type="Float">
 							<ValueFloat>0.1</ValueFloat>
 						</Property>
 					</Properties>
