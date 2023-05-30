@@ -16,9 +16,7 @@
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Missile"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Torpedo"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="AWEStormriderDroneBP"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="AWESidekickDroneBP"/>
-		<Entry Class="ShipConsumables" BlueprintSubtypeId="AWEFalconDroneBP"/>
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Others_Drone_Falcon"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Siege"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_HeavyCannon"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_HeavyMissile"/>

@@ -6,13 +6,11 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYX_Small_Sidekick_Hangar</SubtypeId>
 			</Id>
-			<DisplayName>Drone Launcher</DisplayName>
+			<DisplayName>[Drone] Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
 			<Description>A compact hangar bay capable of launching Aryx-brand drones.
-				[2.5km Semi-Auto Range]
-				[Uses SIDEKICK (Gatling) Drones x3]
-				[Uses FALCON (Cannon) Drones x3]
-				[Uses STORMWING (Laser) Drones x3]</Description>
+				[3km Semi-Auto Range]
+				[Uses FALCON Drones x3]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="1" z="3"/>
@@ -56,7 +54,7 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>3000</PCU>
+			<PCU>30000</PCU>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
