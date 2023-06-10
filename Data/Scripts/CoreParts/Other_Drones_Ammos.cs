@@ -119,10 +119,10 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
                 Smarts = new SmartsDef
                 {
-                    SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
+                    SteeringLimit = 100, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 3f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.04f, // controls how sharp the trajectile may turn
+                    MaxLateralThrust = 0f, // controls how sharp the trajectile may turn
                     NavAcceleration = 0, // helps influence how the projectile steers. 
                     TrackingDelay = 60, // Measured in Shape diameter units traveled.
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -134,7 +134,7 @@ namespace Scripts
                     Roam = true, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
 					OffsetRatio = 0.2f, // The ratio to offset the random dir (0 to 1) 
-					OffsetTime = 120, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FocusOnly = false, // only target the constructs Ai's focus target
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 2000, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
@@ -146,7 +146,7 @@ namespace Scripts
                 {
 
                     //0
-                    new ApproachDef // Orbit around Target
+                    new ApproachDef // Head to target and loiter
                     {
                         // Start/End behaviors 
                         RestartCondition = ForceRestart, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
@@ -168,7 +168,7 @@ namespace Scripts
                                 Weight = Random(0, 99f),
                                 End1WeightMod = 0, 
                                 End2WeightMod = 99,
-                                End3WeightMod = 0,
+                                End3WeightMod = 99,
                             },
                         },
                         Operators = StartEnd_Or, // Controls how the start and end conditions are matched:  StartEnd_And, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
@@ -186,14 +186,14 @@ namespace Scripts
                         StartCondition2 = Ignore, 
                         EndCondition1 = RelativeSpawns, 
                         EndCondition2 = DistanceToPositionC,  //EnemyTargetLoss
-                        EndCondition3 = Ignore, //DistanceToTarget
+                        EndCondition3 = EnemyTargetLoss, //DistanceToTarget
 
                         // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
                         Start1Value = 1,
                         Start2Value = 0,
-                        End1Value = 60, 
-                        End2Value = 3000, //10 seconds
-                        End3Value = 0, 
+                        End1Value = 119, 
+                        End2Value = 3500, //10 seconds
+                        End3Value = 600, 
                         
                         // Special triggers when the start/end conditions are met (DoNothing, EndProjectile, EndProjectileOnRestart, StoreDestination)
                         StartEvent = DoNothing,
@@ -215,7 +215,7 @@ namespace Scripts
                         AdjustPositionB = true, // Updated the source position overtime.
                         AdjustPositionC = true, // Update destination overtime
                         LeadRotateElevatePositionB = true, // Add lead and rotation to Source Position
-                        LeadRotateElevatePositionC = false, // Add lead and rotation to Destination Position
+                        LeadRotateElevatePositionC = true, // Add lead and rotation to Destination Position
                         TrajectoryRelativeToB = true, // If true the projectiles immediate trajectory will be relative to PositionB instead of PositionC (e.g. quick response to elevation changes relative to PositionB position assuming that position is closer to PositionA)
                         ElevationRelativeToC = false, // If true the projectiles desired elevation will be relative to PositionC instead of PositionB (e.g. quick response to elevation changes relative to PositionC position assuming that position is closer to PositionA)
                         
@@ -223,13 +223,13 @@ namespace Scripts
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 0, // Minimum travel distance before projectile begins racing to target
-                        DesiredElevation = 100, // The desired elevation relative to source 
+                        DesiredElevation = 150, // The desired elevation relative to source 
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
                         StoredStartType = StoredStartLocalPosition,
                         StoredEndType = StoredEndLocalPosition,
                         // Controls the leading behavior
-                        LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        LeadDistance = 100, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
                         PushLeadByTravelDistance = false, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
 
                         // Modify speed and acceleration ratios while this approach is active
@@ -283,7 +283,7 @@ namespace Scripts
 						ModelRotateTime = 0, // If this value is greater than 0 then the projectile model will rotate to face the target, a value of 1 is instant (in ticks).
 					},
                     //1
-                    new ApproachDef // Orbit around Target
+                    new ApproachDef // Die when too far or no target
                     {
                         // Start/End behaviors 
                         RestartCondition = ForceRestart, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
@@ -300,19 +300,19 @@ namespace Scripts
                                                     // RelativeHealthLost[>=], HealthRemaining[<=],
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
-                        EndCondition1 = DistanceToPositionB, 
+                        EndCondition1 = DistanceFromPositionB, 
                         EndCondition2 = Ignore,  //EnemyTargetLoss
                         EndCondition3 = Ignore, //DistanceToTarget
 
                         // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
-                        Start1Value = 3000,
+                        Start1Value = 3001,
                         Start2Value = 0,
-                        End1Value = 3001, 
+                        End1Value = 3000, 
                         End2Value = 0, //10 seconds
                         End3Value = 0, 
                         
                         // Special triggers when the start/end conditions are met (DoNothing, EndProjectile, EndProjectileOnRestart, StoreDestination)
-                        StartEvent = EndProjectileOnRestart,
+                        StartEvent = DoNothing,
                         EndEvent = EndProjectileOnRestart,  
                         
                         // Relative positions and directions
@@ -339,7 +339,7 @@ namespace Scripts
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 0, // Minimum travel distance before projectile begins racing to target
-                        DesiredElevation = 0, // The desired elevation relative to source 
+                        DesiredElevation = -500, // The desired elevation relative to source 
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
                         StoredStartType = StoredStartLocalPosition,
@@ -545,10 +545,10 @@ namespace Scripts
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed
                 Smarts = new SmartsDef
                 {
-                    SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
+                    SteeringLimit = 75, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
                     Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 3f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.04f, // controls how sharp the trajectile may turn
+                    MaxLateralThrust = 0f, // controls how sharp the trajectile may turn
                     NavAcceleration = 0, // helps influence how the projectile steers. 
                     TrackingDelay = 60, // Measured in Shape diameter units traveled.
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -627,7 +627,7 @@ namespace Scripts
                         AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 100, // Minimum travel distance before projectile begins racing to heading
-                        DesiredElevation = 100, // The desired elevation relative to reference position 
+                        DesiredElevation = 150, // The desired elevation relative to reference position 
                         // Storage Values
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
@@ -641,11 +641,11 @@ namespace Scripts
                         AccelMulti = 1.5, // Modify default acceleration by this factor
                         DeAccelMulti = 0, // Modifies your default deacceleration by this factor
                         TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
-                        SpeedCapMulti = 0.5, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
+                        SpeedCapMulti = 1, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
 
                         // navigation behavior 
                         Orbit = true, // Orbit the Position
-                        OrbitRadius = 100, // The orbit radius to extend between the projectile and the Position (target volume + this value)
+                        OrbitRadius = 200, // The orbit radius to extend between the projectile and the Position (target volume + this value)
                         OffsetMinRadius = 0, // Min Radius to offset from Position.  
                         OffsetMaxRadius = 0, // Max Radius to offset from Position.  
                         OffsetTime = 0, // How often to change the offset radius.
