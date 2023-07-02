@@ -108,7 +108,8 @@
 			<InventoryMaxVolume>1</InventoryMaxVolume>
 			<DamageEffectId>213</DamageEffectId>
 			<AiEnabled>false</AiEnabled>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
+            <DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
+            <DestroySound>HWR_FireyExplosion</DestroySound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<TargetingGroups>
@@ -198,7 +199,8 @@
 			<InventoryMaxVolume>1</InventoryMaxVolume>
 			<DamageEffectId>213</DamageEffectId>
 			<AiEnabled>false</AiEnabled>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
+            <DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
+            <DestroySound>HWR_FireyExplosion</DestroySound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<TargetingGroups>
