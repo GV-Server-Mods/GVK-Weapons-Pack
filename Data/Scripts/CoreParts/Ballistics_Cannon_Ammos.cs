@@ -49,7 +49,7 @@ namespace Scripts
             BackKickForce = 200000f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = false, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
+            NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
             DamageScales = new DamageScaleDef 
 			{
                 //This is additional damage done and does not directly affect the speed that the ammo's health pool depletes.
