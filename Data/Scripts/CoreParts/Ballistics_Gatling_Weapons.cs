@@ -18,11 +18,14 @@ namespace Scripts {
 
 		//Common definitions
 		
-		private TargetingDef Ballistics_Gatlings_Targeting_T2 => new TargetingDef {
-			Threats = new[] {
+		private TargetingDef Ballistics_Gatlings_Targeting_T2 => new TargetingDef 
+		{
+			Threats = new[] 
+			{
 				Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
+			SubSystems = new[] 
+			{
 				Any,
 			},
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
@@ -35,11 +38,14 @@ namespace Scripts {
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
-		private TargetingDef Ballistics_Gatlings_Targeting_T1 => new TargetingDef {
-			Threats = new[] {
+		private TargetingDef Ballistics_Gatlings_Targeting_T1 => new TargetingDef 
+		{
+			Threats = new[] 
+			{
 				 Characters, Projectiles, Grids,   // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
+			SubSystems = new[] 
+			{
 				Any,
 			},
 			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
@@ -51,8 +57,8 @@ namespace Scripts {
 			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
-
-		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef {
+		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef 
+		{
 			RotateRate = 0.03f,
 			ElevateRate = 0.03f,
 			MinAzimuth = -180,
@@ -65,8 +71,8 @@ namespace Scripts {
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 		};
-
-		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef {
+		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef 
+		{
 			ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
 			RotateBarrelAxis = 3, // For spinning barrels, which axis to spin the barrel around; 0 = none.
 			MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
@@ -77,8 +83,8 @@ namespace Scripts {
 			CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
 			CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
 		};
-
-		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef {
+		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef 
+		{
 			RateOfFire = 1800,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
@@ -104,7 +110,8 @@ namespace Scripts {
 			GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
 			DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
 		};
-		private HardPointAudioDef Ballistics_Gatlings_Hardpoint_Audio = new HardPointAudioDef {
+		private HardPointAudioDef Ballistics_Gatlings_Hardpoint_Audio = new HardPointAudioDef 
+		{
 			PreFiringSound = "", 
 			FiringSound = "MD_GatlingLoopFire", // MD_GatlingBlisterFire, WepTurretInteriorFire, ArcWepShipGatlingShot, MD_GatlingLoop
 			FiringSoundPerShot = false,
@@ -116,7 +123,8 @@ namespace Scripts {
 			FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
 		};
 
-		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics = new HardPointParticleDef {
+		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics = new HardPointParticleDef 
+		{
 			Effect1 = new ParticleDef
 			{
 				Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
@@ -145,7 +153,8 @@ namespace Scripts {
 
 		//Weapon Definitions
 
-		WeaponDefinition SentinelTurret => new WeaponDefinition {
+		WeaponDefinition SentinelTurret => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
@@ -198,12 +207,14 @@ namespace Scripts {
             },
         };
 
-        WeaponDefinition LargeGatlingTurret => new WeaponDefinition {
+        WeaponDefinition LargeGatlingTurret => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
                 {
-                    new MountPointDef {
+                    new MountPointDef 
+					{
                         SubtypeId = "LargeGatlingTurret",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "GatlingBarrel",
@@ -240,7 +251,8 @@ namespace Scripts {
             },
         };
 
-        WeaponDefinition SmallGatlingTurret => new WeaponDefinition {
+        WeaponDefinition SmallGatlingTurret => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
@@ -295,7 +307,8 @@ namespace Scripts {
             },
         };
 
-        WeaponDefinition SmallGatlingGun => new WeaponDefinition {
+        WeaponDefinition SmallGatlingGun => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
@@ -352,7 +365,8 @@ namespace Scripts {
             },
         };
 
-        WeaponDefinition SmallGatlingGun_Gimbal => new WeaponDefinition {
+        WeaponDefinition SmallGatlingGun_Gimbal => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef
             {
                 MountPoints = new[]
@@ -402,7 +416,8 @@ namespace Scripts {
                 Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
             },
 
-			Ammos = new[] {
+			Ammos = new[] 
+			{
                 NATO_25x184mm,
             },
         };
@@ -411,8 +426,10 @@ namespace Scripts {
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "ARYXVulcanTurret",
                         SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
@@ -433,7 +450,8 @@ namespace Scripts {
                 Threats = new[] {
 					Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
                 },
-                SubSystems = new[] {
+                SubSystems = new[] 
+				{
 					Any,
                 },
                 ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
@@ -504,12 +522,12 @@ namespace Scripts {
                 
 				Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 NATO_25x184mm,
             },
             Animations = AryxVulcanAnimations,
             // Don't edit below this line
         };
-
     }
 }
