@@ -134,13 +134,11 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Others_Drone_Offense,
-				Others_Drone_Defense,
+                Others_Drone_Offense_Launch,
+				Others_Drone_Offense_Main,
+				Others_Drone_Defense_Launch,
+				Others_Drone_Defense_Main,
 				AutocannonClip_Drone,
-				//Others_Drone_Laser,
-				//Lasers_Laser_Small,
-				//Others_Drone_Cannon,
-				//LargeCalibreAmmo
             },
             Animations = AryxSmallHangarAnimations,
         };
