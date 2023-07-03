@@ -8,32 +8,34 @@
 			</Id>
 			<DisplayName>[Drone] Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
-			<Description>A compact hangar bay capable of launching Aryx-brand drones.
-				[3km Semi-Auto Range]
-				[Uses FALCON Drones x3]</Description>
+			<Description>A compact hangar bay capable of launching Aryx-brand drones. OFFENSE = 3 minute flight time. DEFENSE = 5 minute flight time. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
+				[2.5km Semi-Auto Range]
+				[Uses FALCON Drones x3]
+				[Drones fire 30mm KE x120]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="1" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWE_Drones\ARYX_Small_Hangar.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="54"/>
+            <Components>
+                <Component Subtype="SteelPlate" Count="47" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="GVK_Missile_Tech" Count="5"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>Scrap</SubtypeId>
                     </DeconstructId>
 				</Component>
-				<Component Subtype="MetalGrid" Count="54"/>
-				<Component Subtype="LargeTube" Count="64"/>
-				<Component Subtype="Motor" Count="168"/>
-				<Component Subtype="Computer" Count="126"/>
-				<Component Subtype="Construction" Count="420"/>
-				<Component Subtype="SteelPlate" Count="158"/>
-			</Components>
-			<BuildTimeSeconds>46</BuildTimeSeconds>
+                <Component Subtype="MetalGrid" Count="19" />
+                <Component Subtype="LargeTube" Count="10" />
+                <Component Subtype="Motor" Count="93" />
+                <Component Subtype="InteriorPlate" Count="12" />
+                <Component Subtype="Computer" Count="190" />
+                <Component Subtype="Construction" Count="190" />
+                <Component Subtype="SteelPlate" Count="190" />
+            </Components>
+            <BuildTimeSeconds>45</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>

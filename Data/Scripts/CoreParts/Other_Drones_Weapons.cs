@@ -58,7 +58,7 @@ namespace Scripts
 			},
             HardPoint = new HardPointDef
             {
-                PartName = "Small Hangar Bay", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Drone Hangar", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 1f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 180f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
@@ -70,7 +70,7 @@ namespace Scripts
                     RateOfFire = false, // Enables terminal slider for changing rate of fire.
                     RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
                     DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = true, // Enables terminal option to disable smart projectile guidance.
+                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
                     EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
                     AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
                     DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
@@ -90,7 +90,7 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     InventorySize = 1.5f, // Inventory capacity in kL.
-                    IdlePower = 0.02f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+                    IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
                 },
@@ -101,9 +101,9 @@ namespace Scripts
 					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     MuzzleCheck = false,
                     Debug = false,
-                    RestrictionRadius = 1.25f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
                 Loading = new LoadingDef
                 {
@@ -115,7 +115,7 @@ namespace Scripts
                     MagsToLoad = 3, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     ShotsInBurst = 1, // Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 60, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = true, // Whether the weapon should fire the full burst, even if the target is lost or player stops firing prematurely.
                     GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
                     MaxActiveProjectiles = 3, // Maximum number of drones in flight (only works for drone launchers)

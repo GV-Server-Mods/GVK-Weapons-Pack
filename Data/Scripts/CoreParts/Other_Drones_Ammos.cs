@@ -44,7 +44,7 @@ namespace Scripts
             AmmoMagazine = "Others_Drone_Falcon",
             AmmoRound = "Offense Falcon Mode", 
             BaseDamage = 1f,
-            Mass = 1000f, // in kilograms
+            Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
@@ -425,7 +425,7 @@ namespace Scripts
             AmmoMagazine = "Energy",
             AmmoRound = "Others_Drone_Offense_Main", 
             BaseDamage = 1f,
-            Mass = 1000f, // in kilograms
+            Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
@@ -851,7 +851,7 @@ namespace Scripts
             AmmoMagazine = "Others_Drone_Falcon",
             AmmoRound = "Defense Falcon Mode", 
             BaseDamage = 1f,
-            Mass = 1000f, // in kilograms
+            Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
@@ -1211,7 +1211,7 @@ namespace Scripts
             AmmoMagazine = "Energy",
             AmmoRound = "Others_Drone_Defense_Main", 
             BaseDamage = 1f,
-            Mass = 1000f, // in kilograms
+            Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
