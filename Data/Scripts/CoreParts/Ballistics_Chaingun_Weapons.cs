@@ -143,7 +143,25 @@ namespace Scripts
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "muzzle_projectile", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = Ballistics_Chaingun_Targeting_Large,
+            Targeting = new TargetingDef
+            {
+				Threats = new[] 
+				{
+					Grids,   // threats percieved automatically without changing menu settings
+				},
+                SubSystems = new[] 
+				{
+                    Any,
+                },
+				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+				MaxTargetDistance = 1600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
+				TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+				TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
+			},
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
@@ -185,25 +203,7 @@ namespace Scripts
 					"muzzle_missile_1",
                 },
             },
-            Targeting = new TargetingDef
-            {
-				Threats = new[] 
-				{
-					Grids,   // threats percieved automatically without changing menu settings
-				},
-                SubSystems = new[] 
-				{
-                    Any,
-                },
-				ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-				MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-				TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-				TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
-				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-            },
+            Targeting = Ballistics_Chaingun_Targeting_Large,
             HardPoint = new HardPointDef
             {
                 PartName = "Khopesh Turret", // name of weapon in terminal
