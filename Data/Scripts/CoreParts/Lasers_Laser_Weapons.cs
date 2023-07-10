@@ -29,7 +29,7 @@ namespace Scripts
 			{
 				Any, // subsystems the gun targets
 			},
-			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true,
 			LockedSmartOnly = false,
 			MaxTargetDistance = 1600,
@@ -47,7 +47,7 @@ namespace Scripts
 			{
 				Any, // subsystems the gun targets
 			},
-			ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true,
 			LockedSmartOnly = false,
 			MaxTargetDistance = 1100,
