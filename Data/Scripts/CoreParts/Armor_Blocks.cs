@@ -10,6 +10,11 @@ namespace Scripts {
             SubtypeIds = new[]
             {
                 "MA_Buster_ArmorBlock",
+                "MA_Buster_Window",
+                "MA_Buster_Conveyor",
+                "MA_Buster_Camera",
+                "MA_Buster_Passage",
+                "MA_Buster_Passage_Crossing",
             },
             Kind = Heavy,
         };
