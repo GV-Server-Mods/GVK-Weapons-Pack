@@ -4,92 +4,68 @@
 		<Ammo xsi:type="MyObjectBuilder_ProjectileAmmoDefinition">
 			<Id>
 				<TypeId>AmmoDefinition</TypeId>
-				<SubtypeId>Blank</SubtypeId>
+				<SubtypeId>SmallCaliber_Blank</SubtypeId>Zero out these values to prevent a Keen projectile from spawning
+            </Id>
+			<BasicProperties>
+				<DesiredSpeed>0</DesiredSpeed>
+				<SpeedVariance>0</SpeedVariance>
+				<MaxTrajectory>0</MaxTrajectory>
+				<BackkickForce>0</BackkickForce>
+				<PhysicalMaterial>RifleBullet</PhysicalMaterial>
+				<ExplosiveDamageMultiplier>0</ExplosiveDamageMultiplier>
+			</BasicProperties>
+			<ProjectileProperties>
+				<ProjectileTrailScale>0</ProjectileTrailScale>
+				<ProjectileHitImpulse>0</ProjectileHitImpulse>
+				<ProjectileMassDamage>0</ProjectileMassDamage>
+				<ProjectileHealthDamage>0</ProjectileHealthDamage>
+				<HeadShot>false</HeadShot>
+				<ProjectileHeadShotDamage>0</ProjectileHeadShotDamage>
+			</ProjectileProperties>
+		</Ammo>
+		<Ammo xsi:type="MyObjectBuilder_ProjectileAmmoDefinition">
+			<Id>
+				<TypeId>AmmoDefinition</TypeId>
+				<SubtypeId>PistolCaliber_Blank</SubtypeId>
 			</Id>
 			<BasicProperties>
 				<DesiredSpeed>0</DesiredSpeed>
 				<SpeedVariance>0</SpeedVariance>
 				<MaxTrajectory>0</MaxTrajectory>
 				<BackkickForce>0</BackkickForce>
+				<PhysicalMaterial>RifleBullet</PhysicalMaterial>
+				<ExplosiveDamageMultiplier>0</ExplosiveDamageMultiplier>
 			</BasicProperties>
 			<ProjectileProperties>
+				<ProjectileTrailScale>0</ProjectileTrailScale>
 				<ProjectileHitImpulse>0</ProjectileHitImpulse>
 				<ProjectileMassDamage>0</ProjectileMassDamage>
 				<ProjectileHealthDamage>0</ProjectileHealthDamage>
-				<ProjectileMaterial/>
-				<ProjectileTrailScale>0</ProjectileTrailScale>
-				<ProjectileTrailProbability>0</ProjectileTrailProbability>
-			</ProjectileProperties>
-		</Ammo>
-		<!-- Increase small caliber rifle damage against blocks -->
-		<Ammo xsi:type="MyObjectBuilder_ProjectileAmmoDefinition">
-			<Id>
-				<TypeId>AmmoDefinition</TypeId>
-				<SubtypeId>SmallCaliber</SubtypeId>
-			</Id>
-			<BasicProperties>
-				<DesiredSpeed>500</DesiredSpeed>
-				<SpeedVariance>0</SpeedVariance>
-				<MaxTrajectory>800</MaxTrajectory>
-				<BackkickForce>1.5</BackkickForce>
-				<PhysicalMaterial>RifleBullet</PhysicalMaterial>
-			</BasicProperties>
-			<ProjectileProperties>
-				<ProjectileTrailScale>0.05</ProjectileTrailScale>
-				<ProjectileHitImpulse>1</ProjectileHitImpulse>
-				<ProjectileMassDamage>300</ProjectileMassDamage>
-				<ProjectileHealthDamage>100</ProjectileHealthDamage>
-				<HeadShot>true</HeadShot>
-				<ProjectileHeadShotDamage>300</ProjectileHeadShotDamage>
+				<HeadShot>false</HeadShot>
+				<ProjectileHeadShotDamage>0</ProjectileHeadShotDamage>
 			</ProjectileProperties>
 		</Ammo>
 		<Ammo xsi:type="MyObjectBuilder_ProjectileAmmoDefinition">
 			<Id>
 				<TypeId>AmmoDefinition</TypeId>
-				<SubtypeId>PistolCaliber</SubtypeId>
+				<SubtypeId>Missile_Blank</SubtypeId>
 			</Id>
 			<BasicProperties>
-				<DesiredSpeed>300</DesiredSpeed>
+				<DesiredSpeed>0</DesiredSpeed>
 				<SpeedVariance>0</SpeedVariance>
-				<MaxTrajectory>250</MaxTrajectory>
-				<BackkickForce>0.5</BackkickForce>
-				<PhysicalMaterial>RifleBullet</PhysicalMaterial>
-			</BasicProperties>
-			<ProjectileProperties>
-				<ProjectileTrailScale>0.05</ProjectileTrailScale>
-				<ProjectileHitImpulse>1</ProjectileHitImpulse>
-				<ProjectileMassDamage>50</ProjectileMassDamage>
-				<ProjectileHealthDamage>100</ProjectileHealthDamage>
-				<HeadShot>true</HeadShot>
-				<ProjectileHeadShotDamage>300</ProjectileHeadShotDamage>
-			</ProjectileProperties>
-		</Ammo>
-		<!-- nerf handheld launcher missile damage -->
-		<Ammo xsi:type="MyObjectBuilder_MissileAmmoDefinition">
-			<Id>
-				<TypeId>AmmoDefinition</TypeId>
-				<SubtypeId>Missile</SubtypeId>
-			</Id>
-			<BasicProperties>
-				<DesiredSpeed>200</DesiredSpeed>
-				<SpeedVariance>0</SpeedVariance>
-				<MaxTrajectory>800</MaxTrajectory>
-				<IsExplosive>true</IsExplosive>
+				<MaxTrajectory>0</MaxTrajectory>
 				<BackkickForce>0</BackkickForce>
-				<PhysicalMaterial>Missile</PhysicalMaterial>
+				<PhysicalMaterial>RifleBullet</PhysicalMaterial>
+				<ExplosiveDamageMultiplier>0</ExplosiveDamageMultiplier>
 			</BasicProperties>
-			<MissileProperties>
-				<MissileMass>45</MissileMass>
-				<MissileExplosionRadius>1.75</MissileExplosionRadius>
-				<MissileModelName>Models\Weapons\Projectile_Missile.mwm</MissileModelName>
-				<MissileAcceleration>600</MissileAcceleration>
-				<MissileInitialSpeed>200</MissileInitialSpeed>
-				<MissileSkipAcceleration>false</MissileSkipAcceleration>
-				<MissileExplosionDamage>7000</MissileExplosionDamage>
-                <MissileHealthPool>561</MissileHealthPool>
-                <MissileTrailEffect>Smoke_Missile</MissileTrailEffect>
-                <MissileGravityEnabled>true</MissileGravityEnabled>
-			</MissileProperties>
+			<ProjectileProperties>
+				<ProjectileTrailScale>0</ProjectileTrailScale>
+				<ProjectileHitImpulse>0</ProjectileHitImpulse>
+				<ProjectileMassDamage>0</ProjectileMassDamage>
+				<ProjectileHealthDamage>0</ProjectileHealthDamage>
+				<HeadShot>false</HeadShot>
+				<ProjectileHeadShotDamage>0</ProjectileHeadShotDamage>
+			</ProjectileProperties>
 		</Ammo>
 	</Ammos>
 </Definitions>

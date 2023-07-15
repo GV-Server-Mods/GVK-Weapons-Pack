@@ -60,7 +60,16 @@ namespace Scripts
 							ThrasherTurret,
 							tukkaLauncher01,
 							lokiCannon1_def,
-							AryxSpartanTurret
+							AryxSpartanTurret,
+							BasicHandHeldLauncherGun, 
+							AdvancedHandHeldLauncherGun, 
+							ElitePistolGun, 
+							FullAutoPistolGun, 
+							SemiAutoPistolGun, 
+							AutomaticRifleGun, 
+							PreciseAutomaticRifleGun, 
+							RapidFireAutomaticRifleGun, 
+							UltimateAutomaticRifleGun
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
