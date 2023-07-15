@@ -114,7 +114,7 @@ namespace Scripts
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -20,
-                    MaxElevation = 75,
+                    MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     InventorySize = 1.960f, // Inventory capacity in kL.
@@ -201,7 +201,7 @@ namespace Scripts
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -10,
-                    MaxElevation = 50,
+                    MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
                     InventorySize = 0.960f, // Inventory capacity in kL.

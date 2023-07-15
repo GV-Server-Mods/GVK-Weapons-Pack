@@ -95,12 +95,12 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef 
 				{
-                    RotateRate = 0.005f,
-                    ElevateRate = 0.005f,
+                    RotateRate = 0.003f,
+                    ElevateRate = 0.003f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
-                    MaxElevation = 90,
+                    MaxElevation = 75,
                     InventorySize = 0.960f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
@@ -290,12 +290,12 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef 
 				{
-                    RotateRate = 0.015f,
-                    ElevateRate = 0.015f,
+                    RotateRate = 0.010f,
+                    ElevateRate = 0.010f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
-                    MaxElevation = 45,
+                    MaxElevation =  75,
                     InventorySize = 0.480f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
