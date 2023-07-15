@@ -5,7 +5,7 @@
 			<Id>
 				<TypeId>AmmoDefinition</TypeId>
 				<SubtypeId>SmallCaliber_Blank</SubtypeId>Zero out these values to prevent a Keen projectile from spawning
-            </Id>
+            		</Id>
 			<BasicProperties>
 				<DesiredSpeed>0</DesiredSpeed>
 				<SpeedVariance>0</SpeedVariance>
