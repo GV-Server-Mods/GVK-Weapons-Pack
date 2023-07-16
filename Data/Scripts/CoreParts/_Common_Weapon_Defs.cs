@@ -233,6 +233,19 @@ namespace Scripts
 			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 
+		private OtherDef Common_Weapons_Hardpoint_Other_Handhelds = new OtherDef {
+			ConstructPartCap = 0,
+			RotateBarrelAxis = 0,
+			EnergyPriority = 0,
+			MuzzleCheck = false,
+			DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
+			NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
+			Debug = false,
+			RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+			CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+		};
+
 		//// Ammo Definitions ////
 		
 		private ShapeDef Common_Ammos_Shape_None = new ShapeDef {
