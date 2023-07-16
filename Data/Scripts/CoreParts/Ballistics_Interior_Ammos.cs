@@ -70,41 +70,96 @@ namespace Scripts
                         new TextureMapDef
                         {
                             HitMaterial = "Metal",
-                            DecalMaterial = "GunBullet",
+                            DecalMaterial = "RifleBullet",
                         },
                         new TextureMapDef
                         {
                             HitMaterial = "Glass",
-                            DecalMaterial = "GunBullet",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Soil",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Wood",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "GlassOpaque",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Stone",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Rock",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Ice",
+                            DecalMaterial = "RifleBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Soil",
+                            DecalMaterial = "RifleBullet",
                         },
                     },
                 },
                 Particles = new AmmoParticleDef
                 {
-                    Hit = new ParticleDef
+                    Ammo = new ParticleDef
                     {
-                        Name = "MaterialHit_Metal",
-                        Color = Color(red: 3, green: 2, blue: 1, alpha: 1),
+                        Name = "", //ShipWelderArc
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
-                            HitPlayChance = 0.8f,
+                        },
+                    },
+                    Hit = new ParticleDef
+                    {
+                        Name = "Hit_BasicAmmoSmall",
+                        ApplyToShield = true,
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
+                        Extras = new ParticleOptionDef
+                        {
+                            Scale = 1f,
+                            HitPlayChance = 0.75f,
+                        },
+                    },
+                    Eject = new ParticleDef
+                    {
+                        Name = "Shell_Casings",
+                        ApplyToShield = false,
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
+                        Extras = new ParticleOptionDef
+                        {
+                            Scale = 1,
+                            HitPlayChance = 1f,
                         },
                     },
                 },
                 Lines = new LineDef 
 				{
-                    ColorVariance = Random(start: 5f, end: 10f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0.045f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 1f, end: 10f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.01f, end: 0.01f), // adds random value to default width (negatives shrinks width)
 					DropParentVelocity = false, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 3f,
-                        Width = 0.06f,
-                        Color = Color(red: 0.9f, green: 0.7f, blue: 0.5f, alpha: 1),
-						Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        Length = 15f,
+                        Width = 0.03f,
+                        Color = Color(red: 4.4f, green: 2.8f, blue: 2.0f, alpha: 1),
+						Textures = new[] {"ProjectileTrailLine",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                 },
             },

@@ -97,7 +97,7 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 15,
+                    MinArmingTime = 10,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
@@ -122,7 +122,58 @@ namespace Scripts
 			{
 				ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
 				VisualProbability = 1f,
-				ShieldHitDraw = true,
+                Decals = new DecalDef
+                {
+                    MaxAge = 3600,
+                    Map = new[]
+                    {
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Metal",
+                            DecalMaterial = "Missile",
+                        },
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Glass",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Soil",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Wood",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "GlassOpaque",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Stone",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Rock",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Ice",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Soil",
+                            DecalMaterial = "Missile",
+                        },
+                    },
+                },
 				Particles = new AmmoParticleDef
 				{
                     Ammo = new ParticleDef

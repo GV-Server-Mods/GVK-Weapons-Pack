@@ -89,7 +89,58 @@ namespace Scripts
 			{
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
                 VisualProbability = 1f, // %
-                ShieldHitDraw = false,
+                Decals = new DecalDef
+                {
+                    MaxAge = 3600,
+                    Map = new[]
+                    {
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Metal",
+                            DecalMaterial = "GunBullet",
+                        },
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Glass",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Soil",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Wood",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "GlassOpaque",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Stone",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Rock",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Ice",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Soil",
+                            DecalMaterial = "GunBullet",
+                        },
+                    },
+                },
                 Particles = new AmmoParticleDef
                 {
                     Hit = new ParticleDef
@@ -106,13 +157,13 @@ namespace Scripts
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.5f, end: 2.5f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0.05f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 0f, end: 10f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 12f, //
-                        Width = 0.2f, //
+                        Length = 20f, //
+                        Width = 0.15f, //
                         Color = Color(red: 5f, green: 15, blue: 5f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.

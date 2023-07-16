@@ -37,7 +37,6 @@ namespace Scripts {
 			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
-
 		private TargetingDef Ballistics_Gatlings_Targeting_T1 => new TargetingDef 
 		{
 			Threats = new[] 
@@ -122,7 +121,6 @@ namespace Scripts {
 			FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
 			FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
 		};
-
 		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics = new HardPointParticleDef 
 		{
 			Effect1 = new ParticleDef
@@ -163,7 +161,7 @@ namespace Scripts {
                     {
                         SubtypeId = "SentinelTurret",
                         SpinPartId = "SentinelBarrel", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "SentinelBarrel",
+                        MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f,
@@ -172,7 +170,7 @@ namespace Scripts {
                 },
                 Muzzles = new []
                 {
-					//"SentinelBarrel",
+					//"MissileTurretBarrels",
 					"Sentinelmuzzle_1",
 					"Sentinelmuzzle_2",
 					"Sentinelmuzzle_3",
@@ -197,14 +195,45 @@ namespace Scripts {
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
-                Other = Ballistics_Gatlings_Hardpoint_Other,
+				Other = Ballistics_Gatlings_Hardpoint_Other,
                 Loading = Ballistics_Gatlings_Hardpoint_Loading,
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
-            },
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect. Muzzle_Flash_Large
+                        Offset = Vector(x: 0, y: 0, z: -5), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 800,
+                            MaxDuration = 0,
+                            Scale = 2f, // Scale of effect.
+                        },
+                    },
+                    Effect2 = new ParticleDef
+                    {
+						Name = "", // Smoke_LargeGunShot_WC
+                        Offset = Vector(x: 0, y: 0, z: -5),
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = false,
+                            MaxDistance = 800,
+                            MaxDuration = 0,
+                            Scale = 5f,
+                        },
+                    },
+                },
+			},
             Ammos = new [] {
                 NATO_25x184mm,
             },
+            //Animations = SentinelTurretAnimations,
         };
 
         WeaponDefinition LargeGatlingTurret => new WeaponDefinition 

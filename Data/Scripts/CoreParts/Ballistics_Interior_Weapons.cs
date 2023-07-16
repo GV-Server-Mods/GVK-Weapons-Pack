@@ -127,30 +127,16 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Smoke_LargeGunShot", // Smoke_LargeGunShot
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Name = "Muzzle_Flash", // SubtypeId of muzzle particle effect.
+                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 100,
-                            MaxDuration = 1,
-                            Scale = 1.0f,
-                        },
-                    },
-                    Effect2 = new ParticleDef
-                    {
-                        Name = "Muzzle_Flash_Large_Core",//Muzzle_Flash_Large
-                        Color = Color(red: 1, green: 0.7f, blue: 0.5f, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 100,
-                            MaxDuration = 1,
-                            Scale = 1f,
+                            Loop = true, // Set this to the same as in the particle sbc!
+                            Restart = true, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 800,
+                            MaxDuration = 0,
+                            Scale = 3f, // Scale of effect.
                         },
                     },
                 },

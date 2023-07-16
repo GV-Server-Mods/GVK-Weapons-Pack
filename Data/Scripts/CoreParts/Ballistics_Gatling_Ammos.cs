@@ -79,12 +79,12 @@ namespace Scripts
                 MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 1000, // voxel phasing if you go above 5100
                 MaxTrajectory = 1700f, // Max Distance the projectile or beam can Travel.
-                SpeedVariance = Random(start: 0, end: 10), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
+                SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 300), // subtracts value from MaxTrajectory
             },
             AmmoGraphics = new GraphicDef 
 			{
-                VisualProbability = 1f,
+                VisualProbability = 0.75f,
                 Decals = new DecalDef
                 {
                     MaxAge = 3600,
@@ -98,6 +98,41 @@ namespace Scripts
                         new TextureMapDef
                         {
                             HitMaterial = "Glass",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Soil",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Wood",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "GlassOpaque",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Stone",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Rock",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Ice",
+                            DecalMaterial = "GunBullet",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Soil",
                             DecalMaterial = "GunBullet",
                         },
                     },
@@ -120,13 +155,13 @@ namespace Scripts
                 Lines = new LineDef 
 				{
                     ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
+                    WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 8f,
+                        Length = 25f,
                         Width = 0.10f,
-                        FactionColor = Foreground, // DontUse, Foreground, Background.
+                        FactionColor = DontUse, // DontUse, Foreground, Background.
                         Color = Color(red: 22f, green: 10f, blue: 10f, alpha: 1),
                         Textures = new[] {"ProjectileTrailLine",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
