@@ -8,7 +8,7 @@
 			</Id>
         	Clear out the sound names here, use the WC config for weapon/ammo sounds.  Ensure all weps are "projectile" type
 			Match the ROF and ReloadTime here to your weapon.cs to keep animations in sync.
-            <ProjectileAmmoData RateOfFire="240" ShootSoundName="" ShotsInBurst="1"/>
+            <ProjectileAmmoData RateOfFire="160" ShootSoundName="" ShotsInBurst="1"/>
 			<NoAmmoSoundName/>
 			<ReloadSoundName/>
 			<DeviateShotAngle>3</DeviateShotAngle> Has no effect anymore, set in weapon.cs
@@ -71,7 +71,7 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>PreciseAutomaticRifleGun</SubtypeId>
 			</Id>
-			<ProjectileAmmoData RateOfFire="120" ShootSoundName="" ShotsInBurst="1"/>
+			<ProjectileAmmoData RateOfFire="200" ShootSoundName="" ShotsInBurst="1"/>
 			<NoAmmoSoundName/>
 			<ReloadSoundName/>
 			<DeviateShotAngle>4</DeviateShotAngle>

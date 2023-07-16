@@ -34,7 +34,6 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Trace
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
-
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
 
 namespace Scripts
@@ -121,84 +120,13 @@ namespace Scripts
 
             Trajectory = new TrajectoryDef
             {
-                Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 180f, // Degrees, Is pointed forward
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 1000, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 2500, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 250, // voxel phasing if you go above 5100
                 MaxTrajectory = 3000f, // Max Distance the projectile or beam can Travel.
-                Smarts = new SmartsDef
-                {
-                    Aggressiveness = 5, // controls how responsive tracking is.
-                    MaxLateralThrust = 1, // controls how sharp the trajectile may turn
-                    TrackingDelay = 5, // Measured in Shape diameter units traveled.
-                },
-				Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
-                {
-                    new ApproachDef // * in comments means default
-                    {
-                        // Start/End behaviors 
-                        RestartCondition = Wait, // Wait*, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
-                        Operators = StartEnd_And, // Controls how the start and end conditions are matched:  StartEnd_And*, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
-                        CanExpireOnceStarted = true, // This stages values will continue to apply until the end conditions are met.
-                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.  
-
-                        // Start/End conditions
-                        StartCondition1 = Lifetime, // Each condition type is either >= or <= the corresponding value defined below.
-                                                    // Ignore(skip this condition)*, DistanceFromDestination[<=], DistanceToDestination[>=], Lifetime[>=], DeadTime[<=], MinTravelRequired[>=],
-                                                    // MaxTravelRequired[<=], Spawn(works per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
-                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=]
-                                                    // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
-                        StartCondition2 = Ignore, 
-                        EndCondition1 = DistanceFromDestination, 
-                        EndCondition2 = Ignore, 
-
-                        // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
-                        Start1Value = 1,
-                        Start2Value = 0,
-                        End1Value = 100, 
-                        End2Value = 0, 
-
-                        // Relative positions and directions
-                        Forward = ForwardTargetDirection, // ForwardDestinationDirection*, ForwardRelativeToBlock, ForwardRelativeToShooter, ForwardRelativeToGravity, ForwardTargetDirection, ForwardTargetVelocity, ForwardStoredStartPosition, ForwardStoredEndPosition, ForwardStoredStartLocalPosition, ForwardStoredEndLocalPosition, ForwardOriginDirection    
-                        Up = UpRelativeToGravity, // UpRelativeToBlock*, UpRelativeToShooter, UpRelativeToGravity, UpTargetDirection, UpTargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition, UpOriginDirection, UpDestinationDirection
-                        Source = Current, // Origin*, Shooter, Target, Surface, MidPoint, Current, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
-                        Destination = Target, 
-                        Elevation = Surface, 
-                        
-                        //
-                        // Control if the vantagepoints update every frame or only at start.
-                        //
-                        AdjustForward = true, // adjust forwardDir overtime.
-                        AdjustUp = false, // adjust upDir overtime
-                        AdjustSource = true, // Updated the source position overtime.
-                        AdjustDestination = true, // Update destination overtime
-                        LeadAndRotateSource = true, // Add lead and rotation to Source Position
-                        LeadAndRotateDestination = false, // Add lead and rotation to Destination Position
-						SourceTrajectory = true, // If true the projectiles immediate trajectory will be relative to source instead of destination (e.g. quick response to elevation changes relative to source position)
-                        // Tweaks to vantagepoint behavior
-                        ElevationTolerance = 1, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
-                        TrackingDistance = 1, // Minimum travel distance before projectile begins racing to Destination
-                        DesiredElevation = 80, // The desired elevation relative to source 
-                        // Storage Values
-                        StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
-                        StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
-                        StoredStartType = Current, // Uses same values as source/destination/elevation
-                        StoredEndType = Target,
-                        // Controls the leading behavior
-                        LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
-                        PushLeadByTravelDistance = false, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
-
-                        // Modify speed and acceleration ratios while this approach is active
-                        AccelMulti = 0.02, // Modify default acceleration by this factor
-                        DeAccelMulti = 0, // Modifies your default deacceleration by this factor
-                        TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
-                        SpeedCapMulti = 1, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
-                    },
-					
-                },
-				
             },
             AmmoGraphics = new GraphicDef
             {

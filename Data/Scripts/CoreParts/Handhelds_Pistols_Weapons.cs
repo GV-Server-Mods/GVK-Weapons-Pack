@@ -1,4 +1,6 @@
-﻿using static Scripts.Structure;
+﻿using VRageMath;
+using System.Collections.Generic;
+using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.ModelAssignmentsDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef;
@@ -8,15 +10,19 @@ using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
-namespace Scripts {   
-    partial class Parts {
+namespace Scripts 
+{   
+    partial class Parts 
+	{
         // Don't edit above this line
         WeaponDefinition ElitePistolGun => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "ElitePistolItem", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. 
@@ -25,64 +31,37 @@ namespace Scripts {
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },                   
                  },
-                Muzzles = new[] {
+                Muzzles = new[] 
+				{
                     "muzzle_projectile", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
 
                 },
                 Ejector = "Shell_Casings", // Optional; empty from which to eject "shells" if specified.
                 Scope = "", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] {
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
-                },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
-                },
-            },
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Elite Pistol", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 1f, // Projectile inaccuracy in degrees.
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released - while a target is available.
-                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
-                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-				NpcSafe = true,
-                Ai = new AiDef
-                {
-
-                    DefaultLeadGroup = 1, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
                 HardWare = new HardwareDef
                 {
+                    InventorySize = 1f, // Inventory capacity in kL.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = HandWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
-
                 },
-
+                Other = Common_Weapons_Hardpoint_Other_Handhelds,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 200, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 84, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
-                    DelayUntilFire = 0,
-                    HeatPerShot = 1, // Heat generated per shot.
-                    MaxHeat = 70000, // Max heat before weapon enters cooldown (70% of max heat).
-                    Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-                    HeatSinkRate = 9000000, // Amount of heat lost per second.
-                    DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
                     ShotsInBurst = 1, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
                     DelayAfterBurst = 10, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-                    BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-                    SpinFree = true, // Spin barrel while not firing.
-                    StayCharged = false, // Will start recharging whenever power cap is not full.
 
                 },
                 Audio = new HardPointAudioDef
@@ -113,7 +92,8 @@ namespace Scripts {
                     },
                 },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 ElitePistol_Ammo, 
             },
         };
@@ -121,8 +101,10 @@ namespace Scripts {
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "SemiAutoPistolItem", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. 
@@ -138,58 +120,29 @@ namespace Scripts {
                 Ejector = "Shell_Casings", // Optional; empty from which to eject "shells" if specified.
                 Scope = "", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] {
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
-                },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
-                },
-            },
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Semi Auto Pistol", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 2f, // Projectile inaccuracy in degrees.
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released - while a target is available.
-                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
-                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-				NpcSafe = true,
-                Ai = new AiDef
-                {
-
-                    DefaultLeadGroup = 1, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
                 HardWare = new HardwareDef
                 {
+                    InventorySize = 1f, // Inventory capacity in kL.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = HandWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
-
                 },
-
+                Other = Common_Weapons_Hardpoint_Other_Handhelds,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 200, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 84, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
-                    DelayUntilFire = 0,
-                    HeatPerShot = 1, // Heat generated per shot.
-                    MaxHeat = 70000, // Max heat before weapon enters cooldown (70% of max heat).
-                    Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-                    HeatSinkRate = 9000000, // Amount of heat lost per second.
-                    DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
-                    ShotsInBurst = 1, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
                     DelayAfterBurst = 6, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-                    BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-                    SpinFree = true, // Spin barrel while not firing.
-                    StayCharged = false, // Will start recharging whenever power cap is not full.
-
+                    ShotsInBurst = 1, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
                 },
                 Audio = new HardPointAudioDef
                 {
@@ -219,7 +172,8 @@ namespace Scripts {
                     },
                 },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 ElitePistol_Ammo, SemiAutoPistol_Ammo, SemiAutoPistolFlare_Ammo, 
             },
         };
@@ -227,8 +181,10 @@ namespace Scripts {
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "FullAutoPistolItem", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. 
@@ -237,65 +193,36 @@ namespace Scripts {
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },                   
                  },
-                Muzzles = new[] {
+                Muzzles = new[] 
+				{
                     "muzzle_projectile", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
 
                 },
                 Ejector = "Shell_Casings", // Optional; empty from which to eject "shells" if specified.
                 Scope = "", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] {
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
-                },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
-                },
-            },
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Full Auto Pistol", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 4f, // Projectile inaccuracy in degrees.
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released - while a target is available.
-                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
-                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-				NpcSafe = true,
-                Ai = new AiDef
-                {
-
-                    DefaultLeadGroup = 1, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
                 HardWare = new HardwareDef
                 {
+                    InventorySize = 1f, // Inventory capacity in kL.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = HandWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
-
                 },
-
+                Other = Common_Weapons_Hardpoint_Other_Handhelds,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 1000, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 108, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 0,
-                    HeatPerShot = 1, // Heat generated per shot.
-                    MaxHeat = 70000, // Max heat before weapon enters cooldown (70% of max heat).
-                    Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-                    HeatSinkRate = 9000000, // Amount of heat lost per second.
-                    DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
-                    ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-                    BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-                    SpinFree = true, // Spin barrel while not firing.
-                    StayCharged = false, // Will start recharging whenever power cap is not full.
-
                 },
                 Audio = new HardPointAudioDef
                 {
@@ -325,7 +252,8 @@ namespace Scripts {
                     },
                 },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 FullAutoPistol_Ammo, 
             },
         };
