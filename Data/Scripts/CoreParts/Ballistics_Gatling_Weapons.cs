@@ -13,8 +13,10 @@ using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.Se
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
-namespace Scripts {   
-    partial class Parts {
+namespace Scripts 
+{   
+    partial class Parts 
+	{
 
 		//Common definitions
 		
@@ -494,7 +496,7 @@ namespace Scripts {
             HardPoint = new HardPointDef
             {
                 PartName = "Vulcan Gatling", // name of weapon in terminal
-                DeviateShotAngle = 0.4f, // Inaccuracy in degrees
+                DeviateShotAngle = 0.3f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
