@@ -89,7 +89,7 @@ namespace Scripts
                 },                
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 1.5f, // Inventory capacity in kL.
+                    InventorySize = 4.800f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 

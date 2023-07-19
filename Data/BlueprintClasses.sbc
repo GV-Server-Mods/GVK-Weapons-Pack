@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<BlueprintClassEntries>
+		<!-- Uses Class definitions from GVK Settings Mod -->
+		<!-- PLAYER AMMOS -->
+		<Entry Class="PlayerConsumables" BlueprintSubtypeId="ElitePistolMagazine"/>
+		<Entry Class="PlayerConsumables" BlueprintSubtypeId="UltimateAutomaticRifleGun_Mag_30rd"/>
+		<Entry Class="PlayerConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<!--BASIC AMMOS-->
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
-		<!--AMMOS-->
+		<!--SHIP WEAPON AMMOS-->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="AutocannonClip"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Weapons>
-		<Weapon>
+		<Weapon Enabled="false">
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>AutomaticRifleGun</SubtypeId>
@@ -28,8 +28,7 @@
 			-->
 			<AmmoMagazines>
 				Ensure you give the weapon a blanked/dummy magazine.  Your real one should be referenced by the ammo.cs
-                <AmmoMagazine Subtype="AutomaticRifleGun_Mag_20rd_CsBlank"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm_CsBlank"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			Match the ROF and ReloadTime here to your weapon.cs to keep animations in sync.
             <ReloadTime>2400</ReloadTime>
@@ -66,7 +65,7 @@
 			<ShakeOnActionSecondary>false</ShakeOnActionSecondary>
 			<ShakeOnActionTertiary>false</ShakeOnActionTertiary>
 		</Weapon>
-		<Weapon>
+		<Weapon Enabled="false">
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>PreciseAutomaticRifleGun</SubtypeId>
@@ -87,8 +86,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="PreciseAutomaticRifleGun_Mag_5rd_CsBlank"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm_CsBlank"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>10</RecoilJetpackVertical>
@@ -128,7 +126,7 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>RapidFireAutomaticRifleGun</SubtypeId>
 			</Id>
-			<ProjectileAmmoData RateOfFire="800" ShootSoundName=""/>
+			<ProjectileAmmoData RateOfFire="650" ShootSoundName=""/>
 			<NoAmmoSoundName/>
 			<ReloadSoundName/>
 			<DeviateShotAngle>3</DeviateShotAngle>
@@ -145,8 +143,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="RapidFireAutomaticRifleGun_Mag_50rd_CsBlank"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm_CsBlank"/>
+				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>15</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>8</RecoilJetpackHorizontal>
@@ -185,7 +182,7 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>UltimateAutomaticRifleGun</SubtypeId>
 			</Id>
-			<ProjectileAmmoData RateOfFire="600" ShootSoundName="" ShotsInBurst="3"/>
+			<ProjectileAmmoData RateOfFire="500" ShootSoundName="" ShotsInBurst="3"/>
 			<NoAmmoSoundName/>
 			<ReloadSoundName/>
 			<DeviateShotAngle>3</DeviateShotAngle>
@@ -201,8 +198,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="UltimateAutomaticRifleGun_Mag_30rd_CsBlank"/>
-				<AmmoMagazine Subtype="NATO_5p56x45mm_CsBlank"/>
+				<AmmoMagazine Subtype="UltimateAutomaticRifleGun_Mag_30rd"/>
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>6</RecoilJetpackVertical>
@@ -237,7 +233,7 @@
 			<ShakeOnActionSecondary>false</ShakeOnActionSecondary>
 			<ShakeOnActionTertiary>false</ShakeOnActionTertiary>
 		</Weapon>
-		<Weapon>
+		<Weapon Enabled="false">
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>SemiAutoPistolGun</SubtypeId>
@@ -259,7 +255,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects> -->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="SemiAutoPistolMagazine_CsBlank"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>0</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>0</RecoilJetpackHorizontal>
@@ -293,7 +289,7 @@
 			<ShakeOnActionSecondary>false</ShakeOnActionSecondary>
 			<ShakeOnActionTertiary>false</ShakeOnActionTertiary>
 		</Weapon>
-		<Weapon>
+		<Weapon Enabled="false">
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>FullAutoPistolGun</SubtypeId>
@@ -315,7 +311,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="FullAutoPistolMagazine_CsBlank"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>1</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>1</RecoilJetpackHorizontal>
@@ -371,7 +367,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="ElitePistolMagazine_CsBlank"/>
+				<AmmoMagazine Subtype="ElitePistolMagazine"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>0.5</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>0.5</RecoilJetpackHorizontal>

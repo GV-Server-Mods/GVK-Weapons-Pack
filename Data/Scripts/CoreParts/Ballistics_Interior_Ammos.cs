@@ -53,7 +53,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = None,
-                DesiredSpeed = 900,
+                DesiredSpeed = 950,
                 MaxTrajectory = 900f,
                 SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory

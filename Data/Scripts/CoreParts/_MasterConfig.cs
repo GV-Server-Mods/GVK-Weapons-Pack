@@ -64,10 +64,6 @@ namespace Scripts
 							BasicHandHeldLauncherGun, 
 							AdvancedHandHeldLauncherGun, 
 							ElitePistolGun, 
-							FullAutoPistolGun, 
-							SemiAutoPistolGun, 
-							AutomaticRifleGun, 
-							PreciseAutomaticRifleGun, 
 							RapidFireAutomaticRifleGun, 
 							UltimateAutomaticRifleGun
 							);

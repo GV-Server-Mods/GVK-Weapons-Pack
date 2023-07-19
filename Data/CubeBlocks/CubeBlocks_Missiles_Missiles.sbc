@@ -8,7 +8,7 @@
 			</Id>
 			<DisplayName>[Missile] Large Archer Pod</DisplayName>
 			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. Designed by MXA-UNSC.
-				[2300 Semi-Auto Range]
+				[2300m Semi-Auto Range]
 				[Uses Archer HE x150]
 			</Description>
 			<GuiVisible>true</GuiVisible>
@@ -125,7 +125,7 @@
 			</Id>
 			<DisplayName>[Missile] Large Archer Pod NPC</DisplayName>
 			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. Designed by MXA-UNSC.
-				[2300 Semi-Auto Range]
+				[2300m Semi-Auto Range]
 				[Uses Archer HE x150]
 			</Description>
 			<GuiVisible>false</GuiVisible>
