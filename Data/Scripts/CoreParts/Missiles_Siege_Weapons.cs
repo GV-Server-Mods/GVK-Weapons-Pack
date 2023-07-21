@@ -1,22 +1,30 @@
-﻿using static Scripts.Structure;
+﻿using VRageMath;
+using System.Collections.Generic;
+using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.ModelAssignmentsDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.Prediction;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.BlockTypes;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
+using static Scripts.Structure.WeaponDefinition.TargetingDef;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.Comms;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.SecurityMode;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
-namespace Scripts {   
-    partial class Parts {
-
+namespace Scripts 
+{   
+    partial class Parts 
+	{
         WeaponDefinition AryxLongswordMissileBattery => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "ARYXMissileBattery",
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
                         MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
@@ -26,7 +34,8 @@ namespace Scripts {
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                 },
-                Muzzles = new[] {
+                Muzzles = new[] 
+				{
                     "muzzle_missile_1",
                     "muzzle_missile_2",
                     "muzzle_missile_3",
@@ -41,13 +50,15 @@ namespace Scripts {
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
                 },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+                SubSystems = new[] 
+				{
+                    Any, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
                 },
-                ClosestFirst = true, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
+                ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinimumDiameter = 0, // Minimum radius of threat to engage.
@@ -97,23 +108,14 @@ namespace Scripts {
                     HomeElevation = 31, // Default resting elevation
                     InventorySize = 17.690f, // Inventory capacity in kL.
                     IdlePower = 1f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-                    FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
-                    CriticalReaction = new CriticalDef
-                    {
-                        Enable = false, // Enables Warhead behaviour.
-                        DefaultArmedTimer = 120, // Sets default countdown duration.
-                        PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
-                        TerminalControls = false, // Whether the warhead should have terminal controls for arming and detonation.
-                        AmmoRound = "40m", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
-                    },
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
-                    RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
-                    EnergyPriority = 0, // Deprecated.
+                    ConstructPartCap = 1, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
+					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
                     Debug = false, // Force enables debug mode.
                     RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
@@ -125,24 +127,14 @@ namespace Scripts {
                     RateOfFire = 30, // Set this to 3600 for beam weapons.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 1200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 8, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, // Heat generated per shot.
-                    MaxHeat = 0, // Max heat before weapon enters cooldown (70% of max heat).
-                    Cooldown = 0f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-                    HeatSinkRate = 0, // Amount of heat lost per second.
-                    DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
-                    ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false, // Whether the weapon should fire the full burst, even if the target is lost or player stops firing prematurely.
                     GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
-                    BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-                    SpinFree = false, // Spin barrel while not firing.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
-                },
+                    GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
+                    DropTargetUntilLoaded = true, // If true this weapon will drop the target when its out of ammo and until its reloaded.
+				},
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "", // Audio for warmup effect.
@@ -154,47 +146,13 @@ namespace Scripts {
                     BarrelRotationSound = "",
                     FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
-                Graphics = new HardPointParticleDef
-                {
-                    Effect1 = new ParticleDef
-                    {
-                        Name = "", // SubtypeId of muzzle particle effect.
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1), // Deprecated, set color in particle sbc.
-                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
-
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true, // Deprecated, set this in particle sbc.
-                            Restart = false, // Whether to end the previous effect early and spawn a new one.
-                            MaxDistance = 250, // Max distance at which this effect should be visible. NOTE: This will use whichever MaxDistance value is higher across Effect1 and Effect2!
-                            MaxDuration = 1, // How many ticks the effect should be ended after, if it's still running.
-                            Scale = 1f, // Scale of effect.
-                        },
-                    },
-                    Effect2 = new ParticleDef
-                    {
-                        Name = "",
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true, // Deprecated, set this in particle sbc.
-                            Restart = false,
-                            MaxDistance = 250,
-                            MaxDuration = 1,
-                            Scale = 1f,
-                        },
-                    },
-                },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 Missiles_Siege,
 				Missiles_Siege_Shrapnel,
             },
             Animations = AryxMissileBatteryAnims,
-            //Upgrades = UpgradeModules,
         };
-
     }
 }

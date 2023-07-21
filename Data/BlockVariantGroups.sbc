@@ -190,5 +190,14 @@
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallWarhead"/>
 			</Blocks>
 		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Other_Drones"/>
+			<Icon>Textures\Icons\MA_Designator.dds</Icon>
+			<DisplayName>Drone Weapons</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYX_Small_Sidekick_Hangar"/>
+			</Blocks>
+		</BlockVariantGroup>
 	</BlockVariantGroups>
 </Definitions>

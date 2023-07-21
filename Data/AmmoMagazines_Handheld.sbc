@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<AmmoMagazines>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>ElitePistolMagazine</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] 9mm KE x10</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Pistol_Elite_Warfare_Ammo.dds</Icon>
+			<Size>
+				<X>0.2</X>
+				<Y>0.05</Y>
+				<Z>0.02</Z>
+			</Size>
+			<Mass>0.15</Mass>
+			<Volume>0.1</Volume>
+			<Model>Models\Weapons\Pistol_Elite_Magazine_Warfare.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>10</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimumOfferAmount>10</MinimumOfferAmount>
+			<MaximumOfferAmount>100</MaximumOfferAmount>
+			<MinimumOrderAmount>100</MinimumOrderAmount>
+			<MaximumOrderAmount>2000</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<CanSpawnFromScreen>false</CanSpawnFromScreen>
+		</AmmoMagazine>
+        <AmmoMagazine>
+            <Id>
+                <TypeId>AmmoMagazine</TypeId>
+                <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>
+            </Id>
+            <DisplayName>[Sidearm] 7.62mm FMJ x20</DisplayName>
+            <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_Elite.dds</Icon>
+            <Size>
+                <X>0.2</X>
+                <Y>0.05</Y>
+                <Z>0.02</Z>
+            </Size>
+            <Mass>0.9</Mass>
+            <Volume>0.3</Volume>
+            <Model>Models\Weapons\AutomaticRifle_Magazine.mwm</Model>
+            <PhysicalMaterial>Ammo</PhysicalMaterial>
+            <Capacity>20</Capacity>
+            <AmmoDefinitionId Subtype="Blank" />
+            <MinimumOfferAmount>10</MinimumOfferAmount>
+            <MaximumOfferAmount>100</MaximumOfferAmount>
+            <MinimumOrderAmount>100</MinimumOrderAmount>
+            <MaximumOrderAmount>2000</MaximumOrderAmount>
+            <CanPlayerOrder>true</CanPlayerOrder>
+        </AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Missile200mm_CsBlank</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_Missile200mm</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Small_Rocket.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>45</Mass>
+			<Volume>60</Volume>
+			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Missile_Blank"/>
+			<MinimumOfferAmount>50</MinimumOfferAmount>
+			<MaximumOfferAmount>500</MaximumOfferAmount>
+			<MinimumOrderAmount>100</MinimumOrderAmount>
+			<MaximumOrderAmount>2000</MaximumOrderAmount>
+			<CanPlayerOrder>false</CanPlayerOrder>
+			<CanSpawnFromScreen>false</CanSpawnFromScreen>
+		</AmmoMagazine>
+	</AmmoMagazines>
+</Definitions>

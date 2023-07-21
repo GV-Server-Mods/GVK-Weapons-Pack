@@ -7,18 +7,22 @@ using static Scripts.Structure.WeaponDefinition.HardPointDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.Prediction;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.BlockTypes;
 using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
+using static Scripts.Structure.WeaponDefinition.TargetingDef;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.Comms;
+using static Scripts.Structure.WeaponDefinition.TargetingDef.CommunicationDef.SecurityMode;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.HardwareType;
 
 namespace Scripts {   
     partial class Parts {
         // Don't edit above this line
-        WeaponDefinition AryxRailgunTurret => new WeaponDefinition {
-
+        WeaponDefinition AryxRailgunTurret => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef 
             {
                 MountPoints = new[] {
-                    new MountPointDef {
+                    new MountPointDef 
+					{
                         SubtypeId = "ARYXRailgunTurret",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
@@ -28,28 +32,29 @@ namespace Scripts {
                     },
 
                 },
-                Muzzles = new [] {
+                Muzzles = new [] 
+				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
             },
             Targeting = new TargetingDef  
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids,
                 },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                    Any,
                 },
-                ClosestFirst = true, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+                ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
-                MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 50, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef 
@@ -60,69 +65,47 @@ namespace Scripts {
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
-				CanShootSubmerged  = false,
-
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-				
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
-				
-                HardWare = new HardwareDef {
+                HardWare = new HardwareDef 
+				{
                     RotateRate = 0.003f,
                     ElevateRate = 0.003f,
                     MinAzimuth = -180,
                     MaxAzimuth =180,
                     MinElevation = -10,
                     MaxElevation = 25,
-                    FixedOffset = false,
                     InventorySize = 2.680f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
                 },
-				
                 Other = new OtherDef
                 {
                     ConstructPartCap = 21,
-                    RotateBarrelAxis = 0,
-                    EnergyPriority = 0,
                     MuzzleCheck = false,
+					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
+					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false,
                     RestrictionRadius = 1.25f, // Meters, radius of sphere disable this gun if another is present
                     CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
                     CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
 				
-                Loading = new LoadingDef {
+                Loading = new LoadingDef 
+				{
                     RateOfFire = 60,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    SkipBarrels = 0,
                     ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, //heat generated per shot
-                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 0, //amount of heat lost per second
-                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-                    ShotsInBurst = 0,
-                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false,
                     GiveUpAfter = false,
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
-                Audio = new HardPointAudioDef {
+                Audio = new HardPointAudioDef 
+				{
                     PreFiringSound = "ArcWepShipARYXRailgun_Windup",
                     FiringSound = "MD_RailgunFire", // WepShipGatlingShot
                     FiringSoundPerShot = true,
@@ -132,52 +115,22 @@ namespace Scripts {
                     BarrelRotationSound = "",
                     FireSoundEndDelay = 300, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
-                Graphics = new HardPointParticleDef {
-                    Effect1 = new ParticleDef
-                    {
-                        Name = "",//Muzzle_Flash_Large
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2500,
-                            MaxDuration = 480,
-                            Scale = 1f,
-                        },
-                    },
-					Effect2 = new ParticleDef
-					{
-						Name = "", // OKI_230mm_Muzzle_Flash 
-						Color = new Vector4(1f,1f,1f,1f), //RGBA
-						Offset = new Vector3D(0f,0f,0.25f), //XYZ
-						Extras = new ParticleOptionDef
-						{
-							Loop = false,
-							Restart = false,
-							MaxDistance = 1000,
-							MaxDuration = 0,
-							Scale = 1.0f,
-						}
-					},
-                },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 SmallRailgunAmmo,
             },
-
             Animations = AryxRailgunAnims,
-            // Don't edit below this line
         };
 
-        WeaponDefinition AryxRailgun => new WeaponDefinition {
-
+        WeaponDefinition AryxRailgun => new WeaponDefinition 
+		{
             Assignments = new ModelAssignmentsDef 
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "ARYXRailgun",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
@@ -185,30 +138,24 @@ namespace Scripts {
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
                     },
-
                 },
-                Muzzles = new [] {
+                Muzzles = new [] 
+				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
             },
-
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
-			
             HardPoint = new HardPointDef 
             {
                 PartName = "Artemis 250mm Railgun", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
-                AimingTolerance = 0f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AddToleranceToTracking = false,
-
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-				
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
-
-                HardWare = new HardwareDef {
+                HardWare = new HardwareDef 
+				{
                     RotateRate = 0f,
                     ElevateRate = 0f,
                     MinAzimuth = 0,
@@ -220,51 +167,30 @@ namespace Scripts {
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-					CriticalReaction = new CriticalDef
-					{
-						Enable = false, // Enables Warhead behaviour
-						DefaultArmedTimer = 120,
-						PreArmed = false,
-						TerminalControls = true,
-						AmmoRound = "", // name of ammo upon explosion
-					},
                 },
-				
                 Other = new OtherDef
                 {
                     ConstructPartCap = 21,
-                    RotateBarrelAxis = 0,
-                    EnergyPriority = 0,
                     MuzzleCheck = false,
+					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
+					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false,
                     RestrictionRadius = 1.25f, // Meters, radius of sphere disable this gun if another is present
                     CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
                     CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
-
-                Loading = new LoadingDef {
+                Loading = new LoadingDef 
+				{
                     RateOfFire = 60,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    SkipBarrels = 0,
                     ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, //heat generated per shot
-                    MaxHeat = 0, //max heat before weapon enters cooldown (70% of max heat)
-                    Cooldown = 0f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-                    HeatSinkRate = 0, //amount of heat lost per second
-                    DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
-                    ShotsInBurst = 0,
-                    DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false,
-                    GiveUpAfter = false,
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
-					SpinFree = true, // Spin barrel while not firing
 					StayCharged = false, // Will start recharging whenever power cap is not full
                 },
-                Audio = new HardPointAudioDef {
+                Audio = new HardPointAudioDef 
+				{
                     PreFiringSound = "ArcWepShipARYXRailgun_Windup",
                     FiringSound = "MD_RailgunFire", // WepShipGatlingShot
                     FiringSoundPerShot = true,
@@ -274,52 +200,22 @@ namespace Scripts {
                     BarrelRotationSound = "",
                     FireSoundEndDelay = 300, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
-                Graphics = new HardPointParticleDef {
-                    Effect1 = new ParticleDef
-                    {
-                        Name = "",//Muzzle_Flash_Large
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2500,
-                            MaxDuration = 480,
-                            Scale = 1f,
-                        },
-                    },
-					Effect2 = new ParticleDef
-					{
-						Name = "", // OKI_230mm_Muzzle_Flash 
-						Color = new Vector4(1f,1f,1f,1f), //RGBA
-						Offset = new Vector3D(0f,0f,0.25f), //XYZ
-						Extras = new ParticleOptionDef
-						{
-							Loop = false,
-							Restart = false,
-							MaxDistance = 1000,
-							MaxDuration = 0,
-							Scale = 1.0f,
-						}
-					},
-                },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 SmallRailgunAmmo,
             },
-
             Animations = AryxRailgunAnims,
-            // Don't edit below this line
         };
 
         WeaponDefinition SmallBlockRailgun => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "SmallRailgun", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
@@ -330,7 +226,8 @@ namespace Scripts {
                     },
                     
                  },
-                Muzzles = new[] {
+                Muzzles = new[] 
+				{
                     "barrel_001", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
                 },
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
@@ -338,80 +235,41 @@ namespace Scripts {
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
                 },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                    Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MinimumDiameter = 0, // Minimum radius of threat to engage.
-                MaximumDiameter = 0, // Maximum radius of threat to engage; 0 = unlimited.
-                MaxTargetDistance = 0, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                MinTargetDistance = 0, // Minimum distance at which targets will be automatically shot at.
-                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
+                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef
             {
                 PartName = "Small Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.01f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 0f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
-                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
-                CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-
-                Ui = new UiDef
-                {
-                    RateOfFire = false, // Enables terminal slider for changing rate of fire.
-                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
-                    EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-                },
-                Ai = new AiDef
-                {
-                    TrackTargets = false, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
-                    TurretAttached = false, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
-                    TurretController = false, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
-                    PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
-                    SuppressFire = false, // If enabled, weapon can only be fired manually.
-                    OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
-                },
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0f, // Max traversal speed of elevation subpart in radians per tick.
-                    MinAzimuth = 0,
-                    MaxAzimuth = 0,
-                    MinElevation = 0,
-                    MaxElevation = 0,
-                    HomeAzimuth = 0, // Default resting rotation angle
-                    HomeElevation = 0, // Default resting elevation
                     InventorySize = 2.010f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
-                    FixedOffset = false, // Deprecated.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
-                    CriticalReaction = new CriticalDef
-                    {
-                        Enable = false, // Enables Warhead behaviour.
-                        DefaultArmedTimer = 120, // Sets default countdown duration.
-                        PreArmed = false, // Whether the warhead is armed by default when placed. Best left as false.
-                        TerminalControls = true, // Whether the warhead should have terminal controls for arming and detonation.
-                        AmmoRound = "", // Optional. If specified, the warhead will always use this ammo on detonation rather than the currently selected ammo.
-                    },
                 },
                 Other = new OtherDef
                 {
                     ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
-                    RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
-                    EnergyPriority = 0, // Deprecated.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
+					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
+					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false, // Force enables debug mode.
                     RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
                     CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
@@ -419,26 +277,12 @@ namespace Scripts {
                 },
                 Loading = new LoadingDef
                 {
-
                     RateOfFire = 60, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
                     ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    HeatPerShot = 0, // Heat generated per shot.
-                    MaxHeat = 100, // Max heat before weapon enters cooldown (70% of max heat).
-                    Cooldown = .95f, // Percentage of max heat to be under to start firing again after overheat; accepts 0 - 0.95
-                    HeatSinkRate = 0, // Amount of heat lost per second.
-                    DegradeRof = false, // Progressively lower rate of fire when over 80% heat threshold (80% of max heat).
-                    ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-                    BarrelSpinRate = 0, // Visual only, 0 disables and uses RateOfFire.
-                    DeterministicSpin = false, // Spin barrel position will always be relative to initial / starting positions (spin will not be as smooth).
-                    SpinFree = false, // Spin barrel while not firing.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
                 },
                 Audio = new HardPointAudioDef
@@ -453,39 +297,12 @@ namespace Scripts {
                     FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                     FireSoundNoBurst = true, // Don't stop firing sound from looping when delaying after burst.
                 },
-                Graphics = new HardPointParticleDef
-                {
-                    Effect1 = new ParticleDef
-                    {
-                        Name = "", // SubtypeId of muzzle particle effect.
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
-                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Set this to the same as in the particle sbc!
-                            Restart = false, // Whether to end a looping effect instantly when firing stops.
-                            Scale = 1f, // Scale of effect.
-                        },
-                    },
-                    Effect2 = new ParticleDef
-                    {
-                        Name = "",
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = true, // Set this to the same as in the particle sbc!
-                            Restart = false,
-                            Scale = 1f,
-                        },
-                    },
-                },
             },
-            Ammos = new[] {
+            Ammos = new[] 
+			{
                 SmallRailgunAmmo_Ares,
             },
             Animations = SmallRailgunAnimation,
-            //Upgrades = UpgradeModules,
         };
     }
 }

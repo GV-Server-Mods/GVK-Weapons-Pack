@@ -6,7 +6,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKIObserverSM</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Small Long Range Search Radar</DisplayName>
+			<DisplayName>[Sensor] Small Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
 				[5km Range]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\OKIObserverSM.dds</Icon>
@@ -55,13 +55,14 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKIDesignator</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Large Long Range Search Radar</DisplayName>
+			<DisplayName>[Sensor] Large Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
 				[5km Range]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\OKIDesignator.dds</Icon>
@@ -109,6 +110,7 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
 			<PCU>0</PCU>
+            <IsAirTight>false</IsAirTight>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

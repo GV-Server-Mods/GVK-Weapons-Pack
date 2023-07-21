@@ -4,49 +4,34 @@ using static Scripts.Structure.WeaponDefinition.AnimationDef;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.PartAnimationSetDef.EventTriggers;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.RelMove.MoveType;
 using static Scripts.Structure.WeaponDefinition.AnimationDef.RelMove;
-
+//using static Scripts.Structure.WeaponDefinition.AnimationDef.PartAnimationSetDef.ResetConditions;
 namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        /// Possible Events ///
-        
-        //Reloading,
-        //Firing,
-        //Tracking,
-        //Overheated,
-        //TurnOn,
-        //TurnOff,
-        //BurstReload,
-        //NoMagsToLoad,
-        //PreFire,
-        //EmptyOnGameLoad,
-        //StopFiring,
-        //StopTracking
-
-        private AnimationDef MD_Gatling_Animations => new AnimationDef
+        private AnimationDef SentinelTurretAnimations => new AnimationDef
         {
 
             EventParticles = new Dictionary<PartAnimationSetDef.EventTriggers, EventParticle[]>
             {
-                [Firing] = new[]{
+                [PreFire] = new[]{
                        new EventParticle
                        {
                            EmptyNames = Names("muzzle_projectile_1"),
                            MuzzleNames = Names("muzzle_projectile_1"),
                            StartDelay = 0, //ticks 60 = 1 second
                            LoopDelay = 0, //ticks 60 = 1 second
-                           ForceStop = true,
+                           ForceStop = false,
                            Particle = new ParticleDef
                            {
-                               Name = "Muzzle_Flash_Large_GV",
+                               Name = "MAC_Charge_Particle_effect",
                                Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                                Extras = new ParticleOptionDef
                                {
                                    Loop = true,
                                    Restart = false,
                                    MaxDistance = 1500, //meters
-                                   MaxDuration = 0, //ticks 60 = 1 second
+                                   MaxDuration = 1120, //ticks 60 = 1 second
                                    Scale = 1,
                                }
                            }

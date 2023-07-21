@@ -25,6 +25,24 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Energy</SubtypeId>
+			</Id>
+			<DisplayName>Energy</DisplayName>
+			<Icon>Textures\GUI\Icons\component\BatteryComponent.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>1</Volume>
+			<Model>Models\Components\PowerCellComponent.mwm</Model>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>NATO_25x184mm</SubtypeId>
 			</Id>
 			<DisplayName>[Gatling] 25mm KE x30</DisplayName>
@@ -48,7 +66,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>NATO_5p56x45mm</SubtypeId>
 			</Id>
-			<DisplayName>[Interior] 5.56mm KE x30</DisplayName>
+			<DisplayName>[Interior/Sidearm] 5.56mm KE x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Rifle_Ammo.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -69,7 +87,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>AutocannonClip</SubtypeId>
 			</Id>
-			<DisplayName>[Chaingun] 30mm API x6</DisplayName>
+			<DisplayName>[Autocannon] 30mm API x6</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -237,7 +255,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Siege</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword MRV</DisplayName>
+			<DisplayName>[SRBM] Longsword MIRV</DisplayName>
 			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
 			<Size>
 				<X>4</X>
@@ -279,15 +297,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Missile] Tuukka HE</DisplayName>
+			<DisplayName>[MLRS] Tuukka HE</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Size>
 				<X>4</X>
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>400</Mass>
-			<Volume>200</Volume>
+			<Mass>320</Mass>
+			<Volume>160</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -316,5 +334,25 @@
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 		</AmmoMagazine>
+        <AmmoMagazine>
+            <Id>
+                <TypeId>AmmoMagazine</TypeId>
+                <SubtypeId>Others_Drone_Falcon</SubtypeId>
+            </Id>
+            <DisplayName>[Drone] Falcon Autocannon</DisplayName>
+            <Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
+            <Size>
+                <X>1</X>
+                <Y>2</Y>
+                <Z>0.5</Z>
+            </Size>
+			<Mass>2400</Mass>
+			<Volume>1600</Volume>
+            <Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
+            <PhysicalMaterial>Ammo</PhysicalMaterial>
+            <Capacity>1</Capacity>
+            <AmmoDefinitionId Subtype="Blank" />
+            <CanPlayerOrder>true</CanPlayerOrder>
+        </AmmoMagazine>	
 	</AmmoMagazines>
 </Definitions>

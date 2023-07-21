@@ -74,7 +74,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>LargeRailgun</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Large 500mm</DisplayName>
+			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Only suitable for the largest ships, and damage drops with range.
 				[3000m Manual Range]
@@ -135,7 +135,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>LargeRailgun</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Light Coil</DisplayName>
+			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Max damage up to 2km, 25% damage at max range.
 				[3000m Manual Range]

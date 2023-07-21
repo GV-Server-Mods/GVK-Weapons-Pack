@@ -3,15 +3,24 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.FwdRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ReInitCondition;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.RelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DeformDef.DeformTypes;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
@@ -20,8 +29,10 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.PushPullDef.Force;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.FactionColor;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
 
 namespace Scripts
@@ -32,32 +43,22 @@ namespace Scripts
         {
 			AmmoMagazine = "Missile200mm",
 			AmmoRound = "Missiles_Rocket",
-			HybridRound = false, //AmmoMagazine based weapon with energy cost
-			EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
 			BaseDamage = 1f,
 			Mass = 200f, // in kilograms
 			Health = 1, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
 			BackKickForce = 100f,
-            DecayPerShot = 0f,
 			HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-			EnergyMagazineSize = 0,
-			IgnoreWater = false,
-
-            Shape = Common_Ammos_Shape_None,
-			
-            ObjectsHit = Common_Ammos_ObjectsHit_None,
-			
-            Fragment = Common_Ammos_Fragment_None,
-			
-            Pattern = Common_Ammos_Pattern_None,
-						
+            NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+            Sync = new SynchronizeDef
+            {
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                PointDefense = true, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
+                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+            },
 			DamageScales = new DamageScaleDef {
 				MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
 				DamageVoxels = false, // true = voxels are vulnerable to this weapon
-				SelfDamage = false, // true = allow self damage.
 				HealthHitModifier = 1, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
-				VoxelHitModifier = -1,
-				// modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
 				Characters = -1f,
 				Grids = new GridSizeDef
 				{
@@ -67,15 +68,9 @@ namespace Scripts
 				Armor = new ArmorDef
 				{
 					Armor = -1f,
-					Light = -1f,
+					Light = 0.75f,
 					Heavy = 1.2f,
 					NonArmor = 0.8f,
-				},
-				Shields = new ShieldDef
-				{
-					Modifier = -1f,
-					Type = Default, // Default, Heal
-					BypassModifier = -1f,
 				},
 				DamageType = new DamageTypes
 				{
@@ -84,26 +79,10 @@ namespace Scripts
 					Detonation = Energy,
 					Shield = Energy,
                 },
-				
                 Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
-				
 			},
-
-            AreaOfDamage = new AreaOfDamageDef {
-                ByBlockHit = new ByBlockHitDef
-                {
-                    Enable = false,
-                    Radius = 0f,
-                    Damage = 0f,
-                    Depth = 0f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
-                    MaxAbsorb = 0f,
-                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                },
+            AreaOfDamage = new AreaOfDamageDef 
+			{
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
@@ -118,7 +97,7 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 15,
+                    MinArmingTime = 10,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
@@ -127,38 +106,79 @@ namespace Scripts
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
-			
-			Ewar = Common_Ammos_Ewar_None,
-
-            Beams = Common_Ammos_Beams_None,
-
-			Trajectory = new TrajectoryDef {
+			Trajectory = new TrajectoryDef 
+			{
 				Guidance = None,
 				TargetLossDegree = 1f,
 				TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-				MaxLifeTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+				MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				AccelPerSec = 800f,
 				DesiredSpeed = 1500,
 				MaxTrajectory = 900f,
 				SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed
 				RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
-                
-				Smarts = Common_Ammos_Trajectory_Smarts_None,
-                
-				Mines = Common_Ammos_Trajectory_Mines_None,
-				
 			},
-
-			AmmoGraphics = new GraphicDef {
+			AmmoGraphics = new GraphicDef 
+			{
 				ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
 				VisualProbability = 1f,
-				ShieldHitDraw = true,
+                Decals = new DecalDef
+                {
+                    MaxAge = 3600,
+                    Map = new[]
+                    {
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Metal",
+                            DecalMaterial = "Missile",
+                        },
+                        new TextureMapDef
+                        {
+                            HitMaterial = "Glass",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Soil",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Wood",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "GlassOpaque",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+                        {
+                            HitMaterial = "Stone",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Rock",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Ice",
+                            DecalMaterial = "Missile",
+                        },
+						new TextureMapDef
+						{
+                            HitMaterial = "Soil",
+                            DecalMaterial = "Missile",
+                        },
+                    },
+                },
 				Particles = new AmmoParticleDef
 				{
                     Ammo = new ParticleDef
                     {
                         Name = "MD_BulletGlowMedYellow", //Archer_MissileSmokeTrail
-                        ShrinkByDistance = false,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0f),
                         Extras = new ParticleOptionDef
@@ -173,8 +193,7 @@ namespace Scripts
                     Hit = new ParticleDef
                     {
                         Name = "MD_HydraRocketExplosion", //MD_HydraRocketExplosion MD_InstallationExplosion
-                        ApplyToShield = true,
-                        ShrinkByDistance = false,
+                        ApplyToShield = false,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
@@ -192,26 +211,19 @@ namespace Scripts
 				{
                     ColorVariance = Random(start: 0f, end: 2f), // multiply the color by random values within range.
                     WidthVariance = Random(start: -0.2f, end: 0.2f), // adds random value to default width (negatives shrinks width)
+					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
                         Length = 10f,
                         Width = 0.3f,
                         Color = Color(red: 30f, green: 25f, blue: 1.5f, alpha: 1f),
-                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
-                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
-                        Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                            "MD_MissileThrustFlame",
-                        },
-                        TextureMode = Normal, // Normal, Cycle, Chaos, Wave
+                        Textures = new[] {"MD_MissileThrustFlame",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
 					Trail = new TrailDef
 					{
 						Enable = true,
-						Textures = new[] {
-							"WeaponLaser",
-						},
-						TextureMode = Normal,
+						Textures = new[] {"WeaponLaser",},
 						DecayTime = 30,
 						Color = Color(red: 1, green: 1, blue: 1, alpha: 1f),
 						Back = false,
@@ -221,8 +233,8 @@ namespace Scripts
 					},
 				},
 			},
-
-			AmmoAudio = new AmmoAudioDef {
+			AmmoAudio = new AmmoAudioDef 
+			{
 				TravelSound = "MXA_Archer_Travel",
 				HitSound = "HWR_LargeExplosion",
                 ShieldHitSound = "",
@@ -232,9 +244,7 @@ namespace Scripts
                 HitPlayChance = 1f,
                 HitPlayShield = true,
 			}, // Don't edit below this line
-			
 			Ejection = Common_Ammos_Ejection_None,
-			
         };
     }
 }

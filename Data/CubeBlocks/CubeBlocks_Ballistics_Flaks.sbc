@@ -6,7 +6,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeBlockMediumCalibreTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Large Assault Turret</DisplayName>
+			<DisplayName>[Flak] Large 100mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurretLarge.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[1800m Auto Range (100m min)]
@@ -21,7 +21,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
 				<Component Subtype="Construction" Count="210"/>
 				<Component Subtype="SmallTube" Count="83"/>
 				<Component Subtype="LargeTube" Count="69"/>
@@ -102,7 +102,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallBlockMediumCalibreTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Small Assault Turret</DisplayName>
+			<DisplayName>[Flak] Small 100mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurret_Small.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[1300m Auto Range (100m min)]
@@ -117,7 +117,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="20"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
 				<Component Subtype="Construction" Count="29"/>
 				<Component Subtype="SmallTube" Count="12"/>
 				<Component Subtype="LargeTube" Count="10"/>
@@ -195,7 +195,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallBlockMediumCalibreGun</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Small Assault Gun</DisplayName>
+			<DisplayName>[Flak] Small 100mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCaliberGun.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[2000m Manual Range (100m min)]

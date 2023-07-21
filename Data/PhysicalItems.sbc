@@ -1,24 +1,259 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <PhysicalItems>
-        <PhysicalItem>
-            <Id>
-                <TypeId>Ingot</TypeId>
-                <SubtypeId>GVK_Relic_Tech</SubtypeId>
-            </Id>
-            <DisplayName>[Tech] Relic Ammo Ingot</DisplayName>
-            <Icon>Textures\GUI\Icons\Items\ZoneChip_Item.dds</Icon>
-            <Size>
-                <X>0.1</X>
-                <Y>0.1</Y>
-                <Z>0.2</Z>
-            </Size>
-            <Mass>0.250</Mass>
-            <Volume>0.2</Volume>
-            <Model>Models\Items\ZoneChip_Item.mwm</Model>
-            <PhysicalMaterial>Metal</PhysicalMaterial>
-            <IconSymbol>Relic</IconSymbol>
-            <CanPlayerOrder>true</CanPlayerOrder>
-        </PhysicalItem>
-    </PhysicalItems>
+	<PhysicalItems>
+		<PhysicalItem>
+			<Id>
+				<TypeId>Ingot</TypeId>
+				<SubtypeId>GVK_Relic_Tech</SubtypeId>
+			</Id>
+			<DisplayName>[Tech] Relic Ammo Ingot</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\ZoneChip_Item.dds</Icon>
+			<Size>
+				<X>0.1</X>
+				<Y>0.1</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>0.250</Mass>
+			<Volume>0.2</Volume>
+			<Model>Models\Items\ZoneChip_Item.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<IconSymbol>Relic</IconSymbol>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition" Enabled="false">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>SemiAutoPistolItem</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_SemiAutoPistol</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponPistol_Warfare.dds</Icon>
+			<Description>Description_SemiAutoPistol</Description>
+			<Size>
+				<X>0.27</X>
+				<Y>0.15</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\Pistol_Warfare.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="Blank"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>20</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition" Enabled="false">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>FullAutoPistolItem</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_FullAutoPistol</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponPistol_FullAuto_Warfare.dds</Icon>
+			<Description>Description_FullAutoPistol</Description>
+			<Size>
+				<X>0.27</X>
+				<Y>0.15</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>8</Volume>
+			<Model>Models\Weapons\Pistol_FullAuto_Warfare.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="Blank"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>10</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>ElitePistolItem</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] S-10E 9mm Pistol</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponPistol_Elite_Warfare.dds</Icon>
+			<Description>A simple 10 round semi-automatic handgun.
+				[400m Range]
+				[Uses 9mm KE]</Description>
+			<Size>
+				<X>0.27</X>
+				<Y>0.15</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\Pistol_Elite_Warfare.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="ElitePistolGun"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>3</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition"  Enabled="false">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>AutomaticRifleItem</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_AutomaticRifle</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle.dds</Icon>
+			<Description>Description_Rifle</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>3</Mass>
+			<Volume>20</Volume>
+			<Model>Models\Weapons\AutomaticRifle.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="Blank"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>20</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition"  Enabled="false">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>PreciseAutomaticRifleItem</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Item_PreciseAutomaticRifle</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Precise.dds</Icon>
+			<Description>Description_PreciseAutomaticRifle</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>3</Mass>
+			<Volume>20</Volume>
+			<Model>Models\Weapons\PreciseAutomaticRifle.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="Blank"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>10</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>50</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>RapidFireAutomaticRifleItem</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] MR-50 5.56mm Automatic Rifle</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_RapidFire.dds</Icon>
+			<Description>Lightweight automatic infantry rifle with poor accuracy and recoil.
+				[900m Range]
+				[Uses 5.56 KE]</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>3</Mass>
+			<Volume>20</Volume>
+			<Model>Models\Weapons\RapidFireAutomaticRifle.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="RapidFireAutomaticRifleGun"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>10</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>50</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>UltimateAutomaticRifleItem</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] MR-30E 7.62mm Burst Rifle</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Elite.dds</Icon>
+			<Description>Heavy but accurate battle rifle, fires in 3 round burst.
+				[800m Range]
+				[Uses 7.62 FMJ]</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>3</Mass>
+			<Volume>20</Volume>
+			<Model>Models\Weapons\UltimateAutomaticRifle.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="UltimateAutomaticRifleGun"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>3</MaximumOfferAmount>
+			<MinimumOrderAmount>5</MinimumOrderAmount>
+			<MaximumOrderAmount>10</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>BasicHandHeldLauncherItem</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] Hydra Rocket Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Regular.dds</Icon>
+			<Description>A shoulder fired Hydra Rocket Launcher.
+				[1000m Range]
+				[Uses Hydra HE x1]</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>25</Mass>
+			<Volume>125</Volume>
+			<Model>Models\Weapons\RocketLauncher_Regular.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="BasicHandHeldLauncherGun"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>5</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
+			<Id>
+				<TypeId>PhysicalGunObject</TypeId>
+				<SubtypeId>AdvancedHandHeldLauncherItem</SubtypeId>
+			</Id>
+			<DisplayName>[Sidearm] Archer Rocket Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
+			<Description>A homing Launcher that fires Archer missiles. Use MMB to lock onto a target.
+				[2500m Range]
+				[Uses Archer HE x1]</Description>
+			<Size>
+				<X>0.8</X>
+				<Y>0.24</Y>
+				<Z>0.08</Z>
+			</Size>
+			<Mass>25</Mass>
+			<Volume>125</Volume>
+			<Model>Models\Weapons\RocketLauncher_Precision.mwm</Model>
+			<PhysicalMaterial>Metal</PhysicalMaterial>
+			<WeaponDefinitionId Subtype="AdvancedHandHeldLauncherGun"/>
+			<ShowAmmoCount>true</ShowAmmoCount>
+			<MinimumOfferAmount>1</MinimumOfferAmount>
+			<MaximumOfferAmount>3</MaximumOfferAmount>
+			<MinimumOrderAmount>10</MinimumOrderAmount>
+			<MaximumOrderAmount>100</MaximumOrderAmount>
+			<CanPlayerOrder>true</CanPlayerOrder>
+		</PhysicalItem>
+	</PhysicalItems>
 </Definitions>

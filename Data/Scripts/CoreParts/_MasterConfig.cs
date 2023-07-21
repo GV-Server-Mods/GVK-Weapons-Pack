@@ -51,6 +51,7 @@ namespace Scripts
 							Other_Radar_Large,
 							Other_Warheads_RegularWarhead_LG_Weapon, 
 							Other_Warheads_RegularWarhead_SG_Weapon,
+							AryxSmallFighterHangar,
 							AryxLongswordMissileBattery,
 							KhopeshTurret,
 							SentinelTurret,
@@ -59,7 +60,12 @@ namespace Scripts
 							ThrasherTurret,
 							tukkaLauncher01,
 							lokiCannon1_def,
-							AryxSpartanTurret
+							AryxSpartanTurret,
+							BasicHandHeldLauncherGun, 
+							AdvancedHandHeldLauncherGun, 
+							ElitePistolGun, 
+							RapidFireAutomaticRifleGun, 
+							UltimateAutomaticRifleGun
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

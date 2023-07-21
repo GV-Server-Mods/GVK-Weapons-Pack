@@ -6,7 +6,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXVulcanTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Large Vulcan Turret</DisplayName>
+			<DisplayName>[Gatling] Vulcan</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_VulcanCannon.dds</Icon>	  
 			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Vulcan. Designed by Aryx Weapon Enterprises.
 				[1400m Auto Range]
@@ -63,7 +63,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SentinelTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Large Sentinel Turret</DisplayName>
+			<DisplayName>[Gatling] Sentinel</DisplayName>
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1400m Auto Range]
@@ -325,7 +325,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm Fixed</DisplayName>
+			<DisplayName>[Gatling] Small 25mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Hard-mounted six-barrel multi-role rotary cannon.
 				[1600m Manual Range]
@@ -467,7 +467,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGunWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm Fixed (Warfare)</DisplayName>
+			<DisplayName>[Gatling] Small 25mm Gun (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
 				[1600m Manual Range]
