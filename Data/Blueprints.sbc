@@ -370,7 +370,7 @@
                 <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] 7.62mm FMJ x20</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_RapidFire.dds</Icon>
+            <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_Elite.dds</Icon>
             <Prerequisites>
                 <Item Amount="20" TypeId="Ingot" SubtypeId="Iron" />
                 <Item Amount="5" TypeId="Ingot" SubtypeId="Nickel" />
