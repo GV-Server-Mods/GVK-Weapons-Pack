@@ -44,12 +44,40 @@ namespace Scripts
             AmmoMagazine = "NATO_5p56x45mm",
             AmmoRound = "Ballistics_Interior",
             BaseDamage = 25f,
-            Mass = 1f, // in kilograms
+            Mass = 0.25f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 2f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
+            DamageScales = new DamageScaleDef
+            {
+                MaxIntegrity = 0f, // Blocks with integrity higher than this value will be immune to damage from this projectile; 0 = disabled.
+                DamageVoxels = false, // Whether to damage voxels.
+                SelfDamage = true, // Whether to damage the weapon's own grid.
+                HealthHitModifier = 0, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
+                VoxelHitModifier = 1, // Voxel damage multiplier; defaults to 1 if zero or less.
+                Characters = 1f, // Character damage multiplier; defaults to 1 if zero or less.
+                // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
+                Grids = new GridSizeDef
+                {
+                    Large = 1f, // Multiplier for damage against large grids.
+                    Small = 1f, // Multiplier for damage against small grids.
+                },
+                Armor = new ArmorDef
+                {
+                    Armor = 1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
+                    Light = 1f, // Multiplier for damage against light armor.
+                    Heavy = 1f, // Multiplier for damage against heavy armor.
+                    NonArmor = 2f, // Multiplier for damage against every else.
+                },
+                DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
+                {
+                    Base = Kinetic, // Base Damage uses this
+                    AreaEffect = Energy,
+                    Detonation = Energy,
+                    Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
+                },
+            },
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = None,

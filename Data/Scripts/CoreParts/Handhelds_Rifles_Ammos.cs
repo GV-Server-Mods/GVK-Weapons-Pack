@@ -40,16 +40,11 @@ namespace Scripts
             AmmoMagazine = "UltimateAutomaticRifleGun_Mag_30rd", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "RifleTrace", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             BaseDamage = 40, // Direct damage; one steel plate is worth 100.
-            Mass = 6f, // In kilograms; how much force the impact will apply to the target.
+            Mass = 0.25f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
+            BackKickForce = 2f,
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
 			NpcSafe = true,
-            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
-            {
-                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = .1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
-            },
             DamageScales = new DamageScaleDef
             {
                 MaxIntegrity = 0f, // Blocks with integrity higher than this value will be immune to damage from this projectile; 0 = disabled.
@@ -57,13 +52,8 @@ namespace Scripts
                 SelfDamage = true, // Whether to damage the weapon's own grid.
                 HealthHitModifier = 0, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
                 VoxelHitModifier = 1, // Voxel damage multiplier; defaults to 1 if zero or less.
-                Characters = -1f, // Character damage multiplier; defaults to 1 if zero or less.
+                Characters = 1f, // Character damage multiplier; defaults to 1 if zero or less.
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
-                FallOff = new FallOffDef
-                {
-                    Distance = 0f, // Distance at which damage begins falling off.
-                    MinMultipler = 1f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
-                },
                 Grids = new GridSizeDef
                 {
                     Large = 1f, // Multiplier for damage against large grids.
@@ -71,10 +61,10 @@ namespace Scripts
                 },
                 Armor = new ArmorDef
                 {
-                    Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
-                    Light = -1f, // Multiplier for damage against light armor.
-                    Heavy = -1f, // Multiplier for damage against heavy armor.
-                    NonArmor = -1f, // Multiplier for damage against every else.
+                    Armor = 1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
+                    Light = 1f, // Multiplier for damage against light armor.
+                    Heavy = 1f, // Multiplier for damage against heavy armor.
+                    NonArmor = 2f, // Multiplier for damage against every else.
                 },
                 DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
                 {
@@ -96,7 +86,6 @@ namespace Scripts
             {
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
                 VisualProbability = 1f, // %
-                ShieldHitDraw = true,
                 Decals = new DecalDef
                 {
                     MaxAge = 3600,
