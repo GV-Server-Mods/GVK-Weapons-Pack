@@ -110,8 +110,8 @@ namespace Scripts
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
-					GiveUpAfter = true,
-					GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
+					GiveUpAfter = false,
+					GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
                 },
                 Audio = new HardPointAudioDef
                 {
