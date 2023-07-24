@@ -143,7 +143,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="NATO_5p56x45mm"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>15</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>8</RecoilJetpackHorizontal>
@@ -198,7 +198,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="UltimateAutomaticRifleGun_Mag_30rd"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>6</RecoilJetpackVertical>
@@ -367,7 +367,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="ElitePistolMagazine"/>
+				<AmmoMagazine Subtype="Blank"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>0.5</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>0.5</RecoilJetpackHorizontal>
