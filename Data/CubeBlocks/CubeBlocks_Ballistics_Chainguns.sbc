@@ -18,7 +18,7 @@
 			<Model>Models\Flak\ARYX_LargeFlakCannon.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="140" />
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="7"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="14"/>
                 <Component Subtype="Construction" Count="810" />
                 <Component Subtype="SmallTube" Count="170" />
                 <Component Subtype="Motor" Count="220" />
@@ -27,7 +27,7 @@
                 <Component Subtype="SteelPlate" Count="410" />
             </Components>
             <BuildTimeSeconds>135</BuildTimeSeconds>
-			<PCU>40000</PCU>
+			<PCU>14</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
@@ -77,7 +77,7 @@
 			<Model>Models\Akiad\Small\KhopeshBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="90"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="6"/>
 				<Component Subtype="MetalGrid" Count="270"/>
 				<Component Subtype="SmallTube" Count="110"/>
 				<Component Subtype="Motor" Count="150"/>
@@ -86,7 +86,7 @@
 				<Component Subtype="SteelPlate" Count="270"/>
 			</Components>
 			<BuildTimeSeconds>90</BuildTimeSeconds>
-			<PCU>20000</PCU>
+			<PCU>6</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -163,7 +163,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="30"/>
 				<Component Subtype="SmallTube" Count="12"/>
 				<Component Subtype="Motor" Count="16"/>
@@ -172,7 +172,7 @@
 				<Component Subtype="SteelPlate" Count="30"/>
 			</Components>
 			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<PCU>10000</PCU>
+			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="1.0" EndY="1.0" Default="true"/>
@@ -253,7 +253,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="28"/>
 				<Component Subtype="SmallTube" Count="12"/>
 				<Component Subtype="Motor" Count="15"/>
@@ -262,7 +262,7 @@
 				<Component Subtype="SteelPlate" Count="28"/>
 			</Components>
 			<BuildTimeSeconds>9</BuildTimeSeconds>
-			<PCU>20000</PCU>
+			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.3" StartY="1.3" EndX="3.7" EndY="3.7" Default="true"/>
@@ -354,7 +354,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="28"/>
 				<Component Subtype="SmallTube" Count="12"/>
 				<Component Subtype="Motor" Count="15"/>
@@ -363,7 +363,7 @@
 				<Component Subtype="SteelPlate" Count="28"/>
 			</Components>
 			<BuildTimeSeconds>9</BuildTimeSeconds>
-			<PCU>20000</PCU>
+			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.3" StartY="1.3" EndX="3.7" EndY="3.7" Default="true"/>
@@ -454,7 +454,7 @@
 			<Model>Models\Cubes\Small\Autocannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
 				<Component Subtype="MetalGrid" Count="10"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -463,7 +463,7 @@
 				<Component Subtype="SteelPlate" Count="10"/>
 			</Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
-			<PCU>10000</PCU>
+			<PCU>2</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

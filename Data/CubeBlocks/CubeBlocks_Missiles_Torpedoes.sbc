@@ -22,7 +22,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="26"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="9"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -38,7 +38,7 @@
 				<Component Subtype="SteelPlate" Count="110"/>
 			</Components>
 			<BuildTimeSeconds>25</BuildTimeSeconds>
-			<PCU>60000</PCU>
+			<PCU>10</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1" EndY="1" Default="true"/>
@@ -95,7 +95,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="11"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="7"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -111,7 +111,7 @@
 				<Component Subtype="SteelPlate" Count="43"/>
 			</Components>
 			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<PCU>60000</PCU>
+			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>
@@ -166,7 +166,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="26"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="9"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -188,7 +188,7 @@
 				<Component Subtype="SteelPlate" Count="110"/>
 			</Components>
 			<BuildTimeSeconds>25</BuildTimeSeconds>
-			<PCU>60000</PCU>
+			<PCU>10</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1" EndY="1" Default="true"/>
@@ -246,7 +246,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="11"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="7"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -268,7 +268,7 @@
 				<Component Subtype="SteelPlate" Count="43"/>
 			</Components>
 			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<PCU>60000</PCU>
+			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>

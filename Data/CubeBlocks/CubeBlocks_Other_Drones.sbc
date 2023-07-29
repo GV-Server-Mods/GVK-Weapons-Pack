@@ -20,7 +20,7 @@
             <Components>
                 <Component Subtype="SteelPlate" Count="47" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="5"/>
+				<Component Subtype="GVK_Missile_Tech" Count="11"/>
 				<Component Subtype="GVK_Missile_Tech" Count="1">
 				    <DeconstructId>
                         <TypeId>Ore</TypeId>
@@ -56,7 +56,7 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>30000</PCU>
+			<PCU>12</PCU>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>

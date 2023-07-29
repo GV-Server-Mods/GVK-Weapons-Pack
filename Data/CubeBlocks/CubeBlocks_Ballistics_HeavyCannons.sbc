@@ -19,7 +19,13 @@
             <Components>
                 <Component Subtype="SteelPlate" Count="1200" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="7"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="13"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>Scrap</SubtypeId>
+					</DeconstructId>
+				</Component>
                 <Component Subtype="Construction" Count="580" />
                 <Component Subtype="SmallTube" Count="240" />
                 <Component Subtype="LargeTube" Count="390" />
@@ -29,7 +35,7 @@
                 <Component Subtype="SteelPlate" Count="970" />
             </Components>
             <BuildTimeSeconds>375</BuildTimeSeconds>
-			<PCU>70000</PCU>
+			<PCU>14</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>

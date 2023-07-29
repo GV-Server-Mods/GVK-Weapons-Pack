@@ -23,7 +23,7 @@
             <Components>
                 <Component Subtype="SteelPlate" Count="260" />
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Laser_Tech" Count="7"/>
+				<Component Subtype="GVK_Laser_Tech" Count="14"/>
                 <Component Subtype="SmallTube" Count="350" />
                 <Component Subtype="Motor" Count="280" />
                 <Component Subtype="Superconductor" Count="860" />
@@ -33,7 +33,7 @@
                 <Component Subtype="SteelPlate" Count="2300" />
             </Components>
             <BuildTimeSeconds>375</BuildTimeSeconds>
-			<PCU>60000</PCU>
+			<PCU>14</PCU>
 			<CriticalComponent Subtype="Computer" Index="0" />
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
