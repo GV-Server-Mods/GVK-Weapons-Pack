@@ -23,7 +23,7 @@
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missile200mm"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Others_Drone_Falcon"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_Siege"/>
-		<!--<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_HeavyCannon"/> Converted to Relic -->
+		<Entry Class="ShipConsumables" BlueprintSubtypeId="Ballistics_HeavyCannon"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Missiles_HeavyMissile"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="Lasers_Plasma"/>
 		<!--LARGE BLOCKS-->

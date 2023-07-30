@@ -201,6 +201,7 @@
 				<Item Amount="16" TypeId="Ingot" SubtypeId="Magnesium"/>
 				<Item Amount="64" TypeId="Ingot" SubtypeId="Cobalt"/>
 				<Item Amount="11" TypeId="Ingot" SubtypeId="Silver"/>
+				<Item Amount="1" TypeId="Ingot" SubtypeId="GVK_Relic_Tech"/>
 			</Prerequisites>
 			<BaseProductionTimeInSeconds>251</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_HeavyCannon"/>
