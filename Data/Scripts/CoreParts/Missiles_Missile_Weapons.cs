@@ -37,29 +37,13 @@ namespace Scripts
 			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 5, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			CycleTargets = 5, // Number of targets to "cycle" per acquire attempt.
-			CycleBlocks = 5, // Number of blocks to "cycle" per acquire attempt.
+			CycleTargets = 0, // Number of targets to "cycle" per acquire attempt.
+			CycleBlocks = 0, // Number of blocks to "cycle" per acquire attempt.
 			UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
 			MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one
 			ShootBlanks = false, // Do not generate projectiles when shooting
 			FocusOnly = false, // This weapon can only track focus targets.
 			EvictUniqueTargets = false, // if this is set it will evict any weapons set to UniqueTargetPerWeapon unless they to have this set
-			Communications = new CommunicationDef 
-			{
-				StoreTargets = false, // Pushes its current target to the grid/construct so that other slaved weapons can fire on it.
-				StorageLimit = 0, // The limit at which this weapon will no longer export targets onto the channel.
-				MaxConnections = 0, // 0 is unlimited, this value determines the maximum number of weapons that can link up to another weapon.
-				StoreLimitPerBlock = false, // Setting this to true will switch the StorageLimit from being per Location to per block per Location.
-				StorageLocation = "GVK_Radar_TargetStorage", // This location ID is used either by the master weapon (if StoreTargets = true) or the slave weapon (if its false).  This is shared across the conncted grids.
-				Mode = LocalNetwork, // NoComms, BroadCast, LocalNetwork, Repeater, Relay, Jamming. Only LocalNetwork works right now
-				TargetPersists = false, // Whether or not the weapon will retain its existing target even if the source of the target releases theirs.
-				Security = Private, // Public, Private, Secure
-				BroadCastChannel = "GVK_Radar_BroadcastChannel", // If defined you will broadcast to all other scanners on this channel.
-				BroadCastRange = 2300, // This is the range that you will broadcast up too.  Note that this value applies to both the sender and receiver, both range requirements must be met. 
-				JammingStrength = 0, // If Mode is set to jamming, then this value will decrease the "range" of broadcasts.  Strength falls off at sqr of the distance.
-				RelayChannel = "GVK_Radar_RelayChannel", // If defined this channel will be used to relay any targets it seems on the broadcast channel.
-				RelayRange = 2300, // This defines the range that any broadcasts will be relayed.  Note that this channel id is seen as the "broadcast" channel for all receivers, broadcast range requirements apply. 
-			},
 		};
 
 		private TargetingDef Missiles_Missile_Targeting_Small => new TargetingDef 
@@ -68,7 +52,7 @@ namespace Scripts
 				Grids, // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] {
-				Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+				Any,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -281,7 +265,7 @@ namespace Scripts
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
-                CanShootSubmerged = false,
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Missiles_Missile_Hardpoint_Ai,
                 HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
