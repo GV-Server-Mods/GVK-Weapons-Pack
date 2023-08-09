@@ -74,7 +74,7 @@ namespace Scripts
 		};
 		private OtherDef Ballistics_Gatlings_Hardpoint_Other = new OtherDef 
 		{
-			ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+			ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
 			RotateBarrelAxis = 3, // For spinning barrels, which axis to spin the barrel around; 0 = none.
 			MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
 			DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
@@ -378,7 +378,7 @@ namespace Scripts
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 0.2f,
@@ -519,7 +519,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     RotateBarrelAxis = 0,
                     MuzzleCheck = false,
                     Debug = false,

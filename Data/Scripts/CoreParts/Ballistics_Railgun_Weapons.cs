@@ -83,7 +83,7 @@ namespace Scripts {
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -153,7 +153,7 @@ namespace Scripts {
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef 
 				{
                     RotateRate = 0f,
@@ -170,7 +170,7 @@ namespace Scripts {
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -233,30 +233,14 @@ namespace Scripts {
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "barrel_001", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] 
-				{
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
-                },
-                SubSystems = new[] 
-				{
-                    Any,
-                },
-                ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
-                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
-                StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
-            },
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Small Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.01f, // Projectile inaccuracy in degrees.
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 2.010f, // Inventory capacity in kL.
@@ -266,7 +250,7 @@ namespace Scripts {
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
 					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.

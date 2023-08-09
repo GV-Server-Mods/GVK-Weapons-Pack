@@ -73,19 +73,6 @@ namespace Scripts
 			EvictUniqueTargets = false, // if this is set it will evict any weapons set to UniqueTargetPerWeapon unless they to have this set
 		};
 
-		private AiDef Missiles_Missile_Hardpoint_Ai => new AiDef 
-		{
-			TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
-			TurretAttached = false, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
-			TurretController = false, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
-			PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-			LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
-			SuppressFire = false, // If enabled, weapon can only be fired manually.
-			OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
-			DefaultLeadGroup = 1, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-			TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
-		};
-
 		private HardwareDef Missiles_Missile_Hardpoint_HardWare_Large = new HardwareDef
 		{
 			InventorySize = 14.100f,
@@ -102,7 +89,7 @@ namespace Scripts
 
 		private OtherDef Missiles_Missile_Hardpoint_Other => new OtherDef 
 		{
-			ConstructPartCap = 21,
+			ConstructPartCap = 0,
 			RotateBarrelAxis = 0,
 			DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
 			NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -215,8 +202,8 @@ namespace Scripts
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Missiles_Missile_Hardpoint_Ai,
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = Missiles_Missile_Hardpoint_HardWare_Large,
 				Other = Missiles_Missile_Hardpoint_Other,
                 Loading = Missiles_Missile_Hardpoint_Loading_Large,
@@ -266,8 +253,8 @@ namespace Scripts
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Missiles_Missile_Hardpoint_Ai,
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
 				Other = Missiles_Missile_Hardpoint_Other,
                 Loading = Missiles_Missile_Hardpoint_Loading_Small,
@@ -278,132 +265,33 @@ namespace Scripts
 				Missiles_Missile,
             },
         };
-
-        WeaponDefinition MXA_ArcherPods_NPC => new WeaponDefinition 
-		{
-            Assignments = new ModelAssignmentsDef
+		
+		WeaponDefinition MXA_ArcherPods_NPC
+        {
+            get
             {
-                MountPoints = new[] 
-				{
-                    new MountPointDef 
-					{
-                        SubtypeId = "MXA_ArcherPods_NPC",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "None",
-                        AzimuthPartId = "None",
-                        ElevationPartId = "None",
-                        DurabilityMod = 0.5f,
-                        IconName = ""
-                    },
-                },
-                Muzzles = new[] 
-				{
-                    "subpart_ArcherPod1_Missile_1", "subpart_ArcherPod2_Missile_1", "subpart_ArcherPod3_Missile_1", "subpart_ArcherPod4_Missile_1", "subpart_ArcherPod5_Missile_1",
-                    "subpart_ArcherPod1_Missile_2", "subpart_ArcherPod2_Missile_2", "subpart_ArcherPod3_Missile_2", "subpart_ArcherPod4_Missile_2", "subpart_ArcherPod5_Missile_2",
-                    "subpart_ArcherPod1_Missile_3", "subpart_ArcherPod2_Missile_3", "subpart_ArcherPod3_Missile_3", "subpart_ArcherPod4_Missile_3", "subpart_ArcherPod5_Missile_3",
-                    "subpart_ArcherPod1_Missile_4", "subpart_ArcherPod2_Missile_4", "subpart_ArcherPod3_Missile_4", "subpart_ArcherPod4_Missile_4", "subpart_ArcherPod5_Missile_4",
-                    "subpart_ArcherPod1_Missile_5", "subpart_ArcherPod2_Missile_5", "subpart_ArcherPod3_Missile_5", "subpart_ArcherPod4_Missile_5", "subpart_ArcherPod5_Missile_5",
-                    "subpart_ArcherPod1_Missile_6", "subpart_ArcherPod2_Missile_6", "subpart_ArcherPod3_Missile_6", "subpart_ArcherPod4_Missile_6", "subpart_ArcherPod5_Missile_6",
-                    "subpart_ArcherPod1_Missile_7", "subpart_ArcherPod2_Missile_7", "subpart_ArcherPod3_Missile_7", "subpart_ArcherPod4_Missile_7", "subpart_ArcherPod5_Missile_7",
-                    "subpart_ArcherPod1_Missile_8", "subpart_ArcherPod2_Missile_8", "subpart_ArcherPod3_Missile_8", "subpart_ArcherPod4_Missile_8", "subpart_ArcherPod5_Missile_8",
-                    "subpart_ArcherPod1_Missile_9", "subpart_ArcherPod2_Missile_9", "subpart_ArcherPod3_Missile_9", "subpart_ArcherPod4_Missile_9", "subpart_ArcherPod5_Missile_9",
-                    "subpart_ArcherPod1_Missile_10", "subpart_ArcherPod2_Missile_10", "subpart_ArcherPod3_Missile_10", "subpart_ArcherPod4_Missile_10", "subpart_ArcherPod5_Missile_10",
-                    "subpart_ArcherPod1_Missile_11", "subpart_ArcherPod2_Missile_11", "subpart_ArcherPod3_Missile_11", "subpart_ArcherPod4_Missile_11", "subpart_ArcherPod5_Missile_11",
-                    "subpart_ArcherPod1_Missile_12", "subpart_ArcherPod2_Missile_12", "subpart_ArcherPod3_Missile_12", "subpart_ArcherPod4_Missile_12", "subpart_ArcherPod5_Missile_12",
-                    "subpart_ArcherPod1_Missile_13", "subpart_ArcherPod2_Missile_13", "subpart_ArcherPod3_Missile_13", "subpart_ArcherPod4_Missile_13", "subpart_ArcherPod5_Missile_13",
-                    "subpart_ArcherPod1_Missile_14", "subpart_ArcherPod2_Missile_14", "subpart_ArcherPod3_Missile_14", "subpart_ArcherPod4_Missile_14", "subpart_ArcherPod5_Missile_14",
-                    "subpart_ArcherPod1_Missile_15", "subpart_ArcherPod2_Missile_15", "subpart_ArcherPod3_Missile_15", "subpart_ArcherPod4_Missile_15", "subpart_ArcherPod5_Missile_15",
-                    "subpart_ArcherPod1_Missile_16", "subpart_ArcherPod2_Missile_16", "subpart_ArcherPod3_Missile_16", "subpart_ArcherPod4_Missile_16", "subpart_ArcherPod5_Missile_16",
-                    "subpart_ArcherPod1_Missile_17", "subpart_ArcherPod2_Missile_17", "subpart_ArcherPod3_Missile_17", "subpart_ArcherPod4_Missile_17", "subpart_ArcherPod5_Missile_17",
-                    "subpart_ArcherPod1_Missile_18", "subpart_ArcherPod2_Missile_18", "subpart_ArcherPod3_Missile_18", "subpart_ArcherPod4_Missile_18", "subpart_ArcherPod5_Missile_18",
-                    "subpart_ArcherPod1_Missile_19", "subpart_ArcherPod2_Missile_19", "subpart_ArcherPod3_Missile_19", "subpart_ArcherPod4_Missile_19", "subpart_ArcherPod5_Missile_19",
-                    "subpart_ArcherPod1_Missile_20", "subpart_ArcherPod2_Missile_20", "subpart_ArcherPod3_Missile_20", "subpart_ArcherPod4_Missile_20", "subpart_ArcherPod5_Missile_20",
-                    "subpart_ArcherPod1_Missile_21", "subpart_ArcherPod2_Missile_21", "subpart_ArcherPod3_Missile_21", "subpart_ArcherPod4_Missile_21", "subpart_ArcherPod5_Missile_21",
-                    "subpart_ArcherPod1_Missile_22", "subpart_ArcherPod2_Missile_22", "subpart_ArcherPod3_Missile_22", "subpart_ArcherPod4_Missile_22", "subpart_ArcherPod5_Missile_22",
-                    "subpart_ArcherPod1_Missile_23", "subpart_ArcherPod2_Missile_23", "subpart_ArcherPod3_Missile_23", "subpart_ArcherPod4_Missile_23", "subpart_ArcherPod5_Missile_23",
-                    "subpart_ArcherPod1_Missile_24", "subpart_ArcherPod2_Missile_24", "subpart_ArcherPod3_Missile_24", "subpart_ArcherPod4_Missile_24", "subpart_ArcherPod5_Missile_24",
-                    "subpart_ArcherPod1_Missile_25", "subpart_ArcherPod2_Missile_25", "subpart_ArcherPod3_Missile_25", "subpart_ArcherPod4_Missile_25", "subpart_ArcherPod5_Missile_25",
-                    "subpart_ArcherPod1_Missile_26", "subpart_ArcherPod2_Missile_26", "subpart_ArcherPod3_Missile_26", "subpart_ArcherPod4_Missile_26", "subpart_ArcherPod5_Missile_26",
-                    "subpart_ArcherPod1_Missile_27", "subpart_ArcherPod2_Missile_27", "subpart_ArcherPod3_Missile_27", "subpart_ArcherPod4_Missile_27", "subpart_ArcherPod5_Missile_27",
-                    "subpart_ArcherPod1_Missile_28", "subpart_ArcherPod2_Missile_28", "subpart_ArcherPod3_Missile_28", "subpart_ArcherPod4_Missile_28", "subpart_ArcherPod5_Missile_28",
-                    "subpart_ArcherPod1_Missile_29", "subpart_ArcherPod2_Missile_29", "subpart_ArcherPod3_Missile_29", "subpart_ArcherPod4_Missile_29", "subpart_ArcherPod5_Missile_29",
-                    "subpart_ArcherPod1_Missile_30", "subpart_ArcherPod2_Missile_30", "subpart_ArcherPod3_Missile_30", "subpart_ArcherPod4_Missile_30", "subpart_ArcherPod5_Missile_30",
-                },
-                Ejector = "",
-                Scope = "subpart_ArcherPod2_Missile_16", //Where line of sight checks are performed from must be clear of block collision
-            },
-            Targeting = Missiles_Missile_Targeting_Large,
-            HardPoint = new HardPointDef
-            {
-                PartName = "Large Archer Missile Pod NPC", // name of weapon in terminal
-                DeviateShotAngle = 1f,
-                AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AddToleranceToTracking = true,
-				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Missiles_Missile_Hardpoint_Ai,
-                HardWare = Missiles_Missile_Hardpoint_HardWare_Large,
-				Other = Missiles_Missile_Hardpoint_Other,
-                Loading = Missiles_Missile_Hardpoint_Loading_Large,
-				Audio = Missiles_Missile_Hardpoint_Audio,
-            },
-            Ammos = new[] 
-			{
-				Missiles_Missile_NPC,
-            },
-            Animations = MXA_ArcherPods_Animation,
-        };
-
-        WeaponDefinition SmallRocketLauncherReload_NPC => new WeaponDefinition 
-		{
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
+                var missile = MXA_ArcherPods;
+                missile.Assignments.MountPoints[0].SubtypeId = "MXA_ArcherPods_NPC";
+                missile.Ammos = new[]
                 {
-                    new MountPointDef
-                    {
-                        SubtypeId = "SmallRocketLauncherReload_NPC",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "None",
-                        ElevationPartId = "None",
-                        AzimuthPartId = "None",
-                        DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
-                    },
-                },
-                Muzzles = new []
-                {
-                    "muzzle_missile_001",
-					"muzzle_missile_002",
-					"muzzle_missile_003",
-					"muzzle_missile_004",
-                },
-                Ejector = "",
-                Scope = "muzzle_missile_002", //Where line of sight checks are performed from must be clear of block collision
-            },
-            Targeting = Missiles_Missile_Targeting_Small,
-            HardPoint = new HardPointDef
+                    Missiles_Missile_NPC,
+                };
+                return missile;
+            }
+        }
+
+		WeaponDefinition SmallRocketLauncherReload_NPC
+        {
+            get
             {
-                PartName = "SmallRocketLauncherReload NPC", // name of weapon in terminal
-                DeviateShotAngle = 1f,
-                AimingTolerance = 180f, // 0 - 180 firing angle
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AddToleranceToTracking = true,
-                CanShootSubmerged = false,
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Missiles_Missile_Hardpoint_Ai,
-                HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
-				Other = Missiles_Missile_Hardpoint_Other,
-                Loading = Missiles_Missile_Hardpoint_Loading_Small,
-                Audio = Missiles_Missile_Hardpoint_Audio,
-            },
-			Ammos = new[] 
-			{
-				Missiles_Missile_NPC,
-            },
-        };
+                var missile = SmallRocketLauncherReload;
+                missile.Assignments.MountPoints[0].SubtypeId = "SmallRocketLauncherReload_NPC";
+                missile.Ammos = new[]
+                {
+                    Missiles_Missile_NPC,
+                };
+                return missile;
+            }
+        }
     }
 }

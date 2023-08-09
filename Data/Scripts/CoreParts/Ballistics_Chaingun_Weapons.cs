@@ -216,7 +216,7 @@ namespace Scripts
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
                     MuzzleCheck = false,
@@ -355,7 +355,7 @@ namespace Scripts
                 DeviateShotAngle = 0.1f, // Projectile inaccuracy in degrees.
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 0.160f, // Inventory capacity in kL.
@@ -438,7 +438,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.

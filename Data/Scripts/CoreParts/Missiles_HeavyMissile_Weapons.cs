@@ -84,28 +84,8 @@ namespace Scripts
                 AimingTolerance = 2, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = new UiDef
-                {
-                    RateOfFire = true, // Enables terminal slider for changing rate of fire.
-                    RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
-                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
-                    EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-                    AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
-                    DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
-                },
-                Ai = new AiDef
-                {
-                    TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
-                    TurretAttached = true, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
-                    TurretController = true, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
-                    PrimaryTracking = true, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
-                    SuppressFire = false, // If enabled, weapon can only be fired manually.
-                    OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
-                    DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-                    TargetGridCenter = true, // Does not target blocks, instead it targets grid center.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
@@ -123,7 +103,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
                     DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
                     NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution. 

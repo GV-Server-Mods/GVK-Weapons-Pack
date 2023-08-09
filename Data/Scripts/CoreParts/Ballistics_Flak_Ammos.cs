@@ -149,26 +149,11 @@ namespace Scripts
 			{
                 ModelName = "",
                 VisualProbability = 1f,
-                ShieldHitDraw = true,
-                Particles = new AmmoParticleDef
-                {
-                    Hit = new ParticleDef
-                    {
-                        Name = "",
-                        ApplyToShield = false,
-                        Color = Color(red: 1, green: 1f, blue: 1f, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 1,
-                            HitPlayChance = 1f,
-                        },
-                    },
-                },
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.
                     WidthVariance = Random(start: 0f, end: 1f), // adds random value to default width (negatives shrinks width)
+                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
@@ -272,11 +257,11 @@ namespace Scripts
             {
                 ModelName = "",
                 VisualProbability = 0.15f,
-                ShieldHitDraw = true,
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.
                     WidthVariance = Random(start: 0f, end: -0.25f), // adds random value to default width (negatives shrinks width)
+                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,

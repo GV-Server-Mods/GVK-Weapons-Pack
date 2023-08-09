@@ -137,9 +137,9 @@
 			</Id>
 			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Max damage up to 2km, 25% damage at max range.
+			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage.
 				[3000m Manual Range]
-				[Uses 200mm DU + 167MW]
+				[Uses 200mm DU + 383MW]
 			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

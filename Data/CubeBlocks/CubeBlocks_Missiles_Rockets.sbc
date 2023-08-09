@@ -22,7 +22,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="78"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="78"/>
 				<Component Subtype="LargeTube" Count="93"/>
 				<Component Subtype="Motor" Count="250"/>
@@ -107,7 +107,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="8"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2"/>
 				<Component Subtype="MetalGrid" Count="8"/>
 				<Component Subtype="LargeTube" Count="9"/>
 				<Component Subtype="Motor" Count="24"/>
@@ -192,7 +192,7 @@
 			<Model>Models\Cubes\Large\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="11"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="3"/>
 				<Component Subtype="MetalGrid" Count="11"/>
 				<Component Subtype="LargeTube" Count="14"/>
 				<Component Subtype="Motor" Count="36"/>

@@ -43,14 +43,14 @@ namespace Scripts
         {
             AmmoMagazine = "Energy",
             AmmoRound = "Lasers_AMS",
-            EnergyCost = 0.63f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
-            BaseDamage = 50f,
+            EnergyCost = 0.3f, //Eyeball this because spreadsheet uses BaseDamage but this only does HealthHitModifier damage
+            BaseDamage = 100f,
             HardPointUsable = true,
 			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             DamageScales = new DamageScaleDef 
 			{
                 DamageVoxels = false, // Whether to damage voxels.
-				HealthHitModifier = 0.5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+				HealthHitModifier = 0.75, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 Grids = new GridSizeDef
                 {
                     Large = 0f,

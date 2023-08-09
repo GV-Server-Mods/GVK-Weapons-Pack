@@ -156,6 +156,7 @@ namespace Scripts
 				{
                     ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
                     WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
+                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,

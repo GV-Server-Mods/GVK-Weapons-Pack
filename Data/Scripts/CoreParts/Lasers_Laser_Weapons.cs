@@ -61,12 +61,13 @@ namespace Scripts
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
 			DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			HeatPerShot = 2, //heat generated per shot
-			MaxHeat = 600, //max heat before weapon enters cooldown (70% of max heat)
-			Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 30, //amount of heat lost per second
+			ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			MagsToLoad = 1, // Number of physical magazines to consume on reload.
-			StayCharged = false, // Will start recharging whenever power cap is not full
+			//HeatPerShot = 2, //heat generated per shot
+			//MaxHeat = 600, //max heat before weapon enters cooldown (70% of max heat)
+			//Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+			//HeatSinkRate = 30, //amount of heat lost per second
+			StayCharged = true, // Will start recharging whenever power cap is not full
 		};
 			
 		private HardPointAudioDef Lasers_Laser_Audio_Large => new HardPointAudioDef {
@@ -139,7 +140,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -209,7 +210,7 @@ namespace Scripts
 				},
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -258,7 +259,7 @@ namespace Scripts
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_Damage_Overload,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef 
 				{
 					InventorySize = 0f,
@@ -268,7 +269,7 @@ namespace Scripts
 				},
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -335,7 +336,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21,
+                    ConstructPartCap = 0,
                     MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
@@ -402,33 +403,28 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 21,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 3600,
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    ReloadTime = 360, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    MagsToLoad = 1, // Number of physical magazines to consume on reload.
 					DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					HeatPerShot = 2, //heat generated per shot
-					MaxHeat = 1200, //max heat before weapon enters cooldown (70% of max heat)
-					Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-					HeatSinkRate = 60, //amount of heat lost per second
+                    //ShotsInBurst = 120, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
+                    //DelayAfterBurst = 120, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					//HeatPerShot = 2, //heat generated per shot
+					//MaxHeat = 1200, //max heat before weapon enters cooldown (70% of max heat)
+					//Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
+					//HeatSinkRate = 60, //amount of heat lost per second
+					StayCharged = true, // Will start recharging whenever power cap is not full
                 },
                 Audio = Lasers_Laser_Audio_Large,
             },
             Ammos = new[] 
 			{
-                Lasers_Laser_Large,
+                Lasers_Laser_Dual,
 				Lasers_Laser_Large_Shrapnel
             },
         };

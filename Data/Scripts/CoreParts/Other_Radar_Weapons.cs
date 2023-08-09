@@ -99,24 +99,8 @@ namespace Scripts
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = true, // Allows turret to only track to the edge of the AimingTolerance cone instead of dead centre.
                 ScanTrackOnly = true, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
-                Ui = new UiDef
-                {
-                    RateOfFire = false, // Enables terminal slider for changing rate of fire.
-                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
-                    EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-                },
-                Ai = new AiDef
-                {
-                    TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation.
-                    TurretAttached = true, // Whether this weapon is a turret and should have the UI and API options for such.
-                    TurretController = true, // Whether this weapon can physically control the turret's movement.
-                    PrimaryTracking = true, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-                    LockOnFocus = false, // Whether this weapon should automatically fire at a target that has been locked onto via HUD.
-                    SuppressFire = false, // If enabled, weapon can only be fired manually.
-                    OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
-					TargetGridCenter = true, // Does not target blocks, instead it targets grid center.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.1f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
@@ -134,7 +118,7 @@ namespace Scripts
                 },
                 Other = new OtherDef
                 {
-                    ConstructPartCap = 21, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
+                    ConstructPartCap = 20, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     RotateBarrelAxis = 0, // For spinning barrels, which axis to spin the barrel around; 0 = none.
                     EnergyPriority = 0, // Deprecated.
                     DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons

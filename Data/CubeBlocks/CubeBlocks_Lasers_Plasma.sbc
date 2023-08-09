@@ -10,7 +10,7 @@
 			<DisplayName>[Plasma] LOKI</DisplayName>
 			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
 				[2600m Auto Range]
-				[Uses Plasma Cells + 156MW Energy]</Description>
+				[Uses Plasma Cells + 343MW Energy]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\lokiCannon_01.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

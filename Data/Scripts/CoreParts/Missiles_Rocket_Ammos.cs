@@ -244,7 +244,6 @@ namespace Scripts
                 HitPlayChance = 1f,
                 HitPlayShield = true,
 			}, // Don't edit below this line
-			Ejection = Common_Ammos_Ejection_None,
         };
     }
 }

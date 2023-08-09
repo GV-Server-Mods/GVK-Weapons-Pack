@@ -44,7 +44,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.08030075188f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.1202255639f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -168,7 +168,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.09067669173f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.1357894737f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.

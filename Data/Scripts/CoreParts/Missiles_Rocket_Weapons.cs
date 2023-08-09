@@ -99,7 +99,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = Common_Weapons_Hardpoint_Other_21CapOnly,
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 480,
@@ -179,7 +179,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = Common_Weapons_Hardpoint_Other_21CapOnly,
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 320,
@@ -243,7 +243,7 @@ namespace Scripts
                 DeviateShotAngle = 4f,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 2.470f,
@@ -251,7 +251,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = Common_Weapons_Hardpoint_Other_21CapOnly,
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 320,
@@ -310,7 +310,7 @@ namespace Scripts
                 DeviateShotAngle = 3f,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_NoTracking,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 0.520f,
@@ -318,7 +318,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },				
-                Other = Common_Weapons_Hardpoint_Other_21CapOnly,				
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,				
                 Loading = new LoadingDef
                 {
                     RateOfFire = 480,
