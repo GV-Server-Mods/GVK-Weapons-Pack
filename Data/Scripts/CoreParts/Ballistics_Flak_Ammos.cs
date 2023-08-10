@@ -52,7 +52,7 @@ namespace Scripts
 			{
                 AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
                 Fragments = 30, // Number of projectiles to spawn.
-                Degrees = 60, // Cone in which to randomize direction of spawned projectiles.
+                Degrees = 45, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = false, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
