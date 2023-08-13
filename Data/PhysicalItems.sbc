@@ -152,7 +152,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>RapidFireAutomaticRifleItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] MR-50 5.56mm Automatic Rifle</DisplayName>
+			<DisplayName>[Sidearm] MR-50 5.56mm Auto Rifle</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_RapidFire.dds</Icon>
 			<Description>Lightweight automatic infantry rifle with poor accuracy and recoil.
 				[900m Range]

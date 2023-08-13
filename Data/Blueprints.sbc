@@ -188,6 +188,7 @@
 			<BaseProductionTimeInSeconds>210</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Others_Drone_Falcon"/>
 		</Blueprint>
+		<!-- Ammo only discoverable -->
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
@@ -206,6 +207,7 @@
 			<BaseProductionTimeInSeconds>251</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Ballistics_HeavyCannon"/>
 		</Blueprint>
+		<!-- Ammo only discoverable -->
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
@@ -242,6 +244,7 @@
 			<BaseProductionTimeInSeconds>58</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_HeavyMissile"/>
 		</Blueprint>
+		<!-- Ammo only discoverable -->
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
@@ -365,7 +368,7 @@
             <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="PreciseAutomaticRifleGun_Mag_5rd" />
             <BaseProductionTimeInSeconds>10</BaseProductionTimeInSeconds>
         </Blueprint>
-       <Blueprint>
+        <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
                 <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>
@@ -443,7 +446,7 @@
                 <TypeId>BlueprintDefinition</TypeId>
                 <SubtypeId>RapidFireAutomaticRifle</SubtypeId>
             </Id>
-            <DisplayName>[Sidearm] MR-50 5.56mm Automatic Rifle</DisplayName>
+            <DisplayName>[Sidearm] MR-50 5.56mm Auto Rifle</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponAutomaticRifle_RapidFire.dds</Icon>
             <Prerequisites>
                 <Item Amount="3" TypeId="Ingot" SubtypeId="Iron" />
@@ -477,7 +480,7 @@
             <Prerequisites>
                 <Item Amount="3" TypeId="Ingot" SubtypeId="Iron" />
                 <Item Amount="1" TypeId="Ingot" SubtypeId="Nickel" />
-                <Item Amount="4" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="0.5" TypeId="Ingot" SubtypeId="Platinum" />
                 <Item Amount="6" TypeId="Ingot" SubtypeId="Silver" />
             </Prerequisites>
             <Result Amount="1" TypeId="PhysicalGunObject" SubtypeId="UltimateAutomaticRifleItem" />
@@ -503,13 +506,13 @@
                 <TypeId>BlueprintDefinition</TypeId>
                 <SubtypeId>AdvancedHandHeldLauncher</SubtypeId>
             </Id>
-            <DisplayName>[Sidearm] Hydra Rocket Launcher</DisplayName>
+            <DisplayName>[Sidearm] Archer Rocket Launcher</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
             <Prerequisites>
                 <Item Amount="30" TypeId="Ingot" SubtypeId="Iron" />
                 <Item Amount="10" TypeId="Ingot" SubtypeId="Nickel" />
                 <Item Amount="5" TypeId="Ingot" SubtypeId="Cobalt" />
-                <Item Amount="5" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="0.5" TypeId="Ingot" SubtypeId="Platinum" />
             </Prerequisites>
             <Result Amount="1" TypeId="PhysicalGunObject" SubtypeId="AdvancedHandHeldLauncherItem" />
             <BaseProductionTimeInSeconds>20</BaseProductionTimeInSeconds>
