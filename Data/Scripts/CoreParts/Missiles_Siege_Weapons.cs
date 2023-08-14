@@ -130,7 +130,7 @@ namespace Scripts
                     ReloadTime = 1200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 8, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
+                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
                     GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
                     DropTargetUntilLoaded = true, // If true this weapon will drop the target when its out of ammo and until its reloaded.

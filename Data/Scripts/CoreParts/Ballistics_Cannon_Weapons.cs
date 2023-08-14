@@ -123,7 +123,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					MagsToLoad = 2, // Number of physical magazines to consume on reload.
                 },
                 Audio = new HardPointAudioDef
@@ -216,7 +216,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
                 },
                 Audio = new HardPointAudioDef
@@ -318,7 +318,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
+                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.
 				},
                 Audio = new HardPointAudioDef

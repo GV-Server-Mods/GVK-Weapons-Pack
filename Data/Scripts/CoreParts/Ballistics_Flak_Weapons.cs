@@ -208,7 +208,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Flak_Hardpoint_Audio,

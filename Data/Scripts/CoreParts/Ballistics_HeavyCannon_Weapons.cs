@@ -121,7 +121,7 @@ namespace Scripts
                     ShotsInBurst = 0,
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
 					DropTargetUntilLoaded = true, // If true this weapon will drop the target when its out of ammo and until its reloaded.
                 },

@@ -62,7 +62,7 @@ namespace Scripts
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			MagsToLoad = 2, // Number of physical magazines to consume on reload.
-			GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
+			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
 		};
 
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T2 = new LoadingDef 
@@ -72,7 +72,7 @@ namespace Scripts
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 90, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			MagsToLoad = 1, // Number of physical magazines to consume on reload.
-			GiveUpAfter = true, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
+			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
 		};
 		
 		private HardPointAudioDef Ballistics_Chaingun_Hardpoint_Audio = new HardPointAudioDef 
@@ -453,7 +453,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    GiveUpAfter = true,
+                    GiveUpAfter = false,
 					MagsToLoad = 2, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
