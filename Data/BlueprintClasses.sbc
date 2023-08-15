@@ -10,6 +10,9 @@
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="BasicShipConsumables" BlueprintSubtypeId="AutocannonClip"/>
+		<!--TOOLS-->
+		<Entry Class="Tools" BlueprintSubtypeId="EliteAutoPistol"/>
+		<Entry Class="Tools" BlueprintSubtypeId="UltimateAutomaticRifle"/>
 		<!--SHIP WEAPON AMMOS-->
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="ShipConsumables" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
