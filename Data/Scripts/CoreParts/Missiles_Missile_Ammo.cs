@@ -65,7 +65,7 @@ namespace Scripts
                 Grids = new GridSizeDef
                 {
                     Large = -1f,
-                    Small = 0.04f, // 1/125
+                    Small = 0.75f,
                 },
                 Armor = new ArmorDef
                 {
