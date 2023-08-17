@@ -53,7 +53,7 @@ namespace Scripts
 			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.			
             Fragment = new FragmentDef 
 			{
-                AmmoRound = "Lasers_Laser_Small_Shrapnel", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "", // AmmoRound field of the ammo to spawn. Lasers_Laser_Small_Shrapnel
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -157,15 +157,15 @@ namespace Scripts
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Lasers_Laser_Large", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 117f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 1f, // Direct damage; one steel plate is worth 100.
+            EnergyCost = 0.78f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
+            BaseDamage = 150f, // Direct damage; one steel plate is worth 100.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
 			EnergyMagazineSize = 240,
 			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.			
             Fragment = new FragmentDef 
 			{
-                AmmoRound = "Lasers_Laser_Large_Shrapnel", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "", // AmmoRound field of the ammo to spawn. Lasers_Laser_Large_Shrapnel
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -278,6 +278,7 @@ namespace Scripts
                 var laser = Lasers_Laser_Large;
                 laser.AmmoRound = "Lasers_Laser_Large_Shrapnel";
 				laser.BaseDamage = 150f;
+				laser.HardPointUsable = false;
 				laser.EnergyMagazineSize = 1;
 				laser.Fragment = Common_Ammos_Fragment_None;
 				laser.Trajectory.MaxTrajectory = 10f;
@@ -294,6 +295,7 @@ namespace Scripts
                 var laser = Lasers_Laser_Small;
                 laser.AmmoRound = "Lasers_Laser_Small_Shrapnel";
 				laser.BaseDamage = 75f;
+				laser.HardPointUsable = false;
 				laser.EnergyMagazineSize = 1;
 				laser.Fragment = Common_Ammos_Fragment_None;
 				laser.Trajectory.MaxTrajectory = 10f;
