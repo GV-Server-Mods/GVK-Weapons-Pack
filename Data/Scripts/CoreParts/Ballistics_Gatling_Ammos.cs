@@ -57,8 +57,8 @@ namespace Scripts
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
                 Grids = new GridSizeDef
                 {
-                    Large = -1f,
-                    Small = 0.75f,
+                    Large = 1f,
+                    Small = 1f,
                 },
                 Armor = new ArmorDef
                 {
