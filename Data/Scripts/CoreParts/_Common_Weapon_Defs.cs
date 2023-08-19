@@ -100,17 +100,6 @@ namespace Scripts
 			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
 		};
 
-		private UiDef Common_Weapons_Hardpoint_Ui_Damage_Overload = new UiDef 
-		{
-			RateOfFire = false, //not recommended for beams
-			RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
-			DamageModifier = true, //only works on energy
-			ToggleGuidance = false,
-			EnableOverload = true, //only works on energy
-			AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
-			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
-		};
-
 		private UiDef Common_Weapons_Hardpoint_Ui_GuidanceOnly = new UiDef 
 		{
 			RateOfFire = false, //not recommended for beams
@@ -231,7 +220,7 @@ namespace Scripts
 
 		private CustomScalesDef Common_Ammos_DamageScales_Cockpits_BigNerf = new CustomScalesDef 
 		{
-			IgnoreAllOthers = false, //pass through everything else
+            SkipOthers = NoSkip, // Controls how projectile interacts with other blocks in relation to those defined here, NoSkip, Exclusive, Inclusive.
 			Types = new[]
 			{
 				new CustomBlocksDef
