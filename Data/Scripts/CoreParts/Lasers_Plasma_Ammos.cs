@@ -70,20 +70,6 @@ namespace Scripts
                 MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
                 IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
                 AdvOffset = Vector(x: 0, y: 0, z: 0), // advanced offsets the fragment by xyz coordinates relative to parent, value is read from fragment ammo type.
-                TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
-                {
-                    Enable = true, // Enables TimedSpawns mechanism
-                    Interval = 2, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
-                    StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
-                    MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 100, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
-                    ParentDies = false, // Parent dies once after it spawns its last child.
-                    PointAtTarget = true, // Start fragment direction pointing at Target
-                    PointType = Lead, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
-                    DirectAimCone = 0f, //Aim cone used for Direct fire, in degrees
-                    GroupSize = 0, // Number of spawns in each group
-                    GroupDelay = 0, // Delay between each group.
-                },
             },
             DamageScales = new DamageScaleDef 
 			{
@@ -95,14 +81,14 @@ namespace Scripts
                 Grids = new GridSizeDef
                 {
                     Large = -1f, // Multiplier for damage against large grids.
-                    Small = -1f, // Multiplier for damage against small grids.
+                    Small = 0.75f, // Multiplier for damage against small grids.
                 },
                 Armor = new ArmorDef
                 {
                     Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
-                    Light = -1f, // Multiplier for damage against light armor.
+                    Light = 0.25f, // Multiplier for damage against light armor.
                     Heavy = -1f, // Multiplier for damage against heavy armor.
-                    NonArmor = -1f, // Multiplier for damage against every else.
+                    NonArmor = 0.25f, // Multiplier for damage against every else.
                 },
                 DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
                 {
@@ -111,16 +97,16 @@ namespace Scripts
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
-				Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+				Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
             },
             AreaOfDamage = new AreaOfDamageDef 
 			{
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 10f, // Radius of AOE effect, in meters.
-                    Damage = 10000f,
-                    Depth = 10f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
+                    Radius = 15f, // Radius of AOE effect, in meters.
+                    Damage = 20000f,
+                    Depth = 15f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
                     MaxAbsorb = 0f, // Soft cutoff for damage, except for pooled falloff.  If pooled falloff, limits max damage per block.
                     Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -224,32 +210,92 @@ namespace Scripts
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Lasers_Plasma_Shrapnel", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            HybridRound = false, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
             BaseDamage = 1f, // Direct damage; one steel plate is worth 100.
-            Mass = 1f, // In kilograms; how much force the impact will apply to the target.
-            Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
+			       //float.MaxValue will drop the weapon to the first build state and destroy all components used for construction
+			       //If greater than cube integrity it will remove the cube upon firing, without causing deformation (makes it look like the whole "block" flew away)
             HardPointUsable = false, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.
             NpcSafe = false, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
             Sync = new SynchronizeDef
             {
-                Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                Full = false, // Do not use - still in progress
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
+            {
+                Shape = SphereShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 30, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
+            DamageScales = new DamageScaleDef
+            {
+                DamageVoxels = false, // Whether to damage voxels.
+                HealthHitModifier = 10, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
+                VoxelHitModifier = 0, // Voxel damage multiplier; defaults to 1 if zero or less.
+                Characters = 0f, // Character damage multiplier; defaults to 1 if zero or less.
+                // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
+                Grids = new GridSizeDef //If both of these values are -1, a 4x buff to SG weapons firing at LG and 0.25x debuff to LG weapons firing at SG will apply
+                {
+                    Large = -1f, // Multiplier for damage against large grids.
+                    Small = 0.75f, // Multiplier for damage against small grids.
+                },
+                Armor = new ArmorDef
+                {
+                    Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
+                    Light = -1f, // Multiplier for damage against light armor.
+                    Heavy = -1f, // Multiplier for damage against heavy armor.
+                    NonArmor = -1f, // Multiplier for damage against every else.
+                },
+                DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
+                {
+                    Base = Energy, // Base Damage uses this
+                    AreaEffect = Energy,
+                    Detonation = Energy,
+                    Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
+                },
+                Custom = new CustomScalesDef
+                {
+                    SkipOthers = Exclusive, // Controls how projectile interacts with other blocks in relation to those defined here, NoSkip, Exclusive, Inclusive.
+                    Types = new[] // List of blocks to apply custom damage multipliers to.
+                    {
+                        new CustomBlocksDef
+                        {
+                            SubTypeId = "LargeBlockBatteryBlock",
+                            Modifier = 1f,
+                        },
+                        new CustomBlocksDef
+                        {
+                            SubTypeId = "SmallBlockBatteryBlock",
+                            Modifier = 1f,
+                        },
+                        new CustomBlocksDef
+                        {
+                            SubTypeId = "SmallBlockSmallBatteryBlock",
+                            Modifier = 1f,
+                        },
+                        new CustomBlocksDef
+                        {
+                            SubTypeId = "LargeBlockBatteryBlockWarfare2",
+                            Modifier = 1f,
+                        },
+                        new CustomBlocksDef
+                        {
+                            SubTypeId = "SmallBlockBatteryBlockWarfare2",
+                            Modifier = 1f,
+                        },
+                    },
+                },
+			},
             Ewar = new EwarDef
             {
                 Enable = true, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
                 Type = EnergySink, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Effect, // Effect , Field
-                Strength = 1000000f,
-                Radius = 75f, // Meters
-                Duration = 800, // In Ticks
+                Strength = 200000f,
+                Radius = 50f, // Meters
+                Duration = 300, // In Ticks
                 StackDuration = false, // Combined Durations
                 Depletable = false,
-                MaxStacks = 0, // Max Debuffs at once
+                MaxStacks = 1, // Max Debuffs at once
                 NoHitParticle = false,
                 /*
                 EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
@@ -265,72 +311,30 @@ namespace Scripts
                 Anchor : Targets & Shutdowns Thrusters
                 
                 */
-                Force = new PushPullDef
-                {
-                    ForceFrom = ProjectileLastPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    ForceTo = HitPosition, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    Position = TargetCenterOfMass, // ProjectileLastPosition, ProjectileOrigin, HitPosition, TargetCenter, TargetCenterOfMass
-                    DisableRelativeMass = false,
-                    TractorRange = 0,
-                    ShooterFeelsForce = false,
-                },
-                Field = new FieldDef
-                {
-                    Interval = 0, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
-                    PulseChance = 0, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 0, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the default bubble, or other model if specified.
-                    ShowParticle = true, // Show Block damage effect.
-                    TriggerRange = 250f, //range at which fields are triggered
-                    Particle = new ParticleDef // Particle effect to generate at the field's position.
-                    {
-                        Name = "", // SubtypeId of field particle effect.
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 10, // Scale of effect.
-                        },
-                    },
-                },
-            },
-            Beams = new BeamDef
-            {
-                Enable = true, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
-                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
-                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
-                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
-                OneParticle = true, // Only spawn one particle hit per beam weapon.
-                FakeVoxelHitTicks = 30, // If this beam hits/misses a voxel it assumes it will continue to do so for this many ticks at the same hit length and not extend further within this window.  This can save up to n times worth of cpu.
             },
             Trajectory = new TrajectoryDef
             {
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                AccelPerSec = 0f, // Acceleration in Meters Per Second. Projectile starts on tick 0 at its parents (weapon/other projectiles) travel velocity.
                 DesiredSpeed = 500, // voxel phasing if you go above 5100
                 MaxTrajectory = 200f, // Max Distance the projectile or beam can Travel.
             },
             AmmoGraphics = new GraphicDef
             {
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
-                ShieldHitDraw = false,
+                VisualProbability = 1f, // %
                 Particles = new AmmoParticleDef
                 {
-                    Ammo = new ParticleDef
-                    {
-                        Name = "EMP_Field_Lightning", //ShipWelderArc
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 2,
-                        },
-                    },
                     Hit = new ParticleDef
                     {
                         Name = "EMP_Field_Lightning",
                         ApplyToShield = false,
                         Offset = Vector(x: 0, y: 0, z: 0),
+                        DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 2,
+                            Scale = 4,
                             HitPlayChance = 1f,
                         },
                     },
@@ -340,13 +344,14 @@ namespace Scripts
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 5f, //
-                        Width = 0.01f, //
-                        Color = Color(red: 1, green: 1, blue: 1f, alpha: 0.01f), // RBG 255 is Neon Glowing, 100 is Quite Bright.
-                        Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        Length = 1f, //
+                        Width = 1f, //
+                        Color = Color(red: 40, green: 60, blue: 40f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Textures = new[] {"ProjectileTrailLine",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                 },
             },
         };
+
     }
 }
