@@ -126,7 +126,7 @@
 				<ScreenArea Name="CockpitScreen_01" DisplayName="" TextureResolution="256" ScreenWidth="5" ScreenHeight="4"/>
 			</ScreenAreas>
 		</Definition>
-		<Definition xsi:type="MyObjectBuilder_TurretControlBlockDefinition">
+		<Definition xsi:type="MyObjectBuilder_TurretControlBlockDefinition" Enabled="false">
 			<Id>
 				<TypeId>TurretControlBlock</TypeId>
 				<SubtypeId>LargeTurretControlBlockMART</SubtypeId>
@@ -192,7 +192,7 @@
 				<ScreenArea Name="CockpitScreen_04" DisplayName="DisplayName_Screen_BottomRight" TextureResolution="256" ScreenWidth="5" ScreenHeight="8"/>
 			</ScreenAreas>
 		</Definition>
-		<Definition xsi:type="MyObjectBuilder_TurretControlBlockDefinition">
+		<Definition xsi:type="MyObjectBuilder_TurretControlBlockDefinition" Enabled="false">
 			<Id>
 				<TypeId>TurretControlBlock</TypeId>
 				<SubtypeId>SmallTurretControlBlockMART</SubtypeId>
