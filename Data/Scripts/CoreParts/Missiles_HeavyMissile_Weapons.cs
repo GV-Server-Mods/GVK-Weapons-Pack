@@ -120,7 +120,7 @@ namespace Scripts
                     SkipBarrels = 0, // Number of muzzles to skip after each fire event.
 					ReloadTime = 1000, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 19, // Number of physical magazines to consume on reload.
-                    DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    DelayUntilFire = 60, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     ShotsInBurst = 0, // 5. Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
                     DelayAfterBurst = 0, // 160. How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
@@ -176,6 +176,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Missiles_HeavyMissile,
+				Missiles_HeavyMissile_Fragment,
             },
             Animations = missileBattery01anim,
         };
