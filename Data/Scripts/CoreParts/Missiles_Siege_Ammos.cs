@@ -64,7 +64,7 @@ namespace Scripts
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = true, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
-                Radial = 45f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
+                Radial = 60f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 10, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
                 IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
                 FireSound = false, // Play fire/shoot sound
@@ -75,7 +75,7 @@ namespace Scripts
                     Interval = 2, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 400, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    Proximity = 800, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy, Direct, Lead (always fire), Predict (only fire if it can hit)
@@ -122,6 +122,7 @@ namespace Scripts
                 Smarts = new SmartsDef
                 {
                     OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
+                    MaxTargets = 4, // Number of targets allowed before ending, 0 = unlimited
                     ScanRange = 1500, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = true, // this disables target follow and instead travel straight ahead (but will respect offsets).
                 },
@@ -288,30 +289,25 @@ namespace Scripts
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 TargetLossDegree = 30, // Degrees, Is pointed forward
                 TargetLossTime = 60, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                MaxLifeTime = 200, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                AccelPerSec = 600, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
+                MaxLifeTime = 240, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                AccelPerSec = 400, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 300, // voxel phasing if you go above 5100
-                MaxTrajectory = 600f, // Max Distance the projectile or beam can Travel.
-                DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
+                MaxTrajectory = 1000f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: 20, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 100, end: 0), // subtracts value from MaxTrajectory
-                MaxTrajectoryTime = 0, // How long the weapon must fire before it reaches MaxTrajectory.
                 Smarts = new SmartsDef
                 {
-                    Inaccuracy = 20f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-                    Aggressiveness = 0f, // controls how responsive tracking is.
+                    Inaccuracy = 10f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
+                    Aggressiveness = 2f, // controls how responsive tracking is.
                     MaxLateralThrust = 0.0001f, // controls how sharp the trajectile may turn between 0.000001, 1
                     TrackingDelay = 5, // Measured in Shape diameter units traveled.
-                    MaxChaseTime = 200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    MaxChaseTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
                     CheckFutureIntersection = false, // Utilize obstacle avoidance?
-                    MaxTargets = 2, // Number of targets allowed before ending, 0 = unlimited
+                    MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = false, // Roam current area after target loss
-                    KeepAliveAfterTargetLoss = false, // Whether to stop early death of projectile on target loss
-                    OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
-                    OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
+                    KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
                 },
 			},
             AmmoGraphics = new GraphicDef 
@@ -335,6 +331,7 @@ namespace Scripts
                 {
                     ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.
                     WidthVariance = Random(start: 0f, end: -0.25f), // adds random value to default width (negatives shrinks width)
+					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
