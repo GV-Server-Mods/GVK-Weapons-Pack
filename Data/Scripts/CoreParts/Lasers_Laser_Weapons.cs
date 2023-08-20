@@ -27,7 +27,7 @@ namespace Scripts
 			},
 			SubSystems = new[]
 			{
-				Any, // subsystems the gun targets
+				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any // subsystems the gun targets
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true,
@@ -45,7 +45,7 @@ namespace Scripts
 			},
 			SubSystems = new[]
 			{
-				Any, // subsystems the gun targets
+				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any // subsystems the gun targets
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true,

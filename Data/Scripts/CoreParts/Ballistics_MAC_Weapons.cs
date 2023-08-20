@@ -49,7 +49,7 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
 			},
             HardPoint = new HardPointDef

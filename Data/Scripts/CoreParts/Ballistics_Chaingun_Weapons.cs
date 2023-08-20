@@ -28,7 +28,7 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Any,
+                Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
 			},
 			ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -151,7 +151,7 @@ namespace Scripts
 				},
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
 				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -242,8 +242,10 @@ namespace Scripts
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] {
-                    new MountPointDef {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
                         SubtypeId = "AutoCannonTurret", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
@@ -254,7 +256,8 @@ namespace Scripts
                     },
                     
                  },
-                Muzzles = new[] {
+                Muzzles = new[] 
+				{
                     "muzzle_missile_01", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
                 },
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
@@ -262,11 +265,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-				Threats = new[] {
+				Threats = new[] 
+				{
 					Grids,   // threats percieved automatically without changing menu settings
 				},
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
 				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -340,7 +345,7 @@ namespace Scripts
 				},
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
 				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -405,7 +410,7 @@ namespace Scripts
 				},
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
 				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.

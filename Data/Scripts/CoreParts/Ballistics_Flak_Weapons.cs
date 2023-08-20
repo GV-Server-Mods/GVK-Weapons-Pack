@@ -80,7 +80,7 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
@@ -167,7 +167,7 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
@@ -237,7 +237,6 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
                  },
                 Muzzles = new[] 
 				{
@@ -254,7 +253,7 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Any,
+                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
