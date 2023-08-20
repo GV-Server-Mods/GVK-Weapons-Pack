@@ -72,7 +72,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 7.330f,
+                    InventorySize = 5.500f, // in kL
                     Offset = Vector(x: 0, y: 0, z: 5),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -174,7 +174,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 3.330f,
+                    InventorySize = 5.500f, // in kL
                     Offset = Vector(x: 0, y: 0, z: 1),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
