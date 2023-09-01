@@ -88,13 +88,13 @@
 		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="AutocannonClip"/>
 		<!--HANDHELD WEAPONS-->
-		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="EliteAutoPistol"/>
-		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="UltimateAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="EliteAutoPistol"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="RapidFireAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="UltimateAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="BasicHandHeldLauncher"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="AdvancedHandHeldLauncher"/>
+		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
+		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
+		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
+		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
+		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0070_UltimateAutomaticRifle"/>
+		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0080_BasicHandHeldLauncher"/>
+		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0090_AdvancedHandHeldLauncher"/>
 		<!--SHIP WEAPON AMMOS-->
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>

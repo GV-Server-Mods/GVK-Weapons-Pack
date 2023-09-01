@@ -386,7 +386,7 @@
         <Blueprint Enabled="false">
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>SemiAutoPistol</SubtypeId>
+                <SubtypeId>Position0010_SemiAutoPistol</SubtypeId>
             </Id>
             <DisplayName>DisplayName_Item_SemiAutoPistol</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponPistol_Warfare.dds</Icon>
@@ -400,7 +400,7 @@
         <Blueprint Enabled="false">
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>FullAutoPistol</SubtypeId>
+                <SubtypeId>Position0020_FullAutoPistol</SubtypeId>
             </Id>
             <DisplayName>DisplayName_Item_FullAutoPistol</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponPistol_FullAuto_Warfare.dds</Icon>
@@ -414,7 +414,7 @@
         <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>EliteAutoPistol</SubtypeId>
+                <SubtypeId>Position0030_EliteAutoPistol</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] S-10E 9mm Pistol</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponPistol_Elite_Warfare.dds</Icon>
@@ -430,7 +430,7 @@
         <Blueprint Enabled="false">
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>AutomaticRifle</SubtypeId>
+                <SubtypeId>Position0040_AutomaticRifle</SubtypeId>
             </Id>
             <DisplayName>DisplayName_Item_AutomaticRifle</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponAutomaticRifle.dds</Icon>
@@ -444,7 +444,7 @@
         <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>RapidFireAutomaticRifle</SubtypeId>
+                <SubtypeId>Position0050_RapidFireAutomaticRifle</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] MR-50 5.56mm Auto Rifle</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponAutomaticRifle_RapidFire.dds</Icon>
@@ -458,7 +458,7 @@
         <Blueprint Enabled="false">
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>PreciseAutomaticRifle</SubtypeId>
+                <SubtypeId>Position0060_PreciseAutomaticRifle</SubtypeId>
             </Id>
             <DisplayName>DisplayName_Item_PreciseAutomaticRifle</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Precise.dds</Icon>
@@ -473,7 +473,7 @@
         <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>UltimateAutomaticRifle</SubtypeId>
+                <SubtypeId>Position0070_UltimateAutomaticRifle</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] MR-30E 7.62mm Burst Rifle</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Elite.dds</Icon>
@@ -489,7 +489,7 @@
         <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>BasicHandHeldLauncher</SubtypeId>
+                <SubtypeId>Position0080_BasicHandHeldLauncher</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] Hydra Rocket Launcher</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponRocketLauncher_Regular.dds</Icon>
@@ -504,7 +504,7 @@
         <Blueprint>
             <Id>
                 <TypeId>BlueprintDefinition</TypeId>
-                <SubtypeId>AdvancedHandHeldLauncher</SubtypeId>
+                <SubtypeId>Position0090_AdvancedHandHeldLauncher</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] Archer Rocket Launcher</DisplayName>
             <Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
