@@ -56,6 +56,16 @@ namespace Scripts {
                         ElevationPartId = "None",
                         DurabilityMod = 1f,
                         IconName = "TestIcon.dds"
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "LargeExplosiveBarrel",
+                        SpinPartId = "None",
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 1f,
+                        IconName = "TestIcon.dds"
                     }
                 },
                 Muzzles = new[] 
@@ -106,6 +116,16 @@ namespace Scripts {
                     new MountPointDef 
 					{
                         SubtypeId = "SmallWarhead",
+                        SpinPartId = "None",
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 1f,
+                        IconName = "TestIcon.dds"
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "SmallExplosiveBarrel",
                         SpinPartId = "None",
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
