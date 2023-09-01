@@ -122,6 +122,11 @@ namespace Scripts
 					SubTypeId = "RivalAIRemoteControlSmall",
 					Modifier = 0.1f,
 				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockCapCockpit",
+					Modifier = 0.1f,
+				},
 			},
 		};
 
@@ -193,6 +198,11 @@ namespace Scripts
 				new CustomBlocksDef
 				{
 					SubTypeId = "RivalAIRemoteControlSmall",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockCapCockpit",
 					Modifier = 0.5f,
 				},
 			},
@@ -406,6 +416,11 @@ namespace Scripts
 				new CustomBlocksDef
 				{
 					SubTypeId = "RivalAIRemoteControlSmall",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockCapCockpit",
 					Modifier = 0.5f,
 				},
 			},
