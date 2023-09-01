@@ -50,7 +50,7 @@ namespace Scripts
             DamageScales = new DamageScaleDef 
 			{
                 DamageVoxels = false, // Whether to damage voxels.
-				HealthHitModifier = 0.75, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+				HealthHitModifier = 1, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 Grids = new GridSizeDef
                 {
                     Large = 0f,
