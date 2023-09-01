@@ -79,7 +79,7 @@ namespace Scripts
 			{
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
-                HealthHitModifier = 5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                HealthHitModifier = 10, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 Characters = 0.1f,
                 Grids = new GridSizeDef
                 {
@@ -195,7 +195,7 @@ namespace Scripts
             DamageScales = new DamageScaleDef
             {
                 DamageVoxels = false, // true = voxels are vulnerable to this weapon
-                HealthHitModifier = 5, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                HealthHitModifier = 10, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
                 Characters = 0.1f,
                 Grids = new GridSizeDef
                 {

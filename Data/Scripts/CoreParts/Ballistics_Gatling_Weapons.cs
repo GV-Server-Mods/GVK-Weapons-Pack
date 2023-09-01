@@ -189,7 +189,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Sentinel Gatling", // name of weapon in terminal
-                DeviateShotAngle = 0.3f,
+                DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -264,7 +264,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "CIWS Large", // name of weapon in terminal
-                DeviateShotAngle = 0.3f,
+                DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -308,7 +308,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "CWIS Small", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -374,7 +374,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Fixed", // name of weapon in terminal
-                DeviateShotAngle = 0.4f,
+                DeviateShotAngle = 0.15f,
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -422,7 +422,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Gimbal", // name of weapon in terminal
-                DeviateShotAngle = 0.3f,
+                DeviateShotAngle = 0.15f,
                 AimingTolerance = 7f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -496,7 +496,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Vulcan Gatling", // name of weapon in terminal
-                DeviateShotAngle = 0.3f, // Inaccuracy in degrees
+                DeviateShotAngle = 0.15f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

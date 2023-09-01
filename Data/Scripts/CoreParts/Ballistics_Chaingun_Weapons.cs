@@ -165,9 +165,9 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.2f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Accurate, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
@@ -207,7 +207,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Khopesh Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.15f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -284,7 +284,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.2f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -357,7 +357,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Autocannon", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.1f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
@@ -423,7 +423,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Thrasher Autocannon", // name of weapon in terminal
-                DeviateShotAngle = 0.15f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
