@@ -109,7 +109,7 @@
 		<TransparentMaterial>
 			<Id>
 				<TypeId>TransparentMaterialDefinition</TypeId>
-				<SubtypeId>Atlas_AryxAWEBlue_01</SubtypeId>
+				<SubtypeId>Atlas_D_Greyscaled_01</SubtypeId>
 			</Id>
 			<AlphaMistingEnable>false</AlphaMistingEnable>
 			<AlphaSaturation>0</AlphaSaturation>

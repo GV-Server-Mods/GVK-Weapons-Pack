@@ -275,7 +275,7 @@
 								<Keys/>
 							</Property>
 							<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-								<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+								<ValueString>Atlas_D_Greyscaled_01</ValueString>
 							</Property>
 							<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
 								<ValueFloat>1</ValueFloat>
@@ -2467,7 +2467,7 @@
 								<Keys/>
 							</Property>
 							<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-								<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+								<ValueString>Atlas_D_Greyscaled_01</ValueString>
 							</Property>
 							<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
 								<ValueFloat>1</ValueFloat>
@@ -2920,7 +2920,7 @@
 								<Keys/>
 							</Property>
 							<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-								<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+								<ValueString>Atlas_D_Greyscaled_01</ValueString>
 							</Property>
 							<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
 								<ValueFloat>1</ValueFloat>
@@ -3374,7 +3374,7 @@
 								</Keys>
 							</Property>
 							<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-								<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+								<ValueString>Atlas_D_Greyscaled_01</ValueString>
 							</Property>
 							<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
 								<ValueFloat>1</ValueFloat>
@@ -3823,7 +3823,7 @@
 								</Keys>
 							</Property>
 							<Property Name="Material" AnimationType="Const" Type="MyTransparentMaterial">
-								<ValueString>Atlas_AryxAWEBlue_01</ValueString>
+								<ValueString>Atlas_D_Greyscaled_01</ValueString>
 							</Property>
 							<Property Name="OIT weight factor" AnimationType="Const" Type="Float">
 								<ValueFloat>1</ValueFloat>
