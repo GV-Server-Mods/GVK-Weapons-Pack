@@ -138,7 +138,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                TargetLossDegree = 90f, // Degrees, Is pointed forward
+                TargetLossDegree = 100f, // Degrees, Is pointed forward
                 TargetLossTime = 3, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).                MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 50f, // 30. Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 200, // 300. voxel phasing if you go above 5100
