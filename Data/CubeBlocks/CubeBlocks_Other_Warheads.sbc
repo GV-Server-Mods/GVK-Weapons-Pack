@@ -46,7 +46,7 @@
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>0</PCU>
+			<PCU>2</PCU>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<IsAirTight>true</IsAirTight>
@@ -153,7 +153,7 @@
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>0</PCU>
+			<PCU>2</PCU>
 			<IsAirTight>true</IsAirTight>
 			<TargetingGroups>
 				<string>Weapons</string>
@@ -253,7 +253,7 @@
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>100</PCU>
+			<PCU>2</PCU>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<IsAirTight>false</IsAirTight>
@@ -361,7 +361,7 @@
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>100</PCU>
+			<PCU>2</PCU>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<IsAirTight>false</IsAirTight>

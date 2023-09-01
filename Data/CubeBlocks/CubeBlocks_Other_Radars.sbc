@@ -54,7 +54,7 @@
 			<MaxFov>2</MaxFov>
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
-			<PCU>0</PCU>
+			<PCU>1</PCU>
             <IsAirTight>false</IsAirTight>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
@@ -109,7 +109,7 @@
 			<MaxFov>2</MaxFov>
 			<DeformationRatio>0.2</DeformationRatio>
 			<AiEnabled>false</AiEnabled>
-			<PCU>0</PCU>
+			<PCU>1</PCU>
             <IsAirTight>false</IsAirTight>
 		</Definition>
 	</CubeBlocks>

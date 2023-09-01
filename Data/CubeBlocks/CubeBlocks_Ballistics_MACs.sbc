@@ -1,74 +1,6 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
-		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>ARYXLightCoilgun</SubtypeId>
-			</Id>
-			<DisplayName>[MAC] Heavy Onager</DisplayName>
-			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Only suitable for the largest ships, and damage drops with range. Designed by Aryx Weapon Enterprises.
-				[3000m Manual Range]
-				[Uses 1000mm KE]
-			</Description>
-			<Icon>Textures\GUI\Icons\Aryx_AWE_LightCoilgun.dds</Icon>
-			<GuiVisible>true</GuiVisible>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="2" z="15"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWE_Coilgun\ARYX_LightCoilgun.mwm</Model>
-			<UseModelIntersection>true</UseModelIntersection>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<Components>
-				<Component Subtype="SteelPlate" Count="415"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-				<Component Subtype="MetalGrid" Count="125"/>
-				<Component Subtype="PowerCell" Count="42"/>
-				<Component Subtype="Superconductor" Count="83"/>
-				<Component Subtype="Motor" Count="83"/>
-				<Component Subtype="Reactor" Count="104"/>
-				<Component Subtype="Computer" Count="311"/>
-				<Component Subtype="SteelPlate" Count="622"/>
-			</Components>
-			<BuildTimeSeconds>115</BuildTimeSeconds>
-			<PCU>6000</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="LargeRailgun"/>
-			<InventoryMaxVolume>5</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<IsAirTight>true</IsAirTight>
-			<MountPoints>
-				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="1.00" EndY="2.00"/>
-				<MountPoint Side="Left" StartX="1.00" StartY="0.00" EndX="4.00" EndY="1.00"/>
-				<MountPoint Side="Left" StartX="1.00" StartY="1.00" EndX="15.00" EndY="2.00"/>
-				<MountPoint Side="Left" StartX="13.00" StartY="0.00" EndX="15.00" EndY="1.00"/>
-				<MountPoint Side="Right" StartX="11.00" StartY="0.00" EndX="14.00" EndY="1.00"/>
-				<MountPoint Side="Right" StartX="0.00" StartY="1.00" EndX="14.00" EndY="2.00"/>
-				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="2.00" EndY="1.00"/>
-				<MountPoint Side="Top" StartX="0.00" StartY="0.00" EndX="1.00" EndY="14.00"/>
-				<MountPoint Side="Bottom" StartX="0.00" StartY="1.00" EndX="1.00" EndY="4.00"/>
-				<MountPoint Side="Bottom" StartX="0.00" StartY="13.00" EndX="1.00" EndY="15.00"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\AWE_Coilgun\ARYX_LightCoilgun_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.67" File="Models\AWE_Coilgun\ARYX_LightCoilgun_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Coilgun\ARYX_LightCoilgun_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>AWELightCoilgun</BlockPairName>
-		</Definition> -->
 		<Definition Enabled="false">
 			<Id>
 				<TypeId>SmallMissileLauncherReload</TypeId>
@@ -123,7 +55,7 @@
 			<DamagedSound>ParticleElectrical</DamagedSound>
 			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
 			<DestroySound>PoofExplosionCat3</DestroySound>
-			<PCU>80</PCU>
+			<PCU>1</PCU>
 			<IsAirTight>false</IsAirTight>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<TargetingGroups>
