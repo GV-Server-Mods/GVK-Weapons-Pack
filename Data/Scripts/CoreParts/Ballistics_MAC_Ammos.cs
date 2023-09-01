@@ -52,9 +52,9 @@ namespace Scripts
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             Sync = new SynchronizeDef
             {
-                Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },			
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
@@ -226,9 +226,9 @@ namespace Scripts
             HardPointUsable = false, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             Sync = new SynchronizeDef
             {
-                Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },			
             ObjectsHit = new ObjectsHitDef 
 			{

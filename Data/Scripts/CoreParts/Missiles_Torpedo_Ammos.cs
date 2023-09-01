@@ -45,15 +45,15 @@ namespace Scripts
             AmmoRound = "Missiles_Torpedo", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             BaseDamage = 100f, // Direct damage; one steel plate is worth 100.
             Mass = 200f, // In kilograms; how much force the impact will apply to the target.
-            Health = 200, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
+            Health = 150, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
             Sync = new SynchronizeDef
             {
-                Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = true, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
+                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },
             Fragment = new FragmentDef 
 			{
@@ -138,7 +138,8 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                TargetLossDegree = 90f, // Degrees, Is pointed forward
+                TargetLossTime = 3, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).                MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 50f, // 30. Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 200, // 300. voxel phasing if you go above 5100
                 MaxTrajectory = 4000f, // Max Distance the projectile or beam can Travel.
@@ -380,9 +381,9 @@ namespace Scripts
             NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
             Sync = new SynchronizeDef
             {
-                Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },            						
             Ewar = new EwarDef
             {
