@@ -24,38 +24,6 @@ namespace Scripts
         //StopFiring,
         //StopTracking
 
-        private AnimationDef MD_MAC_Animations => new AnimationDef
-        {
-
-            EventParticles = new Dictionary<PartAnimationSetDef.EventTriggers, EventParticle[]>
-            {
-                [PreFire] = new[]{
-                       new EventParticle
-                       {
-                           EmptyNames = Names("muzzle_projectile_1"),
-                           MuzzleNames = Names("muzzle_projectile_1"),
-                           StartDelay = 0, //ticks 60 = 1 second
-                           LoopDelay = 0, //ticks 60 = 1 second
-                           ForceStop = false,
-                           Particle = new ParticleDef
-                           {
-                               Name = "MAC_Charge_Particle_effect",
-                               Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                               Extras = new ParticleOptionDef
-                               {
-                                   Loop = true,
-                                   Restart = false,
-                                   MaxDistance = 1500, //meters
-                                   MaxDuration = 1120, //ticks 60 = 1 second
-                                   Scale = 1,
-                               }
-                           }
-                       },
-                   },
-            },
-
-        };
-
         private AnimationDef LargeRailgunAnimation => new AnimationDef
         {
 			
@@ -72,7 +40,7 @@ namespace Scripts
 					    ForceStop = false,
 					    Particle = new ParticleDef
 					    {
-						    Name = "Muzzle_Flash_RailgunLarge2", //Particle subtypeID
+						    Name = "MD_MAC_Muzzle", //Particle subtypeID
 						    Color = Color(red: 25, green: 25, blue: 25, alpha: 1), //This is redundant as recolouring is no longer supported.
 						    Extras = new ParticleOptionDef //do your particle colours in your particle file instead.
 						    {

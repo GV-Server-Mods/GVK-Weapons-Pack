@@ -144,6 +144,7 @@ namespace Scripts
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
+                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
