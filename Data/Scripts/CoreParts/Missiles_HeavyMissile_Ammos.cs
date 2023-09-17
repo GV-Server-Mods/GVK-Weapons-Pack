@@ -271,6 +271,7 @@ namespace Scripts
 				missile.AreaOfDamage.EndOfLife.Enable = true;
 				missile.Trajectory.MaxLifeTime = 1500;
 				missile.AmmoGraphics.Particles.Ammo.Name = "";
+				missile.AmmoGraphics.Lines.DropParentVelocity = false;
                 return missile;
             }
         }
