@@ -111,7 +111,7 @@
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Ballistics_HeavyCannon"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Missiles_HeavyMissile"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Lasers_Plasma"/>
-		<!--LARGE BLOCK WEAPONS-->
+		<!--LARGE BLOCK WEAPONS, Don't need to add Vanillas here -->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXRailgunTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXRailgun"/>
@@ -131,7 +131,10 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHurricaneCannon"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXVulcanTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHeavyFlakTurret"/>
-		<!--SMALL BLOCKS-->
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/KhopeshTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeAutoCannonTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/SentinelTurret"/>
+		<!--SMALL BLOCKS, Don't need to add Vanillas here -->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret_small"/>
