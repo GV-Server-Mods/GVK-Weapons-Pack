@@ -56,7 +56,7 @@ namespace Scripts
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
-                DropVelocity = false, // fragments will not inherit velocity from parent.
+                DropVelocity = true, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards), value is read from parent ammo type.
                 Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
@@ -454,7 +454,7 @@ namespace Scripts
                     Enable = true, // Enables TimedSpawns mechanism
                     Interval = 10, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
-                    MaxSpawns = 120, // Max number of fragment children to spawn
+                    MaxSpawns = 240, // Max number of fragment children to spawn
                     Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = false, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
@@ -604,7 +604,7 @@ namespace Scripts
                         AngleOffset = 0, // value 0 - 1, rotates the Updir
                         ElevationTolerance = 0, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
                         TrackingDistance = 0, // Minimum travel distance before projectile begins racing to target
-                        DesiredElevation = 150, // The desired elevation relative to source 
+                        DesiredElevation = 200, // The desired elevation relative to source 
                         StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
                         StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
                         StoredStartType = StoredStartLocalPosition,
@@ -863,7 +863,7 @@ namespace Scripts
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
-                DropVelocity = false, // fragments will not inherit velocity from parent.
+                DropVelocity = true, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards), value is read from parent ammo type.
                 Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
@@ -1240,7 +1240,7 @@ namespace Scripts
                     Enable = true, // Enables TimedSpawns mechanism
                     Interval = 10, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
-                    MaxSpawns = 120, // Max number of fragment children to spawn
+                    MaxSpawns = 240, // Max number of fragment children to spawn
                     Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = false, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
@@ -1279,7 +1279,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef
             {
                 Guidance = Smart,
-                MaxLifeTime = 10800, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                MaxLifeTime = 21600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 200f,
                 DesiredSpeed = 150,
                 MaxTrajectory = 30000f,
@@ -1348,7 +1348,7 @@ namespace Scripts
                         // Relative positions and directions (relative to projectile current position aka PositionA)
                         Forward = ForwardElevationDirection, // ForwardElevationDirection*, ForwardRelativeToBlock, ForwardRelativeToShooter, ForwardRelativeToGravity, ForwardTargetDirection, ForwardTargetVelocity, ForwardStoredStartPosition, ForwardStoredEndPosition, ForwardStoredStartLocalPosition, ForwardStoredEndLocalPosition, ForwardOriginDirection    
                         Up = UpRelativeToGravity, // UpRelativeToBlock*, UpRelativeToShooter, UpRelativeToGravity, UpTargetDirection, UpTargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition, UpOriginDirection, UpElevationDirection
-                        PositionB = Shooter, // Origin*, Shooter, Target, Surface, MidPoint, PositionA, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
+                        PositionB = Nothing, // Origin*, Shooter, Target, Surface, MidPoint, PositionA, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
                         PositionC = Shooter,
                         Elevation = Shooter, 
                         
@@ -1358,11 +1358,11 @@ namespace Scripts
                         AdjustForward = true, // adjust forwardDir overtime.
                         AdjustUp = true, // adjust upDir overtime
                         AdjustPositionB = false, // Updated the position overtime.
-                        AdjustPositionC = false, // Update the position overtime.
+                        AdjustPositionC = true, // Update the position overtime.
                         LeadRotateElevatePositionB = false, // Add Lead, Rotation and DesiredElevation to PositionB
                         LeadRotateElevatePositionC = false, // Add Lead, Rotation and DesiredElevation to PositionC
                         TrajectoryRelativeToB = false, // If true the projectiles immediate trajectory will be relative to PositionB instead of PositionC (e.g. quick response to elevation changes relative to PositionB position assuming that position is closer to PositionA)
-                        ElevationRelativeToC = false, // If true the projectiles desired elevation will be relative to PositionC instead of PositionB (e.g. quick response to elevation changes relative to PositionC position assuming that position is closer to PositionA)
+                        ElevationRelativeToC = true, // If true the projectiles desired elevation will be relative to PositionC instead of PositionB (e.g. quick response to elevation changes relative to PositionC position assuming that position is closer to PositionA)
                         // Tweaks to vantagepoint behavior
                         AngleOffset = 0, // value 0 - 1, rotates the Updir and ForwardDir
                         AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
@@ -1376,7 +1376,7 @@ namespace Scripts
                         StoredEndType = Target,
                         // Controls the leading behavior
                         LeadDistance = 40, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
-                        PushLeadByTravelDistance = true, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
+                        PushLeadByTravelDistance = false, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
 
                         // Modify speed and acceleration ratios while this approach is active
                         AccelMulti = 1.5, // Modify default acceleration by this factor
