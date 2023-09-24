@@ -146,6 +146,7 @@
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXSpartanTurret"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_T2PDX"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDX"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ReceptorTurret"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ReceptorCoilGun"/>
 			</Blocks>

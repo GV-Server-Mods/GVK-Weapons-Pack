@@ -65,7 +65,8 @@ namespace Scripts
 							AdvancedHandHeldLauncherGun, 
 							ElitePistolGun, 
 							RapidFireAutomaticRifleGun, 
-							UltimateAutomaticRifleGun
+							UltimateAutomaticRifleGun,
+							MA_PDX
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
