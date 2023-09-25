@@ -60,6 +60,7 @@ namespace Scripts
                 //This is additional damage done and does not directly affect the speed that the ammo's health pool depletes.
                 DamageVoxels = false, // Whether to damage voxels.
                 HealthHitModifier = 5, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
+				Characters = 0.0000001f, // Character damage multiplier; defaults to 1 if zero or less.
                 // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
                 Grids = new GridSizeDef
                 {
