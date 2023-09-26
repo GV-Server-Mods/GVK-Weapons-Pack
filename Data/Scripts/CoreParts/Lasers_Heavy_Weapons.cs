@@ -42,13 +42,11 @@ namespace Scripts
 			RateOfFire = 3600,
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-			DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 			ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			MagsToLoad = 1, // Number of physical magazines to consume on reload.
-			//HeatPerShot = 2, //heat generated per shot
-			//MaxHeat = 600, //max heat before weapon enters cooldown (70% of max heat)
-			//Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			//HeatSinkRate = 30, //amount of heat lost per second
+			MagsToLoad = 0, // Number of physical magazines to consume on reload.
+			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
+			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
 			StayCharged = true, // Will start recharging whenever power cap is not full
 		};
 			
@@ -91,7 +89,8 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "XFEL Laser", // name of weapon in terminal
-                AimingTolerance = 1f, // 0 - 180 firing angle
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -157,11 +156,9 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "XFEL Laser", // name of weapon in terminal
-                DeviateShotAngle = 0.00f,
-                AimingTolerance = 1f, // 0 - 180 firing angle
+                AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                AddToleranceToTracking = false,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
@@ -226,7 +223,6 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Spartan Laser Cannon", // name of weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons)
-                DeviateShotAngle = 0f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -252,15 +248,11 @@ namespace Scripts
                     RateOfFire = 3600,
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 360, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    MagsToLoad = 1, // Number of physical magazines to consume on reload.
-					DelayUntilFire = 15, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    //ShotsInBurst = 120, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-                    //DelayAfterBurst = 120, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					//HeatPerShot = 2, //heat generated per shot
-					//MaxHeat = 1200, //max heat before weapon enters cooldown (70% of max heat)
-					//Cooldown = .5f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-					//HeatSinkRate = 60, //amount of heat lost per second
+					ReloadTime = 360, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					MagsToLoad = 0, // Number of physical magazines to consume on reload.
+					ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
+					DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
 					StayCharged = true, // Will start recharging whenever power cap is not full
                 },
                 Audio = Lasers_Laser_Audio_Large,
