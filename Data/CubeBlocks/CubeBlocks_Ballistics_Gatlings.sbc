@@ -18,7 +18,7 @@
 			<Model>Models\AWE_Vulcan\ARYXVulcanBase.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="140" />
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="10"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="8"/>
                 <Component Subtype="Construction" Count="810" />
                 <Component Subtype="SmallTube" Count="170" />
                 <Component Subtype="Motor" Count="220" />
@@ -27,7 +27,7 @@
                 <Component Subtype="SteelPlate" Count="410" />
             </Components>
             <BuildTimeSeconds>135</BuildTimeSeconds>
-			<PCU>10</PCU>
+			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0" />
 				<MountPoints>
 					<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>

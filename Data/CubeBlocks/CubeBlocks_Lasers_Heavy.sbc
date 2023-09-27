@@ -19,7 +19,7 @@
 			<Model>Models\AWE_Spartan\LG_ARYXSpartan_Base.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="93" />
-				<Component Subtype="GVK_Laser_Tech" Count="14"/>
+				<Component Subtype="GVK_Laser_Tech" Count="12"/>
                 <Component Subtype="SmallTube" Count="130" />
                 <Component Subtype="Motor" Count="99" />
                 <Component Subtype="Superconductor" Count="310" />
@@ -29,7 +29,7 @@
                 <Component Subtype="SteelPlate" Count="810" />
             </Components>
             <BuildTimeSeconds>135</BuildTimeSeconds>
-			<PCU>14</PCU>
+			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
