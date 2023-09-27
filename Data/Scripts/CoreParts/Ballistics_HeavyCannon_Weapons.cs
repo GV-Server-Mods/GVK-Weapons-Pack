@@ -60,7 +60,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Hurricane Heavy Cannon", // name of weapon in terminal
-                DeviateShotAngle = 0.25f,
+                DeviateShotAngle = 0.05f,
                 AimingTolerance = 0.5f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -73,8 +73,8 @@ namespace Scripts
 
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.002f,
-                    ElevateRate = 0.002f,
+                    RotateRate = 0.0027f,
+                    ElevateRate = 0.0027f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -5,
@@ -122,8 +122,8 @@ namespace Scripts
                     DelayAfterBurst = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FireFull = false,
                     GiveUpAfter = false,
-					GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
-					DropTargetUntilLoaded = true, // If true this weapon will drop the target when its out of ammo and until its reloaded.
+					GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
+					DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
                 },
                 Audio = new HardPointAudioDef
                 {

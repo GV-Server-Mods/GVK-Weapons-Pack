@@ -71,7 +71,7 @@ namespace Scripts
                 {
                     Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
                     Light = -1f, // Multiplier for damage against light armor.
-                    Heavy = -1f, // Multiplier for damage against heavy armor.
+                    Heavy = 2f, // Multiplier for damage against heavy armor.
                     NonArmor = -1f, // Multiplier for damage against every else.
                 },
                 DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
@@ -81,7 +81,7 @@ namespace Scripts
                     Detonation = Kinetic,
                     Shield = Kinetic, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+                Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
             },
             AreaOfDamage = new AreaOfDamageDef // Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
             {
@@ -112,7 +112,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                DesiredSpeed = 450f, // voxel phasing if you go above 5100
+                DesiredSpeed = 600f, // voxel phasing if you go above 5100
                 MaxTrajectory = 3300f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 100), // subtracts value from MaxTrajectory
