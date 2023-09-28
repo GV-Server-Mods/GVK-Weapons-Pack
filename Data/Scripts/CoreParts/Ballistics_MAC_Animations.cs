@@ -40,13 +40,12 @@ namespace Scripts
 					    ForceStop = false,
 					    Particle = new ParticleDef
 					    {
-						    Name = "MD_MAC_Muzzle", //Particle subtypeID
-						    Color = Color(red: 25, green: 25, blue: 25, alpha: 1), //This is redundant as recolouring is no longer supported.
+						    Name = "MD_MAC_Muzzle_Flash", //Particle subtypeID
 						    Extras = new ParticleOptionDef //do your particle colours in your particle file instead.
 						    {
 							   Loop = false, //Should match your particle definition.
 							   Restart = false,
-							   MaxDistance = 1000, //meters
+							   MaxDistance = 3000, //meters
 							   MaxDuration = 360, //ticks 60 = 1 second
 							   Scale = 1, //How chunky the particle is.
 						    }
