@@ -185,8 +185,8 @@ namespace Scripts
 				HitSound = "HWR_LargeExplosion",
                 ShotSound = "",
                 ShieldHitSound = "",
-                PlayerHitSound = "",
-                VoxelHitSound = "",
+                PlayerHitSound = "HWR_LargeExplosion",
+                VoxelHitSound = "HWR_LargeExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 0.5f,
                 HitPlayShield = true,
@@ -280,7 +280,7 @@ namespace Scripts
                     NoSound = true,
                     ParticleScale = 1,
                     CustomParticle = "Explosion_AmmunitionSmall", // Particle SubtypeID, from your Particle SBC
-                    CustomSound = "", // SubtypeID from your Audio SBC, not a filename
+                    CustomSound = "DOK_MissileExplosion", // SubtypeID from your Audio SBC, not a filename
                     Shape = Diamond, // Round or Diamond
                 }, 
             },
@@ -360,8 +360,8 @@ namespace Scripts
                 TravelSound = "",
 				HitSound = "DOK_MissileExplosion",
                 ShieldHitSound = "",
-                PlayerHitSound = "",
-                VoxelHitSound = "",
+                PlayerHitSound = "DOK_MissileExplosion",
+                VoxelHitSound = "DOK_MissileExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,

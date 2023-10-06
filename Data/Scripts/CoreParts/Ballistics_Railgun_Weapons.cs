@@ -106,8 +106,8 @@ namespace Scripts {
                 },
                 Audio = new HardPointAudioDef 
 				{
-                    PreFiringSound = "ArcWepShipARYXRailgun_Windup",
-                    FiringSound = "MD_RailgunFire", // WepShipGatlingShot
+                    PreFiringSound = "Railgun_Charge",
+                    FiringSound = "DOK_RailgunFire", // WepShipGatlingShot
                     FiringSoundPerShot = true,
                     ReloadSound = "",
                     NoAmmoSound = "",
@@ -191,8 +191,8 @@ namespace Scripts {
                 },
                 Audio = new HardPointAudioDef 
 				{
-                    PreFiringSound = "ArcWepShipARYXRailgun_Windup",
-                    FiringSound = "MD_RailgunFire", // WepShipGatlingShot
+                    PreFiringSound = "Railgun_Charge",
+                    FiringSound = "DOK_RailgunFire", // WepShipGatlingShot
                     FiringSoundPerShot = true,
                     ReloadSound = "",
                     NoAmmoSound = "",
@@ -271,8 +271,8 @@ namespace Scripts {
                 },
                 Audio = new HardPointAudioDef
                 {
-                    PreFiringSound = "WepRailgunSmallCharge", // Audio for warmup effect.
-                    FiringSound = "WepRailgunSmallShot", // Audio for firing.
+                    PreFiringSound = "Railgun_Charge", // Audio for warmup effect.
+                    FiringSound = "HWR_SmallRailgunFire", // Audio for firing.
                     FiringSoundPerShot = true, // Whether to replay the sound for each shot, or just loop over the entire track while firing.
                     ReloadSound = "", // Sound SubtypeID, for when your Weapon is in a reloading state
                     NoAmmoSound = "WepShipGatlingNoAmmo",

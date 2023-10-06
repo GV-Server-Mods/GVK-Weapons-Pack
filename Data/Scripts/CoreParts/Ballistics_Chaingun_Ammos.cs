@@ -178,8 +178,8 @@ namespace Scripts
                 HitSound = "AutocannonExplosion", // AutocannonExplosion
                 ShotSound = "",
                 ShieldHitSound = "",
-                PlayerHitSound = "ArcWepShipGatlingImpPlay",
-                VoxelHitSound = "ArcWepShipAutocannonSoil",
+                PlayerHitSound = "AutocannonExplosion",
+                VoxelHitSound = "AutocannonExplosion",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,
                 HitPlayShield = true,

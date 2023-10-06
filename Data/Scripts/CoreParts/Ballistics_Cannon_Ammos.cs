@@ -109,12 +109,12 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Explosion_AmmunitionSmall", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
+                        Name = "MD_Cannon_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
                         ApplyToShield = false,
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 1.5f,
+                            Scale = 1f,
                             HitPlayChance = 1f,
                         },
                     },
@@ -148,9 +148,9 @@ namespace Scripts
             AmmoAudio = new AmmoAudioDef 
 			{
                 TravelSound = "MD_Artillary_shell_fly",
-                HitSound = "HWR_SmallExplosion",
+                HitSound = "DOK_CannonHit",
                 ShieldHitSound = "",
-                PlayerHitSound = "HWR_SmallExplosion",
+                PlayerHitSound = "DOK_CannonHit",
                 VoxelHitSound = "ArcHeavyImpactSoil",
                 FloatingHitSound = "",
                 HitPlayChance = 1f,

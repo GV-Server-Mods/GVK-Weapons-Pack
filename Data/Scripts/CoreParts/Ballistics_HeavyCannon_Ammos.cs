@@ -128,30 +128,30 @@ namespace Scripts
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 1,
+                            Scale = 2,
                         },
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Explosion_AmmunitionLarge", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Name = "MD_Cannon_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 1.5f,
+                            Scale = 2f,
                             HitPlayChance = 1f,
                         },
                     },
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
+                    ColorVariance = Random(start: 0f, end: 2f), // multiply the color by random values within range.
                     DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 20f,
-                        Width = 1.25f,
-                        Color = Color(red: 120, green: 20, blue: 20, alpha: 1),
+                        Length = 30f,
+                        Width = 3f,
+                        Color = Color(red: 120, green: 20, blue: 25, alpha: 1),
                         Textures = new[] {"AryxBallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                     Trail = new TrailDef
