@@ -80,8 +80,8 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "LargeMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 1.5f,
-                AimingTolerance = 2f, // 0 - 180 firing angle
+                DeviateShotAngle = 0.75f,
+                AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -160,8 +160,8 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileTurret", // name of weapon in terminal
-                DeviateShotAngle = 1.5f,
-                AimingTolerance = 2f, // 0 - 180 firing angle
+                DeviateShotAngle = 0.75f,
+                AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
@@ -307,7 +307,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 3f,
+                DeviateShotAngle = 2f,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
