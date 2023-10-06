@@ -44,7 +44,7 @@
 			<PitchVariation>20</PitchVariation>
 			<SoundLimit>5</SoundLimit>
 			<PreventSynchronization>10</PreventSynchronization>
-			<Volume>1</Volume>
+			<Volume>0.5</Volume>
 			<Loopable>true</Loopable>
 			<Waves>
 				<Wave Type="D3">
@@ -487,8 +487,6 @@
 			<MaxDistance>5000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>0</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
@@ -515,8 +513,8 @@
 			<MaxDistance>4000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>20</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<SoundLimit>20</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="1000" Distance="2000" Sound="HWR_FlakExplosionDistant"/>
@@ -634,8 +632,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>1</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1.5</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -664,8 +660,8 @@
 			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>100</PitchVariation>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<SoundLimit>20</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="500" Distance="1500" Sound="HWR_LargeExplosionDistant"/>
@@ -890,8 +886,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>500</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>0.5</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1124,8 +1118,6 @@
 			<MaxDistance>200</MaxDistance>
 			<PitchVariation>20</PitchVariation>
 			<PreventSynchronization>0</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<SoundLimit>5</SoundLimit>
 			<Volume>1.5</Volume>
 			<Waves>
@@ -1143,6 +1135,8 @@
             <MaxDistance>3000</MaxDistance>
             <PreventSynchronization>0</PreventSynchronization>
 			<SoundLimit>20</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
             <DistantSounds>
                 <DistantSound DistanceCrossfade="1" Distance="800" Sound="MD_VanillaCannonShot_Dist" />
             </DistantSounds>
@@ -1189,6 +1183,8 @@
 			<Volume>0.25</Volume>
 			<Loopable>false</Loopable>
             <RealisticFilter>FadeIn</RealisticFilter>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\MD\Artillary_shell_fly_1.xwm</Start>
@@ -1230,8 +1226,6 @@
 			<PitchVariation>0</PitchVariation>
 			<SoundLimit>10</SoundLimit>
 			<PreventSynchronization>0</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>0.5</Volume>
 			<Loopable>true</Loopable>
 			<Waves>
@@ -1250,8 +1244,8 @@
 			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>20</PitchVariation>
 			<PreventSynchronization>5</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<SoundLimit>50</SoundLimit>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="1" Distance="800" Sound="AutocannonFireDistant1"/>
@@ -1321,8 +1315,6 @@
 			<MaxDistance>200</MaxDistance>
 			<PitchVariation>100</PitchVariation>
 			<PreventSynchronization>3</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
@@ -1340,7 +1332,7 @@
 			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>25</DynamicMusicAmount>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<SoundLimit>20</SoundLimit>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="50" Distance="500" Sound="AutocannonExplosionDistA"/>
@@ -1480,8 +1472,6 @@
 			<SoundLimit>1</SoundLimit>
 			<PitchVariation>2</PitchVariation>
 			<PreventSynchronization>30</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>0.25</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1536,8 +1526,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>4000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1567,8 +1555,6 @@
 			<VolumeVariation>0.1</VolumeVariation>
 			<PreventSynchronization>0</PreventSynchronization>
 			<SoundLimit>5</SoundLimit>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>0.5</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1616,8 +1602,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>5000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>2</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1645,8 +1629,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>500</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1694,8 +1676,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1.5</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -1784,8 +1764,6 @@
 			<Category>SHOT</Category>
 			<MaxDistance>4000</MaxDistance>
 			<PreventSynchronization>0</PreventSynchronization>
-			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
