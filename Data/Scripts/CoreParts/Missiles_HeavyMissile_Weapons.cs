@@ -72,7 +72,8 @@ namespace Scripts
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MaxTargetDistance = 2000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
+                MinTargetDistance = 1000, // Minimum distance at which targets will be automatically shot at; 0 = unlimited.
+                MaxTargetDistance = 3000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 TopTargets = 3, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
@@ -80,7 +81,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Tuukka MLRS", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.5f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.35f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -95,7 +96,7 @@ namespace Scripts
                     MinElevation = -15,
                     MaxElevation = 50,
                     HomeAzimuth = 0, // Default resting rotation angle
-                    HomeElevation = 20, // Default resting elevation
+                    HomeElevation = 15, // Default resting elevation
                     InventorySize = 6.400f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.

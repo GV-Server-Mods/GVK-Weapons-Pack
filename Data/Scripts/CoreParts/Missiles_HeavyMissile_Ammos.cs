@@ -57,7 +57,7 @@ namespace Scripts
             },
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
-                AmmoRound = "Missiles_HeavyMissile_Fragment", // Missiles_HeavyMissile_Fragment
+                AmmoRound = "", // Missiles_HeavyMissile_Fragment
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -74,7 +74,7 @@ namespace Scripts
                     Interval = 0, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    Proximity = 0, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Predict, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
@@ -114,10 +114,10 @@ namespace Scripts
 			{
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = false,
-                    Radius = 6f, // Radius of AOE effect, in meters.
-                    Damage = 20000f,
-                    Depth = 6f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
+                    Enable = true,
+                    Radius = 7f, // Radius of AOE effect, in meters.
+                    Damage = 30000f,
+                    Depth = 7f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
                     MaxAbsorb = 0f, // Soft cutoff for damage, except for pooled falloff.  If pooled falloff, limits max damage per block.
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -138,13 +138,13 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef 
 			{
-                Guidance = TravelTo, // None, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                MaxLifeTime = 60, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                DesiredSpeed = 200, // voxel phasing if you go above 5100
-                MaxTrajectory = 3000f, // Max Distance the projectile or beam can Travel.
-                GravityMultiplier = 1.1f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
+                Guidance = None, // None, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                DesiredSpeed = 260, // voxel phasing if you go above 5100
+                MaxTrajectory = 4000f, // Max Distance the projectile or beam can Travel.
+                GravityMultiplier = 0.75f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
                 SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
-                RangeVariance = Random(start: 1, end: -1000), // subtracts value from MaxTrajectory, !!!!Doesnt work if start and end are equal!!!
+                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory, !!!!Doesnt work if start and end are equal!!!
 				Smarts = new SmartsDef
                 {
                     ScanRange = 1500, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
@@ -268,6 +268,7 @@ namespace Scripts
                 var missile = Missiles_HeavyMissile;
                 missile.AmmoRound = "Missiles_HeavyMissile_Fragment";
 				missile.HardPointUsable = false;
+				missile.Fragment.DropVelocity = false;
 				missile.AreaOfDamage.EndOfLife.Enable = true;
 				missile.Trajectory.MaxLifeTime = 1500;
 				missile.AmmoGraphics.Particles.Ammo.Name = "";
