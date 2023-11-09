@@ -17,25 +17,20 @@
 			<Size x="3" y="1" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWE_Drones\ARYX_Small_Hangar.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="47" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="68"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="9"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
-				    <DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
-                    </DeconstructId>
-				</Component>
-                <Component Subtype="MetalGrid" Count="19" />
-                <Component Subtype="LargeTube" Count="10" />
-                <Component Subtype="Motor" Count="93" />
-                <Component Subtype="InteriorPlate" Count="12" />
-                <Component Subtype="Computer" Count="190" />
-                <Component Subtype="Construction" Count="190" />
-                <Component Subtype="SteelPlate" Count="190" />
-            </Components>
-            <BuildTimeSeconds>45</BuildTimeSeconds>
+				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="MetalGrid" Count="27"/>
+				<Component Subtype="LargeTube" Count="14"/>
+				<Component Subtype="Motor" Count="140"/>
+				<Component Subtype="InteriorPlate" Count="17"/>
+				<Component Subtype="Computer" Count="270"/>
+				<Component Subtype="Construction" Count="270"/>
+				<Component Subtype="SteelPlate" Count="270"/>
+			</Components>
+			<BuildTimeSeconds>66</BuildTimeSeconds>
+			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
@@ -56,7 +51,6 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>10</PCU>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>

@@ -17,25 +17,20 @@
 			<Size x="5" y="5" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWE_Longbow\ARYX_MissileBatteryBase.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="650" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="550"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="11"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-                <Component Subtype="MetalGrid" Count="260" />
-                <Component Subtype="LargeTube" Count="130" />
-                <Component Subtype="Motor" Count="1300" />
-                <Component Subtype="InteriorPlate" Count="160" />
-                <Component Subtype="Computer" Count="2600" />
-                <Component Subtype="Construction" Count="2600" />
-                <Component Subtype="SteelPlate" Count="2600" />
-            </Components>
-            <BuildTimeSeconds>625</BuildTimeSeconds>
+				<Component Subtype="GVK_Missile_Tech" Count="12"/>
+				<Component Subtype="MetalGrid" Count="220"/>
+				<Component Subtype="LargeTube" Count="110"/>
+				<Component Subtype="Motor" Count="1100"/>
+				<Component Subtype="InteriorPlate" Count="140"/>
+				<Component Subtype="Computer" Count="2200"/>
+				<Component Subtype="Construction" Count="2200"/>
+				<Component Subtype="SteelPlate" Count="2200"/>
+			</Components>
+			<BuildTimeSeconds>533</BuildTimeSeconds>
+			<PCU>12</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="5.00" EndY="2.00"/>
@@ -48,7 +43,6 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<!-- <WeaponDefinitionId Subtype="Missiles_Missile"/> -->
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.48</InventoryMaxVolume>
@@ -56,7 +50,6 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>12</PCU>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>

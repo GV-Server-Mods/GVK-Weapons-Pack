@@ -20,17 +20,17 @@
 			<Model>Models\Cubes\Large\MediumCalibreTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="SteelPlate" Count="160"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="6"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SmallTube" Count="83"/>
-				<Component Subtype="LargeTube" Count="69"/>
-				<Component Subtype="Motor" Count="130"/>
-				<Component Subtype="Computer" Count="69"/>
-				<Component Subtype="MetalGrid" Count="110"/>
-				<Component Subtype="SteelPlate" Count="350"/>
+				<Component Subtype="Construction" Count="240"/>
+				<Component Subtype="SmallTube" Count="93"/>
+				<Component Subtype="LargeTube" Count="78"/>
+				<Component Subtype="Motor" Count="140"/>
+				<Component Subtype="Computer" Count="78"/>
+				<Component Subtype="MetalGrid" Count="120"/>
+				<Component Subtype="SteelPlate" Count="390"/>
 			</Components>
-			<BuildTimeSeconds>90</BuildTimeSeconds>
+			<BuildTimeSeconds>102</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -116,17 +116,17 @@
 			<Model>Models\Cubes\Small\MediumCalibreTurret_Base.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="20"/>
+				<Component Subtype="SteelPlate" Count="57"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
-				<Component Subtype="Construction" Count="29"/>
-				<Component Subtype="SmallTube" Count="12"/>
-				<Component Subtype="LargeTube" Count="10"/>
-				<Component Subtype="Motor" Count="18"/>
-				<Component Subtype="Computer" Count="10"/>
-				<Component Subtype="MetalGrid" Count="15"/>
-				<Component Subtype="SteelPlate" Count="49"/>
+				<Component Subtype="Construction" Count="85"/>
+				<Component Subtype="SmallTube" Count="34"/>
+				<Component Subtype="LargeTube" Count="29"/>
+				<Component Subtype="Motor" Count="51"/>
+				<Component Subtype="Computer" Count="29"/>
+				<Component Subtype="MetalGrid" Count="43"/>
+				<Component Subtype="SteelPlate" Count="150"/>
 			</Components>
-			<BuildTimeSeconds>13</BuildTimeSeconds>
+			<BuildTimeSeconds>37</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -209,13 +209,13 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="7"/>
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
-				<Component Subtype="Construction" Count="10"/>
-				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Construction" Count="11"/>
+				<Component Subtype="SmallTube" Count="5"/>
 				<Component Subtype="LargeTube" Count="4"/>
-				<Component Subtype="Motor" Count="6"/>
+				<Component Subtype="Motor" Count="7"/>
 				<Component Subtype="Computer" Count="4"/>
-				<Component Subtype="MetalGrid" Count="5"/>
-				<Component Subtype="SteelPlate" Count="16"/>
+				<Component Subtype="MetalGrid" Count="6"/>
+				<Component Subtype="SteelPlate" Count="18"/>
 			</Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>2</PCU>

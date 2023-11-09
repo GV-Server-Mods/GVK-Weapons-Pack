@@ -22,24 +22,18 @@
 			<MirroringZ>Y</MirroringZ>
 			<MirroringX>X</MirroringX>
 			<Components>
-				<Component Subtype="SteelPlate" Count="62"/>
+				<Component Subtype="SteelPlate" Count="80"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="7"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-				<Component Subtype="MetalGrid" Count="25"/>
-				<Component Subtype="LargeTube" Count="13"/>
-				<Component Subtype="Motor" Count="130"/>
-				<Component Subtype="InteriorPlate" Count="15"/>
-				<Component Subtype="Computer" Count="250"/>
-				<Component Subtype="Construction" Count="250"/>
-				<Component Subtype="SteelPlate" Count="250"/>
+				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
-			<BuildTimeSeconds>60</BuildTimeSeconds>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<EdgeType>Light</EdgeType>
@@ -95,11 +89,11 @@
 				<Component Subtype="GVK_Missile_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="2"/>
 				<Component Subtype="LargeTube" Count="1"/>
-				<Component Subtype="Motor" Count="9"/>
-				<Component Subtype="InteriorPlate" Count="1"/>
-				<Component Subtype="Computer" Count="17"/>
-				<Component Subtype="Construction" Count="17"/>
-				<Component Subtype="SteelPlate" Count="17"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
 			</Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>4</PCU>
@@ -140,32 +134,26 @@
 			<MirroringZ>Y</MirroringZ>
 			<MirroringX>X</MirroringX>
 			<Components>
-				<Component Subtype="SteelPlate" Count="62"/>
+				<Component Subtype="SteelPlate" Count="80"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="7"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-				<Component Subtype="MetalGrid" Count="25"/>
-				<Component Subtype="LargeTube" Count="13"/>
-				<Component Subtype="Motor" Count="130"/>
-				<Component Subtype="InteriorPlate" Count="15"/>
+				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
 				<Component Subtype="GVK_Unobtanium" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
 						<SubtypeId>Scrap</SubtypeId>
 					</DeconstructId>
 				</Component>
-				<Component Subtype="Computer" Count="250"/>
-				<Component Subtype="Construction" Count="250"/>
-				<Component Subtype="SteelPlate" Count="250"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
-			<BuildTimeSeconds>60</BuildTimeSeconds>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
 			<PCU>8</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
+			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<!--<WeaponDefinitionId Subtype="Missiles_Missile"/>-->
 			<InventoryMaxVolume>0.250</InventoryMaxVolume>
@@ -220,21 +208,21 @@
 				<Component Subtype="GVK_Missile_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="2"/>
 				<Component Subtype="LargeTube" Count="1"/>
-				<Component Subtype="Motor" Count="9"/>
-				<Component Subtype="InteriorPlate" Count="1"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
 				<Component Subtype="GVK_Unobtanium" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
 						<SubtypeId>Scrap</SubtypeId>
 					</DeconstructId>
 				</Component>
-				<Component Subtype="Computer" Count="17"/>
-				<Component Subtype="Construction" Count="17"/>
-				<Component Subtype="SteelPlate" Count="17"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
 			</Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<PCU>4</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
+			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>

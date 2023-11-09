@@ -17,26 +17,19 @@
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\missileBattery01\missileBattery01.mwm</Model>
-
-            <Components>
-                <Component Subtype="SteelPlate" Count="140" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="150"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="9"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-                <Component Subtype="MetalGrid" Count="56" />
-                <Component Subtype="LargeTube" Count="28" />
-                <Component Subtype="Motor" Count="280" />
-                <Component Subtype="InteriorPlate" Count="34" />
-                <Component Subtype="Computer" Count="560" />
-                <Component Subtype="Construction" Count="560" />
-                <Component Subtype="SteelPlate" Count="560" />
-            </Components>
-            <BuildTimeSeconds>135</BuildTimeSeconds>
+				<Component Subtype="GVK_Missile_Tech" Count="10"/>
+				<Component Subtype="MetalGrid" Count="57"/>
+				<Component Subtype="LargeTube" Count="29"/>
+				<Component Subtype="Motor" Count="290"/>
+				<Component Subtype="InteriorPlate" Count="34"/>
+				<Component Subtype="Computer" Count="570"/>
+				<Component Subtype="Construction" Count="570"/>
+				<Component Subtype="SteelPlate" Count="570"/>
+			</Components>
+			<BuildTimeSeconds>138</BuildTimeSeconds>
 			<PCU>10</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>

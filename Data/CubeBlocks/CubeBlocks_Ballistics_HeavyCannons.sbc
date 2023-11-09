@@ -16,25 +16,19 @@
 			<Size x="5" y="3" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
-            <Components>
-                <Component Subtype="SteelPlate" Count="1200" />
+			<Components>
+				<Component Subtype="SteelPlate" Count="1100"/>
 				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="11"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
-                <Component Subtype="Construction" Count="580" />
-                <Component Subtype="SmallTube" Count="240" />
-                <Component Subtype="LargeTube" Count="390" />
-                <Component Subtype="Motor" Count="350" />
-                <Component Subtype="Computer" Count="200" />
-                <Component Subtype="MetalGrid" Count="390" />
-                <Component Subtype="SteelPlate" Count="970" />
-            </Components>
-            <BuildTimeSeconds>375</BuildTimeSeconds>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="12"/>
+				<Component Subtype="Construction" Count="520"/>
+				<Component Subtype="SmallTube" Count="210"/>
+				<Component Subtype="LargeTube" Count="350"/>
+				<Component Subtype="Motor" Count="310"/>
+				<Component Subtype="Computer" Count="180"/>
+				<Component Subtype="MetalGrid" Count="350"/>
+				<Component Subtype="SteelPlate" Count="860"/>
+			</Components>
+			<BuildTimeSeconds>332</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
