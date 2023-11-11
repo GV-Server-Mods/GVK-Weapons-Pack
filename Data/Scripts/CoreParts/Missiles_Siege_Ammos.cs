@@ -118,7 +118,7 @@ namespace Scripts
                 MaxTrajectory = 6000f, // Max Distance the projectile or beam can Travel.
                 GravityMultiplier = 2f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
                 SpeedVariance = Random(start: 20, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
-                RangeVariance = Random(start: 500, end: 0), // subtracts value from MaxTrajectory
+                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
                 Smarts = new SmartsDef
                 {
                     OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
