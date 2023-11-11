@@ -8,6 +8,35 @@
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>DOK_GunshipExplosion</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>3000</MaxDistance>
+			<PitchVariation>200</PitchVariation>
+			<PreventSynchronization>30</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<SoundLimit>8</SoundLimit>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>1</Volume>
+			<Loopable>false</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_bomber_01.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_bomber_02.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_bomber_03.wav</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_bomber_04.wav</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>DOK_FalconDroneFire</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
@@ -1443,7 +1472,7 @@
 			</Id>
 			<Category>SHOT</Category>
 			<Loopable>true</Loopable>
-			<MaxDistance>4000</MaxDistance>
+			<MaxDistance>500</MaxDistance>
 			<VolumeVariation>0.05</VolumeVariation>
 			<Pitch>1</Pitch>
 			<PitchVariation>2</PitchVariation>
@@ -1451,7 +1480,7 @@
 			<SoundLimit>4</SoundLimit>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
-			<Volume>0.7</Volume>
+			<Volume>0.5</Volume>
 			<DistantSounds>
 				<DistantSound DistanceCrossFade="10" Distance="200" Sound="MXA_Archer_Travel_Distant"/>
 			</DistantSounds>
@@ -1469,7 +1498,7 @@
 			<Category>SHOT</Category>
 			<Loopable>true</Loopable>
 			<MaxDistance>4000</MaxDistance>
-			<SoundLimit>1</SoundLimit>
+			<SoundLimit>4</SoundLimit>
 			<PitchVariation>2</PitchVariation>
 			<PreventSynchronization>30</PreventSynchronization>
 			<Volume>0.25</Volume>

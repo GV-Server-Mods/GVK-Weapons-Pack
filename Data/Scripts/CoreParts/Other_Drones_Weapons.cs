@@ -138,7 +138,7 @@ namespace Scripts
 				Others_Drone_Offense_Main,
 				Others_Drone_Defense_Launch,
 				Others_Drone_Defense_Main,
-				AutocannonClip_Drone,
+				Others_Drone_Gunship,
             },
             Animations = AryxSmallHangarAnimations,
         };
