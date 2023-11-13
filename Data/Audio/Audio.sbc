@@ -13,9 +13,9 @@
 			<Category>WEP_EXPL</Category>
 			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
-			<PreventSynchronization>30</PreventSynchronization>
+			<PreventSynchronization>15</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>8</SoundLimit>
+			<SoundLimit>12</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>

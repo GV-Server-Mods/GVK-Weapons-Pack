@@ -184,7 +184,7 @@ namespace Scripts
                                                     // RelativeHealthLost[>=], HealthRemaining[<=],
                                                     // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
                         StartCondition2 = Ignore, 
-                        EndCondition1 = DistanceFromPositionC, ////////////Might need a restart list so it doesnt keep looping in this approach
+                        EndCondition1 = DistanceFromPositionC, // Might need a restart list so it doesnt keep looping in this approach
                         EndCondition2 = DistanceToPositionB,
                         EndCondition3 = Ignore,
                         // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
