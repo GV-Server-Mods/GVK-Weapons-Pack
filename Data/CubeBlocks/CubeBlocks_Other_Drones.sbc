@@ -10,8 +10,7 @@
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
 			<Description>A compact hangar bay capable of launching Aryx-brand drones. OFFENSE = 3 minute flight time. DEFENSE = 5 minute flight time. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
 				[2.5km Semi-Auto Range]
-				[Uses FALCON Drones x3]
-				[Drones fire 30mm KE x120]</Description>
+				[Uses FALCON Drones x3]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="1" z="3"/>
