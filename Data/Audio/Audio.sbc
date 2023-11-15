@@ -15,8 +15,8 @@
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>15</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>12</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<SoundLimit>12</SoundLimit>
 			<Volume>1</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
@@ -281,8 +281,8 @@
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>20</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<SoundLimit>20</SoundLimit>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="50" Distance="500" Sound="HWR_SmallExplosionDistant"/>
 			</DistantSounds>
@@ -319,8 +319,8 @@
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<SoundLimit>20</SoundLimit>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<SoundLimit>20</SoundLimit>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="500" Distance="1500" Sound="HWR_SmallExplosionDistant"/>
 			</DistantSounds>
@@ -366,8 +366,8 @@
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>10</DynamicMusicAmount>
 			<SoundLimit>30</SoundLimit>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="100" Distance="1000" Sound="HWR_LargeExplosionDistant"/>
 			</DistantSounds>
@@ -485,8 +485,8 @@
 			<PitchVariation>200</PitchVariation>
 			<PreventSynchronization>0</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>20</DynamicMusicAmount>
 			<SoundLimit>5</SoundLimit>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="1000" Distance="2000" Sound="HWR_FireyExplosionDistant"/>
 			</DistantSounds>
@@ -630,7 +630,7 @@
 			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DynamicMusicAmount>5</DynamicMusicAmount>
 			<DistantSounds>
 				<DistantSound DistanceCrossfade="500" Distance="1000" Sound="DOK_SiegeMissileFireDistant"/>
 			</DistantSounds>
@@ -1165,7 +1165,7 @@
             <PreventSynchronization>0</PreventSynchronization>
 			<SoundLimit>20</SoundLimit>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DynamicMusicAmount>5</DynamicMusicAmount>
             <DistantSounds>
                 <DistantSound DistanceCrossfade="1" Distance="800" Sound="MD_VanillaCannonShot_Dist" />
             </DistantSounds>
@@ -1213,7 +1213,7 @@
 			<Loopable>false</Loopable>
             <RealisticFilter>FadeIn</RealisticFilter>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DynamicMusicAmount>5</DynamicMusicAmount>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\MD\Artillary_shell_fly_1.xwm</Start>
@@ -1733,7 +1733,7 @@
 			<MaxDistance>3000</MaxDistance>
 			<PreventSynchronization>15</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
-			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<DynamicMusicAmount>10</DynamicMusicAmount>
 			<Volume>2</Volume>
 			<Waves>
 				<Wave Type="D3">
