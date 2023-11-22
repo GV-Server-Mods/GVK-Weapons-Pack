@@ -60,6 +60,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -81,6 +82,7 @@
 			<AmmoDefinitionId Subtype="SmallCaliber"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -102,6 +104,7 @@
 			<AmmoDefinitionId Subtype="AutocannonShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -123,6 +126,7 @@
 			<AmmoDefinitionId Subtype="LargeCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -144,6 +148,7 @@
 			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -165,6 +170,7 @@
 			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -186,6 +192,7 @@
 			<AmmoDefinitionId Subtype="SmallRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -207,6 +214,7 @@
 			<AmmoDefinitionId Subtype="Missile"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -228,6 +236,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -249,6 +258,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -270,6 +280,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -291,6 +302,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -312,6 +324,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -333,6 +346,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
 		</AmmoMagazine>
         <AmmoMagazine>
             <Id>
@@ -353,6 +367,7 @@
             <Capacity>1</Capacity>
             <AmmoDefinitionId Subtype="Blank" />
             <CanPlayerOrder>true</CanPlayerOrder>
+            <Health>99999999</Health>
         </AmmoMagazine>	
 	</AmmoMagazines>
 </Definitions>
