@@ -60,7 +60,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -82,7 +82,7 @@
 			<AmmoDefinitionId Subtype="SmallCaliber"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -104,7 +104,7 @@
 			<AmmoDefinitionId Subtype="AutocannonShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -126,7 +126,7 @@
 			<AmmoDefinitionId Subtype="LargeCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -148,7 +148,7 @@
 			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -170,7 +170,7 @@
 			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -192,7 +192,7 @@
 			<AmmoDefinitionId Subtype="SmallRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -214,7 +214,7 @@
 			<AmmoDefinitionId Subtype="Missile"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -236,7 +236,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -258,7 +258,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -272,15 +272,15 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-            <Mass>1106</Mass>
-            <Volume>737</Volume>
+			<Mass>1106</Mass>
+			<Volume>737</Volume>
 			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -302,7 +302,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -324,7 +324,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -346,28 +346,29 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
+			<Health>99999999</Health>
 		</AmmoMagazine>
-        <AmmoMagazine>
-            <Id>
-                <TypeId>AmmoMagazine</TypeId>
-                <SubtypeId>Others_Drone_Falcon</SubtypeId>
-            </Id>
-            <DisplayName>[Drone] Falcon Autocannon</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
-            <Size>
-                <X>1</X>
-                <Y>2</Y>
-                <Z>0.5</Z>
-            </Size>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Others_Drone_Falcon</SubtypeId>
+			</Id>
+			<DisplayName>[Drone] Falcon Autocannon</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
+			<Size>
+				<X>1</X>
+				<Y>2</Y>
+				<Z>0.5</Z>
+			</Size>
 			<Mass>2400</Mass>
 			<Volume>1600</Volume>
-            <Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
-            <PhysicalMaterial>Ammo</PhysicalMaterial>
-            <Capacity>1</Capacity>
-            <AmmoDefinitionId Subtype="Blank" />
-            <CanPlayerOrder>true</CanPlayerOrder>
-            <Health>99999999</Health>
-        </AmmoMagazine>	
+			<Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>
