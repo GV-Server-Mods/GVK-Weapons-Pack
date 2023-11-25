@@ -370,5 +370,159 @@
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
 		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FlareClip</SubtypeId>
+			</Id>
+			<DisplayName>[Flare] Decoy Flare x4</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FlareGun_Ammo.dds</Icon>
+			<Size>
+				<X>0.2</X>
+				<Y>0.05</Y>
+				<Z>0.02</Z>
+			</Size>
+			<Mass>0.05</Mass>
+			<Volume>0.05</Volume>
+			<Model>Models\Weapons\Pistol_FlareGun_Magazine.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>4</Capacity>
+			<AmmoDefinitionId Subtype="Flare"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxBlue</SubtypeId>
+			</Id>
+			<DisplayName>zz[Do Not Use]zzFireworksBoxBlue</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxBlue.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkBlue"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxGreen</SubtypeId>
+			</Id>
+			<DisplayName>zz[Do Not Use]zzFireworksBoxGreen</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxGreen.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkGreen"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxRed</SubtypeId>
+			</Id>
+			<DisplayName>zz[Do Not Use]zzFireworksBoxRed</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxRed.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkRed"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxPink</SubtypeId>
+			</Id>
+			<DisplayName>zz[Do Not Use]zzFireworksBoxPink</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxPink.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkPink"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxYellow</SubtypeId>
+			</Id>
+			<DisplayName>zz[Do Not Use]zzFireworksBoxYellow</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxYellow.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkYellow"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FireworksBoxRainbow</SubtypeId>
+			</Id>
+			<DisplayName>[Flare] Fireworks Box x8</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>6</Volume>
+			<Model>Models\Weapons\FireworksBoxRainbow.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>8</Capacity>
+			<AmmoDefinitionId Subtype="FireworkRainbow"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>

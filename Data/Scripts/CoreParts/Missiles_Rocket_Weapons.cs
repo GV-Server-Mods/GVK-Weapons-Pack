@@ -235,6 +235,7 @@ namespace Scripts
 					"muzzle_missile_018",
 					"muzzle_missile_019",
                 },
+                Scope = "muzzle_missile_009", // Where line of sight checks are performed from. Must be clear of block collision.
             },
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
 			HardPoint = new HardPointDef

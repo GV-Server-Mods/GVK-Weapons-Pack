@@ -66,7 +66,10 @@ namespace Scripts
 							ElitePistolGun, 
 							RapidFireAutomaticRifleGun, 
 							UltimateAutomaticRifleGun,
-							MA_PDX
+							MA_PDX,
+							LargeFlareWC,
+							SmallFlareWC,
+							FlarePistolGun
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

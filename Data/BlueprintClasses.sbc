@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<BlueprintClasses>
-        <Class>
+        <!-- Builds on Classes defined in GVK Settings Mod -->
+		<Class>
             <Id>
                 <TypeId>BlueprintClassDefinition</TypeId>
-                <SubtypeId>GVKBasicWeapons</SubtypeId>
+                <SubtypeId>GVKBasicHandheldWeapons</SubtypeId>
             </Id>
-            <DisplayName>DisplayName_BlueprintClass_Weapons</DisplayName>
-            <Description>Description_BlueprintClass_Weapons</Description>
+            <DisplayName>Basic Handheld Weapons</DisplayName>
+            <Description>Basic Handheld Weapons</Description>
             <Icon>Textures\GUI\Icons\buttons\weapons.dds</Icon>
             <HighlightIcon>Textures\GUI\Icons\buttons\weapons.dds</HighlightIcon>
             <FocusIcon>Textures\GUI\Icons\buttons\weaponsfocus.dds</FocusIcon>
@@ -16,10 +17,10 @@
         <Class>
             <Id>
                 <TypeId>BlueprintClassDefinition</TypeId>
-                <SubtypeId>GVKEliteWeapons</SubtypeId>
+                <SubtypeId>GVKEliteHandheldWeapons</SubtypeId>
             </Id>
-            <DisplayName>DisplayName_BlueprintClass_Weapons</DisplayName>
-            <Description>Description_BlueprintClass_Weapons</Description>
+            <DisplayName>Handheld Weapons</DisplayName>
+            <Description>Handheld Weapons</Description>
             <Icon>Textures\GUI\Icons\buttons\weapons.dds</Icon>
             <HighlightIcon>Textures\GUI\Icons\buttons\weapons.dds</HighlightIcon>
             <FocusIcon>Textures\GUI\Icons\buttons\weaponsfocus.dds</FocusIcon>
@@ -40,6 +41,18 @@
 		<Class>
 			<Id>
 				<TypeId>BlueprintClassDefinition</TypeId>
+				<SubtypeId>GVKEliteHandheldAmmo</SubtypeId>
+			</Id>
+			<DisplayName>Handheld Ammo</DisplayName>
+			<Description>Handheld Ammo</Description>
+			<Icon>Textures\GUI\Icons\buttons\Ammos.dds</Icon>
+			<HighlightIcon>Textures\GUI\Icons\buttons\Ammos.dds</HighlightIcon>
+			<FocusIcon>Textures\GUI\Icons\buttons\Ammos_focus.dds</FocusIcon>
+			<InputConstraintIcon>Textures\GUI\Icons\filter_ingot.dds</InputConstraintIcon>
+		</Class>
+		<Class>
+			<Id>
+				<TypeId>BlueprintClassDefinition</TypeId>
 				<SubtypeId>GVKBasicShipAmmo</SubtypeId>
 			</Id>
 			<DisplayName>Basic Ship Ammo</DisplayName>
@@ -52,22 +65,10 @@
 		<Class>
 			<Id>
 				<TypeId>BlueprintClassDefinition</TypeId>
-				<SubtypeId>GVKEliteHandheldAmmo</SubtypeId>
-			</Id>
-			<DisplayName>Elite Handheld Ammo</DisplayName>
-			<Description>Elite Handheld Ammo</Description>
-			<Icon>Textures\GUI\Icons\buttons\Ammos.dds</Icon>
-			<HighlightIcon>Textures\GUI\Icons\buttons\Ammos.dds</HighlightIcon>
-			<FocusIcon>Textures\GUI\Icons\buttons\Ammos_focus.dds</FocusIcon>
-			<InputConstraintIcon>Textures\GUI\Icons\filter_ingot.dds</InputConstraintIcon>
-		</Class>
-		<Class>
-			<Id>
-				<TypeId>BlueprintClassDefinition</TypeId>
 				<SubtypeId>GVKEliteShipAmmo</SubtypeId>
 			</Id>
-			<DisplayName>Elite Ship Ammo</DisplayName>
-			<Description>Elite Ship Ammo</Description>
+			<DisplayName>Ship Ammo</DisplayName>
+			<Description>Ship Ammo</Description>
             <Icon>Textures\GUI\Icons\buttons\Consumables.dds</Icon>
             <HighlightIcon>Textures\GUI\Icons\buttons\Consumables.dds</HighlightIcon>
             <FocusIcon>Textures\GUI\Icons\buttons\ConsumablesFocus.dds</FocusIcon>
@@ -75,27 +76,30 @@
 		</Class>
 	</BlueprintClasses>
 	<BlueprintClassEntries>
-		<!-- PLAYER AMMOS -->
+		<!-- Basic Assemblers -->
+		<Entry Class="GVKBasicHandheldWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
+		<Entry Class="GVKBasicHandheldWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
+		<Entry Class="GVKBasicHandheldWeapons" BlueprintSubtypeId="Position0005_FlareGun"/>
 		<Entry Class="GVKBasicHandheldAmmo" BlueprintSubtypeId="ElitePistolMagazine"/>
 		<Entry Class="GVKBasicHandheldAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
+		<Entry Class="GVKBasicHandheldAmmo" BlueprintSubtypeId="Position0005_FlareGunMagazine"/>
+		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
+		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
+		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="AutocannonClip"/>
+		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="Position0005_FlareGunMagazine"/>
+		<!-- Large Assemblers -->	
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0070_UltimateAutomaticRifle"/>
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0080_BasicHandHeldLauncher"/>
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0090_AdvancedHandHeldLauncher"/>
+		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0005_FlareGun"/>
 		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="ElitePistolMagazine"/>
 		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="UltimateAutomaticRifleGun_Mag_30rd"/>
 		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="Missile200mm"/>
 		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="Missiles_Missile"/>
-		<!--BASIC AMMOS-->
-		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
-		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
-		<Entry Class="GVKBasicShipAmmo" BlueprintSubtypeId="AutocannonClip"/>
-		<!--HANDHELD WEAPONS-->
-		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
-		<Entry Class="GVKBasicWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0050_RapidFireAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0070_UltimateAutomaticRifle"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0080_BasicHandHeldLauncher"/>
-		<Entry Class="GVKEliteWeapons" BlueprintSubtypeId="Position0090_AdvancedHandHeldLauncher"/>
-		<!--SHIP WEAPON AMMOS-->
+		<Entry Class="GVKEliteHandheldAmmo" BlueprintSubtypeId="Position0005_FlareGunMagazine"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="NATO_25x184mmMagazine"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="NATO_5p56x45mmMagazine"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="AutocannonClip"/>
@@ -111,7 +115,8 @@
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Ballistics_HeavyCannon"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Missiles_HeavyMissile"/>
 		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Lasers_Plasma"/>
-		<!--LARGE BLOCK WEAPONS, Don't need to add Vanillas here -->
+		<Entry Class="GVKEliteShipAmmo" BlueprintSubtypeId="Position0005_FlareGunMagazine"/>
+		<!-- LARGE BLOCK WEAPONS, Don't need to add Vanillas here -->
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXRailgunTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXRailgun"/>
@@ -135,7 +140,7 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeAutoCannonTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/SentinelTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDX"/>
-		<!--SMALL BLOCKS, Don't need to add Vanillas here -->
+		<!-- SMALL BLOCKS, Don't need to add Vanillas here -->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret_small"/>

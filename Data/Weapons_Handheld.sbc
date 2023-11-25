@@ -406,8 +406,6 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>BasicHandHeldLauncherGun</SubtypeId>
 			</Id>
-			
-			Clear out the sound names here, use the WC config for weapon/ammo sounds.  Ensure all weps are "projectile" type
             <ProjectileAmmoData RateOfFire="240" ShootSoundName="" ShotsInBurst="1"/>
 			<NoAmmoSoundName/>
 			<ReloadSoundName/>
@@ -495,5 +493,51 @@
 			<ShakeOnActionSecondary>false</ShakeOnActionSecondary>
 			<ShakeOnActionTertiary>false</ShakeOnActionTertiary>
 		</Weapon>
+        <Weapon>
+            <Id>
+                <TypeId>WeaponDefinition</TypeId>
+                <SubtypeId>FlarePistolGun</SubtypeId>
+            </Id>
+            <ProjectileAmmoData RateOfFire="120" ShootSoundName="" ShotsInBurst="1"/>
+			<NoAmmoSoundName/>
+			<ReloadSoundName/>
+            <DeviateShotAngle>5</DeviateShotAngle>
+            <DeviateShotAngleAiming>2</DeviateShotAngleAiming>			
+            <AmmoMagazines>
+                <AmmoMagazine Subtype="Blank" />
+            </AmmoMagazines>
+            <ReloadTime>1800</ReloadTime>
+            <RecoilJetpackVertical>10</RecoilJetpackVertical>
+            <RecoilJetpackHorizontal>3</RecoilJetpackHorizontal>
+            <RecoilGroundVertical>3</RecoilGroundVertical>
+            <RecoilGroundHorizontal>1</RecoilGroundHorizontal>
+            <RecoilMultiplierDataNames>
+                <string>Standing</string>
+                <string>Walking</string>
+                <string>Running</string>
+                <string>Crouching</string>
+                <string>Aiming</string>
+            </RecoilMultiplierDataNames>
+            <RecoilMultiplierDataVerticals>
+                <float>1</float>
+                <float>1</float>
+                <float>1.5</float>
+                <float>.75</float>
+                <float>.75</float>
+            </RecoilMultiplierDataVerticals>
+            <RecoilMultiplierDataHorizontals>
+                <float>1</float>
+                <float>1</float>
+                <float>1.5</float>
+                <float>.75</float>
+                <float>.75</float>
+            </RecoilMultiplierDataHorizontals>
+            <ShootDirectionUpdateTime>200</ShootDirectionUpdateTime>
+            <RecoilResetTimeMilliseconds>0</RecoilResetTimeMilliseconds>
+            <EquipDuration>0.5</EquipDuration>
+            <ShakeOnActionPrimary>true</ShakeOnActionPrimary>
+            <ShakeOnActionSecondary>false</ShakeOnActionSecondary>
+            <ShakeOnActionTertiary>false</ShakeOnActionTertiary>
+        </Weapon>
 	</Weapons>
 </Definitions>

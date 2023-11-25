@@ -87,7 +87,11 @@ namespace Scripts
                 DamageVoxels = false, // Whether to damage voxels.
                 HealthHitModifier = 1000, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
-                Grids = new GridSizeDef
+                FallOff = new FallOffDef
+                {
+                    Distance = 2000f, // Distance at which damage begins falling off.
+                    MinMultipler = 0.25f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
+                },                Grids = new GridSizeDef
                 {
                     Large = -1f, // Multiplier for damage against large grids.
                     Small = -1f, // Multiplier for damage against small grids.

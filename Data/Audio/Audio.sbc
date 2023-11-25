@@ -5,6 +5,97 @@
 		<!-- Loopable sounds must be .wav 32-bit float 44100Hz, everything else should be .xwm 48kbps-->
 		<!-- Add 1 second of silence to start of all distant sounds for extra effect, except for Loopable -->
 		<!-- PreventSynchronization is the min time in ticks before the sound can be triggered again -->
+        <Sound>
+            <Id>
+                <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+                <SubtypeId>MD_FireworkLaunch</SubtypeId>
+            </Id>
+            <Category>SHOT</Category>
+            <MaxDistance>2000</MaxDistance>
+            <PitchVariation>100</PitchVariation>
+            <PreventSynchronization>3</PreventSynchronization>
+            <DistantSounds>
+                <DistantSound DistanceCrossfade="50" Distance="500" Sound="MD_FireworkLaunch_Dist" />
+            </DistantSounds>
+            <Volume>3</Volume>
+            <Waves>
+                <Wave Type="D3">
+                    <Start>Audio\MD\Mortar Launch 1.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\Mortar Launch 2.xwm</Start>
+                </Wave>
+            </Waves>
+        </Sound>
+        <Sound>
+            <Id>
+                <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+                <SubtypeId>MD_FireworkLaunch_Dist</SubtypeId>
+            </Id>
+            <Category>SHOT</Category>
+            <MaxDistance>2000</MaxDistance>
+            <PitchVariation>100</PitchVariation>
+            <PreventSynchronization>3</PreventSynchronization>
+            <Volume>3.0</Volume>
+            <Waves>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_LAUNCH_1.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_LAUNCH_2.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_LAUNCH_3.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_LAUNCH_4.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_LAUNCH_5.xwm</Start>
+                </Wave>
+            </Waves>
+        </Sound>
+        <Sound>
+            <Id>
+                <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+                <SubtypeId>MD_FireworkExplosion</SubtypeId>
+            </Id>
+            <Category>WEP_EXPL</Category>
+            <MaxDistance>2000</MaxDistance>
+            <PitchVariation>100</PitchVariation>
+            <PreventSynchronization>3</PreventSynchronization>
+            <DistantSounds>
+                <DistantSound DistanceCrossfade="50" Distance="500" Sound="MD_FireworkExplosion_Dist" />
+            </DistantSounds>
+            <Volume>3</Volume>
+            <Waves>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_EXPLODE_CLOSE_1.xwm</Start>
+                </Wave>
+            </Waves>
+        </Sound>
+        <Sound>
+            <Id>
+                <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+                <SubtypeId>MD_FireworkExplosion_Dist</SubtypeId>
+            </Id>
+            <Category>WEP_EXPL</Category>
+            <MaxDistance>2000</MaxDistance>
+            <PitchVariation>100</PitchVariation>
+            <PreventSynchronization>3</PreventSynchronization>
+            <Volume>3</Volume>
+            <Waves>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_EXPLODE_FAR_1.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_EXPLODE_FAR_2.xwm</Start>
+                </Wave>
+                <Wave Type="D3">
+                    <Start>Audio\MD\FIREWORKS_EXPLODE_FAR_3.xwm</Start>
+                </Wave>
+            </Waves>
+        </Sound>
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
@@ -13,24 +104,24 @@
 			<Category>WEP_EXPL</Category>
 			<MaxDistance>3000</MaxDistance>
 			<PitchVariation>200</PitchVariation>
-			<PreventSynchronization>15</PreventSynchronization>
+			<PreventSynchronization>5</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
-			<SoundLimit>12</SoundLimit>
-			<Volume>1</Volume>
+			<SoundLimit>15</SoundLimit>
+			<Volume>2</Volume>
 			<Loopable>false</Loopable>
 			<Waves>
 				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_expl_bomber_01.wav</Start>
+					<Start>Audio\DOK\sfx_expl_bomber_01.xwm</Start>
 				</Wave>
 				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_expl_bomber_02.wav</Start>
+					<Start>Audio\DOK\sfx_expl_bomber_02.xwm</Start>
 				</Wave>
 				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_expl_bomber_03.wav</Start>
+					<Start>Audio\DOK\sfx_expl_bomber_03.xwm</Start>
 				</Wave>
 				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_expl_bomber_04.wav</Start>
+					<Start>Audio\DOK\sfx_expl_bomber_04.xwm</Start>
 				</Wave>
 			</Waves>
 		</Sound>
