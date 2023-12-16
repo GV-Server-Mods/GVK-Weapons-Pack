@@ -25,13 +25,13 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="GVK_Laser_Tech" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="310"/>

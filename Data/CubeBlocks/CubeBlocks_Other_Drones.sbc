@@ -21,13 +21,13 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="GVK_Missile_Tech" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="27"/>

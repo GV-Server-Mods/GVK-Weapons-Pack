@@ -26,13 +26,13 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="GVK_Missile_Tech" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
@@ -99,7 +99,7 @@
 				<Component Subtype="GVK_Missile_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="2"/>
@@ -153,13 +153,13 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="GVK_Missile_Tech" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
@@ -169,7 +169,7 @@
 				<Component Subtype="GVK_Unobtanium" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
+						<SubtypeId>GVK_CUScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Computer" Count="320"/>
@@ -233,7 +233,7 @@
 				<Component Subtype="GVK_Missile_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="2"/>
@@ -243,7 +243,7 @@
 				<Component Subtype="GVK_Unobtanium" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
+						<SubtypeId>GVK_CUScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Computer" Count="19"/>

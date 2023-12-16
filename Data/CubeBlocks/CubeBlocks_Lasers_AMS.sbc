@@ -26,7 +26,7 @@
 				<Component Subtype="GVK_Laser_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="31"/>
@@ -112,7 +112,7 @@
 				<Component Subtype="GVK_Laser_Tech" Count="3">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="9"/>

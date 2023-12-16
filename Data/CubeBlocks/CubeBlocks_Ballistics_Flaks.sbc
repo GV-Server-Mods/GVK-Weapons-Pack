@@ -24,7 +24,7 @@
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="240"/>
@@ -125,7 +125,7 @@
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="3">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="85"/>
@@ -221,7 +221,7 @@
 				<Component Subtype="GVK_LargeCaliber_Tech" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>Scrap</SubtypeId>
+                        <SubtypeId>GVK_CUScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="11"/>
