@@ -23,8 +23,18 @@
 			<MirroringX>X</MirroringX>
 			<Components>
 				<Component Subtype="SteelPlate" Count="80"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
 				<Component Subtype="LargeTube" Count="16"/>
 				<Component Subtype="Motor" Count="160"/>
@@ -86,7 +96,12 @@
 			</MountPoints>
 			<Components>
 				<Component Subtype="SteelPlate" Count="5"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="2"/>
 				<Component Subtype="LargeTube" Count="1"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -135,8 +150,18 @@
 			<MirroringX>X</MirroringX>
 			<Components>
 				<Component Subtype="SteelPlate" Count="80"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
 				<Component Subtype="LargeTube" Count="16"/>
 				<Component Subtype="Motor" Count="160"/>
@@ -205,7 +230,12 @@
 			</MountPoints>
 			<Components>
 				<Component Subtype="SteelPlate" Count="5"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="2"/>
 				<Component Subtype="LargeTube" Count="1"/>
 				<Component Subtype="Motor" Count="10"/>

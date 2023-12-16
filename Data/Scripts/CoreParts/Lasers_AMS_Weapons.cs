@@ -60,9 +60,9 @@ namespace Scripts
                     Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MaxTargetDistance = 1000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+                MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
                 TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 2000, // do not track target threats traveling faster than this speed

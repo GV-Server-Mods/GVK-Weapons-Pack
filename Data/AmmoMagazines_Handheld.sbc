@@ -8,7 +8,7 @@
 				<SubtypeId>ElitePistolMagazine</SubtypeId>
 			</Id>
 			<DisplayName>[Sidearm] 9mm KE x10</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\Pistol_Elite_Warfare_Ammo.dds</Icon>
+			<Icon>Textures\GUI\Icons\ammo\Pistol_Warfare_Ammo.dds</Icon>
 			<Size>
 				<X>0.2</X>
 				<Y>0.05</Y>
@@ -33,7 +33,7 @@
                 <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>
             </Id>
             <DisplayName>[Sidearm] 7.62mm FMJ x20</DisplayName>
-            <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_Elite.dds</Icon>
+            <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_SemiAuto.dds</Icon>
             <Size>
                 <X>0.2</X>
                 <Y>0.05</Y>

@@ -1005,10 +1005,10 @@ namespace Scripts
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Others_Drone_Gunship", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            BaseDamage = 500f, // Direct damage; one steel plate is worth 100.
-            Mass = 10f, // In kilograms; how much force the impact will apply to the target.
+            BaseDamage = 1f, // Direct damage; one steel plate is worth 100.
+            Mass = 20f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
-            BackKickForce = 1000f, // Recoil. This is applied to the Parent Grid.
+            BackKickForce = 0f, // Recoil. This is applied to the Parent Grid.
             HardPointUsable = false, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             DamageScales = new DamageScaleDef 
 			{

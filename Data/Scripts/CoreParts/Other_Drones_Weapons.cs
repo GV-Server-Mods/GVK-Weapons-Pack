@@ -65,16 +65,7 @@ namespace Scripts
                 DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = true, // Allows turret to only track to the edge of the AimingTolerance cone instead of dead centre.
                 CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
-                Ui = new UiDef
-                {
-                    RateOfFire = false, // Enables terminal slider for changing rate of fire.
-                    RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
-                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
-                    EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-                    AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
-                    DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = new AiDef
                 {
                     TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
@@ -82,7 +73,7 @@ namespace Scripts
                     TurretController = false, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
                     PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
                     LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
-                    SuppressFire = true, // If enabled, weapon can only be fired manually.
+                    SuppressFire = false, // If enabled, weapon can only be fired manually.
                     OverrideLeads = true, // Disable target leading on fixed weapons, or allow it for turrets.
                     DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
                     TargetGridCenter = true, // Does not target blocks, instead it targets grid center.

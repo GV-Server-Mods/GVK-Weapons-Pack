@@ -22,8 +22,18 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="230"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Laser_Tech" Count="12"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Laser_Tech" Count="12">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="SmallTube" Count="310"/>
 				<Component Subtype="Motor" Count="250"/>
 				<Component Subtype="Superconductor" Count="760"/>

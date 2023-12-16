@@ -21,7 +21,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="InteriorPlate" Count="160"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="400"/>
 				<Component Subtype="SmallTube" Count="27"/>
 				<Component Subtype="Motor" Count="53"/>

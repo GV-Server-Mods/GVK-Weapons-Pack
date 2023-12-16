@@ -18,7 +18,12 @@
 			<Model>Models\AWE_Vulcan\ARYXVulcanBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="8"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="830"/>
 				<Component Subtype="SmallTube" Count="170"/>
 				<Component Subtype="Motor" Count="220"/>
@@ -75,7 +80,12 @@
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="4"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="610"/>
 				<Component Subtype="SmallTube" Count="130"/>
 				<Component Subtype="Motor" Count="170"/>
@@ -166,7 +176,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="4"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="610"/>
 				<Component Subtype="SmallTube" Count="130"/>
 				<Component Subtype="Motor" Count="170"/>
@@ -253,7 +268,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="21"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="130"/>
 				<Component Subtype="SmallTube" Count="25"/>
 				<Component Subtype="Motor" Count="34"/>
@@ -338,7 +358,12 @@
 			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -393,7 +418,12 @@
 			<Model>Models\Cubes\Small\GatlingGunReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -450,7 +480,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>

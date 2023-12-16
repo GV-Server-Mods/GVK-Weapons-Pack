@@ -18,8 +18,18 @@
 			<Model>Models\AWE_Drones\ARYX_Small_Hangar.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="68"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="27"/>
 				<Component Subtype="LargeTube" Count="14"/>
 				<Component Subtype="Motor" Count="140"/>

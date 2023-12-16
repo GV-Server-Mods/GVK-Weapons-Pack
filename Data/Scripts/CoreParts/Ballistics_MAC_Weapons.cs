@@ -41,43 +41,13 @@ namespace Scripts
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "barrel_001", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] 
-				{
-                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
-                },
-                SubSystems = new[] 
-				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
-                },
-			},
+            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
                 PartName = "MAC", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = new UiDef
-                {
-                    RateOfFire = false, // Enables terminal slider for changing rate of fire.
-                    RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
-                    DamageModifier = false, // Enables terminal slider for changing damage per shot.
-                    ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
-                    EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-                    AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
-                    DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
-                },
-                Ai = new AiDef
-                {
-                    TrackTargets = false, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
-                    TurretAttached = false, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
-                    TurretController = true, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
-                    PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
-                    LockOnFocus = false, // If enabled, weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.
-                    SuppressFire = true, // If enabled, weapon can only be fired manually.
-                    OverrideLeads = true, // Disable target leading on fixed weapons, or allow it for turrets.
-                    DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-                    TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
-                },
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 6.760f, // Inventory capacity in kL.

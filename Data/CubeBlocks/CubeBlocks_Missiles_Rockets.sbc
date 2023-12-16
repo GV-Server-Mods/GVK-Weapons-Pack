@@ -22,7 +22,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="88"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="88"/>
 				<Component Subtype="LargeTube" Count="110"/>
 				<Component Subtype="Motor" Count="290"/>
@@ -107,7 +112,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="18"/>
-				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="18"/>
 				<Component Subtype="LargeTube" Count="22"/>
 				<Component Subtype="Motor" Count="58"/>
@@ -192,7 +202,12 @@
 			<Model>Models\Cubes\Large\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="33"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="3">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="33"/>
 				<Component Subtype="LargeTube" Count="39"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -245,7 +260,12 @@
 			<Model>Models\Cubes\Small\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -297,7 +317,12 @@
 			<Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>

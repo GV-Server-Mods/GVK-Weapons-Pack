@@ -21,8 +21,18 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="10"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="10">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -88,8 +98,18 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
@@ -153,8 +173,18 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="10"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="10">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -227,8 +257,18 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>Scrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
