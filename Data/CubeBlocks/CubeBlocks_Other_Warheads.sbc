@@ -53,6 +53,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<!-- Standard Warhead-->
@@ -66,7 +68,6 @@
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -116,6 +117,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition Enabled="false">
 			<Id>
@@ -159,6 +162,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<!-- Standard Warhead-->
@@ -172,7 +177,6 @@
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -207,6 +211,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WarheadDefinition" Enabled="false">
 			<Id>
@@ -261,6 +267,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -273,7 +281,6 @@
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -315,6 +322,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WarheadDefinition" Enabled="false">
 			<Id>
@@ -369,6 +378,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<!-- Standard Warhead-->
@@ -382,7 +393,6 @@
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="2" y="3" z="2"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -426,6 +436,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

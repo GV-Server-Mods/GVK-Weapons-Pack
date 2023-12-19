@@ -12,7 +12,6 @@
 				[2200m Auto Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -105,6 +104,8 @@
 				<Z>0</Z>
 			</AimingOffset>
 			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -117,7 +118,6 @@
 				[2400m Manual Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -179,6 +179,8 @@
 				<Y>0</Y>
 				<Z>4</Z>
 			</DamageEffectOffset>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -191,7 +193,6 @@
 				[1700m Auto Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="5" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -248,6 +249,8 @@
 			<AiEnabled>false</AiEnabled>
 			<DeformationRatio>0.2</DeformationRatio>
 			<GeneralDamageMultiplier>0.8</GeneralDamageMultiplier>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -260,7 +263,6 @@
 				[2400m Manual Range]
 				[Uses 155mm AP]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="2" y="3" z="11"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -306,6 +308,8 @@
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<DamageEffectId>213</DamageEffectId>
 			<DeformationRatio>0.2</DeformationRatio>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

@@ -63,6 +63,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

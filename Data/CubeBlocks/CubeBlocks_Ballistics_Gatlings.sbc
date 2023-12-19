@@ -61,6 +61,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- Large Sentinel Turret -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
@@ -75,8 +77,8 @@
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="-1.25" z="0"/>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
@@ -118,7 +120,7 @@
 					<MinAllowed>0.01</MinAllowed>
 				</DynamicMode>
 			</VoxelPlacement>
-			<BlockPairName>GatlingTurret</BlockPairName>
+			<BlockPairName>GatlingTurretSentinel</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -144,8 +146,6 @@
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
 			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
-			<GuiVisible>true</GuiVisible>
-			<Public>true</Public>
 			<AiEnabled>false</AiEnabled>
 			<TieredUpdateTimes>
 				<unsignedInt>10</unsignedInt>
@@ -154,6 +154,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -161,18 +163,16 @@
 				<SubtypeId/>
 			</Id>
 			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\Cubes\OKI14mmCIWS_Turret.dds</Icon>
+            <Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1400m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="-1.25" z="0"/>
-			<Model>Models\Cubes\Large\Gatling\14mmLGBase.mwm</Model>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="1.25" z="0"/>
+            <Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
@@ -195,11 +195,11 @@
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
 			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Gatling\14mmLGBase_LOD1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Gatling\14mmLGBase_LOD2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Gatling\14mmLGBase_LOD3.mwm"/>
-			</BuildProgressModels>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm" />
+            </BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -213,7 +213,7 @@
 					<MinAllowed>0.01</MinAllowed>
 				</DynamicMode>
 			</VoxelPlacement>
-			<BlockPairName>GatlingTurret_Old</BlockPairName>
+			<BlockPairName>GatlingTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -229,7 +229,7 @@
 			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
 			<RotationSpeed>0.002</RotationSpeed>
 			<ElevationSpeed>0.002 </ElevationSpeed>
-			<IdleRotation>true</IdleRotation>
+			<IdleRotation>false</IdleRotation>
 			<MaxRangeMeters>2000</MaxRangeMeters>
 			<AiEnabled>false</AiEnabled>
 			<MinFov>0.1</MinFov>
@@ -247,6 +247,11 @@
 			</TieredUpdateTimes>
 			<UpCameraOffset>0</UpCameraOffset>
 			<ForwardCameraOffset>3.5</ForwardCameraOffset>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -259,7 +264,6 @@
 				[900m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="5" z="5"/>
@@ -339,6 +343,8 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -353,7 +359,6 @@
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
-			<GuiVisible>true</GuiVisible>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
 			<Components>
@@ -398,7 +403,7 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
-			<GuiVisible>true</GuiVisible>
+			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
@@ -459,6 +464,8 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<DLC>Warfare2</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -473,7 +480,6 @@
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<GuiVisible>true</GuiVisible>
 			<Size x="1" y="1" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\GatlingTurretAutoGatling\GatlingTurretAutoGatling_Small.mwm</Model>
@@ -551,6 +557,8 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

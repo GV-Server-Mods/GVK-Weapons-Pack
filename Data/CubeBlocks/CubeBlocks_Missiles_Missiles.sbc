@@ -11,7 +11,6 @@
 				[2300m Semi-Auto Range]
 				[Uses Archer HE x150]
 			</Description>
-			<GuiVisible>true</GuiVisible>
 			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -68,6 +67,8 @@
 				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -81,7 +82,6 @@
 				[1800m Semi-Auto Range]
 				[Uses Archer HE x4]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -126,6 +126,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<MirroringZ>Y</MirroringZ>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -137,8 +139,6 @@
 				[2300m Semi-Auto Range]
 				[Uses Archer HE x150]
 			</Description>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -201,6 +201,8 @@
 				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -214,8 +216,6 @@
 				[1800m Semi-Auto Range]
 				[Uses Archer HE x4]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -266,6 +266,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<MirroringZ>Y</MirroringZ>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

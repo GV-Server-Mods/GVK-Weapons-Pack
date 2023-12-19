@@ -9,6 +9,7 @@
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXVulcanTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype=""/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype=""/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingGun_Gimbal"/>
@@ -175,8 +176,6 @@
 			<DisplayName>Target Sensors</DisplayName>
 			<Description/>
 			<Blocks>
-				<!-- <Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXLargeRadar"/>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/> -->
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIObserverSM"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIDesignator"/>
 			</Blocks>
@@ -189,6 +188,8 @@
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeWarhead"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallWarhead"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeExplosiveBarrel"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallExplosiveBarrel"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
@@ -198,6 +199,16 @@
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYX_Small_Sidekick_Hangar"/>
+			</Blocks>
+		</BlockVariantGroup>
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Other_Flares"/>
+			<Icon>Textures\GUI\Icons\Cubes\FlareLauncher.dds</Icon>
+			<DisplayName>Flares/Fireworks</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeFlareLauncher"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallFlareLauncher"/>
 			</Blocks>
 		</BlockVariantGroup>
 	</BlockVariantGroups>

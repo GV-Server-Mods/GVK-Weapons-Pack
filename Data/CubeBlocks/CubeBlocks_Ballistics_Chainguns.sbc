@@ -41,11 +41,11 @@
 				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="3.0" EndY="3.0"/>
 			</MountPoints>
-			<!-- <BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\BurstCannon\LG_ARYX_BurstCannonTurretBase_BS3.mwm"/>
-			</BuildProgressModels> -->
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
+			</BuildProgressModels>
 			<BlockPairName>AryxHeavyFlak</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
@@ -62,6 +62,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- Large Khopesh Turret -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
@@ -152,6 +154,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -241,12 +245,12 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-			<GuiVisible>true</GuiVisible>
-			<Public>true</Public>
 			<AiEnabled>false</AiEnabled>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -353,6 +357,8 @@
 			<MuzzleProjectileDummyName>muzzle_projectile</MuzzleProjectileDummyName>
 			<CameraDummyName>camera</CameraDummyName>
 			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -366,7 +372,6 @@
 				[Uses 30mm API]
 			</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -416,6 +421,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- Vanilla definition switched to a different typeid and model due to model errors -->
 		<Definition Enabled="false">

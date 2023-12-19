@@ -12,8 +12,6 @@
 				[3000m Auto Range]
 				[Uses 50mm FeW + 133MW]</Description>
 			<CubeSize>Large</CubeSize>
-			<Public>true</Public>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -67,6 +65,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -78,9 +78,6 @@
 				[3300m Manual Range]
 				[Uses 50mm FeW + 133MW]</Description>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
-			<Public>true</Public>
-			<GuiVisible>false</GuiVisible>
-			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
 			<Center x="0" y="0" z="4"/>
@@ -127,6 +124,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -139,8 +138,6 @@
 				[2300m Manual Range]
 				[Uses 50mm FeW + 75MW]</Description>
 			<CubeSize>Small</CubeSize>
-			<Public>true</Public>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="2" z="8"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -194,6 +191,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition Enabled="false">
 			<Id>
@@ -252,6 +251,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

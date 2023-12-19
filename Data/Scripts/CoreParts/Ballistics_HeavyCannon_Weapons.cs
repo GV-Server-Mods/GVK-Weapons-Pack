@@ -62,7 +62,7 @@ namespace Scripts
                 PartName = "Hurricane Heavy Cannon", // name of weapon in terminal
                 DeviateShotAngle = 0.05f,
                 AimingTolerance = 0.5f, // 0 - 180 firing angle
-                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
                 CanShootSubmerged = true,

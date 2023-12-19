@@ -56,6 +56,8 @@
 			<AiEnabled>false</AiEnabled>
 			<PCU>1</PCU>
             <IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -111,6 +113,8 @@
 			<AiEnabled>false</AiEnabled>
 			<PCU>1</PCU>
             <IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

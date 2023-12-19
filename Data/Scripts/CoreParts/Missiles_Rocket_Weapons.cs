@@ -58,12 +58,12 @@ namespace Scripts
                     new MountPointDef
                     {
                         SubtypeId = "LargeMissileTurret",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
+                        IconName = "",
                     },
                 },
                 Muzzles = new []
@@ -75,7 +75,9 @@ namespace Scripts
 					"muzzle_missile_005",
 					"muzzle_missile_006",
                 },
-            },
+                Ejector = "", // Optional; empty from which to eject "shells" if specified.
+                Scope = "muzzle_missile_001", // Where line of sight checks are performed from. Must be clear of block collision.
+			},
 			Targeting = Missiles_Rocket_Targeting, //shared targeting def
             HardPoint = new HardPointDef
             {

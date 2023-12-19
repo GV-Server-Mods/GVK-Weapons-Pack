@@ -13,7 +13,6 @@
 				[Uses Crusader EMP x1]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
 			<ModelOffset x="0" y="0" z="1.25"/>
@@ -77,6 +76,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- Crusader Open Static -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
@@ -90,7 +91,6 @@
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderLauncherOpenStatic.png</Icon>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="15"/>
 			<ModelOffset x="0" y="0" z="0.75"/>
@@ -151,6 +151,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- Large Crusader NPC -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
@@ -164,8 +166,6 @@
 				[Uses Crusader EMP x1]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
 			<ModelOffset x="0" y="0" z="1.25"/>
@@ -235,6 +235,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 		</Definition>
 		<!-- Crusader Open Static NPC -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
@@ -248,8 +250,6 @@
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderLauncherOpenStatic.png</Icon>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="15"/>
 			<ModelOffset x="0" y="0" z="0.75"/>
@@ -316,6 +316,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

@@ -12,7 +12,6 @@
 				[700m Auto Range]
 				[Uses 5.56mm KE (Manual Reload)]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
@@ -90,6 +89,8 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

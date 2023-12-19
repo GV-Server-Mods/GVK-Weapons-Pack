@@ -31,7 +31,7 @@ namespace Scripts
 				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-			IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
@@ -50,7 +50,7 @@ namespace Scripts
 				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-			IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 900, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
@@ -486,7 +486,7 @@ namespace Scripts
 					Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
@@ -499,7 +499,7 @@ namespace Scripts
                 DeviateShotAngle = 0.15f, // Inaccuracy in degrees
                 AimingTolerance = 40f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
@@ -517,16 +517,7 @@ namespace Scripts
                     //Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    RotateBarrelAxis = 0,
-                    MuzzleCheck = false,
-                    Debug = false,
-                    RestrictionRadius = 0, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 1800,

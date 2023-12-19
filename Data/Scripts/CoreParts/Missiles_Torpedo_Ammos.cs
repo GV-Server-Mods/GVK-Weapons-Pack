@@ -57,7 +57,7 @@ namespace Scripts
             },
             Fragment = new FragmentDef 
 			{
-                AmmoRound = "Missiles_Torpedo_Shrapnel", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.

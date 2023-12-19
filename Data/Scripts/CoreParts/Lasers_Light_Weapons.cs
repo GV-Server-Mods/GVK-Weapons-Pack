@@ -102,17 +102,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.005f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 				},
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Lasers_Laser_Loading_Small,
                 Audio = Lasers_Laser_Audio_Small,
             },
@@ -167,17 +157,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Lasers_Laser_Loading_Small,
                 Audio = Lasers_Laser_Audio_Small,
             },
@@ -208,6 +188,7 @@ namespace Scripts
                 {
 					"muzzle_projectile_001",
                 },
+                Scope = "scope", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = Lasers_Laser_Targeting_Turret_Small,
             HardPoint = new HardPointDef
@@ -232,17 +213,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Lasers_Laser_Loading_Small,
                 Audio = Lasers_Laser_Audio_Small,
             },

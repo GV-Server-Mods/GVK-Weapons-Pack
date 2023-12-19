@@ -63,8 +63,8 @@ namespace Scripts
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-                TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 2000, // do not track target threats traveling faster than this speed
 			},
             HardPoint = new HardPointDef
@@ -92,12 +92,12 @@ namespace Scripts
                 {
                     ConstructPartCap = 0,
                     MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
+					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
+					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false,
-                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
+                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
                 },
                 Loading = new LoadingDef 
 				{

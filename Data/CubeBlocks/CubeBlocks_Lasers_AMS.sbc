@@ -13,14 +13,12 @@
 				[1000m Auto Range]
 				[Uses 10MW Energy]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\MA_Designator\MA_Designator.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-			<GuiVisible>true</GuiVisible>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
 				<Component Subtype="GVK_Laser_Tech" Count="4">
@@ -86,6 +84,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- PDT small -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
@@ -99,14 +99,12 @@
 				[1000m Auto Range]
 				[Uses 10MW Energy]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\MA_Designator\MA_Designator_sm.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-			<GuiVisible>true</GuiVisible>
 			<Components>
 				<Component Subtype="SteelPlate" Count="7"/>
 				<Component Subtype="GVK_Laser_Tech" Count="3">
@@ -172,6 +170,8 @@
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

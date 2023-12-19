@@ -12,7 +12,6 @@
 				[500m Manual Range]
 				[Uses Flare x32]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -54,6 +53,8 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -66,7 +67,6 @@
 				[500m Manual Range]
 				[Uses Flare x9]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -107,6 +107,8 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

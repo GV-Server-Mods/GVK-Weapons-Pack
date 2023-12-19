@@ -49,6 +49,11 @@ namespace Scripts
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
 			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
             DamageScales = new DamageScaleDef 
 			{
                 DamageVoxels = false, // Whether to damage voxels.

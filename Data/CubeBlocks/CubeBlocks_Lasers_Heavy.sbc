@@ -64,6 +64,8 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- MA_T2PDX -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
@@ -82,7 +84,6 @@
 			<Size x="2" y="2" z="2"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<ShowEdges>false</ShowEdges>
-			<GuiVisible>true</GuiVisible>
 			<Model>Models\MA_Laser2\MA_T2PDX.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
@@ -138,6 +139,8 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- MA_Fixed_T2 Gimbal -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
@@ -156,7 +159,6 @@
 			<Size x="1" y="1" z="2"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<ShowEdges>false</ShowEdges>
-			<GuiVisible>true</GuiVisible>
 			<Model>Models\MA_Laser2\MA_Fixed_T2.mwm</Model>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="1.00" EndY="1.00"/>
@@ -172,7 +174,6 @@
 			</BuildProgressModels>
 			<BlockPairName>Lasers_Heavy_Gimbal</BlockPairName>
 			<UseModelIntersection>true</UseModelIntersection>
-			<GuiVisible>true</GuiVisible>
 			<Components>
 				<Component Subtype="SteelPlate" Count="26"/>
 				<Component Subtype="GVK_Laser_Tech" Count="4">
@@ -220,6 +221,8 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<AiEnabled>false</AiEnabled>
 			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

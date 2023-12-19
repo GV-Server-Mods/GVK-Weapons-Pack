@@ -7,18 +7,16 @@
 				<SubtypeId/>
 			</Id>
 			<DisplayName>[Rocket] Large Hydra Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\Cubes\LGMissileBase.dds</Icon>
+            <Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[900m Auto Range]
 				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="-1.25" z="0"/>
-			<Model>Models\Cubes\Large\Missile\LGMissileBase.mwm</Model>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="1.25" z="0"/>
+            <Model>Models\Cubes\Large\MissileTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="88"/>
@@ -41,11 +39,11 @@
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
 			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Missile\LGMissileBase_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\Large\Missile\LGMissileBase_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Missile\LGMissileBase_BS3.mwm"/>
-			</BuildProgressModels>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MissileTurretConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MissileTurretConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MissileTurretConstruction_3.mwm" />
+            </BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -91,6 +89,11 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -103,7 +106,6 @@
 				[600m Auto Range]
 				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="5" z="5"/>
@@ -183,6 +185,8 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -195,7 +199,6 @@
 				[1000m Manual Range]
 				[Uses Hydra HE x19]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="2"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -241,6 +244,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -253,7 +258,6 @@
 				[900m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>true</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -298,6 +302,8 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -310,7 +316,6 @@
 				[900m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
 			<ModelOffset x="0" y="0" z="0"/>
@@ -359,6 +364,8 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<DLC>Warfare2</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

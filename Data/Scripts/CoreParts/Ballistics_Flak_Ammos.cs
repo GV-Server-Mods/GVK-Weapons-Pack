@@ -48,6 +48,11 @@ namespace Scripts
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 1000f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
             Fragment = new FragmentDef 
 			{
                 AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
@@ -66,7 +71,7 @@ namespace Scripts
                     Interval = 0, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 80, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    Proximity = 100, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
@@ -83,8 +88,8 @@ namespace Scripts
                 Characters = 0.1f,
                 Grids = new GridSizeDef
                 {
-                    Large = -1f,
-                    Small = -1f,
+                    Large = 0f,
+                    Small = 0f,
                 },
                 Armor = new ArmorDef
                 {
@@ -107,11 +112,11 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 80f,
+                    Radius = 101f,
                     Damage = 1f,
                     Depth = 0f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
+                    Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
                     //.Curve drops off damage sharply as it approaches the max radius
                     //.InvCurve drops off sharply from the middle and tapers to max radius
@@ -129,16 +134,16 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                TargetLossDegree = 30f, // Degrees, Is pointed forward
+                TargetLossDegree = 0f, // Degrees, Is pointed forward
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                DesiredSpeed = 800, // voxel phasing if you go above 5100
+                DesiredSpeed = 900, // voxel phasing if you go above 5100
                 MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
-                SpeedVariance = Random(start: -25f, end: 25), // subtracts value from DesiredSpeed
+                SpeedVariance = Random(start: -0f, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
                 Smarts = new SmartsDef
                 {
-                    MaxTargets = 1, // Number of targets allowed before ending, 0 = unlimited
+                    MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
 					OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     ScanRange = 0, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = true, // this disables target follow and instead travel straight ahead (but will respect offsets).
@@ -256,7 +261,7 @@ namespace Scripts
             AmmoGraphics = new GraphicDef
             {
                 ModelName = "",
-                VisualProbability = 0.15f,
+                VisualProbability = 0.25f,
                 Lines = new LineDef
                 {
                     ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.

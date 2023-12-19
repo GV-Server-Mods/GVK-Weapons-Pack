@@ -83,12 +83,12 @@ namespace Scripts
                     Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 1800, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
-                StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
+                StopTrackingSpeed = 2000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef
             {
@@ -123,7 +123,7 @@ namespace Scripts
                     ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 8, // Number of physical magazines to consume on reload.
-					DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 },
 				Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,
@@ -170,7 +170,7 @@ namespace Scripts
                     Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 1300, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
@@ -256,7 +256,7 @@ namespace Scripts
                     Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
