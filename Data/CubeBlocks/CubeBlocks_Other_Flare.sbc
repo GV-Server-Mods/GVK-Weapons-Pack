@@ -15,16 +15,16 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\large\LG_TSOFlareLauncherConveyorL2S.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="GVK_Missile_Tech" Count="5"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4"/>
 				<Component Subtype="Construction" Count="10"/>
 				<Component Subtype="LargeTube" Count="10"/>
 				<Component Subtype="Computer" Count="4"/>
-				<Component Subtype="SteelPlate" Count="10"/>
+				<Component Subtype="SteelPlate" Count="25"/>
 			</Components>
-			<BuildTimeSeconds>12</BuildTimeSeconds>
+			<BuildTimeSeconds>30</BuildTimeSeconds>
 			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -70,16 +70,16 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\small\TSOFlareLauncherConveyorSG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2"/>
 				<Component Subtype="Construction" Count="1"/>
 				<Component Subtype="LargeTube" Count="3"/>
 				<Component Subtype="Computer" Count="1"/>
-				<Component Subtype="SteelPlate" Count="1"/>
+				<Component Subtype="SteelPlate" Count="7"/>
 			</Components>
-			<BuildTimeSeconds>6</BuildTimeSeconds>
+			<BuildTimeSeconds>10</BuildTimeSeconds>
 			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

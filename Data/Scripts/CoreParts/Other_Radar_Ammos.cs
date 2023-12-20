@@ -43,7 +43,7 @@ namespace Scripts
         private AmmoDef AryxRadarAmmo => new AmmoDef
         {
             AmmoMagazine = "Energy",
-            AmmoRound = "Radiowave",
+            AmmoRound = "AryxRadarAmmo",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 0f,
@@ -52,29 +52,7 @@ namespace Scripts
             BackKickForce = 0f,
             DecayPerShot = 0,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            EnergyMagazineSize = 120,
-            Shape = new ShapeDef //defines the collision shape of projectile, defaults line and visual Line Length if set to 0
-            {
-                Shape = LineShape,
-                Diameter = 1,
-            },
-            ObjectsHit = new ObjectsHitDef
-            {
-                MaxObjectsHit = 0, // 0 = disabled
-                CountBlocks = false, // counts gridBlocks and not just entities hit
-            },
-            Pattern = new PatternDef
-            {
-                Patterns = new[] {
-                    "",
-                },
-                Enable = false,
-                TriggerChance = 1f,
-                Random = false,
-                RandomMin = 1,
-                RandomMax = 1,
-                SkipParent = false,
-            },
+            EnergyMagazineSize = 0,
             DamageScales = new DamageScaleDef
             {
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
@@ -84,8 +62,8 @@ namespace Scripts
                 Characters = 0f,
                 FallOff = new FallOffDef
                 {
-                    Distance = 10000f, // Distance at which max damage begins falling off.
-                    MinMultipler = 0.1f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
+                    Distance = 1f, // Distance at which max damage begins falling off.
+                    MinMultipler = 0f, // value from 0.0f to 1f where 0.1f would be a min damage of 10% of max damage.
                 },
                 Grids = new GridSizeDef
                 {
