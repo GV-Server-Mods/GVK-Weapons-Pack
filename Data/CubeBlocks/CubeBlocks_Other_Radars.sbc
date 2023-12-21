@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- HONIR DESIGNATOR -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>OKIObserverSM</SubtypeId>
+				<SubtypeId>OKIDesignator</SubtypeId>
 			</Id>
 			<DisplayName>[Sensor] Small Radar</DisplayName>
-			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
+			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.
 				[5km Range]</Description>
-			<Icon>Textures\GUI\Icons\Cubes\OKIObserverSM.dds</Icon>
-			<CubeSize>Small</CubeSize>
+			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
+			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\Designator\Designator_Base.mwm</Model>
+			<ModelOffset x="0" y="0" z="0" />
+			<ShowEdges>false</ShowEdges>
+			<GuiVisible>true</GuiVisible>
+			<Model>Models\Cubes\Large\honir_designator_01\HONIR_DESIGNATOR_01.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
@@ -24,95 +27,126 @@
 				<Component Subtype="Computer" Count="20"/>
 				<Component Subtype="SteelPlate" Count="10"/>
 			</Components>
-			<CriticalComponent Subtype="Computer" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0" />
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="0.19" StartY="0.19" EndX="0.81" EndY="0.81"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\Designator\Designator_Base_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\Designator\Designator_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Designator\LG_Designator_Base_BS1.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>OKIDesignator</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>20</BuildTimeSeconds>
+			<BuildTimeSeconds>40</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
-			<WeaponDefinitionId Subtype="Others_Radar"/>
-			<InventoryMaxVolume>0.001</InventoryMaxVolume>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<DamageEffectId>213</DamageEffectId>
+			<WeaponDefinitionId Subtype="Others_Radar" />
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<MinElevationDegrees>-30</MinElevationDegrees>
 			<MaxElevationDegrees>90</MaxElevationDegrees>
 			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
 			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
-			<RotationSpeed>0.003</RotationSpeed>
-			<ElevationSpeed>0.003</ElevationSpeed>
-			<IdleRotation>false</IdleRotation>
-			<MaxRangeMeters>6000</MaxRangeMeters>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>8000</MaxRangeMeters>
+			<RotationSpeed>0.007</RotationSpeed>
+			<ElevationSpeed>0.005 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
-			<MaxFov>2</MaxFov>
-			<DeformationRatio>0.2</DeformationRatio>
+			<MaxFov>1.04719755</MaxFov>
+			<ShowEdges>false</ShowEdges>
 			<AiEnabled>false</AiEnabled>
+			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>1</PCU>
-            <IsAirTight>false</IsAirTight>
+			<IsAirTight>false</IsAirTight>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>OKIDesignator</SubtypeId>
+				<SubtypeId>OKIDesignator_Small</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Large Radar</DisplayName>
-			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by Okim-Chipstix-Ash.
+			<DisplayName>[Sensor] Small Radar</DisplayName>
+			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.
 				[5km Range]</Description>
-			<Icon>Textures\GUI\Icons\Cubes\OKIDesignator.dds</Icon>
-			<CubeSize>Large</CubeSize>
+			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
+			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\Designator\LG_Designator_Base.mwm</Model>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0" />
+			<ShowEdges>false</ShowEdges>
+			<GuiVisible>true</GuiVisible>
+			<Model>Models\Cubes\Large\honir_designator_01\HONIR_DESIGNATOR_01.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="25"/>
-				<Component Subtype="Construction" Count="20"/>
-				<Component Subtype="Detector" Count="10"/>
-				<Component Subtype="LargeTube" Count="5"/>
-				<Component Subtype="Computer" Count="40"/>
-				<Component Subtype="SteelPlate" Count="25"/>
+				<Component Subtype="SteelPlate" Count="10"/>
+				<Component Subtype="Construction" Count="5"/>
+				<Component Subtype="Detector" Count="5"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Computer" Count="20"/>
+				<Component Subtype="SteelPlate" Count="10"/>
 			</Components>
-			<CriticalComponent Subtype="Computer" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0" />
 			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.12" StartY="0.12" EndX="0.88" EndY="0.88"/>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="4" EndY="4"/>
 			</MountPoints>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Designator\LG_Designator_Base_BS1.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>OKIDesignator</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>20</BuildTimeSeconds>
+			<BuildTimeSeconds>40</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
-			<WeaponDefinitionId Subtype="Others_Radar"/>
-			<InventoryMaxVolume>0.01</InventoryMaxVolume>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<DamageEffectId>213</DamageEffectId>
+			<WeaponDefinitionId Subtype="Others_Radar" />
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<MinElevationDegrees>-30</MinElevationDegrees>
 			<MaxElevationDegrees>90</MaxElevationDegrees>
 			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
 			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
-			<RotationSpeed>0.003</RotationSpeed>
-			<ElevationSpeed>0.003</ElevationSpeed>
-			<IdleRotation>false</IdleRotation>
-			<MaxRangeMeters>6000</MaxRangeMeters>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>8000</MaxRangeMeters>
+			<RotationSpeed>0.007</RotationSpeed>
+			<ElevationSpeed>0.005 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
-			<MaxFov>2</MaxFov>
-			<DeformationRatio>0.2</DeformationRatio>
+			<MaxFov>1.04719755</MaxFov>
+			<ShowEdges>false</ShowEdges>
 			<AiEnabled>false</AiEnabled>
+			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>1</PCU>
-            <IsAirTight>false</IsAirTight>
+			<IsAirTight>false</IsAirTight>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
