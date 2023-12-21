@@ -77,8 +77,8 @@
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="2" z="3"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
@@ -170,8 +170,8 @@
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="2" z="3"/>
-			<ModelOffset x="0" y="1.25" z="0"/>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
             <Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
