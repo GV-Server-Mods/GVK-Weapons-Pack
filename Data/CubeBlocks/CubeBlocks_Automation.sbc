@@ -20,7 +20,7 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>GVK_DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Detector" Count="20"/>
@@ -65,7 +65,7 @@
 			<ResourceSinkGroup>Utility</ResourceSinkGroup>
 			<PowerInputIdle>0.0005</PowerInputIdle>
 			<PCU>5</PCU>
-			<MaxRangeMeters>2000</MaxRangeMeters>
+			<MaxRangeMeters>3000</MaxRangeMeters>
 			<ScreenAreas>
 				<ScreenArea Name="CockpitScreen_01" DisplayName="DisplayName_Screen_Large" TextureResolution="512" ScreenWidth="7" ScreenHeight="5"/>
 				<ScreenArea Name="CockpitScreen_02" DisplayName="DisplayName_Screen_TopRight" TextureResolution="256" ScreenWidth="7" ScreenHeight="11"/>
@@ -92,7 +92,7 @@
 				<Component Subtype="GVK_Data_Core" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>GVK_DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Detector" Count="4"/>
@@ -130,7 +130,7 @@
 			<ResourceSinkGroup>Utility</ResourceSinkGroup>
 			<PowerInputIdle>0.0005</PowerInputIdle>
 			<PCU>5</PCU>
-			<MaxRangeMeters>2000</MaxRangeMeters>
+			<MaxRangeMeters>3000</MaxRangeMeters>
 			<IsAirTight>true</IsAirTight>
 			<ScreenAreas>
 				<ScreenArea Name="CockpitScreen_01" DisplayName="" TextureResolution="256" ScreenWidth="5" ScreenHeight="4"/>
