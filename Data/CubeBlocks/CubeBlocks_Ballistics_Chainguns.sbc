@@ -21,7 +21,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="830"/>
@@ -87,7 +87,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="610"/>
@@ -180,7 +180,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="400"/>
@@ -275,7 +275,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="170"/>
@@ -381,7 +381,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="22"/>
@@ -448,7 +448,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="28"/>

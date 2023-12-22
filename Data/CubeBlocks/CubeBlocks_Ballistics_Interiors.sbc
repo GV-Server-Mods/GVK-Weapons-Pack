@@ -23,7 +23,7 @@
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>GVK_CUScrap</SubtypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="400"/>

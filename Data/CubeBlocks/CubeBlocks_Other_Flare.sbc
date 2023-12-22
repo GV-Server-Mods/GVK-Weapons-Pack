@@ -18,7 +18,12 @@
 			<Model>Models\Cubes\large\LG_TSOFlareLauncherConveyorL2S.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
+				<Component Subtype="GVK_Missile_Tech" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>MissileScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="10"/>
 				<Component Subtype="LargeTube" Count="10"/>
 				<Component Subtype="Computer" Count="4"/>
@@ -73,7 +78,12 @@
 			<Model>Models\Cubes\small\TSOFlareLauncherConveyorSG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="GVK_Missile_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>MissileScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="1"/>
 				<Component Subtype="LargeTube" Count="3"/>
 				<Component Subtype="Computer" Count="1"/>
