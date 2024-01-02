@@ -106,8 +106,8 @@ namespace Scripts
                     MagsToLoad = 3, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     ShotsInBurst = 1, // Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    FireFull = true, // Whether the weapon should fire the full burst, even if the target is lost or player stops firing prematurely.
+                    DelayAfterBurst = 120, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = false, // Whether the weapon should fire the full burst, even if the target is lost or player stops firing prematurely.
                     GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
                     MaxActiveProjectiles = 3, // Maximum number of drones in flight (only works for drone launchers)
                 },
@@ -125,9 +125,9 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Others_Drone_Offense_Launch,
+                //Others_Drone_Offense_Launch,
 				Others_Drone_Offense_Main,
-				Others_Drone_Defense_Launch,
+				//Others_Drone_Defense_Launch,
 				Others_Drone_Defense_Main,
 				Others_Drone_Gunship,
             },

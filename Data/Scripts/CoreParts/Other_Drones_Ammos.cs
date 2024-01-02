@@ -165,13 +165,13 @@ namespace Scripts
 
         private AmmoDef Others_Drone_Offense_Main => new AmmoDef
         {
-            AmmoMagazine = "Energy",
-            AmmoRound = "Others_Drone_Offense_Main", 
+            AmmoMagazine = "Others_Drone_Falcon",
+            AmmoRound = "Offense Falcon Mode", 
             BaseDamage = 1f,
             Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
-            HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
 			Sync = new SynchronizeDef
@@ -195,7 +195,7 @@ namespace Scripts
                 TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
                     Enable = true, // Enables TimedSpawns mechanism
-                    Interval = 3, // Time between spawning fragments, in ticks
+                    Interval = 6, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 260, // Max number of fragment children to spawn
                     Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
@@ -203,7 +203,7 @@ namespace Scripts
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy: Direct, Lead (always fire), Predict (only fire if it can hit)
 					DirectAimCone = 180f, //Aim cone used for Direct fire, in degrees
-                    GroupSize = 20, // Number of spawns in each group
+                    GroupSize = 10, // Number of spawns in each group
                     GroupDelay = 180, // Delay between each group.
                 },
             },
@@ -257,7 +257,7 @@ namespace Scripts
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = true, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
-					OffsetRatio = 0f, // The ratio to offset the random dir (0 to 1) 
+					OffsetRatio = 0.2f, // The ratio to offset the random dir (0 to 1) 
 					OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FocusOnly = false, // only target the constructs Ai's focus target
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
@@ -270,7 +270,7 @@ namespace Scripts
                 {
 
                     //0
-                    new ApproachDef // Head to target and loiter
+                    new ApproachDef // Head to target and orbit
                     {
                         // Start/End behaviors 
                         RestartCondition = ForceRestart, // Wait, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
@@ -366,9 +366,9 @@ namespace Scripts
                         // Target navigation behavior 
                         Orbit = true, // Orbit the target
                         OrbitRadius = 700, // The orbit radius to extend between the projectile and the target (target volume + this value)
-                        OffsetMinRadius = 0, // Min Radius to offset from target.  
-                        OffsetMaxRadius = 0, // Max Radius to offset from target.  
-                        OffsetTime = 0, // How often to change the offset direction.
+                        OffsetMinRadius = -100, // Min Radius to offset from target.  
+                        OffsetMaxRadius = 100, // Max Radius to offset from target.  
+                        OffsetTime = 60, // How often to change the offset direction.
                         
                         // Other
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
@@ -638,8 +638,8 @@ namespace Scripts
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = true, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
-					OffsetRatio = 0f, // The ratio to offset the random dir (0 to 1) 
-					OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					OffsetRatio = 0.2f, // The ratio to offset the random dir (0 to 1) 
+					OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FocusOnly = false, // only target the constructs Ai's focus target
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 2000, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
@@ -715,13 +715,13 @@ namespace Scripts
 
         private AmmoDef Others_Drone_Defense_Main => new AmmoDef
         {
-            AmmoMagazine = "Energy",
-            AmmoRound = "Others_Drone_Defense_Main", 
+            AmmoMagazine = "Others_Drone_Falcon",
+            AmmoRound = "Defense Falcon Mode", 
             BaseDamage = 1f,
             Mass = 500f, // in kilograms
             Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
-            HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
 			Sync = new SynchronizeDef
@@ -745,7 +745,7 @@ namespace Scripts
                 TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
                     Enable = true, // Enables TimedSpawns mechanism
-                    Interval = 3, // Time between spawning fragments, in ticks
+                    Interval = 6, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 260, // Max number of fragment children to spawn
                     Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
@@ -753,7 +753,7 @@ namespace Scripts
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy: Direct, Lead (always fire), Predict (only fire if it can hit)
 					DirectAimCone = 180f, //Aim cone used for Direct fire, in degrees
-                    GroupSize = 20, // Number of spawns in each group
+                    GroupSize = 10, // Number of spawns in each group
                     GroupDelay = 180, // Delay between each group.
                 },
             },
@@ -807,8 +807,8 @@ namespace Scripts
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = true, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
-					OffsetRatio = 0f, // The ratio to offset the random dir (0 to 1) 
-					OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					OffsetRatio = 0.2f, // The ratio to offset the random dir (0 to 1) 
+					OffsetTime = 60, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     FocusOnly = false, // only target the constructs Ai's focus target
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 2000, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
@@ -894,9 +894,9 @@ namespace Scripts
                         // navigation behavior 
                         Orbit = true, // Orbit the Position
                         OrbitRadius = 200, // The orbit radius to extend between the projectile and the Position (target volume + this value)
-                        OffsetMinRadius = 0, // Min Radius to offset from Position.  
-                        OffsetMaxRadius = 0, // Max Radius to offset from Position.  
-                        OffsetTime = 0, // How often to change the offset radius.
+                        OffsetMinRadius = -100, // Min Radius to offset from target.  
+                        OffsetMaxRadius = 100, // Max Radius to offset from target.  
+                        OffsetTime = 60, // How often to change the offset direction.
                         
                         // Other
                         NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
@@ -1067,7 +1067,7 @@ namespace Scripts
 			{
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 420, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                DesiredSpeed = 400, // voxel phasing if you go above 5100
+                DesiredSpeed = 500, // voxel phasing if you go above 5100
                 MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
                 RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
