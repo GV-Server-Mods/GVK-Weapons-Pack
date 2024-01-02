@@ -89,7 +89,7 @@ namespace Scripts
             },
             AmmoGraphics = new GraphicDef 
 			{
-                VisualProbability = 0.75f,
+                VisualProbability = 0.6f,
                 Decals = new DecalDef
                 {
                     MaxAge = 3600,
