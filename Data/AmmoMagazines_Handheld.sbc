@@ -40,7 +40,7 @@
                 <Z>0.02</Z>
             </Size>
             <Mass>0.9</Mass>
-            <Volume>0.3</Volume>
+            <Volume>0.2</Volume>
             <Model>Models\Weapons\AutomaticRifle_Magazine.mwm</Model>
             <PhysicalMaterial>Ammo</PhysicalMaterial>
             <Capacity>20</Capacity>

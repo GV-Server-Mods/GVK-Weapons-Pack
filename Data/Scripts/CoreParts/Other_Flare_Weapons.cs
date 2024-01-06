@@ -77,7 +77,7 @@ namespace Scripts {
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.048f, // Inventory capacity in kL.
+                    InventorySize = 0.396f, // Inventory capacity in kL.
                     IdlePower = 0.32f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -88,7 +88,7 @@ namespace Scripts {
                     RateOfFire = 240, // Set this to 3600 for beam weapons. This is how fast your gun fires per minute.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 1200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 4, // Number of physical magazines to consume on reload.
                     ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
                     DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -170,7 +170,7 @@ namespace Scripts {
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.006f, // Inventory capacity in kL.
+                    InventorySize = 0.132f, // Inventory capacity in kL.
                     IdlePower = 0.25f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -181,7 +181,7 @@ namespace Scripts {
                     RateOfFire = 140, // Set this to 3600 for beam weapons. This is how fast your gun fires per minute.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    ReloadTime = 360, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 2, // Number of physical magazines to consume on reload.
                     FireFull = true, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
                 },

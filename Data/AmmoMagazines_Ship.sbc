@@ -25,24 +25,6 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Energy</SubtypeId>
-			</Id>
-			<DisplayName>Energy</DisplayName>
-			<Icon>Textures\GUI\Icons\component\BatteryComponent.dds</Icon>
-			<Size>
-				<X>0.25</X>
-				<Y>0.2</Y>
-				<Z>0.2</Z>
-			</Size>
-			<Mass>1</Mass>
-			<Volume>1</Volume>
-			<Model>Models\Components\PowerCellComponent.mwm</Model>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>NATO_25x184mm</SubtypeId>
 			</Id>
 			<DisplayName>[Gatling] 25mm KE x30</DisplayName>
@@ -382,8 +364,8 @@
 				<Y>0.05</Y>
 				<Z>0.02</Z>
 			</Size>
-			<Mass>0.05</Mass>
-			<Volume>0.05</Volume>
+            <Mass>1</Mass>
+            <Volume>6</Volume>
 			<Model>Models\Weapons\Pistol_FlareGun_Magazine.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>4</Capacity>
@@ -507,7 +489,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxRainbow</SubtypeId>
 			</Id>
-			<DisplayName>[Flare] Fireworks Box x8</DisplayName>
+			<DisplayName>[Flare] Fireworks Box x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -515,10 +497,10 @@
 				<Z>0.2</Z>
 			</Size>
 			<Mass>10</Mass>
-			<Volume>6</Volume>
+			<Volume>60</Volume>
 			<Model>Models\Weapons\FireworksBoxRainbow.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>8</Capacity>
+			<Capacity>30</Capacity>
 			<AmmoDefinitionId Subtype="FireworkRainbow"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
