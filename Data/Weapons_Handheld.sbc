@@ -28,7 +28,7 @@
 			-->
 			<AmmoMagazines>
 				Ensure you give the weapon a blanked/dummy magazine.  Your real one should be referenced by the ammo.cs
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			Match the ROF and ReloadTime here to your weapon.cs to keep animations in sync.
             <ReloadTime>2400</ReloadTime>
@@ -86,7 +86,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>10</RecoilJetpackVertical>
@@ -143,7 +143,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>15</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>8</RecoilJetpackHorizontal>
@@ -198,7 +198,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<ReloadTime>2400</ReloadTime>
 			<RecoilJetpackVertical>6</RecoilJetpackVertical>
@@ -255,7 +255,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects> -->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>0</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>0</RecoilJetpackHorizontal>
@@ -311,7 +311,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>1</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>1</RecoilJetpackHorizontal>
@@ -367,7 +367,7 @@
                 <Effect Action="Shoot" Dummy="Shell_Casings" Particle="Shell_Casings" InstantStop="false"/>
             </Effects>-->
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Blank"/>
+				<AmmoMagazine Subtype="Energy"/>
 			</AmmoMagazines>
 			<RecoilJetpackVertical>0.5</RecoilJetpackVertical>
 			<RecoilJetpackHorizontal>0.5</RecoilJetpackHorizontal>
