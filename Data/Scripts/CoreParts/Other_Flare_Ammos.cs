@@ -327,8 +327,8 @@ namespace Scripts
                 Type = AntiSmart, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Field, // Effect , Field
                 Strength = 1f,
-                Radius = 1000f, // Meters
-                Duration = 1200, // In Ticks
+                Radius = 700f, // Meters
+                Duration = 1000, // In Ticks
                 StackDuration = true, // Combined Durations
                 Depletable = false,
                 MaxStacks = 1, // Max Debuffs at once
@@ -358,9 +358,9 @@ namespace Scripts
                 },
                 Field = new FieldDef
                 {
-                    Interval = 6, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
+                    Interval = 30, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
                     PulseChance = 20, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 180, // How many ticks it should take the field to grow to full size.
+                    GrowTime = 600, // How many ticks it should take the field to grow to full size.
                     HideModel = false, // Hide the default bubble, or other model if specified.
                     ShowParticle = true, // Show Block damage effect.
                     TriggerRange = 1000f, //range at which fields are triggered
