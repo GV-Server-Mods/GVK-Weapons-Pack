@@ -126,7 +126,7 @@ namespace Scripts
 			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 
-		private OtherDef Common_Weapons_Hardpoint_Other_Large = new OtherDef 
+		private OtherDef Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck = new OtherDef 
 		{
 			ConstructPartCap = 0,
 			RotateBarrelAxis = 0,
@@ -134,23 +134,9 @@ namespace Scripts
 			MuzzleCheck = false,
 			DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 			NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
- 			Debug = false,
-			RestrictionRadius = 1.25f, // Meters, radius of sphere disable this gun if another is present
-			CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-			CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-		};
-
-		private OtherDef Common_Weapons_Hardpoint_Other_Small_Fixed = new OtherDef 
-		{
-			ConstructPartCap = 0,
-			RotateBarrelAxis = 0,
-			EnergyPriority = 0,
-			MuzzleCheck = false,
-			DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
-			NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
 			Debug = false,
-			RestrictionRadius = 0.25f, // Meters, radius of sphere disable this gun if another is present
-			CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
+			RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
+			CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
 			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 

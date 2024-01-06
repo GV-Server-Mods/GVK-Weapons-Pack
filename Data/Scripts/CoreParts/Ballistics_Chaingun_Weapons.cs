@@ -171,7 +171,7 @@ namespace Scripts
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
-                Other = Common_Weapons_Hardpoint_Other_Large,
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T1,
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
                 Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
@@ -368,7 +368,7 @@ namespace Scripts
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
                 },
-				Other = Common_Weapons_Hardpoint_Other_Small_Fixed,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T1,
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
                 Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
@@ -415,7 +415,7 @@ namespace Scripts
 				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MaxTargetDistance = 1900, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 				TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
 				TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed

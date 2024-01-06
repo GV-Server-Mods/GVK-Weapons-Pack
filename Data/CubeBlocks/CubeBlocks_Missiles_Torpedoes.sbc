@@ -87,7 +87,7 @@
 			</Id>
 			<DisplayName>[Torpedo] Small Crusader Launcher</DisplayName>
 			<Description>This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
-				[2500m Semi-Auto Range]
+				[3000m Semi-Auto Range]
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderLauncherOpenStatic.png</Icon>
 			<CubeSize>Small</CubeSize>
@@ -246,7 +246,7 @@
 			</Id>
 			<DisplayName>[Torpedo] Small Crusader Launcher NPC</DisplayName>
 			<Description>The Crusader Torpedo is matched only by the MAC in range, however this fire-and-forget torpedo can deliver a powerful EMP warhead on-target with no range penaulty, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
-				[2500m Semi-Auto Range]
+				[3000m Semi-Auto Range]
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
 			<Icon>Textures\GUI\Icons\CrusaderLauncherOpenStatic.png</Icon>
 			<CubeSize>Small</CubeSize>

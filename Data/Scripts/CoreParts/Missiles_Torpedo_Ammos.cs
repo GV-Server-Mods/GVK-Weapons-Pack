@@ -142,7 +142,7 @@ namespace Scripts
                 TargetLossTime = 3, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).                MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 50f, // 30. Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 200, // 300. voxel phasing if you go above 5100
-                MaxTrajectory = 4000f, // Max Distance the projectile or beam can Travel.
+                MaxTrajectory = 3500f, // Max Distance the projectile or beam can Travel.
 				TotalAcceleration = 0, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {

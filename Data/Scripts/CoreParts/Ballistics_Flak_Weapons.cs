@@ -18,6 +18,25 @@ namespace Scripts
     partial class Parts
     {
 
+		private TargetingDef Ballistics_Flak_Targeting = new TargetingDef 
+		{
+			Threats = new[] 
+			{
+				Projectiles, Characters, Grids, 
+			},
+			SubSystems = new[] 
+			{
+				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+			},
+			ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
+			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
+			MaxTargetDistance = 1800, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
+			TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
+			TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
+			StopTrackingSpeed = 2000, // Do not track threats traveling faster than this speed; 0 = unlimited.
+		};
+
 		private HardPointAudioDef Ballistics_Flak_Hardpoint_Audio = new HardPointAudioDef 
 		{
 			PreFiringSound = "",
@@ -72,24 +91,7 @@ namespace Scripts
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "Muzzle_Missile_Left", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] 
-				{
-                    Projectiles, Characters, Grids, 
-                },
-                SubSystems = new[] 
-				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
-                },
-                ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MaxTargetDistance = 1800, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
-                StopTrackingSpeed = 2000, // Do not track threats traveling faster than this speed; 0 = unlimited.
-            },
+            Targeting = Ballistics_Flak_Targeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Large Assault Cannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
@@ -159,24 +161,7 @@ namespace Scripts
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "Muzzle_Missile", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] 
-				{
-                    Projectiles, Characters, Grids, 
-                },
-                SubSystems = new[] 
-				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
-                },
-                ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MaxTargetDistance = 1300, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
-                StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
-            },
+            Targeting = Ballistics_Flak_Targeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Small Assault Cannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
@@ -276,7 +261,7 @@ namespace Scripts
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
                 },
-				Other = Common_Weapons_Hardpoint_Other_Small_Fixed,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 60,

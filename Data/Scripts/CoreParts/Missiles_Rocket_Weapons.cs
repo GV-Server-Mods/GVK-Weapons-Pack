@@ -30,7 +30,7 @@ namespace Scripts
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-			MaxTargetDistance = 700, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 1000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
@@ -141,24 +141,7 @@ namespace Scripts
 					"muzzle_missile_002",
                 },
             },
-			Targeting = new TargetingDef 
-			{
-				Threats = new[] 
-				{
-					Grids,
-				},
-                SubSystems = new[] 
-				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
-                },
-				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MaxTargetDistance = 600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-				TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-				TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
-				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			},
+			Targeting = Missiles_Rocket_Targeting,
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileTurret", // name of weapon in terminal
@@ -254,7 +237,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 320,
@@ -321,7 +304,7 @@ namespace Scripts
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },				
-                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,				
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,				
                 Loading = new LoadingDef
                 {
                     RateOfFire = 480,

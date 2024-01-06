@@ -79,7 +79,7 @@
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. 
-				[1800m Semi-Auto Range]
+				[2000m Semi-Auto Range]
 				[Uses Archer HE x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -213,7 +213,7 @@
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Archer is a ship-to-ship homing missile effective against slow large targets. 
-				[1800m Semi-Auto Range]
+				[2300m Semi-Auto Range]
 				[Uses Archer HE x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

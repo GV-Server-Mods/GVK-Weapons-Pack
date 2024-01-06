@@ -59,7 +59,7 @@ namespace Scripts
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-			MaxTargetDistance = 1800, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 2, // 0 = unlimited, max number of blocks to randomize between
@@ -85,19 +85,6 @@ namespace Scripts
 			InventorySize = 0.380f,
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
-		};
-
-		private OtherDef Missiles_Missile_Hardpoint_Other => new OtherDef 
-		{
-			ConstructPartCap = 0,
-			RotateBarrelAxis = 0,
-			DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
-			NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-			MuzzleCheck = false,
-			Debug = false,
-			RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-			CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-			CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
 		};
 
 		private LoadingDef Missiles_Missile_Hardpoint_Loading_Large = new LoadingDef
@@ -205,7 +192,7 @@ namespace Scripts
                 Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = Missiles_Missile_Hardpoint_HardWare_Large,
-				Other = Missiles_Missile_Hardpoint_Other,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = Missiles_Missile_Hardpoint_Loading_Large,
 				Audio = Missiles_Missile_Hardpoint_Audio,
             },
@@ -256,7 +243,7 @@ namespace Scripts
                 Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
-				Other = Missiles_Missile_Hardpoint_Other,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = Missiles_Missile_Hardpoint_Loading_Small,
                 Audio = Missiles_Missile_Hardpoint_Audio,
             },

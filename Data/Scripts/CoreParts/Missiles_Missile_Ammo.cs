@@ -113,7 +113,7 @@ namespace Scripts
                 MaxLifeTime = 1200, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 300f,
                 DesiredSpeed = 450,
-                MaxTrajectory = 2500f,
+                MaxTrajectory = 2800f,
                 SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 100), // subtracts value from MaxTrajectory
 				TotalAcceleration = 0, // 0 means no limit, something to do due with a thing called delta and something called v.

@@ -20,7 +20,7 @@ namespace Scripts
 
 		//Common definitions
 		
-		private TargetingDef Ballistics_Gatlings_Targeting_T2 => new TargetingDef 
+		private TargetingDef Ballistics_Gatlings_Targeting => new TargetingDef 
 		{
 			Threats = new[] 
 			{
@@ -33,17 +33,17 @@ namespace Scripts
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-			MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 1500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
-		private TargetingDef Ballistics_Gatlings_Targeting_T1 => new TargetingDef 
+		private TargetingDef Ballistics_Gatlings_Targeting_Long => new TargetingDef 
 		{
 			Threats = new[] 
 			{
-				 Characters, Projectiles, Grids,   // threats percieved automatically without changing menu settings
+				Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] 
 			{
@@ -52,9 +52,9 @@ namespace Scripts
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-			MaxTargetDistance = 900, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+			MaxTargetDistance = 1600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
@@ -185,7 +185,7 @@ namespace Scripts
 				Ejector = "ejector",
 				Scope = "camera", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = Ballistics_Gatlings_Targeting_T2,
+            Targeting = Ballistics_Gatlings_Targeting,
             HardPoint = new HardPointDef
             {
                 PartName = "Sentinel Gatling", // name of weapon in terminal
@@ -238,49 +238,35 @@ namespace Scripts
             //Animations = SentinelTurretAnimations,
         };
 
-        WeaponDefinition LargeGatlingTurret => new WeaponDefinition 
-		{
-            Assignments = new ModelAssignmentsDef
+		WeaponDefinition LargeGatlingTurret
+        {
+            get
             {
-                MountPoints = new[]
-                {
-                    new MountPointDef 
+                var weapon = SentinelTurret;
+                weapon.Assignments = new ModelAssignmentsDef
+				{
+					MountPoints = new[]
 					{
-                        SubtypeId = "LargeGatlingTurret",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "GatlingBarrel",
-                        AzimuthPartId = "GatlingTurretBase1",
-                        ElevationPartId = "GatlingTurretBase2",
-                        DurabilityMod = 0.5f,
-                        IconName = "TestIcon.dds",
-                    },
-                },
-                Muzzles = new []
-                {
-                    "muzzle_projectile_1",
-                },
-            },
-            Targeting = Ballistics_Gatlings_Targeting_T2,
-            HardPoint = new HardPointDef
-            {
-                PartName = "CIWS Large", // name of weapon in terminal
-                DeviateShotAngle = 0.15f,
-                AimingTolerance = 30f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
-                HardWare = Ballistics_Gatlings_Hardpoint_HardWare,
-                Other = Ballistics_Gatlings_Hardpoint_Other,
-                Loading = Ballistics_Gatlings_Hardpoint_Loading,
-				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
-            },
-			Ammos = new[] {
-                NATO_25x184mm,
-            },
-        };
+						new MountPointDef 
+						{
+							SubtypeId = "LargeGatlingTurret",
+							SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+							MuzzlePartId = "GatlingBarrel",
+							AzimuthPartId = "GatlingTurretBase1",
+							ElevationPartId = "GatlingTurretBase2",
+							DurabilityMod = 0.5f,
+							IconName = "TestIcon.dds",
+						},
+					},
+					Muzzles = new []
+					{
+						"muzzle_projectile_1",
+					},
+				};
+				weapon.HardPoint.PartName = "CIWS Large";
+                return weapon;
+            }
+        }
 
         WeaponDefinition SmallGatlingTurret => new WeaponDefinition 
 		{
@@ -304,7 +290,7 @@ namespace Scripts
                     "muzzle_projectile",
                 },
             },
-            Targeting = Ballistics_Gatlings_Targeting_T1,
+            Targeting = Ballistics_Gatlings_Targeting,
             HardPoint = new HardPointDef
             {
                 PartName = "CWIS Small", // name of weapon in terminal
@@ -418,7 +404,7 @@ namespace Scripts
                     "muzzle_projectile",
                 },
             },
-            Targeting = Ballistics_Gatlings_Targeting_T2,
+            Targeting = Ballistics_Gatlings_Targeting_Long,
             HardPoint = new HardPointDef
             {
                 PartName = "Gatling Gimbal", // name of weapon in terminal
@@ -476,28 +462,12 @@ namespace Scripts
                 Ejector = "",
 				Scope = "dummy_camera",
             },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] {
-					Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
-                },
-                SubSystems = new[] 
-				{
-					Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
-                },
-                ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
-                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
-                LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                MaxTargetDistance = 1400, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-                TopTargets = 6, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
-                StopTrackingSpeed = 1000f, // do not track target threats traveling faster than this speed
-            },
+            Targeting = Ballistics_Gatlings_Targeting_Long,
             HardPoint = new HardPointDef
             {
                 PartName = "Vulcan Gatling", // name of weapon in terminal
                 DeviateShotAngle = 0.15f, // Inaccuracy in degrees
-                AimingTolerance = 40f, // 0 - 180 firing angle
+                AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.

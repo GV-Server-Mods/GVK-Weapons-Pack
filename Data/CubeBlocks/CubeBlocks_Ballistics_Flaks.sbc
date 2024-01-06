@@ -110,7 +110,7 @@
 			<DisplayName>[Flak] Small 100mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurret_Small.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
-				[1300m Auto Range (100m min)]
+				[1800m Auto Range (100m min)]
 				[Uses 100mm PROX]</Description>
 			<CubeSize>Small</CubeSize>
 			<GuiVisible>false</GuiVisible>

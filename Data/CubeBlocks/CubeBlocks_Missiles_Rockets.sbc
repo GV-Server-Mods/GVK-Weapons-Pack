@@ -9,7 +9,7 @@
 			<DisplayName>[Rocket] Large Hydra Turret</DisplayName>
             <Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[900m Auto Range]
+				[1000m Auto Range]
 				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
@@ -103,7 +103,7 @@
 			<DisplayName>[Rocket] Small Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[600m Auto Range]
+				[1000m Auto Range]
 				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
@@ -196,7 +196,7 @@
 			<DisplayName>[Rocket] Large Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Manual Range]
+				[1200m Manual Range]
 				[Uses Hydra HE x19]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -255,7 +255,7 @@
 			<DisplayName>[Rocket] Small Hydra launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[900m Manual Range]
+				[1200m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -313,7 +313,7 @@
 			<DisplayName>[Rocket] Small Hydra launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[900m Manual Range]
+				[1200m Manual Range]
 				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
