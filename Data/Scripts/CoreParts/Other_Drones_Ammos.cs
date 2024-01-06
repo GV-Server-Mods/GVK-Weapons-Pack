@@ -45,7 +45,7 @@ namespace Scripts
             AmmoRound = "Offense Falcon Mode", 
             BaseDamage = 1f,
             Mass = 500f, // in kilograms
-            Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            Health = 250f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 5f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -1058,7 +1058,7 @@ namespace Scripts
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "MD_GunshipExplosion",
+                    CustomParticle = "none",
                     CustomSound = "soundName",
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
@@ -1132,13 +1132,13 @@ namespace Scripts
                 {
                     Hit = new ParticleDef
                     {
-                        Name = "",  //MaterialHit_Metal_GatlingGun
+                        Name = "MD_GunshipExplosion",  //MaterialHit_Metal_GatlingGun
                         ApplyToShield = false,
                         Offset = Vector(x: 0, y: 0, z: 0),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
-                            HitPlayChance = 1f,
+                            HitPlayChance = 0.5f,
                         },
                     },
                 },
