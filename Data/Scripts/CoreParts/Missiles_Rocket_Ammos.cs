@@ -179,29 +179,20 @@ namespace Scripts
                     Ammo = new ParticleDef
                     {
                         Name = "MD_BulletGlowMedYellow", //Archer_MissileSmokeTrail
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+						DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Offset = Vector(x: 0, y: 0, z: 0f),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true,
-                            Restart = false,
-                            MaxDistance = 2000,
-                            MaxDuration = 0,
                             Scale = 1f,
                         },
                     },
                     Hit = new ParticleDef
                     {
                         Name = "MD_HydraRocketExplosion", //MD_HydraRocketExplosion MD_InstallationExplosion
-                        ApplyToShield = false,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
+						DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
-                            Loop = false,
-                            Restart = false,
-                            MaxDistance = 5000,
-                            MaxDuration = 0,
                             Scale = 1f,
                             HitPlayChance = 1f,
                         },

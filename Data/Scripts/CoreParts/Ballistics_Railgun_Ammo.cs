@@ -116,7 +116,7 @@ namespace Scripts
                         Name = "RailgunHitBlue",
                         ApplyToShield = false,
                         Color = Color(red: 1f, green: 1f, blue: 1f, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
@@ -241,7 +241,7 @@ namespace Scripts
                         Name = "RailgunHitBlue",
                         ApplyToShield = false,
                         Color = Color(red: 1f, green: 1f, blue: 1f, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,

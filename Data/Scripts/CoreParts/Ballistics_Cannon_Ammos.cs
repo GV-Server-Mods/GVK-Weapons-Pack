@@ -109,7 +109,7 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "MD_Cannon_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
+                        Name = "MD_155_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
                         ApplyToShield = false,
                         Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef

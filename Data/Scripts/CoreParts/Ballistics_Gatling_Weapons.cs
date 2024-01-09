@@ -235,7 +235,6 @@ namespace Scripts
             Ammos = new [] {
                 NATO_25x184mm,
             },
-            //Animations = SentinelTurretAnimations,
         };
 
 		WeaponDefinition LargeGatlingTurret

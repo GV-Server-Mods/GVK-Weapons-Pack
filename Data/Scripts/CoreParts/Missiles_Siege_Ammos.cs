@@ -146,7 +146,7 @@ namespace Scripts
                     Hit = new ParticleDef
                     {
                         Name = "MD_HydraRocketExplosion", //MD_HydraRocketExplosion MD_InstallationExplosion
-                        Offset = Vector(x: 0, y: 0, z: 0f),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 2f,

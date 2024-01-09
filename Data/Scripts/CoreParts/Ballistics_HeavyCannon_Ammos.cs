@@ -104,8 +104,8 @@ namespace Scripts
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "Explosion_AmmunitionLarge", // Particle SubtypeID, from your Particle SBC
-                    CustomSound = "soundName", // SubtypeID from your Audio SBC, not a filename
+                    CustomParticle = "none", // Particle SubtypeID, from your Particle SBC
+                    CustomSound = "none", // SubtypeID from your Audio SBC, not a filename
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 }, 
             },
@@ -133,11 +133,11 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "MD_Cannon_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
+                        Name = "MD_480_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
                         Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 2f,
+                            Scale = 1f,
                             HitPlayChance = 1f,
                         },
                     },
@@ -160,6 +160,7 @@ namespace Scripts
                         Textures = new[] {"WeaponLaser",},
                         DecayTime = 120,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+						CustomWidth = 1.5,
                         UseColorFade = true,
                     },
                 },

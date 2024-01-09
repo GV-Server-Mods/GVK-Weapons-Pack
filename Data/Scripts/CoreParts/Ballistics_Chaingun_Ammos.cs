@@ -145,9 +145,9 @@ namespace Scripts
                 {
                     Hit = new ParticleDef
                     {
-                        Name = "Collision_Sparks",  //MaterialHit_Metal_GatlingGun
+                        Name = "MD_30_Hit",  //MaterialHit_Metal_GatlingGun
                         ApplyToShield = false,
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
