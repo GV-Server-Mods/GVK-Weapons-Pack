@@ -44,8 +44,8 @@ namespace Scripts
             AmmoMagazine = "LargeRailgunAmmo", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "200mm DU", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = true, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 69075f, // comes out to 383.75MW. This is because of the bug where lasers often wouldn't actually hit and needed a fragment to hit, but if it did hit then I didnt want double damage on the MAC.
-            BaseDamage = 1, // Direct damage; one steel plate is worth 100.
+            EnergyCost = 0.04605f, // comes out to 383.75MW. This is because of the bug where lasers often wouldn't actually hit and needed a fragment to hit, but if it did hit then I didnt want double damage on the MAC.
+            BaseDamage = 500000f, // Direct damage; one steel plate is worth 100.
             Mass = 20000f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 30000000f, // Recoil. This is applied to the Parent Grid.
@@ -56,32 +56,16 @@ namespace Scripts
                 PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
                 OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
             },			
-            Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
-                AmmoRound = "LargeRailgunSabot_Fragment", // AmmoRound field of the ammo to spawn.
-                Fragments = 1, // Number of projectiles to spawn.
-                Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
-                Reverse = false, // Spawn projectiles backward instead of forward.
-                DropVelocity = true, // fragments will not inherit velocity from parent.
-                Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards), value is read from parent ammo type.
-                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
-                MaxChildren = 0, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
-                IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
-                AdvOffset = Vector(x: 0, y: 0, z: 0), // advanced offsets the fragment by xyz coordinates relative to parent, value is read from fragment ammo type.
-                TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
-                {
-                    Enable = false, // Enables TimedSpawns mechanism
-                    Interval = 0, // Time between spawning fragments, in ticks, 0 means every tick, 1 means every other
-                    StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
-                    MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 1000, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
-                    ParentDies = true, // Parent dies once after it spawns its last child.
-                    PointAtTarget = true, // Start fragment direction pointing at Target
-                    PointType = Predict, // Point accuracy, Direct, Lead (always fire), Predict (only fire if it can hit)
-                    GroupSize = 5, // Number of spawns in each group
-                    GroupDelay = 120, // Delay between each group.
-                },
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
+            ObjectsHit = new ObjectsHitDef 
+			{
+                MaxObjectsHit = 5, // 0 = disabled
+                CountBlocks = true, // counts gridBlocks and not just entities hit
+            },						
             DamageScales = new DamageScaleDef 
 			{
                 DamageVoxels = false, // Whether to damage voxels.
@@ -89,7 +73,7 @@ namespace Scripts
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
                 FallOff = new FallOffDef
                 {
-                    Distance = 2000f, // Distance at which damage begins falling off.
+                    Distance = 0000f, // Distance at which damage begins falling off.
                     MinMultipler = 0.25f, // Value from 0.0001f to 1f where 0.1f would be a min damage of 10% of base damage.
                 },
                 Grids = new GridSizeDef
@@ -115,9 +99,24 @@ namespace Scripts
             },
 			AreaOfDamage = new AreaOfDamageDef 
 			{
-                EndOfLife = new EndOfLifeDef
+                ByBlockHit = new ByBlockHitDef
                 {
                     Enable = true,
+                    Radius = 5f,
+                    Damage = 20000f, 
+                    Depth = 5,
+                    MaxAbsorb = 0f,
+                    Falloff = NoFalloff , //.NoFalloff applies the same damage to all blocks in radius
+                    //.Linear drops evenly by distance from center out to max radius
+                    //.Curve drops off damage sharply as it approaches the max radius
+                    //.InvCurve drops off sharply from the middle and tapers to max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
+                },
+                EndOfLife = new EndOfLifeDef
+                {
+                    Enable = false,
                     Radius = 1f,
                     Damage = 1f,
                     Depth = 1f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
@@ -133,14 +132,14 @@ namespace Scripts
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
-                    CustomParticle = "MD_InstallationExplosion",
-                    CustomSound = "HWR_FireyExplosion",
+                    CustomParticle = "none",
+                    CustomSound = "none",
                     Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
                 },
             },
             Beams = new BeamDef 
 			{
-                Enable = true, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
+                Enable = false, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
                 VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
                 ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
                 RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
@@ -152,12 +151,10 @@ namespace Scripts
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 300, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 0f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
-                DesiredSpeed = 2000, // voxel phasing if you go above 5100
-                MaxTrajectory = 3000f, // Max Distance the projectile or beam can Travel.
+                DesiredSpeed = 5000, // voxel phasing if you go above 5100
+                MaxTrajectory = 1000f, // Max Distance the projectile or beam can Travel.
                 DeaccelTime = 0, // 0 is disabled, a value causes the projectile to come to rest overtime, (Measured in game ticks, 60 = 1 second)
-                GravityMultiplier = 0.5f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
-                SpeedVariance = Random(start: 0, end: 0), // subtracts value from DesiredSpeed. Be warned, you can make your projectile go backwards.
-                RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
+                GravityMultiplier = 0f, // Gravity multiplier, influences the trajectory of the projectile, value greater than 0 to enable. Natural Gravity Only.
             },
 			AmmoGraphics = new GraphicDef 
 			{
@@ -170,7 +167,7 @@ namespace Scripts
                     {
                         Name = "MD_InstallationExplosion",
                         ApplyToShield = false,
-                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1,
