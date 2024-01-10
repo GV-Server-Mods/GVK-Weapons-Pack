@@ -160,7 +160,7 @@ namespace Scripts
                         Textures = new[] {"WeaponLaser",},
                         DecayTime = 120,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
-						CustomWidth = 1.5,
+						CustomWidth = 1.5f,
                         UseColorFade = true,
                     },
                 },
