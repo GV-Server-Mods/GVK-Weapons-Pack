@@ -67,7 +67,7 @@
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_Laser"/>
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<MinElevationDegrees>-5</MinElevationDegrees>
@@ -81,7 +81,7 @@
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
 			<AiEnabled>false</AiEnabled>
@@ -161,7 +161,7 @@
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Lasers_Laser"/>
 			<InventoryMaxVolume>0.12</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<MinElevationDegrees>-8</MinElevationDegrees>
@@ -175,7 +175,7 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
@@ -249,9 +249,9 @@
 			<AiEnabled>false</AiEnabled>
 			<NavigationDefinition>Default</NavigationDefinition>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>

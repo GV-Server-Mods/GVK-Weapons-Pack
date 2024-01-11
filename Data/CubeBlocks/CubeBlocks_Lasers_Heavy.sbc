@@ -57,9 +57,9 @@
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.144</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Small_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
 				<string>Weapons</string>
@@ -134,10 +134,10 @@
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<ShowEdges>false</ShowEdges>
-			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_Electrical_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleElectrical</DamagedSound>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
@@ -214,10 +214,10 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
-			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_Electrical_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleElectrical</DamagedSound>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<AiEnabled>false</AiEnabled>
 			<IsAirTight>true</IsAirTight>

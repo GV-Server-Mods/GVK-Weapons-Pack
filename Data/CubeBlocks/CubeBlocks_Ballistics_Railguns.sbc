@@ -60,9 +60,9 @@
 			<WeaponDefinitionId Subtype="Ballistics_Railgun"/>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.284</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
@@ -120,8 +120,10 @@
 			<EdgeType>Light</EdgeType>
 			<InventoryMaxVolume>0.284</InventoryMaxVolume>
 			<DamageEffectId>213</DamageEffectId>
-			<!--<WeaponDefinitionId Subtype="Ballistics_Railgun"/>-->
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
+			<!--<WeaponDefinitionId Subtype="Ballistics_Railgun"/>-->
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<GuiVisible>false</GuiVisible>
@@ -184,7 +186,7 @@
 			<InventoryMaxVolume>0.048</InventoryMaxVolume>
 			<DamageEffectName>Damage_Railgun_Large</DamageEffectName>
 			<DamagedSound>ParticleElectrical</DamagedSound>
-			<DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+			<DestroyEffect>BlockDestroyed_Small_Blue</DestroyEffect>
 			<DestroySound>PoofExplosionCat3</DestroySound>
 			<IsAirTight>false</IsAirTight>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>

@@ -78,10 +78,10 @@
 			<MaxFov>1.04719755</MaxFov>
 			<ShowEdges>false</ShowEdges>
 			<AiEnabled>false</AiEnabled>
-			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamageEffectName>Damage_Electrical_Damaged_Blue</DamageEffectName>
 			<DamagedSound>ParticleElectrical</DamagedSound>
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
