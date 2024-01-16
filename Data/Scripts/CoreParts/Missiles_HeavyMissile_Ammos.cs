@@ -158,14 +158,14 @@ namespace Scripts
                 TargetLossTime = 3, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).                
 				MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 AccelPerSec = 200f, // 30. Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
-                DesiredSpeed = 270, // 300. voxel phasing if you go above 5100
+                DesiredSpeed = 250, // 300. voxel phasing if you go above 5100
                 MaxTrajectory = 4000f, // Max Distance the projectile or beam can Travel.
 				TotalAcceleration = 0, // 0 means no limit, something to do due with a thing called delta and something called v.
                 Smarts = new SmartsDef
                 {
                     SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
                     Inaccuracy = 5f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-                    Aggressiveness = 3f, // controls how responsive tracking is, recommended value 3-5.
+                    Aggressiveness = 2f, // controls how responsive tracking is, recommended value 3-5.
                     MaxLateralThrust = 1f, //0-1, how much of acceleration can be used for turning, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
                     NavAcceleration = 0f, // helps influence how the projectile steers, 0 defaults to 1/2 Aggressiveness value or 0 if its 0, a value less than 0 disables this feature. 
                     TrackingDelay = 5, // 200. Measured in Shape diameter units traveled.
