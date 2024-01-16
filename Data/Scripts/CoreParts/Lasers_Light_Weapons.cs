@@ -138,7 +138,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "XFEL Turret", // name of weapon in terminal
-                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimingTolerance = 10f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -194,7 +194,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "XFEL Turret", // name of weapon in terminal
-                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimingTolerance = 10f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.

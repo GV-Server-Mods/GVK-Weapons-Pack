@@ -139,6 +139,10 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
