@@ -9,7 +9,7 @@
 			<DisplayName>[MLRS] Tuukka</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<Description>The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.
-				[2000 Auto Range]
+				[3000m Auto Range]
 				[Uses Tuuka HE x19]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
