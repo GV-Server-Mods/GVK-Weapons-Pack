@@ -100,8 +100,8 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>1200</Mass>
-			<Volume>110</Volume>
+			<Mass>1000</Mass>
+			<Volume>100</Volume>
 			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -122,7 +122,7 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>1120</Mass>
+			<Mass>560</Mass>
 			<Volume>80</Volume>
 			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
@@ -254,8 +254,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>1106</Mass>
-			<Volume>737</Volume>
+			<Mass>900</Mass>
+			<Volume>450</Volume>
 			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -276,8 +276,8 @@
 				<Y>0.4</Y>
 				<Z>0.4</Z>
 			</Size>
-			<Mass>10000</Mass>
-			<Volume>1000</Volume>
+			<Mass>8000</Mass>
+			<Volume>800</Volume>
 			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
