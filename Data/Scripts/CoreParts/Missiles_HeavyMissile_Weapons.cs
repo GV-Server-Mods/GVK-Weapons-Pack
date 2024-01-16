@@ -81,7 +81,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Tuukka MLRS", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.35f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.5f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -144,7 +144,7 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "MD_MissileBackblast", // SubtypeId of muzzle particle effect.
+                        Name = "", // SubtypeId of muzzle particle effect. MD_MissileBackblast
                         Color = Color(red: 0, green: 0, blue: 0, alpha: 1), // Deprecated, set color in particle sbc.
                         Offset = Vector(x: 0, y: 0, z: 4), // Offsets the effect from the muzzle empty.
                         DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
@@ -176,8 +176,7 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Missiles_HeavyMissile,
-				Missiles_HeavyMissile_Fragment,
+				Missiles_HeavyMissile,
             },
             Animations = missileBattery01anim,
         };
