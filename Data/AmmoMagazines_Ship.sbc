@@ -289,6 +289,28 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Missiles_LightMissile</SubtypeId>
+			</Id>
+			<DisplayName>[Missile] Zenith HE</DisplayName>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher_Ammo.dds</Icon>
+			<Size>
+				<X>4</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Size>
+			<Mass>320</Mass>
+			<Volume>160</Volume>
+			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
 			<DisplayName>[MLRS] Tuukka HE</DisplayName>

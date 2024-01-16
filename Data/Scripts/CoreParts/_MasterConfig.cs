@@ -69,7 +69,8 @@ namespace Scripts
 							MA_PDX,
 							LargeFlareWC,
 							SmallFlareWC,
-							FlarePistolGun
+							FlarePistolGun,
+							LightMissileTurret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
