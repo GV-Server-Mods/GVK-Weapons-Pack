@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
-		<!-- MISSILE BATTERY 1 -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -9,7 +8,7 @@
 			</Id>
 			<DisplayName>[MLRS] Tuukka</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
-			<Description>The Tuukka is a ship-to-ship cruise missile effective against moving large targets. Designed by L.Y.N.X.
+			<Description>The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.
 				[2000 Auto Range]
 				[Uses Tuuka HE x19]</Description>
 			<CubeSize>Large</CubeSize>
@@ -54,17 +53,31 @@
 				<Model BuildPercentUpperBound="0.67" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
 			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
 			<BlockPairName>missileBattery01</BlockPairName>
-			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<!--WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /-->
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.19</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
