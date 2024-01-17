@@ -10,7 +10,7 @@
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage.
 				[3000m Manual Range]
-				[Damage: 100% @ 2000m - 25% @ 3000m]
+				[Dmg scale: 100% @ 1000m - 0% @ 3000m]
 				[Uses 200mm DU + 383MW]
 			</Description>
 			<CubeSize>Large</CubeSize>
