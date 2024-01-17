@@ -1047,7 +1047,7 @@ namespace Scripts
                     EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
                     {
                         
-                        [PreFire] =
+                        [TurnOn] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1061,7 +1061,7 @@ namespace Scripts
                             },
                         },
 						
-						[StopFiring] =
+						[TurnOff] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1074,7 +1074,7 @@ namespace Scripts
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
                         },	
-						/*[Reloading] =
+						[Reloading] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1083,7 +1083,7 @@ namespace Scripts
                                 TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
-                                Rotation = Transformation(0, -120, 0), //degrees
+                                Rotation = Transformation(0, 120, 0), //degrees
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
 							new RelMove
@@ -1101,10 +1101,10 @@ namespace Scripts
                                 TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
-                                Rotation = Transformation(0, 120, 0), //degrees
+                                Rotation = Transformation(0, -120, 0), //degrees
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
-                        },*/
+                        },
 					}
 				},
 				new PartAnimationSetDef()
@@ -1119,7 +1119,7 @@ namespace Scripts
                     EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
                     {
                         
-                        [PreFire] =
+                        [TurnOn] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1133,7 +1133,7 @@ namespace Scripts
                             },
                         },
 						
-						[StopFiring] =
+						[TurnOff] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1146,7 +1146,7 @@ namespace Scripts
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
                         },
-						/*[Reloading] =
+						[Reloading] =
                         new[] //Firing, Reloading, Overheated, Tracking, On, Off, BurstReload, OutOfAmmo, PreFire define a new[] for each
                         {
 							new RelMove
@@ -1155,7 +1155,7 @@ namespace Scripts
                                 TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
-                                Rotation = Transformation(0, 120, 0), //degrees
+                                Rotation = Transformation(0, -120, 0), //degrees
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
 							new RelMove
@@ -1173,10 +1173,10 @@ namespace Scripts
                                 TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
-                                Rotation = Transformation(0, -120, 0), //degrees
+                                Rotation = Transformation(0, 120, 0), //degrees
                                 RotAroundCenter = Transformation(0, 0, 0), //degrees
                             },
-                        },*/
+                        },
 					}
 				},
 				
