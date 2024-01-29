@@ -137,7 +137,7 @@ namespace Scripts
                         Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 1f,
+                            Scale = 2f,
                             HitPlayChance = 1f,
                         },
                     },
