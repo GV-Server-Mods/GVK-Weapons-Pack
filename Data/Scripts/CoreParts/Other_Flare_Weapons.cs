@@ -14,6 +14,18 @@ using static Scripts.Structure.WeaponDefinition.HardPointDef.HardwareDef.Hardwar
 namespace Scripts {   
     partial class Parts {
         // Don't edit above this line
+
+		private UiDef Other_Flare_Hardpoint_Ui = new UiDef 
+		{
+			RateOfFire = true, // Enables terminal slider for changing rate of fire.
+			RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
+			DamageModifier = false, // Enables terminal slider for changing damage per shot.
+			ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
+			EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
+			AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
+			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
+		};
+
         WeaponDefinition LargeFlareWC => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
@@ -28,7 +40,15 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef {
+                        SubtypeId = "LargeFlareLauncher_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] {
                     "muzzle_missile_033", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
@@ -73,7 +93,7 @@ namespace Scripts {
                 DeviateShotAngle = 10f, // Projectile inaccuracy in degrees.
                 NpcSafe = false, // This is how you tell npc modders that your wep was designed with them in mind, unless they tell you otherwise set this to false.
                 ScanTrackOnly = false, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ui = Other_Flare_Hardpoint_Ui,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
@@ -142,7 +162,15 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef {
+                        SubtypeId = "SmallFlareLauncher_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] {
                     "muzzle_missile_033", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A

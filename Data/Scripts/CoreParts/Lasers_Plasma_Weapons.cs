@@ -31,6 +31,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "lokiCannon_01.png" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "lokiCannon1_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "lokiCannon_01.png" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                 },
                 Muzzles = new[] 
 				{

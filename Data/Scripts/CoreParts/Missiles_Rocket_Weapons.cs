@@ -65,6 +65,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileTurret_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "",
+                    },
                 },
                 Muzzles = new []
                 {
@@ -127,6 +137,16 @@ namespace Scripts
                     new MountPointDef
                     {
                         SubtypeId = "SmallMissileTurret",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileTurret_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -273,6 +293,26 @@ namespace Scripts
                     new MountPointDef
                     {
                         SubtypeId = "SmallMissileLauncherWarfare2",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileLauncher_NPC", //SmallMissileLauncherWarfare2
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileLauncherWarfare2_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",

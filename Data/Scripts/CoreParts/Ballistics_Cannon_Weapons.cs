@@ -73,7 +73,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "LargeCalibreTurret_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "MissileTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "MissileTurretBarrels",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -176,6 +185,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "LargeBlockLargeCalibreGun_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -262,6 +281,16 @@ namespace Scripts
                     new MountPointDef 
 					{
                         SubtypeId = "OKI122mmVT",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = ""
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "OKI122mmVT_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -365,6 +394,16 @@ namespace Scripts
                     new MountPointDef 
 					{
                         SubtypeId = "OKI122mmSGfixed",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = ""
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "OKI122mmSGfixed_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",

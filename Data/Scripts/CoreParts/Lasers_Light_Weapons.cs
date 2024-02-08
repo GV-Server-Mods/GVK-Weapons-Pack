@@ -79,6 +79,15 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "filter_energy.dds"
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "ReceptorCoilGun_NPC",
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds"
+                    },
                 },
                 Muzzles = new [] 
 				{
@@ -121,6 +130,16 @@ namespace Scripts
                     new MountPointDef
                     {
                         SubtypeId = "ReceptorTurret",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds"
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "ReceptorTurret_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -176,6 +195,16 @@ namespace Scripts
                     new MountPointDef
                     {
                         SubtypeId = "MA_PDX",
+                        SpinPartId = "", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds"
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "MA_PDX_NPC",
                         SpinPartId = "", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",

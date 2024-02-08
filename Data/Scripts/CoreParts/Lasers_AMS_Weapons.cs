@@ -43,6 +43,26 @@ namespace Scripts
 						DurabilityMod = 0.5f,
                         IconName = "filter_energy.dds"
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "MA_PDT_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+						DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds" 
+					},
+				    new MountPointDef 
+					{
+                        SubtypeId = "MA_PDT_sm_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+						DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds"
+                    },
                 },
                 Muzzles = new []
                 {

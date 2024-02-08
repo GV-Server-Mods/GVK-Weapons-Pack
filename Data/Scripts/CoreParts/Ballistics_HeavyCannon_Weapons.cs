@@ -30,13 +30,22 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef {
+                        SubtypeId = "ARYXHurricaneCannon_NPC",
+                        SpinPartId = "None",
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                 },
                 Muzzles = new[] {
                     "muzzle_projectile_1",
                     "muzzle_projectile_2",
                 },
                 Ejector = "",
-                Scope = "",
+                Scope = "muzzle_projectile_1",
             },
             Targeting = new TargetingDef
             {

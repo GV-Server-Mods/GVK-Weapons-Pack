@@ -20,7 +20,8 @@ namespace Scripts {
 		{
             Assignments = new ModelAssignmentsDef 
             {
-                MountPoints = new[] {
+                MountPoints = new[] 
+				{
                     new MountPointDef 
 					{
                         SubtypeId = "ARYXRailgunTurret",
@@ -30,13 +31,22 @@ namespace Scripts {
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f,
                     },
-
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXRailgunTurret_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                    },
                 },
                 Muzzles = new [] 
 				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
+                Scope = "muzzle_projectile_1", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = new TargetingDef  
             {
@@ -127,12 +137,22 @@ namespace Scripts {
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXRailgun_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                    },
                 },
                 Muzzles = new [] 
 				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
+                Scope = "muzzle_projectile_1", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
@@ -203,7 +223,16 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "SmallRailgun_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
