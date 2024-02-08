@@ -173,7 +173,7 @@
 			<TargetingGroups>
             </TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
+			<Public>false</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -233,7 +233,7 @@
 			<TargetingGroups>
             </TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
+			<Public>false</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>
