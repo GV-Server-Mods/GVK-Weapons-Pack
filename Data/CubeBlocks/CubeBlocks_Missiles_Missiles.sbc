@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -22,18 +23,8 @@
 			<MirroringX>X</MirroringX>
 			<Components>
 				<Component Subtype="SteelPlate" Count="80"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="8"/>
 				<Component Subtype="MetalGrid" Count="32"/>
 				<Component Subtype="LargeTube" Count="16"/>
 				<Component Subtype="Motor" Count="160"/>
@@ -96,12 +87,7 @@
 			</MountPoints>
 			<Components>
 				<Component Subtype="SteelPlate" Count="5"/>
-				<Component Subtype="GVK_Missile_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="4"/>
 				<Component Subtype="MetalGrid" Count="2"/>
 				<Component Subtype="LargeTube" Count="1"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -129,6 +115,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>

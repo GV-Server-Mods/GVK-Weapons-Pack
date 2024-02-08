@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -18,12 +19,7 @@
 			<Model>Models\AWE_Vulcan\ARYXVulcanBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="8">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="6"/>
 				<Component Subtype="Construction" Count="830"/>
 				<Component Subtype="SmallTube" Count="170"/>
 				<Component Subtype="Motor" Count="220"/>
@@ -64,7 +60,6 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Large Sentinel Turret -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -82,12 +77,7 @@
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
 				<Component Subtype="Construction" Count="610"/>
 				<Component Subtype="SmallTube" Count="130"/>
 				<Component Subtype="Motor" Count="170"/>
@@ -176,12 +166,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
 				<Component Subtype="Construction" Count="610"/>
 				<Component Subtype="SmallTube" Count="130"/>
 				<Component Subtype="Motor" Count="170"/>
@@ -272,12 +257,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="21"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
 				<Component Subtype="Construction" Count="130"/>
 				<Component Subtype="SmallTube" Count="25"/>
 				<Component Subtype="Motor" Count="34"/>
@@ -363,12 +343,7 @@
 			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -423,12 +398,7 @@
 			<Model>Models\Cubes\Small\GatlingGunReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -486,12 +456,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="4"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2"/>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -559,6 +524,565 @@
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXVulcanTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Vulcan</DisplayName>
+			<Icon>Textures\GUI\Icons\Aryx_AWE_VulcanCannon.dds</Icon>
+			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Vulcan. Designed by Aryx Weapon Enterprises.
+				[1600m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWE_Vulcan\ARYXVulcanBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="6">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="830"/>
+				<Component Subtype="SmallTube" Count="170"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="280"/>
+				<Component Subtype="MetalGrid" Count="420"/>
+				<Component Subtype="SteelPlate" Count="420"/>
+			</Components>
+			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\AWE_Vulcan\ARYXVulcanBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\AWE_Vulcan\ARYXVulcanBase_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Vulcan\ARYXVulcanBase_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ARYXVulcanBase_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.144</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>SentinelTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Sentinel</DisplayName>
+			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
+			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
+				[1500m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="-1.25" z="0"/>
+			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="3">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="610"/>
+				<Component Subtype="SmallTube" Count="130"/>
+				<Component Subtype="Motor" Count="170"/>
+				<Component Subtype="Computer" Count="210"/>
+				<Component Subtype="MetalGrid" Count="310"/>
+				<Component Subtype="SteelPlate" Count="310"/>
+			</Components>
+			<BuildTimeSeconds>102</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\SentinelTurretBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.7" File="Models\Akiad\Small\SentinelTurretBase_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\SentinelTurretBase_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GatlingTurretSentinel_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-43</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<RotationSpeed>0.002</RotationSpeed>
+			<ElevationSpeed>0.002 </ElevationSpeed>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>2000</MaxRangeMeters>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<AiEnabled>false</AiEnabled>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeGatlingTurret</TypeId>
+				<SubtypeId>LargeGatlingTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
+            <Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
+			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
+				[1500m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+            <Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="3">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="610"/>
+				<Component Subtype="SmallTube" Count="130"/>
+				<Component Subtype="Motor" Count="170"/>
+				<Component Subtype="Computer" Count="210"/>
+				<Component Subtype="MetalGrid" Count="310"/>
+				<Component Subtype="SteelPlate" Count="310"/>
+			</Components>
+			<BuildTimeSeconds>102</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
+			</MountPoints>
+            <BuildProgressModels>
+                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm" />
+                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm" />
+                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm" />
+            </BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GatlingTurret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-43</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<RotationSpeed>0.002</RotationSpeed>
+			<ElevationSpeed>0.002 </ElevationSpeed>
+			<IdleRotation>false</IdleRotation>
+			<MaxRangeMeters>2000</MaxRangeMeters>
+			<AiEnabled>false</AiEnabled>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<UpCameraOffset>0</UpCameraOffset>
+			<ForwardCameraOffset>3.5</ForwardCameraOffset>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeGatlingTurret</TypeId>
+				<SubtypeId>SmallGatlingTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Small CIWS Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
+			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
+				[1500m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Small</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\GatlingTurret.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="21"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="130"/>
+				<Component Subtype="SmallTube" Count="25"/>
+				<Component Subtype="Motor" Count="34"/>
+				<Component Subtype="Computer" Count="42"/>
+				<Component Subtype="MetalGrid" Count="63"/>
+				<Component Subtype="SteelPlate" Count="63"/>
+			</Components>
+			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
+				<MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Back" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Left" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Front" StartX="1" StartY="0" EndX="4" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.43" File="Models\Cubes\Small\GatlingTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\GatlingTurretConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GatlingTurret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="SmallGatlingTurret"/>
+			<InventoryMaxVolume>0.084</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-10</MinElevationDegrees>
+			<MaxElevationDegrees>180</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<RotationSpeed>0.001</RotationSpeed>
+			<ElevationSpeed>0.001 </ElevationSpeed>
+			<IdleRotation>false</IdleRotation>
+			<MaxRangeMeters>2000</MaxRangeMeters>
+			<AiEnabled>false</AiEnabled>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallGatlingGun</TypeId>
+				<SubtypeId>SmallGatlingGun_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Small 25mm Gun</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<Description>Hard-mounted six-barrel multi-role rotary cannon.
+				[1700m Manual Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\GatlingGun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="4"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="6"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="MetalGrid" Count="10"/>
+				<Component Subtype="SteelPlate" Count="10"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>1</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+				<MountPoint Side="Left" StartX="3" StartY="0" EndX="4" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\GatlingGunConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\GatlingGunConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>GatlingGun_NPC</BlockPairName>
+			<Center x="0" y="0" z="3"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="GatlingGun"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.064</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallGatlingGun</TypeId>
+				<SubtypeId>SmallGatlingGunWarfare2_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Small 25mm Gun (Warfare)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
+			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
+				[1700m Manual Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\GatlingGunReskin.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="4"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="6"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="MetalGrid" Count="10"/>
+				<Component Subtype="SteelPlate" Count="10"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>1</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Left" StartX="3" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\GatlingGunReskinConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\GatlingGunReskinConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>GatlingGunWarfare2_NPC</BlockPairName>
+			<Center x="0" y="0" z="3"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="GatlingGunWarfare"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.064</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<DLC>Warfare2</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeGatlingTurret</TypeId>
+				<SubtypeId>SmallGatlingGun_Gimbal_NPC</SubtypeId>
+			</Id>
+			<DisplayName>[Gatling] Small 25mm Gimbal</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
+			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
+				[1600m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Small</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\GatlingTurretAutoGatling\GatlingTurretAutoGatling_Small.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="4"/>
+				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>SCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="Construction" Count="20"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="6"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="MetalGrid" Count="10"/>
+				<Component Subtype="SteelPlate" Count="10"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+				<MountPoint Side="Left" StartX="3" StartY="0" EndX="4" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\GatlingTurretAutoGatling\GatlingTurretAutoGatling_SmallConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\GatlingTurretAutoGatling\GatlingTurretAutoGatling_SmallConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GatlingGun_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="GatlingGun"/>
+			<InventoryMaxVolume>0.084</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-10</MinElevationDegrees>
+			<MaxElevationDegrees>180</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<RotationSpeed>0.001</RotationSpeed>
+			<ElevationSpeed>0.001 </ElevationSpeed>
+			<IdleRotation>false</IdleRotation>
+			<MaxRangeMeters>2000</MaxRangeMeters>
+			<AiEnabled>false</AiEnabled>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
-		<!-- Large Crusader -->
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -20,18 +20,8 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="10">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="10"/>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -79,7 +69,6 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Crusader Open Static -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -98,18 +87,8 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="8"/>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
@@ -154,7 +133,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Large Crusader NPC -->
+		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -238,7 +217,6 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>false</Public>
 		</Definition>
-		<!-- Crusader Open Static NPC -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>

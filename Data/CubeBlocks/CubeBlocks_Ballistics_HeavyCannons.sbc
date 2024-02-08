@@ -1,10 +1,72 @@
 <?xml version="1.0" ?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
+			</Id>
+			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
+			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
+				[3000m Auto Range]
+				[Uses 480mm HE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="3" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="1100"/>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_LargeCaliber_Tech" Count="12"/>
+				<Component Subtype="Construction" Count="520"/>
+				<Component Subtype="SmallTube" Count="210"/>
+				<Component Subtype="LargeTube" Count="350"/>
+				<Component Subtype="Motor" Count="310"/>
+				<Component Subtype="Computer" Count="180"/>
+				<Component Subtype="MetalGrid" Count="350"/>
+				<Component Subtype="SteelPlate" Count="860"/>
+			</Components>
+			<BuildTimeSeconds>332</BuildTimeSeconds>
+			<PCU>12</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="5.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>AryxHurricaneCannon</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.576</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ARYXHurricaneCannon_NPC</SubtypeId>
 			</Id>
 			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
@@ -52,7 +114,7 @@
 				<Model BuildPercentUpperBound="0.50" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS1.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS2.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>AryxHurricaneCannon</BlockPairName>
+			<BlockPairName>AryxHurricaneCannon_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
@@ -69,7 +131,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
+			<Public>false</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>
