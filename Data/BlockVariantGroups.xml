@@ -172,11 +172,11 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Others_Radars"/>
-			<Icon>Textures\GUI\Icons\Cubes\OKIObserverSM.dds</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
 			<DisplayName>Target Sensors</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIObserverSM"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIDesignator"/>
 			</Blocks>
 		</BlockVariantGroup>
