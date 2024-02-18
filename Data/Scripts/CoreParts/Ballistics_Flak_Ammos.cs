@@ -212,7 +212,7 @@ namespace Scripts
                     Armor = -1f,
                     Light = -1f,
                     Heavy = -1f,
-                    NonArmor = -1f,
+                    NonArmor = 1f,
                 },
 				DamageType = new DamageTypes
 				{
@@ -254,7 +254,7 @@ namespace Scripts
                 Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 120, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 1200, // voxel phasing if you go above 5100
-                MaxTrajectory = 120f, // Max Distance the projectile or beam can Travel.
+                MaxTrajectory = 240f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: 400, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 80, end: 0), // subtracts value from MaxTrajectory
 			},
