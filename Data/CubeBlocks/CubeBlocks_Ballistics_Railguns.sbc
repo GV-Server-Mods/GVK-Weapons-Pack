@@ -126,8 +126,8 @@
 			</Id>
 			<DisplayName>[Railgun] Ares</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
-				[2300m Manual Range]
+			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
+				[3300m Manual Range]
 				[Uses 50mm FeW + 75MW]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -323,8 +323,8 @@
 			</Id>
 			<DisplayName>[Railgun] Ares</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
-				[2300m Manual Range]
+			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
+				[3300m Manual Range]
 				[Uses 50mm FeW + 75MW]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

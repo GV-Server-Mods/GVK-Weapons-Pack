@@ -216,7 +216,7 @@ namespace Scripts
 			{
                 Guidance = None,
                 DesiredSpeed = 2000, //1500
-                MaxTrajectory = 2300,
+                MaxTrajectory = 3300,
                 SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0, end: 0), // subtracts value from MaxTrajectory
             },
