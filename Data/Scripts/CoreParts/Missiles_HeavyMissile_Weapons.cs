@@ -116,7 +116,7 @@ namespace Scripts
                 {
                     ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
                     MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
-                    DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
+                    DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
                     NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution. 
                     Debug = false, // Force enables debug mode.
                     RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
