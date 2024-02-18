@@ -150,9 +150,9 @@ namespace Scripts
                     {
                         Enable = true,
                         Length = 30f,
-                        Width = 3f,
-                        Color = Color(red: 120, green: 20, blue: 25, alpha: 1),
-                        Textures = new[] {"AryxBallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        Width = 0.5f,
+                        Color = Color(red: 60, green: 10, blue: 12, alpha: 1),
+                        Textures = new[] {"MD_BallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                     Trail = new TrailDef
                     {

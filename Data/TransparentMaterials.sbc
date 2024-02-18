@@ -69,10 +69,10 @@
 				<TypeId>TransparentMaterialDefinition</TypeId>
 				<SubtypeId>MD_BallisticTracer</SubtypeId>
 			</Id>
-			<AlphaMistingEnable>false</AlphaMistingEnable>
+			<AlphaMistingEnable>true</AlphaMistingEnable>
 			<AlphaSaturation>1</AlphaSaturation>
 			<CanBeAffectedByOtherLights>false</CanBeAffectedByOtherLights>
-			<IgnoreDepth>false</IgnoreDepth>
+			<IgnoreDepth>true</IgnoreDepth>
 			<SoftParticleDistanceScale>1</SoftParticleDistanceScale>
 			<Texture>Textures\Particles\MD_BallisticTracer.dds</Texture>
 			<UseAtlas>false</UseAtlas>
@@ -115,7 +115,7 @@
 			<AlphaSaturation>1</AlphaSaturation>
 			<CanBeAffectedByOtherLights>false</CanBeAffectedByOtherLights>
 			<IgnoreDepth>false</IgnoreDepth>
-			<SoftParticleDistanceScale>2</SoftParticleDistanceScale>
+			<SoftParticleDistanceScale>1</SoftParticleDistanceScale>
 			<Texture>Textures\Particles\ballistic_tracer.dds</Texture>
 			<UseAtlas>false</UseAtlas>
 			<UVOffset>
