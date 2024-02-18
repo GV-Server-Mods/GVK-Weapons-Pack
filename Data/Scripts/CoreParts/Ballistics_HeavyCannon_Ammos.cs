@@ -176,5 +176,16 @@ namespace Scripts
                 HitPlayShield = true,
             }, // Don't edit below this line
         };
+
+        private AmmoDef Ballistics_HeavyCannon_Odin
+        {
+            get
+            {
+                var missile = Ballistics_HeavyCannon;
+                missile.AmmoRound = "Ballistics_HeavyCannon_Odin";
+                missile.Trajectory.MaxTrajectory = 4300f;
+                return missile;
+            }
+        }
     }
 }
