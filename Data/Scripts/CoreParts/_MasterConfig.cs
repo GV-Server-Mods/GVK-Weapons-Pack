@@ -69,7 +69,8 @@ namespace Scripts
 							LargeFlareWC,
 							SmallFlareWC,
 							FlarePistolGun,
-							odin_def
+							odin_def,
+							LargeBlockRailgun_Turret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

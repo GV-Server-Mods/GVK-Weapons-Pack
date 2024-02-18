@@ -214,149 +214,17 @@ namespace Scripts
             },
         };
 	  
-        private AmmoDef LargeRailgunSabot_Fragment => new AmmoDef // Your ID, for slotting into the Weapon CS
+        private AmmoDef LargeRailgunSabot_turret
         {
-            AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
-            AmmoRound = "LargeRailgunSabot_Fragment", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            HybridRound = false, // Use both a physical ammo magazine and energy per shot.
-            EnergyCost = 1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
-            BaseDamage = 500000f, // Direct damage; one steel plate is worth 100.
-            Mass = 0, // In kilograms; how much force the impact will apply to the target.
-            Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
-            BackKickForce = 0, // Recoil. This is applied to the Parent Grid.
-            DecayPerShot = 0f, // Damage to the firing weapon itself.
-            HardPointUsable = false, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            Sync = new SynchronizeDef
+            get
             {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },			
-            ObjectsHit = new ObjectsHitDef 
-			{
-                MaxObjectsHit = 5, // 0 = disabled
-                CountBlocks = true, // counts gridBlocks and not just entities hit
-            },						
-            DamageScales = new DamageScaleDef 
-			{
-                DamageVoxels = false, // Whether to damage voxels.
-                HealthHitModifier = 1000, // How much Health to subtract from another projectile on hit; defaults to 1 if zero or less.
-                // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
-                Grids = new GridSizeDef
-                {
-                    Large = -1f, // Multiplier for damage against large grids.
-                    Small = -1f, // Multiplier for damage against small grids.
-                },
-                Armor = new ArmorDef
-                {
-                    Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
-                    Light = -1f, // Multiplier for damage against light armor.
-                    Heavy = -1f, // Multiplier for damage against heavy armor.
-                    NonArmor = -1f, // Multiplier for damage against every else.
-                },
-                DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
-                {
-                    Base = Kinetic, // Base Damage uses this
-                    AreaEffect = Kinetic,
-                    Detonation = Kinetic,
-                    Shield = Kinetic, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
-                },
-                Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
-            },
-            AreaOfDamage = new AreaOfDamageDef 
-			{
-                ByBlockHit = new ByBlockHitDef
-                {
-                    Enable = true,
-                    Radius = 5f,
-                    Damage = 20000f, 
-                    Depth = 5,
-                    MaxAbsorb = 0f,
-                    Falloff = NoFalloff , //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
-                },
-            },
-            Beams = new BeamDef 
-			{
-                Enable = true, // Enable beam behaviour. Please have 3600 RPM, when this Setting is enabled. Please do not fire Beams into Voxels.
-                VirtualBeams = false, // Only one damaging beam, but with the effectiveness of the visual beams combined (better performance).
-                ConvergeBeams = false, // When using virtual beams, converge the visual beams to the location of the real beam.
-                RotateRealBeam = false, // The real beam is rotated between all visual beams, instead of centered between them.
-                OneParticle = false, // Only spawn one particle hit per beam weapon.
-				FakeVoxelHitTicks = 30, // If this beam hits/misses a voxel it assumes it will continue to do so for this many ticks at the same hit length and not extend further within this window.  This can save up to n times worth of cpu.
-            },
-			Trajectory = new TrajectoryDef 
-			{
-                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                MaxLifeTime = 300, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                AccelPerSec = 0f, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
-                DesiredSpeed = 2000, // voxel phasing if you go above 5100
-                MaxTrajectory = 300f, // Max Distance the projectile or beam can Travel.
-            },
-			AmmoGraphics = new GraphicDef 
-			{
-                ModelName = "",
-                VisualProbability = 1f,
-                ShieldHitDraw = false,
-                Particles = new AmmoParticleDef
-                {
-                    Hit = new ParticleDef
-                    {
-                        Name = "MD_InstallationExplosion",
-                        ApplyToShield = false,
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        Extras = new ParticleOptionDef
-                        {
-                            Scale = 1,
-                            HitPlayChance = 1f,
-                        },
-                    },
-                },
-				Lines = new LineDef 
-				{
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
-                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
-                    Tracer = new TracerBaseDef
-                    {
-                        Enable = true,
-                        Length = 75f,
-                        Width = .5f,
-                        Color = Color(red: 60f, green: 60f, blue: 60f, alpha: 1f),
-                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
-                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
-                        Textures = new[] {"WeaponLaser",}, // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                    },
-                    Trail = new TrailDef
-                    {
-                        Enable = true,
-                        Textures = new[] {"WeaponLaser",}, // WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                        DecayTime = 180,
-                        Color = Color(red: 60f, green: 50f, blue: 45f, alpha: 1),
-                        Back = false,
-                        CustomWidth = .7f,
-                        UseWidthVariance = false,
-                        UseColorFade = true,
-                    },
-                },
-            },
-			AmmoAudio = new AmmoAudioDef 
-			{
-                TravelSound = "", // SubtypeID for your Sound File. Travel, is sound generated around your Projectile in flight
-                HitSound = "HWR_FireyExplosion",
-                ShotSound = "",
-                ShieldHitSound = "",
-                PlayerHitSound = "",
-                VoxelHitSound = "HWR_FireyExplosion",
-                FloatingHitSound = "",
-                HitPlayChance = 1f,
-                HitPlayShield = true,
-            },
-        };
+                var ammo = LargeRailgunSabot;
+                ammo.AmmoRound = "200mm DU LR";
+				ammo.DamageScales.FallOff.Distance = 2000f;
+                ammo.DamageScales.FallOff.MinMultipler = 0.25f;
+                ammo.Trajectory.MaxTrajectory = 4000;
+                return ammo;
+            }
+        }
     }
 }

@@ -70,6 +70,101 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+            <Id>
+                <TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>R309_RailCannon</SubtypeId>
+			</Id>
+			<DisplayName>[MAC] Large 200mm Coilgun Turret</DisplayName>
+			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Static Only. Manufactured by Substicious.
+				[4000m Manual Range]
+				[Dmg scale: 100% @ 1000m - 25% @ 4000m]
+				[Uses 200mm DU + 383MW]
+			</Description>
+			<Icon>Textures\GUI\Icons\R309_RailCannon.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<GuiVisible>false</GuiVisible>
+            <PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="3" z="5  "/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\R309_RailCannon.mwm</Model>
+			<Components>
+                <Component Subtype="SteelPlate" Count="530"/>
+                <Component Subtype="Construction" Count="315" />
+                <Component Subtype="Computer" Count="140" />
+                <Component Subtype="Motor" Count="175" />
+                <Component Subtype="LargeTube" Count="125" />
+                <Component Subtype="MetalGrid" Count="200" />
+                <Component Subtype="Superconductor" Count="150" />
+                <Component Subtype="Construction" Count="75" />
+                <Component Subtype="SteelPlate" Count="200" />
+			</Components>
+			<CriticalComponent Subtype="Superconductor" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS2.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+                <!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+                <StaticMode>
+                    <PlacementMode>OutsideVoxel</PlacementMode>
+                    <MaxAllowed>0.2</MaxAllowed>
+                    <MinAllowed>0</MinAllowed>
+                </StaticMode>
+                <DynamicMode>
+                    <PlacementMode>OutsideVoxel</PlacementMode>
+                    <MaxAllowed>0.2</MaxAllowed>
+                    <MinAllowed>0.01</MinAllowed>
+                </DynamicMode>
+            </VoxelPlacement>
+			<BlockPairName>R309_RailGun_Cannon</BlockPairName>
+			<MirroringY>Z</MirroringY>
+            <MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+            <BuildTimeSeconds>120</BuildTimeSeconds>
+            <OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+            <EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
+            <HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
+            <MinElevationDegrees>-10</MinElevationDegrees>
+            <MaxElevationDegrees>50</MaxElevationDegrees>
+            <MinAzimuthDegrees>-180</MinAzimuthDegrees>
+            <MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+            <IdleRotation>false</IdleRotation>
+            <MaxRangeMeters>6000</MaxRangeMeters>
+            <MinFov>0.1</MinFov>
+            <MaxFov>1.4</MaxFov>
+            <RotationSpeed>0.0004</RotationSpeed>
+            <ElevationSpeed>0.0004 </ElevationSpeed>
+            <EmissiveColorPreset>Default</EmissiveColorPreset>
+            <WeaponDefinitionId Subtype="LargeRailgun" />
+            <ResourceSinkGroup>Defense</ResourceSinkGroup>
+            <InventoryMaxVolume>1.24</InventoryMaxVolume>
+            <StandbyPowerConsumption>0.0001</StandbyPowerConsumption>
+            <DamageEffectName>Damage_Railgun_Large</DamageEffectName>
+            <DamagedSound>ParticleElectrical</DamagedSound>
+            <DestroyEffect>BlockDestroyed_Large3X</DestroyEffect>
+            <DestroySound>PoofExplosionCat3</DestroySound>
+            <PCU>12</PCU>
+            <IsAirTight>false</IsAirTight>
+            <AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+            <InventoryFillFactorMin>.25</InventoryFillFactorMin>
+            <InventoryFillFactorMax>.5</InventoryFillFactorMax>
+            <TieredUpdateTimes>
+                <unsignedInt>10</unsignedInt>
+                <unsignedInt>0</unsignedInt>
+            </TieredUpdateTimes>
+            <TargetingGroups>
+                <string>Weapons</string>
+            </TargetingGroups>
+            <UpCameraOffset>0.75</UpCameraOffset>
+            <ForwardCameraOffset>15</ForwardCameraOffset>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
