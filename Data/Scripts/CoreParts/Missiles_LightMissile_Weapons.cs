@@ -229,6 +229,23 @@ namespace Scripts
 					DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
                 },
 				Audio = Missiles_Missile_Hardpoint_Audio,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "MD_GriffinLaunchSmoke", // SubtypeId of muzzle particle effect.
+                        Offset = Vector(x: 0, y: 0, z: -0.5f), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 2000,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                },
             },
             Ammos = new[] 
 			{
@@ -306,6 +323,23 @@ namespace Scripts
 				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = Missiles_Missile_Hardpoint_Loading_Large,
 				Audio = Missiles_Missile_Hardpoint_Audio,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "MD_GriffinLaunchSmoke", // SubtypeId of muzzle particle effect.
+                        Offset = Vector(x: 0, y: 0, z: -2.0f), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 2000,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                },
             },
             Ammos = new[] 
 			{

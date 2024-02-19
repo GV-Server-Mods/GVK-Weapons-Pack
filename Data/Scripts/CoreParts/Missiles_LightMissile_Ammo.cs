@@ -42,7 +42,7 @@ namespace Scripts
         private AmmoDef Missiles_Missile => new AmmoDef
         {
             AmmoMagazine = "Missiles_Missile",
-            AmmoRound = "Missiles_Missile",
+            AmmoRound = "Griffin HE",
             BaseDamage = 1f,
             Mass = 200f, // in kilograms
             Health = 1f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -206,7 +206,7 @@ namespace Scripts
                 {
 					Ammo = new ParticleDef
                     {
-                        Name = "MD_ArcherTrailSmoke", //Archer_MissileSmokeTrail MD_BulletGlowMedRed
+                        Name = "MD_GriffinTrailSmoke", //Archer_MissileSmokeTrail MD_BulletGlowMedRed
                         Offset = Vector(x: 0, y: 0, z: 0f),
 						DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
