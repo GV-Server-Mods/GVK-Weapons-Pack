@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>missileBattery01</SubtypeId>
 			</Id>
-			<DisplayName>[MLRS] Tuukka</DisplayName>
+			<DisplayName>[H.Missile] Tuukka</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<Description>The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.
 				[3000m Auto Range]

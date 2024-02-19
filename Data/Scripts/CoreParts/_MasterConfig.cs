@@ -71,6 +71,8 @@ namespace Scripts
 							FlarePistolGun,
 							odin_def,
 							LargeBlockRailgun_Turret
+							GVK_GriffinMissileTurret,
+							GVK_CycloneCannonTurret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

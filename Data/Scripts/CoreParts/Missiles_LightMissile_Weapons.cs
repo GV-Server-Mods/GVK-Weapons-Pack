@@ -126,6 +126,134 @@ namespace Scripts
 
 		//Weapon Definitions
 
+        WeaponDefinition GVK_GriffinMissileTurret => new WeaponDefinition
+        {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
+                        SubtypeId = "GVK_GriffinMissileTurret",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                },
+                Muzzles = new[] 
+				{
+                    "muzzle_missile_1",
+                    "muzzle_missile_2",
+                    "muzzle_missile_3",
+                    "muzzle_missile_4",
+                    "muzzle_missile_5",
+                    "muzzle_missile_6",
+                    "muzzle_missile_7",
+                    "muzzle_missile_8",
+                    "muzzle_missile_9",
+                    "muzzle_missile_10",
+                    "muzzle_missile_11",
+                    "muzzle_missile_12",
+                    "muzzle_missile_13",
+                    "muzzle_missile_14",
+                    "muzzle_missile_15",
+                    "muzzle_missile_16",
+                    "muzzle_missile_17",
+                    "muzzle_missile_18",
+                    "muzzle_missile_19",
+                    "muzzle_missile_20",
+                    "muzzle_missile_21",
+                    "muzzle_missile_22",
+                    "muzzle_missile_23",
+                    "muzzle_missile_24",
+                    "muzzle_missile_25",
+                    "muzzle_missile_26",
+                    "muzzle_missile_27",
+                    "muzzle_missile_28",
+                    "muzzle_missile_29",
+                    "muzzle_missile_30",
+                    "muzzle_missile_31",
+                    "muzzle_missile_32",
+                    "muzzle_missile_33",
+                    "muzzle_missile_34",
+                    "muzzle_missile_35",
+                    "muzzle_missile_36",
+                },
+                Ejector = "", // Optional; empty from which to eject "shells" if specified.
+                Scope = "scope", // Where line of sight checks are performed from. Must be clear of block collision.
+            },
+            Targeting = Missiles_Missile_Targeting_Large,
+            HardPoint = new HardPointDef
+            {
+                PartName = "Griffin Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                DeviateShotAngle = 0.2f, // Projectile inaccuracy in degrees.
+                AimingTolerance = 45, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
+                AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
+                NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -15,
+                    MaxElevation = 65,
+                    HomeAzimuth = 0, // Default resting rotation angle
+                    HomeElevation = 40, // Default resting elevation
+                    InventorySize = 2.500f, // Inventory capacity in kL.
+                    IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+                    Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
+                    Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
+                },
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 300, // 240. Set this to 3600 for beam weapons.
+                    BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
+                    TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
+                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
+					ReloadTime = 1000, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    MagsToLoad = 36, // Number of physical magazines to consume on reload.
+                    DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ShotsInBurst = 4, // 5. Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
+                    DelayAfterBurst = 180, // 160. How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
+                    GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
+					GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
+					DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
+                },
+				Audio = Missiles_Missile_Hardpoint_Audio,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "MD_GriffinLaunchSmoke", // SubtypeId of muzzle particle effect.
+                        Offset = Vector(x: 0, y: 0, z: -0.5f), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 2000,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                },
+            },
+            Ammos = new[] 
+			{
+                Missiles_Missile,
+            },
+            Animations = Missiles_LightMissile_Animation,
+        };
+
         WeaponDefinition MXA_ArcherPods => new WeaponDefinition 
 		{
             Assignments = new ModelAssignmentsDef
@@ -195,6 +323,23 @@ namespace Scripts
 				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = Missiles_Missile_Hardpoint_Loading_Large,
 				Audio = Missiles_Missile_Hardpoint_Audio,
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "MD_GriffinLaunchSmoke", // SubtypeId of muzzle particle effect.
+                        Offset = Vector(x: 0, y: 0, z: -2.0f), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 2000,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+                        },
+                    },
+                },
             },
             Ammos = new[] 
 			{
