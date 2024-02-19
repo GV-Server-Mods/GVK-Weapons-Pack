@@ -29,6 +29,7 @@ namespace Scripts
 		//Missile Subpart: subpart_Missile_1 - subpart_Missile_36
 		//Muzzles: muzzle_missile_1 - muzzle_missile_36
 		//Door Subpart: subpart_Hatch_1 - subpart_Hatch_4
+		//Reload animations should be under 1000ticks
 
         private AnimationDef Missiles_LightMissile_Animation => new AnimationDef
         {
@@ -75,7 +76,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 1000, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees
@@ -1080,7 +1081,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 42, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 120, 0), //degrees
@@ -1089,7 +1090,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 1000, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees
@@ -1098,7 +1099,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 39, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, -120, 0), //degrees
@@ -1152,7 +1153,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 40, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, -120, 0), //degrees
@@ -1161,7 +1162,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 1000, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees
@@ -1170,7 +1171,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 60, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 43, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Linear,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 120, 0), //degrees

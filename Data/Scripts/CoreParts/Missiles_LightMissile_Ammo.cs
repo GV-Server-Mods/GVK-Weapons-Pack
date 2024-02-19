@@ -39,10 +39,10 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Missiles_LightMissile => new AmmoDef
+        private AmmoDef Missiles_Missile => new AmmoDef
         {
-            AmmoMagazine = "Missiles_LightMissile",
-            AmmoRound = "Missiles_LightMissile",
+            AmmoMagazine = "Missiles_Missile",
+            AmmoRound = "Missiles_Missile",
             BaseDamage = 1f,
             Mass = 200f, // in kilograms
             Health = 1f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -269,5 +269,16 @@ namespace Scripts
                 HitPlayShield = true,
             },			
         };
+
+        private AmmoDef Missiles_Missile_NPC
+        {
+            get
+            {
+                var missile = Missiles_Missile;
+                missile.AmmoRound = "Missiles_Missile_NPC";
+                missile.Trajectory.Smarts.OverideTarget = true;
+                return missile;
+            }
+        }
     }
 }

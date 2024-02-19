@@ -173,7 +173,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>010_Missiles_Missile</SubtypeId>
 			</Id>
-			<DisplayName>[Missile] Archer HE x1</DisplayName>
+			<DisplayName>[L.Missile] Griffin HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
 			<Prerequisites>
 				<Item Amount="2.5" TypeId="Ingot" SubtypeId="Magnesium"/>
@@ -190,7 +190,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>011_Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[MLRS] Tuukka HE x1</DisplayName>
+			<DisplayName>[H.Missile] Tuukka HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Prerequisites>
 				<Item Amount="7.7" TypeId="Ingot" SubtypeId="Magnesium"/>

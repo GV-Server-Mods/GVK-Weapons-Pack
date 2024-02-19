@@ -70,7 +70,8 @@ namespace Scripts
 							LargeFlareWC,
 							SmallFlareWC,
 							FlarePistolGun,
-							LightMissileTurret
+							GVK_GriffinMissileTurret,
+							GVK_CycloneCannonTurret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

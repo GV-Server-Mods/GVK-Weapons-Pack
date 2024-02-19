@@ -203,8 +203,8 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Missile</SubtypeId>
 			</Id>
-			<DisplayName>[Missile] Archer HE</DisplayName>
-			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
+			<DisplayName>[L.Missile] Griffin HE</DisplayName>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher_Ammo.dds</Icon>
 			<Size>
 				<X>0.25</X>
 				<Y>0.2</Y>
@@ -212,7 +212,7 @@
 			</Size>
 			<Mass>90</Mass>
 			<Volume>60</Volume>
-			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
+			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
@@ -289,31 +289,9 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Missiles_LightMissile</SubtypeId>
-			</Id>
-			<DisplayName>[Missile] Zenith HE</DisplayName>
-			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher_Ammo.dds</Icon>
-			<Size>
-				<X>4</X>
-				<Y>1</Y>
-				<Z>1</Z>
-			</Size>
-			<Mass>320</Mass>
-			<Volume>160</Volume>
-			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[MLRS] Tuukka HE</DisplayName>
+			<DisplayName>[H.Missile] Tuukka HE</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Size>
 				<X>4</X>
