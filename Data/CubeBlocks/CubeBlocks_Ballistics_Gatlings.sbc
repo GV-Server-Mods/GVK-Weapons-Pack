@@ -28,7 +28,7 @@
 				<Component Subtype="SteelPlate" Count="420"/>
 			</Components>
 			<BuildTimeSeconds>138</BuildTimeSeconds>
-			<PCU>8</PCU>
+			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
@@ -76,17 +76,17 @@
 			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="SteelPlate" Count="78"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
-				<Component Subtype="Construction" Count="610"/>
-				<Component Subtype="SmallTube" Count="130"/>
-				<Component Subtype="Motor" Count="170"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="MetalGrid" Count="310"/>
-				<Component Subtype="SteelPlate" Count="310"/>
+				<Component Subtype="Construction" Count="470"/>
+				<Component Subtype="SmallTube" Count="93"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="160"/>
+				<Component Subtype="MetalGrid" Count="240"/>
+				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
-			<PCU>4</PCU>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<PCU>3</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -153,7 +153,7 @@
 				<SubtypeId/>
 			</Id>
 			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1500m Auto Range]
 				[Uses 25mm KE]</Description>
@@ -162,29 +162,29 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
-            <Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
+			<Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="SteelPlate" Count="78"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="3"/>
-				<Component Subtype="Construction" Count="610"/>
-				<Component Subtype="SmallTube" Count="130"/>
-				<Component Subtype="Motor" Count="170"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="MetalGrid" Count="310"/>
-				<Component Subtype="SteelPlate" Count="310"/>
+				<Component Subtype="Construction" Count="470"/>
+				<Component Subtype="SmallTube" Count="93"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="160"/>
+				<Component Subtype="MetalGrid" Count="240"/>
+				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
-			<PCU>4</PCU>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
 			</MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm" />
-                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm" />
-            </BuildProgressModels>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm"/>
+			</BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -545,10 +545,10 @@
 				<Component Subtype="SteelPlate" Count="140"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="6">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="830"/>
 				<Component Subtype="SmallTube" Count="170"/>
 				<Component Subtype="Motor" Count="220"/>
@@ -605,22 +605,22 @@
 			<ModelOffset x="0" y="-1.25" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="SteelPlate" Count="78"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="3">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="Construction" Count="610"/>
-				<Component Subtype="SmallTube" Count="130"/>
-				<Component Subtype="Motor" Count="170"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="MetalGrid" Count="310"/>
-				<Component Subtype="SteelPlate" Count="310"/>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Construction" Count="470"/>
+				<Component Subtype="SmallTube" Count="93"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="160"/>
+				<Component Subtype="MetalGrid" Count="240"/>
+				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
-			<PCU>4</PCU>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<PCU>3</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -687,7 +687,7 @@
 				<SubtypeId>LargeGatlingTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1500m Auto Range]
 				[Uses 25mm KE]</Description>
@@ -696,34 +696,34 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
-            <Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
+			<Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="SteelPlate" Count="110"/>
+				<Component Subtype="SteelPlate" Count="78"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="3">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="Construction" Count="610"/>
-				<Component Subtype="SmallTube" Count="130"/>
-				<Component Subtype="Motor" Count="170"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="MetalGrid" Count="310"/>
-				<Component Subtype="SteelPlate" Count="310"/>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Construction" Count="470"/>
+				<Component Subtype="SmallTube" Count="93"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="160"/>
+				<Component Subtype="MetalGrid" Count="240"/>
+				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
-			<PCU>4</PCU>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2" Default="true"/>
 			</MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm" />
-                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm" />
-            </BuildProgressModels>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\GatlingTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\GatlingTurretConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\GatlingTurretConstruction_3.mwm"/>
+			</BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -798,10 +798,10 @@
 				<Component Subtype="SteelPlate" Count="21"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="130"/>
 				<Component Subtype="SmallTube" Count="25"/>
 				<Component Subtype="Motor" Count="34"/>
@@ -889,10 +889,10 @@
 				<Component Subtype="SteelPlate" Count="4"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -949,10 +949,10 @@
 				<Component Subtype="SteelPlate" Count="4"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>
@@ -1012,10 +1012,10 @@
 				<Component Subtype="SteelPlate" Count="4"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="2">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="20"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="6"/>

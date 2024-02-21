@@ -7,11 +7,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
+			<DisplayName>[H.Cannon] Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
 			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
 				[3000m Auto Range]
-				[Uses 480mm HE]</Description>
+				[Uses 480mm HE x2]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="3" z="5"/>
@@ -67,13 +67,12 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>odin</SubtypeId>
 			</Id>
-			<DisplayName>HFC-800 ODIN</DisplayName>
+			<DisplayName>[H.Cannon] Odin</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\odin.png</Icon>
 			<Description>The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.
 				[4000m Auto Range]
-				[Uses 480mm HE]</Description>
+				[Uses 480mm HE x4]</Description>
 			<CubeSize>Large</CubeSize>
-			<GuiVisible>false</GuiVisible>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="7" y="5" z="7"/>
@@ -92,6 +91,7 @@
 				<Component Subtype="MetalGrid" Count="350"/>
 				<Component Subtype="SteelPlate" Count="860"/>
 			</Components>
+			<BuildTimeSeconds>60</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0" />
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="7.0" EndY="7.0"/>
@@ -114,7 +114,6 @@
 			</VoxelPlacement>
 			<BlockPairName>odin</BlockPairName>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>60</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="LargeCalibreTurret" />
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
@@ -134,11 +133,13 @@
 			<MaxFov>1.04719755</MaxFov>
 			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<PCU>275</PCU>
+			<PCU>16</PCU>
 			<IsAirTight>false</IsAirTight>
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
 			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
@@ -146,11 +147,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] Hurricane</DisplayName>
+			<DisplayName>[H.Cannon] Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
 			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
 				[3000m Auto Range]
-				[Uses 480mm HE]</Description>
+				[Uses 480mm HE x2]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="3" z="5"/>

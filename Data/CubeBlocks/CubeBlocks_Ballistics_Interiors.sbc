@@ -20,17 +20,17 @@
 			<Model>Models\Cubes\Large\InteriorTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="InteriorPlate" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="120"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
-				<Component Subtype="Construction" Count="400"/>
-				<Component Subtype="SmallTube" Count="27"/>
-				<Component Subtype="Motor" Count="53"/>
-				<Component Subtype="Computer" Count="140"/>
-				<Component Subtype="Construction" Count="140"/>
-				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="Construction" Count="300"/>
+				<Component Subtype="SmallTube" Count="20"/>
+				<Component Subtype="Motor" Count="39"/>
+				<Component Subtype="Computer" Count="97"/>
+				<Component Subtype="Construction" Count="97"/>
+				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>45</BuildTimeSeconds>
-			<PCU>2</PCU>
+			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.46" StartY="0.46" EndX="0.54" EndY="0.54"/>
@@ -107,22 +107,22 @@
 			<Model>Models\Cubes\Large\InteriorTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
-				<Component Subtype="InteriorPlate" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="120"/>
 				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>SCalScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="Construction" Count="400"/>
-				<Component Subtype="SmallTube" Count="27"/>
-				<Component Subtype="Motor" Count="53"/>
-				<Component Subtype="Computer" Count="140"/>
-				<Component Subtype="Construction" Count="140"/>
-				<Component Subtype="SteelPlate" Count="140"/>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Construction" Count="300"/>
+				<Component Subtype="SmallTube" Count="20"/>
+				<Component Subtype="Motor" Count="39"/>
+				<Component Subtype="Computer" Count="97"/>
+				<Component Subtype="Construction" Count="97"/>
+				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>45</BuildTimeSeconds>
-			<PCU>2</PCU>
+			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0.46" StartY="0.46" EndX="0.54" EndY="0.54"/>

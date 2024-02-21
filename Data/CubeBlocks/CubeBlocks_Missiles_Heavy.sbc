@@ -19,18 +19,8 @@
 			<Model>Models\Cubes\Large\missileBattery01\missileBattery01.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="150"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="10">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="GVK_Data_Core" Count="1"/>
+				<Component Subtype="GVK_Missile_Tech" Count="10"/>
 				<Component Subtype="MetalGrid" Count="57"/>
 				<Component Subtype="LargeTube" Count="29"/>
 				<Component Subtype="Motor" Count="290"/>
@@ -103,8 +93,18 @@
 			<Model>Models\Cubes\Large\missileBattery01\missileBattery01.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="150"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="10"/>
+				<Component Subtype="GVK_Data_Core" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>DataScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="GVK_Missile_Tech" Count="10">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>MissileScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="MetalGrid" Count="57"/>
 				<Component Subtype="LargeTube" Count="29"/>
 				<Component Subtype="Motor" Count="290"/>
