@@ -142,6 +142,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "GVK_GriffinMissileTurret_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                 },
                 Muzzles = new[] 
 				{
@@ -190,7 +200,7 @@ namespace Scripts
             {
                 PartName = "Griffin Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.2f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 45, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
+                AimingTolerance = 60, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 AddToleranceToTracking = false, // Allows turret to track to the edge of the AimingTolerance cone instead of dead centre.
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -199,14 +209,14 @@ namespace Scripts
                 HardWare = new HardwareDef
                 {
                     RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
+                    ElevateRate = 0.0f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -15,
-                    MaxElevation = 65,
+                    MinElevation = -60,
+                    MaxElevation = 60,
                     HomeAzimuth = 0, // Default resting rotation angle
-                    HomeElevation = 40, // Default resting elevation
                     InventorySize = 2.500f, // Inventory capacity in kL.
+                    HomeElevation = 0, // Default resting elevation
                     IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
