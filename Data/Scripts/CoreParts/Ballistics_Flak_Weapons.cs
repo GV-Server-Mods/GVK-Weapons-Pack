@@ -104,8 +104,8 @@ namespace Scripts
             Targeting = Ballistics_Flak_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Large Assault Cannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.75f, // Projectile inaccuracy in degrees.
+                PartName = "Flak Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                DeviateShotAngle = 0.3f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -144,6 +144,7 @@ namespace Scripts
 			{
                 Ballistics_Flak,
 				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_HE,
             },
         };
 
@@ -184,8 +185,8 @@ namespace Scripts
             Targeting = Ballistics_Flak_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Small Assault Cannon Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.75f, // Projectile inaccuracy in degrees.
+                PartName = "Small Flak Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                DeviateShotAngle = 0.3f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -223,6 +224,7 @@ namespace Scripts
 			{
                 Ballistics_Flak,
 				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_HE,
             },
         };
 
@@ -307,6 +309,7 @@ namespace Scripts
 			{
                 Ballistics_Flak,
 				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_HE,
             },
         };
     }

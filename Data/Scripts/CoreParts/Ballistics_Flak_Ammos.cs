@@ -42,7 +42,7 @@ namespace Scripts
         private AmmoDef Ballistics_Flak => new AmmoDef
         {
             AmmoMagazine = "MediumCalibreAmmo",
-            AmmoRound = "Ballistics_Flak",
+            AmmoRound = "Proximity Flak",
             BaseDamage = 1000f,
             Mass = 100, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -156,20 +156,15 @@ namespace Scripts
                 VisualProbability = 1f,
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0f, end: 5f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 1f), // adds random value to default width (negatives shrinks width)
+                    WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
                     DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 10f,
-                        Width = 0.4f,
+                        Length = 12f,
+                        Width = 0.15f,
                         Color = Color(red: 80, green: 40, blue: 8, alpha: 1),
-                        VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
-                        VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
-                        Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
-                            "AryxBallisticTracer",
-                        },
+                        Textures = new[] {"MD_BallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                         TextureMode = Normal, // Normal, Cycle, Chaos, Wave
                     },
                 },
@@ -193,7 +188,7 @@ namespace Scripts
             AmmoRound = "Ballistics_Flak_Shrapnel",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 500f,
+            BaseDamage = 400f,
             Mass = 50, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             HardPointUsable = false, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
@@ -272,7 +267,7 @@ namespace Scripts
                         Enable = true,
                         Length = 5f,
                         Width = 0.25f,
-                        Color = Color(red: 40, green: 40, blue: 40, alpha: 1),
+                        Color = Color(red: 80, green: 40, blue: 8, alpha: 1),
                         Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                 },
@@ -288,6 +283,114 @@ namespace Scripts
                 HitPlayChance = 1f,
                 HitPlayShield = true,
             },
+        };
+
+        private AmmoDef Ballistics_Flak_HE => new AmmoDef
+        {
+            AmmoMagazine = "MediumCalibreAmmo",
+            AmmoRound = "Impact Flak",
+            BaseDamage = 500f,
+            Mass = 100, // in kilograms
+            Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            BackKickForce = 1000f,
+            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
+            DamageScales = new DamageScaleDef 
+			{
+                MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
+                DamageVoxels = false, // true = voxels are vulnerable to this weapon
+                HealthHitModifier = -1, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                Characters = 0.1f,
+                Grids = new GridSizeDef
+                {
+                    Large = -1f,
+                    Small = -1f,
+                },
+                Armor = new ArmorDef
+                {
+                    Armor = -1f,
+                    Light = -1f,
+                    Heavy = -1f,
+                    NonArmor = -1f,
+                },
+				DamageType = new DamageTypes
+				{
+					Base = Kinetic,
+					AreaEffect = Kinetic,
+					Detonation = Kinetic,
+					Shield = Kinetic,
+                },
+                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+            },
+            AreaOfDamage = new AreaOfDamageDef //This also applies HealthHitModifier damage to projectiles in the area
+			{
+                EndOfLife = new EndOfLifeDef
+                {
+                    Enable = true,
+                    Radius = 2f,
+                    Damage = 2500f,
+                    Depth = 2f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    MaxAbsorb = 0f,
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
+                    //.Linear drops evenly by distance from center out to max radius
+                    //.Curve drops off damage sharply as it approaches the max radius
+                    //.InvCurve drops off sharply from the middle and tapers to max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                    ArmOnlyOnHit = true,
+                    MinArmingTime = 0,
+                    NoVisuals = false,
+                    NoSound = false,
+                    ParticleScale = 1.5f,
+                    CustomParticle = "MD_FlakExplosion",
+                    CustomSound = "HWR_FlakExplosion",
+                },
+            },
+            Trajectory = new TrajectoryDef 
+			{
+                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                TargetLossDegree = 0f, // Degrees, Is pointed forward
+                TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                DesiredSpeed = 900, // voxel phasing if you go above 5100
+                MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
+                SpeedVariance = Random(start: -0f, end: 0), // subtracts value from DesiredSpeed
+                RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
+            },
+            AmmoGraphics = new GraphicDef 
+			{
+                ModelName = "",
+                VisualProbability = 1f,
+                Lines = new LineDef
+                {
+                    WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
+                    DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
+                    Tracer = new TracerBaseDef
+                    {
+                        Enable = true,
+                        Length = 12f,
+                        Width = 0.15f,
+                        Color = Color(red: 40, green: 20, blue: 4, alpha: 1),
+                        Textures = new[] {"MD_BallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        TextureMode = Normal, // Normal, Cycle, Chaos, Wave
+                    },
+                },
+            },
+            AmmoAudio = new AmmoAudioDef 
+			{
+                TravelSound = "",
+                HitSound = "",  //MXA_ImpactExplosion
+                ShieldHitSound = "",
+                PlayerHitSound = "",
+                VoxelHitSound = "",
+                FloatingHitSound = "",
+                HitPlayChance = 1f,
+                HitPlayShield = true,
+            }, // Don't edit below this line
         };
     }
 }
