@@ -106,7 +106,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -5,
                     MaxElevation = 90,
-                    InventorySize = 1.040f,
+                    InventorySize = 1.32f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -179,7 +179,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -8,
                     MaxElevation = 90,
-                    InventorySize = 0.520f,
+                    InventorySize = 0.88f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -252,7 +252,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 2.470f,
+                    InventorySize = 2.09f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -339,7 +339,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.520f,
+                    InventorySize = 0.88f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.

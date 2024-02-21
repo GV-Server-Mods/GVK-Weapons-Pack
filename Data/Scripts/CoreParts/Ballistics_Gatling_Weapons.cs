@@ -68,7 +68,7 @@ namespace Scripts
 			MaxElevation = 90,
 			HomeAzimuth = 0, // Default resting rotation angle
 			HomeElevation = 0, // Default resting elevation
-			InventorySize = 0.8f,
+			InventorySize = 0.6f,
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 		};
@@ -86,7 +86,7 @@ namespace Scripts
 		};
 		private LoadingDef Ballistics_Gatlings_Hardpoint_Loading = new LoadingDef 
 		{
-			RateOfFire = 1800,
+			RateOfFire = 1500,
 			BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
@@ -96,7 +96,7 @@ namespace Scripts
 			HeatPerShot = 1, //heat generated per shot
 			MaxHeat = 80, //max heat before weapon enters cooldown (70% of max heat)
 			Cooldown = 0.75f, //percent of max heat to be under to start firing again after overheat accepts .2-.95
-			HeatSinkRate = 18, //amount of heat lost per second
+			HeatSinkRate = 15, //amount of heat lost per second
 			DegradeRof = false, // progressively lower rate of fire after 80% heat threshold (80% of max heat)
 			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -338,7 +338,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -10,
                     MaxElevation = 90,
-                    InventorySize = 0.4f,
+                    InventorySize = 0.3f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -416,7 +416,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.2f,
+                    InventorySize = 0.3f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -481,7 +481,7 @@ namespace Scripts
                     MaxAzimuth = 15,
                     MinElevation = -15,
                     MaxElevation = 15,
-                    InventorySize = 0.2f,
+                    InventorySize = 0.3f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.005f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -551,7 +551,7 @@ namespace Scripts
                     MaxElevation = 80,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 2.4f,
+                    InventorySize = 0.9f,
                     //Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
                 },

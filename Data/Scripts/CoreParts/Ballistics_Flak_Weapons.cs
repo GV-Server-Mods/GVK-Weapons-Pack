@@ -121,7 +121,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 1.960f, // Inventory capacity in kL.
+                    InventorySize = 1f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -201,7 +201,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.960f, // Inventory capacity in kL.
+                    InventorySize = 0.5f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -280,13 +280,13 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Flak Cannon", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
-                DeviateShotAngle = 0.5f, // Projectile inaccuracy in degrees.
+                DeviateShotAngle = 0.3f, // Projectile inaccuracy in degrees.
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.480f, // Inventory capacity in kL.
+                    InventorySize = 0.25f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 

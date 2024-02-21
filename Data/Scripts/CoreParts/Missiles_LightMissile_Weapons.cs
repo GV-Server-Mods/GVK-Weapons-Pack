@@ -75,14 +75,14 @@ namespace Scripts
 
 		private HardwareDef Missiles_Missile_Hardpoint_HardWare_Large = new HardwareDef
 		{
-			InventorySize = 14.100f,
+			InventorySize = 16.5f,
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 		};
 
 		private HardwareDef Missiles_Missile_Hardpoint_HardWare_Small = new HardwareDef
 		{
-			InventorySize = 0.380f,
+			InventorySize = 0.88f,
 			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 			IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 		};
@@ -215,8 +215,8 @@ namespace Scripts
                     MinElevation = -60,
                     MaxElevation = 60,
                     HomeAzimuth = 0, // Default resting rotation angle
-                    InventorySize = 2.500f, // Inventory capacity in kL.
                     HomeElevation = 0, // Default resting elevation
+                    InventorySize = 7.92f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -235,7 +235,7 @@ namespace Scripts
                     DelayAfterBurst = 180, // 160. How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
                     GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
-					GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
+					GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
 					DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
                 },
 				Audio = Missiles_Missile_Hardpoint_Audio,
@@ -408,6 +408,7 @@ namespace Scripts
             },
         };
 		
+		// Unique because they use a different ammo with OverideTarget enabled
 		WeaponDefinition MXA_ArcherPods_NPC
         {
             get
@@ -422,6 +423,7 @@ namespace Scripts
             }
         }
 
+		// Unique because they use a different ammo with OverideTarget enabled
 		WeaponDefinition SmallRocketLauncherReload_NPC
         {
             get

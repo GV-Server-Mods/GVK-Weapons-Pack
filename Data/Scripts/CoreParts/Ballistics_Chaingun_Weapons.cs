@@ -49,7 +49,7 @@ namespace Scripts
 			MaxElevation = 90,
 			HomeAzimuth = 0, // Default resting rotation angle
 			HomeElevation = 0, // Default resting elevation
-			InventorySize = 0.320f, // Inventory capacity in kL.
+			InventorySize = 0.5f, // Inventory capacity in kL.
 			IdlePower = 0.01f, // Constant base power draw in MW.
 			//Offset = new Vector3D(0f,0f,0f), // XYZ Offsets the aiming/firing line of the weapon, in metres.
 			Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom          
@@ -399,7 +399,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.160f, // Inventory capacity in kL.
+                    InventorySize = 0.25f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -482,7 +482,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -6,
                     MaxElevation = 80,
-                    InventorySize = 0.960f,
+                    InventorySize = 1f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
                 },
