@@ -223,17 +223,7 @@ namespace Scripts
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef 
 				{
                     RateOfFire = 240, //180 // visual only, 0 disables and uses RateOfFire
@@ -326,17 +316,7 @@ namespace Scripts
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = new LoadingDef 
 				{
                     RateOfFire = 40, //180 // visual only, 0 disables and uses RateOfFire
@@ -438,17 +418,7 @@ namespace Scripts
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0.5f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = true, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = true, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef 
 				{
                     RateOfFire = 40,
@@ -542,17 +512,7 @@ namespace Scripts
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    MuzzleCheck = false,
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = new LoadingDef 
 				{
                     RateOfFire = 40, //180 // visual only, 0 disables and uses RateOfFire
