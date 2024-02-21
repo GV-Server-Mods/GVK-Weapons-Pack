@@ -73,7 +73,6 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
                     new MountPointDef 
 					{
                         SubtypeId = "GVK_CycloneCannonTurret_NPC", // Block Subtypeid. Your Cubeblocks contain this information
@@ -96,8 +95,6 @@ namespace Scripts
             Targeting = Ballistics_Cannons_Targeting_LargeTurret,
             HardPoint = new HardPointDef 
 			{
-                PartName = "155mm Artillery Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.3f,
                 PartName = "155mm Cyclone Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.2f,
                 AimingTolerance = 0.8f, // 0 - 180 firing angle
@@ -203,8 +200,8 @@ namespace Scripts
             Targeting = Ballistics_Cannons_Targeting_LargeTurret,
             HardPoint = new HardPointDef 
 			{
-                PartName = "155mm Artillery Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.3f,
+                PartName = "155mm Turret", // name of weapon in terminal
+                DeviateShotAngle = 0.2f,
                 AimingTolerance = 0.8f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
