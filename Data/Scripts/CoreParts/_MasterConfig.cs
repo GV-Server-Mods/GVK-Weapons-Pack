@@ -70,7 +70,7 @@ namespace Scripts
 							SmallFlareWC,
 							FlarePistolGun,
 							odin_def,
-							LargeBlockRailgun_Turret
+							LargeBlockRailgun_Turret,
 							GVK_GriffinMissileTurret,
 							GVK_CycloneCannonTurret
 							);
