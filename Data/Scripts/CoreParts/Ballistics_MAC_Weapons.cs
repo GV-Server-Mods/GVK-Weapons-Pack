@@ -114,7 +114,17 @@ namespace Scripts
 				{
                     new MountPointDef 
 					{
-                        SubtypeId = "R309_RailCannon", // Block Subtypeid. Your Cubeblocks contain this information
+                        SubtypeId = "Ballistics_MAC_Turret", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "MissileTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "MissileTurretBarrels",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "Ballistics_MAC_Turret_NPC", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
                         AzimuthPartId = "MissileTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
@@ -130,37 +140,41 @@ namespace Scripts
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "muzzle_missile_001", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-            Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
+            Targeting = new TargetingDef
+            {
+                Threats = new[] {
+                    Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals, ScanRoid, ScanPlanet, ScanFriendlyCharacter, ScanFriendlyGrid, ScanEnemyCharacter, ScanEnemyGrid, ScanNeutralCharacter, ScanNeutralGrid, ScanUnOwnedGrid, ScanOwnersGrid
+                },
+                SubSystems = new[] {
+                    Thrust, Utility, Offense, Power, Production, Any, Jumping, Steering, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+                },
+                IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
+                MaxTargetDistance = 4000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
+                MinTargetDistance = 20, // Minimum distance at which targets will be automatically shot at.
+                TopTargets = 4, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 8, // Maximum number of blocks to randomize between; 0 = unlimited.
+                StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
+            },
             HardPoint = new HardPointDef
             {
                 PartName = "MAC", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.015f,
-                    ElevateRate = 0.01f,
+                    RotateRate = 0.005f,
+                    ElevateRate = 0.005f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -5,
+                    MinElevation = -15,
                     MaxElevation = 75,
-                    InventorySize = 6.760f, // Inventory capacity in kL.
+                    InventorySize = 6.754f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
-                    Debug = false, // Force enables debug mode.
-                    RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
-                    CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
-                    CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 20, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
@@ -188,7 +202,7 @@ namespace Scripts
 			{
                 LargeRailgunSabot_turret,
             },
-            //Animations = LargeRailgunAnimation,
+            //Animations = MACTurretAnimation,
         };
     }
 }
