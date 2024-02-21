@@ -57,7 +57,7 @@ namespace Scripts
 		
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T1 = new LoadingDef 
 		{
-			RateOfFire = 150, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 120, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -499,10 +499,10 @@ namespace Scripts
                 },
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 720,
+                    RateOfFire = 480,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 70, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 2, // Number of physical magazines to consume on reload.
                 },

@@ -558,13 +558,13 @@ namespace Scripts
                 Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 1800,
+                    RateOfFire = 1500,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					MagsToLoad = 16, // Number of physical magazines to consume on reload.
+                    ReloadTime = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					MagsToLoad = 14, // Number of physical magazines to consume on reload.
                     SpinFree = false, // Spin while not firing
                 },
                 Audio = new HardPointAudioDef

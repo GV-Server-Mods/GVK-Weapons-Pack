@@ -53,7 +53,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 3f, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+                Diameter = 2f, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
 			DamageScales = new DamageScaleDef 
 			{
@@ -87,9 +87,9 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 5f,
+                    Radius = 4f,
                     Damage = 12000f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -124,13 +124,13 @@ namespace Scripts
                     Aggressiveness = 3f, // controls how responsive tracking is, recommended value 3-5.
                     MaxLateralThrust = 0.5, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
                     NavAcceleration = 0, // helps influence how the projectile steers, 0 defaults to 1/2 Aggressiveness value or 0 if its 0, a value less than 0 disables this feature. 
-                    TrackingDelay = 10, // Measured in Shape diameter units traveled.
+                    TrackingDelay = 20, // Measured in Shape diameter units traveled.
                     AccelClearance = false, // Setting this to true will prevent smart acceleration until it is clear of the grid and tracking delay has been met (free fall).
                     MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     OverideTarget = false, // when set to true ammo picks its own target, does not use hardpoint's.
                     CheckFutureIntersection = false, // Utilize obstacle avoidance for drones/smarts
                     FutureIntersectionRange = 0, // Range in front of the projectile at which it will detect obstacle.  If set to zero it defaults to DesiredSpeed + Shape Diameter
-                    MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
+                    MaxTargets = 1, // Number of targets allowed before ending, 0 = unlimited
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = false, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss

@@ -43,7 +43,7 @@ namespace Scripts
 		{
             AmmoMagazine = "NATO_25x184mm",
             AmmoRound = "NATO_25x184mm", 
-            BaseDamage = 70f,
+            BaseDamage = 100f,
             Mass = 1f, // in kilograms
             BackKickForce = 100f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
