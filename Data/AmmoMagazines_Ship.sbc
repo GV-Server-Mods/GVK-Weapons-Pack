@@ -78,8 +78,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>50</Mass>
-			<Volume>30</Volume>
+			<Mass>80</Mass>
+			<Volume>50</Volume>
 			<Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>6</Capacity>
@@ -100,8 +100,8 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>1000</Mass>
-			<Volume>100</Volume>
+			<Mass>600</Mass>
+			<Volume>60</Volume>
 			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -122,8 +122,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>560</Mass>
-			<Volume>80</Volume>
+			<Mass>350</Mass>
+			<Volume>50</Volume>
 			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -144,8 +144,8 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>61000</Mass>
-			<Volume>3000</Volume>
+			<Mass>61400</Mass>
+			<Volume>3070</Volume>
 			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -166,8 +166,8 @@
 				<Y>0.1</Y>
 				<Z>0.1</Z>
 			</Size>
-			<Mass>6700</Mass>
-			<Volume>330</Volume>
+			<Mass>2700</Mass>
+			<Volume>270</Volume>
 			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -189,7 +189,7 @@
 				<Z>0.2</Z>
 			</Size>
 			<Mass>80</Mass>
-			<Volume>100</Volume>
+			<Volume>110</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -210,8 +210,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>90</Mass>
-			<Volume>60</Volume>
+			<Mass>170</Mass>
+			<Volume>110</Volume>
 			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -298,8 +298,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>320</Mass>
-			<Volume>160</Volume>
+			<Mass>760</Mass>
+			<Volume>380</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -342,8 +342,8 @@
 				<Y>2</Y>
 				<Z>0.5</Z>
 			</Size>
-			<Mass>2400</Mass>
-			<Volume>1600</Volume>
+			<Mass>3770</Mass>
+			<Volume>2510</Volume>
 			<Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
