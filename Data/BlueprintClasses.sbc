@@ -89,11 +89,8 @@
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="ElitePistolMagazine"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="UltimateAutomaticRifleGun_Mag_30rd"/>
 		<!-- LARGE BLOCK WEAPONS, Don't need to add Vanillas here -->
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeGatlingTurretBasic"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXRailgunTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXRailgun"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MXA_CoilgunL"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXLightCoilgun"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXLargeRadar"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_T2PDX"/>
@@ -114,11 +111,12 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDX"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/GVK_CycloneCannonTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/GVK_GriffinMissileTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/R309_RailCannon"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/odin"/>
 		<!-- SMALL BLOCKS, Don't need to add Vanillas here -->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXFlakTurret_small"/>
-		<Entry Class="SmallBlocks" BlueprintSubtypeId="InteriorTurret/SmallInteriorTurret"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXSmallRadar"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeGatlingTurret/SmallGatlingGun_Gimbal"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT_sm"/>
