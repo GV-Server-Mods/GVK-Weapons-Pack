@@ -162,6 +162,15 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "blank" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef {
+                        SubtypeId = "odin_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrelsTubes", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "blank" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                 },
                 Muzzles = new[] {
                     "muzzle_missile_001",
@@ -185,7 +194,7 @@ namespace Scripts
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinimumDiameter = 0, // 0 = unlimited, Minimum radius of threat to engage.
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
-                MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+                MaxTargetDistance = 4000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
                 TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
                 TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
@@ -194,8 +203,8 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "Odin Heavy Cannon", // name of weapon in terminal
-                DeviateShotAngle = 0.03f,
-                AimingTolerance = 0.3f, // 0 - 180 firing angle
+                DeviateShotAngle = 0.003f,
+                AimingTolerance = 0.03f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = false,
@@ -208,8 +217,8 @@ namespace Scripts
                     ElevateRate = 0.003f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
-                    MinElevation = -5,
-                    MaxElevation = 60,
+                    MinElevation = -20,
+                    MaxElevation = 70,
                     FixedOffset = false,
                     InventorySize = 16f,
                     Offset = Vector(x: 0, y: 0, z: 0),
