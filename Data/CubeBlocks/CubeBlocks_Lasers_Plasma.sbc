@@ -82,7 +82,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>lokiCannon1_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Plasma] LOKI</DisplayName>
+			<DisplayName>[NPC-Plasma] LOKI</DisplayName>
 			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
 				[2600m Auto Range]
 				[Uses Plasma Cells + 343MW Energy]</Description>

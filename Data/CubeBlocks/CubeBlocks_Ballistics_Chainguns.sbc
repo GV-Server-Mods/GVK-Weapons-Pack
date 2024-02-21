@@ -405,7 +405,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHeavyFlakTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] Thrasher</DisplayName>
+			<DisplayName>[NPC-Autocannon] Thrasher</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_HeavyFlak.dds</Icon>
 			<Description>The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.
 				[1900m Auto Range]
@@ -469,7 +469,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>KhopeshTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] Khopesh</DisplayName>
+			<DisplayName>[NPC-Autocannon] Khopesh</DisplayName>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
 				[1800m Auto Range]
 				[Uses 30mm API]
@@ -560,7 +560,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeAutoCannonTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] Large 30mm Turret</DisplayName>
+			<DisplayName>[NPC-Autocannon] Large 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\RB_CompactTurretGatlingT1.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
 				[1800m Auto Range]
@@ -655,7 +655,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>AutoCannonTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] Small 30mm Turret</DisplayName>
+			<DisplayName>[NPC-Autocannon] Small 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutocannonTurret_icon.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
 				[1800m Auto Range]
@@ -763,7 +763,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallBlockAutocannon_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] Small 30mm Gun</DisplayName>
+			<DisplayName>[NPC-Autocannon] Small 30mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutoCannon.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
 				[2000m Manual Range]

@@ -168,7 +168,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDT_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[AMS] Large PD-COIL Turret</DisplayName>
+			<DisplayName>[NPC-AMS] Large PD-COIL Turret</DisplayName>
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]
@@ -253,7 +253,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDT_sm_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[AMS] Small PD-COIL Turret</DisplayName>
+			<DisplayName>[NPC-AMS] Small PD-COIL Turret</DisplayName>
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]

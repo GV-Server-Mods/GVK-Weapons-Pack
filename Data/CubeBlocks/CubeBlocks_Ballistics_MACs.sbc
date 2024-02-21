@@ -170,7 +170,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>LargeRailgun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Large 200mm Coilgun</DisplayName>
+			<DisplayName>[NPC-MAC] Large 200mm Coilgun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage.
 				[3000m Manual Range]
@@ -248,7 +248,7 @@
                 <TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>Ballistics_MAC_Turret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] Large 200mm Coilgun Turret</DisplayName>
+			<DisplayName>[NPC-MAC] Large 200mm Coilgun Turret</DisplayName>
 			<Description>The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Static Only. Manufactured by Substicious.
 				[4000m Manual Range]
 				[Dmg scale: 100% @ 1000m - 25% @ 4000m]

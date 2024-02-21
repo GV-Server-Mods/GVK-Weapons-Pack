@@ -349,7 +349,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Large Hydra Turret</DisplayName>
+			<DisplayName>[NPC-Rocket] Large Hydra Turret</DisplayName>
             <Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1000m Auto Range]
@@ -443,7 +443,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Small Hydra Turret</DisplayName>
+			<DisplayName>[NPC-Rocket] Small Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1000m Auto Range]
@@ -536,7 +536,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Large Hydra Launcher</DisplayName>
+			<DisplayName>[NPC-Rocket] Large Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1200m Manual Range]
@@ -595,7 +595,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Small Hydra launcher</DisplayName>
+			<DisplayName>[NPC-Rocket] Small Hydra launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1200m Manual Range]
@@ -653,7 +653,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Small Hydra launcher (Warfare)</DisplayName>
+			<DisplayName>[NPC-Rocket] Small Hydra launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1200m Manual Range]

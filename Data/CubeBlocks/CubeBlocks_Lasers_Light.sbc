@@ -246,7 +246,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDX_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[L.Laser] Large XFEL-L Turret</DisplayName>
+			<DisplayName>[NPC-L.Laser] Large XFEL-L Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MA_PDX.dds</Icon>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
 				[900m Auto Range]
@@ -337,7 +337,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ReceptorTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[L.Laser] Small XFEL-L Turret</DisplayName>
+			<DisplayName>[NPC-L.Laser] Small XFEL-L Turret</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.
 				[900m Auto Range]
 				[Uses 59MW Energy]
@@ -432,7 +432,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ReceptorCoilGun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[L.Laser] Small XFEL-L Gun</DisplayName>
+			<DisplayName>[NPC-L.Laser] Small XFEL-L Gun</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.
 				[1100m Manual Range]
 				[Uses 59MW Energy]

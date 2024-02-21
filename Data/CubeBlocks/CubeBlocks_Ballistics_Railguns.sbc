@@ -189,7 +189,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXRailgunTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Railgun] Apollo</DisplayName>
+			<DisplayName>[NPC-Railgun] Apollo</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
 			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
 				[3000m Auto Range]
@@ -258,7 +258,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXRailgun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Railgun] Artemis</DisplayName>
+			<DisplayName>[NPC-Railgun] Artemis</DisplayName>
 			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
 				[3300m Manual Range]
 				[Uses 50mm FeW + 133MW]</Description>
@@ -321,7 +321,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>SmallRailgun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Railgun] Ares</DisplayName>
+			<DisplayName>[NPC-Railgun] Ares</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
 				[3300m Manual Range]

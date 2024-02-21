@@ -66,7 +66,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword</DisplayName>
+			<DisplayName>[NPC-SRBM] Longsword</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
 			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction. Developed by AWE.
 				[500-4000m Auto Range]

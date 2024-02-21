@@ -531,7 +531,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXVulcanTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Vulcan</DisplayName>
+			<DisplayName>[NPC-Gatling] Vulcan</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_VulcanCannon.dds</Icon>
 			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Vulcan. Designed by Aryx Weapon Enterprises.
 				[1600m Auto Range]
@@ -594,7 +594,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SentinelTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Sentinel</DisplayName>
+			<DisplayName>[NPC-Gatling] Sentinel</DisplayName>
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1500m Auto Range]
@@ -686,7 +686,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeGatlingTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Large CIWS Turret</DisplayName>
+			<DisplayName>[NPC-Gatling] Large CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[1500m Auto Range]
@@ -782,7 +782,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small CIWS Turret</DisplayName>
+			<DisplayName>[NPC-Gatling] Small CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
 				[1500m Auto Range]
@@ -875,7 +875,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm Gun</DisplayName>
+			<DisplayName>[NPC-Gatling] Small 25mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Hard-mounted six-barrel multi-role rotary cannon.
 				[1700m Manual Range]
@@ -935,7 +935,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGunWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm Gun (Warfare)</DisplayName>
+			<DisplayName>[NPC-Gatling] Small 25mm Gun (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
 				[1700m Manual Range]
@@ -996,7 +996,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingGun_Gimbal_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] Small 25mm Gimbal</DisplayName>
+			<DisplayName>[NPC-Gatling] Small 25mm Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
 				[1600m Auto Range]

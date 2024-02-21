@@ -255,7 +255,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeBlockMediumCalibreTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Large 100mm Turret</DisplayName>
+			<DisplayName>[NPC-Flak] Large 100mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurretLarge.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[1800m Auto Range (100m min)]
@@ -357,7 +357,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallBlockMediumCalibreTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Small 100mm Turret</DisplayName>
+			<DisplayName>[NPC-Flak] Small 100mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCalibreTurret_Small.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[1800m Auto Range (100m min)]
@@ -456,7 +456,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallBlockMediumCalibreGun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] Small 100mm Gun</DisplayName>
+			<DisplayName>[NPC-Flak] Small 100mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MediumCaliberGun.dds</Icon>
 			<Description>Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.
 				[2000m Manual Range (100m min)]
