@@ -7,7 +7,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXSpartanTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Spartan</DisplayName>
+			<DisplayName>[H.Laser] Spartan</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
 			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
 				[1600m Auto Range]
@@ -67,7 +67,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_T2PDX</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-H Turret</DisplayName>
+			<DisplayName>[H.Laser] Large XFEL-H Turret</DisplayName>
 			<Description>A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
 				[1600m Auto Range]
 				[Uses 117MW Energy]
@@ -140,7 +140,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_Fixed_T2</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-H Gimbal </DisplayName>
+			<DisplayName>[H.Laser] Large XFEL-H Gimbal </DisplayName>
 			<Description>An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.
 				[1800m Semi-Auto Range]
 				[Uses 117MW Energy]
@@ -217,7 +217,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXSpartanTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Spartan</DisplayName>
+			<DisplayName>[H.Laser] Spartan</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
 			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
 				[1600m Auto Range]
@@ -282,7 +282,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_T2PDX_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-H Turret</DisplayName>
+			<DisplayName>[H.Laser] Large XFEL-H Turret</DisplayName>
 			<Description>A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
 				[1600m Auto Range]
 				[Uses 117MW Energy]
@@ -360,7 +360,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_Fixed_T2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-H Gimbal </DisplayName>
+			<DisplayName>[H.Laser] Large XFEL-H Gimbal </DisplayName>
 			<Description>An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.
 				[1800m Semi-Auto Range]
 				[Uses 117MW Energy]
