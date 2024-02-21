@@ -217,6 +217,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileLauncher_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
                 },
                 Muzzles = new []
                 {
