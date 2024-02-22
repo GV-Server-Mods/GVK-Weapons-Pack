@@ -157,7 +157,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

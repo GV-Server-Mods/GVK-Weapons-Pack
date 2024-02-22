@@ -159,7 +159,7 @@
 			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

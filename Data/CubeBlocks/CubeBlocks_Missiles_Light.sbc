@@ -262,7 +262,7 @@
 			</TargetingGroups>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -337,7 +337,7 @@
 			</BuildProgressModels>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -402,7 +402,7 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<MirroringZ>Y</MirroringZ>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

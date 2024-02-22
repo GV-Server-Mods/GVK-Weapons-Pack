@@ -436,7 +436,7 @@
                 <string>Weapons</string>
             </TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -529,7 +529,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -588,7 +588,7 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -646,7 +646,7 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -708,7 +708,7 @@
 			</TargetingGroups>
 			<DLC>Warfare2</DLC>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

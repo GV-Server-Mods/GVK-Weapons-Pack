@@ -587,7 +587,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -679,7 +679,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -775,7 +775,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -868,7 +868,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -928,7 +928,7 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -989,7 +989,7 @@
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<DLC>Warfare2</DLC>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -1082,7 +1082,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

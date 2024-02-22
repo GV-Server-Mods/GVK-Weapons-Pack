@@ -462,7 +462,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -553,7 +553,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -648,7 +648,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -756,7 +756,7 @@
 			<CameraDummyName>camera</CameraDummyName>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -820,7 +820,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<!-- Vanilla definition switched to a different typeid and model due to model errors -->
 		<Definition Enabled="false">

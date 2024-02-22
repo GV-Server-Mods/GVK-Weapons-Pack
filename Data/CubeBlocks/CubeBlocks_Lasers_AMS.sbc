@@ -246,7 +246,7 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -331,7 +331,7 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<IsAirTight>false</IsAirTight>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

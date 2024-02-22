@@ -431,7 +431,7 @@
 			<IsAirTight>false</IsAirTight>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -537,7 +537,7 @@
 			</AimingOffset>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -612,7 +612,7 @@
 				<Z>4</Z>
 			</DamageEffectOffset>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -682,7 +682,7 @@
 			<DeformationRatio>0.2</DeformationRatio>
 			<GeneralDamageMultiplier>0.8</GeneralDamageMultiplier>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -741,7 +741,7 @@
 			<DamageEffectId>213</DamageEffectId>
 			<DeformationRatio>0.2</DeformationRatio>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

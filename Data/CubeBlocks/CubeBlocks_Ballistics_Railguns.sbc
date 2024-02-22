@@ -251,7 +251,7 @@
 			<UsesDeformation>false</UsesDeformation>
 			<DeformationRatio>0.5</DeformationRatio>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -314,7 +314,7 @@
 			<UsesDeformation>false</UsesDeformation>
 			<DeformationRatio>0.5</DeformationRatio>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -383,7 +383,7 @@
 			<UsesDeformation>false</UsesDeformation>
 			<DeformationRatio>0.5</DeformationRatio>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<!-- Disabled Blocks -->
 		<Definition Enabled="false">

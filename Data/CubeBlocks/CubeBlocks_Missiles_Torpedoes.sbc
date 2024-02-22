@@ -215,7 +215,7 @@
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -295,7 +295,7 @@
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

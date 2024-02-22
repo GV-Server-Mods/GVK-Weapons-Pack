@@ -330,7 +330,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -425,7 +425,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -492,7 +492,7 @@
 			<DestroyEffect>BlockDestroyedExplosion_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

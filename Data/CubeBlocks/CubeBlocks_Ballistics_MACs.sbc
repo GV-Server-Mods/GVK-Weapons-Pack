@@ -241,7 +241,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<!--<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
             <Id>
@@ -336,7 +336,7 @@
             <UpCameraOffset>0.75</UpCameraOffset>
             <ForwardCameraOffset>15</ForwardCameraOffset>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>-->
 		<!-- Disabled Blocks -->
 		<Definition Enabled="false">

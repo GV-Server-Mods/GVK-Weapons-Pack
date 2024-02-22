@@ -210,7 +210,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -289,7 +289,7 @@
 			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
 			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

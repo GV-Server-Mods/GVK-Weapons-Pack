@@ -350,7 +350,7 @@
 			<ForwardCameraOffset>0.5</ForwardCameraOffset>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
@@ -449,7 +449,7 @@
 			<ForwardCameraOffset>0.5</ForwardCameraOffset>
 			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -513,7 +513,7 @@
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

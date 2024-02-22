@@ -178,7 +178,7 @@
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>
