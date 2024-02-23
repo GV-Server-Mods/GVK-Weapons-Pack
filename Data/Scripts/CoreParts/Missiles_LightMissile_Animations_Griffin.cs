@@ -76,7 +76,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 300, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees
@@ -1090,7 +1090,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 300, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees
@@ -1162,7 +1162,7 @@ namespace Scripts
 							new RelMove
                             {
                                 CenterEmpty = "",
-                                TicksToMove = 800, //number of ticks to complete motion, 60 = 1 second
+                                TicksToMove = 300, //number of ticks to complete motion, 60 = 1 second
                                 MovementType = Delay,
                                 LinearPoints = new XYZ[0],
                                 Rotation = Transformation(0, 0, 0), //degrees

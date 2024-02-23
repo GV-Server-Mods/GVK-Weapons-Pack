@@ -224,15 +224,15 @@ namespace Scripts
 				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 300, // 240. Set this to 3600 for beam weapons.
+                    RateOfFire = 480, // 240. Set this to 3600 for beam weapons.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
-					ReloadTime = 1000, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    SkipBarrels = 8, // Number of muzzles to skip after each fire event.
+					ReloadTime = 410, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 36, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 0, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    ShotsInBurst = 4, // 5. Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 180, // 160. How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ShotsInBurst = 9, // 5. Use this if you don't want the weapon to fire an entire physical magazine before stopping to reload. Should not be more than your magazine capacity.
+                    DelayAfterBurst = 380, // 160. How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
                     GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
 					GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
