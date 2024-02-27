@@ -132,6 +132,9 @@
 				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -186,6 +189,9 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -346,6 +352,9 @@
 				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -411,6 +420,9 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

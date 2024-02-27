@@ -323,6 +323,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -378,6 +381,9 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -434,6 +440,9 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<DLC>Warfare2</DLC>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -522,6 +531,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -867,6 +879,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -927,6 +942,9 @@
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -988,6 +1006,9 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<InventoryFillFactorMin>.6</InventoryFillFactorMin>
 			<DLC>Warfare2</DLC>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -1081,6 +1102,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
