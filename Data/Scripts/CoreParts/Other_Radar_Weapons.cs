@@ -46,8 +46,8 @@ namespace Scripts
 			DamageModifier = false, // Enables terminal slider for changing damage per shot.
 			ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
 			EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
-			AlternateUi = true, // This simplifies and customizes the block controls for alternative weapon purposes,   
-			DisableStatus = true, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
+			AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
+			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
 		};
 
 		private AiDef Other_Radar_HardPoint_Ai => new AiDef
@@ -60,7 +60,7 @@ namespace Scripts
 			SuppressFire = false, // If enabled, weapon can only be fired manually.
 			OverrideLeads = false, // Disable target leading on fixed weapons, or allow it for turrets.
 			DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
-			TargetGridCenter = true, // Does not target blocks, instead it targets grid center.
+			TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
 		};
 
 		private OtherDef Other_Radar_HardPoint_Other => new OtherDef
