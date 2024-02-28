@@ -97,7 +97,7 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 10,
+                    MinArmingTime = 0,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
