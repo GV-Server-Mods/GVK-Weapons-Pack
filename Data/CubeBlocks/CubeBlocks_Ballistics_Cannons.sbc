@@ -7,7 +7,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>GVK_CycloneCannonTurret</SubtypeId>
 			</Id>
-			<DisplayName>[L.Cannon] Cyclone</DisplayName>
+			<DisplayName>*L.Cannon* Cyclone</DisplayName>
 			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
 				[2200m Auto Range]
 				[Uses 155mm AP]</Description>
@@ -77,7 +77,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeCalibreTurret</SubtypeId>
 			</Id>
-			<DisplayName>[L.Cannon] Large 155mm Turret</DisplayName>
+			<DisplayName>*L.Cannon* Large 155mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
 				[2200m Auto Range]
@@ -178,7 +178,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeBlockLargeCalibreGun</SubtypeId>
 			</Id>
-			<DisplayName>[L.Cannon] Large 155mm Gun</DisplayName>
+			<DisplayName>*L.Cannon* Large 155mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreGun.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
 				[2400m Manual Range]
@@ -248,7 +248,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKI122mmVT</SubtypeId>
 			</Id>
-			<DisplayName>[L.Cannon] Small 155mm Turret</DisplayName>
+			<DisplayName>*L.Cannon* Small 155mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mm_VehicleTurret.dds</Icon>
 			<Description>Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[2000m Auto Range]
@@ -313,7 +313,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>OKI122mmSGfixed</SubtypeId>
 			</Id>
-			<DisplayName>[L.Cannon] Small 155mm Gun</DisplayName>
+			<DisplayName>*L.Cannon* Small 155mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mmASG_fixed.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[2400m Manual Range]
@@ -368,7 +368,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>GVK_CycloneCannonTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Cannon] Cyclone</DisplayName>
+			<DisplayName>*NPC-L.Cannon* Cyclone</DisplayName>
 			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
 				[2200m Auto Range]
 				[Uses 155mm AP]</Description>
@@ -438,7 +438,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeCalibreTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Cannon] Large 155mm Turret</DisplayName>
+			<DisplayName>*NPC-L.Cannon* Large 155mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
 				[2200m Auto Range]
@@ -544,7 +544,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeBlockLargeCalibreGun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Cannon] Large 155mm Gun</DisplayName>
+			<DisplayName>*NPC-L.Cannon* Large 155mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreGun.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
 				[2400m Manual Range]
@@ -619,7 +619,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKI122mmVT_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Cannon] Small 155mm Turret</DisplayName>
+			<DisplayName>*NPC-L.Cannon* Small 155mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mm_VehicleTurret.dds</Icon>
 			<Description>Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[2000m Auto Range]
@@ -689,7 +689,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>OKI122mmSGfixed_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Cannon] Small 155mm Gun</DisplayName>
+			<DisplayName>*NPC-L.Cannon* Small 155mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\OKI122mmASG_fixed.dds</Icon>
 			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.
 				[2400m Manual Range]

@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret</SubtypeId>
 			</Id>
-			<DisplayName>[L.Missile] Griffin Missile Turret</DisplayName>
+			<DisplayName>*L.Missile* Griffin Missile Turret</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
 				[2300 Auto Range]
 				[Uses Griffin HE x36]</Description>
@@ -81,7 +81,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MXA_ArcherPods</SubtypeId>
 			</Id>
-			<DisplayName>[L.Missile] Large Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
 				[2300m Semi-Auto Range]
 				[Uses Griffin HE x150]
@@ -143,7 +143,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload</SubtypeId>
 			</Id>
-			<DisplayName>[L.Missile] Small Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Small Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
@@ -201,7 +201,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Missile] Griffin Missile Turret</DisplayName>
+			<DisplayName>*NPC-L.Missile* Griffin Missile Turret</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
 				[2300 Auto Range]
 				[Uses Griffin HE x36]</Description>
@@ -285,7 +285,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MXA_ArcherPods_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Missile] Large Griffin Launcher</DisplayName>
+			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
 				[2300m Semi-Auto Range]
 				[Uses Griffin HE x150]
@@ -363,7 +363,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-L.Missile] Small Griffin Launcher</DisplayName>
+			<DisplayName>*NPC-L.Missile* Small Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.

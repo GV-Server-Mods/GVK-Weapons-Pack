@@ -7,7 +7,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>OKIDesignator</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Large Radar</DisplayName>
+			<DisplayName>*Sensor* Large Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.
 				[5km Range]</Description>
 			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
@@ -81,7 +81,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXSmallRadar</SubtypeId>
 			</Id>
-			<DisplayName>[Sensor] Small Radar</DisplayName>
+			<DisplayName>*Sensor* Small Radar</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SmallRadar.dds</Icon>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by AWE.
 				[5km Range]</Description>

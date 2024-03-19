@@ -7,7 +7,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
 			</Id>
-			<DisplayName>[H.Cannon] Hurricane</DisplayName>
+			<DisplayName>*H.Cannon* Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
 			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
 				[3000m Auto Range]
@@ -67,7 +67,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>odin</SubtypeId>
 			</Id>
-			<DisplayName>[H.Cannon] Odin</DisplayName>
+			<DisplayName>*H.Cannon* Odin</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\odin.png</Icon>
 			<Description>The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.
 				[4000m Auto Range]
@@ -147,7 +147,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHurricaneCannon_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-H.Cannon] Hurricane</DisplayName>
+			<DisplayName>*NPC-H.Cannon* Hurricane</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
 			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
 				[3000m Auto Range]
@@ -217,7 +217,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>odin_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-H.Cannon] Odin</DisplayName>
+			<DisplayName>*NPC-H.Cannon* Odin</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\odin.png</Icon>
 			<Description>The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.
 				[4000m Auto Range]

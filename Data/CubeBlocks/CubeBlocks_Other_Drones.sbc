@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYX_Small_Sidekick_Hangar</SubtypeId>
 			</Id>
-			<DisplayName>[Drone] Falcon Drone Bay</DisplayName>
+			<DisplayName>*Drone* Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
 			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
 				OFFENSE = 3 minute flight time. 
@@ -65,7 +65,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYX_Small_Sidekick_Hangar_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[NPC-Drone] Falcon Drone Bay</DisplayName>
+			<DisplayName>*NPC-Drone* Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
 			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
 				OFFENSE = 3 minute flight time. 
