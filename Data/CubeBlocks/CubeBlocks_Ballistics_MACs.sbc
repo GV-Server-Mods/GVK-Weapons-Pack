@@ -21,8 +21,8 @@
 			<Model>Models\Cubes\Large\RailGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="260"/>
-				<Component Subtype="GVK_Laser_Tech" Count="6"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="6"/>
+				<Component Subtype="PrototechCapacitor" Count="6"/>
+				<Component Subtype="PrototechFrame" Count="6"/>
 				<Component Subtype="MetalGrid" Count="76"/>
 				<Component Subtype="PowerCell" Count="26"/>
 				<Component Subtype="Superconductor" Count="51"/>
@@ -184,13 +184,13 @@
 			<Model>Models\Cubes\Large\RailGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="260"/>
-				<Component Subtype="GVK_Laser_Tech" Count="6">
+				<Component Subtype="PrototechCapacitor" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LaserScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="6">
+				<Component Subtype="PrototechFrame" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>

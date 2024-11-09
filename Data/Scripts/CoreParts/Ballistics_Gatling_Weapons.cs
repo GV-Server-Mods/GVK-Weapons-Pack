@@ -128,8 +128,7 @@ namespace Scripts
 			Effect1 = new ParticleDef
 			{
 				Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
-				Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
-				Offset = new Vector3D(0f,0f,0f), //XYZ
+				Offset = new Vector3D(0f,0f,-1.5f), //XYZ
 				Extras = new ParticleOptionDef
 				{
 					Loop = true, // Set this to the same as in the particle sbc!
@@ -139,8 +138,7 @@ namespace Scripts
 			},
 			Effect2 = new ParticleDef
 			{
-				Name = "Smoke_LargeGunShot_WC",
-				Color = new Vector4(1f,1f,1f,1f), //RGBA //Deprecated
+				Name = "", //Smoke_LargeGunShot_WC
 				Offset = new Vector3D(0f,0f,0f), //XYZ
 				Extras = new ParticleOptionDef
 				{
@@ -221,8 +219,6 @@ namespace Scripts
                         {
                             Loop = true, // Set this to the same as in the particle sbc!
                             Restart = true, // Whether to end a looping effect instantly when firing stops.
-                            MaxDistance = 800,
-                            MaxDuration = 0,
                             Scale = 2f, // Scale of effect.
                         },
                     },
@@ -235,8 +231,6 @@ namespace Scripts
                         {
                             Loop = true, // Set this to the same as in the particle sbc!
                             Restart = false,
-                            MaxDistance = 800,
-                            MaxDuration = 0,
                             Scale = 5f,
                         },
                     },
@@ -276,6 +270,26 @@ namespace Scripts
 							DurabilityMod = 0.5f,
 							IconName = "TestIcon.dds",
 						},
+						new MountPointDef 
+						{
+							SubtypeId = "LargeGatlingTurretReskin",
+							SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+							MuzzlePartId = "GatlingTurretReskinBarrel",
+							AzimuthPartId = "GatlingTurretBase1",
+							ElevationPartId = "GatlingTurretBase2",
+							DurabilityMod = 0.5f,
+							IconName = "TestIcon.dds",
+						},
+						new MountPointDef 
+						{
+							SubtypeId = "LargeGatlingTurretReskin_NPC",
+							SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+							MuzzlePartId = "GatlingTurretReskinBarrel",
+							AzimuthPartId = "GatlingTurretBase1",
+							ElevationPartId = "GatlingTurretBase2",
+							DurabilityMod = 0.5f,
+							IconName = "TestIcon.dds",
+						},
 					},
 					Muzzles = new []
 					{
@@ -283,6 +297,7 @@ namespace Scripts
 					},
 				};
 				weapon.HardPoint.PartName = "CIWS Large";
+				weapon.HardPoint.Graphics = Ballistics_Gatlings_Hardpoint_Graphics;
                 return weapon;
             }
         }
@@ -308,6 +323,26 @@ namespace Scripts
                         SubtypeId = "SmallGatlingTurret_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "GatlingBarrel",
+                        AzimuthPartId = "GatlingTurretBase1",
+                        ElevationPartId = "GatlingTurretBase2",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallGatlingTurretReskin",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "GatlingTurretBarrel",
+                        AzimuthPartId = "GatlingTurretBase1",
+                        ElevationPartId = "GatlingTurretBase2",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallGatlingTurretReskin_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "GatlingTurretBarrel",
                         AzimuthPartId = "GatlingTurretBase1",
                         ElevationPartId = "GatlingTurretBase2",
                         DurabilityMod = 0.5f,

@@ -19,8 +19,8 @@
 			<Model>Models\AWE_Longbow\ARYX_MissileBatteryBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="550"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="12"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="12"/>
 				<Component Subtype="MetalGrid" Count="220"/>
 				<Component Subtype="LargeTube" Count="110"/>
 				<Component Subtype="Motor" Count="1100"/>
@@ -78,13 +78,13 @@
 			<Model>Models\AWE_Longbow\ARYX_MissileBatteryBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="550"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="12">
+				<Component Subtype="PrototechPanel" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>MissileScrap</SubtypeId>

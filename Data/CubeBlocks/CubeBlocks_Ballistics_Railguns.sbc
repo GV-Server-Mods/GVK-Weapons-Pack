@@ -20,8 +20,8 @@
 			<!-- added grind to LCalScrap because WC weapons can weld with loaded ammo from projection -->
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="10"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechFrame" Count="10"/>
 				<Component Subtype="MetalGrid" Count="130"/>
 				<Component Subtype="PowerCell" Count="41"/>
 				<Component Subtype="Superconductor" Count="81"/>
@@ -78,7 +78,7 @@
 			<Model>Models\AWERailgun\ARYX_Railgun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8"/>
+				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="MetalGrid" Count="40"/>
 				<Component Subtype="PowerCell" Count="14"/>
 				<Component Subtype="Superconductor" Count="27"/>
@@ -136,7 +136,7 @@
 			<Model>Models\Cubes\Small\RailGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="17"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="5"/>
+				<Component Subtype="PrototechFrame" Count="5"/>
 				<Component Subtype="MetalGrid" Count="6"/>
 				<Component Subtype="PowerCell" Count="2"/>
 				<Component Subtype="Superconductor" Count="4"/>
@@ -202,13 +202,13 @@
 			<!-- added grind to LCalScrap because WC weapons can weld with loaded ammo from projection -->
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="10">
+				<Component Subtype="PrototechFrame" Count="10">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -270,7 +270,7 @@
 			<Model>Models\AWERailgun\ARYX_Railgun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8">
+				<Component Subtype="PrototechFrame" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -333,7 +333,7 @@
 			<Model>Models\Cubes\Small\RailGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="17"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="5">
+				<Component Subtype="PrototechFrame" Count="5">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>

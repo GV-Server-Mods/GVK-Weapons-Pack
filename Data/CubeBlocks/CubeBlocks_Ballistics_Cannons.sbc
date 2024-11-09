@@ -19,7 +19,7 @@
 			<Model>Models\Cubes\large\CAP_TwinAssaultCannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8"/>
+				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
 				<Component Subtype="LargeTube" Count="150"/>
@@ -91,7 +91,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8"/>
+				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
 				<Component Subtype="LargeTube" Count="150"/>
@@ -190,7 +190,7 @@
 			<Model>Models\Cubes\Large\HeavyCalibreGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+				<Component Subtype="PrototechFrame" Count="4"/>
 				<Component Subtype="Construction" Count="70"/>
 				<Component Subtype="SmallTube" Count="28"/>
 				<Component Subtype="LargeTube" Count="47"/>
@@ -261,7 +261,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4"/>
+				<Component Subtype="PrototechFrame" Count="4"/>
 				<Component Subtype="Construction" Count="52"/>
 				<Component Subtype="SmallTube" Count="21"/>
 				<Component Subtype="LargeTube" Count="35"/>
@@ -325,7 +325,7 @@
 			<Model>Models\Cubes\Small\122mmFixed.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="58"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+				<Component Subtype="PrototechFrame" Count="2"/>
 				<Component Subtype="Construction" Count="29"/>
 				<Component Subtype="SmallTube" Count="12"/>
 				<Component Subtype="LargeTube" Count="20"/>
@@ -380,7 +380,7 @@
 			<Model>Models\Cubes\large\CAP_TwinAssaultCannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8"/>
+				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
 				<Component Subtype="LargeTube" Count="150"/>
@@ -452,7 +452,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="8">
+				<Component Subtype="PrototechFrame" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -556,7 +556,7 @@
 			<Model>Models\Cubes\Large\HeavyCalibreGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4">
+				<Component Subtype="PrototechFrame" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -632,7 +632,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="110"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="4">
+				<Component Subtype="PrototechFrame" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -701,7 +701,7 @@
 			<Model>Models\Cubes\Small\122mmFixed.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="58"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2">
+				<Component Subtype="PrototechFrame" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>

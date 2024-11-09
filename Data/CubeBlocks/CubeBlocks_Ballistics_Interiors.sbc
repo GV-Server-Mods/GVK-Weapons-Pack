@@ -21,7 +21,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="InteriorPlate" Count="120"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1"/>
+				<Component Subtype="PrototechMachinery" Count="1"/>
 				<Component Subtype="Construction" Count="300"/>
 				<Component Subtype="SmallTube" Count="20"/>
 				<Component Subtype="Motor" Count="39"/>
@@ -108,7 +108,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="InteriorPlate" Count="120"/>
-				<Component Subtype="GVK_SmallCaliber_Tech" Count="1">
+				<Component Subtype="PrototechMachinery" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
 						<SubtypeId>SCalScrap</SubtypeId>

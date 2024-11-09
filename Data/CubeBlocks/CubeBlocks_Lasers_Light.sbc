@@ -23,7 +23,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4"/>
+				<Component Subtype="PrototechCapacitor" Count="4"/>
 				<Component Subtype="SmallTube" Count="31"/>
 				<Component Subtype="Motor" Count="25"/>
 				<Component Subtype="Superconductor" Count="76"/>
@@ -107,7 +107,7 @@
 			<Model>Models\Akiad\Small\ReceptorTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4"/>
+				<Component Subtype="PrototechCapacitor" Count="4"/>
 				<Component Subtype="SmallTube" Count="31"/>
 				<Component Subtype="Motor" Count="25"/>
 				<Component Subtype="Superconductor" Count="76"/>
@@ -197,7 +197,7 @@
 			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Laser_Tech" Count="2"/>
+				<Component Subtype="PrototechCapacitor" Count="2"/>
 				<Component Subtype="SmallTube" Count="4"/>
 				<Component Subtype="Motor" Count="3"/>
 				<Component Subtype="Superconductor" Count="9"/>
@@ -262,7 +262,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
+				<Component Subtype="PrototechCapacitor" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LaserScrap</SubtypeId>
@@ -351,7 +351,7 @@
 			<Model>Models\Akiad\Small\ReceptorTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
+				<Component Subtype="PrototechCapacitor" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LaserScrap</SubtypeId>
@@ -446,7 +446,7 @@
 			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Laser_Tech" Count="2">
+				<Component Subtype="PrototechCapacitor" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LaserScrap</SubtypeId>

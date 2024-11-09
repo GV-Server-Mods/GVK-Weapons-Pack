@@ -20,8 +20,8 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="10"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="10"/>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -87,8 +87,8 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_Missile_Tech" Count="8"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="8"/>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
@@ -152,13 +152,13 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="10">
+				<Component Subtype="PrototechPanel" Count="10">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>MissileScrap</SubtypeId>
@@ -168,19 +168,13 @@
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
 				<Component Subtype="InteriorPlate" Count="13"/>
-				<Component Subtype="GVK_Unobtanium" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
 				<Component Subtype="Computer" Count="210"/>
 				<Component Subtype="Construction" Count="210"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
 			<BuildTimeSeconds>49</BuildTimeSeconds>
 			<PCU>10</PCU>
-			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1" EndY="1" Default="true"/>
 				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="5" EndY="1" PressurizedWhenOpen="true"/>
@@ -235,13 +229,13 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
+				<Component Subtype="PrototechPanel" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>MissileScrap</SubtypeId>
@@ -251,19 +245,13 @@
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
 				<Component Subtype="InteriorPlate" Count="9"/>
-				<Component Subtype="GVK_Unobtanium" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
 				<Component Subtype="Computer" Count="140"/>
 				<Component Subtype="Construction" Count="140"/>
 				<Component Subtype="SteelPlate" Count="140"/>
 			</Components>
 			<BuildTimeSeconds>34</BuildTimeSeconds>
 			<PCU>8</PCU>
-			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="13" EndX="2.0" EndY="14"/>

@@ -19,8 +19,8 @@
 			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="12"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechFrame" Count="12"/>
 				<Component Subtype="Construction" Count="520"/>
 				<Component Subtype="SmallTube" Count="210"/>
 				<Component Subtype="LargeTube" Count="350"/>
@@ -81,8 +81,8 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="16"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechFrame" Count="16"/>
 				<Component Subtype="Construction" Count="520"/>
 				<Component Subtype="SmallTube" Count="210"/>
 				<Component Subtype="LargeTube" Count="350"/>
@@ -159,13 +159,13 @@
 			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>DataScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="12">
+				<Component Subtype="PrototechFrame" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -231,8 +231,8 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
-				<Component Subtype="GVK_Data_Core" Count="1"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="16"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechFrame" Count="16"/>
 				<Component Subtype="Construction" Count="520"/>
 				<Component Subtype="SmallTube" Count="210"/>
 				<Component Subtype="LargeTube" Count="350"/>

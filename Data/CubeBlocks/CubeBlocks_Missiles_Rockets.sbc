@@ -7,8 +7,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>*Rocket* Large Hydra Turret</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
+			<DisplayName>*Rocket* Hydra Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1000m Auto Range]
 				[Uses Hydra HE x6]</Description>
@@ -17,29 +17,29 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="3"/>
 			<ModelOffset x="0" y="1.25" z="0"/>
-            <Model>Models\Cubes\Large\MissileTurret.mwm</Model>
+			<Model>Models\Cubes\Large\MissileTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="67" />
-				<Component Subtype="GVK_Missile_Tech" Count="4"/>
-                <Component Subtype="MetalGrid" Count="67" />
-                <Component Subtype="LargeTube" Count="81" />
-                <Component Subtype="Motor" Count="220" />
-                <Component Subtype="Computer" Count="170" />
-                <Component Subtype="Construction" Count="540" />
-                <Component Subtype="SteelPlate" Count="210" />
-            </Components>
-            <BuildTimeSeconds>78</BuildTimeSeconds>
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4"/>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
 			</MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MissileTurretConstruction_1.mwm" />
-                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MissileTurretConstruction_2.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MissileTurretConstruction_3.mwm" />
-            </BuildProgressModels>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MissileTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MissileTurretConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MissileTurretConstruction_3.mwm"/>
+			</BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -85,9 +85,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-            <TargetingGroups>
-                <string>Weapons</string>
-            </TargetingGroups>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -96,7 +96,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallMissileTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Small Hydra Turret</DisplayName>
+			<DisplayName>*Rocket* Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1000m Auto Range]
@@ -110,7 +110,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="18"/>
-				<Component Subtype="GVK_Missile_Tech" Count="2"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
 				<Component Subtype="MetalGrid" Count="18"/>
 				<Component Subtype="LargeTube" Count="22"/>
 				<Component Subtype="Motor" Count="58"/>
@@ -196,7 +196,7 @@
 			<Model>Models\Cubes\Large\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="33"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3"/>
+				<Component Subtype="PrototechPanel" Count="3"/>
 				<Component Subtype="MetalGrid" Count="33"/>
 				<Component Subtype="LargeTube" Count="39"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -250,7 +250,7 @@
 			<Model>Models\Cubes\Small\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="1"/>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -303,7 +303,7 @@
 			<Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="1"/>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -343,6 +343,194 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>LargeMissileTurretReskin</SubtypeId>
+			</Id>
+			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[1000m Auto Range]
+				[Uses Hydra HE x6]</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\RocketTurretReskin.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4"/>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\RocketTurretReskinConstruction1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\RocketTurretReskinConstruction2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\RocketTurretReskinConstruction3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MissileTurretReskin</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="LargeMissileTurret"/>
+			<EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-58</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>800</MaxRangeMeters>
+			<RotationSpeed>0.001</RotationSpeed>
+			<ElevationSpeed>0.001 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>275</PCU>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>0.5</ForwardCameraOffset>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+			<DLC>Contact</DLC>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>SmallMissileTurretReskin</SubtypeId>
+			</Id>
+			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[1000m Auto Range]
+				[Uses Hydra HE x2]</Description>
+			<CubeSize>Small</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketTurretReskin.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="18"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="MetalGrid" Count="18"/>
+				<Component Subtype="LargeTube" Count="22"/>
+				<Component Subtype="Motor" Count="58"/>
+				<Component Subtype="Computer" Count="44"/>
+				<Component Subtype="Construction" Count="150"/>
+				<Component Subtype="SteelPlate" Count="54"/>
+			</Components>
+			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
+				<MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Back" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Left" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Front" StartX="1" StartY="0" EndX="4" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.43" File="Models\Cubes\Small\RocketTurretReskinConstruction1.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\RocketTurretReskinConstruction2.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MissileTurretReskin</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="SmallMissileTurret"/>
+			<EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.12</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-8</MinElevationDegrees>
+			<MaxElevationDegrees>180</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>600</MaxRangeMeters>
+			<RotationSpeed>0.0015</RotationSpeed>
+			<ElevationSpeed>0.0015 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>100</PCU>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+			<DLC>Contact</DLC>
+		</Definition>
 		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition" Enabled="true">
 			<Id>
@@ -350,7 +538,7 @@
 				<SubtypeId>LargeMissileTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-Rocket* Large Hydra Turret</DisplayName>
-            <Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[1000m Auto Range]
 				[Uses Hydra HE x6]</Description>
@@ -359,34 +547,34 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="3"/>
 			<ModelOffset x="0" y="1.25" z="0"/>
-            <Model>Models\Cubes\Large\MissileTurret.mwm</Model>
+			<Model>Models\Cubes\Large\MissileTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
-            <Components>
-                <Component Subtype="SteelPlate" Count="67" />
-				<Component Subtype="GVK_Missile_Tech" Count="4">
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-                <Component Subtype="MetalGrid" Count="67" />
-                <Component Subtype="LargeTube" Count="81" />
-                <Component Subtype="Motor" Count="220" />
-                <Component Subtype="Computer" Count="170" />
-                <Component Subtype="Construction" Count="540" />
-                <Component Subtype="SteelPlate" Count="210" />
-            </Components>
-            <BuildTimeSeconds>78</BuildTimeSeconds>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
 			</MountPoints>
-            <BuildProgressModels>
-                <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MissileTurretConstruction_1.mwm" />
-                <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MissileTurretConstruction_2.mwm" />
-                <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MissileTurretConstruction_3.mwm" />
-            </BuildProgressModels>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\MissileTurretConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\MissileTurretConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\MissileTurretConstruction_3.mwm"/>
+			</BuildProgressModels>
 			<VoxelPlacement>
 				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
 				<StaticMode>
@@ -432,9 +620,9 @@
 				<unsignedInt>10</unsignedInt>
 				<unsignedInt>0</unsignedInt>
 			</TieredUpdateTimes>
-            <TargetingGroups>
-                <string>Weapons</string>
-            </TargetingGroups>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -457,12 +645,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="18"/>
-				<Component Subtype="GVK_Missile_Tech" Count="2">
+				<Component Subtype="PrototechPanel" Count="2">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="18"/>
 				<Component Subtype="LargeTube" Count="22"/>
 				<Component Subtype="Motor" Count="58"/>
@@ -548,12 +736,12 @@
 			<Model>Models\Cubes\Large\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="33"/>
-				<Component Subtype="GVK_Missile_Tech" Count="3">
+				<Component Subtype="PrototechPanel" Count="3">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="33"/>
 				<Component Subtype="LargeTube" Count="39"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -607,12 +795,12 @@
 			<Model>Models\Cubes\Small\RocketLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
+				<Component Subtype="PrototechPanel" Count="1">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -665,12 +853,12 @@
 			<Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Missile_Tech" Count="1">
+				<Component Subtype="PrototechPanel" Count="1">
 					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="3"/>
 				<Component Subtype="LargeTube" Count="4"/>
 				<Component Subtype="Motor" Count="10"/>
@@ -709,6 +897,194 @@
 			<DLC>Warfare2</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>LargeMissileTurretReskin_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[1000m Auto Range]
+				[Uses Hydra HE x6]</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\RocketTurretReskin.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4"/>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\RocketTurretReskinConstruction1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\RocketTurretReskinConstruction2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\RocketTurretReskinConstruction3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MissileTurretReskin_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="LargeMissileTurret"/>
+			<EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-58</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>800</MaxRangeMeters>
+			<RotationSpeed>0.001</RotationSpeed>
+			<ElevationSpeed>0.001 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>275</PCU>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>0.5</ForwardCameraOffset>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+			<DLC>Contact</DLC>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>SmallMissileTurretReskin_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[1000m Auto Range]
+				[Uses Hydra HE x2]</Description>
+			<CubeSize>Small</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketTurretReskin.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="18"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="MetalGrid" Count="18"/>
+				<Component Subtype="LargeTube" Count="22"/>
+				<Component Subtype="Motor" Count="58"/>
+				<Component Subtype="Computer" Count="44"/>
+				<Component Subtype="Construction" Count="150"/>
+				<Component Subtype="SteelPlate" Count="54"/>
+			</Components>
+			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
+				<MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Back" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Left" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Front" StartX="1" StartY="0" EndX="4" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.43" File="Models\Cubes\Small\RocketTurretReskinConstruction1.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Cubes\Small\RocketTurretReskinConstruction2.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MissileTurretReskin_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="SmallMissileTurret"/>
+			<EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.12</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-8</MinElevationDegrees>
+			<MaxElevationDegrees>180</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>600</MaxRangeMeters>
+			<RotationSpeed>0.0015</RotationSpeed>
+			<ElevationSpeed>0.0015 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>100</PCU>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+			<DLC>Contact</DLC>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

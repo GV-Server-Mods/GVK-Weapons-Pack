@@ -22,7 +22,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="160"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="6"/>
+				<Component Subtype="PrototechFrame" Count="6"/>
 				<Component Subtype="Construction" Count="240"/>
 				<Component Subtype="SmallTube" Count="93"/>
 				<Component Subtype="LargeTube" Count="78"/>
@@ -118,7 +118,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="57"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="3"/>
+				<Component Subtype="PrototechFrame" Count="3"/>
 				<Component Subtype="Construction" Count="85"/>
 				<Component Subtype="SmallTube" Count="34"/>
 				<Component Subtype="LargeTube" Count="29"/>
@@ -209,7 +209,7 @@
 			<Model>Models\Cubes\Small\MediumCaliberGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="7"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2"/>
+				<Component Subtype="PrototechFrame" Count="2"/>
 				<Component Subtype="Construction" Count="11"/>
 				<Component Subtype="SmallTube" Count="5"/>
 				<Component Subtype="LargeTube" Count="4"/>
@@ -269,7 +269,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="160"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="6">
+				<Component Subtype="PrototechFrame" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -371,7 +371,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="57"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="3">
+				<Component Subtype="PrototechFrame" Count="3">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
@@ -468,7 +468,7 @@
 			<Model>Models\Cubes\Small\MediumCaliberGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="7"/>
-				<Component Subtype="GVK_LargeCaliber_Tech" Count="2">
+				<Component Subtype="PrototechFrame" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>LCalScrap</SubtypeId>
