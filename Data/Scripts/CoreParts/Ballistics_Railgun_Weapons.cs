@@ -117,8 +117,7 @@ namespace Scripts {
             },
             Ammos = new[] 
 			{
-                SmallRailgunAmmo_Pen,
-                SmallRailgunAmmo_Pen_Fragment,
+                SmallRailgunAmmo,
             },
             Animations = AryxRailgunAnims,
         };
@@ -203,8 +202,7 @@ namespace Scripts {
             },
             Ammos = new[] 
 			{
-                SmallRailgunAmmo_Pen,
-                SmallRailgunAmmo_Pen_Fragment,
+                SmallRailgunAmmo,
             },
             Animations = AryxRailgunAnims,
         };

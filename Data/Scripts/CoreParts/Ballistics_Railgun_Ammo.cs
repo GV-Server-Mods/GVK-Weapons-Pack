@@ -360,7 +360,11 @@ namespace Scripts
             HybridRound = true, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.1202255639f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
-            Mass = 2000, // in kilograms
+            BaseDamageCutoff = 8000f,  // Maximum amount of pen damage to apply per block hit.  Deducts from BaseDamage and uses DamageScales modifiers
+                                    // Optional penetration mechanic to apply damage to blocks beyond the first hit, without requiring the block to be destroyed.  
+                                    // Overwrites normal damage behavior of requiring a block to be destroyed before damage can continue.  0 disables. 
+                                    // To limit max # of blocks hit, set MaxObjectsHit to desired # and ensure CountBlocks = true in ObjectsHit, otherwise it will continue until BaseDamage depletes
+			Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 400000f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
@@ -388,7 +392,7 @@ namespace Scripts
 			{
                 ByBlockHit = new ByBlockHitDef
                 {
-                    Enable = true,
+                    Enable = false,
                     Radius = 0.5f,
                     Damage = 66500f,
                     //Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
@@ -484,6 +488,10 @@ namespace Scripts
             HybridRound = true, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.1357894737f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes
+            BaseDamageCutoff = 6000f,  // Maximum amount of pen damage to apply per block hit.  Deducts from BaseDamage and uses DamageScales modifiers
+                                    // Optional penetration mechanic to apply damage to blocks beyond the first hit, without requiring the block to be destroyed.  
+                                    // Overwrites normal damage behavior of requiring a block to be destroyed before damage can continue.  0 disables. 
+                                    // To limit max # of blocks hit, set MaxObjectsHit to desired # and ensure CountBlocks = true in ObjectsHit, otherwise it will continue until BaseDamage depletes            Mass = 2000, // in kilograms
             Mass = 2000, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 200000f,
