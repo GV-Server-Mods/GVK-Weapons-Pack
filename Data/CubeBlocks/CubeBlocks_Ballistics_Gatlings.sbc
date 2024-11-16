@@ -1315,7 +1315,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="78"/>
-				<Component Subtype="PrototechMachinery" Count="3"/>
+				<Component Subtype="PrototechMachinery" Count="3">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="470"/>
 				<Component Subtype="SmallTube" Count="93"/>
 				<Component Subtype="Motor" Count="130"/>
@@ -1408,7 +1413,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="21"/>
-				<Component Subtype="PrototechMachinery" Count="2"/>
+				<Component Subtype="PrototechMachinery" Count="2">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>SCalScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="Construction" Count="130"/>
 				<Component Subtype="SmallTube" Count="25"/>
 				<Component Subtype="Motor" Count="34"/>

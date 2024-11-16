@@ -917,7 +917,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="67"/>
-				<Component Subtype="PrototechPanel" Count="4"/>
+				<Component Subtype="PrototechPanel" Count="4">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="67"/>
 				<Component Subtype="LargeTube" Count="81"/>
 				<Component Subtype="Motor" Count="220"/>
@@ -1011,7 +1016,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="18"/>
-				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="PrototechPanel" Count="2">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>MissileScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
 				<Component Subtype="MetalGrid" Count="18"/>
 				<Component Subtype="LargeTube" Count="22"/>
 				<Component Subtype="Motor" Count="58"/>
