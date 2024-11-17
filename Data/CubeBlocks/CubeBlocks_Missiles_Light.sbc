@@ -84,7 +84,7 @@
 			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
 				[2300m Semi-Auto Range]
-				[Uses Griffin HE x150]
+				[Uses Griffin HE x54]
 			</Description>
 			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
@@ -111,7 +111,7 @@
 				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>HWK_FixedMissileLauncher</BlockPairName>
+			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<MountPoints>
@@ -135,6 +135,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<!-- Archer subtype only for backwards compatibility -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -143,17 +144,14 @@
 			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
 				[2300m Semi-Auto Range]
-				[Uses Griffin HE x150]
+				[Uses Griffin HE x54]
 			</Description>
-			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="2"/>
-			<ModelOffset x="0" y="0" z="1.25"/>
-			<Model>Models\Missiles\MXA_ArcherPods.mwm</Model>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<MirroringX>X</MirroringX>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="80"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
@@ -167,8 +165,22 @@
 				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
 			<BuildTimeSeconds>78</BuildTimeSeconds>
-			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>MXA_ArcherPods</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
 			<EdgeType>Light</EdgeType>
 			<InventoryMaxVolume>0.250</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
@@ -177,24 +189,11 @@
 			<NavigationDefinition>Default</NavigationDefinition>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<MountPoints>
-				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="3.0" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="2" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="1" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="3.0" EndY="0.95" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="1" EndX="3.0" EndY="2" PressurizedWhenOpen="true"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Missiles\MXA_ArcherPods_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Missiles\MXA_ArcherPods_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
+			<Public>false</Public>
 		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
@@ -383,7 +382,7 @@
 				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>HWK_FixedMissileLauncher_NPC</BlockPairName>
+			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<MountPoints>
@@ -407,6 +406,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<!-- Archer subtype only for backwards compatibility -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
@@ -417,15 +417,12 @@
 				[2300m Semi-Auto Range]
 				[Uses Griffin HE x150]
 			</Description>
-			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="2"/>
-			<ModelOffset x="0" y="0" z="1.25"/>
-			<Model>Models\Missiles\MXA_ArcherPods.mwm</Model>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<MirroringX>X</MirroringX>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="80"/>
 				<Component Subtype="PrototechCircuitry" Count="1">
@@ -449,10 +446,23 @@
 				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
 			<BuildTimeSeconds>78</BuildTimeSeconds>
-			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>MXA_ArcherPods_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
 			<EdgeType>Light</EdgeType>
-			<!--<WeaponDefinitionId Subtype="Missiles_Missile"/>-->
 			<InventoryMaxVolume>0.250</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
@@ -460,19 +470,6 @@
 			<NavigationDefinition>Default</NavigationDefinition>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<MountPoints>
-				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="3.0" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="2" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="1" EndY="2.0" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="3.0" EndY="0.95" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Bottom" StartX="0.0" StartY="1" EndX="3.0" EndY="2" PressurizedWhenOpen="true"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Missiles\MXA_ArcherPods_BS1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Missiles\MXA_ArcherPods_BS2.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Missiles\MXA_ArcherPods_BS3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>

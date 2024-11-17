@@ -282,7 +282,7 @@ namespace Scripts
                     },
                     new MountPointDef 
 					{
-                        SubtypeId = "HWK_FixedMissileLauncher_NPC",
+                        SubtypeId = "MXA_ArcherPods",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
@@ -364,7 +364,7 @@ namespace Scripts
             Animations = HWK_FixedMissileLauncher_Animation,
         };
 
-        WeaponDefinition MXA_ArcherPods => new WeaponDefinition 
+        /*WeaponDefinition MXA_ArcherPods => new WeaponDefinition 
 		{
             Assignments = new ModelAssignmentsDef
             {
@@ -456,7 +456,7 @@ namespace Scripts
 				Missiles_Missile,
             },
             Animations = MXA_ArcherPods_Animation,
-        };
+        };*/
 
         WeaponDefinition SmallRocketLauncherReload => new WeaponDefinition 
 		{
@@ -509,12 +509,13 @@ namespace Scripts
         };
 		
 		// Unique because they use a different ammo with OverideTarget enabled
-		WeaponDefinition MXA_ArcherPods_NPC
+		WeaponDefinition HWK_FixedMissileLauncher_NPC
         {
             get
             {
-                var missile = MXA_ArcherPods;
-                missile.Assignments.MountPoints[0].SubtypeId = "MXA_ArcherPods_NPC";
+                var missile = HWK_FixedMissileLauncher;
+                missile.Assignments.MountPoints[0].SubtypeId = "HWK_FixedMissileLauncher_NPC";
+                missile.Assignments.MountPoints[1].SubtypeId = "MXA_ArcherPods_NPC";
                 missile.Ammos = new[]
                 {
                     Missiles_Missile_NPC,

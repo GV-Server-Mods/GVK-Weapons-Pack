@@ -35,8 +35,8 @@ namespace Scripts
 							SmallBlockAssaultCannonTurret,
 							//ARYXLightCoilgun,
 							LargeBlockRailgun,
-							MXA_ArcherPods,
-							MXA_ArcherPods_NPC,
+							//MXA_ArcherPods,
+							//MXA_ArcherPods_NPC,
 							SmallRocketLauncherReload,
 							SmallRocketLauncherReload_NPC,
 							Torpedo_Crusader_Large,
@@ -73,7 +73,8 @@ namespace Scripts
 							LargeBlockRailgun_Turret,
 							GVK_GriffinMissileTurret,
 							GVK_CycloneCannonTurret,
-							HWK_FixedMissileLauncher
+							HWK_FixedMissileLauncher,
+							HWK_FixedMissileLauncher_NPC
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
