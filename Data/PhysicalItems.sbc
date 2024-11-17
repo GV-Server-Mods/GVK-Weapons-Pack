@@ -6,7 +6,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>ElitePistolItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] S-10E 9mm Pistol</DisplayName>
+			<DisplayName>*Sidearm* S-10E 9mm Pistol</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponPistol_Elite_Warfare.dds</Icon>
 			<Description>A simple 10 round semi-automatic handgun.
 				[400m Range]
@@ -30,7 +30,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>RapidFireAutomaticRifleItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] MR-50 5.56mm Auto Rifle</DisplayName>
+			<DisplayName>*Sidearm* MR-50 5.56mm Auto Rifle</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_RapidFire.dds</Icon>
 			<Description>Lightweight automatic infantry rifle with poor accuracy and recoil.
 				[900m Range]
@@ -54,7 +54,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>UltimateAutomaticRifleItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] MR-30E 7.62mm Burst Rifle</DisplayName>
+			<DisplayName>*Sidearm* MR-30E 7.62mm Burst Rifle</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Elite.dds</Icon>
 			<Description>Heavy but accurate battle rifle, fires in 3 round burst.
 				[800m Range]
@@ -78,7 +78,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>BasicHandHeldLauncherItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] Hydra Rocket Launcher</DisplayName>
+			<DisplayName>*Sidearm* Hydra Rocket Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Regular.dds</Icon>
 			<Description>A shoulder fired Hydra Rocket Launcher.
 				[1000m Range]
@@ -102,7 +102,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>AdvancedHandHeldLauncherItem</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] Archer Rocket Launcher</DisplayName>
+			<DisplayName>*Sidearm* Archer Rocket Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
 			<Description>A homing Launcher that fires Archer missiles. Use MMB to lock onto a target.
 				[2500m Range]
@@ -126,7 +126,7 @@
                 <TypeId>PhysicalGunObject</TypeId>
                 <SubtypeId>FlareGunItem</SubtypeId>
             </Id>
-            <DisplayName>[Flare] Decoy Flare Pistol</DisplayName>
+            <DisplayName>*Flare* Decoy Flare Pistol</DisplayName>
             <Icon>Textures\GUI\Icons\FlareGun.dds</Icon>
 			<Description>A handheld launcher for firing flares.
 				[500m Range]
@@ -151,7 +151,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>SemiAutoPistolItem</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzSemiAutoPistol</DisplayName>
+			<DisplayName>zz*Do Not Use*zzSemiAutoPistol</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponPistol_Warfare.dds</Icon>
 			<Description>Description_SemiAutoPistol</Description>
 			<Size>
@@ -173,7 +173,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>FullAutoPistolItem</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFullAutoPistol</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFullAutoPistol</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponPistol_FullAuto_Warfare.dds</Icon>
 			<Description>Description_FullAutoPistol</Description>
 			<Size>
@@ -195,7 +195,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>AutomaticRifleItem</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzAutomaticRifle</DisplayName>
+			<DisplayName>zz*Do Not Use*zzAutomaticRifle</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle.dds</Icon>
 			<Description>Description_Rifle</Description>
 			<Size>
@@ -217,7 +217,7 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>PreciseAutomaticRifleItem</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzPreciseAutomaticRifle</DisplayName>
+			<DisplayName>zz*Do Not Use*zzPreciseAutomaticRifle</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponAutomaticRifle_Precise.dds</Icon>
 			<Description>Description_PreciseAutomaticRifle</Description>
 			<Size>
