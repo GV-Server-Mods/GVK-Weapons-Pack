@@ -45,7 +45,7 @@ namespace Scripts
             AmmoRound = "Ballistics_HeavyCannon", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             BaseDamage = 10000f, // Direct damage; one steel plate is worth 100.
             Mass = 2000f, // In kilograms; how much force the impact will apply to the target.
-            BackKickForce = 500000f, // Recoil. This is applied to the Parent Grid.
+            BackKickForce = 1500000f, // Recoil. This is applied to the Parent Grid.
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
