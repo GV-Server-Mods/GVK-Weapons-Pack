@@ -4,6 +4,67 @@
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
 			<Id>
 				<TypeId>GuiBlockCategoryDefinition</TypeId>
+				<SubtypeId></SubtypeId>
+			</Id>
+			<DisplayName>GV Kharak Items</DisplayName>
+			<Name>GVK</Name>
+			<StrictSearch>false</StrictSearch>
+			<ItemIds>
+				<string>ARYXRailgun</string>
+				<string>ARYXRailgunTurret</string>
+				<string>MXA_ArcherPods</string>
+				<string>Missile_Torpedo_Large</string>
+				<string>Missile_Torpedo_Small</string>
+				<string>LargeWarhead</string>
+				<string>LargeInteriorTurret</string>
+				<string>SmallInteriorTurret</string>
+				<string>SentinelTurret</string>
+				<string>LargeMissileTurret/(null)</string>
+				<string>SmallGatlingTurret</string>
+				<string>SmallMissileTurret</string>
+				<string>LargeMissileLauncher</string>
+				<string>SmallGatlingGun_Gimbal</string>
+				<string>SmallGatlingGun/(null)</string>
+				<string>SmallMissileLauncher/(null)</string>
+				<string>SmallRocketLauncherReload</string>
+				<string>MA_PDT</string>				
+				<string>MA_PDT_sm</string>
+				<string>MA_PDX</string>
+				<string>MA_T2PDX</string>
+				<string>ReceptorCoilGun</string>
+				<string>ReceptorTurret</string>
+				<string>OKI122mmSGfixed</string>
+				<string>OKI122mmVT</string>
+				<string>MA_Fixed_T2</string>
+				<string>LargeBlockMediumCalibreTurret</string>
+				<string>SmallBlockMediumCalibreTurret</string>
+				<string>LargeCalibreTurret</string>
+				<string>LargeBlockLargeCalibreGun</string>
+				<string>SmallBlockMediumCalibreGun</string>
+				<string>SmallRailgun</string>
+				<string>LargeRailgun</string>
+				<string>SmallMissileLauncherWarfare2</string>
+				<string>SmallGatlingGunWarfare2</string>
+				<string>AutoCannonTurret</string>
+				<string>KhopeshTurret</string>
+				<string>ARYXSmallRadar</string>
+				<string>OKIDesignator</string>
+				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
+				<string>ARYXMissileBattery</string>
+				<string>ARYXHeavyFlakTurret</string>
+				<string>ARYXVulcanTurret</string>
+				<string>ARYXHurricaneCannon</string>
+				<string>ARYXSpartanTurret</string>
+				<string>lokiCannon1</string>
+				<string>missileBattery01</string>
+				<string>GVK_CycloneCannonTurret</string>
+				<string>GVK_GriffinMissileTurret</string>
+				<string>odin</string>
+			</ItemIds>
+		</Category>
+		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+			<Id>
+				<TypeId>GuiBlockCategoryDefinition</TypeId>
 				<SubtypeId/>
 			</Id>
             <DisplayName>   Weapons</DisplayName>
