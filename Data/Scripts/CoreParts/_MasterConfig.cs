@@ -74,7 +74,8 @@ namespace Scripts
 							GVK_GriffinMissileTurret,
 							GVK_CycloneCannonTurret,
 							HWK_FixedMissileLauncher,
-							HWK_FixedMissileLauncher_NPC
+							HWK_FixedMissileLauncher_NPC,
+							HWK_TwinPointDefense
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

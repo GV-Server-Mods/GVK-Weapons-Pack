@@ -127,13 +127,15 @@ namespace Scripts
 		{
 			Effect1 = new ParticleDef
 			{
-				Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect.
-				Offset = new Vector3D(0f,0f,-1.5f), //XYZ
+				Name = "MD_Muzzle_Flash_Vulcan", // SubtypeId of muzzle particle effect.
+				Offset = new Vector3D(0f,0f,-1.75f), //XYZ
 				Extras = new ParticleOptionDef
 				{
 					Loop = true, // Set this to the same as in the particle sbc!
-					Restart = true, // Whether to end a looping effect instantly when firing stops.
-					Scale = 2f, // Scale of effect.
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 1000,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
 				},
 			},
 			Effect2 = new ParticleDef
@@ -142,9 +144,40 @@ namespace Scripts
 				Offset = new Vector3D(0f,0f,0f), //XYZ
 				Extras = new ParticleOptionDef
 				{
+					Loop = false, // Set this to the same as in the particle sbc!
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 800,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
+				},
+			},
+		};
+		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics_Vulcan = new HardPointParticleDef 
+		{
+			Effect1 = new ParticleDef
+			{
+				Name = "MD_Muzzle_Flash_Vulcan", // SubtypeId of muzzle particle effect.
+				Offset = new Vector3D(0f,0f,0f), //XYZ
+				Extras = new ParticleOptionDef
+				{
 					Loop = true, // Set this to the same as in the particle sbc!
-					Restart = false,
-					Scale = 2f,
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 1000,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
+				},
+			},
+			Effect2 = new ParticleDef
+			{
+				Name = "", //Smoke_LargeGunShot_WC
+				Offset = new Vector3D(0f,0f,0f), //XYZ
+				Extras = new ParticleOptionDef
+				{
+					Loop = false, // Set this to the same as in the particle sbc!
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 800,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
 				},
 			},
 		};
@@ -212,15 +245,17 @@ namespace Scripts
                 {
                     Effect1 = new ParticleDef
                     {
-                        Name = "Muzzle_Flash_Large", // SubtypeId of muzzle particle effect. Muzzle_Flash_Large
+                        Name = "MD_Muzzle_Flash_Vulcan", // SubtypeId of muzzle particle effect. Muzzle_Flash_Large
                         Offset = Vector(x: 0, y: 0, z: -5), // Offsets the effect from the muzzle empty.
                         DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
                             Loop = true, // Set this to the same as in the particle sbc!
-                            Restart = true, // Whether to end a looping effect instantly when firing stops.
-                            Scale = 2f, // Scale of effect.
-                        },
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 1000,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+						},
                     },
                     Effect2 = new ParticleDef
                     {
@@ -229,10 +264,12 @@ namespace Scripts
                         DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
-                            Loop = true, // Set this to the same as in the particle sbc!
-                            Restart = false,
-                            Scale = 5f,
-                        },
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 800,
+                            MaxDuration = 0,
+                            Scale = 1f, // Scale of effect.
+						},
                     },
                 },
 			},
@@ -622,6 +659,99 @@ namespace Scripts
                 NATO_25x184mm,
             },
             Animations = AryxVulcanAnimations,
+            // Don't edit below this line
+        };
+
+        WeaponDefinition HWK_TwinPointDefense => new WeaponDefinition
+        {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[] 
+				{
+                    new MountPointDef 
+					{
+                        SubtypeId = "HWK_TwinPointDefense",
+                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,	 
+					},
+                    new MountPointDef 
+					{
+                        SubtypeId = "HWK_TwinPointDefense_NPC",
+                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,	 
+					},
+                },
+                Muzzles = new[] {
+                    "muzzle_missile_1",
+                    "muzzle_missile_2",
+                },
+                Ejector = "",
+				Scope = "scope",
+				//Camera = "dummy_camera",
+            },
+            Targeting = Ballistics_Gatlings_Targeting_Long,
+            HardPoint = new HardPointDef
+            {
+                PartName = "Vulcan Gatling", // name of weapon in terminal
+                DeviateShotAngle = 0.15f, // Inaccuracy in degrees
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.015f,
+                    ElevateRate = 0.015f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -15,
+                    MaxElevation = 80,
+                    HomeAzimuth = 0, // Default resting rotation angle
+                    HomeElevation = 0, // Default resting elevation
+                    InventorySize = 0.9f,
+                    //Offset = Vector(x: 0, y: 0, z: 0),
+                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 1500,
+                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
+                    BarrelsPerShot = 2,
+                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    SkipBarrels = 0,
+                    ReloadTime = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					MagsToLoad = 14, // Number of physical magazines to consume on reload.
+                    SpinFree = false, // Spin while not firing
+                },
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "",
+                    FiringSound = "MD_LargeGatlingLoopFire", // WepShipGatlingShot
+                    FiringSoundPerShot = false,
+                    ReloadSound = "",
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "WepTurretGatlingRotate",
+                    BarrelRotationSound = "MD_GatlingBarrelLoop",
+                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundNoBurst = false,
+                },
+                
+				Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Vulcan,
+            },
+            Ammos = new[] 
+			{
+                NATO_25x184mm,
+            },
+            Animations = HWK_TwinPointDefenseAnimations,
             // Don't edit below this line
         };
     }
