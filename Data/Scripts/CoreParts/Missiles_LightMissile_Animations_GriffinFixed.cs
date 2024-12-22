@@ -24,7 +24,7 @@ namespace Scripts
         //StopFiring,
         //StopTracking
 
-        private AnimationDef HWK_FixedMissileLauncher_Animation => new AnimationDef
+        private AnimationDef GVK_GriffinMissileLauncher_Animation => new AnimationDef
         {
             AnimationSets = new[]
             {

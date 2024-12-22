@@ -94,7 +94,7 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXLargeRadar"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_T2PDX"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MXA_ArcherPods"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/GVK_GriffinMissileLauncher"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Large"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYX_Small_Sidekick_Hangar"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_Fixed_T2"/>
@@ -103,7 +103,7 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/lokiCannon1"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXSpartanTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHurricaneCannon"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXVulcanTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/GVK_AvengerGatlingTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHeavyFlakTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/KhopeshTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeAutoCannonTurret"/>

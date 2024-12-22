@@ -79,7 +79,7 @@
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>HWK_FixedMissileLauncher</SubtypeId>
+				<SubtypeId>GVK_GriffinMissileLauncher</SubtypeId>
 			</Id>
 			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
@@ -135,8 +135,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Archer subtype only for backwards compatibility -->
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MXA_ArcherPods</SubtypeId>
@@ -194,7 +193,7 @@
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>false</Public>
-		</Definition>
+		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncherReload</TypeId>
@@ -340,7 +339,7 @@
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>HWK_FixedMissileLauncher_NPC</SubtypeId>
+				<SubtypeId>GVK_GriffinMissileLauncher_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
@@ -406,8 +405,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Archer subtype only for backwards compatibility -->
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MXA_ArcherPods_NPC</SubtypeId>
@@ -475,7 +473,7 @@
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
-		</Definition>
+		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncherReload</TypeId>

@@ -662,7 +662,7 @@ namespace Scripts
             // Don't edit below this line
         };
 
-        WeaponDefinition HWK_TwinPointDefense => new WeaponDefinition
+        WeaponDefinition GVK_AvengerGatlingTurret => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
             {
@@ -670,7 +670,7 @@ namespace Scripts
 				{
                     new MountPointDef 
 					{
-                        SubtypeId = "HWK_TwinPointDefense",
+                        SubtypeId = "GVK_AvengerGatlingTurret",
                         SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -679,7 +679,7 @@ namespace Scripts
 					},
                     new MountPointDef 
 					{
-                        SubtypeId = "HWK_TwinPointDefense_NPC",
+                        SubtypeId = "GVK_AvengerGatlingTurret_NPC",
                         SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -751,7 +751,7 @@ namespace Scripts
 			{
                 NATO_25x184mm,
             },
-            Animations = HWK_TwinPointDefenseAnimations,
+            Animations = GVK_AvengerGatlingTurretAnimations,
             // Don't edit below this line
         };
     }

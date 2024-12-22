@@ -8,7 +8,7 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AnimationDef HWK_TwinPointDefenseAnimations => new AnimationDef
+        private AnimationDef GVK_AvengerGatlingTurretAnimations => new AnimationDef
         {
 
             //These are the animation sets the weapon uses in various states.

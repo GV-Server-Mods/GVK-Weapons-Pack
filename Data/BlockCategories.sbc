@@ -12,7 +12,6 @@
 			<ItemIds>
 				<string>ARYXRailgun</string>
 				<string>ARYXRailgunTurret</string>
-				<string>MXA_ArcherPods</string>
 				<string>Missile_Torpedo_Large</string>
 				<string>Missile_Torpedo_Small</string>
 				<string>LargeWarhead</string>
@@ -52,13 +51,14 @@
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>ARYXMissileBattery</string>
 				<string>ARYXHeavyFlakTurret</string>
-				<string>ARYXVulcanTurret</string>
+				<string>GVK_GriffinMissileLauncher</string>
 				<string>ARYXHurricaneCannon</string>
 				<string>ARYXSpartanTurret</string>
 				<string>lokiCannon1</string>
 				<string>missileBattery01</string>
 				<string>GVK_CycloneCannonTurret</string>
 				<string>GVK_GriffinMissileTurret</string>
+				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
 			</ItemIds>
 		</Category>
@@ -73,7 +73,6 @@
 			<ItemIds>
 				<string>ARYXRailgun</string>
 				<string>ARYXRailgunTurret</string>
-				<string>MXA_ArcherPods</string>
 				<string>Missile_Torpedo_Large</string>
 				<string>Missile_Torpedo_Small</string>
 				<string>LargeWarhead</string>
@@ -113,13 +112,14 @@
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>ARYXMissileBattery</string>
 				<string>ARYXHeavyFlakTurret</string>
-				<string>ARYXVulcanTurret</string>
+				<string>GVK_GriffinMissileLauncher</string>
 				<string>ARYXHurricaneCannon</string>
 				<string>ARYXSpartanTurret</string>
 				<string>lokiCannon1</string>
 				<string>missileBattery01</string>
 				<string>GVK_CycloneCannonTurret</string>
 				<string>GVK_GriffinMissileTurret</string>
+				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
 			</ItemIds>
 		</Category>
@@ -134,7 +134,6 @@
 			<ItemIds>
 				<string>ARYXRailgun</string>
 				<string>ARYXRailgunTurret</string>
-				<string>MXA_ArcherPods</string>
 				<string>Missile_Torpedo_Large</string>
 				<string>Missile_Torpedo_Small</string>
 				<string>LargeWarhead</string>
@@ -174,13 +173,14 @@
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>ARYXMissileBattery</string>
 				<string>ARYXHeavyFlakTurret</string>
-				<string>ARYXVulcanTurret</string>
+				<string>GVK_GriffinMissileLauncher</string>
 				<string>ARYXHurricaneCannon</string>
 				<string>ARYXSpartanTurret</string>
 				<string>lokiCannon1</string>
 				<string>missileBattery01</string>
 				<string>GVK_CycloneCannonTurret</string>
 				<string>GVK_GriffinMissileTurret</string>
+				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
 			</ItemIds>
 		</Category>

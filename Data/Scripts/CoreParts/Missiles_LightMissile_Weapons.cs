@@ -264,7 +264,7 @@ namespace Scripts
             Animations = Missiles_LightMissile_Animation,
         };
 
-        WeaponDefinition HWK_FixedMissileLauncher => new WeaponDefinition 
+        WeaponDefinition GVK_GriffinMissileLauncher => new WeaponDefinition 
 		{
             Assignments = new ModelAssignmentsDef
             {
@@ -272,17 +272,7 @@ namespace Scripts
 				{
                     new MountPointDef 
 					{
-                        SubtypeId = "HWK_FixedMissileLauncher",
-                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "None",
-                        AzimuthPartId = "None",
-                        ElevationPartId = "None",
-                        DurabilityMod = 0.5f,
-                        IconName = ""
-                    },
-                    new MountPointDef 
-					{
-                        SubtypeId = "MXA_ArcherPods",
+                        SubtypeId = "GVK_GriffinMissileLauncher",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
@@ -361,7 +351,7 @@ namespace Scripts
 			{
 				Missiles_Missile,
             },
-            Animations = HWK_FixedMissileLauncher_Animation,
+            Animations = GVK_GriffinMissileLauncher_Animation,
         };
 
         /*WeaponDefinition MXA_ArcherPods => new WeaponDefinition 
@@ -509,13 +499,12 @@ namespace Scripts
         };
 		
 		// Unique because they use a different ammo with OverideTarget enabled
-		WeaponDefinition HWK_FixedMissileLauncher_NPC
+		WeaponDefinition GVK_GriffinMissileLauncher_NPC
         {
             get
             {
-                var missile = HWK_FixedMissileLauncher;
-                missile.Assignments.MountPoints[0].SubtypeId = "HWK_FixedMissileLauncher_NPC";
-                missile.Assignments.MountPoints[1].SubtypeId = "MXA_ArcherPods_NPC";
+                var missile = GVK_GriffinMissileLauncher;
+                missile.Assignments.MountPoints[0].SubtypeId = "GVK_GriffinMissileLauncher_NPC";
                 missile.Ammos = new[]
                 {
                     Missiles_Missile_NPC,

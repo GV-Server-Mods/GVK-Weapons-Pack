@@ -33,10 +33,7 @@ namespace Scripts
 							LargeBlockAssaultCannonTurret,
 							SmallBlockAssaultCannon,
 							SmallBlockAssaultCannonTurret,
-							//ARYXLightCoilgun,
 							LargeBlockRailgun,
-							//MXA_ArcherPods,
-							//MXA_ArcherPods_NPC,
 							SmallRocketLauncherReload,
 							SmallRocketLauncherReload_NPC,
 							Torpedo_Crusader_Large,
@@ -54,7 +51,6 @@ namespace Scripts
 							AryxLongswordMissileBattery,
 							KhopeshTurret,
 							SentinelTurret,
-							AryxVulcanTurret,
 							AryxHurricaneTurret,
 							ThrasherTurret,
 							tukkaLauncher01,
@@ -73,9 +69,9 @@ namespace Scripts
 							LargeBlockRailgun_Turret,
 							GVK_GriffinMissileTurret,
 							GVK_CycloneCannonTurret,
-							HWK_FixedMissileLauncher,
-							HWK_FixedMissileLauncher_NPC,
-							HWK_TwinPointDefense
+							GVK_GriffinMissileLauncher,
+							GVK_GriffinMissileLauncher_NPC,
+							GVK_AvengerGatlingTurret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

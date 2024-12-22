@@ -5,11 +5,11 @@
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
-				<SubtypeId>HWK_TwinPointDefense</SubtypeId>
+				<SubtypeId>GVK_AvengerGatlingTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* Vulcan 2</DisplayName>
+			<DisplayName>*Gatling* Avenger</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_TwinPointDefense.dds</Icon>
-			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Vulcan. Made by Consty Designs.
+			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
 				[1600m Auto Range]
 				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
@@ -42,7 +42,7 @@
 				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_TwinPointDefense_BS2.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_TwinPointDefense_BS3.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>HWK_TwinPointDefense</BlockPairName>
+			<BlockPairName>GVK_AvengerGatlingTurret</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
@@ -60,7 +60,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+		<!-- <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXVulcanTurret</SubtypeId>
@@ -117,7 +117,7 @@
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
-		</Definition>
+		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -787,6 +787,64 @@
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>GVK_AvengerGatlingTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Gatling* Avenger</DisplayName>
+			<Icon>Textures\GUI\Icons\HWK_TwinPointDefense.dds</Icon>
+			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
+				[1600m Auto Range]
+				[Uses 25mm KE]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_TwinPointDefense.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="PrototechMachinery" Count="6"/>
+				<Component Subtype="Construction" Count="830"/>
+				<Component Subtype="SmallTube" Count="170"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="280"/>
+				<Component Subtype="MetalGrid" Count="420"/>
+				<Component Subtype="SteelPlate" Count="420"/>
+			</Components>
+			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<PCU>6</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_TwinPointDefense_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_TwinPointDefense_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_TwinPointDefense_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>GVK_AvengerGatlingTurret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.144</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXVulcanTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-Gatling* Vulcan</DisplayName>
@@ -846,7 +904,7 @@
 			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
-		</Definition>
+		</Definition> -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
