@@ -117,7 +117,7 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Lasers_Laser_Small,
+                Lasers_Laser_Light_SG,
             },
         };
 
@@ -165,12 +165,12 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef 
 				{
-                    RotateRate = 0.015f,
-                    ElevateRate = 0.015f,
+                    RotateRate = 0.02f,
+                    ElevateRate = 0.02f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -18,
-                    MaxElevation = 45,
+                    MaxElevation = 60,
                     InventorySize = 0f,
                     Offset = Vector(x: 0, y: 0, z:0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
@@ -182,7 +182,7 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Lasers_Laser_Small,
+                Lasers_Laser_Light_SG,
             },
         };
 
@@ -248,7 +248,7 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                Lasers_Laser_Small,
+                Lasers_Laser_Light_LG,
             },
         };
     }

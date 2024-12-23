@@ -39,12 +39,12 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Lasers_Laser_Small => new AmmoDef //Blue Receptor laser
+        private AmmoDef Lasers_Laser_Light_LG => new AmmoDef //Blue Receptor laser
         {
             AmmoMagazine = "Energy",
-            AmmoRound = "Lasers_Laser_Small",
+            AmmoRound = "Lasers_Laser_Light_LG",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.78f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
+            EnergyCost = 0.6f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
             BaseDamage = 75,
             Mass = 0f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -143,6 +143,18 @@ namespace Scripts
                 },
             },
         };
+
+        private AmmoDef Lasers_Laser_Light_SG
+        {
+            get
+            {
+                var laser = Lasers_Laser_Light_LG;
+                laser.AmmoRound = "Lasers_Laser_Light_SG";
+                //laser.BaseDamage = 37.5f;
+				laser.EnergyCost = 0.2f; //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
+                return laser;
+            }
+        }
 
     }
 }
