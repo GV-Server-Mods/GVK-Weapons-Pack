@@ -486,7 +486,7 @@ namespace Scripts
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
             HybridRound = true, //AmmoMagazine based weapon with energy cost
-            EnergyCost = 0.1357894737f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
+            EnergyCost = 0.05413533835f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes
             BaseDamageCutoff = 6000f,  // Maximum amount of pen damage to apply per block hit.  Deducts from BaseDamage and uses DamageScales modifiers
                                     // Optional penetration mechanic to apply damage to blocks beyond the first hit, without requiring the block to be destroyed.  
