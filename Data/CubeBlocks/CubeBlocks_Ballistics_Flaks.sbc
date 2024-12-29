@@ -118,7 +118,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="57"/>
-				<Component Subtype="PrototechFrame" Count="3"/>
+				<Component Subtype="PrototechFrame" Count="4"/>
 				<Component Subtype="Construction" Count="85"/>
 				<Component Subtype="SmallTube" Count="34"/>
 				<Component Subtype="LargeTube" Count="29"/>
