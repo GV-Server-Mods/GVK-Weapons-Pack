@@ -137,7 +137,7 @@ namespace Scripts
                         Enable = true,
                         Length = 5f,
                         Width = .15f,
-                        Color = Color(red: 6, green: 15, blue: 60, alpha: 1f),
+                        Color = Color(red: 3, green: 7.5f, blue: 30, alpha: 1f),
                         Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                 },
