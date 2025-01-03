@@ -159,8 +159,9 @@ namespace Scripts {
             {
                 PartName = "Artemis 250mm Railgun", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
+                //DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef 

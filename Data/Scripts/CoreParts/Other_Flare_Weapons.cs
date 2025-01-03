@@ -91,6 +91,8 @@ namespace Scripts {
             {
                 PartName = "WCLargeFlare", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 10f, // Projectile inaccuracy in degrees.
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = false, // This is how you tell npc modders that your wep was designed with them in mind, unless they tell you otherwise set this to false.
                 ScanTrackOnly = false, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
                 Ui = Other_Flare_Hardpoint_Ui,
@@ -192,6 +194,8 @@ namespace Scripts {
             {
                 PartName = "WCSmallFlare", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 5f, // Projectile inaccuracy in degrees.
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = false, // This is how you tell npc modders that your wep was designed with them in mind, unless they tell you otherwise set this to false.
                 ScanTrackOnly = false, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,

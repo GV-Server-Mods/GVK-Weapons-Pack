@@ -297,6 +297,8 @@ namespace Scripts
             {
                 PartName = "LargeMissileLauncher", // name of weapon in terminal
                 DeviateShotAngle = 4f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
