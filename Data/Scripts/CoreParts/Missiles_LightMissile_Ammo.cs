@@ -110,6 +110,8 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart,
+                TargetLossDegree = 90f, // Degrees, Is pointed forward
+                TargetLossTime = 30, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 1200, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AccelPerSec = 300f,
                 DesiredSpeed = 450,
@@ -270,7 +272,7 @@ namespace Scripts
             },			
         };
 
-        private AmmoDef Missiles_Missile_NPC
+        /*private AmmoDef Missiles_Missile_NPC
         {
             get
             {
@@ -279,6 +281,6 @@ namespace Scripts
                 missile.Trajectory.Smarts.OverideTarget = true;
                 return missile;
             }
-        }
+        }*/
     }
 }

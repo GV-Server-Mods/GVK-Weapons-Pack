@@ -33,6 +33,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = ""
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "Missile_Torpedo_Large_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = ""
+                    },
                 },
                 Muzzles = new [] 
 				{
@@ -123,6 +133,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = ""
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "Missile_Torpedo_Small_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = ""
+                    },
                 },
                 Muzzles = new [] 
 				{
@@ -201,7 +221,7 @@ namespace Scripts
             // Don't edit below this line
         };
         
-		WeaponDefinition Torpedo_Crusader_Large_NPC
+		/*WeaponDefinition Torpedo_Crusader_Large_NPC
         {
             get
             {
@@ -229,6 +249,6 @@ namespace Scripts
                 };
                 return torp;
             }
-        }
+        }*/
 	}
 }
