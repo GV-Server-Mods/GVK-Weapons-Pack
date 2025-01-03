@@ -280,7 +280,7 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    new MountPointDef 
+                    /*new MountPointDef 
 					{
                         SubtypeId = "LargeBlockLargeCalibreGun_NPC", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
@@ -289,7 +289,7 @@ namespace Scripts
                         ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
-                    },
+                    },*/
                  },
                 Muzzles = new[] 
 				{
@@ -478,7 +478,7 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = ""
                     },
-                    new MountPointDef 
+                    /*new MountPointDef 
 					{
                         SubtypeId = "OKI122mmSGfixed_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
@@ -487,7 +487,7 @@ namespace Scripts
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
                         IconName = ""
-                    },
+                    },*/
                 },
                 Muzzles = new [] 
 				{
@@ -555,5 +555,34 @@ namespace Scripts
                 LargeCalibreAmmo,
             },
         };
+		//NPC Weapons with auto-aim
+		WeaponDefinition LargeBlockArtillery_NPC
+        {
+            get
+            {
+                var weapon = LargeBlockArtillery;
+                weapon.Assignments.MountPoints[0].SubtypeId = "LargeBlockLargeCalibreGun_NPC";
+                weapon.Ammos = new[]
+                {
+                    Ballistics_Cannon_NPC,
+                    Ballistics_Cannon_NPC_Fragment1,
+                };
+                return weapon;
+            }
+        }
+		WeaponDefinition SmallCannon122mm_NPC
+        {
+            get
+            {
+                var weapon = SmallCannon122mm;
+                weapon.Assignments.MountPoints[0].SubtypeId = "OKI122mmSGfixed_NPC";
+                weapon.Ammos = new[]
+                {
+                    Ballistics_Cannon_NPC,
+                    Ballistics_Cannon_NPC_Fragment1,
+                };
+                return weapon;
+            }
+        }
     }
 }
