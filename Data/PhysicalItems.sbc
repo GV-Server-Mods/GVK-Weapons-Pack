@@ -102,11 +102,11 @@
 				<TypeId>PhysicalGunObject</TypeId>
 				<SubtypeId>AdvancedHandHeldLauncherItem</SubtypeId>
 			</Id>
-			<DisplayName>*Sidearm* Archer Rocket Launcher</DisplayName>
+			<DisplayName>*Sidearm* Griffin Rocket Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
-			<Description>A homing Launcher that fires Archer missiles. Use MMB to lock onto a target.
+			<Description>A homing Launcher that fires Griffin missiles. Use MMB to lock onto a target.
 				[2500m Range]
-				[Uses Archer HE x1]</Description>
+				[Uses Griffin HE x1]</Description>
 			<Size>
 				<X>0.8</X>
 				<Y>0.24</Y>
