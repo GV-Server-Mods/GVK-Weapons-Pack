@@ -301,7 +301,7 @@
               <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Gravity" Type="Float">
-              <ValueFloat>-0.1</ValueFloat>
+              <ValueFloat>-0.07</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Offset" Type="Vector3">
               <ValueVector3>
@@ -320,7 +320,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>0.9</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>1</ValueFloat>
