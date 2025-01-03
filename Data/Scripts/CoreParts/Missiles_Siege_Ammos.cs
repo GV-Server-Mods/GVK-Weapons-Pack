@@ -50,21 +50,20 @@ namespace Scripts
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
             NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
-            Sync = new SynchronizeDef
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },            
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 3 , // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
 			Fragment = new FragmentDef 
 			{
                 AmmoRound = "Missiles_Siege_Shrapnel", // AmmoRound field of the ammo to spawn.
-                Fragments = 8, // Number of projectiles to spawn.
-                Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
+                Fragments = 10, // Number of projectiles to spawn.
+                Degrees = 20, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = true, // fragments will not inherit velocity from parent.
                 Offset = 0f, // Offsets the fragment spawn by this amount, in meters (positive forward, negative for backwards).
-                Radial = 60f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
+                Radial = 0f, // Determines starting angle for Degrees of spread above.  IE, 0 degrees and 90 radial goes perpendicular to travel path
                 MaxChildren = 10, // number of maximum branches for fragments from the roots point of view, 0 is unlimited
                 IgnoreArming = true, // If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions
                 FireSound = false, // Play fire/shoot sound
@@ -72,10 +71,10 @@ namespace Scripts
                 TimedSpawns = new TimedSpawnDef // disables FragOnEnd in favor of info specified below
                 {
                     Enable = true, // Enables TimedSpawns mechanism
-                    Interval = 2, // Time between spawning fragments, in ticks
+                    Interval = 0, // Time between spawning fragments, in ticks
                     StartTime = 0, // Time delay to start spawning fragments, in ticks, of total projectile life
                     MaxSpawns = 1, // Max number of fragment children to spawn
-                    Proximity = 800, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
+                    Proximity = 150, // Starting distance from target bounding sphere to start spawning fragments, 0 disables this feature.  No spawning outside this distance
                     ParentDies = true, // Parent dies once after it spawns its last child.
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy, Direct, Lead (always fire), Predict (only fire if it can hit)
@@ -110,7 +109,7 @@ namespace Scripts
                     Shield = Kinetic, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
             },
-            Trajectory = new TrajectoryDef 
+            /*Trajectory = new TrajectoryDef 
 			{
                 Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 2400, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
@@ -126,7 +125,165 @@ namespace Scripts
                     ScanRange = 1500, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
                     NoSteering = true, // this disables target follow and instead travel straight ahead (but will respect offsets).
                 },
-            },
+            },*/
+            Trajectory = new TrajectoryDef 
+			{
+                Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
+                TargetLossDegree = 100f, // Degrees, Is pointed forward
+                TargetLossTime = 3, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).                
+				MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                AccelPerSec = 200f, // 30. Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
+                DesiredSpeed = 300, // 300. voxel phasing if you go above 5100
+                MaxTrajectory = 6000f, // Max Distance the projectile or beam can Travel.
+				TotalAcceleration = 0, // 0 means no limit, something to do due with a thing called delta and something called v.
+
+                Smarts = new SmartsDef
+                {
+                    SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
+                    Inaccuracy = 0f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
+                    Aggressiveness = 4f, // controls how responsive tracking is, recommended value 3-5.
+                    MaxLateralThrust = 0.75, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
+                    NavAcceleration = 0, // helps influence how the projectile steers, 0 defaults to 1/2 Aggressiveness value or 0 if its 0, a value less than 0 disables this feature. 
+                    TrackingDelay = 5, // Measured in Shape diameter units traveled.
+                    AccelClearance = false, // Setting this to true will prevent smart acceleration until it is clear of the grid and tracking delay has been met (free fall).
+                    MaxChaseTime = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
+                    CheckFutureIntersection = false, // Utilize obstacle avoidance for drones/smarts
+                    FutureIntersectionRange = 0, // Range in front of the projectile at which it will detect obstacle.  If set to zero it defaults to DesiredSpeed + Shape Diameter
+                    MaxTargets = 3, // Number of targets allowed before ending, 0 = unlimited
+                    NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
+                    Roam = false, // Roam current area after target loss
+                    KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
+                    OffsetRatio = 0f, // The ratio to offset the random direction (0 to 1) 
+                    OffsetTime = 0, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
+                    OffsetMinRange = 0, // The range from target at which offsets are no longer active
+                    FocusOnly = false, // only target the constructs Ai's focus target
+                    FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
+                    ScanRange = 0, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
+                    NoSteering = false, // this disables target follow and instead travel straight ahead (but will respect offsets).
+                    MinTurnSpeed = 0, // set this to a reasonable value to avoid projectiles from spinning in place or being too aggressive turing at slow speeds 
+                    NoTargetApproach = true, // If true approaches can begin prior to the projectile ever having had a target.
+                    AltNavigation = false, // If true this will swap the default navigation algorithm from ProNav to ZeroEffort Miss.  Zero effort is more direct/precise but less cinematic 
+                },
+				Approaches = new [] // These approaches move forward and backward in order, once the end condition of the last one is reached it will revert to default behavior. Cost level of 4+, or 5+ if used with steering.
+                {
+                    new ApproachDef // * in comments means default
+                    {
+                        // Start/End behaviors 
+                        RestartCondition = Wait, // Wait*, MoveToPrevious, MoveToNext, ForceRestart -- A restart condition is when the end condition is reached without having met the start condition. 
+                        Operators = StartAnd_EndOr, // Controls how the start and end conditions are matched:  StartEnd_And*, StartEnd_Or, StartAnd_EndOr,StartOr_EndAnd,
+                        CanExpireOnceStarted = true, // This stages values will continue to apply until the end conditions are met.
+                        ForceRestart = false, // This forces the ReStartCondition when the end condition is met no matter if the start condition was met or not.  
+
+                        // Start/End conditions
+                        StartCondition1 = DesiredElevation, // Each condition type is either >= or <= the corresponding value defined below.
+                                                    // Ignore(skip this condition)*, DistanceFromPositionC[<=], DistanceToPositionC[>=], DistanceFromPositionB[<=], DistanceToPositionB[>=]
+                                                    // DistanceFromTarget[<=], DistanceToTarget[>=], DistanceFromEndTrajectory[<=], DistanceToEndTrajectory[>=], Lifetime[>=], DeadTime[<=],
+                                                    // MinTravelRequired[>=], MaxTravelRequired[<=], Spawn(per stage), DesiredElevation(tolerance can be set with ElevationTolerance),
+                                                    // NextTimedSpawn[<=], SinceTimedSpawn[>=], RelativeLifetime[>=], RelativeDeadTime[<=], RelativeSpawns[>=], EnemyTargetLoss[>=],
+                                                    // RelativeHealthLost[>=], HealthRemaining[<=],
+                                                    // *NOTE* DO NOT set start1 and start2 or end1 and end2 to same condition
+                        StartCondition2 = Ignore, 
+                        EndCondition1 = DistanceFromPositionC, // Might need a restart list so it doesnt keep looping in this approach
+                        EndCondition2 = DistanceToPositionB,
+                        EndCondition3 = Ignore,
+                        // Start/End thresholds -- both conditions are evaluated before activation, use Ignore to skip
+                        Start1Value = 250,
+                        Start2Value = 0,
+                        End1Value = 600, 
+                        End2Value = 100,
+                        End3Value = 100, 
+                        // Special triggers when the start/end conditions are met (DoNothing*, EndProjectile, EndProjectileOnRestart, StorePositionA, StorePositionB, StorePositionC, Refund)
+                        StartEvent = DoNothing, 
+                        EndEvent = DoNothing,  
+                        
+                        // Stored "Local" positions are always relative to the shooter and will remain true even if the shooter moves or rotates.
+
+                        // Relative positions and directions (relative to projectile current position aka PositionA)
+                        Forward = ForwardTargetDirection, // ForwardElevationDirection*, ForwardRelativeToBlock, ForwardRelativeToShooter, ForwardRelativeToGravity, ForwardTargetDirection, ForwardTargetVelocity, ForwardStoredStartPosition, ForwardStoredEndPosition, ForwardStoredStartLocalPosition, ForwardStoredEndLocalPosition, ForwardOriginDirection    
+                        Up = UpRelativeToGravity, // UpRelativeToBlock*, UpRelativeToShooter, UpRelativeToGravity, UpTargetDirection, UpTargetVelocity, UpStoredStartPosition, UpStoredEndPosition, UpStoredStartLocalPosition, UpStoredEndLocalPosition, UpOriginDirection, UpElevationDirection
+                        PositionB = Surface, // Origin*, Shooter, Target, Surface, MidPoint, PositionA, Nothing, StoredStartPosition, StoredEndPosition, StoredStartLocalPosition, StoredEndLocalPosition
+                        PositionC = Target, 
+                        Elevation = Surface, 
+                        
+                        //
+                        // Control if the vantagepoints update every frame or only at start.
+                        //
+                        AdjustForward = true, // adjust forwardDir overtime.
+                        AdjustUp = true, // adjust upDir overtime
+                        AdjustPositionB = true, // Updated the position overtime.
+                        AdjustPositionC = true, // Update the position overtime.
+                        LeadRotateElevatePositionB = true, // Add Lead, Rotation and DesiredElevation to PositionB
+                        LeadRotateElevatePositionC = true, // Add Lead, Rotation and DesiredElevation to PositionC
+                        TrajectoryRelativeToB = true, // If true the projectiles immediate trajectory will be relative to PositionB instead of PositionC (e.g. quick response to elevation changes relative to PositionB position assuming that position is closer to PositionA)
+                        ElevationRelativeToC = false, // If true the projectiles desired elevation will be relative to PositionC instead of PositionB (e.g. quick response to elevation changes relative to PositionC position assuming that position is closer to PositionA)
+                        // Tweaks to vantagepoint behavior
+                        AngleOffset = 0, // value 0 - 1, rotates the Updir and ForwardDir
+                        AngleVariance = Random(0, 0), // added to AngleOffset above, values of 0,0 disables feature
+                        ElevationTolerance = 250, // adds additional tolerance (in meters) to meet the Elevation condition requirement.  *note* collision size is also added to the tolerance
+                        TrackingDistance = 0, // Minimum travel distance before projectile begins racing to heading
+                        DesiredElevation = 500, // The desired elevation relative to reference position 
+                        // Storage Values
+                        StoredStartId = 0, // Which approach id the the start storage was saved in, if any.
+                        StoredEndId = 0, // Which approach id the the end storage was saved in, if any.
+                        StoredStartType = PositionA, // Uses same values as PositionB/PositionC/Elevation
+                        StoredEndType = Target,
+                        // Controls the leading behavior
+                        LeadDistance = 100, // Add additional "lead" in meters to the trajectory (project in the future), this will be applied even before TrackingDistance is met. 
+                        PushLeadByTravelDistance = false, // the follow lead position will move in its point direction by an amount equal to the projectiles travel distance.
+
+                        // Modify speed and acceleration ratios while this approach is active
+                        AccelMulti = 1f, // Modify default acceleration by this factor
+                        DeAccelMulti = 0, // Modifies your default deacceleration by this factor
+                        TotalAccelMulti = 0, // Modifies your default totalacceleration by this factor
+                        SpeedCapMulti = 1, // Limit max speed to this factor, must keep this value BELOW default maxspeed (1).
+
+                        // navigation behavior 
+                        Orbit = false, // Orbit the Position
+                        OrbitRadius = 0, // The orbit radius to extend between the projectile and the Position (target volume + this value)
+                        OffsetMinRadius = 0, // Min Radius to offset from Position.  
+                        OffsetMaxRadius = 0, // Max Radius to offset from Position.  
+                        OffsetTime = 0, // How often to change the offset radius.
+                        
+                        // Other
+                        NoTimedSpawns = false, // When true timedSpawns will not be triggered while this approach is active.
+                        DisableAvoidance = false, // Disable futureIntersect.
+                        IgnoreAntiSmart = false, // If set to true, antismart cannot change this approaches target.
+                        HeatRefund = 0, // how much heat to refund when related EndEvent/StartEvent is met.
+                        ReloadRefund = false, // Refund a reload (for max reload).
+                        ToggleIngoreVoxels = false, // Toggles whatever the default IgnoreVoxel value to its opposite. 
+                        SelfAvoidance = false, // If this and FutureIntersect is enabled then projectiles will actively avoid the parent grids.
+                        TargetAvoidance = false, // If this and FutureIntersect is enabled then projectiles will actively avoid the target.
+                        SelfPhasing = false, // If enabled the projectiles can phase through the parent grids without doing damage or dying.
+                        SwapNavigationType = false, // This will swap to other navigation  (i.e. the alternate of what is set in smart, ProNav vs ZeroEffort) 
+                        // Audio/Visual Section
+                        AlternateParticle = new ParticleDef // if blank it will use default, must be a default version for this to be useable. 
+                        {
+                            Name = "", 
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        StartParticle = new ParticleDef // Optional particle to play when this stage begins
+                        {
+                            Name = "",
+                            Offset = Vector(x: 0, y: 0, z: 0),
+                            DisableCameraCulling = true,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                            Extras = new ParticleOptionDef
+                            {
+                                Scale = 1,
+                            },
+                        },
+                        AlternateModel = "", // Define only if you want to switch to an alternate model in this phase
+                        AlternateSound = "", // if blank it will use default, must be a default version for this to be useable. 
+                        ModelRotateTime = 0, // If this value is greater than 0 then the projectile model will rotate to face the target, a value of 1 is instant (in ticks).
+                    },
+
+                },
+			},
             AmmoGraphics = new GraphicDef 
 			{
                 ModelName = "\\Models\\AWE_Ammo\\AryxSabreMissile.mwm",
@@ -211,13 +368,12 @@ namespace Scripts
 			       //float.MaxValue will drop the weapon to the first build state and destroy all components used for construction
 			       //If greater than cube integrity it will remove the cube upon firing, without causing deformation (makes it look like the whole "block" flew away)
             IgnoreWater = true, // Whether the projectile should be able to penetrate water when using WaterMod.
-            IgnoreVoxels = true, // Whether the projectile should be able to penetrate voxels.
-            Sync = new SynchronizeDef
+            IgnoreVoxels = false, // Whether the projectile should be able to penetrate voxels.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },            
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = 2, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
             DamageScales = new DamageScaleDef 
 			{
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
@@ -286,29 +442,13 @@ namespace Scripts
             },
             Trajectory = new TrajectoryDef 
 			{
-                Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
-                TargetLossDegree = 30, // Degrees, Is pointed forward
-                TargetLossTime = 60, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                Guidance = None, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
                 MaxLifeTime = 240, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
-                AccelPerSec = 400, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
+                AccelPerSec = 0, // Meters Per Second. This is the spawning Speed of the Projectile, and used by turning.
                 DesiredSpeed = 300, // voxel phasing if you go above 5100
-                MaxTrajectory = 1000f, // Max Distance the projectile or beam can Travel.
-                SpeedVariance = Random(start: 20, end: 0), // subtracts value from DesiredSpeed
-                RangeVariance = Random(start: 100, end: 0), // subtracts value from MaxTrajectory
-                Smarts = new SmartsDef
-                {
-                    Inaccuracy = 10f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
-                    Aggressiveness = 2f, // controls how responsive tracking is.
-                    MaxLateralThrust = 0.0001f, // controls how sharp the trajectile may turn between 0.000001, 1
-                    TrackingDelay = 5, // Measured in Shape diameter units traveled.
-                    MaxChaseTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    OverideTarget = true, // when set to true ammo picks its own target, does not use hardpoint's.
-                    CheckFutureIntersection = false, // Utilize obstacle avoidance?
-                    MaxTargets = 0, // Number of targets allowed before ending, 0 = unlimited
-                    NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
-                    Roam = false, // Roam current area after target loss
-                    KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
-                },
+                MaxTrajectory = 500f, // Max Distance the projectile or beam can Travel.
+                SpeedVariance = Random(start: 50, end: 0), // subtracts value from DesiredSpeed
+                RangeVariance = Random(start: 50, end: 0), // subtracts value from MaxTrajectory
 			},
             AmmoGraphics = new GraphicDef 
 			{
