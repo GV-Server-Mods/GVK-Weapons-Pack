@@ -55,7 +55,8 @@ namespace Scripts
 			MaxTargetDistance = 1600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
 			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
+			CycleBlocks = 4,
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef 
@@ -482,7 +483,6 @@ namespace Scripts
             {
                 PartName = "Gatling Fixed", // name of weapon in terminal
                 DeviateShotAngle = 0.15f,
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 AimingTolerance = 60f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -572,98 +572,6 @@ namespace Scripts
             },
         };
 		
-        WeaponDefinition AryxVulcanTurret => new WeaponDefinition
-        {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[] 
-				{
-                    new MountPointDef 
-					{
-                        SubtypeId = "ARYXVulcanTurret",
-                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,	 
-					},
-                    new MountPointDef 
-					{
-                        SubtypeId = "ARYXVulcanTurret_NPC",
-                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,	 
-					},
-                },
-                Muzzles = new[] {
-                    "muzzle_projectile_1",
-                    "muzzle_projectile_2",
-                },
-                Ejector = "",
-				Scope = "dummy_camera",
-            },
-            Targeting = Ballistics_Gatlings_Targeting_Long,
-            HardPoint = new HardPointDef
-            {
-                PartName = "Vulcan Gatling", // name of weapon in terminal
-                DeviateShotAngle = 0.15f, // Inaccuracy in degrees
-                AimingTolerance = 30f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
-                HardWare = new HardwareDef
-                {
-                    RotateRate = 0.015f,
-                    ElevateRate = 0.015f,
-                    MinAzimuth = -180,
-                    MaxAzimuth = 180,
-                    MinElevation = -15,
-                    MaxElevation = 80,
-                    HomeAzimuth = 0, // Default resting rotation angle
-                    HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.9f,
-                    //Offset = Vector(x: 0, y: 0, z: 0),
-                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
-                },
-                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
-                Loading = new LoadingDef
-                {
-                    RateOfFire = 1500,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 2,
-                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    SkipBarrels = 0,
-                    ReloadTime = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					MagsToLoad = 14, // Number of physical magazines to consume on reload.
-                    SpinFree = false, // Spin while not firing
-                },
-                Audio = new HardPointAudioDef
-                {
-                    PreFiringSound = "",
-                    FiringSound = "MD_LargeGatlingLoopFire", // WepShipGatlingShot
-                    FiringSoundPerShot = false,
-                    ReloadSound = "",
-                    NoAmmoSound = "WepShipGatlingNoAmmo",
-                    HardPointRotationSound = "WepTurretGatlingRotate",
-                    BarrelRotationSound = "MD_GatlingBarrelLoop",
-                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
-                    FireSoundNoBurst = false,
-                },
-                
-				Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
-            },
-            Ammos = new[] 
-			{
-                NATO_25x184mm,
-            },
-            Animations = AryxVulcanAnimations,
-            // Don't edit below this line
-        };
-
         WeaponDefinition GVK_AvengerGatlingTurret => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
@@ -700,11 +608,11 @@ namespace Scripts
             Targeting = Ballistics_Gatlings_Targeting_Long,
             HardPoint = new HardPointDef
             {
-                PartName = "Vulcan Gatling", // name of weapon in terminal
+                PartName = "Avenger Gatling", // name of weapon in terminal
                 DeviateShotAngle = 0.15f, // Inaccuracy in degrees
-                AimingTolerance = 30f, // 0 - 180 firing angle
-                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AimingTolerance = 3f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
@@ -725,13 +633,15 @@ namespace Scripts
                 Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 1500,
+                    RateOfFire = 1000,
                     BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     SkipBarrels = 0,
-                    ReloadTime = 300, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					FireFull = false,
+                    ReloadTime = 4, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					MagsToLoad = 14, // Number of physical magazines to consume on reload.
+					DelayUntilFire = 0,
                     SpinFree = false, // Spin while not firing
                 },
                 Audio = new HardPointAudioDef
@@ -751,7 +661,8 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
-                NATO_25x184mm,
+                NATO_25x184mm_Dual,
+				NATO_25x184mm_Dual_Fragment,
             },
             Animations = GVK_AvengerGatlingTurretAnimations,
             // Don't edit below this line

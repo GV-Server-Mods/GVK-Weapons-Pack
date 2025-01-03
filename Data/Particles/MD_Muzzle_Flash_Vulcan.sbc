@@ -315,7 +315,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0.97</ValueFloat>
+              <ValueFloat>0.5</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0.5</ValueFloat>
@@ -682,7 +682,7 @@
               <ValueFloat>0.1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
-              <ValueFloat>15</ValueFloat>
+              <ValueFloat>5</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Streak multiplier" Type="Float">
               <ValueFloat>1</ValueFloat>
@@ -697,7 +697,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>50</ValueFloat>
+                  <ValueFloat>40</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -743,7 +743,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0.01</ValueFloat>
@@ -1171,7 +1171,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0</ValueFloat>
@@ -1307,7 +1307,7 @@
               </ValueVector3>
             </Property>
             <Property AnimationType="Const" Name="Array offset" Type="Int">
-              <ValueInt>220</ValueInt>
+              <ValueInt>112</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Array modulo" Type="Int">
               <ValueInt>1</ValueInt>
@@ -1321,6 +1321,16 @@
                       <Key>
                         <Time>0</Time>
                         <ValueVector4>
+                          <X>0.447058827</X>
+                          <Y>0.203921571</Y>
+                          <Z>0.141176477</Z>
+                          <W>0.5019608</W>
+                        </ValueVector4>
+                        <Value2D />
+                      </Key>
+                      <Key>
+                        <Time>0.0152856968</Time>
+                        <ValueVector4>
                           <X>1</X>
                           <Y>0.470588237</Y>
                           <Z>0.219607845</Z>
@@ -1329,22 +1339,12 @@
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.05095199</Time>
+                        <Time>0.3842063</Time>
                         <ValueVector4>
                           <X>1</X>
                           <Y>0.521568656</Y>
                           <Z>0.294117659</Z>
                           <W>1</W>
-                        </ValueVector4>
-                        <Value2D />
-                      </Key>
-                      <Key>
-                        <Time>0.4858377</Time>
-                        <ValueVector4>
-                          <X>0.447058827</X>
-                          <Y>0.203921571</Y>
-                          <Z>0.141176477</Z>
-                          <W>0.5019608</W>
                         </ValueVector4>
                         <Value2D />
                       </Key>
@@ -1370,18 +1370,18 @@
                   <Value2D>
                     <Keys>
                       <Key>
-                        <Time>0.005104645</Time>
+                        <Time>0</Time>
+                        <ValueFloat>0</ValueFloat>
+                        <Value2D />
+                      </Key>
+                      <Key>
+                        <Time>0.0167112127</Time>
                         <ValueFloat>5000</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.0159834139</Time>
+                        <Time>0.6848733</Time>
                         <ValueFloat>5000</ValueFloat>
-                        <Value2D />
-                      </Key>
-                      <Key>
-                        <Time>0.9920421</Time>
-                        <ValueFloat>100</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
@@ -1430,7 +1430,7 @@
               <Keys>
                 <Key>
                   <Time>0.0163850486</Time>
-                  <ValueFloat>20</ValueFloat>
+                  <ValueFloat>30</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1439,7 +1439,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>15</ValueFloat>
+                  <ValueFloat>10</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1511,17 +1511,17 @@
                     <Keys>
                       <Key>
                         <Time>0</Time>
-                        <ValueFloat>0.02</ValueFloat>
+                        <ValueFloat>0.01</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>0.009422956</Time>
-                        <ValueFloat>0.02</ValueFloat>
+                        <ValueFloat>0.01</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>0.985481858</Time>
-                        <ValueFloat>0.02</ValueFloat>
+                        <ValueFloat>0.01</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
@@ -1535,7 +1535,7 @@
               </Keys>
             </Property>
             <Property AnimationType="Const" Name="Life" Type="Float">
-              <ValueFloat>0.07</ValueFloat>
+              <ValueFloat>0.1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
               <ValueFloat>15</ValueFloat>
@@ -1553,7 +1553,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>50</ValueFloat>
+                  <ValueFloat>20</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1599,7 +1599,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0.05</ValueFloat>
@@ -1767,7 +1767,7 @@
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.224525809</Time>
+                        <Time>0.0229006559</Time>
                         <ValueVector4>
                           <X>1</X>
                           <Y>0.4</Y>
@@ -1777,7 +1777,7 @@
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.997543335</Time>
+                        <Time>0.9895365</Time>
                         <ValueVector4>
                           <X>0</X>
                           <Y>0</Y>
@@ -1813,18 +1813,18 @@
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.338437974</Time>
+                        <Time>0.0101602478</Time>
                         <ValueFloat>10</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.6717713</Time>
+                        <Time>0.0181274042</Time>
                         <ValueFloat>10</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>1.00510466</Time>
-                        <ValueFloat>10</ValueFloat>
+                        <ValueFloat>1</ValueFloat>
                         <Value2D />
                       </Key>
                     </Keys>
@@ -1886,7 +1886,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>0</ValueFloat>
+                  <ValueFloat>1</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1895,7 +1895,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>10</ValueFloat>
+                  <ValueFloat>30</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1973,7 +1973,7 @@
               </Keys>
             </Property>
             <Property AnimationType="Const" Name="Life" Type="Float">
-              <ValueFloat>0.15</ValueFloat>
+              <ValueFloat>0.2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
               <ValueFloat>15</ValueFloat>
@@ -1982,7 +1982,7 @@
               <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Animation frame time" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0.007</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Enabled" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -2028,7 +2028,7 @@
               </ValueVector3>
             </Property>
             <Property AnimationType="Const" Name="Rotation velocity var" Type="Float">
-              <ValueFloat>0.5</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Hue var" Type="Float">
               <ValueFloat>0.003</ValueFloat>
@@ -2037,10 +2037,10 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
-              <ValueFloat>0.01</ValueFloat>
+              <ValueFloat>0</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Streaks" Type="Bool">
               <ValueBool>false</ValueBool>
@@ -2111,18 +2111,18 @@
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.333333343</Time>
+                        <Time>0.0116066057</Time>
                         <ValueFloat>100</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.6666667</Time>
+                        <Time>0.0268526934</Time>
                         <ValueFloat>100</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>1</Time>
-                        <ValueFloat>100</ValueFloat>
+                        <ValueFloat>1</ValueFloat>
                         <Value2D />
                       </Key>
                     </Keys>
