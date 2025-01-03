@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
-		<!-- Player Weapons -->
+		<!-- Player Weapons ... count for UPs, and don't grind to tech scrap -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -362,7 +362,7 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- NPC Weapons -->
+		<!-- NPC Weapons ... no limits, and fixed guns have auto-aim -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -380,7 +380,12 @@
 			<Model>Models\Cubes\large\CAP_TwinAssaultCannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
-				<Component Subtype="PrototechFrame" Count="8"/>
+				<Component Subtype="PrototechFrame" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>LCalScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
 				<Component Subtype="LargeTube" Count="150"/>
