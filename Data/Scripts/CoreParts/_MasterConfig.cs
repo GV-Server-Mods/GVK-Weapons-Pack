@@ -22,6 +22,7 @@ namespace Scripts
 							SmallGatlingTurret,
 							AryxRailgunTurret, 
 							AryxRailgun,
+							AryxRailgun_NPC,
 							SmallBlockRailgun,
 							SmallCannon122mm,
 							SmallCannon122mm_NPC,

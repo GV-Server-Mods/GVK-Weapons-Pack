@@ -137,7 +137,7 @@ namespace Scripts {
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
                     },
-                    new MountPointDef 
+                    /*new MountPointDef 
 					{
                         SubtypeId = "ARYXRailgun_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
@@ -145,7 +145,7 @@ namespace Scripts {
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
-                    },
+                    },*/
                 },
                 Muzzles = new [] 
 				{
@@ -287,5 +287,22 @@ namespace Scripts {
             },
             Animations = SmallRailgunAnimation,
         };
+
+		//NPC Weapons with auto-aim
+		WeaponDefinition AryxRailgun_NPC
+        {
+            get
+            {
+                var weapon = AryxRailgun;
+                weapon.Assignments.MountPoints[0].SubtypeId = "ARYXRailgun_NPC";
+                weapon.Ammos = new[]
+                {
+                    SmallRailgunAmmo_NPC,
+                    SmallRailgunAmmo_NPC_Fragment1,
+                };
+                return weapon;
+            }
+        }
+
     }
 }
