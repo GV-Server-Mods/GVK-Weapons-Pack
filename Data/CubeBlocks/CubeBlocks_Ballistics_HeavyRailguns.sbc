@@ -20,13 +20,13 @@
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechFrame" Count="10">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="130"/>

@@ -111,7 +111,7 @@
 				<Component Subtype="PrototechMachinery" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="300"/>

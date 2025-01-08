@@ -272,7 +272,7 @@
 				<Component Subtype="PrototechFrame" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="240"/>
@@ -374,7 +374,7 @@
 				<Component Subtype="PrototechFrame" Count="3">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="85"/>
@@ -471,7 +471,7 @@
 				<Component Subtype="PrototechFrame" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="Construction" Count="11"/>

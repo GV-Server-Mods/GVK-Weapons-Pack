@@ -272,13 +272,13 @@
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechPanel" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="57"/>
@@ -357,13 +357,13 @@
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechPanel" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
@@ -426,13 +426,13 @@
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechPanel" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="32"/>
@@ -503,7 +503,7 @@
 				<Component Subtype="PrototechPanel" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="2"/>

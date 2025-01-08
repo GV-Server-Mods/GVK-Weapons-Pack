@@ -862,7 +862,7 @@
 				<Component Subtype="PrototechMachinery" Count="6">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="830"/>
@@ -925,7 +925,7 @@
 				<Component Subtype="PrototechMachinery" Count="3">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="470"/>
@@ -1019,7 +1019,7 @@
 				<Component Subtype="PrototechMachinery" Count="3">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="470"/>
@@ -1115,7 +1115,7 @@
 				<Component Subtype="PrototechMachinery" Count="2">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="130"/>
@@ -1209,7 +1209,7 @@
 				<Component Subtype="PrototechMachinery" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="20"/>
@@ -1272,7 +1272,7 @@
 				<Component Subtype="PrototechMachinery" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="20"/>
@@ -1338,7 +1338,7 @@
 				<Component Subtype="PrototechMachinery" Count="2">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="20"/>
@@ -1434,7 +1434,7 @@
 				<Component Subtype="PrototechMachinery" Count="3">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="470"/>
@@ -1532,7 +1532,7 @@
 				<Component Subtype="PrototechMachinery" Count="2">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
-						<SubtypeId>SCalScrap</SubtypeId>
+						<SubtypeId>PrototechMachineryScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
 				<Component Subtype="Construction" Count="130"/>

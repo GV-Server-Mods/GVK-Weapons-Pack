@@ -93,13 +93,13 @@
 				<Component Subtype="PrototechCapacitor" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechFrame" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="76"/>

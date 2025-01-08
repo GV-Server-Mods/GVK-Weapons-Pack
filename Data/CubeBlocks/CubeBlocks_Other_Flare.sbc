@@ -134,7 +134,7 @@
 				<Component Subtype="PrototechPanel" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
                 <Component Subtype="LargeTube" Count="5" />
@@ -195,7 +195,7 @@
 				<Component Subtype="PrototechPanel" Count="2">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
                 <Component Subtype="LargeTube" Count="2" />

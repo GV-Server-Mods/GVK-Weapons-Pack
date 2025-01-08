@@ -232,7 +232,7 @@
 				<Component Subtype="PrototechCapacitor" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="130"/>
@@ -300,7 +300,7 @@
 				<Component Subtype="PrototechCapacitor" Count="6">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="57"/>
@@ -391,7 +391,7 @@
 				<Component Subtype="PrototechCapacitor" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="35"/>

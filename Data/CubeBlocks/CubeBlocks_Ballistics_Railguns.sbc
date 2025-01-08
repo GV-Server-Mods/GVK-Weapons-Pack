@@ -17,7 +17,7 @@
 			<Size x="3" y="2" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWERailTurret\LG_ARYXRailgunTurret_Base.mwm</Model>
-			<!-- added grind to LCalScrap because WC weapons can weld with loaded ammo from projection -->
+			<!-- added grind to PrototechFrameScrap because WC weapons can weld with loaded ammo from projection -->
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
@@ -199,19 +199,19 @@
 			<Size x="3" y="2" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\AWERailTurret\LG_ARYXRailgunTurret_Base.mwm</Model>
-			<!-- added grind to LCalScrap because WC weapons can weld with loaded ammo from projection -->
+			<!-- added grind to PrototechFrameScrap because WC weapons can weld with loaded ammo from projection -->
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="PrototechFrame" Count="10">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="130"/>
@@ -273,7 +273,7 @@
 				<Component Subtype="PrototechFrame" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="40"/>
@@ -336,7 +336,7 @@
 				<Component Subtype="PrototechFrame" Count="5">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LCalScrap</SubtypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="6"/>
