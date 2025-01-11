@@ -371,7 +371,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="57"/>
-				<Component Subtype="PrototechFrame" Count="3">
+				<Component Subtype="PrototechFrame" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>PrototechFrameScrap</SubtypeId>
