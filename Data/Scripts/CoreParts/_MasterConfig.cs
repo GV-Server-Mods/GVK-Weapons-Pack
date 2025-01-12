@@ -76,7 +76,9 @@ namespace Scripts
 							//GVK_GriffinMissileLauncher_NPC,
 							GVK_AvengerGatlingTurret,
 							LargeBlockRailgun_NPC,
-							HarbingerTurret
+							HarbingerTurret,
+							Other_Warheads_RegularWarhead_LG_Weapon,
+							Other_Warheads_RegularWarhead_SG_Weapon
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
