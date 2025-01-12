@@ -54,8 +54,8 @@
 			<InventoryMaxVolume>0.576</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
@@ -131,8 +131,8 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<PCU>16</PCU>
 			<IsAirTight>false</IsAirTight>
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
@@ -204,8 +204,8 @@
 			<InventoryMaxVolume>0.576</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
@@ -281,8 +281,8 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MinFov>0.1</MinFov>
 			<MaxFov>1.04719755</MaxFov>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<PCU>16</PCU>
 			<IsAirTight>false</IsAirTight>
 			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
