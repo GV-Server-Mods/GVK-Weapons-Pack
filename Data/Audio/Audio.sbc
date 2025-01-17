@@ -1688,7 +1688,7 @@
 				<SubtypeId>HeavyCannon_Fire</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>4000</MaxDistance>
+			<MaxDistance>5000</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
@@ -1900,6 +1900,71 @@
 				</Wave>
 				<Wave Type="D3">
 					<Start>Audio\DOK\sfx_weapon_c_missile_icp_distant_05.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>Cruiser_Explosion</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>5000</MaxDistance>
+			<PreventSynchronization>10</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<Volume>1.5</Volume>
+			<DistantSounds>
+				<DistantSound DistanceCrossFade="10" Distance="800" Sound="HeavyCannon_FireDistant"/>
+			</DistantSounds>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_01.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_02.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_02.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_04.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_05.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_06.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>Cruiser_Explosion_Distant</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>5000</MaxDistance>
+			<PreventSynchronization>10</PreventSynchronization>
+			<Volume>2</Volume>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_01_dist.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_02_dist.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_02_dist.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_04_dist.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_05_dist.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\DOK\sfx_expl_xlrg_lay_body_06_dist.xwm</Start>
 				</Wave>
 			</Waves>
 		</Sound>
