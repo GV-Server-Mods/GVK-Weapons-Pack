@@ -332,7 +332,7 @@ namespace Scripts
                 StackDuration = true, // Combined Durations
                 Depletable = false,
                 MaxStacks = 1, // Max Debuffs at once
-                NoHitParticle = false,
+                NoHitParticle = true,
                 /*
                 EnergySink : Targets & Shutdowns Power Supplies, such as Batteries & Reactor
                 Emp : Targets & Shutdown any Block capable of being powered
@@ -394,7 +394,7 @@ namespace Scripts
                 {
                     Ammo = new ParticleDef
                     {
-                        Name = "Smoke_Flare", //ShipWelderArc 
+                        Name = "", //Smoke_Flare this seemed to stop working correctly on ewar
                         Offset = Vector(x: 0, y: 0, z: 0),
                         DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
@@ -404,7 +404,7 @@ namespace Scripts
                     },
                     Hit = new ParticleDef
                     {
-                        Name = "Explosion_Flare", //MD_HydraRocketExplosion MD_InstallationExplosion
+                        Name = "Explosion_Flare", //Explosion_Flare
                         ApplyToShield = false,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                         Offset = Vector(x: 0, y: 0, z: 0),
@@ -421,8 +421,8 @@ namespace Scripts
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: -1f, end: 1f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.2f, end: 0.2f), // adds random value to default width (negatives shrinks width)
                     DropParentVelocity = false, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
 
                     Tracer = new TracerBaseDef
@@ -430,32 +430,16 @@ namespace Scripts
                         Enable = true,
                         Length = 1f, //
                         Width = 0.5f, //
-                        Color = Color(red: 10, green: 2, blue: 1f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Color = Color(red: 100, green: 20, blue: 10f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         FactionColor = DontUse, // DontUse, Foreground, Background.
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
-                        AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
+                        AlwaysDraw = true, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
                         Textures = new[] {// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                             "ProjectileTrailLine", // Please always have this Line set, if this Section is enabled.
                         },
                         TextureMode = Normal, // Normal, Cycle, Chaos, Wave
                      },
-                    Trail = new TrailDef
-                    {
-                        Enable = false,
-                        AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
-                        Textures = new[] {
-                            "", // Please always have this Line set, if this Section is enabled.
-                        },
-                        TextureMode = Normal,
-                        DecayTime = 3, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
-                        Color = Color(red: 0, green: 0, blue: 1, alpha: 1),
-                        FactionColor = DontUse, // DontUse, Foreground, Background.
-                        Back = false,
-                        CustomWidth = 0,
-                        UseWidthVariance = false,
-                        UseColorFade = true,
-                    },
                 },
             },
             AmmoAudio = new AmmoAudioDef
