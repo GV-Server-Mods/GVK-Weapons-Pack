@@ -153,6 +153,35 @@ namespace Scripts
 				},
 			},
 		};
+		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics_Small = new HardPointParticleDef 
+		{
+			Effect1 = new ParticleDef
+			{
+				Name = "MD_Muzzle_Flash_Vulcan", // SubtypeId of muzzle particle effect.
+				Offset = new Vector3D(0f,0f,0f), //XYZ
+				Extras = new ParticleOptionDef
+				{
+					Loop = true, // Set this to the same as in the particle sbc!
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 1000,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
+				},
+			},
+			Effect2 = new ParticleDef
+			{
+				Name = "", //Smoke_LargeGunShot_WC
+				Offset = new Vector3D(0f,0f,0f), //XYZ
+				Extras = new ParticleOptionDef
+				{
+					Loop = false, // Set this to the same as in the particle sbc!
+					Restart = false, // Whether to end a looping effect instantly when firing stops.
+					MaxDistance = 800,
+					MaxDuration = 0,
+					Scale = 1f, // Scale of effect.
+				},
+			},
+		};
 		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics_Vulcan = new HardPointParticleDef 
 		{
 			Effect1 = new ParticleDef
@@ -419,7 +448,7 @@ namespace Scripts
                 Other = Ballistics_Gatlings_Hardpoint_Other,
                 Loading = Ballistics_Gatlings_Hardpoint_Loading,
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Small,
             },
 			Ammos = new[] {
                 NATO_25x184mm,
@@ -498,7 +527,7 @@ namespace Scripts
                 Other = Ballistics_Gatlings_Hardpoint_Other,
                 Loading = Ballistics_Gatlings_Hardpoint_Loading,
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Small,
             },
 			Ammos = new[] {
                 NATO_25x184mm,
@@ -563,7 +592,7 @@ namespace Scripts
                 Other = Ballistics_Gatlings_Hardpoint_Other,
                 Loading = Ballistics_Gatlings_Hardpoint_Loading,
 				Audio = Ballistics_Gatlings_Hardpoint_Audio,
-                Graphics = Ballistics_Gatlings_Hardpoint_Graphics,
+                Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Small,
             },
 
 			Ammos = new[] 
