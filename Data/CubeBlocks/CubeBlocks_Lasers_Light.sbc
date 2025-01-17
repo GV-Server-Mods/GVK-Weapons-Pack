@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDX</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Large XFEL-L Turret</DisplayName>
+			<DisplayName>*L.Laser* Large XFEL-L Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MA_PDX.dds</Icon>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
 				[900m Auto Range]
@@ -22,12 +23,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCapacitor" Count="4"/>
 				<Component Subtype="SmallTube" Count="31"/>
 				<Component Subtype="Motor" Count="25"/>
 				<Component Subtype="Superconductor" Count="76"/>
@@ -92,13 +88,12 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Receptor Turret -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ReceptorTurret</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Small XFEL-L Turret</DisplayName>
+			<DisplayName>*L.Laser* Small XFEL-L Turret</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.
 				[900m Auto Range]
 				[Uses 59MW Energy]
@@ -112,12 +107,7 @@
 			<Model>Models\Akiad\Small\ReceptorTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCapacitor" Count="4"/>
 				<Component Subtype="SmallTube" Count="31"/>
 				<Component Subtype="Motor" Count="25"/>
 				<Component Subtype="Superconductor" Count="76"/>
@@ -188,13 +178,12 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Receptor Fixed -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ReceptorCoilGun</SubtypeId>
 			</Id>
-			<DisplayName>[Laser] Small XFEL-L Gun</DisplayName>
+			<DisplayName>*L.Laser* Small XFEL-L Gun</DisplayName>
 			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.
 				[1100m Manual Range]
 				[Uses 59MW Energy]
@@ -208,10 +197,259 @@
 			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="GVK_Laser_Tech" Count="2">
+				<Component Subtype="PrototechCapacitor" Count="2"/>
+				<Component Subtype="SmallTube" Count="4"/>
+				<Component Subtype="Motor" Count="3"/>
+				<Component Subtype="Superconductor" Count="9"/>
+				<Component Subtype="BulletproofGlass" Count="2"/>
+				<Component Subtype="Computer" Count="3"/>
+				<Component Subtype="MetalGrid" Count="1"/>
+				<Component Subtype="SteelPlate" Count="23"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="3" EndX="1.0" EndY="4"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\ReceptorCoilGun_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.7" File="Models\Akiad\Small\ReceptorCoilGun_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\ReceptorCoilGun_BS3.mwm"/>
+			</BuildProgressModels>
+			<StaticMode>
+				<PlacementMode>OutsideVoxel</PlacementMode>
+				<MaxAllowed>0.2</MaxAllowed>
+				<MinAllowed>0</MinAllowed>
+			</StaticMode>
+			<DynamicMode>
+				<PlacementMode>OutsideVoxel</PlacementMode>
+				<MaxAllowed>0.2</MaxAllowed>
+				<MinAllowed>0.01</MinAllowed>
+			</DynamicMode>
+			<BlockPairName>Lasers_Light_Fixed</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<AiEnabled>false</AiEnabled>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Blue</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>MA_PDX_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Laser* Large XFEL-L Turret</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\MA_PDX.dds</Icon>
+			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
+				[900m Auto Range]
+				[Uses 59MW Energy]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<ShowEdges>false</ShowEdges>
+			<Model>Models\MA_Laser2\MA_PDX.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="23"/>
+				<Component Subtype="PrototechCapacitor" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="SmallTube" Count="31"/>
+				<Component Subtype="Motor" Count="25"/>
+				<Component Subtype="Superconductor" Count="76"/>
+				<Component Subtype="BulletproofGlass" Count="16"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="SteelPlate" Count="200"/>
+			</Components>
+			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.11" StartY="0.11" EndX="0.89" EndY="0.89"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\MA_Laser2\MA_PDX_Constr1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\MA_Laser2\MA_PDX_Constr2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\MA_Laser2\MA_PDX_Constr3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>Lasers_Light_Turret_NPC</BlockPairName>
+			<MirroringX>None</MirroringX>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Lasers_Laser"/>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-5</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<RotationSpeed>0.002</RotationSpeed>
+			<ElevationSpeed>0.002 </ElevationSpeed>
+			<IdleRotation>false</IdleRotation>
+			<MaxRangeMeters>1200</MaxRangeMeters>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AiEnabled>false</AiEnabled>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>ReceptorTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Laser* Small XFEL-L Turret</DisplayName>
+			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.
+				[900m Auto Range]
+				[Uses 59MW Energy]
+			</Description>
+			<Icon>Textures\GUI\Icons\ReceptorTurretBase.png</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Center x="2" y="0" z="2"/>
+			<Model>Models\Akiad\Small\ReceptorTurretBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="23"/>
+				<Component Subtype="PrototechCapacitor" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="SmallTube" Count="31"/>
+				<Component Subtype="Motor" Count="25"/>
+				<Component Subtype="Superconductor" Count="76"/>
+				<Component Subtype="BulletproofGlass" Count="16"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="SteelPlate" Count="200"/>
+			</Components>
+			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="0.00" EndX="5" EndY="5" Default="true"/>
+				<MountPoint Side="Left" StartX="0.0" StartY="0.00" EndX="5" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.0" StartY="0.00" EndX="5" EndY="1"/>
+				<MountPoint Side="Front" StartX="0.0" StartY="0.00" EndX="5" EndY="1"/>
+				<MountPoint Side="Back" StartX="0.0" StartY="0.00" EndX="5" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\SaberTurretBase_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.7" File="Models\Akiad\Small\SaberTurretBase_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\SaberTurretBase_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>Lasers_Light_Turret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Lasers_Laser"/>
+			<InventoryMaxVolume>0.12</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-8</MinElevationDegrees>
+			<MaxElevationDegrees>180</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>600</MaxRangeMeters>
+			<RotationSpeed>0.002</RotationSpeed>
+			<ElevationSpeed>0.002 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<AmmoPullAmountPerTick>3</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<AiEnabled>false</AiEnabled>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ReceptorCoilGun_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Laser* Small XFEL-L Gun</DisplayName>
+			<Description>A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.
+				[1100m Manual Range]
+				[Uses 59MW Energy]
+			</Description>
+			<Icon>Textures\GUI\Icons\ReceptorCoilGun.png</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="6"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Center x="0" y="0" z="3"/>
+			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="3"/>
+				<Component Subtype="PrototechCapacitor" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="4"/>
@@ -243,7 +481,7 @@
 				<MaxAllowed>0.2</MaxAllowed>
 				<MinAllowed>0.01</MinAllowed>
 			</DynamicMode>
-			<BlockPairName>Lasers_Light_Fixed</BlockPairName>
+			<BlockPairName>Lasers_Light_Fixed_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<AiEnabled>false</AiEnabled>

@@ -7,7 +7,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>ElitePistolMagazine</SubtypeId>
 			</Id>
-			<DisplayName>[Sidearm] 9mm KE x10</DisplayName>
+			<DisplayName>*Sidearm* 9mm KE x10</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Pistol_Warfare_Ammo.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -32,7 +32,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>
             </Id>
-            <DisplayName>[Sidearm] 7.62mm FMJ x20</DisplayName>
+            <DisplayName>*Sidearm* 7.62mm FMJ x20</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_SemiAuto.dds</Icon>
             <Size>
                 <X>0.2</X>
@@ -82,7 +82,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>SemiAutoPistolMagazine</SubtypeId>
             </Id>
-            <DisplayName>zz[Do Not Use]zzSemiAutoPistolMagazine</DisplayName>
+            <DisplayName>zz*Do Not Use*zzSemiAutoPistolMagazine</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Pistol_Warfare_Ammo.dds</Icon>
             <Size>
                 <X>0.2</X>
@@ -107,7 +107,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>FullAutoPistolMagazine</SubtypeId>
             </Id>
-            <DisplayName>zz[Do Not Use]zzFullAutoPistolMagazine</DisplayName>
+            <DisplayName>zz*Do Not Use*zzFullAutoPistolMagazine</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Pistol_FullAuto_Warfare_Ammo.dds</Icon>
             <Size>
                 <X>0.2</X>
@@ -132,7 +132,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>AutomaticRifleGun_Mag_20rd</SubtypeId>
             </Id>
-            <DisplayName>zz[Do Not Use]zzAutomaticRifleGun_Mag_20rd</DisplayName>
+            <DisplayName>zz*Do Not Use*zzAutomaticRifleGun_Mag_20rd</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_SemiAuto.dds</Icon>
             <Size>
                 <X>0.2</X>
@@ -157,7 +157,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>RapidFireAutomaticRifleGun_Mag_50rd</SubtypeId>
             </Id>
-            <DisplayName>zz[Do Not Use]zzRapidFireAutomaticRifleGun_Mag_50rd</DisplayName>
+            <DisplayName>zz*Do Not Use*zzRapidFireAutomaticRifleGun_Mag_50rd</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_RapidFire.dds</Icon>
             <Size>
                 <X>0.2</X>
@@ -182,7 +182,7 @@
                 <TypeId>AmmoMagazine</TypeId>
                 <SubtypeId>PreciseAutomaticRifleGun_Mag_5rd</SubtypeId>
             </Id>
-            <DisplayName>zz[Do Not Use]zzPreciseAutomaticRifleGun_Mag_5rd</DisplayName>
+            <DisplayName>zz*Do Not Use*zzPreciseAutomaticRifleGun_Mag_5rd</DisplayName>
             <Icon>Textures\GUI\Icons\ammo\Rifle_Ammo_Precise.dds</Icon>
             <Size>
                 <X>0.2</X>

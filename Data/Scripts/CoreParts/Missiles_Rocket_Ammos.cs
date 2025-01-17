@@ -86,9 +86,9 @@ namespace Scripts
                 EndOfLife = new EndOfLifeDef
                 {
                     Enable = true,
-                    Radius = 5f,
-                    Damage = 10000f,
-                    Depth = 5f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Radius = 7f,
+                    Damage = 12000f,
+                    Depth = 7f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
@@ -97,7 +97,7 @@ namespace Scripts
                     //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
                     //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
                     ArmOnlyOnHit = true,
-                    MinArmingTime = 10,
+                    MinArmingTime = 0,
                     NoVisuals = false,
                     NoSound = false,
                     ParticleScale = 1,
@@ -112,8 +112,8 @@ namespace Scripts
 				TargetLossDegree = 1f,
 				TargetLossTime = 1, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 				MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-				AccelPerSec = 800f,
-				DesiredSpeed = 2000,
+				AccelPerSec = 0,
+				DesiredSpeed = 1000,
 				MaxTrajectory = 1200f,
 				SpeedVariance = Random(start: 0, end: 100), // subtracts value from DesiredSpeed
 				RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory

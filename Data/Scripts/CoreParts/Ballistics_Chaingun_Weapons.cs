@@ -49,7 +49,7 @@ namespace Scripts
 			MaxElevation = 90,
 			HomeAzimuth = 0, // Default resting rotation angle
 			HomeElevation = 0, // Default resting elevation
-			InventorySize = 0.320f, // Inventory capacity in kL.
+			InventorySize = 0.5f, // Inventory capacity in kL.
 			IdlePower = 0.01f, // Constant base power draw in MW.
 			//Offset = new Vector3D(0f,0f,0f), // XYZ Offsets the aiming/firing line of the weapon, in metres.
 			Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom          
@@ -57,7 +57,7 @@ namespace Scripts
 		
 		private LoadingDef Ballistics_Chaingun_Hardpoint_Loading_T1 = new LoadingDef 
 		{
-			RateOfFire = 150, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 120, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -134,7 +134,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "LargeAutoCannonTurret_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "GatlingBarrel", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "GatlingTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "GatlingBarrel",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -197,6 +206,15 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "None",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "KhopeshTurret_NPC",
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "None",
+                    },
                 },
                 Muzzles = new []
                 {
@@ -214,19 +232,7 @@ namespace Scripts
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    RotateBarrelAxis = 0,
-                    EnergyPriority = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T2,
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
                 Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
@@ -254,7 +260,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "AutoCannonTurret_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "MissileTurretBase1", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "MissileTurretBarrels",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -291,17 +306,7 @@ namespace Scripts
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = Ballistics_Chaingun_Hardpoint_Hardware,
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 11,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0f, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = Ballistics_Chaingun_Hardpoint_Loading_T1,
                 Audio = Ballistics_Chaingun_Hardpoint_Audio,
                 Graphics = Ballistics_Chaingun_Hardpoint_Graphics,
@@ -328,7 +333,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "SmallBlockAutocannon_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -358,12 +372,14 @@ namespace Scripts
             {
                 PartName = "Autocannon", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.075f, // Projectile inaccuracy in degrees.
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.160f, // Inventory capacity in kL.
+                    InventorySize = 0.25f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -388,6 +404,15 @@ namespace Scripts
                     new MountPointDef 
 					{
                         SubtypeId = "ARYXHeavyFlakTurret",
+                        SpinPartId = "None",
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXHeavyFlakTurret_NPC",
                         SpinPartId = "None",
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",
@@ -437,27 +462,17 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -6,
                     MaxElevation = 80,
-                    InventorySize = 0.960f,
+                    InventorySize = 1f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0,
-                    MuzzleCheck = false,
-					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
-					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
-                    Debug = false,
-                    RestrictionRadius = 0, // Meters, radius of sphere disable this gun if another is present
-                    CheckInflatedBox = false, // if true, the bounding box of the gun is expanded by the RestrictionRadius
-                    CheckForAnyWeapon = false, // if true, the check will fail if ANY gun is present, false only looks for this subtype
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 720,
+                    RateOfFire = 480,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 60, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 70, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 2, // Number of physical magazines to consume on reload.
                 },

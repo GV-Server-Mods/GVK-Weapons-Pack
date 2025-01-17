@@ -20,7 +20,8 @@ namespace Scripts {
 		{
             Assignments = new ModelAssignmentsDef 
             {
-                MountPoints = new[] {
+                MountPoints = new[] 
+				{
                     new MountPointDef 
 					{
                         SubtypeId = "ARYXRailgunTurret",
@@ -30,13 +31,22 @@ namespace Scripts {
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f,
                     },
-
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXRailgunTurret_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                    },
                 },
                 Muzzles = new [] 
 				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
+                Scope = "muzzle_projectile_1", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = new TargetingDef  
             {
@@ -76,7 +86,7 @@ namespace Scripts {
                     MaxAzimuth =180,
                     MinElevation = -15,
                     MaxElevation = 30,
-                    InventorySize = 2.680f,
+                    InventorySize = 2.7f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -127,20 +137,31 @@ namespace Scripts {
                         ElevationPartId = "None",
                         DurabilityMod = 0.5f,
                     },
+                    /*new MountPointDef 
+					{
+                        SubtypeId = "ARYXRailgun_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                    },*/
                 },
                 Muzzles = new [] 
 				{
                     "muzzle_projectile_1",
                 },
                 Ejector = "",
+                Scope = "muzzle_projectile_1", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
             {
                 PartName = "Artemis 250mm Railgun", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
+                //DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef 
@@ -152,7 +173,7 @@ namespace Scripts {
                     MinElevation = 0,
                     MaxElevation = 0,
                     FixedOffset = false,
-                    InventorySize = 1.320f,
+                    InventorySize = 2.7f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -203,7 +224,16 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    
+                    new MountPointDef 
+					{
+                        SubtypeId = "SmallRailgun_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                  },
                 Muzzles = new[] 
 				{
@@ -222,7 +252,7 @@ namespace Scripts {
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 2.010f, // Inventory capacity in kL.
+                    InventorySize = 0.6f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -257,5 +287,22 @@ namespace Scripts {
             },
             Animations = SmallRailgunAnimation,
         };
+
+		//NPC Weapons with auto-aim
+		WeaponDefinition AryxRailgun_NPC
+        {
+            get
+            {
+                var weapon = AryxRailgun;
+                weapon.Assignments.MountPoints[0].SubtypeId = "ARYXRailgun_NPC";
+                weapon.Ammos = new[]
+                {
+                    SmallRailgunAmmo_NPC,
+                    SmallRailgunAmmo_NPC_Fragment1,
+                };
+                return weapon;
+            }
+        }
+
     }
 }

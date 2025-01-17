@@ -130,7 +130,7 @@ namespace Scripts
                         Enable = true,
                         Length = 10f, //
                         Width = 0.4f, //
-                        Color = Color(red: 60, green: 10, blue: 10f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Color = Color(red: 30, green: 5, blue: 5f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                 },

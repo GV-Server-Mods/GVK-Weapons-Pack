@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
-		<!-- Large Crusader -->
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>Missile_Torpedo_Large</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Large Crusader Launcher</DisplayName>
+			<DisplayName>*Torpedo* Large Crusader Launcher</DisplayName>
 			<Description>This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
 				[3000m Auto Range]
 				[Uses Crusader EMP x1]</Description>
@@ -20,18 +20,8 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="10">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="10"/>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
@@ -79,13 +69,12 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Crusader Open Static -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>Missile_Torpedo_Small</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Small Crusader Launcher</DisplayName>
+			<DisplayName>*Torpedo* Small Crusader Launcher</DisplayName>
 			<Description>This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
 				[3000m Semi-Auto Range]
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
@@ -98,18 +87,8 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="8"/>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
@@ -154,13 +133,13 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- Large Crusader NPC -->
+		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>Missile_Torpedo_Large_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Large Crusader Launcher NPC</DisplayName>
+			<DisplayName>*NPC-Torpedo* Large Crusader Launcher</DisplayName>
 			<Description>The Crusader Torpedo is matched only by the MAC in range, however this fire-and-forget torpedo can deliver a powerful EMP warhead on-target with no range penaulty, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
 				[3000m Auto Range]
 				[Uses Crusader EMP x1]</Description>
@@ -173,35 +152,29 @@
 			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="10">
+				<Component Subtype="PrototechPanel" Count="10">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="21"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
 				<Component Subtype="InteriorPlate" Count="13"/>
-				<Component Subtype="GVK_Unobtanium" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
 				<Component Subtype="Computer" Count="210"/>
 				<Component Subtype="Construction" Count="210"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
 			<BuildTimeSeconds>49</BuildTimeSeconds>
 			<PCU>10</PCU>
-			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1" EndY="1" Default="true"/>
 				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="5" EndY="1" PressurizedWhenOpen="true"/>
@@ -236,15 +209,14 @@
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
-		<!-- Crusader Open Static NPC -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>Missile_Torpedo_Small_NPC</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Small Crusader Launcher NPC</DisplayName>
+			<DisplayName>*NPC-Torpedo* Small Crusader Launcher</DisplayName>
 			<Description>The Crusader Torpedo is matched only by the MAC in range, however this fire-and-forget torpedo can deliver a powerful EMP warhead on-target with no range penaulty, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.
 				[3000m Semi-Auto Range]
 				[Uses Crusader EMP x1 (Manual Reload)]</Description>
@@ -257,35 +229,29 @@
 			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
+				<Component Subtype="PrototechPanel" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="14"/>
 				<Component Subtype="LargeTube" Count="7"/>
 				<Component Subtype="Motor" Count="70"/>
 				<Component Subtype="InteriorPlate" Count="9"/>
-				<Component Subtype="GVK_Unobtanium" Count="1">
-					<DeconstructId>
-						<TypeId>Ore</TypeId>
-						<SubtypeId>Scrap</SubtypeId>
-					</DeconstructId>
-				</Component>
 				<Component Subtype="Computer" Count="140"/>
 				<Component Subtype="Construction" Count="140"/>
 				<Component Subtype="SteelPlate" Count="140"/>
 			</Components>
 			<BuildTimeSeconds>34</BuildTimeSeconds>
 			<PCU>8</PCU>
-			<CriticalComponent Subtype="GVK_Unobtanium" Index="0"/>
+			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="13" EndX="2.0" EndY="14"/>
@@ -317,7 +283,7 @@
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<GuiVisible>false</GuiVisible>
-			<Public>false</Public>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>

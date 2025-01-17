@@ -65,7 +65,37 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "",
                     },
-                },
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileTurret_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "",
+                    },
+                     new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileTurretReskin",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileTurretReskin_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "",
+                    },
+               },
                 Muzzles = new []
                 {
 					"muzzle_missile_001",
@@ -96,7 +126,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -5,
                     MaxElevation = 90,
-                    InventorySize = 1.040f,
+                    InventorySize = 1.32f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -134,6 +164,36 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileTurret_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileTurretReskin",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileTurretReskin_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
                 },
                 Muzzles = new []
                 {
@@ -159,7 +219,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -8,
                     MaxElevation = 90,
-                    InventorySize = 0.520f,
+                    InventorySize = 0.88f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -197,6 +257,16 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "LargeMissileLauncher_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
                 },
                 Muzzles = new []
                 {
@@ -227,12 +297,14 @@ namespace Scripts
             {
                 PartName = "LargeMissileLauncher", // name of weapon in terminal
                 DeviateShotAngle = 4f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 2.470f,
+                    InventorySize = 2.09f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -280,6 +352,26 @@ namespace Scripts
                         DurabilityMod = 0.5f,
                         IconName = "TestIcon.dds",
                     },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileLauncher_NPC", //SmallMissileLauncherWarfare2
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallMissileLauncherWarfare2_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
                 },
                 Muzzles = new []
                 {
@@ -299,7 +391,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.520f,
+                    InventorySize = 0.88f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.

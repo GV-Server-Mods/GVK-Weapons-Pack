@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYX_Small_Sidekick_Hangar</SubtypeId>
 			</Id>
-			<DisplayName>[Drone] Falcon Drone Bay</DisplayName>
+			<DisplayName>*Drone* Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
 			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
 				OFFENSE = 3 minute flight time. 
@@ -20,16 +21,74 @@
 			<Model>Models\AWE_Drones\ARYX_Small_Hangar.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="68"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="8"/>
+				<Component Subtype="MetalGrid" Count="27"/>
+				<Component Subtype="LargeTube" Count="14"/>
+				<Component Subtype="Motor" Count="140"/>
+				<Component Subtype="InteriorPlate" Count="17"/>
+				<Component Subtype="Computer" Count="270"/>
+				<Component Subtype="Construction" Count="270"/>
+				<Component Subtype="SteelPlate" Count="270"/>
+			</Components>
+			<BuildTimeSeconds>66</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="1.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="2.00" EndY="1.00"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="1.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BlockPairName>AWE_Small_Hangar_Bay</BlockPairName>
+			<MirroringX>Z</MirroringX>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ARYX_Small_Sidekick_Hangar_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Drone* Falcon Drone Bay</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
+			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
+				OFFENSE = 3 minute flight time. 
+				DEFENSE = 5 minute flight time.
+				[2500m Semi-Auto Range]
+				[Uses FALCON Drones x3]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="1" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWE_Drones\ARYX_Small_Hangar.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="68"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="8">
+				<Component Subtype="PrototechPanel" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="27"/>
@@ -50,7 +109,7 @@
 				<MountPoint Side="Top" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00"/>
 				<MountPoint Side="Bottom" StartX="0.00" StartY="1.00" EndX="3.00" EndY="3.00"/>
 			</MountPoints>
-			<BlockPairName>AWE_Small_Hangar_Bay</BlockPairName>
+			<BlockPairName>AWE_Small_Hangar_Bay_NPC</BlockPairName>
 			<MirroringX>Z</MirroringX>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>

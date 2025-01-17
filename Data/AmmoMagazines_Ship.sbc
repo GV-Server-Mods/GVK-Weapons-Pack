@@ -27,7 +27,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>NATO_25x184mm</SubtypeId>
 			</Id>
-			<DisplayName>[Gatling] 25mm KE x30</DisplayName>
+			<DisplayName>*Gatling* 25mm KE x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Ammo_Box.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -49,7 +49,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>NATO_5p56x45mm</SubtypeId>
 			</Id>
-			<DisplayName>[Interior/Sidearm] 5.56mm KE x30</DisplayName>
+			<DisplayName>*Interior/Sidearm* 5.56mm KE x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Rifle_Ammo.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -71,15 +71,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>AutocannonClip</SubtypeId>
 			</Id>
-			<DisplayName>[Autocannon] 30mm API x6</DisplayName>
+			<DisplayName>*Autocannon* 30mm API x6</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>50</Mass>
-			<Volume>30</Volume>
+			<Mass>80</Mass>
+			<Volume>50</Volume>
 			<Model>Models\Weapons\AutoCanonShellBox.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>6</Capacity>
@@ -93,15 +93,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>LargeCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Cannon] 155mm AP</DisplayName>
+			<DisplayName>*Cannon* 155mm AP</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
 			<Size>
 				<X>1.2</X>
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>1000</Mass>
-			<Volume>100</Volume>
+			<Mass>600</Mass>
+			<Volume>60</Volume>
 			<Model>Models\Weapons\LargeCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -115,15 +115,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>MediumCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Flak] 100mm PROX</DisplayName>
+			<DisplayName>*Flak* 100mm PROX</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
 			<Size>
 				<X>0.25</X>
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>560</Mass>
-			<Volume>80</Volume>
+			<Mass>350</Mass>
+			<Volume>50</Volume>
 			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -137,15 +137,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>LargeRailgunAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[MAC] 200mm DU</DisplayName>
+			<DisplayName>*MAC* 200mm DU</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
 			<Size>
 				<X>1.0</X>
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>61000</Mass>
-			<Volume>3000</Volume>
+			<Mass>61400</Mass>
+			<Volume>3070</Volume>
 			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -159,15 +159,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>SmallRailgunAmmo</SubtypeId>
 			</Id>
-			<DisplayName>[Railgun] 50mm FeW</DisplayName>
+			<DisplayName>*Railgun* 50mm FeW</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\RailgunAmmo.dds</Icon>
 			<Size>
 				<X>0.25</X>
 				<Y>0.1</Y>
 				<Z>0.1</Z>
 			</Size>
-			<Mass>6700</Mass>
-			<Volume>330</Volume>
+			<Mass>2700</Mass>
+			<Volume>270</Volume>
 			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -181,7 +181,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missile200mm</SubtypeId>
 			</Id>
-			<DisplayName>[Rocket] Hydra HE</DisplayName>
+			<DisplayName>*Rocket* Hydra HE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Small_Rocket.dds</Icon>
 			<Size>
 				<X>1.2</X>
@@ -189,7 +189,7 @@
 				<Z>0.2</Z>
 			</Size>
 			<Mass>80</Mass>
-			<Volume>100</Volume>
+			<Volume>110</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -203,16 +203,16 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Missile</SubtypeId>
 			</Id>
-			<DisplayName>[Missile] Archer HE</DisplayName>
-			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
+			<DisplayName>*L.Missile* Griffin HE</DisplayName>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher_Ammo.dds</Icon>
 			<Size>
 				<X>0.25</X>
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>90</Mass>
-			<Volume>60</Volume>
-			<Model>Models\Missiles\MXA_Archer_Missile.mwm</Model>
+			<Mass>170</Mass>
+			<Volume>110</Volume>
+			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
@@ -225,7 +225,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Torpedo</SubtypeId>
 			</Id>
-			<DisplayName>[Torpedo] Crusader EMP</DisplayName>
+			<DisplayName>*Torpedo* Crusader EMP</DisplayName>
 			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
 			<Size>
 				<X>1</X>
@@ -247,7 +247,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Siege</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword MIRV</DisplayName>
+			<DisplayName>*SRBM* Longsword MIRV</DisplayName>
 			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
 			<Size>
 				<X>4</X>
@@ -269,7 +269,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
 			</Id>
-			<DisplayName>[Heavy Cannon] 480mm APHE</DisplayName>
+			<DisplayName>*Heavy Cannon* 480mm APHE</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
 			<Size>
 				<X>0.8</X>
@@ -291,15 +291,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
 			</Id>
-			<DisplayName>[MLRS] Tuukka HE</DisplayName>
+			<DisplayName>*H.Missile* Tuukka HE</DisplayName>
 			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
 			<Size>
 				<X>4</X>
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>320</Mass>
-			<Volume>160</Volume>
+			<Mass>760</Mass>
+			<Volume>380</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -313,7 +313,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Lasers_Plasma</SubtypeId>
 			</Id>
-			<DisplayName>[Plasma] Plasma Bomb</DisplayName>
+			<DisplayName>*Plasma* Plasma Bomb</DisplayName>
 			<Icon>Textures\Icons\MD_Ammo.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -335,15 +335,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Others_Drone_Falcon</SubtypeId>
 			</Id>
-			<DisplayName>[Drone] Falcon Autocannon</DisplayName>
+			<DisplayName>*Drone* Falcon Autocannon</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
 			<Size>
 				<X>1</X>
 				<Y>2</Y>
 				<Z>0.5</Z>
 			</Size>
-			<Mass>2400</Mass>
-			<Volume>1600</Volume>
+			<Mass>3770</Mass>
+			<Volume>2510</Volume>
 			<Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -357,7 +357,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FlareClip</SubtypeId>
 			</Id>
-			<DisplayName>[Flare] Decoy Flare x4</DisplayName>
+			<DisplayName>*Flare* Decoy Flare x4</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FlareGun_Ammo.dds</Icon>
 			<Size>
 				<X>0.2</X>
@@ -379,7 +379,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxBlue</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFireworksBoxBlue</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxBlue</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -401,7 +401,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxGreen</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFireworksBoxGreen</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxGreen</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -423,7 +423,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxRed</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFireworksBoxRed</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxRed</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -445,7 +445,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxPink</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFireworksBoxPink</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxPink</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -467,7 +467,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxYellow</SubtypeId>
 			</Id>
-			<DisplayName>zz[Do Not Use]zzFireworksBoxYellow</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxYellow</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -489,7 +489,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxRainbow</SubtypeId>
 			</Id>
-			<DisplayName>[Flare] Fireworks Box x30</DisplayName>
+			<DisplayName>*Flare* Fireworks Box x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>

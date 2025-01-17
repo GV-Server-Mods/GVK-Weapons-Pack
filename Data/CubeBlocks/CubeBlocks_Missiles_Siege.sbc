@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CubeBlocks>
-		<!-- Longsword Siege Turret -->
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery</SubtypeId>
 			</Id>
-			<DisplayName>[SRBM] Longsword</DisplayName>
+			<DisplayName>*SRBM* Longsword</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
 			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction. Developed by AWE.
 				[500-4000m Auto Range]
@@ -19,16 +19,75 @@
 			<Model>Models\AWE_Longbow\ARYX_MissileBatteryBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="550"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="12"/>
+				<Component Subtype="MetalGrid" Count="220"/>
+				<Component Subtype="LargeTube" Count="110"/>
+				<Component Subtype="Motor" Count="1100"/>
+				<Component Subtype="InteriorPlate" Count="140"/>
+				<Component Subtype="Computer" Count="2200"/>
+				<Component Subtype="Construction" Count="2200"/>
+				<Component Subtype="SteelPlate" Count="2200"/>
+			</Components>
+			<BuildTimeSeconds>533</BuildTimeSeconds>
+			<PCU>12</PCU>
+			<CriticalComponent Index="0" Subtype="Computer"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="5.00" EndY="2.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="5.00" EndY="2.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="5.00" EndY="2.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="5.00" EndY="2.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\AWE_Longbow\XL_Block_BS1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Longbow\XL_Block_BS2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>LG_ARYXMissileBattery_Base</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.48</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ARYXMissileBattery_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-SRBM* Longsword</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
+			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction. Developed by AWE.
+				[500-4000m Auto Range]
+				[Uses Longswoard MIRV]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="5" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\AWE_Longbow\ARYX_MissileBatteryBase.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="550"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="GVK_Missile_Tech" Count="12">
+				<Component Subtype="PrototechPanel" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="MetalGrid" Count="220"/>
@@ -53,7 +112,7 @@
 				<Model BuildPercentUpperBound="0.50" File="Models\AWE_Longbow\XL_Block_BS1.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\AWE_Longbow\XL_Block_BS2.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>LG_ARYXMissileBattery_Base</BlockPairName>
+			<BlockPairName>LG_ARYXMissileBattery_Base_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>

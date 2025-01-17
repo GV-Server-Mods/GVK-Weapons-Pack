@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CubeBlocks>
+		<!-- Player Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>GVK_GriffinMissileTurret</SubtypeId>
+			</Id>
+			<DisplayName>*L.Missile* Griffin Missile Turret</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
+				[2300 Auto Range]
+				[Uses Griffin HE x36]</Description>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_QuadMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="150"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="8"/>
+				<Component Subtype="MetalGrid" Count="57"/>
+				<Component Subtype="LargeTube" Count="29"/>
+				<Component Subtype="Motor" Count="290"/>
+				<Component Subtype="InteriorPlate" Count="34"/>
+				<Component Subtype="Computer" Count="570"/>
+				<Component Subtype="Construction" Count="570"/>
+				<Component Subtype="SteelPlate" Count="570"/>
+			</Components>
+			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<PCU>9</PCU>
+			<CriticalComponent Index="0" Subtype="Computer"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GVK_GriffinMissileTurret</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>GVK_GriffinMissileLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
+				[2300m Semi-Auto Range]
+				[Uses Griffin HE x54]
+			</Description>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="2"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="80"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="6"/>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<EdgeType>Light</EdgeType>
+			<InventoryMaxVolume>0.250</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>MXA_ArcherPods</SubtypeId>
+			</Id>
+			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
+				[2300m Semi-Auto Range]
+				[Uses Griffin HE x54]
+			</Description>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="2"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="80"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="6"/>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>MXA_ArcherPods</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<EdgeType>Light</EdgeType>
+			<InventoryMaxVolume>0.250</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>false</Public>
+		</Definition> -->
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>SmallRocketLauncherReload</SubtypeId>
+			</Id>
+			<DisplayName>*L.Missile* Small Griffin Launcher</DisplayName>
+			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
+				[2000m Semi-Auto Range]
+				[Uses Griffin HE x4]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReload.mwm</Model>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
+			</MountPoints>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<Center x="0" y="0" z="1"/>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<WeaponDefinitionId Subtype="Missiles_Missile"/>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>GVK_GriffinMissileTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Missile* Griffin Missile Turret</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
+				[2300 Auto Range]
+				[Uses Griffin HE x36]</Description>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_QuadMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="150"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechPanel" Count="8">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="MetalGrid" Count="57"/>
+				<Component Subtype="LargeTube" Count="29"/>
+				<Component Subtype="Motor" Count="290"/>
+				<Component Subtype="InteriorPlate" Count="34"/>
+				<Component Subtype="Computer" Count="570"/>
+				<Component Subtype="Construction" Count="570"/>
+				<Component Subtype="SteelPlate" Count="570"/>
+			</Components>
+			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Index="0" Subtype="Computer"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1.00"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_QuadMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>GVK_GriffinMissileTurret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>GVK_GriffinMissileLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
+				[2300m Semi-Auto Range]
+				[Uses Griffin HE x150]
+			</Description>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="2"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="80"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechPanel" Count="6">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<EdgeType>Light</EdgeType>
+			<InventoryMaxVolume>0.250</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- <Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>MXA_ArcherPods_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
+				[2300m Semi-Auto Range]
+				[Uses Griffin HE x150]
+			</Description>
+			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="2" z="2"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\HWK_FixedMissileLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="80"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechPanel" Count="6">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="MetalGrid" Count="32"/>
+				<Component Subtype="LargeTube" Count="16"/>
+				<Component Subtype="Motor" Count="160"/>
+				<Component Subtype="InteriorPlate" Count="20"/>
+				<Component Subtype="Computer" Count="320"/>
+				<Component Subtype="Construction" Count="320"/>
+				<Component Subtype="SteelPlate" Count="320"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>MXA_ArcherPods_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.95" StartY="0.00" EndX="1.95" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.05" StartY="0.00" EndX="1.05" EndY="2.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Top" StartX="0.00" StartY="0.05" EndX="3.00" EndY="1.05" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.95" EndX="3.00" EndY="1.95" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<EdgeType>Light</EdgeType>
+			<InventoryMaxVolume>0.250</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<NavigationDefinition>Default</NavigationDefinition>
+			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition> -->
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>SmallRocketLauncherReload_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Missile* Small Griffin Launcher</DisplayName>
+			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
+			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
+				[2300m Semi-Auto Range]
+				[Uses Griffin HE x4]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReload.mwm</Model>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
+			</MountPoints>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="PrototechPanel" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<Center x="0" y="0" z="1"/>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<WeaponDefinitionId Subtype="Missiles_Missile"/>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+	</CubeBlocks>
+</Definitions>

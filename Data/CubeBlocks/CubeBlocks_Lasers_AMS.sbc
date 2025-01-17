@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
-		<!-- PDT large -->
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDT</SubtypeId>
 			</Id>
-			<DisplayName>[AMS] Large PD-COIL Turret</DisplayName>
+			<DisplayName>*AMS* Large PD-COIL Turret</DisplayName>
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]
@@ -21,12 +21,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCapacitor" Count="4"/>
 				<Component Subtype="SmallTube" Count="31"/>
 				<Component Subtype="Motor" Count="25"/>
 				<Component Subtype="Superconductor" Count="76"/>
@@ -87,13 +82,12 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
-		<!-- PDT small -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>MA_PDT_sm</SubtypeId>
 			</Id>
-			<DisplayName>[AMS] Small PD-COIL Turret</DisplayName>
+			<DisplayName>*AMS* Small PD-COIL Turret</DisplayName>
 			<Icon>Textures\Icons\MA_Designator.dds</Icon>
 			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
 				[1000m Auto Range]
@@ -107,10 +101,176 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="7"/>
-				<Component Subtype="GVK_Laser_Tech" Count="4">
+				<Component Subtype="PrototechCapacitor" Count="4"/>
+				<Component Subtype="SmallTube" Count="9"/>
+				<Component Subtype="Motor" Count="7"/>
+				<Component Subtype="Superconductor" Count="21"/>
+				<Component Subtype="BulletproofGlass" Count="5"/>
+				<Component Subtype="Computer" Count="5"/>
+				<Component Subtype="MetalGrid" Count="3"/>
+				<Component Subtype="SteelPlate" Count="54"/>
+			</Components>
+			<BuildTimeSeconds>9</BuildTimeSeconds>
+			<PCU>3</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.04" StartY="0.04" EndX="0.96" EndY="0.96"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\MA_Designator\MA_Designator_sm_Constr1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\MA_Designator\MA_Designator_sm_Constr2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\MA_Designator\MA_Designator_sm_Constr3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MA_PDT</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Lasers_AMS"/>
+			<InventoryMaxVolume>0.5</InventoryMaxVolume>
+			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-26</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<AiEnabled>false</AiEnabled>
+			<MaxRangeMeters>1000</MaxRangeMeters>
+			<RotationSpeed>0.01</RotationSpeed>
+			<ElevationSpeed>0.007 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.05</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>MA_PDT_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-AMS* Large PD-COIL Turret</DisplayName>
+			<Icon>Textures\Icons\MA_Designator.dds</Icon>
+			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
+				[1000m Auto Range]
+				[Uses 10MW Energy]</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\MA_Designator\MA_Designator.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="23"/>
+				<Component Subtype="PrototechCapacitor" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="SmallTube" Count="31"/>
+				<Component Subtype="Motor" Count="25"/>
+				<Component Subtype="Superconductor" Count="76"/>
+				<Component Subtype="BulletproofGlass" Count="16"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="MetalGrid" Count="8"/>
+				<Component Subtype="SteelPlate" Count="200"/>
+			</Components>
+			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.25" StartY="0.25" EndX="0.75" EndY="0.75"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\MA_Designator\MA_Designator_Constr1.mwm"/>
+				<Model BuildPercentUpperBound="0.67" File="Models\MA_Designator\MA_Designator_Constr2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\MA_Designator\MA_Designator_Constr3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>MA_PDT_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Lasers_AMS"/>
+			<InventoryMaxVolume>0.5</InventoryMaxVolume>
+			<DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-26</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<AiEnabled>false</AiEnabled>
+			<MaxRangeMeters>1000</MaxRangeMeters>
+			<RotationSpeed>0.005</RotationSpeed>
+			<ElevationSpeed>0.007 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.05</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>MA_PDT_sm_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-AMS* Small PD-COIL Turret</DisplayName>
+			<Icon>Textures\Icons\MA_Designator.dds</Icon>
+			<Description>A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.
+				[1000m Auto Range]
+				[Uses 10MW Energy]</Description>
+			<CubeSize>Small</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\MA_Designator\MA_Designator_sm.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="7"/>
+				<Component Subtype="PrototechCapacitor" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
 				<Component Subtype="SmallTube" Count="9"/>
@@ -145,7 +305,7 @@
 					<MinAllowed>0.01</MinAllowed>
 				</DynamicMode>
 			</VoxelPlacement>
-			<BlockPairName>MA_PDT</BlockPairName>
+			<BlockPairName>MA_PDT_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>

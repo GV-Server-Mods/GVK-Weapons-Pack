@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
-		<!-- LOKI PARTICLE ACCELERATOR -->
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>lokiCannon1</SubtypeId>
 			</Id>
-			<DisplayName>[Plasma] LOKI</DisplayName>
+			<DisplayName>*Plasma* LOKI</DisplayName>
 			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
 				[2600m Auto Range]
 				[Uses Plasma Cells + 343MW Energy]</Description>
@@ -21,18 +21,8 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="230"/>
-				<Component Subtype="GVK_Data_Core" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>DataScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="GVK_Laser_Tech" Count="12">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>LaserScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechCapacitor" Count="12"/>
 				<Component Subtype="SmallTube" Count="310"/>
 				<Component Subtype="Motor" Count="250"/>
 				<Component Subtype="Superconductor" Count="760"/>
@@ -83,6 +73,97 @@
 			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>lokiCannon1_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Plasma* LOKI</DisplayName>
+			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
+				[2600m Auto Range]
+				[Uses Plasma Cells + 343MW Energy]</Description>
+			<Icon>Textures\GUI\Icons\Cubes\lokiCannon_01.png</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="5" y="4" z="5"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<ShowEdges>false</ShowEdges>
+			<Model>Models\Cubes\Large\lokiCannon_01\lokiCannon_01.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="230"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechCapacitor" Count="12">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCapacitorScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="SmallTube" Count="310"/>
+				<Component Subtype="Motor" Count="250"/>
+				<Component Subtype="Superconductor" Count="760"/>
+				<Component Subtype="BulletproofGlass" Count="160"/>
+				<Component Subtype="Computer" Count="190"/>
+				<Component Subtype="MetalGrid" Count="76"/>
+				<Component Subtype="SteelPlate" Count="2000"/>
+			</Components>
+			<BuildTimeSeconds>332</BuildTimeSeconds>
+			<PCU>12</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
+			</MountPoints>
+			<BlockPairName>lokiCannon1_NPC</BlockPairName>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Lasers_Laser"/>
+			<InventoryMaxVolume>0.384</InventoryMaxVolume>
+			<MinElevationDegrees>-30</MinElevationDegrees>
+			<MaxElevationDegrees>90</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>8000</MaxRangeMeters>
+			<RotationSpeed>0.007</RotationSpeed>
+			<ElevationSpeed>0.005 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<ShowEdges>false</ShowEdges>
+			<AiEnabled>false</AiEnabled>
+			<DamageEffectName>Damage_Electrical_Damaged_Blue</DamageEffectName>
+			<DamagedSound>ParticleElectrical</DamagedSound>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

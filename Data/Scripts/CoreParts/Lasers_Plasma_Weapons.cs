@@ -29,7 +29,17 @@ namespace Scripts
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
-                        IconName = "lokiCannon_01.png" // Overlay for block inventory slots, like reactors, refineries, etc.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "lokiCannon1_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
                 },
                 Muzzles = new[] 
@@ -76,7 +86,7 @@ namespace Scripts
                     MaxElevation = 40,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 2.960f, // Inventory capacity in kL.
+                    InventorySize = 3.7f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 

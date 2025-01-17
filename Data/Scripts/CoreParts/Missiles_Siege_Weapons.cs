@@ -33,6 +33,16 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXMissileBattery_NPC",
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns.
+                        MuzzlePartId = "MissileTurretBarrels", // The subpart where your muzzle empties are located.
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
                 },
                 Muzzles = new[] 
 				{
@@ -74,7 +84,7 @@ namespace Scripts
                 PartName = "Longsword SRBM", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.3f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 5f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
-                AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
+                AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 second, etc..). Length of time the weapon continues firing after trigger is released.
                 AddToleranceToTracking = true, // Allows turret to only track to the edge of the AimingTolerance cone instead of dead centre.
                 CanShootSubmerged = false, // Whether the weapon can be fired underwater when using WaterMod.
@@ -106,7 +116,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 31, // Default resting elevation
-                    InventorySize = 17.690f, // Inventory capacity in kL.
+                    InventorySize = 9f, // Inventory capacity in kL.
                     IdlePower = 1f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 

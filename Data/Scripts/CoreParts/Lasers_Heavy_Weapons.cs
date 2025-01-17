@@ -78,6 +78,16 @@ namespace Scripts
 						DurabilityMod = .5f,
                         IconName = "filter_energy.dds"
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "MA_T2PDX_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+						DurabilityMod = .5f,
+                        IconName = "filter_energy.dds"
+                    },
                 },				
                 Muzzles = new []
                 {
@@ -135,6 +145,16 @@ namespace Scripts
 						DurabilityMod = 0.5f,
                         IconName = "filter_energy.dds"
                     },
+                    new MountPointDef 
+					{
+                        SubtypeId = "MA_Fixed_T2_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "T2_EL",
+                        AzimuthPartId = "T2_AZ1",
+                        ElevationPartId = "T2_EL",
+						DurabilityMod = 0.5f,
+                        IconName = "filter_energy.dds"
+                    },
                 },				
                 Muzzles = new []
                 {
@@ -184,6 +204,15 @@ namespace Scripts
                     new MountPointDef 
 					{
                         SubtypeId = "ARYXSpartanTurret",
+                        SpinPartId = "",
+                        MuzzlePartId = "MissileTurretBarrels",
+                        AzimuthPartId = "MissileTurretBase1",
+                        ElevationPartId = "MissileTurretBarrels",
+                        DurabilityMod = 0.5f,
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "ARYXSpartanTurret_NPC",
                         SpinPartId = "",
                         MuzzlePartId = "MissileTurretBarrels",
                         AzimuthPartId = "MissileTurretBase1",

@@ -7,7 +7,7 @@
 			<DisplayName>Gatling Weapons</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXVulcanTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_AvengerGatlingTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype=""/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype=""/>
@@ -30,10 +30,11 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Ballistic_Cannons"/>
-			<Icon>Textures\GUI\Icons\Cubes\HeavyCalibreTurret.dds</Icon>
+			<Icon>Textures\GUI\Icons\CAP_TwinAssaultCannon.dds</Icon>
 			<DisplayName>Artillery Cannon Weapons</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_CycloneCannonTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurret"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGun"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="OKI122mmSGfixed"/>
@@ -46,6 +47,7 @@
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXHurricaneCannon"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="odin"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
@@ -103,17 +105,18 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Missiles"/>
-			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
 			<DisplayName>Missile Weapons</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MXA_ArcherPods"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_GriffinMissileTurret"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="GVK_GriffinMissileLauncher"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_HeavyMissiles"/>
-			<Icon>Textures\GUI\Icons\MXA_ArcherPods.png</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<DisplayName>Heavy Missile Weapons</DisplayName>
 			<Description/>
 			<Blocks>
@@ -122,7 +125,7 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Missiles_Torpedoes"/>
-			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
+			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
 			<DisplayName>Torpedo Weapons</DisplayName>
 			<Description/>
 			<Blocks>
@@ -172,11 +175,11 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="Others_Radars"/>
-			<Icon>Textures\GUI\Icons\Cubes\OKIObserverSM.dds</Icon>
+			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
 			<DisplayName>Target Sensors</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIObserverSM"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIDesignator"/>
 			</Blocks>
 		</BlockVariantGroup>

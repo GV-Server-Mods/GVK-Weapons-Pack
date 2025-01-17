@@ -1,6 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- WC warheads need more mass to explode on impact than regular warheads -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<!-- Standard Warhead-->
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>LargeWarhead</SubtypeId>
+			</Id>
+			<DisplayName>Warhead (WC)</DisplayName>
+			<Description>WeaponCore Enabled Warhead.
+				Standard Explosion: 20 Meters, Linear dropoff.
+			</Description>
+			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\warhead.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="100"/>
+				<Component Subtype="Girder" Count="24"/>
+				<Component Subtype="Construction" Count="12"/>
+				<Component Subtype="SmallTube" Count="12"/>
+				<Component Subtype="Computer" Count="2"/>
+				<Component Subtype="Explosives" Count="6"/>
+				<Component Subtype="SteelPlate" Count="5"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WarheadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\WarheadConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\WarheadConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>Warhead</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<DamageEffectId>213</DamageEffectId>
+			<AiEnabled>false</AiEnabled>
+			<DestroyEffect>Explosion_Warhead_15</DestroyEffect>
+			<DestroySound>ArcWepLrgWarheadExpl</DestroySound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<!-- <UsesDeformation>false</UsesDeformation>
+			<DeformationRatio>0.95</DeformationRatio> -->
+			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<!-- Standard Warhead-->
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>SmallWarhead</SubtypeId>
+			</Id>
+			<DisplayName>Small Warhead (WC)</DisplayName>
+			<Description>WeaponCore Enabled Warhead.
+				Standard Explosion: 5 Meters, Linear dropoff.
+			</Description>
+			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\warhead.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="10"/>
+				<Component Subtype="Girder" Count="1"/>
+				<Component Subtype="Construction" Count="1"/>
+				<Component Subtype="SmallTube" Count="2"/>
+				<Component Subtype="Computer" Count="1"/>
+				<Component Subtype="Explosives" Count="2"/>
+				<Component Subtype="SteelPlate" Count="2"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\WarheadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\WarheadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>Warhead</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectId>213</DamageEffectId>
+			<AiEnabled>false</AiEnabled>
+			<DestroyEffect>Explosion_Warhead_02</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UsesDeformation>false</UsesDeformation>
+			<DeformationRatio>0.95</DeformationRatio>
+			<IsAirTight>true</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>LargeExplosiveBarrel</SubtypeId>
+			</Id>
+			<DisplayName>Explosive Barrel (WC)</DisplayName>
+			<Description>WeaponCore Enabled Explosive Barrel.
+				Standard Explosion: 20 Meters, Linear dropoff.
+			</Description>
+			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\Barrel01ExplosiveLarge.mwm</Model>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.6" StartY="0" EndX="1.0" EndY="0.4" Default="true"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.4" EndY="0.5"/>
+				<MountPoint Side="Right" StartX="0.6" StartY="0" EndX="1.0" EndY="0.5"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Barrel01_Large_Construction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Barrel01ExplosiveLarge_Construction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Barrel01ExplosiveLarge_Construction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ExplosiveBarrel</BlockPairName>
+			<Components>
+				<Component Subtype="SteelPlate" Count="100"/>
+				<Component Subtype="Girder" Count="24"/>
+				<Component Subtype="Construction" Count="12"/>
+				<Component Subtype="SmallTube" Count="12"/>
+				<Component Subtype="Computer" Count="2"/>
+				<Component Subtype="Explosives" Count="6"/>
+				<Component Subtype="SteelPlate" Count="5"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectId>213</DamageEffectId>
+			<AiEnabled>false</AiEnabled>
+			<DestroyEffect>Explosion_Warhead_15</DestroyEffect>
+			<DestroySound>ArcWepLrgWarheadExpl</DestroySound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<UsesDeformation>false</UsesDeformation>
+			<DeformationRatio>0.95</DeformationRatio>
+			<IsAirTight>false</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<!-- Standard Warhead-->
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>SmallExplosiveBarrel</SubtypeId>
+			</Id>
+			<DisplayName>Explosive Barrel (WC)</DisplayName>
+			<Description>WeaponCore Enabled Explosive barrel.
+				Standard Explosion: 5 Meters, Linear dropoff.
+			</Description>
+			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="2" y="3" z="2"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\Barrel01Explosive.mwm</Model>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="2.0" EndY="2.0" Default="true"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Small\Barrel01_Construction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Small\Barrel01Explosive_Construction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\Barrel01Explosive_Construction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>ExplosiveBarrel</BlockPairName>
+			<MirroringY>XHalfY</MirroringY>
+			<Components>
+				<Component Subtype="SteelPlate" Count="10"/>
+				<Component Subtype="Girder" Count="1"/>
+				<Component Subtype="Construction" Count="1"/>
+				<Component Subtype="SmallTube" Count="2"/>
+				<Component Subtype="Computer" Count="1"/>
+				<Component Subtype="Explosives" Count="2"/>
+				<Component Subtype="SteelPlate" Count="2"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<InventoryMaxVolume>1</InventoryMaxVolume>
+			<DamageEffectId>213</DamageEffectId>
+			<AiEnabled>false</AiEnabled>
+			<DestroyEffect>Explosion_Warhead_02</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<UsesDeformation>false</UsesDeformation>
+			<DeformationRatio>0.95</DeformationRatio>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DLC>DecorativeBlocks3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- disable vanilla warheads -->
 		<Definition Enabled="false">
 			<Id>
 				<TypeId>Warhead</TypeId>
@@ -44,7 +265,7 @@
 			<ExplosionRadius>22.4415</ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect/>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>2</PCU>
 			<MirroringY>Z</MirroringY>
@@ -53,70 +274,6 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<!-- Standard Warhead-->
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>LargeWarhead</SubtypeId>
-			</Id>
-			<DisplayName>Warhead (WC)</DisplayName>
-			<Description>WeaponCore Enabled Warhead.
-				Standard Explosion: 20 Meters, Linear dropoff.
-			</Description>
-			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\warhead.mwm</Model>
-			<UseModelIntersection>true</UseModelIntersection>
-			<Components>
-				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="Girder" Count="24"/>
-				<Component Subtype="Construction" Count="12"/>
-				<Component Subtype="SmallTube" Count="12"/>
-				<Component Subtype="Computer" Count="2"/>
-				<Component Subtype="Explosives" Count="6"/>
-				<Component Subtype="SteelPlate" Count="10"/>
-			</Components>
-			<CriticalComponent Subtype="Explosives" Index="0"/>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WarheadConstruction_1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\WarheadConstruction_2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\WarheadConstruction_3.mwm"/>
-			</BuildProgressModels>
-			<VoxelPlacement>
-				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
-				<StaticMode>
-					<PlacementMode>OutsideVoxel</PlacementMode>
-					<MaxAllowed>0.2</MaxAllowed>
-					<MinAllowed>0</MinAllowed>
-				</StaticMode>
-				<DynamicMode>
-					<PlacementMode>OutsideVoxel</PlacementMode>
-					<MaxAllowed>0.2</MaxAllowed>
-					<MinAllowed>0.01</MinAllowed>
-				</DynamicMode>
-			</VoxelPlacement>
-			<BlockPairName>Warhead</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>30</BuildTimeSeconds>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectId>213</DamageEffectId>
-			<AiEnabled>false</AiEnabled>
-			<DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
-			<DestroySound>HWR_FireyExplosion</DestroySound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<EmissiveColorPreset>Default</EmissiveColorPreset>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
-			<IsAirTight>true</IsAirTight>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -158,55 +315,6 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>2</PCU>
 			<IsAirTight>true</IsAirTight>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
-			<IsAirTight>true</IsAirTight>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<!-- Standard Warhead-->
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>SmallWarhead</SubtypeId>
-			</Id>
-			<DisplayName>Small Warhead (WC)</DisplayName>
-			<Description>WeaponCore Enabled Warhead.
-				Standard Explosion: 5 Meters, Linear dropoff.
-			</Description>
-			<Icon>Textures\GUI\Icons\Cubes\warhead.dds</Icon>
-			<CubeSize>Small</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\warhead.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="1"/>
-				<Component Subtype="Girder" Count="1"/>
-				<Component Subtype="Construction" Count="1"/>
-				<Component Subtype="SmallTube" Count="2"/>
-				<Component Subtype="Computer" Count="1"/>
-				<Component Subtype="Explosives" Count="2"/>
-				<Component Subtype="SteelPlate" Count="3"/>
-			</Components>
-			<CriticalComponent Subtype="Explosives" Index="0"/>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\WarheadConstruction_1.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\WarheadConstruction_2.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>Warhead</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectId>213</DamageEffectId>
-			<AiEnabled>false</AiEnabled>
-			<DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
-			<DestroySound>HWR_FireyExplosion</DestroySound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
@@ -257,64 +365,9 @@
 			<ExplosionRadius> 4.4883 </ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect/>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>2</PCU>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<IsAirTight>false</IsAirTight>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
-			<DLC>DecorativeBlocks3</DLC>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>LargeExplosiveBarrel</SubtypeId>
-			</Id>
-			<DisplayName>Explosive Barrel (WC)</DisplayName>
-			<Description>WeaponCore Enabled Explosive Barrel.
-				Standard Explosion: 20 Meters, Linear dropoff.
-			</Description>
-			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="1"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\Barrel01ExplosiveLarge.mwm</Model>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0.6" StartY="0" EndX="1.0" EndY="0.4" Default="true"/>
-				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.4" EndY="0.5"/>
-				<MountPoint Side="Right" StartX="0.6" StartY="0" EndX="1.0" EndY="0.5"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Barrel01_Large_Construction_1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Barrel01ExplosiveLarge_Construction_2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Barrel01ExplosiveLarge_Construction_3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>ExplosiveBarrel</BlockPairName>
-			<Components>
-				<Component Subtype="SteelPlate" Count="10"/>
-				<Component Subtype="Girder" Count="24"/>
-				<Component Subtype="Construction" Count="12"/>
-				<Component Subtype="SmallTube" Count="12"/>
-				<Component Subtype="Computer" Count="2"/>
-				<Component Subtype="Explosives" Count="6"/>
-				<Component Subtype="SteelPlate" Count="10"/>
-			</Components>
-			<CriticalComponent Subtype="Explosives" Index="0"/>
-			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>30</BuildTimeSeconds>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectId>213</DamageEffectId>
-			<AiEnabled>false</AiEnabled>
-			<DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
-			<DestroySound>HWR_FireyExplosion</DestroySound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<IsAirTight>false</IsAirTight>
@@ -368,70 +421,12 @@
 			<ExplosionRadius> 4.4883 </ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
-			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroyEffect/>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<PCU>2</PCU>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<IsAirTight>false</IsAirTight>
-			<TargetingGroups>
-				<string>Weapons</string>
-			</TargetingGroups>
-			<DLC>DecorativeBlocks3</DLC>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<!-- Standard Warhead-->
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>SmallExplosiveBarrel</SubtypeId>
-			</Id>
-			<DisplayName>Explosive Barrel (WC)</DisplayName>
-			<Description>WeaponCore Enabled Explosive barrel.
-				Standard Explosion: 5 Meters, Linear dropoff.
-			</Description>
-			<Icon>Textures\GUI\Icons\Cubes\Barrel01Explosive.dds</Icon>
-			<CubeSize>Small</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="2" y="3" z="2"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\Barrel01Explosive.mwm</Model>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="2.0" EndY="2.0" Default="true"/>
-				<MountPoint Side="Front" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
-				<MountPoint Side="Back" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
-				<MountPoint Side="Left" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
-				<MountPoint Side="Right" StartX="0" StartY="0" EndX="2.0" EndY="2.5"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Small\Barrel01_Construction_1.mwm"/>
-				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Small\Barrel01Explosive_Construction_2.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\Barrel01Explosive_Construction_3.mwm"/>
-			</BuildProgressModels>
-			<BlockPairName>ExplosiveBarrel</BlockPairName>
-			<MirroringY>XHalfY</MirroringY>
-			<Components>
-				<Component Subtype="SteelPlate" Count="1"/>
-				<Component Subtype="Girder" Count="1"/>
-				<Component Subtype="Construction" Count="1"/>
-				<Component Subtype="SmallTube" Count="2"/>
-				<Component Subtype="Computer" Count="1"/>
-				<Component Subtype="Explosives" Count="2"/>
-				<Component Subtype="SteelPlate" Count="3"/>
-			</Components>
-			<CriticalComponent Subtype="Explosives" Index="0"/>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
-			<InventoryMaxVolume>1</InventoryMaxVolume>
-			<DamageEffectId>213</DamageEffectId>
-			<AiEnabled>false</AiEnabled>
-			<DestroyEffect>MD_HydraRocketExplosion</DestroyEffect>
-			<DestroySound>HWR_FireyExplosion</DestroySound>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<EmissiveColorPreset>Default</EmissiveColorPreset>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>

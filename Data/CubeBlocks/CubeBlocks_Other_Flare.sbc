@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
+		<!-- Player Weapons -->
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeFlareLauncher</SubtypeId>
 			</Id>
-			<DisplayName>[Flare] Flare/Fireworks Launcher</DisplayName>
+			<DisplayName>*Flare* Flare/Fireworks Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncher.dds</Icon>
 			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
 				[700m Effective Radius]
@@ -18,12 +19,7 @@
 			<Model>Models\Cubes\large\LG_TSOFlareLauncherConveyorL2S.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="25" />
-				<Component Subtype="GVK_Missile_Tech" Count="4">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
+				<Component Subtype="PrototechPanel" Count="4"/>
                 <Component Subtype="LargeTube" Count="5" />
                 <Component Subtype="Motor" Count="50" />
                 <Component Subtype="Computer" Count="50" />
@@ -67,7 +63,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallFlareLauncher</SubtypeId>
 			</Id>
-			<DisplayName>[Flare] Flare/Fireworks Launcher</DisplayName>
+			<DisplayName>*Flare* Flare/Fireworks Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncherSmall.dds</Icon>
 			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
 				[700m Effective Radius]
@@ -79,10 +75,127 @@
 			<Model>Models\Cubes\small\TSOFlareLauncherConveyorSG.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="2" />
-				<Component Subtype="GVK_Missile_Tech" Count="2">
+				<Component Subtype="PrototechPanel" Count="2"/>
+                <Component Subtype="LargeTube" Count="2" />
+                <Component Subtype="Motor" Count="5" />
+                <Component Subtype="Computer" Count="5" />
+                <Component Subtype="Construction" Count="10" />
+                <Component Subtype="SteelPlate" Count="10" />
+            </Components>
+			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.1" StartY="0.5" EndX="0.9" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0.1" StartY="0" EndX="0.9" EndY="0.5"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0.1" EndX="0.5" EndY="0.9"/>
+				<MountPoint Side="Left" StartX="0.5" StartY="0.1" EndX="1.0" EndY="0.9"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\FlareLauncherConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>FlareLauncher</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.006</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeFlareLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Flare* Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\FlareLauncher.dds</Icon>
+			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
+				[700m Effective Radius]
+				[Uses Decoy Flare x2]</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\large\LG_TSOFlareLauncherConveyorL2S.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="25" />
+				<Component Subtype="PrototechPanel" Count="4">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
-                        <SubtypeId>MissileScrap</SubtypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+                <Component Subtype="LargeTube" Count="5" />
+                <Component Subtype="Motor" Count="50" />
+                <Component Subtype="Computer" Count="50" />
+                <Component Subtype="Construction" Count="100" />
+                <Component Subtype="SteelPlate" Count="100" />
+            </Components>
+			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.1" StartY="0.5" EndX="0.9" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0.1" StartY="0" EndX="0.9" EndY="0.5"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="1" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0.1" EndX="0.5" EndY="0.9"/>
+				<MountPoint Side="Left" StartX="0.5" StartY="0.1" EndX="1.0" EndY="0.9"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\FlareLauncherConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\FlareLauncherConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>FlareLauncher_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.032</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallFlareLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Flare* Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\FlareLauncherSmall.dds</Icon>
+			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
+				[700m Effective Radius]
+				[Uses Decoy Flare x4]</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\small\TSOFlareLauncherConveyorSG.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="2" />
+				<Component Subtype="PrototechPanel" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
                 <Component Subtype="LargeTube" Count="2" />
@@ -105,7 +218,7 @@
 				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\FlareLauncherConstruction_1.mwm"/>
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\FlareLauncherConstruction_2.mwm"/>
 			</BuildProgressModels>
-			<BlockPairName>FlareLauncher</BlockPairName>
+			<BlockPairName>FlareLauncher_NPC</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<Center x="0" y="0" z="0"/>

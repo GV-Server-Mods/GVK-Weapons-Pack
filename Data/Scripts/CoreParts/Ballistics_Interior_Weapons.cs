@@ -35,7 +35,7 @@ namespace Scripts
                     },
                     new MountPointDef
                     {
-                        SubtypeId = "SmallInteriorTurret",
+                        SubtypeId = "LargeInteriorTurret_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "InteriorTurretBase2",
                         AzimuthPartId = "InteriorTurretBase1",

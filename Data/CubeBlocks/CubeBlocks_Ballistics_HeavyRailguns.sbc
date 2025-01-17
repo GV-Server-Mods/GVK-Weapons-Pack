@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" ?>
+<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CubeBlocks>
+		<!-- Large Harbinger Turret -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>HarbingerTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Heavy Railgun* Harbinger</DisplayName>
+			<Description>NPC Massive Wreck Only</Description>
+			<Icon>Textures\GUI\Icons\Harbinger_Short_Thin_Base.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="7" y="7" z="7"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Akiad\Small\Harbinger_Short_Thin_Base.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="410"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechFrame" Count="10">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="MetalGrid" Count="130"/>
+				<Component Subtype="PowerCell" Count="41"/>
+				<Component Subtype="Superconductor" Count="81"/>
+				<Component Subtype="Motor" Count="81"/>
+				<Component Subtype="Reactor" Count="110"/>
+				<Component Subtype="Computer" Count="310"/>
+				<Component Subtype="SteelPlate" Count="610"/>
+			</Components>
+			<BuildTimeSeconds>150</BuildTimeSeconds>
+			<PCU>10</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="7.00" EndY="1.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="7.00" EndY="1.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="7.00" EndY="1.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="7.00" EndY="1.00" PressurizedWhenOpen="true"/>
+				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="7.00" EndY="7.00" Default="true" PressurizedWhenOpen="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.4" File="Models\Akiad\Small\Harbinger_Short_Thin_Base_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.7" File="Models\Akiad\Small\Harbinger_Short_Thin_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\Harbinger_Short_Thin_Base_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<BlockPairName>HarbingerTurret_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="Ballistics_Railgun"/>
+			<InventoryMaxVolume>0.5</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<DamageEffectName>Damage_WeapExpl_Damaged_Blue</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large_Blue</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<AiEnabled>false</AiEnabled>
+			<UsesDeformation>false</UsesDeformation>
+			<DeformationRatio>0.5</DeformationRatio>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+	</CubeBlocks>
+</Definitions>

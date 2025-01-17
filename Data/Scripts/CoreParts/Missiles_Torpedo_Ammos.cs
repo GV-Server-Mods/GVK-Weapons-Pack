@@ -355,7 +355,7 @@ namespace Scripts
             },
         };
 
-        private AmmoDef Missiles_Torpedo_NPC
+        /*private AmmoDef Missiles_Torpedo_NPC
         {
             get
             {
@@ -364,7 +364,7 @@ namespace Scripts
                 torp.Trajectory.Smarts.OverideTarget = true;
                 return torp;
             }
-        }
+        }*/
 		
         private AmmoDef Missiles_Torpedo_Shrapnel => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
