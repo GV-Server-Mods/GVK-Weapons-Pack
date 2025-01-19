@@ -197,11 +197,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals, ScanRoid, ScanPlanet, ScanFriendlyCharacter, ScanFriendlyGrid, ScanEnemyCharacter, ScanEnemyGrid, ScanNeutralCharacter, ScanNeutralGrid, ScanUnOwnedGrid, ScanOwnersGrid
                 },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, Jumping, Steering, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+                SubSystems = new[] 
+				{
+                    Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
                 },
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 MaxTargetDistance = 4000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.

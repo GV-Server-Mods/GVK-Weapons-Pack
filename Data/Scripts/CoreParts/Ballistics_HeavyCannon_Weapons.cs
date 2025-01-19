@@ -49,11 +49,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids,
                 },
-                SubSystems = new[] {
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                    Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
@@ -173,11 +175,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids,
                 },
-                SubSystems = new[] {
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                    Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.

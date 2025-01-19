@@ -21,11 +21,13 @@ namespace Scripts
 		
 		private TargetingDef Missiles_Missile_Targeting_Large => new TargetingDef 
 		{
-			Threats = new[] {
+			Threats = new[] 
+			{
 				Grids, // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+			SubSystems = new[] 
+			{
+				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -48,11 +50,13 @@ namespace Scripts
 
 		private TargetingDef Missiles_Missile_Targeting_Small => new TargetingDef 
 		{
-			Threats = new[] {
+			Threats = new[] 
+			{
 				Grids, // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+			SubSystems = new[] 
+			{
+				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.

@@ -23,7 +23,7 @@ namespace Scripts
 				Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
 			},
 			SubSystems = new[] {
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
 			},
 			ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -169,7 +169,7 @@ namespace Scripts
                     Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals
                 },
                 SubSystems = new[] {
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                    Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
