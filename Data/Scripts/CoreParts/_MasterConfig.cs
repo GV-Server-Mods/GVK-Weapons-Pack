@@ -78,7 +78,8 @@ namespace Scripts
 							LargeBlockRailgun_NPC,
 							HarbingerTurret,
 							Other_Warheads_RegularWarhead_LG_Weapon,
-							Other_Warheads_RegularWarhead_SG_Weapon
+							Other_Warheads_RegularWarhead_SG_Weapon,
+							SmallGriffinLauncherWarfare2
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

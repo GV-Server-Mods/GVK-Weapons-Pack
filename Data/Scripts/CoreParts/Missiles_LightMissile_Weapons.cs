@@ -427,6 +427,54 @@ namespace Scripts
 				Missiles_Missile,
             },
         };
+
+        WeaponDefinition SmallGriffinLauncherWarfare2 => new WeaponDefinition 
+		{
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallGriffinLauncherWarfare2_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                },
+                Muzzles = new []
+                {
+                    "muzzle_missile_001",
+					"muzzle_missile_002",
+					"muzzle_missile_003",
+					"muzzle_missile_004",
+                },
+            },
+			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
+            HardPoint = new HardPointDef
+            {
+                PartName = "SmallGriffinLauncher_NPC", // name of weapon in terminal
+                DeviateShotAngle = 1f,
+                AimingTolerance = 180f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = true,
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
+                HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
+                Loading = Missiles_Missile_Hardpoint_Loading_Small,
+                Audio = Missiles_Missile_Hardpoint_Audio,
+            },
+			Ammos = new[] 
+			{
+                Missiles_Missile,
+            },
+        };
 		
 		// Unique because they use a different ammo with OverideTarget enabled - Currently Broken
 		/*WeaponDefinition GVK_GriffinMissileLauncher_NPC
