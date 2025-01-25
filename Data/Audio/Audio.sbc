@@ -403,6 +403,53 @@
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+				<SubtypeId>Explosion_AmmunitionSmall</SubtypeId>
+			</Id>
+			<Category>WEP_EXPL</Category>
+			<MaxDistance>3000</MaxDistance>
+			<PitchVariation>200</PitchVariation>
+			<PreventSynchronization>10</PreventSynchronization>
+			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
+			<DynamicMusicAmount>3</DynamicMusicAmount>
+			<SoundLimit>20</SoundLimit>
+			<DistantSounds>
+				<DistantSound DistanceCrossfade="500" Distance="1500" Sound="HWR_SmallExplosionDistant"/>
+			</DistantSounds>
+			<Volume>2</Volume>
+			<Loopable>false</Loopable>
+			<Waves>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_1.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_2.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_3.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_4.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_5.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_6.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_7.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_8.xwm</Start>
+				</Wave>
+				<Wave Type="D3">
+					<Start>Audio\HWR\Small_explosion_9.xwm</Start>
+				</Wave>
+			</Waves>
+		</Sound>
+		<Sound>
+			<Id>
+				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>HWR_SmallExplosion</SubtypeId>
 			</Id>
 			<Category>WEP_EXPL</Category>
