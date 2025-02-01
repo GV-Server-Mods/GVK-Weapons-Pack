@@ -231,8 +231,18 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
-				<Component Subtype="PrototechCircuitry" Count="1"/>
-				<Component Subtype="PrototechFrame" Count="16"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+				<Component Subtype="PrototechFrame" Count="16">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechFrameScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="Construction" Count="520"/>
 				<Component Subtype="SmallTube" Count="210"/>
 				<Component Subtype="LargeTube" Count="350"/>

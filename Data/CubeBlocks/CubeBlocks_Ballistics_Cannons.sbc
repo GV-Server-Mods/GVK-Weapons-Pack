@@ -19,6 +19,7 @@
 			<Model>Models\Cubes\large\CAP_TwinAssaultCannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
 				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
@@ -91,6 +92,7 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
 				<Component Subtype="PrototechFrame" Count="8"/>
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SmallTube" Count="86"/>
@@ -380,6 +382,12 @@
 			<Model>Models\Cubes\large\CAP_TwinAssaultCannon.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="PrototechFrame" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
@@ -457,6 +465,12 @@
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
 				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
 				<Component Subtype="PrototechFrame" Count="8">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>

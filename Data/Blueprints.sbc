@@ -360,7 +360,7 @@
 			</Prerequisites>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="PreciseAutomaticRifleGun_Mag_5rd"/>
 			<BaseProductionTimeInSeconds>10</BaseProductionTimeInSeconds>
-		</Blueprint-->>
+		</Blueprint-->
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
