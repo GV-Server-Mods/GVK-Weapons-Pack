@@ -54,7 +54,7 @@
 			<InventoryMaxVolume>0.576</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<TargetingGroups>
 				<string>Weapons</string>
@@ -204,7 +204,7 @@
 			<InventoryMaxVolume>0.576</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion_Large3X</DestroyEffect>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
 			<DestroySound>WepLargeWarheadExpl</DestroySound>
 			<TargetingGroups>
 				<string>Weapons</string>
