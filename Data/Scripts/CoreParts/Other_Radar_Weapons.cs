@@ -156,6 +156,18 @@ namespace Scripts
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
                     },
+                    new MountPointDef {
+                        SubtypeId = "SmallBlockRadioAntenna_WCRadar",
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                    },
+                    new MountPointDef {
+                        SubtypeId = "SmallBlockCompactRadioAntennaReskin_WCRadar",
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                    },
                 },
                 Muzzles = new[]{
                     "muzzle_projectile_1",

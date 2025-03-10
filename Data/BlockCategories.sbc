@@ -60,6 +60,8 @@
 				<string>GVK_GriffinMissileTurret</string>
 				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
+				<string>SmallBlockRadioAntenna_WCRadar</string>
+				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -121,6 +123,8 @@
 				<string>GVK_GriffinMissileTurret</string>
 				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
+				<string>SmallBlockRadioAntenna_WCRadar</string>
+				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -182,6 +186,8 @@
 				<string>GVK_GriffinMissileTurret</string>
 				<string>GVK_AvengerGatlingTurret</string>
 				<string>odin</string>
+				<string>SmallBlockRadioAntenna_WCRadar</string>
+				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>
