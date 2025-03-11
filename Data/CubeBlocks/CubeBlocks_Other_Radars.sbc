@@ -176,7 +176,7 @@
             <DestroySound>WepSmallWarheadExpl</DestroySound>
             <PCU>1</PCU>
 			<IsAirTight>false</IsAirTight>
-			<GuiVisible>true</GuiVisible>
+			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
         </Definition>
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
