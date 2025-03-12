@@ -244,17 +244,17 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>015_Others_Drone_Falcon</SubtypeId>
 			</Id>
-			<DisplayName>*Drone* Falcon Autocannon x1</DisplayName>
+			<DisplayName>*Drone* Falcon Gunship x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
 			<Prerequisites>
-				<Item Amount="38.6" TypeId="Ingot" SubtypeId="GVK_RUs"/>
-				<Item Amount="200.8" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="4015.9" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="10" TypeId="Ingot" SubtypeId="Platinum"/>
-				<Item Amount="401.6" TypeId="Ingot" SubtypeId="Silicon"/>
-				<Item Amount="30.1" TypeId="Ingot" SubtypeId="Gold"/>
+				<Item Amount="25.7" TypeId="Ingot" SubtypeId="GVK_RUs"/>
+				<Item Amount="133.2" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="2664.8" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="6.7" TypeId="Ingot" SubtypeId="Platinum"/>
+				<Item Amount="266.5" TypeId="Ingot" SubtypeId="Silicon"/>
+				<Item Amount="20" TypeId="Ingot" SubtypeId="Gold"/>
 			</Prerequisites>
-			<BaseProductionTimeInSeconds>355</BaseProductionTimeInSeconds>
+			<BaseProductionTimeInSeconds>262</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Others_Drone_Falcon"/>
 		</Blueprint>
 		<Blueprint>

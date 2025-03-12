@@ -335,15 +335,15 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Others_Drone_Falcon</SubtypeId>
 			</Id>
-			<DisplayName>*Drone* Falcon Autocannon</DisplayName>
+			<DisplayName>*Drone* Falcon Gunship</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AWE_Drone_Falcon.dds</Icon>
 			<Size>
 				<X>1</X>
 				<Y>2</Y>
 				<Z>0.5</Z>
 			</Size>
-			<Mass>3770</Mass>
-			<Volume>2510</Volume>
+			<Mass>2520</Mass>
+			<Volume>1680</Volume>
 			<Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
