@@ -216,7 +216,7 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                Custom = Common_Ammos_DamageScales_WheelsandCockpits_SmallNerf,
+                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef
             {
