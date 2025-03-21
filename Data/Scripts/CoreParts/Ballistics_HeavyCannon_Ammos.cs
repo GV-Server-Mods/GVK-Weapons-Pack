@@ -69,9 +69,9 @@ namespace Scripts
                 },
                 Armor = new ArmorDef
                 {
-                    Armor = -1f, // Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
-                    Light = -1f, // Multiplier for damage against light armor.
-                    Heavy = 2f, // Multiplier for damage against heavy armor.
+                    Armor = -1f, 	// Multiplier for damage against all armor. This is multiplied with the specific armor type multiplier (light, heavy).
+                    Light = -1f, 	// Multiplier for damage against light armor.
+                    Heavy = 2f, 	// Multiplier for damage against heavy armor.
                     NonArmor = -1f, // Multiplier for damage against every else.
                 },
                 DamageType = new DamageTypes // Damage type of each element of the projectile's damage; Kinetic, Energy
@@ -83,9 +83,10 @@ namespace Scripts
                 },
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef // Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
+            AreaOfDamage = new AreaOfDamageDef 	// Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
+												// Note DamageScales does not apply to AOE
             {
-                EndOfLife = new EndOfLifeDef
+                EndOfLife = new EndOfLifeDef 
                 {
                     Enable = true,
                     Radius = 5f, // Radius of AOE effect, in meters.
