@@ -156,7 +156,7 @@
 				<SubtypeId>010_Missiles_Missile</SubtypeId>
 			</Id>
 			<DisplayName>*L.Missile* Griffin HE x1</DisplayName>
-			<Icon>Textures\GUI\Icons\MXA_Archer_Missile_Ammo.png</Icon>
+			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher_Ammo.dds</Icon>
 			<Prerequisites>
 				<Item Amount="3.2" TypeId="Ingot" SubtypeId="Magnesium"/>
 				<Item Amount="64.9" TypeId="Ingot" SubtypeId="Iron"/>

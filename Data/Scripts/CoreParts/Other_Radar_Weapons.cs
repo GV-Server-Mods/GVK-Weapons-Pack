@@ -98,7 +98,7 @@ namespace Scripts
                         AzimuthPartId = "MissileTurretBase1",
                         ElevationPartId = "MissileTurretBarrels",
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
-                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                        IconName = "filter_energy.dds"
                     },
                 },
                 Muzzles = new[] {
@@ -155,18 +155,24 @@ namespace Scripts
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "filter_energy.dds"
                     },
                     new MountPointDef {
                         SubtypeId = "SmallBlockRadioAntenna_WCRadar",
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
-                    },
+                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "filter_energy.dds"
+                   },
                     new MountPointDef {
                         SubtypeId = "SmallBlockCompactRadioAntennaReskin_WCRadar",
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "filter_energy.dds"
                     },
                 },
                 Muzzles = new[]{
