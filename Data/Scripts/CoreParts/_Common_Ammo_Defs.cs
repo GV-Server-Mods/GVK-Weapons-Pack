@@ -177,6 +177,26 @@ namespace Scripts
 					SubTypeId = "LargeBlockCaptainDesk",
 					Modifier = 0.1f,
 				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "LargeBlockSuspendedControlSeat",
+					Modifier = 0.1f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "LargeBlockSuspendedControlSeatB",
+					Modifier = 0.1f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockSuspendedControlSeat",
+					Modifier = 0.1f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockSuspendedControlSeatB",
+					Modifier = 0.1f,
+				},
 			},
 		};
 
@@ -303,6 +323,26 @@ namespace Scripts
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockCaptainDesk",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "LargeBlockSuspendedControlSeat",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "LargeBlockSuspendedControlSeatB",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockSuspendedControlSeat",
+					Modifier = 0.5f,
+				},
+				new CustomBlocksDef
+				{
+					SubTypeId = "SmallBlockSuspendedControlSeatB",
 					Modifier = 0.5f,
 				},
 			},
