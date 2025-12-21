@@ -219,8 +219,8 @@ namespace Scripts
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Lead, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
                     DirectAimCone = 5f, //Aim cone used for Direct fire, in degrees
-                    GroupSize = 0, // Number of spawns in each group
-                    GroupDelay = 0, // Delay between each group.
+                    GroupSize = 1, // Number of spawns in each group
+                    GroupDelay = 1, // Delay between each group.
                 },
             },
             DamageScales = new DamageScaleDef 
