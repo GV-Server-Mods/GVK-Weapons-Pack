@@ -332,7 +332,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 2f,
-                    Damage = 2500f,
+                    Damage = 2750f,
                     Depth = 2f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
