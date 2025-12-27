@@ -296,7 +296,7 @@ namespace Scripts
 			HardPoint = new HardPointDef
             {
                 PartName = "LargeMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 4f,
+                DeviateShotAngle = 3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -385,7 +385,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "SmallMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 2f,
+                DeviateShotAngle = 0.5f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
