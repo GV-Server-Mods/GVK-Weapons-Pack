@@ -121,7 +121,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 1f, // Inventory capacity in kL.
+                    InventorySize = 0.96f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -132,7 +132,7 @@ namespace Scripts
                     RateOfFire = 120,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 8, // Number of physical magazines to consume on reload.
 					DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -202,7 +202,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.5f, // Inventory capacity in kL.
+                    InventorySize = 0.6f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -215,7 +215,7 @@ namespace Scripts
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
-					MagsToLoad = 4, // Number of physical magazines to consume on reload.
+					MagsToLoad = 5, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,
@@ -290,7 +290,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.25f, // Inventory capacity in kL.
+                    InventorySize = 0.6f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -302,7 +302,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					MagsToLoad = 4, // Number of physical magazines to consume on reload.
+					MagsToLoad = 5, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,
