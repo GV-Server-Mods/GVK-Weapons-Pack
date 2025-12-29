@@ -35,7 +35,7 @@ namespace Scripts
 
 		private LoadingDef Ballistics_MAC_Loading => new LoadingDef 
 		{
-			RateOfFire = 20, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 60, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 4200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
