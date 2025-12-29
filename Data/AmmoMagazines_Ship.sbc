@@ -47,28 +47,6 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>NATO_5p56x45mm</SubtypeId>
-			</Id>
-			<DisplayName>*Interior/Sidearm* 5.56mm KE x30</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\Rifle_Ammo.dds</Icon>
-			<Size>
-				<X>0.2</X>
-				<Y>0.05</Y>
-				<Z>0.02</Z>
-			</Size>
-			<Mass>20</Mass>
-			<Volume>20</Volume>
-			<Model>Models\Weapons\Rifle_Ammo.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>30</Capacity>
-			<AmmoDefinitionId Subtype="SmallCaliber"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>AutocannonClip</SubtypeId>
 			</Id>
 			<DisplayName>*Autocannon* 30mm API x6</DisplayName>
@@ -91,9 +69,53 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>NATO_5p56x45mm</SubtypeId>
+			</Id>
+			<DisplayName>*Interior/Sidearm* 5.56mm KE x30</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\Rifle_Ammo.dds</Icon>
+			<Size>
+				<X>0.2</X>
+				<Y>0.05</Y>
+				<Z>0.02</Z>
+			</Size>
+			<Mass>20</Mass>
+			<Volume>20</Volume>
+			<Model>Models\Weapons\Rifle_Ammo.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>30</Capacity>
+			<AmmoDefinitionId Subtype="SmallCaliber"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>MediumCalibreAmmo</SubtypeId>
+			</Id>
+			<DisplayName>*Flak* 100mm PROX</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
+			<Size>
+				<X>0.25</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>280</Mass>
+			<Volume>40</Volume>
+			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>LargeCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>*Cannon* 155mm AP</DisplayName>
+			<DisplayName>*L.Cannon* 155mm AP</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\LargeCalibreShell.dds</Icon>
 			<Size>
 				<X>1.2</X>
@@ -113,43 +135,21 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>MediumCalibreAmmo</SubtypeId>
+				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
 			</Id>
-			<DisplayName>*Flak* 100mm PROX</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
+			<DisplayName>*H.Cannon* 480mm APHE</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
 			<Size>
-				<X>0.25</X>
-				<Y>0.2</Y>
-				<Z>0.2</Z>
+				<X>0.8</X>
+				<Y>0.4</Y>
+				<Z>0.4</Z>
 			</Size>
-			<Mass>350</Mass>
-			<Volume>50</Volume>
-			<Model>Models\Weapons\MediumCalibreShell.mwm</Model>
+			<Mass>8000</Mass>
+			<Volume>800</Volume>
+			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="MediumCalibreShell"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>LargeRailgunAmmo</SubtypeId>
-			</Id>
-			<DisplayName>*MAC* 200mm DU</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
-			<Size>
-				<X>1.0</X>
-				<Y>0.3</Y>
-				<Z>0.3</Z>
-			</Size>
-			<Mass>61400</Mass>
-			<Volume>3070</Volume>
-			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
+			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
@@ -166,12 +166,34 @@
 				<Y>0.1</Y>
 				<Z>0.1</Z>
 			</Size>
-			<Mass>2700</Mass>
-			<Volume>270</Volume>
+			<Mass>1300</Mass>
+			<Volume>130</Volume>
 			<Model>Models\Weapons\RailgunAmmo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="SmallRailgunSlug"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>LargeRailgunAmmo</SubtypeId>
+			</Id>
+			<DisplayName>*MAC* 200mm DU</DisplayName>
+			<Icon>Textures\GUI\Icons\ammo\RailgunAmmoLarge.dds</Icon>
+			<Size>
+				<X>1.0</X>
+				<Y>0.3</Y>
+				<Z>0.3</Z>
+			</Size>
+			<Mass>31400</Mass>
+			<Volume>3140</Volume>
+			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="LargeRailgunSlug"/>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
@@ -213,6 +235,28 @@
 			<Mass>170</Mass>
 			<Volume>110</Volume>
 			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Blank"/>
+			<MinimalPricePerUnit>0</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
+			</Id>
+			<DisplayName>*H.Missile* Tuukka HE</DisplayName>
+			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
+			<Size>
+				<X>4</X>
+				<Y>1</Y>
+				<Z>1</Z>
+			</Size>
+			<Mass>760</Mass>
+			<Volume>380</Volume>
+			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
 			<AmmoDefinitionId Subtype="Blank"/>
@@ -267,50 +311,6 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Ballistics_HeavyCannon</SubtypeId>
-			</Id>
-			<DisplayName>*Heavy Cannon* 480mm APHE</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\AWEHurricaneAmmo.dds</Icon>
-			<Size>
-				<X>0.8</X>
-				<Y>0.4</Y>
-				<Z>0.4</Z>
-			</Size>
-			<Mass>8000</Mass>
-			<Volume>800</Volume>
-			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Missiles_HeavyMissile</SubtypeId>
-			</Id>
-			<DisplayName>*H.Missile* Tuukka HE</DisplayName>
-			<Icon>Textures\GUI\Icons\Items\mediumMissile01_model.png</Icon>
-			<Size>
-				<X>4</X>
-				<Y>1</Y>
-				<Z>1</Z>
-			</Size>
-			<Mass>760</Mass>
-			<Volume>380</Volume>
-			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimalPricePerUnit>0</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Lasers_Plasma</SubtypeId>
 			</Id>
 			<DisplayName>*Plasma* Plasma Bomb</DisplayName>
@@ -320,8 +320,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>1110</Mass>
-			<Volume>740</Volume>
+			<Mass>840</Mass>
+			<Volume>560</Volume>
 			<Model>Models\Ammo\MD_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
