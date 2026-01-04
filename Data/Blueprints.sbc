@@ -140,14 +140,13 @@
 			</Id>
 			<DisplayName>*Rocket* Hydra HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Small_Rocket.dds</Icon>
-			<Prerequisites>
-				<Item Amount="8.8" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="88.4" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="0.2" TypeId="Ingot" SubtypeId="Platinum"/>
-				<Item Amount="8.8" TypeId="Ingot" SubtypeId="Silicon"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>34</BaseProductionTimeInSeconds>
-			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
+            <Prerequisites>
+                <Item Amount="11" TypeId="Ingot" SubtypeId="Magnesium" />
+                <Item Amount="110.4" TypeId="Ingot" SubtypeId="Iron" />
+                <Item Amount="0.3" TypeId="Ingot" SubtypeId="Platinum" />
+                <Item Amount="11" TypeId="Ingot" SubtypeId="Silicon" />
+            </Prerequisites><BaseProductionTimeInSeconds>41</BaseProductionTimeInSeconds>
+		<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
 		</Blueprint>
 		<!-- Ammo only discoverable -->
 		<Blueprint>
