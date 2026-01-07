@@ -12,8 +12,8 @@
 			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
 				OFFENSE = 3 minute flight time. 
 				DEFENSE = 5 minute flight time.
-				[2500m Semi-Auto Range]
-				[Uses FALCON Drones x3]</Description>
+				[Uses FALCON Drones]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="1" z="3"/>
@@ -67,11 +67,6 @@
 			</Id>
 			<DisplayName>*NPC-Drone* Falcon Drone Bay</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxSmallHangar.dds</Icon>
-			<Description>A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.
-				OFFENSE = 3 minute flight time. 
-				DEFENSE = 5 minute flight time.
-				[2500m Semi-Auto Range]
-				[Uses FALCON Drones x3]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="1" z="3"/>

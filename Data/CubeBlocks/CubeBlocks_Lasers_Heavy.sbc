@@ -7,11 +7,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXSpartanTurret</SubtypeId>
 			</Id>
-			<DisplayName>*H.Laser* Spartan</DisplayName>
+			<DisplayName>*H.Laser* Spartan Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
 			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
-				[1600m Auto Range]
-				[Uses 234MW Energy]</Description>
+				[Uses Energy]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -67,10 +67,9 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_T2PDX</SubtypeId>
 			</Id>
-			<DisplayName>*H.Laser* Large XFEL-H Turret</DisplayName>
+			<DisplayName>*H.Laser* XFEL-H Turret</DisplayName>
 			<Description>A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
-				[1600m Auto Range]
-				[Uses 117MW Energy]
+				[Uses Energy]
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\MA_T2PDX.png</Icon>
 			<CubeSize>Large</CubeSize>
@@ -140,10 +139,9 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_Fixed_T2</SubtypeId>
 			</Id>
-			<DisplayName>*H.Laser* Large XFEL-H Gimbal </DisplayName>
+			<DisplayName>*H.Laser* XFEL-H Gimbal</DisplayName>
 			<Description>An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.
-				[1800m Semi-Auto Range]
-				[Uses 117MW Energy]
+				[Uses Energy]
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\MA_Fixed_T2.png</Icon>
 			<CubeSize>Large</CubeSize>
@@ -217,11 +215,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXSpartanTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-H.Laser* Spartan</DisplayName>
+			<DisplayName>*NPC-H.Laser* Spartan Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SpartanCannon.dds</Icon>
-			<Description>The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.
-				[1600m Auto Range]
-				[Uses 234MW Energy]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -282,11 +277,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_T2PDX_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-H.Laser* Large XFEL-H Turret</DisplayName>
-			<Description>A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.
-				[1600m Auto Range]
-				[Uses 117MW Energy]
-			</Description>
+			<DisplayName>*NPC-H.Laser* XFEL-H Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MA_T2PDX.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -360,11 +351,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>MA_Fixed_T2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-H.Laser* Large XFEL-H Gimbal </DisplayName>
-			<Description>An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.
-				[1800m Semi-Auto Range]
-				[Uses 117MW Energy]
-			</Description>
+			<DisplayName>*NPC-H.Laser* Large XFEL-H Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\MA_Fixed_T2.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

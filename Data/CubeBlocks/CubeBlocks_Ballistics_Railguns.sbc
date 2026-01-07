@@ -7,11 +7,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXRailgunTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Railgun* Apollo</DisplayName>
+			<DisplayName>*Railgun* Apollo Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
 			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
-				[3000m Auto Range]
-				[Uses 50mm FeW + 133MW]</Description>
+				[Uses 50mm FeW + Energy]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="5"/>
@@ -66,10 +66,10 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXRailgun</SubtypeId>
 			</Id>
-			<DisplayName>*Railgun* Artemis</DisplayName>
-			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
-				[3300m Manual Range]
-				[Uses 50mm FeW + 133MW]</Description>
+			<DisplayName>*Railgun* Artemis Gun</DisplayName>
+			<Description>The Artemis railgun is a high velelocity kinetic round with incredible penetration capabilities. Designed by ARYX Weapon Enterprises.
+				[Uses 50mm FeW + Energy]
+			</Description>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
@@ -124,11 +124,11 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>SmallRailgun</SubtypeId>
 			</Id>
-			<DisplayName>*Railgun* Ares</DisplayName>
+			<DisplayName>*Railgun* Ares Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
 			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
-				[3300m Manual Range]
-				[Uses 50mm FeW + 75MW]</Description>
+				[Uses 50mm FeW + Energy]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="2" z="8"/>
@@ -189,11 +189,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXRailgunTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Railgun* Apollo</DisplayName>
+			<DisplayName>*NPC-Railgun* Apollo Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
-			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
-				[3000m Auto Range]
-				[Uses 50mm FeW + 133MW]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="2" z="5"/>
@@ -258,10 +255,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXRailgun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Railgun* Artemis</DisplayName>
-			<Description>The Artemis railgun has a higher damage than the 155mm Field Gun but has a high energy use, and slower fire rate. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot. Designed by ARYX Weapon Enterprises.
-				[3300m Manual Range]
-				[Uses 50mm FeW + 133MW]</Description>
+			<DisplayName>*NPC-Railgun* Artemis Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgun.dds</Icon>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
@@ -321,11 +315,8 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>SmallRailgun_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Railgun* Ares</DisplayName>
+			<DisplayName>*NPC-Railgun* Ares Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
-				[3300m Manual Range]
-				[Uses 50mm FeW + 75MW]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="2" z="8"/>
@@ -391,11 +382,11 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRailgun</SubtypeId>
 			</Id>
-			<DisplayName>*Railgun* 200mm Ares</DisplayName>
+			<DisplayName>*Railgun* 200mm Ares Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RailGun.dds</Icon>
-			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Great for long-range manual fire support, or use on precision strike craft for disabling hardpoints on large targets in the hands of an extremely skilled pilot.
-				[2300m Manual Range]
-				[Uses 50mm FeW + 75MW]</Description>
+			<Description>The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.
+				[Uses 50mm FeW + Energy]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="2" z="8"/>

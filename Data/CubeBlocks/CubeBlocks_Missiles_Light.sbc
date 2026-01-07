@@ -7,10 +7,10 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Griffin Missile Turret</DisplayName>
+			<DisplayName>*L.Missile* Griffin Turret</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
-				[2300 Auto Range]
-				[Uses Griffin HE x36]</Description>
+				[Uses Griffin HE]
+			</Description>
 			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -81,10 +81,9 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x54]
+				[Uses Griffin HE]
 			</Description>
 			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
@@ -199,12 +198,12 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Small Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
-				[2000m Semi-Auto Range]
-				[Uses Griffin HE x4]</Description>
+				[Uses Griffin HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
@@ -257,10 +256,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Griffin Missile Turret</DisplayName>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
-				[2300 Auto Range]
-				[Uses Griffin HE x36]</Description>
+			<DisplayName>*NPC-L.Missile* Griffin Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -341,11 +337,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x150]
-			</Description>
+			<DisplayName>*NPC-L.Missile* Griffin Launcher</DisplayName>
 			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -479,12 +471,9 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Small Griffin Launcher</DisplayName>
+			<DisplayName>*NPC-L.Missile* Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
@@ -541,11 +530,8 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallGriffinLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Small Griffin launcher (Warfare)</DisplayName>
+			<DisplayName>*NPC-L.Missile* Griffin launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>

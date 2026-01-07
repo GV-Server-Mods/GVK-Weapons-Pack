@@ -10,8 +10,8 @@
 			<DisplayName>*Rocket* Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x6]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -99,8 +99,8 @@
 			<DisplayName>*Rocket* Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x2]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -184,11 +184,11 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeMissileLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Large Hydra Launcher</DisplayName>
+			<DisplayName>*Rocket* Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x19]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="2"/>
@@ -238,11 +238,11 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>*Rocket* Small Hydra launcher</DisplayName>
+			<DisplayName>*Rocket* Hydra launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x8 (Manual Reload)]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -291,11 +291,11 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Small Hydra launcher (Warfare)</DisplayName>
+			<DisplayName>*Rocket* Hydra launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x8 (Manual Reload)]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -351,8 +351,8 @@
 			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x6]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -445,8 +445,8 @@
 			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x2]</Description>
+				[Uses Hydra HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -537,11 +537,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Large Hydra Turret</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -631,11 +628,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Small Hydra Turret</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_turret.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -724,11 +718,8 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Large Hydra Launcher</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x19]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="2"/>
@@ -783,11 +774,8 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Small Hydra launcher</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -841,11 +829,8 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Small Hydra launcher (Warfare)</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1200m Manual Range]
-				[Uses Hydra HE x8 (Manual Reload)]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -905,9 +890,6 @@
 			</Id>
 			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x6]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1004,9 +986,6 @@
 			</Id>
 			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
-			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
-				[1000m Auto Range]
-				[Uses Hydra HE x2]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>

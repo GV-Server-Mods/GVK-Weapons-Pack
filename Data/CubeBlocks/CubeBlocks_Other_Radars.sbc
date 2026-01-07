@@ -9,7 +9,8 @@
 			</Id>
 			<DisplayName>*Sensor* Large Radar</DisplayName>
 			<Description>The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.
-				[5km Range]</Description>
+				[5km Range]
+			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\honir_designator_01.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -84,7 +85,8 @@
 			<DisplayName>*Sensor* Small Radar</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_SmallRadar.dds</Icon>
 			<Description>A long-range sensor system that detects incoming threats. Designed by AWE.
-				[5km Range]</Description>
+				[5km Range]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="2" y="4" z="2"/>
@@ -137,7 +139,8 @@
 			<DisplayName>*Sensor* Compact Radar</DisplayName>
             <Icon>Textures\GUI\Icons\Cubes\antenna.dds</Icon>
 			<Description>A long-range sensor system that detects incoming threats.
-				[5km Range]</Description>
+				[5km Range]
+			</Description>
             <CubeSize>Small</CubeSize>
             <BlockTopology>TriangleMesh</BlockTopology>
             <Size x="1" y="1" z="2" />
@@ -187,7 +190,8 @@
 			<DisplayName>*Sensor* Parabolic Radar</DisplayName>
             <Icon>Textures\GUI\Icons\Cubes\CompactAntennaReskinSmall.dds</Icon>
 			<Description>A long-range sensor system that detects incoming threats.
-				[5km Range]</Description>
+				[5km Range]
+			</Description>
             <CubeSize>Small</CubeSize>
             <BlockTopology>TriangleMesh</BlockTopology>
             <Size x="3" y="1" z="1" />

@@ -7,11 +7,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>GVK_AvengerGatlingTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* Avenger</DisplayName>
+			<DisplayName>*Gatling* Avenger Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_TwinPointDefense.dds</Icon>
 			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
-				[1600m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -123,11 +123,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SentinelTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* Sentinel</DisplayName>
+			<DisplayName>*Gatling* Sentinel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -213,8 +213,8 @@
 			<DisplayName>*Gatling* CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -304,8 +304,8 @@
 			<DisplayName>*Gatling* CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -395,8 +395,8 @@
 			<DisplayName>*Gatling* 25mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Hard-mounted six-barrel multi-role rotary cannon.
-				[1700m Manual Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -453,8 +453,8 @@
 			<DisplayName>*Gatling* 25mm Gun (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
-				[1700m Manual Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -512,8 +512,8 @@
 			<DisplayName>*Gatling* 25mm Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
 			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
-				[1600m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -603,8 +603,8 @@
 			<DisplayName>*Gatling* CIWS Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinLarge.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -696,8 +696,8 @@
 			<DisplayName>*Gatling* CIWS Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinSmall.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
+				[Uses 25mm KE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -789,11 +789,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>GVK_AvengerGatlingTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Gatling* Avenger</DisplayName>
+			<DisplayName>*NPC-Gatling* Avenger Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_TwinPointDefense.dds</Icon>
-			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
-				[1600m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -910,11 +907,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SentinelTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Gatling* Sentinel</DisplayName>
+			<DisplayName>*NPC-Gatling* Sentinel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
-			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -1004,9 +998,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
-			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1100,9 +1091,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* CIWS Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_turret.dds</Icon>
-			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1196,9 +1184,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* 25mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
-			<Description>Hard-mounted six-barrel multi-role rotary cannon.
-				[1700m Manual Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -1259,9 +1244,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* 25mm Gun (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
-			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
-				[1700m Manual Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="4"/>
@@ -1323,9 +1305,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* 25mm Gimbal</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatling_gun.dds</Icon>
-			<Description>Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.
-				[1600m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1419,9 +1398,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* CIWS Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinLarge.dds</Icon>
-			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1517,9 +1493,6 @@
 			</Id>
 			<DisplayName>*NPC-Gatling* CIWS Turret (Contact)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinSmall.dds</Icon>
-			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
-				[1500m Auto Range]
-				[Uses 25mm KE]</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>

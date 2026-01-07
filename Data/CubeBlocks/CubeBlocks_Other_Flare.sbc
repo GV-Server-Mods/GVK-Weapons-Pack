@@ -11,7 +11,8 @@
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncher.dds</Icon>
 			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
 				[700m Effective Radius]
-				[Uses Decoy Flare x2]</Description>
+				[Uses Decoy Flare]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
@@ -67,7 +68,8 @@
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncherSmall.dds</Icon>
 			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
 				[700m Effective Radius]
-				[Uses Decoy Flare x4]</Description>
+				[Uses Decoy Flare]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
@@ -121,9 +123,6 @@
 			</Id>
 			<DisplayName>*NPC-Flare* Flare/Fireworks Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncher.dds</Icon>
-			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
-				[700m Effective Radius]
-				[Uses Decoy Flare x2]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
@@ -182,9 +181,6 @@
 			</Id>
 			<DisplayName>*NPC-Flare* Flare/Fireworks Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\FlareLauncherSmall.dds</Icon>
-			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
-				[700m Effective Radius]
-				[Uses Decoy Flare x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>

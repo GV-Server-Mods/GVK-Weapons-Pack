@@ -7,11 +7,11 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>missileBattery01</SubtypeId>
 			</Id>
-			<DisplayName>*H.Missile* Tuukka</DisplayName>
+			<DisplayName>*H.Missile* Tuukka Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
 			<Description>The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.
-				[3000m Auto Range]
-				[Uses Tuuka HE x19]</Description>
+				[Uses Tuuka HE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -81,11 +81,8 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>missileBattery01_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-H.Missile* Tuukka</DisplayName>
+			<DisplayName>*NPC-H.Missile* Tuukka Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missileBattery01.png</Icon>
-			<Description>The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.
-				[3000m Auto Range]
-				[Uses Tuuka HE x19]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>

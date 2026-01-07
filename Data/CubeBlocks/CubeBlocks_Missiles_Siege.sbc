@@ -7,11 +7,11 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery</SubtypeId>
 			</Id>
-			<DisplayName>*SRBM* Longsword</DisplayName>
+			<DisplayName>*SRBM* Longsword Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
-			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction. Developed by AWE.
-				[500-4000m Auto Range]
-				[Uses Longswoard MIRV]</Description>
+			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.
+				[Uses Longswoard MIRV]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="5" z="5"/>
@@ -66,11 +66,8 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>ARYXMissileBattery_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-SRBM* Longsword</DisplayName>
+			<DisplayName>*NPC-SRBM* Longsword Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
-			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction. Developed by AWE.
-				[500-4000m Auto Range]
-				[Uses Longswoard MIRV]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="5" z="5"/>

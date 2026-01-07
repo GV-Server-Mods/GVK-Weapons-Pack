@@ -7,11 +7,11 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>ARYXHeavyFlakTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Autocannon* Thrasher</DisplayName>
+			<DisplayName>*Autocannon* Thrasher Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_HeavyFlak.dds</Icon>
 			<Description>The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.
-				[1900m Auto Range]
-				[Uses 30mm API]</Description>
+				[Uses 30mm API]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -66,9 +66,8 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>KhopeshTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Autocannon* Khopesh</DisplayName>
+			<DisplayName>*Autocannon* Khopesh Turret</DisplayName>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
 				[Uses 30mm API]
 			</Description>
 			<Icon>Textures\GUI\Icons\KhopeshBase.png</Icon>
@@ -152,10 +151,9 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeAutoCannonTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Autocannon* Large 30mm Turret</DisplayName>
+			<DisplayName>*Autocannon* 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\RB_CompactTurretGatlingT1.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
 				[Uses 30mm API]
 			</Description>
 			<CubeSize>Large</CubeSize>
@@ -242,10 +240,9 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>AutoCannonTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Autocannon* Small 30mm Turret</DisplayName>
+			<DisplayName>*Autocannon* 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutocannonTurret_icon.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
 				[Uses 30mm API]
 			</Description>
 			<CubeSize>Small</CubeSize>
@@ -345,10 +342,9 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallBlockAutocannon</SubtypeId>
 			</Id>
-			<DisplayName>*Autocannon* Small 30mm Gun</DisplayName>
+			<DisplayName>*Autocannon* 30mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutoCannon.dds</Icon>
 			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[2000m Manual Range]
 				[Uses 30mm API]
 			</Description>
 			<CubeSize>Small</CubeSize>
@@ -407,9 +403,6 @@
 			</Id>
 			<DisplayName>*NPC-Autocannon* Thrasher</DisplayName>
 			<Icon>Textures\GUI\Icons\Aryx_AWE_HeavyFlak.dds</Icon>
-			<Description>The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.
-				[1900m Auto Range]
-				[Uses 30mm API]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
@@ -470,10 +463,6 @@
 				<SubtypeId>KhopeshTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-Autocannon* Khopesh</DisplayName>
-			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
-				[Uses 30mm API]
-			</Description>
 			<Icon>Textures\GUI\Icons\KhopeshBase.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -562,10 +551,6 @@
 			</Id>
 			<DisplayName>*NPC-Autocannon* Large 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\RB_CompactTurretGatlingT1.dds</Icon>
-			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
-				[Uses 30mm API]
-			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -657,10 +642,6 @@
 			</Id>
 			<DisplayName>*NPC-Autocannon* Small 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutocannonTurret_icon.dds</Icon>
-			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
-				[Uses 30mm API]
-			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -765,10 +746,6 @@
 			</Id>
 			<DisplayName>*NPC-Autocannon* Small 30mm Gun</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutoCannon.dds</Icon>
-			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[2000m Manual Range]
-				[Uses 30mm API]
-			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="5"/>
@@ -830,10 +807,6 @@
 			</Id>
 			<DisplayName>*Autocannon* Small 30mm Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\AutocannonTurret_icon.dds</Icon>
-			<Description>Small caliber medium rate of fire weapon that helps small craft punch above their weight class.
-				[1800m Auto Range]
-				[Uses 30mm API]
-			</Description>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
