@@ -29,7 +29,7 @@ namespace Scripts {
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
-                        DurabilityMod = 10f,
+                        DurabilityMod = 1f,
                         IconName = "TestIcon.dds"
                     },
                     new MountPointDef 
@@ -39,7 +39,7 @@ namespace Scripts {
                         MuzzlePartId = "None",
                         AzimuthPartId = "None",
                         ElevationPartId = "None",
-                        DurabilityMod = 10f,
+                        DurabilityMod = 1f,
                         IconName = "TestIcon.dds"
                     },
                 },
@@ -53,7 +53,7 @@ namespace Scripts {
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Large BoomBoom", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Large Warhead", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 AimLeadingPrediction = Off, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 ScanTrackOnly = true, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
@@ -97,7 +97,9 @@ namespace Scripts {
 				},
             },
             Ammos = new[] {
-                Other_Warheads_RegularWarhead_LG_Ammo, // Must list all primary, shrapnel, and pattern ammos.
+                Other_Warheads_RegularWarhead_LG_Ammo,
+				Other_Warheads_RegularWarhead_LG_Ammo_Particle,
+				Other_Warheads_RegularWarhead_LG_Ammo_Fragment,// Must list all primary, shrapnel, and pattern ammos.
             },
         };
 
@@ -111,7 +113,9 @@ namespace Scripts {
 				weapon.HardPoint.PartName = "Small Warhead";
                 weapon.Ammos = new[]
                 {
-                    Other_Warheads_RegularWarhead_SG_Ammo,
+					Other_Warheads_RegularWarhead_SG_Ammo,
+					Other_Warheads_RegularWarhead_SG_Ammo_Particle,
+					Other_Warheads_RegularWarhead_SG_Ammo_Fragment,// Must list all primary, shrapnel, and pattern ammos.
                 };
                 return weapon;
             }
