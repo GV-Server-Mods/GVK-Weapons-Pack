@@ -401,7 +401,7 @@
 			</Waves>
 		</Sound>
 		<!-- Vanilla replacement -->
-		<Sound>
+		<!-- <Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>Explosion_AmmunitionSmall</SubtypeId>
@@ -447,9 +447,9 @@
 					<Start>Audio\HWR\Small_explosion_9.xwm</Start>
 				</Wave>
 			</Waves>
-		</Sound>
+		</Sound> -->
 		<!-- Vanilla replacement -->
-		<Sound>
+		<!-- <Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>ArcWepSmallWarheadExpl</SubtypeId>
@@ -495,7 +495,7 @@
 					<Start>Audio\HWR\Small_explosion_9.xwm</Start>
 				</Wave>
 			</Waves>
-		</Sound>
+		</Sound> -->
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
@@ -544,7 +544,7 @@
 			</Waves>
 		</Sound>
 		<!-- Vanilla replacement -->
-		<Sound>
+		<!--<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>Explosion_AmmunitionLarge</SubtypeId>
@@ -662,9 +662,9 @@
 					<Start>Audio\DOK\sfx_expl_med_lay_punch_06.xwm</Start>
 				</Wave>
 			</Waves>
-		</Sound>
+		</Sound>-->
 		<!-- Vanilla replacement -->
-		<Sound>
+		<!--<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
 				<SubtypeId>ArcWepLrgWarheadExpl</SubtypeId>
@@ -782,7 +782,7 @@
 					<Start>Audio\DOK\sfx_expl_med_lay_punch_06.xwm</Start>
 				</Wave>
 			</Waves>
-		</Sound>
+		</Sound>-->
 		<Sound>
 			<Id>
 				<TypeId>MyObjectBuilder_AudioDefinition</TypeId>
