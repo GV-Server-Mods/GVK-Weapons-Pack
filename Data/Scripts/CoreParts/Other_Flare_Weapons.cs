@@ -18,12 +18,15 @@ namespace Scripts {
 		private UiDef Other_Flare_Hardpoint_Ui = new UiDef 
 		{
 			RateOfFire = true, // Enables terminal slider for changing rate of fire.
-			RateOfFireMin = 0.0f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
+			RateOfFireMin = 0.25f, // Sets the minimum limit for the rate of fire slider, default is 0.  Range is 0-1f.
 			DamageModifier = false, // Enables terminal slider for changing damage per shot.
 			ToggleGuidance = false, // Enables terminal option to disable smart projectile guidance.
 			EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
 			AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
 			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
+			DisableSupportingPD = true, // If true, the supporting point defense terminal option will be removed and this weapon will only target projectiles targeting the construct it's placed on
+			ProhibitShotDelay = true, // If true, removes shot delay options for players.  This may be desirable for weapons that use heat or bursts as a balance mechanic and deliberately do not offer the ROF slider.
+			ProhibitBurstCount = true, // If true, removes burst shot count options for players.
 		};
 
         WeaponDefinition LargeFlareWC => new WeaponDefinition
@@ -89,7 +92,7 @@ namespace Scripts {
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
             HardPoint = new HardPointDef
             {
-                PartName = "WCLargeFlare", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Flare Launcher", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 10f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
@@ -192,7 +195,7 @@ namespace Scripts {
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
             HardPoint = new HardPointDef
             {
-                PartName = "WCSmallFlare", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Flare Launcher", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 5f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced

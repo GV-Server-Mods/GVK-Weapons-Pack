@@ -27,7 +27,7 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -36,11 +36,9 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 2300, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 5, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			CycleTargets = 0, // Number of targets to "cycle" per acquire attempt.
-			CycleBlocks = 0, // Number of blocks to "cycle" per acquire attempt.
 			UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
 			MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one
 			ShootBlanks = false, // Do not generate projectiles when shooting
@@ -56,7 +54,7 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -65,11 +63,9 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 2, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			CycleTargets = 0, // Number of targets to "cycle" per acquire attempt.
-			CycleBlocks = 0, // Number of blocks to "cycle" per acquire attempt.
 			UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
 			MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one
 			ShootBlanks = false, // Do not generate projectiles when shooting
@@ -315,7 +311,7 @@ namespace Scripts
             Targeting = Missiles_Missile_Targeting_Large,
             HardPoint = new HardPointDef
             {
-                PartName = "Large Griffin Missile Pod", // name of weapon in terminal
+                PartName = "Griffin Launcher", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
@@ -408,7 +404,7 @@ namespace Scripts
             Targeting = Missiles_Missile_Targeting_Small,
             HardPoint = new HardPointDef
             {
-                PartName = "SmallRocketLauncherReload", // name of weapon in terminal
+                PartName = "Griffin Launcher", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
@@ -456,7 +452,7 @@ namespace Scripts
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "SmallGriffinLauncher_NPC", // name of weapon in terminal
+                PartName = "NPC Griffin Launcher", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced

@@ -513,7 +513,6 @@
 			<Prerequisites>
 				<Item Amount="1" TypeId="Ingot" SubtypeId="Iron"/>
 				<Item Amount="0.4" TypeId="Ingot" SubtypeId="Nickel"/>
-				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Platinum"/>
 				<Item Amount="1" TypeId="Ingot" SubtypeId="Silver"/>
 			</Prerequisites>
 			<Result Amount="1" TypeId="PhysicalGunObject" SubtypeId="ElitePistolItem"/>

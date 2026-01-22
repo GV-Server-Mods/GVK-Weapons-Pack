@@ -28,15 +28,15 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 1500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 		private TargetingDef Ballistics_Gatlings_Targeting_Long => new TargetingDef 
@@ -47,16 +47,15 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 1600, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
-			CycleBlocks = 4,
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 		private HardwareDef Ballistics_Gatlings_Hardpoint_HardWare = new HardwareDef 
@@ -259,7 +258,7 @@ namespace Scripts
             Targeting = Ballistics_Gatlings_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Sentinel Gatling", // name of weapon in terminal
+                PartName = "Sentinel Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -424,7 +423,7 @@ namespace Scripts
             Targeting = Ballistics_Gatlings_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "CWIS Small", // name of weapon in terminal
+                PartName = "CWIS", // name of weapon in terminal
                 DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -510,7 +509,7 @@ namespace Scripts
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Gatling Fixed", // name of weapon in terminal
+                PartName = "Gatling Gun", // name of weapon in terminal
                 DeviateShotAngle = 0.15f,
                 AimingTolerance = 60f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -637,7 +636,7 @@ namespace Scripts
             Targeting = Ballistics_Gatlings_Targeting_Long,
             HardPoint = new HardPointDef
             {
-                PartName = "Avenger Gatling", // name of weapon in terminal
+                PartName = "Avenger Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.15f, // Inaccuracy in degrees
                 AimingTolerance = 3f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced

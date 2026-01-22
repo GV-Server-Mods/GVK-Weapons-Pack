@@ -114,13 +114,13 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Any, Offense, Utility, Power, Production, Thrust, Jumping, Steering
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 MaxTargetDistance = 0, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 MinTargetDistance = 2000, // Minimum distance at which targets will be automatically shot at.
-                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
+                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef
