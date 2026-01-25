@@ -25,14 +25,14 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 1000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -111,7 +111,7 @@ namespace Scripts
 			Targeting = Missiles_Rocket_Targeting, //shared targeting def
             HardPoint = new HardPointDef
             {
-                PartName = "LargeMissileTurret", // name of weapon in terminal
+                PartName = "Hydra Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.75f,
                 AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -204,7 +204,7 @@ namespace Scripts
 			Targeting = Missiles_Rocket_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "SmallMissileTurret", // name of weapon in terminal
+                PartName = "Hydra Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.75f,
                 AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -295,8 +295,8 @@ namespace Scripts
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
 			HardPoint = new HardPointDef
             {
-                PartName = "LargeMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 4f,
+                PartName = "Hydra Launcher", // name of weapon in terminal
+                DeviateShotAngle = 3f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -384,9 +384,11 @@ namespace Scripts
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "SmallMissileLauncher", // name of weapon in terminal
-                DeviateShotAngle = 2f,
-				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                PartName = "Hydra Launcher", // name of weapon in terminal
+                DeviateShotAngle = 0.5f,
+                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef

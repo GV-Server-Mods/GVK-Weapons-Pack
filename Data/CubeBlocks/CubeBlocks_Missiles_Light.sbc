@@ -7,10 +7,10 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Griffin Missile Turret</DisplayName>
+			<DisplayName>*L.Missile* Griffin Turret</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
-				[2300 Auto Range]
-				[Uses Griffin HE x36]</Description>
+				[Uses Griffin HE]
+			</Description>
 			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -81,10 +81,9 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Large Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Griffin Launcher</DisplayName>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x54]
+				[Uses Griffin HE]
 			</Description>
 			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
@@ -199,12 +198,12 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload</SubtypeId>
 			</Id>
-			<DisplayName>*L.Missile* Small Griffin Launcher</DisplayName>
+			<DisplayName>*L.Missile* Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
-				[2000m Semi-Auto Range]
-				[Uses Griffin HE x4]</Description>
+				[Uses Griffin HE]
+			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
@@ -257,10 +256,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Griffin Missile Turret</DisplayName>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.
-				[2300 Auto Range]
-				[Uses Griffin HE x36]</Description>
+			<DisplayName>*NPC-L.Missile* Griffin Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_QuadMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -341,11 +337,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_GriffinMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Large Griffin Launcher</DisplayName>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x150]
-			</Description>
+			<DisplayName>*NPC-L.Missile* Griffin Launcher</DisplayName>
 			<Icon>Textures\Cubes\Large\HWK_FixedMissileLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -479,12 +471,9 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>SmallRocketLauncherReload_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Small Griffin Launcher</DisplayName>
+			<DisplayName>*NPC-L.Missile* Griffin Launcher</DisplayName>
 			<BlockPairName>SmallRocketLauncherReload_NPC</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
-			<Description>The Griffin is a light homing missile, effective at evading gatling point defenses.
-				[2300m Semi-Auto Range]
-				[Uses Griffin HE x4]</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="3" z="3"/>
@@ -533,6 +522,65 @@
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallGriffinLauncherWarfare2_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Missile* Griffin launcher (Warfare)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReskin.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="3"/>
+				<Component Subtype="PrototechPanel" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechPanelScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="3"/>
+				<Component Subtype="LargeTube" Count="4"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="Computer" Count="7"/>
+				<Component Subtype="Construction" Count="23"/>
+				<Component Subtype="SteelPlate" Count="9"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>1</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="1" EndX="1" EndY="4"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="1" StartY="0" EndX="4" EndY="1"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\RocketLauncherReskinConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\RocketLauncherReskinConstruction_1.mwm"/>
+			</BuildProgressModels>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BlockPairName>SmallGriffinLauncherWarfare2_NPC</BlockPairName>
+			<Center x="0" y="0" z="2"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallMissileLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DLC>Warfare2</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

@@ -27,14 +27,14 @@ namespace Scripts
 			},
 			SubSystems = new[]
 			{
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any // subsystems the gun targets
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true,
 			LockedSmartOnly = false,
 			MaxTargetDistance = 1100,
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -99,7 +99,7 @@ namespace Scripts
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
             {
-                PartName = "XFEL Laser", // name of weapon in terminal
+                PartName = "Light XFEL Gun", // name of weapon in terminal
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -158,7 +158,7 @@ namespace Scripts
             Targeting = Lasers_Laser_Targeting_Turret_Small,
             HardPoint = new HardPointDef
             {
-                PartName = "XFEL Turret", // name of weapon in terminal
+                PartName = "Light XFEL Turret", // name of weapon in terminal
                 AimingTolerance = 10f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -224,7 +224,7 @@ namespace Scripts
             Targeting = Lasers_Laser_Targeting_Turret_Small,
             HardPoint = new HardPointDef
             {
-                PartName = "XFEL Turret", // name of weapon in terminal
+                PartName = "Light XFEL Turret", // name of weapon in terminal
                 AimingTolerance = 10f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 DelayCeaseFire = 30, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

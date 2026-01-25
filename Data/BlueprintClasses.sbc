@@ -122,6 +122,8 @@
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT_sm"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/ReceptorCoilGun"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ReceptorTurret"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Small"/>
+		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Small"/>
+		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockRadioAntenna_WCRadar"/>
+		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockCompactRadioAntennaReskin_WCRadar"/>
 	</BlueprintClassEntries>
 </Definitions>

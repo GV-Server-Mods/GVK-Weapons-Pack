@@ -26,14 +26,14 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 1800, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-			TopTargets = 8, // Maximum number of targets to randomize between; 0 = unlimited.
-			TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
+			TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+			TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
 			StopTrackingSpeed = 2000, // Do not track threats traveling faster than this speed; 0 = unlimited.
 		};
 
@@ -113,15 +113,15 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.02f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.02f, // Max traversal speed of elevation subpart in radians per tick.
+                    RotateRate = 0.03f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    ElevateRate = 0.03f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -20,
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 1f, // Inventory capacity in kL.
+                    InventorySize = 0.96f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -132,7 +132,7 @@ namespace Scripts
                     RateOfFire = 120,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 8, // Number of physical magazines to consume on reload.
 					DelayUntilFire = 30, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -185,7 +185,7 @@ namespace Scripts
             Targeting = Ballistics_Flak_Targeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Small Flak Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Flak Turret", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.3f, // Projectile inaccuracy in degrees.
                 AimingTolerance = 2f, // How many degrees off target a turret can fire at. 0 - 180 firing angle.
                 AimLeadingPrediction = Advanced, // Level of turret aim prediction; Off, Basic, Accurate, Advanced
@@ -202,7 +202,7 @@ namespace Scripts
                     MaxElevation = 90,
                     HomeAzimuth = 0, // Default resting rotation angle
                     HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.5f, // Inventory capacity in kL.
+                    InventorySize = 0.6f, // Inventory capacity in kL.
                     IdlePower = 0.01f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -215,7 +215,7 @@ namespace Scripts
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
-					MagsToLoad = 4, // Number of physical magazines to consume on reload.
+					MagsToLoad = 5, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,
@@ -270,13 +270,13 @@ namespace Scripts
                 },
                 SubSystems = new[] 
 				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
+                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef
@@ -290,7 +290,7 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
                 HardWare = new HardwareDef
                 {
-                    InventorySize = 0.25f, // Inventory capacity in kL.
+                    InventorySize = 0.6f, // Inventory capacity in kL.
                     IdlePower = 0.001f, // Constant base power draw in MW.
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
@@ -302,7 +302,7 @@ namespace Scripts
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
                     ReloadTime = 180, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					MagsToLoad = 4, // Number of physical magazines to consume on reload.
+					MagsToLoad = 5, // Number of physical magazines to consume on reload.
                 },
                 Audio = Ballistics_Flak_Hardpoint_Audio,
                 Graphics = Ballistics_Flak_Hardpoint_Graphics,

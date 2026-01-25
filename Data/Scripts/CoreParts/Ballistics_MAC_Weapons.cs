@@ -35,7 +35,7 @@ namespace Scripts
 
 		private LoadingDef Ballistics_MAC_Loading => new LoadingDef 
 		{
-			RateOfFire = 20, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
+			RateOfFire = 60, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
 			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
 			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
 			ReloadTime = 4200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -197,17 +197,19 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids, // Types of threat to engage: Grids, Projectiles, Characters, Meteors, Neutrals, ScanRoid, ScanPlanet, ScanFriendlyCharacter, ScanFriendlyGrid, ScanEnemyCharacter, ScanEnemyGrid, ScanNeutralCharacter, ScanNeutralGrid, ScanUnOwnedGrid, ScanOwnersGrid
                 },
-                SubSystems = new[] {
-                    Thrust, Utility, Offense, Power, Production, Any, Jumping, Steering, // Subsystem targeting priority: Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+                SubSystems = new[] 
+				{
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 MaxTargetDistance = 4000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 MinTargetDistance = 0, // Minimum distance at which targets will be automatically shot at.
-                TopTargets = 4, // Maximum number of targets to randomize between; 0 = unlimited.
-                TopBlocks = 1, // Maximum number of blocks to randomize between; 0 = unlimited.
+                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
             HardPoint = new HardPointDef

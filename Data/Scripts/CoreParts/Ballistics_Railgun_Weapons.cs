@@ -56,20 +56,20 @@ namespace Scripts {
                 },
                 SubSystems = new[] 
 				{
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 50, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-                TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef 
             {
-                PartName = "Apollo 1kg Railgun Turret", // name of weapon in terminal
+                PartName = "Apollo Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
                 AimingTolerance = 1f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -157,7 +157,7 @@ namespace Scripts {
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
             {
-                PartName = "Artemis 250mm Railgun", // name of weapon in terminal
+                PartName = "Artemis Railgun", // name of weapon in terminal
                 DeviateShotAngle = 0.01f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
@@ -245,7 +245,7 @@ namespace Scripts {
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Small Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                PartName = "Ares Railgun", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 0.01f, // Projectile inaccuracy in degrees.
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,

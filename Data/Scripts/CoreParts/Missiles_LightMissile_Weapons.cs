@@ -21,11 +21,13 @@ namespace Scripts
 		
 		private TargetingDef Missiles_Missile_Targeting_Large => new TargetingDef 
 		{
-			Threats = new[] {
+			Threats = new[] 
+			{
 				Grids, // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+			SubSystems = new[] 
+			{
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -34,11 +36,9 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 2300, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 5, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			CycleTargets = 0, // Number of targets to "cycle" per acquire attempt.
-			CycleBlocks = 0, // Number of blocks to "cycle" per acquire attempt.
 			UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
 			MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one
 			ShootBlanks = false, // Do not generate projectiles when shooting
@@ -48,11 +48,13 @@ namespace Scripts
 
 		private TargetingDef Missiles_Missile_Targeting_Small => new TargetingDef 
 		{
-			Threats = new[] {
+			Threats = new[] 
+			{
 				Grids, // threats percieved automatically without changing menu settings
 			},
-			SubSystems = new[] {
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+			SubSystems = new[] 
+			{
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
@@ -61,11 +63,9 @@ namespace Scripts
 			MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
 			MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
+			TopTargets = 2, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 2, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
-			CycleTargets = 0, // Number of targets to "cycle" per acquire attempt.
-			CycleBlocks = 0, // Number of blocks to "cycle" per acquire attempt.
 			UniqueTargetPerWeapon = false, // only applies to multi-weapon blocks 
 			MaxTrackingTime = 0, // After this time has been reached the weapon will stop tracking existing target and scan for a new one
 			ShootBlanks = false, // Do not generate projectiles when shooting
@@ -311,7 +311,7 @@ namespace Scripts
             Targeting = Missiles_Missile_Targeting_Large,
             HardPoint = new HardPointDef
             {
-                PartName = "Large Griffin Missile Pod", // name of weapon in terminal
+                PartName = "Griffin Launcher", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
@@ -404,7 +404,7 @@ namespace Scripts
             Targeting = Missiles_Missile_Targeting_Small,
             HardPoint = new HardPointDef
             {
-                PartName = "SmallRocketLauncherReload", // name of weapon in terminal
+                PartName = "Griffin Launcher", // name of weapon in terminal
                 DeviateShotAngle = 1f,
                 AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
@@ -421,6 +421,54 @@ namespace Scripts
 			Ammos = new[] 
 			{
 				Missiles_Missile,
+            },
+        };
+
+        WeaponDefinition SmallGriffinLauncherWarfare2 => new WeaponDefinition 
+		{
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "SmallGriffinLauncherWarfare2_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        AzimuthPartId = "None",
+                        ElevationPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                },
+                Muzzles = new []
+                {
+                    "muzzle_missile_001",
+					"muzzle_missile_002",
+					"muzzle_missile_003",
+					"muzzle_missile_004",
+                },
+            },
+			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
+            HardPoint = new HardPointDef
+            {
+                PartName = "NPC Griffin Launcher", // name of weapon in terminal
+                DeviateShotAngle = 1f,
+                AimingTolerance = 180f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = true,
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_ROFOnly,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
+                HardWare = Missiles_Missile_Hardpoint_HardWare_Small,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
+                Loading = Missiles_Missile_Hardpoint_Loading_Small,
+                Audio = Missiles_Missile_Hardpoint_Audio,
+            },
+			Ammos = new[] 
+			{
+                Missiles_Missile,
             },
         };
 		

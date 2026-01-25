@@ -179,8 +179,10 @@
 			<DisplayName>Target Sensors</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKIDesignator"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXSmallRadar"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallBlockRadioAntenna_WCRadar"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallBlockCompactRadioAntennaReskin_WCRadar"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

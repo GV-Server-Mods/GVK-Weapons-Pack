@@ -39,7 +39,6 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-
         private AmmoDef SmallRailgunAmmo => new AmmoDef
         {
             AmmoMagazine = "SmallRailgunAmmo",
@@ -80,23 +79,6 @@ namespace Scripts
                 },
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef 
-			{
-                ByBlockHit = new ByBlockHitDef
-                {
-                    Enable = false,
-                    Radius = 0.5f,
-                    Damage = 66500f,
-                    //Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
-                    MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                },
-            },			
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = None,
@@ -218,8 +200,8 @@ namespace Scripts
                     PointAtTarget = true, // Start fragment direction pointing at Target
                     PointType = Direct, // Point accuracy, Direct (straight forward), Lead (always fire), Predict (only fire if it can hit)
                     DirectAimCone = 10f, //Aim cone used for Direct fire, in degrees
-                    GroupSize = 0, // Number of spawns in each group
-                    GroupDelay = 0, // Delay between each group.
+                    GroupSize = 1, // Number of spawns in each group
+                    GroupDelay = 1, // Delay between each group.
                 },
             },
             DamageScales = new DamageScaleDef 
@@ -241,23 +223,6 @@ namespace Scripts
                 },
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
             },
-            AreaOfDamage = new AreaOfDamageDef 
-			{
-                ByBlockHit = new ByBlockHitDef
-                {
-                    Enable = false,
-                    Radius = 0.5f,
-                    Damage = 66500f,
-                    //Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
-                    MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                },
-            },			
             Trajectory = new TrajectoryDef 
 			{
 				Guidance = Smart, // None, Remote, TravelTo, Smart, DetectTravelTo, DetectSmart, DetectFixed
@@ -408,23 +373,6 @@ namespace Scripts
                     NonArmor = -1f,
                 },
                 Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
-            },
-            AreaOfDamage = new AreaOfDamageDef 
-			{
-                ByBlockHit = new ByBlockHitDef
-                {
-                    Enable = true,
-                    Radius = 0.5f,
-                    Damage = 33250f,
-                    //Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
-                    MaxAbsorb = 0f,
-                    Falloff = Linear, //.NoFalloff applies the same damage to all blocks in radius
-                    //.Linear drops evenly by distance from center out to max radius
-                    //.Curve drops off damage sharply as it approaches the max radius
-                    //.InvCurve drops off sharply from the middle and tapers to max radius
-                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
-                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
-                },
             },
             Trajectory = new TrajectoryDef 
 			{

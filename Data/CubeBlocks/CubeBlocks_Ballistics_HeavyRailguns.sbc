@@ -7,7 +7,7 @@
 				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>HarbingerTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Heavy Railgun* Harbinger</DisplayName>
+			<DisplayName>*NPC-Heavy Railgun* Harbinger Turret</DisplayName>
 			<Description>NPC Massive Wreck Only</Description>
 			<Icon>Textures\GUI\Icons\Harbinger_Short_Thin_Base.dds</Icon>
 			<CubeSize>Large</CubeSize>

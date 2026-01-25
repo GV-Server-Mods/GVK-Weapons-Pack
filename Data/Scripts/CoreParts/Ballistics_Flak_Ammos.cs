@@ -216,7 +216,7 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                Custom = Common_Ammos_DamageScales_WheelsandCockpits_SmallNerf,
+                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef
             {
@@ -289,7 +289,7 @@ namespace Scripts
         {
             AmmoMagazine = "MediumCalibreAmmo",
             AmmoRound = "Impact Flak",
-            BaseDamage = 500f,
+            BaseDamage = 1000f,
             Mass = 100, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 1000f,
@@ -332,7 +332,7 @@ namespace Scripts
                 {
                     Enable = true,
                     Radius = 2f,
-                    Damage = 2500f,
+                    Damage = 3000f,
                     Depth = 2f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
                     MaxAbsorb = 0f,
                     Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius

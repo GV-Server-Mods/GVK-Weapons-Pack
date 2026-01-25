@@ -7,11 +7,11 @@
 				<TypeId>InteriorTurret</TypeId>
 				<SubtypeId>LargeInteriorTurret</SubtypeId>
 			</Id>
-			<DisplayName>*Interior* Large Anti-personnel Turret</DisplayName>
+			<DisplayName>*Interior* Anti-personnel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\interior_turret.dds</Icon>
 			<Description>The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.
-				[700m Auto Range]
-				[Uses 5.56mm KE (Manual Reload)]</Description>
+				[Uses 5.56mm KE]
+			</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -94,11 +94,8 @@
 				<TypeId>InteriorTurret</TypeId>
 				<SubtypeId>LargeInteriorTurret_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Interior* Large Anti-personnel Turret</DisplayName>
+			<DisplayName>*NPC-Interior* Anti-personnel Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\interior_turret.dds</Icon>
-			<Description>The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.
-				[700m Auto Range]
-				[Uses 5.56mm KE (Manual Reload)]</Description>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>

@@ -25,15 +25,15 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 2200, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 20, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -45,15 +45,15 @@ namespace Scripts
 			},
 			SubSystems = new[] 
 			{
-				Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any
+				Offense, Jumping, Utility, Power, Thrust, Production,
 			},
 			ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
 			IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 			LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 			MaxTargetDistance = 2000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 			MinTargetDistance = 10, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
-			TopBlocks = 1, // 0 = unlimited, max number of blocks to randomize between
+			TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
 		};
 
@@ -95,7 +95,7 @@ namespace Scripts
             Targeting = Ballistics_Cannons_Targeting_LargeTurret,
             HardPoint = new HardPointDef 
 			{
-                PartName = "155mm Cyclone Turret", // name of weapon in terminal
+                PartName = "Cyclone Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.2f,
                 AimingTolerance = 0.8f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -300,7 +300,7 @@ namespace Scripts
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
             {
-                PartName = "155mm Fixed Cannon", // name of weapon in terminal
+                PartName = "155mm Cannon", // name of weapon in terminal
                 DeviateShotAngle = 0.1f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
@@ -395,7 +395,7 @@ namespace Scripts
             Targeting = Ballistics_Cannons_Targeting_SmallTurret,
             HardPoint = new HardPointDef 
             {
-                PartName = "Small 155mm Cannon Turret", // name of weapon in terminal
+                PartName = "155mm Cannon Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.2f,
                 AimingTolerance = 0.5f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -411,7 +411,7 @@ namespace Scripts
                     MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation =  75,
-                    InventorySize = 0.6f,
+                    InventorySize = 1.8f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
 					IdlePower = 0.01f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
@@ -498,7 +498,7 @@ namespace Scripts
             Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef 
             {
-                PartName = "Small 155mm Fixed Cannon", // name of weapon in terminal
+                PartName = "155mm Cannon", // name of weapon in terminal
                 DeviateShotAngle = 0.1f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced

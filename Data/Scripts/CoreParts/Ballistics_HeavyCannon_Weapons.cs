@@ -49,11 +49,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids,
                 },
-                SubSystems = new[] {
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
@@ -62,13 +64,13 @@ namespace Scripts
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-                TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef
             {
-                PartName = "Hurricane Heavy Cannon", // name of weapon in terminal
+                PartName = "Hurricane Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.03f,
                 AimingTolerance = 0.5f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
@@ -173,11 +175,13 @@ namespace Scripts
             },
             Targeting = new TargetingDef
             {
-                Threats = new[] {
+                Threats = new[] 
+				{
                     Grids,
                 },
-                SubSystems = new[] {
-                    Offense, Utility, Power, Production, Thrust, Jumping, Steering, Any,
+                SubSystems = new[] 
+				{
+                   Offense, Jumping, Utility, Power, Thrust, Production,
                 },
                 ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 IgnoreDumbProjectiles = false, // Don't fire at non-smart projectiles.
@@ -186,13 +190,13 @@ namespace Scripts
                 MaximumDiameter = 0, // 0 = unlimited, Maximum radius of threat to engage.
                 MaxTargetDistance = 4000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
                 MinTargetDistance = 0, // 0 = unlimited, Min target distance that targets will be automatically shot at.
-                TopTargets = 4, // 0 = unlimited, max number of top targets to randomize between.
-                TopBlocks = 4, // 0 = unlimited, max number of blocks to randomize between
+                TopTargets = 0, // 0 = unlimited, max number of top targets to randomize between.
+                TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
                 StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
             },
             HardPoint = new HardPointDef
             {
-                PartName = "Odin Heavy Cannon", // name of weapon in terminal
+                PartName = "Odin Turret", // name of weapon in terminal
                 DeviateShotAngle = 0.003f,
                 AimingTolerance = 0.03f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced

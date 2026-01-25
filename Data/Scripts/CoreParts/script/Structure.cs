@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using ProtoBuf;
 using VRageMath;
 
@@ -484,6 +485,7 @@ namespace Scripts
                 [ProtoMember(14)] internal bool CanShootSubmerged;
                 [ProtoMember(15)] internal bool NpcSafe;
                 [ProtoMember(16)] internal bool ScanTrackOnly;
+                [ProtoMember(17)] internal bool CanTargetSubmerged;
 
                 [ProtoContract]
                 public struct LoadingDef
@@ -516,6 +518,18 @@ namespace Scripts
                     [ProtoMember(26)] internal float InventoryFillAmount;
                     [ProtoMember(27)] internal float InventoryLowAmount;
                     [ProtoMember(28)] internal bool UseWorldInventoryVolumeMultiplier;
+                    [ProtoMember(29)] internal bool AllowOverheatShooting;
+                    [ProtoMember(30)] internal DegradeSettingsDef DegradeRofSettings;
+                    [ProtoMember(31)] internal float HeatSinkRateOverheatMult;
+
+                    [ProtoContract]
+                    public struct DegradeSettingsDef
+                    {
+                        [ProtoMember(1)] internal float HeatThresholdStart;
+                        [ProtoMember(2)] internal float HeatThresholdEnd;
+                        [ProtoMember(3)] internal float RofAt0Heat;
+                        [ProtoMember(4)] internal float RofAt100Heat;
+                    }
                 }
 
 
@@ -574,6 +588,7 @@ namespace Scripts
                     [ProtoMember(12)] internal int HomeElevation;
                     [ProtoMember(13)] internal CriticalDef CriticalReaction;
                     [ProtoMember(14)] internal float IdlePower;
+                    [ProtoMember(15)] internal bool FixedInventorySize;
 
                     [ProtoContract]
                     public struct CriticalDef
@@ -613,7 +628,10 @@ namespace Scripts
                     [ProtoMember(8)] internal bool CheckForAnyWeapon;
                     [ProtoMember(9)] internal bool DisableLosCheck;
                     [ProtoMember(10)] internal bool NoVoxelLosCheck;
-
+                    [ProtoMember(11)] internal bool AllowScopeOutsideObb;
+                    [ProtoMember(12)] internal bool ProhibitLGTargeting;
+                    [ProtoMember(13)] internal bool ProhibitSGTargeting;
+                    [ProtoMember(14)] internal bool ProhibitSubsystemChanges;
                 }
 
                 [ProtoContract]
@@ -660,6 +678,9 @@ namespace Scripts
                 [ProtoMember(31)] internal bool NoGridOrArmorScaling;
                 [ProtoMember(32)] internal string TerminalName;
                 [ProtoMember(33)] internal float BaseDamageCutoff;
+                [ProtoMember(34)] internal bool IgnoreGrids;
+                [ProtoMember(35)] internal bool AllowNegativeHeatModifier;
+                [ProtoMember(36)] internal int HeatNeededToFire;
 
                 [ProtoContract]
                 public struct SynchronizeDef
@@ -819,6 +840,9 @@ namespace Scripts
                         [ProtoMember(2)] internal ParticleDef Hit;
                         [ProtoMember(3)] internal ParticleDef Eject;
                         [ProtoMember(4)] internal ParticleDef WeaponEffect1Override;
+                        [ProtoMember(5)] internal ParticleDef ShieldHit;
+                        [ProtoMember(6)] internal ParticleDef VoxelHit;
+                        [ProtoMember(7)] internal ParticleDef WaterHit;
                     }
 
                     [ProtoContract]
@@ -952,7 +976,7 @@ namespace Scripts
                     [ProtoMember(12)] internal bool FireSound; // not used, can remove
                     [ProtoMember(13)] internal Vector3D AdvOffset;
                     [ProtoMember(14)] internal bool ArmWhenHit;
-                        
+
                     [ProtoContract]
                     public struct TimedSpawnDef
                     {
@@ -1269,6 +1293,8 @@ namespace Scripts
                     [ProtoMember(7)] internal string FloatingHitSound;
                     [ProtoMember(8)] internal string ShieldHitSound;
                     [ProtoMember(9)] internal string ShotSound;
+                    [ProtoMember(10)] internal string WaterHitSound;
+                    [ProtoMember(11)] internal bool OverrideShotSound;
                 }
 
                 [ProtoContract]
@@ -1302,8 +1328,9 @@ namespace Scripts
                     [ProtoMember(14)] internal uint MaxTrajectoryTime;
                     [ProtoMember(15)] internal ApproachDef[] Approaches;
                     [ProtoMember(16)] internal double TotalAcceleration;
-                    [ProtoMember(17)] internal OnHitDef OnHit;
+                    [ProtoMember(17)] internal OnHitDef OnHit; // Deprecated
                     [ProtoMember(18)] internal float DragPerSecond;
+                    [ProtoMember(19)] internal float DragMinSpeed;
 
                     [ProtoContract]
                     public struct SmartsDef
@@ -1333,6 +1360,7 @@ namespace Scripts
                         [ProtoMember(23)] internal double MinTurnSpeed;
                         [ProtoMember(24)] internal bool NoTargetApproach;
                         [ProtoMember(25)] internal bool AltNavigation;
+                        [ProtoMember(26)] internal bool IgnoreAntiSmarts;
                     }
 
                     [ProtoContract]
@@ -1525,7 +1553,7 @@ namespace Scripts
                         [ProtoMember(66)] internal bool SwapNavigationType;
                         [ProtoMember(67)] internal bool ElevationRelativeToC;
                     }
-                    
+
                     [ProtoContract]
                     public struct MinesDef
                     {
