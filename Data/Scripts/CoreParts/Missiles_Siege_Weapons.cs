@@ -142,8 +142,8 @@ namespace Scripts
                     DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its burst.
                     StayCharged = false, // Will start recharging whenever power cap is not full.
-                    GoHomeToReload = true, // Tells the weapon it must be in the home position before it can reload.
-                    DropTargetUntilLoaded = true, // If true this weapon will drop the target when its out of ammo and until its reloaded.
+                    GoHomeToReload = false, // Tells the weapon it must be in the home position before it can reload.
+                    DropTargetUntilLoaded = false, // If true this weapon will drop the target when its out of ammo and until its reloaded.
 				},
                 Audio = new HardPointAudioDef
                 {
