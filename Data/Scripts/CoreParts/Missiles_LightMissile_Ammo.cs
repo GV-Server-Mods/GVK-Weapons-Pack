@@ -208,7 +208,7 @@ namespace Scripts
                 {
 					Ammo = new ParticleDef
                     {
-                        Name = "MD_GriffinTrailSmoke", //Archer_MissileSmokeTrail MD_BulletGlowMedRed
+                        Name = "", // MD_GriffinTrailSmoke
                         Offset = Vector(x: 0, y: 0, z: 0f),
 						DisableCameraCulling = false,// If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
@@ -244,17 +244,16 @@ namespace Scripts
                     },
                     Trail = new TrailDef
                     {
-                        Enable = false,
-						AlwaysDraw = true, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
+                        Enable = true,
+						AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
                         Textures = new[] {
-                            "WeaponLaser",
+                            "WeaponTrail",
                         },
-                        TextureMode = Normal,
-                        DecayTime = 150,
-                        Color = Color(red: 1.1f, green: 1.01f, blue: 1, alpha: 1f),
+                        DecayTime = 60,
+                        Color = Color(red: 0.1f, green: 0.075f, blue: 0.075f, alpha: 0.75f),
                         Back = false,
-                        CustomWidth = 1f,
-                        UseWidthVariance = true,
+                        CustomWidth = 1.5f,
+                        UseWidthVariance = false,
                         UseColorFade = true,
                     },
                 },
