@@ -146,14 +146,14 @@ namespace Scripts
                 {
                     Hit = new ParticleDef
                     {
-                        Name = "MaterialHit_Metal_GatlingGun", //MaterialHit_Metal
+                        Name = "MD_25_Hit", //MaterialHit_Metal_GatlingGun
                         ApplyToShield = false,
                         Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
                         DisableCameraCulling = true, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
-                            Scale = 0.75f,
-                            HitPlayChance = 0.2f,
+                            Scale = 1f,
+                            HitPlayChance = 0.4f,
                         },
                     },
                 },
