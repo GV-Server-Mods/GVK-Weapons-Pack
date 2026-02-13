@@ -21,6 +21,7 @@
 			<AmmoDefinitionId Subtype="Blank"/>
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>false</CanPlayerOrder>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -43,6 +44,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -65,6 +67,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -109,6 +112,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -131,6 +135,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -153,6 +158,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -175,6 +181,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -197,6 +204,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -219,6 +227,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -241,6 +250,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -263,6 +273,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -285,6 +296,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -307,6 +319,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -329,6 +342,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -351,6 +365,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
@@ -505,6 +520,7 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+			<DepositAllEnabled>true</DepositAllEnabled>
 		</AmmoMagazine>
 	</AmmoMagazines>
 </Definitions>
