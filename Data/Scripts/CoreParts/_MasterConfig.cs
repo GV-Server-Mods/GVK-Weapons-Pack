@@ -79,7 +79,8 @@ namespace Scripts
 							HarbingerTurret,
 							Other_Warheads_RegularWarhead_LG_Weapon,
 							Other_Warheads_RegularWarhead_SG_Weapon,
-							SmallGriffinLauncherWarfare2
+							SmallGriffinLauncherWarfare2,
+							Missiles_Rockets_SGReloadableLauncher
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);

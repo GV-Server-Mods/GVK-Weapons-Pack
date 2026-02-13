@@ -47,6 +47,23 @@ namespace Scripts
 			BarrelRotationSound = "",
 		};
 
+		private LoadingDef Missiles_Rocket_Hardpoint_Loading_Small = new LoadingDef
+		{
+			RateOfFire = 240, // 240 Pre Rebalance 
+			BarrelsPerShot = 1, 
+			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+			ReloadTime = 240, //3600 // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			MagsToLoad = 4, // Number of physical magazines to consume on reload.
+			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
+		};
+
+		private HardwareDef Missiles_Rocket_Hardpoint_HardWare_Small = new HardwareDef
+		{
+			InventorySize = 1.12f,
+			Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+			IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
+		};
+
 		//Weapon Definitions
 
         WeaponDefinition LargeMissileTurret => new WeaponDefinition 
@@ -384,7 +401,7 @@ namespace Scripts
 			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
             HardPoint = new HardPointDef
             {
-                PartName = "Hydra Launcher", // name of weapon in terminal
+                PartName = "Hydra Pod", // name of weapon in terminal
                 DeviateShotAngle = 0.5f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Accurate, // Off, Basic, Accurate, Advanced
@@ -407,6 +424,66 @@ namespace Scripts
                     ReloadTime = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
 					MagsToLoad = 4, // Number of physical magazines to consume on reload.
                 },
+                Audio = Missiles_Rocket_Hardpoint_Audio,
+            },
+			Ammos = new[] 
+			{
+                Missiles_Rocket,
+            },
+        };
+
+        WeaponDefinition Missiles_Rockets_SGReloadableLauncher => new WeaponDefinition 
+		{
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "Missiles_Rockets_SGReloadableLauncher",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "Missiles_Rockets_SGReloadableLauncher_NPC",
+                        SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
+                        MuzzlePartId = "None",
+                        ElevationPartId = "None",
+                        AzimuthPartId = "None",
+                        DurabilityMod = 0.5f,
+                        IconName = "TestIcon.dds",
+                    },
+                },
+                Muzzles = new []
+                {
+                    "muzzle_missile_001",
+					"muzzle_missile_002",
+					"muzzle_missile_003",
+					"muzzle_missile_004",
+                },
+                Ejector = "",
+                Scope = "muzzle_missile_002", //Where line of sight checks are performed from must be clear of block collision
+            },
+			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting,
+            HardPoint = new HardPointDef
+            {
+                PartName = "Hydra Launcher", // name of weapon in terminal
+                DeviateShotAngle = 1f,
+                AimingTolerance = 180f, // 0 - 180 firing angle
+                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
+                DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                AddToleranceToTracking = true,
+				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
+                HardWare = Missiles_Rocket_Hardpoint_HardWare_Small,
+				Other = Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck,
+                Loading = Missiles_Rocket_Hardpoint_Loading_Small,
                 Audio = Missiles_Rocket_Hardpoint_Audio,
             },
 			Ammos = new[] 

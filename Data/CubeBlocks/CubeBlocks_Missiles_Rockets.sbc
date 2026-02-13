@@ -238,7 +238,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId/>
 			</Id>
-			<DisplayName>*Rocket* Hydra launcher</DisplayName>
+			<DisplayName>*Rocket* Hydra Pod</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[Uses Hydra HE]
@@ -530,6 +530,63 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 			<DLC>Contact</DLC>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>Missiles_Rockets_SGReloadableLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*Rocket* Hydra launcher</DisplayName>
+			<BlockPairName>Missiles_Rockets_SGReloadableLauncher</BlockPairName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.
+				[Uses Hydra HE]
+			</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReload.mwm</Model>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
+			</MountPoints>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<Center x="0" y="0" z="1"/>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<WeaponDefinitionId Subtype="Missiles_Missile"/>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition" Enabled="true">
@@ -1074,6 +1131,60 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 			<DLC>Contact</DLC>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncherReload</TypeId>
+				<SubtypeId>Missiles_Rockets_SGReloadableLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Rocket* Hydra launcher</DisplayName>
+			<BlockPairName>Missiles_Rockets_SGReloadableLauncher_NPC</BlockPairName>
+			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\RocketLauncherReload.mwm</Model>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="3" EndY="3"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="3" EndY="3"/>
+			</MountPoints>
+			<Components>
+				<Component Subtype="SteelPlate" Count="5"/>
+				<Component Subtype="PrototechPanel" Count="2"/>
+				<Component Subtype="MetalGrid" Count="2"/>
+				<Component Subtype="LargeTube" Count="1"/>
+				<Component Subtype="Motor" Count="10"/>
+				<Component Subtype="InteriorPlate" Count="2"/>
+				<Component Subtype="Computer" Count="19"/>
+				<Component Subtype="Construction" Count="19"/>
+				<Component Subtype="SteelPlate" Count="19"/>
+			</Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\small\RocketLauncherReloadConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\small\RocketLauncherReloadConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<Center x="0" y="0" z="1"/>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<WeaponDefinitionId Subtype="Missiles_Missile"/>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<MirroringZ>Y</MirroringZ>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
 		</Definition>
 	</CubeBlocks>
 </Definitions>
