@@ -24,6 +24,7 @@
 			<ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
 		</PhysicalItem>
 		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
 			<Id>
@@ -48,6 +49,7 @@
 			<ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
 		</PhysicalItem>
 		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
 			<Id>
@@ -72,6 +74,7 @@
 			<ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
 		</PhysicalItem>
 		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
 			<Id>
@@ -96,6 +99,7 @@
 			<ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
 		</PhysicalItem>
 		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
 			<Id>
@@ -120,6 +124,7 @@
 			<ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
 		</PhysicalItem>
         <PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition">
             <Id>
@@ -144,6 +149,7 @@
             <ShowAmmoCount>true</ShowAmmoCount>
 			<MinimalPricePerUnit>0</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
+			<DepositAllEnabled>false</DepositAllEnabled>
         </PhysicalItem>
 		<!-- Disabled in GVK -->
 		<PhysicalItem xsi:type="MyObjectBuilder_WeaponItemDefinition" Enabled="true">
