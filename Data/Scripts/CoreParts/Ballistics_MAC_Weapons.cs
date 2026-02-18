@@ -105,6 +105,7 @@ namespace Scripts
             HardPoint = new HardPointDef
             {
                 PartName = "MAC", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
+                DeviateShotAngle = 0.05f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -152,7 +153,7 @@ namespace Scripts
             HardPoint = new HardPointDef 
             {
                 PartName = "MAC NPC", // name of weapon in terminal
-                DeviateShotAngle = 0.0f,
+                DeviateShotAngle = 0.05f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 //DelayCeaseFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

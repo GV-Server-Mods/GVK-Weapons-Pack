@@ -45,7 +45,7 @@ namespace Scripts
             AmmoRound = "HeavyRailgunAmmo",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.001f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
-            BaseDamage = 200000f, //slightly more than 4 heavy armor cubes
+            BaseDamage = 1000000f, //slightly more than 4 heavy armor cubes
             BaseDamageCutoff = 20000f,  // Maximum amount of pen damage to apply per block hit.  Deducts from BaseDamage and uses DamageScales modifiers
                                     // Optional penetration mechanic to apply damage to blocks beyond the first hit, without requiring the block to be destroyed.  
                                     // Overwrites normal damage behavior of requiring a block to be destroyed before damage can continue.  0 disables. 
@@ -59,7 +59,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
             DamageScales = new DamageScaleDef 
 			{

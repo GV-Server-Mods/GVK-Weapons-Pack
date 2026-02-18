@@ -58,7 +58,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
             DamageScales = new DamageScaleDef 
 			{
@@ -82,6 +82,7 @@ namespace Scripts
             Trajectory = new TrajectoryDef 
 			{
                 Guidance = None,
+                MaxLifeTime = 300, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 3000, //1500
                 MaxTrajectory = 3300,
                 SpeedVariance = Random(start: 0, end: 50), // subtracts value from DesiredSpeed
@@ -174,7 +175,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 10, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
@@ -355,6 +356,11 @@ namespace Scripts
             EnergyMagazineSize = 0,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
             DamageScales = new DamageScaleDef 
 			{
                 MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with currently integrity above 1000 will be immune to damage.
