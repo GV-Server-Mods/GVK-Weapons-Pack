@@ -101,6 +101,7 @@
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype=""/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallMissileLauncherWarfare2"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="Missiles_Rockets_SGReloadableLauncher"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

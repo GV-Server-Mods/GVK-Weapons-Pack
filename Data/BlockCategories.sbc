@@ -62,6 +62,7 @@
 				<string>odin</string>
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
+				<string>Missiles_Rockets_SGReloadableLauncher</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -125,6 +126,7 @@
 				<string>odin</string>
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
+				<string>Missiles_Rockets_SGReloadableLauncher</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -188,6 +190,7 @@
 				<string>odin</string>
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
+				<string>Missiles_Rockets_SGReloadableLauncher</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>

@@ -125,5 +125,6 @@
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Small"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockRadioAntenna_WCRadar"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockCompactRadioAntennaReskin_WCRadar"/>
+		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher"/>
 	</BlueprintClassEntries>
 </Definitions>
