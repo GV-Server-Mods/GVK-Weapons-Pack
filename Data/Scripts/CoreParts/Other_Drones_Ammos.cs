@@ -621,7 +621,7 @@ namespace Scripts
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Others_Drone_Gunship", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            BaseDamage = 1f, // Direct damage; one steel plate is worth 100.
+            BaseDamage = 2500f, // Direct damage; one steel plate is worth 100.
             Mass = 20f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             BackKickForce = 0f, // Recoil. This is applied to the Parent Grid.
@@ -658,7 +658,7 @@ namespace Scripts
 			{
                 EndOfLife = new EndOfLifeDef
                 {
-                    Enable = true,
+                    Enable = false,
                     Radius = 4f,
                     Damage = 2500f,
                     Depth = 4f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
