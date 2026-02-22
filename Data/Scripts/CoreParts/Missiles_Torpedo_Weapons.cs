@@ -78,7 +78,7 @@ namespace Scripts
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ui = Common_Weapons_Hardpoint_Ui_GuidanceOnly,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = new HardwareDef
                 {
@@ -181,7 +181,7 @@ namespace Scripts
                 DelayCeaseFire = 1, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 AddToleranceToTracking = true,
 				NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ui = Common_Weapons_Hardpoint_Ui_GuidanceOnly,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,                
                 HardWare = new HardwareDef
                 {
