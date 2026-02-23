@@ -84,7 +84,7 @@ namespace Scripts
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
                 MinTargetDistance = 0, // Minimum distance at which targets will be automatically shot at; 0 = unlimited.
                 MaxTargetDistance = 3000, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
-                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },

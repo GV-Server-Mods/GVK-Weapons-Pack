@@ -119,7 +119,7 @@ namespace Scripts
                 ClosestFirst = false, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
                 MaxTargetDistance = 0, // Maximum distance at which targets will be automatically shot at; 0 = unlimited.
                 MinTargetDistance = 2000, // Minimum distance at which targets will be automatically shot at.
-                TopTargets = 0, // Maximum number of targets to randomize between; 0 = unlimited.
+                TopTargets = 1, // Maximum number of targets to randomize between; 0 = unlimited.
                 TopBlocks = 0, // Maximum number of blocks to randomize between; 0 = unlimited.
                 StopTrackingSpeed = 1000, // Do not track threats traveling faster than this speed; 0 = unlimited.
             },
