@@ -32,10 +32,10 @@
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
-				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
 				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
 			</MountPoints>
 			<BuildProgressModels>
@@ -242,10 +242,10 @@
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
-				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
-				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="0.50"/>
+				<MountPoint Side="Front" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Back" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Left" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.00" StartY="0.00" EndX="3.00" EndY="1"/>
 				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="3.00" EndY="3.00"/>
 			</MountPoints>
 			<BuildProgressModels>
