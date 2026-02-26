@@ -189,7 +189,6 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="6"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Center x="0" y="0" z="3"/>
 			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>
@@ -333,9 +332,8 @@
 			<Icon>Textures\GUI\Icons\ReceptorTurretBase.png</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="5" y="5" z="5"/>
-			<ModelOffset x="0" y="0" z="0"/>
-			<Center x="2" y="0" z="2"/>
+			<Size x="5" y="4" z="5"/>
+			<ModelOffset x="0" y="0.25" z="0"/>
 			<Model>Models\Akiad\Small\ReceptorTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="23"/>
@@ -426,7 +424,6 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="6"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Center x="0" y="0" z="3"/>
 			<Model>Models\Akiad\Small\ReceptorCoilGun.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="3"/>

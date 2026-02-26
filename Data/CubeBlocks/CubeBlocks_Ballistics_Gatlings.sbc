@@ -784,6 +784,7 @@
 			<DLC>Contact</DLC>
 		</Definition>
 		<!-- NPC Weapons -->
+		<!-- NPC weapons should have consistent cubeblock sizes for dyanmic replacer use. -->
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -911,8 +912,8 @@
 			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="-1.25" z="0"/>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Akiad\Small\SentinelTurretBase.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="78"/>
@@ -1001,8 +1002,8 @@
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="1.25" z="0"/>
 			<Model>Models\Cubes\Large\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
@@ -1094,8 +1095,8 @@
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="5" y="5" z="5"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="5" y="4" z="5"/>
+			<ModelOffset x="0" y="0.25" z="0"/>
 			<Model>Models\Cubes\Small\GatlingTurret.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
@@ -1401,8 +1402,8 @@
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="3"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="3" y="2" z="3"/>
+			<ModelOffset x="0" y="1.25" z="0"/>
 			<Model>Models\Cubes\Large\GatlingTurretReskin.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
@@ -1496,8 +1497,8 @@
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
 			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="5" y="5" z="5"/>
-			<ModelOffset x="0" y="0" z="0"/>
+			<Size x="5" y="4" z="5"/>
+			<ModelOffset x="0" y="0.25" z="0"/>
 			<Model>Models\Cubes\Small\GatlingTurretReskin.mwm</Model>
 			<UseModelIntersection>true</UseModelIntersection>
 			<Components>
