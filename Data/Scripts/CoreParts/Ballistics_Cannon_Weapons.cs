@@ -158,6 +158,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 LargeCalibreAmmo,
+                LargeCalibreAmmoHE,
             },
         };
 
@@ -260,6 +261,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 LargeCalibreAmmo,
+                LargeCalibreAmmoHE,
             },
         };
 
@@ -355,6 +357,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 LargeCalibreAmmo,
+                LargeCalibreAmmoHE,
             },
         };
 
@@ -458,6 +461,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 LargeCalibreAmmo,
+                LargeCalibreAmmoHE,
             },
         };
 
@@ -552,6 +556,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 LargeCalibreAmmo,
+                LargeCalibreAmmoHE,
             },
         };
 		//NPC Weapons with auto-aim

@@ -42,7 +42,8 @@ namespace Scripts
 		private AmmoDef NATO_25x184mm => new AmmoDef 
 		{
             AmmoMagazine = "NATO_25x184mm",
-            AmmoRound = "NATO_25x184mm", 
+            AmmoRound = "NATO_25x184mm",
+			TerminalName = "NATO 25mm", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 100f,
             Mass = 1f, // in kilograms
             BackKickForce = 100f,
@@ -184,6 +185,7 @@ namespace Scripts
 		{
             AmmoMagazine = "NATO_25x184mm",
             AmmoRound = "NATO_25x184mm_Dual", 
+			TerminalName = "NATO 25mm", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 100f,
             Mass = 1f, // in kilograms
             BackKickForce = 100f,

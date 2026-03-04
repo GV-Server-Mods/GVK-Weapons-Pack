@@ -43,6 +43,7 @@ namespace Scripts
         {
             AmmoMagazine = "LargeCalibreAmmo",
             AmmoRound = "LargeCalibreAmmo",
+            TerminalName = "155 AP", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 6000f, // breaks 1 HA or 1 LA cubes in 1 round
             Mass = 300f, // in kilograms
             Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -53,7 +54,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 5, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
             },
             DamageScales = new DamageScaleDef 
 			{
@@ -144,6 +145,154 @@ namespace Scripts
                         Textures = new[] {"WeaponLaser",},
                         DecayTime = 40,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                        Back = false,
+                        CustomWidth = 0,
+                        UseWidthVariance = true,
+                        UseColorFade = true,
+                    },
+                },
+            },
+            AmmoAudio = new AmmoAudioDef 
+			{
+                TravelSound = "MD_Artillary_shell_fly",
+                HitSound = "DOK_CannonHit",
+                ShieldHitSound = "",
+                PlayerHitSound = "DOK_CannonHit",
+                VoxelHitSound = "ArcHeavyImpactSoil",
+                FloatingHitSound = "",
+                HitPlayChance = 1f,
+                HitPlayShield = true,
+            },		
+        };
+
+        private AmmoDef LargeCalibreAmmoHE => new AmmoDef
+        {
+            AmmoMagazine = "LargeCalibreAmmo",
+            AmmoRound = "LargeCalibreAmmoHE",
+            TerminalName = "155 HE", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
+            BaseDamage = 6000f, // breaks 1 HA or 1 LA cubes in 1 round
+            Mass = 300f, // in kilograms
+            Health = 0, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            BackKickForce = 200000f,
+            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+            NpcSafe = false, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+            NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
+            Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the Line Length of 1 if set to 0.
+            {
+                Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
+                Diameter = -1, // Diameter is minimum length of LineShape or minimum diameter of SphereShape.
+            },
+            DamageScales = new DamageScaleDef 
+			{
+                //This is additional damage done and does not directly affect the speed that the ammo's health pool depletes.
+				MaxIntegrity = 0f, // 0 = disabled, 1000 = any blocks with current integrity above 1000 will be immune to damage.
+                DamageVoxels = false, // true = voxels are vulnerable to this weapon
+                HealthHitModifier = 1, // defaults to a value of 1, this setting modifies how much Health is subtracted from a projectile per hit (1 = per hit).
+                Characters = 0.25f,
+                // modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.
+                Grids = new GridSizeDef
+                {
+                    Large = -1f,
+                    Small = 0.75f,
+                },
+                Armor = new ArmorDef
+                {
+                    Armor = -1f,
+                    Light = -1f,
+                    Heavy = -1f,
+                    NonArmor = 1f,
+                },
+				DamageType = new DamageTypes
+				{
+					Base = Kinetic,
+					AreaEffect = Kinetic,
+					Detonation = Kinetic,
+					Shield = Kinetic,
+                },
+                //Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
+            },
+            AreaOfDamage = new AreaOfDamageDef 	// Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
+												// Note DamageScales does not apply to AOE
+            {
+                EndOfLife = new EndOfLifeDef 
+                {
+                    Enable = true,
+                    Radius = 4f, // Radius of AOE effect, in meters.
+                    Damage = 6000f,
+                    Depth = 4f, // Max depth of AOE effect, in meters. 0=disabled, and AOE effect will reach to a depth of the radius value
+                    MaxAbsorb = 0f, // Soft cutoff for damage, except for pooled falloff.  If pooled falloff, limits max damage per block.
+                    Falloff = Pooled, //.NoFalloff applies the same damage to all blocks in radius
+                    //.Linear drops evenly by distance from center out to max radius
+                    //.Curve drops off damage sharply as it approaches the max radius
+                    //.InvCurve drops off sharply from the middle and tapers to max radius
+                    //.Squeeze does little damage to the middle, but rapidly increases damage toward max radius
+                    //.Pooled damage behaves in a pooled manner that once exhausted damage ceases.
+                    //.Exponential drops off exponentially.  Does not scale to max radius
+                    ArmOnlyOnHit = true, // Detonation only is available, After it hits something, when this is true. IE, if shot down, it won't explode.
+                    MinArmingTime = 0, // In ticks, before the Ammo is allowed to explode, detonate or similar; This affects shrapnel spawning.
+                    NoVisuals = false,
+                    NoSound = false,
+                    ParticleScale = 1,
+                    CustomParticle = "none", // Particle SubtypeID, from your Particle SBC
+                    CustomSound = "none", // SubtypeID from your Audio SBC, not a filename
+                    Shape = Diamond, // Round or Diamond shape.  Diamond is more performance friendly.
+                }, 
+            },
+            Trajectory = new TrajectoryDef 
+			{
+                Guidance = None,
+                MaxLifeTime = 3600, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
+                DesiredSpeed = 600f, // DO NOT SET HIGHER THAN 4100
+                MaxTrajectory = 2400f,
+                SpeedVariance = Random(start: 0, end: 20), // subtracts value from DesiredSpeed
+                RangeVariance = Random(start: 0, end: 50), // subtracts value from MaxTrajectory
+            },
+            AmmoGraphics = new GraphicDef 
+			{
+                ModelName = "",
+                VisualProbability = 1f,
+                Particles = new AmmoParticleDef
+                {
+                    Ammo = new ParticleDef
+                    {
+                        Name = "MD_BulletGlowMedMagenta", //ShipWelderArc
+                        Offset = Vector(x: 0, y: 0, z: 0),
+                        Extras = new ParticleOptionDef
+                        {
+                            Scale = 1,
+                        },
+                    },
+                    Hit = new ParticleDef
+                    {
+                        Name = "MD_155HE_Hit", //Explosion_AmmunitionLarge  Collision_Sparks  Explosion_Warhead_50
+                        ApplyToShield = false,
+                        Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
+                        Extras = new ParticleOptionDef
+                        {
+                            Scale = 1f,
+                            HitPlayChance = 1f,
+                        },
+                    },
+                },
+                Lines = new LineDef
+                {
+                    //ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.2f, end: 0f), // adds random value to default width (negatives shrinks width)
+					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
+                    Tracer = new TracerBaseDef
+                    {
+                        Enable = true,
+                        Length = 16f,
+                        Width = 0.45f,
+                        Color = Color(red: 100, green: 30, blue: 50, alpha: 10),
+                        Textures = new[] {"AryxBallisticTracer",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                    },
+                    Trail = new TrailDef
+                    {
+                        Enable = true,
+                        Textures = new[] {"WeaponLaser",},
+                        DecayTime = 60,
+                        Color = Color(red: 0.5f, green: 0.5f, blue: 0.5f, alpha: 0.5f),
                         Back = false,
                         CustomWidth = 0,
                         UseWidthVariance = true,
