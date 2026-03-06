@@ -326,7 +326,7 @@ namespace Scripts
                 Enable = true, // Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!
                 Type = AntiSmartv2, // EnergySink, Emp, Offense, Nav, Dot, AntiSmart, AntiSmartV2, JumpNull, Anchor, Tractor, Pull, Push, 
                 Mode = Field, // Effect , Field
-                Strength = 151f,
+                Strength = 99f,
                 Radius = 700f, // Meters
                 Duration = 1000, // In Ticks
                 StackDuration = true, // Combined Durations
@@ -359,9 +359,9 @@ namespace Scripts
                 Field = new FieldDef
                 {
                     Interval = 30, // Time between each pulse, in game ticks (60 == 1 second), starts at 0 (59 == tick 60).
-                    PulseChance = 20, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
-                    GrowTime = 600, // How many ticks it should take the field to grow to full size.
-                    HideModel = false, // Hide the default bubble, or other model if specified.
+                    PulseChance = 5, // Chance from 0 - 100 that an entity in the field will be hit by any given pulse.
+                    GrowTime = 60, // How many ticks it should take the field to grow to full size.
+                    HideModel = true, // Hide the default bubble, or other model if specified.
                     ShowParticle = true, // Show Block damage effect.
                     TriggerRange = 1000f, //range at which fields are triggered
                     Particle = new ParticleDef // Particle effect to generate at the field's position.
