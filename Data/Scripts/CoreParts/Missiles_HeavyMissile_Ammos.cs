@@ -390,7 +390,7 @@ namespace Scripts
                     {
                         Enable = false,
 						AlwaysDraw = true, 
-                        Textures = new[] {"WeaponLaser",},
+						Textures = new[] {"WeaponTrail",},
                         DecayTime = 150, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
                         Color = Color(red: 1.75f, green: 1.75f, blue: 1.75f, alpha: 1f), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         Back = false,

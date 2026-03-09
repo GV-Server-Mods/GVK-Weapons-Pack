@@ -278,7 +278,7 @@
               <ValueString>Atlas_D_01</ValueString>
             </Property>
             <Property AnimationType="Const" Name="OIT weight factor" Type="Float">
-              <ValueFloat>1</ValueFloat>
+              <ValueFloat>2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Collide" Type="Bool">
               <ValueBool>false</ValueBool>
@@ -315,7 +315,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0.95</ValueFloat>
+              <ValueFloat>0.8</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0</ValueFloat>
@@ -418,10 +418,10 @@
               <ValueBool>false</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Ambient light factor" Type="Float">
-              <ValueFloat>1</ValueFloat>
+              <ValueFloat>5</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Radius var" Type="Float">
-              <ValueFloat>0.6</ValueFloat>
+              <ValueFloat>2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
               <ValueFloat>1</ValueFloat>
@@ -430,7 +430,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.002</ValueFloat>
+              <ValueFloat>0.0005</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -706,7 +706,7 @@
               <ValueString>Atlas_D_01</ValueString>
             </Property>
             <Property AnimationType="Const" Name="OIT weight factor" Type="Float">
-              <ValueFloat>1</ValueFloat>
+              <ValueFloat>2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Collide" Type="Bool">
               <ValueBool>false</ValueBool>
@@ -743,7 +743,7 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0.95</ValueFloat>
+              <ValueFloat>0.8</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
               <ValueFloat>0</ValueFloat>
@@ -803,7 +803,7 @@
               <Keys />
             </Property>
             <Property AnimationType="Const" Name="Camera bias" Type="Float">
-              <ValueFloat>-1</ValueFloat>
+              <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Animated2D" Name="Emissivity" Type="Float">
               <Keys>
@@ -846,10 +846,10 @@
               <ValueBool>false</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Ambient light factor" Type="Float">
-              <ValueFloat>1</ValueFloat>
+              <ValueFloat>5</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Radius var" Type="Float">
-              <ValueFloat>0</ValueFloat>
+              <ValueFloat>2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Rotation velocity collision multiplier" Type="Float">
               <ValueFloat>1</ValueFloat>
@@ -858,7 +858,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.002</ValueFloat>
+              <ValueFloat>0.0005</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -943,7 +943,7 @@
                     <Keys>
                       <Key>
                         <Time>0</Time>
-                        <ValueFloat>5000</ValueFloat>
+                        <ValueFloat>3000</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
@@ -1286,7 +1286,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.002</ValueFloat>
+              <ValueFloat>0.0005</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1511,22 +1511,22 @@
                     <Keys>
                       <Key>
                         <Time>0</Time>
-                        <ValueFloat>3</ValueFloat>
+                        <ValueFloat>0</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.04457168</Time>
+                        <Time>0.003809921</Time>
+                        <ValueFloat>6</ValueFloat>
+                        <Value2D />
+                      </Key>
+                      <Key>
+                        <Time>0.872226</Time>
                         <ValueFloat>4</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
-                        <Time>0.177092463</Time>
-                        <ValueFloat>5</ValueFloat>
-                        <Value2D />
-                      </Key>
-                      <Key>
                         <Time>1</Time>
-                        <ValueFloat>8</ValueFloat>
+                        <ValueFloat>6</ValueFloat>
                         <Value2D />
                       </Key>
                     </Keys>
@@ -1535,7 +1535,7 @@
               </Keys>
             </Property>
             <Property AnimationType="Const" Name="Life" Type="Float">
-              <ValueFloat>2</ValueFloat>
+              <ValueFloat>0.5</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Soft particle distance scale" Type="Float">
               <ValueFloat>10</ValueFloat>
@@ -1553,7 +1553,7 @@
               <Keys>
                 <Key>
                   <Time>0</Time>
-                  <ValueFloat>10</ValueFloat>
+                  <ValueFloat>75</ValueFloat>
                   <Value2D />
                 </Key>
               </Keys>
@@ -1599,10 +1599,10 @@
               <ValueBool>true</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Motion inheritance" Type="Float">
-              <ValueFloat>0.8</ValueFloat>
+              <ValueFloat>0.2</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Life var" Type="Float">
-              <ValueFloat>0.5</ValueFloat>
+              <ValueFloat>0.1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Streaks" Type="Bool">
               <ValueBool>false</ValueBool>
@@ -1702,7 +1702,7 @@
               <ValueBool>false</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Ambient light factor" Type="Float">
-              <ValueFloat>5</ValueFloat>
+              <ValueFloat>50</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Radius var" Type="Float">
               <ValueFloat>0</ValueFloat>
@@ -1714,7 +1714,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.002</ValueFloat>
+              <ValueFloat>0.0005</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -1751,7 +1751,7 @@
                         <ValueVector4>
                           <X>0.1</X>
                           <Y>1</Y>
-                          <Z>0.2</Z>
+                          <Z>0.1</Z>
                           <W>1</W>
                         </ValueVector4>
                         <Value2D />
@@ -1761,7 +1761,7 @@
                         <ValueVector4>
                           <X>0.1</X>
                           <Y>1</Y>
-                          <Z>0.2</Z>
+                          <Z>0.1</Z>
                           <W>1</W>
                         </ValueVector4>
                         <Value2D />
@@ -1771,7 +1771,7 @@
                         <ValueVector4>
                           <X>0.1</X>
                           <Y>1</Y>
-                          <Z>0.2</Z>
+                          <Z>0.1</Z>
                           <W>1</W>
                         </ValueVector4>
                         <Value2D />
@@ -1781,7 +1781,7 @@
                         <ValueVector4>
                           <X>0.1</X>
                           <Y>1</Y>
-                          <Z>0.2</Z>
+                          <Z>0.1</Z>
                           <W>1</W>
                         </ValueVector4>
                         <Value2D />
@@ -1799,22 +1799,22 @@
                     <Keys>
                       <Key>
                         <Time>0</Time>
-                        <ValueFloat>3000</ValueFloat>
+                        <ValueFloat>2000</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>0.333333343</Time>
-                        <ValueFloat>3000</ValueFloat>
+                        <ValueFloat>2000</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>0.6666667</Time>
-                        <ValueFloat>3000</ValueFloat>
+                        <ValueFloat>2000</ValueFloat>
                         <Value2D />
                       </Key>
                       <Key>
                         <Time>1</Time>
-                        <ValueFloat>3000</ValueFloat>
+                        <ValueFloat>2000</ValueFloat>
                         <Value2D />
                       </Key>
                     </Keys>
@@ -2021,7 +2021,7 @@
               <ValueFloat>1</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Hue var" Type="Float">
-              <ValueFloat>0.012</ValueFloat>
+              <ValueFloat>0</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Rotation enabled" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -2142,7 +2142,7 @@
               <ValueInt>0</ValueInt>
             </Property>
             <Property AnimationType="Const" Name="Distance scaling factor" Type="Float">
-              <ValueFloat>0.002</ValueFloat>
+              <ValueFloat>0</ValueFloat>
             </Property>
             <Property AnimationType="Const" Name="Motion interpolation" Type="Bool">
               <ValueBool>true</ValueBool>
@@ -2236,7 +2236,7 @@
               </Keys>
             </Property>
             <Property AnimationType="Const" Name="Enabled" Type="Bool">
-              <ValueBool>true</ValueBool>
+              <ValueBool>false</ValueBool>
             </Property>
             <Property AnimationType="Const" Name="Gravity Displacement" Type="Float">
               <ValueFloat>0</ValueFloat>
@@ -2250,7 +2250,7 @@
           </Properties>
         </ParticleLight>
       </ParticleLights>
-      <DistanceMax>5000</DistanceMax>
+      <DistanceMax>4000</DistanceMax>
       <Priority>1</Priority>
     </ParticleEffect>
   </ParticleEffects>

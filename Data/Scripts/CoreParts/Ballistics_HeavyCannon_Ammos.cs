@@ -158,7 +158,7 @@ namespace Scripts
                     Trail = new TrailDef
                     {
                         Enable = true,
-                        Textures = new[] {"WeaponLaser",},
+						Textures = new[] {"WeaponTrail",},
                         DecayTime = 120,
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
 						CustomWidth = 1.5f,

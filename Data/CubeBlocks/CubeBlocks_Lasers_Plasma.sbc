@@ -8,8 +8,8 @@
 				<SubtypeId>lokiCannon1</SubtypeId>
 			</Id>
 			<DisplayName>*Plasma* LOKI Turret</DisplayName>
-			<Description>The LOKI launches slow moving plasma fields with extreme heat that melts armor and adjacent subsystems. Designed by L.Y.N.X.
-				[Uses Plasma Cells + Energy]
+			<Description>The LOKI fires a 3-round burst of plasma that melts armor but is less effective against non-armor. Designed by L.Y.N.X.
+				[Uses Plasma Charge + Energy]
 			</Description>
 			<Icon>Textures\GUI\Icons\Cubes\lokiCannon_01.png</Icon>
 			<CubeSize>Large</CubeSize>

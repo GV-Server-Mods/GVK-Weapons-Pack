@@ -331,7 +331,7 @@ namespace Scripts
                     {
                         Enable = true,
 						AlwaysDraw = true, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
-                        Textures = new[] {"WeaponLaser",},
+						Textures = new[] {"WeaponTrail",},
                         DecayTime = 300, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
                         Color = Color(red: 1, green: 1, blue: 1, alpha: 1f),
                         Back = false,

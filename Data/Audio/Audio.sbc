@@ -2085,6 +2085,7 @@
 			<Category>SHOT</Category>
 			<MaxDistance>500</MaxDistance>
 			<PreventSynchronization>10</PreventSynchronization>
+			<PitchVariation>20</PitchVariation>
 			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
@@ -2098,29 +2099,18 @@
 				<SubtypeId>PlasmaLauncher_Fire</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>3000</MaxDistance>
-			<PreventSynchronization>10</PreventSynchronization>
+			<MaxDistance>4000</MaxDistance>
+			<PreventSynchronization>3</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>3</DynamicMusicAmount>
-			<Volume>1.5</Volume>
+			<PitchVariation>20</PitchVariation>
+			<Volume>1</Volume>
 			<DistantSounds>
 				<DistantSound DistanceCrossFade="10" Distance="800" Sound="HeavyCannon_FireDistant"/>
 			</DistantSounds>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_near_01.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_near_02.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_near_03.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_near_04.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_near_05.xwm</Start>
 				</Wave>
 			</Waves>
 		</Sound>
@@ -2130,24 +2120,13 @@
 				<SubtypeId>PlasmaLauncher_FireDistant</SubtypeId>
 			</Id>
 			<Category>SHOT</Category>
-			<MaxDistance>3000</MaxDistance>
-			<PreventSynchronization>10</PreventSynchronization>
-			<Volume>1.5</Volume>
+			<MaxDistance>4000</MaxDistance>
+			<PitchVariation>20</PitchVariation>
+			<PreventSynchronization>3</PreventSynchronization>
+			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_distant_01.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_distant_02.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_distant_03.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_distant_04.xwm</Start>
-				</Wave>
-				<Wave Type="D3">
-					<Start>Audio\DOK\sfx_weapon_g_battlecruiser_cannon_distant_05.xwm</Start>
 				</Wave>
 			</Waves>
 		</Sound>
@@ -2161,7 +2140,7 @@
 			<PreventSynchronization>15</PreventSynchronization>
 			<DynamicMusicCategory>HeavyFight</DynamicMusicCategory>
 			<DynamicMusicAmount>10</DynamicMusicAmount>
-			<Volume>2</Volume>
+			<Volume>1</Volume>
 			<Waves>
 				<Wave Type="D3">
 					<Start>Audio\DOK\sfx_expl_lrg_lay_dist_g_01.xwm</Start>

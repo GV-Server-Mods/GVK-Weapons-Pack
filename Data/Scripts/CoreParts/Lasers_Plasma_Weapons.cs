@@ -78,8 +78,8 @@ namespace Scripts
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.004f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
-                    ElevateRate = 0.004f, // Max traversal speed of elevation subpart in radians per tick.
+                    RotateRate = 0.01f, // Max traversal speed of azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).
+                    ElevateRate = 0.01f, // Max traversal speed of elevation subpart in radians per tick.
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
@@ -91,26 +91,21 @@ namespace Scripts
                     Offset = Vector(x: 0, y: 0, z: 0), // Offsets the aiming/firing line of the weapon, in metres.
                     Type = BlockWeapon, // What type of weapon this is; BlockWeapon, HandWeapon, Phantom 
                 },
-                Other = new OtherDef
-                {
-                    ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
-                    MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
-                    DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
-                    NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution. 
-                    Debug = false, // Force enables debug mode.
-                    RestrictionRadius = 0, // Prevents other blocks of this type from being placed within this distance of the centre of the block.
-                    CheckInflatedBox = false, // If true, the above distance check is performed from the edge of the block instead of the centre.
-                    CheckForAnyWeapon = false, // If true, the check will fail if ANY weapon is present, not just weapons of the same subtype.
-                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
-                    RateOfFire = 60, // Set this to 3600 for beam weapons.
+                    RateOfFire = 120, // Set this to 3600 for beam weapons. This is how fast your gun fires per minute.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    ReloadTime = 1500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    SkipBarrels = 0, // Number of muzzles to skip after each fire event.
+                    ReloadTime = 750, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     MagsToLoad = 1, // Number of physical magazines to consume on reload.
                     DelayUntilFire = 120, // How long the weapon waits before shooting after being told to fire. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    StayCharged = true, // Will start recharging whenever power cap is not full.
+                    ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
+                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    FireFull = true, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
+                    StayCharged = false, // Will start recharging whenever power cap is not full.
+                    MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for smart or droneAdvanced projectiles)
                 },
                 Audio = new HardPointAudioDef
                 {
@@ -123,13 +118,29 @@ namespace Scripts
                     BarrelRotationSound = "",
                     FireSoundEndDelay = 0, // How long the firing audio should keep playing after firing stops. Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
                 },
-            },
+                Graphics = new HardPointParticleDef
+                {
+                    Effect1 = new ParticleDef
+                    {
+                        Name = "MD_PlasmaLaunch", // SubtypeId of muzzle particle effect. 
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        Extras = new ParticleOptionDef
+                        {
+                            Loop = false, // Set this to the same as in the particle sbc!
+                            Restart = false, // Whether to end a looping effect instantly when firing stops.
+                            MaxDistance = 3000,
+                            MaxDuration = 1120,
+                            Scale = 0.8f, // Scale of effect.
+                        },
+                    },
+                },
+			},
             Ammos = new[] 
 			{
                 Lasers_Plasma,
-				Lasers_Plasma_Shrapnel,// Must list all primary, shrapnel, and pattern ammos.
             },
-            Animations = Lasers_Plasma_Animations_Loki,
+            //Animations = Lasers_Plasma_Animations_Loki,
         };
     }
 }

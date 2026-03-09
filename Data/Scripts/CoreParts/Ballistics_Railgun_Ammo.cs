@@ -133,7 +133,7 @@ namespace Scripts
                     Trail = new TrailDef
                     {
                         Enable = true,
-                        Textures = new[] {"WeaponLaser",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+						Textures = new[] {"WeaponTrail",},
                         DecayTime = 50,
                         Color = Color(red: 22, green: 32, blue: 50, alpha: 1),
                         Back = false,

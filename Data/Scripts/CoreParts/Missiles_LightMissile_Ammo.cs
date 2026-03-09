@@ -152,58 +152,6 @@ namespace Scripts
 			{
                 ModelName = "\\Models\\Cubes\\Large\\HWK_QuadMissileLauncher_Projectile.mwm",
                 VisualProbability = 1f,
-                Decals = new DecalDef
-                {
-                    MaxAge = 3600,
-                    Map = new[]
-                    {
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Metal",
-                            DecalMaterial = "Missile",
-                        },
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Glass",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Soil",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Wood",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "GlassOpaque",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Stone",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Rock",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Ice",
-                            DecalMaterial = "Missile",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Soil",
-                            DecalMaterial = "Missile",
-                        },
-                    },
-                },
                 Particles = new AmmoParticleDef
                 {
 					Ammo = new ParticleDef
@@ -246,9 +194,7 @@ namespace Scripts
                     {
                         Enable = true,
 						AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
-                        Textures = new[] {
-                            "WeaponTrail",
-                        },
+						Textures = new[] {"WeaponTrail",},
                         DecayTime = 60,
                         Color = Color(red: 0.1f, green: 0.075f, blue: 0.075f, alpha: 0.75f),
                         Back = false,

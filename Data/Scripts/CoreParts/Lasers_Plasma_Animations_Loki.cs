@@ -39,13 +39,13 @@ namespace Scripts
                            ForceStop = false,
                            Particle = new ParticleDef
                            {
-                               Name = "MD_PlasmaLaunch",
+                               Name = "MD_PlasmaPreFire",
                                Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
                                Extras = new ParticleOptionDef
                                {
-                                   Loop = true,
+                                   Loop = false,
                                    Restart = false,
-                                   MaxDistance = 3000, //meters
+                                   MaxDistance = 1000, //meters
                                    MaxDuration = 1120, //ticks 60 = 1 second
                                    Scale = 1,
                                }

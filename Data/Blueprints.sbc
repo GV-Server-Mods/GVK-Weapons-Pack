@@ -140,13 +140,14 @@
 			</Id>
 			<DisplayName>*Rocket* Hydra HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Small_Rocket.dds</Icon>
-            <Prerequisites>
-                <Item Amount="11" TypeId="Ingot" SubtypeId="Magnesium" />
-                <Item Amount="110.4" TypeId="Ingot" SubtypeId="Iron" />
-                <Item Amount="0.3" TypeId="Ingot" SubtypeId="Platinum" />
-                <Item Amount="11" TypeId="Ingot" SubtypeId="Silicon" />
-            </Prerequisites><BaseProductionTimeInSeconds>41</BaseProductionTimeInSeconds>
-		<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
+			<Prerequisites>
+				<Item Amount="11" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="110.4" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="0.3" TypeId="Ingot" SubtypeId="Platinum"/>
+				<Item Amount="11" TypeId="Ingot" SubtypeId="Silicon"/>
+			</Prerequisites>
+			<BaseProductionTimeInSeconds>41</BaseProductionTimeInSeconds>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missile200mm"/>
 		</Blueprint>
 		<!-- Ammo only discoverable -->
 		<Blueprint>
@@ -225,17 +226,17 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>014_Lasers_Plasma</SubtypeId>
 			</Id>
-			<DisplayName>*Plasma* Plasma Bomb x1</DisplayName>
+			<DisplayName>*Plasma* Plasma Charge x3</DisplayName>
 			<Icon>Textures\Icons\MD_Ammo.dds</Icon>
 			<Prerequisites>
-				<Item Amount="19.2" TypeId="Ingot" SubtypeId="GVK_RUs"/>
-				<Item Amount="95.1" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="951" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="2.4" TypeId="Ingot" SubtypeId="Uranium"/>
-				<Item Amount="1188.8" TypeId="Ingot" SubtypeId="Cobalt"/>
-				<Item Amount="7.1" TypeId="Ingot" SubtypeId="Gold"/>
+				<Item Amount="10.2" TypeId="Ingot" SubtypeId="GVK_RUs"/>
+				<Item Amount="50.4" TypeId="Ingot" SubtypeId="Magnesium"/>
+				<Item Amount="504.3" TypeId="Ingot" SubtypeId="Iron"/>
+				<Item Amount="1.3" TypeId="Ingot" SubtypeId="Uranium"/>
+				<Item Amount="630.4" TypeId="Ingot" SubtypeId="Cobalt"/>
+				<Item Amount="3.8" TypeId="Ingot" SubtypeId="Gold"/>
 			</Prerequisites>
-			<BaseProductionTimeInSeconds>115</BaseProductionTimeInSeconds>
+			<BaseProductionTimeInSeconds>72</BaseProductionTimeInSeconds>
 			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Lasers_Plasma"/>
 		</Blueprint>
 		<Blueprint>
