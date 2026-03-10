@@ -149,8 +149,8 @@
 				<Y>0.4</Y>
 				<Z>0.4</Z>
 			</Size>
-			<Mass>8000</Mass>
-			<Volume>800</Volume>
+			<Mass>4000</Mass>
+			<Volume>400</Volume>
 			<Model>Models\AWE_Ammo\Aryx480mmShell.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -195,8 +195,8 @@
 				<Y>0.3</Y>
 				<Z>0.3</Z>
 			</Size>
-			<Mass>31400</Mass>
-			<Volume>3140</Volume>
+			<Mass>13300</Mass>
+			<Volume>1330</Volume>
 			<Model>Models\Weapons\RailgunAmmoLarge.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -218,8 +218,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>110</Mass>
-			<Volume>140</Volume>
+			<Mass>80</Mass>
+			<Volume>110</Volume>
 			<Model>Models\Weapons\Projectile_Missile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -241,8 +241,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>170</Mass>
-			<Volume>110</Volume>
+			<Mass>140</Mass>
+			<Volume>90</Volume>
 			<Model>Models\Cubes\Large\HWK_QuadMissileLauncher_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -264,8 +264,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>760</Mass>
-			<Volume>380</Volume>
+			<Mass>600</Mass>
+			<Volume>300</Volume>
 			<Model>Models\Cubes\Large\missileBattery01\mediumMissile01_model.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -287,8 +287,8 @@
 				<Y>5.0</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>3750</Mass>
-			<Volume>2500</Volume>
+			<Mass>2250</Mass>
+			<Volume>1500</Volume>
 			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -310,8 +310,8 @@
 				<Y>1</Y>
 				<Z>1</Z>
 			</Size>
-			<Mass>900</Mass>
-			<Volume>450</Volume>
+			<Mass>680</Mass>
+			<Volume>340</Volume>
 			<Model>Models\AWE_Ammo\AryxSabreMissile.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
@@ -333,8 +333,8 @@
 				<Y>0.2</Y>
 				<Z>0.2</Z>
 			</Size>
-			<Mass>840</Mass>
-			<Volume>560</Volume>
+			<Mass>360</Mass>
+			<Volume>240</Volume>
 			<Model>Models\Ammo\MD_Ammo.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>3</Capacity>
@@ -356,8 +356,8 @@
 				<Y>2</Y>
 				<Z>0.5</Z>
 			</Size>
-			<Mass>2520</Mass>
-			<Volume>1680</Volume>
+			<Mass>1730</Mass>
+			<Volume>1150</Volume>
 			<Model>Models\AWE_Ammo\ARYX_SidekickDroneItem.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
 			<Capacity>1</Capacity>
