@@ -70,15 +70,15 @@
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\warhead.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="Girder" Count="6"/>
-				<Component Subtype="Construction" Count="3"/>
-				<Component Subtype="SmallTube" Count="5"/>
-				<Component Subtype="Computer" Count="1"/>
-				<Component Subtype="Explosives" Count="55"/>
-				<Component Subtype="SteelPlate" Count="1"/>
-			</Components>
+            <Components>
+                <Component Subtype="SteelPlate" Count="5" />
+                <Component Subtype="Girder" Count="2" />
+                <Component Subtype="Construction" Count="1" />
+                <Component Subtype="SmallTube" Count="2" />
+                <Component Subtype="Computer" Count="1" />
+                <Component Subtype="Explosives" Count="11" />
+                <Component Subtype="SteelPlate" Count="1" />
+            </Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<CriticalComponent Subtype="Explosives" Index="0"/>
 			<BuildProgressModels>
@@ -192,15 +192,15 @@
 			</BuildProgressModels>
 			<BlockPairName>ExplosiveBarrel</BlockPairName>
 			<MirroringY>XHalfY</MirroringY>
-			<Components>
-				<Component Subtype="SteelPlate" Count="3"/>
-				<Component Subtype="Girder" Count="6"/>
-				<Component Subtype="Construction" Count="3"/>
-				<Component Subtype="SmallTube" Count="5"/>
-				<Component Subtype="Computer" Count="1"/>
-				<Component Subtype="Explosives" Count="55"/>
-				<Component Subtype="SteelPlate" Count="1"/>
-			</Components>
+            <Components>
+                <Component Subtype="SteelPlate" Count="5" />
+                <Component Subtype="Girder" Count="2" />
+                <Component Subtype="Construction" Count="1" />
+                <Component Subtype="SmallTube" Count="2" />
+                <Component Subtype="Computer" Count="1" />
+                <Component Subtype="Explosives" Count="11" />
+                <Component Subtype="SteelPlate" Count="1" />
+            </Components>
 			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<CriticalComponent Subtype="Explosives" Index="0"/>
 			<MirroringY>Z</MirroringY>
