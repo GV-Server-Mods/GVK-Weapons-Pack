@@ -56,7 +56,7 @@ namespace Scripts
             Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
             {
                 AmmoRound = "Large HE Fragment", // AmmoRound field of the ammo to spawn.
-                Fragments = 50, // Number of projectiles to spawn.
+                Fragments = 100, // Number of projectiles to spawn.
                 Degrees = 360, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
                 DropVelocity = true, // fragments will not inherit velocity from parent.
@@ -162,7 +162,7 @@ namespace Scripts
             TerminalName = "", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.  If patterning ammos, only the main ammo (first fired) will count toward energy.
-            BaseDamage = 4000, // Direct damage; one steel plate is worth 100.
+            BaseDamage = 2000, // Direct damage; one steel plate is worth 100.
             BaseDamageCutoff = 0,  // Maximum amount of pen damage to apply per block hit.  Deducts from BaseDamage and uses DamageScales modifiers
                                     // Optional penetration mechanic to apply damage to blocks beyond the first hit, without requiring the block to be destroyed.  
                                     // Overwrites normal damage behavior of requiring a block to be destroyed before damage can continue.  0 disables. 
@@ -183,7 +183,7 @@ namespace Scripts
             Shape = new ShapeDef // Defines the collision shape of the projectile, defaults to LineShape and uses the visual Line Length if set to 0.
             {
                 Shape = LineShape, // LineShape or SphereShape. Do not use SphereShape for fast moving projectiles if you care about precision.
-                Diameter = 3, // For SphereShape this is diameter.
+                Diameter = -1f, // For SphereShape this is diameter.
                               // For LineShape it is total length (double this value when setting up MaximumDiameter for weapon targeting).
                               // Defaults to 1 if left zero or deleted.
             },
@@ -257,7 +257,7 @@ namespace Scripts
                 var ammo = Other_Warheads_RegularWarhead_LG_Ammo;
                 ammo.AmmoRound = "Small HE";
 				ammo.Fragment.AmmoRound = "Small HE Fragment";
-				ammo.Fragment.Fragments = 25;
+				ammo.Fragment.Fragments = 50;
 				ammo.Pattern.Patterns[0] = "Small HE Particle";
                 return ammo;
             }
@@ -282,7 +282,7 @@ namespace Scripts
             {
                 var ammo = Other_Warheads_RegularWarhead_LG_Ammo_Fragment;
                 ammo.AmmoRound = "Small HE Fragment";
-				ammo.BaseDamage = 2000f;
+				ammo.BaseDamage = 1000f;
 				ammo.Trajectory.MaxTrajectory = 7.5f;
                 return ammo;
             }
