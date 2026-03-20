@@ -2,6 +2,84 @@
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
 		<!-- Player Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ARYXHydraTurret</SubtypeId>
+			</Id>
+			<DisplayName>*Rocket* Hydra Turret XL</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxHydraTurret.dds</Icon>
+			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
+				[Uses Hydra HE]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Hydra\LG_ARYXHydra_Base.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4"/>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Index="0" Subtype="Computer"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="3.0" EndY="3.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Hydra\LG_ARYXHydra_Base_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Hydra\LG_ARYXHydra_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Hydra\LG_ARYXHydra_Base_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>LG_ARYXHydra_Base</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<!--WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /-->
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Missiles_Rocket"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>4</PCU>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition" Enabled="true">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>
@@ -589,6 +667,86 @@
 			<Public>true</Public>
 		</Definition>
 		<!-- NPC Weapons -->
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
+			<Id>
+				<TypeId>ConveyorSorter</TypeId>
+				<SubtypeId>ARYXHydraTurret_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*Rocket* Hydra Turret XL</DisplayName>
+			<Icon>Textures\GUI\Icons\AryxHydraTurret.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Hydra\LG_ARYXHydra_Base.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="67"/>
+				<Component Subtype="PrototechPanel" Count="4">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechPanelScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="67"/>
+				<Component Subtype="LargeTube" Count="81"/>
+				<Component Subtype="Motor" Count="220"/>
+				<Component Subtype="Computer" Count="170"/>
+				<Component Subtype="Construction" Count="540"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<CriticalComponent Index="0" Subtype="Computer"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
+				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="3.0" EndY="3.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Hydra\LG_ARYXHydra_Base_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Hydra\LG_ARYXHydra_Base_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.0" File="Models\Hydra\LG_ARYXHydra_Base_BS3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>LG_ARYXHydra_Base_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<!--WeaponDefinitionId Subtype="AryxBurstCannonWepDef" /-->
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="Missiles_Rocket"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.24</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>4</PCU>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
+			<IsAirTight>false</IsAirTight>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition" Enabled="true">
 			<Id>
 				<TypeId>LargeMissileTurret</TypeId>

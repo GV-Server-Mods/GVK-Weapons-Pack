@@ -34,6 +34,7 @@
 			<DisplayName>Artillery Cannon Weapons</DisplayName>
 			<Description/>
 			<Blocks>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXCycloneCannon"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_CycloneCannonTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurret"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGun"/>
@@ -102,6 +103,7 @@
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype=""/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallMissileLauncherWarfare2"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="Missiles_Rockets_SGReloadableLauncher"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXHydraTurret"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

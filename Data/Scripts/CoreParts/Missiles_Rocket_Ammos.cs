@@ -125,7 +125,7 @@ namespace Scripts
 			},
 			AmmoGraphics = new GraphicDef 
 			{
-				ModelName = "\\Models\\Missiles\\MXA_Archer_Missile.mwm",
+				ModelName = "\\Models\\AWE_Ammo\\AryxFlechetteMissile.mwm",
 				VisualProbability = 1f,
                 Decals = new DecalDef
                 {
@@ -221,7 +221,7 @@ namespace Scripts
 						Enable = true,
 						Textures = new[] {"WeaponTrail",},
 						DecayTime = 30,
-						Color = Color(red: 1, green: 1, blue: 1, alpha: 1f),
+						Color = Color(red: 1, green: 1, blue: 1, alpha: 0.75f),
 						Back = false,
 						CustomWidth = 1f,
 						UseWidthVariance = true,

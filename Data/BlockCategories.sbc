@@ -63,6 +63,8 @@
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 				<string>Missiles_Rockets_SGReloadableLauncher</string>
+				<string>ARYXHydraTurret</string>
+				<string>ARYXCycloneCannon</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -127,6 +129,8 @@
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 				<string>Missiles_Rockets_SGReloadableLauncher</string>
+				<string>ARYXHydraTurret</string>
+				<string>ARYXCycloneCannon</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -191,6 +195,8 @@
 				<string>SmallBlockRadioAntenna_WCRadar</string>
 				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 				<string>Missiles_Rockets_SGReloadableLauncher</string>
+				<string>ARYXHydraTurret</string>
+				<string>ARYXCycloneCannon</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>

@@ -113,6 +113,8 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/GVK_GriffinMissileTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/R309_RailCannon"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/odin"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXHydraTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXCycloneCannon"/>
 		<!-- SMALL BLOCKS, Don't need to add Vanillas here -->
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncher/OKI122mmSGfixed"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/OKI122mmVT"/>

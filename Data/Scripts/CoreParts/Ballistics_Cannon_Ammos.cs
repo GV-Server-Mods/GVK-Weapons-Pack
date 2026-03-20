@@ -128,8 +128,8 @@ namespace Scripts
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
 					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
@@ -144,7 +144,7 @@ namespace Scripts
                         Enable = true,
 						Textures = new[] {"WeaponTrail",},
                         DecayTime = 40,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                        Color = Color(red: 0.5f, green: 0.5f, blue: 0.5f, alpha: 0.5f),
                         Back = false,
                         CustomWidth = 0,
                         UseWidthVariance = true,
@@ -276,8 +276,8 @@ namespace Scripts
                 },
                 Lines = new LineDef
                 {
-                    //ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: -0.2f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
 					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
@@ -455,8 +455,8 @@ namespace Scripts
                 },
                 Lines = new LineDef
                 {
-                    ColorVariance = Random(start: 0.75f, end: 2f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: 0f, end: 0f), // adds random value to default width (negatives shrinks width)
+                    ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
 					DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
@@ -471,7 +471,7 @@ namespace Scripts
                         Enable = true,
                         Textures = new[] {"WeaponLaser",},
                         DecayTime = 40,
-                        Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+                        Color = Color(red: 0.5f, green: 0.5f, blue: 0.5f, alpha: 0.5f),
                         Back = false,
                         CustomWidth = 0,
                         UseWidthVariance = true,

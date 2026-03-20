@@ -69,7 +69,6 @@ namespace Scripts
 							SmallFlareWC,
 							FlarePistolGun,
 							odin_def,
-							//Ballistics_MAC_Turret,
 							GVK_GriffinMissileTurret,
 							GVK_CycloneCannonTurret,
 							GVK_GriffinMissileLauncher,
@@ -80,7 +79,9 @@ namespace Scripts
 							Other_Warheads_RegularWarhead_LG_Weapon,
 							Other_Warheads_RegularWarhead_SG_Weapon,
 							SmallGriffinLauncherWarfare2,
-							Missiles_Rockets_SGReloadableLauncher
+							Missiles_Rockets_SGReloadableLauncher,
+							ARYXHydraTurret,
+							AryxCycloneTurret
 							);
             ArmorDefinitions(BusterArmor, AdditionalLightArmors);
             // SupportDefinitions(ArmorEnhancer1A);
