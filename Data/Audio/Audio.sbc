@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Sounds>
+		<!-- D2 sounds need to be around -12dB volume than the D3 version -->
 		<!-- Sounds with attached DistantSounds must have a MaxDistance equal to the DistantSound MaxDistance -->
-		<!-- Loopable sounds must be .wav 32-bit float 44100Hz, everything else should be .xwm 48kbps-->
+		<!-- Loopable sounds must be .wav 32-bit float 44100Hz, everything else should be .xwm 48kbps unsigned 8-bit -->
 		<!-- Add 1 second of silence to start of all distant sounds for extra effect, except for Loopable -->
 		<!-- PreventSynchronization is the min time in ticks before the sound can be triggered again -->
         <Sound>
