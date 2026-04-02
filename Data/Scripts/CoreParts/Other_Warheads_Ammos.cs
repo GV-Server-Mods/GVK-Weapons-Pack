@@ -207,20 +207,23 @@ namespace Scripts
                 MaxLifeTime = 5, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 1, // voxel phasing if you go above 5100
                 MaxTrajectory = 20f, // Max Distance the projectile or beam can Travel.
+                //RangeVariance = Random(start: 0, end: 3), // subtracts value from MaxTrajectory
             },
 			// Just for debugging damage
             AmmoGraphics = new GraphicDef
             {
-                VisualProbability = 0f, // 0-1 % chance of AV appearing (controls all audio AND visual)
+                VisualProbability = 0.3f, // 0-1 % chance of AV appearing (controls all audio AND visual)
                 Lines = new LineDef
                 {
+                    ColorVariance = Random(start: 0.5f, end: 1.5f), // multiply the color by random values within range.
+                    WidthVariance = Random(start: -0.1f, end: 0.1f), // adds random value to default width (negatives shrinks width)
                     DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
                         Length = 5f, //
-                        Width = 0.2f, //
-                        Color = Color(red: 30, green: 2, blue: 1f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Width = 0.1f, //
+                        Color = Color(red: 10, green: 5, blue: 2, alpha: 1),
                         FactionColor = DontUse, // DontUse, Foreground, Background.
                         VisualFadeStart = 0, // Number of ticks the weapon has been firing before projectiles begin to fade their color
                         VisualFadeEnd = 0, // How many ticks after fade began before it will be invisible.
@@ -235,11 +238,11 @@ namespace Scripts
                         Enable = true,
                         AlwaysDraw = false, // Prevents this tracer from being culled.  Only use if you have a reason too (very long tracers/trails).
                         Textures = new[] {
-                            "WeaponLaser", // Please always have this Line set, if this Section is enabled.
+                            "WeaponTrail", // Please always have this Line set, if this Section is enabled.
                         },
                         TextureMode = Normal,
-                        DecayTime = 60, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
-                        Color = Color(red: 30, green: 10, blue: 10, alpha: 1),
+                        DecayTime = 30, // In Ticks. 1 = 1 Additional Tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.
+                        Color = Color(red: 10, green: 5, blue: 2, alpha: 1),
                         FactionColor = DontUse, // DontUse, Foreground, Background.
                         Back = false,
                         CustomWidth = 0,
