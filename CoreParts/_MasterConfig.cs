@@ -83,7 +83,12 @@ namespace Scripts
 							ARYXHydraTurret,
 							AryxCycloneTurret
 							);
-            ArmorDefinitions(BusterArmor, AdditionalLightArmors);
+							
+            ArmorDefinitions(
+							GVK_BusterArmor,
+							GVK_AdditionalLightArmors, 
+							GVK_MechanicalBlocks, 
+							GVK_CockpitBuffs);
             // SupportDefinitions(ArmorEnhancer1A);
             // UpgradeDefinitions(Upgrade75a, Upgrade75b);
         }

@@ -1,0 +1,24 @@
+# WORKSPACE INSTRUCTIONS: WEAPONCORE / COREPARTS MOD DEVELOPMENT
+
+## I. USER & COMMUNICATION CONTEXT
+- The user is an experienced Space Engineers modder working with WeaponCore (CoreParts / CoreSystems).
+- Target Framework: .NET Framework 4.8 via MDK2.
+- Skip basic tutorials, or generic Space Engineers concepts.
+- Provide direct, production-ready C# definition classes and SBC blocks.
+
+## II. DIRECTORY ROLES & DATA TRUTH
+- `./content/` contains all of the SE block definitions, audio, models and textures.
+  - XML definitions (block definitions, SBCs) live in `./content/Data/`.
+- `./CoreParts/` contains all of the WeaponCore C# script files that define this mod's weapon mechanics and behavior.
+- `./CorePartsReferences/` is a local, read-only repository clone of the CoreParts codebase and official examples.
+- CRITICAL: Treat `./CorePartsReferences/` as the absolute source of truth for:
+  - Definition structures (`WeaponDef`, `AmmoDef`, `ArmorDef`, `PartAnimation`, etc.).
+  - Enums, flag options, and valid property fields.
+  - Never hallucinate properties or methods not found in the reference repository.
+  - Note that commented notes sometimes contain errors, or misinterpretations from the WeaponCore dev community.
+
+## III. DEFINITION INTEGRITY & VALIDATION
+- Cross-Match Names: Ensure SubtypeIds in `.sbc` files match the block assignments inside `WeaponDef.Assignments.MountPoints`.
+- Ammo & Particle Links: Cross-check that `AmmoDef` IDs match their respective `WeaponDef.HardPoint.Loading.Ammos` entries.
+- Dummy Alignment: Ensure weapon dummy names in scripts match standard Space Engineers / CoreParts conventions (e.g., `detector_barrel_01`, `muzzle_projectile_01`).
+- Isolation Boundary: Never suggest placing build tools, `.dll` references, or files from `./CorePartsReferences/` directly into the `./content/` folder.

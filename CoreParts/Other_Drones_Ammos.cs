@@ -40,26 +40,21 @@ namespace Scripts
     partial class Parts
     {
 
-        private AmmoDef Others_Drone_Offense_Main => new AmmoDef
-        {
-            AmmoMagazine = "Others_Drone_Falcon",
-            AmmoRound = "Offense Falcon Mode", 
-            BaseDamage = 1f,
-            Mass = 500f, // in kilograms
-            Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
-            BackKickForce = 5f,
-            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
-			Sync = new SynchronizeDef
-            {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },
+		private AmmoDef Others_Drone_Offense_Main => new AmmoDef
+		{
+			AmmoMagazine = "Others_Drone_Falcon",
+			AmmoRound = "Offense Falcon Mode", 
+			BaseDamage = 1f,
+			Mass = 500f, // in kilograms
+			Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+			BackKickForce = 5f,
+			HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+			NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
+			Sync = Common_Ammos_Synchronize_Full,
 			Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
-            {
-                AmmoRound = "Others_Drone_Gunship", // AmmoRound field of the ammo to spawn.
+			{
+				AmmoRound = "Others_Drone_Gunship", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 4, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -329,26 +324,21 @@ namespace Scripts
             }, // Don't edit below this line
         };
 
-        private AmmoDef Others_Drone_Defense_Main => new AmmoDef
-        {
-            AmmoMagazine = "Others_Drone_Falcon",
-            AmmoRound = "Defense Falcon Mode", 
-            BaseDamage = 1f,
-            Mass = 500f, // in kilograms
-            Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
-            BackKickForce = 5f,
-            HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
-			Sync = new SynchronizeDef
-            {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },
+		private AmmoDef Others_Drone_Defense_Main => new AmmoDef
+		{
+			AmmoMagazine = "Others_Drone_Falcon",
+			AmmoRound = "Defense Falcon Mode", 
+			BaseDamage = 1f,
+			Mass = 500f, // in kilograms
+			Health = 200f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+			BackKickForce = 5f,
+			HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
+			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+			NoGridOrArmorScaling = true, // If you enable this you can remove the damagescale section entirely.
+			Sync = Common_Ammos_Synchronize_Full,
 			Fragment = new FragmentDef // Formerly known as Shrapnel. Spawns specified ammo fragments on projectile death (via hit or detonation).
-            {
-                AmmoRound = "Others_Drone_Gunship", // AmmoRound field of the ammo to spawn.
+			{
+				AmmoRound = "Others_Drone_Gunship", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 4, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.

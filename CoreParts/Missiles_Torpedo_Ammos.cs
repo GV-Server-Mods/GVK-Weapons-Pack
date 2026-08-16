@@ -47,17 +47,12 @@ namespace Scripts
             Mass = 200f, // In kilograms; how much force the impact will apply to the target.
             Health = 150, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
             HardPointUsable = true, // Whether this is a primary ammo type fired directly by the turret. Set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
-            NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
-            NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
-            Sync = new SynchronizeDef
-            {
-                Full = false, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
-                PointDefense = false, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
-                OnHitDeath = false, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
-            },
-            Fragment = new FragmentDef 
+			NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+			NoGridOrArmorScaling = false, // If you enable this you can remove the damagescale section entirely.
+			Sync = Common_Ammos_Synchronize_Full,
+			Fragment = new FragmentDef 
 			{
-                AmmoRound = "", // AmmoRound field of the ammo to spawn.
+				AmmoRound = "", // AmmoRound field of the ammo to spawn.
                 Fragments = 1, // Number of projectiles to spawn.
                 Degrees = 0, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.

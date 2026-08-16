@@ -39,9 +39,16 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTyp
 
 namespace Scripts
 {
-    partial class Parts
-    {
-				
+	partial class Parts
+	{
+
+		private SynchronizeDef Common_Ammos_Synchronize_Full = new SynchronizeDef 
+		{
+			Full = true, // Be careful, do not use on high fire rate weapons or ammos with many simultaneous fragments. This will send position updates twice per second per projectile/fragment and sync target (grid/block) changes.
+			PointDefense = true, // Server will inform clients of what projectiles have died by PD defense and will trigger destruction.
+			OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
+		};
+
 		private FragmentDef Common_Ammos_Fragment_None = new FragmentDef 
 		{
 			AmmoRound = "",

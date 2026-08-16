@@ -6,6 +6,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Configurations>Release;Debug</Configurations>
     <Platforms>x64</Platforms>
+    <NoWarn>$(NoWarn);CS0649;CS0169;CS0414</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Mal.Mdk2.ModAnalyzers" Version="2.1.16">
@@ -29,8 +30,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
     <AdditionalFiles Remove="Content\*\**\*.cs" />
+    <AdditionalFiles Remove="CorePartsReferences\**" />
+    <Compile Remove="CorePartsReferences\**" />
+    <EmbeddedResource Remove="CorePartsReferences\**" />
+    <None Remove="CorePartsReferences\**" />
     <AdditionalFiles Remove="Content\Other content folders" />
     <AdditionalFiles Remove="Content\Data\SBC files can go here" />
+    <AdditionalFiles Remove="mdk.ini" />
+    <AdditionalFiles Remove="mdk.local.ini" />
+    <None Remove="mdk.ini" />
+    <None Remove="mdk.local.ini" />
+    <None Remove="metadata.mod" />
+    <None Remove="modinfo.sbmi" />
+    <None Remove="Place your code files here" />
     <None Remove="thumb.png" />
   </ItemGroup>
 </Project>

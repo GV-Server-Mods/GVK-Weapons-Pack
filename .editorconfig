@@ -1,0 +1,8 @@
+root = true
+
+# Treat CoreParts template files from WeaponCore as generated code
+[CoreParts/**/script/**]
+generated_code = true
+
+[CoreParts/script/**]
+generated_code = true

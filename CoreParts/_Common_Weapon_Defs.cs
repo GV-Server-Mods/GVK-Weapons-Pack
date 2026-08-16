@@ -77,7 +77,7 @@ namespace Scripts
 			EnableOverload = false, // Enables terminal option to turn on Overload; this allows energy weapons to double damage per shot, at the cost of quadrupled power draw and heat gain, and 2% self damage on overheat.
 			AlternateUi = false, // This simplifies and customizes the block controls for alternative weapon purposes,   
 			DisableStatus = false, // Do not display weapon status NoTarget, Reloading, NoAmmo, etc..
-			DisableSupportingPD = false, // If true, the supporting point defense terminal option will be removed and this weapon will only target projectiles targeting the construct it's placed on
+			DisableSupportingPD = true, // If true, the supporting point defense terminal option will be removed and this weapon will only target projectiles targeting the construct it's placed on
 			ProhibitShotDelay = false, // If true, removes shot delay options for players.  This may be desirable for weapons that use heat or bursts as a balance mechanic and deliberately do not offer the ROF slider.
 			ProhibitBurstCount = true, // If true, removes burst shot count options for players.
 		};
@@ -94,7 +94,8 @@ namespace Scripts
 			DefaultLeadGroup = 1, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
 			TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
 			PainterUseMaxTargeting = true, //If enabled, painter will utilize the lesser of the weapons targeting max dist or projectile trajectory.  By default painter can be used out to the projectiles max trajectory.
-		};
+            UseLimitlessPDSolver = false, // If enabled a more precise and expensive aiming calculation will be used for targeting projectiles.  More effective against dodging/rapidly maneuvering projectiles
+        };
 
 		private AiDef Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking = new AiDef 
 		{
@@ -108,7 +109,8 @@ namespace Scripts
 			DefaultLeadGroup = 0, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
 			TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
 			PainterUseMaxTargeting = true, //If enabled, painter will utilize the lesser of the weapons targeting max dist or projectile trajectory.  By default painter can be used out to the projectiles max trajectory.
-		};
+            UseLimitlessPDSolver = false, // If enabled a more precise and expensive aiming calculation will be used for targeting projectiles.  More effective against dodging/rapidly maneuvering projectiles
+        };
 
 		private AiDef Common_Weapons_Hardpoint_Ai_FullDisable = new AiDef 
 		{
@@ -122,7 +124,8 @@ namespace Scripts
 			DefaultLeadGroup = 2, // Default LeadGroup setting, range 0-5, 0 is disables lead group.  Only useful for fixed weapons or weapons set to OverrideLeads.
 			TargetGridCenter = false, // Does not target blocks, instead it targets grid center.
 			PainterUseMaxTargeting = true, //If enabled, painter will utilize the lesser of the weapons targeting max dist or projectile trajectory.  By default painter can be used out to the projectiles max trajectory.
-		};
+            UseLimitlessPDSolver = false, // If enabled a more precise and expensive aiming calculation will be used for targeting projectiles.  More effective against dodging/rapidly maneuvering projectiles
+        };
 
 		private OtherDef Common_Weapons_Hardpoint_Other_NoRestrictionRadius = new OtherDef 
 		{
