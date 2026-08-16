@@ -60,290 +60,187 @@ namespace Scripts
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockCockpitSeat",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "DBSmallBlockFighterCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "CockpitOpen",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "RoverCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "OpenCockpitSmall",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "OpenCockpitLarge",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockCockpitIndustrial",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockCockpitIndustrial",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "BuggyCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "RivalAIRemoteControlLarge",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "RivalAIRemoteControlSmall",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockFlushCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockCapCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockConsoleModuleInvertedCorner",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockConsoleModuleScreens",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "PassengerBench",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockStandingCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockStandingCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockModularBridgeCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SpeederCockpit",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SpeederCockpitCompact",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockCaptainDesk",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockSuspendedControlSeat",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "LargeBlockSuspendedControlSeatB",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockSuspendedControlSeat",
-					Modifier = 0.1f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
 					SubTypeId = "SmallBlockSuspendedControlSeatB",
-					Modifier = 0.1f,
-				},
-			},
-		};
-
-		private CustomScalesDef Common_Ammos_DamageScales_Cockpits_SmallNerf = new CustomScalesDef 
-		{
-			IgnoreAllOthers = false, //pass through everything else
-			Types = new[]
-			{
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCockpit",
-					Modifier = 0.5f,
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "LargeBlockCockpitSeat",
-					Modifier = 0.5f,
+					SubTypeId = "LargeBlockOpenSlopedCockpit",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "SmallBlockCockpit",
-					Modifier = 0.5f,
+					SubTypeId = "LargeBlockClosedSlopedCockpit",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "DBSmallBlockFighterCockpit",
-					Modifier = 0.5f,
+					SubTypeId = "SmallBlockOpenSlopedCockpit",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "CockpitOpen",
-					Modifier = 0.5f,
+					SubTypeId = "SmallBlockClosedSlopedCockpit",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "RoverCockpit",
-					Modifier = 0.5f,
+					SubTypeId = "LargeBlockLabDeskSeat",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "OpenCockpitSmall",
-					Modifier = 0.5f,
+					SubTypeId = "PassengerSeatLarge",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "OpenCockpitLarge",
-					Modifier = 0.5f,
+					SubTypeId = "PassengerSeatSmall",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "SmallBlockCockpitIndustrial",
-					Modifier = 0.5f,
+					SubTypeId = "PassengerSeatSmallNew",
+					Modifier = 0.6f,
 				},
 				new CustomBlocksDef
 				{
-					SubTypeId = "LargeBlockCockpitIndustrial",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "BuggyCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "RivalAIRemoteControlLarge",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "RivalAIRemoteControlSmall",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockFlushCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockCapCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockConsoleModuleInvertedCorner",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockConsoleModuleScreens",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerBench",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockStandingCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockStandingCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockModularBridgeCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SpeederCockpit",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SpeederCockpitCompact",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCaptainDesk",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockSuspendedControlSeat",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockSuspendedControlSeatB",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockSuspendedControlSeat",
-					Modifier = 0.5f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockSuspendedControlSeatB",
-					Modifier = 0.5f,
+					SubTypeId = "PassengerSeatSmallOffset",
+					Modifier = 0.6f,
 				},
 			},
 		};

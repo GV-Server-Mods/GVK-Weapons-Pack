@@ -84,7 +84,6 @@ namespace Scripts
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Beams = new BeamDef 
 			{
@@ -238,7 +237,6 @@ namespace Scripts
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Beams = new BeamDef
             {
@@ -432,7 +430,6 @@ namespace Scripts
                     Detonation = Energy,
                     Shield = Energy, // Damage against shields is currently all of one type per projectile. Shield Bypass Weapons, always Deal Energy regardless of this line
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Beams = new BeamDef
             {

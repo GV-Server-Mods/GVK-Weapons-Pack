@@ -105,7 +105,6 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef //This also applies HealthHitModifier damage to projectiles in the area
 			{
@@ -216,7 +215,6 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef
             {
@@ -324,7 +322,6 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef //This also applies HealthHitModifier damage to projectiles in the area
 			{

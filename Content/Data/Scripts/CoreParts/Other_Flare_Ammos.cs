@@ -75,7 +75,6 @@ namespace Scripts
 					Detonation = Energy,
 					Shield = Energy,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 			},
             Pattern = new PatternDef
             {

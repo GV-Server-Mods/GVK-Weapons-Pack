@@ -78,7 +78,6 @@ namespace Scripts
                     DeformType = NoDeform, //HitBlock, AllDamagedBlocks, NoDeform
                     DeformDelay = 30,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Trajectory = new TrajectoryDef 
 			{
@@ -248,7 +247,6 @@ namespace Scripts
                     DeformType = NoDeform, //HitBlock, AllDamagedBlocks, NoDeform
                     DeformDelay = 30,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Trajectory = new TrajectoryDef 
 			{

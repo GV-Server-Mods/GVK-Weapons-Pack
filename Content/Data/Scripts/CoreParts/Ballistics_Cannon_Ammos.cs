@@ -88,7 +88,6 @@ namespace Scripts
                     DeformType = HitBlock,
                     DeformDelay = 30,
                 },
-                //Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Trajectory = new TrajectoryDef 
 			{
@@ -209,7 +208,6 @@ namespace Scripts
 					Detonation = Kinetic,
 					Shield = Kinetic,
                 },
-                //Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             AreaOfDamage = new AreaOfDamageDef 	// Note AOE is only applied to the Player/Grid it hit (and nearby projectiles) not nearby grids/players.
 												// Note DamageScales does not apply to AOE
@@ -389,7 +387,6 @@ namespace Scripts
                     DeformType = HitBlock,
                     DeformDelay = 30,
                 },
-                //Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
             },
             Trajectory = new TrajectoryDef 
 			{

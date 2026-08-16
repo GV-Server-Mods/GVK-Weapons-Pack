@@ -84,7 +84,6 @@ namespace Scripts
 					Detonation = Energy,
 					Shield = Energy,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_SmallNerf,
 			},
             AreaOfDamage = new AreaOfDamageDef 
 			{
