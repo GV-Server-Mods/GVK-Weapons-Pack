@@ -49,16 +49,6 @@ namespace Scripts
 			OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
 		};
 
-		private FragmentDef Common_Ammos_Fragment_None = new FragmentDef 
-		{
-			AmmoRound = "",
-		};
-		
-		private GraphicDef Common_Ammos_AmmoGraphics_None = new GraphicDef
-		{
-			ModelName = "",
-		};
-
 		private CustomScalesDef Common_Ammos_DamageScales_Cockpits_BigNerf = new CustomScalesDef 
 		{
             SkipOthers = NoSkip, // Controls how projectile interacts with other blocks in relation to those defined here, NoSkip, Exclusive, Inclusive.

@@ -1,39 +1,42 @@
 ﻿using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DeformDef.DeformTypes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.CustomScalesDef.SkipMode;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.FwdRelativeTo;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ReInitCondition;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.RelativeTo;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DeformDef.DeformTypes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.Falloff;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarMode;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.EwarType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EwarDef.PushPullDef.Force;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.FragmentDef.TimedSpawnDef.PointTypes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.AdvBillboardsDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.FactionColor;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.Texture;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.DecalDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.DamageTypes.Damage;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.GraphicDef.LineDef.TracerBaseDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.PatternDef.PatternModes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.Conditions;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.FwdRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ReInitCondition;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.RelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.UpRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ModelRelativeTo;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
+using static VRageRender.MyBillboard.BlendTypeEnum; // 41 lines of usings... lmao
 
 namespace Scripts
 { // Don't edit above this line
@@ -89,7 +92,7 @@ namespace Scripts
             },
             AmmoGraphics = new GraphicDef 
 			{
-                VisualProbability = 0.6f,
+                VisualProbability = 0.7f,
                 Decals = new DecalDef
                 {
                     MaxAge = 3600,
@@ -149,7 +152,7 @@ namespace Scripts
                         Name = "MD_25_Hit", //MaterialHit_Metal_GatlingGun
                         ApplyToShield = false,
                         Offset = Vector(x: double.MaxValue, y: double.MaxValue, z: double.MaxValue),
-                        DisableCameraCulling = true, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
+                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
                             Scale = 1f,
@@ -157,21 +160,34 @@ namespace Scripts
                         },
                     },
                 },
+                
                 Lines = new LineDef 
 				{
-                    ColorVariance = Random(start: 0f, end: 0f), // multiply the color by random values within range.
-                    WidthVariance = Random(start: -0.05f, end: 0.05f), // adds random value to default width (negatives shrinks width)
                     DropParentVelocity = true, // If set to true will not take on the parents (grid/player) initial velocity when rendering.
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 25f,
-                        Width = 0.10f,
+                        Length = 20f,
+                        Width = 0.07f,
                         FactionColor = DontUse, // DontUse, Foreground, Background.
                         Color = Color(red: 22f, green: 10f, blue: 10f, alpha: 1),
-                        Textures = new[] {"ProjectileTrailLine",},// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                        Textures = new[] { "WeaponLaser", },// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
+                    },
+                    OffsetEffect = new OffsetEffectDef
+                    {
+                        //This allows for lightning-like effects on the base tracer only, NOT trail.
+
+                        MaxOffset = 0.3f,// 0 offset value disables this effect, determines how far the offset is from the projectile.
+                        MinLength = 5f,
+                        MaxLength = 15f, // MinLength and MaxLength determine the minimum and maximum length between segments.
+                                        // Note that smaller values on large tracers mean that many more billboards are used per projectile, see above.
+                                        // Divide Tracer Length by MinLength to get the maximum amount of billboards seen per tick.
+
+                        // Note: The segmentation starts at the back of the projectile (or start of the beam) and so long as there is some distance left of the tracer to cover with
+                        // OffsetEffect then it will fill it without regard to how much distance is left. In other words, this effect can overshoot the front of the projectile (or end of the beam).
                     },
                 },
+
             },
             AmmoAudio = new AmmoAudioDef 
 			{

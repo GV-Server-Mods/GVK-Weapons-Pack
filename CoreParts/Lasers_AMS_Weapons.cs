@@ -75,7 +75,10 @@ namespace Scripts
 				{
 					Projectiles, // threats percieved automatically without changing menu settings
 				},
-				SubSystems = new BlockTypes[] { },
+				SubSystems = new[] 
+				{
+					Offense, Jumping, Utility, Power, Thrust, Production,
+				},
 				ClosestFirst = true, // Tries to pick closest targets first (blocks on grids, projectiles, etc...).
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles. If you're using projectile tags, ensure this is set to false as this overwrites the newer system
                 LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
