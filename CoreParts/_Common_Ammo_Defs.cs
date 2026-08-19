@@ -241,5 +241,39 @@ namespace Scripts
 				},
 			},
 		};
+
+		private DecalDef Common_Ammos_Decals_GunBullet = new DecalDef
+		{
+			MaxAge = 3600,
+			Map = new[]
+			{
+				new TextureMapDef { HitMaterial = "Metal", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Glass", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Wood", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "GlassOpaque", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Stone", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Rock", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Ice", DecalMaterial = "GunBullet", },
+				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "GunBullet", },
+			},
+		};
+
+		private DecalDef Common_Ammos_Decals_RifleBullet = new DecalDef
+		{
+			MaxAge = 3600,
+			Map = new[]
+			{
+				new TextureMapDef { HitMaterial = "Metal", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Glass", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Wood", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "GlassOpaque", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Stone", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Rock", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Ice", DecalMaterial = "RifleBullet", },
+				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "RifleBullet", },
+			},
+		};
 	}
 }

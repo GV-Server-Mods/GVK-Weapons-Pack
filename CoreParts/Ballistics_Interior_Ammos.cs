@@ -90,58 +90,7 @@ namespace Scripts
 			{
                 ModelName = "",
                 VisualProbability = 1f,
-                Decals = new DecalDef
-                {
-                    MaxAge = 3600,
-                    Map = new[]
-                    {
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Metal",
-                            DecalMaterial = "RifleBullet",
-                        },
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Glass",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Soil",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Wood",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "GlassOpaque",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Stone",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Rock",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Ice",
-                            DecalMaterial = "RifleBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Soil",
-                            DecalMaterial = "RifleBullet",
-                        },
-                    },
-                },
+				Decals = Common_Ammos_Decals_RifleBullet,
                 Particles = new AmmoParticleDef
                 {
                     Ammo = new ParticleDef

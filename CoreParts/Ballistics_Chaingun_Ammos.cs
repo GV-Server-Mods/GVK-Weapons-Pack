@@ -88,58 +88,7 @@ namespace Scripts
 			{
                 ModelName = "", // Model Path goes here.  "\\Models\\Ammo\\Starcore_Arrow_Missile_Large"
                 VisualProbability = 1f, // %
-                Decals = new DecalDef
-                {
-                    MaxAge = 3600,
-                    Map = new[]
-                    {
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Metal",
-                            DecalMaterial = "GunBullet",
-                        },
-                        new TextureMapDef
-                        {
-                            HitMaterial = "Glass",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Soil",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Wood",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "GlassOpaque",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-                        {
-                            HitMaterial = "Stone",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Rock",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Ice",
-                            DecalMaterial = "GunBullet",
-                        },
-						new TextureMapDef
-						{
-                            HitMaterial = "Soil",
-                            DecalMaterial = "GunBullet",
-                        },
-                    },
-                },
+				Decals = Common_Ammos_Decals_GunBullet,
                 Particles = new AmmoParticleDef
                 {
                     Hit = new ParticleDef
@@ -160,18 +109,18 @@ namespace Scripts
                     Tracer = new TracerBaseDef
                     {
                         Enable = true,
-                        Length = 35f, //
-                        Width = 0.12f, //
-                        Color = Color(red: 5f, green: 15, blue: 5f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Length = 27f, //
+                        Width = 0.10f, //
+                        Color = Color(red: 4f, green: 10, blue: 3f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         Textures = new[] { "WeaponLaser", },// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                     OffsetEffect = new OffsetEffectDef
                     {
                         //This allows for lightning-like effects on the base tracer only, NOT trail.
 
-                        MaxOffset = 0.4f,// 0 offset value disables this effect, determines how far the offset is from the projectile.
-                        MinLength = 5f,
-                        MaxLength = 15f, // MinLength and MaxLength determine the minimum and maximum length between segments.
+                        MaxOffset = 0.3f,// 0 offset value disables this effect, determines how far the offset is from the projectile.
+                        MinLength = 6f,
+                        MaxLength = 23f, // MinLength and MaxLength determine the minimum and maximum length between segments.
                                          // Note that smaller values on large tracers mean that many more billboards are used per projectile, see above.
                                          // Divide Tracer Length by MinLength to get the maximum amount of billboards seen per tick.
 
