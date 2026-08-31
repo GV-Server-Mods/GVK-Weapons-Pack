@@ -87,21 +87,6 @@ namespace Scripts
 			IdlePower = 0.001f, // Power draw in MW while not charging, or for non-energy weapons. Defaults to 0.001.
 		};
 
-		private LoadingDef Missiles_Missile_Hardpoint_Loading_Large = new LoadingDef
-		{
-			RateOfFire = 480, // Set this to 3600 for beam weapons. This is how fast your Gun fires.
-			BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
-			TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-			SkipBarrels = 0, // Number of muzzles to skip after each fire event.
-			ReloadTime = 2700, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			MagsToLoad = 150, // Number of physical magazines to consume on reload.
-			ShotsInBurst = 10, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-			DelayAfterBurst = 480, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-			FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
-			GiveUpAfter = false, // Whether the weapon should drop its current target and reacquire a new target after finishing its magazine or burst.
-			MaxActiveProjectiles = 0, // Maximum number of drones in flight (only works for drone launchers)
-		};
-
 		private LoadingDef Missiles_Missile_Hardpoint_Loading_Small = new LoadingDef
 		{
 			RateOfFire = 240, // 240 Pre Rebalance 
@@ -282,6 +267,7 @@ namespace Scripts
                     },
                     new MountPointDef 
 					{
+                        // NPC grids use this mountpoint - no separate NPC weapon def needed (MES spawns reference this SubtypeId)
                         SubtypeId = "GVK_GriffinMissileLauncher_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
@@ -471,35 +457,5 @@ namespace Scripts
                 Missiles_Missile,
             },
         };
-		
-		// Unique because they use a different ammo with OverideTarget enabled - Currently Broken
-		/*WeaponDefinition GVK_GriffinMissileLauncher_NPC
-        {
-            get
-            {
-                var missile = GVK_GriffinMissileLauncher;
-                missile.Assignments.MountPoints[0].SubtypeId = "GVK_GriffinMissileLauncher_NPC";
-                missile.Ammos = new[]
-                {
-                    Missiles_Missile_NPC,
-                };
-                return missile;
-            }
-        }*/
-
-		// Unique because they use a different ammo with OverideTarget enabled - Currently Broken
-		/*WeaponDefinition SmallRocketLauncherReload_NPC
-        {
-            get
-            {
-                var missile = SmallRocketLauncherReload;
-                missile.Assignments.MountPoints[0].SubtypeId = "SmallRocketLauncherReload_NPC";
-                missile.Ammos = new[]
-                {
-                    Missiles_Missile_NPC,
-                };
-                return missile;
-            }
-        }*/
     }
 }

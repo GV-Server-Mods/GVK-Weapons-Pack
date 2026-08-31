@@ -1,4 +1,4 @@
-﻿using VRageMath;
+using VRageMath;
 using System.Collections.Generic;
 using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
@@ -120,21 +120,6 @@ namespace Scripts {
                             MaxDistance = 3000,
                             MaxDuration = 0,
                             Scale = 1f, // Scale of effect.
-                        },
-                    },
-                    Effect2 = new ParticleDef
-                    {
-                        Name = "",
-                        Color = Color(red: 0, green: 0, blue: 0, alpha: 1),
-                        Offset = Vector(x: 0, y: 0, z: 0),
-                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Set this to the same as in the particle sbc!
-                            Restart = false,
-                            MaxDistance = 800,
-                            MaxDuration = 0,
-                            Scale = 1f,
                         },
                     },
                 },

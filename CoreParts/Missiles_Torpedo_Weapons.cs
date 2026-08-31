@@ -1,4 +1,4 @@
-﻿using VRageMath;
+using VRageMath;
 using System.Collections.Generic;
 using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
@@ -35,6 +35,7 @@ namespace Scripts
                     },
                     new MountPointDef 
 					{
+                        // NPC grids use this mountpoint - no separate NPC weapon def needed (MES spawns reference this SubtypeId)
                         SubtypeId = "Missile_Torpedo_Large_NPC",
                         SpinPartId = "Boomsticks", // For weapons with a spinning barrel such as Gatling Guns
                         MuzzlePartId = "None",
@@ -220,35 +221,5 @@ namespace Scripts
             //Upgrades = UpgradeModules,
             // Don't edit below this line
         };
-        
-		/*WeaponDefinition Torpedo_Crusader_Large_NPC
-        {
-            get
-            {
-                var torp = Torpedo_Crusader_Large;
-                torp.Assignments.MountPoints[0].SubtypeId = "Missile_Torpedo_Large_NPC";
-                torp.Ammos = new[]
-                {
-                    Missiles_Torpedo_NPC,
-                    Missiles_Torpedo_Shrapnel,
-                };
-                return torp;
-            }
-        }
-        
-		WeaponDefinition Torpedo_Crusader_Small_NPC
-        {
-            get
-            {
-                var torp = Torpedo_Crusader_Small;
-                torp.Assignments.MountPoints[0].SubtypeId = "Missile_Torpedo_Small_NPC";
-                torp.Ammos = new[]
-                {
-                    Missiles_Torpedo_NPC,
-                    Missiles_Torpedo_Shrapnel,
-                };
-                return torp;
-            }
-        }*/
-	}
+    }
 }

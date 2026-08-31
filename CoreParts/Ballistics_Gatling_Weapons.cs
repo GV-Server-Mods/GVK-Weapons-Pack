@@ -1,4 +1,4 @@
-﻿using VRageMath;
+using VRageMath;
 using System.Collections.Generic;
 using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
@@ -152,19 +152,6 @@ namespace Scripts
 					Scale = 1f, // Scale of effect.
 				},
 			},
-			Effect2 = new ParticleDef
-			{
-				Name = "", //Smoke_LargeGunShot_WC
-				Offset = new Vector3D(0f,0f,0f), //XYZ
-				Extras = new ParticleOptionDef
-				{
-					Loop = false, // Set this to the same as in the particle sbc!
-					Restart = false, // Whether to end a looping effect instantly when firing stops.
-					MaxDistance = 800,
-					MaxDuration = 0,
-					Scale = 1f, // Scale of effect.
-				},
-			},
 		};
 		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics_Small = new HardPointParticleDef 
 		{
@@ -181,19 +168,6 @@ namespace Scripts
 					Scale = 1f, // Scale of effect.
 				},
 			},
-			Effect2 = new ParticleDef
-			{
-				Name = "", //Smoke_LargeGunShot_WC
-				Offset = new Vector3D(0f,0f,0f), //XYZ
-				Extras = new ParticleOptionDef
-				{
-					Loop = false, // Set this to the same as in the particle sbc!
-					Restart = false, // Whether to end a looping effect instantly when firing stops.
-					MaxDistance = 800,
-					MaxDuration = 0,
-					Scale = 1f, // Scale of effect.
-				},
-			},
 		};
 		private HardPointParticleDef Ballistics_Gatlings_Hardpoint_Graphics_Vulcan = new HardPointParticleDef 
 		{
@@ -206,19 +180,6 @@ namespace Scripts
 					Loop = true, // Set this to the same as in the particle sbc!
 					Restart = false, // Whether to end a looping effect instantly when firing stops.
 					MaxDistance = 1000,
-					MaxDuration = 0,
-					Scale = 1f, // Scale of effect.
-				},
-			},
-			Effect2 = new ParticleDef
-			{
-				Name = "", //Smoke_LargeGunShot_WC
-				Offset = new Vector3D(0f,0f,0f), //XYZ
-				Extras = new ParticleOptionDef
-				{
-					Loop = false, // Set this to the same as in the particle sbc!
-					Restart = false, // Whether to end a looping effect instantly when firing stops.
-					MaxDistance = 800,
 					MaxDuration = 0,
 					Scale = 1f, // Scale of effect.
 				},
@@ -296,20 +257,6 @@ namespace Scripts
                             Loop = true, // Set this to the same as in the particle sbc!
                             Restart = false, // Whether to end a looping effect instantly when firing stops.
                             MaxDistance = 1000,
-                            MaxDuration = 0,
-                            Scale = 1f, // Scale of effect.
-						},
-                    },
-                    Effect2 = new ParticleDef
-                    {
-						Name = "", // Smoke_LargeGunShot_WC
-                        Offset = Vector(x: 0, y: 0, z: -5),
-                        DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
-                        Extras = new ParticleOptionDef
-                        {
-                            Loop = false, // Set this to the same as in the particle sbc!
-                            Restart = false, // Whether to end a looping effect instantly when firing stops.
-                            MaxDistance = 800,
                             MaxDuration = 0,
                             Scale = 1f, // Scale of effect.
 						},

@@ -255,7 +255,6 @@ namespace Scripts
 				new TextureMapDef { HitMaterial = "Stone", DecalMaterial = "GunBullet", },
 				new TextureMapDef { HitMaterial = "Rock", DecalMaterial = "GunBullet", },
 				new TextureMapDef { HitMaterial = "Ice", DecalMaterial = "GunBullet", },
-				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "GunBullet", },
 			},
 		};
 
@@ -272,7 +271,6 @@ namespace Scripts
 				new TextureMapDef { HitMaterial = "Stone", DecalMaterial = "RifleBullet", },
 				new TextureMapDef { HitMaterial = "Rock", DecalMaterial = "RifleBullet", },
 				new TextureMapDef { HitMaterial = "Ice", DecalMaterial = "RifleBullet", },
-				new TextureMapDef { HitMaterial = "Soil", DecalMaterial = "RifleBullet", },
 			},
 		};
 	}
