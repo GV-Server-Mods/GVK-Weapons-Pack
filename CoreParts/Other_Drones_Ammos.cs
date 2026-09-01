@@ -355,7 +355,7 @@ namespace Scripts
 					NavAcceleration = -1f, // <0 truly disables twitchy proportional snap
 					TrackingDelay = 60, // Allows drone to launch upward out of the hangar before smarts engage
 					AccelClearance = false,
-					MaxChaseTime = 0, // Keeps current target until destroyed or lost
+					MaxChaseTime = 180, // Re-evaluates threat priorities every 3 seconds to switch to closer hostiles
 					OverideTarget = true, // Autonomously acquires closest hostile targets within range
 					CheckFutureIntersection = true, // Obstacle and terrain avoidance
 					FutureIntersectionRange = 0,
