@@ -56,9 +56,9 @@ namespace Scripts
                 },
 				SubSystems = new[] 
 				{
-                   Offense, Jumping, Utility, Power, Thrust, Production,
+                   Offense, Jumping, Utility, Power, Thrust, Production, Any,
 				},
-				ClosestFirst = false, // tries to pick closest targets first (blocks on grids, projectiles, etc...).
+				ClosestFirst = true, // Prioritizes closest hostile targets first
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
 				MaxTargetDistance = 2500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
@@ -78,7 +78,7 @@ namespace Scripts
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = new AiDef
                 {
-                    TrackTargets = true, // Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking enabled for target designation. Turrets Need this set to True.
+                    TrackTargets = true, // Enables target tracking and threat radar for the hangar and its drones
                     TurretAttached = false, // Whether this weapon is a turret and should have the UI and API options for such. Turrets Need this set to True.
                     TurretController = false, // Whether this weapon can physically control the turret's movement. Turrets Need this set to True.
                     PrimaryTracking = false, // For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.
@@ -99,6 +99,7 @@ namespace Scripts
                 {
 					DisableLosCheck = true, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
+					AllowNoTargetFiring = true, // Allows manual and toolbar launches without requiring an active target lock
                 },
                 Loading = new LoadingDef
                 {
@@ -127,7 +128,6 @@ namespace Scripts
             Ammos = new[] 
 			{
 				Others_Drone_Offense_Advanced,
-				Others_Drone_Offense_Main,
 				Others_Drone_Defense_Main,
 				Others_Drone_Gunship,
             },
