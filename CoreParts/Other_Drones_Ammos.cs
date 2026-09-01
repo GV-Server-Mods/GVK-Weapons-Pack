@@ -1,4 +1,4 @@
-﻿using static Scripts.Structure.WeaponDefinition;
+using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
@@ -17,6 +17,7 @@ using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDe
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ConditionOperators;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.StageEvents;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef;
+using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.ApproachDef.ModelRelativeTo;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef.GuidanceType;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.DamageScaleDef.ShieldDef.ShieldType;
@@ -39,6 +40,392 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
+
+		private AmmoDef Others_Drone_Offense_Advanced => new AmmoDef
+		{
+			AmmoMagazine = "Others_Drone_Falcon",
+			AmmoRound = "Offense Falcon V2",
+			BaseDamage = 1f,
+			Mass = 500f,
+			Health = 200f,
+			BackKickForce = 5f,
+			HardPointUsable = true,
+			NpcSafe = true,
+			NoGridOrArmorScaling = true,
+			Sync = Common_Ammos_Synchronize_Full,
+			Fragment = new FragmentDef
+			{
+				AmmoRound = "Others_Drone_Gunship",
+				Fragments = 1,
+				Degrees = 4,
+				Reverse = false,
+				DropVelocity = false,
+				Offset = 0f,
+				Radial = 0f,
+				MaxChildren = 0,
+				IgnoreArming = true,
+				ArmWhenHit = false,
+				TimedSpawns = new TimedSpawnDef
+				{
+					Enable = true,
+					Interval = 6, // 100ms
+					StartTime = 0,
+					MaxSpawns = 260,
+					Proximity = 1000,
+					ParentDies = false,
+					PointAtTarget = true,
+					PointType = Lead,
+					DirectAimCone = 180f,
+					GroupSize = 10,
+					GroupDelay = 180, // 3 seconds between bursts
+				},
+			},
+			AreaOfDamage = new AreaOfDamageDef
+			{
+				EndOfLife = new EndOfLifeDef
+				{
+					Enable = true,
+					Radius = 5f,
+					Damage = 20000f,
+					Depth = 5f,
+					MaxAbsorb = 0f,
+					Falloff = Pooled,
+					ArmOnlyOnHit = false,
+					MinArmingTime = 0,
+					NoVisuals = false,
+					NoSound = false,
+					ParticleScale = 1,
+					CustomParticle = "particleName",
+					CustomSound = "soundName",
+					Shape = Diamond,
+				},
+			},
+			Trajectory = new TrajectoryDef
+			{
+				Guidance = Smart,
+				MaxLifeTime = 10800, // 3 minutes at 60 TPS
+				AccelPerSec = 200f,
+				DesiredSpeed = 150,
+				MaxTrajectory = 30000f,
+				SpeedVariance = Random(start: 0, end: 0),
+				Smarts = new SmartsDef
+				{
+					SteeringLimit = 0, // 0 = no limit, allows full-angle pull-ups
+					Inaccuracy = 0f,
+					Aggressiveness = 4f, // High responsiveness
+					MaxLateralThrust = 1f, // 100% lateral/vertical thrust authority required for terrain contouring
+					NavAcceleration = 2f,
+					TrackingDelay = 60, // Allows drone to launch upward out of the hangar before smarts engage
+					AccelClearance = false,
+					MaxChaseTime = 0,
+					OverideTarget = false, // Follow hangar-designated target
+					CheckFutureIntersection = true, // Obstacle and terrain avoidance
+					FutureIntersectionRange = 0, // Default to DesiredSpeed + Shape Diameter
+					MaxTargets = 0,
+					NoTargetExpire = false,
+					Roam = true,
+					KeepAliveAfterTargetLoss = true,
+					OffsetRatio = 0f,
+					OffsetTime = 0,
+					OffsetMinRange = 0,
+					FocusOnly = false,
+					FocusEviction = false,
+					ScanRange = 2500, // Matches hangar 2500m targeting range
+					NoSteering = false,
+					MinTurnSpeed = 50,
+					NoTargetApproach = true,
+					AltNavigation = true, // Required for terrain following matching Missiles_Siege_Ammos
+					IgnoreAntiSmarts = false,
+				},
+				Approaches = new[]
+				{
+					// Stage 0: Combat Orbit - Orbit target at 500m, dynamically contour 200m above terrain surface
+					new ApproachDef
+					{
+						RestartCondition = MoveToNext, // When ammo spent, leash broken, or target lost -> proceed to Stage 1 (Return)
+						Operators = StartAnd_EndOr,
+						CanExpireOnceStarted = true,
+						ForceRestart = false,
+
+						StartCondition1 = Spawn,
+						StartCondition2 = Ignore,
+						EndCondition1 = RelativeSpawns,  // Expended all 250 fragment rounds
+						EndCondition2 = DistanceToTarget, // Leash breached: target pulled >2500m away
+						EndCondition3 = EnemyTargetLoss,  // Target destroyed/lost for 5s (300 ticks)
+						EndCondition4 = Ignore,
+						EndCondition5 = Ignore,
+
+						Start1Value = 1,
+						Start2Value = 0,
+						End1Value = 250,
+						End2Value = 2500,
+						End3Value = 300, // Returns home 5 seconds after target is destroyed
+						End4Value = 0,
+						End5Value = 0,
+
+						StartEvent = DoNothing,
+						EndEvent = DoNothing,
+
+						Forward = ForwardTargetDirection,
+						Up = UpRelativeToGravity,
+						PositionB = Surface, // Dynamically tracks terrain surface directly under drone
+						PositionC = Target,  // Horizontal center for combat orbit
+						Elevation = Target,  // Activates WC PlaneD.DistanceToPoint projection to translate local terrain height into orbit plane
+
+						AdjustForward = true,
+						AdjustUp = true,
+						AdjustPositionB = true, // Frame-by-frame terrain height updates as drone flies
+						AdjustPositionC = true,
+						LeadRotateElevatePositionB = false, // Must be false; Forward points radially inward, not tangential
+						LeadRotateElevatePositionC = false,
+						TrajectoryRelativeToB = false, // Orbits Target (PositionC); true causes self-orbit figure-8s
+						ElevationRelativeToC = false, // Projects elevation delta from Target plane to PositionB (local terrain)
+
+						AngleOffset = 0,
+						ElevationTolerance = 0,
+						TrackingDistance = 0,
+						DesiredElevation = 200, // Vertical clearance maintained above local terrain under drone
+
+						LeadDistance = 0, // Must be 0; radial lead pulls orbit center down into valleys/basins
+						PushLeadByTravelDistance = false,
+
+						AccelMulti = 1.3f,
+						DeAccelMulti = 0,
+						TotalAccelMulti = 0,
+						SpeedCapMulti = 1f,
+
+						Orbit = true,
+						OrbitRadius = 500, // 500m combat orbit radius
+						OffsetMinRadius = 0,
+						OffsetMaxRadius = 0,
+						OffsetTime = 0,
+
+						NoTimedSpawns = false, // TimedSpawns active (fires within Proximity = 1000)
+						DisableAvoidance = false, // Active terrain/obstacle avoidance
+						IgnoreAntiSmart = true,
+						HeatRefund = 0,
+						ReloadRefund = false,
+						ToggleIngoreVoxels = false,
+						SelfAvoidance = true,
+						TargetAvoidance = true,
+						SelfPhasing = false,
+						SwapNavigationType = false,
+						DockOnEnd = false,
+					},
+
+					// Stage 1: Return to Mothership - Cruise back to shooter maintaining terrain contour
+					new ApproachDef
+					{
+						RestartCondition = MoveToNext, // Once within 120m of hangar -> proceed to Stage 2 (Dock)
+						Operators = StartAnd_EndOr,
+						CanExpireOnceStarted = true,
+						ForceRestart = false,
+
+						StartCondition1 = Spawn,
+						StartCondition2 = Ignore,
+						EndCondition1 = DistanceFromPositionC, // Within 120m of Shooter (PositionC)
+						EndCondition2 = Ignore,
+						EndCondition3 = Ignore,
+						EndCondition4 = Ignore,
+						EndCondition5 = Ignore,
+
+						Start1Value = 1,
+						Start2Value = 0,
+						End1Value = 120,
+						End2Value = 0,
+						End3Value = 0,
+						End4Value = 0,
+						End5Value = 0,
+
+						StartEvent = DoNothing,
+						EndEvent = DoNothing,
+
+						Forward = ForwardTargetDirection,
+						Up = UpRelativeToGravity,
+						PositionB = Surface, // Continues hugging terrain surface on return leg
+						PositionC = Shooter,
+						Elevation = Surface,
+
+						AdjustForward = true,
+						AdjustUp = true,
+						AdjustPositionB = true,
+						AdjustPositionC = true,
+						LeadRotateElevatePositionB = true, // Elevates local surface reference by DesiredElevation
+						LeadRotateElevatePositionC = true,
+						TrajectoryRelativeToB = false, // Flies straight to Shooter (PositionC)
+						ElevationRelativeToC = false, // Maintains clearance above local terrain on the way home
+
+						AngleOffset = 0,
+						ElevationTolerance = 0,
+						TrackingDistance = 0,
+						DesiredElevation = 120, // Lower transit altitude so it glides down toward base
+
+						LeadDistance = 40, // Samples ground close to drone on return flight
+						PushLeadByTravelDistance = false,
+
+						AccelMulti = 1.2f, // Swift return to mothership
+						DeAccelMulti = 0,
+						TotalAccelMulti = 0,
+						SpeedCapMulti = 1f,
+
+						Orbit = false,
+						OrbitRadius = 0,
+						OffsetMinRadius = 0,
+						OffsetMaxRadius = 0,
+						OffsetTime = 0,
+
+						NoTimedSpawns = true, // Weapons cold during return
+						DisableAvoidance = false, // Active terrain avoidance on return flight
+						IgnoreAntiSmart = true,
+						HeatRefund = 0,
+						ReloadRefund = false,
+						ToggleIngoreVoxels = false,
+						SelfAvoidance = true,
+						TargetAvoidance = false,
+						SelfPhasing = false,
+						SwapNavigationType = false,
+						DockOnEnd = false,
+					},
+
+					// Stage 2: Hangar Docking - Align with hangar, smooth glide, phase in and recover
+					new ApproachDef
+					{
+						RestartCondition = MoveToNext,
+						Operators = StartAnd_EndOr,
+						CanExpireOnceStarted = true,
+						ForceRestart = false,
+
+						StartCondition1 = Spawn,
+						StartCondition2 = Ignore,
+						EndCondition1 = DistanceFromPositionC, // Within 20m of hangar block
+						EndCondition2 = Ignore,
+						EndCondition3 = Ignore,
+						EndCondition4 = Ignore,
+						EndCondition5 = Ignore,
+
+						Start1Value = 1,
+						Start2Value = 0,
+						End1Value = 20,
+						End2Value = 0,
+						End3Value = 0,
+						End4Value = 0,
+						End5Value = 0,
+
+						StartEvent = DoNothing,
+						EndEvent = EndProjectile, // Suppressed by DockOnEnd
+
+						Forward = ForwardRelativeToShooter,
+						Up = UpRelativeToShooter,
+						PositionB = PositionA,
+						PositionC = Shooter,
+						Elevation = Shooter,
+
+						AdjustForward = true,
+						AdjustUp = true,
+						AdjustPositionB = false,
+						AdjustPositionC = true,
+						LeadRotateElevatePositionB = false,
+						LeadRotateElevatePositionC = false,
+						TrajectoryRelativeToB = false,
+						ElevationRelativeToC = true,
+
+						AngleOffset = 0,
+						ElevationTolerance = 5,
+						TrackingDistance = 0,
+						DesiredElevation = 0, // Direct lineup with hangar muzzle
+
+						LeadDistance = 0,
+						PushLeadByTravelDistance = false,
+
+						AccelMulti = 1f,
+						DeAccelMulti = 0,
+						TotalAccelMulti = 0,
+						SpeedCapMulti = 0.5f, // Smooth, responsive docking glide
+
+						Orbit = false,
+						OrbitRadius = 0,
+						OffsetMinRadius = 0,
+						OffsetMaxRadius = 0,
+						OffsetTime = 0,
+
+						NoTimedSpawns = true,
+						DisableAvoidance = true,  // Must disable obstacle avoidance to allow hull entry
+						IgnoreAntiSmart = true,
+						HeatRefund = 0,
+						ReloadRefund = true,      // Refund reload count to weapon
+						ToggleIngoreVoxels = false,
+						SelfAvoidance = false,    // Must disable self-avoidance to enter hangar
+						TargetAvoidance = false,
+						SelfPhasing = true,       // Phase cleanly through parent hull
+						SwapNavigationType = false,
+						DockOnEnd = true,         // Suppresses EOL explosion and fragment spawning
+					},
+				},
+			},
+			AmmoGraphics = new GraphicDef
+			{
+				ModelName = "\\Models\\AWE_Drones\\ARYX_SidekickDrone.mwm",
+				VisualProbability = 1f,
+				ShieldHitDraw = true,
+				Particles = new AmmoParticleDef
+				{
+					Ammo = new ParticleDef
+					{
+						Name = "MDB_Drone_Thruster",
+						Color = Color(red: 25, green: 25, blue: 25, alpha: 1),
+						Offset = Vector(x: 0, y: 0, z: 1.65f),
+						Extras = new ParticleOptionDef
+						{
+							Scale = 1f,
+						},
+					},
+					Hit = new ParticleDef
+					{
+						Name = "MD_FlakExplosion",
+						Color = Color(red: 1, green: 1, blue: 1, alpha: 1),
+						Offset = Vector(x: 0, y: 0, z: 0),
+						Extras = new ParticleOptionDef
+						{
+							Scale = 1f,
+							HitPlayChance = 1f,
+						},
+					},
+				},
+				Lines = new LineDef
+				{
+					Tracer = new TracerBaseDef
+					{
+						Enable = true,
+						Length = 15f,
+						Width = 0.5f,
+						Color = Color(red: 1f, green: 1f, blue: 1f, alpha: 0f),
+						Textures = new[] { "MD_MissileThrustFlame" },
+					},
+					Trail = new TrailDef
+					{
+						Enable = true,
+						Textures = new[] { "WeaponLaser" },
+						DecayTime = 150,
+						Color = Color(red: 1.01f, green: 1.10f, blue: 1.3f, alpha: 1f),
+						Back = false,
+						CustomWidth = 1.5f,
+						UseColorFade = true,
+					},
+				},
+			},
+			AmmoAudio = new AmmoAudioDef
+			{
+				TravelSound = "MXA_Archer_Travel",
+				HitSound = "HWR_SmallExplosion",
+				ShotSound = "",
+				ShieldHitSound = "",
+				PlayerHitSound = "",
+				VoxelHitSound = "",
+				FloatingHitSound = "",
+				HitPlayChance = 1f,
+				HitPlayShield = true,
+			},
+		};
 
 		private AmmoDef Others_Drone_Offense_Main => new AmmoDef
 		{

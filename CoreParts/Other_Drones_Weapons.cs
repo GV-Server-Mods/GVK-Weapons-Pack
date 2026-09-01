@@ -1,4 +1,4 @@
-﻿using static Scripts.Structure;
+using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.ModelAssignmentsDef;
 using static Scripts.Structure.WeaponDefinition.HardPointDef;
@@ -126,6 +126,7 @@ namespace Scripts
             },
             Ammos = new[] 
 			{
+				Others_Drone_Offense_Advanced,
 				Others_Drone_Offense_Main,
 				Others_Drone_Defense_Main,
 				Others_Drone_Gunship,
