@@ -48,3 +48,39 @@ To horizontally orbit the target while vertically following the terrain beneath 
 - **`LeadDistance = 0`** and **`LeadRotateElevate = false`**: Eliminates radial vector distortion.
 - **`TrajectoryRelativeToB = false`**: Ensures the drone orbits `PositionC` (Target) rather than itself.
 
+---
+
+## Falcon Combat Drone Architecture (`AryxSmallFighterHangar`)
+
+### 1. Falcon Strike (Offense Mode - `Others_Drone_Offense_Advanced`)
+- **ProNav Flight Dynamics**: `AltNavigation = false`, `SteeringLimit = 150`, `MaxLateralThrust = 0.8f` for natural aerodynamic curved flight and banking rather than rigid ZeroEffort lines.
+- **Combat Orbit**: 600m radius combat orbit with 200m terrain contouring clearance, delivering 250 fragment rounds (25 ten-round bursts) with velocity-lead prediction (`PointType = Lead`).
+- **Autonomous Hunter AI (`OverideTarget = true`)**: Seamlessly acquires the nearest armed hostile within 2.5km when launched blind without an active HUD target lock.
+- **3.5km Pursuit Leash**:
+  - `NoTargetApproach = false`: Skips approach execution on Frame 1 when no target is locked, preventing `DistanceToTarget` from false-tripping against $(0,0,0)$.
+  - `EndCondition2 = DistanceToTarget` (`3500m`): Actively leashes pursuit so the drone breaks orbit and dives/self-destructs if a fleeing target pulls $>3.5\text{km}$ away from the drone.
+- **Single-Stage Kamikaze Finisher**:
+  - `EndCondition1 = RelativeSpawns` (`End1Value = 250`), `EndEvent = DoNothing`.
+  - When all 250 fragment rounds are spent, the orbit approach naturally concludes, and WeaponCore falls back to base `Guidance = Smart`, plunging directly into the target hull for **20,000 damage**.
+
+### 2. Falcon CAP (Defense Mode - `Others_Drone_Defense_Main`)
+- **Carrier/Rover Defense Umbrella**: Orbits the launcher grid at a tight 300m radius (`PositionC = Shooter`, `Orbit = true`) with 150m terrain contouring clearance (`DesiredElevation = 150`).
+- **Target-Free Hangar Launch**: `AllowNoTargetFiring = true` on `HardPoint.Other` enables blind launching from cockpit toolbar without requiring an active HUD/radar lock.
+- **Deterministic Threat Prioritization**:
+  - `OverideTarget = true` + `Targeting.ClosestFirst = true` + `Targeting.TopTargets = 0` (disables RNG shuffling for deterministic closest-target priority).
+  - `MaxChaseTime = 180`: Re-evaluates active threats every 3 seconds to dynamically switch fire to closer hostiles.
+- **Sustained Gunship Fire**: 10-round autocannon bursts with lead prediction (`PointType = Lead`, `Proximity = 2500`) and a 5,000 round ammunition reserve for a full 6-minute patrol (`MaxLifeTime = 21600`) before safely detonating with a 20,000 damage explosion.
+
+---
+
+## WeaponCore ModAPI Technical Discoveries & Engine Quirks
+
+| Engine Feature / Quirk | Discovery & Solution |
+| :--- | :--- |
+| **`OffenseRating` Filter** | Unarmed test grids have `OffenseRating = 0`. WeaponCore's threat scanner (`AiTargeting.cs:971`) ignores non-focused targets with `OffenseRating <= 0`. Hostile grids must have functional weapons to be targeted autonomously. |
+| **`AllowNoTargetFiring`** | Fixed launchers with `TrackTargets = true` block blind toolbar firing unless `AllowNoTargetFiring = true` is set on `HardPoint.Other`. |
+| **`TargetLossDegree` in Orbits** | Non-zero `TargetLossDegree` evaluates the nose cone angle relative to flight vector. In a circular orbit, this causes the drone to reset/drop target every frame. Must remain `0` for orbiting drones. |
+| **RNG Target Shuffling (`TopTargets`)** | `TopTargets > 0` enables `GetDeck` chunk randomization (`AiSupport.cs:230`), causing weapons to randomly target further hostiles. Setting `TopTargets = 0` disables shuffling for strict closest-first targeting. |
+| **`NoTargetApproach` Leash Trips** | When `NoTargetApproach = true`, `ProcessApproach` runs on Frame 1 with `TargetPos == Zero`, causing `DistanceToTarget` to immediately trip against $(0,0,0)$. Setting `NoTargetApproach = false` delays approach execution until a real target is acquired. |
+| **Direct vs Lead Pointing** | `PointType = Lead` calculates full relative velocity lead intercept in `TrajectoryEstimation`. `PointType = Direct` aims straight at the entity center with 0 lead. |
+

@@ -103,10 +103,10 @@ namespace Scripts
 			Trajectory = new TrajectoryDef
 			{
 				Guidance = Smart,
-				MaxLifeTime = 10800, // 3 minutes at 60 TPS
+				MaxLifeTime = 10800, // 3 minutes at 60 TPS (supports full pursuit, gun run, and dive)
 				AccelPerSec = 200f,
 				DesiredSpeed = 150,
-				MaxTrajectory = 30000f,
+				MaxTrajectory = 30000f, // 30km cumulative pursuit ceiling for high-speed (90 m/s) rover chases
 				SpeedVariance = Random(start: 0, end: 0),
 				Smarts = new SmartsDef
 				{
@@ -117,14 +117,14 @@ namespace Scripts
 					NavAcceleration = -1f, // <0 truly disables twitchy proportional snap (0 defaulted to 1/2 aggressiveness)
 					TrackingDelay = 60, // Allows drone to launch upward out of the hangar before smarts engage
 					AccelClearance = false,
-					MaxChaseTime = 0,
-					OverideTarget = false, // Must be false so drone inherits weapon target at launch
+					MaxChaseTime = 0, // Retains primary target until dead
+					OverideTarget = true, // Autonomously acquires nearest hostile if launched without a target
 					CheckFutureIntersection = true, // Obstacle and terrain avoidance
 					FutureIntersectionRange = 0, // Default to DesiredSpeed + Shape Diameter
 					MaxTargets = 0,
-					NoTargetExpire = false,
+					NoTargetExpire = true, // Safely self-destructs if no hostile is found within range
 					Roam = true, // Patrols current area after target loss
-					KeepAliveAfterTargetLoss = true,
+					KeepAliveAfterTargetLoss = false,
 					OffsetRatio = 0.05f, // Subtle organic drift during flight and roaming
 					OffsetTime = 90,
 					OffsetMinRange = 0,
@@ -133,7 +133,7 @@ namespace Scripts
 					ScanRange = 2500, // Matches hangar 2500m targeting range
 					NoSteering = false,
 					MinTurnSpeed = 50,
-					NoTargetApproach = true,
+					NoTargetApproach = false, // Skips approach until target is acquired (prevents Frame-1 zero-target leash trips)
 					AltNavigation = false, // ProNav guidance for natural, cinematic flight curves instead of rigid ZeroEffort
 					IgnoreAntiSmarts = false,
 				},
@@ -149,8 +149,8 @@ namespace Scripts
 
 						StartCondition1 = Spawn,
 						StartCondition2 = Ignore,
-						EndCondition1 = RelativeSpawns,  // Expended all 260 fragment rounds
-						EndCondition2 = DistanceToTarget, // Leash breached: target pulled >2500m away
+						EndCondition1 = RelativeSpawns,  // Expended all 250 fragment rounds
+						EndCondition2 = DistanceToTarget, // Leash: if target pulls >3500m away from drone, breaks orbit to dive
 						EndCondition3 = EnemyTargetLoss,  // Target destroyed/lost
 						EndCondition4 = Ignore,
 						EndCondition5 = Ignore,
@@ -158,7 +158,7 @@ namespace Scripts
 						Start1Value = 1,
 						Start2Value = 0,
 						End1Value = 250, // 25 bursts (250 rounds) exhausted -> proceed to Stage 1 (Kamikaze)
-						End2Value = 2500,
+						End2Value = 3500, // 3.5km pursuit leash buffer
 						End3Value = 720, // 12 seconds patrol roaming before self-destructing
 						End4Value = 0,
 						End5Value = 0,
