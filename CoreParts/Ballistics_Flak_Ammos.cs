@@ -1,4 +1,4 @@
-﻿using static Scripts.Structure.WeaponDefinition;
+using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
@@ -113,7 +113,7 @@ namespace Scripts
                     Enable = true,
                     Radius = 101f,
                     Damage = 1f,
-                    Depth = 0f, //NOT OPTIONAL, 0 or -1 breaks the manhattan distance
+                    Depth = 1f, // Changed from 0f (which iterated the entire 101m radius of grid blocks) to 1f. Massively optimizes sim speed by capping penetration.
                     MaxAbsorb = 0f,
                     Falloff = NoFalloff, //.NoFalloff applies the same damage to all blocks in radius
                     //.Linear drops evenly by distance from center out to max radius
