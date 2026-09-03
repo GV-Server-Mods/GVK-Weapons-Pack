@@ -82,7 +82,8 @@
         "subtype": "MetalGrid",
         "count": 420
       }
-    ]
+    ],
+    "icon": "icons/L__Gatling_Avenger_Turret.png"
   },
   {
     "id": "L__Gatling_Turret",
@@ -167,7 +168,8 @@
         "subtype": "MetalGrid",
         "count": 240
       }
-    ]
+    ],
+    "icon": "icons/L__Gatling_Turret.png"
   },
   {
     "id": "S__Gatling_Turret",
@@ -252,7 +254,8 @@
         "subtype": "MetalGrid",
         "count": 63
       }
-    ]
+    ],
+    "icon": "icons/S__Gatling_Turret.png"
   },
   {
     "id": "S__Gatling_Gun",
@@ -337,7 +340,8 @@
         "subtype": "MetalGrid",
         "count": 10
       }
-    ]
+    ],
+    "icon": "icons/S__Gatling_Gun.png"
   },
   {
     "id": "S__Gatling_Gimbal",
@@ -422,7 +426,8 @@
         "subtype": "MetalGrid",
         "count": 10
       }
-    ]
+    ],
+    "icon": "icons/S__Gatling_Gimbal.png"
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
@@ -507,7 +512,8 @@
         "subtype": "MetalGrid",
         "count": 420
       }
-    ]
+    ],
+    "icon": "icons/L__Chaingun_Thrasher_Turret.png"
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
@@ -592,7 +598,8 @@
         "subtype": "MetalGrid",
         "count": 240
       }
-    ]
+    ],
+    "icon": "icons/L__Chaingun_Khopesh_Turret.png"
   },
   {
     "id": "L__Chaingun_Turret",
@@ -677,7 +684,8 @@
         "subtype": "MetalGrid",
         "count": 100
       }
-    ]
+    ],
+    "icon": "icons/L__Chaingun_Turret.png"
   },
   {
     "id": "S__Chaingun_Turret",
@@ -762,7 +770,8 @@
         "subtype": "MetalGrid",
         "count": 81
       }
-    ]
+    ],
+    "icon": "icons/S__Chaingun_Turret.png"
   },
   {
     "id": "S__Chaingun_Gun",
@@ -847,7 +856,8 @@
         "subtype": "MetalGrid",
         "count": 11
       }
-    ]
+    ],
+    "icon": "icons/S__Chaingun_Gun.png"
   },
   {
     "id": "L__Interior_Turret",
@@ -932,7 +942,8 @@
         "subtype": "MetalGrid",
         "count": 97
       }
-    ]
+    ],
+    "icon": "icons/L__Interior_Turret.png"
   },
   {
     "id": "L__Flak_Turret",
@@ -1021,7 +1032,8 @@
         "subtype": "SteelPlate",
         "count": 390
       }
-    ]
+    ],
+    "icon": "icons/L__Flak_Turret.png"
   },
   {
     "id": "S__Flak_Turret",
@@ -1110,7 +1122,8 @@
         "subtype": "SteelPlate",
         "count": 150
       }
-    ]
+    ],
+    "icon": "icons/S__Flak_Turret.png"
   },
   {
     "id": "S__Flak_Gun",
@@ -1199,7 +1212,8 @@
         "subtype": "SteelPlate",
         "count": 18
       }
-    ]
+    ],
+    "icon": "icons/S__Flak_Gun.png"
   },
   {
     "id": "L__Cannon_Turret",
@@ -1288,7 +1302,8 @@
         "subtype": "SteelPlate",
         "count": 360
       }
-    ]
+    ],
+    "icon": "icons/L__Cannon_Turret.png"
   },
   {
     "id": "L__Cannon_Gun",
@@ -1377,7 +1392,8 @@
         "subtype": "SteelPlate",
         "count": 120
       }
-    ]
+    ],
+    "icon": "icons/L__Cannon_Gun.png"
   },
   {
     "id": "S__Cannon_Turret",
@@ -1466,7 +1482,8 @@
         "subtype": "SteelPlate",
         "count": 86
       }
-    ]
+    ],
+    "icon": "icons/S__Cannon_Turret.png"
   },
   {
     "id": "S__Cannon_Gun",
@@ -1555,7 +1572,8 @@
         "subtype": "SteelPlate",
         "count": 49
       }
-    ]
+    ],
+    "icon": "icons/S__Cannon_Gun.png"
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -1644,7 +1662,8 @@
         "subtype": "SteelPlate",
         "count": 860
       }
-    ]
+    ],
+    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png"
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
@@ -1733,7 +1752,8 @@
         "subtype": "SteelPlate",
         "count": 1400
       }
-    ]
+    ],
+    "icon": "icons/L__Heavy_Cannon_Odin_Turret.png"
   },
   {
     "id": "L__Railgun_Turret",
@@ -1822,7 +1842,8 @@
         "subtype": "SteelPlate",
         "count": 610
       }
-    ]
+    ],
+    "icon": "icons/L__Railgun_Turret.png"
   },
   {
     "id": "L__Railgun_Gun",
@@ -1911,7 +1932,8 @@
         "subtype": "SteelPlate",
         "count": 200
       }
-    ]
+    ],
+    "icon": "icons/L__Railgun_Gun.png"
   },
   {
     "id": "S__Railgun_Gun",
@@ -2000,7 +2022,8 @@
         "subtype": "SteelPlate",
         "count": 26
       }
-    ]
+    ],
+    "icon": "icons/S__Railgun_Gun.png"
   },
   {
     "id": "L__MAC_Gun",
@@ -2089,7 +2112,8 @@
         "subtype": "SteelPlate",
         "count": 380
       }
-    ]
+    ],
+    "icon": "icons/L__MAC_Gun.png"
   },
   {
     "id": "L__Rocket_Turret",
@@ -2174,7 +2198,8 @@
         "subtype": "MetalGrid",
         "count": 210
       }
-    ]
+    ],
+    "icon": "icons/L__Rocket_Turret.png"
   },
   {
     "id": "S__Rocket_Turret",
@@ -2259,7 +2284,8 @@
         "subtype": "MetalGrid",
         "count": 54
       }
-    ]
+    ],
+    "icon": "icons/S__Rocket_Turret.png"
   },
   {
     "id": "L__Rocket_Launcher",
@@ -2344,7 +2370,8 @@
         "subtype": "MetalGrid",
         "count": 97
       }
-    ]
+    ],
+    "icon": "icons/L__Rocket_Launcher.png"
   },
   {
     "id": "S__Rocket_Launcher",
@@ -2429,7 +2456,8 @@
         "subtype": "MetalGrid",
         "count": 9
       }
-    ]
+    ],
+    "icon": "icons/S__Rocket_Launcher.png"
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
@@ -2514,7 +2542,8 @@
         "subtype": "MetalGrid",
         "count": 9
       }
-    ]
+    ],
+    "icon": "icons/S__Rocket_Launcher_Reloadable.png"
   },
   {
     "id": "L__Missile_Turret",
@@ -2603,7 +2632,8 @@
         "subtype": "SteelPlate",
         "count": 570
       }
-    ]
+    ],
+    "icon": "icons/L__Missile_Turret.png"
   },
   {
     "id": "L__Missile_Launcher",
@@ -2692,7 +2722,8 @@
         "subtype": "SteelPlate",
         "count": 320
       }
-    ]
+    ],
+    "icon": "icons/L__Missile_Launcher.png"
   },
   {
     "id": "S__Missile_Launcher",
@@ -2781,7 +2812,8 @@
         "subtype": "SteelPlate",
         "count": 19
       }
-    ]
+    ],
+    "icon": "icons/S__Missile_Launcher.png"
   },
   {
     "id": "L__Tuukka_Missile_Turret",
@@ -2870,7 +2902,8 @@
         "subtype": "SteelPlate",
         "count": 570
       }
-    ]
+    ],
+    "icon": "icons/L__Tuukka_Missile_Turret.png"
   },
   {
     "id": "L__Torpedo_Launcher",
@@ -2959,7 +2992,8 @@
         "subtype": "SteelPlate",
         "count": 210
       }
-    ]
+    ],
+    "icon": "icons/L__Torpedo_Launcher.png"
   },
   {
     "id": "S__Torpedo_Launcher",
@@ -3048,7 +3082,8 @@
         "subtype": "SteelPlate",
         "count": 140
       }
-    ]
+    ],
+    "icon": "icons/S__Torpedo_Launcher.png"
   },
   {
     "id": "L__SRBM_Turret",
@@ -3137,7 +3172,8 @@
         "subtype": "SteelPlate",
         "count": 2200
       }
-    ]
+    ],
+    "icon": "icons/L__SRBM_Turret.png"
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
@@ -3226,7 +3262,8 @@
         "subtype": "SteelPlate",
         "count": 820
       }
-    ]
+    ],
+    "icon": "icons/L__Spartan_Heavy_Laser_Turret.png"
   },
   {
     "id": "L__Heavy_Laser_Turret",
@@ -3315,7 +3352,8 @@
         "subtype": "SteelPlate",
         "count": 370
       }
-    ]
+    ],
+    "icon": "icons/L__Heavy_Laser_Turret.png"
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
@@ -3404,7 +3442,8 @@
         "subtype": "SteelPlate",
         "count": 230
       }
-    ]
+    ],
+    "icon": "icons/L__Heavy_Laser_Gimbal.png"
   },
   {
     "id": "L__Light_Laser_Turret",
@@ -3493,7 +3532,8 @@
         "subtype": "SteelPlate",
         "count": 200
       }
-    ]
+    ],
+    "icon": "icons/L__Light_Laser_Turret.png"
   },
   {
     "id": "S__Light_Laser_Turret",
@@ -3582,7 +3622,8 @@
         "subtype": "SteelPlate",
         "count": 200
       }
-    ]
+    ],
+    "icon": "icons/S__Light_Laser_Turret.png"
   },
   {
     "id": "S__Light_Laser_Gun",
@@ -3671,7 +3712,8 @@
         "subtype": "SteelPlate",
         "count": 23
       }
-    ]
+    ],
+    "icon": "icons/S__Light_Laser_Gun.png"
   },
   {
     "id": "L__Loki_Plasma_Turret",
@@ -3760,7 +3802,8 @@
         "subtype": "SteelPlate",
         "count": 2000
       }
-    ]
+    ],
+    "icon": "icons/L__Loki_Plasma_Turret.png"
   },
   {
     "id": "L__PD_Laser",
@@ -3849,7 +3892,8 @@
         "subtype": "SteelPlate",
         "count": 200
       }
-    ]
+    ],
+    "icon": "icons/L__PD_Laser.png"
   },
   {
     "id": "S__PD_Laser",
@@ -3938,7 +3982,8 @@
         "subtype": "SteelPlate",
         "count": 54
       }
-    ]
+    ],
+    "icon": "icons/S__PD_Laser.png"
   },
   {
     "id": "L__Warhead",
@@ -4023,7 +4068,8 @@
         "subtype": "MetalGrid",
         "count": 100
       }
-    ]
+    ],
+    "icon": "icons/L__Warhead.png"
   },
   {
     "id": "S__Warhead",
@@ -4108,7 +4154,8 @@
         "subtype": "MetalGrid",
         "count": 100
       }
-    ]
+    ],
+    "icon": "icons/S__Warhead.png"
   },
   {
     "id": "L__Drone_Bay",
@@ -4197,6 +4244,7 @@
         "subtype": "SteelPlate",
         "count": 270
       }
-    ]
+    ],
+    "icon": "icons/L__Drone_Bay.png"
   }
 ]

@@ -40,11 +40,18 @@
     <!-- Weapon Selector Banner -->
     <div class="weapon-banner">
       <div class="selector-left">
-        <span class="selector-label">Active Weapon</span>
-        <select id="weaponSelect" class="weapon-dropdown">
-          <option value="">Loading weapons database...</option>
-        </select>
-        <button id="btnResetDefaults" class="btn" title="Reset this weapon back to official server defaults">↺ Reset to Defaults</button>
+        <div class="weapon-icon-wrap">
+          <img id="activeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon">
+        </div>
+        <div>
+          <span class="selector-label">Active Weapon</span>
+          <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap;">
+            <select id="weaponSelect" class="weapon-dropdown">
+              <option value="">Loading weapons database...</option>
+            </select>
+            <button id="btnResetDefaults" class="btn" title="Reset this weapon back to official server defaults">↺ Reset to Defaults</button>
+          </div>
+        </div>
       </div>
       
       <div class="banner-badges">
@@ -393,14 +400,42 @@
           </div>
         </div>
 
-        <!-- 1v1 Weapon Comparison Matrix -->
+        <!-- 1v1 Weapon Comparison Matrix & Spider Graph -->
         <div class="comparison-box">
           <div class="comparison-header">
-            <h3>⚔️ 1v1 Benchmark Comparison</h3>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="faceoff-badge">
+                <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm" title="Active Weapon">
+                <span class="vs-tag">VS</span>
+                <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm" style="display: none;" title="Benchmark Weapon">
+              </div>
+              <h3>⚔️ 1v1 Combat Radar & Comparison</h3>
+            </div>
             <select id="compareSelect" class="compare-dropdown">
-              <option value="">Select benchmark weapon...</option>
+              <option value="">Select benchmark weapon to compare...</option>
             </select>
           </div>
+
+          <!-- Radar Chart (Spider Graph) -->
+          <div class="radar-container">
+            <div style="position: relative; display: flex; justify-content: center;">
+              <canvas id="radarCanvas" width="360" height="340"></canvas>
+            </div>
+            <div class="radar-legend">
+              <div class="legend-item">
+                <span class="legend-color" style="background: var(--amber-primary);"></span>
+                <span style="color: var(--amber-primary); font-weight: 700;" id="legendActiveName">Active Weapon</span>
+              </div>
+              <div class="legend-item" id="legendBenchItem" style="display: none;">
+                <span class="legend-color" style="background: var(--cyan-primary);"></span>
+                <span style="color: var(--cyan-primary); font-weight: 700;" id="legendBenchName">Benchmark Weapon</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-dim); line-height: 1.5; max-width: 240px; margin-top: 6px;">
+                Hexagonal tactical radar plots normalized DPS, Burst Alpha, Trajectory Range, Muzzle Velocity, Tracking Traverse, and Thermal Endurance.
+              </div>
+            </div>
+          </div>
+
           <table class="compare-table">
             <thead>
               <tr>
@@ -411,7 +446,7 @@
               </tr>
             </thead>
             <tbody id="compareTableBody">
-              <tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a weapon above to compare</td></tr>
+              <tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>
             </tbody>
           </table>
         </div>

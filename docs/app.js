@@ -238,6 +238,15 @@ function populateDeckFromWeapon(w) {
   badgeType.innerHTML = `Mount: <strong>${w.type}</strong>`;
   badgeTech.innerHTML = `Tech: <strong>${w.techQty || 0} UPs</strong>`;
   badgePcu.innerHTML = `PCU: <strong>${(w.pcu || 0).toLocaleString()}</strong>`;
+
+  // Weapon Icons & Radar Legend
+  const activeIconSrc = w.icon || `icons/${w.id}.png`;
+  const activeWeaponIcon = document.getElementById('activeWeaponIcon');
+  const compActiveIcon = document.getElementById('compActiveIcon');
+  const legendActiveName = document.getElementById('legendActiveName');
+  if (activeWeaponIcon) activeWeaponIcon.src = activeIconSrc;
+  if (compActiveIcon) compActiveIcon.src = activeIconSrc;
+  if (legendActiveName) legendActiveName.textContent = w.name;
 }
 
 // Read Current Values from Inputs into Active Weapon
@@ -510,14 +519,16 @@ function generateBalancedComponents(w, stats) {
   ];
 }
 
-// Update 1v1 Comparison Table
+// Update 1v1 Comparison Table & Radar Chart
 function updateComparisonTable(activeStats) {
   if (!benchmarkWeapon) {
     compareTableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>`;
+    drawRadarChart(activeStats, null);
     return;
   }
 
   const bStats = calculateStats(benchmarkWeapon);
+  drawRadarChart(activeStats, bStats);
   compareTableBody.innerHTML = '';
 
   const metrics = [
@@ -545,6 +556,161 @@ function updateComparisonTable(activeStats) {
     `;
     compareTableBody.appendChild(tr);
   });
+}
+
+// Draw Spider Graph / Radar Chart
+function drawRadarChart(aStats, bStats = null) {
+  const canvas = document.getElementById('radarCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const width = canvas.clientWidth || 360;
+  const height = canvas.clientHeight || 340;
+
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.scale(dpr, dpr);
+
+  const cx = width / 2;
+  const cy = height / 2;
+  const radius = Math.min(cx, cy) - 45;
+
+  ctx.clearRect(0, 0, width, height);
+
+  const axes = [
+    { name: "DPS", max: 15000, getVal: (s, w) => s ? s.sustainedDps : 0 },
+    { name: "ALPHA", max: 50000, getVal: (s, w) => s ? s.alphaDamage : 0 },
+    { name: "RANGE", max: 4000, getVal: (s, w) => w ? w.maxTrajectory : 0 },
+    { name: "VELOCITY", max: 2000, getVal: (s, w) => w ? w.desiredSpeed : 0 },
+    { name: "TRACKING", max: 90, getVal: (s, w) => s ? s.averageTraverse : 0 },
+    { name: "ENDURANCE", max: 1.0, getVal: (s, w) => s ? s.dutyRatio : 0 }
+  ];
+
+  const totalAxes = axes.length;
+  const angleStep = (Math.PI * 2) / totalAxes;
+
+  // 1. Draw Concentric Grid Polygons
+  const levels = [0.2, 0.4, 0.6, 0.8, 1.0];
+  levels.forEach(level => {
+    ctx.beginPath();
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const r = radius * level;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = level === 1.0 ? "rgba(245, 158, 11, 0.4)" : "rgba(255, 255, 255, 0.08)";
+    ctx.lineWidth = level === 1.0 ? 1.5 : 1;
+    ctx.stroke();
+  });
+
+  // 2. Draw Radial Spokes and Labels
+  ctx.font = "bold 10px 'JetBrains Mono', monospace";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  for (let i = 0; i < totalAxes; i++) {
+    const angle = i * angleStep - Math.PI / 2;
+    const x = cx + radius * Math.cos(angle);
+    const y = cy + radius * Math.sin(angle);
+
+    // Spoke line
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(x, y);
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Label position
+    const labelDist = radius + 20;
+    const lx = cx + labelDist * Math.cos(angle);
+    const ly = cy + labelDist * Math.sin(angle);
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.fillText(axes[i].name, lx, ly);
+  }
+
+  function normalize(val, max) {
+    const clamped = Math.max(0, Math.min(val, max));
+    return 0.05 + (clamped / max) * 0.95;
+  }
+
+  // 3. Draw Benchmark Polygon (Cyan) if selected
+  if (bStats && benchmarkWeapon) {
+    ctx.beginPath();
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const val = axes[i].getVal(bStats, benchmarkWeapon);
+      const norm = normalize(val, axes[i].max);
+      const r = radius * norm;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = "rgba(56, 189, 248, 0.22)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(56, 189, 248, 0.85)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Vertex points
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const val = axes[i].getVal(bStats, benchmarkWeapon);
+      const norm = normalize(val, axes[i].max);
+      const r = radius * norm;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "#38bdf8";
+      ctx.fill();
+    }
+  }
+
+  // 4. Draw Active Weapon Polygon (Amber)
+  if (aStats && activeWeapon) {
+    ctx.beginPath();
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const val = axes[i].getVal(aStats, activeWeapon);
+      const norm = normalize(val, axes[i].max);
+      const r = radius * norm;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = "rgba(245, 158, 11, 0.35)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(245, 158, 11, 0.95)";
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Vertex points
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = i * angleStep - Math.PI / 2;
+      const val = axes[i].getVal(aStats, activeWeapon);
+      const norm = normalize(val, axes[i].max);
+      const r = radius * norm;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fill();
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -951,6 +1117,23 @@ function setupEventListeners() {
   compareSelect.addEventListener('change', e => {
     const found = weaponsDb.find(w => w.id === e.target.value);
     benchmarkWeapon = found ? JSON.parse(JSON.stringify(found)) : null;
+
+    const compBenchIcon = document.getElementById('compBenchIcon');
+    const legendBenchItem = document.getElementById('legendBenchItem');
+    const legendBenchName = document.getElementById('legendBenchName');
+
+    if (benchmarkWeapon) {
+      const benchIconSrc = benchmarkWeapon.icon || `icons/${benchmarkWeapon.id}.png`;
+      if (compBenchIcon) {
+        compBenchIcon.src = benchIconSrc;
+        compBenchIcon.style.display = 'block';
+      }
+      if (legendBenchItem) legendBenchItem.style.display = 'flex';
+      if (legendBenchName) legendBenchName.textContent = benchmarkWeapon.name;
+    } else {
+      if (compBenchIcon) compBenchIcon.style.display = 'none';
+      if (legendBenchItem) legendBenchItem.style.display = 'none';
+    }
     recalculate();
   });
 
