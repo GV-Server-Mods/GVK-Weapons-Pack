@@ -116,10 +116,10 @@ Renders authentic weapon-to-target lethality across 4 key combat target profiles
 $$M_{\text{blend}} = \frac{w_H \cdot \text{Heavy} + w_L \cdot \text{Light} + w_N \cdot \text{NonArmor}}{w_H + w_L + w_N}, \quad \text{Effective DPS} = \text{Sustained DPS} \times M_{\text{blend}}$$
 Unset multipliers ($-1$) resolve to $1.0\times$. The hero card shows the blended figure beneath raw DPS, and the 1v1 compare table gains an "Effective DPS (mix)" row.
 
-**Overmatch (`BaseDamageCutoff`)** — per WeaponCore source, penetrating rounds apply at most Cutoff damage per block hit and carry the remainder onward:
+**Overpen (`BaseDamageCutoff`)** — per WeaponCore source, penetrating rounds apply at most Cutoff damage per block hit and carry the remainder onward:
 $$D_{\text{block}} = \min(\text{BaseDamage}, \text{Cutoff}) \times M_{\text{target}}, \quad N_{\text{blocks}} = \left\lfloor \frac{\text{BaseDamage}}{\text{Cutoff}} \right\rfloor$$
 - The cap **redistributes** damage, never destroys it: raw DPS and total alpha (e.g. the MAC's $2{,}000{,}001$) are unchanged.
-- Matrix volleys and the TTK simulator use $D_{\text{block}}$ (a single cube cannot absorb the full base damage of a capped round); the munition badge shows a `🪡 N blocks @ X hp` chip when a cap is active.
+- Matrix volleys and the TTK simulator use $D_{\text{block}}$ (a single cube cannot absorb the full base damage of a capped round); the matrix header shows a `🪡 Overpen: N blocks @ X hp` chip whenever `BaseDamageCutoff > 0` (it replaces the retired "Loaded" munition badge, which duplicated the munition bar).
 
 #### 5. Effective Fire Rate & Combat Cycle
 Replaces static heat bars with operational sustainability metrics:

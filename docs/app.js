@@ -559,7 +559,6 @@ const outTotalValue = document.getElementById('outTotalValue');
 const bomTableBody = document.getElementById('bomTableBody');
 
 // DOM Elements - Target Damage & Multiplier Matrix
-const targetMatrixMunitionLabel = document.getElementById('targetMatrixMunitionLabel');
 const tmHeavyMult = document.getElementById('tmHeavyMult');
 const tmHeavyDmg  = document.getElementById('tmHeavyDmg');
 const tmHeavySub  = document.getElementById('tmHeavySub');
@@ -2337,12 +2336,9 @@ function updateCombatTelemetry() {
   outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
 
   // Update Target Damage & Multiplier Matrix
-  if (targetMatrixMunitionLabel) {
-    targetMatrixMunitionLabel.textContent = `Loaded: ${activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name}`;
-  }
   if (tmPenetrationChip) {
     if (dmgDetails.cutoff > 0) {
-      tmPenetrationChip.textContent = `🪡 Overmatch: ${dmgDetails.penBlocks} blocks @ ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp`;
+      tmPenetrationChip.textContent = `🪡 Overpen: ${dmgDetails.penBlocks} blocks @ ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp`;
       tmPenetrationChip.style.display = 'inline-flex';
     } else {
       tmPenetrationChip.style.display = 'none';
