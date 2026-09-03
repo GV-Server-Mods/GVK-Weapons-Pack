@@ -120,7 +120,6 @@ const WC_CORE_DEFAULTS = {
 
   // DamageScaleDef
   maxIntegrity: 0,
-  damageToShields: 1.0,
   characters: -1,
   damageType: "BaseDamage",
   armorArmor: -1,
@@ -131,9 +130,6 @@ const WC_CORE_DEFAULTS = {
   falloffMinMult: 0,
   gridLarge: -1,
   gridSmall: -1,
-  shieldModifier: 1.0,
-  shieldType: "Default",
-  shieldBypassMod: 0,
 
   // Trajectory & Smarts
   accelPerSec: 0,
@@ -206,7 +202,6 @@ const WC_CORE_DEFAULTS = {
 
   // GraphicDef
   visualProbability: 1.0,
-  shieldHitDraw: true,
   tracerEnable: true,
   tracerLength: 10,
   tracerWidth: 0.1,
@@ -224,12 +219,10 @@ const WC_CORE_DEFAULTS = {
   soundShot: "",
   soundTravel: "",
   soundHit: "",
-  soundShieldHit: "",
   soundVoxelHit: "",
   soundPlayerHit: "",
   soundWaterHit: "",
   hitPlayChance: 1.0,
-  hitPlayShield: true,
 
   // SynchronizeDef
   syncFull: false,
@@ -366,9 +359,6 @@ const dsGridLarge = document.getElementById('dsGridLarge');
 const dsGridSmall = document.getElementById('dsGridSmall');
 const dsFalloffDistance = document.getElementById('dsFalloffDistance');
 const dsFalloffMinMult = document.getElementById('dsFalloffMinMult');
-const dsShieldModifier = document.getElementById('dsShieldModifier');
-const dsShieldType = document.getElementById('dsShieldType');
-const dsShieldBypassMod = document.getElementById('dsShieldBypassMod');
 
 // Scope B: AreaOfDamageDef (BlockHit & EndOfLife)
 const aodBlockEnable = document.getElementById('aodBlockEnable');
@@ -415,7 +405,6 @@ const ewStackDuration = document.getElementById('ewStackDuration');
 const ewDeplete = document.getElementById('ewDeplete');
 
 // Scope B: GraphicDef extras
-const gShieldHitDraw = document.getElementById('gShieldHitDraw');
 const gTracerColor = document.getElementById('gTracerColor');
 const gTracerTexture = document.getElementById('gTracerTexture');
 const gTracerSegmented = document.getElementById('gTracerSegmented');
@@ -432,7 +421,6 @@ const aSoundVoxelHit = document.getElementById('aSoundVoxelHit');
 const aSoundPlayerHit = document.getElementById('aSoundPlayerHit');
 const aSoundWaterHit = document.getElementById('aSoundWaterHit');
 const aHitPlayChance = document.getElementById('aHitPlayChance');
-const aHitPlayShield = document.getElementById('aHitPlayShield');
 
 // Scope B: SynchronizeDef
 const syncInterval = document.getElementById('syncInterval');
@@ -574,9 +562,9 @@ const tmHeavySub  = document.getElementById('tmHeavySub');
 const tmLightMult = document.getElementById('tmLightMult');
 const tmLightDmg  = document.getElementById('tmLightDmg');
 const tmLightSub  = document.getElementById('tmLightSub');
-const tmShieldMult = document.getElementById('tmShieldMult');
-const tmShieldDmg  = document.getElementById('tmShieldDmg');
-const tmShieldSub  = document.getElementById('tmShieldSub');
+const tmNonArmorMult = document.getElementById('tmNonArmorMult');
+const tmNonArmorDmg  = document.getElementById('tmNonArmorDmg');
+const tmNonArmorSub  = document.getElementById('tmNonArmorSub');
 const tmBlastRadius = document.getElementById('tmBlastRadius');
 const tmBlastDmg   = document.getElementById('tmBlastDmg');
 const tmBlastSub   = document.getElementById('tmBlastSub');
@@ -690,7 +678,6 @@ const fChildAmmoRound = document.getElementById('fChildAmmoRound');
 const fragStatusBadge = document.getElementById('fragStatusBadge');
 const fragChainVisual = document.getElementById('fragChainVisual');
 
-const dsShield = document.getElementById('dsShield');
 const dsLightArmor = document.getElementById('dsLightArmor');
 const dsHeavyArmor = document.getElementById('dsHeavyArmor');
 
@@ -707,7 +694,6 @@ const gVisualProb = document.getElementById('gVisualProb');
 
 const aSoundTravel = document.getElementById('aSoundTravel');
 const aSoundHit = document.getElementById('aSoundHit');
-const aSoundShieldHit = document.getElementById('aSoundShieldHit');
 
 // GVK Canonical Tech Component Dictionary
 const GVK_TECH_COMPONENTS = {
@@ -1326,7 +1312,7 @@ function updateTelemetryAmmoBadge() {
   const ds = activeAmmo.damageScales || {};
   const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
-  const shieldMult = (ds.shield !== undefined && ds.shield !== -1) ? ds.shield : 1.0;
+  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
 
   let typeDesc = "Direct Kinetic AP";
   if (eol && eol.damage > 0) {
@@ -1345,8 +1331,9 @@ function updateTelemetryAmmoBadge() {
   if (lightMult !== 1.0) {
     modifierChips += ` &bull; <span class="badge ${lightMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">📄 Light ${lightMult}×</span>`;
   }
-  if (shieldMult !== 1.0) {
-    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">⚡ Shield ${shieldMult}×</span>`;
+  if (nonArmorMult !== 1.0) {
+    const effNonArmor = Math.round((dmg.base * nonArmorMult) + dmg.aoe + dmg.frag);
+    modifierChips += ` &bull; <span class="badge ${nonArmorMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">⚙️ Non-Armor ${nonArmorMult}× (${effNonArmor.toLocaleString()}hp)</span>`;
   }
 
   telemetryAmmoBadge.innerHTML = `
@@ -1913,28 +1900,20 @@ function populateAmmoWorkbench() {
   // DamageScaleDef
   const ds = activeAmmo.damageScales || {};
   bindInputVal(dsMaxIntegrity, ds.maxIntegrity, 0);
-  bindInputVal(dsShield, ds.damageToShields, 1.0);
   bindInputVal(dsCharacters, ds.characters, -1);
   bindInputVal(dsDamageType, ds.damageType, 'BaseDamage');
 
-  const arm = ds.armor || {};
-  bindInputVal(dsArmorArmor, arm.armor, -1);
-  bindInputVal(dsLightArmor, arm.light, -1);
-  bindInputVal(dsHeavyArmor, arm.heavy, -1);
-  bindInputVal(dsNonArmor, arm.nonArmor, -1);
+  // Flat keys match ammos_data.js damageScales schema (no nested armor object)
+  bindInputVal(dsArmorArmor, ds.armorArmor, -1);
+  bindInputVal(dsLightArmor, ds.lightArmor, -1);
+  bindInputVal(dsHeavyArmor, ds.heavyArmor, -1);
+  bindInputVal(dsNonArmor, ds.nonArmor, -1);
 
-  const fo = ds.fallOff || {};
-  bindInputVal(dsFalloffDistance, fo.distance, 0);
-  bindInputVal(dsFalloffMinMult, fo.minMultipler, 0);
+  bindInputVal(dsFalloffDistance, ds.falloffDistance, 0);
+  bindInputVal(dsFalloffMinMult, ds.falloffMinMult, 0);
 
-  const grd = ds.grids || {};
-  bindInputVal(dsGridLarge, grd.large, -1);
-  bindInputVal(dsGridSmall, grd.small, -1);
-
-  const shld = ds.shields || {};
-  bindInputVal(dsShieldModifier, shld.modifier, 1.0);
-  bindInputVal(dsShieldType, shld.type, 'Default');
-  bindInputVal(dsShieldBypassMod, shld.bypassModifier, 0);
+  bindInputVal(dsGridLarge, ds.gridLarge, -1);
+  bindInputVal(dsGridSmall, ds.gridSmall, -1);
 
   // AreaOfDamageDef
   const aod = activeAmmo.areaOfDamage || {};
@@ -1999,7 +1978,6 @@ function populateAmmoWorkbench() {
   // GraphicDef
   const gfx = activeAmmo.graphic || {};
   bindInputVal(gVisualProb, gfx.visualProbability, 1.0);
-  bindCheckboxVal(gShieldHitDraw, gfx.shieldHitDraw, true);
 
   const trc = gfx.lines ? gfx.lines.tracer : {};
   bindCheckboxVal(gTracerEnable, trc ? trc.enable : undefined, true);
@@ -2023,12 +2001,10 @@ function populateAmmoWorkbench() {
   bindInputVal(aSoundShot, aud.shotSound, '');
   bindInputVal(aSoundTravel, aud.travelSound, '');
   bindInputVal(aSoundHit, aud.hitSound, '');
-  bindInputVal(aSoundShieldHit, aud.shieldHitSound, '');
   bindInputVal(aSoundVoxelHit, aud.voxelHitSound, '');
   bindInputVal(aSoundPlayerHit, aud.playerHitSound, '');
   bindInputVal(aSoundWaterHit, aud.waterHitSound, '');
   bindInputVal(aHitPlayChance, aud.hitPlayChance, 1.0);
-  bindCheckboxVal(aHitPlayShield, aud.hitPlayShield, true);
 
   // SynchronizeDef
   const sync = activeAmmo.sync || {};
@@ -2286,7 +2262,7 @@ function updateCombatTelemetry() {
   const ds = activeAmmo.damageScales || {};
   const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
-  const shieldMult = (ds.shield !== undefined && ds.shield !== -1) ? ds.shield : 1.0;
+  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
 
   const heavyDmg = (dmgDetails.base * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
   const heavyVolley = Math.round(heavyDmg * barrels);
@@ -2294,8 +2270,8 @@ function updateCombatTelemetry() {
   const lightDmg = (dmgDetails.base * lightMult) + dmgDetails.aoe + dmgDetails.frag;
   const lightVolley = Math.round(lightDmg * barrels);
 
-  const shieldDmg = (dmgDetails.base * shieldMult) + dmgDetails.aoe + dmgDetails.frag;
-  const shieldVolley = Math.round(shieldDmg * barrels);
+  const nonArmorDmg = (dmgDetails.base * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
+  const nonArmorVolley = Math.round(nonArmorDmg * barrels);
 
   // Blast stats
   let blastRadius = 0;
@@ -2356,16 +2332,16 @@ function updateCombatTelemetry() {
     tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp (${lightNote})`;
   }
 
-  if (tmShieldMult) {
-    tmShieldMult.textContent = `${shieldMult.toFixed(1)}×`;
-    tmShieldMult.className = `target-multiplier-badge ${shieldMult > 1.0 ? 'buff' : (shieldMult < 1.0 ? 'nerf' : '')}`;
+  if (tmNonArmorMult) {
+    tmNonArmorMult.textContent = `${nonArmorMult.toFixed(1)}×`;
+    tmNonArmorMult.className = `target-multiplier-badge ${nonArmorMult > 1.0 ? 'buff' : (nonArmorMult < 1.0 ? 'nerf' : '')}`;
   }
-  if (tmShieldDmg) {
-    tmShieldDmg.innerHTML = `${Math.round(shieldDmg).toLocaleString()} <span class="unit">hp</span>`;
+  if (tmNonArmorDmg) {
+    tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp</span>`;
   }
-  if (tmShieldSub) {
-    const shieldNote = shieldMult > 1.0 ? '⚡ Shield Disruptor' : (shieldMult < 1.0 ? '⚠️ Shield Dissipation' : 'Standard Shield Draw');
-    tmShieldSub.textContent = `Volley: ${shieldVolley.toLocaleString()} hp (${shieldNote})`;
+  if (tmNonArmorSub) {
+    const nonArmorNote = nonArmorMult > 1.0 ? '⚡ Systems Shredder' : (nonArmorMult < 1.0 ? '⚠️ Component Resistance' : 'Standard Impact');
+    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp (${nonArmorNote})`;
   }
 
   if (tmBlastRadius) {
@@ -3660,17 +3636,19 @@ function createMinimalAmmo() {
     },
     damageScales: {
       maxIntegrity: 0,
-      damageToShields: 1.0,
       characters: 1.0,
       damageType: "BaseDamage",
-      armor: { armor: -1, light: -1, heavy: -1, nonArmor: -1 },
-      fallOff: { distance: 0, minMultipler: 0 },
-      grids: { large: -1, small: -1 },
-      shields: { modifier: 1.0, type: "Default", bypassModifier: 0 }
+      armorArmor: -1,
+      lightArmor: -1,
+      heavyArmor: -1,
+      nonArmor: -1,
+      falloffDistance: 0,
+      falloffMinMult: 0,
+      gridLarge: -1,
+      gridSmall: -1
     },
     graphic: {
       visualProbability: 1.0,
-      shieldHitDraw: true,
       lines: {
         tracer: { enable: true, length: 12, width: 0.12, color: "255, 120, 20, 255", texture: "WeaponLaser", segmentation: false },
         trail: { enable: false, alwaysDraw: false, decayTime: 60, customWidth: 0.5, color: "200, 200, 200, 180", textures: ["WeaponLaser"] }
@@ -3680,12 +3658,10 @@ function createMinimalAmmo() {
       shotSound: "",
       travelSound: "",
       hitSound: "DOK_CannonHit",
-      shieldHitSound: "",
       voxelHitSound: "",
       playerHitSound: "",
       waterHitSound: "",
-      hitPlayChance: 1.0,
-      hitPlayShield: true
+      hitPlayChance: 1.0
     },
     sync: {
       full: false,
@@ -4360,8 +4336,6 @@ function generateCSharpAmmo() {
 `;
   if (dsMaxIntegrity && parseFloat(dsMaxIntegrity.value) > 0) code += `                MaxIntegrity = ${dsMaxIntegrity.value}f,
 `;
-  code += `                DamageToShields = ${dsShield.value}f,
-`;
   if (dsCharacters && parseFloat(dsCharacters.value) !== 1.0) code += `                Characters = ${dsCharacters.value}f,
 `;
   code += `                Armor = new ArmorDef
@@ -4412,20 +4386,6 @@ function generateCSharpAmmo() {
     code += `                },
 `;
   }
-  if (dsShieldType && (dsShieldType.value !== 'Default' || parseFloat(dsShieldBypassMod.value) > 0)) {
-    code += `                Shields = new ShieldDef
-`;
-    code += `                {
-`;
-    code += `                    Modifier = ${dsShieldModifier.value}f,
-`;
-    code += `                    Type = ${dsShieldType.value},
-`;
-    if (parseFloat(dsShieldBypassMod.value) > 0) code += `                    BypassModifier = ${dsShieldBypassMod.value}f,
-`;
-    code += `                },
-`;
-  }
   code += `            },
 `;
 
@@ -4462,8 +4422,6 @@ function generateCSharpAmmo() {
   code += `            {
 `;
   if (parseFloat(gVisualProb.value) !== 1.0) code += `                VisualProbability = ${gVisualProb.value}f,
-`;
-  if (gShieldHitDraw && !gShieldHitDraw.checked) code += `                ShieldHitDraw = false,
 `;
   code += `                Lines = new LineDef
 `;
@@ -4518,7 +4476,6 @@ function generateCSharpAmmo() {
   const hasAudio = (aSoundShot && aSoundShot.value.trim()) ||
     (aSoundTravel && aSoundTravel.value.trim()) ||
     (aSoundHit && aSoundHit.value.trim()) ||
-    (aSoundShieldHit && aSoundShieldHit.value.trim()) ||
     (aSoundVoxelHit && aSoundVoxelHit.value.trim()) ||
     (aSoundPlayerHit && aSoundPlayerHit.value.trim()) ||
     (aSoundWaterHit && aSoundWaterHit.value.trim());
@@ -4534,8 +4491,6 @@ function generateCSharpAmmo() {
 `;
     if (aSoundHit && aSoundHit.value.trim()) code += `                HitSound = "${aSoundHit.value}",
 `;
-    if (aSoundShieldHit && aSoundShieldHit.value.trim()) code += `                ShieldHitSound = "${aSoundShieldHit.value}",
-`;
     if (aSoundVoxelHit && aSoundVoxelHit.value.trim()) code += `                VoxelHitSound = "${aSoundVoxelHit.value}",
 `;
     if (aSoundPlayerHit && aSoundPlayerHit.value.trim()) code += `                PlayerHitSound = "${aSoundPlayerHit.value}",
@@ -4543,8 +4498,6 @@ function generateCSharpAmmo() {
     if (aSoundWaterHit && aSoundWaterHit.value.trim()) code += `                WaterHitSound = "${aSoundWaterHit.value}",
 `;
     if (aHitPlayChance && parseFloat(aHitPlayChance.value) !== 1.0) code += `                HitPlayChance = ${aHitPlayChance.value}f,
-`;
-    if (aHitPlayShield && !aHitPlayShield.checked) code += `                HitPlayShield = false,
 `;
     code += `            },
 `;

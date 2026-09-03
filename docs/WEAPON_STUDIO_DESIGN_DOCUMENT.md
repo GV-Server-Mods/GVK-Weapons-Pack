@@ -106,9 +106,11 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 Renders authentic weapon-to-target lethality across 4 key combat target profiles:
 - **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and salvo volley. Highlights armor-shredding penetration.
 - **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP [over-penetration], } 1.0\times\text{ on HE}$), and effective damage.
-- **Shields**: Multiplier ($\text{e.g. } 10\times\text{ on Flak/Torpedo, } 5\times\text{ on Heavy Cannon, } 3\times\text{ on Gatling, } 1000\times\text{ on MAC}$) and effective shield drain.
+- **Non-Armor (Systems)**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
 - **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
 - **Target Dummy Time-to-Kill (TTK)**: Applies true target multipliers ($\text{Damage}_{\text{target}} = \text{Base} \times \text{Multiplier} + \text{AoE} + \text{Frag}$) when simulating shots and time to destroy Light Armor, Heavy Armor, Battery, and Refinery cubes. Demonstrates why 155 AP destroys a Heavy Armor Cube in 1 salvo ($18\text{k dmg} > 16.5\text{k hp}$) while 155 HE requires 2 salvos.
+
+> **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Non-Armor (Systems)** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
 
 #### 5. Effective Fire Rate & Combat Cycle
 Replaces static heat bars with operational sustainability metrics:
@@ -167,7 +169,7 @@ Form controls categorized strictly matching the C# struct layout:
 Full canonical WeaponCore round engineering:
 - Header & Core (Base damage, cutoff, mass, health, kick force)
 - `TrajectoryDef` & `SmartsDef` (Speed, acceleration, lifetime, pro-nav guidance, scan rates)
-- `DamageScaleDef` (Armor multipliers, shield damage, grid scaling)
+- `DamageScaleDef` (Armor & Non-Armor multipliers, grid scaling, falloff)
 - `AreaOfDamageDef` (Impact `ByBlockHit` & Proximity `EndOfLife` explosive radii)
 - `FragmentDef` (Child ammo round triggers, spawn counts, radial dispersion)
 - `PatternDef`, `EwarDef`, `GraphicDef` (Tracers & ribbon trails), and `AmmoAudioDef`.
@@ -311,8 +313,8 @@ When modifying or extending the GVK Weapon Studio:
    - `GVK_*.sbc` for custom mod content.
    - `Blueprints.sbc` for production recipes.
 4. **Theme Rigor**: Whenever adding new text or cards, ensure both dark mode and `[data-theme="light"]` selectors are verified for contrast.
-5. **Run Verification Script**: Always validate changes using:
+5. **Run Verification Script**: Always validate changes using the headless smoke harness (stubs a minimal DOM, loads `docs/app.js`, and asserts the WC exporters run clean with zero shield output):
    ```cmd
-   node scratch/test_ammo_logistics_and_theme.js
+   node scratch/test_studio_smoke.js
    ```
 

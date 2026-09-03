@@ -196,7 +196,7 @@
           <div class="target-matrix-header">
             <div class="target-matrix-title-wrap">
               <span class="target-matrix-title">🎯 TARGET DAMAGE & MULTIPLIER MATRIX</span>
-              <span class="target-matrix-sub">True penetration values scaled by armor, shields & internal structures</span>
+              <span class="target-matrix-sub">True penetration values scaled by heavy armor, light armor & internal systems</span>
             </div>
             <span id="targetMatrixMunitionLabel" class="target-matrix-badge">155 AP</span>
           </div>
@@ -225,16 +225,16 @@
               <div class="target-stat-sub" id="tmLightSub">Volley: 3,000 hp (Over-penetration)</div>
             </div>
 
-            <div class="target-stat-box" id="tmShieldBox">
+            <div class="target-stat-box" id="tmNonArmorBox">
               <div class="target-stat-header">
                 <div class="target-type-label">
-                  <span class="target-type-icon">⚡</span>
-                  <span class="target-type-name">Shields</span>
+                  <span class="target-type-icon">⚙️</span>
+                  <span class="target-type-name">Non-Armor (Systems)</span>
                 </div>
-                <span class="target-multiplier-badge" id="tmShieldMult">1.0×</span>
+                <span class="target-multiplier-badge" id="tmNonArmorMult">1.0×</span>
               </div>
-              <div class="target-stat-value" id="tmShieldDmg">6,000 <span class="unit">hp</span></div>
-              <div class="target-stat-sub" id="tmShieldSub">Volley: 6,000 hp (Standard)</div>
+              <div class="target-stat-value" id="tmNonArmorDmg">6,000 <span class="unit">hp</span></div>
+              <div class="target-stat-sub" id="tmNonArmorSub">Volley: 6,000 hp (Standard)</div>
             </div>
 
             <div class="target-stat-box" id="tmBlastBox">
@@ -1169,18 +1169,14 @@
         <!-- 4. DamageScaleDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">4. DamageScaleDef (Armor, Shields, Grids &amp; Falloff)</span>
-            <span class="wc-tag">Shields, Light/Heavy Armor, Falloff</span>
+            <span class="wc-title">4. DamageScaleDef (Armor, Grids &amp; Falloff)</span>
+            <span class="wc-tag">Light/Heavy/Non-Armor, Grids, Falloff</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Max Integrity</label>
                 <input type="number" id="dsMaxIntegrity" class="control-input" min="0" value="0">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Damage To Shields <span class="unit">mult</span></label>
-                <input type="number" id="dsShield" class="control-input" step="0.1" min="0" value="1.0">
               </div>
               <div class="control-item">
                 <label class="control-label">Characters Modifier</label>
@@ -1226,28 +1222,6 @@
               <div class="control-item">
                 <label class="control-label">Falloff Min Multiplier</label>
                 <input type="number" id="dsFalloffMinMult" class="control-input" step="0.05" min="0" max="1" value="0">
-              </div>
-            </div>
-
-            <div class="nested-card" style="margin-top: 14px;">
-              <div class="nested-card-title">🛡️ Shields Scaling (ShieldDef)</div>
-              <div class="control-grid">
-                <div class="control-item">
-                  <label class="control-label">Shield Modifier</label>
-                  <input type="number" id="dsShieldModifier" class="control-input" step="0.1" min="0" value="1.0">
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Shield Response Type</label>
-                  <select id="dsShieldType" class="control-input">
-                    <option value="Default" selected>Default (Standard Damage)</option>
-                    <option value="Heal">Heal (Repairs Shields)</option>
-                    <option value="Bypass">Bypass (Penetrates Shield Bubble)</option>
-                  </select>
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Bypass Modifier <span class="unit">0.0 - 1.0</span></label>
-                  <input type="number" id="dsShieldBypassMod" class="control-input" step="0.05" min="0" max="1" value="0">
-                </div>
               </div>
             </div>
           </div>
@@ -1458,7 +1432,6 @@
                   <option value="Emp">Emp (Disrupt Systems)</option>
                   <option value="Offense">Offense (Disable Weapons)</option>
                   <option value="Nav">Nav (Disrupt Gyros/Thrusters)</option>
-                  <option value="ShieldOffense">ShieldOffense (Overload Shields)</option>
                 </select>
               </div>
               <div class="control-item">
@@ -1499,12 +1472,6 @@
               <div class="control-item">
                 <label class="control-label">Visual Probability <span class="unit">0.0 - 1.0</span></label>
                 <input type="number" id="gVisualProb" class="control-input" step="0.1" min="0" max="1" value="1.0">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Shield Hit Visuals</label>
-                <div style="margin-top: 6px;">
-                  <label class="chk-label"><input type="checkbox" id="gShieldHitDraw" checked> Draw On Shield Impact</label>
-                </div>
               </div>
             </div>
 
@@ -1569,7 +1536,7 @@
         <details class="wc-accordion">
           <summary class="wc-summary">
             <span class="wc-title">10. AmmoAudioDef (Flight, Hits &amp; Environmental Sounds)</span>
-            <span class="wc-tag">Travel, Hit, Shield, Voxel, Water</span>
+            <span class="wc-tag">Travel, Hit, Voxel, Water</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
@@ -1586,10 +1553,6 @@
                 <input type="text" id="aSoundHit" class="control-input" value="DOK_CannonHit">
               </div>
               <div class="control-item">
-                <label class="control-label">Shield Hit Sound</label>
-                <input type="text" id="aSoundShieldHit" class="control-input" value="">
-              </div>
-              <div class="control-item">
                 <label class="control-label">Voxel Hit Sound</label>
                 <input type="text" id="aSoundVoxelHit" class="control-input" value="">
               </div>
@@ -1604,9 +1567,6 @@
               <div class="control-item">
                 <label class="control-label">Hit Play Chance <span class="unit">0.0 - 1.0</span></label>
                 <input type="number" id="aHitPlayChance" class="control-input" step="0.1" min="0" max="1" value="1.0">
-              </div>
-              <div class="control-item full-width">
-                <label class="chk-label"><input type="checkbox" id="aHitPlayShield" checked> Play Hit Sound on Shield Impact</label>
               </div>
             </div>
           </div>
