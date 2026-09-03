@@ -566,6 +566,21 @@ const outBuildTime = document.getElementById('outBuildTime');
 const outTotalValue = document.getElementById('outTotalValue');
 const bomTableBody = document.getElementById('bomTableBody');
 
+// DOM Elements - Target Damage & Multiplier Matrix
+const targetMatrixMunitionLabel = document.getElementById('targetMatrixMunitionLabel');
+const tmHeavyMult = document.getElementById('tmHeavyMult');
+const tmHeavyDmg  = document.getElementById('tmHeavyDmg');
+const tmHeavySub  = document.getElementById('tmHeavySub');
+const tmLightMult = document.getElementById('tmLightMult');
+const tmLightDmg  = document.getElementById('tmLightDmg');
+const tmLightSub  = document.getElementById('tmLightSub');
+const tmShieldMult = document.getElementById('tmShieldMult');
+const tmShieldDmg  = document.getElementById('tmShieldDmg');
+const tmShieldSub  = document.getElementById('tmShieldSub');
+const tmBlastRadius = document.getElementById('tmBlastRadius');
+const tmBlastDmg   = document.getElementById('tmBlastDmg');
+const tmBlastSub   = document.getElementById('tmBlastSub');
+
 // DOM Elements - Simulator Tools (TTK & Drift)
 const ttkTargetSelect = document.getElementById('ttkTargetSelect');
 const outTtkMain = document.getElementById('outTtkMain');
@@ -1308,6 +1323,11 @@ function updateTelemetryAmmoBadge() {
     : null;
   const frag = (activeAmmo.fragment && activeAmmo.fragment.enable) ? activeAmmo.fragment : null;
 
+  const ds = activeAmmo.damageScales || {};
+  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const shieldMult = (ds.shield !== undefined && ds.shield !== -1) ? ds.shield : 1.0;
+
   let typeDesc = "Direct Kinetic AP";
   if (eol && eol.damage > 0) {
     typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
@@ -1317,11 +1337,23 @@ function updateTelemetryAmmoBadge() {
     typeDesc = "High-Energy Sabot";
   }
 
+  let modifierChips = '';
+  if (heavyMult !== 1.0) {
+    const effHeavy = Math.round((dmg.base * heavyMult) + dmg.aoe + dmg.frag);
+    modifierChips += ` &bull; <span class="badge ${heavyMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">🛡️ Heavy ${heavyMult}× (${effHeavy.toLocaleString()}hp)</span>`;
+  }
+  if (lightMult !== 1.0) {
+    modifierChips += ` &bull; <span class="badge ${lightMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">📄 Light ${lightMult}×</span>`;
+  }
+  if (shieldMult !== 1.0) {
+    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">⚡ Shield ${shieldMult}×</span>`;
+  }
+
   telemetryAmmoBadge.innerHTML = `
     <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span> &bull; 
     <span>${Math.round(dmg.total).toLocaleString()} Dmg/Shot</span> &bull; 
     <span>${Math.round(spd)} m/s</span> &bull; 
-    <span>${Math.round(rng)}m Range</span>
+    <span>${Math.round(rng)}m Range</span>${modifierChips}
   `;
 }
 
@@ -2250,11 +2282,44 @@ function updateCombatTelemetry() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
+  // Extract Target Modifiers
+  const ds = activeAmmo.damageScales || {};
+  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const shieldMult = (ds.shield !== undefined && ds.shield !== -1) ? ds.shield : 1.0;
+
+  const heavyDmg = (dmgDetails.base * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
+  const heavyVolley = Math.round(heavyDmg * barrels);
+
+  const lightDmg = (dmgDetails.base * lightMult) + dmgDetails.aoe + dmgDetails.frag;
+  const lightVolley = Math.round(lightDmg * barrels);
+
+  const shieldDmg = (dmgDetails.base * shieldMult) + dmgDetails.aoe + dmgDetails.frag;
+  const shieldVolley = Math.round(shieldDmg * barrels);
+
+  // Blast stats
+  let blastRadius = 0;
+  let blastDepth = 0;
+  let blastDmg = dmgDetails.aoe;
+  if (activeAmmo.areaOfDamage) {
+    if (activeAmmo.areaOfDamage.enable) {
+      blastRadius = activeAmmo.areaOfDamage.radius || 0;
+      blastDepth = activeAmmo.areaOfDamage.depth || 0;
+    } else if (activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable) {
+      blastRadius = activeAmmo.areaOfDamage.endOfLife.radius || 0;
+      blastDepth = activeAmmo.areaOfDamage.endOfLife.depth || 0;
+      blastDmg = activeAmmo.areaOfDamage.endOfLife.damage || blastDmg;
+    }
+  }
+
   // Update Hero Metrics
   outSustainedDps.textContent = sustainedDps.toLocaleString();
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
     outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
+  } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
+    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
+    outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Heavy: ${Math.round(heavyDmg).toLocaleString()} [${heavyMult}×] | Light: ${Math.round(lightDmg).toLocaleString()} [${lightMult}×])`;
   } else {
     outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
     outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
@@ -2262,6 +2327,66 @@ function updateCombatTelemetry() {
   outAlphaDmg.textContent = Math.round(alphaVolley).toLocaleString();
   outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
   outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
+
+  // Update Target Damage & Multiplier Matrix
+  if (targetMatrixMunitionLabel) {
+    targetMatrixMunitionLabel.textContent = `Loaded: ${activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name}`;
+  }
+  if (tmHeavyMult) {
+    tmHeavyMult.textContent = `${heavyMult.toFixed(1)}×`;
+    tmHeavyMult.className = `target-multiplier-badge ${heavyMult > 1.0 ? 'buff' : (heavyMult < 1.0 ? 'nerf' : '')}`;
+  }
+  if (tmHeavyDmg) {
+    tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp</span>`;
+  }
+  if (tmHeavySub) {
+    const heavyNote = heavyMult > 1.0 ? '⚡ Armor Shredder' : (heavyMult < 1.0 ? '⚠️ Armor Resistance' : 'Standard Impact');
+    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp (${heavyNote})`;
+  }
+
+  if (tmLightMult) {
+    tmLightMult.textContent = `${lightMult.toFixed(1)}×`;
+    tmLightMult.className = `target-multiplier-badge ${lightMult > 1.0 ? 'buff' : (lightMult < 1.0 ? 'nerf' : '')}`;
+  }
+  if (tmLightDmg) {
+    tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp</span>`;
+  }
+  if (tmLightSub) {
+    const lightNote = lightMult < 1.0 ? '⚠️ Over-penetration' : (lightMult > 1.0 ? '⚡ Hull Shredder' : 'Standard Impact');
+    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp (${lightNote})`;
+  }
+
+  if (tmShieldMult) {
+    tmShieldMult.textContent = `${shieldMult.toFixed(1)}×`;
+    tmShieldMult.className = `target-multiplier-badge ${shieldMult > 1.0 ? 'buff' : (shieldMult < 1.0 ? 'nerf' : '')}`;
+  }
+  if (tmShieldDmg) {
+    tmShieldDmg.innerHTML = `${Math.round(shieldDmg).toLocaleString()} <span class="unit">hp</span>`;
+  }
+  if (tmShieldSub) {
+    const shieldNote = shieldMult > 1.0 ? '⚡ Shield Disruptor' : (shieldMult < 1.0 ? '⚠️ Shield Dissipation' : 'Standard Shield Draw');
+    tmShieldSub.textContent = `Volley: ${shieldVolley.toLocaleString()} hp (${shieldNote})`;
+  }
+
+  if (tmBlastRadius) {
+    if (blastRadius > 0) {
+      tmBlastRadius.textContent = `${blastRadius.toFixed(1)}m Radius`;
+      tmBlastRadius.className = 'target-multiplier-badge special';
+    } else {
+      tmBlastRadius.textContent = 'None';
+      tmBlastRadius.className = 'target-multiplier-badge';
+    }
+  }
+  if (tmBlastDmg) {
+    tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp</span>`;
+  }
+  if (tmBlastSub) {
+    if (blastRadius > 0) {
+      tmBlastSub.textContent = `${blastDepth > 0 ? blastDepth.toFixed(1) + 'm Depth | ' : ''}Area Detonation (Pooled)`;
+    } else {
+      tmBlastSub.textContent = 'Direct Kinetic Penetration Only';
+    }
+  }
 
   // Traverse Speed
   const rotRad = parseFloat(wRotateRate.value) || 0.015;
@@ -2369,27 +2494,42 @@ function updateTtkSimulator() {
   const targetType = ttkTargetSelect.value;
   let targetHp = 16500;
   let targetName = "Heavy Armor Cube";
+  let targetMult = 1.0;
+
+  const ds = activeAmmo.damageScales || {};
+  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
 
   if (targetType === 'lightArmor') {
     targetHp = 3000;
     targetName = "Light Armor Cube";
+    targetMult = lightMult;
+  } else if (targetType === 'heavyArmor') {
+    targetHp = 16500;
+    targetName = "Heavy Armor Cube";
+    targetMult = heavyMult;
   } else if (targetType === 'battery') {
     targetHp = 11460;
     targetName = "Large Grid Battery";
+    targetMult = nonArmorMult;
   } else if (targetType === 'refinery') {
     targetHp = 37280;
     targetName = "Large Grid Refinery";
+    targetMult = nonArmorMult;
   }
+
+  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
+  const barrels = parseFloat(wBarrelsPerShot.value) || 1;
+  const effectiveDmgPerShot = (dmgDetails.base * targetMult) + dmgDetails.aoe + dmgDetails.frag;
+  const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels);
+  const shotsNeeded = Math.ceil(targetHp / effectiveVolley);
 
   const dpsText = outSustainedDps.textContent.replace(/,/g, '');
   const sustainedDps = parseFloat(dpsText) || 1;
+  const effectiveSustainedDps = sustainedDps * (effectiveDmgPerShot / Math.max(1, dmgDetails.total));
 
-  const baseDmg = parseFloat(aBaseDamage.value) || 1;
-  const aodDmg = (aodBlockEnable && aodBlockEnable.checked ? safeFloat(aodBlockDamage.value, 0) : 0) + (aodEolEnable && aodEolEnable.checked ? safeFloat(aodEolDamage.value, 0) : 0);
-  const dmgPerShot = baseDmg + aodDmg;
-
-  const ttkSeconds = (targetHp / sustainedDps);
-  const shotsNeeded = Math.ceil(targetHp / dmgPerShot);
+  const ttkSeconds = (targetHp / Math.max(1, effectiveSustainedDps));
 
   if (ttkSeconds < 1.0) {
     outTtkMain.textContent = `${ttkSeconds.toFixed(2)}s to Destroy`;
@@ -2397,7 +2537,8 @@ function updateTtkSimulator() {
     outTtkMain.textContent = `${ttkSeconds.toFixed(1)}s to Destroy`;
   }
 
-  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} rounds against ${targetName}`;
+  const multLabel = targetMult !== 1.0 ? ` (${targetMult}× multiplier applied: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
+  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s) against ${targetName}${multLabel}`;
   ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
 }
 

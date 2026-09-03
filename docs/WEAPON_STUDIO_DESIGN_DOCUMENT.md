@@ -102,14 +102,22 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
     $$\text{Sustained DPS} = \text{LoiterDPS} \times \text{MaxConcurrent}$$
   - Guarantees the **MAC Gun** ($2,000,001\text{ Alpha}$) remains the server's undisputed top Alpha weapon, while loitering summons (e.g. Falcon Drone at $45,001\text{ Alpha}$, $26,447\text{ DPS}$) scale realistically.
 
-#### 4. Effective Fire Rate & Combat Cycle
+#### 4. Target Damage & Multiplier Matrix (`.target-matrix-card`)
+Renders authentic weapon-to-target lethality across 4 key combat target profiles:
+- **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and salvo volley. Highlights armor-shredding penetration.
+- **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP [over-penetration], } 1.0\times\text{ on HE}$), and effective damage.
+- **Shields**: Multiplier ($\text{e.g. } 10\times\text{ on Flak/Torpedo, } 5\times\text{ on Heavy Cannon, } 3\times\text{ on Gatling, } 1000\times\text{ on MAC}$) and effective shield drain.
+- **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
+- **Target Dummy Time-to-Kill (TTK)**: Applies true target multipliers ($\text{Damage}_{\text{target}} = \text{Base} \times \text{Multiplier} + \text{AoE} + \text{Frag}$) when simulating shots and time to destroy Light Armor, Heavy Armor, Battery, and Refinery cubes. Demonstrates why 155 AP destroys a Heavy Armor Cube in 1 salvo ($18\text{k dmg} > 16.5\text{k hp}$) while 155 HE requires 2 salvos.
+
+#### 5. Effective Fire Rate & Combat Cycle
 Replaces static heat bars with operational sustainability metrics:
 - **Duty Cycle Percentage**: Real-time ratio of firing uptime vs reload downtime.
 - **Consumption Rate**:
   - **Physical Munitions**: Computes exact magazine burn rate ($\text{mags/min}$).
   - **Energy Weapons**: For energy-draining systems, derives Uranium consumption ($\text{kg/min}$ based on $1\text{ MWh} = 1\text{ kg Uranium}$).
 
-#### 5. Hexagonal Tactical Radar (`#radarCanvas`)
+#### 6. Hexagonal Tactical Radar (`#radarCanvas`)
 - Plots 6 normalized tactical axes dynamically scaled across the dataset:
   1. **DPS** (Sustained Damage Per Second)
   2. **Volley Alpha** (Single-shot burst payload)
@@ -123,9 +131,9 @@ Replaces static heat bars with operational sustainability metrics:
   - Outliers (such as the 200mm MAC and SRBM) scale naturally without clipping or special case filtering.
   - Side-by-side comparison card displaying active weapon name & description above benchmark weapon name & description.
 
-#### 6. Tactical Tools
+#### 7. Tactical Tools
 - **Initial D Flight Delay & Drift Lead**: Projects target intercept flight time at $500\text{m}$, $1000\text{m}$, and $\text{Max Range}$, and calculates dune drift lead at $100\text{ km/h}$ ($27.8\text{ m/s}$).
-- **Target Dummy Time-to-Kill (TTK)**: Real-time simulation against Light Armor ($3\text{k HP}$), Heavy Armor ($16.5\text{k HP}$), Battery ($11.4\text{k HP}$), and Refinery ($37.3\text{k HP}$).
+- **Target Dummy Time-to-Kill (TTK)**: Real-time simulation against Light Armor ($3\text{k HP}$), Heavy Armor ($16.5\text{k HP}$), Battery ($11.4\text{k HP}$), and Refinery ($37.3\text{k HP}$) with active damage scale modifiers applied.
 - **🔗 Share Permalinks**: Encodes configuration state (`?gun=...&ammo=...&vs=...`) for instant Discord sharing.
 
 ---

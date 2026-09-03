@@ -60,10 +60,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.5,
+      "heavyArmor": 3.0,
       "characters": 0.25,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": 1.0
     },
     "approachesRef": null,
     "audio": {
@@ -150,7 +151,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -411,7 +413,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 0.1,
-      "healthHitModifier": 2.0
+      "healthHitModifier": 2.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -585,7 +588,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 0.1,
-      "healthHitModifier": 10.0
+      "healthHitModifier": 10.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -672,7 +676,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 0.1,
-      "healthHitModifier": 10.0
+      "healthHitModifier": 10.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -759,7 +764,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 0.1,
-      "healthHitModifier": -1.0
+      "healthHitModifier": -1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -846,7 +852,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 0.2,
-      "healthHitModifier": 3.0
+      "healthHitModifier": 3.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1105,9 +1112,10 @@
     "damageScales": {
       "shield": 5.0,
       "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "heavyArmor": 2.0,
       "characters": 1e-07,
-      "healthHitModifier": 5.0
+      "healthHitModifier": 5.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1281,7 +1289,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 500.0
+      "healthHitModifier": 500.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1365,10 +1374,11 @@
     },
     "damageScales": {
       "shield": 0.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 1.0,
+      "heavyArmor": 1.0,
       "characters": 1.0,
-      "healthHitModifier": 0.0
+      "healthHitModifier": 0.0,
+      "nonArmor": 2.0
     },
     "approachesRef": null,
     "audio": {
@@ -1455,7 +1465,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1000.0
+      "healthHitModifier": 1000.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1705,7 +1716,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 500.0
+      "healthHitModifier": 500.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1781,7 +1793,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 500.0
+      "healthHitModifier": 500.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1857,7 +1870,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -1933,7 +1947,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2009,7 +2024,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 0.5
+      "healthHitModifier": 0.5,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2237,7 +2253,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": 1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2324,7 +2341,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 0.0
+      "healthHitModifier": 0.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2408,10 +2426,11 @@
     },
     "damageScales": {
       "shield": 0.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 1.0,
+      "heavyArmor": 1.0,
       "characters": 1.0,
-      "healthHitModifier": 0.0
+      "healthHitModifier": 0.0,
+      "nonArmor": 2.0
     },
     "approachesRef": null,
     "audio": {
@@ -2495,10 +2514,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.0,
+      "heavyArmor": 0.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": 0.0
     },
     "approachesRef": null,
     "audio": {
@@ -2582,10 +2602,11 @@
     },
     "damageScales": {
       "shield": -1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
       "characters": 0.25,
-      "healthHitModifier": -1.0
+      "healthHitModifier": -1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2669,10 +2690,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2756,10 +2778,11 @@
     },
     "damageScales": {
       "shield": -1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
       "characters": 0.25,
-      "healthHitModifier": -1.0
+      "healthHitModifier": -1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -2843,10 +2866,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
       "characters": 0.25,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -3017,10 +3041,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
+      "lightArmor": 0.75,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": 0.2
     },
     "approachesRef": null,
     "audio": {
@@ -3107,7 +3132,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": "Inline",
     "audio": {
@@ -3183,7 +3209,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 0.5
+      "healthHitModifier": 0.5,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -3343,10 +3370,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": 0.8
     },
     "approachesRef": null,
     "audio": {
@@ -3433,7 +3461,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 2.0
+      "healthHitModifier": 2.0,
+      "nonArmor": -1.0
     },
     "approachesRef": "Inline",
     "audio": {
@@ -3520,7 +3549,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -3607,7 +3637,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 10.0
+      "healthHitModifier": 10.0,
+      "nonArmor": -1.0
     },
     "approachesRef": "Inline",
     "audio": {
@@ -4140,10 +4171,11 @@
     },
     "damageScales": {
       "shield": 1.0,
-      "lightArmor": -1.0,
-      "heavyArmor": -1.0,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": 0.8
     },
     "approachesRef": null,
     "audio": {
@@ -4230,7 +4262,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4317,7 +4350,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4404,7 +4438,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4491,7 +4526,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4578,7 +4614,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4665,7 +4702,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4752,7 +4790,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 1.0
+      "healthHitModifier": 1.0,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {
@@ -4839,7 +4878,8 @@
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
-      "healthHitModifier": 0.5
+      "healthHitModifier": 0.5,
+      "nonArmor": -1.0
     },
     "approachesRef": null,
     "audio": {

@@ -190,6 +190,66 @@
             <div class="stat-sub" id="outTraverseAzEl">Az: 0.0&deg;/s | El: 0.0&deg;/s</div>
           </div>
         </div>
+ 
+        <!-- Target Multipliers & Effective Damage Matrix -->
+        <div class="target-matrix-card">
+          <div class="target-matrix-header">
+            <div class="target-matrix-title-wrap">
+              <span class="target-matrix-title">🎯 TARGET DAMAGE & MULTIPLIER MATRIX</span>
+              <span class="target-matrix-sub">True penetration values scaled by armor, shields & internal structures</span>
+            </div>
+            <span id="targetMatrixMunitionLabel" class="target-matrix-badge">155 AP</span>
+          </div>
+          <div class="target-matrix-grid">
+            <div class="target-stat-box" id="tmHeavyArmorBox">
+              <div class="target-stat-header">
+                <div class="target-type-label">
+                  <span class="target-type-icon">🛡️</span>
+                  <span class="target-type-name">Heavy Armor</span>
+                </div>
+                <span class="target-multiplier-badge buff" id="tmHeavyMult">3.0×</span>
+              </div>
+              <div class="target-stat-value" id="tmHeavyDmg">18,000 <span class="unit">hp</span></div>
+              <div class="target-stat-sub" id="tmHeavySub">Volley: 18,000 hp (3× Armor Shredder)</div>
+            </div>
+
+            <div class="target-stat-box" id="tmLightArmorBox">
+              <div class="target-stat-header">
+                <div class="target-type-label">
+                  <span class="target-type-icon">📄</span>
+                  <span class="target-type-name">Light Armor</span>
+                </div>
+                <span class="target-multiplier-badge nerf" id="tmLightMult">0.5×</span>
+              </div>
+              <div class="target-stat-value" id="tmLightDmg">3,000 <span class="unit">hp</span></div>
+              <div class="target-stat-sub" id="tmLightSub">Volley: 3,000 hp (Over-penetration)</div>
+            </div>
+
+            <div class="target-stat-box" id="tmShieldBox">
+              <div class="target-stat-header">
+                <div class="target-type-label">
+                  <span class="target-type-icon">⚡</span>
+                  <span class="target-type-name">Shields</span>
+                </div>
+                <span class="target-multiplier-badge" id="tmShieldMult">1.0×</span>
+              </div>
+              <div class="target-stat-value" id="tmShieldDmg">6,000 <span class="unit">hp</span></div>
+              <div class="target-stat-sub" id="tmShieldSub">Volley: 6,000 hp (Standard)</div>
+            </div>
+
+            <div class="target-stat-box" id="tmBlastBox">
+              <div class="target-stat-header">
+                <div class="target-type-label">
+                  <span class="target-type-icon">💥</span>
+                  <span class="target-type-name">Blast & Splash</span>
+                </div>
+                <span class="target-multiplier-badge" id="tmBlastRadius">None</span>
+              </div>
+              <div class="target-stat-value" id="tmBlastDmg">0 <span class="unit">hp</span></div>
+              <div class="target-stat-sub" id="tmBlastSub">Direct Impact Only</div>
+            </div>
+          </div>
+        </div>
 
         <!-- Combat Simulator Cards: TTK Target Dummy + Initial D Drift Meter -->
         <div class="sim-tools-grid">
