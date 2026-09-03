@@ -522,9 +522,14 @@ const scopeBtns = document.querySelectorAll('.scope-btn');
 const scopeContents = document.querySelectorAll('.scope-content');
 
 // DOM Elements - Universal Weapon Banner
-const weaponSelect = document.getElementById('weaponSelect');
-const activeWeaponIcon = document.getElementById('activeWeaponIcon');
-const btnResetDefaults = document.getElementById('btnResetDefaults');
+const weaponSelect       = document.getElementById('weaponSelect');
+const activeWeaponIcon   = document.getElementById('activeWeaponIcon');
+const activeAmmoIcon     = document.getElementById('activeAmmoIcon');
+const activeAmmoIconWrap = document.getElementById('activeAmmoIconWrap');
+const compActiveAmmoIcon = document.getElementById('compActiveAmmoIcon');
+const compBenchAmmoIcon  = document.getElementById('compBenchAmmoIcon');
+const scopeAmmoIcon      = document.getElementById('scopeAmmoIcon');
+const btnResetDefaults   = document.getElementById('btnResetDefaults');
 const badgeGrid = document.getElementById('badgeGrid');
 const badgeType = document.getElementById('badgeType');
 const badgeTech = document.getElementById('badgeTech');
