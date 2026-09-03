@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GVK Weapon Studio // WeaponCore Real-Time Configurator</title>
+  <title>GVK Weapon Studio // WeaponCore Real-Time Configurator & Logistics Engine</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,24 +20,93 @@
         <p id="repoStatus">Ash-LikeSnow/WeaponCore v2.4+ &bull; GV-Server-Mods/GVK-Weapons-Pack</p>
       </div>
     </div>
+
+    <!-- Workspace Tabs Navigation -->
+    <nav class="workspace-nav">
+      <button class="ws-tab active" data-ws="ws-telemetry">⚔️ Combat Telemetry</button>
+      <button class="ws-tab" data-ws="ws-workbench">🔧 Definition Workbench</button>
+      <button class="ws-tab" data-ws="ws-logistics">📦 Ammo Logistics & Blueprints</button>
+    </nav>
     
     <div class="header-actions">
-      <button id="btnSyncGithub" class="btn" title="Refresh definitions directly from Ash-LikeSnow/WeaponCore on GitHub">
-        🔄 Sync GitHub
-      </button>
-      <button id="btnExportCsv" class="btn" title="Download Summary CSV for reference or Google Sheets">
-        📊 Export CSV
-      </button>
-      <button id="btnToggleDeck" class="btn btn-primary" title="Toggle the parameter tuning deck and mod tools">
-        🛠️ Tuning Workbench
-      </button>
+      <button id="btnShareUrl" class="btn" title="Copy shareable permalink to this weapon configuration">🔗 Share</button>
+      <button id="btnBalanceMatrix" class="btn" title="Open Global Server Balance Multipliers">⚙️ Balance Matrix</button>
+      <button id="btnToggleDeck" class="btn btn-primary" title="Toggle the parameter tuning workbench">🛠️ Tuning Workbench</button>
     </div>
   </header>
+
+  <!-- Global Server Balance Matrix Drawer / Modal -->
+  <div id="balanceMatrixModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-panel" style="max-width: 680px;">
+      <div class="panel-header">
+        <h2>⚙️ Server Balance Matrix & Global Constants</h2>
+        <button id="btnCloseMatrix" class="btn btn-sm">✕</button>
+      </div>
+      <div style="padding: 16px;">
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+          These 11 global server multipliers govern structural integrity curves, build times, Space Credits valuations, and assembler logistics across all GVK weapons.
+        </p>
+        <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div class="control-item">
+            <label class="control-label">BuildTime Dividend</label>
+            <input type="number" id="matBuildTimeDividend" class="control-input" value="750">
+          </div>
+          <div class="control-item">
+            <label class="control-label">SC per 1U</label>
+            <input type="number" id="matScPer1U" class="control-input" value="207284">
+          </div>
+          <div class="control-item">
+            <label class="control-label">SC / Damage (in U)</label>
+            <input type="number" id="matScPerDamage" class="control-input" step="0.1" value="3.0">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Min Integrity</label>
+            <input type="number" id="matMinIntegrity" class="control-input" value="2500">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Mid Integrity (1x1x1)</label>
+            <input type="number" id="matMidIntegrity" class="control-input" value="25000">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Max Integrity</label>
+            <input type="number" id="matMaxIntegrity" class="control-input" value="400000">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Min Size (cubes)</label>
+            <input type="number" id="matMinSize" class="control-input" step="0.001" value="0.032">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Mid Size (cubes)</label>
+            <input type="number" id="matMidSize" class="control-input" step="0.1" value="1.0">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Max Size (cubes)</label>
+            <input type="number" id="matMaxSize" class="control-input" value="125">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Assembler Efficiency</label>
+            <input type="number" id="matAssemblerEff" class="control-input" step="0.1" value="3.0">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Scrap Yield</label>
+            <input type="number" id="matScrapYield" class="control-input" step="0.05" value="0.25">
+          </div>
+        </div>
+        <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">Changes persist locally in browser storage.</span>
+          <div style="display: flex; gap: 8px;">
+            <button id="btnResetMatrix" class="btn">↺ Reset Defaults</button>
+            <button id="btnApplyMatrix" class="btn btn-primary">Apply Multipliers</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Container -->
   <div class="app-container">
     
-    <!-- Weapon Selector Banner -->
+    <!-- Universal Weapon Selector Banner -->
     <div class="weapon-banner">
       <div class="selector-left">
         <div class="weapon-icon-wrap">
@@ -49,7 +118,7 @@
             <select id="weaponSelect" class="weapon-dropdown">
               <option value="">Loading weapons database...</option>
             </select>
-            <button id="btnResetDefaults" class="btn" title="Reset this weapon back to official server defaults">↺ Reset to Defaults</button>
+            <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
           </div>
         </div>
       </div>
@@ -58,295 +127,15 @@
         <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
         <div class="badge badge-amber" id="badgeTech">Tech: <strong>6 UPs</strong></div>
-        <div class="badge badge-cyan" id="badgePcu">PCU: <strong>20,000</strong></div>
-        <div class="badge" id="badgeNpc" style="display: none; background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);">⚔️ NPC VARIANT</div>
-        <button id="btnBannerToggleDeck" class="btn btn-cyan" style="margin-left: 8px;">🛠️ Customize Stats</button>
+        <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 Circuitry: 1 (>2km)</div>
+        <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
+        <div class="badge badge-red" id="badgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
       </div>
     </div>
 
-    <!-- Studio Grid (Tuning Deck + Telemetry Deck) -->
-    <div id="studioGrid" class="studio-grid">
-      
-      <!-- COLLAPSIBLE TUNING WORKBENCH (Inputs & Mod Tools) -->
-      <div id="tuningDeckPanel" class="panel" style="display: none;">
-        <div class="panel-header">
-          <h2>🛠️ Weapon Tuning Workbench</h2>
-          <button id="btnCloseDeck" class="btn" style="padding: 2px 8px; font-size: 11px;">✕ Close Workbench</button>
-        </div>
-
-        <!-- Sandbox Disclaimer Banner -->
-        <div style="padding: 16px 18px 0 18px;">
-          <div class="sandbox-disclaimer">
-            <div class="disclaimer-header">
-              <span>⚠️ CLIENT-SIDE SANDBOX SIMULATOR</span>
-            </div>
-            <p>
-              Modifying parameters in this workbench simulates WeaponCore ballistics and combat math locally in your browser. 
-              <strong>Changes made here will NOT alter live server weapons without server administrator approval and deployment.</strong>
-            </p>
-          </div>
-        </div>
-
-        <!-- Workbench Action Bar -->
-        <div class="workbench-actions">
-          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <button id="btnNewWeapon" class="btn" title="Create a new custom weapon from scratch">+ New Custom Gun</button>
-            <button id="btnLinkLocal" class="btn btn-cyan" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); cursor: pointer; user-select: none; background: var(--bg-input); padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border-color);" title="Show hostile/relic NPC weapon variants normally hidden from players">
-              <input type="checkbox" id="chkShowNpcWeapons" style="cursor: pointer; accent-color: var(--amber-primary);">
-              <span>Include NPC Weapons (_NPC)</span>
-            </label>
-          </div>
-          <div>
-            <button id="btnOpenCode" class="btn btn-primary" title="View and copy generated C# and SBC definitions">⚡ Export Code & SBC</button>
-          </div>
-        </div>
-        
-        <!-- Navigation Tabs for Tuning Deck -->
-        <div class="tab-group">
-          <button class="tab-btn active" data-tab="tab-ballistics">🎯 Ballistics & Loading</button>
-          <button class="tab-btn" data-tab="tab-payload">💥 Damage & Shrapnel</button>
-          <button class="tab-btn" data-tab="tab-heat">🔥 Heat & Energy</button>
-          <button class="tab-btn" data-tab="tab-aim">🔄 Aim & Traversal</button>
-          <button class="tab-btn" data-tab="tab-economy">🛡️ Structure & Economy</button>
-        </div>
-
-        <!-- TAB 1: Ballistics & Loading -->
-        <div id="tab-ballistics" class="tab-content active">
-          <div class="control-grid">
-            <div class="control-item">
-              <label class="control-label">Rate of Fire <span class="unit">RPM</span></label>
-              <div class="slider-container">
-                <input type="range" id="inputRofSlider" min="1" max="6000" step="10" value="1000">
-                <input type="number" id="inputRof" class="control-input" min="1" max="10000" value="1000">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Barrels per Shot <span class="unit">qty</span></label>
-              <input type="number" id="inputBarrelsPerShot" class="control-input" min="1" max="16" value="1">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Reload Time <span class="unit">ticks (60=1s)</span></label>
-              <div class="slider-container">
-                <input type="range" id="inputReloadSlider" min="0" max="1200" step="10" value="0">
-                <input type="number" id="inputReloadTime" class="control-input" min="0" max="6000" value="0">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Magazine Size <span class="unit">rounds</span></label>
-              <input type="number" id="inputMagazineSize" class="control-input" min="1" max="1000" value="30">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Mags to Load <span class="unit">capacity</span></label>
-              <input type="number" id="inputMagsToLoad" class="control-input" min="1" max="100" value="1">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Shots in Burst <span class="unit">0 = continuous</span></label>
-              <input type="number" id="inputShotsInBurst" class="control-input" min="0" max="100" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Delay After Burst <span class="unit">ticks</span></label>
-              <input type="number" id="inputDelayAfterBurst" class="control-input" min="0" max="3600" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Delay Until Fire <span class="unit">ticks (spool)</span></label>
-              <input type="number" id="inputDelayUntilFire" class="control-input" min="0" max="600" value="0">
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 2: Payload & Shrapnel -->
-        <div id="tab-payload" class="tab-content">
-          <div class="control-grid">
-            <div class="control-item">
-              <label class="control-label">Base Kinetic / Energy Damage <span class="unit">hp</span></label>
-              <input type="number" id="inputBaseDamage" class="control-input" min="0" step="10" value="100">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Desired Velocity <span class="unit">m/s</span></label>
-              <input type="number" id="inputDesiredSpeed" class="control-input" min="0" max="10000" step="50" value="1000">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Max Trajectory / Range <span class="unit">meters</span></label>
-              <input type="number" id="inputMaxTrajectory" class="control-input" min="0" max="50000" step="100" value="1500">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Explosive Damage (EOL) <span class="unit">hp</span></label>
-              <input type="number" id="inputDetDamage" class="control-input" min="0" step="500" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Explosion Radius <span class="unit">meters</span></label>
-              <input type="number" id="inputDetRadius" class="control-input" min="0" max="500" step="1" value="0">
-            </div>
-          </div>
-
-          <div style="margin: 16px 0 8px 0; border-top: 1px solid var(--border-color); padding-top: 12px;">
-            <h3 style="font-size: 12px; color: var(--amber-primary); font-family: var(--font-mono); margin-bottom: 10px;">
-              💥 Proximity Fragmentation & Shrapnel
-            </h3>
-            <div class="control-grid">
-              <div class="control-item">
-                <label class="control-label">Fragment Projectiles <span class="unit">spawn count</span></label>
-                <input type="number" id="inputFragments" class="control-input" min="0" max="500" value="0">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Fragment Spread <span class="unit">degrees</span></label>
-                <input type="number" id="inputFragmentDegrees" class="control-input" min="0" max="180" value="45">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Shrapnel Direct Damage <span class="unit">per frag</span></label>
-                <input type="number" id="inputShrapnelBaseDmg" class="control-input" min="0" value="0">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Shrapnel Blast Damage <span class="unit">per frag</span></label>
-                <input type="number" id="inputShrapnelDetDmg" class="control-input" min="0" value="0">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Fragment Hit Probability <span class="unit">ratio (0.25=25%)</span></label>
-                <input type="number" id="inputChanceToHit" class="control-input" min="0" max="1" step="0.05" value="1.0">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 3: Heat & Energy -->
-        <div id="tab-heat" class="tab-content">
-          <div class="control-grid">
-            <div class="control-item">
-              <label class="control-label">Heat Generated per Shot <span class="unit">heat units</span></label>
-              <input type="number" id="inputHeatPerShot" class="control-input" min="0" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Max Heat Capacity <span class="unit">max thermal pool</span></label>
-              <input type="number" id="inputMaxHeat" class="control-input" min="0" step="50" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Cooldown Threshold <span class="unit">ratio (0.5 = 50%)</span></label>
-              <input type="number" id="inputCooldown" class="control-input" min="0" max="1" step="0.05" value="0.5">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Heat Sink Dissipation Rate <span class="unit">heat/sec</span></label>
-              <input type="number" id="inputHeatSinkRate" class="control-input" min="0" step="5" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Energy Cost Scalar <span class="unit">WC multiplier</span></label>
-              <input type="number" id="inputEnergyCost" class="control-input" min="0" step="0.01" value="0">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Idle Power <span class="unit">MW</span></label>
-              <input type="number" id="inputIdlePower" class="control-input" min="0" step="0.1" value="0">
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 4: Aim & Traversal -->
-        <div id="tab-aim" class="tab-content">
-          <div class="control-grid">
-            <div class="control-item">
-              <label class="control-label">Azimuth Rotation Rate <span class="unit">rad/tick</span></label>
-              <div class="slider-container">
-                <input type="range" id="inputRotateRateSlider" min="0.001" max="0.1" step="0.001" value="0.015">
-                <input type="number" id="inputRotateRate" class="control-input" min="0" max="1" step="0.001" value="0.015">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Elevation Rate <span class="unit">rad/tick</span></label>
-              <div class="slider-container">
-                <input type="range" id="inputElevateRateSlider" min="0.001" max="0.1" step="0.001" value="0.015">
-                <input type="number" id="inputElevateRate" class="control-input" min="0" max="1" step="0.001" value="0.015">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Azimuth Arc <span class="unit">Min / Max (deg)</span></label>
-              <div style="display: flex; gap: 6px;">
-                <input type="number" id="inputMinAzimuth" class="control-input" value="-180">
-                <input type="number" id="inputMaxAzimuth" class="control-input" value="180">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Elevation Arc <span class="unit">Min / Max (deg)</span></label>
-              <div style="display: flex; gap: 6px;">
-                <input type="number" id="inputMinElevation" class="control-input" value="-10">
-                <input type="number" id="inputMaxElevation" class="control-input" value="90">
-              </div>
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Inaccuracy Deviation <span class="unit">degrees</span></label>
-              <input type="number" id="inputDeviateShotAngle" class="control-input" min="0" max="10" step="0.05" value="0.1">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Max Targeting Engagement <span class="unit">meters</span></label>
-              <input type="number" id="inputMaxTargetDistance" class="control-input" min="0" max="50000" step="100" value="1500">
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 5: Structure & Economy -->
-        <div id="tab-economy" class="tab-content">
-          <div class="control-grid">
-            <div class="control-item">
-              <label class="control-label">Target Effective Integrity <span class="unit">HP</span></label>
-              <input type="number" id="inputTargetIntegrity" class="control-input" min="1000" step="5000" value="152822">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Durability Modifier <span class="unit">default 0.5</span></label>
-              <input type="number" id="inputDurabilityMod" class="control-input" min="0.1" max="2.0" step="0.1" value="0.5">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Tech Tier (UPs) <span class="unit">server points</span></label>
-              <input type="number" id="inputTechQty" class="control-input" min="0" max="50" value="6">
-            </div>
-
-            <div class="control-item">
-              <label class="control-label">Grid Size <span class="unit">Large / Small</span></label>
-              <select id="selectGridSize" class="control-input">
-                <option value="Large">Large Grid</option>
-                <option value="Small">Small Grid</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-top: 14px; background: var(--bg-card); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
-            <h4 style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; margin-bottom: 8px;">
-              Component Generation Formula
-            </h4>
-            <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
-              Components are automatically balanced against your target Effective Integrity. Base Integrity = Effective Integrity &times; DurabilityMod. Build Time = round(Effective Integrity &divide; 1500).
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- RIGHT COLUMN: Live Telemetry & Combat Simulator -->
-      <div class="telemetry-deck">
+    <!-- WORKSPACE 1: COMBAT TELEMETRY & BENCHMARKS (PLAYER DEFAULT) -->
+    <div id="ws-telemetry" class="workspace-section active">
+      <div class="telemetry-grid">
         
         <!-- Hero Metrics -->
         <div class="hero-stats-grid">
@@ -375,6 +164,56 @@
           </div>
         </div>
 
+        <!-- Combat Simulator Cards: TTK Target Dummy + Initial D Drift Meter -->
+        <div class="sim-tools-grid">
+          
+          <!-- Realistic Target Dummy / Time-To-Kill Simulator -->
+          <div class="sim-card">
+            <div class="sim-card-header">
+              <span class="sim-card-title">🎯 REALISTIC TARGET DUMMY & TTK</span>
+              <select id="ttkTargetSelect" class="sim-select">
+                <option value="lightArmor">Light Armor Cube (3,000 HP)</option>
+                <option value="heavyArmor" selected>Heavy Armor Cube (16,500 HP)</option>
+                <option value="battery">Large Grid Battery (11,460 HP)</option>
+                <option value="refinery">Large Grid Refinery (37,280 HP)</option>
+              </select>
+            </div>
+            <div class="ttk-display">
+              <div class="ttk-main" id="outTtkMain">0.38s to Destroy</div>
+              <div class="ttk-sub" id="outTtkRounds">Requires ~3.8 rounds of continuous fire</div>
+            </div>
+            <div class="ttk-progress-bar">
+              <div id="ttkProgressFill" class="ttk-progress-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <!-- Initial D Dodgeability & Drift Lead Meter -->
+          <div class="sim-card">
+            <div class="sim-card-header">
+              <span class="sim-card-title">🏎️ FLIGHT DELAY & DRIFT LEAD (100 KM/H)</span>
+              <span id="outFlightMuzzleSpd" style="font-size: 11px; font-family: var(--font-mono); color: var(--cyan-primary);">1000 m/s</span>
+            </div>
+            <div class="drift-readouts">
+              <div class="drift-item">
+                <span class="drift-dist">500m</span>
+                <span class="drift-time" id="outDelay500m">0.50s</span>
+                <span class="drift-lead" id="outLead500m">13.9m drift</span>
+              </div>
+              <div class="drift-item">
+                <span class="drift-dist">1000m</span>
+                <span class="drift-time" id="outDelay1000m">1.00s</span>
+                <span class="drift-lead" id="outLead1000m">27.8m drift</span>
+              </div>
+              <div class="drift-item highlight">
+                <span class="drift-dist" id="outMaxRangeLabel">1500m (Max)</span>
+                <span class="drift-time" id="outDelayMax">1.50s</span>
+                <span class="drift-lead" id="outLeadMax">41.7m drift</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <!-- Heat Dissipation Simulator -->
         <div class="heat-box">
           <div class="heat-header">
@@ -387,11 +226,10 @@
           <div class="heat-meta">
             <span id="outTimeToOverheat">Continuous Fire: Unlimited</span>
             <span id="outCooldownTime">Cooldown Window: 0s</span>
-          </div>
         </div>
 
         <!-- Power & Structural Telemetry -->
-        <div class="hero-stats-grid">
+        <div class="hero-stats-grid" style="margin-top: 16px;">
           <div class="stat-card">
             <div class="stat-title">Power Required <span class="unit">OPERATIONAL</span></div>
             <div class="stat-value" id="outPowerMw">0.0 <span style="font-size: 14px; font-weight: 400;">MW</span></div>
@@ -464,7 +302,7 @@
             <h2>📦 Bill of Materials & Ingot Costs</h2>
             <span id="outTotalValue" style="font-size: 12px; font-family: var(--font-mono); color: var(--green-accent);">$0</span>
           </div>
-          <div style="padding: 12px; max-height: 220px; overflow-y: auto;">
+          <div style="padding: 12px; max-height: 240px; overflow-y: auto;">
             <table class="bom-table">
               <thead>
                 <tr>
@@ -482,17 +320,766 @@
         </div>
 
       </div>
+    </div>
 
+    <!-- WORKSPACE 2: DEFINITION WORKBENCH (DEEP C# & SBC EDITORS) -->
+    <div id="ws-workbench" class="workspace-section">
+      
+      <!-- Scope Toggle Bar -->
+      <div class="scope-toggle-bar">
+        <div class="scope-tabs">
+          <button class="scope-btn active" data-scope="scope-weapon">🔫 WeaponDefinition</button>
+          <button class="scope-btn" data-scope="scope-ammo">💥 AmmoDef (<span id="scopeActiveAmmoLabel">Primary</span>)</button>
+          <button class="scope-btn" data-scope="scope-sbc">🧱 CubeBlocks SBC</button>
+        </div>
+        <div class="scope-actions">
+          <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per WeaponCore wiki">+ New Minimal Weapon</button>
+          <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Minimal Ammo</button>
+          <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
+          <button id="btnOpenCodeWorkbench" class="btn btn-primary btn-sm" title="Export syntax-complete C# and SBC">⚡ Export Code & SBC</button>
+        </div>
+      </div>
+
+      <!-- Live WeaponCore Linter & Clang Hazard Banner -->
+      <div id="linterBanner" class="linter-banner clean">
+        <span class="linter-icon">✅</span>
+        <span id="linterText" class="linter-text">Definition syntax healthy. 0 Clang hazards detected.</span>
+      </div>
+
+      <!-- SCOPE A: WeaponDefinition Editor -->
+      <div id="scope-weapon" class="scope-content active">
+        
+        <!-- Accordion 1: Assignments & Model -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">1. ModelAssignmentsDef (Assignments & Mounts)</span>
+            <span class="wc-tag">SubtypeId, Muzzles, MountPoints</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">SubtypeId</label>
+                <input type="text" id="wSubtypeId" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Terminal PartName</label>
+                <input type="text" id="wPartName" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Durability Modifier</label>
+                <input type="number" id="wDurabilityMod" class="control-input" step="0.1" value="0.5">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Scope Dummy Name</label>
+                <input type="text" id="wScope" class="control-input" value="scope">
+              </div>
+              <div class="control-item full-width">
+                <label class="control-label">Muzzle Dummies <span class="unit">(comma-separated)</span></label>
+                <input type="text" id="wMuzzles" class="control-input" value="muzzle_missile_1, muzzle_missile_2">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 2: TargetingDef -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">2. TargetingDef (Targeting & Acquisition)</span>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span id="badgeTargetingHelper" class="helper-badge" style="display: none;">Shared Preset</span>
+              <button id="btnRevertTargeting" class="btn btn-xs" style="display: none;">↺ Revert to Shared</button>
+            </div>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Max Targeting Range <span class="unit">meters</span></label>
+                <input type="number" id="wMaxTargetDistance" class="control-input" value="1600">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Min Targeting Range <span class="unit">meters</span></label>
+                <input type="number" id="wMinTargetDistance" class="control-input" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Top Targets <span class="unit">randomization pool</span></label>
+                <input type="number" id="wTopTargets" class="control-input" value="4">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Top Blocks <span class="unit">subsystem pool</span></label>
+                <input type="number" id="wTopBlocks" class="control-input" value="8">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Stop Tracking Speed <span class="unit">m/s</span></label>
+                <input type="number" id="wStopTrackingSpeed" class="control-input" value="1000">
+              </div>
+            </div>
+            <div class="checkbox-row" style="margin-top: 12px;">
+              <label class="chk-label"><input type="checkbox" id="wClosestFirst" checked> Closest First</label>
+              <label class="chk-label"><input type="checkbox" id="wIgnoreDumb" checked> Ignore Dumb Projectiles</label>
+              <label class="chk-label"><input type="checkbox" id="wLockedSmartOnly"> Locked Smart Only</label>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 3: HardPointDef -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">3. HardPointDef (Gimbal, Loading & Audio)</span>
+            <span class="wc-tag">Hardware, Loading, Audio, Graphics</span>
+          </summary>
+          <div class="wc-body">
+            
+            <!-- Top Hardpoint tags -->
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Inaccuracy (DeviateShotAngle) <span class="unit">degrees</span></label>
+                <input type="number" id="wDeviateAngle" class="control-input" step="0.01" value="0.15">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Aiming Tolerance <span class="unit">degrees</span></label>
+                <input type="number" id="wAimingTolerance" class="control-input" step="0.5" value="3.0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Aim Leading Prediction</label>
+                <select id="wAimLeading" class="control-input">
+                  <option value="Off">Off</option>
+                  <option value="Basic">Basic</option>
+                  <option value="Accurate">Accurate</option>
+                  <option value="Advanced" selected>Advanced</option>
+                </select>
+              </div>
+              <div class="control-item">
+                <label class="control-label">Delay Cease Fire <span class="unit">ticks</span></label>
+                <input type="number" id="wDelayCeaseFire" class="control-input" value="0">
+              </div>
+            </div>
+
+            <!-- Nested Sub-Cards: Loading & Timings -->
+            <div class="nested-card">
+              <div class="nested-card-title">⚡ LoadingDef (Cycle Timings & Heat)</div>
+              <div class="control-grid">
+                <div class="control-item">
+                  <label class="control-label">Rate of Fire <span class="unit">RPM</span></label>
+                  <input type="number" id="wRateOfFire" class="control-input" value="1000">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Barrels Per Shot</label>
+                  <input type="number" id="wBarrelsPerShot" class="control-input" value="2">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Reload Time <span class="unit">ticks (60=1s)</span></label>
+                  <input type="number" id="wReloadTime" class="control-input" value="4">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Mags To Load <span class="unit">capacity</span></label>
+                  <input type="number" id="wMagsToLoad" class="control-input" value="14">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Heat Per Shot</label>
+                  <input type="number" id="wHeatPerShot" class="control-input" step="0.1" value="0">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Max Heat</label>
+                  <input type="number" id="wMaxHeat" class="control-input" value="0">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Heat Sink Rate <span class="unit">heat/sec</span></label>
+                  <input type="number" id="wHeatSinkRate" class="control-input" value="0">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Cooldown Threshold <span class="unit">0.2 - 0.95</span></label>
+                  <input type="number" id="wCooldown" class="control-input" step="0.05" value="0.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- Nested Sub-Cards: Hardware & Traversal -->
+            <div class="nested-card">
+              <div class="nested-card-title">🔄 HardwareDef (Rotation & Inventory)</div>
+              <div class="control-grid">
+                <div class="control-item">
+                  <label class="control-label">Rotate Rate <span class="unit">rad/tick</span></label>
+                  <input type="number" id="wRotateRate" class="control-input" step="0.001" value="0.015">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Elevate Rate <span class="unit">rad/tick</span></label>
+                  <input type="number" id="wElevateRate" class="control-input" step="0.001" value="0.015">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Min / Max Azimuth <span class="unit">deg</span></label>
+                  <div style="display: flex; gap: 4px;">
+                    <input type="number" id="wMinAzimuth" class="control-input" value="-180">
+                    <input type="number" id="wMaxAzimuth" class="control-input" value="180">
+                  </div>
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Min / Max Elevation <span class="unit">deg</span></label>
+                  <div style="display: flex; gap: 4px;">
+                    <input type="number" id="wMinElevation" class="control-input" value="-15">
+                    <input type="number" id="wMaxElevation" class="control-input" value="80">
+                  </div>
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Inventory Size <span class="unit">m³</span></label>
+                  <input type="number" id="wInventorySize" class="control-input" step="0.1" value="0.9">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Idle Power Draw <span class="unit">MW</span></label>
+                  <input type="number" id="wIdlePower" class="control-input" step="0.001" value="0.01">
+                </div>
+              </div>
+            </div>
+
+            <!-- Nested Sub-Cards: HardPoint Audio -->
+            <div class="nested-card">
+              <div class="nested-card-title">🔊 HardPointAudioDef (Sounds)</div>
+              <div class="control-grid">
+                <div class="control-item">
+                  <label class="control-label">Firing Sound</label>
+                  <input type="text" id="wSoundFiring" class="control-input" value="MD_LargeGatlingLoopFire">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Reload Sound</label>
+                  <input type="text" id="wSoundReload" class="control-input" value="">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">Rotation Sound</label>
+                  <input type="text" id="wSoundRotate" class="control-input" value="WepTurretGatlingRotate">
+                </div>
+                <div class="control-item">
+                  <label class="control-label">No Ammo Sound</label>
+                  <input type="text" id="wSoundNoAmmo" class="control-input" value="WepShipGatlingNoAmmo">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- Accordion 4: Assigned Ammos Array -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">4. Ammos = new[] { ... } (Assigned Ammunitions)</span>
+            <span class="wc-tag" id="assignedAmmosCountBadge">2 Rounds Loaded</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+              These are the ammo definitions loaded by this weapon. The <strong>Primary Round</strong> drives live combat DPS, range, and velocity calculations.
+            </p>
+            <div id="assignedAmmosList" class="assigned-ammo-badges">
+              <!-- Rendered dynamically -->
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 12px; align-items: center; flex-wrap: wrap;">
+              <select id="assignAmmoDropdown" class="control-input" style="max-width: 280px;">
+                <option value="">Choose ammo to assign...</option>
+              </select>
+              <button id="btnAssignAmmo" class="btn btn-cyan btn-sm">+ Assign Ammo</button>
+              <button id="btnTuneActiveAmmo" class="btn btn-primary btn-sm">👉 Tune in AmmoDef Editor</button>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 5: Animations Assignment -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">5. Animations (AnimationDef Binding)</span>
+            <span class="wc-tag" id="currentAnimBadge">GVK_AvengerGatlingTurretAnimations</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+              Select the assigned AnimationDef from your mod's 18 existing subpart animation definitions. Keeping this assigned ensures your spinning barrels and recoil motions are never dropped on export.
+            </p>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <select id="selectAnimationDef" class="control-input" style="max-width: 360px;">
+                <option value="">None / Static</option>
+              </select>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- SCOPE B: AmmoDef Editor (Canonical WeaponCore Source Flow) -->
+      <div id="scope-ammo" class="scope-content">
+        
+        <!-- Active Ammo Selector Strip -->
+        <div style="background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING AMMO:</span>
+            <select id="ammoSelectGlobal" class="weapon-dropdown" style="min-width: 240px;">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="btnNewFragAmmo" class="btn btn-sm">+ Create Child Fragment Ammo</button>
+          </div>
+        </div>
+
+        <!-- 1. Header & Core Identification -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">1. Ammo Identification & Core Payload</span>
+            <span class="wc-tag">AmmoRound, Damage, Mass, Health</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Ammo Round Identifier</label>
+                <input type="text" id="aAmmoRound" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Ammo Magazine Subtype</label>
+                <input type="text" id="aAmmoMagazine" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Terminal Consumable Name</label>
+                <input type="text" id="aTerminalName" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Base Kinetic / Energy Damage</label>
+                <input type="number" id="aBaseDamage" class="control-input" step="10" value="100">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Projectile Mass <span class="unit">kg</span></label>
+                <input type="number" id="aMass" class="control-input" step="0.1" value="1.0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Health <span class="unit">PD shootable</span></label>
+                <input type="number" id="aHealth" class="control-input" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">BackKick Force <span class="unit">Newtons</span></label>
+                <input type="number" id="aBackKick" class="control-input" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Energy Cost <span class="unit">MWh / shot</span></label>
+                <input type="number" id="aEnergyCost" class="control-input" step="0.001" value="0">
+              </div>
+            </div>
+            <div class="checkbox-row" style="margin-top: 12px;">
+              <label class="chk-label"><input type="checkbox" id="aHardPointUsable" checked> HardPoint Usable (Primary)</label>
+              <label class="chk-label"><input type="checkbox" id="aNpcSafe"> NPC Safe</label>
+              <label class="chk-label"><input type="checkbox" id="aNoGridOrArmorScaling"> No Grid/Armor Scaling</label>
+            </div>
+          </div>
+        </details>
+
+        <!-- 2. ShapeDef -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">2. ShapeDef (Collision Geometry)</span>
+            <span class="wc-tag">LineShape vs SphereShape</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Shape Type</label>
+                <select id="aShape" class="control-input">
+                  <option value="LineShape" selected>LineShape (Precision Bullets/Rays)</option>
+                  <option value="SphereShape">SphereShape (Orbs/Missiles)</option>
+                </select>
+              </div>
+              <div class="control-item">
+                <label class="control-label">Diameter <span class="unit">-1 = default line</span></label>
+                <input type="number" id="aDiameter" class="control-input" step="0.1" value="-1">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 3. FragmentDef (Nested Submunitions / Shrapnel) -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">3. FragmentDef (Proximity Shrapnel & Submunitions)</span>
+            <span class="wc-tag" id="fragStatusBadge">Disabled</span>
+          </summary>
+          <div class="wc-body">
+            <div class="checkbox-row" style="margin-bottom: 12px;">
+              <label class="chk-label"><input type="checkbox" id="fEnable"> 💥 Enable Fragment Spawning</label>
+              <label class="chk-label"><input type="checkbox" id="fReverse"> Reverse Direction</label>
+              <label class="chk-label"><input type="checkbox" id="fDropVelocity"> Drop Velocity</label>
+            </div>
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Fragment Projectile Count</label>
+                <input type="number" id="fFragments" class="control-input" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Spread Cone <span class="unit">degrees</span></label>
+                <input type="number" id="fDegrees" class="control-input" step="1" value="15">
+              </div>
+              <div class="control-item full-width">
+                <label class="control-label">Child Ammo Round to Spawn</label>
+                <select id="fChildAmmoRound" class="control-input">
+                  <option value="">None / Select child ammo...</option>
+                </select>
+              </div>
+            </div>
+            <!-- Live Visual Tree Diagram -->
+            <div class="chain-box" id="fragChainVisual">
+              <span>Parent Ammo</span> ──(Spawns 0 frags)──&gt; <span>Child Round</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- 4. DamageScaleDef -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">4. DamageScaleDef (Armor & Shield Modifiers)</span>
+            <span class="wc-tag">Shields, Light/Heavy Armor</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Shield Modifier <span class="unit">mult</span></label>
+                <input type="number" id="dsShield" class="control-input" step="0.1" value="1.0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Light Armor <span class="unit">-1 = default</span></label>
+                <input type="number" id="dsLightArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Heavy Armor <span class="unit">-1 = default</span></label>
+                <input type="number" id="dsHeavyArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Health Hit Modifier</label>
+                <input type="number" id="dsHealthHit" class="control-input" step="0.1" value="1.0">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 5. AreaOfDamageDef -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">5. AreaOfDamageDef (Explosive Blast)</span>
+            <span class="wc-tag">Radius, Damage, Depth</span>
+          </summary>
+          <div class="wc-body">
+            <div class="checkbox-row" style="margin-bottom: 12px;">
+              <label class="chk-label"><input type="checkbox" id="aodEnable"> Enable Blast On End-Of-Life</label>
+            </div>
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Explosion Radius <span class="unit">meters</span></label>
+                <input type="number" id="aodRadius" class="control-input" step="0.5" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Explosion Damage <span class="unit">hp</span></label>
+                <input type="number" id="aodDamage" class="control-input" step="100" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Detonation Depth <span class="unit">penetration</span></label>
+                <input type="number" id="aodDepth" class="control-input" step="0.1" value="0">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 6. TrajectoryDef -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">6. TrajectoryDef (Velocity, Range & Guidance)</span>
+            <span class="wc-tag">Speed, Range, Guidance</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Desired Velocity <span class="unit">m/s</span></label>
+                <input type="number" id="tDesiredSpeed" class="control-input" step="50" value="1000">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Max Trajectory / Range <span class="unit">meters</span></label>
+                <input type="number" id="tMaxTrajectory" class="control-input" step="100" value="1500">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Max LifeTime <span class="unit">ticks (60=1s)</span></label>
+                <input type="number" id="tMaxLifeTime" class="control-input" value="3600">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Guidance Type</label>
+                <select id="tGuidance" class="control-input">
+                  <option value="None">None (Dumbfire / Ballistic)</option>
+                  <option value="Smart">Smart (Target Tracking)</option>
+                  <option value="DetectEngage">DetectEngage</option>
+                  <option value="TravelTo">TravelTo</option>
+                </select>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px;">
+              <em>Note: Complex multi-stage waypoint approaches are safely managed in C# and preserved verbatim without UI truncation.</em>
+            </p>
+          </div>
+        </details>
+
+        <!-- 7. GraphicDef (Tracers & Visuals) -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">7. GraphicDef (Tracer & Visual FX)</span>
+            <span class="wc-tag">Lines, Tracers, Trails</span>
+          </summary>
+          <div class="wc-body">
+            <div class="checkbox-row" style="margin-bottom: 12px;">
+              <label class="chk-label"><input type="checkbox" id="gTracerEnable" checked> Enable Tracer Line</label>
+            </div>
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Tracer Length <span class="unit">meters</span></label>
+                <input type="number" id="gTracerLength" class="control-input" step="1" value="10">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Tracer Width <span class="unit">meters</span></label>
+                <input type="number" id="gTracerWidth" class="control-input" step="0.05" value="0.1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Visual Probability <span class="unit">0.0 - 1.0</span></label>
+                <input type="number" id="gVisualProb" class="control-input" step="0.1" value="1.0">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 8. AmmoAudioDef -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">8. AmmoAudioDef (Flight & Impact Sounds)</span>
+            <span class="wc-tag">Travel, Hit, Shield</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Travel Sound</label>
+                <input type="text" id="aSoundTravel" class="control-input" value="">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Hit Sound</label>
+                <input type="text" id="aSoundHit" class="control-input" value="DOK_CannonHit">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Shield Hit Sound</label>
+                <input type="text" id="aSoundShieldHit" class="control-input" value="">
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- SCOPE C: CubeBlocks SBC Editor & Standardizer -->
+      <div id="scope-sbc" class="scope-content">
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">1. CubeBlock Definition & Keen Standardization</span>
+            <span class="wc-tag">Clean XML, AiEnabled</span>
+          </summary>
+          <div class="wc-body">
+            
+            <div class="standardizer-status-card">
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <span style="font-size: 20px;">🛡️</span>
+                <div>
+                  <strong style="color: var(--green-accent); font-size: 13px;">Keen Vanilla AI Conflict Suppression Active</strong>
+                  <p style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">
+                    This turret definition automatically includes <code>&lt;AiEnabled&gt;false&lt;/AiEnabled&gt;</code> to permanently disable vanilla SE AI loops and eliminate sim-speed stutter.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 14px;">
+              <div class="control-item">
+                <label class="control-label">In-Game Display Name</label>
+                <input type="text" id="sbcDisplayName" class="control-input">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Grid Size</label>
+                <select id="sbcCubeSize" class="control-input">
+                  <option value="Large">Large Grid</option>
+                  <option value="Small">Small Grid</option>
+                </select>
+              </div>
+              <div class="control-item">
+                <label class="control-label">Build Time <span class="unit">seconds</span></label>
+                <input type="number" id="sbcBuildTime" class="control-input" value="78">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Utility Points (UPs / PCU)</label>
+                <input type="number" id="sbcUpCost" class="control-input" value="6">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Tech Component</label>
+                <select id="sbcTechComp" class="control-input">
+                  <option value="PrototechMachinery">PrototechMachinery</option>
+                  <option value="PrototechFrame">PrototechFrame</option>
+                  <option value="PrototechCircuitry">PrototechCircuitry</option>
+                  <option value="PrototechCapacitor">PrototechCapacitor</option>
+                  <option value="PrototechPropulsion">PrototechPropulsion</option>
+                </select>
+              </div>
+              <div class="control-item">
+                <label class="control-label">Tech Quantity</label>
+                <input type="number" id="sbcTechQty" class="control-input" value="6">
+              </div>
+            </div>
+
+            <div class="checkbox-row" style="margin-top: 14px;">
+              <label class="chk-label"><input type="checkbox" id="sbcIsRelic"> 👑 Relic Weapon (Non-Craftable Ammunition)</label>
+              <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry"> 🔬 Include PrototechCircuitry (>2km Range Gate)</label>
+            </div>
+
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <!-- WORKSPACE 3: AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS") -->
+    <div id="ws-logistics" class="workspace-section">
+      <div class="logistics-grid">
+        
+        <!-- Left: Logistics Balancing Controls -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2>⚖️ Rebalancing Levers (Ammo Maths)</h2>
+            <span id="logActiveAmmoName" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">NATO 25x184mm</span>
+          </div>
+          <div style="padding: 16px;">
+            <div class="control-grid">
+              <div class="control-item full-width">
+                <label class="control-label">Target Damage Density <span class="unit">dmg / Liter (Row 16)</span></label>
+                <div class="slider-container">
+                  <input type="range" id="inputDmgDensitySlider" min="500" max="30000" step="250" value="5000">
+                  <input type="number" id="inputDmgDensity" class="control-input" min="100" max="100000" value="5000">
+                </div>
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Physical Density <span class="unit">kg / Liter (Row 6)</span></label>
+                <input type="number" id="inputPhysicalDensity" class="control-input" step="0.1" value="4.0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Ammo Role Multiplier <span class="unit">Row 46</span></label>
+                <select id="selectRoleMultiplier" class="control-input">
+                  <option value="1.0" selected>1.0x (Standard Kinetic)</option>
+                  <option value="1.1">1.1x (Armor Piercing AP)</option>
+                  <option value="1.25">1.25x (Rockets / Missiles)</option>
+                  <option value="1.5">1.5x (MIRV / Torpedo / Drone)</option>
+                </select>
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Research Units (RUs) <span class="unit">tech tier cost</span></label>
+                <input type="number" id="inputRUs" class="control-input" min="0" value="0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Assembler Craft Time <span class="unit">seconds</span></label>
+                <input type="number" id="inputCraftTime" class="control-input" min="1" value="13">
+              </div>
+            </div>
+
+            <!-- Derived Footprint Output Card -->
+            <div style="margin-top: 16px; background: var(--bg-card); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
+              <h4 style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; margin-bottom: 10px;">
+                📏 DERIVED PHYSICAL FOOTPRINT & BUFFER
+              </h4>
+              <div class="hero-stats-grid" style="grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                <div class="stat-card">
+                  <div class="stat-title">Magazine Volume</div>
+                  <div class="stat-value" id="outMagVolume">0.0 <span style="font-size: 12px; font-weight: 400;">L</span></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-title">Magazine Mass</div>
+                  <div class="stat-value" id="outMagMass">0.0 <span style="font-size: 12px; font-weight: 400;">kg</span></div>
+                </div>
+                <div class="stat-card cyan">
+                  <div class="stat-title">Suggested Weapon Vol</div>
+                  <div class="stat-value" id="outSuggestedVol">0.0 <span style="font-size: 12px; font-weight: 400;">kL (2.2x)</span></div>
+                </div>
+                <div class="stat-card green">
+                  <div class="stat-title">Buffer Depletion</div>
+                  <div class="stat-value" id="outDepletionTime">0.0 <span style="font-size: 12px; font-weight: 400;">s</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Cargo Packing & Blueprint Generator -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2>📦 Cargo Packing & Fleet Endurance</h2>
+            <span style="font-size: 11px; font-family: var(--font-mono); color: var(--cyan-primary);">1x Realistic Inventory</span>
+          </div>
+          <div style="padding: 16px;">
+            
+            <!-- Small Cargo (3,375 L) -->
+            <div class="cargo-box">
+              <div class="cargo-header">
+                <span>SMALL CARGO CONTAINER (3,375 L)</span>
+                <span id="outSmallCargoMags" style="color: var(--cyan-primary); font-weight: 700;">0 Mags</span>
+              </div>
+              <div class="cargo-sub" id="outSmallCargoDmg">Total Damage Stored: 0 hp</div>
+              <div class="cargo-endurance">
+                <span>1 Gun Fire: <strong id="outSmall1GunTime">0s</strong></span>
+                <span>20-Gun Battery: <strong id="outSmall20GunTime">0s</strong></span>
+              </div>
+            </div>
+
+            <!-- Large Cargo (421,875 L) -->
+            <div class="cargo-box" style="margin-top: 12px;">
+              <div class="cargo-header">
+                <span>LARGE CARGO CONTAINER (421,875 L)</span>
+                <span id="outLargeCargoMags" style="color: var(--green-accent); font-weight: 700;">0 Mags</span>
+              </div>
+              <div class="cargo-sub" id="outLargeCargoDmg">Total Damage Stored: 0 hp</div>
+              <div class="cargo-endurance">
+                <span>1 Gun Fire: <strong id="outLarge1GunTime">0s</strong></span>
+                <span>20-Gun Battery: <strong id="outLarge20GunTime">0s</strong></span>
+              </div>
+            </div>
+
+            <!-- XML Blueprint Prerequisites Output -->
+            <div style="margin-top: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">
+                  XML BLUEPRINT &lt;Prerequisites&gt; (Blueprints.sbc)
+                </span>
+                <button id="btnCopyBlueprintXml" class="btn btn-sm">📋 Copy XML</button>
+              </div>
+              <pre id="codeBlueprintXml" class="xml-box">&lt;!-- Calculating Ingot Recipe... --&gt;</pre>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
 
+  <!-- Persistent Bottom Sticky HUD Bar -->
+  <div class="sticky-hud-bar">
+    <div class="hud-left">
+      <span class="hud-title" id="hudWeaponName">(L) Gatling Avenger Turret</span>
+      <span class="hud-stat">DPS: <strong id="hudDps">0</strong></span>
+      <span class="hud-stat">Range: <strong id="hudRange">0m</strong></span>
+      <span class="hud-stat">Overheat: <strong id="hudOverheat">Unlimited</strong></span>
+    </div>
+    <div class="hud-right">
+      <button id="btnHudExport" class="btn btn-primary btn-sm">⚡ Export Code & SBC</button>
+    </div>
+  </div>
+
   <!-- Code Generation Modal / Drawer -->
-  <div id="codeModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: var(--bg-panel); border: 1px solid var(--amber-primary); border-radius: 8px; width: 100%; max-width: 900px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+  <div id="codeModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-panel" style="max-width: 960px; max-height: 88vh;">
       <div class="panel-header">
         <h2>⚡ IN-GAME CODE & SBC DEFINITIONS</h2>
-        <button id="btnCloseModal" class="btn" style="padding: 2px 8px; font-size: 14px;">✕</button>
+        <button id="btnCloseModal" class="btn btn-sm">✕</button>
       </div>
 
       <div class="tab-group" style="padding: 6px 12px;">
@@ -509,29 +1096,28 @@
         <div id="code-blueprints-sbc" class="code-box" style="flex: 1; display: none;">&lt;!-- Generating Blueprints... --&gt;</div>
       </div>
 
-      <div style="padding: 12px 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+      <div style="padding: 12px 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
         <span id="saveStatusHint" style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">
-          Link your local mod folder to enable 1-click direct file overwriting.
+          Link local mod folder to enable direct file saving.
         </span>
         <div style="display: flex; gap: 8px;">
           <button id="btnCopyCode" class="btn">📋 Copy Code</button>
           <button id="btnDownloadFile" class="btn">💾 Download File</button>
-          <button id="btnCommitGithub" class="btn btn-cyan" title="Commit updated files directly to GV-Server-Mods/GVK-Weapons-Pack on GitHub">🚀 Commit to GitHub</button>
-          <button id="btnSaveToDisk" class="btn btn-primary" title="Save directly to local mod folder">⚡ Save to Mod Folder</button>
+          <button id="btnSaveToDisk" class="btn btn-primary">⚡ Save to Mod Folder</button>
         </div>
       </div>
     </div>
   </div>
-
-
 
   <!-- Toast Notification -->
   <div id="toast" class="toast">
     <span id="toastMsg">Ready</span>
   </div>
 
-  <!-- Fallback local data for file:/// compatibility -->
+  <!-- Foundational Data Scripts -->
   <script src="data/weapons_data.js"></script>
+  <script src="data/ammos_data.js"></script>
+  <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
   <script src="app.js"></script>
 </body>

@@ -1,0 +1,4790 @@
+window.GVK_DEFAULT_AMMOS = {
+  "LargeCalibreAmmo": {
+    "name": "LargeCalibreAmmo",
+    "base_name": null,
+    "file": "Ballistics_Cannon_Ammos.cs",
+    "ammoMagazine": "LargeCalibreAmmo",
+    "ammoRound": "LargeCalibreAmmo",
+    "terminalName": "155 AP",
+    "baseDamage": 6000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 300.0,
+    "health": 0.0,
+    "backKickForce": 200000.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 600.0,
+      "maxTrajectory": 2400.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.25,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MD_Artillary_shell_fly",
+      "hitSound": "DOK_CannonHit",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "LargeCalibreAmmoHE": {
+    "name": "LargeCalibreAmmoHE",
+    "base_name": "LargeCalibreAmmo",
+    "file": "Ballistics_Cannon_Ammos.cs",
+    "ammoMagazine": "LargeCalibreAmmoHE",
+    "ammoRound": "LargeCalibreAmmoHE",
+    "terminalName": "155 HE",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 4.0,
+      "damage": 6000.0,
+      "depth": 4.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Cannon_NPC": {
+    "name": "Ballistics_Cannon_NPC",
+    "base_name": "LargeCalibreAmmo",
+    "file": "Ballistics_Cannon_Ammos.cs",
+    "ammoMagazine": "Ballistics_Cannon_NPC",
+    "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
+    "terminalName": "Ballistics_Cannon_NPC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 5.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
+      "fragments": 1,
+      "degrees": 0.1,
+      "reverse": false,
+      "dropVelocity": true
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Cannon_NPC_Fragment1": {
+    "name": "Ballistics_Cannon_NPC_Fragment1",
+    "base_name": "LargeCalibreAmmo",
+    "file": "Ballistics_Cannon_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
+    "terminalName": "Ballistics_Cannon_NPC_Fragment1",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "AutocannonClip": {
+    "name": "AutocannonClip",
+    "base_name": null,
+    "file": "Ballistics_Chaingun_Ammos.cs",
+    "ammoMagazine": "AutocannonClip",
+    "ammoRound": "AutocannonClip",
+    "terminalName": "AutocannonClip",
+    "baseDamage": 1000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 10.0,
+    "health": 0.0,
+    "backKickForce": 1000.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 900.0,
+      "maxTrajectory": 2000.0,
+      "maxLifeTime": 420,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 2.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.1,
+      "healthHitModifier": 2.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "AutocannonExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "AutocannonClip_Drone": {
+    "name": "AutocannonClip_Drone",
+    "base_name": null,
+    "file": "Ballistics_Chaingun_Ammos.cs",
+    "ammoMagazine": "AutocannonClip_Drone",
+    "ammoRound": "AutocannonClip_Drone",
+    "terminalName": "AutocannonClip_Drone",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Flak": {
+    "name": "Ballistics_Flak",
+    "base_name": null,
+    "file": "Ballistics_Flak_Ammos.cs",
+    "ammoMagazine": "MediumCalibreAmmo",
+    "ammoRound": "Proximity Flak",
+    "terminalName": "Ballistics_Flak",
+    "baseDamage": 1000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 100.0,
+    "health": 0.0,
+    "backKickForce": 1000.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 10.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "Ballistics_Flak_Shrapnel",
+      "fragments": 30,
+      "degrees": 45.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 900.0,
+      "maxTrajectory": 2000.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 10.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.1,
+      "healthHitModifier": 10.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Flak_Shrapnel": {
+    "name": "Ballistics_Flak_Shrapnel",
+    "base_name": null,
+    "file": "Ballistics_Flak_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Ballistics_Flak_Shrapnel",
+    "terminalName": "Ballistics_Flak_Shrapnel",
+    "baseDamage": 400.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 50.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1200.0,
+      "maxTrajectory": 240.0,
+      "maxLifeTime": 120,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 10.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.1,
+      "healthHitModifier": 10.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 0.25,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Flak_HE": {
+    "name": "Ballistics_Flak_HE",
+    "base_name": null,
+    "file": "Ballistics_Flak_Ammos.cs",
+    "ammoMagazine": "MediumCalibreAmmo",
+    "ammoRound": "Impact Flak",
+    "terminalName": "Ballistics_Flak_HE",
+    "baseDamage": 1000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 100.0,
+    "health": 0.0,
+    "backKickForce": 1000.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 900.0,
+      "maxTrajectory": 2000.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": -1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.1,
+      "healthHitModifier": -1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "NATO_25x184mm": {
+    "name": "NATO_25x184mm",
+    "base_name": null,
+    "file": "Ballistics_Gatling_Ammos.cs",
+    "ammoMagazine": "NATO_25x184mm",
+    "ammoRound": "NATO_25x184mm",
+    "terminalName": "NATO 25mm",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 100.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 10.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1700.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 3.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.2,
+      "healthHitModifier": 3.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "MD_BulletHit",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 0.7,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "NATO_25x184mm_Dual": {
+    "name": "NATO_25x184mm_Dual",
+    "base_name": "NATO_25x184mm",
+    "file": "Ballistics_Gatling_Ammos.cs",
+    "ammoMagazine": "NATO_25x184mm_Dual",
+    "ammoRound": "NATO_25x184mm_Dual",
+    "terminalName": "NATO_25x184mm_Dual",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "NATO_25x184mm_Dual_Fragment",
+      "fragments": 1,
+      "degrees": 0.15,
+      "reverse": false,
+      "dropVelocity": true
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 0.6,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "NATO_25x184mm_Dual_Fragment": {
+    "name": "NATO_25x184mm_Dual_Fragment",
+    "base_name": "NATO_25x184mm",
+    "file": "Ballistics_Gatling_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "NATO_25x184mm_Dual_Fragment",
+    "terminalName": "NATO_25x184mm_Dual_Fragment",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_HeavyCannon": {
+    "name": "Ballistics_HeavyCannon",
+    "base_name": null,
+    "file": "Ballistics_HeavyCannon_Ammos.cs",
+    "ammoMagazine": "Ballistics_HeavyCannon",
+    "ammoRound": "Ballistics_HeavyCannon",
+    "terminalName": "Ballistics_HeavyCannon",
+    "baseDamage": 10000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 2000.0,
+    "health": 0.0,
+    "backKickForce": 1500000.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 600.0,
+      "maxTrajectory": 3300.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 5.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 1e-07,
+      "healthHitModifier": 5.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MD_Artillary_shell_fly",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_HeavyCannon_Odin": {
+    "name": "Ballistics_HeavyCannon_Odin",
+    "base_name": null,
+    "file": "Ballistics_HeavyCannon_Ammos.cs",
+    "ammoMagazine": "Ballistics_HeavyCannon_Odin",
+    "ammoRound": "Ballistics_HeavyCannon_Odin",
+    "terminalName": "Ballistics_HeavyCannon_Odin",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "HeavyRailgunAmmo": {
+    "name": "HeavyRailgunAmmo",
+    "base_name": null,
+    "file": "Ballistics_HeavyRailgun_Ammo.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "HeavyRailgunAmmo",
+    "terminalName": "HeavyRailgunAmmo",
+    "baseDamage": 1000000.0,
+    "baseDamageCutoff": 20000.0,
+    "mass": 4000.0,
+    "health": 0.0,
+    "backKickForce": 400000.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.001,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 3000.0,
+      "maxTrajectory": 4200.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 500.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 500.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Ballistics_Interior": {
+    "name": "Ballistics_Interior",
+    "base_name": null,
+    "file": "Ballistics_Interior_Ammos.cs",
+    "ammoMagazine": "NATO_5p56x45mm",
+    "ammoRound": "Ballistics_Interior",
+    "terminalName": "Ballistics_Interior",
+    "baseDamage": 25.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 0.25,
+    "health": 0.0,
+    "backKickForce": 2.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 950.0,
+      "maxTrajectory": 900.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 0.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 1.0,
+      "healthHitModifier": 0.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "ArcImpMetalMetalCat0",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "LargeRailgunSabot": {
+    "name": "LargeRailgunSabot",
+    "base_name": null,
+    "file": "Ballistics_MAC_Ammos.cs",
+    "ammoMagazine": "LargeRailgunAmmo",
+    "ammoRound": "200mm DU",
+    "terminalName": "LargeRailgunSabot",
+    "baseDamage": 2000000.0,
+    "baseDamageCutoff": 20000.0,
+    "mass": 20000.0,
+    "health": 0.0,
+    "backKickForce": 30000000.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": true,
+    "energyCost": 0.01071,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 5.0,
+      "damage": 20000.0,
+      "depth": 5.0
+    },
+    "trajectory": {
+      "desiredSpeed": 4100.0,
+      "maxTrajectory": 3000.0,
+      "maxLifeTime": 300,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1000.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1000.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "LargeRailgunSabot_NPC": {
+    "name": "LargeRailgunSabot_NPC",
+    "base_name": "LargeRailgunSabot",
+    "file": "Ballistics_MAC_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "LargeRailgunSabot_NPC",
+    "terminalName": "LargeRailgunSabot_NPC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0001,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "LargeRailgunSabot_NPC_Fragment": {
+    "name": "LargeRailgunSabot_NPC_Fragment",
+    "base_name": "LargeRailgunSabot",
+    "file": "Ballistics_MAC_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "LargeRailgunSabot_NPC_Fragment",
+    "terminalName": "LargeRailgunSabot_NPC_Fragment",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "SmallRailgunAmmo": {
+    "name": "SmallRailgunAmmo",
+    "base_name": null,
+    "file": "Ballistics_Railgun_Ammo.cs",
+    "ammoMagazine": "SmallRailgunAmmo",
+    "ammoRound": "SmallRailgunAmmo",
+    "terminalName": "SmallRailgunAmmo",
+    "baseDamage": 66500.0,
+    "baseDamageCutoff": 8000.0,
+    "mass": 2000.0,
+    "health": 0.0,
+    "backKickForce": 400000.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": true,
+    "energyCost": 0.1202255639,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 3000.0,
+      "maxTrajectory": 3300.0,
+      "maxLifeTime": 300,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 500.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 500.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "SmallRailgunAmmo_NPC": {
+    "name": "SmallRailgunAmmo_NPC",
+    "base_name": null,
+    "file": "Ballistics_Railgun_Ammo.cs",
+    "ammoMagazine": "SmallRailgunAmmo",
+    "ammoRound": "SmallRailgunAmmo",
+    "terminalName": "SmallRailgunAmmo_NPC",
+    "baseDamage": 66500.0,
+    "baseDamageCutoff": 8000.0,
+    "mass": 2000.0,
+    "health": 0.0,
+    "backKickForce": 400000.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": true,
+    "energyCost": 0.1202255639,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 3000.0,
+      "maxTrajectory": 3300.0,
+      "maxLifeTime": 3000,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 500.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 500.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "SmallRailgunAmmo_NPC_Fragment1": {
+    "name": "SmallRailgunAmmo_NPC_Fragment1",
+    "base_name": "SmallRailgunAmmo",
+    "file": "Ballistics_Railgun_Ammo.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "SmallRailgunAmmo_NPC_Fragment1",
+    "terminalName": "SmallRailgunAmmo_NPC_Fragment1",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "SmallRailgunAmmo_Ares": {
+    "name": "SmallRailgunAmmo_Ares",
+    "base_name": null,
+    "file": "Ballistics_Railgun_Ammo.cs",
+    "ammoMagazine": "SmallRailgunAmmo",
+    "ammoRound": "SmallRailgunAmmo",
+    "terminalName": "SmallRailgunAmmo_Ares",
+    "baseDamage": 33250.0,
+    "baseDamageCutoff": 6000.0,
+    "mass": 2000.0,
+    "health": 0.0,
+    "backKickForce": 200000.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": true,
+    "energyCost": 0.05413533835,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 2000.0,
+      "maxTrajectory": 3300.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Basic_Rocket": {
+    "name": "Basic_Rocket",
+    "base_name": null,
+    "file": "Handhelds_Launchers_Ammo.cs",
+    "ammoMagazine": "Missile200mm",
+    "ammoRound": "Basic_Rocket",
+    "terminalName": "Basic_Rocket",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 5.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.1,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": -1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 5.0,
+      "damage": 500.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 250.0,
+      "maxTrajectory": 3000.0,
+      "maxLifeTime": 1000,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 0.5,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 0.5
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MissileFlightSound",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Advanced_Rocket_Launch": {
+    "name": "Advanced_Rocket_Launch",
+    "base_name": null,
+    "file": "Handhelds_Launchers_Ammo.cs",
+    "ammoMagazine": "Missile200mm",
+    "ammoRound": "Advanced_Rocket_Launch",
+    "terminalName": "Advanced_Rocket_Launch",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 5.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.1,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 500.0,
+      "maxTrajectory": 4000.0,
+      "maxLifeTime": 35,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Advanced_Rocket": {
+    "name": "Advanced_Rocket",
+    "base_name": null,
+    "file": "Handhelds_Launchers_Ammo.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Advanced_Rocket",
+    "terminalName": "Advanced_Rocket",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 50.0,
+    "health": 5.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.1,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 5.0,
+      "damage": 500.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 500.0,
+      "maxTrajectory": 4000.0,
+      "maxLifeTime": 720,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MissileFlightSound",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Rocket_Frag": {
+    "name": "Rocket_Frag",
+    "base_name": null,
+    "file": "Handhelds_Launchers_Ammo.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Rocket_Frag",
+    "terminalName": "Rocket_Frag",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 0.1,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 5000.0,
+      "maxTrajectory": 15.0,
+      "maxLifeTime": 2,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "ElitePistol_Ammo": {
+    "name": "ElitePistol_Ammo",
+    "base_name": null,
+    "file": "Handhelds_Pistols_Ammos.cs",
+    "ammoMagazine": "ElitePistolMagazine",
+    "ammoRound": "Pistol",
+    "terminalName": "ElitePistol_Ammo",
+    "baseDamage": 30.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 0.1,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 400.0,
+      "maxTrajectory": 400.0,
+      "maxLifeTime": 60,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 0.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 0.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "WepPlayRifleImpMetal",
+      "shieldHitSound": "WepPlayRifleImpRock"
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "UltimateAutomaticRifleGun_Ammo": {
+    "name": "UltimateAutomaticRifleGun_Ammo",
+    "base_name": null,
+    "file": "Handhelds_Rifles_Ammos.cs",
+    "ammoMagazine": "UltimateAutomaticRifleGun_Mag_30rd",
+    "ammoRound": "RifleTrace",
+    "terminalName": "UltimateAutomaticRifleGun_Ammo",
+    "baseDamage": 40.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 0.25,
+    "health": 0.0,
+    "backKickForce": 2.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 800.0,
+      "maxTrajectory": 800.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 0.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 1.0,
+      "healthHitModifier": 0.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "WepPlayRifleImpMetal",
+      "shieldHitSound": "WepPlayRifleImpRock"
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_AMS": {
+    "name": "Lasers_AMS",
+    "base_name": null,
+    "file": "Lasers_AMS_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Lasers_AMS",
+    "terminalName": "Lasers_AMS",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.3,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 0.0,
+      "maxTrajectory": 1200.0,
+      "maxLifeTime": 0,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Laser_Large": {
+    "name": "Lasers_Laser_Large",
+    "base_name": null,
+    "file": "Lasers_Heavy_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Lasers_Laser_Large",
+    "terminalName": "Lasers_Laser_Large",
+    "baseDamage": 150.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.78,
+    "energyMagazineSize": 240,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 5.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1800.0,
+      "maxLifeTime": 60,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": -1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.25,
+      "healthHitModifier": -1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Laser_Dual": {
+    "name": "Lasers_Laser_Dual",
+    "base_name": null,
+    "file": "Lasers_Heavy_Ammos.cs",
+    "ammoMagazine": "Lasers_Laser_Dual",
+    "ammoRound": "Lasers_Laser_Dual",
+    "terminalName": "Lasers_Laser_Dual",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 360,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Lightning": {
+    "name": "Lasers_Lightning",
+    "base_name": null,
+    "file": "Lasers_Heavy_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Lasers_Lightning",
+    "terminalName": "Lasers_Lightning",
+    "baseDamage": 250.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.52,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": -1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.25,
+      "healthHitModifier": -1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Laser_Light_LG": {
+    "name": "Lasers_Laser_Light_LG",
+    "base_name": null,
+    "file": "Lasers_Light_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Lasers_Laser_Light_LG",
+    "terminalName": "Lasers_Laser_Light_LG",
+    "baseDamage": 75.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.6,
+    "energyMagazineSize": 240,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 5.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1100.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.25,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Laser_Light_SG": {
+    "name": "Lasers_Laser_Light_SG",
+    "base_name": null,
+    "file": "Lasers_Light_Ammos.cs",
+    "ammoMagazine": "Lasers_Laser_Light_SG",
+    "ammoRound": "Lasers_Laser_Light_SG",
+    "terminalName": "Lasers_Laser_Light_SG",
+    "baseDamage": 37.5,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.2,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Lasers_Plasma": {
+    "name": "Lasers_Plasma",
+    "base_name": null,
+    "file": "Lasers_Plasma_Ammos.cs",
+    "ammoMagazine": "Lasers_Plasma",
+    "ammoRound": "Lasers_Plasma",
+    "terminalName": "Lasers_Plasma",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 100.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": true,
+    "energyCost": 5865.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 7.0,
+      "damage": 80000.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 500.0,
+      "maxTrajectory": 3000.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "PlasmaLauncher_Hit",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_HeavyMissile": {
+    "name": "Missiles_HeavyMissile",
+    "base_name": null,
+    "file": "Missiles_HeavyMissile_Ammos.cs",
+    "ammoMagazine": "Missiles_HeavyMissile",
+    "ammoRound": "Missiles_HeavyMissile",
+    "terminalName": "Missiles_HeavyMissile",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 400.0,
+    "health": 15.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 5.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 6.0,
+      "damage": 30000.0,
+      "depth": 5.0
+    },
+    "trajectory": {
+      "desiredSpeed": 270.0,
+      "maxTrajectory": 4000.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": "Inline",
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "DOK_MissileExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Missile": {
+    "name": "Missiles_Missile",
+    "base_name": null,
+    "file": "Missiles_LightMissile_Ammo.cs",
+    "ammoMagazine": "Missiles_Missile",
+    "ammoRound": "Griffin HE",
+    "terminalName": "Missiles_Missile",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 200.0,
+    "health": 1.0,
+    "backKickForce": 50.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 2.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 4.0,
+      "damage": 12000.0,
+      "depth": 4.0
+    },
+    "trajectory": {
+      "desiredSpeed": 450.0,
+      "maxTrajectory": 2800.0,
+      "maxLifeTime": 1200,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 0.5,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 0.5
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_SmallExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Missile_NPC": {
+    "name": "Missiles_Missile_NPC",
+    "base_name": null,
+    "file": "Missiles_LightMissile_Ammo.cs",
+    "ammoMagazine": "Missiles_Missile_NPC",
+    "ammoRound": "Missiles_Missile_NPC",
+    "terminalName": "Missiles_Missile_NPC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Rocket": {
+    "name": "Missiles_Rocket",
+    "base_name": null,
+    "file": "Missiles_Rocket_Ammos.cs",
+    "ammoMagazine": "Missile200mm",
+    "ammoRound": "Missiles_Rocket",
+    "terminalName": "Missiles_Rocket",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 200.0,
+    "health": 1.0,
+    "backKickForce": 100.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 4.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 7.0,
+      "damage": 15000.0,
+      "depth": 7.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1200.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Siege": {
+    "name": "Missiles_Siege",
+    "base_name": null,
+    "file": "Missiles_Siege_Ammos.cs",
+    "ammoMagazine": "Missiles_Siege",
+    "ammoRound": "Missiles_Siege",
+    "terminalName": "Missiles_Siege",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 500.0,
+    "health": 100.0,
+    "backKickForce": 100.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 3.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "Missiles_Siege_Shrapnel",
+      "fragments": 10,
+      "degrees": 20.0,
+      "reverse": false,
+      "dropVelocity": true
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 300.0,
+      "maxTrajectory": 6000.0,
+      "maxLifeTime": 2400,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 2.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 2.0
+    },
+    "approachesRef": "Inline",
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_LargeExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Siege_Shrapnel": {
+    "name": "Missiles_Siege_Shrapnel",
+    "base_name": null,
+    "file": "Missiles_Siege_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Missiles_Siege_Shrapnel",
+    "terminalName": "Missiles_Siege_Shrapnel",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 200.0,
+    "health": 10.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.1,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 2.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 5.0,
+      "damage": 17000.0,
+      "depth": 5.0
+    },
+    "trajectory": {
+      "desiredSpeed": 300.0,
+      "maxTrajectory": 500.0,
+      "maxLifeTime": 240,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "DOK_MissileExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Torpedo": {
+    "name": "Missiles_Torpedo",
+    "base_name": null,
+    "file": "Missiles_Torpedo_Ammos.cs",
+    "ammoMagazine": "Missiles_Torpedo",
+    "ammoRound": "Missiles_Torpedo",
+    "terminalName": "Missiles_Torpedo",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 200.0,
+    "health": 150.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "",
+      "fragments": 1,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 25.0,
+      "damage": 1500000.0,
+      "depth": 25.0
+    },
+    "trajectory": {
+      "desiredSpeed": 200.0,
+      "maxTrajectory": 3500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 10.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 10.0
+    },
+    "approachesRef": "Inline",
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_FireyExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Torpedo_NPC": {
+    "name": "Missiles_Torpedo_NPC",
+    "base_name": null,
+    "file": "Missiles_Torpedo_Ammos.cs",
+    "ammoMagazine": "Missiles_Torpedo_NPC",
+    "ammoRound": "Missiles_Torpedo_NPC",
+    "terminalName": "Missiles_Torpedo_NPC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Missiles_Torpedo_Shrapnel": {
+    "name": "Missiles_Torpedo_Shrapnel",
+    "base_name": null,
+    "file": "Missiles_Torpedo_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Missiles_Torpedo_Shrapnel",
+    "terminalName": "Missiles_Torpedo_Shrapnel",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.1,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 500.0,
+      "maxTrajectory": 200.0,
+      "maxLifeTime": 900,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Others_Drone_Offense_Advanced": {
+    "name": "Others_Drone_Offense_Advanced",
+    "base_name": null,
+    "file": "Other_Drones_Ammos.cs",
+    "ammoMagazine": "Others_Drone_Falcon",
+    "ammoRound": "Offense Falcon V2",
+    "terminalName": "Others_Drone_Offense_Advanced",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 500.0,
+    "health": 200.0,
+    "backKickForce": 5.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "Others_Drone_Gunship",
+      "fragments": 1,
+      "degrees": 4.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 5.0,
+      "damage": 20000.0,
+      "depth": 5.0
+    },
+    "trajectory": {
+      "desiredSpeed": 150.0,
+      "maxTrajectory": 30000.0,
+      "maxLifeTime": 10800,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": "Inline",
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_SmallExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Others_Drone_Defense_Main": {
+    "name": "Others_Drone_Defense_Main",
+    "base_name": null,
+    "file": "Other_Drones_Ammos.cs",
+    "ammoMagazine": "Others_Drone_Falcon",
+    "ammoRound": "Defense Falcon Mode",
+    "terminalName": "Others_Drone_Defense_Main",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 500.0,
+    "health": 200.0,
+    "backKickForce": 5.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": true,
+      "ammoRound": "Others_Drone_Gunship",
+      "fragments": 1,
+      "degrees": 4.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 5.0,
+      "damage": 20000.0,
+      "depth": 5.0
+    },
+    "trajectory": {
+      "desiredSpeed": 150.0,
+      "maxTrajectory": 30000.0,
+      "maxLifeTime": 21600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "Smart"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": "Inline",
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_SmallExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Others_Drone_Gunship": {
+    "name": "Others_Drone_Gunship",
+    "base_name": null,
+    "file": "Other_Drones_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Others_Drone_Gunship",
+    "terminalName": "Others_Drone_Gunship",
+    "baseDamage": 2500.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 20.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 4.0,
+      "damage": 2500.0,
+      "depth": 4.0
+    },
+    "trajectory": {
+      "desiredSpeed": 500.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 420,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 2.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": 0.1,
+      "healthHitModifier": 2.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "DOK_GunshipExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkBaseWC": {
+    "name": "FireworkBaseWC",
+    "base_name": null,
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworksBoxRainbow",
+    "ammoRound": "FireworkRandom",
+    "terminalName": "FireworkBaseWC",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 20.0,
+    "health": 1.0,
+    "backKickForce": 10.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 100.0,
+      "maxTrajectory": 300.0,
+      "maxLifeTime": 240,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "ArcFlareFlightSound",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkRainbowWC": {
+    "name": "FireworkRainbowWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkRainbowWC",
+    "ammoRound": "FireworkRainbow",
+    "terminalName": "FireworkRainbowWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkGreenWC": {
+    "name": "FireworkGreenWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkGreenWC",
+    "ammoRound": "FireworkGreen",
+    "terminalName": "FireworkGreenWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkRedWC": {
+    "name": "FireworkRedWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkRedWC",
+    "ammoRound": "FireworkRed",
+    "terminalName": "FireworkRedWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkPinkWC": {
+    "name": "FireworkPinkWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkPinkWC",
+    "ammoRound": "FireworkPink",
+    "terminalName": "FireworkPinkWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkYellowWC": {
+    "name": "FireworkYellowWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkYellowWC",
+    "ammoRound": "FireworkYellow",
+    "terminalName": "FireworkYellowWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FireworkBlueWC": {
+    "name": "FireworkBlueWC",
+    "base_name": "FireworkBaseWC",
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FireworkBlueWC",
+    "ammoRound": "FireworkBlue",
+    "terminalName": "FireworkBlueWC",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "FlareWC": {
+    "name": "FlareWC",
+    "base_name": null,
+    "file": "Other_Flare_Ammos.cs",
+    "ammoMagazine": "FlareClip",
+    "ammoRound": "Flare",
+    "terminalName": "FlareWC",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 50.0,
+    "health": 1.0,
+    "backKickForce": 10.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": 1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 50.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 1200,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "ArcFlareFlightSound",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "designatorBeam1": {
+    "name": "designatorBeam1",
+    "base_name": null,
+    "file": "Other_Radar_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "designatorBeam",
+    "terminalName": "designatorBeam1",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 1.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 50000.0,
+      "maxTrajectory": 20000.0,
+      "maxLifeTime": 0,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 0.5,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 0.5
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_LG_Ammo": {
+    "name": "Other_Warheads_RegularWarhead_LG_Ammo",
+    "base_name": null,
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Large HE",
+    "terminalName": "Other_Warheads_RegularWarhead_LG_Ammo",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 1.0,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1.0,
+      "maxTrajectory": 1.0,
+      "maxLifeTime": 1,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_LG_Ammo_Particle": {
+    "name": "Other_Warheads_RegularWarhead_LG_Ammo_Particle",
+    "base_name": null,
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Large HE Particle",
+    "terminalName": "Other_Warheads_RegularWarhead_LG_Ammo_Particle",
+    "baseDamage": 1.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 1.0,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1.0,
+      "maxTrajectory": 1.0,
+      "maxLifeTime": 30,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "HWR_LargeExplosion",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_LG_Ammo_Fragment": {
+    "name": "Other_Warheads_RegularWarhead_LG_Ammo_Fragment",
+    "base_name": null,
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Energy",
+    "ammoRound": "Large HE Fragment",
+    "terminalName": "Other_Warheads_RegularWarhead_LG_Ammo_Fragment",
+    "baseDamage": 2000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": false,
+    "npcSafe": true,
+    "noGridOrArmorScaling": true,
+    "hybridRound": false,
+    "energyCost": 1.0,
+    "energyMagazineSize": 1,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1.0,
+      "maxTrajectory": 20.0,
+      "maxLifeTime": 5,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 0.3,
+      "tracer": {
+        "enable": true,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_SG_Ammo": {
+    "name": "Other_Warheads_RegularWarhead_SG_Ammo",
+    "base_name": "Other_Warheads_RegularWarhead_LG_Ammo",
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo",
+    "ammoRound": "Small HE",
+    "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_SG_Ammo_Particle": {
+    "name": "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
+    "base_name": "Other_Warheads_RegularWarhead_LG_Ammo_Particle",
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
+    "ammoRound": "Small HE Particle",
+    "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
+    "baseDamage": 100.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "HWR_LargeExplosion",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  },
+  "Other_Warheads_RegularWarhead_SG_Ammo_Fragment": {
+    "name": "Other_Warheads_RegularWarhead_SG_Ammo_Fragment",
+    "base_name": "Other_Warheads_RegularWarhead_LG_Ammo_Fragment",
+    "file": "Other_Warheads_Ammos.cs",
+    "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo_Fragment",
+    "ammoRound": "Small HE Fragment",
+    "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo_Fragment",
+    "baseDamage": 1000.0,
+    "baseDamageCutoff": 0.0,
+    "mass": 1.0,
+    "health": 0.0,
+    "backKickForce": 0.0,
+    "hardPointUsable": true,
+    "npcSafe": false,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0.0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0.0,
+    "heatPerShot": 0.0,
+    "heatModifier": 1.0,
+    "shape": "LineShape",
+    "diameter": -1.0,
+    "objectsHit": {
+      "maxHits": 1
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0.0,
+      "reverse": false,
+      "dropVelocity": false
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0
+    },
+    "trajectory": {
+      "desiredSpeed": 1000.0,
+      "maxTrajectory": 1500.0,
+      "maxLifeTime": 3600,
+      "speedVariance": 0.0,
+      "rangeVariance": 0.0,
+      "guidance": "None"
+    },
+    "damageScales": {
+      "shield": 1.0,
+      "lightArmor": -1.0,
+      "heavyArmor": -1.0,
+      "characters": -1.0,
+      "healthHitModifier": 1.0
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1.0,
+      "tracer": {
+        "enable": false,
+        "length": 10.0,
+        "width": 0.1,
+        "color": {
+          "r": 5.0,
+          "g": 2.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      }
+    }
+  }
+};

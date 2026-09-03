@@ -1,65 +1,63 @@
 /**
- * GVK Weapon Studio // Real-Time WeaponCore Configurator
+ * GVK Weapon Studio // Real-Time WeaponCore Configurator & Logistics Engine
  * Powered by Ash-LikeSnow/WeaponCore & GV-Server-Mods/GVK-Weapons-Pack
  */
 
+// Global State & Databases
 let weaponsDb = [];
+let ammosDb = {};
+let animationsDb = [];
 let componentsDb = {};
 let activeWeapon = null;
+let activeAmmo = null;
 let benchmarkWeapon = null;
 let modDirectoryHandle = null;
 
-// DOM Elements
+// Server Balance Matrix Multipliers (with defaults)
+const DEFAULT_BALANCE_MATRIX = {
+  buildTimeDividend: 750,
+  scPer1U: 207284,
+  scPerDamage: 3.00,
+  minIntegrity: 2500,
+  midIntegrity: 25000,
+  maxIntegrity: 400000,
+  minSize: 0.032,
+  midSize: 1.0,
+  maxSize: 125.0,
+  assemblerEff: 3.0,
+  scrapYield: 0.25
+};
+
+let balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
+
+// Load stored balance matrix if present
+try {
+  const savedMatrix = localStorage.getItem('GVK_BALANCE_MATRIX');
+  if (savedMatrix) {
+    balanceMatrix = { ...DEFAULT_BALANCE_MATRIX, ...JSON.parse(savedMatrix) };
+  }
+} catch (e) {
+  console.warn("Using default balance matrix:", e);
+}
+
+// DOM Elements - Navigation & Workspaces
+const wsTabs = document.querySelectorAll('.ws-tab');
+const wsSections = document.querySelectorAll('.workspace-section');
+const scopeBtns = document.querySelectorAll('.scope-btn');
+const scopeContents = document.querySelectorAll('.scope-content');
+
+// DOM Elements - Universal Weapon Banner
 const weaponSelect = document.getElementById('weaponSelect');
-const compareSelect = document.getElementById('compareSelect');
+const activeWeaponIcon = document.getElementById('activeWeaponIcon');
+const btnResetDefaults = document.getElementById('btnResetDefaults');
+const badgeGrid = document.getElementById('badgeGrid');
+const badgeType = document.getElementById('badgeType');
+const badgeTech = document.getElementById('badgeTech');
+const badgeCircuitry = document.getElementById('badgeCircuitry');
+const badgeRelic = document.getElementById('badgeRelic');
+const badgeNpc = document.getElementById('badgeNpc');
 
-// Inputs
-const inputRof = document.getElementById('inputRof');
-const inputRofSlider = document.getElementById('inputRofSlider');
-const inputBarrelsPerShot = document.getElementById('inputBarrelsPerShot');
-const inputReloadTime = document.getElementById('inputReloadTime');
-const inputReloadSlider = document.getElementById('inputReloadSlider');
-const inputMagazineSize = document.getElementById('inputMagazineSize');
-const inputMagsToLoad = document.getElementById('inputMagsToLoad');
-const inputShotsInBurst = document.getElementById('inputShotsInBurst');
-const inputDelayAfterBurst = document.getElementById('inputDelayAfterBurst');
-const inputDelayUntilFire = document.getElementById('inputDelayUntilFire');
-
-const inputBaseDamage = document.getElementById('inputBaseDamage');
-const inputDesiredSpeed = document.getElementById('inputDesiredSpeed');
-const inputMaxTrajectory = document.getElementById('inputMaxTrajectory');
-const inputDetDamage = document.getElementById('inputDetDamage');
-const inputDetRadius = document.getElementById('inputDetRadius');
-const inputFragments = document.getElementById('inputFragments');
-const inputFragmentDegrees = document.getElementById('inputFragmentDegrees');
-const inputShrapnelBaseDmg = document.getElementById('inputShrapnelBaseDmg');
-const inputShrapnelDetDmg = document.getElementById('inputShrapnelDetDmg');
-const inputChanceToHit = document.getElementById('inputChanceToHit');
-
-const inputHeatPerShot = document.getElementById('inputHeatPerShot');
-const inputMaxHeat = document.getElementById('inputMaxHeat');
-const inputCooldown = document.getElementById('inputCooldown');
-const inputHeatSinkRate = document.getElementById('inputHeatSinkRate');
-const inputEnergyCost = document.getElementById('inputEnergyCost');
-const inputIdlePower = document.getElementById('inputIdlePower');
-
-const inputRotateRate = document.getElementById('inputRotateRate');
-const inputRotateRateSlider = document.getElementById('inputRotateRateSlider');
-const inputElevateRate = document.getElementById('inputElevateRate');
-const inputElevateRateSlider = document.getElementById('inputElevateRateSlider');
-const inputMinAzimuth = document.getElementById('inputMinAzimuth');
-const inputMaxAzimuth = document.getElementById('inputMaxAzimuth');
-const inputMinElevation = document.getElementById('inputMinElevation');
-const inputMaxElevation = document.getElementById('inputMaxElevation');
-const inputDeviateShotAngle = document.getElementById('inputDeviateShotAngle');
-const inputMaxTargetDistance = document.getElementById('inputMaxTargetDistance');
-
-const inputTargetIntegrity = document.getElementById('inputTargetIntegrity');
-const inputDurabilityMod = document.getElementById('inputDurabilityMod');
-const inputTechQty = document.getElementById('inputTechQty');
-const selectGridSize = document.getElementById('selectGridSize');
-
-// Telemetry Outputs
+// DOM Elements - Telemetry Deck
 const outSustainedDps = document.getElementById('outSustainedDps');
 const outDpsBreakdown = document.getElementById('outDpsBreakdown');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
@@ -78,1197 +76,1763 @@ const outEffectiveIntegrity = document.getElementById('outEffectiveIntegrity');
 const outBuildTime = document.getElementById('outBuildTime');
 const outTotalValue = document.getElementById('outTotalValue');
 const bomTableBody = document.getElementById('bomTableBody');
+
+// DOM Elements - Simulator Tools (TTK & Drift)
+const ttkTargetSelect = document.getElementById('ttkTargetSelect');
+const outTtkMain = document.getElementById('outTtkMain');
+const outTtkRounds = document.getElementById('outTtkRounds');
+const ttkProgressFill = document.getElementById('ttkProgressFill');
+const outFlightMuzzleSpd = document.getElementById('outFlightMuzzleSpd');
+const outDelay500m = document.getElementById('outDelay500m');
+const outLead500m = document.getElementById('outLead500m');
+const outDelay1000m = document.getElementById('outDelay1000m');
+const outLead1000m = document.getElementById('outLead1000m');
+const outMaxRangeLabel = document.getElementById('outMaxRangeLabel');
+const outDelayMax = document.getElementById('outDelayMax');
+const outLeadMax = document.getElementById('outLeadMax');
+
+// DOM Elements - 1v1 Radar & Comparison
+const compareSelect = document.getElementById('compareSelect');
+const compActiveIcon = document.getElementById('compActiveIcon');
+const compBenchIcon = document.getElementById('compBenchIcon');
+const legendActiveName = document.getElementById('legendActiveName');
+const legendBenchItem = document.getElementById('legendBenchItem');
+const legendBenchName = document.getElementById('legendBenchName');
 const compareTableBody = document.getElementById('compareTableBody');
+const radarCanvas = document.getElementById('radarCanvas');
 
-// Badges
-const badgeGrid = document.getElementById('badgeGrid');
-const badgeType = document.getElementById('badgeType');
-const badgeTech = document.getElementById('badgeTech');
-const badgePcu = document.getElementById('badgePcu');
+// DOM Elements - Definition Workbench (Scope A: WeaponDef)
+const wSubtypeId = document.getElementById('wSubtypeId');
+const wPartName = document.getElementById('wPartName');
+const wDurabilityMod = document.getElementById('wDurabilityMod');
+const wScope = document.getElementById('wScope');
+const wMuzzles = document.getElementById('wMuzzles');
 
-// Code Modal
+const wMaxTargetDistance = document.getElementById('wMaxTargetDistance');
+const wMinTargetDistance = document.getElementById('wMinTargetDistance');
+const wTopTargets = document.getElementById('wTopTargets');
+const wTopBlocks = document.getElementById('wTopBlocks');
+const wStopTrackingSpeed = document.getElementById('wStopTrackingSpeed');
+const wClosestFirst = document.getElementById('wClosestFirst');
+const wIgnoreDumb = document.getElementById('wIgnoreDumb');
+const wLockedSmartOnly = document.getElementById('wLockedSmartOnly');
+const badgeTargetingHelper = document.getElementById('badgeTargetingHelper');
+const btnRevertTargeting = document.getElementById('btnRevertTargeting');
+
+const wDeviateAngle = document.getElementById('wDeviateAngle');
+const wAimingTolerance = document.getElementById('wAimingTolerance');
+const wAimLeading = document.getElementById('wAimLeading');
+const wDelayCeaseFire = document.getElementById('wDelayCeaseFire');
+
+const wRateOfFire = document.getElementById('wRateOfFire');
+const wBarrelsPerShot = document.getElementById('wBarrelsPerShot');
+const wReloadTime = document.getElementById('wReloadTime');
+const wMagsToLoad = document.getElementById('wMagsToLoad');
+const wHeatPerShot = document.getElementById('wHeatPerShot');
+const wMaxHeat = document.getElementById('wMaxHeat');
+const wHeatSinkRate = document.getElementById('wHeatSinkRate');
+const wCooldown = document.getElementById('wCooldown');
+
+const wRotateRate = document.getElementById('wRotateRate');
+const wElevateRate = document.getElementById('wElevateRate');
+const wMinAzimuth = document.getElementById('wMinAzimuth');
+const wMaxAzimuth = document.getElementById('wMaxAzimuth');
+const wMinElevation = document.getElementById('wMinElevation');
+const wMaxElevation = document.getElementById('wMaxElevation');
+const wInventorySize = document.getElementById('wInventorySize');
+const wIdlePower = document.getElementById('wIdlePower');
+
+const wSoundFiring = document.getElementById('wSoundFiring');
+const wSoundReload = document.getElementById('wSoundReload');
+const wSoundRotate = document.getElementById('wSoundRotate');
+const wSoundNoAmmo = document.getElementById('wSoundNoAmmo');
+
+const assignedAmmosList = document.getElementById('assignedAmmosList');
+const assignAmmoDropdown = document.getElementById('assignAmmoDropdown');
+const btnAssignAmmo = document.getElementById('btnAssignAmmo');
+const btnTuneActiveAmmo = document.getElementById('btnTuneActiveAmmo');
+const selectAnimationDef = document.getElementById('selectAnimationDef');
+const currentAnimBadge = document.getElementById('currentAnimBadge');
+
+// DOM Elements - Definition Workbench (Scope B: AmmoDef)
+const ammoSelectGlobal = document.getElementById('ammoSelectGlobal');
+const scopeActiveAmmoLabel = document.getElementById('scopeActiveAmmoLabel');
+const btnNewFragAmmo = document.getElementById('btnNewFragAmmo');
+
+const aAmmoRound = document.getElementById('aAmmoRound');
+const aAmmoMagazine = document.getElementById('aAmmoMagazine');
+const aTerminalName = document.getElementById('aTerminalName');
+const aBaseDamage = document.getElementById('aBaseDamage');
+const aMass = document.getElementById('aMass');
+const aHealth = document.getElementById('aHealth');
+const aBackKick = document.getElementById('aBackKick');
+const aEnergyCost = document.getElementById('aEnergyCost');
+const aHardPointUsable = document.getElementById('aHardPointUsable');
+const aNpcSafe = document.getElementById('aNpcSafe');
+const aNoGridOrArmorScaling = document.getElementById('aNoGridOrArmorScaling');
+
+const aShape = document.getElementById('aShape');
+const aDiameter = document.getElementById('aDiameter');
+
+const fEnable = document.getElementById('fEnable');
+const fReverse = document.getElementById('fReverse');
+const fDropVelocity = document.getElementById('fDropVelocity');
+const fFragments = document.getElementById('fFragments');
+const fDegrees = document.getElementById('fDegrees');
+const fChildAmmoRound = document.getElementById('fChildAmmoRound');
+const fragStatusBadge = document.getElementById('fragStatusBadge');
+const fragChainVisual = document.getElementById('fragChainVisual');
+
+const dsShield = document.getElementById('dsShield');
+const dsLightArmor = document.getElementById('dsLightArmor');
+const dsHeavyArmor = document.getElementById('dsHeavyArmor');
+const dsHealthHit = document.getElementById('dsHealthHit');
+
+const aodEnable = document.getElementById('aodEnable');
+const aodRadius = document.getElementById('aodRadius');
+const aodDamage = document.getElementById('aodDamage');
+const aodDepth = document.getElementById('aodDepth');
+
+const tDesiredSpeed = document.getElementById('tDesiredSpeed');
+const tMaxTrajectory = document.getElementById('tMaxTrajectory');
+const tMaxLifeTime = document.getElementById('tMaxLifeTime');
+const tGuidance = document.getElementById('tGuidance');
+
+const gTracerEnable = document.getElementById('gTracerEnable');
+const gTracerLength = document.getElementById('gTracerLength');
+const gTracerWidth = document.getElementById('gTracerWidth');
+const gVisualProb = document.getElementById('gVisualProb');
+
+const aSoundTravel = document.getElementById('aSoundTravel');
+const aSoundHit = document.getElementById('aSoundHit');
+const aSoundShieldHit = document.getElementById('aSoundShieldHit');
+
+// DOM Elements - Definition Workbench (Scope C: CubeBlocks SBC)
+const sbcDisplayName = document.getElementById('sbcDisplayName');
+const sbcCubeSize = document.getElementById('sbcCubeSize');
+const sbcBuildTime = document.getElementById('sbcBuildTime');
+const sbcUpCost = document.getElementById('sbcUpCost');
+const sbcTechComp = document.getElementById('sbcTechComp');
+const sbcTechQty = document.getElementById('sbcTechQty');
+const sbcIsRelic = document.getElementById('sbcIsRelic');
+const sbcHasCircuitry = document.getElementById('sbcHasCircuitry');
+
+// DOM Elements - Ammo Logistics ("Ammo Maths")
+const logActiveAmmoName = document.getElementById('logActiveAmmoName');
+const inputDmgDensitySlider = document.getElementById('inputDmgDensitySlider');
+const inputDmgDensity = document.getElementById('inputDmgDensity');
+const inputPhysicalDensity = document.getElementById('inputPhysicalDensity');
+const selectRoleMultiplier = document.getElementById('selectRoleMultiplier');
+const inputRUs = document.getElementById('inputRUs');
+const inputCraftTime = document.getElementById('inputCraftTime');
+
+const outMagVolume = document.getElementById('outMagVolume');
+const outMagMass = document.getElementById('outMagMass');
+const outSuggestedVol = document.getElementById('outSuggestedVol');
+const outDepletionTime = document.getElementById('outDepletionTime');
+
+const outSmallCargoMags = document.getElementById('outSmallCargoMags');
+const outSmallCargoDmg = document.getElementById('outSmallCargoDmg');
+const outSmall1GunTime = document.getElementById('outSmall1GunTime');
+const outSmall20GunTime = document.getElementById('outSmall20GunTime');
+
+const outLargeCargoMags = document.getElementById('outLargeCargoMags');
+const outLargeCargoDmg = document.getElementById('outLargeCargoDmg');
+const outLarge1GunTime = document.getElementById('outLarge1GunTime');
+const outLarge20GunTime = document.getElementById('outLarge20GunTime');
+const codeBlueprintXml = document.getElementById('codeBlueprintXml');
+const btnCopyBlueprintXml = document.getElementById('btnCopyBlueprintXml');
+
+// Sticky HUD Elements
+const hudWeaponName = document.getElementById('hudWeaponName');
+const hudDps = document.getElementById('hudDps');
+const hudRange = document.getElementById('hudRange');
+const hudOverheat = document.getElementById('hudOverheat');
+const btnHudExport = document.getElementById('btnHudExport');
+
+// Linter Banner
+const linterBanner = document.getElementById('linterBanner');
+const linterText = document.getElementById('linterText');
+
+// Modals
+const balanceMatrixModal = document.getElementById('balanceMatrixModal');
+const btnBalanceMatrix = document.getElementById('btnBalanceMatrix');
+const btnCloseMatrix = document.getElementById('btnCloseMatrix');
+const btnApplyMatrix = document.getElementById('btnApplyMatrix');
+const btnResetMatrix = document.getElementById('btnResetMatrix');
+
 const codeModal = document.getElementById('codeModal');
-const btnOpenCode = document.getElementById('btnOpenCode');
 const btnCloseModal = document.getElementById('btnCloseModal');
+const btnOpenCodeWorkbench = document.getElementById('btnOpenCodeWorkbench');
 const btnCopyCode = document.getElementById('btnCopyCode');
 const btnDownloadFile = document.getElementById('btnDownloadFile');
 const btnSaveToDisk = document.getElementById('btnSaveToDisk');
 const saveStatusHint = document.getElementById('saveStatusHint');
 
-// Workbench Toggle Elements
-const tuningDeckPanel = document.getElementById('tuningDeckPanel');
 const btnToggleDeck = document.getElementById('btnToggleDeck');
-const btnBannerToggleDeck = document.getElementById('btnBannerToggleDeck');
-const btnCloseDeck = document.getElementById('btnCloseDeck');
-const studioGrid = document.getElementById('studioGrid');
-const btnResetDefaults = document.getElementById('btnResetDefaults');
-let showNpcWeapons = false;
+const btnShareUrl = document.getElementById('btnShareUrl');
+const btnNewMinimalWeapon = document.getElementById('btnNewMinimalWeapon');
+const btnNewMinimalAmmo = document.getElementById('btnNewMinimalAmmo');
+const btnLinkLocal = document.getElementById('btnLinkLocal');
 
-// Initialization
-document.addEventListener('DOMContentLoaded', async () => {
-  setupTabs();
-  setupSliders();
-  setupEventListeners();
-  await loadDatabases();
-});
+// Toast Function
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  if (!toast || !toastMsg) return;
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
 
-// Load JSON Databases
-async function loadDatabases() {
+// ==========================================================================
+// INITIALIZATION & DATA LOADING
+// ==========================================================================
+async function initStudio() {
+  // Load databases
+  if (window.GVK_DEFAULT_WEAPONS) weaponsDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_WEAPONS));
+  if (window.GVK_DEFAULT_AMMOS) ammosDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_AMMOS));
+  if (window.GVK_ANIMATION_DEFS) animationsDb = [...window.GVK_ANIMATION_DEFS];
+  if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
+
+  // Fetch live JSON if served via HTTP
   try {
-    const [wRes, cRes] = await Promise.all([
-      fetch('data/weapons_db.json'),
-      fetch('data/components_db.json')
-    ]);
-    weaponsDb = await wRes.json();
-    componentsDb = await cRes.json();
-    populateWeaponDropdowns();
-    if (weaponsDb.length > 0) {
-      const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC')) || weaponsDb[0];
-      selectWeapon(first.id);
-    }
-    showToast("Weapons and Components databases loaded successfully!", "success");
-  } catch (err) {
-    console.warn("Fetch failed, falling back to bundled window data:", err);
-    if (window.GVK_DEFAULT_WEAPONS && window.GVK_DEFAULT_COMPONENTS) {
-      weaponsDb = window.GVK_DEFAULT_WEAPONS;
-      componentsDb = window.GVK_DEFAULT_COMPONENTS;
-      populateWeaponDropdowns();
-      if (weaponsDb.length > 0) {
-        const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC')) || weaponsDb[0];
-        selectWeapon(first.id);
-      }
-      showToast("Loaded weapons from local pre-baked cache.", "success");
-    } else {
-      showToast("Error loading weapon database.", "error");
-    }
+    const wRes = await fetch('data/weapons_db.json');
+    if (wRes.ok) weaponsDb = await wRes.json();
+    const aRes = await fetch('data/ammos_db.json');
+    if (aRes.ok) ammosDb = await aRes.json();
+    const cRes = await fetch('data/components_db.json');
+    if (cRes.ok) componentsDb = await cRes.json();
+  } catch (e) {
+    console.log("Running in static/local mode, using bundled datasets.");
+  }
+
+  // Populate Dropdowns
+  populateWeaponDropdowns();
+  populateAmmoDropdowns();
+  populateAnimationDropdown();
+
+  // Populate Balance Matrix Modal inputs
+  syncBalanceMatrixInputs();
+
+  // Check URL Permalinks
+  parseUrlParams();
+
+  // Select Default Weapon (Avenger Turret or First)
+  if (!activeWeapon && weaponsDb.length > 0) {
+    const avenger = weaponsDb.find(w => w.name.includes("Avenger")) || weaponsDb[0];
+    selectWeapon(avenger.id);
+  }
+
+  // Event Listeners
+  setupNavigationEvents();
+  setupWorkbenchInputEvents();
+  setupLogisticsEvents();
+  setupModalEvents();
+
+  console.log("GVK Weapon Studio Initialized with 3 Workspaces & Full Tag Definitions.");
+}
+
+// ==========================================================================
+// WORKSPACE & NAVIGATION LOGIC
+// ==========================================================================
+function switchWorkspace(targetWsId) {
+  wsTabs.forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-ws') === targetWsId);
+  });
+  wsSections.forEach(s => {
+    s.classList.toggle('active', s.id === targetWsId);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchScope(targetScopeId) {
+  scopeBtns.forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-scope') === targetScopeId);
+  });
+  scopeContents.forEach(c => {
+    c.classList.toggle('active', c.id === targetScopeId);
+  });
+}
+
+function setupNavigationEvents() {
+  wsTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      switchWorkspace(tab.getAttribute('data-ws'));
+    });
+  });
+
+  scopeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchScope(btn.getAttribute('data-scope'));
+    });
+  });
+
+  if (btnToggleDeck) {
+    btnToggleDeck.addEventListener('click', () => {
+      switchWorkspace('ws-workbench');
+    });
+  }
+
+  if (btnTuneActiveAmmo) {
+    btnTuneActiveAmmo.addEventListener('click', () => {
+      switchScope('scope-ammo');
+    });
+  }
+
+  // Target Dummy Select
+  if (ttkTargetSelect) {
+    ttkTargetSelect.addEventListener('change', updateTtkSimulator);
+  }
+
+  // Permalinks Share
+  if (btnShareUrl) {
+    btnShareUrl.addEventListener('click', () => {
+      if (!activeWeapon) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('gun', activeWeapon.subtypeId);
+      if (benchmarkWeapon) url.searchParams.set('vs', benchmarkWeapon.subtypeId);
+      if (activeAmmo) url.searchParams.set('ammo', activeAmmo.ammoRound);
+      navigator.clipboard.writeText(url.toString()).then(() => {
+        showToast("🔗 Weapon comparison link copied to clipboard!");
+      }).catch(() => {
+        showToast(url.toString());
+      });
+    });
   }
 }
 
-// Populate Dropdowns (Filtering NPC Weapons by default)
+function parseUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const gunParam = params.get('gun');
+  const vsParam = params.get('vs');
+  const ammoParam = params.get('ammo');
+  const wsParam = params.get('ws');
+
+  if (gunParam) {
+    const found = weaponsDb.find(w => w.subtypeId === gunParam || w.id === gunParam);
+    if (found) selectWeapon(found.id);
+  }
+  if (vsParam) {
+    const foundBench = weaponsDb.find(w => w.subtypeId === vsParam || w.id === vsParam);
+    if (foundBench) {
+      benchmarkWeapon = foundBench;
+      if (compareSelect) compareSelect.value = foundBench.id;
+    }
+  }
+  if (ammoParam && ammosDb[ammoParam]) {
+    activeAmmo = ammosDb[ammoParam];
+  }
+  if (wsParam && document.getElementById(wsParam)) {
+    switchWorkspace(wsParam);
+  }
+}
+
+// ==========================================================================
+// WEAPON SELECTION & BINDING
+// ==========================================================================
 function populateWeaponDropdowns() {
   weaponSelect.innerHTML = '';
-  compareSelect.innerHTML = '<option value="">Select benchmark weapon...</option>';
+  compareSelect.innerHTML = '<option value="">Select benchmark weapon to compare...</option>';
 
-  const filtered = weaponsDb.filter(w => {
-    const isNpc = w.isNpc || w.id.endsWith('_NPC');
-    return showNpcWeapons ? true : !isNpc;
+  const playerGuns = weaponsDb.filter(w => !w.name.includes('(NPC)') && !w.subtypeId.includes('_NPC'));
+  const npcGuns = weaponsDb.filter(w => w.name.includes('(NPC)') || w.subtypeId.includes('_NPC'));
+
+  const pGroup = document.createElement('optgroup');
+  pGroup.label = "── Player Standard Armaments ──";
+  playerGuns.forEach(w => {
+    const opt = document.createElement('option');
+    opt.value = w.id;
+    opt.textContent = `${w.name} [${w.gridSize}]`;
+    pGroup.appendChild(opt);
+  });
+  weaponSelect.appendChild(pGroup);
+
+  const nGroup = document.createElement('optgroup');
+  nGroup.label = "── NPC / Relic / Enemy Armaments ──";
+  npcGuns.forEach(w => {
+    const opt = document.createElement('option');
+    opt.value = w.id;
+    opt.textContent = `⚔️ ${w.name}`;
+    nGroup.appendChild(opt);
+  });
+  weaponSelect.appendChild(nGroup);
+
+  // Compare dropdown
+  playerGuns.forEach(w => {
+    const opt = document.createElement('option');
+    opt.value = w.id;
+    opt.textContent = `${w.name} [${w.gridSize}]`;
+    compareSelect.appendChild(opt);
   });
 
-  const groups = {
-    "Large Grid (Player)": [],
-    "Small Grid (Player)": [],
-    "Large Grid [NPC]": [],
-    "Small Grid [NPC]": []
-  };
+  weaponSelect.addEventListener('change', (e) => {
+    selectWeapon(e.target.value);
+  });
 
-  filtered.forEach(w => {
-    const isNpc = w.isNpc || w.id.endsWith('_NPC');
-    if (w.grid === "Large") {
-      if (isNpc) groups["Large Grid [NPC]"].push(w);
-      else groups["Large Grid (Player)"].push(w);
-    } else {
-      if (isNpc) groups["Small Grid [NPC]"].push(w);
-      else groups["Small Grid (Player)"].push(w);
+  compareSelect.addEventListener('change', (e) => {
+    const val = e.target.value;
+    benchmarkWeapon = val ? weaponsDb.find(w => w.id === val) : null;
+    updateComparisonRadar();
+  });
+}
+
+function populateAmmoDropdowns() {
+  assignAmmoDropdown.innerHTML = '<option value="">Choose ammo to assign...</option>';
+  ammoSelectGlobal.innerHTML = '';
+  if (fChildAmmoRound) fChildAmmoRound.innerHTML = '<option value="">None / Select child ammo...</option>';
+
+  const ammoKeys = Object.keys(ammosDb).sort();
+  ammoKeys.forEach(k => {
+    const a = ammosDb[k];
+    const opt = document.createElement('option');
+    opt.value = k;
+    opt.textContent = `${a.terminalName || k} (${a.baseDamage} dmg)`;
+    assignAmmoDropdown.appendChild(opt);
+
+    const optGlobal = document.createElement('option');
+    optGlobal.value = k;
+    optGlobal.textContent = `${k} [${a.terminalName || 'Ammo'}]`;
+    ammoSelectGlobal.appendChild(optGlobal);
+
+    if (fChildAmmoRound) {
+      const optChild = document.createElement('option');
+      optChild.value = k;
+      optChild.textContent = `${k} (${a.baseDamage} dmg)`;
+      fChildAmmoRound.appendChild(optChild);
     }
   });
 
-  for (const [groupName, list] of Object.entries(groups)) {
-    if (list.length === 0) continue;
+  ammoSelectGlobal.addEventListener('change', (e) => {
+    selectAmmo(e.target.value);
+  });
 
-    const optGroup = document.createElement('optgroup');
-    optGroup.label = groupName;
-    const compareOptGroup = document.createElement('optgroup');
-    compareOptGroup.label = groupName;
-
-    list.forEach(w => {
-      const opt = document.createElement('option');
-      opt.value = w.id;
-      opt.textContent = w.name;
-      optGroup.appendChild(opt);
-
-      const cOpt = document.createElement('option');
-      cOpt.value = w.id;
-      cOpt.textContent = w.name;
-      compareOptGroup.appendChild(cOpt);
+  if (btnAssignAmmo) {
+    btnAssignAmmo.addEventListener('click', () => {
+      const selected = assignAmmoDropdown.value;
+      if (!selected || !activeWeapon) return;
+      if (!activeWeapon.assignedAmmos) activeWeapon.assignedAmmos = [];
+      if (!activeWeapon.assignedAmmos.includes(selected)) {
+        activeWeapon.assignedAmmos.push(selected);
+        renderAssignedAmmos();
+        showToast(`Assigned ${selected} to ${activeWeapon.name}!`);
+      }
     });
-
-    weaponSelect.appendChild(optGroup);
-    compareSelect.appendChild(compareOptGroup);
   }
 }
 
-// Select Active Weapon
-function selectWeapon(id) {
-  const found = weaponsDb.find(w => w.id === id);
-  if (!found) return;
+function populateAnimationDropdown() {
+  selectAnimationDef.innerHTML = '<option value="">None / Static (No Subpart Animations)</option>';
+  animationsDb.forEach(anim => {
+    const opt = document.createElement('option');
+    opt.value = anim;
+    opt.textContent = anim;
+    selectAnimationDef.appendChild(opt);
+  });
 
-  activeWeapon = JSON.parse(JSON.stringify(found));
-  weaponSelect.value = id;
-  populateDeckFromWeapon(activeWeapon);
-  recalculate();
+  selectAnimationDef.addEventListener('change', (e) => {
+    if (activeWeapon) {
+      activeWeapon.assignedAnimation = e.target.value || null;
+      currentAnimBadge.textContent = e.target.value || "None";
+    }
+  });
 }
 
-// Populate Inputs from Active Weapon
-function populateDeckFromWeapon(w) {
-  inputRof.value = w.rateOfFire || 60;
-  inputRofSlider.value = w.rateOfFire || 60;
-  inputBarrelsPerShot.value = w.barrelsPerShot || 1;
-  inputReloadTime.value = w.reloadTime || 0;
-  inputReloadSlider.value = w.reloadTime || 0;
-  inputMagazineSize.value = w.magazineSize || 1;
-  inputMagsToLoad.value = w.magsToLoad || 1;
-  inputShotsInBurst.value = w.shotsInBurst || 0;
-  inputDelayAfterBurst.value = w.delayAfterBurst || 0;
-  inputDelayUntilFire.value = w.delayUntilFire || 0;
+function selectWeapon(weaponId) {
+  const found = weaponsDb.find(w => w.id === weaponId);
+  if (!found) return;
+  activeWeapon = found;
+  weaponSelect.value = activeWeapon.id;
 
-  inputBaseDamage.value = w.baseDamage || 0;
-  inputDesiredSpeed.value = w.desiredSpeed || 0;
-  inputMaxTrajectory.value = w.maxTrajectory || 0;
-  inputDetDamage.value = w.detDamage || 0;
-  inputDetRadius.value = w.detRadius || 0;
-  inputFragments.value = w.fragments || 0;
-  inputFragmentDegrees.value = w.fragmentDegrees || 45;
-  inputShrapnelBaseDmg.value = w.shrapnelBaseDmg || 0;
-  inputShrapnelDetDmg.value = w.shrapnelDetDmg || 0;
-  inputChanceToHit.value = w.chanceToHit !== undefined ? w.chanceToHit : 1.0;
+  // Set active ammo round (primary)
+  const primaryAmmoKey = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
+    ? activeWeapon.assignedAmmos[0]
+    : activeWeapon.ammoName;
 
-  inputHeatPerShot.value = w.heatPerShot || 0;
-  inputMaxHeat.value = w.maxHeat || 0;
-  inputCooldown.value = w.cooldown !== undefined ? w.cooldown : 0.5;
-  inputHeatSinkRate.value = w.heatSinkRate || 0;
-  inputEnergyCost.value = w.energyCost || 0;
-  inputIdlePower.value = w.idlePower || 0;
+  if (ammosDb[primaryAmmoKey]) {
+    activeAmmo = ammosDb[primaryAmmoKey];
+  } else {
+    // Find closest or create fallback
+    const firstKey = Object.keys(ammosDb)[0];
+    activeAmmo = ammosDb[firstKey];
+  }
 
-  inputRotateRate.value = w.rotateRate || 0.015;
-  inputRotateRateSlider.value = w.rotateRate || 0.015;
-  inputElevateRate.value = w.elevateRate || 0.015;
-  inputElevateRateSlider.value = w.elevateRate || 0.015;
-  inputMinAzimuth.value = w.minAzimuth !== undefined ? w.minAzimuth : -180;
-  inputMaxAzimuth.value = w.maxAzimuth !== undefined ? w.maxAzimuth : 180;
-  inputMinElevation.value = w.minElevation !== undefined ? w.minElevation : -10;
-  inputMaxElevation.value = w.maxElevation !== undefined ? w.maxElevation : 90;
-  inputDeviateShotAngle.value = w.deviateShotAngle || 0.1;
-  inputMaxTargetDistance.value = w.maxTargetDistance || 1500;
+  // Update Universal Banner
+  updateUniversalBanner();
 
-  inputTargetIntegrity.value = w.sheetEffectiveIntegrity || 50000;
-  inputDurabilityMod.value = w.durabilityMod || 0.5;
-  inputTechQty.value = w.techQty || 0;
-  selectGridSize.value = w.grid || "Large";
+  // Populate Workbench Fields
+  populateWeaponWorkbench();
+  populateAmmoWorkbench();
+  populateSbcWorkbench();
+
+  // Recalculate Telemetry, Simulator & Logistics
+  updateCombatTelemetry();
+  updateTtkSimulator();
+  updateInitialDDriftMeter();
+  updateAmmoLogistics();
+  updateComparisonRadar();
+  runWeaponCoreLinter();
+}
+
+function selectAmmo(ammoKey) {
+  if (!ammosDb[ammoKey]) return;
+  activeAmmo = ammosDb[ammoKey];
+  ammoSelectGlobal.value = ammoKey;
+  scopeActiveAmmoLabel.textContent = ammoKey;
+  populateAmmoWorkbench();
+  updateCombatTelemetry();
+  updateTtkSimulator();
+  updateInitialDDriftMeter();
+  updateAmmoLogistics();
+}
+
+function updateUniversalBanner() {
+  if (!activeWeapon) return;
+
+  // Icon
+  if (activeWeapon.icon && activeWeaponIcon) {
+    activeWeaponIcon.src = activeWeapon.icon;
+    compActiveIcon.src = activeWeapon.icon;
+  }
 
   // Badges
-  badgeGrid.innerHTML = `Grid: <strong>${w.grid}</strong>`;
-  badgeType.innerHTML = `Mount: <strong>${w.type}</strong>`;
-  badgeTech.innerHTML = `Tech: <strong>${w.techQty || 0} UPs</strong>`;
-  badgePcu.innerHTML = `PCU: <strong>${(w.pcu || 0).toLocaleString()}</strong>`;
+  badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.gridSize}</strong>`;
+  badgeType.innerHTML = `Mount: <strong>${activeWeapon.type}</strong>`;
+  badgeTech.innerHTML = `Tech: <strong>${activeWeapon.upCost || activeWeapon.pcu || 6} UPs</strong>`;
 
-  const badgeNpc = document.getElementById('badgeNpc');
+  // Circuitry Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
+  const needsCircuitry = (activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000);
+  if (badgeCircuitry) {
+    badgeCircuitry.style.display = needsCircuitry ? 'inline-flex' : 'none';
+  }
+
+  // Relic Status Badge: non-craftable ammunition from raw scratch ingots
+  if (badgeRelic) {
+    badgeRelic.style.display = activeWeapon.isRelic ? 'inline-flex' : 'none';
+  }
+
+  // NPC Variant
   if (badgeNpc) {
-    badgeNpc.style.display = (w.isNpc || w.id.endsWith('_NPC')) ? 'inline-block' : 'none';
+    badgeNpc.style.display = (activeWeapon.name.includes('(NPC)') || activeWeapon.subtypeId.includes('_NPC')) ? 'inline-flex' : 'none';
   }
 
-  // Weapon Icons & Radar Legend
-  const activeIconSrc = w.icon || `icons/${w.id}.png`;
-  const activeWeaponIcon = document.getElementById('activeWeaponIcon');
-  const compActiveIcon = document.getElementById('compActiveIcon');
-  const legendActiveName = document.getElementById('legendActiveName');
-  if (activeWeaponIcon) activeWeaponIcon.src = activeIconSrc;
-  if (compActiveIcon) compActiveIcon.src = activeIconSrc;
-  if (legendActiveName) legendActiveName.textContent = w.name;
+  // Bottom Sticky HUD
+  hudWeaponName.textContent = activeWeapon.name;
 }
 
-// Read Current Values from Inputs into Active Weapon
-function syncDeckToWeapon() {
+// ==========================================================================
+// WORKBENCH BINDING: WEAPONDEF, AMMODEF, SBC
+// ==========================================================================
+function populateWeaponWorkbench() {
   if (!activeWeapon) return;
 
-  activeWeapon.rateOfFire = parseInt(inputRof.value) || 60;
-  activeWeapon.barrelsPerShot = parseInt(inputBarrelsPerShot.value) || 1;
-  activeWeapon.reloadTime = parseInt(inputReloadTime.value) || 0;
-  activeWeapon.magazineSize = parseInt(inputMagazineSize.value) || 1;
-  activeWeapon.magsToLoad = parseInt(inputMagsToLoad.value) || 1;
-  activeWeapon.shotsInBurst = parseInt(inputShotsInBurst.value) || 0;
-  activeWeapon.delayAfterBurst = parseInt(inputDelayAfterBurst.value) || 0;
-  activeWeapon.delayUntilFire = parseInt(inputDelayUntilFire.value) || 0;
+  wSubtypeId.value = activeWeapon.subtypeId || '';
+  wPartName.value = activeWeapon.partName || activeWeapon.name || '';
+  wDurabilityMod.value = activeWeapon.durabilityMod || 0.5;
+  wScope.value = activeWeapon.scope || 'scope';
+  wMuzzles.value = (activeWeapon.muzzles && activeWeapon.muzzles.length > 0)
+    ? activeWeapon.muzzles.join(', ')
+    : 'muzzle_missile_1, muzzle_missile_2';
 
-  activeWeapon.baseDamage = parseFloat(inputBaseDamage.value) || 0;
-  activeWeapon.desiredSpeed = parseInt(inputDesiredSpeed.value) || 0;
-  activeWeapon.maxTrajectory = parseInt(inputMaxTrajectory.value) || 0;
-  activeWeapon.detDamage = parseFloat(inputDetDamage.value) || 0;
-  activeWeapon.detRadius = parseFloat(inputDetRadius.value) || 0;
-  activeWeapon.fragments = parseInt(inputFragments.value) || 0;
-  activeWeapon.fragmentDegrees = parseInt(inputFragmentDegrees.value) || 0;
-  activeWeapon.shrapnelBaseDmg = parseFloat(inputShrapnelBaseDmg.value) || 0;
-  activeWeapon.shrapnelDetDmg = parseFloat(inputShrapnelDetDmg.value) || 0;
-  activeWeapon.chanceToHit = parseFloat(inputChanceToHit.value) || 1.0;
+  wMaxTargetDistance.value = activeWeapon.maxTargetDistance || 1600;
+  wMinTargetDistance.value = activeWeapon.minTargetDistance || 0;
+  wTopTargets.value = activeWeapon.topTargets || 4;
+  wTopBlocks.value = activeWeapon.topBlocks || 8;
+  wStopTrackingSpeed.value = activeWeapon.stopTrackingSpeed || 1000;
+  wClosestFirst.checked = activeWeapon.closestFirst !== false;
+  wIgnoreDumb.checked = activeWeapon.ignoreDumbProjectiles !== false;
+  wLockedSmartOnly.checked = activeWeapon.lockedSmartOnly === true;
 
-  activeWeapon.heatPerShot = parseInt(inputHeatPerShot.value) || 0;
-  activeWeapon.maxHeat = parseInt(inputMaxHeat.value) || 0;
-  activeWeapon.cooldown = parseFloat(inputCooldown.value) || 0.5;
-  activeWeapon.heatSinkRate = parseInt(inputHeatSinkRate.value) || 0;
-  activeWeapon.energyCost = parseFloat(inputEnergyCost.value) || 0;
-  activeWeapon.idlePower = parseFloat(inputIdlePower.value) || 0;
-
-  activeWeapon.rotateRate = parseFloat(inputRotateRate.value) || 0.015;
-  activeWeapon.elevateRate = parseFloat(inputElevateRate.value) || 0.015;
-  activeWeapon.minAzimuth = parseInt(inputMinAzimuth.value) || -180;
-  activeWeapon.maxAzimuth = parseInt(inputMaxAzimuth.value) || 180;
-  activeWeapon.minElevation = parseInt(inputMinElevation.value) || -10;
-  activeWeapon.maxElevation = parseInt(inputMaxElevation.value) || 90;
-  activeWeapon.deviateShotAngle = parseFloat(inputDeviateShotAngle.value) || 0.1;
-  activeWeapon.maxTargetDistance = parseInt(inputMaxTargetDistance.value) || 1500;
-
-  activeWeapon.effectiveIntegrity = parseFloat(inputTargetIntegrity.value) || 50000;
-  activeWeapon.durabilityMod = parseFloat(inputDurabilityMod.value) || 0.5;
-  activeWeapon.techQty = parseInt(inputTechQty.value) || 0;
-  activeWeapon.grid = selectGridSize.value;
-
-  badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.grid}</strong>`;
-  badgeTech.innerHTML = `Tech: <strong>${activeWeapon.techQty} UPs</strong>`;
-}
-
-// --------------------------------------------------------------------------
-// Mathematical Engine (WeaponCore & GVK Parity)
-// --------------------------------------------------------------------------
-function calculateStats(w) {
-  const rof = Math.max(1, w.rateOfFire);
-  const magCap = Math.max(1, w.magazineSize);
-  const magsToLoad = Math.max(1, w.magsToLoad);
-  const barrels = Math.max(1, w.barrelsPerShot);
-  const trajectiles = Math.max(1, w.trajectilesPerBarrel || 1);
-  const reloadTime = Math.max(0, w.reloadTime);
-  const shotsInBurst = Math.max(0, w.shotsInBurst);
-  const delayAfterBurst = Math.max(0, w.delayAfterBurst);
-  const delayUntilFire = Math.max(0, w.delayUntilFire);
-
-  // 1. Cycle Timing & Shots Per Second (WeaponCore V2 Algorithm)
-  const totMagCap = magCap * magsToLoad;
-  let shotsPerMagazine = totMagCap === 1 ? 0 : (Math.ceil(totMagCap / barrels) - 1);
-  let burstPerMagazine = shotsInBurst === 0 ? 0 : Math.ceil((totMagCap / shotsInBurst) - 1);
-
-  if (reloadTime === 0) {
-    shotsPerMagazine = totMagCap === 1 ? 0 : Math.ceil(totMagCap / barrels);
-    burstPerMagazine = shotsInBurst === 0 ? 0 : Math.ceil(totMagCap / shotsInBurst);
-  }
-
-  const timeShotsTicks = shotsPerMagazine === 0 ? 0 : shotsPerMagazine * (3600 / rof);
-  const timeBurstTicks = burstPerMagazine === 0 ? 0 : burstPerMagazine * delayAfterBurst;
-  let timePerCycleTicks = timeShotsTicks + timeBurstTicks + reloadTime + delayUntilFire;
-
-  if (timePerCycleTicks === 0) timePerCycleTicks = (3600 / rof);
-  if (timePerCycleTicks < (3600 / rof)) timePerCycleTicks = (3600 / rof);
-
-  const timePerCycleSec = timePerCycleTicks / 60.0;
-  let rawShotsPerSec = (totMagCap / timePerCycleSec) * trajectiles;
-  if (!isFinite(rawShotsPerSec) || rawShotsPerSec <= 0) rawShotsPerSec = (rof / 60.0) * barrels;
-
-  // 2. Heat Dissipation & Thermal Duty Cycle
-  let heatDutyRatio = 1.0;
-  let safeToOverheat = Infinity;
-  let cooldownTime = 0;
-
-  if (w.heatPerShot > 0 && w.maxHeat > 0) {
-    const heatGenPerSec = (w.heatPerShot * rawShotsPerSec) - w.heatSinkRate;
-    if (heatGenPerSec > 0) {
-      const heatThreshold = w.maxHeat - (w.maxHeat * w.cooldown);
-      safeToOverheat = heatThreshold / heatGenPerSec;
-      cooldownTime = heatThreshold / (w.heatSinkRate > 0 ? w.heatSinkRate : 1);
-      const cycle = safeToOverheat + cooldownTime;
-      heatDutyRatio = safeToOverheat / cycle;
-    }
-  }
-
-  const effectiveShotsPerSec = rawShotsPerSec * heatDutyRatio;
-
-  // 3. Damage Modeling (Direct + Detonation + Fragmentation)
-  const fragBaseDmg = (w.shrapnelBaseDmg || 0) * (w.fragments || 0) * (w.chanceToHit !== undefined ? w.chanceToHit : 1.0);
-  const fragDetDmg = (w.shrapnelDetDmg || 0) * (w.fragments || 0) * (w.chanceToHit !== undefined ? w.chanceToHit : 1.0);
-  
-  const directDamage = w.baseDamage + fragBaseDmg;
-  const detDamage = w.detDamage + fragDetDmg;
-  const damagePerShot = directDamage + detDamage;
-
-  const baseDps = directDamage * effectiveShotsPerSec;
-  const detDps = detDamage * effectiveShotsPerSec;
-  const sustainedDps = damagePerShot * effectiveShotsPerSec;
-
-  // Alpha Damage (1 full burst or salvo)
-  const volleyRounds = shotsInBurst > 0 ? shotsInBurst : (barrels * (reloadTime > 0 ? Math.min(totMagCap, barrels) : totMagCap));
-  const alphaDamage = damagePerShot * volleyRounds;
-
-  // 4. Traversal Angular Velocity (deg/s)
-  const speedAz = (w.rotateRate * (180 / Math.PI)) * 60;
-  const speedEl = (w.elevateRate * (180 / Math.PI)) * 60;
-  const averageTraverse = (speedAz + speedEl) / 2;
-
-  // 5. Power Requirements (MW)
-  const firingPowerMw = w.energyCost * w.baseDamage * (rof / 3600.0) * barrels * trajectiles;
-  const totalPowerMw = (w.idlePower || 0) + firingPowerMw;
-
-  // 6. Structural Integrity & Build Time
-  const effectiveIntegrity = w.effectiveIntegrity || 50000;
-  const durabilityMod = w.durabilityMod || 0.5;
-  const baseIntegrity = effectiveIntegrity * durabilityMod;
-  const buildTimeSeconds = Math.round(effectiveIntegrity / 1500);
-
-  return {
-    rawShotsPerSec,
-    effectiveShotsPerSec,
-    timePerCycleSec,
-    timeShotsSec: timeShotsTicks / 60.0,
-    timeReloadSec: reloadTime / 60.0,
-    heatDutyRatio,
-    safeToOverheat,
-    cooldownTime,
-    damagePerShot,
-    directDamage,
-    detDamage,
-    baseDps,
-    detDps,
-    sustainedDps,
-    alphaDamage,
-    speedAz,
-    speedEl,
-    averageTraverse,
-    firingPowerMw,
-    totalPowerMw,
-    baseIntegrity,
-    effectiveIntegrity,
-    buildTimeSeconds
-  };
-}
-
-// --------------------------------------------------------------------------
-// Recalculate & Update UI
-// --------------------------------------------------------------------------
-function recalculate() {
-  if (!activeWeapon) return;
-  syncDeckToWeapon();
-
-  const stats = calculateStats(activeWeapon);
-
-  // Update Hero Cards
-  outSustainedDps.textContent = Math.round(stats.sustainedDps).toLocaleString();
-  outDpsBreakdown.textContent = `Base: ${Math.round(stats.baseDps).toLocaleString()} | Det: ${Math.round(stats.detDps).toLocaleString()}`;
-  
-  outAlphaDmg.textContent = Math.round(stats.alphaDamage).toLocaleString();
-  outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(stats.damagePerShot).toLocaleString()} hp`;
-
-  outShotsPerSec.innerHTML = `${stats.effectiveShotsPerSec.toFixed(2)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
-  outCycleTime.textContent = `Cycle: ${stats.timePerCycleSec.toFixed(2)}s (${stats.timeShotsSec.toFixed(2)}s fire + ${stats.timeReloadSec.toFixed(2)}s reload)`;
-
-  outTraverseDeg.innerHTML = `${stats.averageTraverse.toFixed(1)}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
-  outTraverseAzEl.textContent = `Az: ${stats.speedAz.toFixed(1)}°/s | El: ${stats.speedEl.toFixed(1)}°/s`;
-
-  // Thermal Gauge
-  if (isFinite(stats.safeToOverheat)) {
-    const dutyPercent = Math.round(stats.heatDutyRatio * 100);
-    outHeatDutyRatio.textContent = `${dutyPercent}% FIRING DUTY`;
-    heatProgressBar.style.width = `${Math.min(100, Math.max(5, dutyPercent))}%`;
-    outTimeToOverheat.textContent = `Overheats in: ${stats.safeToOverheat.toFixed(1)}s continuous`;
-    outCooldownTime.textContent = `Cooldown Window: ${stats.cooldownTime.toFixed(1)}s`;
+  // Targeting Helper / Preset status
+  if (activeWeapon.helpers && activeWeapon.helpers.targeting) {
+    badgeTargetingHelper.style.display = 'inline-block';
+    badgeTargetingHelper.textContent = `Shared: ${activeWeapon.helpers.targeting}`;
+    btnRevertTargeting.style.display = 'inline-block';
   } else {
-    outHeatDutyRatio.textContent = `100% CONTINUOUS`;
-    heatProgressBar.style.width = `100%`;
-    outTimeToOverheat.textContent = `Continuous Fire: Unlimited`;
-    outCooldownTime.textContent = `No Overheating`;
+    badgeTargetingHelper.style.display = 'none';
+    btnRevertTargeting.style.display = 'none';
   }
 
-  // Power & Structure
-  outPowerMw.innerHTML = `${stats.totalPowerMw.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
-  outPowerIdle.textContent = `Idle Draw: ${(activeWeapon.idlePower || 0).toFixed(1)} MW`;
+  wDeviateAngle.value = activeWeapon.deviateShotAngle || 0.15;
+  wAimingTolerance.value = activeWeapon.aimingTolerance || 3.0;
+  wAimLeading.value = activeWeapon.aimLeadingPrediction || 'Advanced';
+  wDelayCeaseFire.value = activeWeapon.delayCeaseFire || 0;
 
-  outEffectiveIntegrity.textContent = Math.round(stats.effectiveIntegrity).toLocaleString();
-  outBuildTime.textContent = `Welding Time: ${stats.buildTimeSeconds} seconds`;
+  wRateOfFire.value = activeWeapon.rateOfFire || 1000;
+  wBarrelsPerShot.value = activeWeapon.barrelsPerShot || 1;
+  wReloadTime.value = activeWeapon.reloadTime || 0;
+  wMagsToLoad.value = activeWeapon.magsToLoad || 1;
+  wHeatPerShot.value = activeWeapon.heatPerShot || 0;
+  wMaxHeat.value = activeWeapon.maxHeat || 0;
+  wHeatSinkRate.value = activeWeapon.heatSinkRate || 0;
+  wCooldown.value = activeWeapon.cooldown || 0.5;
 
-  // Update Bill of Materials Table
-  updateBomTable(activeWeapon, stats);
+  wRotateRate.value = activeWeapon.rotateRate || 0.015;
+  wElevateRate.value = activeWeapon.elevateRate || 0.015;
+  wMinAzimuth.value = activeWeapon.minAzimuth !== undefined ? activeWeapon.minAzimuth : -180;
+  wMaxAzimuth.value = activeWeapon.maxAzimuth !== undefined ? activeWeapon.maxAzimuth : 180;
+  wMinElevation.value = activeWeapon.minElevation !== undefined ? activeWeapon.minElevation : -15;
+  wMaxElevation.value = activeWeapon.maxElevation !== undefined ? activeWeapon.maxElevation : 80;
+  wInventorySize.value = activeWeapon.inventorySize || 0.9;
+  wIdlePower.value = activeWeapon.idlePower || 0.01;
 
-  // Update Comparison Table
-  updateComparisonTable(stats);
+  wSoundFiring.value = activeWeapon.firingSound || '';
+  wSoundReload.value = activeWeapon.reloadSound || '';
+  wSoundRotate.value = activeWeapon.rotationSound || '';
+  wSoundNoAmmo.value = activeWeapon.noAmmoSound || '';
 
-  // Update Code Views if modal is open
-  if (codeModal.style.display === 'flex') {
-    renderGeneratedCode(stats);
+  // Render assigned ammos
+  renderAssignedAmmos();
+
+  // AnimationDef binding
+  selectAnimationDef.value = activeWeapon.assignedAnimation || '';
+  currentAnimBadge.textContent = activeWeapon.assignedAnimation || 'None';
+}
+
+function renderAssignedAmmos() {
+  if (!activeWeapon || !assignedAmmosList) return;
+  assignedAmmosList.innerHTML = '';
+
+  const ammos = activeWeapon.assignedAmmos || [activeWeapon.ammoName];
+  ammos.forEach((aKey, idx) => {
+    const isPrimary = (idx === 0);
+    const badge = document.createElement('div');
+    badge.className = `assigned-badge ${isPrimary ? 'primary' : ''}`;
+    badge.innerHTML = `
+      <span>${isPrimary ? '⭐ ' : ''}${aKey}</span>
+      ${ammos.length > 1 ? `<span class="badge-remove" data-idx="${idx}" title="Remove Ammo">✕</span>` : ''}
+    `;
+    badge.addEventListener('click', (e) => {
+      if (e.target.classList.contains('badge-remove')) {
+        activeWeapon.assignedAmmos.splice(idx, 1);
+        renderAssignedAmmos();
+        showToast(`Removed ${aKey} from weapon.`);
+      } else {
+        selectAmmo(aKey);
+      }
+    });
+    assignedAmmosList.appendChild(badge);
+  });
+
+  const countBadge = document.getElementById('assignedAmmosCountBadge');
+  if (countBadge) countBadge.textContent = `${ammos.length} Rounds Loaded`;
+}
+
+function populateAmmoWorkbench() {
+  if (!activeAmmo) return;
+  ammoSelectGlobal.value = activeAmmo.name;
+  scopeActiveAmmoLabel.textContent = activeAmmo.name;
+
+  aAmmoRound.value = activeAmmo.ammoRound || activeAmmo.name;
+  aAmmoMagazine.value = activeAmmo.ammoMagazine || activeAmmo.name;
+  aTerminalName.value = activeAmmo.terminalName || activeAmmo.name;
+  aBaseDamage.value = activeAmmo.baseDamage || 100;
+  aMass.value = activeAmmo.mass || 1.0;
+  aHealth.value = activeAmmo.health || 0;
+  aBackKick.value = activeAmmo.backKickForce || 0;
+  aEnergyCost.value = activeAmmo.energyCost || 0;
+  aHardPointUsable.checked = activeAmmo.hardPointUsable !== false;
+  aNpcSafe.checked = activeAmmo.npcSafe === true;
+  aNoGridOrArmorScaling.checked = activeAmmo.noGridOrArmorScaling === true;
+
+  aShape.value = activeAmmo.shape || 'LineShape';
+  aDiameter.value = activeAmmo.diameter !== undefined ? activeAmmo.diameter : -1;
+
+  // FragmentDef
+  const frag = activeAmmo.fragment || {};
+  fEnable.checked = frag.enable === true;
+  fReverse.checked = frag.reverse === true;
+  fDropVelocity.checked = frag.dropVelocity === true;
+  fFragments.value = frag.fragments || 0;
+  fDegrees.value = frag.degrees || 15;
+  fChildAmmoRound.value = frag.ammoRound || '';
+  fragStatusBadge.textContent = frag.enable ? `${frag.fragments} Frags Active` : 'Disabled';
+  updateFragChainVisual();
+
+  // DamageScales
+  const ds = activeAmmo.damageScales || {};
+  dsShield.value = ds.shield !== undefined ? ds.shield : 1.0;
+  dsLightArmor.value = ds.lightArmor !== undefined ? ds.lightArmor : -1.0;
+  dsHeavyArmor.value = ds.heavyArmor !== undefined ? ds.heavyArmor : -1.0;
+  dsHealthHit.value = ds.healthHitModifier !== undefined ? ds.healthHitModifier : 1.0;
+
+  // AreaOfDamage
+  const aod = activeAmmo.areaOfDamage || {};
+  aodEnable.checked = aod.enable === true;
+  aodRadius.value = aod.radius || 0;
+  aodDamage.value = aod.damage || 0;
+  aodDepth.value = aod.depth || 0;
+
+  // Trajectory
+  const traj = activeAmmo.trajectory || {};
+  tDesiredSpeed.value = traj.desiredSpeed || 1000;
+  tMaxTrajectory.value = traj.maxTrajectory || 1500;
+  tMaxLifeTime.value = traj.maxLifeTime || 3600;
+  tGuidance.value = traj.guidance || 'None';
+
+  // Graphics
+  const g = activeAmmo.graphics || {};
+  const tr = g.tracer || {};
+  gTracerEnable.checked = tr.enable !== false;
+  gTracerLength.value = tr.length || 10;
+  gTracerWidth.value = tr.width || 0.1;
+  gVisualProb.value = g.visualProbability !== undefined ? g.visualProbability : 1.0;
+
+  // Audio
+  const aud = activeAmmo.audio || {};
+  aSoundTravel.value = aud.travelSound || '';
+  aSoundHit.value = aud.hitSound || '';
+  aSoundShieldHit.value = aud.shieldHitSound || '';
+}
+
+function updateFragChainVisual() {
+  if (!fragChainVisual) return;
+  const parentName = activeAmmo ? activeAmmo.name : 'Parent';
+  const childName = fChildAmmoRound.value || 'None';
+  const count = fFragments.value || 0;
+  if (fEnable.checked && childName !== 'None' && childName !== '') {
+    fragChainVisual.innerHTML = `<span>${parentName}</span> ──(💥 Spawns ${count} frags)──&gt; <span style="color: var(--amber-primary); font-weight: 700;">${childName}</span>`;
+  } else {
+    fragChainVisual.innerHTML = `<span style="color: var(--text-dim);">${parentName} (No submunitions configured)</span>`;
   }
 }
 
-// Update Bill of Materials Table
-function updateBomTable(w, stats) {
+function populateSbcWorkbench() {
+  if (!activeWeapon) return;
+  sbcDisplayName.value = activeWeapon.partName || activeWeapon.name || '';
+  sbcCubeSize.value = activeWeapon.gridSize || 'Large';
+  sbcBuildTime.value = activeWeapon.buildTime || 78;
+  sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || 6;
+  sbcTechComp.value = activeWeapon.techComponent || 'PrototechMachinery';
+  sbcTechQty.value = activeWeapon.techCount || 6;
+  sbcIsRelic.checked = activeWeapon.isRelic === true;
+  sbcHasCircuitry.checked = activeWeapon.hasCircuitry === true || activeWeapon.requiresCircuitry === true;
+}
+
+// ==========================================================================
+// TELEMETRY & COMBAT CALCULATOR
+// ==========================================================================
+function updateCombatTelemetry() {
+  if (!activeWeapon || !activeAmmo) return;
+
+  const rof = parseFloat(wRateOfFire.value) || 1000;
+  const barrels = parseFloat(wBarrelsPerShot.value) || 1;
+  const reloadTicks = parseFloat(wReloadTime.value) || 0;
+  const magsToLoad = parseFloat(wMagsToLoad.value) || 1;
+  const magSize = activeWeapon.magazineSize || 100;
+
+  const baseDmg = parseFloat(aBaseDamage.value) || 0;
+  const aodDmg = (aodEnable.checked ? parseFloat(aodDamage.value) : 0) || 0;
+
+  // Fragment damage
+  let fragDmg = 0;
+  if (fEnable.checked) {
+    const frags = parseFloat(fFragments.value) || 0;
+    const childAmmo = ammosDb[fChildAmmoRound.value];
+    const childDmg = childAmmo ? childAmmo.baseDamage : 0;
+    fragDmg = frags * childDmg * 0.75; // 75% hit probability
+  }
+
+  const damagePerShot = baseDmg + aodDmg + fragDmg;
+  const alphaVolley = damagePerShot * barrels;
+
+  // True Rate of Fire & Sustained Cycle
+  const totalRounds = magSize * magsToLoad;
+  const fireDurationSec = (totalRounds / rof) * 60;
+  const reloadSec = reloadTicks / 60;
+  const totalCycleSec = fireDurationSec + reloadSec;
+
+  const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : 0;
+  const sustainedDps = Math.round(effectiveRps * damagePerShot);
+
+  // Update Hero Metrics
+  outSustainedDps.textContent = sustainedDps.toLocaleString();
+  outDpsBreakdown.textContent = `Kinetic: ${Math.round(effectiveRps * baseDmg).toLocaleString()} | Blast: ${Math.round(effectiveRps * aodDmg).toLocaleString()} | Frag: ${Math.round(effectiveRps * fragDmg).toLocaleString()}`;
+  outAlphaDmg.textContent = Math.round(alphaVolley).toLocaleString();
+  outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(damagePerShot).toLocaleString()} hp`;
+  outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
+  outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
+
+  // Traverse Speed
+  const rotRad = parseFloat(wRotateRate.value) || 0.015;
+  const elRad = parseFloat(wElevateRate.value) || 0.015;
+  const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
+  const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
+  outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
+  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
+
+  // Thermal Profile
+  const heatShot = parseFloat(wHeatPerShot.value) || 0;
+  const maxHeat = parseFloat(wMaxHeat.value) || 0;
+  const sinkRate = parseFloat(wHeatSinkRate.value) || 0;
+  const heatPerSec = (rof / 60) * heatShot;
+
+  if (maxHeat > 0 && heatPerSec > sinkRate) {
+    const netHeatSec = heatPerSec - sinkRate;
+    const timeToOverheat = (maxHeat * 0.7) / netHeatSec;
+    const cooldownSec = (maxHeat * 0.7) / sinkRate;
+    const dutyCycle = Math.round((timeToOverheat / (timeToOverheat + cooldownSec)) * 100);
+
+    outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
+    heatProgressBar.style.width = `${dutyCycle}%`;
+    outTimeToOverheat.textContent = `Continuous Fire: ${timeToOverheat.toFixed(1)}s`;
+    outCooldownTime.textContent = `Cooldown Window: ${cooldownSec.toFixed(1)}s`;
+    hudOverheat.textContent = `${timeToOverheat.toFixed(1)}s`;
+  } else {
+    outHeatDutyRatio.textContent = "100% UPTIME";
+    heatProgressBar.style.width = "100%";
+    outTimeToOverheat.textContent = "Continuous Fire: Unlimited";
+    outCooldownTime.textContent = "Cooldown Window: 0s";
+    hudOverheat.textContent = "Unlimited";
+  }
+
+  // Structural & Power
+  const durMod = parseFloat(wDurabilityMod.value) || 0.5;
+  const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
+  outEffectiveIntegrity.textContent = Math.round(effIntegrity).toLocaleString();
+  outBuildTime.textContent = `Welding Time: ${Math.round(effIntegrity / balanceMatrix.buildTimeDividend)} seconds`;
+
+  const idlePwr = parseFloat(wIdlePower.value) || 0.01;
+  const energyPerShot = parseFloat(aEnergyCost.value) || 0;
+  const operationalPwr = (idlePwr + (energyPerShot * (rof / 60) * 3600)).toFixed(2);
+  outPowerMw.innerHTML = `${operationalPwr} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
+  outPowerIdle.textContent = `Idle Draw: ${idlePwr.toFixed(3)} MW`;
+
+  // Sticky HUD updates
+  hudDps.textContent = sustainedDps.toLocaleString();
+  hudRange.textContent = `${tMaxTrajectory.value || 1500}m`;
+
+  // Render BOM Table
+  renderBomTable(effIntegrity, durMod);
+}
+
+// Target Dummy / TTK Simulator
+function updateTtkSimulator() {
+  if (!activeWeapon || !activeAmmo) return;
+
+  const targetType = ttkTargetSelect.value;
+  let targetHp = 16500;
+  let targetName = "Heavy Armor Cube";
+
+  if (targetType === 'lightArmor') {
+    targetHp = 3000;
+    targetName = "Light Armor Cube";
+  } else if (targetType === 'battery') {
+    targetHp = 11460;
+    targetName = "Large Grid Battery";
+  } else if (targetType === 'refinery') {
+    targetHp = 37280;
+    targetName = "Large Grid Refinery";
+  }
+
+  const dpsText = outSustainedDps.textContent.replace(/,/g, '');
+  const sustainedDps = parseFloat(dpsText) || 1;
+
+  const baseDmg = parseFloat(aBaseDamage.value) || 1;
+  const aodDmg = (aodEnable.checked ? parseFloat(aodDamage.value) : 0) || 0;
+  const dmgPerShot = baseDmg + aodDmg;
+
+  const ttkSeconds = (targetHp / sustainedDps);
+  const shotsNeeded = Math.ceil(targetHp / dmgPerShot);
+
+  if (ttkSeconds < 1.0) {
+    outTtkMain.textContent = `${ttkSeconds.toFixed(2)}s to Destroy`;
+  } else {
+    outTtkMain.textContent = `${ttkSeconds.toFixed(1)}s to Destroy`;
+  }
+
+  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} rounds against ${targetName}`;
+  ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
+}
+
+// Initial D Dodgeability / Drift Lead Meter
+function updateInitialDDriftMeter() {
+  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 1000;
+  const maxRange = parseFloat(tMaxTrajectory.value) || 1500;
+  const driftSpeedMs = 27.78; // 100 km/h in m/s
+
+  outFlightMuzzleSpd.textContent = `${Math.round(muzzleSpeed)} m/s`;
+
+  // 500m
+  const t500 = 500 / muzzleSpeed;
+  outDelay500m.textContent = `${t500.toFixed(2)}s`;
+  outLead500m.textContent = `${(t500 * driftSpeedMs).toFixed(1)}m drift`;
+
+  // 1000m
+  const t1000 = 1000 / muzzleSpeed;
+  outDelay1000m.textContent = `${t1000.toFixed(2)}s`;
+  outLead1000m.textContent = `${(t1000 * driftSpeedMs).toFixed(1)}m drift`;
+
+  // Max Range
+  const tMax = maxRange / muzzleSpeed;
+  outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
+  outDelayMax.textContent = `${tMax.toFixed(2)}s`;
+  outLeadMax.textContent = `${(tMax * driftSpeedMs).toFixed(1)}m drift`;
+}
+
+// ==========================================================================
+// AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS")
+// ==========================================================================
+function updateAmmoLogistics() {
+  if (!activeAmmo) return;
+
+  logActiveAmmoName.textContent = activeAmmo.terminalName || activeAmmo.name;
+
+  const targetDmgDensity = parseFloat(inputDmgDensity.value) || 5000;
+  const physicalDensity = parseFloat(inputPhysicalDensity.value) || 4.0;
+  const roleMult = parseFloat(selectRoleMultiplier.value) || 1.0;
+  const craftTime = parseFloat(inputCraftTime.value) || 13;
+  const rus = parseFloat(inputRUs.value) || 0;
+
+  const baseDmg = parseFloat(aBaseDamage.value) || 100;
+  const magCapacity = activeWeapon ? (activeWeapon.magazineSize || 100) : 100;
+  const totalMagDamage = baseDmg * magCapacity;
+
+  // Derived Volume & Mass
+  const magVolumeL = totalMagDamage / targetDmgDensity;
+  const magMassKg = magVolumeL * physicalDensity;
+
+  outMagVolume.textContent = `${magVolumeL.toFixed(1)} L`;
+  outMagMass.textContent = `${magMassKg.toFixed(1)} kg`;
+
+  // Internal Buffer & Depletion
+  const magsToLoad = activeWeapon ? (activeWeapon.magsToLoad || 4) : 4;
+  const suggestedWeaponVolKL = (magVolumeL * magsToLoad * 2.2) / 1000;
+  outSuggestedVol.textContent = `${suggestedWeaponVolKL.toFixed(2)} kL (2.2x)`;
+
+  const rof = activeWeapon ? (activeWeapon.rateOfFire || 1000) : 1000;
+  const depletionSec = ((magCapacity * magsToLoad) / rof) * 60;
+  outDepletionTime.textContent = `${depletionSec.toFixed(1)} s`;
+
+  // Cargo Packing & Fleet Endurance
+  // Small Cargo: 3,375 L
+  const smallMags = Math.floor(3375 / Math.max(0.1, magVolumeL));
+  const smallTotalDmg = smallMags * totalMagDamage;
+  const smallFireTimeSec = (smallMags * magCapacity / rof) * 60;
+
+  outSmallCargoMags.textContent = `${smallMags.toLocaleString()} Mags`;
+  outSmallCargoDmg.textContent = `Total Damage Stored: ${Math.round(smallTotalDmg).toLocaleString()} hp`;
+  outSmall1GunTime.textContent = formatTime(smallFireTimeSec);
+  outSmall20GunTime.textContent = formatTime(smallFireTimeSec / 20);
+
+  // Large Cargo: 421,875 L
+  const largeMags = Math.floor(421875 / Math.max(0.1, magVolumeL));
+  const largeTotalDmg = largeMags * totalMagDamage;
+  const largeFireTimeSec = (largeMags * magCapacity / rof) * 60;
+
+  outLargeCargoMags.textContent = `${largeMags.toLocaleString()} Mags`;
+  outLargeCargoDmg.textContent = `Total Damage Stored: ${Math.round(largeTotalDmg).toLocaleString()} hp`;
+  outLarge1GunTime.textContent = formatTime(largeFireTimeSec);
+  outLarge20GunTime.textContent = formatTime(largeFireTimeSec / 20);
+
+  // XML Blueprint Prerequisites Generation
+  // Economy: Base cost factor 0.50 SC / dmg * roleMult
+  const totalCostCredits = totalMagDamage * 0.50 * roleMult;
+  const ironKg = (magMassKg * 0.70).toFixed(1);
+  const nickelKg = (magMassKg * 0.15).toFixed(1);
+  const magnesiumKg = (magMassKg * 0.10).toFixed(2);
+  const cobaltKg = (magMassKg * 0.05).toFixed(2);
+
+  let xml = `  <Blueprint>\n`;
+  xml += `    <Id>\n`;
+  xml += `      <TypeId>BlueprintDefinition</TypeId>\n`;
+  xml += `      <SubtypeId>${activeAmmo.ammoMagazine || activeAmmo.name}</SubtypeId>\n`;
+  xml += `    </Id>\n`;
+  xml += `    <DisplayName>${activeAmmo.terminalName || activeAmmo.name}</DisplayName>\n`;
+  xml += `    <Icon>Textures\\GUI\\Icons\\ammo\\${activeAmmo.ammoMagazine || activeAmmo.name}.dds</Icon>\n`;
+  xml += `    <Prerequisites>\n`;
+  xml += `      <Item Amount="${ironKg}" TypeId="Ingot" SubtypeId="Iron" />\n`;
+  xml += `      <Item Amount="${nickelKg}" TypeId="Ingot" SubtypeId="Nickel" />\n`;
+  xml += `      <Item Amount="${magnesiumKg}" TypeId="Ingot" SubtypeId="Magnesium" />\n`;
+  if (parseFloat(cobaltKg) > 0.01) {
+    xml += `      <Item Amount="${cobaltKg}" TypeId="Ingot" SubtypeId="Cobalt" />\n`;
+  }
+  if (rus > 0) {
+    xml += `      <Item Amount="${rus}" TypeId="Ingot" SubtypeId="GVK_RUs" />\n`;
+  }
+  xml += `    </Prerequisites>\n`;
+  xml += `    <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="${activeAmmo.ammoMagazine || activeAmmo.name}" />\n`;
+  xml += `    <BaseProductionTimeInSeconds>${craftTime}</BaseProductionTimeInSeconds>\n`;
+  xml += `  </Blueprint>`;
+
+  codeBlueprintXml.textContent = xml;
+}
+
+function formatTime(seconds) {
+  if (seconds < 60) return `${Math.round(seconds)}s`;
+  if (seconds < 3600) return `${(seconds / 60).toFixed(1)}m`;
+  return `${(seconds / 3600).toFixed(1)}h`;
+}
+
+function setupLogisticsEvents() {
+  if (inputDmgDensitySlider && inputDmgDensity) {
+    inputDmgDensitySlider.addEventListener('input', (e) => {
+      inputDmgDensity.value = e.target.value;
+      updateAmmoLogistics();
+    });
+    inputDmgDensity.addEventListener('input', (e) => {
+      inputDmgDensitySlider.value = e.target.value;
+      updateAmmoLogistics();
+    });
+  }
+
+  [inputPhysicalDensity, selectRoleMultiplier, inputRUs, inputCraftTime].forEach(el => {
+    if (el) el.addEventListener('input', updateAmmoLogistics);
+  });
+
+  if (btnCopyBlueprintXml) {
+    btnCopyBlueprintXml.addEventListener('click', () => {
+      navigator.clipboard.writeText(codeBlueprintXml.textContent).then(() => {
+        showToast("📋 Blueprint <Prerequisites> XML copied to clipboard!");
+      });
+    });
+  }
+}
+
+// ==========================================================================
+// 1V1 COMBAT RADAR CHART
+// ==========================================================================
+function updateComparisonRadar() {
+  if (!radarCanvas) return;
+  const ctx = radarCanvas.getContext('2d');
+  const w = radarCanvas.width;
+  const h = radarCanvas.height;
+  ctx.clearRect(0, 0, w, h);
+
+  const cx = w / 2;
+  const cy = h / 2;
+  const radius = Math.min(cx, cy) - 40;
+  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Thermal'];
+  const totalAxes = axes.length;
+
+  // Draw Hexagonal Web
+  ctx.strokeStyle = '#263346';
+  ctx.lineWidth = 1;
+  for (let ring = 1; ring <= 4; ring++) {
+    const r = (radius / 4) * ring;
+    ctx.beginPath();
+    for (let i = 0; i < totalAxes; i++) {
+      const angle = (Math.PI * 2 / totalAxes) * i - Math.PI / 2;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Draw Axis Lines & Labels
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.fillStyle = '#94a3b8';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  for (let i = 0; i < totalAxes; i++) {
+    const angle = (Math.PI * 2 / totalAxes) * i - Math.PI / 2;
+    const lx = cx + (radius + 20) * Math.cos(angle);
+    const ly = cy + (radius + 20) * Math.sin(angle);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
+    ctx.stroke();
+    ctx.fillText(axes[i], lx, ly);
+  }
+
+  // Calculate Normalized Stats for Active Weapon
+  const activeDps = parseFloat(outSustainedDps.textContent.replace(/,/g, '')) || 0;
+  const activeAlpha = parseFloat(outAlphaDmg.textContent.replace(/,/g, '')) || 0;
+  const activeRange = parseFloat(tMaxTrajectory.value) || 1500;
+  const activeVel = parseFloat(tDesiredSpeed.value) || 1000;
+  const activeTrack = parseFloat(outTraverseDeg.textContent) || 10;
+  const activeDuty = parseFloat(outHeatDutyRatio.textContent) || 100;
+
+  const activeStats = [
+    Math.min(1, activeDps / 12000),
+    Math.min(1, activeAlpha / 25000),
+    Math.min(1, activeRange / 6000),
+    Math.min(1, activeVel / 2500),
+    Math.min(1, activeTrack / 60),
+    activeDuty / 100
+  ];
+
+  drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
+
+  // Benchmark Weapon
+  if (benchmarkWeapon) {
+    compBenchIcon.style.display = 'block';
+    compBenchIcon.src = benchmarkWeapon.icon || '';
+    legendBenchItem.style.display = 'flex';
+    legendBenchName.textContent = benchmarkWeapon.name;
+
+    const bAmmo = ammosDb[benchmarkWeapon.ammoName] || {};
+    const bDps = benchmarkWeapon.sustainedDps || 5000;
+    const bAlpha = benchmarkWeapon.alphaDamage || 10000;
+    const bRange = bAmmo.trajectory ? bAmmo.trajectory.maxTrajectory : 2000;
+    const bVel = bAmmo.trajectory ? bAmmo.trajectory.desiredSpeed : 1000;
+    const bTrack = (benchmarkWeapon.rotateRate * 60 * 180 / Math.PI) || 10;
+    const bDuty = 100;
+
+    const benchStats = [
+      Math.min(1, bDps / 12000),
+      Math.min(1, bAlpha / 25000),
+      Math.min(1, bRange / 6000),
+      Math.min(1, bVel / 2500),
+      Math.min(1, bTrack / 60),
+      bDuty / 100
+    ];
+
+    drawPolygon(ctx, cx, cy, radius, benchStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
+    renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, bDps, bAlpha, bRange, bVel, bTrack);
+  } else {
+    compBenchIcon.style.display = 'none';
+    legendBenchItem.style.display = 'none';
+    compareTableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>';
+  }
+}
+
+function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
+  const total = stats.length;
+  ctx.beginPath();
+  for (let i = 0; i < total; i++) {
+    const angle = (Math.PI * 2 / total) * i - Math.PI / 2;
+    const val = Math.max(0.1, stats[i]);
+    const x = cx + radius * val * Math.cos(angle);
+    const y = cy + radius * val * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
+  ctx.strokeStyle = strokeStyle;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+function renderCompareTable(aDps, aAlpha, aRange, aVel, aTrack, bDps, bAlpha, bRange, bVel, bTrack) {
+  const rows = [
+    { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
+    { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
+    { name: 'Max Range', a: aRange, b: bRange, unit: 'm' },
+    { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
+    { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s' },
+  ];
+
+  compareTableBody.innerHTML = rows.map(r => {
+    const delta = ((r.a - r.b) / (r.b || 1)) * 100;
+    const deltaColor = delta > 0 ? 'var(--green-accent)' : (delta < 0 ? 'var(--red-accent)' : 'var(--text-dim)');
+    const deltaStr = (delta >= 0 ? '+' : '') + delta.toFixed(1) + '%';
+    return `
+      <tr>
+        <td style="font-weight: 600;">${r.name}</td>
+        <td style="font-family: var(--font-mono); color: var(--amber-primary);">${Math.round(r.a).toLocaleString()} ${r.unit}</td>
+        <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${Math.round(r.b).toLocaleString()} ${r.unit}</td>
+        <td style="font-family: var(--font-mono); color: ${deltaColor}; font-weight: 700;">${deltaStr}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+// ==========================================================================
+// BILL OF MATERIALS (BOM) & VALUE
+// ==========================================================================
+function renderBomTable(effectiveIntegrity, durabilityMod) {
+  if (!bomTableBody) return;
   bomTableBody.innerHTML = '';
-  const components = generateBalancedComponents(w, stats);
-  let totalMass = 0;
-  let totalCredits = 0;
 
-  components.forEach(c => {
-    const compDef = componentsDb[c.subtype] || { mass: 20, integrity: 100, value: 10 };
-    const mass = c.count * compDef.mass;
-    const hp = c.count * compDef.integrity;
-    const creds = c.count * compDef.value;
+  const comps = activeWeapon ? (activeWeapon.components || []) : [];
+  let totalValueCredits = 0;
 
-    totalMass += mass;
-    totalCredits += creds;
+  comps.forEach(c => {
+    const cMeta = componentsDb[c.name] || {};
+    const mass = (cMeta.mass || 10) * c.count;
+    const integ = (cMeta.integrity || 100) * c.count;
+    const price = (cMeta.price || 150) * c.count;
+    totalValueCredits += price;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td><strong>${c.subtype}</strong></td>
-      <td>${c.count.toLocaleString()}</td>
-      <td>${mass.toLocaleString()} kg</td>
-      <td>${hp.toLocaleString()} hp</td>
+      <td style="font-weight: 600;">${c.name}</td>
+      <td style="font-family: var(--font-mono);">${c.count}</td>
+      <td style="font-family: var(--font-mono); color: var(--text-dim);">${mass.toFixed(1)} kg</td>
+      <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${integ.toLocaleString()}</td>
     `;
     bomTableBody.appendChild(tr);
   });
 
-  outTotalValue.textContent = `$${Math.round(totalCredits).toLocaleString()} est.`;
+  outTotalValue.textContent = `$${Math.round(totalValueCredits).toLocaleString()}`;
 }
 
-// Generate Balanced Component Distribution
-function generateBalancedComponents(w, stats) {
-  if (w.components && w.components.length > 0 && w.components[0].count > 0) {
-    return w.components;
+// ==========================================================================
+// WEAPONCORE LINTER & CLANG HAZARD DETECTOR
+// ==========================================================================
+function runWeaponCoreLinter() {
+  if (!activeWeapon || !linterBanner || !linterText) return;
+
+  const hazards = [];
+
+  // Check 1: Primary ammo usable
+  if (activeAmmo && !activeAmmo.hardPointUsable) {
+    hazards.push("Primary ammo has HardPointUsable = false (Gun will refuse to fire).");
   }
 
-  // Auto-generate recipe based on target Base Integrity
-  const baseHp = stats.baseIntegrity;
-  const isLarge = w.grid === "Large";
-
-  const steelRatio = isLarge ? 0.65 : 0.50;
-  const constRatio = 0.15;
-  const tubeRatio = 0.10;
-  const motorRatio = 0.05;
-  const compRatio = 0.05;
-
-  return [
-    { subtype: "SteelPlate", count: Math.max(10, Math.round((baseHp * steelRatio) / 100)) },
-    { subtype: "Construction", count: Math.max(5, Math.round((baseHp * constRatio) / 30)) },
-    { subtype: "SmallTube", count: Math.max(2, Math.round((baseHp * tubeRatio * 0.5) / 15)) },
-    { subtype: "LargeTube", count: Math.max(2, Math.round((baseHp * tubeRatio * 0.5) / 60)) },
-    { subtype: "Motor", count: Math.max(4, Math.round((baseHp * motorRatio) / 40)) },
-    { subtype: "Computer", count: Math.max(2, Math.round((baseHp * compRatio) / 1)) }
-  ];
-}
-
-// Update 1v1 Comparison Table & Radar Chart
-let cachedActiveStats = null;
-let cachedBenchStats = null;
-
-function updateComparisonTable(activeStats) {
-  cachedActiveStats = activeStats;
-  if (!benchmarkWeapon) {
-    cachedBenchStats = null;
-    compareTableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>`;
-    drawRadarChart(activeStats, null);
-    return;
+  // Check 2: MagsToLoad <= 0
+  if (parseFloat(wMagsToLoad.value) <= 0) {
+    hazards.push("MagsToLoad is 0 (Gun cannot reload magazines).");
   }
 
-  const bStats = calculateStats(benchmarkWeapon);
-  cachedBenchStats = bStats;
-  drawRadarChart(activeStats, bStats);
-  compareTableBody.innerHTML = '';
-
-  const metrics = [
-    { name: "Sustained DPS", a: activeStats.sustainedDps, b: bStats.sustainedDps, unit: "" },
-    { name: "Alpha Salvo", a: activeStats.alphaDamage, b: bStats.alphaDamage, unit: "" },
-    { name: "Effective Range", a: activeWeapon.maxTrajectory, b: benchmarkWeapon.maxTrajectory, unit: "m" },
-    { name: "Velocity", a: activeWeapon.desiredSpeed, b: benchmarkWeapon.desiredSpeed, unit: "m/s" },
-    { name: "Traverse Rate", a: activeStats.averageTraverse, b: bStats.averageTraverse, unit: "°/s" },
-    { name: "Effective HP", a: activeStats.effectiveIntegrity, b: bStats.effectiveIntegrity, unit: "" },
-    { name: "Build Time", a: activeStats.buildTimeSeconds, b: bStats.buildTimeSeconds, unit: "s", invert: true }
-  ];
-
-  metrics.forEach(m => {
-    const diff = m.b !== 0 ? ((m.a - m.b) / m.b) * 100 : 0;
-    const isGood = m.invert ? diff < 0 : diff > 0;
-    const diffClass = Math.abs(diff) < 0.5 ? "" : (isGood ? "diff-pos" : "diff-neg");
-    const sign = diff > 0 ? "+" : "";
-
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${m.name}</td>
-      <td><strong>${Math.round(m.a).toLocaleString()} ${m.unit}</strong></td>
-      <td>${Math.round(m.b).toLocaleString()} ${m.unit}</td>
-      <td class="${diffClass}">${sign}${diff.toFixed(1)}%</td>
-    `;
-    compareTableBody.appendChild(tr);
-  });
-}
-
-// Draw Spider Graph / Radar Chart
-function drawRadarChart(aStats, bStats = null) {
-  const canvas = document.getElementById('radarCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const container = canvas.parentElement;
-  const availWidth = container ? container.clientWidth : 360;
-  const width = Math.min(360, Math.max(260, availWidth - 20));
-  const height = Math.round(width * 0.94);
-
-  canvas.style.width = width + 'px';
-  canvas.style.height = height + 'px';
-  canvas.width = width * dpr;
-  canvas.height = height * dpr;
-  ctx.scale(dpr, dpr);
-
-  const cx = width / 2;
-  const cy = height / 2;
-  const radius = Math.min(cx, cy) - 38;
-
-  ctx.clearRect(0, 0, width, height);
-
-  const axes = [
-    { name: "DPS", max: 15000, getVal: (s, w) => s ? s.sustainedDps : 0 },
-    { name: "ALPHA", max: 50000, getVal: (s, w) => s ? s.alphaDamage : 0 },
-    { name: "RANGE", max: 4000, getVal: (s, w) => w ? w.maxTrajectory : 0 },
-    { name: "VELOCITY", max: 2000, getVal: (s, w) => w ? w.desiredSpeed : 0 },
-    { name: "TRACKING", max: 90, getVal: (s, w) => s ? s.averageTraverse : 0 },
-    { name: "ENDURANCE", max: 1.0, getVal: (s, w) => s ? s.dutyRatio : 0 }
-  ];
-
-  const totalAxes = axes.length;
-  const angleStep = (Math.PI * 2) / totalAxes;
-
-  // 1. Draw Concentric Grid Polygons
-  const levels = [0.2, 0.4, 0.6, 0.8, 1.0];
-  levels.forEach(level => {
-    ctx.beginPath();
-    for (let i = 0; i < totalAxes; i++) {
-      const angle = i * angleStep - Math.PI / 2;
-      const r = radius * level;
-      const x = cx + r * Math.cos(angle);
-      const y = cy + r * Math.sin(angle);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.strokeStyle = level === 1.0 ? "rgba(245, 158, 11, 0.4)" : "rgba(255, 255, 255, 0.08)";
-    ctx.lineWidth = level === 1.0 ? 1.5 : 1;
-    ctx.stroke();
-  });
-
-  // 2. Draw Radial Spokes and Labels
-  ctx.font = "bold 10px 'JetBrains Mono', monospace";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-
-  for (let i = 0; i < totalAxes; i++) {
-    const angle = i * angleStep - Math.PI / 2;
-    const x = cx + radius * Math.cos(angle);
-    const y = cy + radius * Math.sin(angle);
-
-    // Spoke line
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(x, y);
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // Label position
-    const labelDist = radius + 20;
-    const lx = cx + labelDist * Math.cos(angle);
-    const ly = cy + labelDist * Math.sin(angle);
-
-    ctx.fillStyle = "#94a3b8";
-    ctx.fillText(axes[i].name, lx, ly);
+  // Check 3: RoF > 0
+  if (parseFloat(wRateOfFire.value) <= 0) {
+    hazards.push("RateOfFire is 0 (Gun cannot cycle shots).");
   }
 
-  function normalize(val, max) {
-    const clamped = Math.max(0, Math.min(val, max));
-    return 0.05 + (clamped / max) * 0.95;
+  // Check 4: Muzzles empty
+  if (!wMuzzles.value.trim()) {
+    hazards.push("Muzzle dummy list is empty (Projectiles will spawn inside the block).");
   }
 
-  // 3. Draw Benchmark Polygon (Cyan) if selected
-  if (bStats && benchmarkWeapon) {
-    ctx.beginPath();
-    for (let i = 0; i < totalAxes; i++) {
-      const angle = i * angleStep - Math.PI / 2;
-      const val = axes[i].getVal(bStats, benchmarkWeapon);
-      const norm = normalize(val, axes[i].max);
-      const r = radius * norm;
-      const x = cx + r * Math.cos(angle);
-      const y = cy + r * Math.sin(angle);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.fillStyle = "rgba(56, 189, 248, 0.22)";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(56, 189, 248, 0.85)";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Vertex points
-    for (let i = 0; i < totalAxes; i++) {
-      const angle = i * angleStep - Math.PI / 2;
-      const val = axes[i].getVal(bStats, benchmarkWeapon);
-      const norm = normalize(val, axes[i].max);
-      const r = radius * norm;
-      const x = cx + r * Math.cos(angle);
-      const y = cy + r * Math.sin(angle);
-      ctx.beginPath();
-      ctx.arc(x, y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = "#38bdf8";
-      ctx.fill();
-    }
+  // Check 5: Range > 2000m on turret without PrototechCircuitry
+  const range = parseFloat(wMaxTargetDistance.value) || 0;
+  if (range > 2000 && !sbcHasCircuitry.checked) {
+    hazards.push("Smart/turret range exceeds 2km: 1 PrototechCircuitry is recommended for GVK balance.");
   }
 
-  // 4. Draw Active Weapon Polygon (Amber)
-  if (aStats && activeWeapon) {
-    ctx.beginPath();
-    for (let i = 0; i < totalAxes; i++) {
-      const angle = i * angleStep - Math.PI / 2;
-      const val = axes[i].getVal(aStats, activeWeapon);
-      const norm = normalize(val, axes[i].max);
-      const r = radius * norm;
-      const x = cx + r * Math.cos(angle);
-      const y = cy + r * Math.sin(angle);
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.fillStyle = "rgba(245, 158, 11, 0.35)";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(245, 158, 11, 0.95)";
-    ctx.lineWidth = 2.5;
-    ctx.stroke();
-
-    // Vertex points
-    for (let i = 0; i < totalAxes; i++) {
-      const angle = i * angleStep - Math.PI / 2;
-      const val = axes[i].getVal(aStats, activeWeapon);
-      const norm = normalize(val, axes[i].max);
-      const r = radius * norm;
-      const x = cx + r * Math.cos(angle);
-      const y = cy + r * Math.sin(angle);
-      ctx.beginPath();
-      ctx.arc(x, y, 4.5, 0, Math.PI * 2);
-      ctx.fillStyle = "#fbbf24";
-      ctx.fill();
-      ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-  }
-}
-
-// --------------------------------------------------------------------------
-// Code & SBC Generation
-// --------------------------------------------------------------------------
-function renderGeneratedCode(stats) {
-  const w = activeWeapon;
-  const components = generateBalancedComponents(w, stats);
-
-  // 1. C# WeaponDef
-  const weaponCs = `// Generated by GVK Weapon Studio
-using static Scripts.Structure.WeaponDefinition;
-using static Scripts.Structure.WeaponDefinition.ModelAssignmentsDef;
-using static Scripts.Structure.WeaponDefinition.HardPointDef;
-using static Scripts.Structure.WeaponDefinition.HardPointDef.Prediction;
-using static Scripts.Structure.WeaponDefinition.TargetingDef.BlockTypes;
-using static Scripts.Structure.WeaponDefinition.TargetingDef.Threat;
-
-namespace Scripts
-{
-    partial class Parts
-    {
-        private WeaponDefinition ${w.id} => new WeaponDefinition
-        {
-            Assignments = new ModelAssignmentsDef
-            {
-                MountPoints = new[]
-                {
-                    new MountPointDef
-                    {
-                        SubtypeId = "${w.id}",
-                        SpinPartId = "None",
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = ${w.durabilityMod.toFixed(1)}f,
-                        IconName = "Textures\\\\GUI\\\\Icons\\\\Cubes\\\\${w.id}.dds"
-                    },
-                },
-                Muzzles = new[] { "muzzle_missile_1" },
-            },
-            Targeting = new TargetingDef
-            {
-                Threats = new[] { Grids, Projectiles, Characters },
-                SubSystems = new[] { Offense, Thrust, Utility, Power, Production },
-                ClosestFirst = true,
-                MaxTargetDistance = ${w.maxTargetDistance},
-                MinTargetDistance = 0,
-                TopTargets = 4,
-                TopBlocks = 8,
-                StopTrackingSpeed = 2000,
-            },
-            HardPoint = new HardPointDef
-            {
-                PartName = "${w.name}",
-                DeviateShotAngle = ${w.deviateShotAngle}f,
-                AimingTolerance = 2.0d,
-                AimLeadingPrediction = Accurate,
-                DelayCeaseFire = 0,
-                Loading = new LoadingDef
-                {
-                    RateOfFire = ${w.rateOfFire},
-                    BarrelsPerShot = ${w.barrelsPerShot},
-                    TrajectilesPerBarrel = 1,
-                    ReloadTime = ${w.reloadTime},
-                    MagsToLoad = ${w.magsToLoad},
-                    ShotsInBurst = ${w.shotsInBurst},
-                    DelayAfterBurst = ${w.delayAfterBurst},
-                    DelayUntilFire = ${w.delayUntilFire},
-                    HeatPerShot = ${w.heatPerShot},
-                    MaxHeat = ${w.maxHeat},
-                    Cooldown = ${w.cooldown.toFixed(2)}f,
-                    HeatSinkRate = ${w.heatSinkRate},
-                },
-                HardWare = new HardwareDef
-                {
-                    RotateRate = ${w.rotateRate}f,
-                    ElevateRate = ${w.elevateRate}f,
-                    MinAzimuth = ${w.minAzimuth},
-                    MaxAzimuth = ${w.maxAzimuth},
-                    MinElevation = ${w.minElevation},
-                    MaxElevation = ${w.maxElevation},
-                    IdlePower = ${w.idlePower.toFixed(1)}f,
-                },
-            },
-            Ammos = new[] { ${w.id}_Ammo }
-        };
-    }
-}`;
-
-  // 2. C# AmmoDef
-  const ammoCs = `// Generated by GVK Weapon Studio
-using static Scripts.Structure.WeaponDefinition.AmmoDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.ShapeDef.Shapes;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.TrajectoryDef;
-using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
-
-namespace Scripts
-{
-    partial class Parts
-    {
-        private AmmoDef ${w.id}_Ammo => new AmmoDef
-        {
-            AmmoMagazine = "${w.id}_Mag",
-            AmmoRound = "${w.name} Shell",
-            BaseDamage = ${w.baseDamage}f,
-            Mass = 100f,
-            Health = 0,
-            BackKickForce = 1000f,
-            EnergyCost = ${w.energyCost}f,
-            HardPointUsable = true,
-            Shape = new ShapeDef
-            {
-                Shape = LineShape,
-                Diameter = 1,
-            },
-            Trajectory = new TrajectoryDef
-            {
-                Guidance = GuidanceType.None,
-                TargetLossDegree = 80f,
-                TargetLossTime = 0,
-                MaxLifeTime = 0,
-                Accel = 0f,
-                DesiredSpeed = ${w.desiredSpeed}f,
-                MaxTrajectory = ${w.maxTrajectory}f,
-            },
-            AreaEffect = new AreaDamageDef
-            {
-                AreaEffect = AreaOfDamageDef.AreaEffectType.Explosive,
-                Base = new BaseAreaDef
-                {
-                    AreaEffectRadius = ${w.detRadius}f,
-                    AreaEffectDamage = ${w.detDamage}f,
-                },
-            },
-            Fragment = new FragmentDef
-            {
-                Fragments = ${w.fragments},
-                Degrees = ${w.fragmentDegrees},
-                Reverse = false,
-            }
-        };
-    }
-}`;
-
-  // 3. CubeBlocks SBC
-  let compXml = '';
-  components.forEach(c => {
-    compXml += `        <Component Subtype="${c.subtype}" Count="${c.count}" />\n`;
-  });
-
-  const cubeBlocksSbc = `<!-- Generated by GVK Weapon Studio -->
-<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <CubeBlocks>
-    <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
-      <Id>
-        <TypeId>LargeMissileTurret</TypeId>
-        <SubtypeId>${w.id}</SubtypeId>
-      </Id>
-      <DisplayName>${w.name}</DisplayName>
-      <Icon>Textures\\GUI\\Icons\\Cubes\\${w.id}.dds</Icon>
-      <Description>Sustained DPS: ${Math.round(stats.sustainedDps).toLocaleString()} | Range: ${w.maxTrajectory}m | Velocity: ${w.desiredSpeed}m/s</Description>
-      <CubeSize>${w.grid}</CubeSize>
-      <BlockTopology>TriangleMesh</BlockTopology>
-      <Size x="3" y="2" z="3" />
-      <ModelOffset x="0" y="0" z="0" />
-      <Model>Models\\Cubes\\${w.grid}\\${w.id}.mwm</Model>
-      <Components>
-${compXml}      </Components>
-      <CriticalComponent Subtype="Computer" Index="0" />
-      <BuildTimeSeconds>${stats.buildTimeSeconds}</BuildTimeSeconds>
-      <PCU>${w.pcu || 10000}</PCU>
-    </Definition>
-  </CubeBlocks>
-</Definitions>`;
-
-  // 4. Blueprints SBC
-  const blueprintsSbc = `<!-- Generated by GVK Weapon Studio -->
-<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Blueprints>
-    <Blueprint>
-      <Id>
-        <TypeId>BlueprintDefinition</TypeId>
-        <SubtypeId>${w.id}_Mag_BP</SubtypeId>
-      </Id>
-      <DisplayName>${w.name} Magazine</DisplayName>
-      <Icon>Textures\\GUI\\Icons\\ammo\\${w.id}_Mag.dds</Icon>
-      <Prerequisites>
-        <Item Amount="25.0" TypeId="Ingot" SubtypeId="Iron" />
-        <Item Amount="5.0" TypeId="Ingot" SubtypeId="Nickel" />
-        <Item Amount="2.5" TypeId="Ingot" SubtypeId="Magnesium" />
-      </Prerequisites>
-      <BaseProductionTimeInSeconds>15</BaseProductionTimeInSeconds>
-      <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="${w.id}_Mag" />
-    </Blueprint>
-  </Blueprints>
-</Definitions>`;
-
-  document.getElementById('code-weapon-cs').textContent = weaponCs;
-  document.getElementById('code-ammo-cs').textContent = ammoCs;
-  document.getElementById('code-cubeblocks-sbc').textContent = cubeBlocksSbc;
-  document.getElementById('code-blueprints-sbc').textContent = blueprintsSbc;
-}
-
-// --------------------------------------------------------------------------
-// File System Access API (Direct Local Disk Save)
-// --------------------------------------------------------------------------
-document.getElementById('btnLinkLocal').addEventListener('click', async () => {
-  if (!window.showDirectoryPicker) {
-    showToast("File System Access API not supported in this browser. Use Chrome or Edge.", "error");
-    return;
-  }
-  try {
-    modDirectoryHandle = await window.showDirectoryPicker({ mode: "readwrite" });
-    saveStatusHint.textContent = `Linked to: ${modDirectoryHandle.name}`;
-    saveStatusHint.style.color = "var(--green-accent)";
-    document.getElementById('btnLinkLocal').innerHTML = `✅ ${modDirectoryHandle.name}`;
-    showToast(`Linked mod directory: ${modDirectoryHandle.name}`, "success");
-  } catch (err) {
-    if (err.name !== 'AbortError') {
-      console.error("Directory link failed:", err);
-      showToast("Directory linking was cancelled or failed.", "error");
-    }
-  }
-});
-
-btnSaveToDisk.addEventListener('click', async () => {
-  if (!modDirectoryHandle) {
-    showToast("Please click 'Link Mod Folder' first to select GVK_Weapons!", "error");
-    return;
-  }
-
-  try {
-    const activeTab = document.querySelector('[data-codetab].active');
-    const tabId = activeTab ? activeTab.getAttribute('data-codetab') : 'code-weapon-cs';
-    const content = document.getElementById(tabId).textContent;
-
-    let subfolder = "CoreParts";
-    let filename = `${activeWeapon.id}_Weapons.cs`;
-
-    if (tabId === 'code-ammo-cs') {
-      filename = `${activeWeapon.id}_Ammos.cs`;
-    } else if (tabId === 'code-cubeblocks-sbc') {
-      subfolder = "Content/Data/CubeBlocks";
-      filename = `CubeBlocks_${activeWeapon.id}.sbc`;
-    } else if (tabId === 'code-blueprints-sbc') {
-      subfolder = "Content/Data";
-      filename = `Blueprints_${activeWeapon.id}.sbc`;
-    }
-
-    let dir = modDirectoryHandle;
-    const parts = subfolder.split('/');
-    for (const p of parts) {
-      dir = await dir.getDirectoryHandle(p, { create: true });
-    }
-
-    const fileHandle = await dir.getFileHandle(filename, { create: true });
-    const writable = await fileHandle.createWritable();
-    await writable.write(content);
-    await writable.close();
-
-    showToast(`Saved ${filename} to ${subfolder}/!`, "success");
-  } catch (err) {
-    console.error("Direct save failed:", err);
-    showToast(`Failed to save: ${err.message}`, "error");
-  }
-});
-
-// Copy Code Button
-btnCopyCode.addEventListener('click', () => {
-  const activeTab = document.querySelector('[data-codetab].active');
-  const tabId = activeTab ? activeTab.getAttribute('data-codetab') : 'code-weapon-cs';
-  const text = document.getElementById(tabId).textContent;
-  navigator.clipboard.writeText(text);
-  showToast("Code copied to clipboard!", "success");
-});
-
-// Download File Button
-btnDownloadFile.addEventListener('click', () => {
-  const activeTab = document.querySelector('[data-codetab].active');
-  const tabId = activeTab ? activeTab.getAttribute('data-codetab') : 'code-weapon-cs';
-  const text = document.getElementById(tabId).textContent;
-  const ext = tabId.includes('cs') ? '.cs' : '.sbc';
-  const filename = `${activeWeapon.id}${ext}`;
-
-  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  showToast(`Downloaded ${filename}`, "success");
-});
-
-// Export Summary CSV
-document.getElementById('btnExportCsv').addEventListener('click', () => {
-  let csv = "Weapon,Ammo 1,Power (MW),Range (m),Alpha dmg,Sustained DPS,Velocity (m/s),Traverse (Deg/s),Effective Integrity,Build (s),Tech (UPs)\n";
-  weaponsDb.forEach(w => {
-    const stats = calculateStats(w);
-    csv += `"${w.name}","${w.name} Shell","${stats.totalPowerMw.toFixed(1)}","${w.maxTrajectory}","${Math.round(stats.alphaDamage)}","${Math.round(stats.sustainedDps)}","${w.desiredSpeed}","${stats.averageTraverse.toFixed(1)}","${Math.round(stats.effectiveIntegrity)}","${stats.buildTimeSeconds}","${w.techQty || 0}"\n`;
-  });
-
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = "GVK_Weapons_Summary.csv";
-  a.click();
-  showToast("Exported GVK_Weapons_Summary.csv for Google Sheets!", "success");
-});
-
-// GitHub Sync Button
-document.getElementById('btnSyncGithub').addEventListener('click', async () => {
-  showToast("Syncing schema with Ash-LikeSnow/WeaponCore...", "info");
-  try {
-    const res = await fetch("https://raw.githubusercontent.com/Ash-LikeSnow/WeaponCore/master/Data/Scripts/CoreSystems/Definitions/SerializedConfigs/AmmoConstants.cs");
-    if (res.ok) {
-      showToast("Successfully synced with Ash-LikeSnow/WeaponCore master!", "success");
-    } else {
-      showToast("GitHub raw fetch returned status " + res.status, "error");
-    }
-  } catch (e) {
-    showToast("GitHub sync request completed.", "success");
-  }
-});
-
-// Setup Tabs
-function setupTabs() {
-  document.querySelectorAll('[data-tab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
-    });
-  });
-
-  document.querySelectorAll('[data-codetab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-codetab]').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.code-box').forEach(c => c.style.display = 'none');
-      btn.classList.add('active');
-      document.getElementById(btn.getAttribute('data-codetab')).style.display = 'block';
-    });
-  });
-}
-
-// Setup Slider 2-Way Sync
-function setupSliders() {
-  const pairs = [
-    [inputRof, inputRofSlider],
-    [inputReloadTime, inputReloadSlider],
-    [inputRotateRate, inputRotateRateSlider],
-    [inputElevateRate, inputElevateRateSlider]
-  ];
-  pairs.forEach(([num, slider]) => {
-    num.addEventListener('input', () => { slider.value = num.value; recalculate(); });
-    slider.addEventListener('input', () => { num.value = slider.value; recalculate(); });
-  });
-}
-
-// Workbench Toggle Function
-function toggleWorkbench(forceState = null) {
-  const isCurrentlyOpen = tuningDeckPanel.style.display !== 'none';
-  const shouldOpen = forceState !== null ? forceState : !isCurrentlyOpen;
-
-  if (shouldOpen) {
-    tuningDeckPanel.style.display = 'block';
-    studioGrid.classList.add('split-view');
-    btnToggleDeck.innerHTML = '✕ Close Workbench';
-    btnToggleDeck.classList.add('btn-toggle-active');
-    btnBannerToggleDeck.innerHTML = '✕ Close Workbench';
-    recalculate();
+  if (hazards.length === 0) {
+    linterBanner.className = 'linter-banner clean';
+    linterText.textContent = 'Definition syntax healthy. 0 Clang hazards detected. AI suppression active.';
   } else {
-    tuningDeckPanel.style.display = 'none';
-    studioGrid.classList.remove('split-view');
-    btnToggleDeck.innerHTML = '🛠️ Tuning Workbench';
-    btnToggleDeck.classList.remove('btn-toggle-active');
-    btnBannerToggleDeck.innerHTML = '🛠️ Customize Stats';
+    linterBanner.className = 'linter-banner warning';
+    linterText.textContent = `⚠️ Warning: ${hazards.join(' | ')}`;
   }
 }
 
-// Setup Event Listeners
-function setupEventListeners() {
-  // Workbench Toggles
-  btnToggleDeck.addEventListener('click', () => toggleWorkbench());
-  btnBannerToggleDeck.addEventListener('click', () => toggleWorkbench());
-  btnCloseDeck.addEventListener('click', () => toggleWorkbench(false));
+// ==========================================================================
+// MINIMAL WORKING DEF CREATORS
+// ==========================================================================
+function createMinimalWeapon() {
+  const name = prompt("Enter new Weapon SubtypeId (e.g. GVK_FlakTurret):", "GVK_CustomTurret");
+  if (!name) return;
 
-  // Reset to Defaults Button
-  btnResetDefaults.addEventListener('click', () => {
-    if (!activeWeapon) return;
-    const original = weaponsDb.find(w => w.id === activeWeapon.id);
-    if (original) {
-      activeWeapon = JSON.parse(JSON.stringify(original));
-      populateDeckFromWeapon(activeWeapon);
-      recalculate();
-      showToast(`Reset ${activeWeapon.name} to server defaults.`, "info");
-    }
-  });
+  const newGun = {
+    id: name,
+    name: name.replace(/_/g, ' '),
+    subtypeId: name,
+    partName: name.replace(/_/g, ' '),
+    gridSize: "Large",
+    type: "Turret",
+    rateOfFire: 600,
+    barrelsPerShot: 1,
+    reloadTime: 60,
+    magsToLoad: 1,
+    magazineSize: 30,
+    ammoName: "NATO_25x184mm",
+    assignedAmmos: ["NATO_25x184mm"],
+    maxTargetDistance: 1500,
+    minTargetDistance: 0,
+    topTargets: 4,
+    topBlocks: 4,
+    stopTrackingSpeed: 1000,
+    rotateRate: 0.02,
+    elevateRate: 0.02,
+    minAzimuth: -180,
+    maxAzimuth: 180,
+    minElevation: -10,
+    maxElevation: 80,
+    inventorySize: 0.6,
+    idlePower: 0.01,
+    durabilityMod: 0.5,
+    effectiveIntegrity: 80000,
+    pcu: 6,
+    upCost: 6,
+    techComponent: "PrototechMachinery",
+    techCount: 6,
+    isRelic: false,
+    hasCircuitry: false,
+    muzzles: ["muzzle_missile_1"],
+    scope: "scope",
+    components: [
+      { name: "SteelPlate", count: 120 },
+      { name: "Construction", count: 60 },
+      { name: "LargeTube", count: 10 },
+      { name: "Motor", count: 16 },
+      { name: "Computer", count: 12 },
+      { name: "PrototechMachinery", count: 6 }
+    ]
+  };
 
-  weaponSelect.addEventListener('change', e => {
-    selectWeapon(e.target.value);
-  });
+  weaponsDb.push(newGun);
+  populateWeaponDropdowns();
+  selectWeapon(newGun.id);
+  showToast(`Created minimal turret definition: ${name}!`);
+}
 
-  compareSelect.addEventListener('change', e => {
-    const found = weaponsDb.find(w => w.id === e.target.value);
-    benchmarkWeapon = found ? JSON.parse(JSON.stringify(found)) : null;
+function createMinimalAmmo() {
+  const name = prompt("Enter new AmmoRound identifier (e.g. NATO_30mm_AP):", "NATO_CustomRound");
+  if (!name) return;
 
-    const compBenchIcon = document.getElementById('compBenchIcon');
-    const legendBenchItem = document.getElementById('legendBenchItem');
-    const legendBenchName = document.getElementById('legendBenchName');
+  const newAmmo = {
+    name: name,
+    ammoRound: name,
+    ammoMagazine: `${name}_Mag`,
+    terminalName: name.replace(/_/g, ' '),
+    baseDamage: 250,
+    mass: 2.0,
+    health: 0,
+    backKickForce: 50,
+    hardPointUsable: true,
+    npcSafe: false,
+    noGridOrArmorScaling: false,
+    shape: "LineShape",
+    diameter: -1,
+    fragment: { enable: false, ammoRound: "", fragments: 0, degrees: 0 },
+    areaOfDamage: { enable: false, radius: 0, damage: 0, depth: 0 },
+    trajectory: { desiredSpeed: 1200, maxTrajectory: 2000, maxLifeTime: 3600, guidance: "None" },
+    damageScales: { shield: 1.0, lightArmor: -1.0, heavyArmor: -1.0, characters: -1.0 },
+    graphics: { tracer: { enable: true, length: 12, width: 0.12 }, visualProbability: 1.0 },
+    audio: { hitSound: "DOK_CannonHit" }
+  };
 
-    if (benchmarkWeapon) {
-      const benchIconSrc = benchmarkWeapon.icon || `icons/${benchmarkWeapon.id}.png`;
-      if (compBenchIcon) {
-        compBenchIcon.src = benchIconSrc;
-        compBenchIcon.style.display = 'block';
-      }
-      if (legendBenchItem) legendBenchItem.style.display = 'flex';
-      if (legendBenchName) legendBenchName.textContent = benchmarkWeapon.name;
+  ammosDb[name] = newAmmo;
+  populateAmmoDropdowns();
+  selectAmmo(name);
+  showToast(`Created minimal tracer ammo: ${name}!`);
+}
+
+// ==========================================================================
+// CODE GENERATION & EXPORT
+// ==========================================================================
+function generateCSharpWeapon() {
+  if (!activeWeapon) return "// No weapon selected";
+
+  const sub = wSubtypeId.value || activeWeapon.subtypeId;
+  const pName = wPartName.value || activeWeapon.partName;
+  const dur = wDurabilityMod.value || 0.5;
+  const sc = wScope.value || "scope";
+  const muzz = wMuzzles.value.split(',').map(m => `"${m.trim()}"`).join(', ');
+
+  const ammosList = (activeWeapon.assignedAmmos || [activeWeapon.ammoName]).join(',\n                ');
+  const animRef = selectAnimationDef.value ? `Animations = ${selectAnimationDef.value},` : `// Animations = None,`;
+
+  let code = `        WeaponDefinition ${sub} => new WeaponDefinition\n`;
+  code += `        {\n`;
+  code += `            Assignments = new ModelAssignmentsDef\n`;
+  code += `            {\n`;
+  code += `                MountPoints = new[]\n`;
+  code += `                {\n`;
+  code += `                    new MountPointDef\n`;
+  code += `                    {\n`;
+  code += `                        SubtypeId = "${sub}",\n`;
+  code += `                        SpinPartId = "",\n`;
+  code += `                        MuzzlePartId = "MissileTurretBarrels",\n`;
+  code += `                        AzimuthPartId = "MissileTurretBase1",\n`;
+  code += `                        ElevationPartId = "MissileTurretBarrels",\n`;
+  code += `                        DurabilityMod = ${dur}f,\n`;
+  code += `                    },\n`;
+  code += `                },\n`;
+  code += `                Muzzles = new[] {\n`;
+  code += `                    ${muzz}\n`;
+  code += `                },\n`;
+  code += `                Scope = "${sc}",\n`;
+  code += `            },\n`;
+
+  // TargetingDef (Preserve shared helper if not overridden)
+  if (activeWeapon.helpers && activeWeapon.helpers.targeting && !activeWeapon.targetingOverridden) {
+    code += `            Targeting = ${activeWeapon.helpers.targeting},\n`;
+  } else {
+    code += `            Targeting = new TargetingDef\n`;
+    code += `            {\n`;
+    code += `                Threats = new[] { Projectiles, Characters, Grids },\n`;
+    code += `                SubSystems = new[] { Offense, Jumping, Utility, Power, Thrust, Production },\n`;
+    code += `                ClosestFirst = ${wClosestFirst.checked ? 'true' : 'false'},\n`;
+    code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},\n`;
+    code += `                MaxTargetDistance = ${wMaxTargetDistance.value},\n`;
+    code += `                MinTargetDistance = ${wMinTargetDistance.value},\n`;
+    code += `                TopTargets = ${wTopTargets.value},\n`;
+    code += `                TopBlocks = ${wTopBlocks.value},\n`;
+    code += `                StopTrackingSpeed = ${wStopTrackingSpeed.value},\n`;
+    code += `            },\n`;
+  }
+
+  code += `            HardPoint = new HardPointDef\n`;
+  code += `            {\n`;
+  code += `                PartName = "${pName}",\n`;
+  code += `                DeviateShotAngle = ${wDeviateAngle.value}f,\n`;
+  code += `                AimingTolerance = ${wAimingTolerance.value}f,\n`;
+  code += `                AimLeadingPrediction = ${wAimLeading.value},\n`;
+  code += `                DelayCeaseFire = ${wDelayCeaseFire.value},\n`;
+  code += `                HardWare = new HardwareDef\n`;
+  code += `                {\n`;
+  code += `                    RotateRate = ${wRotateRate.value}f,\n`;
+  code += `                    ElevateRate = ${wElevateRate.value}f,\n`;
+  code += `                    MinAzimuth = ${wMinAzimuth.value},\n`;
+  code += `                    MaxAzimuth = ${wMaxAzimuth.value},\n`;
+  code += `                    MinElevation = ${wMinElevation.value},\n`;
+  code += `                    MaxElevation = ${wMaxElevation.value},\n`;
+  code += `                    InventorySize = ${wInventorySize.value}f,\n`;
+  code += `                    IdlePower = ${wIdlePower.value}f,\n`;
+  code += `                    Type = BlockWeapon,\n`;
+  code += `                },\n`;
+  code += `                Loading = new LoadingDef\n`;
+  code += `                {\n`;
+  code += `                    RateOfFire = ${wRateOfFire.value},\n`;
+  code += `                    BarrelsPerShot = ${wBarrelsPerShot.value},\n`;
+  code += `                    ReloadTime = ${wReloadTime.value},\n`;
+  code += `                    MagsToLoad = ${wMagsToLoad.value},\n`;
+  code += `                    HeatPerShot = ${wHeatPerShot.value}f,\n`;
+  code += `                    MaxHeat = ${wMaxHeat.value},\n`;
+  code += `                    HeatSinkRate = ${wHeatSinkRate.value},\n`;
+  code += `                    Cooldown = ${wCooldown.value}f,\n`;
+  code += `                },\n`;
+  code += `                Audio = new HardPointAudioDef\n`;
+  code += `                {\n`;
+  code += `                    FiringSound = "${wSoundFiring.value}",\n`;
+  code += `                    ReloadSound = "${wSoundReload.value}",\n`;
+  code += `                    HardPointRotationSound = "${wSoundRotate.value}",\n`;
+  code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",\n`;
+  code += `                },\n`;
+  code += `            },\n`;
+  code += `            Ammos = new[]\n`;
+  code += `            {\n`;
+  code += `                ${ammosList},\n`;
+  code += `            },\n`;
+  code += `            ${animRef}\n`;
+  code += `        };\n`;
+
+  return code;
+}
+
+function generateCSharpAmmo() {
+  if (!activeAmmo) return "// No ammo selected";
+
+  const aRound = aAmmoRound.value || activeAmmo.name;
+  const aMag = aAmmoMagazine.value || `${aRound}_Mag`;
+  const aTerm = aTerminalName.value || aRound;
+
+  let code = `        AmmoDef ${aRound} => new AmmoDef\n`;
+  code += `        {\n`;
+  code += `            AmmoMagazine = "${aMag}",\n`;
+  code += `            AmmoRound = "${aRound}",\n`;
+  code += `            TerminalName = "${aTerm}",\n`;
+  code += `            BaseDamage = ${aBaseDamage.value}f,\n`;
+  code += `            Mass = ${aMass.value}f,\n`;
+  code += `            Health = ${aHealth.value}f,\n`;
+  code += `            BackKickForce = ${aBackKick.value}f,\n`;
+  code += `            HardPointUsable = ${aHardPointUsable.checked ? 'true' : 'false'},\n`;
+  code += `            NpcSafe = ${aNpcSafe.checked ? 'true' : 'false'},\n`;
+  code += `            NoGridOrArmorScaling = ${aNoGridOrArmorScaling.checked ? 'true' : 'false'},\n`;
+
+  if (fEnable.checked && fChildAmmoRound.value) {
+    code += `            Fragment = new FragmentDef\n`;
+    code += `            {\n`;
+    code += `                AmmoRound = "${fChildAmmoRound.value}",\n`;
+    code += `                Fragments = ${fFragments.value},\n`;
+    code += `                Degrees = ${fDegrees.value}f,\n`;
+    code += `                Reverse = ${fReverse.checked ? 'true' : 'false'},\n`;
+    code += `                DropVelocity = ${fDropVelocity.checked ? 'true' : 'false'},\n`;
+    code += `            },\n`;
+  }
+
+  if (aodEnable.checked && parseFloat(aodRadius.value) > 0) {
+    code += `            AreaOfDamage = new AreaOfDamageDef\n`;
+    code += `            {\n`;
+    code += `                EndOfLife = new EndOfLifeDef\n`;
+    code += `                {\n`;
+    code += `                    Enable = true,\n`;
+    code += `                    Radius = ${aodRadius.value}f,\n`;
+    code += `                    Damage = ${aodDamage.value}f,\n`;
+    code += `                    Depth = ${aodDepth.value}f,\n`;
+    code += `                },\n`;
+    code += `            },\n`;
+  }
+
+  code += `            Trajectory = new TrajectoryDef\n`;
+  code += `            {\n`;
+  code += `                DesiredSpeed = ${tDesiredSpeed.value}f,\n`;
+  code += `                MaxTrajectory = ${tMaxTrajectory.value}f,\n`;
+  code += `                MaxLifeTime = ${tMaxLifeTime.value},\n`;
+  code += `                Guidance = ${tGuidance.value},\n`;
+
+  // Lossless preservation of Approaches if present
+  if (activeAmmo.approachesRef) {
+    if (activeAmmo.approachesRef !== 'Inline') {
+      code += `                Approaches = ${activeAmmo.approachesRef},\n`;
     } else {
-      if (compBenchIcon) compBenchIcon.style.display = 'none';
-      if (legendBenchItem) legendBenchItem.style.display = 'none';
+      code += `                // Approaches preserved in C# source\n`;
     }
-    recalculate();
-  });
+  }
 
-  const chkShowNpcWeapons = document.getElementById('chkShowNpcWeapons');
-  if (chkShowNpcWeapons) {
-    chkShowNpcWeapons.addEventListener('change', e => {
-      showNpcWeapons = e.target.checked;
-      const currentId = activeWeapon ? activeWeapon.id : null;
-      populateWeaponDropdowns();
-      if (currentId && weaponsDb.some(w => w.id === currentId && (showNpcWeapons || (!w.isNpc && !w.id.endsWith('_NPC'))))) {
-        weaponSelect.value = currentId;
-      } else {
-        const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC'));
-        if (first) selectWeapon(first.id);
-      }
-      showToast(showNpcWeapons ? "Hostile / Relic NPC weapons unlocked in dropdowns." : "NPC weapons hidden from view.", "info");
+  code += `            },\n`;
+  code += `            DamageScales = new DamageScaleDef\n`;
+  code += `            {\n`;
+  code += `                Shield = new ShieldDef { Modifier = ${dsShield.value}f },\n`;
+  code += `                DamageType = new DamageTypes { Light = ${dsLightArmor.value}f, Heavy = ${dsHeavyArmor.value}f },\n`;
+  code += `            },\n`;
+  code += `            Graphic = new GraphicDef\n`;
+  code += `            {\n`;
+  code += `                VisualProbability = ${gVisualProb.value}f,\n`;
+  code += `                Lines = new LineDef\n`;
+  code += `                {\n`;
+  code += `                    Tracer = new TracerBaseDef\n`;
+  code += `                    {\n`;
+  code += `                        Enable = ${gTracerEnable.checked ? 'true' : 'false'},\n`;
+  code += `                        Length = ${gTracerLength.value}f,\n`;
+  code += `                        Width = ${gTracerWidth.value}f,\n`;
+  code += `                    },\n`;
+  code += `                },\n`;
+  code += `            },\n`;
+  code += `        };\n`;
+
+  return code;
+}
+
+function generateSbcCubeBlocks() {
+  if (!activeWeapon) return "<!-- No weapon selected -->";
+
+  const sub = sbcDisplayName.value ? activeWeapon.subtypeId : "GVK_CustomTurret";
+  const name = sbcDisplayName.value || activeWeapon.name;
+  const grid = sbcCubeSize.value || "Large";
+  const bTime = sbcBuildTime.value || 78;
+  const upCost = sbcUpCost.value || 6;
+  const techComp = sbcTechComp.value || "PrototechMachinery";
+  const techQty = sbcTechQty.value || 6;
+
+  let xml = `  <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">\n`;
+  xml += `    <Id>\n`;
+  xml += `      <TypeId>LargeGatlingTurret</TypeId>\n`;
+  xml += `      <SubtypeId>${sub}</SubtypeId>\n`;
+  xml += `    </Id>\n`;
+  xml += `    <DisplayName>${name}</DisplayName>\n`;
+  xml += `    <Icon>Textures\\GUI\\Icons\\Cubes\\${sub}.dds</Icon>\n`;
+  xml += `    <Description>GVK WeaponCore Specialized Armament.</Description>\n`;
+  xml += `    <CubeSize>${grid}</CubeSize>\n`;
+  xml += `    <BlockTopology>TriangleMesh</BlockTopology>\n`;
+  xml += `    <Size x="3" y="3" z="3" />\n`;
+  xml += `    <ModelOffset x="0" y="0" z="0" />\n`;
+  xml += `    <Model>Models\\Cubes\\Large\\${sub}.mwm</Model>\n`;
+  xml += `    <!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->\n`;
+  xml += `    <AiEnabled>false</AiEnabled>\n`;
+  xml += `    <Components>\n`;
+  xml += `      <Component Subtype="SteelPlate" Count="150" />\n`;
+  xml += `      <Component Subtype="Construction" Count="80" />\n`;
+  xml += `      <Component Subtype="LargeTube" Count="16" />\n`;
+  xml += `      <Component Subtype="Motor" Count="20" />\n`;
+  xml += `      <Component Subtype="Computer" Count="24" />\n`;
+  xml += `      <Component Subtype="${techComp}" Count="${techQty}" />\n`;
+  if (sbcHasCircuitry.checked) {
+    xml += `      <!-- GVK Range Gate (>2km): 1 PrototechCircuitry -->\n`;
+    xml += `      <Component Subtype="PrototechCircuitry" Count="1" />\n`;
+  }
+  xml += `      <Component Subtype="SteelPlate" Count="50" />\n`;
+  xml += `    </Components>\n`;
+  xml += `    <CriticalComponent Subtype="Computer" Index="0" />\n`;
+  xml += `    <BuildTimeSeconds>${bTime}</BuildTimeSeconds>\n`;
+  xml += `    <PCU>${upCost}</PCU>\n`;
+  xml += `  </Definition>`;
+
+  return xml;
+}
+
+// ==========================================================================
+// MODAL EVENTS & FILE SAVING
+// ==========================================================================
+function setupModalEvents() {
+  if (btnOpenCodeWorkbench) {
+    btnOpenCodeWorkbench.addEventListener('click', openCodeModal);
+  }
+  if (btnHudExport) {
+    btnHudExport.addEventListener('click', openCodeModal);
+  }
+  if (btnCloseModal) {
+    btnCloseModal.addEventListener('click', () => {
+      codeModal.style.display = 'none';
     });
   }
 
-  const inputs = [
-    inputBarrelsPerShot, inputMagazineSize, inputMagsToLoad, inputShotsInBurst,
-    inputDelayAfterBurst, inputDelayUntilFire, inputBaseDamage, inputDesiredSpeed,
-    inputMaxTrajectory, inputDetDamage, inputDetRadius, inputFragments,
-    inputFragmentDegrees, inputShrapnelBaseDmg, inputShrapnelDetDmg, inputChanceToHit,
-    inputHeatPerShot, inputMaxHeat, inputCooldown, inputHeatSinkRate, inputEnergyCost,
-    inputIdlePower, inputMinAzimuth, inputMaxAzimuth, inputMinElevation,
-    inputMaxElevation, inputDeviateShotAngle, inputMaxTargetDistance,
-    inputTargetIntegrity, inputDurabilityMod, inputTechQty, selectGridSize
+  // Code tab switching
+  const codeTabs = document.querySelectorAll('[data-codetab]');
+  codeTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      codeTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const targetId = tab.getAttribute('data-codetab');
+      ['code-weapon-cs', 'code-ammo-cs', 'code-cubeblocks-sbc', 'code-blueprints-sbc'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = (id === targetId) ? 'block' : 'none';
+      });
+    });
+  });
+
+  if (btnCopyCode) {
+    btnCopyCode.addEventListener('click', () => {
+      const activeCodeBox = document.querySelector('.code-box:not([style*="display: none"])');
+      if (activeCodeBox) {
+        navigator.clipboard.writeText(activeCodeBox.textContent).then(() => {
+          showToast("📋 Code definition copied to clipboard!");
+        });
+      }
+    });
+  }
+
+  // Balance Matrix Modal
+  if (btnBalanceMatrix) {
+    btnBalanceMatrix.addEventListener('click', () => {
+      balanceMatrixModal.style.display = 'flex';
+    });
+  }
+  if (btnCloseMatrix) {
+    btnCloseMatrix.addEventListener('click', () => {
+      balanceMatrixModal.style.display = 'none';
+    });
+  }
+  if (btnApplyMatrix) {
+    btnApplyMatrix.addEventListener('click', () => {
+      applyBalanceMatrixInputs();
+      balanceMatrixModal.style.display = 'none';
+      showToast("⚙️ Server Balance Matrix updated & applied!");
+    });
+  }
+  if (btnResetMatrix) {
+    btnResetMatrix.addEventListener('click', () => {
+      balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
+      syncBalanceMatrixInputs();
+      localStorage.removeItem('GVK_BALANCE_MATRIX');
+      updateCombatTelemetry();
+      updateAmmoLogistics();
+      showToast("↺ Reset Balance Matrix to official GVK defaults.");
+    });
+  }
+
+  // Link Mod Directory
+  if (btnLinkLocal) {
+    btnLinkLocal.addEventListener('click', async () => {
+      try {
+        if ('showDirectoryPicker' in window) {
+          modDirectoryHandle = await window.showDirectoryPicker();
+          saveStatusHint.textContent = `Connected to local mod directory: ${modDirectoryHandle.name}`;
+          btnSaveToDisk.disabled = false;
+          showToast(`📁 Connected to local folder: ${modDirectoryHandle.name}!`);
+        } else {
+          showToast("⚠️ Directory picker not supported by this browser.");
+        }
+      } catch (err) {
+        console.warn("Folder picker cancelled or failed:", err);
+      }
+    });
+  }
+}
+
+function openCodeModal() {
+  document.getElementById('code-weapon-cs').textContent = generateCSharpWeapon();
+  document.getElementById('code-ammo-cs').textContent = generateCSharpAmmo();
+  document.getElementById('code-cubeblocks-sbc').textContent = generateSbcCubeBlocks();
+  document.getElementById('code-blueprints-sbc').textContent = codeBlueprintXml.textContent;
+  codeModal.style.display = 'flex';
+}
+
+function syncBalanceMatrixInputs() {
+  document.getElementById('matBuildTimeDividend').value = balanceMatrix.buildTimeDividend;
+  document.getElementById('matScPer1U').value = balanceMatrix.scPer1U;
+  document.getElementById('matScPerDamage').value = balanceMatrix.scPerDamage;
+  document.getElementById('matMinIntegrity').value = balanceMatrix.minIntegrity;
+  document.getElementById('matMidIntegrity').value = balanceMatrix.midIntegrity;
+  document.getElementById('matMaxIntegrity').value = balanceMatrix.maxIntegrity;
+  document.getElementById('matMinSize').value = balanceMatrix.minSize;
+  document.getElementById('matMidSize').value = balanceMatrix.midSize;
+  document.getElementById('matMaxSize').value = balanceMatrix.maxSize;
+  document.getElementById('matAssemblerEff').value = balanceMatrix.assemblerEff;
+  document.getElementById('matScrapYield').value = balanceMatrix.scrapYield;
+}
+
+function applyBalanceMatrixInputs() {
+  balanceMatrix.buildTimeDividend = parseFloat(document.getElementById('matBuildTimeDividend').value) || 750;
+  balanceMatrix.scPer1U = parseFloat(document.getElementById('matScPer1U').value) || 207284;
+  balanceMatrix.scPerDamage = parseFloat(document.getElementById('matScPerDamage').value) || 3.0;
+  balanceMatrix.minIntegrity = parseFloat(document.getElementById('matMinIntegrity').value) || 2500;
+  balanceMatrix.midIntegrity = parseFloat(document.getElementById('matMidIntegrity').value) || 25000;
+  balanceMatrix.maxIntegrity = parseFloat(document.getElementById('matMaxIntegrity').value) || 400000;
+  balanceMatrix.minSize = parseFloat(document.getElementById('matMinSize').value) || 0.032;
+  balanceMatrix.midSize = parseFloat(document.getElementById('matMidSize').value) || 1.0;
+  balanceMatrix.maxSize = parseFloat(document.getElementById('matMaxSize').value) || 125;
+  balanceMatrix.assemblerEff = parseFloat(document.getElementById('matAssemblerEff').value) || 3.0;
+  balanceMatrix.scrapYield = parseFloat(document.getElementById('matScrapYield').value) || 0.25;
+
+  localStorage.setItem('GVK_BALANCE_MATRIX', JSON.stringify(balanceMatrix));
+  updateCombatTelemetry();
+  updateAmmoLogistics();
+}
+
+function setupWorkbenchInputEvents() {
+  // Live recalculation on any input change
+  const liveInputs = [
+    wRateOfFire, wBarrelsPerShot, wReloadTime, wMagsToLoad, wHeatPerShot, wMaxHeat, wHeatSinkRate, wCooldown,
+    wRotateRate, wElevateRate, aBaseDamage, aMass, aEnergyCost, aodEnable, aodRadius, aodDamage,
+    fEnable, fFragments, fDegrees, fChildAmmoRound, tDesiredSpeed, tMaxTrajectory,
+    sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcTechComp, sbcTechQty, sbcIsRelic, sbcHasCircuitry
   ];
 
-  inputs.forEach(inp => {
-    inp.addEventListener('input', recalculate);
-    inp.addEventListener('change', recalculate);
-  });
-
-  // Code Modal
-  btnOpenCode.addEventListener('click', () => {
-    codeModal.style.display = 'flex';
-    recalculate();
-  });
-
-  btnCloseModal.addEventListener('click', () => {
-    codeModal.style.display = 'none';
-  });
-
-  // New Weapon Creator
-  document.getElementById('btnNewWeapon').addEventListener('click', () => {
-    const name = prompt("Enter new custom weapon name:", "GVK Custom Railgun");
-    if (!name) return;
-    const newId = "GVK_" + name.replace(/[^a-zA-Z0-9_]/g, '_');
-    const newW = {
-      id: newId,
-      name: name,
-      grid: "Large",
-      type: "Turret",
-      rateOfFire: 120,
-      barrelsPerShot: 1,
-      magazineSize: 10,
-      magsToLoad: 1,
-      reloadTime: 120,
-      baseDamage: 5000,
-      desiredSpeed: 1000,
-      maxTrajectory: 2000,
-      heatPerShot: 0,
-      maxHeat: 0,
-      heatSinkRate: 0,
-      cooldown: 0.5,
-      rotateRate: 0.015,
-      elevateRate: 0.015,
-      effectiveIntegrity: 100000,
-      durabilityMod: 0.5,
-      techQty: 4,
-      pcu: 10000,
-      components: []
-    };
-    weaponsDb.unshift(newW);
-    populateWeaponDropdowns();
-    selectWeapon(newId);
-    toggleWorkbench(true);
-    showToast(`Created custom weapon profile: ${name}`, "success");
-  });
-
-  // Responsive redraw on window resize
-  window.addEventListener('resize', () => {
-    if (cachedActiveStats) {
-      drawRadarChart(cachedActiveStats, cachedBenchStats);
+  liveInputs.forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => {
+        if (input === fChildAmmoRound || input === fEnable || input === fFragments) {
+          updateFragChainVisual();
+        }
+        updateCombatTelemetry();
+        updateTtkSimulator();
+        updateInitialDDriftMeter();
+        updateAmmoLogistics();
+        updateComparisonRadar();
+        runWeaponCoreLinter();
+      });
     }
   });
+
+  // Targeting fields convert shared preset to custom override
+  const targetingInputs = [wMaxTargetDistance, wMinTargetDistance, wTopTargets, wTopBlocks, wStopTrackingSpeed, wClosestFirst, wIgnoreDumb];
+  targetingInputs.forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => {
+        if (activeWeapon && activeWeapon.helpers && activeWeapon.helpers.targeting) {
+          activeWeapon.targetingOverridden = true;
+          badgeTargetingHelper.textContent = "Custom Override";
+          badgeTargetingHelper.style.background = "rgba(245, 158, 11, 0.2)";
+          badgeTargetingHelper.style.color = "var(--amber-primary)";
+          btnRevertTargeting.style.display = "inline-block";
+        }
+      });
+    }
+  });
+
+  if (btnRevertTargeting) {
+    btnRevertTargeting.addEventListener('click', () => {
+      if (activeWeapon && activeWeapon.helpers && activeWeapon.helpers.targeting) {
+        activeWeapon.targetingOverridden = false;
+        badgeTargetingHelper.textContent = `Shared: ${activeWeapon.helpers.targeting}`;
+        badgeTargetingHelper.style.background = "rgba(56, 189, 248, 0.15)";
+        badgeTargetingHelper.style.color = "var(--cyan-primary)";
+        btnRevertTargeting.style.display = "none";
+        showToast(`↺ Reverted targeting to shared ${activeWeapon.helpers.targeting}`);
+      }
+    });
+  }
+
+  if (btnNewMinimalWeapon) btnNewMinimalWeapon.addEventListener('click', createMinimalWeapon);
+  if (btnNewMinimalAmmo) btnNewMinimalAmmo.addEventListener('click', createMinimalAmmo);
+  if (btnNewFragAmmo) btnNewFragAmmo.addEventListener('click', createMinimalAmmo);
+
+  if (btnResetDefaults) {
+    btnResetDefaults.addEventListener('click', () => {
+      if (!activeWeapon) return;
+      const orig = window.GVK_DEFAULT_WEAPONS.find(w => w.id === activeWeapon.id);
+      if (orig) {
+        const idx = weaponsDb.findIndex(w => w.id === activeWeapon.id);
+        weaponsDb[idx] = JSON.parse(JSON.stringify(orig));
+        selectWeapon(activeWeapon.id);
+        showToast(`↺ Reset ${activeWeapon.name} to server defaults.`);
+      }
+    });
+  }
 }
 
-// Toast Feedback System
-function showToast(msg, type = "info") {
-  const toast = document.getElementById('toast');
-  const toastMsg = document.getElementById('toastMsg');
-  toastMsg.textContent = msg;
-  toast.className = `toast show ${type}`;
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 3500);
-}
-
+// Kickoff
+window.addEventListener('DOMContentLoaded', initStudio);

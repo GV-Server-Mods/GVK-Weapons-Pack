@@ -1,0 +1,20 @@
+window.GVK_ANIMATION_DEFS = [
+  "AryxCycloneAnims",
+  "AryxHydraAnims",
+  "KhopeshTurret_Recoil",
+  "GVK_AvengerGatlingTurretAnimations",
+  "AryxHurricaneAnims",
+  "Harbinger_Emissive",
+  "LargeRailgunAnimation",
+  "MACTurretAnimation",
+  "AryxRailgunAnims",
+  "SmallRailgunAnimation",
+  "Lasers_Plasma_Animations_Loki",
+  "missileBattery01anim",
+  "Missiles_LightMissile_Animation",
+  "GVK_GriffinMissileLauncher_Animation",
+  "AryxMissileBatteryAnims",
+  "Crusader_Fire",
+  "Crusader_Fire_Small",
+  "AryxSmallHangarAnimations"
+];

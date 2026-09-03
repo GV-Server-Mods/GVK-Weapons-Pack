@@ -90,7 +90,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "GVK_AvengerGatlingTurret",
     "ammoName": "NATO_25x184mm_Dual",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
+    "assignedAmmos": [
+      "NATO_25x184mm_Dual",
+      "NATO_25x184mm_Dual_Fragment"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Vulcan"
+    },
+    "upCost": 6,
+    "techComponent": "PrototechMachinery",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Gatling_Turret",
@@ -182,7 +203,26 @@ window.GVK_DEFAULT_WEAPONS = [
     ],
     "icon": "icons/L__Gatling_Turret.png",
     "subtypeId": "SentinelTurret",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting",
+      "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": null
+    },
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "upCost": 3,
+    "techComponent": "PrototechMachinery",
+    "techCount": 3,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Turret",
@@ -275,7 +315,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Gatling_Turret.png",
     "subtypeId": "SmallGatlingTurret",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21.0
+    "buildTimeSeconds": 21.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Gun",
@@ -368,7 +427,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Gatling_Gun.png",
     "subtypeId": "SmallGatlingGun",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 1,
+    "techComponent": "PrototechMachinery",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Gimbal",
@@ -461,7 +539,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Gatling_Gimbal.png",
     "subtypeId": "SmallGatlingGun_Gimbal",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
@@ -554,7 +651,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Chaingun_Thrasher_Turret.png",
     "subtypeId": "ARYXHeavyFlakTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "AutocannonClip"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechMachinery",
+    "techCount": 12,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
@@ -646,7 +752,27 @@ window.GVK_DEFAULT_WEAPONS = [
     ],
     "icon": "icons/L__Chaingun_Khopesh_Turret.png",
     "subtypeId": "KhopeshTurret",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "KhopeshTurret_Recoil",
+    "helpers": {
+      "targeting": "Ballistics_Chaingun_Targeting_Large",
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T2",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechMachinery",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Turret",
@@ -739,7 +865,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Chaingun_Turret.png",
     "subtypeId": "LargeAutoCannonTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": null,
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 4,
+    "techComponent": "PrototechMachinery",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Chaingun_Turret",
@@ -832,7 +979,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Chaingun_Turret.png",
     "subtypeId": "AutoCannonTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 9.0
+    "buildTimeSeconds": 9.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 4,
+    "techComponent": "PrototechMachinery",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Chaingun_Gun",
@@ -925,7 +1093,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Chaingun_Gun.png",
     "subtypeId": "SmallBlockAutocannon",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Interior_Turret",
@@ -1018,7 +1207,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Interior_Turret.png",
     "subtypeId": "LargeInteriorTurret",
     "ammoName": "Ballistics_Interior",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Ballistics_Interior"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 1,
+    "techComponent": "PrototechMachinery",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Flak_Turret",
@@ -1115,7 +1323,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Flak_Turret.png",
     "subtypeId": "LargeBlockMediumCalibreTurret",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 102.0
+    "buildTimeSeconds": 102.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechFrame",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Flak_Turret",
@@ -1212,7 +1429,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Flak_Turret.png",
     "subtypeId": "SmallBlockMediumCalibreTurret",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 3,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Flak_Gun",
@@ -1309,7 +1535,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Flak_Gun.png",
     "subtypeId": "SmallBlockMediumCalibreGun",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechFrame",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Cannon_Turret",
@@ -1410,7 +1645,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Cannon_Turret.png",
     "subtypeId": "LargeCalibreTurret",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechFrame",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Cannon_Gun",
@@ -1507,7 +1751,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Cannon_Gun.png",
     "subtypeId": "LargeBlockLargeCalibreGun",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 45.0
+    "buildTimeSeconds": 45.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 4,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Cannon_Turret",
@@ -1604,7 +1857,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Cannon_Turret.png",
     "subtypeId": "OKI122mmVT",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 4,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "S__Cannon_Gun",
@@ -1701,7 +1963,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Cannon_Gun.png",
     "subtypeId": "OKI122mmSGfixed",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 19.0
+    "buildTimeSeconds": 19.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechFrame",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -1802,7 +2073,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
     "subtypeId": "ARYXHurricaneCannon",
     "ammoName": "Ballistics_HeavyCannon",
-    "buildTimeSeconds": 332.0
+    "buildTimeSeconds": 332.0,
+    "assignedAmmos": [
+      "Ballistics_HeavyCannon"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechFrame",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
@@ -1903,7 +2183,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
     "ammoName": "Ballistics_HeavyCannon_Odin",
     "buildTimeSeconds": 60.0,
-    "subtypeId": "odin"
+    "subtypeId": "odin",
+    "assignedAmmos": [
+      "Ballistics_HeavyCannon_Odin"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 16,
+    "techComponent": "PrototechFrame",
+    "techCount": 14,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": true
   },
   {
     "id": "L__Railgun_Turret",
@@ -2004,7 +2303,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Railgun_Turret.png",
     "subtypeId": "ARYXRailgunTurret",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 150.0
+    "buildTimeSeconds": 150.0,
+    "assignedAnimation": "AryxRailgunAnims",
+    "assignedAmmos": [
+      "SmallRailgunAmmo"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 10,
+    "techComponent": "PrototechFrame",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Railgun_Gun",
@@ -2101,7 +2420,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Railgun_Gun.png",
     "subtypeId": "ARYXRailgun",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 49.0
+    "buildTimeSeconds": 49.0,
+    "assignedAnimation": "AryxRailgunAnims",
+    "assignedAmmos": [
+      "SmallRailgunAmmo"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 8,
+    "techComponent": "PrototechFrame",
+    "techCount": 8,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Railgun_Gun",
@@ -2190,7 +2529,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Railgun_Gun.png",
     "subtypeId": "SmallRailgun",
     "ammoName": "SmallRailgunAmmo_Ares",
-    "buildTimeSeconds": 30.0
+    "buildTimeSeconds": 30.0,
+    "assignedAmmos": [
+      "SmallRailgunAmmo_Ares"
+    ],
+    "upCost": 0,
+    "techComponent": "PrototechMachinery",
+    "techCount": 0,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__MAC_Gun",
@@ -2279,7 +2627,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__MAC_Gun.png",
     "subtypeId": "LargeRailgun",
     "ammoName": "LargeRailgunSabot",
-    "buildTimeSeconds": 100.0
+    "buildTimeSeconds": 100.0,
+    "assignedAmmos": [
+      "LargeRailgunSabot"
+    ],
+    "upCost": 1,
+    "techComponent": "PrototechMachinery",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__Rocket_Turret",
@@ -2372,7 +2729,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Rocket_Turret.png",
     "subtypeId": "ARYXHydraTurret",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "AryxHydraAnims",
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Rocket_Targeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechPanel",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Turret",
@@ -2465,7 +2842,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Rocket_Turret.png",
     "subtypeId": "SmallMissileTurret",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21.0
+    "buildTimeSeconds": 21.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Rocket_Targeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Rocket_Launcher",
@@ -2558,7 +2954,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Rocket_Launcher.png",
     "subtypeId": "LargeMissileLauncher",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 3,
+    "techComponent": "PrototechPanel",
+    "techCount": 3,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Launcher",
@@ -2651,7 +3066,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Rocket_Launcher.png",
     "subtypeId": "SmallMissileLauncher",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 1,
+    "techComponent": "PrototechPanel",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
@@ -2748,7 +3182,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Rocket_Launcher_Reloadable.png",
     "subtypeId": "Missiles_Rockets_SGReloadableLauncher",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": "Missiles_Rocket_Hardpoint_HardWare_Small",
+      "loading": "Missiles_Rocket_Hardpoint_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Missile_Turret",
@@ -2849,7 +3302,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Missile_Turret.png",
     "subtypeId": "GVK_GriffinMissileTurret",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAnimation": "Missiles_LightMissile_Animation",
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Large",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 9,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Missile_Launcher",
@@ -2950,7 +3423,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Missile_Launcher.png",
     "subtypeId": "GVK_GriffinMissileLauncher",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Large",
+      "hardware": "Missiles_Missile_Hardpoint_HardWare_Large",
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 250,
+    "techComponent": "PrototechPanel",
+    "techCount": 6,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Missile_Launcher",
@@ -3047,7 +3540,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Missile_Launcher.png",
     "subtypeId": "SmallRocketLauncherReload",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Small",
+      "hardware": "Missiles_Missile_Hardpoint_HardWare_Small",
+      "loading": "Missiles_Missile_Hardpoint_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Tuukka_Missile_Turret",
@@ -3148,7 +3660,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Tuukka_Missile_Turret.png",
     "subtypeId": "missileBattery01",
     "ammoName": "Missiles_HeavyMissile",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "Missiles_HeavyMissile"
+    ],
+    "upCost": 10,
+    "techComponent": "PrototechPanel",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Torpedo_Launcher",
@@ -3249,7 +3770,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Torpedo_Launcher.png",
     "subtypeId": "Missile_Torpedo_Large",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 49.0
+    "buildTimeSeconds": 49.0,
+    "assignedAmmos": [
+      "Missiles_Torpedo"
+    ],
+    "upCost": 10,
+    "techComponent": "PrototechPanel",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "S__Torpedo_Launcher",
@@ -3350,7 +3880,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Torpedo_Launcher.png",
     "subtypeId": "Missile_Torpedo_Small",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 34.0
+    "buildTimeSeconds": 34.0,
+    "assignedAmmos": [
+      "Missiles_Torpedo"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__SRBM_Turret",
@@ -3451,7 +3990,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__SRBM_Turret.png",
     "subtypeId": "ARYXMissileBattery",
     "ammoName": "Missiles_Siege",
-    "buildTimeSeconds": 533.0
+    "buildTimeSeconds": 533.0,
+    "assignedAmmos": [
+      "Missiles_Siege"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechPanel",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
@@ -3548,7 +4096,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
     "subtypeId": "ARYXSpartanTurret",
     "ammoName": "Lasers_Laser_Dual",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Dual"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Large",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Large",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 12,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 12,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__Heavy_Laser_Turret",
@@ -3645,7 +4212,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Heavy_Laser_Turret.png",
     "subtypeId": "MA_T2PDX",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 62.0
+    "buildTimeSeconds": 62.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Large"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
@@ -3742,7 +4318,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Heavy_Laser_Gimbal.png",
     "subtypeId": "MA_Fixed_T2",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Large"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Large",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Large",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Large",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Light_Laser_Turret",
@@ -3839,7 +4434,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Light_Laser_Turret.png",
     "subtypeId": "ReceptorTurret",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Small",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Light_Laser_Turret",
@@ -3936,7 +4550,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Light_Laser_Turret.png",
     "subtypeId": "MA_PDX",
     "ammoName": "Lasers_Laser_Light_LG",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_LG"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Small",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Light_Laser_Gun",
@@ -4033,7 +4666,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Light_Laser_Gun.png",
     "subtypeId": "ReceptorCoilGun",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Loki_Plasma_Turret",
@@ -4134,7 +4786,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Loki_Plasma_Turret.png",
     "subtypeId": "lokiCannon1",
     "ammoName": "Lasers_Plasma",
-    "buildTimeSeconds": 332.0
+    "buildTimeSeconds": 332.0,
+    "assignedAnimation": "Lasers_Plasma_Animations_Loki",
+    "assignedAmmos": [
+      "Lasers_Plasma"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 12,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": true
   },
   {
     "id": "L__PD_Laser",
@@ -4231,7 +4903,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__PD_Laser.png",
     "subtypeId": "MA_PDT",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_AMS"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__PD_Laser",
@@ -4328,7 +5019,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__PD_Laser.png",
     "subtypeId": "MA_PDT_sm",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 9.0
+    "buildTimeSeconds": 9.0,
+    "assignedAmmos": [
+      "Lasers_AMS"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 3,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Warhead",
@@ -4417,7 +5127,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Warhead.png",
     "subtypeId": "LargeWarhead",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
-    "buildTimeSeconds": 30.0
+    "buildTimeSeconds": 30.0,
+    "assignedAmmos": [
+      "Other_Warheads_RegularWarhead_LG_Ammo"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Warhead",
@@ -4506,7 +5225,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Warhead.png",
     "subtypeId": "SmallWarhead",
     "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
-    "buildTimeSeconds": 10.0
+    "buildTimeSeconds": 10.0,
+    "assignedAmmos": [
+      "Other_Warheads_RegularWarhead_SG_Ammo"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Drone_Bay",
@@ -4607,7 +5335,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Drone_Bay.png",
     "subtypeId": "ARYX_Small_Sidekick_Hangar",
     "ammoName": "Others_Drone_Offense_Advanced",
-    "buildTimeSeconds": 66.0
+    "buildTimeSeconds": 66.0,
+    "assignedAmmos": [
+      "Others_Drone_Offense_Advanced"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
@@ -4701,7 +5438,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "GVK_AvengerGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm_Dual",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
+    "assignedAmmos": [
+      "NATO_25x184mm_Dual",
+      "NATO_25x184mm_Dual_Fragment"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Vulcan"
+    },
+    "upCost": 6,
+    "techComponent": "PrototechMachinery",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Gatling_Turret_NPC",
@@ -4794,7 +5552,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Gatling_Turret_NPC.png",
     "isNpc": true,
     "subtypeId": "SentinelTurret_NPC",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting",
+      "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": null
+    },
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "upCost": 3,
+    "techComponent": "PrototechMachinery",
+    "techCount": 3,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Turret_NPC",
@@ -4888,7 +5665,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21.0
+    "buildTimeSeconds": 21.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Gun_NPC",
@@ -4982,7 +5778,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallGatlingGun_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 1,
+    "techComponent": "PrototechMachinery",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
@@ -5076,7 +5891,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallGatlingGun_Gimbal_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "helpers": {
+      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "hardware": null,
+      "loading": "Ballistics_Gatlings_Hardpoint_Loading",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Gatlings_Hardpoint_Audio",
+      "other": "Ballistics_Gatlings_Hardpoint_Other",
+      "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
@@ -5170,7 +6004,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXHeavyFlakTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "AutocannonClip"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechMachinery",
+    "techCount": 12,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
@@ -5263,7 +6106,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png",
     "isNpc": true,
     "subtypeId": "KhopeshTurret_NPC",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "KhopeshTurret_Recoil",
+    "helpers": {
+      "targeting": "Ballistics_Chaingun_Targeting_Large",
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T2",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "assignedAmmos": [
+      "NATO_25x184mm"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechMachinery",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Chaingun_Turret_NPC",
@@ -5357,7 +6220,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeAutoCannonTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": null,
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 4,
+    "techComponent": "PrototechMachinery",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Chaingun_Turret_NPC",
@@ -5451,7 +6335,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "AutoCannonTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 27.0
+    "buildTimeSeconds": 27.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 4,
+    "techComponent": "PrototechMachinery",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Chaingun_Gun_NPC",
@@ -5545,7 +6450,28 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallBlockAutocannon_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "AutocannonClip",
+      "shrapnel",
+      "and pattern ammos."
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": "Ballistics_Chaingun_Hardpoint_Loading_T1",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Ballistics_Chaingun_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
+    },
+    "upCost": 2,
+    "techComponent": "PrototechMachinery",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Interior_Turret_NPC",
@@ -5639,7 +6565,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeInteriorTurret_NPC",
     "ammoName": "Ballistics_Interior",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Ballistics_Interior"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 1,
+    "techComponent": "PrototechMachinery",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Flak_Turret_NPC",
@@ -5737,7 +6682,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeBlockMediumCalibreTurret_NPC",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 102.0
+    "buildTimeSeconds": 102.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechFrame",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Flak_Turret_NPC",
@@ -5835,7 +6789,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallBlockMediumCalibreTurret_NPC",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 3,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Flak_Gun_NPC",
@@ -5933,7 +6896,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallBlockMediumCalibreGun_NPC",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Ballistics_Flak"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechFrame",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Cannon_Turret_NPC",
@@ -6035,7 +7007,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeCalibreTurret_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechFrame",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Cannon_Gun_NPC",
@@ -6133,7 +7114,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeBlockLargeCalibreGun_NPC",
     "ammoName": "Ballistics_Cannon_NPC",
-    "buildTimeSeconds": 45.0
+    "buildTimeSeconds": 45.0,
+    "assignedAmmos": [
+      "Ballistics_Cannon_NPC"
+    ],
+    "upCost": 4,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Cannon_Turret_NPC",
@@ -6231,7 +7221,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "OKI122mmVT_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "LargeCalibreAmmo"
+    ],
+    "upCost": 4,
+    "techComponent": "PrototechFrame",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "S__Cannon_Gun_NPC",
@@ -6329,7 +7328,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "OKI122mmSGfixed_NPC",
     "ammoName": "Ballistics_Cannon_NPC",
-    "buildTimeSeconds": 19.0
+    "buildTimeSeconds": 19.0,
+    "assignedAmmos": [
+      "Ballistics_Cannon_NPC"
+    ],
+    "upCost": 2,
+    "techComponent": "PrototechFrame",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
@@ -6431,7 +7439,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXHurricaneCannon_NPC",
     "ammoName": "Ballistics_HeavyCannon",
-    "buildTimeSeconds": 332.0
+    "buildTimeSeconds": 332.0,
+    "assignedAmmos": [
+      "Ballistics_HeavyCannon"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechFrame",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret_NPC",
@@ -6533,7 +7550,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "ammoName": "Ballistics_HeavyCannon_Odin",
     "buildTimeSeconds": 60.0,
-    "subtypeId": "odin_NPC"
+    "subtypeId": "odin_NPC",
+    "assignedAmmos": [
+      "Ballistics_HeavyCannon_Odin"
+    ],
+    "upCost": 16,
+    "techComponent": "PrototechFrame",
+    "techCount": 14,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": true
   },
   {
     "id": "L__Railgun_Turret_NPC",
@@ -6635,7 +7661,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXRailgunTurret_NPC",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 150.0
+    "buildTimeSeconds": 150.0,
+    "assignedAnimation": "AryxRailgunAnims",
+    "assignedAmmos": [
+      "SmallRailgunAmmo"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 10,
+    "techComponent": "PrototechFrame",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Railgun_Gun_NPC",
@@ -6733,7 +7779,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXRailgun_NPC",
     "ammoName": "SmallRailgunAmmo_NPC",
-    "buildTimeSeconds": 49.0
+    "buildTimeSeconds": 49.0,
+    "assignedAnimation": "AryxRailgunAnims",
+    "assignedAmmos": [
+      "SmallRailgunAmmo"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": null,
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 8,
+    "techComponent": "PrototechFrame",
+    "techCount": 8,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Railgun_Gun_NPC",
@@ -6831,7 +7897,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallRailgun_NPC",
     "ammoName": "SmallRailgunAmmo_Ares",
-    "buildTimeSeconds": 6.0
+    "buildTimeSeconds": 6.0,
+    "assignedAmmos": [
+      "SmallRailgunAmmo_Ares"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechFrame",
+    "techCount": 5,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__MAC_Gun_NPC",
@@ -6933,7 +8008,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeRailgun_NPC",
     "ammoName": "LargeRailgunSabot_NPC",
-    "buildTimeSeconds": 94.0
+    "buildTimeSeconds": 94.0,
+    "assignedAmmos": [
+      "LargeRailgunSabot_NPC"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__Rocket_Turret_NPC",
@@ -7027,7 +8111,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXHydraTurret_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "AryxHydraAnims",
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Rocket_Targeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechPanel",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Turret_NPC",
@@ -7121,7 +8225,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallMissileTurret_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21.0
+    "buildTimeSeconds": 21.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Rocket_Targeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Rocket_Launcher_NPC",
@@ -7215,7 +8338,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "LargeMissileLauncher_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 3,
+    "techComponent": "PrototechPanel",
+    "techCount": 3,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Launcher_NPC",
@@ -7309,7 +8451,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallMissileLauncher_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 1,
+    "techComponent": "PrototechPanel",
+    "techCount": 1,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
@@ -7407,7 +8568,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "Missiles_Rockets_SGReloadableLauncher_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": "Missiles_Rocket_Hardpoint_HardWare_Small",
+      "loading": "Missiles_Rocket_Hardpoint_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Missiles_Rocket_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Missile_Turret_NPC",
@@ -7509,7 +8689,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "GVK_GriffinMissileTurret_NPC",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAnimation": "Missiles_LightMissile_Animation",
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Large",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 8,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Missile_Launcher_NPC",
@@ -7611,7 +8811,27 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "GVK_GriffinMissileLauncher_NPC",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 78.0
+    "buildTimeSeconds": 78.0,
+    "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Large",
+      "hardware": "Missiles_Missile_Hardpoint_HardWare_Large",
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 250,
+    "techComponent": "PrototechPanel",
+    "techCount": 6,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Missile_Launcher_NPC",
@@ -7709,7 +8929,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "SmallRocketLauncherReload_NPC",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "helpers": {
+      "targeting": "Missiles_Missile_Targeting_Small",
+      "hardware": "Missiles_Missile_Hardpoint_HardWare_Small",
+      "loading": "Missiles_Missile_Hardpoint_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_ROFOnly",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
+      "audio": "Missiles_Missile_Hardpoint_Audio",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechPanel",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Tuukka_Missile_Turret_NPC",
@@ -7811,7 +9050,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "missileBattery01_NPC",
     "ammoName": "Missiles_HeavyMissile",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "Missiles_HeavyMissile"
+    ],
+    "upCost": 10,
+    "techComponent": "PrototechPanel",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
@@ -7913,7 +9161,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "Missile_Torpedo_Large_NPC",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 49.0
+    "buildTimeSeconds": 49.0,
+    "assignedAmmos": [
+      "Missiles_Torpedo"
+    ],
+    "upCost": 10,
+    "techComponent": "PrototechPanel",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
@@ -8015,7 +9272,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "Missile_Torpedo_Small_NPC",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 34.0
+    "buildTimeSeconds": 34.0,
+    "assignedAmmos": [
+      "Missiles_Torpedo"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__SRBM_Turret_NPC",
@@ -8117,7 +9383,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXMissileBattery_NPC",
     "ammoName": "Missiles_Siege",
-    "buildTimeSeconds": 533.0
+    "buildTimeSeconds": 533.0,
+    "assignedAmmos": [
+      "Missiles_Siege"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechPanel",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": false
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
@@ -8215,7 +9490,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYXSpartanTurret_NPC",
     "ammoName": "Lasers_Laser_Dual",
-    "buildTimeSeconds": 138.0
+    "buildTimeSeconds": 138.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Dual"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Large",
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Large",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 12,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 12,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": true
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
@@ -8313,7 +9607,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "MA_T2PDX_NPC",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 62.0
+    "buildTimeSeconds": 62.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Large"
+    ],
+    "upCost": 6,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 6,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
@@ -8411,7 +9714,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "MA_Fixed_T2_NPC",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 37.0
+    "buildTimeSeconds": 37.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Large"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Large",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Large",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Large",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
@@ -8509,7 +9831,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ReceptorTurret_NPC",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Small",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
@@ -8607,7 +9948,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "MA_PDX_NPC",
     "ammoName": "Lasers_Laser_Light_LG",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_LG"
+    ],
+    "helpers": {
+      "targeting": "Lasers_Laser_Targeting_Turret_Small",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
@@ -8705,7 +10065,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ReceptorCoilGun_NPC",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 5.0
+    "buildTimeSeconds": 5.0,
+    "assignedAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
+    "helpers": {
+      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "hardware": null,
+      "loading": "Lasers_Laser_Loading_Small",
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "audio": "Lasers_Laser_Audio_Small",
+      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
+      "graphics": null
+    },
+    "upCost": 2,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 2,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
@@ -8807,7 +10186,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "lokiCannon1_NPC",
     "ammoName": "Lasers_Plasma",
-    "buildTimeSeconds": 332.0
+    "buildTimeSeconds": 332.0,
+    "assignedAmmos": [
+      "Lasers_Plasma"
+    ],
+    "upCost": 12,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 12,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": true
   },
   {
     "id": "L__PD_Laser_NPC",
@@ -8905,7 +10293,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "MA_PDT_NPC",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 33.0
+    "buildTimeSeconds": 33.0,
+    "assignedAmmos": [
+      "Lasers_AMS"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 4,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__PD_Laser_NPC",
@@ -9003,7 +10410,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "MA_PDT_sm_NPC",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 9.0
+    "buildTimeSeconds": 9.0,
+    "assignedAmmos": [
+      "Lasers_AMS"
+    ],
+    "helpers": {
+      "targeting": null,
+      "hardware": null,
+      "loading": null,
+      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "audio": null,
+      "other": null,
+      "graphics": null
+    },
+    "upCost": 3,
+    "techComponent": "PrototechCapacitor",
+    "techCount": 4,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Warhead_NPC",
@@ -9092,7 +10518,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/L__Warhead_NPC.png",
     "isNpc": true,
     "subtypeId": "LargeWarhead_NPC",
-    "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo"
+    "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
+    "assignedAmmos": [
+      "Other_Warheads_RegularWarhead_LG_Ammo"
+    ],
+    "upCost": 10000,
+    "techComponent": "PrototechMachinery",
+    "techCount": 10000,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "S__Warhead_NPC",
@@ -9181,7 +10616,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "icon": "icons/S__Warhead_NPC.png",
     "isNpc": true,
     "subtypeId": "SmallWarhead_NPC",
-    "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo"
+    "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
+    "assignedAmmos": [
+      "Other_Warheads_RegularWarhead_SG_Ammo"
+    ],
+    "upCost": 10000,
+    "techComponent": "PrototechMachinery",
+    "techCount": 10000,
+    "hasCircuitry": false,
+    "requiresCircuitry": false,
+    "isRelic": false
   },
   {
     "id": "L__Drone_Bay_NPC",
@@ -9283,6 +10727,15 @@ window.GVK_DEFAULT_WEAPONS = [
     "isNpc": true,
     "subtypeId": "ARYX_Small_Sidekick_Hangar_NPC",
     "ammoName": "Others_Drone_Offense_Advanced",
-    "buildTimeSeconds": 66.0
+    "buildTimeSeconds": 66.0,
+    "assignedAmmos": [
+      "Others_Drone_Offense_Advanced"
+    ],
+    "upCost": 8,
+    "techComponent": "PrototechPanel",
+    "techCount": 8,
+    "hasCircuitry": true,
+    "requiresCircuitry": false,
+    "isRelic": false
   }
 ];
