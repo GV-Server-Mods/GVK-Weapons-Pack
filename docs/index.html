@@ -22,18 +22,34 @@
     </div>
     
     <div class="header-actions">
-      <button id="btnLinkLocal" class="btn btn-cyan" title="Connect directly to your local GVK_Weapons mod folder to enable 1-click disk saving">
-        📁 Link Mod Folder
+      <div id="modeBadge" class="badge badge-amber" style="display: flex; align-items: center; gap: 5px;">
+        🛡️ PLAYER INTEL MODE
+      </div>
+      
+      <button id="btnLinkLocal" class="btn btn-cyan" title="Restricted to GV-Server-Mods organization staff">
+        🔒 Link Mod Folder
       </button>
-      <button id="btnSyncGithub" class="btn" title="Refresh definitions and math directly from Ash-LikeSnow/WeaponCore on GitHub">
+      <button id="btnSyncGithub" class="btn" title="Refresh definitions directly from Ash-LikeSnow/WeaponCore on GitHub">
         🔄 Sync GitHub
       </button>
-      <button id="btnExportCsv" class="btn" title="Download exact Summary CSV to paste into your Google Sheet">
+      <button id="btnExportCsv" class="btn" title="Download Summary CSV for reference">
         📊 Export CSV
       </button>
-      <button id="btnOpenCode" class="btn btn-primary" title="View, copy, or save generated C# and SBC definitions">
-        ⚡ Export Code & SBC
+      <button id="btnOpenCode" class="btn btn-primary" title="Export in-game C# and SBC definitions (Staff Only)">
+        🔒 Export Code & SBC
       </button>
+
+      <!-- Staff Authentication Controls -->
+      <div id="authContainer" style="display: flex; align-items: center; gap: 8px; margin-left: 6px; border-left: 1px solid var(--border-color); padding-left: 12px;">
+        <button id="btnStaffLogin" class="btn btn-primary" style="background: rgba(245, 158, 11, 0.2); color: var(--amber-primary); border-color: var(--amber-primary);">
+          🔑 Staff Login
+        </button>
+        <div id="staffProfile" style="display: none; align-items: center; gap: 8px;">
+          <img id="staffAvatar" src="" alt="Avatar" style="width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--amber-primary);">
+          <span id="staffName" style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--amber-primary);">Staff</span>
+          <button id="btnStaffLogout" class="btn" style="padding: 3px 8px; font-size: 10px;" title="Sign out of Staff Mode">Sign Out</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -452,7 +468,40 @@
         <div style="display: flex; gap: 8px;">
           <button id="btnCopyCode" class="btn">📋 Copy Code</button>
           <button id="btnDownloadFile" class="btn">💾 Download File</button>
-          <button id="btnSaveToDisk" class="btn btn-primary">⚡ Save to Mod Folder</button>
+          <button id="btnCommitGithub" class="btn btn-cyan" title="Commit updated files directly to GV-Server-Mods/GVK-Weapons-Pack on GitHub">🚀 Commit to GitHub</button>
+          <button id="btnSaveToDisk" class="btn btn-primary" title="Save directly to local mod folder">⚡ Save to Mod Folder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Staff Authorization Modal -->
+  <div id="authModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--bg-panel); border: 1px solid var(--amber-primary); border-radius: 8px; width: 100%; max-width: 520px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+      <div class="panel-header">
+        <h2>🔑 GV-SERVER-MODS STAFF AUTH</h2>
+        <button id="btnCloseAuthModal" class="btn" style="padding: 2px 8px; font-size: 14px;">✕</button>
+      </div>
+
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+          Exporting in-game C# and SBC weapon definitions and committing code is reserved for verified members of the <strong style="color: var(--amber-primary);">GV-Server-Mods</strong> organization.
+        </p>
+
+        <div style="background: var(--bg-card); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 12px; color: var(--text-dim); line-height: 1.5;">
+          Enter a GitHub Personal Access Token (classic with <code style="color: var(--cyan-primary);">read:org</code> or <code style="color: var(--cyan-primary);">repo</code> scope). Your token is saved securely in your browser's local storage and used only to query GitHub for organization membership.
+        </div>
+
+        <div class="control-item">
+          <label class="control-label">GitHub Token <span class="unit">ghp_... or github_pat_...</span></label>
+          <input type="password" id="inputGithubToken" class="control-input" placeholder="Paste GitHub personal access token">
+        </div>
+
+        <div id="authErrorMsg" style="display: none; color: var(--red-accent); font-size: 12px; font-family: var(--font-mono);"></div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px;">
+          <button id="btnCancelAuth" class="btn">Cancel</button>
+          <button id="btnVerifyStaff" class="btn btn-primary">Verify Membership & Unlock</button>
         </div>
       </div>
     </div>
