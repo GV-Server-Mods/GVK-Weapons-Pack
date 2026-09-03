@@ -585,8 +585,10 @@ const compareAmmoSelect = document.getElementById('compareAmmoSelect');
 const compActiveIcon = document.getElementById('compActiveIcon');
 const compBenchIcon = document.getElementById('compBenchIcon');
 const legendActiveName = document.getElementById('legendActiveName');
-const legendBenchItem = document.getElementById('legendBenchItem');
+const legendActiveDesc = document.getElementById('legendActiveDesc');
+const legendBenchCard = document.getElementById('legendBenchCard');
 const legendBenchName = document.getElementById('legendBenchName');
+const legendBenchDesc = document.getElementById('legendBenchDesc');
 const compareTableBody = document.getElementById('compareTableBody');
 const radarCanvas = document.getElementById('radarCanvas');
 
@@ -1316,8 +1318,20 @@ function selectAmmo(ammoKey) {
 }
 
 // ==========================================================================
-// TECH COMPONENT DERIVATION HELPERS
+// TECH COMPONENT DERIVATION HELPERS & WEAPON DESCRIPTIONS
 // ==========================================================================
+function getWeaponDescription(weapon) {
+  if (!weapon) return 'No weapon loaded.';
+  const sbcDesc = weapon.sbcData?.description;
+  const desc = sbcDesc || weapon.description;
+  if (!desc) {
+    const grid = weapon.gridSize || weapon.grid || 'Large';
+    const type = weapon.type || 'Weapon';
+    return `${grid} Grid ${type}. Official GVK WeaponCore Armament.`;
+  }
+  return desc.replace(/\\n/g, '\n').replace(/\t+/g, ' ').replace(/[ ]{2,}/g, ' ').trim();
+}
+
 function isTechComponent(compName) {
   if (!compName) return false;
   return !!GVK_TECH_COMPONENTS[compName] || compName.startsWith('Prototech') || compName.includes('Prototech');
@@ -1335,9 +1349,11 @@ function getTechSummary(components) {
     .reduce((sum, c) => sum + (parseInt(c.count) || 0), 0);
   const upCost = techQtyExcludingDataCore;
   
+  // Tech box lists only non-Data Core tech components (Data Core is displayed separately in its own badge)
+  const nonDataCoreTech = techLayers.filter(c => c.name !== 'PrototechCircuitry' && !c.name.includes('Circuitry'));
   let summaryStr = 'None';
-  if (techLayers.length > 0) {
-    summaryStr = techLayers.map(c => {
+  if (nonDataCoreTech.length > 0) {
+    summaryStr = nonDataCoreTech.map(c => {
       const friendly = GVK_TECH_COMPONENTS[c.name]?.displayName || c.name.replace('Prototech', '');
       return `${c.count}x ${friendly}`;
     }).join(', ');
@@ -1391,13 +1407,14 @@ function updateUniversalBanner() {
     badgeUps.innerHTML = `⚡ <strong>${currentUps} UPs</strong>`;
   }
   if (badgeTech) {
-    badgeTech.innerHTML = `Tech: <strong>${techInfo.totalQty > 0 ? techInfo.summaryStr : 'None'}</strong>`;
+    badgeTech.innerHTML = `Tech: <strong>${techInfo.summaryStr}</strong>`;
   }
 
-  // Circuitry Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
-  const needsCircuitry = (activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000);
+  // Circuitry / Data Core Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
+  const hasDataCore = techInfo.hasCircuitry || ((activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000));
   if (badgeCircuitry) {
-    badgeCircuitry.style.display = needsCircuitry ? 'inline-flex' : 'none';
+    badgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
+    badgeCircuitry.style.display = hasDataCore ? 'inline-flex' : 'none';
   }
 
   // Relic Status Badge: non-craftable ammunition from raw scratch ingots
@@ -2109,9 +2126,10 @@ function renderSbcComponentsTable() {
     badgeUps.innerHTML = `⚡ <strong>${techInfo.upCost} UPs</strong>`;
   }
   if (badgeTech) {
-    badgeTech.innerHTML = `Tech: <strong>${techInfo.totalQty > 0 ? techInfo.summaryStr : 'None'}</strong>`;
+    badgeTech.innerHTML = `Tech: <strong>${techInfo.summaryStr}</strong>`;
   }
   if (badgeCircuitry) {
+    badgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
     badgeCircuitry.style.display = techInfo.hasCircuitry ? 'inline-flex' : 'none';
   }
 
@@ -2510,7 +2528,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   return { sustainedDps, alphaVolley, range, velocity, tracking, integrity };
 }
 
-function getModMaxMetrics(allowExtremeOutliers = false) {
+function getModMaxMetrics() {
   let maxDps = 1000;
   let maxAlpha = 1000;
   let maxRange = 1000;
@@ -2520,11 +2538,6 @@ function getModMaxMetrics(allowExtremeOutliers = false) {
 
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
-    // Exclude spinal superweapons (e.g. 2M Alpha MAC Gun) from mod standard baseline unless user explicitly tests them
-    if (!allowExtremeOutliers && m.alphaVolley > 500000) {
-      return;
-    }
-
     if (m.sustainedDps > maxDps) maxDps = m.sustainedDps;
     if (m.alphaVolley > maxAlpha) maxAlpha = m.alphaVolley;
     if (m.range > maxRange) maxRange = m.range;
@@ -2587,13 +2600,9 @@ function updateComparisonRadar() {
     ctx.fillText(axes[i], lx, ly);
   }
 
-  // Check if active weapon or benchmark weapon has > 500k alpha (e.g. MAC Gun)
-  const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
+  // Mod-wide dynamic max ceilings across all weapons
+  const modMax = getModMaxMetrics();
   const bMetrics = benchmarkWeapon ? calculateWeaponMetrics(benchmarkWeapon, benchmarkAmmoKey) : null;
-  const hasSpinalSuperweapon = (activeAlpha > 500000) || (bMetrics && bMetrics.alphaVolley > 500000);
-
-  // Calculate Dynamic Mod-Wide Max Ceilings (isolating spinal outliers unless currently inspecting one)
-  const modMax = getModMaxMetrics(hasSpinalSuperweapon);
 
   // Update Max Metrics Readout in Legend
   const readout = document.getElementById('radarMaxMetrics');
@@ -2603,6 +2612,7 @@ function updateComparisonRadar() {
 
   // Calculate Normalized Stats for Active Weapon
   const activeDps = parseFloat(outSustainedDps ? outSustainedDps.textContent.replace(/,/g, '') : 0) || 0;
+  const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
   
   // Use weapon's targeting range, falling back to trajectory if 0 or fixed
   let activeRange = (wMaxTargetDistance && parseFloat(wMaxTargetDistance.value)) || 0;
@@ -2634,19 +2644,38 @@ function updateComparisonRadar() {
 
   drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
 
+  // Active Weapon Name in Orange & Description below it
   if (legendActiveName && activeWeapon) {
     const aAmmoObj = activeAmmo;
-    legendActiveName.textContent = aAmmoObj ? `${activeWeapon.displayName || activeWeapon.name} [${aAmmoObj.terminalName || aAmmoObj.ammoRound}]` : (activeWeapon.displayName || activeWeapon.name);
+    const ammoSuffix = aAmmoObj ? ` [${aAmmoObj.terminalName || aAmmoObj.ammoRound}]` : '';
+    legendActiveName.textContent = `${activeWeapon.displayName || activeWeapon.name}${ammoSuffix}`;
+  }
+  if (legendActiveDesc && activeWeapon) {
+    legendActiveDesc.textContent = getWeaponDescription(activeWeapon);
   }
 
   // Benchmark Weapon
   if (benchmarkWeapon) {
-    compBenchIcon.style.display = 'block';
-    compBenchIcon.src = benchmarkWeapon.icon || '';
-    legendBenchItem.style.display = 'flex';
+    if (compBenchIcon) {
+      compBenchIcon.style.display = 'inline-block';
+      compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
+      compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
+    }
+    if (compBenchAmmoIcon && benchmarkAmmoKey) {
+      const bAmmo = ammosDb[benchmarkAmmoKey];
+      compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
+      compBenchAmmoIcon.style.display = 'inline-block';
+      compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+    }
     
-    const bAmmoObj = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
-    legendBenchName.textContent = bAmmoObj ? `${benchmarkWeapon.displayName || benchmarkWeapon.name} [${bAmmoObj.terminalName || bAmmoObj.ammoRound}]` : (benchmarkWeapon.displayName || benchmarkWeapon.name);
+    if (legendBenchName) {
+      const bAmmoObj = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
+      const bAmmoSuffix = bAmmoObj ? ` [${bAmmoObj.terminalName || bAmmoObj.ammoRound}]` : '';
+      legendBenchName.textContent = `${benchmarkWeapon.displayName || benchmarkWeapon.name}${bAmmoSuffix}`;
+    }
+    if (legendBenchDesc) {
+      legendBenchDesc.textContent = getWeaponDescription(benchmarkWeapon);
+    }
 
     const bStats = [
       Math.min(1, Math.max(0, bMetrics.sustainedDps / modMax.maxDps)),
@@ -2661,9 +2690,11 @@ function updateComparisonRadar() {
     renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
                        bMetrics.sustainedDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {
-    compBenchIcon.style.display = 'none';
-    legendBenchItem.style.display = 'none';
-    compareTableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>';
+    if (compBenchIcon) compBenchIcon.style.display = 'none';
+    if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
+    if (legendBenchName) legendBenchName.textContent = 'No Benchmark Selected';
+    if (legendBenchDesc) legendBenchDesc.textContent = 'Select a benchmark weapon above to compare attributes and radar profile.';
+    if (compareTableBody) compareTableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>';
   }
 }
 

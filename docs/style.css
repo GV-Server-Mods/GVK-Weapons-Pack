@@ -87,6 +87,7 @@
 [data-theme="light"] .panel,
 [data-theme="light"] .weapon-banner,
 [data-theme="light"] .telemetry-ammo-bar,
+[data-theme="light"] .radar-profile-card,
 [data-theme="light"] .sim-card,
 [data-theme="light"] .comparison-box,
 [data-theme="light"] .stat-card,
@@ -94,6 +95,25 @@
   background: #ffffff;
   border-color: #cbd5e1;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .radar-profile-desc {
+  color: #475569;
+}
+
+[data-theme="light"] .icon-active,
+[data-theme="light"] .weapon-icon-wrap,
+[data-theme="light"] .ammo-icon-wrap,
+[data-theme="light"] .ammo-icon-wrap-sm {
+  background: #fffbeb !important;
+  border-color: #d97706 !important;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.15) !important;
+}
+
+[data-theme="light"] .icon-bench {
+  background: #f0f9ff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.15) !important;
 }
 
 [data-theme="light"] .wc-summary {
@@ -396,27 +416,27 @@ header {
 .ammo-icon-wrap {
   width: 58px;
   height: 58px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(15, 23, 42, 0.88) 100%);
-  border: 1px solid var(--cyan-primary);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, rgba(15, 23, 42, 0.88) 100%);
+  border: 1.5px solid var(--amber-primary);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4px;
-  box-shadow: 0 0 14px rgba(6, 182, 212, 0.2);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.25);
   flex-shrink: 0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .ammo-icon-wrap:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 18px rgba(6, 182, 212, 0.35);
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
 }
 
 .ammo-icon-wrap-sm {
   width: 44px;
   height: 44px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(15, 23, 42, 0.85) 100%);
-  border: 1px solid var(--cyan-primary);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.14) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1.5px solid var(--amber-primary);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -442,23 +462,35 @@ header {
 .weapon-icon-sm {
   width: 48px;
   height: 48px;
-  background: var(--bg-panel);
-  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 3px;
   object-fit: contain;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease;
 }
 
 .ammo-icon-sm {
   width: 40px;
   height: 40px;
-  background: var(--bg-panel);
-  border: 1px solid var(--cyan-primary);
   border-radius: 6px;
   padding: 2px;
   object-fit: contain;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: transform 0.15s ease;
+}
+
+/* Active Weapon/Ammo = Consistent Orange Border & Background */
+.icon-active {
+  border: 1.5px solid var(--amber-primary) !important;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Benchmark Weapon/Ammo = Consistent Blue Border & Background */
+.icon-bench {
+  border: 1.5px solid var(--cyan-primary) !important;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3) !important;
 }
 
 .faceoff-badge {
@@ -484,7 +516,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
   padding: 12px 0 16px 0;
   border-bottom: 1px solid var(--border-color);
@@ -494,15 +526,66 @@ header {
 .radar-legend {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  max-width: 380px;
+  flex: 1;
+  min-width: 280px;
 }
 
-.legend-item {
+.radar-profile-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.radar-profile-card.active-card {
+  border-left: 3px solid var(--amber-primary);
+}
+
+.radar-profile-card.bench-card {
+  border-left: 3px solid var(--cyan-primary);
+}
+
+.radar-profile-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+}
+
+.radar-profile-name {
+  font-size: 13px;
+  font-weight: 700;
   font-family: var(--font-mono);
+}
+
+.radar-profile-name.active-name {
+  color: var(--amber-primary);
+}
+
+.radar-profile-name.bench-name {
+  color: var(--cyan-primary);
+}
+
+.radar-profile-desc {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+  white-space: pre-line;
+  max-height: 85px;
+  overflow-y: auto;
+}
+
+.radar-max-metrics {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--amber-primary);
+  line-height: 1.4;
+  padding-top: 4px;
 }
 
 .legend-color {
@@ -510,6 +593,7 @@ header {
   height: 12px;
   border-radius: 3px;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .selector-left {

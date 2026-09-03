@@ -139,7 +139,7 @@
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
         <div class="badge badge-amber" id="badgeUps">⚡ <strong>0 UPs</strong></div>
         <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
-        <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 Circuitry: 1 (>2km)</div>
+        <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
         <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
         <div class="badge badge-red" id="badgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
       </div>
@@ -273,11 +273,11 @@
           <div class="comparison-header">
             <div style="display: flex; align-items: center; gap: 12px;">
               <div class="faceoff-badge">
-                <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm" title="Active Weapon">
-                <img id="compActiveAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Active Ammo" class="ammo-icon-sm" title="Active Weapon Munition">
+                <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm icon-active" title="Active Weapon">
+                <img id="compActiveAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Active Ammo" class="ammo-icon-sm icon-active" title="Active Weapon Munition">
                 <span class="vs-tag">VS</span>
-                <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm" style="display: none;" title="Benchmark Weapon">
-                <img id="compBenchAmmoIcon" src="" alt="Benchmark Ammo" class="ammo-icon-sm" style="display: none;" title="Benchmark Weapon Munition">
+                <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon">
+                <img id="compBenchAmmoIcon" src="" alt="Benchmark Ammo" class="ammo-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon Munition">
               </div>
               <h3>⚔️ 1v1 Combat Radar & Comparison</h3>
             </div>
@@ -296,18 +296,30 @@
               <canvas id="radarCanvas" width="360" height="340"></canvas>
             </div>
             <div class="radar-legend">
-              <div class="legend-item">
-                <span class="legend-color" style="background: var(--amber-primary);"></span>
-                <span style="color: var(--amber-primary); font-weight: 700;" id="legendActiveName">Active Weapon</span>
+              <!-- Active Weapon Profile -->
+              <div class="radar-profile-card active-card">
+                <div class="radar-profile-header">
+                  <span class="legend-color" style="background: var(--amber-primary);"></span>
+                  <span class="radar-profile-name active-name" id="legendActiveName">Active Weapon</span>
+                </div>
+                <div class="radar-profile-desc" id="legendActiveDesc">
+                  Loading weapon description...
+                </div>
               </div>
-              <div class="legend-item" id="legendBenchItem" style="display: none;">
-                <span class="legend-color" style="background: var(--cyan-primary);"></span>
-                <span style="color: var(--cyan-primary); font-weight: 700;" id="legendBenchName">Benchmark Weapon</span>
+
+              <!-- Benchmark Weapon Profile -->
+              <div class="radar-profile-card bench-card" id="legendBenchCard">
+                <div class="radar-profile-header">
+                  <span class="legend-color" style="background: var(--cyan-primary);"></span>
+                  <span class="radar-profile-name bench-name" id="legendBenchName">No Benchmark Selected</span>
+                </div>
+                <div class="radar-profile-desc" id="legendBenchDesc">
+                  Select a benchmark weapon above to compare attributes and radar profile.
+                </div>
               </div>
-              <div style="font-size: 11px; color: var(--text-dim); line-height: 1.5; max-width: 260px; margin-top: 6px;">
-                Hexagonal tactical radar plots normalized DPS, Volley Alpha, Range, Velocity, Tracking, and Block Integrity scaled dynamically from 0 to the highest value across all weapons in the mod dataset (outer ring = 100% max).
-              </div>
-              <div id="radarMaxMetrics" style="font-size: 10px; font-family: var(--font-mono); color: var(--amber-primary); margin-top: 6px; line-height: 1.4;">
+
+              <!-- Mod Maximum Ceilings Readout -->
+              <div id="radarMaxMetrics" class="radar-max-metrics">
                 Mod Ceilings: Calculating...
               </div>
             </div>
