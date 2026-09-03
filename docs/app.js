@@ -2230,23 +2230,8 @@ function updateCombatTelemetry() {
   const magsToLoad = parseFloat(wMagsToLoad.value) || 1;
   const magSize = activeWeapon.magazineSize || 100;
 
-  const baseDmg = parseFloat(aBaseDamage.value) || 0;
-  const aodDmg = (aodBlockEnable && aodBlockEnable.checked ? safeFloat(aodBlockDamage.value, 0) : 0) + (aodEolEnable && aodEolEnable.checked ? safeFloat(aodEolDamage.value, 0) : 0);
-
-  // Fragment damage (including recursive child fragment & area damage)
-  let fragDmg = 0;
-  if (fEnable && fEnable.checked) {
-    const frags = parseFloat(fFragments.value) || 0;
-    const childKey = fChildAmmoRound ? fChildAmmoRound.value : '';
-    const childAmmo = ammosDb[childKey];
-    if (childAmmo) {
-      const childD = getAmmoDamageDetailed(childAmmo);
-      fragDmg = frags * childD.total;
-    }
-  }
-
-  const damagePerShot = baseDmg + aodDmg + fragDmg;
-  const alphaVolley = damagePerShot * barrels;
+  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
+  const alphaVolley = dmgDetails.instantTotal * barrels;
 
   // True Rate of Fire & Sustained Cycle
   const totalRounds = magSize * magsToLoad;
@@ -2255,13 +2240,26 @@ function updateCombatTelemetry() {
   const totalCycleSec = fireDurationSec + reloadSec;
 
   const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : 0;
-  const sustainedDps = Math.round(effectiveRps * damagePerShot);
+
+  let sustainedDps = 0;
+  if (dmgDetails.deliverySec > 1.0) {
+    const loiterDps = dmgDetails.total / dmgDetails.deliverySec;
+    const maxConcurrent = Math.min(magsToLoad, Math.max(1.0, dmgDetails.deliverySec / Math.max(0.1, totalCycleSec)));
+    sustainedDps = Math.round(loiterDps * maxConcurrent);
+  } else {
+    sustainedDps = Math.round(effectiveRps * dmgDetails.total);
+  }
 
   // Update Hero Metrics
   outSustainedDps.textContent = sustainedDps.toLocaleString();
-  outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * baseDmg).toLocaleString()} | Blast: ${Math.round(effectiveRps * aodDmg).toLocaleString()} | Frag: ${Math.round(effectiveRps * fragDmg).toLocaleString()}`;
+  if (dmgDetails.deliverySec > 1.0) {
+    outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
+    outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
+  } else {
+    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
+    outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
+  }
   outAlphaDmg.textContent = Math.round(alphaVolley).toLocaleString();
-  outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(damagePerShot).toLocaleString()} hp (Direct:${Math.round(baseDmg).toLocaleString()} + Blast:${Math.round(aodDmg).toLocaleString()} + Frag:${Math.round(fragDmg).toLocaleString()})`;
   outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
   outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
 
@@ -2622,7 +2620,7 @@ function setupLogisticsEvents() {
 // RECURSIVE DAMAGE & ICON RESOLUTION HELPERS
 // ==========================================================================
 function getAmmoDamageDetailed(ammo, depth = 0) {
-  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, total: 0 };
+  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0 };
   const base = parseFloat(ammo.baseDamage) || 0;
 
   let aoe = 0;
@@ -2636,27 +2634,56 @@ function getAmmoDamageDetailed(ammo, depth = 0) {
     }
   }
 
-  let frag = 0;
+  let fragTotal = 0;
+  let fragInstant = 0;
+  let deliverySec = 0;
+
   if (ammo.fragment && ammo.fragment.enable) {
     const rnd = ammo.fragment.ammoRound;
-    let cnt = parseInt(ammo.fragment.fragments) || 0;
-    if (ammo.fragment.timedSpawns && ammo.fragment.timedSpawns.enable) {
-      const ms = parseInt(ammo.fragment.timedSpawns.maxSpawns) || 1;
-      const gs = parseInt(ammo.fragment.timedSpawns.groupSize) || 1;
-      cnt = Math.max(cnt, ms * gs);
-    }
-    if (rnd && ammosDb[rnd] && cnt > 0) {
-      const child = ammosDb[rnd];
-      const childD = getAmmoDamageDetailed(child, depth + 1);
-      frag = cnt * childD.total;
+    const child = rnd ? ammosDb[rnd] : null;
+    const childD = child ? getAmmoDamageDetailed(child, depth + 1) : { total: 0, instantTotal: 0 };
+    const childSingleDmg = childD.total;
+
+    const timed = ammo.fragment.timedSpawns;
+    if (timed && timed.enable) {
+      const ms = parseInt(timed.maxSpawns) || 1;
+      const gs = parseInt(timed.groupSize) || 1;
+      const interval = parseInt(timed.interval) || 0;
+      const groupDelay = parseInt(timed.groupDelay) || 0;
+
+      const totalFrags = ms;
+      const numGroups = Math.ceil(totalFrags / Math.max(1, gs));
+      const totalDurationTicks = (numGroups - 1) * groupDelay + (gs * interval);
+      deliverySec = totalDurationTicks / 60.0;
+
+      fragTotal = totalFrags * childSingleDmg;
+
+      // If duration <= 1.0s, all fragments arrive in opening volley
+      if (deliverySec <= 1.0) {
+        fragInstant = fragTotal;
+      } else {
+        // Over-time loitering: Only first burst contributes to initial volley
+        fragInstant = Math.min(gs, totalFrags) * childSingleDmg;
+      }
+    } else {
+      const cnt = parseInt(ammo.fragment.fragments) || 0;
+      fragTotal = cnt * childSingleDmg;
+      fragInstant = fragTotal;
+      deliverySec = 0;
     }
   }
+
+  const total = base + aoe + fragTotal;
+  const instantTotal = base + aoe + fragInstant;
 
   return {
     base: base,
     aoe: aoe,
-    frag: frag,
-    total: base + aoe + frag
+    frag: fragTotal,
+    fragInstant: fragInstant,
+    total: total,
+    instantTotal: instantTotal,
+    deliverySec: deliverySec
   };
 }
 
@@ -2686,8 +2713,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const magSize = weapon.magazineSize || 100;
 
   const dmgDetails = getAmmoDamageDetailed(a);
-  const damagePerShot = dmgDetails.total;
-  const alphaVolley = Math.round(damagePerShot * barrels);
+  const alphaVolley = Math.round(dmgDetails.instantTotal * barrels);
 
   const totalRounds = magSize * mags;
   const fireDurationSec = (totalRounds / rof) * 60;
@@ -2695,7 +2721,15 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const totalCycleSec = fireDurationSec + reloadSec;
 
   const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : (rof / 60);
-  const sustainedDps = Math.round(effectiveRps * damagePerShot);
+
+  let sustainedDps = 0;
+  if (dmgDetails.deliverySec > 1.0) {
+    const loiterDps = dmgDetails.total / dmgDetails.deliverySec;
+    const maxConcurrent = Math.min(mags, Math.max(1.0, dmgDetails.deliverySec / Math.max(0.1, totalCycleSec)));
+    sustainedDps = Math.round(loiterDps * maxConcurrent);
+  } else {
+    sustainedDps = Math.round(effectiveRps * dmgDetails.total);
+  }
 
   // Use Weapon's targeting range; fallback to trajectory if 0 or fixed weapon
   let range = weapon.maxTargetDistance || 0;

@@ -80,16 +80,27 @@ graph TD
 - Features matching orange border (`#d97706`), ammo magazine icon, and munition selector for dual-load weapons (e.g. High Explosive vs Armor Piercing).
 - Live badges displaying active ammo SubtypeId, Base Damage, Muzzle Speed, and Max Range.
 
-#### 3. Recursive Damage Engine
+#### 3. Recursive Damage Engine & Scalable TimedSpawns Architecture
 Calculates true damage potential through multi-stage fragment trees:
-$$\text{Total Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_{\text{frags}} (\text{Count} \times \text{Damage}_{\text{child}})$$
+$$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_{\text{frags}} (\text{Count} \times \text{Damage}_{\text{child}})$$
 - **Area of Damage (AoE)**: Evaluates both `ByBlockHit` (impact explosion) and `EndOfLife` (flak proximity burst). Excludes non-damaging EWAR effects.
-- **Fragment Spawns**: Recursively resolves nested rounds up to depth 3, accounting for timed spawns (`maxSpawns \times groupSize`) and radial spreads (e.g. Flak shrapnel, MIRV torpedo submunitions).
-- **Alpha Volley**:
-  $$\text{Alpha} = \text{Total Single-Round Damage} \times \text{BarrelsPerShot}$$
-- **True Sustained DPS & RPS**:
-  $$\text{FireTime} = \frac{\text{TotalRounds}}{\text{RateOfFire}} \times 60, \quad \text{CycleSec} = \text{FireTime} + \frac{\text{ReloadTimeTicks}}{60}$$
-  $$\text{RPS} = \frac{\text{TotalRounds}}{\text{CycleSec}}, \quad \text{Sustained DPS} = \text{RPS} \times \text{Total Single-Round Damage}$$
+- **Scalable TimedSpawns Delivery Duration ($\Delta T_{\text{delivery}}$)**:
+  Evaluates `TimedSpawnDef` (`maxSpawns`, `groupSize`, `interval`, `groupDelay`):
+  $$\text{numBursts} = \left\lceil \frac{\text{totalSpawns}}{\text{groupSize}} \right\rceil, \quad \Delta T_{\text{delivery}} = \frac{(\text{numBursts} - 1) \times \text{groupDelay} + \text{groupSize} \times \text{interval}}{60\text{ ticks/sec}}$$
+- **Instantaneous Cluster vs Loitering Deployable Scaling**:
+  - **If $\Delta T_{\text{delivery}} \le 1.0\text{s}$** (Flak, Proximity Warhead, Cluster Bomb):
+    All fragments arrive in the initial strike:
+    $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\text{totalSpawns} \times \text{ChildDamage})$$
+    $$\text{AlphaVolley} = \text{AlphaRound} \times \text{BarrelsPerShot}$$
+    $$\text{Sustained DPS} = \text{RPS} \times \text{TotalLifetimeDamage}$$
+  - **If $\Delta T_{\text{delivery}} > 1.0\text{s}$** (Drones, Loitering Minefields, Area Denial):
+    Initial burst contributes to opening salvo; sustained payload delivers over time:
+    $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\min(\text{groupSize}, \text{totalSpawns}) \times \text{ChildDamage})$$
+    $$\text{AlphaVolley} = \text{AlphaRound} \times \text{BarrelsPerShot}$$
+    $$\text{LoiterDPS} = \frac{\text{TotalLifetimeDamage}}{\Delta T_{\text{delivery}}}$$
+    $$\text{MaxConcurrent} = \min\left(\text{MagsToLoad}, \max\left(1.0, \frac{\Delta T_{\text{delivery}}}{\text{CycleSec}}\right)\right)$$
+    $$\text{Sustained DPS} = \text{LoiterDPS} \times \text{MaxConcurrent}$$
+  - Guarantees the **MAC Gun** ($2,000,001\text{ Alpha}$) remains the server's undisputed top Alpha weapon, while loitering summons (e.g. Falcon Drone at $45,001\text{ Alpha}$, $26,447\text{ DPS}$) scale realistically.
 
 #### 4. Effective Fire Rate & Combat Cycle
 Replaces static heat bars with operational sustainability metrics:
@@ -296,3 +307,4 @@ When modifying or extending the GVK Weapon Studio:
    ```cmd
    node scratch/test_ammo_logistics_and_theme.js
    ```
+

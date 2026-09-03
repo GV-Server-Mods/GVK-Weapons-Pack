@@ -1,4 +1,4 @@
-const ammosData = {
+const BUNDLED_AMMOS_DATA = {
   "LargeCalibreAmmo": {
     "name": "LargeCalibreAmmo",
     "base_name": null,
@@ -3833,10 +3833,17 @@ const ammosData = {
     "fragment": {
       "enable": true,
       "ammoRound": "Others_Drone_Gunship",
-      "fragments": 2600,
+      "fragments": 260,
       "degrees": 4.0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "timedSpawns": {
+        "enable": true,
+        "maxSpawns": 260,
+        "groupSize": 10,
+        "groupDelay": 180,
+        "interval": 6
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -3920,10 +3927,17 @@ const ammosData = {
     "fragment": {
       "enable": true,
       "ammoRound": "Others_Drone_Gunship",
-      "fragments": 50000,
+      "fragments": 5000,
       "degrees": 4.0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "timedSpawns": {
+        "enable": true,
+        "maxSpawns": 5000,
+        "groupSize": 10,
+        "groupDelay": 120,
+        "interval": 6
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -5371,3 +5385,4 @@ const ammosData = {
     }
   }
 };
+if (typeof window !== "undefined") window.BUNDLED_AMMOS_DATA = BUNDLED_AMMOS_DATA;
