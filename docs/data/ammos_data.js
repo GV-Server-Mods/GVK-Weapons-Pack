@@ -1,4 +1,5 @@
-window.AMMOS_DATA = {
+// Bundled fallback dataset for local file:// execution
+const BUNDLED_AMMOS_DATA = {
   "LargeCalibreAmmo": {
     "name": "LargeCalibreAmmo",
     "base_name": null,
@@ -121,15 +122,15 @@ window.AMMOS_DATA = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0,
+      "enable": true,
+      "radius": 4.0,
+      "damage": 6000.0,
+      "depth": 4.0,
       "endOfLife": {
-        "enable": false,
-        "damage": 0.0,
-        "radius": 0.0,
-        "depth": 0.0
+        "enable": true,
+        "damage": 6000.0,
+        "radius": 4.0,
+        "depth": 4.0
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1219,11 +1220,11 @@ window.AMMOS_DATA = {
   },
   "HeavyRailgunAmmo": {
     "name": "HeavyRailgunAmmo",
-    "base_name": null,
+    "base_name": "HeavyRailgunAmmo",
     "file": "Ballistics_HeavyRailgun_Ammo.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "HeavyRailgunAmmo",
-    "terminalName": "HeavyRailgunAmmo",
+    "terminalName": "Heavy Railgun",
     "baseDamage": 1000000.0,
     "baseDamageCutoff": 20000.0,
     "mass": 4000.0,
@@ -1255,7 +1256,18 @@ window.AMMOS_DATA = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 3000.0,
@@ -1266,7 +1278,7 @@ window.AMMOS_DATA = {
       "guidance": "None"
     },
     "damageScales": {
-      "shield": 500.0,
+      "shield": 1.0,
       "lightArmor": -1.0,
       "heavyArmor": -1.0,
       "characters": -1.0,
@@ -1282,12 +1294,12 @@ window.AMMOS_DATA = {
       "visualProbability": 1.0,
       "tracer": {
         "enable": true,
-        "length": 10.0,
-        "width": 0.1,
+        "length": 200.0,
+        "width": 0.5,
         "color": {
-          "r": 5.0,
-          "g": 2.0,
-          "b": 1.0,
+          "r": 50.0,
+          "g": 10.0,
+          "b": 5.0,
           "a": 1.0
         }
       }

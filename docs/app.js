@@ -486,6 +486,7 @@ let componentsDb = {};
 let activeWeapon = null;
 let activeAmmo = null;
 let benchmarkWeapon = null;
+let benchmarkAmmoKey = null;
 let modDirectoryHandle = null;
 
 // Server Balance Matrix Multipliers (with defaults)
@@ -515,8 +516,9 @@ try {
   console.warn("Using default balance matrix:", e);
 }
 
-// DOM Elements - Navigation & Workspaces
+// DOM Elements - Shell Navigation
 const wsTabs = document.querySelectorAll('.ws-tab');
+const navTabs = document.querySelectorAll('.nav-tab');
 const wsSections = document.querySelectorAll('.workspace-section');
 const scopeBtns = document.querySelectorAll('.scope-btn');
 const scopeContents = document.querySelectorAll('.scope-content');
@@ -526,6 +528,7 @@ const weaponSelect       = document.getElementById('weaponSelect');
 const activeWeaponIcon   = document.getElementById('activeWeaponIcon');
 const activeAmmoIcon     = document.getElementById('activeAmmoIcon');
 const activeAmmoIconWrap = document.getElementById('activeAmmoIconWrap');
+const activeAmmoSelect   = document.getElementById('activeAmmoSelect');
 const compActiveAmmoIcon = document.getElementById('compActiveAmmoIcon');
 const compBenchAmmoIcon  = document.getElementById('compBenchAmmoIcon');
 const scopeAmmoIcon      = document.getElementById('scopeAmmoIcon');
@@ -536,6 +539,11 @@ const badgeTech = document.getElementById('badgeTech');
 const badgeCircuitry = document.getElementById('badgeCircuitry');
 const badgeRelic = document.getElementById('badgeRelic');
 const badgeNpc = document.getElementById('badgeNpc');
+
+// DOM Elements - Telemetry Munition Bar (Workspace 1)
+const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
+const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
+const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
 
 // DOM Elements - Telemetry Deck
 const outSustainedDps = document.getElementById('outSustainedDps');
@@ -573,6 +581,7 @@ const outLeadMax = document.getElementById('outLeadMax');
 
 // DOM Elements - 1v1 Radar & Comparison
 const compareSelect = document.getElementById('compareSelect');
+const compareAmmoSelect = document.getElementById('compareAmmoSelect');
 const compActiveIcon = document.getElementById('compActiveIcon');
 const compBenchIcon = document.getElementById('compBenchIcon');
 const legendActiveName = document.getElementById('legendActiveName');
@@ -849,16 +858,20 @@ if (window.matchMedia) {
 
 async function initStudio() {
   // Load databases
-  if (typeof WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(WEAPONS_DATA));
+  if (typeof BUNDLED_WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(BUNDLED_WEAPONS_DATA));
+  else if (typeof WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(WEAPONS_DATA));
   else if (window.GVK_DEFAULT_WEAPONS) weaponsDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_WEAPONS));
 
-  if (typeof AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(AMMOS_DATA));
+  if (typeof BUNDLED_AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(BUNDLED_AMMOS_DATA));
+  else if (typeof AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(AMMOS_DATA));
   else if (window.GVK_DEFAULT_AMMOS) ammosDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_AMMOS));
 
-  if (typeof ANIMATIONS_DATA !== 'undefined') animationsDb = [...ANIMATIONS_DATA];
+  if (typeof BUNDLED_ANIMATIONS_DATA !== 'undefined') animationsDb = [...BUNDLED_ANIMATIONS_DATA];
+  else if (typeof ANIMATIONS_DATA !== 'undefined') animationsDb = [...ANIMATIONS_DATA];
   else if (window.GVK_ANIMATION_DEFS) animationsDb = [...window.GVK_ANIMATION_DEFS];
 
-  if (typeof COMPONENTS_DATA !== 'undefined') componentsDb = { ...COMPONENTS_DATA };
+  if (typeof BUNDLED_COMPONENTS_DATA !== 'undefined') componentsDb = { ...BUNDLED_COMPONENTS_DATA };
+  else if (typeof COMPONENTS_DATA !== 'undefined') componentsDb = { ...COMPONENTS_DATA };
   else if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
 
   // Fetch live JSON if served via HTTP
@@ -955,6 +968,18 @@ function setupNavigationEvents() {
   // Target Dummy Select
   if (ttkTargetSelect) {
     ttkTargetSelect.addEventListener('change', updateTtkSimulator);
+  }
+
+  // Active Munition Selectors (Universal Banner & Workspace 1 Telemetry Bar)
+  if (activeAmmoSelect) {
+    activeAmmoSelect.addEventListener('change', (e) => {
+      selectAmmo(e.target.value);
+    });
+  }
+  if (telemetryAmmoSelect) {
+    telemetryAmmoSelect.addEventListener('change', (e) => {
+      selectAmmo(e.target.value);
+    });
   }
 
   // Permalinks Share
@@ -1054,21 +1079,51 @@ function populateWeaponDropdowns() {
         compBenchIcon.style.display = 'inline-block';
         compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
       }
+      
+      const bAmmos = getSelectableAmmos(benchmarkWeapon);
+      benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
+
+      if (compareAmmoSelect) {
+        if (bAmmos.length > 1) {
+          compareAmmoSelect.innerHTML = bAmmos.map(k => {
+            const a = ammosDb[k] || {};
+            const label = a.terminalName || a.ammoRound || k;
+            const mag = a.ammoMagazine || 'Energy';
+            return `<option value="${k}">${label} [${mag}]</option>`;
+          }).join('');
+          compareAmmoSelect.value = benchmarkAmmoKey;
+          compareAmmoSelect.style.display = 'inline-block';
+        } else {
+          compareAmmoSelect.style.display = 'none';
+        }
+      }
+
       if (compBenchAmmoIcon) {
-        const bAKey = (benchmarkWeapon.assignedAmmos && benchmarkWeapon.assignedAmmos.length > 0)
-          ? benchmarkWeapon.assignedAmmos[0]
-          : benchmarkWeapon.ammoName;
-        const bAmmo = ammosDb[bAKey];
+        const bAmmo = ammosDb[benchmarkAmmoKey];
         compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
         compBenchAmmoIcon.style.display = 'inline-block';
         compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
       }
     } else {
+      benchmarkAmmoKey = null;
       if (compBenchIcon) compBenchIcon.style.display = 'none';
       if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
+      if (compareAmmoSelect) compareAmmoSelect.style.display = 'none';
     }
     updateComparisonRadar();
   });
+
+  if (compareAmmoSelect) {
+    compareAmmoSelect.addEventListener('change', (e) => {
+      benchmarkAmmoKey = e.target.value;
+      if (compBenchAmmoIcon) {
+        const bAmmo = ammosDb[benchmarkAmmoKey];
+        compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
+        compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+      }
+      updateComparisonRadar();
+    });
+  }
 }
 
 function populateAmmoDropdowns() {
@@ -1132,27 +1187,98 @@ function populateAnimationDropdown() {
   });
 }
 
+// Helper to get terminal-usable ammos for a weapon (filtering out internal submunitions)
+function getSelectableAmmos(weapon) {
+  if (!weapon) return [];
+  const assigned = (weapon.assignedAmmos && weapon.assignedAmmos.length > 0)
+    ? weapon.assignedAmmos
+    : (weapon.ammoName ? [weapon.ammoName] : []);
+  
+  const usable = assigned.filter(k => {
+    const a = ammosDb[k];
+    return a && a.hardPointUsable !== false;
+  });
+
+  return usable.length > 0 ? usable : (assigned.length > 0 ? [assigned[0]] : []);
+}
+
+function updateTelemetryAmmoBadge() {
+  if (!telemetryAmmoBadge || !activeAmmo) return;
+  const dmg = getAmmoDamageDetailed(activeAmmo);
+  const spd = activeAmmo.trajectory ? (activeAmmo.trajectory.desiredSpeed || 0) : 0;
+  const rng = activeAmmo.trajectory ? (activeAmmo.trajectory.maxTrajectory || 0) : 0;
+  const eol = (activeAmmo.areaOfDamage && activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable)
+    ? activeAmmo.areaOfDamage.endOfLife
+    : null;
+  const frag = (activeAmmo.fragment && activeAmmo.fragment.enable) ? activeAmmo.fragment : null;
+
+  let typeDesc = "Direct Kinetic AP";
+  if (eol && eol.damage > 0) {
+    typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
+  } else if (frag && frag.fragments > 0) {
+    typeDesc = `Proximity Shrapnel (${frag.fragments} Frags)`;
+  } else if (activeAmmo.ammoMagazine === 'Energy') {
+    typeDesc = "High-Energy Sabot";
+  }
+
+  telemetryAmmoBadge.innerHTML = `
+    <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span> &bull; 
+    <span>${Math.round(dmg.total).toLocaleString()} Dmg/Shot</span> &bull; 
+    <span>${Math.round(spd)} m/s</span> &bull; 
+    <span>${Math.round(rng)}m Range</span>
+  `;
+}
+
 function selectWeapon(weaponId) {
-  const found = weaponsDb.find(w => w.id === weaponId);
+  const found = weaponsDb.find(w => w.id === weaponId || w.subtypeId === weaponId);
   if (!found) return;
   activeWeapon = found;
   weaponSelect.value = activeWeapon.id;
 
-  // Set active ammo round (primary)
-  const primaryAmmoKey = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
-    ? activeWeapon.assignedAmmos[0]
-    : activeWeapon.ammoName;
+  // Derive selectable user-terminal ammos
+  const selectableAmmos = getSelectableAmmos(activeWeapon);
+  const primaryAmmoKey = selectableAmmos[0] || activeWeapon.ammoName;
+
+  // Active ammo dropdowns (Universal Banner & Workspace 1 Telemetry Bar)
+  if (activeAmmoSelect) {
+    if (selectableAmmos.length > 1) {
+      activeAmmoSelect.innerHTML = selectableAmmos.map(k => {
+        const a = ammosDb[k] || {};
+        const label = a.terminalName || a.ammoRound || k;
+        return `<option value="${k}">${label}</option>`;
+      }).join('');
+      activeAmmoSelect.value = primaryAmmoKey;
+      activeAmmoSelect.style.display = 'inline-block';
+    } else {
+      activeAmmoSelect.style.display = 'none';
+    }
+  }
+
+  if (telemetryAmmoSelect && telemetryAmmoBar) {
+    if (selectableAmmos.length > 1) {
+      telemetryAmmoSelect.innerHTML = selectableAmmos.map(k => {
+        const a = ammosDb[k] || {};
+        const label = a.terminalName || a.ammoRound || k;
+        const mag = a.ammoMagazine || 'Energy';
+        return `<option value="${k}">${label} [${mag}]</option>`;
+      }).join('');
+      telemetryAmmoSelect.value = primaryAmmoKey;
+      telemetryAmmoBar.style.display = 'flex';
+    } else {
+      telemetryAmmoBar.style.display = 'none';
+    }
+  }
 
   if (ammosDb[primaryAmmoKey]) {
     activeAmmo = ammosDb[primaryAmmoKey];
   } else {
-    // Find closest or create fallback
     const firstKey = Object.keys(ammosDb)[0];
     activeAmmo = ammosDb[firstKey];
   }
 
-  // Update Universal Banner
+  // Update Universal Banner & Telemetry Munition Badge
   updateUniversalBanner();
+  updateTelemetryAmmoBadge();
 
   // Populate Workbench Fields
   populateWeaponWorkbench();
@@ -1171,17 +1297,22 @@ function selectWeapon(weaponId) {
 function selectAmmo(ammoKey) {
   if (!ammosDb[ammoKey]) return;
   activeAmmo = ammosDb[ammoKey];
-  ammoSelectGlobal.value = ammoKey;
-  scopeActiveAmmoLabel.textContent = ammoKey;
+  if (ammoSelectGlobal) ammoSelectGlobal.value = ammoKey;
+  if (activeAmmoSelect) activeAmmoSelect.value = ammoKey;
+  if (telemetryAmmoSelect) telemetryAmmoSelect.value = ammoKey;
+  if (scopeActiveAmmoLabel) scopeActiveAmmoLabel.textContent = ammoKey;
   if (scopeAmmoIcon) {
     scopeAmmoIcon.src = getAmmoIconUrl(activeAmmo);
     scopeAmmoIcon.title = `Tuning Ammo: ${activeAmmo.terminalName || activeAmmo.ammoRound} (${activeAmmo.ammoMagazine || 'Energy'})`;
   }
+  updateUniversalBanner();
+  updateTelemetryAmmoBadge();
   populateAmmoWorkbench();
   updateCombatTelemetry();
   updateTtkSimulator();
   updateInitialDDriftMeter();
   updateAmmoLogistics();
+  updateComparisonRadar();
 }
 
 // ==========================================================================
@@ -1194,11 +1325,15 @@ function isTechComponent(compName) {
 
 function getTechSummary(components) {
   if (!components || components.length === 0) {
-    return { totalQty: 0, summaryStr: 'None', techLayers: [], hasCircuitry: false };
+    return { totalQty: 0, techQtyExcludingDataCore: 0, upCost: 0, summaryStr: 'None', techLayers: [], hasCircuitry: false };
   }
   const techLayers = components.filter(c => isTechComponent(c.name));
   const totalQty = techLayers.reduce((sum, c) => sum + (parseInt(c.count) || 0), 0);
-  const hasCircuitry = techLayers.some(c => c.name === 'PrototechCircuitry' && (parseInt(c.count) || 0) > 0);
+  const hasCircuitry = techLayers.some(c => (c.name === 'PrototechCircuitry' || c.name.includes('Circuitry')) && (parseInt(c.count) || 0) > 0);
+  const techQtyExcludingDataCore = techLayers
+    .filter(c => c.name !== 'PrototechCircuitry' && !c.name.includes('Circuitry'))
+    .reduce((sum, c) => sum + (parseInt(c.count) || 0), 0);
+  const upCost = techQtyExcludingDataCore;
   
   let summaryStr = 'None';
   if (techLayers.length > 0) {
@@ -1207,7 +1342,7 @@ function getTechSummary(components) {
       return `${c.count}x ${friendly}`;
     }).join(', ');
   }
-  return { totalQty, summaryStr, techLayers, hasCircuitry };
+  return { totalQty, techQtyExcludingDataCore, upCost, summaryStr, techLayers, hasCircuitry };
 }
 
 function updateUniversalBanner() {
@@ -1225,11 +1360,8 @@ function updateUniversalBanner() {
     }
   }
 
-  // Ammo Icon
-  const aKey = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
-    ? activeWeapon.assignedAmmos[0]
-    : activeWeapon.ammoName;
-  const curAmmo = ammosDb[aKey] || activeAmmo;
+  // Ammo Icon (prefer current activeAmmo, fallback to primary assigned)
+  const curAmmo = activeAmmo || (activeWeapon.assignedAmmos && ammosDb[activeWeapon.assignedAmmos[0]]) || ammosDb[activeWeapon.ammoName];
   if (curAmmo) {
     const ammoIconUrl = getAmmoIconUrl(curAmmo);
     if (activeAmmoIcon) {
@@ -1252,7 +1384,15 @@ function updateUniversalBanner() {
   // Badges
   badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.gridSize || activeWeapon.grid || 'Large'}</strong>`;
   badgeType.innerHTML = `Mount: <strong>${activeWeapon.type}</strong>`;
-  badgeTech.innerHTML = `Tech: <strong>${activeWeapon.upCost || activeWeapon.pcu || 6} UPs</strong>`;
+  
+  const techInfo = getTechSummary(activeWeapon.components);
+  const currentUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
+  if (badgeUps) {
+    badgeUps.innerHTML = `⚡ <strong>${currentUps} UPs</strong>`;
+  }
+  if (badgeTech) {
+    badgeTech.innerHTML = `Tech: <strong>${techInfo.totalQty > 0 ? techInfo.summaryStr : 'None'}</strong>`;
+  }
 
   // Circuitry Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
   const needsCircuitry = (activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000);
@@ -1952,15 +2092,22 @@ function renderSbcComponentsTable() {
   const durMod = parseFloat(wDurabilityMod.value) || activeWeapon.durabilityMod || 0.5;
   activeWeapon.effectiveIntegrity = Math.round(totalIntegrity / durMod);
 
-  // Auto-Derive Tech Information from Prototech components
+  // Auto-Derive Tech Information from Prototech components (excluding Data Cores from UPs)
   const techInfo = getTechSummary(activeWeapon.components);
   if (sbcTechSummary) sbcTechSummary.textContent = techInfo.summaryStr;
   if (sbcHasCircuitry) sbcHasCircuitry.checked = techInfo.hasCircuitry;
+  if (sbcUpCostVal) sbcUpCostVal.textContent = `${techInfo.upCost} UPs`;
+  if (sbcUpCost) sbcUpCost.value = techInfo.upCost;
 
   activeWeapon.techCount = techInfo.totalQty;
+  activeWeapon.upCost = techInfo.upCost;
+  activeWeapon.pcu = techInfo.upCost;
   activeWeapon.techComponent = techInfo.techLayers.length > 0 ? techInfo.techLayers[0].name : '';
   activeWeapon.hasCircuitry = techInfo.hasCircuitry;
 
+  if (badgeUps) {
+    badgeUps.innerHTML = `⚡ <strong>${techInfo.upCost} UPs</strong>`;
+  }
   if (badgeTech) {
     badgeTech.innerHTML = `Tech: <strong>${techInfo.totalQty > 0 ? techInfo.summaryStr : 'None'}</strong>`;
   }
@@ -2316,10 +2463,10 @@ function getWeaponIconUrl(weapon) {
 
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
-function calculateWeaponMetrics(weapon) {
+function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   if (!weapon) return { sustainedDps: 0, alphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
 
-  const aKey = (weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName;
+  const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
 
   const rof = weapon.rateOfFire || 600;
@@ -2442,7 +2589,7 @@ function updateComparisonRadar() {
 
   // Check if active weapon or benchmark weapon has > 500k alpha (e.g. MAC Gun)
   const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
-  const bMetrics = benchmarkWeapon ? calculateWeaponMetrics(benchmarkWeapon) : null;
+  const bMetrics = benchmarkWeapon ? calculateWeaponMetrics(benchmarkWeapon, benchmarkAmmoKey) : null;
   const hasSpinalSuperweapon = (activeAlpha > 500000) || (bMetrics && bMetrics.alphaVolley > 500000);
 
   // Calculate Dynamic Mod-Wide Max Ceilings (isolating spinal outliers unless currently inspecting one)
@@ -2487,16 +2634,21 @@ function updateComparisonRadar() {
 
   drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
 
+  if (legendActiveName && activeWeapon) {
+    const aAmmoObj = activeAmmo;
+    legendActiveName.textContent = aAmmoObj ? `${activeWeapon.displayName || activeWeapon.name} [${aAmmoObj.terminalName || aAmmoObj.ammoRound}]` : (activeWeapon.displayName || activeWeapon.name);
+  }
+
   // Benchmark Weapon
   if (benchmarkWeapon) {
     compBenchIcon.style.display = 'block';
     compBenchIcon.src = benchmarkWeapon.icon || '';
     legendBenchItem.style.display = 'flex';
-    legendBenchName.textContent = benchmarkWeapon.name;
+    
+    const bAmmoObj = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
+    legendBenchName.textContent = bAmmoObj ? `${benchmarkWeapon.displayName || benchmarkWeapon.name} [${bAmmoObj.terminalName || bAmmoObj.ammoRound}]` : (benchmarkWeapon.displayName || benchmarkWeapon.name);
 
-    const bMetrics = calculateWeaponMetrics(benchmarkWeapon);
-
-    const benchStats = [
+    const bStats = [
       Math.min(1, Math.max(0, bMetrics.sustainedDps / modMax.maxDps)),
       Math.min(1, Math.max(0, bMetrics.alphaVolley / modMax.maxAlpha)),
       Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
@@ -2505,7 +2657,7 @@ function updateComparisonRadar() {
       Math.min(1, Math.max(0, bMetrics.integrity / modMax.maxIntegrity))
     ];
 
-    drawPolygon(ctx, cx, cy, radius, benchStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
+    drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
     renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
                        bMetrics.sustainedDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {

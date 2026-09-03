@@ -1385,7 +1385,7 @@
       "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
     },
     "assignedAmmos": [
-      "NATO_25x184mm"
+      "AutocannonClip"
     ],
     "upCost": 6,
     "techComponent": "PrototechMachinery",
@@ -1580,9 +1580,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 33.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -1783,9 +1781,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 9.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -1986,9 +1982,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 5.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -2414,7 +2408,8 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 102.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
     "upCost": 6,
     "techComponent": "PrototechFrame",
@@ -2581,7 +2576,7 @@
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 3,
+    "pcu": 4,
     "idlePower": 0.01,
     "components": [
       {
@@ -2626,9 +2621,10 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 37.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
-    "upCost": 3,
+    "upCost": 4,
     "techComponent": "PrototechFrame",
     "techCount": 4,
     "hasCircuitry": false,
@@ -2821,7 +2817,8 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 5.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
     "upCost": 2,
     "techComponent": "PrototechFrame",
@@ -3037,7 +3034,8 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "upCost": 8,
     "techComponent": "PrototechFrame",
@@ -3249,7 +3247,8 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 45.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "upCost": 4,
     "techComponent": "PrototechFrame",
@@ -3458,7 +3457,8 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 33.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "upCost": 4,
     "techComponent": "PrototechFrame",
@@ -3673,7 +3673,8 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 19.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "upCost": 2,
     "techComponent": "PrototechFrame",
@@ -3881,7 +3882,8 @@
     "ammoName": "Ballistics_HeavyCannon",
     "buildTimeSeconds": 332.0,
     "assignedAmmos": [
-      "Ballistics_HeavyCannon"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "upCost": 12,
     "techComponent": "PrototechFrame",
@@ -4047,7 +4049,7 @@
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 16,
-    "pcu": 16,
+    "pcu": 14,
     "idlePower": 0.01,
     "components": [
       {
@@ -4096,7 +4098,8 @@
     "buildTimeSeconds": 60.0,
     "subtypeId": "odin",
     "assignedAmmos": [
-      "Ballistics_HeavyCannon_Odin"
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
     ],
     "helpers": {
       "targeting": null,
@@ -4108,7 +4111,7 @@
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "upCost": 16,
+    "upCost": 14,
     "techComponent": "PrototechFrame",
     "techCount": 14,
     "hasCircuitry": true,
@@ -4693,7 +4696,7 @@
     "sheetBuildTime": 6,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 6,
+    "pcu": 5,
     "idlePower": 0.001,
     "components": [
       {
@@ -4740,7 +4743,7 @@
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
     ],
-    "upCost": 6,
+    "upCost": 5,
     "techComponent": "PrototechMachinery",
     "techCount": 0,
     "hasCircuitry": false,
@@ -6244,7 +6247,7 @@
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 9,
+    "pcu": 8,
     "idlePower": 0.01,
     "components": [
       {
@@ -6306,7 +6309,7 @@
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "upCost": 9,
+    "upCost": 8,
     "techComponent": "PrototechPanel",
     "techCount": 8,
     "hasCircuitry": true,
@@ -9513,7 +9516,7 @@
     "sheetBuildTime": 9,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 3,
+    "pcu": 4,
     "idlePower": 0.01,
     "components": [
       {
@@ -9570,7 +9573,7 @@
       "other": null,
       "graphics": null
     },
-    "upCost": 3,
+    "upCost": 4,
     "techComponent": "PrototechCapacitor",
     "techCount": 4,
     "hasCircuitry": false,
@@ -9721,7 +9724,7 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 6,
+    "pcu": 0,
     "idlePower": 0.25,
     "components": [
       {
@@ -9760,7 +9763,7 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
-    "upCost": 6,
+    "upCost": 0,
     "techComponent": "PrototechMachinery",
     "techCount": 2,
     "hasCircuitry": false,
@@ -9936,7 +9939,7 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 6,
+    "pcu": 0,
     "idlePower": 0.25,
     "components": [
       {
@@ -9975,7 +9978,7 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
     ],
-    "upCost": 6,
+    "upCost": 0,
     "techComponent": "PrototechMachinery",
     "techCount": 2,
     "hasCircuitry": false,
@@ -11681,7 +11684,7 @@
       "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
     },
     "assignedAmmos": [
-      "NATO_25x184mm"
+      "AutocannonClip"
     ],
     "upCost": 6,
     "techComponent": "PrototechMachinery",
@@ -11877,9 +11880,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 33.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -12081,9 +12082,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 27.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -12285,9 +12284,7 @@
     "ammoName": "AutocannonClip",
     "buildTimeSeconds": 5.0,
     "assignedAmmos": [
-      "AutocannonClip",
-      "shrapnel",
-      "and pattern ammos."
+      "AutocannonClip"
     ],
     "helpers": {
       "targeting": null,
@@ -12715,7 +12712,8 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 102.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
     "upCost": 6,
     "techComponent": "PrototechFrame",
@@ -12882,7 +12880,7 @@
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 3,
+    "pcu": 4,
     "idlePower": 0.01,
     "components": [
       {
@@ -12928,9 +12926,10 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 37.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
-    "upCost": 3,
+    "upCost": 4,
     "techComponent": "PrototechFrame",
     "techCount": 4,
     "hasCircuitry": false,
@@ -13124,7 +13123,8 @@
     "ammoName": "Ballistics_Flak",
     "buildTimeSeconds": 5.0,
     "assignedAmmos": [
-      "Ballistics_Flak"
+      "Ballistics_Flak",
+      "Ballistics_Flak_HE"
     ],
     "upCost": 2,
     "techComponent": "PrototechFrame",
@@ -13341,7 +13341,7 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "Ballistics_Cannon_NPC"
     ],
     "upCost": 8,
     "techComponent": "PrototechFrame",
@@ -13764,7 +13764,7 @@
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 33.0,
     "assignedAmmos": [
-      "LargeCalibreAmmo"
+      "Ballistics_Cannon_NPC"
     ],
     "upCost": 4,
     "techComponent": "PrototechFrame",
@@ -14189,7 +14189,7 @@
     "ammoName": "Ballistics_HeavyCannon",
     "buildTimeSeconds": 332.0,
     "assignedAmmos": [
-      "Ballistics_HeavyCannon"
+      "Ballistics_Cannon_NPC"
     ],
     "upCost": 12,
     "techComponent": "PrototechFrame",
@@ -14355,7 +14355,7 @@
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 16,
-    "pcu": 16,
+    "pcu": 14,
     "idlePower": 0.01,
     "components": [
       {
@@ -14405,9 +14405,9 @@
     "buildTimeSeconds": 60.0,
     "subtypeId": "odin_NPC",
     "assignedAmmos": [
-      "Ballistics_HeavyCannon_Odin"
+      "Ballistics_Cannon_NPC"
     ],
-    "upCost": 16,
+    "upCost": 14,
     "techComponent": "PrototechFrame",
     "techCount": 14,
     "hasCircuitry": true,
@@ -14994,7 +14994,7 @@
     "sheetBuildTime": 6,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 6,
+    "pcu": 5,
     "idlePower": 0.001,
     "components": [
       {
@@ -15042,7 +15042,7 @@
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
     ],
-    "upCost": 6,
+    "upCost": 5,
     "techComponent": "PrototechFrame",
     "techCount": 5,
     "hasCircuitry": false,
@@ -19855,7 +19855,7 @@
     "sheetBuildTime": 9,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 3,
+    "pcu": 4,
     "idlePower": 0.01,
     "components": [
       {
@@ -19913,7 +19913,7 @@
       "other": null,
       "graphics": null
     },
-    "upCost": 3,
+    "upCost": 4,
     "techComponent": "PrototechCapacitor",
     "techCount": 4,
     "hasCircuitry": false,
@@ -20064,7 +20064,7 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 6,
+    "pcu": 0,
     "idlePower": 0.25,
     "components": [
       {
@@ -20103,7 +20103,7 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
-    "upCost": 6,
+    "upCost": 0,
     "techComponent": "PrototechMachinery",
     "techCount": 10000,
     "hasCircuitry": false,
@@ -20240,7 +20240,7 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 6,
+    "pcu": 0,
     "idlePower": 0.25,
     "components": [
       {
@@ -20279,7 +20279,7 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
     ],
-    "upCost": 6,
+    "upCost": 0,
     "techComponent": "PrototechMachinery",
     "techCount": 10000,
     "hasCircuitry": false,
@@ -20556,6 +20556,231 @@
       "damageEffectName": "Damage_WeapExpl_Damaged",
       "damagedSound": "ParticleWeapExpl",
       "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
+  },
+  {
+    "id": "L__Harbinger_Turret_NPC",
+    "name": "(L) Harbinger Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 360,
+    "magsToLoad": 1,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 4000,
+    "deviateShotAngle": 0.01,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 60.0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.001,
+    "magazineSize": 1,
+    "baseDamage": 1000000.0,
+    "maxTrajectory": 4200.0,
+    "desiredSpeed": 3000.0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.125,
+    "sheetBaseDPS": 125000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000000.0,
+    "sheetAlphaDamage": 1000000.0,
+    "sheetPeakDPS": 125000.0,
+    "sheetSpeedEl": 0.57,
+    "sheetSpeedAz": 0.57,
+    "sheetTraverseDegPerSec": 0.57,
+    "requiredPower": 100.0,
+    "sheetEffectiveIntegrity": 320000.0,
+    "sheetBuildTime": 150,
+    "durabilityMod": 0.25,
+    "techQty": 10,
+    "pcu": 10,
+    "idlePower": 0.001,
+    "components": [
+      {
+        "name": "SteelPlate",
+        "count": 410
+      },
+      {
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
+        "count": 130
+      },
+      {
+        "name": "PowerCell",
+        "count": 41
+      },
+      {
+        "name": "Superconductor",
+        "count": 81
+      },
+      {
+        "name": "Motor",
+        "count": 81
+      },
+      {
+        "name": "Reactor",
+        "count": 110
+      },
+      {
+        "name": "Computer",
+        "count": 310
+      },
+      {
+        "name": "SteelPlate",
+        "count": 610
+      }
+    ],
+    "icon": "icons/HarbingerTurret_NPC.png",
+    "subtypeId": "HarbingerTurret_NPC",
+    "ammoName": "HeavyRailgunAmmo",
+    "buildTimeSeconds": 150.0,
+    "assignedAmmos": [
+      "HeavyRailgunAmmo"
+    ],
+    "upCost": 10,
+    "techComponent": "PrototechFrame",
+    "techCount": 10,
+    "hasCircuitry": true,
+    "requiresCircuitry": true,
+    "isRelic": true,
+    "displayName": "*NPC-Heavy Railgun* Harbinger Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 150.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_HeavyRailguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_HeavyRailguns.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Heavy Railgun* Harbinger Turret",
+      "description": "NPC Massive Wreck Only",
+      "icon": "Textures\\GUI\\Icons\\Harbinger_Short_Thin_Base.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 7,
+        "y": 7,
+        "z": 7
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\Harbinger_Short_Thin_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 150.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "7.00",
+          "EndY": "1.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "7.00",
+          "EndY": "1.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "7.00",
+          "EndY": "1.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "7.00",
+          "EndY": "1.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "7.00",
+          "EndY": "7.00",
+          "Default": "true",
+          "PressurizedWhenOpen": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\Harbinger_Short_Thin_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\Harbinger_Short_Thin_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\Harbinger_Short_Thin_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "HarbingerTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
       "destroySound": "WepSmallWarheadExpl",
       "emissiveColorPreset": "Default",
       "isAirTight": false,

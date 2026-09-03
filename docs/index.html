@@ -128,6 +128,7 @@
             <select id="weaponSelect" class="weapon-dropdown">
               <option value="">Loading weapons database...</option>
             </select>
+            <select id="activeAmmoSelect" class="ammo-dropdown" style="display: none;" title="Select Loaded Munition"></select>
             <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
           </div>
         </div>
@@ -136,8 +137,8 @@
       <div class="banner-badges">
         <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
-        <div class="badge badge-amber" id="badgeUps">⚡ <strong>6 UPs</strong></div>
-        <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>6x PrototechMachinery</strong></div>
+        <div class="badge badge-amber" id="badgeUps">⚡ <strong>0 UPs</strong></div>
+        <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
         <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 Circuitry: 1 (>2km)</div>
         <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
         <div class="badge badge-red" id="badgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
@@ -146,6 +147,18 @@
 
     <!-- WORKSPACE 1: COMBAT TELEMETRY & BENCHMARKS (PLAYER DEFAULT) -->
     <div id="ws-telemetry" class="workspace-section active">
+      
+      <!-- Multi-Munition Switcher Bar (Appears for weapons with multiple terminal ammos like Cannon AP/HE or Flak) -->
+      <div id="telemetryAmmoBar" class="telemetry-ammo-bar" style="display: none;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span class="telemetry-ammo-label">🚀 LOADED MUNITION:</span>
+          <select id="telemetryAmmoSelect" class="telemetry-ammo-dropdown" title="Select active munition to test and benchmark"></select>
+        </div>
+        <div id="telemetryAmmoBadge" class="telemetry-ammo-badge">
+          <!-- Dynamic details: Type | Damage | Velocity | Range -->
+        </div>
+      </div>
+
       <div class="telemetry-grid">
         
         <!-- Hero Metrics -->
@@ -268,9 +281,13 @@
               </div>
               <h3>⚔️ 1v1 Combat Radar & Comparison</h3>
             </div>
-            <select id="compareSelect" class="compare-dropdown">
-              <option value="">Select benchmark weapon to compare...</option>
-            </select>
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <select id="compareSelect" class="compare-dropdown">
+                <option value="">Select benchmark weapon to compare...</option>
+              </select>
+              <select id="compareAmmoSelect" class="compare-dropdown" style="display: none; max-width: 220px;" title="Select Benchmark Munition">
+              </select>
+            </div>
           </div>
 
           <!-- Radar Chart (Spider Graph) -->
