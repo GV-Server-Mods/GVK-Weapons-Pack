@@ -1803,13 +1803,27 @@ function renderSbcComponentsTable() {
   let totalIntegrity = 0;
   let totalMassKg = 0;
 
-  const compNames = Object.keys(componentsDb).sort();
-  if (compNames.length === 0) {
-    compNames.push("SteelPlate", "Construction", "LargeTube", "SmallTube", "Motor", "Computer", "MetalGrid", "PrototechMachinery", "PrototechFrame", "PrototechCircuitry");
-  }
+  // Group available components into Standard and Tech
+  const standardComps = [];
+  const techComps = [];
+
+  Object.keys(componentsDb).forEach(k => {
+    const item = componentsDb[k];
+    const sub = item.subtype || k;
+    const name = item.displayName || sub;
+    const isTech = item.isTech || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[sub]);
+    if (isTech) {
+      techComps.push({ subtype: sub, displayName: name });
+    } else {
+      standardComps.push({ subtype: sub, displayName: name });
+    }
+  });
+
+  standardComps.sort((a, b) => a.displayName.localeCompare(b.displayName));
+  techComps.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
   activeWeapon.components.forEach((c, idx) => {
-    const cMeta = componentsDb[c.name] || { mass: 20, integrity: 100 };
+    const cMeta = componentsDb[c.name] || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name]) || { mass: 20, integrity: 100 };
     const layerMass = (cMeta.mass || 0) * c.count;
     const layerHp = (cMeta.integrity || 0) * c.count;
     totalIntegrity += layerHp;
@@ -1818,8 +1832,13 @@ function renderSbcComponentsTable() {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>
-        <select class="sbc-comp-select" data-idx="${idx}">
-          ${compNames.map(cn => `<option value="${cn}" ${cn === c.name ? 'selected' : ''}>${cn}</option>`).join('')}
+        <select class="sbc-comp-select control-input" data-idx="${idx}" style="width: 100%; padding: 4px 8px;">
+          <optgroup label="Standard Components">
+            ${standardComps.map(sc => `<option value="${sc.subtype}" ${sc.subtype === c.name ? 'selected' : ''}>${sc.displayName}</option>`).join('')}
+          </optgroup>
+          <optgroup label="👑 GVK Tech & Special Components">
+            ${techComps.map(tc => `<option value="${tc.subtype}" ${tc.subtype === c.name ? 'selected' : ''}>${tc.displayName}</option>`).join('')}
+          </optgroup>
         </select>
       </td>
       <td>
@@ -2425,8 +2444,9 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
     totalValueCredits += price;
 
     const tr = document.createElement('tr');
+    const compDisplayName = cMeta.displayName || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name] && GVK_TECH_COMPONENTS[c.name].displayName) || c.name;
     tr.innerHTML = `
-      <td style="font-weight: 600;">${c.name}</td>
+      <td style="font-weight: 600;">${compDisplayName}</td>
       <td style="font-family: var(--font-mono);">${c.count}</td>
       <td style="font-family: var(--font-mono); color: var(--text-dim);">${mass.toFixed(1)} kg</td>
       <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${integ.toLocaleString()}</td>
