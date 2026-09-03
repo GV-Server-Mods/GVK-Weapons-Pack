@@ -111,7 +111,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Gatling* Avenger Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "L__Gatling_Turret",
@@ -222,7 +228,13 @@
     "techCount": 3,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Gatling* Sentinel Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "S__Gatling_Turret",
@@ -334,7 +346,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Gatling* CIWS Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 21.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "S__Gatling_Gun",
@@ -446,7 +464,10 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "(S) Gatling Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small"
   },
   {
     "id": "S__Gatling_Gimbal",
@@ -558,7 +579,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Gatling* 25mm Gimbal",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
@@ -660,7 +687,13 @@
     "techCount": 12,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Autocannon* Thrasher Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
@@ -772,7 +805,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Autocannon* Khopesh Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Chaingun_Turret",
@@ -886,7 +925,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Autocannon* 30mm Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "S__Chaingun_Turret",
@@ -945,35 +990,35 @@
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 27
       },
       {
         "name": "PrototechMachinery",
         "count": 4
       },
       {
-        "name": "MetalGrid",
-        "count": 28
+        "name": "Construction",
+        "count": 170
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 33
       },
       {
         "name": "Motor",
-        "count": 15
+        "count": 44
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 54
       },
       {
-        "name": "Construction",
-        "count": 56
+        "name": "MetalGrid",
+        "count": 81
       },
       {
         "name": "SteelPlate",
-        "count": 28
+        "count": 81
       }
     ],
     "icon": "icons/S__Chaingun_Turret.png",
@@ -1000,7 +1045,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Autocannon* 30mm Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 27.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "S__Chaingun_Gun",
@@ -1114,7 +1165,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Autocannon* 30mm Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Interior_Turret",
@@ -1226,7 +1283,13 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Interior* Anti-personnel Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc"
   },
   {
     "id": "L__Flak_Turret",
@@ -1332,7 +1395,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Flak* 100mm Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 102.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "S__Flak_Turret",
@@ -1438,7 +1507,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Flak* 100mm Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "S__Flak_Gun",
@@ -1544,7 +1619,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Flak* 100mm Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "L__Cannon_Turret",
@@ -1654,7 +1735,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Cannon* 155mm Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "L__Cannon_Gun",
@@ -1760,7 +1847,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Cannon* 155mm Cannon",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 45.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "S__Cannon_Turret",
@@ -1866,7 +1959,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Cannon* 155mm Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "S__Cannon_Gun",
@@ -1972,7 +2071,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Cannon* 155mm Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 19.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -2082,7 +2187,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*H.Cannon* Hurricane Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 332.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
@@ -2202,7 +2313,13 @@
     "techCount": 14,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*H.Cannon* Odin Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 60.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
   },
   {
     "id": "L__Railgun_Turret",
@@ -2323,7 +2440,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Railgun* Apollo Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 150.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "L__Railgun_Gun",
@@ -2440,7 +2563,13 @@
     "techCount": 8,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Railgun* Artemis Gun",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 49.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "S__Railgun_Gun",
@@ -2494,36 +2623,44 @@
     "sheetBuildTime": 6,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 0,
+    "pcu": 6,
     "idlePower": 0.001,
     "components": [
       {
         "name": "SteelPlate",
+        "count": 17
+      },
+      {
+        "name": "PrototechFrame",
         "count": 5
       },
       {
-        "name": "Construction",
-        "count": 20
-      },
-      {
-        "name": "Superconductor",
-        "count": 20
-      },
-      {
-        "name": "LargeTube",
+        "name": "MetalGrid",
         "count": 6
       },
       {
         "name": "PowerCell",
-        "count": 10
+        "count": 2
+      },
+      {
+        "name": "Superconductor",
+        "count": 4
+      },
+      {
+        "name": "Motor",
+        "count": 4
+      },
+      {
+        "name": "Reactor",
+        "count": 5
       },
       {
         "name": "Computer",
-        "count": 20
+        "count": 13
       },
       {
         "name": "SteelPlate",
-        "count": 20
+        "count": 26
       }
     ],
     "icon": "icons/S__Railgun_Gun.png",
@@ -2533,12 +2670,18 @@
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
     ],
-    "upCost": 0,
+    "upCost": 6,
     "techComponent": "PrototechMachinery",
     "techCount": 0,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Railgun* Ares Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 6.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "L__MAC_Gun",
@@ -2592,36 +2735,48 @@
     "sheetBuildTime": 94,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 1,
+    "pcu": 12,
     "idlePower": 0.001,
     "components": [
       {
         "name": "SteelPlate",
-        "count": 50
+        "count": 260
       },
       {
-        "name": "Construction",
-        "count": 150
+        "name": "PrototechCapacitor",
+        "count": 6
       },
       {
-        "name": "Superconductor",
-        "count": 150
+        "name": "PrototechFrame",
+        "count": 6
       },
       {
-        "name": "LargeTube",
-        "count": 60
+        "name": "MetalGrid",
+        "count": 76
       },
       {
         "name": "PowerCell",
-        "count": 100
+        "count": 26
+      },
+      {
+        "name": "Superconductor",
+        "count": 51
+      },
+      {
+        "name": "Motor",
+        "count": 51
+      },
+      {
+        "name": "Reactor",
+        "count": 64
       },
       {
         "name": "Computer",
-        "count": 100
+        "count": 190
       },
       {
         "name": "SteelPlate",
-        "count": 300
+        "count": 380
       }
     ],
     "icon": "icons/L__MAC_Gun.png",
@@ -2631,12 +2786,18 @@
     "assignedAmmos": [
       "LargeRailgunSabot"
     ],
-    "upCost": 1,
+    "upCost": 12,
     "techComponent": "PrototechMachinery",
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*MAC* 200mm Coilgun",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 94.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc"
   },
   {
     "id": "L__Rocket_Turret",
@@ -2749,7 +2910,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Rocket* Hydra Turret XL",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "S__Rocket_Turret",
@@ -2861,7 +3028,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Rocket* Hydra Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 21.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "L__Rocket_Launcher",
@@ -2973,7 +3146,13 @@
     "techCount": 3,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Rocket* Hydra Launcher",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "S__Rocket_Launcher",
@@ -3085,7 +3264,10 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "(S) Rocket Launcher",
+    "gridSize": "Small",
+    "cubeSize": "Small"
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
@@ -3201,7 +3383,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Rocket* Hydra launcher",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "L__Missile_Turret",
@@ -3322,7 +3510,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Missile* Griffin Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "L__Missile_Launcher",
@@ -3376,7 +3570,7 @@
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 250,
+    "pcu": 6,
     "idlePower": 0.001,
     "components": [
       {
@@ -3438,12 +3632,18 @@
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "upCost": 250,
+    "upCost": 6,
     "techComponent": "PrototechPanel",
     "techCount": 6,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Missile* Griffin Launcher",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "S__Missile_Launcher",
@@ -3559,7 +3759,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Missile* Griffin Launcher",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "L__Tuukka_Missile_Turret",
@@ -3669,7 +3875,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*H.Missile* Tuukka Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc"
   },
   {
     "id": "L__Torpedo_Launcher",
@@ -3779,7 +3991,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*Torpedo* Crusader Launcher",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 49.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
   },
   {
     "id": "S__Torpedo_Launcher",
@@ -3889,7 +4107,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*Torpedo* Crusader Launcher",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 34.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
   },
   {
     "id": "L__SRBM_Turret",
@@ -3999,7 +4223,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*SRBM* Longsword Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 533.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Siege.sbc"
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
@@ -4115,7 +4345,13 @@
     "techCount": 12,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*H.Laser* Spartan Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Heavy_Laser_Turret",
@@ -4221,7 +4457,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*H.Laser* XFEL-H Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 62.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
@@ -4337,12 +4579,18 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*H.Laser* XFEL-H Gimbal",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Light_Laser_Turret",
     "name": "(L) Light Laser Turret",
-    "grid": "Large",
+    "grid": "Small",
     "type": "Turret",
     "rateOfFire": 3600,
     "shotsInBurst": 0,
@@ -4453,12 +4701,18 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Laser* XFEL-L Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "S__Light_Laser_Turret",
     "name": "(S) Light Laser Turret",
-    "grid": "Small",
+    "grid": "Large",
     "type": "Turret",
     "rateOfFire": 3600,
     "shotsInBurst": 0,
@@ -4569,7 +4823,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Laser* XFEL-L Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "S__Light_Laser_Gun",
@@ -4685,7 +4945,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*L.Laser* XFEL-L Gun",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "L__Loki_Plasma_Turret",
@@ -4806,7 +5072,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*Plasma* LOKI Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 332.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc"
   },
   {
     "id": "L__PD_Laser",
@@ -4922,7 +5194,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*AMS* PD-COIL Turret",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
   },
   {
     "id": "S__PD_Laser",
@@ -5038,7 +5316,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*AMS* PD-COIL Turret",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 9.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
   },
   {
     "id": "L__Warhead",
@@ -5092,36 +5376,36 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 2,
+    "pcu": 6,
     "idlePower": 0.25,
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 122
       },
       {
         "name": "Girder",
-        "count": 24
+        "count": 39
       },
       {
         "name": "Construction",
-        "count": 12
+        "count": 19
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 32
       },
       {
         "name": "Computer",
-        "count": 2
+        "count": 4
       },
       {
         "name": "Explosives",
-        "count": 5
+        "count": 325
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 8
       }
     ],
     "icon": "icons/L__Warhead.png",
@@ -5131,12 +5415,18 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
-    "upCost": 2,
+    "upCost": 6,
     "techComponent": "PrototechMachinery",
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "Warhead (WC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 30.0,
+    "criticalComponent": "Explosives",
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
   },
   {
     "id": "S__Warhead",
@@ -5190,16 +5480,16 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 2,
+    "pcu": 6,
     "idlePower": 0.25,
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 5
       },
       {
         "name": "Girder",
-        "count": 1
+        "count": 2
       },
       {
         "name": "Construction",
@@ -5215,11 +5505,11 @@
       },
       {
         "name": "Explosives",
-        "count": 2
+        "count": 11
       },
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 1
       }
     ],
     "icon": "icons/S__Warhead.png",
@@ -5229,12 +5519,18 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
     ],
-    "upCost": 2,
+    "upCost": 6,
     "techComponent": "PrototechMachinery",
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "Small Warhead (WC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Explosives",
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
   },
   {
     "id": "L__Drone_Bay",
@@ -5344,7 +5640,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Drone* Falcon Drone Bay",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 66.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Other_Drones.sbc"
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
@@ -5459,7 +5761,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Gatling* Avenger Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "L__Gatling_Turret_NPC",
@@ -5571,7 +5879,13 @@
     "techCount": 3,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Gatling* Sentinel Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "S__Gatling_Turret_NPC",
@@ -5684,7 +5998,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Gatling* CIWS Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 21.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "S__Gatling_Gun_NPC",
@@ -5797,7 +6117,13 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Gatling* 25mm Gun (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
@@ -5910,7 +6236,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Gatling* 25mm Gimbal (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
@@ -6013,7 +6345,13 @@
     "techCount": 12,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Autocannon* Thrasher (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
@@ -6126,7 +6464,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Autocannon* Khopesh (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Chaingun_Turret_NPC",
@@ -6241,7 +6585,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Autocannon* Large 30mm Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "S__Chaingun_Turret_NPC",
@@ -6356,7 +6706,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Autocannon* Small 30mm Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 27.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "S__Chaingun_Gun_NPC",
@@ -6471,7 +6827,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Autocannon* Small 30mm Gun (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
   },
   {
     "id": "L__Interior_Turret_NPC",
@@ -6584,7 +6946,13 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Interior* Anti-personnel Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc"
   },
   {
     "id": "L__Flak_Turret_NPC",
@@ -6691,7 +7059,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Flak* Large 100mm Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 102.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "S__Flak_Turret_NPC",
@@ -6798,7 +7172,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Flak* Small 100mm Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "S__Flak_Gun_NPC",
@@ -6905,7 +7285,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Flak* Small 100mm Gun (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
   },
   {
     "id": "L__Cannon_Turret_NPC",
@@ -7016,7 +7402,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Cannon* 155mm Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "L__Cannon_Gun_NPC",
@@ -7123,7 +7515,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Cannon* 155mm Cannon (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 45.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "S__Cannon_Turret_NPC",
@@ -7230,7 +7628,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Cannon* 155mm Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "S__Cannon_Gun_NPC",
@@ -7337,7 +7741,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Cannon* 155mm Cannon (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 19.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
@@ -7448,7 +7858,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-H.Cannon* Hurricane Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 332.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret_NPC",
@@ -7559,7 +7975,13 @@
     "techCount": 14,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-H.Cannon* Odin Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 60.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
   },
   {
     "id": "L__Railgun_Turret_NPC",
@@ -7681,7 +8103,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Railgun* Apollo Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 150.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "L__Railgun_Gun_NPC",
@@ -7799,7 +8227,13 @@
     "techCount": 8,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Railgun* Artemis Gun (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 49.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "S__Railgun_Gun_NPC",
@@ -7906,7 +8340,13 @@
     "techCount": 5,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Railgun* Ares Gun (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 6.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
   },
   {
     "id": "L__MAC_Gun_NPC",
@@ -8017,7 +8457,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-MAC* 200mm Coilgun (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 94.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc"
   },
   {
     "id": "L__Rocket_Turret_NPC",
@@ -8131,7 +8577,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*Rocket* Hydra Turret XL (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "S__Rocket_Turret_NPC",
@@ -8244,7 +8696,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Rocket* Hydra Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 21.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "L__Rocket_Launcher_NPC",
@@ -8357,7 +8815,13 @@
     "techCount": 3,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Rocket* Hydra Launcher (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "S__Rocket_Launcher_NPC",
@@ -8470,7 +8934,13 @@
     "techCount": 1,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Rocket* Hydra launcher (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
@@ -8587,7 +9057,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Rocket* Hydra launcher (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
   },
   {
     "id": "L__Missile_Turret_NPC",
@@ -8709,7 +9185,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Missile* Griffin Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "L__Missile_Launcher_NPC",
@@ -8763,7 +9245,7 @@
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 250,
+    "pcu": 6,
     "idlePower": 0.001,
     "components": [
       {
@@ -8826,12 +9308,18 @@
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "upCost": 250,
+    "upCost": 6,
     "techComponent": "PrototechPanel",
     "techCount": 6,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Missile* Griffin Launcher (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 78.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "S__Missile_Launcher_NPC",
@@ -8948,7 +9436,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Missile* Griffin Launcher (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
   },
   {
     "id": "L__Tuukka_Missile_Turret_NPC",
@@ -9059,7 +9553,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-H.Missile* Tuukka Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc"
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
@@ -9170,7 +9670,13 @@
     "techCount": 10,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-Torpedo* Crusader Launcher (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 49.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
@@ -9281,7 +9787,13 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-Torpedo* Crusader Launcher (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 34.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
   },
   {
     "id": "L__SRBM_Turret_NPC",
@@ -9392,7 +9904,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-SRBM* Longsword Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 533.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Missiles_Siege.sbc"
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
@@ -9509,7 +10027,13 @@
     "techCount": 12,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-H.Laser* Spartan Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 138.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
@@ -9616,7 +10140,13 @@
     "techCount": 6,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-H.Laser* XFEL-H Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 62.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
@@ -9733,12 +10263,18 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-H.Laser* Large XFEL-H Gimbal (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 37.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
     "name": "(L) Light Laser Turret [NPC]",
-    "grid": "Large",
+    "grid": "Small",
     "type": "Turret",
     "rateOfFire": 3600,
     "shotsInBurst": 0,
@@ -9850,12 +10386,18 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Laser* XFEL-L Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
     "name": "(S) Light Laser Turret [NPC]",
-    "grid": "Small",
+    "grid": "Large",
     "type": "Turret",
     "rateOfFire": 3600,
     "shotsInBurst": 0,
@@ -9967,7 +10509,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Laser* XFEL-L Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
@@ -10084,7 +10632,13 @@
     "techCount": 2,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-L.Laser* XFEL-L Gun (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
@@ -10195,7 +10749,13 @@
     "techCount": 12,
     "hasCircuitry": true,
     "requiresCircuitry": true,
-    "isRelic": true
+    "isRelic": true,
+    "displayName": "*NPC-Plasma* LOKI Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 332.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc"
   },
   {
     "id": "L__PD_Laser_NPC",
@@ -10312,7 +10872,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-AMS* PD-COIL Turret (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 33.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
   },
   {
     "id": "S__PD_Laser_NPC",
@@ -10429,7 +10995,13 @@
     "techCount": 4,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-AMS* PD-COIL Turret (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 9.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
   },
   {
     "id": "L__Warhead_NPC",
@@ -10483,36 +11055,36 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 10000,
+    "pcu": 6,
     "idlePower": 0.25,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 34
+        "name": "SteelPlate",
+        "count": 122
       },
       {
-        "subtype": "Construction",
-        "count": 200
+        "name": "Girder",
+        "count": 39
       },
       {
-        "subtype": "SmallTube",
-        "count": 40
+        "name": "Construction",
+        "count": 19
       },
       {
-        "subtype": "LargeTube",
-        "count": 54
+        "name": "SmallTube",
+        "count": 32
       },
       {
-        "subtype": "Motor",
-        "count": 67
+        "name": "Computer",
+        "count": 4
       },
       {
-        "subtype": "Computer",
-        "count": 100
+        "name": "Explosives",
+        "count": 325
       },
       {
-        "subtype": "MetalGrid",
-        "count": 100
+        "name": "SteelPlate",
+        "count": 8
       }
     ],
     "icon": "icons/L__Warhead_NPC.png",
@@ -10522,12 +11094,18 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
-    "upCost": 10000,
+    "upCost": 6,
     "techComponent": "PrototechMachinery",
     "techCount": 10000,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "Warhead (WC) (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 30.0,
+    "criticalComponent": "Explosives",
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
   },
   {
     "id": "S__Warhead_NPC",
@@ -10581,36 +11159,36 @@
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 10000,
+    "pcu": 6,
     "idlePower": 0.25,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 34
+        "name": "SteelPlate",
+        "count": 5
       },
       {
-        "subtype": "Construction",
-        "count": 200
+        "name": "Girder",
+        "count": 2
       },
       {
-        "subtype": "SmallTube",
-        "count": 40
+        "name": "Construction",
+        "count": 1
       },
       {
-        "subtype": "LargeTube",
-        "count": 54
+        "name": "SmallTube",
+        "count": 2
       },
       {
-        "subtype": "Motor",
-        "count": 67
+        "name": "Computer",
+        "count": 1
       },
       {
-        "subtype": "Computer",
-        "count": 100
+        "name": "Explosives",
+        "count": 11
       },
       {
-        "subtype": "MetalGrid",
-        "count": 100
+        "name": "SteelPlate",
+        "count": 1
       }
     ],
     "icon": "icons/S__Warhead_NPC.png",
@@ -10620,12 +11198,18 @@
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
     ],
-    "upCost": 10000,
+    "upCost": 6,
     "techComponent": "PrototechMachinery",
     "techCount": 10000,
     "hasCircuitry": false,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "Small Warhead (WC) (NPC)",
+    "gridSize": "Small",
+    "cubeSize": "Small",
+    "buildTime": 5.0,
+    "criticalComponent": "Explosives",
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
   },
   {
     "id": "L__Drone_Bay_NPC",
@@ -10736,6 +11320,12 @@
     "techCount": 8,
     "hasCircuitry": true,
     "requiresCircuitry": false,
-    "isRelic": false
+    "isRelic": false,
+    "displayName": "*NPC-Drone* Falcon Drone Bay (NPC)",
+    "gridSize": "Large",
+    "cubeSize": "Large",
+    "buildTime": 66.0,
+    "criticalComponent": "Computer",
+    "sbcFile": "CubeBlocks_Other_Drones.sbc"
   }
 ]

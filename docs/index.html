@@ -931,6 +931,41 @@
 
           </div>
         </details>
+
+        <!-- Accordion 2: Full Component Recipe & Integrity -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">2. Construction Components & Integrity Recipe (&lt;Components&gt;)</span>
+            <span class="wc-tag" id="sbcIntegritySummary">Integrity: 0 HP | BuildTime: 0s</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+              Adjust every component layer in assembly order. Build time is dynamically derived using <code>=MAX(5, Round(WeaponIntegrity / BuildTime_Mult, 0))</code>.
+            </p>
+            <div class="table-responsive">
+              <table class="compare-table" id="sbcComponentsTable">
+                <thead>
+                  <tr>
+                    <th>Component Type</th>
+                    <th>Quantity</th>
+                    <th>Layer Mass (kg)</th>
+                    <th>Layer HP</th>
+                    <th style="text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="sbcComponentsBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
+              <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
+              <span id="sbcFormulaReadout" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">
+                Formula: MAX(5, Round(Integrity / 750))
+              </span>
+            </div>
+          </div>
+        </details>
       </div>
 
     </div>

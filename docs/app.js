@@ -443,7 +443,8 @@ function populateWeaponDropdowns() {
   playerGuns.forEach(w => {
     const opt = document.createElement('option');
     opt.value = w.id;
-    opt.textContent = `${w.name} [${w.gridSize}]`;
+    const grid = w.gridSize || w.grid || 'Large';
+    opt.textContent = `${w.displayName || w.name} [${grid}]`;
     pGroup.appendChild(opt);
   });
   weaponSelect.appendChild(pGroup);
@@ -453,7 +454,8 @@ function populateWeaponDropdowns() {
   npcGuns.forEach(w => {
     const opt = document.createElement('option');
     opt.value = w.id;
-    opt.textContent = `⚔️ ${w.name}`;
+    const grid = w.gridSize || w.grid || 'Large';
+    opt.textContent = `⚔️ ${w.displayName || w.name} [${grid}]`;
     nGroup.appendChild(opt);
   });
   weaponSelect.appendChild(nGroup);
@@ -462,7 +464,8 @@ function populateWeaponDropdowns() {
   playerGuns.forEach(w => {
     const opt = document.createElement('option');
     opt.value = w.id;
-    opt.textContent = `${w.name} [${w.gridSize}]`;
+    const grid = w.gridSize || w.grid || 'Large';
+    opt.textContent = `${w.displayName || w.name} [${grid}]`;
     compareSelect.appendChild(opt);
   });
 
@@ -596,7 +599,7 @@ function updateUniversalBanner() {
   }
 
   // Badges
-  badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.gridSize}</strong>`;
+  badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.gridSize || activeWeapon.grid || 'Large'}</strong>`;
   badgeType.innerHTML = `Mount: <strong>${activeWeapon.type}</strong>`;
   badgeTech.innerHTML = `Tech: <strong>${activeWeapon.upCost || activeWeapon.pcu || 6} UPs</strong>`;
 
@@ -799,14 +802,100 @@ function updateFragChainVisual() {
 
 function populateSbcWorkbench() {
   if (!activeWeapon) return;
-  sbcDisplayName.value = activeWeapon.partName || activeWeapon.name || '';
-  sbcCubeSize.value = activeWeapon.gridSize || 'Large';
-  sbcBuildTime.value = activeWeapon.buildTime || 78;
+  sbcDisplayName.value = activeWeapon.displayName || activeWeapon.partName || activeWeapon.name || '';
+  sbcCubeSize.value = activeWeapon.gridSize || activeWeapon.grid || 'Large';
   sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || 6;
   sbcTechComp.value = activeWeapon.techComponent || 'PrototechMachinery';
   sbcTechQty.value = activeWeapon.techCount || 6;
   sbcIsRelic.checked = activeWeapon.isRelic === true;
   sbcHasCircuitry.checked = activeWeapon.hasCircuitry === true || activeWeapon.requiresCircuitry === true;
+
+  renderSbcComponentsTable();
+}
+
+function renderSbcComponentsTable() {
+  const tbody = document.getElementById('sbcComponentsBody');
+  const summary = document.getElementById('sbcIntegritySummary');
+  const readout = document.getElementById('sbcFormulaReadout');
+  if (!tbody || !activeWeapon) return;
+
+  tbody.innerHTML = '';
+  if (!activeWeapon.components) activeWeapon.components = [];
+
+  let totalIntegrity = 0;
+  let totalMassKg = 0;
+
+  const compNames = Object.keys(componentsDb).sort();
+  if (compNames.length === 0) {
+    compNames.push("SteelPlate", "Construction", "LargeTube", "SmallTube", "Motor", "Computer", "MetalGrid", "PrototechMachinery", "PrototechFrame", "PrototechCircuitry");
+  }
+
+  activeWeapon.components.forEach((c, idx) => {
+    const cMeta = componentsDb[c.name] || { mass: 20, integrity: 100 };
+    const layerMass = (cMeta.mass || 0) * c.count;
+    const layerHp = (cMeta.integrity || 0) * c.count;
+    totalIntegrity += layerHp;
+    totalMassKg += layerMass;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <select class="sbc-comp-select" data-idx="${idx}">
+          ${compNames.map(cn => `<option value="${cn}" ${cn === c.name ? 'selected' : ''}>${cn}</option>`).join('')}
+        </select>
+      </td>
+      <td>
+        <input type="number" class="sbc-comp-input" data-idx="${idx}" min="1" max="50000" value="${c.count}">
+      </td>
+      <td style="font-family: var(--font-mono); color: var(--text-dim);">${layerMass.toFixed(1)} kg</td>
+      <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${layerHp.toLocaleString()}</td>
+      <td style="text-align: center;">
+        <button class="btn-delete-row" data-idx="${idx}" title="Delete Layer">✕</button>
+      </td>
+    `;
+
+    tr.querySelector('select').addEventListener('change', (e) => {
+      activeWeapon.components[idx].name = e.target.value;
+      renderSbcComponentsTable();
+      updateCombatTelemetry();
+    });
+
+    tr.querySelector('input').addEventListener('input', (e) => {
+      const val = parseInt(e.target.value) || 1;
+      activeWeapon.components[idx].count = val;
+      renderSbcComponentsTable();
+      updateCombatTelemetry();
+    });
+
+    tr.querySelector('.btn-delete-row').addEventListener('click', () => {
+      if (activeWeapon.components.length > 1) {
+        activeWeapon.components.splice(idx, 1);
+        renderSbcComponentsTable();
+        updateCombatTelemetry();
+      } else {
+        showToast("Weapon must have at least 1 component layer.");
+      }
+    });
+
+    tbody.appendChild(tr);
+  });
+
+  // Calculate Build Time with user's formula: =MAX(5, Round(WeaponIntegrity / BuildTime_Mult, 0))
+  const buildTimeDiv = balanceMatrix.buildTimeDividend || 750;
+  const calculatedBuildTime = Math.max(5, Math.round(totalIntegrity / buildTimeDiv));
+  activeWeapon.buildTime = calculatedBuildTime;
+  if (sbcBuildTime) sbcBuildTime.value = calculatedBuildTime;
+
+  if (summary) {
+    summary.textContent = `Integrity: ${Math.round(totalIntegrity).toLocaleString()} HP | BuildTime: ${calculatedBuildTime}s`;
+  }
+  if (readout) {
+    readout.innerHTML = `Formula: <code>MAX(5, Round(${Math.round(totalIntegrity).toLocaleString()} / ${buildTimeDiv})) = ${calculatedBuildTime}s</code>`;
+  }
+
+  // Update Effective Integrity
+  const durMod = parseFloat(wDurabilityMod.value) || activeWeapon.durabilityMod || 0.5;
+  activeWeapon.effectiveIntegrity = Math.round(totalIntegrity / durMod);
 }
 
 // ==========================================================================
@@ -1613,17 +1702,18 @@ function generateSbcCubeBlocks() {
   xml += `    <!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->\n`;
   xml += `    <AiEnabled>false</AiEnabled>\n`;
   xml += `    <Components>\n`;
-  xml += `      <Component Subtype="SteelPlate" Count="150" />\n`;
-  xml += `      <Component Subtype="Construction" Count="80" />\n`;
-  xml += `      <Component Subtype="LargeTube" Count="16" />\n`;
-  xml += `      <Component Subtype="Motor" Count="20" />\n`;
-  xml += `      <Component Subtype="Computer" Count="24" />\n`;
-  xml += `      <Component Subtype="${techComp}" Count="${techQty}" />\n`;
-  if (sbcHasCircuitry.checked) {
-    xml += `      <!-- GVK Range Gate (>2km): 1 PrototechCircuitry -->\n`;
-    xml += `      <Component Subtype="PrototechCircuitry" Count="1" />\n`;
+  if (activeWeapon.components && activeWeapon.components.length > 0) {
+    activeWeapon.components.forEach(c => {
+      xml += `      <Component Subtype="${c.name}" Count="${c.count}" />\n`;
+    });
+  } else {
+    xml += `      <Component Subtype="SteelPlate" Count="150" />\n`;
+    xml += `      <Component Subtype="Construction" Count="80" />\n`;
+    xml += `      <Component Subtype="LargeTube" Count="16" />\n`;
+    xml += `      <Component Subtype="Motor" Count="20" />\n`;
+    xml += `      <Component Subtype="Computer" Count="24" />\n`;
+    xml += `      <Component Subtype="${techComp}" Count="${techQty}" />\n`;
   }
-  xml += `      <Component Subtype="SteelPlate" Count="50" />\n`;
   xml += `    </Components>\n`;
   xml += `    <CriticalComponent Subtype="Computer" Index="0" />\n`;
   xml += `    <BuildTimeSeconds>${bTime}</BuildTimeSeconds>\n`;
@@ -1813,6 +1903,18 @@ function setupWorkbenchInputEvents() {
         btnRevertTargeting.style.display = "none";
         showToast(`↺ Reverted targeting to shared ${activeWeapon.helpers.targeting}`);
       }
+    });
+  }
+
+    const btnAddSbcComponent = document.getElementById('btnAddSbcComponent');
+  if (btnAddSbcComponent) {
+    btnAddSbcComponent.addEventListener('click', () => {
+      if (!activeWeapon) return;
+      if (!activeWeapon.components) activeWeapon.components = [];
+      activeWeapon.components.push({ name: 'SteelPlate', count: 20 });
+      renderSbcComponentsTable();
+      updateCombatTelemetry();
+      showToast("Added new component layer.");
     });
   }
 
