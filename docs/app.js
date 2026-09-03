@@ -547,14 +547,20 @@ function generateBalancedComponents(w, stats) {
 }
 
 // Update 1v1 Comparison Table & Radar Chart
+let cachedActiveStats = null;
+let cachedBenchStats = null;
+
 function updateComparisonTable(activeStats) {
+  cachedActiveStats = activeStats;
   if (!benchmarkWeapon) {
+    cachedBenchStats = null;
     compareTableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>`;
     drawRadarChart(activeStats, null);
     return;
   }
 
   const bStats = calculateStats(benchmarkWeapon);
+  cachedBenchStats = bStats;
   drawRadarChart(activeStats, bStats);
   compareTableBody.innerHTML = '';
 
@@ -591,16 +597,20 @@ function drawRadarChart(aStats, bStats = null) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
-  const width = canvas.clientWidth || 360;
-  const height = canvas.clientHeight || 340;
+  const container = canvas.parentElement;
+  const availWidth = container ? container.clientWidth : 360;
+  const width = Math.min(360, Math.max(260, availWidth - 20));
+  const height = Math.round(width * 0.94);
 
+  canvas.style.width = width + 'px';
+  canvas.style.height = height + 'px';
   canvas.width = width * dpr;
   canvas.height = height * dpr;
   ctx.scale(dpr, dpr);
 
   const cx = width / 2;
   const cy = height / 2;
-  const radius = Math.min(cx, cy) - 45;
+  const radius = Math.min(cx, cy) - 38;
 
   ctx.clearRect(0, 0, width, height);
 
@@ -1241,6 +1251,13 @@ function setupEventListeners() {
     selectWeapon(newId);
     toggleWorkbench(true);
     showToast(`Created custom weapon profile: ${name}`, "success");
+  });
+
+  // Responsive redraw on window resize
+  window.addEventListener('resize', () => {
+    if (cachedActiveStats) {
+      drawRadarChart(cachedActiveStats, cachedBenchStats);
+    }
   });
 }
 

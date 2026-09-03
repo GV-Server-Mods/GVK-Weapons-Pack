@@ -389,7 +389,17 @@ header {
 
 @media (max-width: 1150px) {
   .studio-grid.split-view {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .telemetry-deck {
+    order: 1;
+    width: 100%;
+  }
+  #tuningDeckPanel {
+    order: 2;
+    width: 100%;
   }
 }
 
@@ -425,11 +435,18 @@ header {
 /* Tabs */
 .tab-group {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   padding: 8px 12px;
   background: var(--bg-input);
   border-bottom: 1px solid var(--border-color);
   overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tab-group::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-btn {
@@ -757,5 +774,189 @@ header {
 .toast.success {
   border-color: var(--green-accent);
   color: var(--green-accent);
+}
+
+/* Table Responsive Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile & Small Screen Optimizations */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px 12px;
+    gap: 12px;
+  }
+
+  .header {
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .header-actions .btn {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  #btnToggleDeck {
+    flex: 1 1 100%;
+  }
+
+  /* Weapon Banner Mobile */
+  .weapon-banner {
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .selector-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .weapon-icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .weapon-dropdown {
+    width: 100%;
+    min-width: 0;
+    font-size: 13px;
+  }
+
+  .banner-badges {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .banner-badges .badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  #btnBannerToggleDeck {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-top: 4px;
+    justify-content: center;
+  }
+
+  /* Hero Stats Grid Mobile */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .hero-card {
+    padding: 10px 12px;
+  }
+
+  .hero-label {
+    font-size: 9px;
+  }
+
+  .hero-value {
+    font-size: 19px;
+  }
+
+  .hero-sub {
+    font-size: 9px;
+  }
+
+  /* Workbench Mobile Actions */
+  .workbench-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .workbench-actions > div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .workbench-actions .btn {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+  }
+
+  .workbench-actions label {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Radar Spider Graph Mobile */
+  .radar-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radar-legend {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Comparison Header Mobile */
+  .comparison-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .faceoff-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .compare-dropdown {
+    width: 100%;
+  }
+
+  /* Toast Notification Mobile */
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .hero-value {
+    font-size: 17px;
+  }
+
+  .control-grid {
+    grid-template-columns: 1fr;
+  }
 }
 

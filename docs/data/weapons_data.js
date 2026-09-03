@@ -4331,7 +4331,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 420
       }
     ],
-    "icon": "icons/L__Gatling_Avenger_Turret.png",
+    "icon": "icons/L__Gatling_Avenger_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -4418,7 +4418,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 240
       }
     ],
-    "icon": "icons/L__Gatling_Turret.png",
+    "icon": "icons/L__Gatling_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -4505,7 +4505,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 63
       }
     ],
-    "icon": "icons/S__Gatling_Turret.png",
+    "icon": "icons/S__Gatling_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -4592,7 +4592,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__Gatling_Gun.png",
+    "icon": "icons/S__Gatling_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -4679,7 +4679,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__Gatling_Gimbal.png",
+    "icon": "icons/S__Gatling_Gimbal_NPC.png",
     "isNpc": true
   },
   {
@@ -4766,7 +4766,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 420
       }
     ],
-    "icon": "icons/L__Chaingun_Thrasher_Turret.png",
+    "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -4853,7 +4853,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 240
       }
     ],
-    "icon": "icons/L__Chaingun_Khopesh_Turret.png",
+    "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -4940,7 +4940,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 100
       }
     ],
-    "icon": "icons/L__Chaingun_Turret.png",
+    "icon": "icons/L__Chaingun_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5027,7 +5027,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 81
       }
     ],
-    "icon": "icons/S__Chaingun_Turret.png",
+    "icon": "icons/S__Chaingun_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5114,7 +5114,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 11
       }
     ],
-    "icon": "icons/S__Chaingun_Gun.png",
+    "icon": "icons/S__Chaingun_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -5201,7 +5201,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 97
       }
     ],
-    "icon": "icons/L__Interior_Turret.png",
+    "icon": "icons/L__Interior_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5292,7 +5292,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 390
       }
     ],
-    "icon": "icons/L__Flak_Turret.png",
+    "icon": "icons/L__Flak_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5383,7 +5383,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 150
       }
     ],
-    "icon": "icons/S__Flak_Turret.png",
+    "icon": "icons/S__Flak_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5474,7 +5474,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 18
       }
     ],
-    "icon": "icons/S__Flak_Gun.png",
+    "icon": "icons/S__Flak_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -5565,7 +5565,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 360
       }
     ],
-    "icon": "icons/L__Cannon_Turret.png",
+    "icon": "icons/L__Cannon_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5656,7 +5656,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 120
       }
     ],
-    "icon": "icons/L__Cannon_Gun.png",
+    "icon": "icons/L__Cannon_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -5747,7 +5747,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 86
       }
     ],
-    "icon": "icons/S__Cannon_Turret.png",
+    "icon": "icons/S__Cannon_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -5838,7 +5838,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 49
       }
     ],
-    "icon": "icons/S__Cannon_Gun.png",
+    "icon": "icons/S__Cannon_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -5929,7 +5929,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 860
       }
     ],
-    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
+    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -6020,7 +6020,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 1400
       }
     ],
-    "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
+    "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -6111,7 +6111,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 610
       }
     ],
-    "icon": "icons/L__Railgun_Turret.png",
+    "icon": "icons/L__Railgun_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -6202,7 +6202,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 200
       }
     ],
-    "icon": "icons/L__Railgun_Gun.png",
+    "icon": "icons/L__Railgun_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -6293,7 +6293,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 26
       }
     ],
-    "icon": "icons/S__Railgun_Gun.png",
+    "icon": "icons/S__Railgun_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -6384,7 +6384,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 380
       }
     ],
-    "icon": "icons/L__MAC_Gun.png",
+    "icon": "icons/L__MAC_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -6471,7 +6471,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 210
       }
     ],
-    "icon": "icons/L__Rocket_Turret.png",
+    "icon": "icons/L__Rocket_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -6558,7 +6558,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 54
       }
     ],
-    "icon": "icons/S__Rocket_Turret.png",
+    "icon": "icons/S__Rocket_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -6645,7 +6645,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 97
       }
     ],
-    "icon": "icons/L__Rocket_Launcher.png",
+    "icon": "icons/L__Rocket_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -6732,7 +6732,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 9
       }
     ],
-    "icon": "icons/S__Rocket_Launcher.png",
+    "icon": "icons/S__Rocket_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -6819,7 +6819,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 9
       }
     ],
-    "icon": "icons/S__Rocket_Launcher_Reloadable.png",
+    "icon": "icons/S__Rocket_Launcher_Reloadable_NPC.png",
     "isNpc": true
   },
   {
@@ -6910,7 +6910,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 570
       }
     ],
-    "icon": "icons/L__Missile_Turret.png",
+    "icon": "icons/L__Missile_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7001,7 +7001,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 320
       }
     ],
-    "icon": "icons/L__Missile_Launcher.png",
+    "icon": "icons/L__Missile_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -7092,7 +7092,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 19
       }
     ],
-    "icon": "icons/S__Missile_Launcher.png",
+    "icon": "icons/S__Missile_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -7183,7 +7183,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 570
       }
     ],
-    "icon": "icons/L__Tuukka_Missile_Turret.png",
+    "icon": "icons/L__Tuukka_Missile_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7274,7 +7274,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 210
       }
     ],
-    "icon": "icons/L__Torpedo_Launcher.png",
+    "icon": "icons/L__Torpedo_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -7365,7 +7365,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 140
       }
     ],
-    "icon": "icons/S__Torpedo_Launcher.png",
+    "icon": "icons/S__Torpedo_Launcher_NPC.png",
     "isNpc": true
   },
   {
@@ -7456,7 +7456,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 2200
       }
     ],
-    "icon": "icons/L__SRBM_Turret.png",
+    "icon": "icons/L__SRBM_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7547,7 +7547,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 820
       }
     ],
-    "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
+    "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7638,7 +7638,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 370
       }
     ],
-    "icon": "icons/L__Heavy_Laser_Turret.png",
+    "icon": "icons/L__Heavy_Laser_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7729,7 +7729,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 230
       }
     ],
-    "icon": "icons/L__Heavy_Laser_Gimbal.png",
+    "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png",
     "isNpc": true
   },
   {
@@ -7820,7 +7820,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 200
       }
     ],
-    "icon": "icons/L__Light_Laser_Turret.png",
+    "icon": "icons/L__Light_Laser_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -7911,7 +7911,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 200
       }
     ],
-    "icon": "icons/S__Light_Laser_Turret.png",
+    "icon": "icons/S__Light_Laser_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -8002,7 +8002,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 23
       }
     ],
-    "icon": "icons/S__Light_Laser_Gun.png",
+    "icon": "icons/S__Light_Laser_Gun_NPC.png",
     "isNpc": true
   },
   {
@@ -8093,7 +8093,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 2000
       }
     ],
-    "icon": "icons/L__Loki_Plasma_Turret.png",
+    "icon": "icons/L__Loki_Plasma_Turret_NPC.png",
     "isNpc": true
   },
   {
@@ -8184,7 +8184,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 200
       }
     ],
-    "icon": "icons/L__PD_Laser.png",
+    "icon": "icons/L__PD_Laser_NPC.png",
     "isNpc": true
   },
   {
@@ -8275,7 +8275,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 54
       }
     ],
-    "icon": "icons/S__PD_Laser.png",
+    "icon": "icons/S__PD_Laser_NPC.png",
     "isNpc": true
   },
   {
@@ -8362,7 +8362,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 100
       }
     ],
-    "icon": "icons/L__Warhead.png",
+    "icon": "icons/L__Warhead_NPC.png",
     "isNpc": true
   },
   {
@@ -8449,7 +8449,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 100
       }
     ],
-    "icon": "icons/S__Warhead.png",
+    "icon": "icons/S__Warhead_NPC.png",
     "isNpc": true
   },
   {
@@ -8540,7 +8540,7 @@ window.GVK_DEFAULT_WEAPONS = [
         "count": 270
       }
     ],
-    "icon": "icons/L__Drone_Bay.png",
+    "icon": "icons/L__Drone_Bay_NPC.png",
     "isNpc": true
   }
 ];
