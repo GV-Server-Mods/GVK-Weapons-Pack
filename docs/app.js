@@ -86,47 +86,29 @@ const badgeType = document.getElementById('badgeType');
 const badgeTech = document.getElementById('badgeTech');
 const badgePcu = document.getElementById('badgePcu');
 
-// Code Modal & Auth Elements
+// Code Modal
 const codeModal = document.getElementById('codeModal');
 const btnOpenCode = document.getElementById('btnOpenCode');
 const btnCloseModal = document.getElementById('btnCloseModal');
 const btnCopyCode = document.getElementById('btnCopyCode');
 const btnDownloadFile = document.getElementById('btnDownloadFile');
 const btnSaveToDisk = document.getElementById('btnSaveToDisk');
-const btnCommitGithub = document.getElementById('btnCommitGithub');
 const saveStatusHint = document.getElementById('saveStatusHint');
 
-// Staff Auth Elements
-const modeBadge = document.getElementById('modeBadge');
-const btnStaffLogin = document.getElementById('btnStaffLogin');
-const staffProfile = document.getElementById('staffProfile');
-const staffAvatar = document.getElementById('staffAvatar');
-const staffName = document.getElementById('staffName');
-const btnStaffLogout = document.getElementById('btnStaffLogout');
-const authModal = document.getElementById('authModal');
-const btnCloseAuthModal = document.getElementById('btnCloseAuthModal');
-const btnCancelAuth = document.getElementById('btnCancelAuth');
-const btnVerifyStaff = document.getElementById('btnVerifyStaff');
-const inputGithubToken = document.getElementById('inputGithubToken');
-const authErrorMsg = document.getElementById('authErrorMsg');
-
-// Staff Auth State
-let isStaff = false;
-let staffUser = null;
-let staffToken = localStorage.getItem('gvk_staff_token') || null;
+// Workbench Toggle Elements
+const tuningDeckPanel = document.getElementById('tuningDeckPanel');
+const btnToggleDeck = document.getElementById('btnToggleDeck');
+const btnBannerToggleDeck = document.getElementById('btnBannerToggleDeck');
+const btnCloseDeck = document.getElementById('btnCloseDeck');
+const studioGrid = document.getElementById('studioGrid');
+const btnResetDefaults = document.getElementById('btnResetDefaults');
 
 // Initialization
 document.addEventListener('DOMContentLoaded', async () => {
   setupTabs();
   setupSliders();
   setupEventListeners();
-  setupStaffAuth();
   await loadDatabases();
-
-  // Check saved staff token
-  if (staffToken) {
-    verifyStaffMembership(staffToken, true);
-  }
 });
 
 // Load JSON Databases
@@ -768,14 +750,9 @@ ${compXml}      </Components>
 }
 
 // --------------------------------------------------------------------------
-// File System Access API & GitHub Committer (Staff Only)
+// File System Access API (Direct Local Disk Save)
 // --------------------------------------------------------------------------
 document.getElementById('btnLinkLocal').addEventListener('click', async () => {
-  if (!isStaff) {
-    openAuthModal("Linking a local mod directory requires verified GV-Server-Mods staff authorization.");
-    return;
-  }
-
   if (!window.showDirectoryPicker) {
     showToast("File System Access API not supported in this browser. Use Chrome or Edge.", "error");
     return;
@@ -795,11 +772,6 @@ document.getElementById('btnLinkLocal').addEventListener('click', async () => {
 });
 
 btnSaveToDisk.addEventListener('click', async () => {
-  if (!isStaff) {
-    openAuthModal("Saving files to disk requires verified GV-Server-Mods staff authorization.");
-    return;
-  }
-
   if (!modDirectoryHandle) {
     showToast("Please click 'Link Mod Folder' first to select GVK_Weapons!", "error");
     return;
@@ -838,66 +810,6 @@ btnSaveToDisk.addEventListener('click', async () => {
   } catch (err) {
     console.error("Direct save failed:", err);
     showToast(`Failed to save: ${err.message}`, "error");
-  }
-});
-
-// Commit Directly to GitHub (Staff Only)
-btnCommitGithub.addEventListener('click', async () => {
-  if (!isStaff || !staffToken) {
-    openAuthModal("Committing code directly to GitHub requires GV-Server-Mods staff authorization.");
-    return;
-  }
-
-  const activeTab = document.querySelector('[data-codetab].active');
-  const tabId = activeTab ? activeTab.getAttribute('data-codetab') : 'code-weapon-cs';
-  const content = document.getElementById(tabId).textContent;
-
-  let path = `CoreParts/${activeWeapon.id}_Weapons.cs`;
-  if (tabId === 'code-ammo-cs') path = `CoreParts/${activeWeapon.id}_Ammos.cs`;
-  else if (tabId === 'code-cubeblocks-sbc') path = `Content/Data/CubeBlocks/CubeBlocks_${activeWeapon.id}.sbc`;
-  else if (tabId === 'code-blueprints-sbc') path = `Content/Data/Blueprints_${activeWeapon.id}.sbc`;
-
-  showToast(`Committing ${path} to GitHub...`, "info");
-
-  try {
-    // Check if file already exists to obtain its sha
-    let sha = null;
-    const checkRes = await fetch(`https://api.github.com/repos/GV-Server-Mods/GVK-Weapons-Pack/contents/${path}?ref=gvk-weapon-studio`, {
-      headers: {
-        'Authorization': `Bearer ${staffToken}`,
-        'Accept': 'application/vnd.github+json'
-      }
-    });
-    if (checkRes.ok) {
-      const fileData = await checkRes.json();
-      sha = fileData.sha;
-    }
-
-    // Push commit
-    const putRes = await fetch(`https://api.github.com/repos/GV-Server-Mods/GVK-Weapons-Pack/contents/${path}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${staffToken}`,
-        'Accept': 'application/vnd.github+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: `Tweak ${activeWeapon.name} [Staff: @${staffUser.login}]`,
-        content: btoa(unescape(encodeURIComponent(content))),
-        branch: 'gvk-weapon-studio',
-        sha: sha || undefined
-      })
-    });
-
-    if (putRes.ok) {
-      showToast(`Committed ${path} to gvk-weapon-studio branch on GitHub!`, "success");
-    } else {
-      const err = await putRes.json();
-      showToast(`GitHub Commit failed: ${err.message}`, "error");
-    }
-  } catch (err) {
-    console.error("GitHub commit failed:", err);
-    showToast(`GitHub commit error: ${err.message}`, "error");
   }
 });
 
@@ -992,8 +904,46 @@ function setupSliders() {
   });
 }
 
+// Workbench Toggle Function
+function toggleWorkbench(forceState = null) {
+  const isCurrentlyOpen = tuningDeckPanel.style.display !== 'none';
+  const shouldOpen = forceState !== null ? forceState : !isCurrentlyOpen;
+
+  if (shouldOpen) {
+    tuningDeckPanel.style.display = 'block';
+    studioGrid.classList.add('split-view');
+    btnToggleDeck.innerHTML = '✕ Close Workbench';
+    btnToggleDeck.classList.add('btn-toggle-active');
+    btnBannerToggleDeck.innerHTML = '✕ Close Workbench';
+    recalculate();
+  } else {
+    tuningDeckPanel.style.display = 'none';
+    studioGrid.classList.remove('split-view');
+    btnToggleDeck.innerHTML = '🛠️ Tuning Workbench';
+    btnToggleDeck.classList.remove('btn-toggle-active');
+    btnBannerToggleDeck.innerHTML = '🛠️ Customize Stats';
+  }
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
+  // Workbench Toggles
+  btnToggleDeck.addEventListener('click', () => toggleWorkbench());
+  btnBannerToggleDeck.addEventListener('click', () => toggleWorkbench());
+  btnCloseDeck.addEventListener('click', () => toggleWorkbench(false));
+
+  // Reset to Defaults Button
+  btnResetDefaults.addEventListener('click', () => {
+    if (!activeWeapon) return;
+    const original = weaponsDb.find(w => w.id === activeWeapon.id);
+    if (original) {
+      activeWeapon = JSON.parse(JSON.stringify(original));
+      populateDeckFromWeapon(activeWeapon);
+      recalculate();
+      showToast(`Reset ${activeWeapon.name} to server defaults.`, "info");
+    }
+  });
+
   weaponSelect.addEventListener('change', e => {
     selectWeapon(e.target.value);
   });
@@ -1020,12 +970,8 @@ function setupEventListeners() {
     inp.addEventListener('change', recalculate);
   });
 
-  // Modal open / close (Guarded)
+  // Code Modal
   btnOpenCode.addEventListener('click', () => {
-    if (!isStaff) {
-      openAuthModal("Exporting in-game C# and SBC weapon definitions is reserved for authorized GV-Server-Mods staff.");
-      return;
-    }
     codeModal.style.display = 'flex';
     recalculate();
   });
@@ -1034,12 +980,8 @@ function setupEventListeners() {
     codeModal.style.display = 'none';
   });
 
-  // New Weapon Button (Guarded)
+  // New Weapon Creator
   document.getElementById('btnNewWeapon').addEventListener('click', () => {
-    if (!isStaff) {
-      openAuthModal("Creating and exporting custom weapons is reserved for authorized GV-Server-Mods staff.");
-      return;
-    }
     const name = prompt("Enter new custom weapon name:", "GVK Custom Railgun");
     if (!name) return;
     const newId = "GVK_" + name.replace(/[^a-zA-Z0-9_]/g, '_');
@@ -1071,145 +1013,9 @@ function setupEventListeners() {
     weaponsDb.unshift(newW);
     populateWeaponDropdowns();
     selectWeapon(newId);
-    showToast(`Created new weapon profile: ${name}`, "success");
+    toggleWorkbench(true);
+    showToast(`Created custom weapon profile: ${name}`, "success");
   });
-}
-
-// --------------------------------------------------------------------------
-// Staff Authentication (GV-Server-Mods Organization Membership Check)
-// --------------------------------------------------------------------------
-function setupStaffAuth() {
-  btnStaffLogin.addEventListener('click', () => openAuthModal());
-  btnCloseAuthModal.addEventListener('click', () => closeAuthModal());
-  btnCancelAuth.addEventListener('click', () => closeAuthModal());
-  btnStaffLogout.addEventListener('click', () => logoutStaff());
-
-  btnVerifyStaff.addEventListener('click', async () => {
-    const token = inputGithubToken.value.trim();
-    if (!token) {
-      showAuthError("Please paste a GitHub Personal Access Token.");
-      return;
-    }
-    btnVerifyStaff.disabled = true;
-    btnVerifyStaff.textContent = "Verifying with GitHub...";
-    await verifyStaffMembership(token, false);
-    btnVerifyStaff.disabled = false;
-    btnVerifyStaff.textContent = "Verify Membership & Unlock";
-  });
-
-  inputGithubToken.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') btnVerifyStaff.click();
-  });
-}
-
-function openAuthModal(reason = "") {
-  authModal.style.display = 'flex';
-  authErrorMsg.style.display = 'none';
-  if (reason) {
-    authErrorMsg.textContent = reason;
-    authErrorMsg.style.color = "var(--amber-primary)";
-    authErrorMsg.style.display = 'block';
-  }
-  inputGithubToken.value = "";
-  inputGithubToken.focus();
-}
-
-function closeAuthModal() {
-  authModal.style.display = 'none';
-}
-
-function showAuthError(msg) {
-  authErrorMsg.textContent = msg;
-  authErrorMsg.style.color = "var(--red-accent)";
-  authErrorMsg.style.display = 'block';
-}
-
-async function verifyStaffMembership(token, isSilent = false) {
-  if (!token) return false;
-  try {
-    // 1. Get authenticated user profile
-    const uRes = await fetch('https://api.github.com/user', {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github+json'
-      }
-    });
-    if (!uRes.ok) {
-      if (!isSilent) showAuthError("Invalid GitHub token or expired credentials.");
-      return false;
-    }
-    const uData = await uRes.json();
-
-    // 2. Check GV-Server-Mods membership via user memberships API
-    const mRes = await fetch('https://api.github.com/user/memberships/orgs/GV-Server-Mods', {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github+json'
-      }
-    });
-
-    if (mRes.ok) {
-      const mData = await mRes.json();
-      if (mData.state === 'active') {
-        setStaffState(true, uData, token);
-        return true;
-      }
-    }
-
-    // 3. Fallback check for public org membership
-    const pubRes = await fetch(`https://api.github.com/orgs/GV-Server-Mods/members/${uData.login}`, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github+json'
-      }
-    });
-    if (pubRes.status === 204 || pubRes.status === 200) {
-      setStaffState(true, uData, token);
-      return true;
-    }
-
-    if (!isSilent) {
-      showAuthError(`Access Denied: @${uData.login} is not an active member of the GV-Server-Mods organization.`);
-    }
-    return false;
-  } catch (err) {
-    console.error("Staff verification error:", err);
-    if (!isSilent) showAuthError(`Network error while verifying GitHub membership: ${err.message}`);
-    return false;
-  }
-}
-
-function setStaffState(active, user = null, token = null) {
-  isStaff = active;
-  staffUser = user;
-  staffToken = token;
-
-  if (active && user) {
-    localStorage.setItem('gvk_staff_token', token);
-    modeBadge.textContent = "⚡ GV-SERVER-MODS STAFF";
-    modeBadge.className = "badge badge-cyan";
-    btnStaffLogin.style.display = "none";
-    staffProfile.style.display = "flex";
-    staffAvatar.src = user.avatar_url;
-    staffName.textContent = `@${user.login}`;
-    document.getElementById('btnOpenCode').innerHTML = "⚡ Export Code & SBC";
-    document.getElementById('btnLinkLocal').innerHTML = "📁 Link Mod Folder";
-    authModal.style.display = "none";
-    showToast(`Welcome @${user.login}! Staff Engineering Mode unlocked.`, "success");
-  } else {
-    localStorage.removeItem('gvk_staff_token');
-    modeBadge.textContent = "🛡️ PLAYER INTEL MODE";
-    modeBadge.className = "badge badge-amber";
-    btnStaffLogin.style.display = "block";
-    staffProfile.style.display = "none";
-    document.getElementById('btnOpenCode').innerHTML = "🔒 Export (Staff Only)";
-    document.getElementById('btnLinkLocal').innerHTML = "🔒 Link Mod (Staff Only)";
-  }
-}
-
-function logoutStaff() {
-  setStaffState(false);
-  showToast("Signed out of Staff Mode. Returned to Player Intel Mode.", "info");
 }
 
 // Toast Feedback System
@@ -1222,3 +1028,4 @@ function showToast(msg, type = "info") {
     toast.classList.remove('show');
   }, 3500);
 }
+
