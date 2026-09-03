@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GVK Weapon Studio // WeaponCore Real-Time Configurator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="logo-group">
+      <div class="logo-badge">GVK // DO-K</div>
+      <div class="logo-title">
+        <h1>WEAPON <span>STUDIO</span></h1>
+        <p id="repoStatus">Ash-LikeSnow/WeaponCore v2.4+ &bull; GV-Server-Mods/GVK-Weapons-Pack</p>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <button id="btnLinkLocal" class="btn btn-cyan" title="Connect directly to your local GVK_Weapons mod folder to enable 1-click disk saving">
+        📁 Link Mod Folder
+      </button>
+      <button id="btnSyncGithub" class="btn" title="Refresh definitions and math directly from Ash-LikeSnow/WeaponCore on GitHub">
+        🔄 Sync GitHub
+      </button>
+      <button id="btnExportCsv" class="btn" title="Download exact Summary CSV to paste into your Google Sheet">
+        📊 Export CSV
+      </button>
+      <button id="btnOpenCode" class="btn btn-primary" title="View, copy, or save generated C# and SBC definitions">
+        ⚡ Export Code & SBC
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Weapon Selector Banner -->
+    <div class="weapon-banner">
+      <div class="selector-left">
+        <span class="selector-label">Active Weapon</span>
+        <select id="weaponSelect" class="weapon-dropdown">
+          <option value="">Loading weapons database...</option>
+        </select>
+        <button id="btnNewWeapon" class="btn" title="Create a new custom weapon from scratch">+ New</button>
+      </div>
+      
+      <div class="banner-badges">
+        <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
+        <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
+        <div class="badge badge-amber" id="badgeTech">Tech: <strong>6 UPs</strong></div>
+        <div class="badge badge-cyan" id="badgePcu">PCU: <strong>20,000</strong></div>
+      </div>
+    </div>
+
+    <!-- Studio 2-Column Grid -->
+    <div class="studio-grid">
+      
+      <!-- LEFT COLUMN: Tuning Deck (Inputs) -->
+      <div class="panel">
+        <div class="panel-header">
+          <h2>🛠️ Live Tuning Deck</h2>
+          <span style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">REAL-TIME RECALCULATION ACTIVE</span>
+        </div>
+        
+        <!-- Navigation Tabs for Tuning Deck -->
+        <div class="tab-group">
+          <button class="tab-btn active" data-tab="tab-ballistics">🎯 Ballistics & Loading</button>
+          <button class="tab-btn" data-tab="tab-payload">💥 Damage & Shrapnel</button>
+          <button class="tab-btn" data-tab="tab-heat">🔥 Heat & Energy</button>
+          <button class="tab-btn" data-tab="tab-aim">🔄 Aim & Traversal</button>
+          <button class="tab-btn" data-tab="tab-economy">🛡️ Structure & Economy</button>
+        </div>
+
+        <!-- TAB 1: Ballistics & Loading -->
+        <div id="tab-ballistics" class="tab-content active">
+          <div class="control-grid">
+            <div class="control-item">
+              <label class="control-label">Rate of Fire <span class="unit">RPM</span></label>
+              <div class="slider-container">
+                <input type="range" id="inputRofSlider" min="1" max="6000" step="10" value="1000">
+                <input type="number" id="inputRof" class="control-input" min="1" max="10000" value="1000">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Barrels per Shot <span class="unit">qty</span></label>
+              <input type="number" id="inputBarrelsPerShot" class="control-input" min="1" max="16" value="1">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Reload Time <span class="unit">ticks (60=1s)</span></label>
+              <div class="slider-container">
+                <input type="range" id="inputReloadSlider" min="0" max="1200" step="10" value="0">
+                <input type="number" id="inputReloadTime" class="control-input" min="0" max="6000" value="0">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Magazine Size <span class="unit">rounds</span></label>
+              <input type="number" id="inputMagazineSize" class="control-input" min="1" max="1000" value="30">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Mags to Load <span class="unit">capacity</span></label>
+              <input type="number" id="inputMagsToLoad" class="control-input" min="1" max="100" value="1">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Shots in Burst <span class="unit">0 = continuous</span></label>
+              <input type="number" id="inputShotsInBurst" class="control-input" min="0" max="100" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Delay After Burst <span class="unit">ticks</span></label>
+              <input type="number" id="inputDelayAfterBurst" class="control-input" min="0" max="3600" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Delay Until Fire <span class="unit">ticks (spool)</span></label>
+              <input type="number" id="inputDelayUntilFire" class="control-input" min="0" max="600" value="0">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Payload & Shrapnel -->
+        <div id="tab-payload" class="tab-content">
+          <div class="control-grid">
+            <div class="control-item">
+              <label class="control-label">Base Kinetic / Energy Damage <span class="unit">hp</span></label>
+              <input type="number" id="inputBaseDamage" class="control-input" min="0" step="10" value="100">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Desired Velocity <span class="unit">m/s</span></label>
+              <input type="number" id="inputDesiredSpeed" class="control-input" min="0" max="10000" step="50" value="1000">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Max Trajectory / Range <span class="unit">meters</span></label>
+              <input type="number" id="inputMaxTrajectory" class="control-input" min="0" max="50000" step="100" value="1500">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Explosive Damage (EOL) <span class="unit">hp</span></label>
+              <input type="number" id="inputDetDamage" class="control-input" min="0" step="500" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Explosion Radius <span class="unit">meters</span></label>
+              <input type="number" id="inputDetRadius" class="control-input" min="0" max="500" step="1" value="0">
+            </div>
+          </div>
+
+          <div style="margin: 16px 0 8px 0; border-top: 1px solid var(--border-color); padding-top: 12px;">
+            <h3 style="font-size: 12px; color: var(--amber-primary); font-family: var(--font-mono); margin-bottom: 10px;">
+              💥 Proximity Fragmentation & Shrapnel
+            </h3>
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Fragment Projectiles <span class="unit">spawn count</span></label>
+                <input type="number" id="inputFragments" class="control-input" min="0" max="500" value="0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Fragment Spread <span class="unit">degrees</span></label>
+                <input type="number" id="inputFragmentDegrees" class="control-input" min="0" max="180" value="45">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Shrapnel Direct Damage <span class="unit">per frag</span></label>
+                <input type="number" id="inputShrapnelBaseDmg" class="control-input" min="0" value="0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Shrapnel Blast Damage <span class="unit">per frag</span></label>
+                <input type="number" id="inputShrapnelDetDmg" class="control-input" min="0" value="0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Fragment Hit Probability <span class="unit">ratio (0.25=25%)</span></label>
+                <input type="number" id="inputChanceToHit" class="control-input" min="0" max="1" step="0.05" value="1.0">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: Heat & Energy -->
+        <div id="tab-heat" class="tab-content">
+          <div class="control-grid">
+            <div class="control-item">
+              <label class="control-label">Heat Generated per Shot <span class="unit">heat units</span></label>
+              <input type="number" id="inputHeatPerShot" class="control-input" min="0" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Max Heat Capacity <span class="unit">max thermal pool</span></label>
+              <input type="number" id="inputMaxHeat" class="control-input" min="0" step="50" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Cooldown Threshold <span class="unit">ratio (0.5 = 50%)</span></label>
+              <input type="number" id="inputCooldown" class="control-input" min="0" max="1" step="0.05" value="0.5">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Heat Sink Dissipation Rate <span class="unit">heat/sec</span></label>
+              <input type="number" id="inputHeatSinkRate" class="control-input" min="0" step="5" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Energy Cost Scalar <span class="unit">WC multiplier</span></label>
+              <input type="number" id="inputEnergyCost" class="control-input" min="0" step="0.01" value="0">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Idle Power <span class="unit">MW</span></label>
+              <input type="number" id="inputIdlePower" class="control-input" min="0" step="0.1" value="0">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: Aim & Traversal -->
+        <div id="tab-aim" class="tab-content">
+          <div class="control-grid">
+            <div class="control-item">
+              <label class="control-label">Azimuth Rotation Rate <span class="unit">rad/tick</span></label>
+              <div class="slider-container">
+                <input type="range" id="inputRotateRateSlider" min="0.001" max="0.1" step="0.001" value="0.015">
+                <input type="number" id="inputRotateRate" class="control-input" min="0" max="1" step="0.001" value="0.015">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Elevation Rate <span class="unit">rad/tick</span></label>
+              <div class="slider-container">
+                <input type="range" id="inputElevateRateSlider" min="0.001" max="0.1" step="0.001" value="0.015">
+                <input type="number" id="inputElevateRate" class="control-input" min="0" max="1" step="0.001" value="0.015">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Azimuth Arc <span class="unit">Min / Max (deg)</span></label>
+              <div style="display: flex; gap: 6px;">
+                <input type="number" id="inputMinAzimuth" class="control-input" value="-180">
+                <input type="number" id="inputMaxAzimuth" class="control-input" value="180">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Elevation Arc <span class="unit">Min / Max (deg)</span></label>
+              <div style="display: flex; gap: 6px;">
+                <input type="number" id="inputMinElevation" class="control-input" value="-10">
+                <input type="number" id="inputMaxElevation" class="control-input" value="90">
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Inaccuracy Deviation <span class="unit">degrees</span></label>
+              <input type="number" id="inputDeviateShotAngle" class="control-input" min="0" max="10" step="0.05" value="0.1">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Max Targeting Engagement <span class="unit">meters</span></label>
+              <input type="number" id="inputMaxTargetDistance" class="control-input" min="0" max="50000" step="100" value="1500">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: Structure & Economy -->
+        <div id="tab-economy" class="tab-content">
+          <div class="control-grid">
+            <div class="control-item">
+              <label class="control-label">Target Effective Integrity <span class="unit">HP</span></label>
+              <input type="number" id="inputTargetIntegrity" class="control-input" min="1000" step="5000" value="152822">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Durability Modifier <span class="unit">default 0.5</span></label>
+              <input type="number" id="inputDurabilityMod" class="control-input" min="0.1" max="2.0" step="0.1" value="0.5">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Tech Tier (UPs) <span class="unit">server points</span></label>
+              <input type="number" id="inputTechQty" class="control-input" min="0" max="50" value="6">
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">Grid Size <span class="unit">Large / Small</span></label>
+              <select id="selectGridSize" class="control-input">
+                <option value="Large">Large Grid</option>
+                <option value="Small">Small Grid</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; background: var(--bg-card); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+            <h4 style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; margin-bottom: 8px;">
+              Component Generation Formula
+            </h4>
+            <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+              Components are automatically balanced against your target Effective Integrity. Base Integrity = Effective Integrity &times; DurabilityMod. Build Time = round(Effective Integrity &divide; 1500).
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Live Telemetry & Combat Simulator -->
+      <div class="telemetry-deck">
+        
+        <!-- Hero Metrics -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-title">Sustained DPS <span id="teleDpsType">TOTAL</span></div>
+            <div class="stat-value" id="outSustainedDps">0</div>
+            <div class="stat-sub" id="outDpsBreakdown">Base: 0 | Det: 0 | Frag: 0</div>
+          </div>
+
+          <div class="stat-card cyan">
+            <div class="stat-title">Alpha Volley <span class="unit">1 SALVO</span></div>
+            <div class="stat-value" id="outAlphaDmg">0</div>
+            <div class="stat-sub" id="outDamagePerShot">Dmg / Shot: 0 hp</div>
+          </div>
+
+          <div class="stat-card green">
+            <div class="stat-title">Effective Rate <span class="unit">TRUE ROF</span></div>
+            <div class="stat-value" id="outShotsPerSec">0.0 <span style="font-size: 14px; font-weight: 400;">sps</span></div>
+            <div class="stat-sub" id="outCycleTime">Cycle: 0.0s (0.0s shoot + 0.0s reload)</div>
+          </div>
+
+          <div class="stat-card blue">
+            <div class="stat-title">Traverse Speed <span class="unit">ANGULAR</span></div>
+            <div class="stat-value" id="outTraverseDeg">0.0&deg;<span style="font-size: 14px; font-weight: 400;">/s</span></div>
+            <div class="stat-sub" id="outTraverseAzEl">Az: 0.0&deg;/s | El: 0.0&deg;/s</div>
+          </div>
+        </div>
+
+        <!-- Heat Dissipation Simulator -->
+        <div class="heat-box">
+          <div class="heat-header">
+            <span style="color: var(--amber-primary); font-weight: 700;">🔥 THERMAL PROFILE & DUTY CYCLE</span>
+            <span id="outHeatDutyRatio">100% UPTIME</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="heatProgressBar" style="width: 100%;"></div>
+          </div>
+          <div class="heat-meta">
+            <span id="outTimeToOverheat">Continuous Fire: Unlimited</span>
+            <span id="outCooldownTime">Cooldown Window: 0s</span>
+          </div>
+        </div>
+
+        <!-- Power & Structural Telemetry -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-title">Power Required <span class="unit">OPERATIONAL</span></div>
+            <div class="stat-value" id="outPowerMw">0.0 <span style="font-size: 14px; font-weight: 400;">MW</span></div>
+            <div class="stat-sub" id="outPowerIdle">Idle Draw: 0.0 MW</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-title">Effective Integrity <span class="unit">HP / BUILD</span></div>
+            <div class="stat-value" id="outEffectiveIntegrity">0</div>
+            <div class="stat-sub" id="outBuildTime">Welding Time: 0 seconds</div>
+          </div>
+        </div>
+
+        <!-- 1v1 Weapon Comparison Matrix -->
+        <div class="comparison-box">
+          <div class="comparison-header">
+            <h3>⚔️ 1v1 Benchmark Comparison</h3>
+            <select id="compareSelect" class="compare-dropdown">
+              <option value="">Select benchmark weapon...</option>
+            </select>
+          </div>
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Active Gun</th>
+                <th>Benchmark</th>
+                <th>Delta %</th>
+              </tr>
+            </thead>
+            <tbody id="compareTableBody">
+              <tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a weapon above to compare</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bill of Materials (Components & Ingots) -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2>📦 Bill of Materials & Ingot Costs</h2>
+            <span id="outTotalValue" style="font-size: 12px; font-family: var(--font-mono); color: var(--green-accent);">$0</span>
+          </div>
+          <div style="padding: 12px; max-height: 220px; overflow-y: auto;">
+            <table class="bom-table">
+              <thead>
+                <tr>
+                  <th>Component / Ingot</th>
+                  <th>Quantity</th>
+                  <th>Mass (kg)</th>
+                  <th>Integrity</th>
+                </tr>
+              </thead>
+              <tbody id="bomTableBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Code Generation Modal / Drawer -->
+  <div id="codeModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--bg-panel); border: 1px solid var(--amber-primary); border-radius: 8px; width: 100%; max-width: 900px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+      <div class="panel-header">
+        <h2>⚡ IN-GAME CODE & SBC DEFINITIONS</h2>
+        <button id="btnCloseModal" class="btn" style="padding: 2px 8px; font-size: 14px;">✕</button>
+      </div>
+
+      <div class="tab-group" style="padding: 6px 12px;">
+        <button class="tab-btn active" data-codetab="code-weapon-cs">C# WeaponDef</button>
+        <button class="tab-btn" data-codetab="code-ammo-cs">C# AmmoDef</button>
+        <button class="tab-btn" data-codetab="code-cubeblocks-sbc">SBC CubeBlocks</button>
+        <button class="tab-btn" data-codetab="code-blueprints-sbc">SBC Blueprints</button>
+      </div>
+
+      <div style="padding: 16px; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+        <div id="code-weapon-cs" class="code-box" style="flex: 1;">// Generating C#...</div>
+        <div id="code-ammo-cs" class="code-box" style="flex: 1; display: none;">// Generating C# Ammo...</div>
+        <div id="code-cubeblocks-sbc" class="code-box" style="flex: 1; display: none;">&lt;!-- Generating SBC... --&gt;</div>
+        <div id="code-blueprints-sbc" class="code-box" style="flex: 1; display: none;">&lt;!-- Generating Blueprints... --&gt;</div>
+      </div>
+
+      <div style="padding: 12px 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <span id="saveStatusHint" style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">
+          Link your local mod folder to enable 1-click direct file overwriting.
+        </span>
+        <div style="display: flex; gap: 8px;">
+          <button id="btnCopyCode" class="btn">📋 Copy Code</button>
+          <button id="btnDownloadFile" class="btn">💾 Download File</button>
+          <button id="btnSaveToDisk" class="btn btn-primary">⚡ Save to Mod Folder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toastMsg">Ready</span>
+  </div>
+
+  <!-- Fallback local data for file:/// compatibility -->
+  <script src="data/weapons_data.js"></script>
+  <script src="data/components_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
