@@ -8,18 +8,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 4,
     "magsToLoad": 14,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.015,
     "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 80.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -27,8 +27,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -51,39 +51,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
+    "pcu": 6,
     "idlePower": 0.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 830
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 170
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 280
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 420
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 420
       }
     ],
-    "icon": "icons/L__Gatling_Avenger_Turret.png"
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
+    "subtypeId": "GVK_AvengerGatlingTurret",
+    "ammoName": "NATO_25x184mm_Dual",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Gatling_Turret",
@@ -98,18 +105,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1500,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1500.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
@@ -137,39 +144,45 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 3,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 78
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 3
+      },
+      {
+        "name": "Construction",
         "count": 470
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 240
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 240
       }
     ],
-    "icon": "icons/L__Gatling_Turret.png"
+    "icon": "icons/L__Gatling_Turret.png",
+    "subtypeId": "SentinelTurret",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Gatling_Turret",
@@ -184,23 +197,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1500,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1500.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -223,39 +236,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 21,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 21
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 34
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 42
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 63
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 63
       }
     ],
-    "icon": "icons/S__Gatling_Turret.png"
+    "icon": "icons/S__Gatling_Turret.png",
+    "subtypeId": "SmallGatlingTurret",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 21.0
   },
   {
     "id": "S__Gatling_Gun",
@@ -271,22 +291,22 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.4,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
     "maxAzimuth": 0,
     "minElevation": 0,
     "maxElevation": 0,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -309,39 +329,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 1
+      },
+      {
+        "name": "Construction",
         "count": 20
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 10
       }
     ],
-    "icon": "icons/S__Gatling_Gun.png"
+    "icon": "icons/S__Gatling_Gun.png",
+    "subtypeId": "SmallGatlingGun",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "S__Gatling_Gimbal",
@@ -356,23 +383,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -15,
-    "maxAzimuth": 15,
-    "minElevation": -15,
-    "maxElevation": 15,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -15.0,
+    "maxAzimuth": 15.0,
+    "minElevation": -15.0,
+    "maxElevation": 15.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -395,39 +422,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 20
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 10
       }
     ],
-    "icon": "icons/S__Gatling_Gimbal.png"
+    "icon": "icons/S__Gatling_Gimbal.png",
+    "subtypeId": "SmallGatlingGun_Gimbal",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
@@ -442,14 +476,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1900,
-    "deviateShotAngle": 0.15,
+    "maxTargetDistance": 1900.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.0125,
     "elevateRate": 0.0125,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -6.0,
+    "maxElevation": 80.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -457,8 +491,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -481,39 +515,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 40000,
+    "pcu": 12,
     "idlePower": 0.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 12
+      },
+      {
+        "name": "Construction",
         "count": 830
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 170
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 280
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 420
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 420
       }
     ],
-    "icon": "icons/L__Chaingun_Thrasher_Turret.png"
+    "icon": "icons/L__Chaingun_Thrasher_Turret.png",
+    "subtypeId": "ARYXHeavyFlakTurret",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
@@ -528,14 +569,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.15,
+    "maxTargetDistance": 1800.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -567,39 +608,45 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 78
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 470
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 240
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 240
       }
     ],
-    "icon": "icons/L__Chaingun_Khopesh_Turret.png"
+    "icon": "icons/L__Chaingun_Khopesh_Turret.png",
+    "subtypeId": "KhopeshTurret",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "L__Chaingun_Turret",
@@ -610,18 +657,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.2,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -629,8 +676,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -653,39 +700,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 34
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 200
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 40
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 54
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 67
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 100
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 100
       }
     ],
-    "icon": "icons/L__Chaingun_Turret.png"
+    "icon": "icons/L__Chaingun_Turret.png",
+    "subtypeId": "LargeAutoCannonTurret",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Chaingun_Turret",
@@ -696,18 +750,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.2,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -715,8 +769,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -739,39 +793,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 27,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 27
+        "name": "SteelPlate",
+        "count": 10
       },
       {
-        "subtype": "Construction",
-        "count": 170
+        "name": "PrototechMachinery",
+        "count": 4
       },
       {
-        "subtype": "SmallTube",
-        "count": 33
+        "name": "MetalGrid",
+        "count": 28
       },
       {
-        "subtype": "LargeTube",
-        "count": 44
+        "name": "SmallTube",
+        "count": 12
       },
       {
-        "subtype": "Motor",
-        "count": 54
+        "name": "Motor",
+        "count": 15
       },
       {
-        "subtype": "Computer",
-        "count": 81
+        "name": "Computer",
+        "count": 19
       },
       {
-        "subtype": "MetalGrid",
-        "count": 81
+        "name": "Construction",
+        "count": 56
+      },
+      {
+        "name": "SteelPlate",
+        "count": 28
       }
     ],
-    "icon": "icons/S__Chaingun_Turret.png"
+    "icon": "icons/S__Chaingun_Turret.png",
+    "subtypeId": "AutoCannonTurret",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 9.0
   },
   {
     "id": "S__Chaingun_Gun",
@@ -782,12 +843,12 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.1,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -801,8 +862,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -825,39 +886,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 22
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 5
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 8
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 11
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 11
       }
     ],
-    "icon": "icons/S__Chaingun_Gun.png"
+    "icon": "icons/S__Chaingun_Gun.png",
+    "subtypeId": "SmallBlockAutocannon",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Interior_Turret",
@@ -872,23 +940,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 700,
+    "maxTargetDistance": 700.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -76,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -76.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 30,
-    "baseDamage": 50.0,
-    "maxTrajectory": 900,
-    "desiredSpeed": 900,
+    "baseDamage": 25.0,
+    "maxTrajectory": 900.0,
+    "desiredSpeed": 950.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -911,39 +979,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "InteriorPlate",
         "count": 120
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 1
+      },
+      {
+        "name": "Construction",
         "count": 300
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 20
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 39
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 97
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 97
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 97
       }
     ],
-    "icon": "icons/L__Interior_Turret.png"
+    "icon": "icons/L__Interior_Turret.png",
+    "subtypeId": "LargeInteriorTurret",
+    "ammoName": "Ballistics_Interior",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "L__Flak_Turret",
@@ -958,14 +1033,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 8,
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
+    "maxTargetDistance": 1800.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 75,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -973,8 +1048,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -997,43 +1072,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 102,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 160
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 240
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 78
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 140
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 78
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 120
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 390
       }
     ],
-    "icon": "icons/L__Flak_Turret.png"
+    "icon": "icons/L__Flak_Turret.png",
+    "subtypeId": "LargeBlockMediumCalibreTurret",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 102.0
   },
   {
     "id": "S__Flak_Turret",
@@ -1048,14 +1130,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 5,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
+    "maxTargetDistance": 1800.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 50,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1063,8 +1145,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -1087,43 +1169,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 57
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 85
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 34
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 51
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 29
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 43
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       }
     ],
-    "icon": "icons/S__Flak_Turret.png"
+    "icon": "icons/S__Flak_Turret.png",
+    "subtypeId": "SmallBlockMediumCalibreTurret",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "S__Flak_Gun",
@@ -1153,8 +1242,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -1177,43 +1266,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 7
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 11
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 5
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 4
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 4
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 6
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 18
       }
     ],
-    "icon": "icons/S__Flak_Gun.png"
+    "icon": "icons/S__Flak_Gun.png",
+    "subtypeId": "SmallBlockMediumCalibreGun",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Cannon_Turret",
@@ -1228,14 +1324,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2200,
+    "maxTargetDistance": 2200.0,
     "deviateShotAngle": 0.2,
     "rotateRate": 0.004,
     "elevateRate": 0.004,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1243,8 +1339,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1267,43 +1363,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 430
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 8
+      },
+      {
+        "name": "Construction",
         "count": 220
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 86
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 150
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 71
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 150
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 360
       }
     ],
-    "icon": "icons/L__Cannon_Turret.png"
+    "icon": "icons/L__Cannon_Turret.png",
+    "subtypeId": "LargeCalibreTurret",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Cannon_Gun",
@@ -1314,7 +1421,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -1333,8 +1440,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1357,43 +1464,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 45,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 70
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 28
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 47
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 42
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 24
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 47
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 120
       }
     ],
-    "icon": "icons/L__Cannon_Gun.png"
+    "icon": "icons/L__Cannon_Gun.png",
+    "subtypeId": "LargeBlockLargeCalibreGun",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 45.0
   },
   {
     "id": "S__Cannon_Turret",
@@ -1404,18 +1518,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2000,
+    "maxTargetDistance": 2200.0,
     "deviateShotAngle": 0.2,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1423,8 +1537,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1447,43 +1561,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 110
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 52
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 21
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 35
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 31
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 18
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 35
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 86
       }
     ],
-    "icon": "icons/S__Cannon_Turret.png"
+    "icon": "icons/S__Cannon_Turret.png",
+    "subtypeId": "OKI122mmVT",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Cannon_Gun",
@@ -1494,7 +1615,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -1513,8 +1634,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1537,43 +1658,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 19,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 58
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 29
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 12
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 20
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 18
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 20
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 49
       }
     ],
-    "icon": "icons/S__Cannon_Gun.png"
+    "icon": "icons/S__Cannon_Gun.png",
+    "subtypeId": "OKI122mmSGfixed",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 19.0
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -1588,14 +1716,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.03,
     "rotateRate": 0.003,
     "elevateRate": 0.003,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -5,
-    "maxElevation": 45,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -5.0,
+    "maxElevation": 45.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1603,8 +1731,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 10000.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 600,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 600.0,
     "detRadius": 5.0,
     "detDamage": 70000.0,
     "fragments": 0,
@@ -1627,43 +1755,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 332,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 1100
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 12
+      },
+      {
+        "name": "Construction",
         "count": 520
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 210
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 350
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 310
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 180
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 350
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 860
       }
     ],
-    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png"
+    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
+    "subtypeId": "ARYXHurricaneCannon",
+    "ammoName": "Ballistics_HeavyCannon",
+    "buildTimeSeconds": 332.0
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
@@ -1678,14 +1817,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 4000,
-    "deviateShotAngle": 0.05,
+    "maxTargetDistance": 4000.0,
+    "deviateShotAngle": 0.003,
     "rotateRate": 0.003,
     "elevateRate": 0.003,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 70,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 70.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1693,7 +1832,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 10000.0,
-    "maxTrajectory": 3300,
+    "maxTrajectory": 4300.0,
     "desiredSpeed": 600,
     "detRadius": 5.0,
     "detDamage": 70000.0,
@@ -1717,43 +1856,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 16,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 16,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 1700
+        "name": "SteelPlate",
+        "count": 1100
       },
       {
-        "subtype": "Construction",
-        "count": 830
+        "name": "PrototechCircuitry",
+        "count": 1
       },
       {
-        "subtype": "SmallTube",
-        "count": 330
+        "name": "PrototechFrame",
+        "count": 14
       },
       {
-        "subtype": "LargeTube",
-        "count": 550
+        "name": "Construction",
+        "count": 520
       },
       {
-        "subtype": "Motor",
-        "count": 500
+        "name": "SmallTube",
+        "count": 210
       },
       {
-        "subtype": "Computer",
-        "count": 280
+        "name": "LargeTube",
+        "count": 350
       },
       {
-        "subtype": "MetalGrid",
-        "count": 550
+        "name": "Motor",
+        "count": 310
       },
       {
-        "subtype": "SteelPlate",
-        "count": 1400
+        "name": "Computer",
+        "count": 180
+      },
+      {
+        "name": "MetalGrid",
+        "count": 350
+      },
+      {
+        "name": "SteelPlate",
+        "count": 860
       }
     ],
-    "icon": "icons/L__Heavy_Cannon_Odin_Turret.png"
+    "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
+    "ammoName": "Ballistics_HeavyCannon_Odin",
+    "buildTimeSeconds": 60.0,
+    "subtypeId": "odin"
   },
   {
     "id": "L__Railgun_Turret",
@@ -1768,14 +1918,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.01,
     "rotateRate": 0.004,
     "elevateRate": 0.004,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 30,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 30.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1783,8 +1933,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 3000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1807,43 +1957,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 150,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 50000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 410
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "PowerCell",
         "count": 41
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 81
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 81
       },
       {
-        "subtype": "Computer",
+        "name": "Reactor",
         "count": 110
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Computer",
         "count": 310
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 610
       }
     ],
-    "icon": "icons/L__Railgun_Turret.png"
+    "icon": "icons/L__Railgun_Turret.png",
+    "subtypeId": "ARYXRailgunTurret",
+    "ammoName": "SmallRailgunAmmo",
+    "buildTimeSeconds": 150.0
   },
   {
     "id": "L__Railgun_Gun",
@@ -1862,10 +2023,10 @@ window.GVK_DEFAULT_WEAPONS = [
     "deviateShotAngle": 0.01,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": 0,
-    "maxElevation": 0,
+    "minAzimuth": 0.0,
+    "maxAzimuth": 0.0,
+    "minElevation": 0.0,
+    "maxElevation": 0.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -1873,8 +2034,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 3000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1897,43 +2058,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 49,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 40
       },
       {
-        "subtype": "SmallTube",
+        "name": "PowerCell",
         "count": 14
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 27
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 27
       },
       {
-        "subtype": "Computer",
+        "name": "Reactor",
         "count": 34
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Computer",
         "count": 100
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
-    "icon": "icons/L__Railgun_Gun.png"
+    "icon": "icons/L__Railgun_Gun.png",
+    "subtypeId": "ARYXRailgun",
+    "ammoName": "SmallRailgunAmmo",
+    "buildTimeSeconds": 49.0
   },
   {
     "id": "S__Railgun_Gun",
@@ -1963,8 +2131,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.05413533835,
     "magazineSize": 1,
     "baseDamage": 33250.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 2000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 2000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -1987,43 +2155,42 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 6,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 0,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 17
-      },
-      {
-        "subtype": "Construction",
-        "count": 6
-      },
-      {
-        "subtype": "SmallTube",
-        "count": 2
-      },
-      {
-        "subtype": "LargeTube",
-        "count": 4
-      },
-      {
-        "subtype": "Motor",
-        "count": 4
-      },
-      {
-        "subtype": "Computer",
+        "name": "SteelPlate",
         "count": 5
       },
       {
-        "subtype": "MetalGrid",
-        "count": 13
+        "name": "Construction",
+        "count": 20
       },
       {
-        "subtype": "SteelPlate",
-        "count": 26
+        "name": "Superconductor",
+        "count": 20
+      },
+      {
+        "name": "LargeTube",
+        "count": 6
+      },
+      {
+        "name": "PowerCell",
+        "count": 10
+      },
+      {
+        "name": "Computer",
+        "count": 20
+      },
+      {
+        "name": "SteelPlate",
+        "count": 20
       }
     ],
-    "icon": "icons/S__Railgun_Gun.png"
+    "icon": "icons/S__Railgun_Gun.png",
+    "subtypeId": "SmallRailgun",
+    "ammoName": "SmallRailgunAmmo_Ares",
+    "buildTimeSeconds": 30.0
   },
   {
     "id": "L__MAC_Gun",
@@ -2039,13 +2206,13 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.0,
-    "rotateRate": 0.0,
-    "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": 0,
-    "maxElevation": 0,
+    "deviateShotAngle": 0.05,
+    "rotateRate": 0.005,
+    "elevateRate": 0.005,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -2053,8 +2220,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.01071,
     "magazineSize": 1,
     "baseDamage": 2000000.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3000.0,
+    "desiredSpeed": 4100.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -2077,43 +2244,42 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 94,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 260
+        "name": "SteelPlate",
+        "count": 50
       },
       {
-        "subtype": "Construction",
-        "count": 76
+        "name": "Construction",
+        "count": 150
       },
       {
-        "subtype": "SmallTube",
-        "count": 26
+        "name": "Superconductor",
+        "count": 150
       },
       {
-        "subtype": "LargeTube",
-        "count": 51
+        "name": "LargeTube",
+        "count": 60
       },
       {
-        "subtype": "Motor",
-        "count": 51
+        "name": "PowerCell",
+        "count": 100
       },
       {
-        "subtype": "Computer",
-        "count": 64
+        "name": "Computer",
+        "count": 100
       },
       {
-        "subtype": "MetalGrid",
-        "count": 190
-      },
-      {
-        "subtype": "SteelPlate",
-        "count": 380
+        "name": "SteelPlate",
+        "count": 300
       }
     ],
-    "icon": "icons/L__MAC_Gun.png"
+    "icon": "icons/L__MAC_Gun.png",
+    "subtypeId": "LargeRailgun",
+    "ammoName": "LargeRailgunSabot",
+    "buildTimeSeconds": 100.0
   },
   {
     "id": "L__Rocket_Turret",
@@ -2128,14 +2294,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 6,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
-    "deviateShotAngle": 3.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 1000.0,
+    "deviateShotAngle": 0.75,
+    "rotateRate": 0.03,
     "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -5,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -5.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -2143,8 +2309,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -2167,39 +2333,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 67
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 4
+      },
+      {
+        "name": "MetalGrid",
         "count": 67
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 81
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 170
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 540
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 210
       }
     ],
-    "icon": "icons/L__Rocket_Turret.png"
+    "icon": "icons/L__Rocket_Turret.png",
+    "subtypeId": "ARYXHydraTurret",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Rocket_Turret",
@@ -2214,14 +2387,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
-    "deviateShotAngle": 3.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 1000.0,
+    "deviateShotAngle": 0.75,
+    "rotateRate": 0.03,
     "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -8,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -8.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -2229,8 +2402,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -2253,39 +2426,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 21,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 18
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 2
+      },
+      {
+        "name": "MetalGrid",
         "count": 18
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 22
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 58
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 44
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 150
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 54
       }
     ],
-    "icon": "icons/S__Rocket_Turret.png"
+    "icon": "icons/S__Rocket_Turret.png",
+    "subtypeId": "SmallMissileTurret",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 21.0
   },
   {
     "id": "L__Rocket_Launcher",
@@ -2301,7 +2481,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 3.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -2315,8 +2495,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -2339,39 +2519,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 3,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 33
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 3
+      },
+      {
+        "name": "MetalGrid",
         "count": 33
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 39
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 78
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 260
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 97
       }
     ],
-    "icon": "icons/L__Rocket_Launcher.png"
+    "icon": "icons/L__Rocket_Launcher.png",
+    "subtypeId": "LargeMissileLauncher",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "S__Rocket_Launcher",
@@ -2387,7 +2574,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 0.5,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -2401,8 +2588,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -2425,55 +2612,62 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 3
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 1
+      },
+      {
+        "name": "MetalGrid",
         "count": 3
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 23
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 9
       }
     ],
-    "icon": "icons/S__Rocket_Launcher.png"
+    "icon": "icons/S__Rocket_Launcher.png",
+    "subtypeId": "SmallMissileLauncher",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
     "name": "(S) Rocket Launcher Reloadable",
     "grid": "Small",
     "type": "Fixed",
-    "rateOfFire": 480,
+    "rateOfFire": 240,
     "shotsInBurst": 4,
     "barrelsPerShot": 1,
     "delayAfterBurst": 900,
-    "reloadTime": 120,
+    "reloadTime": 240,
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -2487,8 +2681,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -2511,39 +2705,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 3
+        "name": "SteelPlate",
+        "count": 5
       },
       {
-        "subtype": "Construction",
-        "count": 3
+        "name": "PrototechPanel",
+        "count": 2
       },
       {
-        "subtype": "SmallTube",
-        "count": 4
+        "name": "MetalGrid",
+        "count": 2
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
+        "count": 1
+      },
+      {
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
-        "count": 7
+        "name": "InteriorPlate",
+        "count": 2
       },
       {
-        "subtype": "Computer",
-        "count": 23
+        "name": "Computer",
+        "count": 19
       },
       {
-        "subtype": "MetalGrid",
-        "count": 9
+        "name": "Construction",
+        "count": 19
+      },
+      {
+        "name": "SteelPlate",
+        "count": 19
       }
     ],
-    "icon": "icons/S__Rocket_Launcher_Reloadable.png"
+    "icon": "icons/S__Rocket_Launcher_Reloadable.png",
+    "subtypeId": "Missiles_Rockets_SGReloadableLauncher",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Missile_Turret",
@@ -2558,14 +2763,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 36,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2300,
-    "deviateShotAngle": 1.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 2300.0,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.01,
     "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": -15,
-    "maxElevation": 65,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -60.0,
+    "maxElevation": 60.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -2573,8 +2778,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -2597,43 +2802,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 9,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 290
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 34
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 570
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 570
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 570
       }
     ],
-    "icon": "icons/L__Missile_Turret.png"
+    "icon": "icons/L__Missile_Turret.png",
+    "subtypeId": "GVK_GriffinMissileTurret",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Missile_Launcher",
@@ -2648,7 +2864,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 54,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2300,
+    "maxTargetDistance": 2300.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -2663,8 +2879,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -2687,43 +2903,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 250,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 80
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 6
+      },
+      {
+        "name": "MetalGrid",
         "count": 32
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 16
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 160
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 20
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 320
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 320
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 320
       }
     ],
-    "icon": "icons/L__Missile_Launcher.png"
+    "icon": "icons/L__Missile_Launcher.png",
+    "subtypeId": "GVK_GriffinMissileLauncher",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Missile_Launcher",
@@ -2738,7 +2965,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -2753,8 +2980,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -2777,43 +3004,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 5
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
         "count": 2
       },
       {
-        "subtype": "SmallTube",
+        "name": "MetalGrid",
+        "count": 2
+      },
+      {
+        "name": "LargeTube",
         "count": 1
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 2
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 19
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 19
       }
     ],
-    "icon": "icons/S__Missile_Launcher.png"
+    "icon": "icons/S__Missile_Launcher.png",
+    "subtypeId": "SmallRocketLauncherReload",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Tuukka_Missile_Turret",
@@ -2826,16 +3060,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayAfterBurst": 0,
     "reloadTime": 1000,
     "magsToLoad": 19,
-    "delayUntilFire": 0,
+    "delayUntilFire": 60,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "deviateShotAngle": 0.5,
+    "maxTargetDistance": 3000.0,
+    "deviateShotAngle": 1.0,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": -15,
-    "maxElevation": 50,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 50.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -2843,8 +3077,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 3000,
-    "desiredSpeed": 500,
+    "maxTrajectory": 4000.0,
+    "desiredSpeed": 270.0,
     "detRadius": 6.0,
     "detDamage": 30000.0,
     "fragments": 0,
@@ -2867,43 +3101,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 290
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 34
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 570
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 570
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 570
       }
     ],
-    "icon": "icons/L__Tuukka_Missile_Turret.png"
+    "icon": "icons/L__Tuukka_Missile_Turret.png",
+    "subtypeId": "missileBattery01",
+    "ammoName": "Missiles_HeavyMissile",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Torpedo_Launcher",
@@ -2918,8 +3163,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "deviateShotAngle": 0.0,
+    "maxTargetDistance": 3000.0,
+    "deviateShotAngle": 0.1,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -2932,9 +3177,9 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 1,
-    "baseDamage": 1.0,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 350,
+    "baseDamage": 100.0,
+    "maxTrajectory": 3500.0,
+    "desiredSpeed": 200.0,
     "detRadius": 25.0,
     "detDamage": 1500000.0,
     "fragments": 1,
@@ -2957,43 +3202,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 49,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 51
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 21
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 11
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 13
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 210
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 210
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 210
       }
     ],
-    "icon": "icons/L__Torpedo_Launcher.png"
+    "icon": "icons/L__Torpedo_Launcher.png",
+    "subtypeId": "Missile_Torpedo_Large",
+    "ammoName": "Missiles_Torpedo",
+    "buildTimeSeconds": 49.0
   },
   {
     "id": "S__Torpedo_Launcher",
@@ -3008,7 +3264,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -3022,9 +3278,9 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 1,
-    "baseDamage": 1.0,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 350,
+    "baseDamage": 100.0,
+    "maxTrajectory": 3500.0,
+    "desiredSpeed": 200.0,
     "detRadius": 25.0,
     "detDamage": 1500000.0,
     "fragments": 1,
@@ -3047,43 +3303,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 34,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 35
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 14
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 7
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 70
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 9
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 140
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 140
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       }
     ],
-    "icon": "icons/S__Torpedo_Launcher.png"
+    "icon": "icons/S__Torpedo_Launcher.png",
+    "subtypeId": "Missile_Torpedo_Small",
+    "ammoName": "Missiles_Torpedo",
+    "buildTimeSeconds": 34.0
   },
   {
     "id": "L__SRBM_Turret",
@@ -3098,14 +3365,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 8,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 4000,
+    "maxTargetDistance": 4000.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -3113,8 +3380,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 5000,
-    "desiredSpeed": 300,
+    "maxTrajectory": 6000.0,
+    "desiredSpeed": 300.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 8,
@@ -3137,43 +3404,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 1.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 550
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 12
+      },
+      {
+        "name": "MetalGrid",
         "count": 220
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 110
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 1100
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 140
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 2200
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 2200
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 2200
       }
     ],
-    "icon": "icons/L__SRBM_Turret.png"
+    "icon": "icons/L__SRBM_Turret.png",
+    "subtypeId": "ARYXMissileBattery",
+    "ammoName": "Missiles_Siege",
+    "buildTimeSeconds": 533.0
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
@@ -3184,18 +3462,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 360,
     "magsToLoad": 1,
     "delayUntilFire": 15,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.0075,
     "elevateRate": 0.0075,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 80,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 80.0,
     "heatPerShot": 2,
     "maxHeat": 1200,
     "cooldown": 0.5,
@@ -3227,43 +3505,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 95
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 12
+      },
+      {
+        "name": "SmallTube",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 320
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 63
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 76
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 32
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 820
       }
     ],
-    "icon": "icons/L__Spartan_Heavy_Laser_Turret.png"
+    "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
+    "subtypeId": "ARYXSpartanTurret",
+    "ammoName": "Lasers_Laser_Dual",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Heavy_Laser_Turret",
@@ -3274,18 +3559,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.015,
     "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
@@ -3293,7 +3578,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.78,
     "magazineSize": 60,
     "baseDamage": 150.0,
-    "maxTrajectory": 1800,
+    "maxTrajectory": 1800.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -3317,43 +3602,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 62,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 43
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 6
+      },
+      {
+        "name": "SmallTube",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 45
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 150
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 29
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 34
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 15
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 370
       }
     ],
-    "icon": "icons/L__Heavy_Laser_Turret.png"
+    "icon": "icons/L__Heavy_Laser_Turret.png",
+    "subtypeId": "MA_T2PDX",
+    "ammoName": "Lasers_Laser_Large",
+    "buildTimeSeconds": 62.0
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
@@ -3364,18 +3656,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -15,
-    "maxAzimuth": 15,
-    "minElevation": -15,
-    "maxElevation": 15,
+    "minAzimuth": -15.0,
+    "maxAzimuth": 15.0,
+    "minElevation": -15.0,
+    "maxElevation": 15.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
@@ -3383,7 +3675,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.78,
     "magazineSize": 60,
     "baseDamage": 150.0,
-    "maxTrajectory": 1800,
+    "maxTrajectory": 1800.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -3407,43 +3699,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 26
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 35
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 28
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 86
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 18
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 21
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 9
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 230
       }
     ],
-    "icon": "icons/L__Heavy_Laser_Gimbal.png"
+    "icon": "icons/L__Heavy_Laser_Gimbal.png",
+    "subtypeId": "MA_Fixed_T2",
+    "ammoName": "Lasers_Laser_Large",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "L__Light_Laser_Turret",
@@ -3454,25 +3753,25 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1100,
+    "maxTargetDistance": 1100.0,
     "deviateShotAngle": 0.0,
-    "rotateRate": 0.015,
-    "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -18,
-    "maxElevation": 85,
+    "rotateRate": 0.02,
+    "elevateRate": 0.02,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -18.0,
+    "maxElevation": 60.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
     "heatSinkRate": 30,
-    "energyCost": 0.7866666667,
+    "energyCost": 0.2,
     "magazineSize": 60,
-    "baseDamage": 75.0,
+    "baseDamage": 37.5,
     "maxTrajectory": 1300,
     "desiredSpeed": 0,
     "detRadius": 0.0,
@@ -3497,43 +3796,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
-    "icon": "icons/L__Light_Laser_Turret.png"
+    "icon": "icons/L__Light_Laser_Turret.png",
+    "subtypeId": "ReceptorTurret",
+    "ammoName": "Lasers_Laser_Light_SG",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Light_Laser_Turret",
@@ -3544,26 +3850,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1100,
+    "maxTargetDistance": 1100.0,
     "deviateShotAngle": 0.0,
-    "rotateRate": 0.02,
-    "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -18,
-    "maxElevation": 60,
+    "rotateRate": 0.015,
+    "elevateRate": 0.015,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -18.0,
+    "maxElevation": 85.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
     "heatSinkRate": 30,
-    "energyCost": 0.2,
+    "energyCost": 0.6,
     "magazineSize": 60,
     "baseDamage": 75.0,
-    "maxTrajectory": 1300,
+    "maxTrajectory": 1100.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -3587,43 +3893,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
-    "icon": "icons/S__Light_Laser_Turret.png"
+    "icon": "icons/S__Light_Laser_Turret.png",
+    "subtypeId": "MA_PDX",
+    "ammoName": "Lasers_Laser_Light_LG",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Light_Laser_Gun",
@@ -3634,7 +3947,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -3652,7 +3965,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 30,
     "energyCost": 0.2,
     "magazineSize": 60,
-    "baseDamage": 75.0,
+    "baseDamage": 37.5,
     "maxTrajectory": 1300,
     "desiredSpeed": 0,
     "detRadius": 0.0,
@@ -3677,43 +3990,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 3
       },
       {
-        "subtype": "Construction",
-        "count": 4
-      },
-      {
-        "subtype": "SmallTube",
-        "count": 3
-      },
-      {
-        "subtype": "LargeTube",
-        "count": 9
-      },
-      {
-        "subtype": "Motor",
+        "name": "PrototechCapacitor",
         "count": 2
       },
       {
-        "subtype": "Computer",
+        "name": "SmallTube",
+        "count": 4
+      },
+      {
+        "name": "Motor",
         "count": 3
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Superconductor",
+        "count": 9
+      },
+      {
+        "name": "BulletproofGlass",
+        "count": 2
+      },
+      {
+        "name": "Computer",
+        "count": 3
+      },
+      {
+        "name": "MetalGrid",
         "count": 1
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       }
     ],
-    "icon": "icons/S__Light_Laser_Gun.png"
+    "icon": "icons/S__Light_Laser_Gun.png",
+    "subtypeId": "ReceptorCoilGun",
+    "ammoName": "Lasers_Laser_Light_SG",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Loki_Plasma_Turret",
@@ -3728,14 +4048,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 2500.0,
     "deviateShotAngle": 0.1,
-    "rotateRate": 0.01,
-    "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 40,
+    "rotateRate": 0.005,
+    "elevateRate": 0.005,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 40.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -3743,8 +4063,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 5865.0,
     "magazineSize": 3,
     "baseDamage": 1.0,
-    "maxTrajectory": 3000,
-    "desiredSpeed": 600,
+    "maxTrajectory": 3000.0,
+    "desiredSpeed": 500.0,
     "detRadius": 7.0,
     "detDamage": 80000.0,
     "fragments": 0,
@@ -3767,43 +4087,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 332,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 230
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechCapacitor",
+        "count": 12
+      },
+      {
+        "name": "SmallTube",
         "count": 310
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 250
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 760
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 190
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 76
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 2000
       }
     ],
-    "icon": "icons/L__Loki_Plasma_Turret.png"
+    "icon": "icons/L__Loki_Plasma_Turret.png",
+    "subtypeId": "lokiCannon1",
+    "ammoName": "Lasers_Plasma",
+    "buildTimeSeconds": 332.0
   },
   {
     "id": "L__PD_Laser",
@@ -3818,23 +4149,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.06,
     "elevateRate": 0.06,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
-    "heatPerShot": 2,
-    "maxHeat": 200,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 2.0,
+    "maxHeat": 200.0,
     "cooldown": 0.95,
-    "heatSinkRate": 4,
+    "heatSinkRate": 4.0,
     "energyCost": 0.3,
     "magazineSize": 1,
     "baseDamage": 100.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 0,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 0.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -3857,43 +4188,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
-    "icon": "icons/L__PD_Laser.png"
+    "icon": "icons/L__PD_Laser.png",
+    "subtypeId": "MA_PDT",
+    "ammoName": "Lasers_AMS",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__PD_Laser",
@@ -3908,23 +4246,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.06,
     "elevateRate": 0.06,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
-    "heatPerShot": 2,
-    "maxHeat": 200,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 2.0,
+    "maxHeat": 200.0,
     "cooldown": 0.95,
-    "heatSinkRate": 4,
+    "heatSinkRate": 4.0,
     "energyCost": 0.3,
     "magazineSize": 1,
     "baseDamage": 100.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 0,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 0.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -3947,43 +4285,50 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 9,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 7
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 9
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 7
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 21
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 5
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 5
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 3
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 54
       }
     ],
-    "icon": "icons/S__PD_Laser.png"
+    "icon": "icons/S__PD_Laser.png",
+    "subtypeId": "MA_PDT_sm",
+    "ammoName": "Lasers_AMS",
+    "buildTimeSeconds": 9.0
   },
   {
     "id": "L__Warhead",
@@ -3994,7 +4339,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 1,
     "barrelsPerShot": 1,
     "delayAfterBurst": 999999,
-    "reloadTime": 0,
+    "reloadTime": 1,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -4010,11 +4355,11 @@ window.GVK_DEFAULT_WEAPONS = [
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
-    "energyCost": 0.0,
+    "energyCost": 1.0,
     "magazineSize": 1,
-    "baseDamage": 200000.0,
-    "maxTrajectory": 0,
-    "desiredSpeed": 0,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1.0,
+    "desiredSpeed": 1.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4037,39 +4382,42 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.25,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 34
+        "name": "SteelPlate",
+        "count": 10
       },
       {
-        "subtype": "Construction",
-        "count": 200
+        "name": "Girder",
+        "count": 24
       },
       {
-        "subtype": "SmallTube",
-        "count": 40
+        "name": "Construction",
+        "count": 12
       },
       {
-        "subtype": "LargeTube",
-        "count": 54
+        "name": "SmallTube",
+        "count": 12
       },
       {
-        "subtype": "Motor",
-        "count": 67
+        "name": "Computer",
+        "count": 2
       },
       {
-        "subtype": "Computer",
-        "count": 100
+        "name": "Explosives",
+        "count": 5
       },
       {
-        "subtype": "MetalGrid",
-        "count": 100
+        "name": "SteelPlate",
+        "count": 10
       }
     ],
-    "icon": "icons/L__Warhead.png"
+    "icon": "icons/L__Warhead.png",
+    "subtypeId": "LargeWarhead",
+    "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
+    "buildTimeSeconds": 30.0
   },
   {
     "id": "S__Warhead",
@@ -4080,7 +4428,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 1,
     "barrelsPerShot": 1,
     "delayAfterBurst": 999999,
-    "reloadTime": 0,
+    "reloadTime": 1,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -4096,11 +4444,11 @@ window.GVK_DEFAULT_WEAPONS = [
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
-    "energyCost": 0.0,
+    "energyCost": 1.0,
     "magazineSize": 1,
-    "baseDamage": 50000.0,
-    "maxTrajectory": 0,
-    "desiredSpeed": 0,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1.0,
+    "desiredSpeed": 1.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4123,54 +4471,57 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 0,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.25,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 34
+        "name": "SteelPlate",
+        "count": 1
       },
       {
-        "subtype": "Construction",
-        "count": 200
+        "name": "Girder",
+        "count": 1
       },
       {
-        "subtype": "SmallTube",
-        "count": 40
+        "name": "Construction",
+        "count": 1
       },
       {
-        "subtype": "LargeTube",
-        "count": 54
+        "name": "SmallTube",
+        "count": 2
       },
       {
-        "subtype": "Motor",
-        "count": 67
+        "name": "Computer",
+        "count": 1
       },
       {
-        "subtype": "Computer",
-        "count": 100
+        "name": "Explosives",
+        "count": 2
       },
       {
-        "subtype": "MetalGrid",
-        "count": 100
+        "name": "SteelPlate",
+        "count": 3
       }
     ],
-    "icon": "icons/S__Warhead.png"
+    "icon": "icons/S__Warhead.png",
+    "subtypeId": "SmallWarhead",
+    "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
+    "buildTimeSeconds": 10.0
   },
   {
     "id": "L__Drone_Bay",
     "name": "(L) Drone Bay",
     "grid": "Large",
     "type": "Fixed",
-    "rateOfFire": 3,
+    "rateOfFire": 30,
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
     "reloadTime": 600,
     "magsToLoad": 3,
-    "delayUntilFire": 30,
+    "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 2500.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -4185,8 +4536,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 30000,
-    "desiredSpeed": 150,
+    "maxTrajectory": 30000.0,
+    "desiredSpeed": 150.0,
     "detRadius": 5.0,
     "detDamage": 20000.0,
     "fragments": 260,
@@ -4209,43 +4560,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 66,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 68
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 27
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 14
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 140
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 17
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 270
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 270
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 270
       }
     ],
-    "icon": "icons/L__Drone_Bay.png"
+    "icon": "icons/L__Drone_Bay.png",
+    "subtypeId": "ARYX_Small_Sidekick_Hangar",
+    "ammoName": "Others_Drone_Offense_Advanced",
+    "buildTimeSeconds": 66.0
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
@@ -4256,18 +4618,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 4,
     "magsToLoad": 14,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.015,
     "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 80.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -4275,8 +4637,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4299,40 +4661,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
+    "pcu": 6,
     "idlePower": 0.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 830
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 170
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 280
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 420
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 420
       }
     ],
     "icon": "icons/L__Gatling_Avenger_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "GVK_AvengerGatlingTurret_NPC",
+    "ammoName": "NATO_25x184mm_Dual",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Gatling_Turret_NPC",
@@ -4347,18 +4716,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1500,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1500.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
@@ -4386,40 +4755,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 3,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 78
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 3
+      },
+      {
+        "name": "Construction",
         "count": 470
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 240
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 240
       }
     ],
     "icon": "icons/L__Gatling_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SentinelTurret_NPC",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Gatling_Turret_NPC",
@@ -4434,23 +4809,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1500,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1500.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4473,40 +4848,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 21,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 21
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 34
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 42
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 63
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 63
       }
     ],
     "icon": "icons/S__Gatling_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallGatlingTurret_NPC",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 21.0
   },
   {
     "id": "S__Gatling_Gun_NPC",
@@ -4522,22 +4904,22 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.4,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
     "maxAzimuth": 0,
     "minElevation": 0,
     "maxElevation": 0,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4560,40 +4942,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 1
+      },
+      {
+        "name": "Construction",
         "count": 20
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 10
       }
     ],
     "icon": "icons/S__Gatling_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallGatlingGun_NPC",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
@@ -4608,23 +4997,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
-    "deviateShotAngle": 0.4,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.15,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -15,
-    "maxAzimuth": 15,
-    "minElevation": -15,
-    "maxElevation": 15,
-    "heatPerShot": 0,
-    "maxHeat": 0,
+    "minAzimuth": -15.0,
+    "maxAzimuth": 15.0,
+    "minElevation": -15.0,
+    "maxElevation": 15.0,
+    "heatPerShot": 0.0,
+    "maxHeat": 0.0,
     "cooldown": 0.0,
-    "heatSinkRate": 0,
+    "heatSinkRate": 0.0,
     "energyCost": 0.0,
     "magazineSize": 30,
     "baseDamage": 100.0,
-    "maxTrajectory": 1700,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1700.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4647,40 +5036,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 20
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 10
       }
     ],
     "icon": "icons/S__Gatling_Gimbal_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallGatlingGun_Gimbal_NPC",
+    "ammoName": "NATO_25x184mm",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
@@ -4695,14 +5091,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1900,
-    "deviateShotAngle": 0.15,
+    "maxTargetDistance": 1900.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.0125,
     "elevateRate": 0.0125,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -6.0,
+    "maxElevation": 80.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -4710,8 +5106,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4734,40 +5130,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 40000,
+    "pcu": 12,
     "idlePower": 0.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 12
+      },
+      {
+        "name": "Construction",
         "count": 830
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 170
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 280
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 420
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 420
       }
     ],
     "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXHeavyFlakTurret_NPC",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
@@ -4782,14 +5185,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.15,
+    "maxTargetDistance": 1800.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -4821,40 +5224,46 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 78
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 470
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 240
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 240
       }
     ],
     "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "KhopeshTurret_NPC",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "L__Chaingun_Turret_NPC",
@@ -4865,18 +5274,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.2,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -4884,8 +5293,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4908,40 +5317,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 34
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 200
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 40
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 54
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 67
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 100
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 100
       }
     ],
     "icon": "icons/L__Chaingun_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeAutoCannonTurret_NPC",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Chaingun_Turret_NPC",
@@ -4952,18 +5368,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
-    "deviateShotAngle": 0.2,
+    "maxTargetDistance": 1600.0,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.025,
     "elevateRate": 0.025,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -4971,8 +5387,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -4995,40 +5411,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 27,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 27
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 170
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 33
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 44
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 54
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 81
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 81
       }
     ],
     "icon": "icons/S__Chaingun_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "AutoCannonTurret_NPC",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 27.0
   },
   {
     "id": "S__Chaingun_Gun_NPC",
@@ -5039,12 +5462,12 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 30,
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.1,
+    "deviateShotAngle": 0.075,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -5058,8 +5481,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 6,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5082,40 +5505,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 4
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 22
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 5
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 6
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 8
       },
       {
-        "subtype": "Computer",
+        "name": "MetalGrid",
         "count": 11
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 11
       }
     ],
     "icon": "icons/S__Chaingun_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallBlockAutocannon_NPC",
+    "ammoName": "AutocannonClip",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Interior_Turret_NPC",
@@ -5130,23 +5560,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 700,
+    "maxTargetDistance": 700.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -76,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -76.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 30,
-    "baseDamage": 50.0,
-    "maxTrajectory": 900,
-    "desiredSpeed": 900,
+    "baseDamage": 25.0,
+    "maxTrajectory": 900.0,
+    "desiredSpeed": 950.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5169,40 +5599,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "InteriorPlate",
         "count": 120
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechMachinery",
+        "count": 1
+      },
+      {
+        "name": "Construction",
         "count": 300
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 20
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 39
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 97
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 97
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 97
       }
     ],
     "icon": "icons/L__Interior_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeInteriorTurret_NPC",
+    "ammoName": "Ballistics_Interior",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "L__Flak_Turret_NPC",
@@ -5217,14 +5654,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 8,
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
+    "maxTargetDistance": 1800.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 75,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5232,8 +5669,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -5256,44 +5693,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 102,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 160
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 6
+      },
+      {
+        "name": "Construction",
         "count": 240
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 93
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 78
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 140
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 78
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 120
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 390
       }
     ],
     "icon": "icons/L__Flak_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeBlockMediumCalibreTurret_NPC",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 102.0
   },
   {
     "id": "S__Flak_Turret_NPC",
@@ -5308,14 +5752,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 5,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1800,
+    "maxTargetDistance": 1800.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.03,
     "elevateRate": 0.03,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 50,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5323,8 +5767,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -5347,44 +5791,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 57
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 85
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 34
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 51
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 29
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 43
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       }
     ],
     "icon": "icons/S__Flak_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallBlockMediumCalibreTurret_NPC",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "S__Flak_Gun_NPC",
@@ -5414,8 +5865,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1000.0,
-    "maxTrajectory": 2000,
-    "desiredSpeed": 900,
+    "maxTrajectory": 2000.0,
+    "desiredSpeed": 900.0,
     "detRadius": 101.0,
     "detDamage": 1.0,
     "fragments": 30,
@@ -5438,44 +5889,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 7
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 11
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 5
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 4
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 4
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 6
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 18
       }
     ],
     "icon": "icons/S__Flak_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallBlockMediumCalibreGun_NPC",
+    "ammoName": "Ballistics_Flak",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Cannon_Turret_NPC",
@@ -5490,14 +5948,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2200,
+    "maxTargetDistance": 2200.0,
     "deviateShotAngle": 0.2,
     "rotateRate": 0.004,
     "elevateRate": 0.004,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5505,8 +5963,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5529,44 +5987,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 430
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 8
+      },
+      {
+        "name": "Construction",
         "count": 220
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 86
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 150
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 130
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 71
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 150
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 360
       }
     ],
     "icon": "icons/L__Cannon_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeCalibreTurret_NPC",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Cannon_Gun_NPC",
@@ -5577,7 +6046,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -5596,8 +6065,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5620,44 +6089,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 45,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 70
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 28
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 47
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 42
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 24
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 47
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 120
       }
     ],
     "icon": "icons/L__Cannon_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeBlockLargeCalibreGun_NPC",
+    "ammoName": "Ballistics_Cannon_NPC",
+    "buildTimeSeconds": 45.0
   },
   {
     "id": "S__Cannon_Turret_NPC",
@@ -5668,18 +6144,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2000,
+    "maxTargetDistance": 2200.0,
     "deviateShotAngle": 0.2,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5687,8 +6163,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5711,44 +6187,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 110
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 4
+      },
+      {
+        "name": "Construction",
         "count": 52
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 21
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 35
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 31
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 18
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 35
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 86
       }
     ],
     "icon": "icons/S__Cannon_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "OKI122mmVT_NPC",
+    "ammoName": "LargeCalibreAmmo",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Cannon_Gun_NPC",
@@ -5759,7 +6242,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 90,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -5778,8 +6261,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 6000.0,
-    "maxTrajectory": 2400,
-    "desiredSpeed": 600,
+    "maxTrajectory": 2400.0,
+    "desiredSpeed": 600.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -5802,44 +6285,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 19,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 58
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 2
+      },
+      {
+        "name": "Construction",
         "count": 29
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 12
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 20
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 18
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 10
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 20
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 49
       }
     ],
     "icon": "icons/S__Cannon_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "OKI122mmSGfixed_NPC",
+    "ammoName": "Ballistics_Cannon_NPC",
+    "buildTimeSeconds": 19.0
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
@@ -5854,14 +6344,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.03,
     "rotateRate": 0.003,
     "elevateRate": 0.003,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -5,
-    "maxElevation": 45,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -5.0,
+    "maxElevation": 45.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5869,8 +6359,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 10000.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 600,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 600.0,
     "detRadius": 5.0,
     "detDamage": 70000.0,
     "fragments": 0,
@@ -5893,44 +6383,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 332,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 1100
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 12
+      },
+      {
+        "name": "Construction",
         "count": 520
       },
       {
-        "subtype": "SmallTube",
+        "name": "SmallTube",
         "count": 210
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
         "count": 350
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 310
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 180
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 350
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 860
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXHurricaneCannon_NPC",
+    "ammoName": "Ballistics_HeavyCannon",
+    "buildTimeSeconds": 332.0
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret_NPC",
@@ -5945,14 +6446,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 4000,
-    "deviateShotAngle": 0.05,
+    "maxTargetDistance": 4000.0,
+    "deviateShotAngle": 0.003,
     "rotateRate": 0.003,
     "elevateRate": 0.003,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 70,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 70.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -5960,7 +6461,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 10000.0,
-    "maxTrajectory": 3300,
+    "maxTrajectory": 4300.0,
     "desiredSpeed": 600,
     "detRadius": 5.0,
     "detDamage": 70000.0,
@@ -5984,44 +6485,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 16,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 16,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 1700
+        "name": "SteelPlate",
+        "count": 1100
       },
       {
-        "subtype": "Construction",
-        "count": 830
+        "name": "PrototechCircuitry",
+        "count": 1
       },
       {
-        "subtype": "SmallTube",
-        "count": 330
+        "name": "PrototechFrame",
+        "count": 14
       },
       {
-        "subtype": "LargeTube",
-        "count": 550
+        "name": "Construction",
+        "count": 520
       },
       {
-        "subtype": "Motor",
-        "count": 500
+        "name": "SmallTube",
+        "count": 210
       },
       {
-        "subtype": "Computer",
-        "count": 280
+        "name": "LargeTube",
+        "count": 350
       },
       {
-        "subtype": "MetalGrid",
-        "count": 550
+        "name": "Motor",
+        "count": 310
       },
       {
-        "subtype": "SteelPlate",
-        "count": 1400
+        "name": "Computer",
+        "count": 180
+      },
+      {
+        "name": "MetalGrid",
+        "count": 350
+      },
+      {
+        "name": "SteelPlate",
+        "count": 860
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "ammoName": "Ballistics_HeavyCannon_Odin",
+    "buildTimeSeconds": 60.0,
+    "subtypeId": "odin_NPC"
   },
   {
     "id": "L__Railgun_Turret_NPC",
@@ -6036,14 +6548,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.01,
     "rotateRate": 0.004,
     "elevateRate": 0.004,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 30,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 30.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -6051,8 +6563,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 3000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -6075,44 +6587,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 150,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 50000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 410
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "PowerCell",
         "count": 41
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 81
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 81
       },
       {
-        "subtype": "Computer",
+        "name": "Reactor",
         "count": 110
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Computer",
         "count": 310
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 610
       }
     ],
     "icon": "icons/L__Railgun_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXRailgunTurret_NPC",
+    "ammoName": "SmallRailgunAmmo",
+    "buildTimeSeconds": 150.0
   },
   {
     "id": "L__Railgun_Gun_NPC",
@@ -6131,10 +6654,10 @@ window.GVK_DEFAULT_WEAPONS = [
     "deviateShotAngle": 0.01,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": 0,
-    "maxElevation": 0,
+    "minAzimuth": 0.0,
+    "maxAzimuth": 0.0,
+    "minElevation": 0.0,
+    "maxElevation": 0.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -6142,8 +6665,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 3000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -6166,44 +6689,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 49,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechFrame",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 40
       },
       {
-        "subtype": "SmallTube",
+        "name": "PowerCell",
         "count": 14
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 27
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 27
       },
       {
-        "subtype": "Computer",
+        "name": "Reactor",
         "count": 34
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Computer",
         "count": 100
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
     "icon": "icons/L__Railgun_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXRailgun_NPC",
+    "ammoName": "SmallRailgunAmmo_NPC",
+    "buildTimeSeconds": 49.0
   },
   {
     "id": "S__Railgun_Gun_NPC",
@@ -6233,8 +6763,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.05413533835,
     "magazineSize": 1,
     "baseDamage": 33250.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 2000,
+    "maxTrajectory": 3300.0,
+    "desiredSpeed": 2000.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -6257,44 +6787,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 6,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 17
       },
       {
-        "subtype": "Construction",
-        "count": 6
-      },
-      {
-        "subtype": "SmallTube",
-        "count": 2
-      },
-      {
-        "subtype": "LargeTube",
-        "count": 4
-      },
-      {
-        "subtype": "Motor",
-        "count": 4
-      },
-      {
-        "subtype": "Computer",
+        "name": "PrototechFrame",
         "count": 5
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
+        "count": 6
+      },
+      {
+        "name": "PowerCell",
+        "count": 2
+      },
+      {
+        "name": "Superconductor",
+        "count": 4
+      },
+      {
+        "name": "Motor",
+        "count": 4
+      },
+      {
+        "name": "Reactor",
+        "count": 5
+      },
+      {
+        "name": "Computer",
         "count": 13
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 26
       }
     ],
     "icon": "icons/S__Railgun_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallRailgun_NPC",
+    "ammoName": "SmallRailgunAmmo_Ares",
+    "buildTimeSeconds": 6.0
   },
   {
     "id": "L__MAC_Gun_NPC",
@@ -6310,22 +6847,22 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 0.0,
-    "rotateRate": 0.0,
-    "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": 0,
-    "maxElevation": 0,
+    "deviateShotAngle": 0.05,
+    "rotateRate": 0.005,
+    "elevateRate": 0.005,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 75.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
-    "energyCost": 0.01071,
+    "energyCost": 0.0001,
     "magazineSize": 1,
     "baseDamage": 2000000.0,
-    "maxTrajectory": 3300,
-    "desiredSpeed": 3000,
+    "maxTrajectory": 3000.0,
+    "desiredSpeed": 4100.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -6348,44 +6885,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 94,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 260
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 6
+      },
+      {
+        "name": "PrototechFrame",
+        "count": 6
+      },
+      {
+        "name": "MetalGrid",
         "count": 76
       },
       {
-        "subtype": "SmallTube",
+        "name": "PowerCell",
         "count": 26
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 51
       },
       {
-        "subtype": "Motor",
+        "name": "Motor",
         "count": 51
       },
       {
-        "subtype": "Computer",
+        "name": "Reactor",
         "count": 64
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Computer",
         "count": 190
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 380
       }
     ],
     "icon": "icons/L__MAC_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeRailgun_NPC",
+    "ammoName": "LargeRailgunSabot_NPC",
+    "buildTimeSeconds": 94.0
   },
   {
     "id": "L__Rocket_Turret_NPC",
@@ -6400,14 +6948,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 6,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
-    "deviateShotAngle": 3.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 1000.0,
+    "deviateShotAngle": 0.75,
+    "rotateRate": 0.03,
     "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -5,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -5.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -6415,8 +6963,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -6439,40 +6987,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 67
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 4
+      },
+      {
+        "name": "MetalGrid",
         "count": 67
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 81
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 220
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 170
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 540
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 210
       }
     ],
     "icon": "icons/L__Rocket_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXHydraTurret_NPC",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Rocket_Turret_NPC",
@@ -6487,14 +7042,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 2,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
-    "deviateShotAngle": 3.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 1000.0,
+    "deviateShotAngle": 0.75,
+    "rotateRate": 0.03,
     "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -8,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -8.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -6502,8 +7057,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -6526,40 +7081,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 21,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 18
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 2
+      },
+      {
+        "name": "MetalGrid",
         "count": 18
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 22
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 58
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 44
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 150
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 54
       }
     ],
     "icon": "icons/S__Rocket_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallMissileTurret_NPC",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 21.0
   },
   {
     "id": "L__Rocket_Launcher_NPC",
@@ -6575,7 +7137,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 3.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -6589,8 +7151,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -6613,40 +7175,47 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 3,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 33
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 3
+      },
+      {
+        "name": "MetalGrid",
         "count": 33
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 39
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 78
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 260
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 97
       }
     ],
     "icon": "icons/L__Rocket_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeMissileLauncher_NPC",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "S__Rocket_Launcher_NPC",
@@ -6662,7 +7231,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 0.5,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -6676,8 +7245,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -6700,56 +7269,63 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 1,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 3
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
+        "count": 1
+      },
+      {
+        "name": "MetalGrid",
         "count": 3
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 4
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
+        "name": "Computer",
         "count": 7
       },
       {
-        "subtype": "Computer",
+        "name": "Construction",
         "count": 23
       },
       {
-        "subtype": "MetalGrid",
+        "name": "SteelPlate",
         "count": 9
       }
     ],
     "icon": "icons/S__Rocket_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallMissileLauncher_NPC",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
     "name": "(S) Rocket Launcher Reloadable [NPC]",
     "grid": "Small",
     "type": "Fixed",
-    "rateOfFire": 480,
+    "rateOfFire": 240,
     "shotsInBurst": 4,
     "barrelsPerShot": 1,
     "delayAfterBurst": 900,
-    "reloadTime": 120,
+    "reloadTime": 240,
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
-    "deviateShotAngle": 4.0,
+    "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -6763,8 +7339,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 1000,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 1000.0,
     "detRadius": 7.0,
     "detDamage": 15000.0,
     "fragments": 0,
@@ -6787,40 +7363,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 1,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
-        "count": 3
+        "name": "SteelPlate",
+        "count": 5
       },
       {
-        "subtype": "Construction",
-        "count": 3
+        "name": "PrototechPanel",
+        "count": 2
       },
       {
-        "subtype": "SmallTube",
-        "count": 4
+        "name": "MetalGrid",
+        "count": 2
       },
       {
-        "subtype": "LargeTube",
+        "name": "LargeTube",
+        "count": 1
+      },
+      {
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
-        "count": 7
+        "name": "InteriorPlate",
+        "count": 2
       },
       {
-        "subtype": "Computer",
-        "count": 23
+        "name": "Computer",
+        "count": 19
       },
       {
-        "subtype": "MetalGrid",
-        "count": 9
+        "name": "Construction",
+        "count": 19
+      },
+      {
+        "name": "SteelPlate",
+        "count": 19
       }
     ],
     "icon": "icons/S__Rocket_Launcher_Reloadable_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "Missiles_Rockets_SGReloadableLauncher_NPC",
+    "ammoName": "Missiles_Rocket",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Missile_Turret_NPC",
@@ -6835,14 +7422,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 36,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2300,
-    "deviateShotAngle": 1.0,
-    "rotateRate": 0.02,
+    "maxTargetDistance": 2300.0,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.01,
     "elevateRate": 0.0,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": -15,
-    "maxElevation": 65,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -60.0,
+    "maxElevation": 60.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -6850,8 +7437,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -6874,44 +7461,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 290
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 34
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 570
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 570
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 570
       }
     ],
     "icon": "icons/L__Missile_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "GVK_GriffinMissileTurret_NPC",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Missile_Launcher_NPC",
@@ -6926,7 +7524,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 54,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2300,
+    "maxTargetDistance": 2300.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -6941,8 +7539,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -6965,44 +7563,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 78,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 250,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 80
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 6
+      },
+      {
+        "name": "MetalGrid",
         "count": 32
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 16
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 160
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 20
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 320
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 320
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 320
       }
     ],
     "icon": "icons/L__Missile_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "GVK_GriffinMissileLauncher_NPC",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 78.0
   },
   {
     "id": "S__Missile_Launcher_NPC",
@@ -7017,7 +7626,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 4,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -7032,8 +7641,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 2800,
-    "desiredSpeed": 450,
+    "maxTrajectory": 2800.0,
+    "desiredSpeed": 450.0,
     "detRadius": 4.0,
     "detDamage": 12000.0,
     "fragments": 0,
@@ -7056,44 +7665,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 5
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechPanel",
         "count": 2
       },
       {
-        "subtype": "SmallTube",
+        "name": "MetalGrid",
+        "count": 2
+      },
+      {
+        "name": "LargeTube",
         "count": 1
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 10
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 2
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 19
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 19
       }
     ],
     "icon": "icons/S__Missile_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallRocketLauncherReload_NPC",
+    "ammoName": "Missiles_Missile",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Tuukka_Missile_Turret_NPC",
@@ -7106,16 +7722,16 @@ window.GVK_DEFAULT_WEAPONS = [
     "delayAfterBurst": 0,
     "reloadTime": 1000,
     "magsToLoad": 19,
-    "delayUntilFire": 0,
+    "delayUntilFire": 60,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "deviateShotAngle": 0.5,
+    "maxTargetDistance": 3000.0,
+    "deviateShotAngle": 1.0,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": 0,
-    "maxAzimuth": 0,
-    "minElevation": -15,
-    "maxElevation": 50,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 50.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -7123,8 +7739,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 3000,
-    "desiredSpeed": 500,
+    "maxTrajectory": 4000.0,
+    "desiredSpeed": 270.0,
     "detRadius": 6.0,
     "detDamage": 30000.0,
     "fragments": 0,
@@ -7147,44 +7763,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 150
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 29
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 290
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 34
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 570
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 570
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 570
       }
     ],
     "icon": "icons/L__Tuukka_Missile_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "missileBattery01_NPC",
+    "ammoName": "Missiles_HeavyMissile",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
@@ -7199,8 +7826,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "deviateShotAngle": 0.0,
+    "maxTargetDistance": 3000.0,
+    "deviateShotAngle": 0.1,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
     "minAzimuth": 0,
@@ -7213,9 +7840,9 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 1,
-    "baseDamage": 1.0,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 350,
+    "baseDamage": 100.0,
+    "maxTrajectory": 3500.0,
+    "desiredSpeed": 200.0,
     "detRadius": 25.0,
     "detDamage": 1500000.0,
     "fragments": 1,
@@ -7238,44 +7865,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 49,
     "durabilityMod": 0.5,
     "techQty": 10,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 10,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 51
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 10
+      },
+      {
+        "name": "MetalGrid",
         "count": 21
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 11
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 13
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 210
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 210
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 210
       }
     ],
     "icon": "icons/L__Torpedo_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "Missile_Torpedo_Large_NPC",
+    "ammoName": "Missiles_Torpedo",
+    "buildTimeSeconds": 49.0
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
@@ -7290,7 +7928,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
+    "maxTargetDistance": 3000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -7304,9 +7942,9 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 0,
     "energyCost": 0.0,
     "magazineSize": 1,
-    "baseDamage": 1.0,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 350,
+    "baseDamage": 100.0,
+    "maxTrajectory": 3500.0,
+    "desiredSpeed": 200.0,
     "detRadius": 25.0,
     "detDamage": 1500000.0,
     "fragments": 1,
@@ -7329,44 +7967,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 34,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.001,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 35
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 14
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 7
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 70
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 9
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 140
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 140
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 140
       }
     ],
     "icon": "icons/S__Torpedo_Launcher_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "Missile_Torpedo_Small_NPC",
+    "ammoName": "Missiles_Torpedo",
+    "buildTimeSeconds": 34.0
   },
   {
     "id": "L__SRBM_Turret_NPC",
@@ -7381,14 +8030,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 8,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 4000,
+    "maxTargetDistance": 4000.0,
     "deviateShotAngle": 0.3,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -7396,8 +8045,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 5000,
-    "desiredSpeed": 300,
+    "maxTrajectory": 6000.0,
+    "desiredSpeed": 300.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 8,
@@ -7420,44 +8069,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 533,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 1.0,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 550
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 12
+      },
+      {
+        "name": "MetalGrid",
         "count": 220
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 110
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 1100
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 140
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 2200
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 2200
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 2200
       }
     ],
     "icon": "icons/L__SRBM_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXMissileBattery_NPC",
+    "ammoName": "Missiles_Siege",
+    "buildTimeSeconds": 533.0
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
@@ -7468,18 +8128,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 360,
     "magsToLoad": 1,
     "delayUntilFire": 15,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.0075,
     "elevateRate": 0.0075,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -10,
-    "maxElevation": 80,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -10.0,
+    "maxElevation": 80.0,
     "heatPerShot": 2,
     "maxHeat": 1200,
     "cooldown": 0.5,
@@ -7511,44 +8171,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 138,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 40000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 95
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 12
+      },
+      {
+        "name": "SmallTube",
         "count": 130
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 110
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 320
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 63
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 76
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 32
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 820
       }
     ],
     "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYXSpartanTurret_NPC",
+    "ammoName": "Lasers_Laser_Dual",
+    "buildTimeSeconds": 138.0
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
@@ -7559,18 +8226,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1600,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.015,
     "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
@@ -7578,7 +8245,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.78,
     "magazineSize": 60,
     "baseDamage": 150.0,
-    "maxTrajectory": 1800,
+    "maxTrajectory": 1800.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -7602,44 +8269,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 62,
     "durabilityMod": 0.5,
     "techQty": 6,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 6,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 43
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 6
+      },
+      {
+        "name": "SmallTube",
         "count": 57
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 45
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 150
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 29
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 34
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 15
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 370
       }
     ],
     "icon": "icons/L__Heavy_Laser_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "MA_T2PDX_NPC",
+    "ammoName": "Lasers_Laser_Large",
+    "buildTimeSeconds": 62.0
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
@@ -7650,18 +8324,18 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
+    "maxTargetDistance": 1600.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.01,
     "elevateRate": 0.01,
-    "minAzimuth": -15,
-    "maxAzimuth": 15,
-    "minElevation": -15,
-    "maxElevation": 15,
+    "minAzimuth": -15.0,
+    "maxAzimuth": 15.0,
+    "minElevation": -15.0,
+    "maxElevation": 15.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
@@ -7669,7 +8343,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.78,
     "magazineSize": 60,
     "baseDamage": 150.0,
-    "maxTrajectory": 1800,
+    "maxTrajectory": 1800.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -7693,44 +8367,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 37,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 26
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 35
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 28
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 86
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 18
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 21
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 9
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 230
       }
     ],
     "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "MA_Fixed_T2_NPC",
+    "ammoName": "Lasers_Laser_Large",
+    "buildTimeSeconds": 37.0
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
@@ -7741,25 +8422,25 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1100,
+    "maxTargetDistance": 1100.0,
     "deviateShotAngle": 0.0,
-    "rotateRate": 0.015,
-    "elevateRate": 0.015,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -18,
-    "maxElevation": 85,
+    "rotateRate": 0.02,
+    "elevateRate": 0.02,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -18.0,
+    "maxElevation": 60.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
     "heatSinkRate": 30,
-    "energyCost": 0.7866666667,
+    "energyCost": 0.2,
     "magazineSize": 60,
-    "baseDamage": 75.0,
+    "baseDamage": 37.5,
     "maxTrajectory": 1300,
     "desiredSpeed": 0,
     "detRadius": 0.0,
@@ -7784,44 +8465,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
     "icon": "icons/L__Light_Laser_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ReceptorTurret_NPC",
+    "ammoName": "Lasers_Laser_Light_SG",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
@@ -7832,26 +8520,26 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1100,
+    "maxTargetDistance": 1100.0,
     "deviateShotAngle": 0.0,
-    "rotateRate": 0.02,
-    "elevateRate": 0.02,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -18,
-    "maxElevation": 60,
+    "rotateRate": 0.015,
+    "elevateRate": 0.015,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -18.0,
+    "maxElevation": 85.0,
     "heatPerShot": 2,
     "maxHeat": 600,
     "cooldown": 0.5,
     "heatSinkRate": 30,
-    "energyCost": 0.2,
+    "energyCost": 0.6,
     "magazineSize": 60,
     "baseDamage": 75.0,
-    "maxTrajectory": 1300,
+    "maxTrajectory": 1100.0,
     "desiredSpeed": 0,
     "detRadius": 0.0,
     "detDamage": 0.0,
@@ -7875,44 +8563,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
     "icon": "icons/S__Light_Laser_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "MA_PDX_NPC",
+    "ammoName": "Lasers_Laser_Light_LG",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
@@ -7923,7 +8618,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 0,
+    "reloadTime": 240,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -7941,7 +8636,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "heatSinkRate": 30,
     "energyCost": 0.2,
     "magazineSize": 60,
-    "baseDamage": 75.0,
+    "baseDamage": 37.5,
     "maxTrajectory": 1300,
     "desiredSpeed": 0,
     "detRadius": 0.0,
@@ -7966,44 +8661,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 5,
     "durabilityMod": 0.5,
     "techQty": 2,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 2,
+    "idlePower": 0.005,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 3
       },
       {
-        "subtype": "Construction",
-        "count": 4
-      },
-      {
-        "subtype": "SmallTube",
-        "count": 3
-      },
-      {
-        "subtype": "LargeTube",
-        "count": 9
-      },
-      {
-        "subtype": "Motor",
+        "name": "PrototechCapacitor",
         "count": 2
       },
       {
-        "subtype": "Computer",
+        "name": "SmallTube",
+        "count": 4
+      },
+      {
+        "name": "Motor",
         "count": 3
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Superconductor",
+        "count": 9
+      },
+      {
+        "name": "BulletproofGlass",
+        "count": 2
+      },
+      {
+        "name": "Computer",
+        "count": 3
+      },
+      {
+        "name": "MetalGrid",
         "count": 1
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       }
     ],
     "icon": "icons/S__Light_Laser_Gun_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ReceptorCoilGun_NPC",
+    "ammoName": "Lasers_Laser_Light_SG",
+    "buildTimeSeconds": 5.0
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
@@ -8018,14 +8720,14 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 2500.0,
     "deviateShotAngle": 0.1,
-    "rotateRate": 0.01,
-    "elevateRate": 0.01,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 40,
+    "rotateRate": 0.005,
+    "elevateRate": 0.005,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -15.0,
+    "maxElevation": 40.0,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0.0,
@@ -8033,8 +8735,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 5865.0,
     "magazineSize": 3,
     "baseDamage": 1.0,
-    "maxTrajectory": 3000,
-    "desiredSpeed": 600,
+    "maxTrajectory": 3000.0,
+    "desiredSpeed": 500.0,
     "detRadius": 7.0,
     "detDamage": 80000.0,
     "fragments": 0,
@@ -8057,44 +8759,55 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 332,
     "durabilityMod": 0.5,
     "techQty": 12,
-    "pcu": 60000,
-    "idlePower": 0.0,
+    "pcu": 12,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 230
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechCapacitor",
+        "count": 12
+      },
+      {
+        "name": "SmallTube",
         "count": 310
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 250
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 760
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 160
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 190
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 76
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 2000
       }
     ],
     "icon": "icons/L__Loki_Plasma_Turret_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "lokiCannon1_NPC",
+    "ammoName": "Lasers_Plasma",
+    "buildTimeSeconds": 332.0
   },
   {
     "id": "L__PD_Laser_NPC",
@@ -8109,23 +8822,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.06,
     "elevateRate": 0.06,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
-    "heatPerShot": 2,
-    "maxHeat": 200,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 2.0,
+    "maxHeat": 200.0,
     "cooldown": 0.95,
-    "heatSinkRate": 4,
+    "heatSinkRate": 4.0,
     "energyCost": 0.3,
     "magazineSize": 1,
     "baseDamage": 100.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 0,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 0.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -8148,44 +8861,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 33,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 10000,
-    "idlePower": 0.0,
+    "pcu": 4,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 23
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 31
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 25
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 76
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 16
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 19
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 8
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 200
       }
     ],
     "icon": "icons/L__PD_Laser_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "MA_PDT_NPC",
+    "ammoName": "Lasers_AMS",
+    "buildTimeSeconds": 33.0
   },
   {
     "id": "S__PD_Laser_NPC",
@@ -8200,23 +8920,23 @@ window.GVK_DEFAULT_WEAPONS = [
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 1000,
+    "maxTargetDistance": 2000.0,
     "deviateShotAngle": 0.0,
     "rotateRate": 0.06,
     "elevateRate": 0.06,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -20,
-    "maxElevation": 90,
-    "heatPerShot": 2,
-    "maxHeat": 200,
+    "minAzimuth": -180.0,
+    "maxAzimuth": 180.0,
+    "minElevation": -20.0,
+    "maxElevation": 90.0,
+    "heatPerShot": 2.0,
+    "maxHeat": 200.0,
     "cooldown": 0.95,
-    "heatSinkRate": 4,
+    "heatSinkRate": 4.0,
     "energyCost": 0.3,
     "magazineSize": 1,
     "baseDamage": 100.0,
-    "maxTrajectory": 1200,
-    "desiredSpeed": 0,
+    "maxTrajectory": 1200.0,
+    "desiredSpeed": 0.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -8239,44 +8959,51 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 9,
     "durabilityMod": 0.5,
     "techQty": 4,
-    "pcu": 20000,
-    "idlePower": 0.0,
+    "pcu": 3,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 7
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCapacitor",
+        "count": 4
+      },
+      {
+        "name": "SmallTube",
         "count": 9
       },
       {
-        "subtype": "SmallTube",
+        "name": "Motor",
         "count": 7
       },
       {
-        "subtype": "LargeTube",
+        "name": "Superconductor",
         "count": 21
       },
       {
-        "subtype": "Motor",
+        "name": "BulletproofGlass",
         "count": 5
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 5
       },
       {
-        "subtype": "MetalGrid",
+        "name": "MetalGrid",
         "count": 3
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 54
       }
     ],
     "icon": "icons/S__PD_Laser_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "MA_PDT_sm_NPC",
+    "ammoName": "Lasers_AMS",
+    "buildTimeSeconds": 9.0
   },
   {
     "id": "L__Warhead_NPC",
@@ -8287,7 +9014,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 1,
     "barrelsPerShot": 1,
     "delayAfterBurst": 999999,
-    "reloadTime": 0,
+    "reloadTime": 1,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -8303,11 +9030,11 @@ window.GVK_DEFAULT_WEAPONS = [
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
-    "energyCost": 0.0,
+    "energyCost": 1.0,
     "magazineSize": 1,
-    "baseDamage": 200000.0,
-    "maxTrajectory": 0,
-    "desiredSpeed": 0,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1.0,
+    "desiredSpeed": 1.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -8331,7 +9058,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "durabilityMod": 0.5,
     "techQty": 0,
     "pcu": 10000,
-    "idlePower": 0.0,
+    "idlePower": 0.25,
     "components": [
       {
         "subtype": "SteelPlate",
@@ -8363,7 +9090,9 @@ window.GVK_DEFAULT_WEAPONS = [
       }
     ],
     "icon": "icons/L__Warhead_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "LargeWarhead_NPC",
+    "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo"
   },
   {
     "id": "S__Warhead_NPC",
@@ -8374,7 +9103,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "shotsInBurst": 1,
     "barrelsPerShot": 1,
     "delayAfterBurst": 999999,
-    "reloadTime": 0,
+    "reloadTime": 1,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
@@ -8390,11 +9119,11 @@ window.GVK_DEFAULT_WEAPONS = [
     "maxHeat": 0,
     "cooldown": 0.0,
     "heatSinkRate": 0,
-    "energyCost": 0.0,
+    "energyCost": 1.0,
     "magazineSize": 1,
-    "baseDamage": 50000.0,
-    "maxTrajectory": 0,
-    "desiredSpeed": 0,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1.0,
+    "desiredSpeed": 1.0,
     "detRadius": 0.0,
     "detDamage": 0.0,
     "fragments": 0,
@@ -8418,7 +9147,7 @@ window.GVK_DEFAULT_WEAPONS = [
     "durabilityMod": 0.5,
     "techQty": 0,
     "pcu": 10000,
-    "idlePower": 0.0,
+    "idlePower": 0.25,
     "components": [
       {
         "subtype": "SteelPlate",
@@ -8450,22 +9179,24 @@ window.GVK_DEFAULT_WEAPONS = [
       }
     ],
     "icon": "icons/S__Warhead_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "SmallWarhead_NPC",
+    "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo"
   },
   {
     "id": "L__Drone_Bay_NPC",
     "name": "(L) Drone Bay [NPC]",
     "grid": "Large",
     "type": "Fixed",
-    "rateOfFire": 3,
+    "rateOfFire": 30,
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
     "reloadTime": 600,
     "magsToLoad": 3,
-    "delayUntilFire": 30,
+    "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 2500.0,
     "deviateShotAngle": 1.0,
     "rotateRate": 0.0,
     "elevateRate": 0.0,
@@ -8480,8 +9211,8 @@ window.GVK_DEFAULT_WEAPONS = [
     "energyCost": 0.0,
     "magazineSize": 1,
     "baseDamage": 1.0,
-    "maxTrajectory": 30000,
-    "desiredSpeed": 150,
+    "maxTrajectory": 30000.0,
+    "desiredSpeed": 150.0,
     "detRadius": 5.0,
     "detDamage": 20000.0,
     "fragments": 260,
@@ -8504,43 +9235,54 @@ window.GVK_DEFAULT_WEAPONS = [
     "sheetBuildTime": 66,
     "durabilityMod": 0.5,
     "techQty": 8,
-    "pcu": 30000,
-    "idlePower": 0.0,
+    "pcu": 8,
+    "idlePower": 0.01,
     "components": [
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 68
       },
       {
-        "subtype": "Construction",
+        "name": "PrototechCircuitry",
+        "count": 1
+      },
+      {
+        "name": "PrototechPanel",
+        "count": 8
+      },
+      {
+        "name": "MetalGrid",
         "count": 27
       },
       {
-        "subtype": "SmallTube",
+        "name": "LargeTube",
         "count": 14
       },
       {
-        "subtype": "LargeTube",
+        "name": "Motor",
         "count": 140
       },
       {
-        "subtype": "Motor",
+        "name": "InteriorPlate",
         "count": 17
       },
       {
-        "subtype": "Computer",
+        "name": "Computer",
         "count": 270
       },
       {
-        "subtype": "MetalGrid",
+        "name": "Construction",
         "count": 270
       },
       {
-        "subtype": "SteelPlate",
+        "name": "SteelPlate",
         "count": 270
       }
     ],
     "icon": "icons/L__Drone_Bay_NPC.png",
-    "isNpc": true
+    "isNpc": true,
+    "subtypeId": "ARYX_Small_Sidekick_Hangar_NPC",
+    "ammoName": "Others_Drone_Offense_Advanced",
+    "buildTimeSeconds": 66.0
   }
 ];
