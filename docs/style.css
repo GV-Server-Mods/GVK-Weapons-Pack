@@ -89,6 +89,7 @@
 [data-theme="light"] .telemetry-ammo-bar,
 [data-theme="light"] .radar-profile-card,
 [data-theme="light"] .sim-card,
+[data-theme="light"] .heat-box,
 [data-theme="light"] .comparison-box,
 [data-theme="light"] .stat-card,
 [data-theme="light"] .wc-accordion {
@@ -651,7 +652,7 @@ header {
 }
 
 .telemetry-ammo-bar {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   background: var(--bg-panel);
@@ -997,10 +998,17 @@ input.control-input.is-wc-default {
   gap: 16px;
 }
 
+.telemetry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
 .hero-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 16px;
 }
 
 .stat-card {
@@ -1464,7 +1472,7 @@ input.control-input.is-wc-default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .sim-card {

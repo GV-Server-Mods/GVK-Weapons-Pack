@@ -1,5 +1,4 @@
-// Bundled fallback dataset for local file:// execution
-const BUNDLED_AMMOS_DATA = {
+const ammosData = {
   "LargeCalibreAmmo": {
     "name": "LargeCalibreAmmo",
     "base_name": null,
@@ -2613,7 +2612,7 @@ const BUNDLED_AMMOS_DATA = {
     "name": "Lasers_Laser_Dual",
     "base_name": null,
     "file": "Lasers_Heavy_Ammos.cs",
-    "ammoMagazine": "Lasers_Laser_Dual",
+    "ammoMagazine": "Energy",
     "ammoRound": "Lasers_Laser_Dual",
     "terminalName": "Lasers_Laser_Dual",
     "baseDamage": 150.0,
@@ -2625,7 +2624,7 @@ const BUNDLED_AMMOS_DATA = {
     "npcSafe": false,
     "noGridOrArmorScaling": false,
     "hybridRound": false,
-    "energyCost": 0.0,
+    "energyCost": 0.78,
     "energyMagazineSize": 360,
     "decayPerShot": 0.0,
     "heatPerShot": 0.0,

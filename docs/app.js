@@ -553,6 +553,7 @@ const outShotsPerSec = document.getElementById('outShotsPerSec');
 const outCycleTime = document.getElementById('outCycleTime');
 const outTraverseDeg = document.getElementById('outTraverseDeg');
 const outTraverseAzEl = document.getElementById('outTraverseAzEl');
+const outCombatCycleTitle = document.getElementById('outCombatCycleTitle');
 const outHeatDutyRatio = document.getElementById('outHeatDutyRatio');
 const heatProgressBar = document.getElementById('heatProgressBar');
 const outTimeToOverheat = document.getElementById('outTimeToOverheat');
@@ -861,10 +862,12 @@ async function initStudio() {
   // Load databases
   if (typeof BUNDLED_WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(BUNDLED_WEAPONS_DATA));
   else if (typeof WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(WEAPONS_DATA));
+  else if (typeof weaponsData !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(weaponsData));
   else if (window.GVK_DEFAULT_WEAPONS) weaponsDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_WEAPONS));
 
   if (typeof BUNDLED_AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(BUNDLED_AMMOS_DATA));
   else if (typeof AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(AMMOS_DATA));
+  else if (typeof ammosData !== 'undefined') ammosDb = JSON.parse(JSON.stringify(ammosData));
   else if (window.GVK_DEFAULT_AMMOS) ammosDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_AMMOS));
 
   if (typeof BUNDLED_ANIMATIONS_DATA !== 'undefined') animationsDb = [...BUNDLED_ANIMATIONS_DATA];
@@ -1231,12 +1234,15 @@ function selectWeapon(weaponId) {
   activeWeapon = found;
   weaponSelect.value = activeWeapon.id;
 
-  // Derive selectable user-terminal ammos
-  const selectableAmmos = getSelectableAmmos(activeWeapon);
-  const primaryAmmoKey = selectableAmmos[0] || activeWeapon.ammoName;
+  // Derive selectable user-terminal ammos (ensuring at least 1 valid munition)
+  let selectableAmmos = getSelectableAmmos(activeWeapon);
+  if (!selectableAmmos || selectableAmmos.length === 0) {
+    selectableAmmos = activeWeapon.ammoName ? [activeWeapon.ammoName] : [Object.keys(ammosDb)[0]];
+  }
+  const primaryAmmoKey = selectableAmmos[0];
 
   // Active ammo dropdown (Workspace 1 Telemetry Bar - always displayed for all weapons)
-  if (telemetryAmmoSelect && telemetryAmmoBar) {
+  if (telemetryAmmoSelect) {
     telemetryAmmoSelect.innerHTML = selectableAmmos.map(k => {
       const a = ammosDb[k] || {};
       const label = a.terminalName || a.ammoRound || k;
@@ -1244,7 +1250,9 @@ function selectWeapon(weaponId) {
       return `<option value="${k}">${label} [${mag}]</option>`;
     }).join('');
     telemetryAmmoSelect.value = primaryAmmoKey;
-    telemetryAmmoSelect.disabled = (selectableAmmos.length <= 1);
+    telemetryAmmoSelect.disabled = false;
+  }
+  if (telemetryAmmoBar) {
     telemetryAmmoBar.style.display = 'flex';
   }
 
@@ -2168,31 +2176,6 @@ function updateCombatTelemetry() {
   outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
   outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
 
-  // Thermal Profile
-  const heatShot = parseFloat(wHeatPerShot.value) || 0;
-  const maxHeat = parseFloat(wMaxHeat.value) || 0;
-  const sinkRate = parseFloat(wHeatSinkRate.value) || 0;
-  const heatPerSec = (rof / 60) * heatShot;
-
-  if (maxHeat > 0 && heatPerSec > sinkRate) {
-    const netHeatSec = heatPerSec - sinkRate;
-    const timeToOverheat = (maxHeat * 0.7) / netHeatSec;
-    const cooldownSec = (maxHeat * 0.7) / sinkRate;
-    const dutyCycle = Math.round((timeToOverheat / (timeToOverheat + cooldownSec)) * 100);
-
-    outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
-    heatProgressBar.style.width = `${dutyCycle}%`;
-    outTimeToOverheat.textContent = `Continuous Fire: ${timeToOverheat.toFixed(1)}s`;
-    outCooldownTime.textContent = `Cooldown Window: ${cooldownSec.toFixed(1)}s`;
-    hudOverheat.textContent = `${timeToOverheat.toFixed(1)}s`;
-  } else {
-    outHeatDutyRatio.textContent = "100% UPTIME";
-    heatProgressBar.style.width = "100%";
-    outTimeToOverheat.textContent = "Continuous Fire: Unlimited";
-    outCooldownTime.textContent = "Cooldown Window: 0s";
-    hudOverheat.textContent = "Unlimited";
-  }
-
   // Structural & Power
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
   const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
@@ -2201,9 +2184,80 @@ function updateCombatTelemetry() {
 
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
-  const operationalPwr = (idlePwr + (energyPerShot * (rof / 60) * 3600)).toFixed(2);
+  const operationalPwrNum = (idlePwr + (energyPerShot * (rof / 60) * 3600));
+  const operationalPwr = operationalPwrNum.toFixed(2);
   outPowerMw.innerHTML = `${operationalPwr} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
   outPowerIdle.textContent = `Idle Draw: ${idlePwr.toFixed(3)} MW`;
+
+  // Combat Cycle & Sustained Consumption / Thermal Profile
+  const heatShot = parseFloat(wHeatPerShot.value) || 0;
+  const maxHeat = parseFloat(wMaxHeat.value) || 0;
+  const sinkRate = parseFloat(wHeatSinkRate.value) || 0;
+  const heatPerSec = (rof / 60) * heatShot;
+  const hasHeat = maxHeat > 0 && heatShot > 0;
+
+  // Consumption metrics (magazines / min or Uranium kg/min)
+  const isEnergyAmmo = activeAmmo && (activeAmmo.ammoMagazine === 'Energy' || !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine.includes('Energy'));
+  const ammoMagCapacity = magSize || (activeAmmo && activeAmmo.magazineSize) || 100;
+  const roundsPerMin = effectiveRps * 60;
+  const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
+  const kgUraniumPerMin = operationalPwrNum / 60;
+
+  // Format Consumption String
+  let consumptionHtml = '';
+  if (isEnergyAmmo || (!activeAmmo.ammoMagazine && operationalPwrNum > 5)) {
+    const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
+    consumptionHtml = `⚡ Uranium Draw: <strong>${uStr}</strong> / min (${operationalPwr} MW)`;
+  } else {
+    const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
+    if (operationalPwrNum > 20) {
+      // High-energy kinetic hybrid (e.g. heavy railguns drawing large reactor power)
+      const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
+      consumptionHtml = `📦 <strong>${magsPerMin.toFixed(1)}</strong> mags/min [${magSubtype}] &bull; ⚡ <strong>${uStr}</strong> Uranium/min`;
+    } else {
+      consumptionHtml = `📦 Ammo Draw: <strong>${magsPerMin.toFixed(1)}</strong> mags/min (${Math.round(roundsPerMin).toLocaleString()} rds/min) [${magSubtype}]`;
+    }
+  }
+
+  if (hasHeat && heatPerSec > sinkRate) {
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
+    const netHeatSec = heatPerSec - sinkRate;
+    const timeToOverheat = (maxHeat * 0.7) / netHeatSec;
+    const cooldownSec = (maxHeat * 0.7) / sinkRate;
+    const dutyCycle = Math.round((timeToOverheat / (timeToOverheat + cooldownSec)) * 100);
+
+    outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
+    heatProgressBar.style.width = `${dutyCycle}%`;
+    heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--amber-primary), var(--red-accent))';
+    outTimeToOverheat.textContent = `Fire Limit: ${timeToOverheat.toFixed(1)}s (Cooldown: ${cooldownSec.toFixed(1)}s)`;
+    outCooldownTime.innerHTML = consumptionHtml;
+    if (hudOverheat) hudOverheat.textContent = `${timeToOverheat.toFixed(1)}s`;
+  } else if (hasHeat) {
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
+    outHeatDutyRatio.textContent = "100% UPTIME";
+    heatProgressBar.style.width = "100%";
+    heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--cyan-primary))';
+    outTimeToOverheat.textContent = "Continuous Fire: Unlimited (Sink > Heat)";
+    outCooldownTime.innerHTML = consumptionHtml;
+    if (hudOverheat) hudOverheat.textContent = "Unlimited";
+  } else {
+    // Effective Fire Rate Metric including reload cycles
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
+    const effectiveRpm = Math.round(effectiveRps * 60);
+    const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
+
+    outHeatDutyRatio.textContent = `${fireDutyPercent}% SUSTAINED (${effectiveRpm} RPM)`;
+    heatProgressBar.style.width = `${fireDutyPercent}%`;
+    heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), var(--amber-primary))';
+
+    outTimeToOverheat.textContent = reloadSec > 0
+      ? `Cycle: ${fireDurationSec.toFixed(1)}s burst + ${reloadSec.toFixed(1)}s reload (${effectiveRps.toFixed(1)} sps)`
+      : `Continuous Fire: 100% Belt-Fed (${effectiveRps.toFixed(1)} sps)`;
+
+    outCooldownTime.innerHTML = consumptionHtml;
+
+    if (hudOverheat) hudOverheat.textContent = `${effectiveRpm} RPM`;
+  }
 
   // Sticky HUD updates
   hudDps.textContent = sustainedDps.toLocaleString();
