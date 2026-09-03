@@ -1,3 +1,6 @@
+const codeSbcXmlDirect = document.getElementById('codeSbcXmlDirect');
+const btnCopySbcXmlDirect = document.getElementById('btnCopySbcXmlDirect');
+const btnDownloadSbcDirect = document.getElementById('btnDownloadSbcDirect');
 // Schema Guard Elements
 const wcSchemaBadge = document.getElementById('wcSchemaBadge');
 const wcSchemaNotice = document.getElementById('wcSchemaNotice');
@@ -298,7 +301,6 @@ const btnDownloadFile = document.getElementById('btnDownloadFile');
 const btnSaveToDisk = document.getElementById('btnSaveToDisk');
 const saveStatusHint = document.getElementById('saveStatusHint');
 
-const btnToggleDeck = document.getElementById('btnToggleDeck');
 const btnShareUrl = document.getElementById('btnShareUrl');
 const btnNewMinimalWeapon = document.getElementById('btnNewMinimalWeapon');
 const btnNewMinimalAmmo = document.getElementById('btnNewMinimalAmmo');
@@ -398,11 +400,7 @@ function setupNavigationEvents() {
     });
   });
 
-  if (btnToggleDeck) {
-    btnToggleDeck.addEventListener('click', () => {
-      switchWorkspace('ws-workbench');
-    });
-  }
+
 
   if (btnTuneActiveAmmo) {
     btnTuneActiveAmmo.addEventListener('click', () => {
@@ -689,7 +687,7 @@ function checkWcSchemaIntegrity() {
 
   const schema = window.GVK_WC_SCHEMA;
   if (wcSchemaBadge) {
-    wcSchemaBadge.innerHTML = `🛡️ WC ${schema.version} (${schema.structureHash.slice(0, 6)}) | Synced`;
+    wcSchemaBadge.innerHTML = `🛡️ WC v3.0 (Core ${schema.version}) | Synced`;
     wcSchemaBadge.addEventListener('click', showSchemaModal);
   }
 
@@ -1025,6 +1023,12 @@ function updateFragChainVisual() {
   }
 }
 
+function updateDirectSbcXml() {
+  if (codeSbcXmlDirect) {
+    codeSbcXmlDirect.textContent = generateSbcCubeBlocks();
+  }
+}
+
 function populateSbcWorkbench() {
   if (!activeWeapon) return;
   sbcDisplayName.value = activeWeapon.displayName || activeWeapon.partName || activeWeapon.name || '';
@@ -1033,6 +1037,7 @@ function populateSbcWorkbench() {
   sbcIsRelic.checked = activeWeapon.isRelic === true;
 
   renderSbcComponentsTable();
+  updateDirectSbcXml();
 }
 
 function renderSbcComponentsTable() {
@@ -2109,8 +2114,8 @@ function generateSbcCubeBlocks() {
   const grid = sbcCubeSize.value || "Large";
   const bTime = sbcBuildTime.value || 78;
   const upCost = sbcUpCost.value || 6;
-  const techComp = sbcTechComp.value || "PrototechMachinery";
-  const techQty = sbcTechQty.value || 6;
+  const techComp = activeWeapon.techComponent || "PrototechMachinery";
+  const techQty = activeWeapon.techCount || 6;
 
   let xml = `  <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">\n`;
   xml += `    <Id>\n`;
@@ -2279,6 +2284,20 @@ function applyBalanceMatrixInputs() {
 }
 
 function setupWorkbenchInputEvents() {
+  if (btnCopySbcXmlDirect) {
+    btnCopySbcXmlDirect.addEventListener('click', () => {
+      navigator.clipboard.writeText(generateSbcCubeBlocks()).then(() => {
+        showToast("📋 Copied CubeBlocks SBC XML to clipboard!");
+      });
+    });
+  }
+  if (btnDownloadSbcDirect) {
+    btnDownloadSbcDirect.addEventListener('click', () => {
+      const sub = activeWeapon ? (activeWeapon.subtypeId || activeWeapon.id) : 'CubeBlock';
+      downloadFile(`${sub}.sbc`, generateSbcCubeBlocks(), 'application/xml');
+    });
+  }
+
   // Extended Tag Buttons
   if (btnAddWeaponExtendedTag) {
     btnAddWeaponExtendedTag.addEventListener('click', () => {
