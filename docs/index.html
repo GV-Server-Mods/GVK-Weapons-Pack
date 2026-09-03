@@ -32,6 +32,11 @@
     </nav>
     
     <div class="header-actions">
+      <div class="theme-switcher" title="Color Mode (Dark / Light / System)">
+        <button class="theme-btn" data-theme-mode="dark" title="Dark Mode">🌙</button>
+        <button class="theme-btn" data-theme-mode="light" title="Light Mode">☀️</button>
+        <button class="theme-btn active" data-theme-mode="system" title="System Mode">💻</button>
+      </div>
       <button id="btnShareUrl" class="btn" title="Copy shareable permalink to this weapon configuration">🔗 Share</button>
       <button id="btnBalanceMatrix" class="btn" title="Open Global Server Balance Multipliers">⚙️ Balance Matrix</button>
     </div>
@@ -277,8 +282,11 @@
                 <span class="legend-color" style="background: var(--cyan-primary);"></span>
                 <span style="color: var(--cyan-primary); font-weight: 700;" id="legendBenchName">Benchmark Weapon</span>
               </div>
-              <div style="font-size: 11px; color: var(--text-dim); line-height: 1.5; max-width: 240px; margin-top: 6px;">
-                Hexagonal tactical radar plots normalized DPS, Burst Alpha, Trajectory Range, Muzzle Velocity, Tracking Traverse, and Thermal Endurance.
+              <div style="font-size: 11px; color: var(--text-dim); line-height: 1.5; max-width: 260px; margin-top: 6px;">
+                Hexagonal tactical radar plots normalized DPS, Volley Alpha, Range, Velocity, Tracking, and Block Integrity scaled dynamically from 0 to the highest value across all weapons in the mod dataset (outer ring = 100% max).
+              </div>
+              <div id="radarMaxMetrics" style="font-size: 10px; font-family: var(--font-mono); color: var(--amber-primary); margin-top: 6px; line-height: 1.4;">
+                Mod Ceilings: Calculating...
               </div>
             </div>
           </div>

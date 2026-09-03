@@ -800,6 +800,48 @@ function showToast(msg) {
 // ==========================================================================
 // INITIALIZATION & DATA LOADING
 // ==========================================================================
+
+// ==========================================================================
+// THEME SWITCHER (Dark / Light / System)
+// ==========================================================================
+let currentThemeMode = (typeof localStorage !== 'undefined') ? (localStorage.getItem('GVK_THEME_MODE') || 'dark') : 'dark';
+
+function applyTheme(mode) {
+  currentThemeMode = mode;
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('GVK_THEME_MODE', mode);
+  }
+
+  let effectiveTheme = mode;
+  if (mode === 'system') {
+    const prefersDark = (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    effectiveTheme = prefersDark ? 'dark' : 'light';
+  }
+
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', effectiveTheme);
+
+    // Update button active state
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-theme-mode') === mode);
+    });
+  }
+
+  // Re-render radar chart to reflect theme colors
+  if (typeof updateComparisonRadar === 'function') {
+    updateComparisonRadar();
+  }
+}
+
+// Listen to system OS theme changes
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (currentThemeMode === 'system') {
+      applyTheme('system');
+    }
+  });
+}
+
 async function initStudio() {
   // Load databases
   if (typeof WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(WEAPONS_DATA));
@@ -2127,6 +2169,74 @@ function setupLogisticsEvents() {
 // ==========================================================================
 // 1V1 COMBAT RADAR CHART
 // ==========================================================================
+
+// ==========================================================================
+// DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
+// ==========================================================================
+function calculateWeaponMetrics(weapon) {
+  if (!weapon) return { sustainedDps: 0, alphaVolley: 0, range: 1500, velocity: 1000, tracking: 10, integrity: 10000 };
+
+  const aKey = (weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName;
+  const a = ammosDb[aKey] || {};
+
+  const rof = weapon.rateOfFire || 600;
+  const barrels = weapon.barrelsPerShot || 1;
+  const reloadTicks = weapon.reloadTime || 0;
+  const mags = weapon.magsToLoad || 1;
+  const magSize = weapon.magazineSize || 100;
+
+  const baseDmg = a.baseDamage || 0;
+  const aodDmg = (a.areaOfDamage && a.areaOfDamage.areaEffect && a.areaOfDamage.areaEffect.damage) || 0;
+  const damagePerShot = baseDmg + aodDmg;
+  const alphaVolley = damagePerShot * barrels;
+
+  const totalRounds = magSize * mags;
+  const fireDurationSec = (totalRounds / rof) * 60;
+  const reloadSec = reloadTicks / 60;
+  const totalCycleSec = fireDurationSec + reloadSec;
+
+  const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : (rof / 60);
+  const sustainedDps = Math.round(effectiveRps * damagePerShot);
+
+  const range = (a.trajectory && a.trajectory.maxTrajectory) ? a.trajectory.maxTrajectory : 1500;
+  const velocity = (a.trajectory && a.trajectory.desiredSpeed) ? a.trajectory.desiredSpeed : 1000;
+  const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
+
+  let integrity = 0;
+  if (weapon.components && weapon.components.length > 0) {
+    integrity = weapon.components.reduce((sum, c) => {
+      const cMeta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { integrity: 100 };
+      return sum + (cMeta.integrity || 0) * (c.count || 0);
+    }, 0);
+  }
+  if (!integrity && weapon.effectiveIntegrity) {
+    integrity = weapon.effectiveIntegrity;
+  }
+
+  return { sustainedDps, alphaVolley, range, velocity, tracking, integrity };
+}
+
+function getModMaxMetrics() {
+  let maxDps = 1000;
+  let maxAlpha = 1000;
+  let maxRange = 1000;
+  let maxVel = 500;
+  let maxTrack = 10;
+  let maxIntegrity = 5000;
+
+  weaponsDb.forEach(w => {
+    const m = calculateWeaponMetrics(w);
+    if (m.sustainedDps > maxDps) maxDps = m.sustainedDps;
+    if (m.alphaVolley > maxAlpha) maxAlpha = m.alphaVolley;
+    if (m.range > maxRange) maxRange = m.range;
+    if (m.velocity > maxVel) maxVel = m.velocity;
+    if (m.tracking > maxTrack) maxTrack = m.tracking;
+    if (m.integrity > maxIntegrity) maxIntegrity = m.integrity;
+  });
+
+  return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity };
+}
+
 function updateComparisonRadar() {
   if (!radarCanvas) return;
   const ctx = radarCanvas.getContext('2d');

@@ -26,6 +26,78 @@
   --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
 }
 
+[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-panel: #ffffff;
+  --bg-card: #f1f5f9;
+  --bg-card-hover: #e2e8f0;
+  --bg-input: #ffffff;
+  --border-color: #cbd5e1;
+  --border-focus: #d97706;
+  
+  --amber-primary: #d97706;
+  --amber-light: #b45309;
+  --amber-glow: rgba(217, 119, 6, 0.2);
+  
+  --cyan-primary: #0284c7;
+  --cyan-glow: rgba(2, 132, 199, 0.15);
+  
+  --green-accent: #059669;
+  --red-accent: #dc2626;
+  --blue-accent: #4f46e5;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+}
+
+[data-theme="light"] header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .sticky-hud-bar {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .hud-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .code-box,
+[data-theme="light"] .xml-box {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+[data-theme="light"] .standardizer-status-card {
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+[data-theme="light"] .modal-panel {
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .stat-card {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .control-input {
+  color: #0f172a;
+}
+
+[data-theme="light"] .control-input.is-wc-default {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .logo-title h1 {
+  color: #0f172a;
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1577,4 +1649,43 @@ input.control-input.is-wc-default {
 .btn-delete-row:hover {
   color: var(--red-accent);
   background: rgba(239, 68, 68, 0.15);
+}
+
+
+/* Theme Switcher */
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.theme-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-card-hover);
+}
+
+.theme-btn.active {
+  background: var(--amber-primary);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 8px var(--amber-glow);
 }
