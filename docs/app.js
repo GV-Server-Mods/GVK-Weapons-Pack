@@ -2,37 +2,40 @@
 // ==========================================================================
 // WEAPONCORE CANONICAL DEFAULTS CONSTANTS (from Structure.cs & Weapon75ammo.cs)
 // ==========================================================================
-const WC_DEFAULTS = {
+// ==========================================================================
+// WEAPONCORE PURE CORE DEFAULTS (Directly from Structure.cs & WC Framework)
+// ==========================================================================
+const WC_CORE_DEFAULTS = {
   // ModelAssignmentsDef
   spinPartId: "None",
   muzzlePartId: "",
   azimuthPartId: "",
   elevationPartId: "",
   iconName: "",
-  scope: "scope",
-  durabilityMod: 0.5,
+  scope: "",
+  durabilityMod: 1.0,
 
   // HardwareDef
-  rotateRate: 0.015,
-  elevateRate: 0.015,
+  rotateRate: 0,
+  elevateRate: 0,
   minAzimuth: -180,
   maxAzimuth: 180,
-  minElevation: -15,
-  maxElevation: 80,
+  minElevation: -90,
+  maxElevation: 90,
   homeAzimuth: 0,
   homeElevation: 0,
-  inventorySize: 0.9,
-  idlePower: 0.01,
+  inventorySize: 0,
+  idlePower: 0,
   hardwareType: "BlockWeapon",
   criticalChance: 0,
   offsetX: 0, offsetY: 0, offsetZ: 0,
 
   // LoadingDef
-  rateOfFire: 600,
+  rateOfFire: 0,
   barrelsPerShot: 1,
   trajectilesPerBarrel: 1,
   skipBarrels: 0,
-  reloadTime: 60,
+  reloadTime: 0,
   magsToLoad: 1,
   delayUntilFire: 0,
   shotsInBurst: 0,
@@ -49,8 +52,8 @@ const WC_DEFAULTS = {
   useFillSound: false,
 
   // HardPointDef
-  deviateShotAngle: 0.15,
-  aimingTolerance: 3.0,
+  deviateShotAngle: 0,
+  aimingTolerance: 0,
   aimLeadingPrediction: "Advanced",
   delayCeaseFire: 0,
   addToleranceToTracking: false,
@@ -58,15 +61,23 @@ const WC_DEFAULTS = {
   npcSafe: true,
 
   // TargetingDef
-  maxTargetDistance: 1500,
+  maxTargetDistance: 0,
   minTargetDistance: 0,
-  topTargets: 4,
-  topBlocks: 4,
-  stopTrackingSpeed: 1000,
+  topTargets: 1,
+  topBlocks: 1,
+  stopTrackingSpeed: 0,
   maxCost: 0,
   closestFirst: true,
   ignoreDumbProjectiles: true,
   lockedSmartOnly: false,
+
+  // HardPointAudioDef
+  firingSound: "",
+  preFiringSound: "",
+  firingSoundPerShot: false,
+  reloadSound: "",
+  hardPointRotationSound: "",
+  noAmmoSound: "",
 
   // OtherDef
   constructPartCap: 0,
@@ -82,30 +93,35 @@ const WC_DEFAULTS = {
 
   // AmmoDef Core
   baseDamageCutoff: 0,
+  mass: 0,
+  health: 0,
+  backKickForce: 0,
   decayPerShot: 0,
   energyCost: 0,
   energyMagazineSize: 0,
   heatModifier: 1.0,
   heatNeededToFire: 0,
   hybridRound: false,
+  hardPointUsable: true,
+  npcSafe: true,
   noGridOrArmorScaling: false,
   ignoreWater: false,
   ignoreVoxels: false,
   ignoreGrids: false,
   allowNegativeHeatModifier: false,
   gridsTargetSeekersTargetingThis: false,
+
+  // ShapeDef & ObjectsHitDef
   shape: "LineShape",
   diameter: -1,
-
-  // ObjectsHit
   maxObjectsHit: 1,
   countBlocks: true,
   skipBlocksForAOE: false,
 
-  // DamageScales
+  // DamageScaleDef
   maxIntegrity: 0,
   damageToShields: 1.0,
-  characters: 1.0,
+  characters: -1,
   damageType: "BaseDamage",
   armorArmor: -1,
   lightArmor: -1,
@@ -142,13 +158,80 @@ const WC_DEFAULTS = {
   smartsStepVel: false,
   smartsAltNavigation: false,
 
-  // Visuals & Sync
+  // AreaOfDamageDef
+  aodBlockEnable: false,
+  aodBlockRadius: 0,
+  aodBlockDamage: 0,
+  aodBlockDepth: 0,
+  aodBlockMaxAbsorb: 0,
+  aodBlockFalloff: "Linear",
+  aodBlockShape: "Sphere",
+  aodEolEnable: false,
+  aodEolRadius: 0,
+  aodEolDamage: 0,
+  aodEolDepth: 0,
+  aodEolMaxAbsorb: 0,
+  aodEolFalloff: "Linear",
+  aodEolShape: "Sphere",
+
+  // FragmentDef
+  fragmentEnable: false,
+  fragmentAmmoRound: "",
+  fragmentCount: 0,
+  fragmentDegrees: 0,
+  fragmentBackwardDegrees: 0,
+  fragmentOffset: 0,
+  fragmentReverse: false,
+  fragmentDropVelocity: false,
+  fragmentIgnoreArming: false,
+  fragmentRadial: false,
+
+  // PatternDef & EwarDef
+  patternEnable: false,
+  patternPatterns: "",
+  patternTriggerChance: 1.0,
+  patternRandomMin: 0,
+  patternRandomMax: 0,
+  patternSteps: 1,
+  patternMode: "Never",
+  ewarEnable: false,
+  ewarType: "AntiSmart",
+  ewarMode: "Effect",
+  ewarStrength: 0,
+  ewarRadius: 0,
+  ewarDuration: 0,
+  ewarMaxStacks: 1,
+  ewarStackDuration: false,
+  ewarDeplete: false,
+
+  // GraphicDef
   visualProbability: 1.0,
   shieldHitDraw: true,
-  tracerSegmentation: false,
+  tracerEnable: true,
+  tracerLength: 10,
+  tracerWidth: 0.1,
+  tracerColor: "255, 120, 20, 255",
+  tracerTexture: "WeaponLaser",
+  tracerSegmented: false,
   trailEnable: false,
+  trailAlwaysDraw: false,
+  trailDecay: 0,
+  trailWidth: 0,
+  trailColor: "200, 200, 200, 180",
+  trailTextures: "WeaponLaser",
+
+  // AudioDef
+  soundShot: "",
+  soundTravel: "",
+  soundHit: "",
+  soundShieldHit: "",
+  soundVoxelHit: "",
+  soundPlayerHit: "",
+  soundWaterHit: "",
   hitPlayChance: 1.0,
   hitPlayShield: true,
+
+  // SynchronizeDef
   syncFull: false,
   syncPointDefense: true,
   syncOnHitDeath: false,
@@ -1305,13 +1388,13 @@ function populateAmmoWorkbench() {
   if (ammoSelectGlobal) ammoSelectGlobal.value = activeAmmo.name;
   if (scopeActiveAmmoLabel) scopeActiveAmmoLabel.textContent = activeAmmo.name;
 
-  // Core Identification & Physics
+  // Core Identification & Physics (No mock damage or mass fallbacks)
   aAmmoRound.value = activeAmmo.ammoRound || activeAmmo.name || '';
   aAmmoMagazine.value = activeAmmo.ammoMagazine || '';
   aTerminalName.value = activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name || '';
-  aBaseDamage.value = activeAmmo.baseDamage || 0;
+  aBaseDamage.value = activeAmmo.baseDamage !== undefined ? activeAmmo.baseDamage : 0;
   if (aBaseDamageCutoff) aBaseDamageCutoff.value = activeAmmo.baseDamageCutoff || 0;
-  aMass.value = activeAmmo.mass !== undefined ? activeAmmo.mass : 1.0;
+  aMass.value = activeAmmo.mass !== undefined ? activeAmmo.mass : 0;
   aHealth.value = activeAmmo.health || 0;
   aBackKick.value = activeAmmo.backKickForce || 0;
   if (aDecayPerShot) aDecayPerShot.value = activeAmmo.decayPerShot || 0;
@@ -1332,10 +1415,10 @@ function populateAmmoWorkbench() {
 
   // TrajectoryDef & SmartsDef
   const traj = activeAmmo.trajectory || {};
-  tDesiredSpeed.value = traj.desiredSpeed || activeAmmo.desiredSpeed || 1000;
+  tDesiredSpeed.value = traj.desiredSpeed !== undefined ? traj.desiredSpeed : (activeAmmo.desiredSpeed || 0);
   if (tAccelPerSec) tAccelPerSec.value = traj.accelPerSec || 0;
-  tMaxTrajectory.value = traj.maxTrajectory || activeAmmo.maxTrajectory || 1500;
-  tMaxLifeTime.value = traj.maxLifeTime || 3600;
+  tMaxTrajectory.value = traj.maxTrajectory !== undefined ? traj.maxTrajectory : (activeAmmo.maxTrajectory || 0);
+  tMaxLifeTime.value = traj.maxLifeTime !== undefined ? traj.maxLifeTime : 3600;
   if (tSpeedVariance) tSpeedVariance.value = traj.speedVariance || 0;
   if (tRangeVariance) tRangeVariance.value = traj.rangeVariance || 0;
   if (tDeaccelTime) tDeaccelTime.value = traj.deaccelTime || 0;
@@ -1363,7 +1446,7 @@ function populateAmmoWorkbench() {
   aShape.value = activeAmmo.shape || 'LineShape';
   aDiameter.value = activeAmmo.diameter !== undefined ? activeAmmo.diameter : -1;
   const objHit = activeAmmo.objectsHit || {};
-  if (oMaxObjectsHit) oMaxObjectsHit.value = objHit.maxObjectsHit || 1;
+  if (oMaxObjectsHit) oMaxObjectsHit.value = objHit.maxObjectsHit !== undefined ? objHit.maxObjectsHit : 1;
   if (oCountBlocks) oCountBlocks.checked = objHit.countBlocks !== false;
   if (oSkipBlocksForAOE) oSkipBlocksForAOE.checked = objHit.skipBlocksForAOE === true;
 
@@ -1371,7 +1454,7 @@ function populateAmmoWorkbench() {
   const ds = activeAmmo.damageScales || {};
   if (dsMaxIntegrity) dsMaxIntegrity.value = ds.maxIntegrity || 0;
   dsShield.value = ds.damageToShields !== undefined ? ds.damageToShields : 1.0;
-  if (dsCharacters) dsCharacters.value = ds.characters !== undefined ? ds.characters : 1.0;
+  if (dsCharacters) dsCharacters.value = ds.characters !== undefined ? ds.characters : -1;
   if (dsDamageType) dsDamageType.value = ds.damageType || 'BaseDamage';
 
   const arm = ds.armor || {};
@@ -1389,7 +1472,7 @@ function populateAmmoWorkbench() {
   if (dsGridSmall) dsGridSmall.value = grd.small !== undefined ? grd.small : -1;
 
   const shld = ds.shields || {};
-  if (dsShieldModifier) dsShieldModifier.value = shld.modifier !== undefined ? shld.modifier : (ds.damageToShields || 1.0);
+  if (dsShieldModifier) dsShieldModifier.value = shld.modifier !== undefined ? shld.modifier : (ds.damageToShields !== undefined ? ds.damageToShields : 1.0);
   if (dsShieldType) dsShieldType.value = shld.type || 'Default';
   if (dsShieldBypassMod) dsShieldBypassMod.value = shld.bypassModifier || 0;
 
@@ -1421,7 +1504,7 @@ function populateAmmoWorkbench() {
   if (fIgnoreArming) fIgnoreArming.checked = frag.ignoreArming === true;
   if (fRadial) fRadial.checked = frag.radial === true;
   fFragments.value = frag.fragments || 0;
-  fDegrees.value = frag.degrees || 15;
+  fDegrees.value = frag.degrees || 0;
   if (fBackwardDegrees) fBackwardDegrees.value = frag.backwardDegrees || 0;
   if (fOffset) fOffset.value = frag.offset || 0;
   fChildAmmoRound.value = frag.ammoRound || '';
@@ -1440,14 +1523,14 @@ function populateAmmoWorkbench() {
   if (pSkipParent) pSkipParent.checked = pat.skipParent === true;
   if (pRandom) pRandom.checked = pat.random === true;
 
-  // EwarDef
+  // EwarDef (No mock strength/radius fallbacks)
   const ew = activeAmmo.ewar || {};
   if (ewEnable) ewEnable.checked = ew.enable === true;
   if (ewType) ewType.value = ew.type || 'AntiSmart';
   if (ewMode) ewMode.value = ew.mode || 'Effect';
-  if (ewStrength) ewStrength.value = ew.strength || 100;
-  if (ewRadius) ewRadius.value = ew.radius || 50;
-  if (ewDuration) ewDuration.value = ew.duration || 600;
+  if (ewStrength) ewStrength.value = ew.strength || 0;
+  if (ewRadius) ewRadius.value = ew.radius || 0;
+  if (ewDuration) ewDuration.value = ew.duration || 0;
   if (ewMaxStacks) ewMaxStacks.value = ew.maxStacks || 1;
   if (ewStackDuration) ewStackDuration.checked = ew.stackDuration === true;
   if (ewDeplete) ewDeplete.checked = ew.deplete === true;
@@ -1468,16 +1551,16 @@ function populateAmmoWorkbench() {
   const trl = gfx.lines ? gfx.lines.trail : {};
   if (gTrailEnable) gTrailEnable.checked = trl.enable === true;
   if (gTrailAlwaysDraw) gTrailAlwaysDraw.checked = trl.alwaysDraw === true;
-  if (gTrailDecay) gTrailDecay.value = trl.decayTime || 60;
-  if (gTrailWidth) gTrailWidth.value = trl.customWidth !== undefined ? trl.customWidth : 0.5;
+  if (gTrailDecay) gTrailDecay.value = trl.decayTime || 0;
+  if (gTrailWidth) gTrailWidth.value = trl.customWidth !== undefined ? trl.customWidth : 0;
   if (gTrailColor) gTrailColor.value = trl.color || '200, 200, 200, 180';
   if (gTrailTextures) gTrailTextures.value = Array.isArray(trl.textures) ? trl.textures.join(', ') : (trl.textures || 'WeaponLaser');
 
-  // Audio
+  // Audio (No mock DOK sound fallbacks)
   const aud = activeAmmo.audio || {};
   if (aSoundShot) aSoundShot.value = aud.shotSound || '';
   aSoundTravel.value = aud.travelSound || '';
-  aSoundHit.value = aud.hitSound || 'DOK_CannonHit';
+  aSoundHit.value = aud.hitSound || '';
   aSoundShieldHit.value = aud.shieldHitSound || '';
   if (aSoundVoxelHit) aSoundVoxelHit.value = aud.voxelHitSound || '';
   if (aSoundPlayerHit) aSoundPlayerHit.value = aud.playerHitSound || '';
