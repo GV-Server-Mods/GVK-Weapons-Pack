@@ -1,3 +1,18 @@
+// ==========================================================================
+// DATA VALIDATION & TYPE SAFETY HELPERS
+// ==========================================================================
+function safeFloat(val, fallback = 0, min = -Infinity, max = Infinity) {
+  const parsed = parseFloat(val);
+  if (isNaN(parsed)) return fallback;
+  return Math.min(Math.max(parsed, min), max);
+}
+
+function safeInt(val, fallback = 0, min = -Infinity, max = Infinity) {
+  const parsed = parseInt(val, 10);
+  if (isNaN(parsed)) return fallback;
+  return Math.min(Math.max(parsed, min), max);
+}
+
 /**
  * GVK Weapon Studio // Real-Time WeaponCore Configurator & Logistics Engine
  * Powered by Ash-LikeSnow/WeaponCore & GV-Server-Mods/GVK-Weapons-Pack
@@ -1401,47 +1416,214 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
 function runWeaponCoreLinter() {
   if (!activeWeapon || !linterBanner || !linterText) return;
 
-  const hazards = [];
+  const criticalErrors = [];
+  const warnings = [];
 
-  // Check 1: Primary ammo usable
-  if (activeAmmo && !activeAmmo.hardPointUsable) {
-    hazards.push("Primary ammo has HardPointUsable = false (Gun will refuse to fire).");
+  // --- WEAPON CHECKS (Structure.cs / WeaponDefinition) ---
+  const rof = safeInt(wRateOfFire.value, 0);
+  if (rof <= 0) {
+    criticalErrors.push("RateOfFire must be > 0 (Gun cannot cycle shots).");
   }
 
-  // Check 2: MagsToLoad <= 0
-  if (parseFloat(wMagsToLoad.value) <= 0) {
-    hazards.push("MagsToLoad is 0 (Gun cannot reload magazines).");
+  const magsToLoad = safeInt(wMagsToLoad.value, 0);
+  if (magsToLoad <= 0) {
+    criticalErrors.push("MagsToLoad must be > 0 (Gun cannot reload magazines).");
   }
 
-  // Check 3: RoF > 0
-  if (parseFloat(wRateOfFire.value) <= 0) {
-    hazards.push("RateOfFire is 0 (Gun cannot cycle shots).");
+  const barrels = safeInt(wBarrelsPerShot.value, 0);
+  if (barrels <= 0) {
+    criticalErrors.push("BarrelsPerShot must be >= 1 (0 projectiles fired per cycle).");
   }
 
-  // Check 4: Muzzles empty
-  if (!wMuzzles.value.trim()) {
-    hazards.push("Muzzle dummy list is empty (Projectiles will spawn inside the block).");
+  const durMod = safeFloat(wDurabilityMod.value, 0);
+  if (durMod <= 0) {
+    criticalErrors.push("DurabilityMod must be > 0 (Prevents divide-by-zero in effective integrity).");
   }
 
-  // Check 5: Range > 2000m on turret without PrototechCircuitry
-  const range = parseFloat(wMaxTargetDistance.value) || 0;
+  const muzzles = (wMuzzles.value || '').trim();
+  if (!muzzles) {
+    criticalErrors.push("Muzzle dummy list is empty (Projectiles will spawn inside the block).");
+  }
+
+  // Thermal & Overheat Safety
+  const heatPerShot = safeFloat(wHeatPerShot.value, 0);
+  const maxHeat = safeFloat(wMaxHeat.value, 0);
+  const heatSink = safeFloat(wHeatSinkRate.value, 0);
+  const cooldown = safeFloat(wCooldown.value, 0.5);
+
+  if (heatPerShot > 0 && heatSink <= 0) {
+    criticalErrors.push("HeatPerShot > 0 but HeatSinkRate is 0 (Permanent weapon overheat lock).");
+  }
+  if (maxHeat > 0 && (cooldown <= 0 || cooldown >= 1.0)) {
+    criticalErrors.push("Cooldown threshold must be between 0.05 and 0.95 (0 or 1.0 breaks overheat reset).");
+  }
+
+  // Traversal & Aiming Bounds
+  const isTurret = (activeWeapon.type === 'Turret');
+  const rotRate = safeFloat(wRotateRate.value, 0);
+  const elRate = safeFloat(wElevateRate.value, 0);
+  const minAz = safeFloat(wMinAzimuth.value, -180);
+  const maxAz = safeFloat(wMaxAzimuth.value, 180);
+  const minEl = safeFloat(wMinElevation.value, -15);
+  const maxEl = safeFloat(wMaxElevation.value, 80);
+  const aimTol = safeFloat(wAimingTolerance.value, 0);
+
+  if (isTurret) {
+    if (rotRate <= 0) {
+      warnings.push("Turret RotateRate is 0 (Turret cannot traverse in azimuth).");
+    }
+    if (elRate <= 0 && minEl !== maxEl) {
+      warnings.push("Turret ElevateRate is 0 (Turret elevation locked on vertical axis).");
+    }
+    if (minAz > maxAz) {
+      criticalErrors.push(`MinAzimuth (${minAz}°) cannot be greater than MaxAzimuth (${maxAz}°).`);
+    }
+    if (minEl > maxEl) {
+      criticalErrors.push(`MinElevation (${minEl}°) cannot be greater than MaxElevation (${maxEl}°).`);
+    }
+    if (aimTol <= 0) {
+      warnings.push("AimingTolerance is 0° (Turret will require infinite precision and rarely fire).");
+    }
+  }
+
+  // Inventory Buffer
+  const invSize = safeFloat(wInventorySize.value, 0);
+  if (invSize <= 0) {
+    criticalErrors.push("InventorySize must be > 0 (Gun inventory has 0 capacity).");
+  }
+
+  // Targeting Range Bounds
+  const minRange = safeFloat(wMinTargetDistance.value, 0);
+  const maxRange = safeFloat(wMaxTargetDistance.value, 0);
+  if (minRange >= maxRange && maxRange > 0) {
+    criticalErrors.push(`MinTargetDistance (${minRange}m) must be less than MaxTargetDistance (${maxRange}m).`);
+  }
+
+  // GVK Server Rules: Range Gate (>2km)
   const techInfo = getTechSummary(activeWeapon ? activeWeapon.components : null);
-  if (range > 2000 && !techInfo.hasCircuitry) {
-    hazards.push("Smart/turret range exceeds 2km: 1 PrototechCircuitry component layer is required in <Components>.");
+  if (maxRange > 2000 && !techInfo.hasCircuitry && !activeWeapon.isRelic) {
+    warnings.push("Smart/turret range exceeds 2km: 1 PrototechCircuitry component layer is required in <Components>.");
   }
 
-  if (hazards.length === 0) {
-    linterBanner.className = 'linter-banner clean';
-    linterText.textContent = 'Definition syntax healthy. 0 Clang hazards detected. AI suppression active.';
-  } else {
+  // Component Layers Check
+  if (!activeWeapon.components || activeWeapon.components.length === 0) {
+    criticalErrors.push("Block has 0 construction component layers (Cube cannot be built).");
+  }
+
+  // --- AMMO CHECKS (Weapon75ammo.cs / AmmoDef) ---
+  if (activeAmmo) {
+    // Primary Ammo Usability
+    const isAssignedPrimary = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos[0] === activeAmmo.name);
+    if (isAssignedPrimary && aHardPointUsable && !aHardPointUsable.checked) {
+      criticalErrors.push(`Primary ammo '${activeAmmo.name}' has HardPointUsable = false (Gun will refuse to fire).`);
+    }
+
+    // Trajectory Bounds
+    const speed = safeFloat(tDesiredSpeed.value, 0);
+    const maxTraj = safeFloat(tMaxTrajectory.value, 0);
+    if (speed <= 0) {
+      criticalErrors.push("DesiredSpeed must be > 0 (Projectile is frozen in space).");
+    }
+    if (maxTraj <= 0) {
+      criticalErrors.push("MaxTrajectory must be > 0 (Projectile terminates at tick 0).");
+    }
+
+    // Collision Shape
+    if (aShape && aShape.value === 'SphereShape') {
+      const diam = safeFloat(aDiameter ? aDiameter.value : 0, 0);
+      if (diam <= 0) {
+        warnings.push("SphereShape Diameter must be > 0 (Collision hitbox has 0 volume).");
+      }
+    }
+
+    // Fragmentation Recursion & Bounds
+    if (fEnable && fEnable.checked) {
+      const frags = safeInt(fFragments.value, 0);
+      const childRound = fChildAmmoRound.value;
+      if (frags <= 0) {
+        warnings.push("FragmentDef is enabled but Fragments count is 0.");
+      }
+      if (childRound === activeAmmo.name || childRound === activeAmmo.ammoRound) {
+        criticalErrors.push(`Infinite recursion detected: Ammo '${activeAmmo.name}' spawns itself as a fragment (Causes game crash).`);
+      }
+    }
+
+    // Area of Damage Bounds
+    if (aodEnable && aodEnable.checked) {
+      const aoeRad = safeFloat(aodRadius.value, 0);
+      const aoeDmg = safeFloat(aodDamage.value, 0);
+      if (aoeRad <= 0 || aoeDmg <= 0) {
+        warnings.push("AreaOfDamage is enabled but Radius or Damage is 0.");
+      }
+    }
+  }
+
+  // Render Linter Status
+  if (criticalErrors.length > 0) {
+    linterBanner.className = 'linter-banner danger';
+    linterText.innerHTML = `<strong>🚨 CRITICAL CLANG / SYNTAX HAZARD:</strong> ${criticalErrors.join(' | ')}`;
+  } else if (warnings.length > 0) {
     linterBanner.className = 'linter-banner warning';
-    linterText.textContent = `⚠️ Warning: ${hazards.join(' | ')}`;
+    linterText.innerHTML = `<strong>⚠️ ENGINE / BALANCE WARNING:</strong> ${warnings.join(' | ')}`;
+  } else {
+    linterBanner.className = 'linter-banner clean';
+    linterText.innerHTML = '<strong>🛡️ SYNTAX &amp; BALLISTICS HEALTHY:</strong> 0 Clang hazards detected. All types and numerical bounds valid.';
   }
 }
 
 // ==========================================================================
 // MINIMAL WORKING DEF CREATORS
 // ==========================================================================
+
+// ==========================================================================
+// UPGRADEDEFINITION CREATOR (Upgrade75aPart.cs support)
+// ==========================================================================
+function createMinimalUpgrade() {
+  const name = prompt("Enter Upgrade SubtypeId (e.g. GVK_RadarBooster):", "GVK_UpgradeModule");
+  if (!name) return;
+
+  const newUp = {
+    id: name,
+    name: name.replace(/_/g, ' '),
+    displayName: name.replace(/_/g, ' '),
+    subtypeId: name,
+    partName: name.replace(/_/g, ' '),
+    gridSize: "Large",
+    type: "Upgrade",
+    rateOfFire: 1,
+    barrelsPerShot: 1,
+    reloadTime: 0,
+    magsToLoad: 1,
+    magazineSize: 1,
+    ammoName: "None",
+    assignedAmmos: ["None"],
+    maxTargetDistance: 0,
+    minTargetDistance: 0,
+    rotateRate: 0,
+    elevateRate: 0,
+    idlePower: 0.25,
+    inventorySize: 1.0,
+    durabilityMod: 1.0,
+    pcu: 4,
+    upCost: 4,
+    buildTime: 40,
+    techCount: 2,
+    techComponent: "PrototechMachinery",
+    components: [
+      { name: "SteelPlate", count: 80 },
+      { name: "Construction", count: 40 },
+      { name: "Computer", count: 20 },
+      { name: "PrototechMachinery", count: 2 },
+      { name: "SteelPlate", count: 20 }
+    ]
+  };
+
+  weaponsDb.push(newUp);
+  populateWeaponDropdowns();
+  selectWeapon(newUp.id);
+  showToast(`Created new UpgradeDefinition '${name}'.`);
+}
+
 function createMinimalWeapon() {
   const name = prompt("Enter new Weapon SubtypeId (e.g. GVK_FlakTurret):", "GVK_CustomTurret");
   if (!name) return;
@@ -1961,6 +2143,8 @@ function setupWorkbenchInputEvents() {
     });
   }
 
+  const btnNewMinimalUpgrade = document.getElementById('btnNewMinimalUpgrade');
+  if (btnNewMinimalUpgrade) btnNewMinimalUpgrade.addEventListener('click', createMinimalUpgrade);
   if (btnNewMinimalWeapon) btnNewMinimalWeapon.addEventListener('click', createMinimalWeapon);
   if (btnNewMinimalAmmo) btnNewMinimalAmmo.addEventListener('click', createMinimalAmmo);
   if (btnNewFragAmmo) btnNewFragAmmo.addEventListener('click', createMinimalAmmo);
