@@ -1884,6 +1884,31 @@
 
     <!-- WORKSPACE 3: AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS") -->
     <div id="ws-logistics" class="workspace-section">
+      <!-- Dedicated Ammo Magazine Selector Bar -->
+      <div class="logistics-ammo-bar">
+        <div class="selector-left">
+          <div class="ammo-icon-wrap" title="Ammo Magazine Icon">
+            <img id="logisticsAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Ammo Icon" class="ammo-icon">
+          </div>
+          <div>
+            <span class="selector-label">Ammo Magazine & Blueprint</span>
+            <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap;">
+              <select id="logisticsAmmoSelect" class="telemetry-ammo-dropdown" style="font-size: 14px; min-width: 320px;">
+                <option value="">Loading ammo magazines...</option>
+              </select>
+              <button id="btnResetAmmoLogistics" class="btn btn-sm" title="Reset this magazine back to official SBC defaults">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="banner-badges">
+          <div class="badge" id="badgeLogMagSubtype">Subtype: <strong>NATO_25x184mm</strong></div>
+          <div class="badge badge-amber" id="badgeLogMagCap">Capacity: <strong>30 rds</strong></div>
+          <div class="badge badge-cyan" id="badgeLogMagVol">Volume: <strong>30 L</strong></div>
+          <div class="badge badge-green" id="badgeLogMagMass">Mass: <strong>30 kg</strong></div>
+          <div class="badge badge-purple" id="badgeLogBlueprint">⏱️ <strong>13s Craft</strong></div>
+        </div>
+      </div>
+
       <div class="logistics-grid">
         
         <!-- Left: Logistics Balancing Controls -->
@@ -1929,7 +1954,7 @@
             </div>
 
             <!-- Derived Footprint Output Card -->
-            <div style="margin-top: 16px; background: var(--bg-card); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div class="derived-footprint-box" style="margin-top: 16px; background: var(--bg-card); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
               <h4 style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; margin-bottom: 10px;">
                 📏 DERIVED PHYSICAL FOOTPRINT & BUFFER
               </h4>
@@ -1998,7 +2023,9 @@
                 </span>
                 <button id="btnCopyBlueprintXml" class="btn btn-sm">📋 Copy XML</button>
               </div>
-              <pre id="codeBlueprintXml" class="xml-box">&lt;!-- Calculating Ingot Recipe... --&gt;</pre>
+              <!-- Visual Materials Breakdown Chips -->
+              <div id="blueprintVisualMaterials" class="blueprint-materials-grid"></div>
+              <pre id="codeBlueprintXml" class="xml-box" style="margin-top: 10px;">&lt;!-- Calculating Ingot Recipe... --&gt;</pre>
             </div>
 
           </div>
@@ -2066,6 +2093,7 @@
   <script src="data/wc_schema.js"></script>
   <script src="data/weapons_data.js"></script>
   <script src="data/ammos_data.js"></script>
+  <script src="data/magazines_blueprints_data.js"></script>
   <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
   <script src="app.js"></script>

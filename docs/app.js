@@ -483,6 +483,7 @@ let weaponsDb = [];
 let ammosDb = {};
 let animationsDb = [];
 let componentsDb = {};
+let magazinesBlueprintsDb = [];
 let activeWeapon = null;
 let activeAmmo = null;
 let benchmarkWeapon = null;
@@ -747,6 +748,18 @@ const sbcBlockTypeTag = document.getElementById('sbcBlockTypeTag');
 const badgeUps = document.getElementById('badgeUps');
 
 // DOM Elements - Ammo Logistics ("Ammo Maths")
+const weaponBanner = document.querySelector('.weapon-banner');
+const logisticsAmmoSelect = document.getElementById('logisticsAmmoSelect');
+const logisticsAmmoIcon = document.getElementById('logisticsAmmoIcon');
+const btnResetAmmoLogistics = document.getElementById('btnResetAmmoLogistics');
+const badgeLogMagSubtype = document.getElementById('badgeLogMagSubtype');
+const badgeLogMagCap = document.getElementById('badgeLogMagCap');
+const badgeLogMagVol = document.getElementById('badgeLogMagVol');
+const badgeLogMagMass = document.getElementById('badgeLogMagMass');
+const badgeLogBlueprint = document.getElementById('badgeLogBlueprint');
+const blueprintVisualMaterials = document.getElementById('blueprintVisualMaterials');
+let selectedLogisticsMagSubtype = 'NATO_25x184mm';
+
 const logActiveAmmoName = document.getElementById('logActiveAmmoName');
 const inputDmgDensitySlider = document.getElementById('inputDmgDensitySlider');
 const inputDmgDensity = document.getElementById('inputDmgDensity');
@@ -878,6 +891,8 @@ async function initStudio() {
   else if (typeof COMPONENTS_DATA !== 'undefined') componentsDb = { ...COMPONENTS_DATA };
   else if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
 
+  if (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined') magazinesBlueprintsDb = JSON.parse(JSON.stringify(MAGAZINES_BLUEPRINTS_DATA));
+
   // Fetch live JSON if served via HTTP
   try {
     const wRes = await fetch('data/weapons_db.json');
@@ -895,6 +910,7 @@ async function initStudio() {
   populateWeaponDropdowns();
   populateAmmoDropdowns();
   populateAnimationDropdown();
+  populateLogisticsAmmoDropdown();
 
   // Populate Balance Matrix Modal inputs
   syncBalanceMatrixInputs();
@@ -907,6 +923,9 @@ async function initStudio() {
     const avenger = weaponsDb.find(w => w.name.includes("Avenger")) || weaponsDb[0];
     selectWeapon(avenger.id);
   }
+
+  // Initialize Default Logistics Magazine
+  selectLogisticsMagazine(selectedLogisticsMagSubtype, true);
 
   // Event Listeners
   setupNavigationEvents();
@@ -927,6 +946,12 @@ function switchWorkspace(targetWsId) {
   wsSections.forEach(s => {
     s.classList.toggle('active', s.id === targetWsId);
   });
+  if (weaponBanner) {
+    weaponBanner.style.display = (targetWsId === 'ws-logistics') ? 'none' : 'flex';
+  }
+  if (targetWsId === 'ws-logistics') {
+    selectLogisticsMagazine(selectedLogisticsMagSubtype, false);
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1167,6 +1192,78 @@ function populateAmmoDropdowns() {
       }
     });
   }
+}
+
+function populateLogisticsAmmoDropdown() {
+  if (!logisticsAmmoSelect) return;
+
+  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
+    ? MAGAZINES_BLUEPRINTS_DATA
+    : magazinesBlueprintsDb;
+
+  if (!dataset || dataset.length === 0) return;
+
+  const categories = {};
+  dataset.forEach(m => {
+    const cat = m.category || 'Ship Standard Munitions';
+    if (!categories[cat]) categories[cat] = [];
+    categories[cat].push(m);
+  });
+
+  logisticsAmmoSelect.innerHTML = Object.entries(categories).map(([catName, mags]) => {
+    const opts = mags.map(m => `<option value="${m.subtypeId}">${m.displayName} [${m.subtypeId}]</option>`).join('');
+    return `<optgroup label="── ${catName} ──">${opts}</optgroup>`;
+  }).join('');
+
+  if (selectedLogisticsMagSubtype) {
+    logisticsAmmoSelect.value = selectedLogisticsMagSubtype;
+  }
+}
+
+function selectLogisticsMagazine(magSubtype, resetLevers = false) {
+  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
+    ? MAGAZINES_BLUEPRINTS_DATA
+    : magazinesBlueprintsDb;
+
+  const mag = dataset.find(m => m.subtypeId === magSubtype) || dataset[0];
+  if (!mag) return;
+
+  selectedLogisticsMagSubtype = mag.subtypeId;
+  if (logisticsAmmoSelect) logisticsAmmoSelect.value = mag.subtypeId;
+
+  if (logisticsAmmoIcon) {
+    logisticsAmmoIcon.src = mag.localIcon || `icons/ammo_${mag.subtypeId}.png`;
+    logisticsAmmoIcon.onerror = () => { logisticsAmmoIcon.src = 'icons/ammo_NATO_25x184mm.png'; };
+  }
+
+  if (badgeLogMagSubtype) badgeLogMagSubtype.innerHTML = `Subtype: <strong>${mag.subtypeId}</strong>`;
+  if (badgeLogMagCap) badgeLogMagCap.innerHTML = `Capacity: <strong>${mag.capacity} rds</strong>`;
+  if (badgeLogMagVol) badgeLogMagVol.innerHTML = `Volume: <strong>${mag.volume} L</strong>`;
+  if (badgeLogMagMass) badgeLogMagMass.innerHTML = `Mass: <strong>${mag.mass} kg</strong>`;
+  if (badgeLogBlueprint) badgeLogBlueprint.innerHTML = `⏱️ <strong>${mag.productionTime}s Craft</strong>`;
+  if (logActiveAmmoName) logActiveAmmoName.textContent = mag.displayName;
+
+  if (resetLevers) {
+    if (inputCraftTime) inputCraftTime.value = mag.productionTime;
+    if (inputRUs) inputRUs.value = mag.defaultRUs;
+    if (selectRoleMultiplier) selectRoleMultiplier.value = mag.roleMultiplier.toString();
+    const physDens = mag.volume > 0 ? (mag.mass / mag.volume).toFixed(1) : 4.0;
+    if (inputPhysicalDensity) inputPhysicalDensity.value = physDens;
+
+    let magDmg = 0;
+    const ammoObj = ammosDb[mag.subtypeId] || Object.values(ammosDb).find(a => a.ammoMagazine === mag.subtypeId);
+    if (ammoObj) {
+      const dmgDet = getAmmoDamageDetailed(ammoObj);
+      magDmg = dmgDet.total * mag.capacity;
+    }
+    if (magDmg > 0 && mag.volume > 0) {
+      const derivedDmgDens = Math.round(magDmg / mag.volume);
+      if (inputDmgDensity) inputDmgDensity.value = derivedDmgDens;
+      if (inputDmgDensitySlider) inputDmgDensitySlider.value = Math.min(30000, Math.max(500, derivedDmgDens));
+    }
+  }
+
+  updateAmmoLogistics();
 }
 
 function populateAnimationDropdown() {
@@ -2335,88 +2432,140 @@ function updateInitialDDriftMeter() {
 // AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS")
 // ==========================================================================
 function updateAmmoLogistics() {
-  if (!activeAmmo) return;
+  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
+    ? MAGAZINES_BLUEPRINTS_DATA
+    : magazinesBlueprintsDb;
 
-  logActiveAmmoName.textContent = activeAmmo.terminalName || activeAmmo.name;
+  const mag = dataset.find(m => m.subtypeId === selectedLogisticsMagSubtype) || dataset[0];
+  if (!mag) return;
+
+  if (logActiveAmmoName) logActiveAmmoName.textContent = mag.displayName;
 
   const targetDmgDensity = parseFloat(inputDmgDensity.value) || 5000;
   const physicalDensity = parseFloat(inputPhysicalDensity.value) || 4.0;
   const roleMult = parseFloat(selectRoleMultiplier.value) || 1.0;
-  const craftTime = parseFloat(inputCraftTime.value) || 13;
+  const craftTime = parseFloat(inputCraftTime.value) || mag.productionTime;
   const rus = parseFloat(inputRUs.value) || 0;
 
-  const baseDmg = parseFloat(aBaseDamage.value) || 100;
-  const magCapacity = activeWeapon ? (activeWeapon.magazineSize || 100) : 100;
-  const totalMagDamage = baseDmg * magCapacity;
+  // Single-shot damage from ammosDb if available
+  const ammoObj = ammosDb[mag.subtypeId] || Object.values(ammosDb).find(a => a.ammoMagazine === mag.subtypeId);
+  const singleShotDmg = ammoObj ? getAmmoDamageDetailed(ammoObj).total : 100;
+  const totalMagDamage = singleShotDmg * mag.capacity;
 
   // Derived Volume & Mass
   const magVolumeL = totalMagDamage / targetDmgDensity;
   const magMassKg = magVolumeL * physicalDensity;
 
-  outMagVolume.textContent = `${magVolumeL.toFixed(1)} L`;
-  outMagMass.textContent = `${magMassKg.toFixed(1)} kg`;
+  if (outMagVolume) outMagVolume.textContent = `${magVolumeL.toFixed(1)} L`;
+  if (outMagMass) outMagMass.textContent = `${magMassKg.toFixed(1)} kg`;
 
   // Internal Buffer & Depletion
-  const magsToLoad = activeWeapon ? (activeWeapon.magsToLoad || 4) : 4;
-  const suggestedWeaponVolKL = (magVolumeL * magsToLoad * 2.2) / 1000;
-  outSuggestedVol.textContent = `${suggestedWeaponVolKL.toFixed(2)} kL (2.2x)`;
+  const weaponUsingAmmo = weaponsDb.find(w => {
+    const ammos = w.assignedAmmos || [w.ammoName];
+    return ammos.some(aKey => {
+      const a = ammosDb[aKey];
+      return a && (a.ammoMagazine === mag.subtypeId || aKey === mag.subtypeId);
+    });
+  });
 
-  const rof = activeWeapon ? (activeWeapon.rateOfFire || 1000) : 1000;
-  const depletionSec = ((magCapacity * magsToLoad) / rof) * 60;
-  outDepletionTime.textContent = `${depletionSec.toFixed(1)} s`;
+  const magsToLoad = weaponUsingAmmo ? (weaponUsingAmmo.magsToLoad || 4) : 4;
+  const rof = weaponUsingAmmo ? (weaponUsingAmmo.rateOfFire || 600) : 600;
+
+  const suggestedWeaponVolKL = (magVolumeL * magsToLoad * 2.2) / 1000;
+  if (outSuggestedVol) outSuggestedVol.textContent = `${suggestedWeaponVolKL.toFixed(2)} kL (2.2x)`;
+
+  const depletionSec = ((mag.capacity * magsToLoad) / rof) * 60;
+  if (outDepletionTime) outDepletionTime.textContent = `${depletionSec.toFixed(1)} s`;
 
   // Cargo Packing & Fleet Endurance
-  // Small Cargo: 3,375 L
   const smallMags = Math.floor(3375 / Math.max(0.1, magVolumeL));
   const smallTotalDmg = smallMags * totalMagDamage;
-  const smallFireTimeSec = (smallMags * magCapacity / rof) * 60;
+  const smallFireTimeSec = (smallMags * mag.capacity / rof) * 60;
 
-  outSmallCargoMags.textContent = `${smallMags.toLocaleString()} Mags`;
-  outSmallCargoDmg.textContent = `Total Damage Stored: ${Math.round(smallTotalDmg).toLocaleString()} hp`;
-  outSmall1GunTime.textContent = formatTime(smallFireTimeSec);
-  outSmall20GunTime.textContent = formatTime(smallFireTimeSec / 20);
+  if (outSmallCargoMags) outSmallCargoMags.textContent = `${smallMags.toLocaleString()} Mags`;
+  if (outSmallCargoDmg) outSmallCargoDmg.textContent = `Total Damage Stored: ${Math.round(smallTotalDmg).toLocaleString()} hp`;
+  if (outSmall1GunTime) outSmall1GunTime.textContent = formatTime(smallFireTimeSec);
+  if (outSmall20GunTime) outSmall20GunTime.textContent = formatTime(smallFireTimeSec / 20);
 
-  // Large Cargo: 421,875 L
   const largeMags = Math.floor(421875 / Math.max(0.1, magVolumeL));
   const largeTotalDmg = largeMags * totalMagDamage;
-  const largeFireTimeSec = (largeMags * magCapacity / rof) * 60;
+  const largeFireTimeSec = (largeMags * mag.capacity / rof) * 60;
 
-  outLargeCargoMags.textContent = `${largeMags.toLocaleString()} Mags`;
-  outLargeCargoDmg.textContent = `Total Damage Stored: ${Math.round(largeTotalDmg).toLocaleString()} hp`;
-  outLarge1GunTime.textContent = formatTime(largeFireTimeSec);
-  outLarge20GunTime.textContent = formatTime(largeFireTimeSec / 20);
+  if (outLargeCargoMags) outLargeCargoMags.textContent = `${largeMags.toLocaleString()} Mags`;
+  if (outLargeCargoDmg) outLargeCargoDmg.textContent = `Total Damage Stored: ${Math.round(largeTotalDmg).toLocaleString()} hp`;
+  if (outLarge1GunTime) outLarge1GunTime.textContent = formatTime(largeFireTimeSec);
+  if (outLarge20GunTime) outLarge20GunTime.textContent = formatTime(largeFireTimeSec / 20);
 
-  // XML Blueprint Prerequisites Generation
-  // Economy: Base cost factor 0.50 SC / dmg * roleMult
-  const totalCostCredits = totalMagDamage * 0.50 * roleMult;
-  const ironKg = (magMassKg * 0.70).toFixed(1);
-  const nickelKg = (magMassKg * 0.15).toFixed(1);
-  const magnesiumKg = (magMassKg * 0.10).toFixed(2);
-  const cobaltKg = (magMassKg * 0.05).toFixed(2);
+  // XML Blueprint Prerequisites Generation & Visual Breakdown
+  const baseSbcMass = Math.max(0.1, mag.mass);
+  const massRatio = magMassKg / baseSbcMass;
+  const roleScale = roleMult / Math.max(0.1, mag.roleMultiplier);
+  const scale = massRatio * roleScale;
 
+  let calculatedPrereqs = [];
+  if (mag.prerequisites && mag.prerequisites.length > 0) {
+    calculatedPrereqs = mag.prerequisites.map(p => {
+      let amt = p.amount;
+      if (p.subtypeId === 'GVK_RUs') {
+        amt = rus > 0 ? rus : p.amount;
+      } else {
+        amt = (scale > 0.98 && scale < 1.02) ? p.amount : Math.round((p.amount * scale) * 10) / 10;
+      }
+      return {
+        typeId: p.typeId || 'Ingot',
+        subtypeId: p.subtypeId,
+        amount: Math.max(0.01, amt)
+      };
+    });
+
+    if (rus > 0 && !calculatedPrereqs.some(p => p.subtypeId === 'GVK_RUs')) {
+      calculatedPrereqs.unshift({ typeId: 'Ingot', subtypeId: 'GVK_RUs', amount: rus });
+    }
+  } else {
+    calculatedPrereqs = [
+      { typeId: 'Ingot', subtypeId: 'Iron', amount: Math.round(magMassKg * 0.70 * 10) / 10 },
+      { typeId: 'Ingot', subtypeId: 'Nickel', amount: Math.round(magMassKg * 0.15 * 10) / 10 },
+      { typeId: 'Ingot', subtypeId: 'Magnesium', amount: Math.round(magMassKg * 0.10 * 100) / 100 }
+    ];
+    if (rus > 0) {
+      calculatedPrereqs.unshift({ typeId: 'Ingot', subtypeId: 'GVK_RUs', amount: rus });
+    }
+  }
+
+  // Render Visual Materials Breakdown Chips
+  if (blueprintVisualMaterials) {
+    blueprintVisualMaterials.innerHTML = calculatedPrereqs.map(p => {
+      const unit = p.subtypeId === 'GVK_RUs' ? 'RUs' : 'kg';
+      const formattedAmt = p.amount >= 100 ? Math.round(p.amount).toLocaleString() : p.amount.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+      return `
+        <div class="blueprint-mat-chip">
+          <span class="blueprint-mat-name">${p.subtypeId}</span>
+          <span class="blueprint-mat-amount">${formattedAmt} <span style="font-size: 10px; font-weight: normal; color: var(--text-muted);">${unit}</span></span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Generate XML
   let xml = `  <Blueprint>\n`;
   xml += `    <Id>\n`;
   xml += `      <TypeId>BlueprintDefinition</TypeId>\n`;
-  xml += `      <SubtypeId>${activeAmmo.ammoMagazine || activeAmmo.name}</SubtypeId>\n`;
+  xml += `      <SubtypeId>${mag.blueprintSubtype || ('00_' + mag.subtypeId)}</SubtypeId>\n`;
   xml += `    </Id>\n`;
-  xml += `    <DisplayName>${activeAmmo.terminalName || activeAmmo.name}</DisplayName>\n`;
-  xml += `    <Icon>Textures\\GUI\\Icons\\ammo\\${activeAmmo.ammoMagazine || activeAmmo.name}.dds</Icon>\n`;
+  xml += `    <DisplayName>${mag.displayName}</DisplayName>\n`;
+  xml += `    <Icon>${mag.icon || ('Textures\\GUI\\Icons\\ammo\\' + mag.subtypeId + '.dds')}</Icon>\n`;
   xml += `    <Prerequisites>\n`;
-  xml += `      <Item Amount="${ironKg}" TypeId="Ingot" SubtypeId="Iron" />\n`;
-  xml += `      <Item Amount="${nickelKg}" TypeId="Ingot" SubtypeId="Nickel" />\n`;
-  xml += `      <Item Amount="${magnesiumKg}" TypeId="Ingot" SubtypeId="Magnesium" />\n`;
-  if (parseFloat(cobaltKg) > 0.01) {
-    xml += `      <Item Amount="${cobaltKg}" TypeId="Ingot" SubtypeId="Cobalt" />\n`;
-  }
-  if (rus > 0) {
-    xml += `      <Item Amount="${rus}" TypeId="Ingot" SubtypeId="GVK_RUs" />\n`;
-  }
+  calculatedPrereqs.forEach(p => {
+    xml += `      <Item Amount="${p.amount}" TypeId="${p.typeId}" SubtypeId="${p.subtypeId}" />\n`;
+  });
   xml += `    </Prerequisites>\n`;
-  xml += `    <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="${activeAmmo.ammoMagazine || activeAmmo.name}" />\n`;
+  xml += `    <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="${mag.subtypeId}" />\n`;
   xml += `    <BaseProductionTimeInSeconds>${craftTime}</BaseProductionTimeInSeconds>\n`;
   xml += `  </Blueprint>`;
 
-  codeBlueprintXml.textContent = xml;
+  if (codeBlueprintXml) {
+    codeBlueprintXml.textContent = xml;
+  }
 }
 
 function formatTime(seconds) {
@@ -2440,6 +2589,19 @@ function setupLogisticsEvents() {
   [inputPhysicalDensity, selectRoleMultiplier, inputRUs, inputCraftTime].forEach(el => {
     if (el) el.addEventListener('input', updateAmmoLogistics);
   });
+
+  if (logisticsAmmoSelect) {
+    logisticsAmmoSelect.addEventListener('change', (e) => {
+      selectLogisticsMagazine(e.target.value, true);
+    });
+  }
+
+  if (btnResetAmmoLogistics) {
+    btnResetAmmoLogistics.addEventListener('click', () => {
+      selectLogisticsMagazine(selectedLogisticsMagSubtype, true);
+      showToast("↺ Ammo Logistics levers reset to official SBC defaults!");
+    });
+  }
 
   if (btnCopyBlueprintXml) {
     btnCopyBlueprintXml.addEventListener('click', () => {

@@ -63,15 +63,54 @@
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .hud-title,
-[data-theme="light"] .logo-title h1,
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
-[data-theme="light"] .stat-value,
+[data-theme="light"] h4,
+[data-theme="light"] h5 {
+  color: #0f172a;
+}
+
+[data-theme="light"] .logo-title h1,
+[data-theme="light"] .panel-header h2,
+[data-theme="light"] .modal-panel h2,
 [data-theme="light"] .wc-title,
-[data-theme="light"] .sim-card-title,
-[data-theme="light"] .control-label,
+[data-theme="light"] .hud-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .stat-value {
+  color: #0f172a;
+}
+
+[data-theme="light"] .stat-value span {
+  color: #64748b;
+}
+
+[data-theme="light"] .stat-title {
+  color: #475569;
+}
+
+[data-theme="light"] .stat-sub {
+  color: #64748b;
+}
+
+[data-theme="light"] .sim-card-title {
+  color: #d97706;
+}
+
+[data-theme="light"] .control-label {
+  color: #334155;
+}
+
+[data-theme="light"] .control-label .unit {
+  color: #64748b;
+}
+
+[data-theme="light"] .selector-label {
+  color: #64748b;
+}
+
 [data-theme="light"] .weapon-dropdown,
 [data-theme="light"] .ammo-dropdown,
 [data-theme="light"] .compare-dropdown,
@@ -84,18 +123,91 @@
   color: #475569;
 }
 
+[data-theme="light"] .hud-stat strong {
+  color: #0f172a;
+}
+
 [data-theme="light"] .panel,
 [data-theme="light"] .weapon-banner,
 [data-theme="light"] .telemetry-ammo-bar,
+[data-theme="light"] .logistics-ammo-bar,
 [data-theme="light"] .radar-profile-card,
 [data-theme="light"] .sim-card,
 [data-theme="light"] .heat-box,
 [data-theme="light"] .comparison-box,
 [data-theme="light"] .stat-card,
+[data-theme="light"] .cargo-box,
+[data-theme="light"] .blueprint-mat-chip,
 [data-theme="light"] .wc-accordion {
   background: #ffffff;
   border-color: #cbd5e1;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .cargo-header,
+[data-theme="light"] .cargo-header span:first-child,
+[data-theme="light"] .cargo-box span {
+  color: #0f172a;
+}
+
+[data-theme="light"] .cargo-sub {
+  color: #475569;
+}
+
+[data-theme="light"] .cargo-endurance {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] .cargo-endurance span {
+  color: #64748b;
+}
+
+[data-theme="light"] .cargo-endurance strong {
+  color: #0f172a;
+}
+
+[data-theme="light"] .derived-footprint-box {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .blueprint-mat-name {
+  color: #475569;
+}
+
+[data-theme="light"] .blueprint-mat-amount {
+  color: #0f172a;
+}
+
+[data-theme="light"] .sandbox-disclaimer p strong {
+  color: #0f172a;
+}
+
+[data-theme="light"] .bom-container {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .ws-tab:hover {
+  color: #0f172a;
+  background: #e2e8f0;
+}
+
+[data-theme="light"] .scope-btn:hover {
+  color: #0f172a;
+  background: #e2e8f0;
+}
+
+[data-theme="light"] .control-input.is-wc-default:focus {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .sticky-hud-bar {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .radar-profile-desc {
@@ -651,7 +763,8 @@ header {
   box-shadow: 0 0 0 2px var(--cyan-glow);
 }
 
-.telemetry-ammo-bar {
+.telemetry-ammo-bar,
+.logistics-ammo-bar {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
@@ -1873,6 +1986,47 @@ input.control-input.is-wc-default {
   color: var(--amber-light);
 }
 
+/* Visual Blueprint Materials Grid */
+.blueprint-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.blueprint-mat-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.blueprint-mat-chip:hover {
+  border-color: var(--amber-primary);
+  transform: translateY(-1px);
+}
+
+.blueprint-mat-name {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blueprint-mat-amount {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--amber-primary);
+}
+
 .xml-box {
   background: var(--bg-input);
   border: 1px solid var(--border-color);
@@ -1882,7 +2036,7 @@ input.control-input.is-wc-default {
   font-size: 11px;
   color: #38bdf8;
   overflow-x: auto;
-  max-height: 180px;
+  max-height: 260px;
 }
 
 /* ==========================================================================
