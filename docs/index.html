@@ -1549,10 +1549,11 @@
 
 <!-- SCOPE C: CubeBlocks SBC Editor & Standardizer -->
       <div id="scope-sbc" class="scope-content">
+        <!-- Accordion 1: Block Identity & Engine Standardization -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">1. CubeBlock Definition & Keen Standardization</span>
-            <span class="wc-tag">Clean XML, AiEnabled</span>
+            <span class="wc-title">1. Block Identity & Engine Standardization</span>
+            <span class="wc-tag" id="sbcBlockTypeTag">ConveyorSorter / LargeTurretBase</span>
           </summary>
           <div class="wc-body">
             
@@ -1562,7 +1563,7 @@
                 <div>
                   <strong style="color: var(--green-accent); font-size: 13px;">Keen Vanilla AI Conflict Suppression Active</strong>
                   <p style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">
-                    This turret definition automatically includes <code>&lt;AiEnabled&gt;false&lt;/AiEnabled&gt;</code> to permanently disable vanilla SE AI loops and eliminate sim-speed stutter.
+                    Turrets automatically include <code>&lt;AiEnabled&gt;false&lt;/AiEnabled&gt;</code> and strip redundant Keen targeting loops so WeaponCore has 100% exclusive control.
                   </p>
                 </div>
               </div>
@@ -1570,15 +1571,38 @@
 
             <div class="control-grid" style="margin-top: 14px;">
               <div class="control-item">
+                <label class="control-label">Block SubtypeId</label>
+                <input type="text" id="sbcSubtypeId" class="control-input" placeholder="e.g. MA_T2PDX">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Block TypeId (Class)</label>
+                <select id="sbcTypeId" class="control-input">
+                  <option value="ConveyorSorter">ConveyorSorter (Sorter Weapon)</option>
+                  <option value="LargeMissileTurret">LargeMissileTurret (Vanilla Missile Turret)</option>
+                  <option value="LargeGatlingTurret">LargeGatlingTurret (Vanilla Gatling Turret)</option>
+                  <option value="InteriorTurret">InteriorTurret (Interior Turret)</option>
+                  <option value="SmallGatlingGun">SmallGatlingGun (Fixed Gun)</option>
+                  <option value="SmallMissileLauncher">SmallMissileLauncher (Fixed Launcher)</option>
+                </select>
+              </div>
+              <div class="control-item">
                 <label class="control-label">In-Game Display Name</label>
                 <input type="text" id="sbcDisplayName" class="control-input">
               </div>
               <div class="control-item">
-                <label class="control-label">Grid Size</label>
+                <label class="control-label">Block Pair Name</label>
+                <input type="text" id="sbcBlockPairName" class="control-input" placeholder="e.g. Lasers_Heavy_Turret">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Grid Size (CubeSize)</label>
                 <select id="sbcCubeSize" class="control-input">
                   <option value="Large">Large Grid</option>
                   <option value="Small">Small Grid</option>
                 </select>
+              </div>
+              <div class="control-item">
+                <label class="control-label">Resource Sink Group</label>
+                <input type="text" id="sbcResourceSinkGroup" class="control-input" value="Defense" placeholder="Defense">
               </div>
               <div class="control-item">
                 <label class="control-label">Build Time <span class="unit">seconds</span></label>
@@ -1588,6 +1612,9 @@
                 <label class="control-label">Utility Points (UPs / PCU)</label>
                 <input type="number" id="sbcUpCost" class="control-input" value="6">
               </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 12px;">
               <div class="control-item">
                 <label class="control-label">Tech Requirements <span class="unit">Auto-Derived</span></label>
                 <div id="sbcTechSummary" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="Calculated from Prototech components in the layer list below">
@@ -1602,9 +1629,106 @@
               </div>
             </div>
 
+            <div class="control-item" style="margin-top: 12px;">
+              <label class="control-label">In-Game Description (Includes ammo usage tag like [Uses 25mm KE])</label>
+              <textarea id="sbcDescription" class="control-input" rows="3" style="width: 100%; font-family: var(--font-sans); resize: vertical;" placeholder="Block description and ammo requirements..."></textarea>
+            </div>
+
             <div class="checkbox-row" style="margin-top: 14px;">
               <label class="chk-label"><input type="checkbox" id="sbcIsRelic"> 👑 Relic Weapon (Non-Craftable Ammunition)</label>
               <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry" disabled> 🔬 PrototechCircuitry Layer Present (&gt;2km Range Gate)</label>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- Accordion 2: Physical Geometry, Visuals & Camera HUD -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">2. Physical Dimensions, Visuals & Camera HUD</span>
+            <span class="wc-tag">Size, Mirroring, OverlayTexture, FOV</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Icon File Path</label>
+                <input type="text" id="sbcIcon" class="control-input" placeholder="Textures\GUI\Icons\...">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Model File Path</label>
+                <input type="text" id="sbcModel" class="control-input" placeholder="Models\...">
+              </div>
+              <div class="control-item">
+                <label class="control-label">HUD Overlay Texture</label>
+                <input type="text" id="sbcOverlayTexture" class="control-input" value="Textures\GUI\Screens\camera_overlay.dds">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Inventory Max Volume <span class="unit">m³</span></label>
+                <input type="number" id="sbcInventoryMaxVolume" class="control-input" step="0.001" value="0.384">
+              </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 12px;">
+              <div class="control-item">
+                <label class="control-label">Size X (width)</label>
+                <input type="number" id="sbcSizeX" class="control-input" value="1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Size Y (height)</label>
+                <input type="number" id="sbcSizeY" class="control-input" value="1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Size Z (depth)</label>
+                <input type="number" id="sbcSizeZ" class="control-input" value="1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Edge Type</label>
+                <select id="sbcEdgeType" class="control-input">
+                  <option value="Light">Light</option>
+                  <option value="Heavy">Heavy</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 12px;">
+              <div class="control-item">
+                <label class="control-label">Mirroring X</label>
+                <input type="text" id="sbcMirroringX" class="control-input" placeholder="e.g. OffsetX (or none)">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Mirroring Y</label>
+                <input type="text" id="sbcMirroringY" class="control-input" value="Z" placeholder="Z">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Mirroring Z</label>
+                <input type="text" id="sbcMirroringZ" class="control-input" value="Y" placeholder="Y">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Camera Min / Max FOV</label>
+                <div style="display: flex; gap: 6px;">
+                  <input type="text" id="sbcMinFov" class="control-input" style="flex: 1;" value="0.1" placeholder="Min FOV">
+                  <input type="text" id="sbcMaxFov" class="control-input" style="flex: 1;" value="1.04719755" placeholder="Max FOV">
+                </div>
+              </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 12px;">
+              <div class="control-item">
+                <label class="control-label">Damage Effect Name</label>
+                <input type="text" id="sbcDamageEffectName" class="control-input" placeholder="Damage_Electrical_Damaged_Blue">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Damaged Sound</label>
+                <input type="text" id="sbcDamagedSound" class="control-input" placeholder="ParticleElectrical">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Destroy Effect</label>
+                <input type="text" id="sbcDestroyEffect" class="control-input" placeholder="BlockDestroyedExplosion_Large_Blue">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Destroy Sound</label>
+                <input type="text" id="sbcDestroySound" class="control-input" placeholder="WepSmallWarheadExpl">
+              </div>
             </div>
 
           </div>

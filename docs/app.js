@@ -678,15 +678,38 @@ const aSoundHit = document.getElementById('aSoundHit');
 const aSoundShieldHit = document.getElementById('aSoundShieldHit');
 
 // DOM Elements - Definition Workbench (Scope C: CubeBlocks SBC)
+const sbcSubtypeId = document.getElementById('sbcSubtypeId');
+const sbcTypeId = document.getElementById('sbcTypeId');
 const sbcDisplayName = document.getElementById('sbcDisplayName');
+const sbcBlockPairName = document.getElementById('sbcBlockPairName');
 const sbcCubeSize = document.getElementById('sbcCubeSize');
+const sbcResourceSinkGroup = document.getElementById('sbcResourceSinkGroup');
 const sbcBuildTime = document.getElementById('sbcBuildTime');
 const sbcUpCost = document.getElementById('sbcUpCost');
 const sbcTechSummary = document.getElementById('sbcTechSummary');
 const sbcTechQtyDisplay = document.getElementById('sbcTechQtyDisplay');
 const badgeUps = document.getElementById('badgeUps');
+const sbcDescription = document.getElementById('sbcDescription');
 const sbcIsRelic = document.getElementById('sbcIsRelic');
 const sbcHasCircuitry = document.getElementById('sbcHasCircuitry');
+const sbcIcon = document.getElementById('sbcIcon');
+const sbcModel = document.getElementById('sbcModel');
+const sbcOverlayTexture = document.getElementById('sbcOverlayTexture');
+const sbcInventoryMaxVolume = document.getElementById('sbcInventoryMaxVolume');
+const sbcSizeX = document.getElementById('sbcSizeX');
+const sbcSizeY = document.getElementById('sbcSizeY');
+const sbcSizeZ = document.getElementById('sbcSizeZ');
+const sbcEdgeType = document.getElementById('sbcEdgeType');
+const sbcMirroringX = document.getElementById('sbcMirroringX');
+const sbcMirroringY = document.getElementById('sbcMirroringY');
+const sbcMirroringZ = document.getElementById('sbcMirroringZ');
+const sbcMinFov = document.getElementById('sbcMinFov');
+const sbcMaxFov = document.getElementById('sbcMaxFov');
+const sbcDamageEffectName = document.getElementById('sbcDamageEffectName');
+const sbcDamagedSound = document.getElementById('sbcDamagedSound');
+const sbcDestroyEffect = document.getElementById('sbcDestroyEffect');
+const sbcDestroySound = document.getElementById('sbcDestroySound');
+const sbcBlockTypeTag = document.getElementById('sbcBlockTypeTag');
 
 // DOM Elements - Ammo Logistics ("Ammo Maths")
 const logActiveAmmoName = document.getElementById('logActiveAmmoName');
@@ -760,10 +783,17 @@ function showToast(msg) {
 // ==========================================================================
 async function initStudio() {
   // Load databases
-  if (window.GVK_DEFAULT_WEAPONS) weaponsDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_WEAPONS));
-  if (window.GVK_DEFAULT_AMMOS) ammosDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_AMMOS));
-  if (window.GVK_ANIMATION_DEFS) animationsDb = [...window.GVK_ANIMATION_DEFS];
-  if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
+  if (typeof WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(WEAPONS_DATA));
+  else if (window.GVK_DEFAULT_WEAPONS) weaponsDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_WEAPONS));
+
+  if (typeof AMMOS_DATA !== 'undefined') ammosDb = JSON.parse(JSON.stringify(AMMOS_DATA));
+  else if (window.GVK_DEFAULT_AMMOS) ammosDb = JSON.parse(JSON.stringify(window.GVK_DEFAULT_AMMOS));
+
+  if (typeof ANIMATIONS_DATA !== 'undefined') animationsDb = [...ANIMATIONS_DATA];
+  else if (window.GVK_ANIMATION_DEFS) animationsDb = [...window.GVK_ANIMATION_DEFS];
+
+  if (typeof COMPONENTS_DATA !== 'undefined') componentsDb = { ...COMPONENTS_DATA };
+  else if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
 
   // Fetch live JSON if served via HTTP
   try {
@@ -1633,10 +1663,52 @@ function updateDirectSbcXml() {
 
 function populateSbcWorkbench() {
   if (!activeWeapon) return;
-  sbcDisplayName.value = activeWeapon.displayName || activeWeapon.partName || activeWeapon.name || '';
-  sbcCubeSize.value = activeWeapon.gridSize || activeWeapon.grid || 'Large';
-  sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || 6;
-  sbcIsRelic.checked = activeWeapon.isRelic === true;
+
+  const sbc = activeWeapon.sbcData || {};
+
+  if (sbcSubtypeId) sbcSubtypeId.value = activeWeapon.subtypeId || activeWeapon.id || '';
+  if (sbcTypeId) {
+    sbcTypeId.value = sbc.typeId || (activeWeapon.type === 'Turret' ? 'LargeMissileTurret' : 'ConveyorSorter');
+  }
+  if (sbcDisplayName) sbcDisplayName.value = activeWeapon.displayName || activeWeapon.name || sbc.displayName || '';
+  if (sbcBlockPairName) sbcBlockPairName.value = sbc.blockPairName || activeWeapon.subtypeId || '';
+  if (sbcCubeSize) sbcCubeSize.value = activeWeapon.gridSize || activeWeapon.grid || sbc.cubeSize || 'Large';
+  if (sbcResourceSinkGroup) sbcResourceSinkGroup.value = sbc.resourceSinkGroup || 'Defense';
+  if (sbcBuildTime) sbcBuildTime.value = activeWeapon.buildTimeSeconds || activeWeapon.buildTime || sbc.buildTimeSeconds || 60;
+  if (sbcUpCost) sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || sbc.pcu || 6;
+  if (sbcDescription) {
+    sbcDescription.value = sbc.description || `${activeWeapon.name}.
+[Uses ${activeWeapon.ammoName || 'Ammunition'}]`;
+  }
+  if (sbcIsRelic) sbcIsRelic.checked = activeWeapon.isRelic === true;
+
+  if (sbcIcon) sbcIcon.value = sbc.icon || `Textures\GUI\Icons\Cubes\${activeWeapon.subtypeId}.png`;
+  if (sbcModel) sbcModel.value = sbc.model || `Models\Cubes\${activeWeapon.grid || 'Large'}\${activeWeapon.subtypeId}.mwm`;
+  if (sbcOverlayTexture) sbcOverlayTexture.value = sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+  if (sbcInventoryMaxVolume) sbcInventoryMaxVolume.value = sbc.inventoryMaxVolume || 0.384;
+
+  const sz = sbc.size || { x: 1, y: 1, z: 1 };
+  if (sbcSizeX) sbcSizeX.value = sz.x !== undefined ? sz.x : 1;
+  if (sbcSizeY) sbcSizeY.value = sz.y !== undefined ? sz.y : 1;
+  if (sbcSizeZ) sbcSizeZ.value = sz.z !== undefined ? sz.z : 1;
+
+  if (sbcEdgeType) sbcEdgeType.value = sbc.edgeType || 'Light';
+  if (sbcMirroringX) sbcMirroringX.value = sbc.mirroringX || '';
+  if (sbcMirroringY) sbcMirroringY.value = sbc.mirroringY || 'Z';
+  if (sbcMirroringZ) sbcMirroringZ.value = sbc.mirroringZ || 'Y';
+
+  if (sbcMinFov) sbcMinFov.value = sbc.minFov || '0.1';
+  if (sbcMaxFov) sbcMaxFov.value = sbc.maxFov || '1.04719755';
+
+  const isSorter = (sbc.typeId === 'ConveyorSorter');
+  if (sbcDamageEffectName) sbcDamageEffectName.value = sbc.damageEffectName || (isSorter ? 'Damage_Electrical_Damaged_Blue' : 'Damage_WeapExpl_Damaged');
+  if (sbcDamagedSound) sbcDamagedSound.value = sbc.damagedSound || (isSorter ? 'ParticleElectrical' : 'ParticleWeapExpl');
+  if (sbcDestroyEffect) sbcDestroyEffect.value = sbc.destroyEffect || 'BlockDestroyedExplosion_Small';
+  if (sbcDestroySound) sbcDestroySound.value = sbc.destroySound || 'WepSmallWarheadExpl';
+
+  if (sbcBlockTypeTag) {
+    sbcBlockTypeTag.textContent = isSorter ? 'ConveyorSorter Definition' : 'LargeTurretBase Definition';
+  }
 
   renderSbcComponentsTable();
   updateDirectSbcXml();
@@ -3632,47 +3704,269 @@ function generateCSharpAmmo() {
 function generateSbcCubeBlocks() {
   if (!activeWeapon) return "<!-- No weapon selected -->";
 
-  const sub = sbcDisplayName.value ? activeWeapon.subtypeId : "GVK_CustomTurret";
-  const name = sbcDisplayName.value || activeWeapon.name;
-  const grid = sbcCubeSize.value || "Large";
-  const bTime = sbcBuildTime.value || 78;
-  const upCost = sbcUpCost.value || 6;
-  const techComp = activeWeapon.techComponent || "PrototechMachinery";
-  const techQty = activeWeapon.techCount || 6;
+  const sbc = activeWeapon.sbcData || {};
+  const sub = (sbcSubtypeId && sbcSubtypeId.value.trim()) || activeWeapon.subtypeId || activeWeapon.id || 'GVK_CustomWeapon';
+  const name = (sbcDisplayName && sbcDisplayName.value.trim()) || sbc.displayName || activeWeapon.displayName || activeWeapon.name || sub;
+  const typeId = (sbcTypeId && sbcTypeId.value.trim()) || sbc.typeId || (activeWeapon.type === 'Turret' ? 'LargeMissileTurret' : 'ConveyorSorter');
 
-  let xml = `  <Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">\n`;
-  xml += `    <Id>\n`;
-  xml += `      <TypeId>LargeGatlingTurret</TypeId>\n`;
-  xml += `      <SubtypeId>${sub}</SubtypeId>\n`;
-  xml += `    </Id>\n`;
-  xml += `    <DisplayName>${name}</DisplayName>\n`;
-  xml += `    <Icon>Textures\\GUI\\Icons\\Cubes\\${sub}.dds</Icon>\n`;
-  xml += `    <Description>GVK WeaponCore Specialized Armament.</Description>\n`;
-  xml += `    <CubeSize>${grid}</CubeSize>\n`;
-  xml += `    <BlockTopology>TriangleMesh</BlockTopology>\n`;
-  xml += `    <Size x="3" y="3" z="3" />\n`;
-  xml += `    <ModelOffset x="0" y="0" z="0" />\n`;
-  xml += `    <Model>Models\\Cubes\\Large\\${sub}.mwm</Model>\n`;
-  xml += `    <!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->\n`;
-  xml += `    <AiEnabled>false</AiEnabled>\n`;
-  xml += `    <Components>\n`;
+  // Decide xsi:type
+  let xsiType = sbc.xsiType;
+  if (!xsiType || (sbcTypeId && sbcTypeId.value !== sbc.typeId)) {
+    if (typeId === 'ConveyorSorter') xsiType = 'MyObjectBuilder_ConveyorSorterDefinition';
+    else if (typeId === 'InteriorTurret') xsiType = 'MyObjectBuilder_InteriorTurretDefinition';
+    else if (typeId.includes('Turret')) xsiType = 'MyObjectBuilder_LargeTurretBaseDefinition';
+    else if (typeId === 'SmallGatlingGun' || typeId === 'SmallMissileLauncher') xsiType = 'MyObjectBuilder_WeaponBlockDefinition';
+    else xsiType = 'MyObjectBuilder_LargeTurretBaseDefinition';
+  }
+
+  const grid = (sbcCubeSize && sbcCubeSize.value) || sbc.cubeSize || activeWeapon.grid || 'Large';
+  const bTime = (sbcBuildTime && sbcBuildTime.value) || sbc.buildTimeSeconds || 60;
+  const pcu = (sbcUpCost && sbcUpCost.value) || sbc.pcu || 6;
+  const desc = (sbcDescription && sbcDescription.value.trim()) || sbc.description || `${name}.
+[Uses ${activeWeapon.ammoName || 'Ammunition'}]`;
+  const icon = (sbcIcon && sbcIcon.value.trim()) || sbc.icon || `Textures\GUI\Icons\Cubes\${sub}.png`;
+  const model = (sbcModel && sbcModel.value.trim()) || sbc.model || `Models\Cubes\${grid}\${sub}.mwm`;
+  const pairName = (sbcBlockPairName && sbcBlockPairName.value.trim()) || sbc.blockPairName || sub;
+  const resGroup = (sbcResourceSinkGroup && sbcResourceSinkGroup.value.trim()) || sbc.resourceSinkGroup || 'Defense';
+  const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+
+  const sizeX = sbcSizeX ? sbcSizeX.value : (sbc.size ? sbc.size.x : 1);
+  const sizeY = sbcSizeY ? sbcSizeY.value : (sbc.size ? sbc.size.y : 1);
+  const sizeZ = sbcSizeZ ? sbcSizeZ.value : (sbc.size ? sbc.size.z : 1);
+
+  const moX = (sbc.modelOffset && sbc.modelOffset.x !== undefined) ? sbc.modelOffset.x : 0;
+  const moY = (sbc.modelOffset && sbc.modelOffset.y !== undefined) ? sbc.modelOffset.y : 0;
+  const moZ = (sbc.modelOffset && sbc.modelOffset.z !== undefined) ? sbc.modelOffset.z : 0;
+
+  const mirrorX = (sbcMirroringX && sbcMirroringX.value.trim()) || sbc.mirroringX || '';
+  const mirrorY = (sbcMirroringY && sbcMirroringY.value.trim()) || sbc.mirroringY || 'Z';
+  const mirrorZ = (sbcMirroringZ && sbcMirroringZ.value.trim()) || sbc.mirroringZ || 'Y';
+
+  const invVol = (sbcInventoryMaxVolume && sbcInventoryMaxVolume.value) || sbc.inventoryMaxVolume || 0.384;
+  const edgeType = (sbcEdgeType && sbcEdgeType.value) || sbc.edgeType || 'Light';
+
+  const isSorter = (typeId === 'ConveyorSorter');
+
+  function escapeXml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe.replace(/[<>&'"]/g, function (c) {
+      switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case '\'': return '&apos;';
+        case '"': return '&quot;';
+      }
+    });
+  }
+
+  let xml = `		<Definition xsi:type="${xsiType}">
+`;
+  xml += `			<Id>
+`;
+  xml += `				<TypeId>${typeId}</TypeId>
+`;
+  xml += `				<SubtypeId>${sub}</SubtypeId>
+`;
+  xml += `			</Id>
+`;
+  xml += `			<DisplayName>${escapeXml(name)}</DisplayName>
+`;
+  xml += `			<Description>${escapeXml(desc)}
+			</Description>
+`;
+  xml += `			<Icon>${icon}</Icon>
+`;
+  xml += `			<CubeSize>${grid}</CubeSize>
+`;
+  xml += `			<BlockTopology>${sbc.blockTopology || 'TriangleMesh'}</BlockTopology>
+`;
+  xml += `			<Size x="${sizeX}" y="${sizeY}" z="${sizeZ}"/>
+`;
+  xml += `			<ModelOffset x="${moX}" y="${moY}" z="${moZ}"/>
+`;
+  if (sbc.showEdges !== undefined) xml += `			<ShowEdges>${sbc.showEdges}</ShowEdges>
+`;
+  xml += `			<Model>${model}</Model>
+`;
+  if (sbc.useModelIntersection) xml += `			<UseModelIntersection>true</UseModelIntersection>
+`;
+
+  // AiEnabled suppression for WeaponCore turrets
+  if (!isSorter) {
+    xml += `			<!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->
+`;
+    xml += `			<AiEnabled>false</AiEnabled>
+`;
+  }
+
+  // Components block (always dynamically synchronized with recipe table)
+  xml += `			<Components>
+`;
   if (activeWeapon.components && activeWeapon.components.length > 0) {
     activeWeapon.components.forEach(c => {
-      xml += `      <Component Subtype="${c.name}" Count="${c.count}" />\n`;
+      xml += `				<Component Subtype="${c.name}" Count="${c.count}"/>
+`;
+    });
+  } else if (sbc.components && sbc.components.length > 0) {
+    sbc.components.forEach(c => {
+      xml += `				<Component Subtype="${c.name}" Count="${c.count}"/>
+`;
     });
   } else {
-    xml += `      <Component Subtype="SteelPlate" Count="150" />\n`;
-    xml += `      <Component Subtype="Construction" Count="80" />\n`;
-    xml += `      <Component Subtype="LargeTube" Count="16" />\n`;
-    xml += `      <Component Subtype="Motor" Count="20" />\n`;
-    xml += `      <Component Subtype="Computer" Count="24" />\n`;
-    xml += `      <Component Subtype="${techComp}" Count="${techQty}" />\n`;
+    xml += `				<Component Subtype="SteelPlate" Count="150"/>
+`;
+    xml += `				<Component Subtype="Computer" Count="20"/>
+`;
+    xml += `				<Component Subtype="SteelPlate" Count="50"/>
+`;
   }
-  xml += `    </Components>\n`;
-  xml += `    <CriticalComponent Subtype="Computer" Index="0" />\n`;
-  xml += `    <BuildTimeSeconds>${bTime}</BuildTimeSeconds>\n`;
-  xml += `    <PCU>${upCost}</PCU>\n`;
-  xml += `  </Definition>`;
+  xml += `			</Components>
+`;
+
+  const critSub = (sbc.criticalComponent && sbc.criticalComponent.subtype) || 'Computer';
+  const critIdx = (sbc.criticalComponent && sbc.criticalComponent.index !== undefined) ? sbc.criticalComponent.index : 0;
+  xml += `			<CriticalComponent Subtype="${critSub}" Index="${critIdx}"/>
+`;
+  xml += `			<BuildTimeSeconds>${bTime}</BuildTimeSeconds>
+`;
+  xml += `			<PCU>${pcu}</PCU>
+`;
+
+  // Overlay texture for camera HUD
+  if (overlay) {
+    xml += `			<OverlayTexture>${overlay}</OverlayTexture>
+`;
+  }
+
+  // MountPoints
+  if (sbc.mountPoints && sbc.mountPoints.length > 0) {
+    xml += `			<MountPoints>
+`;
+    sbc.mountPoints.forEach(mp => {
+      let attrs = Object.entries(mp).map(([k, v]) => `${k}="${v}"`).join(' ');
+      xml += `				<MountPoint ${attrs}/>
+`;
+    });
+    xml += `			</MountPoints>
+`;
+  } else {
+    xml += `			<MountPoints>
+`;
+    xml += `				<MountPoint Side="Bottom" StartX="0.0" StartY="0.0" EndX="${sizeX}.0" EndY="${sizeZ}.0" Default="true"/>
+`;
+    xml += `			</MountPoints>
+`;
+  }
+
+  // BuildProgressModels
+  if (sbc.buildProgressModels && sbc.buildProgressModels.length > 0) {
+    xml += `			<BuildProgressModels>
+`;
+    sbc.buildProgressModels.forEach(bpm => {
+      let pct = bpm.percent || bpm.BuildPercentUpperBound || '1.0';
+      let file = bpm.file || bpm.File || '';
+      xml += `				<Model BuildPercentUpperBound="${pct}" File="${file}"/>
+`;
+    });
+    xml += `			</BuildProgressModels>
+`;
+  }
+
+  xml += `			<BlockPairName>${pairName}</BlockPairName>
+`;
+  if (mirrorX) xml += `			<MirroringX>${mirrorX}</MirroringX>
+`;
+  if (mirrorY) xml += `			<MirroringY>${mirrorY}</MirroringY>
+`;
+  if (mirrorZ) xml += `			<MirroringZ>${mirrorZ}</MirroringZ>
+`;
+
+  // VoxelPlacement
+  if (sbc.voxelPlacement && (sbc.voxelPlacement.staticMode || sbc.voxelPlacement.dynamicMode)) {
+    xml += `			<VoxelPlacement>
+`;
+    if (sbc.voxelPlacement.staticMode) {
+      const sm = sbc.voxelPlacement.staticMode;
+      xml += `				<StaticMode>
+`;
+      xml += `					<PlacementMode>${sm.placementMode || 'OutsideVoxel'}</PlacementMode>
+`;
+      xml += `					<MaxAllowed>${sm.maxAllowed || 0.2}</MaxAllowed>
+`;
+      xml += `					<MinAllowed>${sm.minAllowed || 0}</MinAllowed>
+`;
+      xml += `				</StaticMode>
+`;
+    }
+    if (sbc.voxelPlacement.dynamicMode) {
+      const dm = sbc.voxelPlacement.dynamicMode;
+      xml += `				<DynamicMode>
+`;
+      xml += `					<PlacementMode>${dm.placementMode || 'OutsideVoxel'}</PlacementMode>
+`;
+      xml += `					<MaxAllowed>${dm.maxAllowed || 0.2}</MaxAllowed>
+`;
+      xml += `					<MinAllowed>${dm.minAllowed || 0.01}</MinAllowed>
+`;
+      xml += `				</DynamicMode>
+`;
+    }
+    xml += `			</VoxelPlacement>
+`;
+  }
+
+  xml += `			<EdgeType>${edgeType}</EdgeType>
+`;
+  if (resGroup) xml += `			<ResourceSinkGroup>${resGroup}</ResourceSinkGroup>
+`;
+  if (invVol) xml += `			<InventoryMaxVolume>${invVol}</InventoryMaxVolume>
+`;
+
+  // Camera / Turret FOV tags (for turrets)
+  if (!isSorter) {
+    const minFov = (sbcMinFov && sbcMinFov.value) || sbc.minFov || '0.1';
+    const maxFov = (sbcMaxFov && sbcMaxFov.value) || sbc.maxFov || '1.04719755';
+    xml += `			<MinFov>${minFov}</MinFov>
+`;
+    xml += `			<MaxFov>${maxFov}</MaxFov>
+`;
+  }
+
+  const dmgEff = (sbcDamageEffectName && sbcDamageEffectName.value) || sbc.damageEffectName || (isSorter ? 'Damage_Electrical_Damaged_Blue' : 'Damage_WeapExpl_Damaged');
+  const dmgSnd = (sbcDamagedSound && sbcDamagedSound.value) || sbc.damagedSound || (isSorter ? 'ParticleElectrical' : 'ParticleWeapExpl');
+  const dstEff = (sbcDestroyEffect && sbcDestroyEffect.value) || sbc.destroyEffect || 'BlockDestroyedExplosion_Small';
+  const dstSnd = (sbcDestroySound && sbcDestroySound.value) || sbc.destroySound || 'WepSmallWarheadExpl';
+
+  if (dmgEff) xml += `			<DamageEffectName>${dmgEff}</DamageEffectName>
+`;
+  if (dmgSnd) xml += `			<DamagedSound>${dmgSnd}</DamagedSound>
+`;
+  if (dstEff) xml += `			<DestroyEffect>${dstEff}</DestroyEffect>
+`;
+  if (dstSnd) xml += `			<DestroySound>${dstSnd}</DestroySound>
+`;
+  xml += `			<EmissiveColorPreset>${sbc.emissiveColorPreset || 'Default'}</EmissiveColorPreset>
+`;
+  xml += `			<IsAirTight>${sbc.isAirTight === true}</IsAirTight>
+`;
+
+  // Targeting groups
+  xml += `			<TargetingGroups>
+`;
+  const tgList = sbc.targetingGroups && sbc.targetingGroups.length > 0 ? sbc.targetingGroups : ['Weapons'];
+  tgList.forEach(tg => {
+    xml += `				<string>${tg}</string>
+`;
+  });
+  xml += `			</TargetingGroups>
+`;
+
+  xml += `			<GuiVisible>false</GuiVisible>
+`;
+  xml += `			<Public>true</Public>
+`;
+  xml += `		</Definition>`;
 
   return xml;
 }
@@ -3807,6 +4101,29 @@ function applyBalanceMatrixInputs() {
 }
 
 function setupWorkbenchInputEvents() {
+  
+  // Live binding for Scope C SBC fields
+  const sbcInputs = [
+    sbcSubtypeId, sbcTypeId, sbcDisplayName, sbcBlockPairName, sbcCubeSize,
+    sbcResourceSinkGroup, sbcBuildTime, sbcUpCost, sbcDescription,
+    sbcIcon, sbcModel, sbcOverlayTexture, sbcInventoryMaxVolume,
+    sbcSizeX, sbcSizeY, sbcSizeZ, sbcEdgeType, sbcMirroringX, sbcMirroringY, sbcMirroringZ,
+    sbcMinFov, sbcMaxFov, sbcDamageEffectName, sbcDamagedSound, sbcDestroyEffect, sbcDestroySound
+  ];
+  sbcInputs.forEach(inp => {
+    if (!inp) return;
+    inp.addEventListener('input', () => {
+      updateDirectSbcXml();
+      const codeBox = document.getElementById('code-cubeblocks-sbc');
+      if (codeBox) codeBox.textContent = generateSbcCubeBlocks();
+    });
+    inp.addEventListener('change', () => {
+      updateDirectSbcXml();
+      const codeBox = document.getElementById('code-cubeblocks-sbc');
+      if (codeBox) codeBox.textContent = generateSbcCubeBlocks();
+    });
+  });
+
   if (btnCopySbcXmlDirect) {
     btnCopySbcXmlDirect.addEventListener('click', () => {
       navigator.clipboard.writeText(generateSbcCubeBlocks()).then(() => {

@@ -1,4 +1,4 @@
-window.GVK_DEFAULT_WEAPONS = [
+const WEAPONS_DATA = [
   {
     "id": "L__Gatling_Avenger_Turret",
     "name": "(L) Gatling Avenger Turret",
@@ -117,7 +117,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Gatling* Avenger Turret",
+      "description": "When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.\n\t\t\t\t[Uses 25mm KE]",
+      "icon": "Textures\\GUI\\Icons\\HWK_TwinPointDefense.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_TwinPointDefense.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GVK_AvengerGatlingTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Gatling_Turret",
@@ -234,7 +337,94 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Gatling* Sentinel Turret",
+      "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\n\t\t\t\t[Uses 25mm KE]",
+      "icon": "Textures\\GUI\\Icons\\SentinelTurretBase.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\SentinelTurretBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "1",
+          "EndX": "2",
+          "EndY": "2",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GatlingTurretSentinel",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Turret",
@@ -352,7 +542,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 21.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Gatling* CIWS Turret",
+      "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\n\t\t\t\t[Uses 25mm KE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\gatling_turret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\GatlingTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 21.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\GatlingTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\GatlingTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "GatlingTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.084,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Gun",
@@ -467,7 +768,79 @@ window.GVK_DEFAULT_WEAPONS = [
     "isRelic": false,
     "displayName": "(S) Gatling Gun",
     "gridSize": "Small",
-    "cubeSize": "Small"
+    "cubeSize": "Small",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Custom.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "(S) Gatling Gun",
+      "description": "GVK WeaponCore Specialized Armament.\\n[Uses NATO_25x184mm]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\SmallGatlingGun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "model": "Models\\Cubes\\Small\\SmallGatlingGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "side": "Bottom",
+          "startX": "0.00",
+          "startY": "0.00",
+          "endX": "1.00",
+          "endY": "1.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "SmallGatlingGun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Gimbal",
@@ -585,7 +958,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Gatling* 25mm Gimbal",
+      "description": "Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.\n\t\t\t\t[Uses 25mm KE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\gatling_gun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_Small.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_SmallConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_SmallConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "GatlingGun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.084,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
@@ -693,7 +1177,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Autocannon* Thrasher Turret",
+      "description": "The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.\n\t\t\t\t[Uses 30mm API]",
+      "icon": "Textures\\GUI\\Icons\\Aryx_AWE_HeavyFlak.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Flak\\ARYX_LargeFlakCannon.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "3.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        }
+      ],
+      "blockPairName": "AryxHeavyFlak",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
@@ -811,7 +1398,94 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Autocannon* Khopesh Turret",
+      "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
+      "icon": "Textures\\GUI\\Icons\\KhopeshBase.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\KhopeshBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "1",
+          "EndX": "2",
+          "EndY": "2",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "KhopeshTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Turret",
@@ -931,7 +1605,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Autocannon* 30mm Turret",
+      "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
+      "icon": "Textures\\GUI\\Icons\\RB_CompactTurretGatlingT1.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "1.0",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large_BS2.mwm"
+        }
+      ],
+      "blockPairName": "AutoCannonTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Chaingun_Turret",
@@ -1051,7 +1808,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 27.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "",
+      "displayName": "*Autocannon* Small 30mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\AutocannonTurret_icon.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 4,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\AutocannonTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 9.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.3",
+          "StartY": "1.3",
+          "EndX": "3.7",
+          "EndY": "3.7",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\AutocannonTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\AutocannonTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "AutoCannonTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.072,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Chaingun_Gun",
@@ -1171,7 +2011,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "SmallGatlingGun",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*Autocannon* 30mm Gun",
+      "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\AutoCannon.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\Autocannon.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "4",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "4",
+          "EndX": "1",
+          "EndY": "5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\AutocannonConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\AutocannonConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Autocannon",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.072,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Interior_Turret",
@@ -1289,7 +2229,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc",
+      "typeId": "InteriorTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Interior* Anti-personnel Turret",
+      "description": "The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.\n\t\t\t\t[Uses 5.56mm KE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\interior_turret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\InteriorTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.46",
+          "StartY": "0.46",
+          "EndX": "0.54",
+          "EndY": "0.54"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "InteriorTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Flak_Turret",
@@ -1401,7 +2427,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 102.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Flak* 100mm Turret",
+      "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCalibreTurretLarge.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\MediumCalibreTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 102.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.8",
+          "StartY": "1",
+          "EndX": "2.2",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "0.8",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "2.2"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.18,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Flak_Turret",
@@ -1513,7 +2639,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Flak* 100mm Turret",
+      "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCalibreTurret_Small.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 7,
+        "y": 5,
+        "z": 7
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MediumCalibreTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "2",
+          "StartY": "2",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\MediumCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\MediumCalibreTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.09,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Flak_Gun",
@@ -1625,7 +2834,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*Flak* 100mm Gun",
+      "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCaliberGun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 9
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MediumCaliberGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "6",
+          "StartY": "0",
+          "EndX": "9",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "6",
+          "EndX": "1",
+          "EndY": "9"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\MediumCaliberGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\MediumCaliberGunConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreGun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.09,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Cannon_Turret",
@@ -1741,7 +3050,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*L.Cannon* 155mm Turret",
+      "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\HeavyCalibreTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\HeavyCalibreTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.5",
+          "StartY": "1",
+          "EndX": "2.5",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "0.5",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "2.5"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.6,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Cannon_Gun",
@@ -1853,7 +3262,104 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 45.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*L.Cannon* 155mm Cannon",
+      "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\HeavyCalibreGun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\HeavyCalibreGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 45.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "3.2",
+          "StartY": "0.2",
+          "EndX": "3.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreGun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.3,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Cannon_Turret",
@@ -1965,7 +3471,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*L.Cannon* 155mm Turret",
+      "description": "Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\n\t\t\t\t[Uses 155mm AP]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\OKI122mm_VehicleTurret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\122mmBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Front",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Heavy",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.72,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Cannon_Gun",
@@ -2077,7 +3686,99 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 19.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*L.Cannon* 155mm Gun",
+      "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\n\t\t\t\t[Uses 155mm AP]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\OKI122mmASG_fixed.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 2,
+        "y": 3,
+        "z": 11
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\122mmFixed.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 19.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "6"
+        },
+        {
+          "Side": "Right",
+          "StartX": "2",
+          "StartY": "0",
+          "EndX": "6",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5",
+          "StartY": "0",
+          "EndX": "9",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "6",
+          "EndX": "2",
+          "EndY": "9"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Cubes\\Small\\122mmFixed_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\122mmFixed_BS2.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreGun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.3,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -2193,7 +3894,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 332.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*H.Cannon* Hurricane Turret",
+      "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\n\t\t\t\t[Uses 480mm HE]",
+      "icon": "Textures\\GUI\\Icons\\AryxHurricaneCannon.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 3,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_HeavyCannon\\ARYX_HurricaneCannonBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 332.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\AWE_HeavyCannon\\XL_HalfBlock_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_HeavyCannon\\XL_HalfBlock_BS2.mwm"
+        }
+      ],
+      "blockPairName": "AryxHurricaneCannon",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.576,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
@@ -2319,7 +4119,85 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 60.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*H.Cannon* Odin Turret",
+      "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[Uses 480mm HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\odin.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 7,
+        "y": 5,
+        "z": 7
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\odin\\MissileTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 60.0,
+      "pcu": 16,
+      "overlayTexture": "Textures\\GUI\\Screens\\turret_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "7.0",
+          "EndY": "7.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\odin\\7x5x7Base_BS1.mwm"
+        }
+      ],
+      "blockPairName": "odin",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large3X",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Railgun_Turret",
@@ -2446,7 +4324,96 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 150.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Railgun* Apollo Turret",
+      "description": "A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.\n\t\t\t\t[Uses 50mm FeW + Energy]",
+      "icon": "Textures\\GUI\\Icons\\AWERailgunTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 150.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "1.0",
+          "EndX": "2.0",
+          "EndY": "4.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "2.0",
+          "StartY": "1.6",
+          "EndX": "2.5",
+          "EndY": "4.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.5",
+          "StartY": "1.6",
+          "EndX": "1.0",
+          "EndY": "4.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "RailgunTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.284,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Railgun_Gun",
@@ -2569,7 +4536,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 49.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Railgun* Artemis Gun",
+      "description": "The Artemis railgun is a high velelocity kinetic round with incredible penetration capabilities. Designed by ARYX Weapon Enterprises.\n\t\t\t\t[Uses 50mm FeW + Energy]",
+      "icon": "Textures\\GUI\\Icons\\AWERailgun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWERailgun\\ARYX_Railgun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 49.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3.0",
+          "StartY": "0.0",
+          "EndX": "5.0",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "2.0",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "2.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "3.0",
+          "EndX": "1.0",
+          "EndY": "5.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Railgun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.284,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Railgun_Gun",
@@ -2681,7 +4751,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 6.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "",
+      "displayName": "*Railgun* 200mm Ares Gun",
+      "description": "The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.\n\t\t\t\t[Uses 50mm FeW + Energy]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RailGun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 2,
+        "z": 8
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RailGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 30.0,
+      "pcu": 0,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "0.9",
+          "EndY": "1.9",
+          "Default": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "3.3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.3",
+          "StartY": "4.9",
+          "EndX": "0.7",
+          "EndY": "6.5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "1",
+          "EndX": "3.3",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "2.1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "4.7",
+          "StartY": "1",
+          "EndX": "7.9",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5.9",
+          "StartY": "0.6",
+          "EndX": "7.9",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\RailGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\RailGunConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Railgun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "DefenseAdative",
+      "inventoryMaxVolume": 0.048,
+      "damageEffectName": "Damage_Railgun_Large",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyed_Large3X",
+      "destroySound": "PoofExplosionCat3",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__MAC_Gun",
@@ -2797,7 +4981,125 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 94.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_MACs.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "",
+      "displayName": "*MAC* 200mm Coilgun",
+      "description": "The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Damge falls off after 1km.\n\t\t\t\t[Uses 200mm DU]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RailGun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 2,
+        "z": 8
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\RailGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 100.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "0.9",
+          "EndY": "1.9",
+          "Default": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "3.3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.3",
+          "StartY": "4.9",
+          "EndX": "0.7",
+          "EndY": "6.5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "1",
+          "EndX": "3.3",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "2.1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "4.7",
+          "StartY": "1",
+          "EndX": "7.9",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5.9",
+          "StartY": "0.6",
+          "EndX": "7.9",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "Railgun",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "DefenseAdative",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_Railgun_Large",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyed_Large3X",
+      "destroySound": "PoofExplosionCat3",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Rocket_Turret",
@@ -2916,7 +5218,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Rocket* Hydra Turret XL",
+      "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
+      "icon": "Textures\\GUI\\Icons\\AryxHydraTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Hydra\\LG_ARYXHydra_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "3.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "LG_ARYXHydra_Base",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Turret",
@@ -3034,7 +5450,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 21.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Rocket* Hydra Turret",
+      "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missile_turret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MissileTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 21.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\MissileTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\MissileTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MissileTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.12,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Rocket_Launcher",
@@ -3152,7 +5679,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*Rocket* Hydra Launcher",
+      "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missile_launcher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\RocketLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "2"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "2",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "RocketLauncher",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 1.14,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Launcher",
@@ -3267,7 +5897,79 @@ window.GVK_DEFAULT_WEAPONS = [
     "isRelic": false,
     "displayName": "(S) Rocket Launcher",
     "gridSize": "Small",
-    "cubeSize": "Small"
+    "cubeSize": "Small",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Custom.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "(S) Rocket Launcher",
+      "description": "GVK WeaponCore Specialized Armament.\\n[Uses Missiles_Rocket]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\SmallMissileLauncher.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "model": "Models\\Cubes\\Small\\SmallMissileLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "side": "Bottom",
+          "startX": "0.00",
+          "startY": "0.00",
+          "endX": "1.00",
+          "endY": "1.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "SmallMissileLauncher",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
@@ -3389,7 +6091,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*Rocket* Hydra launcher",
+      "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.\n\t\t\t\t[Uses Hydra HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RocketLauncherReload.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RocketLauncherReload.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Missiles_Rockets_SGReloadableLauncher",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Missile_Turret",
@@ -3516,7 +6317,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*L.Missile* Griffin Turret",
+      "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.\n\t\t\t\t[Uses Griffin HE]",
+      "icon": "Textures\\GUI\\Icons\\HWK_QuadMissileLauncher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_QuadMissileLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 9,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GVK_GriffinMissileTurret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Missile_Launcher",
@@ -3643,7 +6558,115 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*L.Missile* Griffin Launcher",
+      "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.\n\t\t\t\t[Uses Griffin HE]",
+      "icon": "Textures\\Cubes\\Large\\HWK_FixedMissileLauncher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_FixedMissileLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.95",
+          "StartY": "0.00",
+          "EndX": "1.95",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.05",
+          "StartY": "0.00",
+          "EndX": "1.05",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.05",
+          "EndX": "3.00",
+          "EndY": "1.05",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.95",
+          "EndX": "3.00",
+          "EndY": "1.95",
+          "PressurizedWhenOpen": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS3.mwm"
+        }
+      ],
+      "blockPairName": "SmallRocketLauncherReload",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.25,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Missile_Launcher",
@@ -3765,7 +6788,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*L.Missile* Griffin Launcher",
+      "description": "The Griffin is a light homing missile, effective at evading gatling point defenses.\n\t\t\t\t[Uses Griffin HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RocketLauncherReload.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RocketLauncherReload.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "SmallRocketLauncherReload",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Tuukka_Missile_Turret",
@@ -3881,7 +7003,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*H.Missile* Tuukka Turret",
+      "description": "The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.\n\t\t\t\t[Uses Tuuka HE]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missileBattery01.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\missileBattery01\\missileBattery01.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        }
+      ],
+      "blockPairName": "missileBattery01",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.19,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Torpedo_Launcher",
@@ -3997,7 +7233,111 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 49.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Torpedo* Crusader Launcher",
+      "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\n\t\t\t\t[Uses Crusader Torps]",
+      "icon": "Textures\\GUI\\Icons\\CrusaderTubeLG.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "model": "Models\\Akiad\\Small\\CrusaderTubeLG.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 49.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0.0",
+          "EndX": "5",
+          "EndY": "1",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "4",
+          "EndY": "1",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1",
+          "EndY": "4",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "1",
+          "EndX": "1",
+          "EndY": "5",
+          "PressurizedWhenOpen": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderTubeLG_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderTubeLG_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Missile_Torpedo",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 3000.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Torpedo_Launcher",
@@ -4113,7 +7453,86 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 34.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Torpedo* Crusader Launcher",
+      "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\n\t\t\t\t[Uses Crusader Torps]",
+      "icon": "Textures\\GUI\\Icons\\CrusaderLauncherOpenStatic.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 15
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.75
+      },
+      "model": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 34.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "11",
+          "EndX": "2.0",
+          "EndY": "12",
+          "Default": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "13",
+          "EndX": "2.0",
+          "EndY": "14"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Missile_Torpedo",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 3000.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__SRBM_Turret",
@@ -4229,7 +7648,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 533.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Siege.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Siege.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Siege.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*SRBM* Longsword Turret",
+      "description": "Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.\n\t\t\t\t[Uses Longswoard MIRV]",
+      "icon": "Textures\\GUI\\Icons\\AryxMissileBattery.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Longbow\\ARYX_MissileBatteryBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 533.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\AWE_Longbow\\XL_Block_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Longbow\\XL_Block_BS2.mwm"
+        }
+      ],
+      "blockPairName": "LG_ARYXMissileBattery_Base",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.48,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large3X",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
@@ -4351,7 +7869,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*H.Laser* Spartan Turret",
+      "description": "The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\Aryx_AWE_SpartanCannon.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "AryxSpartanCannon",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Laser_Turret",
@@ -4463,7 +8084,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 62.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*H.Laser* XFEL-H Turret",
+      "description": "A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_T2PDX.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 2,
+        "y": 2,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_T2PDX.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 62.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "2.0",
+          "EndY": "2.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Heavy_Turret",
+      "mirroringX": "OffsetX",
+      "mirroringY": "ZThenOffsetX",
+      "mirroringZ": "YThenOffsetX",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
@@ -4585,7 +8292,124 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*H.Laser* XFEL-H Gimbal",
+      "description": "An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_Fixed_T2.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_Fixed_T2.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "2.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\MA_Laser2\\MA_Fixed_T2_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Laser2\\MA_Fixed_T2_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Heavy_Gimbal",
+      "mirroringX": "None",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": true,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Light_Laser_Turret",
@@ -4707,7 +8531,122 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*L.Laser* XFEL-L Turret",
+      "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\ReceptorTurretBase.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\ReceptorTurretBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Turret",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.12,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Light_Laser_Turret",
@@ -4829,7 +8768,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*L.Laser* XFEL-L Turret",
+      "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_PDX.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_PDX.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.11",
+          "StartY": "0.11",
+          "EndX": "0.89",
+          "EndY": "0.89"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Turret",
+      "mirroringX": "None",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Light_Laser_Gun",
@@ -4951,7 +8976,82 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*L.Laser* XFEL-L Gun",
+      "description": "A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\GUI\\Icons\\ReceptorCoilGun.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 6
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\ReceptorCoilGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "3",
+          "EndX": "1.0",
+          "EndY": "4"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Fixed",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Loki_Plasma_Turret",
@@ -5078,7 +9178,80 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 332.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Plasma.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*Plasma* LOKI Turret",
+      "description": "The LOKI fires a 3-round burst of plasma that melts armor but is less effective against non-armor. Designed by L.Y.N.X.\n\t\t\t\t[Uses Plasma Charge + Energy]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\lokiCannon_01.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 4,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\lokiCannon_01\\lokiCannon_01.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 332.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "lokiCannon1",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__PD_Laser",
@@ -5200,7 +9373,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*AMS* PD-COIL Turret",
+      "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\Icons\\MA_Designator.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Designator\\MA_Designator.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.25",
+          "StartY": "0.25",
+          "EndX": "0.75",
+          "EndY": "0.75"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "MA_PDT",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_Electrical_Damaged",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.05",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__PD_Laser",
@@ -5322,7 +9581,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 9.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*AMS* PD-COIL Turret",
+      "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
+      "icon": "Textures\\Icons\\MA_Designator.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Designator\\MA_Designator_sm.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 9.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.04",
+          "StartY": "0.04",
+          "EndX": "0.96",
+          "EndY": "0.96"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "MA_PDT",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_Electrical_Damaged",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.05",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Warhead",
@@ -5426,7 +9771,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 30.0,
     "criticalComponent": "Explosives",
-    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+      "typeId": "Warhead",
+      "xsiType": "",
+      "displayName": "DisplayName_Block_Warhead",
+      "description": "Description_Warhead",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\warhead.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\warhead.mwm",
+      "criticalComponent": {
+        "subtype": "Explosives",
+        "index": 0
+      },
+      "buildTimeSeconds": 30.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8",
+          "Default": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\WarheadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\WarheadConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\WarheadConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "Warhead",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Timer",
+      "isAirTight": true,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Warhead",
@@ -5530,7 +9986,70 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Explosives",
-    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+      "typeId": "Warhead",
+      "xsiType": "",
+      "displayName": "DisplayName_Block_Warhead",
+      "description": "Description_Warhead",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\warhead.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\warhead.mwm",
+      "criticalComponent": {
+        "subtype": "Explosives",
+        "index": 0
+      },
+      "buildTimeSeconds": 10.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\WarheadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\WarheadConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Warhead",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Timer",
+      "isAirTight": true,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Drone_Bay",
@@ -5646,7 +10165,97 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 66.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Other_Drones.sbc"
+    "sbcFile": "CubeBlocks_Other_Drones.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Drones.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Drone* Falcon Drone Bay",
+      "description": "A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.\n\t\t\t\tOFFENSE = 3 minute flight time. \n\t\t\t\tDEFENSE = 5 minute flight time.\n\t\t\t\t[Uses FALCON Drones]",
+      "icon": "Textures\\GUI\\Icons\\AryxSmallHangar.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 1,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Drones\\ARYX_Small_Hangar.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 66.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "1.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "AWE_Small_Hangar_Bay",
+      "mirroringX": "Z",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 1.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
@@ -5767,7 +10376,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Gatling* Avenger Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\HWK_TwinPointDefense.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_TwinPointDefense.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_TwinPointDefense_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GVK_AvengerGatlingTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Gatling_Turret_NPC",
@@ -5885,7 +10597,94 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Gatling* Sentinel Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\SentinelTurretBase.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\SentinelTurretBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "1",
+          "EndX": "2",
+          "EndY": "2",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\SentinelTurretBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GatlingTurretSentinel_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Turret_NPC",
@@ -6004,7 +10803,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 21.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Gatling* CIWS Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\gatling_turret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\GatlingTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 21.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\GatlingTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\GatlingTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "GatlingTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.084,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Gun_NPC",
@@ -6123,7 +11033,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "SmallGatlingGun",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Gatling* 25mm Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\gatling_gun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\GatlingGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\GatlingGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\GatlingGunConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "GatlingGun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.064,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
@@ -6242,7 +11252,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Gatlings.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Gatling* 25mm Gimbal",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\gatling_gun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_Small.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_SmallConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\GatlingTurretAutoGatling\\GatlingTurretAutoGatling_SmallConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "GatlingGun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.084,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
@@ -6351,7 +11472,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Autocannon* Thrasher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Aryx_AWE_HeavyFlak.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Flak\\ARYX_LargeFlakCannon.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "3.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        }
+      ],
+      "blockPairName": "AryxHeavyFlak_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
@@ -6470,7 +11694,94 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Autocannon* Khopesh",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\KhopeshBase.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\KhopeshBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "1",
+          "EndX": "2",
+          "EndY": "2",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\KhopeshBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "KhopeshTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Chaingun_Turret_NPC",
@@ -6591,7 +11902,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeGatlingTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Autocannon* Large 30mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\RB_CompactTurretGatlingT1.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "1.0",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Ravenbolt\\RB_GAT-1_Turret_Large_BS2.mwm"
+        }
+      ],
+      "blockPairName": "AutoCannonTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Chaingun_Turret_NPC",
@@ -6712,7 +12106,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 27.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Autocannon* Small 30mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\AutocannonTurret_icon.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 4,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\AutocannonTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 27.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.3",
+          "StartY": "1.3",
+          "EndX": "3.7",
+          "EndY": "3.7",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\AutocannonTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\AutocannonTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "AutoCannonTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.072,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Chaingun_Gun_NPC",
@@ -6833,7 +12310,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Chainguns.sbc",
+      "typeId": "SmallGatlingGun",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Autocannon* Small 30mm Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\AutoCannon.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\Autocannon.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "4",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "4",
+          "EndX": "1",
+          "EndY": "5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\AutocannonConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\AutocannonConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Autocannon_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.072,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Interior_Turret_NPC",
@@ -6952,7 +12529,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Interiors.sbc",
+      "typeId": "InteriorTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Interior* Anti-personnel Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\interior_turret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\InteriorTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.46",
+          "StartY": "0.46",
+          "EndX": "0.54",
+          "EndY": "0.54"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\InteriorTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "InteriorTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Flak_Turret_NPC",
@@ -7065,7 +12728,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 102.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Flak* Large 100mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCalibreTurretLarge.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\MediumCalibreTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 102.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.8",
+          "StartY": "1",
+          "EndX": "2.2",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "0.8",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "2.2"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\MediumCalibreTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.18,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Flak_Turret_NPC",
@@ -7178,7 +12941,90 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Flak* Small 100mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCalibreTurret_Small.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 7,
+        "y": 5,
+        "z": 7
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MediumCalibreTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "2",
+          "StartY": "2",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\MediumCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\MediumCalibreTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.09,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Flak_Gun_NPC",
@@ -7291,7 +13137,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Flaks.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Flak* Small 100mm Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MediumCaliberGun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 9
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MediumCaliberGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "6",
+          "StartY": "0",
+          "EndX": "9",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "6",
+          "EndX": "1",
+          "EndY": "9"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\MediumCaliberGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\MediumCaliberGunConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MediumCalibreGun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.09,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Cannon_Turret_NPC",
@@ -7408,7 +13354,107 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-L.Cannon* 155mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\HeavyCalibreTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\HeavyCalibreTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.5",
+          "StartY": "1",
+          "EndX": "2.5",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "0.5",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "2.5"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\HeavyCalibreTurretConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.6,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Cannon_Gun_NPC",
@@ -7521,7 +13567,104 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 45.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-L.Cannon* 155mm Cannon",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\HeavyCalibreGun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\HeavyCalibreGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 45.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Left",
+          "StartX": "3.2",
+          "StartY": "0.2",
+          "EndX": "3.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "0.8",
+          "Default": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HeavyCalibreGunConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreGun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.3,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Cannon_Turret_NPC",
@@ -7634,7 +13777,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-L.Cannon* 155mm Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\OKI122mm_VehicleTurret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\122mmBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Front",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\122mmBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Heavy",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.72,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Cannon_Gun_NPC",
@@ -7747,7 +13993,99 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 19.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Cannons.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-L.Cannon* 155mm Cannon",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\OKI122mmASG_fixed.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 2,
+        "y": 3,
+        "z": 11
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\122mmFixed.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 19.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "2",
+          "EndX": "2",
+          "EndY": "6"
+        },
+        {
+          "Side": "Right",
+          "StartX": "2",
+          "StartY": "0",
+          "EndX": "6",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5",
+          "StartY": "0",
+          "EndX": "9",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "6",
+          "EndX": "2",
+          "EndY": "9"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Cubes\\Small\\122mmFixed_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\122mmFixed_BS2.mwm"
+        }
+      ],
+      "blockPairName": "LargeCalibreGun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.3,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
@@ -7864,7 +14202,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 332.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-H.Cannon* Hurricane Turret",
+      "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\n\t\t\t\t[3000m Auto Range]\n\t\t\t\t[Uses 480mm HE x2]",
+      "icon": "Textures\\GUI\\Icons\\AryxHurricaneCannon.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 3,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_HeavyCannon\\ARYX_HurricaneCannonBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 332.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\AWE_HeavyCannon\\XL_HalfBlock_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_HeavyCannon\\XL_HalfBlock_BS2.mwm"
+        }
+      ],
+      "blockPairName": "AryxHurricaneCannon_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.576,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret_NPC",
@@ -7981,7 +14418,85 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 60.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_HeavyCannons.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-H.Cannon* Odin Turret",
+      "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[4000m Auto Range]\n\t\t\t\t[Uses 480mm HE x4]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\odin.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 7,
+        "y": 5,
+        "z": 7
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\odin\\MissileTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 60.0,
+      "pcu": 16,
+      "overlayTexture": "Textures\\GUI\\Screens\\turret_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "7.0",
+          "EndY": "7.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\odin\\7x5x7Base_BS1.mwm"
+        }
+      ],
+      "blockPairName": "odin_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large3X",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Railgun_Turret_NPC",
@@ -8109,7 +14624,96 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 150.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Railgun* Apollo Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\AWERailgunTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 150.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "1.0",
+          "EndX": "2.0",
+          "EndY": "4.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "2.0",
+          "StartY": "1.6",
+          "EndX": "2.5",
+          "EndY": "4.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.5",
+          "StartY": "1.6",
+          "EndX": "1.0",
+          "EndY": "4.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWERailTurret\\LG_ARYXRailgunTurret_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "RailgunTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.284,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Railgun_Gun_NPC",
@@ -8233,7 +14837,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 49.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Railgun* Artemis Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\AWERailgun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWERailgun\\ARYX_Railgun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 49.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3.0",
+          "StartY": "0.0",
+          "EndX": "5.0",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "2.0",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1.0",
+          "EndY": "2.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "3.0",
+          "EndX": "1.0",
+          "EndY": "5.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\AWERailgun\\ARYX_Railgun_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Railgun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.284,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Railgun_Gun_NPC",
@@ -8346,7 +15053,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 6.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_Railguns.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Railgun* Ares Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RailGun.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 2,
+        "z": 8
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RailGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 6.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "0.9",
+          "EndY": "1.9",
+          "Default": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "3.3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.3",
+          "StartY": "4.9",
+          "EndX": "0.7",
+          "EndY": "6.5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "1",
+          "EndX": "3.3",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "2.1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "4.7",
+          "StartY": "1",
+          "EndX": "7.9",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5.9",
+          "StartY": "0.6",
+          "EndX": "7.9",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\RailGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\RailGunConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Railgun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "DefenseAdative",
+      "inventoryMaxVolume": 0.048,
+      "damageEffectName": "Damage_Railgun_Large",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyed_Small_Blue",
+      "destroySound": "PoofExplosionCat3",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__MAC_Gun_NPC",
@@ -8463,7 +15284,125 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 94.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc"
+    "sbcFile": "CubeBlocks_Ballistics_MACs.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Ballistics_MACs.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-MAC* 200mm Coilgun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RailGun.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 2,
+        "z": 8
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\RailGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 94.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "0.9",
+          "EndY": "1.9",
+          "Default": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.2",
+          "StartY": "0.2",
+          "EndX": "0.8",
+          "EndY": "3.3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.3",
+          "StartY": "4.9",
+          "EndX": "0.7",
+          "EndY": "6.5"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "1",
+          "EndX": "3.3",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.1",
+          "StartY": "0.6",
+          "EndX": "2.1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "4.7",
+          "StartY": "1",
+          "EndX": "7.9",
+          "EndY": "1.8"
+        },
+        {
+          "Side": "Left",
+          "StartX": "5.9",
+          "StartY": "0.6",
+          "EndX": "7.9",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\RailGunConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "LargeRailgun_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "DefenseAdative",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_Railgun_Large",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyed_Large3X",
+      "destroySound": "PoofExplosionCat3",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Rocket_Turret_NPC",
@@ -8583,7 +15522,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*Rocket* Hydra Turret XL",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\AryxHydraTurret.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Hydra\\LG_ARYXHydra_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "1.0"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "3.0",
+          "EndY": "3.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Hydra\\LG_ARYXHydra_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "LG_ARYXHydra_Base_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Turret_NPC",
@@ -8702,7 +15755,118 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 21.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Rocket* Hydra Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missile_turret.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\MissileTurret.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 21.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "1",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.43",
+          "File": "Models\\Cubes\\Small\\MissileTurretConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Cubes\\Small\\MissileTurretConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "MissileTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.12,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Rocket_Launcher_NPC",
@@ -8821,7 +15985,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Rocket* Hydra Launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missile_launcher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\RocketLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "2"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "2"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "2",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "2",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Large\\RocketLauncherConstruction_3.mwm"
+        }
+      ],
+      "blockPairName": "RocketLauncher_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 1.14,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Launcher_NPC",
@@ -8940,7 +16207,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "SmallMissileLauncher",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Rocket* Hydra launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missile_launcher_small.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 4
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RocketLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 1,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "3",
+          "EndX": "1",
+          "EndY": "4"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "3",
+          "StartY": "0",
+          "EndX": "4",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\Small\\RocketLauncherConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\Small\\RocketLauncherConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "RocketLauncher_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "X",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
@@ -9063,7 +16429,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Rockets.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-Rocket* Hydra launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RocketLauncherReload.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RocketLauncherReload.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "Missiles_Rockets_SGReloadableLauncher_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Missile_Turret_NPC",
@@ -9191,7 +16656,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-L.Missile* Griffin Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\HWK_QuadMissileLauncher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_QuadMissileLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_QuadMissileLauncher_BS3.mwm"
+        }
+      ],
+      "blockPairName": "GVK_GriffinMissileTurret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Missile_Launcher_NPC",
@@ -9319,7 +16898,115 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 78.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-L.Missile* Griffin Launcher",
+      "description": "",
+      "icon": "Textures\\Cubes\\Large\\HWK_FixedMissileLauncher.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 2,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\large\\HWK_FixedMissileLauncher.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.95",
+          "StartY": "0.00",
+          "EndX": "1.95",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.05",
+          "StartY": "0.00",
+          "EndX": "1.05",
+          "EndY": "2.00",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.05",
+          "EndX": "3.00",
+          "EndY": "1.05",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.95",
+          "EndX": "3.00",
+          "EndY": "1.95",
+          "PressurizedWhenOpen": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\large\\HWK_FixedMissileLauncher_BS3.mwm"
+        }
+      ],
+      "blockPairName": "SmallRocketLauncherReload_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.25,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Missile_Launcher_NPC",
@@ -9442,7 +17129,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Light.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Light.sbc",
+      "typeId": "SmallMissileLauncherReload",
+      "xsiType": "MyObjectBuilder_WeaponBlockDefinition",
+      "displayName": "*NPC-L.Missile* Griffin Launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\RocketLauncherReload.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Small\\RocketLauncherReload.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "1",
+          "EndY": "3"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0",
+          "StartY": "0",
+          "EndX": "3",
+          "EndY": "3"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\Cubes\\small\\RocketLauncherReloadConstruction_2.mwm"
+        }
+      ],
+      "blockPairName": "SmallRocketLauncherReload_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.24,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Tuukka_Missile_Turret_NPC",
@@ -9559,7 +17345,121 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-H.Missile* Tuukka Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\missileBattery01.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\missileBattery01\\missileBattery01.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.03"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Vulcan\\ARYXVulcanBase_BS1.mwm"
+        }
+      ],
+      "blockPairName": "missileBattery01_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.19,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
@@ -9676,7 +17576,111 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 49.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Torpedo* Crusader Launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\CrusaderTubeLG.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.25
+      },
+      "model": "Models\\Akiad\\Small\\CrusaderTubeLG.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 49.0,
+      "pcu": 10,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1",
+          "EndY": "1",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1",
+          "StartY": "0.0",
+          "EndX": "5",
+          "EndY": "1",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "4",
+          "EndY": "1",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "1",
+          "EndY": "4",
+          "PressurizedWhenOpen": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0",
+          "StartY": "1",
+          "EndX": "1",
+          "EndY": "5",
+          "PressurizedWhenOpen": "true"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderTubeLG_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderTubeLG_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Missile_Torpedo_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 3000.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
@@ -9793,7 +17797,86 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 34.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Torpedoes.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Torpedo* Crusader Launcher",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\CrusaderLauncherOpenStatic.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 15
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.75
+      },
+      "model": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 34.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "11",
+          "EndX": "2.0",
+          "EndY": "12",
+          "Default": "true"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "1.0",
+          "StartY": "13",
+          "EndX": "2.0",
+          "EndY": "14"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.5",
+          "File": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\CrusaderLauncherOpenStatic_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Missile_Torpedo_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 3000.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__SRBM_Turret_NPC",
@@ -9910,7 +17993,106 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 533.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Missiles_Siege.sbc"
+    "sbcFile": "CubeBlocks_Missiles_Siege.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Missiles_Siege.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-SRBM* Longsword Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\AryxMissileBattery.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Longbow\\ARYX_MissileBatteryBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 533.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\AWE_Longbow\\XL_Block_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Longbow\\XL_Block_BS2.mwm"
+        }
+      ],
+      "blockPairName": "LG_ARYXMissileBattery_Base_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.48,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large3X",
+      "destroySound": "WepLargeWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
@@ -10033,7 +18215,110 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 138.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-H.Laser* Spartan Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Aryx_AWE_SpartanCannon.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 3,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": -1.25,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 138.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\AWE_Spartan\\LG_ARYXSpartan_Base_BS3.mwm"
+        }
+      ],
+      "blockPairName": "AryxSpartanCannon_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.144,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
@@ -10146,7 +18431,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 62.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-H.Laser* XFEL-H Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_T2PDX.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 2,
+        "y": 2,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_T2PDX.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 62.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.0",
+          "EndX": "2.0",
+          "EndY": "2.0"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.66",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\MA_Laser2\\MA_T2PDX_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Heavy_Turret_NPC",
+      "mirroringX": "OffsetX",
+      "mirroringY": "ZThenOffsetX",
+      "mirroringZ": "YThenOffsetX",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
@@ -10269,7 +18640,124 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 37.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Heavy.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-H.Laser* Large XFEL-H Gimbal",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_Fixed_T2.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_Fixed_T2.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 37.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Front",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "1.00",
+          "EndY": "2.00"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.50",
+          "File": "Models\\MA_Laser2\\MA_Fixed_T2_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Laser2\\MA_Fixed_T2_BS2.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Heavy_Gimbal_NPC",
+      "mirroringX": "None",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": true,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
@@ -10392,7 +18880,122 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-L.Laser* XFEL-L Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\ReceptorTurretBase.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 5,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\ReceptorTurretBase.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "5",
+          "Default": "true"
+        },
+        {
+          "Side": "Left",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Front",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        },
+        {
+          "Side": "Back",
+          "StartX": "0.0",
+          "StartY": "0.00",
+          "EndX": "5",
+          "EndY": "1"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\SaberTurretBase_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Turret_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.12,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
@@ -10515,7 +19118,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-L.Laser* XFEL-L Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\MA_PDX.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Laser2\\MA_PDX.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.11",
+          "StartY": "0.11",
+          "EndX": "0.89",
+          "EndY": "0.89"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Laser2\\MA_PDX_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Turret_NPC",
+      "mirroringX": "None",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
@@ -10638,7 +19327,82 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Light.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Light.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-L.Laser* XFEL-L Gun",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\ReceptorCoilGun.png",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 6
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Akiad\\Small\\ReceptorCoilGun.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 5.0,
+      "pcu": 2,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.0",
+          "StartY": "3",
+          "EndX": "1.0",
+          "EndY": "4"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.4",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.7",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.0",
+          "File": "Models\\Akiad\\Small\\ReceptorCoilGun_BS3.mwm"
+        }
+      ],
+      "blockPairName": "Lasers_Light_Fixed_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged_Blue",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
@@ -10755,7 +19519,80 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 332.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc"
+    "sbcFile": "CubeBlocks_Lasers_Plasma.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_Plasma.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-Plasma* LOKI Turret",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\lokiCannon_01.png",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 5,
+        "y": 4,
+        "z": 5
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\Cubes\\Large\\lokiCannon_01\\lokiCannon_01.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 332.0,
+      "pcu": 12,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "5.00",
+          "EndY": "5.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "lokiCannon1_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_Electrical_Damaged_Blue",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large_Blue",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__PD_Laser_NPC",
@@ -10878,7 +19715,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 33.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-AMS* PD-COIL Turret",
+      "description": "",
+      "icon": "Textures\\Icons\\MA_Designator.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Designator\\MA_Designator.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 33.0,
+      "pcu": 4,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.25",
+          "StartY": "0.25",
+          "EndX": "0.75",
+          "EndY": "0.75"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Designator\\MA_Designator_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "MA_PDT_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_Electrical_Damaged",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.05",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__PD_Laser_NPC",
@@ -11001,7 +19924,93 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 9.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Lasers_AMS.sbc"
+    "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Lasers_AMS.sbc",
+      "typeId": "LargeMissileTurret",
+      "xsiType": "MyObjectBuilder_LargeTurretBaseDefinition",
+      "displayName": "*NPC-AMS* PD-COIL Turret",
+      "description": "",
+      "icon": "Textures\\Icons\\MA_Designator.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\MA_Designator\\MA_Designator_sm.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 9.0,
+      "pcu": 3,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Bottom",
+          "StartX": "0.04",
+          "StartY": "0.04",
+          "EndX": "0.96",
+          "EndY": "0.96"
+        }
+      ],
+      "buildProgressModels": [
+        {
+          "BuildPercentUpperBound": "0.33",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr1.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "0.67",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr2.mwm"
+        },
+        {
+          "BuildPercentUpperBound": "1.00",
+          "File": "Models\\MA_Designator\\MA_Designator_sm_Constr3.mwm"
+        }
+      ],
+      "blockPairName": "MA_PDT_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.5,
+      "damageEffectName": "Damage_Electrical_Damaged",
+      "damagedSound": "ParticleElectrical",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": true,
+      "minFov": "0.05",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Warhead_NPC",
@@ -11105,7 +20114,79 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 30.0,
     "criticalComponent": "Explosives",
-    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "Warhead (WC) (NPC)",
+      "description": "GVK WeaponCore Specialized Armament.\\n[Uses Other_Warheads_RegularWarhead_LG_Ammo]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\LargeWarhead_NPC.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "model": "Models\\Cubes\\Large\\LargeWarhead_NPC.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "side": "Bottom",
+          "startX": "0.00",
+          "startY": "0.00",
+          "endX": "1.00",
+          "endY": "1.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "LargeWarhead_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "S__Warhead_NPC",
@@ -11209,7 +20290,79 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Small",
     "buildTime": 5.0,
     "criticalComponent": "Explosives",
-    "sbcFile": "CubeBlocks_Other_Warheads.sbc"
+    "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Warheads.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "Small Warhead (WC) (NPC)",
+      "description": "GVK WeaponCore Specialized Armament.\\n[Uses Other_Warheads_RegularWarhead_SG_Ammo]",
+      "icon": "Textures\\GUI\\Icons\\Cubes\\SmallWarhead_NPC.dds",
+      "cubeSize": "Small",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 1,
+        "y": 1,
+        "z": 2
+      },
+      "modelOffset": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "model": "Models\\Cubes\\Small\\SmallWarhead_NPC.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 78.0,
+      "pcu": 6,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "side": "Bottom",
+          "startX": "0.00",
+          "startY": "0.00",
+          "endX": "1.00",
+          "endY": "1.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "SmallWarhead_NPC",
+      "mirroringX": "",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {
+        "staticMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0"
+        },
+        "dynamicMode": {
+          "placementMode": "OutsideVoxel",
+          "maxAllowed": "0.2",
+          "minAllowed": "0.01"
+        }
+      },
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 0.384,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Small",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   },
   {
     "id": "L__Drone_Bay_NPC",
@@ -11326,6 +20479,96 @@ window.GVK_DEFAULT_WEAPONS = [
     "cubeSize": "Large",
     "buildTime": 66.0,
     "criticalComponent": "Computer",
-    "sbcFile": "CubeBlocks_Other_Drones.sbc"
+    "sbcFile": "CubeBlocks_Other_Drones.sbc",
+    "sbcData": {
+      "sbcFile": "CubeBlocks_Other_Drones.sbc",
+      "typeId": "ConveyorSorter",
+      "xsiType": "MyObjectBuilder_ConveyorSorterDefinition",
+      "displayName": "*NPC-Drone* Falcon Drone Bay",
+      "description": "",
+      "icon": "Textures\\GUI\\Icons\\AryxSmallHangar.dds",
+      "cubeSize": "Large",
+      "blockTopology": "TriangleMesh",
+      "size": {
+        "x": 3,
+        "y": 1,
+        "z": 3
+      },
+      "modelOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "model": "Models\\AWE_Drones\\ARYX_Small_Hangar.mwm",
+      "criticalComponent": {
+        "subtype": "Computer",
+        "index": 0
+      },
+      "buildTimeSeconds": 66.0,
+      "pcu": 8,
+      "overlayTexture": "Textures\\GUI\\Screens\\camera_overlay.dds",
+      "mountPoints": [
+        {
+          "Side": "Back",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Left",
+          "StartX": "1.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Right",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "2.00",
+          "EndY": "1.00"
+        },
+        {
+          "Side": "Top",
+          "StartX": "0.00",
+          "StartY": "0.00",
+          "EndX": "3.00",
+          "EndY": "2.00"
+        },
+        {
+          "Side": "Bottom",
+          "StartX": "0.00",
+          "StartY": "1.00",
+          "EndX": "3.00",
+          "EndY": "3.00"
+        }
+      ],
+      "buildProgressModels": [],
+      "blockPairName": "AWE_Small_Hangar_Bay_NPC",
+      "mirroringX": "Z",
+      "mirroringY": "Z",
+      "mirroringZ": "Y",
+      "voxelPlacement": {},
+      "edgeType": "Light",
+      "resourceSinkGroup": "Defense",
+      "inventoryMaxVolume": 1.0,
+      "damageEffectName": "Damage_WeapExpl_Damaged",
+      "damagedSound": "ParticleWeapExpl",
+      "destroyEffect": "BlockDestroyedExplosion_Large",
+      "destroySound": "WepSmallWarheadExpl",
+      "emissiveColorPreset": "Default",
+      "isAirTight": false,
+      "showEdges": false,
+      "useModelIntersection": false,
+      "minFov": "0.1",
+      "maxFov": "1.04719755",
+      "targetingGroups": [
+        "Weapons"
+      ],
+      "guiVisible": false,
+      "public": true,
+      "aiEnabled": false
+    }
   }
 ];
