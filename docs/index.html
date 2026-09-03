@@ -119,16 +119,12 @@
         <div class="weapon-icon-wrap" title="Active Weapon Model">
           <img id="activeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon">
         </div>
-        <div class="ammo-icon-wrap" id="activeAmmoIconWrap" title="Loaded Munition / Magazine">
-          <img id="activeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Loaded Ammo Icon" class="ammo-icon">
-        </div>
         <div>
           <span class="selector-label">Active Weapon</span>
           <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap;">
             <select id="weaponSelect" class="weapon-dropdown">
               <option value="">Loading weapons database...</option>
             </select>
-            <select id="activeAmmoSelect" class="ammo-dropdown" style="display: none;" title="Select Loaded Munition"></select>
             <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
           </div>
         </div>
@@ -148,11 +144,18 @@
     <!-- WORKSPACE 1: COMBAT TELEMETRY & BENCHMARKS (PLAYER DEFAULT) -->
     <div id="ws-telemetry" class="workspace-section active">
       
-      <!-- Multi-Munition Switcher Bar (Appears for weapons with multiple terminal ammos like Cannon AP/HE or Flak) -->
-      <div id="telemetryAmmoBar" class="telemetry-ammo-bar" style="display: none;">
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-          <span class="telemetry-ammo-label">🚀 LOADED MUNITION:</span>
-          <select id="telemetryAmmoSelect" class="telemetry-ammo-dropdown" title="Select active munition to test and benchmark"></select>
+      <!-- Loaded Munition Bar (Always visible for all weapons in Combat Telemetry) -->
+      <div id="telemetryAmmoBar" class="telemetry-ammo-bar">
+        <div class="selector-left">
+          <div class="ammo-icon-wrap" id="activeAmmoIconWrap" title="Loaded Munition Magazine Subtype">
+            <img id="activeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Loaded Ammo Icon" class="ammo-icon">
+          </div>
+          <div>
+            <span class="selector-label">Loaded Munition</span>
+            <div style="margin-top: 4px;">
+              <select id="telemetryAmmoSelect" class="telemetry-ammo-dropdown" title="Select active munition to test and benchmark"></select>
+            </div>
+          </div>
         </div>
         <div id="telemetryAmmoBadge" class="telemetry-ammo-badge">
           <!-- Dynamic details: Type | Damage | Velocity | Range -->

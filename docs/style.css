@@ -656,40 +656,41 @@ header {
   align-items: center;
   background: var(--bg-panel);
   border: 1px solid var(--border-color);
-  border-left: 4px solid var(--cyan-primary);
+  border-left: 4px solid var(--amber-primary);
   border-radius: 8px;
-  padding: 8px 16px;
-  margin-bottom: 14px;
-  gap: 12px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  gap: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.2s ease-in-out;
-}
-
-.telemetry-ammo-label {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: var(--cyan-primary);
-  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 .telemetry-ammo-dropdown {
   background: var(--bg-input);
   border: 1px solid var(--border-color);
   color: #fff;
-  padding: 6px 12px;
-  font-size: 13px;
+  padding: 8px 14px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 6px;
   outline: none;
   cursor: pointer;
-  min-width: 240px;
+  min-width: 280px;
+  max-width: 400px;
+  width: 100%;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .telemetry-ammo-dropdown:focus {
-  border-color: var(--cyan-primary);
-  box-shadow: 0 0 0 2px var(--cyan-glow);
+  border-color: var(--amber-primary);
+  box-shadow: 0 0 0 2px var(--amber-glow);
+}
+
+.telemetry-ammo-dropdown:disabled {
+  opacity: 0.85;
+  cursor: default;
+  border-color: var(--border-color);
 }
 
 .telemetry-ammo-badge {

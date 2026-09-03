@@ -528,7 +528,6 @@ const weaponSelect       = document.getElementById('weaponSelect');
 const activeWeaponIcon   = document.getElementById('activeWeaponIcon');
 const activeAmmoIcon     = document.getElementById('activeAmmoIcon');
 const activeAmmoIconWrap = document.getElementById('activeAmmoIconWrap');
-const activeAmmoSelect   = document.getElementById('activeAmmoSelect');
 const compActiveAmmoIcon = document.getElementById('compActiveAmmoIcon');
 const compBenchAmmoIcon  = document.getElementById('compBenchAmmoIcon');
 const scopeAmmoIcon      = document.getElementById('scopeAmmoIcon');
@@ -972,12 +971,7 @@ function setupNavigationEvents() {
     ttkTargetSelect.addEventListener('change', updateTtkSimulator);
   }
 
-  // Active Munition Selectors (Universal Banner & Workspace 1 Telemetry Bar)
-  if (activeAmmoSelect) {
-    activeAmmoSelect.addEventListener('change', (e) => {
-      selectAmmo(e.target.value);
-    });
-  }
+  // Active Munition Selector (Workspace 1 Telemetry Bar)
   if (telemetryAmmoSelect) {
     telemetryAmmoSelect.addEventListener('change', (e) => {
       selectAmmo(e.target.value);
@@ -1241,34 +1235,17 @@ function selectWeapon(weaponId) {
   const selectableAmmos = getSelectableAmmos(activeWeapon);
   const primaryAmmoKey = selectableAmmos[0] || activeWeapon.ammoName;
 
-  // Active ammo dropdowns (Universal Banner & Workspace 1 Telemetry Bar)
-  if (activeAmmoSelect) {
-    if (selectableAmmos.length > 1) {
-      activeAmmoSelect.innerHTML = selectableAmmos.map(k => {
-        const a = ammosDb[k] || {};
-        const label = a.terminalName || a.ammoRound || k;
-        return `<option value="${k}">${label}</option>`;
-      }).join('');
-      activeAmmoSelect.value = primaryAmmoKey;
-      activeAmmoSelect.style.display = 'inline-block';
-    } else {
-      activeAmmoSelect.style.display = 'none';
-    }
-  }
-
+  // Active ammo dropdown (Workspace 1 Telemetry Bar - always displayed for all weapons)
   if (telemetryAmmoSelect && telemetryAmmoBar) {
-    if (selectableAmmos.length > 1) {
-      telemetryAmmoSelect.innerHTML = selectableAmmos.map(k => {
-        const a = ammosDb[k] || {};
-        const label = a.terminalName || a.ammoRound || k;
-        const mag = a.ammoMagazine || 'Energy';
-        return `<option value="${k}">${label} [${mag}]</option>`;
-      }).join('');
-      telemetryAmmoSelect.value = primaryAmmoKey;
-      telemetryAmmoBar.style.display = 'flex';
-    } else {
-      telemetryAmmoBar.style.display = 'none';
-    }
+    telemetryAmmoSelect.innerHTML = selectableAmmos.map(k => {
+      const a = ammosDb[k] || {};
+      const label = a.terminalName || a.ammoRound || k;
+      const mag = a.ammoMagazine || 'Energy';
+      return `<option value="${k}">${label} [${mag}]</option>`;
+    }).join('');
+    telemetryAmmoSelect.value = primaryAmmoKey;
+    telemetryAmmoSelect.disabled = (selectableAmmos.length <= 1);
+    telemetryAmmoBar.style.display = 'flex';
   }
 
   if (ammosDb[primaryAmmoKey]) {
@@ -1300,7 +1277,6 @@ function selectAmmo(ammoKey) {
   if (!ammosDb[ammoKey]) return;
   activeAmmo = ammosDb[ammoKey];
   if (ammoSelectGlobal) ammoSelectGlobal.value = ammoKey;
-  if (activeAmmoSelect) activeAmmoSelect.value = ammoKey;
   if (telemetryAmmoSelect) telemetryAmmoSelect.value = ammoKey;
   if (scopeActiveAmmoLabel) scopeActiveAmmoLabel.textContent = ammoKey;
   if (scopeAmmoIcon) {
