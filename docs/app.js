@@ -1043,6 +1043,25 @@ function populateWeaponDropdowns() {
   compareSelect.addEventListener('change', (e) => {
     const val = e.target.value;
     benchmarkWeapon = val ? weaponsDb.find(w => w.id === val) : null;
+    if (benchmarkWeapon) {
+      if (compBenchIcon) {
+        compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
+        compBenchIcon.style.display = 'inline-block';
+        compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
+      }
+      if (compBenchAmmoIcon) {
+        const bAKey = (benchmarkWeapon.assignedAmmos && benchmarkWeapon.assignedAmmos.length > 0)
+          ? benchmarkWeapon.assignedAmmos[0]
+          : benchmarkWeapon.ammoName;
+        const bAmmo = ammosDb[bAKey];
+        compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
+        compBenchAmmoIcon.style.display = 'inline-block';
+        compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+      }
+    } else {
+      if (compBenchIcon) compBenchIcon.style.display = 'none';
+      if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
+    }
     updateComparisonRadar();
   });
 }
@@ -1149,6 +1168,10 @@ function selectAmmo(ammoKey) {
   activeAmmo = ammosDb[ammoKey];
   ammoSelectGlobal.value = ammoKey;
   scopeActiveAmmoLabel.textContent = ammoKey;
+  if (scopeAmmoIcon) {
+    scopeAmmoIcon.src = getAmmoIconUrl(activeAmmo);
+    scopeAmmoIcon.title = `Tuning Ammo: ${activeAmmo.terminalName || activeAmmo.ammoRound} (${activeAmmo.ammoMagazine || 'Energy'})`;
+  }
   populateAmmoWorkbench();
   updateCombatTelemetry();
   updateTtkSimulator();
@@ -1185,10 +1208,40 @@ function getTechSummary(components) {
 function updateUniversalBanner() {
   if (!activeWeapon) return;
 
-  // Icon
-  if (activeWeapon.icon && activeWeaponIcon) {
-    activeWeaponIcon.src = activeWeapon.icon;
-    compActiveIcon.src = activeWeapon.icon;
+  // Weapon Icon
+  if (activeWeaponIcon) {
+    const wIcon = getWeaponIconUrl(activeWeapon);
+    activeWeaponIcon.src = wIcon;
+    activeWeaponIcon.alt = activeWeapon.name || 'Weapon Icon';
+    activeWeaponIcon.title = `${activeWeapon.displayName || activeWeapon.name} [${activeWeapon.gridSize || activeWeapon.grid || 'Large'}]`;
+    if (compActiveIcon) {
+      compActiveIcon.src = wIcon;
+      compActiveIcon.title = activeWeapon.displayName || activeWeapon.name;
+    }
+  }
+
+  // Ammo Icon
+  const aKey = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
+    ? activeWeapon.assignedAmmos[0]
+    : activeWeapon.ammoName;
+  const curAmmo = ammosDb[aKey] || activeAmmo;
+  if (curAmmo) {
+    const ammoIconUrl = getAmmoIconUrl(curAmmo);
+    if (activeAmmoIcon) {
+      activeAmmoIcon.src = ammoIconUrl;
+      activeAmmoIcon.alt = curAmmo.terminalName || curAmmo.ammoRound || 'Ammo';
+    }
+    if (activeAmmoIconWrap) {
+      activeAmmoIconWrap.title = `Loaded Munition: ${curAmmo.terminalName || curAmmo.ammoRound || 'Standard'}\nMagazine Subtype: ${curAmmo.ammoMagazine || 'Energy'}`;
+    }
+    if (compActiveAmmoIcon) {
+      compActiveAmmoIcon.src = ammoIconUrl;
+      compActiveAmmoIcon.title = `Munition: ${curAmmo.terminalName || curAmmo.ammoRound || 'Standard'}`;
+    }
+    if (scopeAmmoIcon) {
+      scopeAmmoIcon.src = ammoIconUrl;
+      scopeAmmoIcon.title = `Tuning Ammo: ${curAmmo.terminalName || curAmmo.ammoRound}`;
+    }
   }
 
   // Badges
@@ -1929,13 +1982,16 @@ function updateCombatTelemetry() {
   const baseDmg = parseFloat(aBaseDamage.value) || 0;
   const aodDmg = (aodBlockEnable && aodBlockEnable.checked ? safeFloat(aodBlockDamage.value, 0) : 0) + (aodEolEnable && aodEolEnable.checked ? safeFloat(aodEolDamage.value, 0) : 0);
 
-  // Fragment damage
+  // Fragment damage (including recursive child fragment & area damage)
   let fragDmg = 0;
-  if (fEnable.checked) {
+  if (fEnable && fEnable.checked) {
     const frags = parseFloat(fFragments.value) || 0;
-    const childAmmo = ammosDb[fChildAmmoRound.value];
-    const childDmg = childAmmo ? childAmmo.baseDamage : 0;
-    fragDmg = frags * childDmg * 0.75; // 75% hit probability
+    const childKey = fChildAmmoRound ? fChildAmmoRound.value : '';
+    const childAmmo = ammosDb[childKey];
+    if (childAmmo) {
+      const childD = getAmmoDamageDetailed(childAmmo);
+      fragDmg = frags * childD.total;
+    }
   }
 
   const damagePerShot = baseDmg + aodDmg + fragDmg;
@@ -1952,9 +2008,9 @@ function updateCombatTelemetry() {
 
   // Update Hero Metrics
   outSustainedDps.textContent = sustainedDps.toLocaleString();
-  outDpsBreakdown.textContent = `Kinetic: ${Math.round(effectiveRps * baseDmg).toLocaleString()} | Blast: ${Math.round(effectiveRps * aodDmg).toLocaleString()} | Frag: ${Math.round(effectiveRps * fragDmg).toLocaleString()}`;
+  outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * baseDmg).toLocaleString()} | Blast: ${Math.round(effectiveRps * aodDmg).toLocaleString()} | Frag: ${Math.round(effectiveRps * fragDmg).toLocaleString()}`;
   outAlphaDmg.textContent = Math.round(alphaVolley).toLocaleString();
-  outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(damagePerShot).toLocaleString()} hp`;
+  outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(damagePerShot).toLocaleString()} hp (Direct:${Math.round(baseDmg).toLocaleString()} + Blast:${Math.round(aodDmg).toLocaleString()} + Frag:${Math.round(fragDmg).toLocaleString()})`;
   outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
   outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
 
@@ -2199,10 +2255,64 @@ function setupLogisticsEvents() {
 // ==========================================================================
 
 // ==========================================================================
+
+// ==========================================================================
+// RECURSIVE DAMAGE & ICON RESOLUTION HELPERS
+// ==========================================================================
+function getAmmoDamageDetailed(ammo, depth = 0) {
+  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, total: 0 };
+  const base = parseFloat(ammo.baseDamage) || 0;
+
+  let aoe = 0;
+  if (ammo.areaOfDamage) {
+    if (ammo.areaOfDamage.enable) {
+      aoe = parseFloat(ammo.areaOfDamage.damage) || 0;
+    } else {
+      const eolDmg = (ammo.areaOfDamage.endOfLife && ammo.areaOfDamage.endOfLife.enable && parseFloat(ammo.areaOfDamage.endOfLife.damage)) || 0;
+      const aeDmg = (ammo.areaOfDamage.areaEffect && ammo.areaOfDamage.areaEffect.areaEffect && parseFloat(ammo.areaOfDamage.areaEffect.damage)) || 0;
+      aoe = eolDmg + aeDmg;
+    }
+  }
+
+  let frag = 0;
+  if (ammo.fragment && ammo.fragment.enable) {
+    const rnd = ammo.fragment.ammoRound;
+    let cnt = parseInt(ammo.fragment.fragments) || 0;
+    if (ammo.fragment.timedSpawns && ammo.fragment.timedSpawns.enable) {
+      const ms = parseInt(ammo.fragment.timedSpawns.maxSpawns) || 1;
+      const gs = parseInt(ammo.fragment.timedSpawns.groupSize) || 1;
+      cnt = Math.max(cnt, ms * gs);
+    }
+    if (rnd && ammosDb[rnd] && cnt > 0) {
+      const child = ammosDb[rnd];
+      const childD = getAmmoDamageDetailed(child, depth + 1);
+      frag = cnt * childD.total;
+    }
+  }
+
+  return {
+    base: base,
+    aoe: aoe,
+    frag: frag,
+    total: base + aoe + frag
+  };
+}
+
+function getAmmoIconUrl(ammo) {
+  if (!ammo) return 'icons/ammo_Energy.png';
+  const mag = ammo.ammoMagazine || 'Energy';
+  return `icons/ammo_${mag}.png`;
+}
+
+function getWeaponIconUrl(weapon) {
+  if (!weapon || !weapon.icon) return 'icons/L__Gatling_Avenger_Turret.png';
+  return weapon.icon;
+}
+
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
 function calculateWeaponMetrics(weapon) {
-  if (!weapon) return { sustainedDps: 0, alphaVolley: 0, range: 1500, velocity: 1000, tracking: 10, integrity: 10000 };
+  if (!weapon) return { sustainedDps: 0, alphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
 
   const aKey = (weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName;
   const a = ammosDb[aKey] || {};
@@ -2213,10 +2323,9 @@ function calculateWeaponMetrics(weapon) {
   const mags = weapon.magsToLoad || 1;
   const magSize = weapon.magazineSize || 100;
 
-  const baseDmg = a.baseDamage || 0;
-  const aodDmg = (a.areaOfDamage && a.areaOfDamage.areaEffect && a.areaOfDamage.areaEffect.damage) || 0;
-  const damagePerShot = baseDmg + aodDmg;
-  const alphaVolley = damagePerShot * barrels;
+  const dmgDetails = getAmmoDamageDetailed(a);
+  const damagePerShot = dmgDetails.total;
+  const alphaVolley = Math.round(damagePerShot * barrels);
 
   const totalRounds = magSize * mags;
   const fireDurationSec = (totalRounds / rof) * 60;

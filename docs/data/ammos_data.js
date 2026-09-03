@@ -1,4 +1,4 @@
-window.GVK_DEFAULT_AMMOS = {
+window.AMMOS_DATA = {
   "LargeCalibreAmmo": {
     "name": "LargeCalibreAmmo",
     "base_name": null,
@@ -37,7 +37,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 600.0,
@@ -82,7 +93,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "LargeCalibreAmmoHE",
     "ammoRound": "LargeCalibreAmmoHE",
     "terminalName": "155 HE",
-    "baseDamage": 100.0,
+    "baseDamage": 6000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -110,10 +121,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": true,
-      "radius": 4.0,
-      "damage": 6000.0,
-      "depth": 4.0
+      "enable": false,
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -158,7 +180,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Ballistics_Cannon_NPC",
     "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
     "terminalName": "Ballistics_Cannon_NPC",
-    "baseDamage": 100.0,
+    "baseDamage": 6000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -189,7 +211,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -234,7 +267,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Energy",
     "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
     "terminalName": "Ballistics_Cannon_NPC_Fragment1",
-    "baseDamage": 100.0,
+    "baseDamage": 6000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -265,7 +298,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -341,7 +385,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 900.0,
@@ -386,7 +441,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "AutocannonClip_Drone",
     "ammoRound": "AutocannonClip_Drone",
     "terminalName": "AutocannonClip_Drone",
-    "baseDamage": 100.0,
+    "baseDamage": 1000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -417,7 +472,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -490,10 +556,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 101.0,
+      "damage": 1.0,
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 101.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 900.0,
@@ -569,7 +646,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1200.0,
@@ -642,10 +730,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 2.0,
+      "damage": 3000.0,
+      "depth": 2.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 3000.0,
+        "radius": 2.0,
+        "depth": 2.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 900.0,
@@ -721,7 +820,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -797,7 +907,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -873,7 +994,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -946,10 +1078,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 5.0,
+      "damage": 70000.0,
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 70000.0,
+        "radius": 5.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 600.0,
@@ -994,7 +1137,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Ballistics_HeavyCannon_Odin",
     "ammoRound": "Ballistics_HeavyCannon_Odin",
     "terminalName": "Ballistics_HeavyCannon_Odin",
-    "baseDamage": 100.0,
+    "baseDamage": 10000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -1022,10 +1165,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 5.0,
+      "damage": 70000.0,
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 70000.0,
+        "radius": 5.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -1177,7 +1331,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 950.0,
@@ -1250,10 +1415,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 5.0,
-      "damage": 20000.0,
-      "depth": 5.0
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 4100.0,
@@ -1298,7 +1474,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Energy",
     "ammoRound": "LargeRailgunSabot_NPC",
     "terminalName": "LargeRailgunSabot_NPC",
-    "baseDamage": 100.0,
+    "baseDamage": 2000000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -1326,10 +1502,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -1374,7 +1561,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Energy",
     "ammoRound": "LargeRailgunSabot_NPC_Fragment",
     "terminalName": "LargeRailgunSabot_NPC_Fragment",
-    "baseDamage": 100.0,
+    "baseDamage": 2000000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -1402,10 +1589,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 1.0,
+      "damage": 1.0,
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2089,7 +2287,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 400.0,
@@ -2165,7 +2374,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 800.0,
@@ -2241,7 +2461,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 0.0,
@@ -2317,7 +2548,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2362,7 +2604,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Lasers_Laser_Dual",
     "ammoRound": "Lasers_Laser_Dual",
     "terminalName": "Lasers_Laser_Dual",
-    "baseDamage": 100.0,
+    "baseDamage": 150.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -2393,7 +2635,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2469,7 +2722,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2545,7 +2809,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2590,7 +2865,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Lasers_Laser_Light_SG",
     "ammoRound": "Lasers_Laser_Light_SG",
     "terminalName": "Lasers_Laser_Light_SG",
-    "baseDamage": 37.5,
+    "baseDamage": 75.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -2621,7 +2896,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -2697,7 +2983,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 7.0,
       "damage": 80000.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 80000.0,
+        "radius": 7.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 500.0,
@@ -2773,7 +3070,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 6.0,
       "damage": 30000.0,
-      "depth": 5.0
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 30000.0,
+        "radius": 6.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 270.0,
@@ -3001,7 +3309,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 7.0,
       "damage": 15000.0,
-      "depth": 7.0
+      "depth": 7.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 15000.0,
+        "radius": 7.0,
+        "depth": 7.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -3077,7 +3396,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 300.0,
@@ -3153,7 +3483,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 5.0,
       "damage": 17000.0,
-      "depth": 5.0
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 17000.0,
+        "radius": 5.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 300.0,
@@ -3229,7 +3570,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 25.0,
       "damage": 1500000.0,
-      "depth": 25.0
+      "depth": 25.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1500000.0,
+        "radius": 25.0,
+        "depth": 25.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 200.0,
@@ -3302,10 +3654,21 @@ window.GVK_DEFAULT_AMMOS = {
       "dropVelocity": false
     },
     "areaOfDamage": {
-      "enable": false,
-      "radius": 0.0,
-      "damage": 0.0,
-      "depth": 0.0
+      "enable": true,
+      "radius": 25.0,
+      "damage": 1500000.0,
+      "depth": 25.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1500000.0,
+        "radius": 25.0,
+        "depth": 25.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -3381,7 +3744,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 500.0,
@@ -3448,7 +3822,7 @@ window.GVK_DEFAULT_AMMOS = {
     "fragment": {
       "enable": true,
       "ammoRound": "Others_Drone_Gunship",
-      "fragments": 1,
+      "fragments": 2600,
       "degrees": 4.0,
       "reverse": false,
       "dropVelocity": false
@@ -3457,7 +3831,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 5.0,
       "damage": 20000.0,
-      "depth": 5.0
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 20000.0,
+        "radius": 5.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 150.0,
@@ -3524,7 +3909,7 @@ window.GVK_DEFAULT_AMMOS = {
     "fragment": {
       "enable": true,
       "ammoRound": "Others_Drone_Gunship",
-      "fragments": 1,
+      "fragments": 50000,
       "degrees": 4.0,
       "reverse": false,
       "dropVelocity": false
@@ -3533,7 +3918,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 5.0,
       "damage": 20000.0,
-      "depth": 5.0
+      "depth": 5.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 20000.0,
+        "radius": 5.0,
+        "depth": 5.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 150.0,
@@ -3607,9 +4003,20 @@ window.GVK_DEFAULT_AMMOS = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 4.0,
-      "damage": 2500.0,
-      "depth": 4.0
+      "radius": 0.0,
+      "damage": 0.0,
+      "depth": 4.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 2500.0,
+        "radius": 4.0,
+        "depth": 4.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 500.0,
@@ -3685,7 +4092,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 100.0,
@@ -3730,7 +4148,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkRainbowWC",
     "ammoRound": "FireworkRainbow",
     "terminalName": "FireworkRainbowWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -3761,7 +4179,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -3806,7 +4235,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkGreenWC",
     "ammoRound": "FireworkGreen",
     "terminalName": "FireworkGreenWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -3837,7 +4266,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -3882,7 +4322,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkRedWC",
     "ammoRound": "FireworkRed",
     "terminalName": "FireworkRedWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -3913,7 +4353,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -3958,7 +4409,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkPinkWC",
     "ammoRound": "FireworkPink",
     "terminalName": "FireworkPinkWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -3989,7 +4440,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -4034,7 +4496,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkYellowWC",
     "ammoRound": "FireworkYellow",
     "terminalName": "FireworkYellowWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4065,7 +4527,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -4110,7 +4583,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "FireworkBlueWC",
     "ammoRound": "FireworkBlue",
     "terminalName": "FireworkBlueWC",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4141,7 +4614,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": true,
       "radius": 1.0,
       "damage": 1.0,
-      "depth": 1.0
+      "depth": 1.0,
+      "endOfLife": {
+        "enable": true,
+        "damage": 1.0,
+        "radius": 1.0,
+        "depth": 1.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -4217,7 +4701,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 50.0,
@@ -4262,7 +4757,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Energy",
     "ammoRound": "designatorBeam",
     "terminalName": "designatorBeam1",
-    "baseDamage": 100.0,
+    "baseDamage": 0.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4293,7 +4788,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 50000.0,
@@ -4369,7 +4875,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1.0,
@@ -4445,7 +4962,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1.0,
@@ -4521,7 +5049,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1.0,
@@ -4566,7 +5105,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo",
     "ammoRound": "Small HE",
     "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4597,7 +5136,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -4642,7 +5192,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
     "ammoRound": "Small HE Particle",
     "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
-    "baseDamage": 100.0,
+    "baseDamage": 1.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4673,7 +5223,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,
@@ -4718,7 +5279,7 @@ window.GVK_DEFAULT_AMMOS = {
     "ammoMagazine": "Other_Warheads_RegularWarhead_SG_Ammo_Fragment",
     "ammoRound": "Small HE Fragment",
     "terminalName": "Other_Warheads_RegularWarhead_SG_Ammo_Fragment",
-    "baseDamage": 1000.0,
+    "baseDamage": 2000.0,
     "baseDamageCutoff": 0.0,
     "mass": 1.0,
     "health": 0.0,
@@ -4749,7 +5310,18 @@ window.GVK_DEFAULT_AMMOS = {
       "enable": false,
       "radius": 0.0,
       "damage": 0.0,
-      "depth": 0.0
+      "depth": 0.0,
+      "endOfLife": {
+        "enable": false,
+        "damage": 0.0,
+        "radius": 0.0,
+        "depth": 0.0
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0.0,
+        "radius": 0.0
+      }
     },
     "trajectory": {
       "desiredSpeed": 1000.0,

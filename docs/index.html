@@ -116,8 +116,11 @@
     <!-- Universal Weapon Selector Banner -->
     <div class="weapon-banner">
       <div class="selector-left">
-        <div class="weapon-icon-wrap">
+        <div class="weapon-icon-wrap" title="Active Weapon Model">
           <img id="activeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon">
+        </div>
+        <div class="ammo-icon-wrap" id="activeAmmoIconWrap" title="Loaded Munition / Magazine">
+          <img id="activeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Loaded Ammo Icon" class="ammo-icon">
         </div>
         <div>
           <span class="selector-label">Active Weapon</span>
@@ -258,8 +261,10 @@
             <div style="display: flex; align-items: center; gap: 12px;">
               <div class="faceoff-badge">
                 <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm" title="Active Weapon">
+                <img id="compActiveAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Active Ammo" class="ammo-icon-sm" title="Active Weapon Munition">
                 <span class="vs-tag">VS</span>
                 <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm" style="display: none;" title="Benchmark Weapon">
+                <img id="compBenchAmmoIcon" src="" alt="Benchmark Ammo" class="ammo-icon-sm" style="display: none;" title="Benchmark Weapon Munition">
               </div>
               <h3>⚔️ 1v1 Combat Radar & Comparison</h3>
             </div>
@@ -829,11 +834,18 @@
         
         <!-- Active Ammo Selector Strip -->
         <div style="background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING AMMO:</span>
-            <select id="ammoSelectGlobal" class="weapon-dropdown" style="min-width: 240px;">
-              <!-- Populated dynamically -->
-            </select>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="ammo-icon-wrap-sm" title="Active Munition Magazine Icon">
+              <img id="scopeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Ammo Magazine" class="ammo-icon">
+            </div>
+            <div>
+              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING AMMO:</span>
+              <div style="margin-top: 3px;">
+                <select id="ammoSelectGlobal" class="weapon-dropdown" style="min-width: 240px;">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
           </div>
           <div style="display: flex; gap: 8px;">
             <button id="btnNewFragAmmo" class="btn btn-sm">+ Create Child Fragment Ammo</button>
