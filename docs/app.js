@@ -212,8 +212,9 @@ const sbcDisplayName = document.getElementById('sbcDisplayName');
 const sbcCubeSize = document.getElementById('sbcCubeSize');
 const sbcBuildTime = document.getElementById('sbcBuildTime');
 const sbcUpCost = document.getElementById('sbcUpCost');
-const sbcTechComp = document.getElementById('sbcTechComp');
-const sbcTechQty = document.getElementById('sbcTechQty');
+const sbcTechSummary = document.getElementById('sbcTechSummary');
+const sbcTechQtyDisplay = document.getElementById('sbcTechQtyDisplay');
+const badgeUps = document.getElementById('badgeUps');
 const sbcIsRelic = document.getElementById('sbcIsRelic');
 const sbcHasCircuitry = document.getElementById('sbcHasCircuitry');
 
@@ -589,6 +590,30 @@ function selectAmmo(ammoKey) {
   updateAmmoLogistics();
 }
 
+// ==========================================================================
+// TECH COMPONENT DERIVATION HELPERS
+// ==========================================================================
+function isTechComponent(compName) {
+  if (!compName) return false;
+  const lower = compName.toLowerCase();
+  return lower.startsWith('prototech') || lower.includes('prototech');
+}
+
+function getTechSummary(components) {
+  if (!components || components.length === 0) {
+    return { totalQty: 0, summaryStr: 'None', techLayers: [], hasCircuitry: false };
+  }
+  const techLayers = components.filter(c => isTechComponent(c.name));
+  const totalQty = techLayers.reduce((sum, c) => sum + (parseInt(c.count) || 0), 0);
+  const hasCircuitry = techLayers.some(c => c.name === 'PrototechCircuitry' && (parseInt(c.count) || 0) > 0);
+  
+  let summaryStr = 'None';
+  if (techLayers.length > 0) {
+    summaryStr = techLayers.map(c => `${c.count}x ${c.name.replace('Prototech', '')}`).join(', ');
+  }
+  return { totalQty, summaryStr, techLayers, hasCircuitry };
+}
+
 function updateUniversalBanner() {
   if (!activeWeapon) return;
 
@@ -805,10 +830,7 @@ function populateSbcWorkbench() {
   sbcDisplayName.value = activeWeapon.displayName || activeWeapon.partName || activeWeapon.name || '';
   sbcCubeSize.value = activeWeapon.gridSize || activeWeapon.grid || 'Large';
   sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || 6;
-  sbcTechComp.value = activeWeapon.techComponent || 'PrototechMachinery';
-  sbcTechQty.value = activeWeapon.techCount || 6;
   sbcIsRelic.checked = activeWeapon.isRelic === true;
-  sbcHasCircuitry.checked = activeWeapon.hasCircuitry === true || activeWeapon.requiresCircuitry === true;
 
   renderSbcComponentsTable();
 }
@@ -896,6 +918,26 @@ function renderSbcComponentsTable() {
   // Update Effective Integrity
   const durMod = parseFloat(wDurabilityMod.value) || activeWeapon.durabilityMod || 0.5;
   activeWeapon.effectiveIntegrity = Math.round(totalIntegrity / durMod);
+
+  // Auto-Derive Tech Information from Prototech components
+  const techInfo = getTechSummary(activeWeapon.components);
+  if (sbcTechSummary) sbcTechSummary.textContent = techInfo.summaryStr;
+  if (sbcTechQtyDisplay) sbcTechQtyDisplay.textContent = `${techInfo.totalQty} Tech Items`;
+  if (sbcHasCircuitry) sbcHasCircuitry.checked = techInfo.hasCircuitry;
+
+  activeWeapon.techCount = techInfo.totalQty;
+  activeWeapon.techComponent = techInfo.techLayers.length > 0 ? techInfo.techLayers[0].name : '';
+  activeWeapon.hasCircuitry = techInfo.hasCircuitry;
+
+  if (badgeTech) {
+    badgeTech.innerHTML = `Tech: <strong>${techInfo.totalQty > 0 ? techInfo.summaryStr : 'None'}</strong>`;
+  }
+  if (badgeCircuitry) {
+    badgeCircuitry.style.display = techInfo.hasCircuitry ? 'inline-flex' : 'none';
+  }
+
+  // Update Linter Check
+  runWeaponCoreLinter();
 }
 
 // ==========================================================================
@@ -1383,8 +1425,9 @@ function runWeaponCoreLinter() {
 
   // Check 5: Range > 2000m on turret without PrototechCircuitry
   const range = parseFloat(wMaxTargetDistance.value) || 0;
-  if (range > 2000 && !sbcHasCircuitry.checked) {
-    hazards.push("Smart/turret range exceeds 2km: 1 PrototechCircuitry is recommended for GVK balance.");
+  const techInfo = getTechSummary(activeWeapon ? activeWeapon.components : null);
+  if (range > 2000 && !techInfo.hasCircuitry) {
+    hazards.push("Smart/turret range exceeds 2km: 1 PrototechCircuitry component layer is required in <Components>.");
   }
 
   if (hazards.length === 0) {
@@ -1858,7 +1901,7 @@ function setupWorkbenchInputEvents() {
     wRateOfFire, wBarrelsPerShot, wReloadTime, wMagsToLoad, wHeatPerShot, wMaxHeat, wHeatSinkRate, wCooldown,
     wRotateRate, wElevateRate, aBaseDamage, aMass, aEnergyCost, aodEnable, aodRadius, aodDamage,
     fEnable, fFragments, fDegrees, fChildAmmoRound, tDesiredSpeed, tMaxTrajectory,
-    sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcTechComp, sbcTechQty, sbcIsRelic, sbcHasCircuitry
+    sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcIsRelic, sbcHasCircuitry
   ];
 
   liveInputs.forEach(input => {

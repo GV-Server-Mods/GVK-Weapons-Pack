@@ -126,7 +126,8 @@
       <div class="banner-badges">
         <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
-        <div class="badge badge-amber" id="badgeTech">Tech: <strong>6 UPs</strong></div>
+        <div class="badge badge-amber" id="badgeUps">⚡ <strong>6 UPs</strong></div>
+        <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>6x PrototechMachinery</strong></div>
         <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 Circuitry: 1 (>2km)</div>
         <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
         <div class="badge badge-red" id="badgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
@@ -909,24 +910,22 @@
                 <input type="number" id="sbcUpCost" class="control-input" value="6">
               </div>
               <div class="control-item">
-                <label class="control-label">Tech Component</label>
-                <select id="sbcTechComp" class="control-input">
-                  <option value="PrototechMachinery">PrototechMachinery</option>
-                  <option value="PrototechFrame">PrototechFrame</option>
-                  <option value="PrototechCircuitry">PrototechCircuitry</option>
-                  <option value="PrototechCapacitor">PrototechCapacitor</option>
-                  <option value="PrototechPropulsion">PrototechPropulsion</option>
-                </select>
+                <label class="control-label">Tech Requirements <span class="unit">Auto-Derived</span></label>
+                <div id="sbcTechSummary" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="Calculated from Prototech components in the layer list below">
+                  6x PrototechMachinery
+                </div>
               </div>
               <div class="control-item">
-                <label class="control-label">Tech Quantity</label>
-                <input type="number" id="sbcTechQty" class="control-input" value="6">
+                <label class="control-label">Total Tech Count <span class="unit">Prototech Items</span></label>
+                <div id="sbcTechQtyDisplay" class="control-input" style="background: rgba(6, 182, 212, 0.08); border-color: var(--cyan-primary); color: var(--cyan-primary); font-weight: 700;">
+                  6
+                </div>
               </div>
             </div>
 
             <div class="checkbox-row" style="margin-top: 14px;">
               <label class="chk-label"><input type="checkbox" id="sbcIsRelic"> 👑 Relic Weapon (Non-Craftable Ammunition)</label>
-              <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry"> 🔬 Include PrototechCircuitry (>2km Range Gate)</label>
+              <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry" disabled> 🔬 PrototechCircuitry Layer Present (&gt;2km Range Gate)</label>
             </div>
 
           </div>
