@@ -2226,7 +2226,12 @@ function calculateWeaponMetrics(weapon) {
   const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : (rof / 60);
   const sustainedDps = Math.round(effectiveRps * damagePerShot);
 
-  const range = (a.trajectory && a.trajectory.maxTrajectory) ? a.trajectory.maxTrajectory : 1500;
+  // Use Weapon's targeting range; fallback to trajectory if 0 or fixed weapon
+  let range = weapon.maxTargetDistance || 0;
+  if (range <= 0) {
+    range = (a.trajectory && a.trajectory.maxTrajectory) ? Math.min(4000, a.trajectory.maxTrajectory) : 1600;
+  }
+
   const velocity = (a.trajectory && a.trajectory.desiredSpeed) ? a.trajectory.desiredSpeed : 1000;
   const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
@@ -2244,7 +2249,7 @@ function calculateWeaponMetrics(weapon) {
   return { sustainedDps, alphaVolley, range, velocity, tracking, integrity };
 }
 
-function getModMaxMetrics() {
+function getModMaxMetrics(allowExtremeOutliers = false) {
   let maxDps = 1000;
   let maxAlpha = 1000;
   let maxRange = 1000;
@@ -2254,6 +2259,11 @@ function getModMaxMetrics() {
 
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
+    // Exclude spinal superweapons (e.g. 2M Alpha MAC Gun) from mod standard baseline unless user explicitly tests them
+    if (!allowExtremeOutliers && m.alphaVolley > 500000) {
+      return;
+    }
+
     if (m.sustainedDps > maxDps) maxDps = m.sustainedDps;
     if (m.alphaVolley > maxAlpha) maxAlpha = m.alphaVolley;
     if (m.range > maxRange) maxRange = m.range;
@@ -2316,19 +2326,28 @@ function updateComparisonRadar() {
     ctx.fillText(axes[i], lx, ly);
   }
 
-  // Calculate Dynamic Mod-Wide Max Ceilings
-  const modMax = getModMaxMetrics();
+  // Check if active weapon or benchmark weapon has > 500k alpha (e.g. MAC Gun)
+  const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
+  const bMetrics = benchmarkWeapon ? calculateWeaponMetrics(benchmarkWeapon) : null;
+  const hasSpinalSuperweapon = (activeAlpha > 500000) || (bMetrics && bMetrics.alphaVolley > 500000);
+
+  // Calculate Dynamic Mod-Wide Max Ceilings (isolating spinal outliers unless currently inspecting one)
+  const modMax = getModMaxMetrics(hasSpinalSuperweapon);
 
   // Update Max Metrics Readout in Legend
   const readout = document.getElementById('radarMaxMetrics');
   if (readout) {
-    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()}`;
+    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Target Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()}`;
   }
 
   // Calculate Normalized Stats for Active Weapon
   const activeDps = parseFloat(outSustainedDps ? outSustainedDps.textContent.replace(/,/g, '') : 0) || 0;
-  const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
-  const activeRange = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) || 1500;
+  
+  // Use weapon's targeting range, falling back to trajectory if 0 or fixed
+  let activeRange = (wMaxTargetDistance && parseFloat(wMaxTargetDistance.value)) || 0;
+  if (activeRange <= 0) {
+    activeRange = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) ? Math.min(4000, parseFloat(tMaxTrajectory.value)) : 1600;
+  }
   const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
   const activeTrack = (outTraverseDeg && parseFloat(outTraverseDeg.textContent)) || 10;
   
@@ -2405,7 +2424,7 @@ function renderCompareTable(aDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bA
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
     { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
-    { name: 'Max Range', a: aRange, b: bRange, unit: 'm' },
+    { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm' },
     { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
     { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s' },
     { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp' }
