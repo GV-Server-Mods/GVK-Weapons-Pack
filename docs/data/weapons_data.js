@@ -4246,5 +4246,4301 @@ window.GVK_DEFAULT_WEAPONS = [
       }
     ],
     "icon": "icons/L__Drone_Bay.png"
+  },
+  {
+    "id": "L__Gatling_Avenger_Turret_NPC",
+    "name": "(L) Gatling Avenger Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 1000,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 2,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 14,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1600,
+    "deviateShotAngle": 0.4,
+    "rotateRate": 0.015,
+    "elevateRate": 0.015,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1700,
+    "desiredSpeed": 1000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 33.333,
+    "sheetBaseDPS": 3333.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 42000.0,
+    "sheetPeakDPS": 3330.0,
+    "sheetSpeedEl": 51.57,
+    "sheetSpeedAz": 51.57,
+    "sheetTraverseDegPerSec": 51.57,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 140
+      },
+      {
+        "subtype": "Construction",
+        "count": 830
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 170
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 220
+      },
+      {
+        "subtype": "Motor",
+        "count": 280
+      },
+      {
+        "subtype": "Computer",
+        "count": 420
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 420
+      }
+    ],
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Gatling_Turret_NPC",
+    "name": "(L) Gatling Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 1500,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 192,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1500,
+    "deviateShotAngle": 0.4,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1700,
+    "desiredSpeed": 1000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 15.0,
+    "sheetBaseDPS": 1500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 1500.0,
+    "sheetSpeedEl": 103.13,
+    "sheetSpeedAz": 103.13,
+    "sheetTraverseDegPerSec": 103.13,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 116532.0,
+    "sheetBuildTime": 78,
+    "durabilityMod": 0.5,
+    "techQty": 3,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 78
+      },
+      {
+        "subtype": "Construction",
+        "count": 470
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 93
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 130
+      },
+      {
+        "subtype": "Motor",
+        "count": 160
+      },
+      {
+        "subtype": "Computer",
+        "count": 240
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 240
+      }
+    ],
+    "icon": "icons/L__Gatling_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Gatling_Turret_NPC",
+    "name": "(S) Gatling Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 1500,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 192,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1500,
+    "deviateShotAngle": 0.4,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1700,
+    "desiredSpeed": 1000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 15.0,
+    "sheetBaseDPS": 1500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 1500.0,
+    "sheetSpeedEl": 103.13,
+    "sheetSpeedAz": 103.13,
+    "sheetTraverseDegPerSec": 103.13,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 31404.0,
+    "sheetBuildTime": 21,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 21
+      },
+      {
+        "subtype": "Construction",
+        "count": 130
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 25
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 34
+      },
+      {
+        "subtype": "Motor",
+        "count": 42
+      },
+      {
+        "subtype": "Computer",
+        "count": 63
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 63
+      }
+    ],
+    "icon": "icons/S__Gatling_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Gatling_Gun_NPC",
+    "name": "(S) Gatling Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 1500,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 192,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.4,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1700,
+    "desiredSpeed": 1000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 15.0,
+    "sheetBaseDPS": 1500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 1500.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 5000.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 1,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 4
+      },
+      {
+        "subtype": "Construction",
+        "count": 20
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 4
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 6
+      },
+      {
+        "subtype": "Motor",
+        "count": 7
+      },
+      {
+        "subtype": "Computer",
+        "count": 10
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 10
+      }
+    ],
+    "icon": "icons/S__Gatling_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Gatling_Gimbal_NPC",
+    "name": "(S) Gatling Gimbal [NPC]",
+    "grid": "Small",
+    "type": "Gimbal",
+    "rateOfFire": 1500,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 192,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1600,
+    "deviateShotAngle": 0.4,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -15,
+    "maxAzimuth": 15,
+    "minElevation": -15,
+    "maxElevation": 15,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1700,
+    "desiredSpeed": 1000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 15.0,
+    "sheetBaseDPS": 1500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 1500.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 5000.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 4
+      },
+      {
+        "subtype": "Construction",
+        "count": 20
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 4
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 6
+      },
+      {
+        "subtype": "Motor",
+        "count": 7
+      },
+      {
+        "subtype": "Computer",
+        "count": 10
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 10
+      }
+    ],
+    "icon": "icons/S__Gatling_Gimbal.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Chaingun_Thrasher_Turret_NPC",
+    "name": "(L) Chaingun Thrasher Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 480,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 70,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1900,
+    "deviateShotAngle": 0.15,
+    "rotateRate": 0.0125,
+    "elevateRate": 0.0125,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 6,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 4.5,
+    "sheetBaseDPS": 4500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 4500.0,
+    "sheetSpeedEl": 42.97,
+    "sheetSpeedAz": 42.97,
+    "sheetTraverseDegPerSec": 42.97,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 40000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 140
+      },
+      {
+        "subtype": "Construction",
+        "count": 830
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 170
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 220
+      },
+      {
+        "subtype": "Motor",
+        "count": 280
+      },
+      {
+        "subtype": "Computer",
+        "count": 420
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 420
+      }
+    ],
+    "icon": "icons/L__Chaingun_Thrasher_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Chaingun_Khopesh_Turret_NPC",
+    "name": "(L) Chaingun Khopesh Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 360,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 90,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1800,
+    "deviateShotAngle": 0.15,
+    "rotateRate": 0.025,
+    "elevateRate": 0.025,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 6,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 2.4,
+    "sheetBaseDPS": 2400.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000.0,
+    "sheetAlphaDamage": 6000.0,
+    "sheetPeakDPS": 2400.0,
+    "sheetSpeedEl": 85.94,
+    "sheetSpeedAz": 85.94,
+    "sheetTraverseDegPerSec": 85.94,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 116532.0,
+    "sheetBuildTime": 78,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 78
+      },
+      {
+        "subtype": "Construction",
+        "count": 470
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 93
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 130
+      },
+      {
+        "subtype": "Motor",
+        "count": 160
+      },
+      {
+        "subtype": "Computer",
+        "count": 240
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 240
+      }
+    ],
+    "icon": "icons/L__Chaingun_Khopesh_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Chaingun_Turret_NPC",
+    "name": "(L) Chaingun Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1800,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.025,
+    "elevateRate": 0.025,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 6,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 2.0,
+    "sheetBaseDPS": 2000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 2000.0,
+    "sheetSpeedEl": 85.94,
+    "sheetSpeedAz": 85.94,
+    "sheetTraverseDegPerSec": 85.94,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 34
+      },
+      {
+        "subtype": "Construction",
+        "count": 200
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 40
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 54
+      },
+      {
+        "subtype": "Motor",
+        "count": 67
+      },
+      {
+        "subtype": "Computer",
+        "count": 100
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 100
+      }
+    ],
+    "icon": "icons/L__Chaingun_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Chaingun_Turret_NPC",
+    "name": "(S) Chaingun Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1800,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.025,
+    "elevateRate": 0.025,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 6,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 2.0,
+    "sheetBaseDPS": 2000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 2000.0,
+    "sheetSpeedEl": 85.94,
+    "sheetSpeedAz": 85.94,
+    "sheetTraverseDegPerSec": 85.94,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 40702.0,
+    "sheetBuildTime": 27,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 27
+      },
+      {
+        "subtype": "Construction",
+        "count": 170
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 33
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 44
+      },
+      {
+        "subtype": "Motor",
+        "count": 54
+      },
+      {
+        "subtype": "Computer",
+        "count": 81
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 81
+      }
+    ],
+    "icon": "icons/S__Chaingun_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Chaingun_Gun_NPC",
+    "name": "(S) Chaingun Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.1,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 6,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 2.0,
+    "sheetBaseDPS": 2000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 1000.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 2000.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 5372.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 4
+      },
+      {
+        "subtype": "Construction",
+        "count": 22
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 5
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 6
+      },
+      {
+        "subtype": "Motor",
+        "count": 8
+      },
+      {
+        "subtype": "Computer",
+        "count": 11
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 11
+      }
+    ],
+    "icon": "icons/S__Chaingun_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Interior_Turret_NPC",
+    "name": "(L) Interior Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 180,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 700,
+    "deviateShotAngle": 0.3,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -76,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 30,
+    "baseDamage": 50.0,
+    "maxTrajectory": 900,
+    "desiredSpeed": 900,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 5.0,
+    "sheetBaseDPS": 250.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 50.0,
+    "sheetAlphaDamage": 1500.0,
+    "sheetPeakDPS": 250.0,
+    "sheetSpeedEl": 103.13,
+    "sheetSpeedAz": 103.13,
+    "sheetTraverseDegPerSec": 103.13,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 120
+      },
+      {
+        "subtype": "Construction",
+        "count": 300
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 20
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 39
+      },
+      {
+        "subtype": "Motor",
+        "count": 97
+      },
+      {
+        "subtype": "Computer",
+        "count": 97
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 97
+      }
+    ],
+    "icon": "icons/L__Interior_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Flak_Turret_NPC",
+    "name": "(L) Flak Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 200,
+    "magsToLoad": 8,
+    "delayUntilFire": 30,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1800,
+    "deviateShotAngle": 0.3,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 75,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 101.0,
+    "detDamage": 1.0,
+    "fragments": 30,
+    "fragmentDegrees": 45,
+    "shrapnelBaseDmg": 400.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 0.25,
+    "sheetShotsPerSec": 1.021,
+    "sheetBaseDPS": 4085.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 4000.0,
+    "sheetAlphaDamage": 32000.0,
+    "sheetPeakDPS": 4090.0,
+    "sheetSpeedEl": 103.13,
+    "sheetSpeedAz": 103.13,
+    "sheetTraverseDegPerSec": 103.13,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 152822.0,
+    "sheetBuildTime": 102,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 160
+      },
+      {
+        "subtype": "Construction",
+        "count": 240
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 93
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 78
+      },
+      {
+        "subtype": "Motor",
+        "count": 140
+      },
+      {
+        "subtype": "Computer",
+        "count": 78
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 120
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 390
+      }
+    ],
+    "icon": "icons/L__Flak_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Flak_Turret_NPC",
+    "name": "(S) Flak Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 180,
+    "magsToLoad": 5,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1800,
+    "deviateShotAngle": 0.3,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 50,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 101.0,
+    "detDamage": 1.0,
+    "fragments": 30,
+    "fragmentDegrees": 45,
+    "shrapnelBaseDmg": 400.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 0.25,
+    "sheetShotsPerSec": 0.625,
+    "sheetBaseDPS": 2500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 4000.0,
+    "sheetAlphaDamage": 20000.0,
+    "sheetPeakDPS": 2500.0,
+    "sheetSpeedEl": 103.13,
+    "sheetSpeedAz": 103.13,
+    "sheetTraverseDegPerSec": 103.13,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 55806.0,
+    "sheetBuildTime": 37,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 40000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 57
+      },
+      {
+        "subtype": "Construction",
+        "count": 85
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 34
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 29
+      },
+      {
+        "subtype": "Motor",
+        "count": 51
+      },
+      {
+        "subtype": "Computer",
+        "count": 29
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 43
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 150
+      }
+    ],
+    "icon": "icons/S__Flak_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Flak_Gun_NPC",
+    "name": "(S) Flak Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 180,
+    "magsToLoad": 5,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.3,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1000.0,
+    "maxTrajectory": 2000,
+    "desiredSpeed": 900,
+    "detRadius": 101.0,
+    "detDamage": 1.0,
+    "fragments": 30,
+    "fragmentDegrees": 45,
+    "shrapnelBaseDmg": 400.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 0.25,
+    "sheetShotsPerSec": 0.625,
+    "sheetBaseDPS": 2500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 4000.0,
+    "sheetAlphaDamage": 20000.0,
+    "sheetPeakDPS": 2500.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 6860.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 7
+      },
+      {
+        "subtype": "Construction",
+        "count": 11
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 5
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 4
+      },
+      {
+        "subtype": "Motor",
+        "count": 7
+      },
+      {
+        "subtype": "Computer",
+        "count": 4
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 6
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 18
+      }
+    ],
+    "icon": "icons/S__Flak_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Cannon_Turret_NPC",
+    "name": "(L) Cannon Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 240,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 120,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2200,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.004,
+    "elevateRate": 0.004,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -15,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 6000.0,
+    "maxTrajectory": 2400,
+    "desiredSpeed": 600,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.8,
+    "sheetBaseDPS": 4800.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 6000.0,
+    "sheetAlphaDamage": 12000.0,
+    "sheetPeakDPS": 4800.0,
+    "sheetSpeedEl": 13.75,
+    "sheetSpeedAz": 13.75,
+    "sheetTraverseDegPerSec": 13.75,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 8,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 430
+      },
+      {
+        "subtype": "Construction",
+        "count": 220
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 86
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 150
+      },
+      {
+        "subtype": "Motor",
+        "count": 130
+      },
+      {
+        "subtype": "Computer",
+        "count": 71
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 150
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 360
+      }
+    ],
+    "icon": "icons/L__Cannon_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Cannon_Gun_NPC",
+    "name": "(L) Cannon Gun [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 40,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.1,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 6000.0,
+    "maxTrajectory": 2400,
+    "desiredSpeed": 600,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.667,
+    "sheetBaseDPS": 4000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 6000.0,
+    "sheetAlphaDamage": 24000.0,
+    "sheetPeakDPS": 4000.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 68146.0,
+    "sheetBuildTime": 45,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 140
+      },
+      {
+        "subtype": "Construction",
+        "count": 70
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 28
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 47
+      },
+      {
+        "subtype": "Motor",
+        "count": 42
+      },
+      {
+        "subtype": "Computer",
+        "count": 24
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 47
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 120
+      }
+    ],
+    "icon": "icons/L__Cannon_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Cannon_Turret_NPC",
+    "name": "(S) Cannon Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 40,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2000,
+    "deviateShotAngle": 0.2,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -15,
+    "maxElevation": 45,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 6000.0,
+    "maxTrajectory": 2400,
+    "desiredSpeed": 600,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.667,
+    "sheetBaseDPS": 4000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 6000.0,
+    "sheetAlphaDamage": 6000.0,
+    "sheetPeakDPS": 4000.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 110
+      },
+      {
+        "subtype": "Construction",
+        "count": 52
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 21
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 35
+      },
+      {
+        "subtype": "Motor",
+        "count": 31
+      },
+      {
+        "subtype": "Computer",
+        "count": 18
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 35
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 86
+      }
+    ],
+    "icon": "icons/S__Cannon_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Cannon_Gun_NPC",
+    "name": "(S) Cannon Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 40,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.1,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 6000.0,
+    "maxTrajectory": 2400,
+    "desiredSpeed": 600,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.667,
+    "sheetBaseDPS": 4000.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 6000.0,
+    "sheetAlphaDamage": 6000.0,
+    "sheetPeakDPS": 4000.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 28058.0,
+    "sheetBuildTime": 19,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 58
+      },
+      {
+        "subtype": "Construction",
+        "count": 29
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 12
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 20
+      },
+      {
+        "subtype": "Motor",
+        "count": 18
+      },
+      {
+        "subtype": "Computer",
+        "count": 10
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 20
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 49
+      }
+    ],
+    "icon": "icons/S__Cannon_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
+    "name": "(L) Heavy Cannon Hurricane Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 600,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 3000,
+    "deviateShotAngle": 0.03,
+    "rotateRate": 0.003,
+    "elevateRate": 0.003,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -5,
+    "maxElevation": 45,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 10000.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 600,
+    "detRadius": 5.0,
+    "detDamage": 70000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.182,
+    "sheetBaseDPS": 1818.0,
+    "sheetDetDPS": 12727.0,
+    "sheetDamagePerShot": 80000.0,
+    "sheetAlphaDamage": 160000.0,
+    "sheetPeakDPS": 14550.0,
+    "sheetSpeedEl": 10.31,
+    "sheetSpeedAz": 10.31,
+    "sheetTraverseDegPerSec": 10.31,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 497580.0,
+    "sheetBuildTime": 332,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 1100
+      },
+      {
+        "subtype": "Construction",
+        "count": 520
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 210
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 350
+      },
+      {
+        "subtype": "Motor",
+        "count": 310
+      },
+      {
+        "subtype": "Computer",
+        "count": 180
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 350
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 860
+      }
+    ],
+    "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Heavy_Cannon_Odin_Turret_NPC",
+    "name": "(L) Heavy Cannon Odin Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 1200,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 4000,
+    "deviateShotAngle": 0.05,
+    "rotateRate": 0.003,
+    "elevateRate": 0.003,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 70,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 10000.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 600,
+    "detRadius": 5.0,
+    "detDamage": 70000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.182,
+    "sheetBaseDPS": 1818.0,
+    "sheetDetDPS": 12727.0,
+    "sheetDamagePerShot": 80000.0,
+    "sheetAlphaDamage": 320000.0,
+    "sheetPeakDPS": 14550.0,
+    "sheetSpeedEl": 10.31,
+    "sheetSpeedAz": 10.31,
+    "sheetTraverseDegPerSec": 10.31,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 800000.0,
+    "sheetBuildTime": 533,
+    "durabilityMod": 0.5,
+    "techQty": 16,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 1700
+      },
+      {
+        "subtype": "Construction",
+        "count": 830
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 330
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 550
+      },
+      {
+        "subtype": "Motor",
+        "count": 500
+      },
+      {
+        "subtype": "Computer",
+        "count": 280
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 550
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 1400
+      }
+    ],
+    "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Railgun_Turret_NPC",
+    "name": "(L) Railgun Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 600,
+    "magsToLoad": 1,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 3000,
+    "deviateShotAngle": 0.01,
+    "rotateRate": 0.004,
+    "elevateRate": 0.004,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -15,
+    "maxElevation": 30,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.1202255639,
+    "magazineSize": 1,
+    "baseDamage": 66500.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 3000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.077,
+    "sheetBaseDPS": 5115.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 66500.0,
+    "sheetAlphaDamage": 66500.0,
+    "sheetPeakDPS": 5120.0,
+    "sheetSpeedEl": 13.75,
+    "sheetSpeedAz": 13.75,
+    "sheetTraverseDegPerSec": 13.75,
+    "requiredPower": 133.25,
+    "sheetEffectiveIntegrity": 225404.0,
+    "sheetBuildTime": 150,
+    "durabilityMod": 0.5,
+    "techQty": 10,
+    "pcu": 50000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 410
+      },
+      {
+        "subtype": "Construction",
+        "count": 130
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 41
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 81
+      },
+      {
+        "subtype": "Motor",
+        "count": 81
+      },
+      {
+        "subtype": "Computer",
+        "count": 110
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 310
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 610
+      }
+    ],
+    "icon": "icons/L__Railgun_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Railgun_Gun_NPC",
+    "name": "(L) Railgun Gun [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 600,
+    "magsToLoad": 1,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.01,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.1202255639,
+    "magazineSize": 1,
+    "baseDamage": 66500.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 3000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.077,
+    "sheetBaseDPS": 5115.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 66500.0,
+    "sheetAlphaDamage": 66500.0,
+    "sheetPeakDPS": 5120.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 133.25,
+    "sheetEffectiveIntegrity": 74194.0,
+    "sheetBuildTime": 49,
+    "durabilityMod": 0.5,
+    "techQty": 8,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 140
+      },
+      {
+        "subtype": "Construction",
+        "count": 40
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 14
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 27
+      },
+      {
+        "subtype": "Motor",
+        "count": 27
+      },
+      {
+        "subtype": "Computer",
+        "count": 34
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 100
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 200
+      }
+    ],
+    "icon": "icons/L__Railgun_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Railgun_Gun_NPC",
+    "name": "(S) Railgun Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 600,
+    "magsToLoad": 1,
+    "delayUntilFire": 30,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.01,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.05413533835,
+    "magazineSize": 1,
+    "baseDamage": 33250.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 2000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.087,
+    "sheetBaseDPS": 2891.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 33250.0,
+    "sheetAlphaDamage": 33300.0,
+    "sheetPeakDPS": 2890.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 30.0,
+    "sheetEffectiveIntegrity": 9462.0,
+    "sheetBuildTime": 6,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 40000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 17
+      },
+      {
+        "subtype": "Construction",
+        "count": 6
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 2
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 4
+      },
+      {
+        "subtype": "Motor",
+        "count": 4
+      },
+      {
+        "subtype": "Computer",
+        "count": 5
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 13
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 26
+      }
+    ],
+    "icon": "icons/S__Railgun_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__MAC_Gun_NPC",
+    "name": "(L) MAC Gun [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 4200,
+    "magsToLoad": 1,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.01071,
+    "magazineSize": 1,
+    "baseDamage": 2000000.0,
+    "maxTrajectory": 3300,
+    "desiredSpeed": 3000,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.014,
+    "sheetBaseDPS": 27397.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 2000000.0,
+    "sheetAlphaDamage": 2000000.0,
+    "sheetPeakDPS": 27400.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 357.0,
+    "sheetEffectiveIntegrity": 140726.0,
+    "sheetBuildTime": 94,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 260
+      },
+      {
+        "subtype": "Construction",
+        "count": 76
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 26
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 51
+      },
+      {
+        "subtype": "Motor",
+        "count": 51
+      },
+      {
+        "subtype": "Computer",
+        "count": 64
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 190
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 380
+      }
+    ],
+    "icon": "icons/L__MAC_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Rocket_Turret_NPC",
+    "name": "(L) Rocket Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 480,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 480,
+    "magsToLoad": 6,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1000,
+    "deviateShotAngle": 3.0,
+    "rotateRate": 0.02,
+    "elevateRate": 0.02,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -5,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 1000,
+    "detRadius": 7.0,
+    "detDamage": 15000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.686,
+    "sheetBaseDPS": 1.0,
+    "sheetDetDPS": 7714.0,
+    "sheetDamagePerShot": 11251.0,
+    "sheetAlphaDamage": 67500.0,
+    "sheetPeakDPS": 7710.0,
+    "sheetSpeedEl": 68.75,
+    "sheetSpeedAz": 68.75,
+    "sheetTraverseDegPerSec": 68.75,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 116532.0,
+    "sheetBuildTime": 78,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 67
+      },
+      {
+        "subtype": "Construction",
+        "count": 67
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 81
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 220
+      },
+      {
+        "subtype": "Motor",
+        "count": 170
+      },
+      {
+        "subtype": "Computer",
+        "count": 540
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 210
+      }
+    ],
+    "icon": "icons/L__Rocket_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Rocket_Turret_NPC",
+    "name": "(S) Rocket Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 320,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 260,
+    "magsToLoad": 2,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1000,
+    "deviateShotAngle": 3.0,
+    "rotateRate": 0.02,
+    "elevateRate": 0.02,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -8,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 1000,
+    "detRadius": 7.0,
+    "detDamage": 15000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.425,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 4779.0,
+    "sheetDamagePerShot": 11251.0,
+    "sheetAlphaDamage": 22500.0,
+    "sheetPeakDPS": 4780.0,
+    "sheetSpeedEl": 68.75,
+    "sheetSpeedAz": 68.75,
+    "sheetTraverseDegPerSec": 68.75,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 31404.0,
+    "sheetBuildTime": 21,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 18
+      },
+      {
+        "subtype": "Construction",
+        "count": 18
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 22
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 58
+      },
+      {
+        "subtype": "Motor",
+        "count": 44
+      },
+      {
+        "subtype": "Computer",
+        "count": 150
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 54
+      }
+    ],
+    "icon": "icons/S__Rocket_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Rocket_Launcher_NPC",
+    "name": "(L) Rocket Launcher [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 320,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 960,
+    "magsToLoad": 19,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 4.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 1000,
+    "detRadius": 7.0,
+    "detDamage": 15000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.971,
+    "sheetBaseDPS": 1.0,
+    "sheetDetDPS": 10927.0,
+    "sheetDamagePerShot": 11251.0,
+    "sheetAlphaDamage": 213800.0,
+    "sheetPeakDPS": 10930.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 56048.0,
+    "sheetBuildTime": 37,
+    "durabilityMod": 0.5,
+    "techQty": 3,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 33
+      },
+      {
+        "subtype": "Construction",
+        "count": 33
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 39
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 110
+      },
+      {
+        "subtype": "Motor",
+        "count": 78
+      },
+      {
+        "subtype": "Computer",
+        "count": 260
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 97
+      }
+    ],
+    "icon": "icons/L__Rocket_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Rocket_Launcher_NPC",
+    "name": "(S) Rocket Launcher [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 480,
+    "shotsInBurst": 4,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 900,
+    "reloadTime": 120,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 4.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 1000,
+    "detRadius": 7.0,
+    "detDamage": 15000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.229,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 2571.0,
+    "sheetDamagePerShot": 11251.0,
+    "sheetAlphaDamage": 45000.0,
+    "sheetPeakDPS": 2570.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 5000.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 1,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 3
+      },
+      {
+        "subtype": "Construction",
+        "count": 3
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 4
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 10
+      },
+      {
+        "subtype": "Motor",
+        "count": 7
+      },
+      {
+        "subtype": "Computer",
+        "count": 23
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 9
+      }
+    ],
+    "icon": "icons/S__Rocket_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Rocket_Launcher_Reloadable_NPC",
+    "name": "(S) Rocket Launcher Reloadable [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 480,
+    "shotsInBurst": 4,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 900,
+    "reloadTime": 120,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 4.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 1000,
+    "detRadius": 7.0,
+    "detDamage": 15000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.229,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 2571.0,
+    "sheetDamagePerShot": 11251.0,
+    "sheetAlphaDamage": 45000.0,
+    "sheetPeakDPS": 2570.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 5000.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 1,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 3
+      },
+      {
+        "subtype": "Construction",
+        "count": 3
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 4
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 10
+      },
+      {
+        "subtype": "Motor",
+        "count": 7
+      },
+      {
+        "subtype": "Computer",
+        "count": 23
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 9
+      }
+    ],
+    "icon": "icons/S__Rocket_Launcher_Reloadable.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Missile_Turret_NPC",
+    "name": "(L) Missile Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 480,
+    "shotsInBurst": 9,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 380,
+    "reloadTime": 410,
+    "magsToLoad": 36,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2300,
+    "deviateShotAngle": 1.0,
+    "rotateRate": 0.02,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": -15,
+    "maxElevation": 65,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 2800,
+    "desiredSpeed": 450,
+    "detRadius": 4.0,
+    "detDamage": 12000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.982,
+    "sheetBaseDPS": 1.0,
+    "sheetDetDPS": 8836.0,
+    "sheetDamagePerShot": 9001.0,
+    "sheetAlphaDamage": 81000.0,
+    "sheetPeakDPS": 8840.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 68.75,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 8,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 150
+      },
+      {
+        "subtype": "Construction",
+        "count": 57
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 29
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 290
+      },
+      {
+        "subtype": "Motor",
+        "count": 34
+      },
+      {
+        "subtype": "Computer",
+        "count": 570
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 570
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 570
+      }
+    ],
+    "icon": "icons/L__Missile_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Missile_Launcher_NPC",
+    "name": "(L) Missile Launcher [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 480,
+    "shotsInBurst": 9,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 380,
+    "reloadTime": 900,
+    "magsToLoad": 54,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2300,
+    "deviateShotAngle": 1.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 2800,
+    "desiredSpeed": 450,
+    "detRadius": 4.0,
+    "detDamage": 12000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.904,
+    "sheetBaseDPS": 1.0,
+    "sheetDetDPS": 8134.0,
+    "sheetDamagePerShot": 9001.0,
+    "sheetAlphaDamage": 81000.0,
+    "sheetPeakDPS": 8130.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 116532.0,
+    "sheetBuildTime": 78,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 80
+      },
+      {
+        "subtype": "Construction",
+        "count": 32
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 16
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 160
+      },
+      {
+        "subtype": "Motor",
+        "count": 20
+      },
+      {
+        "subtype": "Computer",
+        "count": 320
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 320
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 320
+      }
+    ],
+    "icon": "icons/L__Missile_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Missile_Launcher_NPC",
+    "name": "(S) Missile Launcher [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 240,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 480,
+    "magsToLoad": 4,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2000,
+    "deviateShotAngle": 1.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 2800,
+    "desiredSpeed": 450,
+    "detRadius": 4.0,
+    "detDamage": 12000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.444,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 4000.0,
+    "sheetDamagePerShot": 9001.0,
+    "sheetAlphaDamage": 36000.0,
+    "sheetPeakDPS": 4000.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 6860.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 5
+      },
+      {
+        "subtype": "Construction",
+        "count": 2
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 1
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 10
+      },
+      {
+        "subtype": "Motor",
+        "count": 2
+      },
+      {
+        "subtype": "Computer",
+        "count": 19
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 19
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 19
+      }
+    ],
+    "icon": "icons/S__Missile_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Tuukka_Missile_Turret_NPC",
+    "name": "(L) Tuukka Missile Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 1000,
+    "magsToLoad": 19,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 3000,
+    "deviateShotAngle": 0.5,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": -15,
+    "maxElevation": 50,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 3000,
+    "desiredSpeed": 500,
+    "detRadius": 6.0,
+    "detDamage": 30000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.533,
+    "sheetBaseDPS": 1.0,
+    "sheetDetDPS": 15981.0,
+    "sheetDamagePerShot": 30001.0,
+    "sheetAlphaDamage": 570000.0,
+    "sheetPeakDPS": 15980.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 10,
+    "pcu": 40000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 150
+      },
+      {
+        "subtype": "Construction",
+        "count": 57
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 29
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 290
+      },
+      {
+        "subtype": "Motor",
+        "count": 34
+      },
+      {
+        "subtype": "Computer",
+        "count": 570
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 570
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 570
+      }
+    ],
+    "icon": "icons/L__Tuukka_Missile_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Torpedo_Launcher_NPC",
+    "name": "(L) Torpedo Launcher [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 3300,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 3000,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 3500,
+    "desiredSpeed": 350,
+    "detRadius": 25.0,
+    "detDamage": 1500000.0,
+    "fragments": 1,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.018,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 26786.0,
+    "sheetDamagePerShot": 1500001.0,
+    "sheetAlphaDamage": 1500000.0,
+    "sheetPeakDPS": 26790.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 74194.0,
+    "sheetBuildTime": 49,
+    "durabilityMod": 0.5,
+    "techQty": 10,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 51
+      },
+      {
+        "subtype": "Construction",
+        "count": 21
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 11
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 110
+      },
+      {
+        "subtype": "Motor",
+        "count": 13
+      },
+      {
+        "subtype": "Computer",
+        "count": 210
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 210
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 210
+      }
+    ],
+    "icon": "icons/L__Torpedo_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Torpedo_Launcher_NPC",
+    "name": "(S) Torpedo Launcher [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 3300,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 3000,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 3500,
+    "desiredSpeed": 350,
+    "detRadius": 25.0,
+    "detDamage": 1500000.0,
+    "fragments": 1,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.018,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 26786.0,
+    "sheetDamagePerShot": 1500001.0,
+    "sheetAlphaDamage": 1500000.0,
+    "sheetPeakDPS": 26790.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50484.0,
+    "sheetBuildTime": 34,
+    "durabilityMod": 0.5,
+    "techQty": 8,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 35
+      },
+      {
+        "subtype": "Construction",
+        "count": 14
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 7
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 70
+      },
+      {
+        "subtype": "Motor",
+        "count": 9
+      },
+      {
+        "subtype": "Computer",
+        "count": 140
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 140
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 140
+      }
+    ],
+    "icon": "icons/S__Torpedo_Launcher.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__SRBM_Turret_NPC",
+    "name": "(L) SRBM Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 30,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 1200,
+    "magsToLoad": 8,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 4000,
+    "deviateShotAngle": 0.3,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 90,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 5000,
+    "desiredSpeed": 300,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 8,
+    "fragmentDegrees": 45,
+    "shrapnelBaseDmg": 1.0,
+    "shrapnelDetRadius": 5.0,
+    "shrapnelDetDmg": 17000.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.211,
+    "sheetBaseDPS": 2.0,
+    "sheetDetDPS": 28632.0,
+    "sheetDamagePerShot": 136009.0,
+    "sheetAlphaDamage": 1088100.0,
+    "sheetPeakDPS": 28630.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 800000.0,
+    "sheetBuildTime": 533,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 550
+      },
+      {
+        "subtype": "Construction",
+        "count": 220
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 110
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 1100
+      },
+      {
+        "subtype": "Motor",
+        "count": 140
+      },
+      {
+        "subtype": "Computer",
+        "count": 2200
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 2200
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 2200
+      }
+    ],
+    "icon": "icons/L__SRBM_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Spartan_Heavy_Laser_Turret_NPC",
+    "name": "(L) Spartan Heavy Laser Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 2,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 15,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1600,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0075,
+    "elevateRate": 0.0075,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -10,
+    "maxElevation": 80,
+    "heatPerShot": 2,
+    "maxHeat": 1200,
+    "cooldown": 0.5,
+    "heatSinkRate": 60,
+    "energyCost": 0.78,
+    "magazineSize": 60,
+    "baseDamage": 150.0,
+    "maxTrajectory": 1800,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 80.0,
+    "sheetBaseDPS": 4500.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 150.0,
+    "sheetAlphaDamage": 9000.0,
+    "sheetPeakDPS": 4500.0,
+    "sheetSpeedEl": 25.78,
+    "sheetSpeedAz": 25.78,
+    "sheetTraverseDegPerSec": 25.78,
+    "requiredPower": 234.0,
+    "sheetEffectiveIntegrity": 207258.0,
+    "sheetBuildTime": 138,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 40000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 95
+      },
+      {
+        "subtype": "Construction",
+        "count": 130
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 110
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 320
+      },
+      {
+        "subtype": "Motor",
+        "count": 63
+      },
+      {
+        "subtype": "Computer",
+        "count": 76
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 32
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 820
+      }
+    ],
+    "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Heavy_Laser_Turret_NPC",
+    "name": "(L) Heavy Laser Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1600,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.015,
+    "elevateRate": 0.015,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 90,
+    "heatPerShot": 2,
+    "maxHeat": 600,
+    "cooldown": 0.5,
+    "heatSinkRate": 30,
+    "energyCost": 0.78,
+    "magazineSize": 60,
+    "baseDamage": 150.0,
+    "maxTrajectory": 1800,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 60.0,
+    "sheetBaseDPS": 2250.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 150.0,
+    "sheetAlphaDamage": 9000.0,
+    "sheetPeakDPS": 2250.0,
+    "sheetSpeedEl": 51.57,
+    "sheetSpeedAz": 51.57,
+    "sheetTraverseDegPerSec": 51.57,
+    "requiredPower": 117.0,
+    "sheetEffectiveIntegrity": 92338.0,
+    "sheetBuildTime": 62,
+    "durabilityMod": 0.5,
+    "techQty": 6,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 43
+      },
+      {
+        "subtype": "Construction",
+        "count": 57
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 45
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 150
+      },
+      {
+        "subtype": "Motor",
+        "count": 29
+      },
+      {
+        "subtype": "Computer",
+        "count": 34
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 15
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 370
+      }
+    ],
+    "icon": "icons/L__Heavy_Laser_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Heavy_Laser_Gimbal_NPC",
+    "name": "(L) Heavy Laser Gimbal [NPC]",
+    "grid": "Large",
+    "type": "Gimbal",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -15,
+    "maxAzimuth": 15,
+    "minElevation": -15,
+    "maxElevation": 15,
+    "heatPerShot": 2,
+    "maxHeat": 600,
+    "cooldown": 0.5,
+    "heatSinkRate": 30,
+    "energyCost": 0.78,
+    "magazineSize": 60,
+    "baseDamage": 150.0,
+    "maxTrajectory": 1800,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 60.0,
+    "sheetBaseDPS": 2250.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 150.0,
+    "sheetAlphaDamage": 9000.0,
+    "sheetPeakDPS": 2250.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 117.0,
+    "sheetEffectiveIntegrity": 56048.0,
+    "sheetBuildTime": 37,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 26
+      },
+      {
+        "subtype": "Construction",
+        "count": 35
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 28
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 86
+      },
+      {
+        "subtype": "Motor",
+        "count": 18
+      },
+      {
+        "subtype": "Computer",
+        "count": 21
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 9
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 230
+      }
+    ],
+    "icon": "icons/L__Heavy_Laser_Gimbal.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Light_Laser_Turret_NPC",
+    "name": "(L) Light Laser Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1100,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.015,
+    "elevateRate": 0.015,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -18,
+    "maxElevation": 85,
+    "heatPerShot": 2,
+    "maxHeat": 600,
+    "cooldown": 0.5,
+    "heatSinkRate": 30,
+    "energyCost": 0.7866666667,
+    "magazineSize": 60,
+    "baseDamage": 75.0,
+    "maxTrajectory": 1300,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 60.0,
+    "sheetBaseDPS": 1125.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 75.0,
+    "sheetAlphaDamage": 4500.0,
+    "sheetPeakDPS": 1130.0,
+    "sheetSpeedEl": 51.57,
+    "sheetSpeedAz": 51.57,
+    "sheetTraverseDegPerSec": 51.57,
+    "requiredPower": 59.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 23
+      },
+      {
+        "subtype": "Construction",
+        "count": 31
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 25
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 76
+      },
+      {
+        "subtype": "Motor",
+        "count": 16
+      },
+      {
+        "subtype": "Computer",
+        "count": 19
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 8
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 200
+      }
+    ],
+    "icon": "icons/L__Light_Laser_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Light_Laser_Turret_NPC",
+    "name": "(S) Light Laser Turret [NPC]",
+    "grid": "Small",
+    "type": "Turret",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1100,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.02,
+    "elevateRate": 0.02,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -18,
+    "maxElevation": 60,
+    "heatPerShot": 2,
+    "maxHeat": 600,
+    "cooldown": 0.5,
+    "heatSinkRate": 30,
+    "energyCost": 0.2,
+    "magazineSize": 60,
+    "baseDamage": 75.0,
+    "maxTrajectory": 1300,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 60.0,
+    "sheetBaseDPS": 1125.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 75.0,
+    "sheetAlphaDamage": 4500.0,
+    "sheetPeakDPS": 1130.0,
+    "sheetSpeedEl": 68.75,
+    "sheetSpeedAz": 68.75,
+    "sheetTraverseDegPerSec": 68.75,
+    "requiredPower": 15.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 23
+      },
+      {
+        "subtype": "Construction",
+        "count": 31
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 25
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 76
+      },
+      {
+        "subtype": "Motor",
+        "count": 16
+      },
+      {
+        "subtype": "Computer",
+        "count": 19
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 8
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 200
+      }
+    ],
+    "icon": "icons/S__Light_Laser_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Light_Laser_Gun_NPC",
+    "name": "(S) Light Laser Gun [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 3600,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 2,
+    "maxHeat": 600,
+    "cooldown": 0.5,
+    "heatSinkRate": 30,
+    "energyCost": 0.2,
+    "magazineSize": 60,
+    "baseDamage": 75.0,
+    "maxTrajectory": 1300,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 60.0,
+    "sheetBaseDPS": 1125.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 75.0,
+    "sheetAlphaDamage": 4500.0,
+    "sheetPeakDPS": 1130.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 15.0,
+    "sheetEffectiveIntegrity": 5744.0,
+    "sheetBuildTime": 5,
+    "durabilityMod": 0.5,
+    "techQty": 2,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 3
+      },
+      {
+        "subtype": "Construction",
+        "count": 4
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 3
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 9
+      },
+      {
+        "subtype": "Motor",
+        "count": 2
+      },
+      {
+        "subtype": "Computer",
+        "count": 3
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 1
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 23
+      }
+    ],
+    "icon": "icons/S__Light_Laser_Gun.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Loki_Plasma_Turret_NPC",
+    "name": "(L) Loki Plasma Turret [NPC]",
+    "grid": "Large",
+    "type": "Turret",
+    "rateOfFire": 120,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 750,
+    "magsToLoad": 1,
+    "delayUntilFire": 120,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2500,
+    "deviateShotAngle": 0.1,
+    "rotateRate": 0.01,
+    "elevateRate": 0.01,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -15,
+    "maxElevation": 40,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 5865.0,
+    "magazineSize": 3,
+    "baseDamage": 1.0,
+    "maxTrajectory": 3000,
+    "desiredSpeed": 600,
+    "detRadius": 7.0,
+    "detDamage": 80000.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.188,
+    "sheetBaseDPS": 0.0,
+    "sheetDetDPS": 15000.0,
+    "sheetDamagePerShot": 80001.0,
+    "sheetAlphaDamage": 240000.0,
+    "sheetPeakDPS": 15000.0,
+    "sheetSpeedEl": 34.38,
+    "sheetSpeedAz": 34.38,
+    "sheetTraverseDegPerSec": 34.38,
+    "requiredPower": 195.5,
+    "sheetEffectiveIntegrity": 497580.0,
+    "sheetBuildTime": 332,
+    "durabilityMod": 0.5,
+    "techQty": 12,
+    "pcu": 60000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 230
+      },
+      {
+        "subtype": "Construction",
+        "count": 310
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 250
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 760
+      },
+      {
+        "subtype": "Motor",
+        "count": 160
+      },
+      {
+        "subtype": "Computer",
+        "count": 190
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 76
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 2000
+      }
+    ],
+    "icon": "icons/L__Loki_Plasma_Turret.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__PD_Laser_NPC",
+    "name": "(L) PD Laser [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 1200,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 3,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1000,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.06,
+    "elevateRate": 0.06,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 90,
+    "heatPerShot": 2,
+    "maxHeat": 200,
+    "cooldown": 0.95,
+    "heatSinkRate": 4,
+    "energyCost": 0.3,
+    "magazineSize": 1,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 10.0,
+    "sheetBaseDPS": 200.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 100.0,
+    "sheetPeakDPS": 200.0,
+    "sheetSpeedEl": 206.26,
+    "sheetSpeedAz": 206.26,
+    "sheetTraverseDegPerSec": 206.26,
+    "requiredPower": 10.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 23
+      },
+      {
+        "subtype": "Construction",
+        "count": 31
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 25
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 76
+      },
+      {
+        "subtype": "Motor",
+        "count": 16
+      },
+      {
+        "subtype": "Computer",
+        "count": 19
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 8
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 200
+      }
+    ],
+    "icon": "icons/L__PD_Laser.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__PD_Laser_NPC",
+    "name": "(S) PD Laser [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 1200,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 3,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 1000,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.06,
+    "elevateRate": 0.06,
+    "minAzimuth": -180,
+    "maxAzimuth": 180,
+    "minElevation": -20,
+    "maxElevation": 90,
+    "heatPerShot": 2,
+    "maxHeat": 200,
+    "cooldown": 0.95,
+    "heatSinkRate": 4,
+    "energyCost": 0.3,
+    "magazineSize": 1,
+    "baseDamage": 100.0,
+    "maxTrajectory": 1200,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 10.0,
+    "sheetBaseDPS": 200.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 100.0,
+    "sheetAlphaDamage": 100.0,
+    "sheetPeakDPS": 200.0,
+    "sheetSpeedEl": 206.26,
+    "sheetSpeedAz": 206.26,
+    "sheetTraverseDegPerSec": 206.26,
+    "requiredPower": 10.0,
+    "sheetEffectiveIntegrity": 13554.0,
+    "sheetBuildTime": 9,
+    "durabilityMod": 0.5,
+    "techQty": 4,
+    "pcu": 20000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 7
+      },
+      {
+        "subtype": "Construction",
+        "count": 9
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 7
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 21
+      },
+      {
+        "subtype": "Motor",
+        "count": 5
+      },
+      {
+        "subtype": "Computer",
+        "count": 5
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 3
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 54
+      }
+    ],
+    "icon": "icons/S__PD_Laser.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Warhead_NPC",
+    "name": "(L) Warhead [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 1,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 999999,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 200000.0,
+    "maxTrajectory": 0,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.0,
+    "sheetBaseDPS": 12.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 200000.0,
+    "sheetAlphaDamage": 200000.0,
+    "sheetPeakDPS": 10.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 0,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 34
+      },
+      {
+        "subtype": "Construction",
+        "count": 200
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 40
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 54
+      },
+      {
+        "subtype": "Motor",
+        "count": 67
+      },
+      {
+        "subtype": "Computer",
+        "count": 100
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 100
+      }
+    ],
+    "icon": "icons/L__Warhead.png",
+    "isNpc": true
+  },
+  {
+    "id": "S__Warhead_NPC",
+    "name": "(S) Warhead [NPC]",
+    "grid": "Small",
+    "type": "Fixed",
+    "rateOfFire": 60,
+    "shotsInBurst": 1,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 999999,
+    "reloadTime": 0,
+    "magsToLoad": 1,
+    "delayUntilFire": 0,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 0,
+    "deviateShotAngle": 0.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 50000.0,
+    "maxTrajectory": 0,
+    "desiredSpeed": 0,
+    "detRadius": 0.0,
+    "detDamage": 0.0,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0.0,
+    "shrapnelDetRadius": 0.0,
+    "shrapnelDetDmg": 0.0,
+    "chanceToHit": 1.0,
+    "sheetShotsPerSec": 0.0,
+    "sheetBaseDPS": 3.0,
+    "sheetDetDPS": 0.0,
+    "sheetDamagePerShot": 50000.0,
+    "sheetAlphaDamage": 50000.0,
+    "sheetPeakDPS": 0.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 50000.0,
+    "sheetBuildTime": 33,
+    "durabilityMod": 0.5,
+    "techQty": 0,
+    "pcu": 10000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 34
+      },
+      {
+        "subtype": "Construction",
+        "count": 200
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 40
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 54
+      },
+      {
+        "subtype": "Motor",
+        "count": 67
+      },
+      {
+        "subtype": "Computer",
+        "count": 100
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 100
+      }
+    ],
+    "icon": "icons/S__Warhead.png",
+    "isNpc": true
+  },
+  {
+    "id": "L__Drone_Bay_NPC",
+    "name": "(L) Drone Bay [NPC]",
+    "grid": "Large",
+    "type": "Fixed",
+    "rateOfFire": 3,
+    "shotsInBurst": 0,
+    "barrelsPerShot": 1,
+    "delayAfterBurst": 0,
+    "reloadTime": 600,
+    "magsToLoad": 3,
+    "delayUntilFire": 30,
+    "trajectilesPerBarrel": 1,
+    "maxTargetDistance": 2500,
+    "deviateShotAngle": 1.0,
+    "rotateRate": 0.0,
+    "elevateRate": 0.0,
+    "minAzimuth": 0,
+    "maxAzimuth": 0,
+    "minElevation": 0,
+    "maxElevation": 0,
+    "heatPerShot": 0,
+    "maxHeat": 0,
+    "cooldown": 0.0,
+    "heatSinkRate": 0,
+    "energyCost": 0.0,
+    "magazineSize": 1,
+    "baseDamage": 1.0,
+    "maxTrajectory": 30000,
+    "desiredSpeed": 150,
+    "detRadius": 5.0,
+    "detDamage": 20000.0,
+    "fragments": 260,
+    "fragmentDegrees": 4,
+    "shrapnelBaseDmg": 1.0,
+    "shrapnelDetRadius": 4.0,
+    "shrapnelDetDmg": 2500.0,
+    "chanceToHit": 0.5,
+    "sheetShotsPerSec": 0.043,
+    "sheetBaseDPS": 6.0,
+    "sheetDetDPS": 14681.0,
+    "sheetDamagePerShot": 345131.0,
+    "sheetAlphaDamage": 1035400.0,
+    "sheetPeakDPS": 14690.0,
+    "sheetSpeedEl": 0.0,
+    "sheetSpeedAz": 0.0,
+    "sheetTraverseDegPerSec": 0.0,
+    "requiredPower": 0.0,
+    "sheetEffectiveIntegrity": 98388.0,
+    "sheetBuildTime": 66,
+    "durabilityMod": 0.5,
+    "techQty": 8,
+    "pcu": 30000,
+    "idlePower": 0.0,
+    "components": [
+      {
+        "subtype": "SteelPlate",
+        "count": 68
+      },
+      {
+        "subtype": "Construction",
+        "count": 27
+      },
+      {
+        "subtype": "SmallTube",
+        "count": 14
+      },
+      {
+        "subtype": "LargeTube",
+        "count": 140
+      },
+      {
+        "subtype": "Motor",
+        "count": 17
+      },
+      {
+        "subtype": "Computer",
+        "count": 270
+      },
+      {
+        "subtype": "MetalGrid",
+        "count": 270
+      },
+      {
+        "subtype": "SteelPlate",
+        "count": 270
+      }
+    ],
+    "icon": "icons/L__Drone_Bay.png",
+    "isNpc": true
   }
 ];

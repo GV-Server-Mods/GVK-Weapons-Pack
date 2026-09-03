@@ -102,6 +102,7 @@ const btnBannerToggleDeck = document.getElementById('btnBannerToggleDeck');
 const btnCloseDeck = document.getElementById('btnCloseDeck');
 const studioGrid = document.getElementById('studioGrid');
 const btnResetDefaults = document.getElementById('btnResetDefaults');
+let showNpcWeapons = false;
 
 // Initialization
 document.addEventListener('DOMContentLoaded', async () => {
@@ -120,39 +121,60 @@ async function loadDatabases() {
     ]);
     weaponsDb = await wRes.json();
     componentsDb = await cRes.json();
-  } catch (err) {
-    console.warn("Fetch failed, using local script data fallback:", err);
-    if (window.GVK_DEFAULT_WEAPONS) {
-      weaponsDb = window.GVK_DEFAULT_WEAPONS;
-    }
-    if (window.GVK_DEFAULT_COMPONENTS) {
-      componentsDb = window.GVK_DEFAULT_COMPONENTS;
-    }
-  }
-
-  if (weaponsDb && weaponsDb.length > 0) {
     populateWeaponDropdowns();
-    // Default to Avenger or Flak Turret if found
-    const defaultWeapon = weaponsDb.find(w => w.name.includes("Flak Turret") || w.name.includes("Avenger")) || weaponsDb[0];
-    selectWeapon(defaultWeapon.id);
-    showToast(`Loaded ${weaponsDb.length} GVK weapon definitions & schemas.`, "success");
-  } else {
-    showToast("Error loading weapon database.", "error");
+    if (weaponsDb.length > 0) {
+      const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC')) || weaponsDb[0];
+      selectWeapon(first.id);
+    }
+    showToast("Weapons and Components databases loaded successfully!", "success");
+  } catch (err) {
+    console.warn("Fetch failed, falling back to bundled window data:", err);
+    if (window.GVK_DEFAULT_WEAPONS && window.GVK_DEFAULT_COMPONENTS) {
+      weaponsDb = window.GVK_DEFAULT_WEAPONS;
+      componentsDb = window.GVK_DEFAULT_COMPONENTS;
+      populateWeaponDropdowns();
+      if (weaponsDb.length > 0) {
+        const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC')) || weaponsDb[0];
+        selectWeapon(first.id);
+      }
+      showToast("Loaded weapons from local pre-baked cache.", "success");
+    } else {
+      showToast("Error loading weapon database.", "error");
+    }
   }
 }
 
-// Populate Dropdowns
+// Populate Dropdowns (Filtering NPC Weapons by default)
 function populateWeaponDropdowns() {
   weaponSelect.innerHTML = '';
   compareSelect.innerHTML = '<option value="">Select benchmark weapon...</option>';
 
-  const groups = { "Large Grid": [], "Small Grid": [] };
-  weaponsDb.forEach(w => {
-    if (w.grid === "Large") groups["Large Grid"].push(w);
-    else groups["Small Grid"].push(w);
+  const filtered = weaponsDb.filter(w => {
+    const isNpc = w.isNpc || w.id.endsWith('_NPC');
+    return showNpcWeapons ? true : !isNpc;
+  });
+
+  const groups = {
+    "Large Grid (Player)": [],
+    "Small Grid (Player)": [],
+    "Large Grid [NPC]": [],
+    "Small Grid [NPC]": []
+  };
+
+  filtered.forEach(w => {
+    const isNpc = w.isNpc || w.id.endsWith('_NPC');
+    if (w.grid === "Large") {
+      if (isNpc) groups["Large Grid [NPC]"].push(w);
+      else groups["Large Grid (Player)"].push(w);
+    } else {
+      if (isNpc) groups["Small Grid [NPC]"].push(w);
+      else groups["Small Grid (Player)"].push(w);
+    }
   });
 
   for (const [groupName, list] of Object.entries(groups)) {
+    if (list.length === 0) continue;
+
     const optGroup = document.createElement('optgroup');
     optGroup.label = groupName;
     const compareOptGroup = document.createElement('optgroup');
@@ -238,6 +260,11 @@ function populateDeckFromWeapon(w) {
   badgeType.innerHTML = `Mount: <strong>${w.type}</strong>`;
   badgeTech.innerHTML = `Tech: <strong>${w.techQty || 0} UPs</strong>`;
   badgePcu.innerHTML = `PCU: <strong>${(w.pcu || 0).toLocaleString()}</strong>`;
+
+  const badgeNpc = document.getElementById('badgeNpc');
+  if (badgeNpc) {
+    badgeNpc.style.display = (w.isNpc || w.id.endsWith('_NPC')) ? 'inline-block' : 'none';
+  }
 
   // Weapon Icons & Radar Legend
   const activeIconSrc = w.icon || `icons/${w.id}.png`;
@@ -1136,6 +1163,22 @@ function setupEventListeners() {
     }
     recalculate();
   });
+
+  const chkShowNpcWeapons = document.getElementById('chkShowNpcWeapons');
+  if (chkShowNpcWeapons) {
+    chkShowNpcWeapons.addEventListener('change', e => {
+      showNpcWeapons = e.target.checked;
+      const currentId = activeWeapon ? activeWeapon.id : null;
+      populateWeaponDropdowns();
+      if (currentId && weaponsDb.some(w => w.id === currentId && (showNpcWeapons || (!w.isNpc && !w.id.endsWith('_NPC'))))) {
+        weaponSelect.value = currentId;
+      } else {
+        const first = weaponsDb.find(w => !w.isNpc && !w.id.endsWith('_NPC'));
+        if (first) selectWeapon(first.id);
+      }
+      showToast(showNpcWeapons ? "Hostile / Relic NPC weapons unlocked in dropdowns." : "NPC weapons hidden from view.", "info");
+    });
+  }
 
   const inputs = [
     inputBarrelsPerShot, inputMagazineSize, inputMagsToLoad, inputShotsInBurst,

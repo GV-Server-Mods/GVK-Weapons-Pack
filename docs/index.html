@@ -59,6 +59,7 @@
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
         <div class="badge badge-amber" id="badgeTech">Tech: <strong>6 UPs</strong></div>
         <div class="badge badge-cyan" id="badgePcu">PCU: <strong>20,000</strong></div>
+        <div class="badge" id="badgeNpc" style="display: none; background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);">⚔️ NPC VARIANT</div>
         <button id="btnBannerToggleDeck" class="btn btn-cyan" style="margin-left: 8px;">🛠️ Customize Stats</button>
       </div>
     </div>
@@ -88,9 +89,13 @@
 
         <!-- Workbench Action Bar -->
         <div class="workbench-actions">
-          <div style="display: flex; gap: 8px;">
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
             <button id="btnNewWeapon" class="btn" title="Create a new custom weapon from scratch">+ New Custom Gun</button>
             <button id="btnLinkLocal" class="btn btn-cyan" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
+            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); cursor: pointer; user-select: none; background: var(--bg-input); padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border-color);" title="Show hostile/relic NPC weapon variants normally hidden from players">
+              <input type="checkbox" id="chkShowNpcWeapons" style="cursor: pointer; accent-color: var(--amber-primary);">
+              <span>Include NPC Weapons (_NPC)</span>
+            </label>
           </div>
           <div>
             <button id="btnOpenCode" class="btn btn-primary" title="View and copy generated C# and SBC definitions">⚡ Export Code & SBC</button>
