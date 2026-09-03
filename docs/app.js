@@ -1,3 +1,162 @@
+
+// ==========================================================================
+// WEAPONCORE CANONICAL DEFAULTS CONSTANTS (from Structure.cs & Weapon75ammo.cs)
+// ==========================================================================
+const WC_DEFAULTS = {
+  // ModelAssignmentsDef
+  spinPartId: "None",
+  muzzlePartId: "",
+  azimuthPartId: "",
+  elevationPartId: "",
+  iconName: "",
+  scope: "scope",
+  durabilityMod: 0.5,
+
+  // HardwareDef
+  rotateRate: 0.015,
+  elevateRate: 0.015,
+  minAzimuth: -180,
+  maxAzimuth: 180,
+  minElevation: -15,
+  maxElevation: 80,
+  homeAzimuth: 0,
+  homeElevation: 0,
+  inventorySize: 0.9,
+  idlePower: 0.01,
+  hardwareType: "BlockWeapon",
+  criticalChance: 0,
+  offsetX: 0, offsetY: 0, offsetZ: 0,
+
+  // LoadingDef
+  rateOfFire: 600,
+  barrelsPerShot: 1,
+  trajectilesPerBarrel: 1,
+  skipBarrels: 0,
+  reloadTime: 60,
+  magsToLoad: 1,
+  delayUntilFire: 0,
+  shotsInBurst: 0,
+  delayAfterBurst: 0,
+  heatPerShot: 0,
+  maxHeat: 0,
+  heatSinkRate: 0,
+  cooldown: 0.5,
+  fireFull: false,
+  giveUpAfter: false,
+  goHomeToReload: false,
+  dropTargetUntilLoaded: false,
+  degradeWithHeat: false,
+  useFillSound: false,
+
+  // HardPointDef
+  deviateShotAngle: 0.15,
+  aimingTolerance: 3.0,
+  aimLeadingPrediction: "Advanced",
+  delayCeaseFire: 0,
+  addToleranceToTracking: false,
+  canShootSubmerged: false,
+  npcSafe: true,
+
+  // TargetingDef
+  maxTargetDistance: 1500,
+  minTargetDistance: 0,
+  topTargets: 4,
+  topBlocks: 4,
+  stopTrackingSpeed: 1000,
+  maxCost: 0,
+  closestFirst: true,
+  ignoreDumbProjectiles: true,
+  lockedSmartOnly: false,
+
+  // OtherDef
+  constructPartCap: 0,
+  energyPriority: 0,
+  restrictionRadius: 0,
+  otherDebug: false,
+  checkInflatedBox: false,
+  checkForAnySupport: false,
+  stayCharged: false,
+  rotateToTarget: false,
+  stopTrackingAfterFiring: false,
+  noVoxelLOSCheck: false,
+
+  // AmmoDef Core
+  baseDamageCutoff: 0,
+  decayPerShot: 0,
+  energyCost: 0,
+  energyMagazineSize: 0,
+  heatModifier: 1.0,
+  heatNeededToFire: 0,
+  hybridRound: false,
+  noGridOrArmorScaling: false,
+  ignoreWater: false,
+  ignoreVoxels: false,
+  ignoreGrids: false,
+  allowNegativeHeatModifier: false,
+  gridsTargetSeekersTargetingThis: false,
+  shape: "LineShape",
+  diameter: -1,
+
+  // ObjectsHit
+  maxObjectsHit: 1,
+  countBlocks: true,
+  skipBlocksForAOE: false,
+
+  // DamageScales
+  maxIntegrity: 0,
+  damageToShields: 1.0,
+  characters: 1.0,
+  damageType: "BaseDamage",
+  armorArmor: -1,
+  lightArmor: -1,
+  heavyArmor: -1,
+  nonArmor: -1,
+  falloffDistance: 0,
+  falloffMinMult: 0,
+  gridLarge: -1,
+  gridSmall: -1,
+  shieldModifier: 1.0,
+  shieldType: "Default",
+  shieldBypassMod: 0,
+
+  // Trajectory & Smarts
+  accelPerSec: 0,
+  speedVariance: 0,
+  rangeVariance: 0,
+  deaccelTime: 0,
+  fieldExponent: 1.0,
+  targetLossDegree: 0,
+  targetLossTime: 0,
+  guidance: "None",
+  smartsInaccuracy: 0,
+  smartsAggressiveness: 1.0,
+  smartsNavAcceleration: 0,
+  smartsMaxLateralThrust: 0.5,
+  smartsNavAngle: 0,
+  smartsMinArmingRange: 0,
+  smartsScanRounds: 0,
+  smartsSpeedLimit: 0,
+  smartsVelocity: 0,
+  smartsSteeringLimit: 0,
+  smartsOverSteer: false,
+  smartsStepVel: false,
+  smartsAltNavigation: false,
+
+  // Visuals & Sync
+  visualProbability: 1.0,
+  shieldHitDraw: true,
+  tracerSegmentation: false,
+  trailEnable: false,
+  hitPlayChance: 1.0,
+  hitPlayShield: true,
+  syncFull: false,
+  syncPointDefense: true,
+  syncOnHitDeath: false,
+  syncInterval: 0,
+  syncPatchWindow: 0,
+  syncUpdateOnRandomize: false
+};
+
 // ==========================================================================
 // COMPREHENSIVE WEAPON & AMMO DOM REFERENCES
 // ==========================================================================
@@ -2502,11 +2661,13 @@ function generateCSharpWeapon() {
   const dur = wDurabilityMod.value || 0.5;
   const scope = wScope.value || 'scope';
   const muzzles = (wMuzzles.value || 'muzzle_missile_1').split(',').map(m => `"${m.trim()}"`).join(', ');
-  const spin = wSpinPartId ? wSpinPartId.value || 'None' : 'None';
-  const muzPart = wMuzzlePartId ? wMuzzlePartId.value : '';
-  const azPart = wAzimuthPartId ? wAzimuthPartId.value : '';
-  const elPart = wElevationPartId ? wElevationPartId.value : '';
-  const icon = wIconName ? wIconName.value : '';
+
+  // Optional mount subparts (only output if defined)
+  const spin = wSpinPartId ? wSpinPartId.value.trim() : '';
+  const muzPart = wMuzzlePartId ? wMuzzlePartId.value.trim() : '';
+  const azPart = wAzimuthPartId ? wAzimuthPartId.value.trim() : '';
+  const elPart = wElevationPartId ? wElevationPartId.value.trim() : '';
+  const icon = wIconName ? wIconName.value.trim() : '';
 
   // Assigned ammos array
   const ammosList = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
@@ -2536,7 +2697,7 @@ function generateCSharpWeapon() {
 `;
   code += `                        SubtypeId = "${sub}",
 `;
-  code += `                        SpinPartId = "${spin}",
+  if (spin && spin !== 'None') code += `                        SpinPartId = "${spin}",
 `;
   if (muzPart) code += `                        MuzzlePartId = "${muzPart}",
 `;
@@ -2546,7 +2707,7 @@ function generateCSharpWeapon() {
 `;
   code += `                        DurabilityMod = ${dur}f,
 `;
-  code += `                        IconName = "${icon}",
+  if (icon) code += `                        IconName = "${icon}",
 `;
   code += `                    },
 `;
@@ -2560,35 +2721,36 @@ function generateCSharpWeapon() {
 `;
   code += `                },
 `;
-  code += `                Scope = "${scope}",
+  if (scope && scope !== 'scope') code += `                Scope = "${scope}",
 `;
   code += `            },
 `;
 
-  // Threats array
-  const activeThreats = [];
-  if (wThreatGrids && wThreatGrids.checked) activeThreats.push('Grids');
-  if (wThreatProjectiles && wThreatProjectiles.checked) activeThreats.push('Projectiles');
-  if (wThreatCharacters && wThreatCharacters.checked) activeThreats.push('Characters');
-  if (wThreatMeteors && wThreatMeteors.checked) activeThreats.push('Meteors');
-  if (wThreatNeutrals && wThreatNeutrals.checked) activeThreats.push('Neutrals');
-  const threatsStr = activeThreats.length > 0 ? activeThreats.join(', ') : 'Grids';
-
-  // Subsystems array
-  const activeSubs = [];
-  if (wSubOffense && wSubOffense.checked) activeSubs.push('Offense');
-  if (wSubPower && wSubPower.checked) activeSubs.push('Power');
-  if (wSubProduction && wSubProduction.checked) activeSubs.push('Production');
-  if (wSubThrust && wSubThrust.checked) activeSubs.push('Thrust');
-  if (wSubJumping && wSubJumping.checked) activeSubs.push('Jumping');
-  if (wSubSteering && wSubSteering.checked) activeSubs.push('Steering');
-  if (wSubAny && wSubAny.checked) activeSubs.push('Any');
-  const subsStr = activeSubs.length > 0 ? activeSubs.join(', ') : 'Offense, Power, Thrust';
-
+  // Targeting: Helper or Inline
   if (activeWeapon.targetingPreset && !activeWeapon.targetingCustomized) {
     code += `            Targeting = ${activeWeapon.targetingPreset},
 `;
   } else {
+    // Threats array
+    const activeThreats = [];
+    if (wThreatGrids && wThreatGrids.checked) activeThreats.push('Grids');
+    if (wThreatProjectiles && wThreatProjectiles.checked) activeThreats.push('Projectiles');
+    if (wThreatCharacters && wThreatCharacters.checked) activeThreats.push('Characters');
+    if (wThreatMeteors && wThreatMeteors.checked) activeThreats.push('Meteors');
+    if (wThreatNeutrals && wThreatNeutrals.checked) activeThreats.push('Neutrals');
+    const threatsStr = activeThreats.length > 0 ? activeThreats.join(', ') : 'Grids';
+
+    // Subsystems array
+    const activeSubs = [];
+    if (wSubOffense && wSubOffense.checked) activeSubs.push('Offense');
+    if (wSubPower && wSubPower.checked) activeSubs.push('Power');
+    if (wSubProduction && wSubProduction.checked) activeSubs.push('Production');
+    if (wSubThrust && wSubThrust.checked) activeSubs.push('Thrust');
+    if (wSubJumping && wSubJumping.checked) activeSubs.push('Jumping');
+    if (wSubSteering && wSubSteering.checked) activeSubs.push('Steering');
+    if (wSubAny && wSubAny.checked) activeSubs.push('Any');
+    const subsStr = activeSubs.length > 0 ? activeSubs.join(', ') : 'Offense, Power, Thrust';
+
     code += `            Targeting = new TargetingDef
 `;
     code += `            {
@@ -2601,11 +2763,11 @@ function generateCSharpWeapon() {
 `;
     code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},
 `;
-    code += `                LockedTarget = ${wLockedSmartOnly.checked ? 'true' : 'false'},
+    if (wLockedSmartOnly && wLockedSmartOnly.checked) code += `                LockedTarget = true,
 `;
     code += `                MaxTargetDistance = ${wMaxTargetDistance.value},
 `;
-    code += `                MinTargetDistance = ${wMinTargetDistance.value},
+    if (parseFloat(wMinTargetDistance.value) > 0) code += `                MinTargetDistance = ${wMinTargetDistance.value},
 `;
     code += `                TopTargets = ${wTopTargets.value},
 `;
@@ -2619,6 +2781,7 @@ function generateCSharpWeapon() {
 `;
   }
 
+  // HardPoint
   code += `            HardPoint = new HardPointDef
 `;
   code += `            {
@@ -2631,51 +2794,16 @@ function generateCSharpWeapon() {
 `;
   code += `                AimLeadingPrediction = ${wAimLeading.value},
 `;
-  code += `                DelayCeaseFire = ${wDelayCeaseFire.value},
+  if (parseInt(wDelayCeaseFire.value, 10) > 0) code += `                DelayCeaseFire = ${wDelayCeaseFire.value},
 `;
   if (wAddToleranceToTracking && wAddToleranceToTracking.checked) code += `                AddToleranceToTracking = true,
 `;
   if (wCanShootSubmerged && wCanShootSubmerged.checked) code += `                CanShootSubmerged = true,
 `;
-  if (wNpcSafe) code += `                NpcSafe = ${wNpcSafe.checked ? 'true' : 'false'},
+  if (wNpcSafe && !wNpcSafe.checked) code += `                NpcSafe = false,
 `;
 
-  // UiDef
-  code += `                Ui = new UiDef
-`;
-  code += `                {
-`;
-  code += `                    RateOfFire = ${wUiRateOfFire && wUiRateOfFire.checked ? 'true' : 'false'},
-`;
-  code += `                    DamageModifier = ${wUiDamageModifier && wUiDamageModifier.checked ? 'true' : 'false'},
-`;
-  code += `                    ToggleGuidance = ${wUiToggleGuidance && wUiToggleGuidance.checked ? 'true' : 'false'},
-`;
-  code += `                    EnableOverload = ${wUiEnableOverload && wUiEnableOverload.checked ? 'true' : 'false'},
-`;
-  code += `                },
-`;
-
-  // AiDef
-  code += `                Ai = new AiDef
-`;
-  code += `                {
-`;
-  code += `                    TrackTargets = ${wAiTrackTargets && wAiTrackTargets.checked ? 'true' : 'false'},
-`;
-  code += `                    TurretAttached = ${wAiTurretAttached && wAiTurretAttached.checked ? 'true' : 'false'},
-`;
-  code += `                    TurretController = ${wAiTurretController && wAiTurretController.checked ? 'true' : 'false'},
-`;
-  code += `                    PrimaryTracking = ${wAiPrimaryTracking && wAiPrimaryTracking.checked ? 'true' : 'false'},
-`;
-  code += `                    LockOnFocus = ${wAiLockOnFocus && wAiLockOnFocus.checked ? 'true' : 'false'},
-`;
-  code += `                    SuppressActivityWhenTargetInfracted = ${wAiSuppressInfracted && wAiSuppressInfracted.checked ? 'true' : 'false'},
-`;
-  code += `                },
-`;
-
+  // HardwareDef
   code += `                HardWare = new HardwareDef
 `;
   code += `                {
@@ -2692,25 +2820,24 @@ function generateCSharpWeapon() {
 `;
   code += `                    MaxElevation = ${wMaxElevation.value},
 `;
-  if (wHomeAzimuth && parseFloat(wHomeAzimuth.value) !== 0) code += `                    HomeAzimuth = ${wHomeAzimuth.value},
-`;
-  if (wHomeElevation && parseFloat(wHomeElevation.value) !== 0) code += `                    HomeElevation = ${wHomeElevation.value},
-`;
-  code += `                    InventorySize = ${wInventorySize.value}f,
-`;
-  code += `                    IdlePower = ${wIdlePower.value}f,
-`;
-  code += `                    Type = ${wHardwareType ? wHardwareType.value : 'BlockWeapon'},
-`;
-  if (wCriticalChance && parseFloat(wCriticalChance.value) > 0) code += `                    CriticalChance = ${wCriticalChance.value}f,
-`;
-  if (wOffsetX && (parseFloat(wOffsetX.value) !== 0 || parseFloat(wOffsetY.value) !== 0 || parseFloat(wOffsetZ.value) !== 0)) {
-    code += `                    Offset = Vector(x: ${wOffsetX.value}f, y: ${wOffsetY.value}f, z: ${wOffsetZ.value}f),
-`;
+  const homeAz = safeFloat(wHomeAzimuth ? wHomeAzimuth.value : 0, 0);
+  const homeEl = safeFloat(wHomeElevation ? wHomeElevation.value : 0, 0);
+  if (homeAz !== 0) code += `                    HomeAzimuth = ${homeAz},\n`;
+  if (homeEl !== 0) code += `                    HomeElevation = ${homeEl},\n`;
+  code += `                    InventorySize = ${safeFloat(wInventorySize.value, 0.9)}f,\n`;
+  code += `                    IdlePower = ${safeFloat(wIdlePower.value, 0.01)}f,\n`;
+  if (wHardwareType && wHardwareType.value && wHardwareType.value !== 'BlockWeapon') code += `                    Type = ${wHardwareType.value},\n`;
+  const critChance = safeFloat(wCriticalChance ? wCriticalChance.value : 0, 0);
+  if (critChance > 0) code += `                    CriticalChance = ${critChance}f,\n`;
+  const offX = safeFloat(wOffsetX ? wOffsetX.value : 0, 0);
+  const offY = safeFloat(wOffsetY ? wOffsetY.value : 0, 0);
+  const offZ = safeFloat(wOffsetZ ? wOffsetZ.value : 0, 0);
+  if (offX !== 0 || offY !== 0 || offZ !== 0) {
+    code += `                    Offset = Vector(x: ${offX}f, y: ${offY}f, z: ${offZ}f),\n`;
   }
-  code += `                },
-`;
+  code += `                },\n`;
 
+  // LoadingDef
   code += `                Loading = new LoadingDef
 `;
   code += `                {
@@ -2729,14 +2856,16 @@ function generateCSharpWeapon() {
 `;
   if (wDelayUntilFire && parseInt(wDelayUntilFire.value, 10) > 0) code += `                    DelayUntilFire = ${wDelayUntilFire.value},
 `;
-  code += `                    HeatPerShot = ${wHeatPerShot.value}f,
+  if (parseFloat(wHeatPerShot.value) > 0 || parseFloat(wMaxHeat.value) > 0) {
+    code += `                    HeatPerShot = ${wHeatPerShot.value}f,
 `;
-  code += `                    MaxHeat = ${wMaxHeat.value},
+    code += `                    MaxHeat = ${wMaxHeat.value},
 `;
-  code += `                    HeatSinkRate = ${wHeatSinkRate.value},
+    code += `                    HeatSinkRate = ${wHeatSinkRate.value},
 `;
-  code += `                    Cooldown = ${wCooldown.value}f,
+    if (parseFloat(wCooldown.value) !== 0.5) code += `                    Cooldown = ${wCooldown.value}f,
 `;
+  }
   if (wShotsInBurst && parseInt(wShotsInBurst.value, 10) > 0) {
     code += `                    ShotsInBurst = ${wShotsInBurst.value},
 `;
@@ -2758,6 +2887,7 @@ function generateCSharpWeapon() {
   code += `                },
 `;
 
+  // HardPointAudioDef
   code += `                Audio = new HardPointAudioDef
 `;
   code += `                {
@@ -2768,45 +2898,79 @@ function generateCSharpWeapon() {
 `;
   if (wSoundFiringPerShot && wSoundFiringPerShot.checked) code += `                    FiringSoundPerShot = true,
 `;
-  code += `                    ReloadSound = "${wSoundReload.value}",
+  if (wSoundReload && wSoundReload.value) code += `                    ReloadSound = "${wSoundReload.value}",
 `;
-  code += `                    HardPointRotationSound = "${wSoundRotate.value}",
+  if (wSoundRotate && wSoundRotate.value) code += `                    HardPointRotationSound = "${wSoundRotate.value}",
 `;
-  code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",
+  if (wSoundNoAmmo && wSoundNoAmmo.value) code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",
 `;
   code += `                },
 `;
 
-  // OtherDef
-  code += `                Other = new OtherDef
+  // UiDef (only write if customized)
+  const uiCustom = (wUiDamageModifier && wUiDamageModifier.checked) || (wUiToggleGuidance && wUiToggleGuidance.checked) || (wUiEnableOverload && wUiEnableOverload.checked) || (wUiRateOfFire && !wUiRateOfFire.checked);
+  if (uiCustom) {
+    code += `                Ui = new UiDef
 `;
-  code += `                {
+    code += `                {
 `;
-  if (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) code += `                    ConstructPartCap = ${wConstructPartCap.value},
+    code += `                    RateOfFire = ${wUiRateOfFire && wUiRateOfFire.checked ? 'true' : 'false'},
 `;
-  if (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) code += `                    EnergyPriority = ${wEnergyPriority.value},
+    if (wUiDamageModifier && wUiDamageModifier.checked) code += `                    DamageModifier = true,
 `;
-  if (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) code += `                    RestrictionRadius = ${wRestrictionRadius.value}f,
+    if (wUiToggleGuidance && wUiToggleGuidance.checked) code += `                    ToggleGuidance = true,
 `;
-  if (wOtherDebug && wOtherDebug.checked) code += `                    Debug = true,
+    if (wUiEnableOverload && wUiEnableOverload.checked) code += `                    EnableOverload = true,
 `;
-  if (wCheckInflatedBox && wCheckInflatedBox.checked) code += `                    CheckInflatedBox = true,
+    code += `                },
 `;
-  if (wCheckForAnySupport && wCheckForAnySupport.checked) code += `                    CheckForAnySupport = true,
+  }
+
+  // OtherDef (only write if non-default)
+  const hasOtherNonDefault = (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) ||
+    (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) ||
+    (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) ||
+    (wOtherDebug && wOtherDebug.checked) ||
+    (wCheckInflatedBox && wCheckInflatedBox.checked) ||
+    (wCheckForAnySupport && wCheckForAnySupport.checked) ||
+    (wStayCharged && wStayCharged.checked) ||
+    (wRotateToTarget && wRotateToTarget.checked) ||
+    (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) ||
+    (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked);
+
+  if (hasOtherNonDefault) {
+    code += `                Other = new OtherDef
 `;
-  if (wStayCharged && wStayCharged.checked) code += `                    StayCharged = true,
+    code += `                {
 `;
-  if (wRotateToTarget && wRotateToTarget.checked) code += `                    RotateToTarget = true,
+    if (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) code += `                    ConstructPartCap = ${wConstructPartCap.value},
 `;
-  if (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) code += `                    StopTrackingAfterFiring = true,
+    if (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) code += `                    EnergyPriority = ${wEnergyPriority.value},
 `;
-  if (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked) code += `                    NoVoxelLOSCheck = true,
+    if (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) code += `                    RestrictionRadius = ${wRestrictionRadius.value}f,
 `;
-  code += `                },
+    if (wOtherDebug && wOtherDebug.checked) code += `                    Debug = true,
 `;
+    if (wCheckInflatedBox && wCheckInflatedBox.checked) code += `                    CheckInflatedBox = true,
+`;
+    if (wCheckForAnySupport && wCheckForAnySupport.checked) code += `                    CheckForAnySupport = true,
+`;
+    if (wStayCharged && wStayCharged.checked) code += `                    StayCharged = true,
+`;
+    if (wRotateToTarget && wRotateToTarget.checked) code += `                    RotateToTarget = true,
+`;
+    if (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) code += `                    StopTrackingAfterFiring = true,
+`;
+    if (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked) code += `                    NoVoxelLOSCheck = true,
+`;
+    code += `                },
+`;
+  }
+
   code += `            },
 `;
 
+  // Ammos Array
   code += `            Ammos = new[]
 `;
   code += `            {
@@ -2816,6 +2980,7 @@ function generateCSharpWeapon() {
   code += `            },
 `;
 
+  // Extended / Auto-Discovered Tags
   if (activeWeapon.extendedTags && Object.keys(activeWeapon.extendedTags).length > 0) {
     code += `            // Extended / Auto-Discovered WeaponCore Tags
 `;
@@ -2857,9 +3022,9 @@ function generateCSharpAmmo() {
 `;
   code += `            Mass = ${aMass.value}f,
 `;
-  code += `            Health = ${aHealth.value}f,
+  if (parseFloat(aHealth.value) > 0) code += `            Health = ${aHealth.value}f,
 `;
-  code += `            BackKickForce = ${aBackKick.value}f,
+  if (parseFloat(aBackKick.value) > 0) code += `            BackKickForce = ${aBackKick.value}f,
 `;
   if (aDecayPerShot && parseFloat(aDecayPerShot.value) > 0) code += `            DecayPerShot = ${aDecayPerShot.value}f,
 `;
@@ -2875,9 +3040,9 @@ function generateCSharpAmmo() {
 `;
   if (aHybridRound && aHybridRound.checked) code += `            HybridRound = true,
 `;
-  code += `            NpcSafe = ${aNpcSafe.checked ? 'true' : 'false'},
+  if (aNpcSafe && !aNpcSafe.checked) code += `            NpcSafe = false,
 `;
-  code += `            NoGridOrArmorScaling = ${aNoGridOrArmorScaling.checked ? 'true' : 'false'},
+  if (aNoGridOrArmorScaling && aNoGridOrArmorScaling.checked) code += `            NoGridOrArmorScaling = true,
 `;
   if (aIgnoreWater && aIgnoreWater.checked) code += `            IgnoreWater = true,
 `;
@@ -2890,19 +3055,21 @@ function generateCSharpAmmo() {
   if (aGridsTargetSeekersTargetingThis && aGridsTargetSeekersTargetingThis.checked) code += `            GridsTargetSeekersTargetingThis = true,
 `;
 
-  // ShapeDef
+  // ShapeDef (only output diameter if non-default)
   code += `            Shape = new ShapeDef
 `;
   code += `            {
 `;
   code += `                Shape = ${aShape.value},
 `;
-  code += `                Diameter = ${aDiameter.value}f,
+  if (parseFloat(aDiameter.value) > 0 || aShape.value === 'SphereShape') {
+    code += `                Diameter = ${aDiameter.value}f,
 `;
+  }
   code += `            },
 `;
 
-  // ObjectsHitDef
+  // ObjectsHitDef (only output if non-default)
   if (oMaxObjectsHit && (parseInt(oMaxObjectsHit.value, 10) > 1 || !oCountBlocks.checked || oSkipBlocksForAOE.checked)) {
     code += `            ObjectsHit = new ObjectsHitDef
 `;
@@ -2918,8 +3085,8 @@ function generateCSharpAmmo() {
 `;
   }
 
-  // FragmentDef
-  if (fEnable.checked && fChildAmmoRound.value) {
+  // FragmentDef (ONLY if enabled and populated)
+  if (fEnable.checked && fChildAmmoRound.value && parseInt(fFragments.value, 10) > 0) {
     code += `            Fragment = new FragmentDef
 `;
     code += `            {
@@ -2934,9 +3101,9 @@ function generateCSharpAmmo() {
 `;
     if (fOffset && parseFloat(fOffset.value) !== 0) code += `                Offset = ${fOffset.value}f,
 `;
-    code += `                Reverse = ${fReverse.checked ? 'true' : 'false'},
+    if (fReverse && fReverse.checked) code += `                Reverse = true,
 `;
-    code += `                DropVelocity = ${fDropVelocity.checked ? 'true' : 'false'},
+    if (fDropVelocity && fDropVelocity.checked) code += `                DropVelocity = true,
 `;
     if (fIgnoreArming && fIgnoreArming.checked) code += `                IgnoreArming = true,
 `;
@@ -2946,7 +3113,7 @@ function generateCSharpAmmo() {
 `;
   }
 
-  // AreaOfDamageDef
+  // AreaOfDamageDef (ONLY if enabled and radius > 0)
   const hasBlockAoe = aodBlockEnable && aodBlockEnable.checked && parseFloat(aodBlockRadius.value) > 0;
   const hasEolAoe = aodEolEnable && aodEolEnable.checked && parseFloat(aodEolRadius.value) > 0;
 
@@ -3031,7 +3198,7 @@ function generateCSharpAmmo() {
   code += `                Guidance = ${tGuidance.value},
 `;
 
-  // Smarts
+  // Smarts (ONLY if smart guidance or non-default navigation)
   if (tGuidance.value === 'Smart' || (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0)) {
     code += `                Smarts = new SmartsDef
 `;
@@ -3039,11 +3206,11 @@ function generateCSharpAmmo() {
 `;
     if (sInaccuracy && parseFloat(sInaccuracy.value) > 0) code += `                    Inaccuracy = ${sInaccuracy.value}f,
 `;
-    if (sAggressiveness) code += `                    Aggressiveness = ${sAggressiveness.value}f,
+    if (sAggressiveness && parseFloat(sAggressiveness.value) !== 1.0) code += `                    Aggressiveness = ${sAggressiveness.value}f,
 `;
     if (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0) code += `                    NavAcceleration = ${sNavAcceleration.value}f,
 `;
-    if (sMaxLateralThrust) code += `                    MaxLateralThrust = ${sMaxLateralThrust.value}f,
+    code += `                    MaxLateralThrust = ${sMaxLateralThrust.value}f,
 `;
     if (sNavAngle && parseFloat(sNavAngle.value) > 0) code += `                    NavAngle = ${sNavAngle.value}f,
 `;
@@ -3080,8 +3247,8 @@ function generateCSharpAmmo() {
   code += `            },
 `;
 
-  // PatternDef
-  if (pEnable && pEnable.checked && pPatterns.value) {
+  // PatternDef (ONLY if enabled)
+  if (pEnable && pEnable.checked && pPatterns.value.trim()) {
     const patList = pPatterns.value.split(',').map(p => `"${p.trim()}"`).join(', ');
     code += `            Pattern = new PatternDef
 `;
@@ -3093,19 +3260,19 @@ function generateCSharpAmmo() {
 `;
     code += `                TriggerChance = ${pTriggerChance.value}f,
 `;
-    code += `                SkipParent = ${pSkipParent.checked ? 'true' : 'false'},
+    if (pSkipParent && pSkipParent.checked) code += `                SkipParent = true,
 `;
-    code += `                Random = ${pRandom.checked ? 'true' : 'false'},
+    if (pRandom && pRandom.checked) code += `                Random = true,
 `;
-    code += `                PatternSteps = ${pPatternSteps.value},
+    if (parseInt(pPatternSteps.value, 10) > 1) code += `                PatternSteps = ${pPatternSteps.value},
 `;
-    code += `                Mode = ${pMode.value},
+    if (pMode && pMode.value !== 'Never') code += `                Mode = ${pMode.value},
 `;
     code += `            },
 `;
   }
 
-  // EwarDef
+  // EwarDef (ONLY if enabled)
   if (ewEnable && ewEnable.checked) {
     code += `            Ewar = new EwarDef
 `;
@@ -3125,9 +3292,9 @@ function generateCSharpAmmo() {
 `;
     code += `                MaxStacks = ${ewMaxStacks.value},
 `;
-    code += `                StackDuration = ${ewStackDuration.checked ? 'true' : 'false'},
+    if (ewStackDuration && ewStackDuration.checked) code += `                StackDuration = true,
 `;
-    code += `                Deplete = ${ewDeplete.checked ? 'true' : 'false'},
+    if (ewDeplete && ewDeplete.checked) code += `                Deplete = true,
 `;
     code += `            },
 `;
@@ -3142,19 +3309,19 @@ function generateCSharpAmmo() {
 `;
   code += `                DamageToShields = ${dsShield.value}f,
 `;
-  if (dsCharacters) code += `                Characters = ${dsCharacters.value}f,
+  if (dsCharacters && parseFloat(dsCharacters.value) !== 1.0) code += `                Characters = ${dsCharacters.value}f,
 `;
   code += `                Armor = new ArmorDef
 `;
   code += `                {
 `;
-  if (dsArmorArmor) code += `                    Armor = ${dsArmorArmor.value}f,
+  if (dsArmorArmor && parseFloat(dsArmorArmor.value) !== -1) code += `                    Armor = ${dsArmorArmor.value}f,
 `;
   code += `                    Light = ${dsLightArmor.value}f,
 `;
   code += `                    Heavy = ${dsHeavyArmor.value}f,
 `;
-  if (dsNonArmor) code += `                    NonArmor = ${dsNonArmor.value}f,
+  if (dsNonArmor && parseFloat(dsNonArmor.value) !== -1) code += `                    NonArmor = ${dsNonArmor.value}f,
 `;
   code += `                },
 `;
@@ -3182,57 +3349,68 @@ function generateCSharpAmmo() {
     code += `                },
 `;
   }
-  code += `                DamageType = new DamageTypes
+  if (dsDamageType && dsDamageType.value !== 'BaseDamage') {
+    code += `                DamageType = new DamageTypes
 `;
-  code += `                {
+    code += `                {
 `;
-  code += `                    BaseDamage = true,
+    code += `                    ${dsDamageType.value} = true,
 `;
-  code += `                },
+    code += `                },
 `;
-  code += `                Shields = new ShieldDef
+  }
+  if (dsShieldType && (dsShieldType.value !== 'Default' || parseFloat(dsShieldBypassMod.value) > 0)) {
+    code += `                Shields = new ShieldDef
 `;
-  code += `                {
+    code += `                {
 `;
-  code += `                    Modifier = ${dsShieldModifier.value}f,
+    code += `                    Modifier = ${dsShieldModifier.value}f,
 `;
-  code += `                    Type = ${dsShieldType.value},
+    code += `                    Type = ${dsShieldType.value},
 `;
-  if (dsShieldBypassMod && parseFloat(dsShieldBypassMod.value) > 0) code += `                    BypassModifier = ${dsShieldBypassMod.value}f,
+    if (parseFloat(dsShieldBypassMod.value) > 0) code += `                    BypassModifier = ${dsShieldBypassMod.value}f,
 `;
-  code += `                },
+    code += `                },
 `;
+  }
   code += `            },
 `;
 
-  // SynchronizeDef
-  code += `            Sync = new SynchronizeDef
+  // SynchronizeDef (ONLY if non-default)
+  const isSyncCustom = (syncFull && syncFull.checked) ||
+    (syncPointDefense && !syncPointDefense.checked) ||
+    (syncOnHitDeath && syncOnHitDeath.checked) ||
+    (syncInterval && parseInt(syncInterval.value, 10) > 0);
+
+  if (isSyncCustom) {
+    code += `            Sync = new SynchronizeDef
 `;
-  code += `            {
+    code += `            {
 `;
-  code += `                Full = ${syncFull && syncFull.checked ? 'true' : 'false'},
+    if (syncFull && syncFull.checked) code += `                Full = true,
 `;
-  code += `                PointDefense = ${syncPointDefense && syncPointDefense.checked ? 'true' : 'false'},
+    if (syncPointDefense && !syncPointDefense.checked) code += `                PointDefense = false,
 `;
-  code += `                OnHitDeath = ${syncOnHitDeath && syncOnHitDeath.checked ? 'true' : 'false'},
+    if (syncOnHitDeath && syncOnHitDeath.checked) code += `                OnHitDeath = true,
 `;
-  if (syncInterval && parseInt(syncInterval.value, 10) > 0) code += `                PositionSyncInterval = ${syncInterval.value},
+    if (syncInterval && parseInt(syncInterval.value, 10) > 0) code += `                PositionSyncInterval = ${syncInterval.value},
 `;
-  if (syncPatchWindow && parseInt(syncPatchWindow.value, 10) > 0) code += `                PositionPatchWindow = ${syncPatchWindow.value},
+    if (syncPatchWindow && parseInt(syncPatchWindow.value, 10) > 0) code += `                PositionPatchWindow = ${syncPatchWindow.value},
 `;
-  if (syncUpdateOnRandomize && syncUpdateOnRandomize.checked) code += `                PositionUpdateOnRandomize = true,
+    if (syncUpdateOnRandomize && syncUpdateOnRandomize.checked) code += `                PositionUpdateOnRandomize = true,
 `;
-  code += `            },
+    code += `            },
 `;
+  }
 
   // GraphicDef
   code += `            Graphic = new GraphicDef
 `;
   code += `            {
 `;
-  code += `                VisualProbability = ${gVisualProb.value}f,
+  if (parseFloat(gVisualProb.value) !== 1.0) code += `                VisualProbability = ${gVisualProb.value}f,
 `;
-  if (gShieldHitDraw) code += `                ShieldHitDraw = ${gShieldHitDraw.checked ? 'true' : 'false'},
+  if (gShieldHitDraw && !gShieldHitDraw.checked) code += `                ShieldHitDraw = false,
 `;
   code += `                Lines = new LineDef
 `;
@@ -3248,10 +3426,12 @@ function generateCSharpAmmo() {
 `;
   code += `                        Width = ${gTracerWidth.value}f,
 `;
-  if (gTracerColor) code += `                        Color = Color(${gTracerColor.value}),
+  if (gTracerColor && gTracerColor.value.trim()) code += `                        Color = Color(${gTracerColor.value}),
 `;
-  if (gTracerTexture) code += `                        Textures = new[] { "${gTracerTexture.value}" },
+  if (gTracerTexture && gTracerTexture.value.trim() && gTracerTexture.value !== 'WeaponLaser') {
+    code += `                        Textures = new[] { "${gTracerTexture.value}" },
 `;
+  }
   if (gTracerSegmented && gTracerSegmented.checked) code += `                        Segmentation = true,
 `;
   code += `                    },
@@ -3263,15 +3443,15 @@ function generateCSharpAmmo() {
 `;
     code += `                        Enable = true,
 `;
-    code += `                        AlwaysDraw = ${gTrailAlwaysDraw.checked ? 'true' : 'false'},
+    if (gTrailAlwaysDraw && gTrailAlwaysDraw.checked) code += `                        AlwaysDraw = true,
 `;
     code += `                        DecayTime = ${gTrailDecay.value},
 `;
     code += `                        CustomWidth = ${gTrailWidth.value}f,
 `;
-    if (gTrailColor) code += `                        Color = Color(${gTrailColor.value}),
+    if (gTrailColor && gTrailColor.value.trim()) code += `                        Color = Color(${gTrailColor.value}),
 `;
-    if (gTrailTextures) code += `                        Textures = new[] { "${gTrailTextures.value}" },
+    if (gTrailTextures && gTrailTextures.value.trim()) code += `                        Textures = new[] { "${gTrailTextures.value}" },
 `;
     code += `                    },
 `;
@@ -3281,32 +3461,43 @@ function generateCSharpAmmo() {
   code += `            },
 `;
 
-  // AudioDef
-  code += `            Audio = new AmmoAudioDef
-`;
-  code += `            {
-`;
-  if (aSoundShot && aSoundShot.value) code += `                ShotSound = "${aSoundShot.value}",
-`;
-  code += `                TravelSound = "${aSoundTravel.value}",
-`;
-  code += `                HitSound = "${aSoundHit.value}",
-`;
-  code += `                ShieldHitSound = "${aSoundShieldHit.value}",
-`;
-  if (aSoundVoxelHit && aSoundVoxelHit.value) code += `                VoxelHitSound = "${aSoundVoxelHit.value}",
-`;
-  if (aSoundPlayerHit && aSoundPlayerHit.value) code += `                PlayerHitSound = "${aSoundPlayerHit.value}",
-`;
-  if (aSoundWaterHit && aSoundWaterHit.value) code += `                WaterHitSound = "${aSoundWaterHit.value}",
-`;
-  if (aHitPlayChance) code += `                HitPlayChance = ${aHitPlayChance.value}f,
-`;
-  if (aHitPlayShield) code += `                HitPlayShield = ${aHitPlayShield.checked ? 'true' : 'false'},
-`;
-  code += `            },
-`;
+  // AudioDef (only write sounds that are defined)
+  const hasAudio = (aSoundShot && aSoundShot.value.trim()) ||
+    (aSoundTravel && aSoundTravel.value.trim()) ||
+    (aSoundHit && aSoundHit.value.trim()) ||
+    (aSoundShieldHit && aSoundShieldHit.value.trim()) ||
+    (aSoundVoxelHit && aSoundVoxelHit.value.trim()) ||
+    (aSoundPlayerHit && aSoundPlayerHit.value.trim()) ||
+    (aSoundWaterHit && aSoundWaterHit.value.trim());
 
+  if (hasAudio) {
+    code += `            Audio = new AmmoAudioDef
+`;
+    code += `            {
+`;
+    if (aSoundShot && aSoundShot.value.trim()) code += `                ShotSound = "${aSoundShot.value}",
+`;
+    if (aSoundTravel && aSoundTravel.value.trim()) code += `                TravelSound = "${aSoundTravel.value}",
+`;
+    if (aSoundHit && aSoundHit.value.trim()) code += `                HitSound = "${aSoundHit.value}",
+`;
+    if (aSoundShieldHit && aSoundShieldHit.value.trim()) code += `                ShieldHitSound = "${aSoundShieldHit.value}",
+`;
+    if (aSoundVoxelHit && aSoundVoxelHit.value.trim()) code += `                VoxelHitSound = "${aSoundVoxelHit.value}",
+`;
+    if (aSoundPlayerHit && aSoundPlayerHit.value.trim()) code += `                PlayerHitSound = "${aSoundPlayerHit.value}",
+`;
+    if (aSoundWaterHit && aSoundWaterHit.value.trim()) code += `                WaterHitSound = "${aSoundWaterHit.value}",
+`;
+    if (aHitPlayChance && parseFloat(aHitPlayChance.value) !== 1.0) code += `                HitPlayChance = ${aHitPlayChance.value}f,
+`;
+    if (aHitPlayShield && !aHitPlayShield.checked) code += `                HitPlayShield = false,
+`;
+    code += `            },
+`;
+  }
+
+  // Extended / Auto-Discovered Tags
   if (activeAmmo.extendedTags && Object.keys(activeAmmo.extendedTags).length > 0) {
     code += `            // Extended / Auto-Discovered WeaponCore Tags
 `;
