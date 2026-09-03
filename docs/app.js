@@ -490,10 +490,7 @@ const DEFAULT_BALANCE_MATRIX = {
   midSize: 1.0,
   maxSize: 125.0,
   assemblerEff: 3.0,
-  scrapYield: 0.25,
-  mixHeavy: 1,
-  mixLight: 1,
-  mixNonArmor: 1
+  scrapYield: 0.25
 };
 
 let balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
@@ -540,6 +537,7 @@ const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
 const outSustainedDps = document.getElementById('outSustainedDps');
 const outDpsBreakdown = document.getElementById('outDpsBreakdown');
 const outEffectiveDps = document.getElementById('outEffectiveDps');
+const teleDpsType = document.getElementById('teleDpsType');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
 const outDamagePerShot = document.getElementById('outDamagePerShot');
 const outShotsPerSec = document.getElementById('outShotsPerSec');
@@ -2239,34 +2237,36 @@ function renderSbcComponentsTable() {
 // ==========================================================================
 
 /// <summary>
-/// Blends heavy/light/non-armor multipliers into one effective multiplier using
-/// Balance Matrix target-mix weights (equal weights = simple average). Unset (-1) resolves to 1.0.
+/// Finds the highest armor multiplier (Heavy / Light / Non-Armor; unset (-1) = 1.0).
+/// Two-way ties join labels; all-equal reports "All Targets".
 /// </summary>
-function getBlendMultiplier(ds = {}) {
+function getTopArmorProfile(ds = {}) {
   const heavy = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const light = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
   const nonArmor = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
-  const wH = (balanceMatrix.mixHeavy !== undefined) ? Math.max(0, balanceMatrix.mixHeavy) : 1;
-  const wL = (balanceMatrix.mixLight !== undefined) ? Math.max(0, balanceMatrix.mixLight) : 1;
-  const wN = (balanceMatrix.mixNonArmor !== undefined) ? Math.max(0, balanceMatrix.mixNonArmor) : 1;
-  const total = wH + wL + wN;
-  if (total <= 0) return 1.0;
-  return (wH * heavy + wL * light + wN * nonArmor) / total;
+  const max = Math.max(heavy, light, nonArmor);
+  const names = [];
+  if (heavy === max) names.push('Heavy Armor');
+  if (light === max) names.push('Light Armor');
+  if (nonArmor === max) names.push('Non-Armor (Systems)');
+  const label = (names.length === 3) ? 'All Targets' : names.join(' & ');
+  return { label, mult: max };
 }
 
-function updateCombatTelemetry() {
-  if (!activeWeapon || !activeAmmo) return;
-
+/// <summary>
+/// Computes paper (unmultiplied) sustained DPS and cycle stats from the workbench inputs.
+/// Shared by telemetry, TTK and radar so paper vs effective never double-apply the multiplier.
+/// </summary>
+function computeSustainedDps() {
   const rof = parseFloat(wRateOfFire.value) || 1000;
   const barrels = parseFloat(wBarrelsPerShot.value) || 1;
   const reloadTicks = parseFloat(wReloadTime.value) || 0;
   const magsToLoad = parseFloat(wMagsToLoad.value) || 1;
-  const magSize = activeWeapon.magazineSize || 100;
+  const magSize = activeWeapon ? (activeWeapon.magazineSize || 100) : 100;
 
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const alphaVolley = dmgDetails.instantTotal * barrels;
 
-  // True Rate of Fire & Sustained Cycle
   const totalRounds = magSize * magsToLoad;
   const fireDurationSec = (totalRounds / rof) * 60;
   const reloadSec = reloadTicks / 60;
@@ -2283,12 +2283,19 @@ function updateCombatTelemetry() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
+  return { rof, barrels, magSize, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
+}
+
+function updateCombatTelemetry() {
+  if (!activeWeapon || !activeAmmo) return;
+
+  const { rof, barrels, magSize, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
+
   // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
   const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
-  const blendMult = getBlendMultiplier(ds);
   const perHit = dmgDetails.perBlockBase;
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
 
@@ -2316,10 +2323,16 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Update Hero Metrics
-  outSustainedDps.textContent = sustainedDps.toLocaleString();
+  // Update Hero Metrics (big number = effective vs best-fit target; blue line is the disclaimer)
+  const topProfile = getTopArmorProfile(activeAmmo.damageScales || {});
+  const effectiveDps = Math.round(sustainedDps * topProfile.mult);
+  outSustainedDps.textContent = effectiveDps.toLocaleString();
+  if (teleDpsType) {
+    teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}`;
+  }
   if (outEffectiveDps) {
-    outEffectiveDps.textContent = `⚡ Effective vs mixed hull: ${Math.round(sustainedDps * blendMult).toLocaleString()} DPS (×${blendMult.toFixed(2)})`;
+    const multTag = (topProfile.label === 'All Targets' && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
+    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Paper: ${sustainedDps.toLocaleString()} DPS`;
   }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
@@ -2492,7 +2505,7 @@ function updateCombatTelemetry() {
   }
 
   // Sticky HUD updates
-  hudDps.textContent = sustainedDps.toLocaleString();
+  hudDps.textContent = effectiveDps.toLocaleString();
   hudRange.textContent = `${tMaxTrajectory.value || 1500}m`;
 
   // Render BOM Table
@@ -2538,8 +2551,7 @@ function updateTtkSimulator() {
   const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels);
   const shotsNeeded = Math.ceil(targetHp / effectiveVolley);
 
-  const dpsText = outSustainedDps.textContent.replace(/,/g, '');
-  const sustainedDps = parseFloat(dpsText) || 1;
+  const sustainedDps = computeSustainedDps().sustainedDps || 1;
   const effectiveSustainedDps = sustainedDps * (effectiveDmgPerShot / Math.max(1, dmgDetails.total));
 
   const ttkSeconds = (targetHp / Math.max(1, effectiveSustainedDps));
@@ -2913,8 +2925,8 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
     integrity = weapon.effectiveIntegrity;
   }
 
-  const blend = getBlendMultiplier(a.damageScales || {});
-  return { sustainedDps, effectiveDps: Math.round(sustainedDps * blend), alphaVolley, range, velocity, tracking, integrity };
+  const effectiveDps = Math.round(sustainedDps * getTopArmorProfile(a.damageScales || {}).mult);
+  return { sustainedDps, effectiveDps, alphaVolley, range, velocity, tracking, integrity };
 }
 
 function getModMaxMetrics() {
@@ -2927,7 +2939,7 @@ function getModMaxMetrics() {
 
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
-    if (m.sustainedDps > maxDps) maxDps = m.sustainedDps;
+    if (m.effectiveDps > maxDps) maxDps = m.effectiveDps;
     if (m.alphaVolley > maxAlpha) maxAlpha = m.alphaVolley;
     if (m.range > maxRange) maxRange = m.range;
     if (m.velocity > maxVel) maxVel = m.velocity;
@@ -3067,7 +3079,7 @@ function updateComparisonRadar() {
     }
 
     const bStats = [
-      Math.min(1, Math.max(0, bMetrics.sustainedDps / modMax.maxDps)),
+      Math.min(1, Math.max(0, bMetrics.effectiveDps / modMax.maxDps)),
       Math.min(1, Math.max(0, bMetrics.alphaVolley / modMax.maxAlpha)),
       Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
       Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel)),
@@ -3076,8 +3088,8 @@ function updateComparisonRadar() {
     ];
 
     drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
-    const activeBlend = getBlendMultiplier(activeAmmo ? (activeAmmo.damageScales || {}) : {});
-    renderCompareTable(activeDps, Math.round(activeDps * activeBlend), activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
+    const activeSustained = computeSustainedDps().sustainedDps;
+    renderCompareTable(activeSustained, activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
                        bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {
     if (compBenchIcon) compBenchIcon.style.display = 'none';
@@ -3110,7 +3122,7 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
 function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bEffDps, bAlpha, bRange, bVel, bTrack, bInteg) {
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
-    { name: 'Effective DPS (mix)', a: aEffDps, b: bEffDps, unit: '' },
+    { name: 'Effective DPS', a: aEffDps, b: bEffDps, unit: '' },
     { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
     { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm' },
     { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
@@ -4946,9 +4958,6 @@ function syncBalanceMatrixInputs() {
   document.getElementById('matMaxSize').value = balanceMatrix.maxSize;
   document.getElementById('matAssemblerEff').value = balanceMatrix.assemblerEff;
   document.getElementById('matScrapYield').value = balanceMatrix.scrapYield;
-  document.getElementById('matMixHeavy').value = balanceMatrix.mixHeavy;
-  document.getElementById('matMixLight').value = balanceMatrix.mixLight;
-  document.getElementById('matMixNonArmor').value = balanceMatrix.mixNonArmor;
 }
 
 function applyBalanceMatrixInputs() {
@@ -4963,13 +4972,6 @@ function applyBalanceMatrixInputs() {
   balanceMatrix.maxSize = parseFloat(document.getElementById('matMaxSize').value) || 125;
   balanceMatrix.assemblerEff = parseFloat(document.getElementById('matAssemblerEff').value) || 3.0;
   balanceMatrix.scrapYield = parseFloat(document.getElementById('matScrapYield').value) || 0.25;
-  // Mix weights: 0 is a legitimate weight, so only NaN falls back to default
-  const mixHeavy = parseFloat(document.getElementById('matMixHeavy').value);
-  const mixLight = parseFloat(document.getElementById('matMixLight').value);
-  const mixNonArmor = parseFloat(document.getElementById('matMixNonArmor').value);
-  balanceMatrix.mixHeavy = isNaN(mixHeavy) ? 1 : Math.max(0, mixHeavy);
-  balanceMatrix.mixLight = isNaN(mixLight) ? 1 : Math.max(0, mixLight);
-  balanceMatrix.mixNonArmor = isNaN(mixNonArmor) ? 1 : Math.max(0, mixNonArmor);
 
   localStorage.setItem('GVK_BALANCE_MATRIX', JSON.stringify(balanceMatrix));
   updateCombatTelemetry();

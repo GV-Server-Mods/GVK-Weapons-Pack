@@ -51,7 +51,7 @@
       </div>
       <div style="padding: 16px;">
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
-          These 14 global server multipliers govern structural integrity curves, build times, Space Credits valuations, target-mix damage blending, and assembler logistics across all GVK weapons.
+          These 11 global server multipliers govern structural integrity curves, build times, Space Credits valuations, and assembler logistics across all GVK weapons.
         </p>
         <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
           <div class="control-item">
@@ -97,18 +97,6 @@
           <div class="control-item">
             <label class="control-label">Scrap Yield</label>
             <input type="number" id="matScrapYield" class="control-input" step="0.05" value="0.25">
-          </div>
-          <div class="control-item">
-            <label class="control-label" title="Relative share of heavy armor blocks in a typical penetrated target">Target Mix: Heavy (weight)</label>
-            <input type="number" id="matMixHeavy" class="control-input" step="0.5" min="0" value="1">
-          </div>
-          <div class="control-item">
-            <label class="control-label" title="Relative share of light armor blocks in a typical penetrated target">Target Mix: Light (weight)</label>
-            <input type="number" id="matMixLight" class="control-input" step="0.5" min="0" value="1">
-          </div>
-          <div class="control-item">
-            <label class="control-label" title="Relative share of non-armor (systems) blocks in a typical penetrated target">Target Mix: Non-Armor (weight)</label>
-            <input type="number" id="matMixNonArmor" class="control-input" step="0.5" min="0" value="1">
           </div>
         </div>
         <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
@@ -179,10 +167,10 @@
         <!-- Hero Metrics -->
         <div class="hero-stats-grid">
           <div class="stat-card">
-            <div class="stat-title">Sustained DPS <span id="teleDpsType">TOTAL</span></div>
+            <div class="stat-title">Effective DPS <span id="teleDpsType">ALL TARGETS</span></div>
             <div class="stat-value" id="outSustainedDps">0</div>
             <div class="stat-sub" id="outDpsBreakdown">Base: 0 | Det: 0 | Frag: 0</div>
-            <div class="stat-sub" id="outEffectiveDps" style="margin-top: 2px; color: var(--cyan-primary);">⚡ Effective vs mixed hull: 0 DPS</div>
+            <div class="stat-sub" id="outEffectiveDps" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Targets · Paper: 0 DPS</div>
           </div>
 
           <div class="stat-card cyan">

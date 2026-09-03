@@ -101,7 +101,8 @@ const testBody = `
   const weaponCs = generateCSharpWeapon();
   const sbcXml = generateSbcCubeBlocks();
   const dmg = getAmmoDamageDetailed(activeAmmo);
-  const blend155 = getBlendMultiplier(activeAmmo.damageScales);
+  const prof155 = getTopArmorProfile(activeAmmo.damageScales);
+  const eff155 = Math.round(1000 * prof155.mult);
 
   // Overmatch scenario: Heavy Railgun (1M base, 20k/block cap)
   activeAmmo = {
@@ -115,6 +116,10 @@ const testBody = `
   };
   const rgDmg = getAmmoDamageDetailed(activeAmmo);
   const rgAmmoCs = generateCSharpAmmo();
+  const profRg = getTopArmorProfile(activeAmmo.damageScales);
+  const effRg = Math.round(100000 * profRg.mult);
+  const profNa = getTopArmorProfile({ heavyArmor: 0.5, lightArmor: 0.5, nonArmor: 2.0 });
+  const profAll = getTopArmorProfile({ heavyArmor: 1.0, lightArmor: 1.0, nonArmor: 1.0 });
 
   __report({
     ammoCsLength: ammoCs.length,
@@ -125,7 +130,14 @@ const testBody = `
     sbcXmlShieldFree: !/shield/i.test(sbcXml),
     dmgTotal: dmg.total,
     dmgBase: dmg.base,
-    blend155: blend155,
+    eff155: eff155,
+    prof155Label: prof155.label,
+    prof155Mult: prof155.mult,
+    effRg: effRg,
+    profRgLabel: profRg.label,
+    profNaLabel: profNa.label,
+    profNaMult: profNa.mult,
+    profAllLabel: profAll.label,
     rgPerBlock: rgDmg.perBlockBase,
     rgPenBlocks: rgDmg.penBlocks,
     rgShieldFree: !/shield/i.test(rgAmmoCs)
@@ -145,7 +157,10 @@ check('AmmoDef export emits zero shield tags', report.ammoCsShieldFree);
 check('WeaponDef export emits zero shield tags', report.weaponCsShieldFree);
 check('SBC export emits zero shield tags', report.sbcXmlShieldFree);
 check('recursive damage total resolves (6000 base)', report.dmgTotal === 6000);
-check('blend multiplier for 155 AP mix (3.0/0.5/1.0) = 1.5', report.blend155 === 1.5);
+check('155 AP best-fit = Heavy Armor ×3.0 (1000 paper → 3000 eff)', report.eff155 === 3000 && report.prof155Label === 'Heavy Armor' && report.prof155Mult === 3.0);
+check('Heavy Railgun peak ideal = ×3.0 on full payload (100k → 300k, cap not diluting)', report.effRg === 300000 && report.profRgLabel === 'Heavy Armor');
+check('Non-Armor winner detected (×2.0)', report.profNaLabel === 'Non-Armor (Systems)' && report.profNaMult === 2.0);
+check('all-equal multipliers report All Targets', report.profAllLabel === 'All Targets');
 check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
 check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
 check('Railgun export emits zero shield tags', report.rgShieldFree);
