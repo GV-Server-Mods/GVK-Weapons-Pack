@@ -2004,6 +2004,31 @@ function runWeaponCoreLinter() {
     }
   }
 
+  // Critical Chance Bounds
+  if (wCriticalChance) {
+    const crit = safeFloat(wCriticalChance.value, 0);
+    if (crit < 0 || crit > 1.0) {
+      criticalErrors.push(`CriticalChance must be between 0.0 and 1.0 (${crit}).`);
+    }
+  }
+
+  // Burst Consistency
+  if (wShotsInBurst && wDelayAfterBurst) {
+    const burstShots = safeInt(wShotsInBurst.value, 0);
+    const burstDelay = safeInt(wDelayAfterBurst.value, 0);
+    if (burstShots > 0 && burstDelay <= 0) {
+      warnings.push("ShotsInBurst > 0 but DelayAfterBurst is 0 (Burst weapon has no delay between bursts).");
+    }
+  }
+
+  // Trajectiles Per Barrel
+  if (wTrajectilesPerBarrel) {
+    const trajPB = safeInt(wTrajectilesPerBarrel.value, 1);
+    if (trajPB < 1) {
+      criticalErrors.push("TrajectilesPerBarrel must be >= 1.");
+    }
+  }
+
   // Inventory Buffer
   const invSize = safeFloat(wInventorySize.value, 0);
   if (invSize <= 0) {
@@ -2079,6 +2104,50 @@ function runWeaponCoreLinter() {
       const aoeDmg = safeFloat(aodEolDamage.value, 0);
       if (aoeRad <= 0 || aoeDmg <= 0) {
         warnings.push("EndOfLife AOE is enabled but Radius or Damage is 0.");
+      }
+    }
+
+    // Probability & Variance Bounds
+    if (gVisualProb) {
+      const vp = safeFloat(gVisualProb.value, 1.0);
+      if (vp < 0 || vp > 1.0) {
+        criticalErrors.push(`VisualProbability must be between 0.0 and 1.0 (${vp}).`);
+      }
+    }
+    if (aHitPlayChance) {
+      const hpc = safeFloat(aHitPlayChance.value, 1.0);
+      if (hpc < 0 || hpc > 1.0) {
+        criticalErrors.push(`HitPlayChance must be between 0.0 and 1.0 (${hpc}).`);
+      }
+    }
+    if (sMaxLateralThrust) {
+      const mlt = safeFloat(sMaxLateralThrust.value, 0.5);
+      if (mlt < 0 || mlt > 1.0) {
+        criticalErrors.push(`Smarts MaxLateralThrust must be between 0.0 and 1.0 (${mlt}).`);
+      }
+    }
+    if (pTriggerChance && pEnable && pEnable.checked) {
+      const ptc = safeFloat(pTriggerChance.value, 1.0);
+      if (ptc < 0 || ptc > 1.0) {
+        criticalErrors.push(`Pattern TriggerChance must be between 0.0 and 1.0 (${ptc}).`);
+      }
+    }
+
+    // Ewar Validation
+    if (ewEnable && ewEnable.checked) {
+      const ewStr = safeFloat(ewStrength.value, 0);
+      const ewRad = safeFloat(ewRadius.value, 0);
+      if (ewStr <= 0 || ewRad <= 0) {
+        warnings.push("Ewar is enabled but Strength or Radius is 0.");
+      }
+    }
+
+    // Network Sync Validation
+    if (syncFull && syncFull.checked && syncInterval && syncPatchWindow) {
+      const sInt = safeInt(syncInterval.value, 0);
+      const sPatch = safeInt(syncPatchWindow.value, 0);
+      if (sInt > 0 && sPatch >= sInt) {
+        warnings.push(`PositionPatchWindow (${sPatch} ticks) must be less than PositionSyncInterval (${sInt} ticks) to prevent network interpolation tearing.`);
       }
     }
   }
@@ -2163,9 +2232,24 @@ function createMinimalWeapon() {
     type: "Turret",
     rateOfFire: 600,
     barrelsPerShot: 1,
+    trajectilesPerBarrel: 1,
+    skipBarrels: 0,
     reloadTime: 60,
     magsToLoad: 1,
     magazineSize: 30,
+    delayUntilFire: 0,
+    shotsInBurst: 0,
+    delayAfterBurst: 0,
+    heatPerShot: 0,
+    maxHeat: 0,
+    heatSinkRate: 0,
+    cooldown: 0.5,
+    fireFull: false,
+    giveUpAfter: false,
+    goHomeToReload: false,
+    dropTargetUntilLoaded: false,
+    degradeWithHeat: false,
+    useFillSound: false,
     ammoName: "NATO_25x184mm",
     assignedAmmos: ["NATO_25x184mm"],
     maxTargetDistance: 1500,
@@ -2173,14 +2257,66 @@ function createMinimalWeapon() {
     topTargets: 4,
     topBlocks: 4,
     stopTrackingSpeed: 1000,
+    maxCost: 0,
+    closestFirst: true,
+    ignoreDumbProjectiles: true,
+    lockedSmartOnly: false,
+    threats: ["Grids", "Projectiles", "Characters", "Meteors"],
+    subsystems: ["Offense", "Power", "Thrust", "Any"],
+    deviateShotAngle: 0.15,
+    aimingTolerance: 3.0,
+    aimLeadingPrediction: "Advanced",
+    delayCeaseFire: 0,
+    addToleranceToTracking: false,
+    canShootSubmerged: false,
+    npcSafe: true,
     rotateRate: 0.02,
     elevateRate: 0.02,
     minAzimuth: -180,
     maxAzimuth: 180,
     minElevation: -10,
     maxElevation: 80,
+    homeAzimuth: 0,
+    homeElevation: 0,
     inventorySize: 0.6,
     idlePower: 0.01,
+    hardwareType: "BlockWeapon",
+    criticalChance: 0,
+    offset: { x: 0, y: 0, z: 0 },
+    ai: {
+      trackTargets: true,
+      turretAttached: true,
+      turretController: true,
+      primaryTracking: true,
+      lockOnFocus: false,
+      suppressActivityWhenTargetInfracted: false
+    },
+    ui: {
+      rateOfFire: true,
+      damageModifier: false,
+      toggleGuidance: false,
+      enableOverload: false
+    },
+    audio: {
+      firingSound: "MD_LargeGatlingLoopFire",
+      preFiringSound: "",
+      firingSoundPerShot: false,
+      reloadSound: "",
+      hardPointRotationSound: "WepTurretGatlingRotate",
+      noAmmoSound: "WepShipGatlingNoAmmo"
+    },
+    other: {
+      constructPartCap: 0,
+      energyPriority: 0,
+      restrictionRadius: 0,
+      debug: false,
+      checkInflatedBox: false,
+      checkForAnySupport: false,
+      stayCharged: false,
+      rotateToTarget: false,
+      stopTrackingAfterFiring: false,
+      noVoxelLOSCheck: false
+    },
     durabilityMod: 0.5,
     effectiveIntegrity: 80000,
     pcu: 6,
@@ -2189,6 +2325,11 @@ function createMinimalWeapon() {
     techCount: 6,
     isRelic: false,
     hasCircuitry: false,
+    spinPartId: "None",
+    muzzlePartId: "",
+    azimuthPartId: "",
+    elevationPartId: "",
+    iconName: "",
     muzzles: ["muzzle_missile_1"],
     scope: "scope",
     components: [
@@ -2218,20 +2359,130 @@ function createMinimalAmmo() {
     ammoMagazine: `${name}_Mag`,
     terminalName: name.replace(/_/g, ' '),
     baseDamage: 250,
+    baseDamageCutoff: 0,
     mass: 2.0,
     health: 0,
     backKickForce: 50,
+    decayPerShot: 0,
+    energyCost: 0,
+    energyMagazineSize: 0,
+    heatModifier: 1.0,
+    heatNeededToFire: 0,
     hardPointUsable: true,
-    npcSafe: false,
+    hybridRound: false,
+    npcSafe: true,
     noGridOrArmorScaling: false,
+    ignoreWater: false,
+    ignoreVoxels: false,
+    ignoreGrids: false,
+    allowNegativeHeatModifier: false,
+    gridsTargetSeekersTargetingThis: false,
     shape: "LineShape",
     diameter: -1,
-    fragment: { enable: false, ammoRound: "", fragments: 0, degrees: 0 },
-    areaOfDamage: { enable: false, radius: 0, damage: 0, depth: 0 },
-    trajectory: { desiredSpeed: 1200, maxTrajectory: 2000, maxLifeTime: 3600, guidance: "None" },
-    damageScales: { shield: 1.0, lightArmor: -1.0, heavyArmor: -1.0, characters: -1.0 },
-    graphics: { tracer: { enable: true, length: 12, width: 0.12 }, visualProbability: 1.0 },
-    audio: { hitSound: "DOK_CannonHit" }
+    objectsHit: { maxObjectsHit: 1, countBlocks: true, skipBlocksForAOE: false },
+    fragment: {
+      enable: false,
+      ammoRound: "",
+      fragments: 0,
+      degrees: 15,
+      backwardDegrees: 0,
+      offset: 0,
+      reverse: false,
+      dropVelocity: false,
+      ignoreArming: false,
+      radial: false
+    },
+    pattern: {
+      enable: false,
+      patterns: [],
+      triggerChance: 1.0,
+      randomMin: 0,
+      randomMax: 0,
+      patternSteps: 1,
+      mode: "Never",
+      skipParent: false,
+      random: false
+    },
+    ewar: {
+      enable: false,
+      type: "AntiSmart",
+      mode: "Effect",
+      strength: 100,
+      radius: 50,
+      duration: 600,
+      maxStacks: 1,
+      stackDuration: false,
+      deplete: false
+    },
+    areaOfDamage: {
+      byBlockHit: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Sphere" },
+      endOfLife: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Sphere" }
+    },
+    trajectory: {
+      desiredSpeed: 1200,
+      accelPerSec: 0,
+      maxTrajectory: 2000,
+      maxLifeTime: 3600,
+      speedVariance: 0,
+      rangeVariance: 0,
+      deaccelTime: 0,
+      fieldExponent: 1.0,
+      targetLossDegree: 0,
+      targetLossTime: 0,
+      guidance: "None",
+      smarts: {
+        inaccuracy: 0,
+        aggressiveness: 1.0,
+        navAcceleration: 0,
+        maxLateralThrust: 0.5,
+        navAngle: 0,
+        minimumArmingRange: 0,
+        scanRounds: 0,
+        speedLimit: 0,
+        velocity: 0,
+        steeringLimit: 0,
+        overSteer: false,
+        stepVel: false,
+        altNavigation: false
+      }
+    },
+    damageScales: {
+      maxIntegrity: 0,
+      damageToShields: 1.0,
+      characters: 1.0,
+      damageType: "BaseDamage",
+      armor: { armor: -1, light: -1, heavy: -1, nonArmor: -1 },
+      fallOff: { distance: 0, minMultipler: 0 },
+      grids: { large: -1, small: -1 },
+      shields: { modifier: 1.0, type: "Default", bypassModifier: 0 }
+    },
+    graphic: {
+      visualProbability: 1.0,
+      shieldHitDraw: true,
+      lines: {
+        tracer: { enable: true, length: 12, width: 0.12, color: "255, 120, 20, 255", texture: "WeaponLaser", segmentation: false },
+        trail: { enable: false, alwaysDraw: false, decayTime: 60, customWidth: 0.5, color: "200, 200, 200, 180", textures: ["WeaponLaser"] }
+      }
+    },
+    audio: {
+      shotSound: "",
+      travelSound: "",
+      hitSound: "DOK_CannonHit",
+      shieldHitSound: "",
+      voxelHitSound: "",
+      playerHitSound: "",
+      waterHitSound: "",
+      hitPlayChance: 1.0,
+      hitPlayShield: true
+    },
+    sync: {
+      full: false,
+      pointDefense: true,
+      onHitDeath: false,
+      positionSyncInterval: 0,
+      positionPatchWindow: 0,
+      positionUpdateOnRandomize: false
+    }
   };
 
   ammosDb[name] = newAmmo;
