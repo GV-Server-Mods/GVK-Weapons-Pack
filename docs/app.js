@@ -1,3 +1,205 @@
+// ==========================================================================
+// COMPREHENSIVE WEAPON & AMMO DOM REFERENCES
+// ==========================================================================
+// Scope A: ModelAssignmentsDef & HardwareDef
+const wSpinPartId = document.getElementById('wSpinPartId');
+const wMuzzlePartId = document.getElementById('wMuzzlePartId');
+const wAzimuthPartId = document.getElementById('wAzimuthPartId');
+const wElevationPartId = document.getElementById('wElevationPartId');
+const wIconName = document.getElementById('wIconName');
+const wHomeAzimuth = document.getElementById('wHomeAzimuth');
+const wHomeElevation = document.getElementById('wHomeElevation');
+const wHardwareType = document.getElementById('wHardwareType');
+const wCriticalChance = document.getElementById('wCriticalChance');
+const wOffsetX = document.getElementById('wOffsetX');
+const wOffsetY = document.getElementById('wOffsetY');
+const wOffsetZ = document.getElementById('wOffsetZ');
+
+// Scope A: LoadingDef extras
+const wTrajectilesPerBarrel = document.getElementById('wTrajectilesPerBarrel');
+const wSkipBarrels = document.getElementById('wSkipBarrels');
+const wDelayUntilFire = document.getElementById('wDelayUntilFire');
+const wShotsInBurst = document.getElementById('wShotsInBurst');
+const wDelayAfterBurst = document.getElementById('wDelayAfterBurst');
+const wFireFull = document.getElementById('wFireFull');
+const wGiveUpAfter = document.getElementById('wGiveUpAfter');
+const wGoHomeToReload = document.getElementById('wGoHomeToReload');
+const wDropTargetUntilLoaded = document.getElementById('wDropTargetUntilLoaded');
+const wDegradeWithHeat = document.getElementById('wDegradeWithHeat');
+const wUseFillSound = document.getElementById('wUseFillSound');
+
+// Scope A: HardPointDef extras
+const wAddToleranceToTracking = document.getElementById('wAddToleranceToTracking');
+const wCanShootSubmerged = document.getElementById('wCanShootSubmerged');
+const wNpcSafe = document.getElementById('wNpcSafe');
+
+// Scope A: TargetingDef extras
+const wMaxCost = document.getElementById('wMaxCost');
+const wThreatGrids = document.getElementById('wThreatGrids');
+const wThreatProjectiles = document.getElementById('wThreatProjectiles');
+const wThreatCharacters = document.getElementById('wThreatCharacters');
+const wThreatMeteors = document.getElementById('wThreatMeteors');
+const wThreatNeutrals = document.getElementById('wThreatNeutrals');
+const wSubOffense = document.getElementById('wSubOffense');
+const wSubPower = document.getElementById('wSubPower');
+const wSubProduction = document.getElementById('wSubProduction');
+const wSubThrust = document.getElementById('wSubThrust');
+const wSubJumping = document.getElementById('wSubJumping');
+const wSubSteering = document.getElementById('wSubSteering');
+const wSubAny = document.getElementById('wSubAny');
+
+// Scope A: AiDef & UiDef
+const wAiTrackTargets = document.getElementById('wAiTrackTargets');
+const wAiTurretAttached = document.getElementById('wAiTurretAttached');
+const wAiTurretController = document.getElementById('wAiTurretController');
+const wAiPrimaryTracking = document.getElementById('wAiPrimaryTracking');
+const wAiLockOnFocus = document.getElementById('wAiLockOnFocus');
+const wAiSuppressInfracted = document.getElementById('wAiSuppressInfracted');
+const wUiRateOfFire = document.getElementById('wUiRateOfFire');
+const wUiDamageModifier = document.getElementById('wUiDamageModifier');
+const wUiToggleGuidance = document.getElementById('wUiToggleGuidance');
+const wUiEnableOverload = document.getElementById('wUiEnableOverload');
+
+// Scope A: Audio & Other
+const wSoundPreFiring = document.getElementById('wSoundPreFiring');
+const wSoundFiringPerShot = document.getElementById('wSoundFiringPerShot');
+const wConstructPartCap = document.getElementById('wConstructPartCap');
+const wEnergyPriority = document.getElementById('wEnergyPriority');
+const wRestrictionRadius = document.getElementById('wRestrictionRadius');
+const wOtherDebug = document.getElementById('wOtherDebug');
+const wCheckInflatedBox = document.getElementById('wCheckInflatedBox');
+const wCheckForAnySupport = document.getElementById('wCheckForAnySupport');
+const wStayCharged = document.getElementById('wStayCharged');
+const wRotateToTarget = document.getElementById('wRotateToTarget');
+const wStopTrackingAfterFiring = document.getElementById('wStopTrackingAfterFiring');
+const wNoVoxelLOSCheck = document.getElementById('wNoVoxelLOSCheck');
+
+// Scope B: Core AmmoDef extras
+const aBaseDamageCutoff = document.getElementById('aBaseDamageCutoff');
+const aDecayPerShot = document.getElementById('aDecayPerShot');
+const aEnergyMagazineSize = document.getElementById('aEnergyMagazineSize');
+const aHeatModifier = document.getElementById('aHeatModifier');
+const aHeatNeededToFire = document.getElementById('aHeatNeededToFire');
+const aHybridRound = document.getElementById('aHybridRound');
+const aIgnoreWater = document.getElementById('aIgnoreWater');
+const aIgnoreVoxels = document.getElementById('aIgnoreVoxels');
+const aIgnoreGrids = document.getElementById('aIgnoreGrids');
+const aAllowNegativeHeatModifier = document.getElementById('aAllowNegativeHeatModifier');
+const aGridsTargetSeekersTargetingThis = document.getElementById('aGridsTargetSeekersTargetingThis');
+
+// Scope B: Trajectory & Smarts
+const tAccelPerSec = document.getElementById('tAccelPerSec');
+const tSpeedVariance = document.getElementById('tSpeedVariance');
+const tRangeVariance = document.getElementById('tRangeVariance');
+const tDeaccelTime = document.getElementById('tDeaccelTime');
+const tFieldExponent = document.getElementById('tFieldExponent');
+const tTargetLossDegree = document.getElementById('tTargetLossDegree');
+const tTargetLossTime = document.getElementById('tTargetLossTime');
+const sInaccuracy = document.getElementById('sInaccuracy');
+const sAggressiveness = document.getElementById('sAggressiveness');
+const sNavAcceleration = document.getElementById('sNavAcceleration');
+const sMaxLateralThrust = document.getElementById('sMaxLateralThrust');
+const sNavAngle = document.getElementById('sNavAngle');
+const sMinArmingRange = document.getElementById('sMinArmingRange');
+const sScanRounds = document.getElementById('sScanRounds');
+const sSpeedLimit = document.getElementById('sSpeedLimit');
+const sVelocity = document.getElementById('sVelocity');
+const sSteeringLimit = document.getElementById('sSteeringLimit');
+const sOverSteer = document.getElementById('sOverSteer');
+const sStepVel = document.getElementById('sStepVel');
+const sAltNavigation = document.getElementById('sAltNavigation');
+
+// Scope B: ObjectsHitDef
+const oMaxObjectsHit = document.getElementById('oMaxObjectsHit');
+const oCountBlocks = document.getElementById('oCountBlocks');
+const oSkipBlocksForAOE = document.getElementById('oSkipBlocksForAOE');
+
+// Scope B: DamageScaleDef extras
+const dsMaxIntegrity = document.getElementById('dsMaxIntegrity');
+const dsCharacters = document.getElementById('dsCharacters');
+const dsDamageType = document.getElementById('dsDamageType');
+const dsArmorArmor = document.getElementById('dsArmorArmor');
+const dsNonArmor = document.getElementById('dsNonArmor');
+const dsGridLarge = document.getElementById('dsGridLarge');
+const dsGridSmall = document.getElementById('dsGridSmall');
+const dsFalloffDistance = document.getElementById('dsFalloffDistance');
+const dsFalloffMinMult = document.getElementById('dsFalloffMinMult');
+const dsShieldModifier = document.getElementById('dsShieldModifier');
+const dsShieldType = document.getElementById('dsShieldType');
+const dsShieldBypassMod = document.getElementById('dsShieldBypassMod');
+
+// Scope B: AreaOfDamageDef (BlockHit & EndOfLife)
+const aodBlockEnable = document.getElementById('aodBlockEnable');
+const aodBlockRadius = document.getElementById('aodBlockRadius');
+const aodBlockDamage = document.getElementById('aodBlockDamage');
+const aodBlockDepth = document.getElementById('aodBlockDepth');
+const aodBlockMaxAbsorb = document.getElementById('aodBlockMaxAbsorb');
+const aodBlockFalloff = document.getElementById('aodBlockFalloff');
+const aodBlockShape = document.getElementById('aodBlockShape');
+const aodEolEnable = document.getElementById('aodEolEnable');
+const aodEolRadius = document.getElementById('aodEolRadius');
+const aodEolDamage = document.getElementById('aodEolDamage');
+const aodEolDepth = document.getElementById('aodEolDepth');
+const aodEolMaxAbsorb = document.getElementById('aodEolMaxAbsorb');
+const aodEolFalloff = document.getElementById('aodEolFalloff');
+const aodEolShape = document.getElementById('aodEolShape');
+
+// Scope B: Fragment extras
+const fBackwardDegrees = document.getElementById('fBackwardDegrees');
+const fOffset = document.getElementById('fOffset');
+const fIgnoreArming = document.getElementById('fIgnoreArming');
+const fRadial = document.getElementById('fRadial');
+
+// Scope B: PatternDef
+const pEnable = document.getElementById('pEnable');
+const pPatterns = document.getElementById('pPatterns');
+const pTriggerChance = document.getElementById('pTriggerChance');
+const pRandomMin = document.getElementById('pRandomMin');
+const pRandomMax = document.getElementById('pRandomMax');
+const pPatternSteps = document.getElementById('pPatternSteps');
+const pMode = document.getElementById('pMode');
+const pSkipParent = document.getElementById('pSkipParent');
+const pRandom = document.getElementById('pRandom');
+
+// Scope B: EwarDef
+const ewEnable = document.getElementById('ewEnable');
+const ewType = document.getElementById('ewType');
+const ewMode = document.getElementById('ewMode');
+const ewStrength = document.getElementById('ewStrength');
+const ewRadius = document.getElementById('ewRadius');
+const ewDuration = document.getElementById('ewDuration');
+const ewMaxStacks = document.getElementById('ewMaxStacks');
+const ewStackDuration = document.getElementById('ewStackDuration');
+const ewDeplete = document.getElementById('ewDeplete');
+
+// Scope B: GraphicDef extras
+const gShieldHitDraw = document.getElementById('gShieldHitDraw');
+const gTracerColor = document.getElementById('gTracerColor');
+const gTracerTexture = document.getElementById('gTracerTexture');
+const gTracerSegmented = document.getElementById('gTracerSegmented');
+const gTrailEnable = document.getElementById('gTrailEnable');
+const gTrailAlwaysDraw = document.getElementById('gTrailAlwaysDraw');
+const gTrailDecay = document.getElementById('gTrailDecay');
+const gTrailWidth = document.getElementById('gTrailWidth');
+const gTrailColor = document.getElementById('gTrailColor');
+const gTrailTextures = document.getElementById('gTrailTextures');
+
+// Scope B: Audio extras
+const aSoundShot = document.getElementById('aSoundShot');
+const aSoundVoxelHit = document.getElementById('aSoundVoxelHit');
+const aSoundPlayerHit = document.getElementById('aSoundPlayerHit');
+const aSoundWaterHit = document.getElementById('aSoundWaterHit');
+const aHitPlayChance = document.getElementById('aHitPlayChance');
+const aHitPlayShield = document.getElementById('aHitPlayShield');
+
+// Scope B: SynchronizeDef
+const syncInterval = document.getElementById('syncInterval');
+const syncPatchWindow = document.getElementById('syncPatchWindow');
+const syncFull = document.getElementById('syncFull');
+const syncPointDefense = document.getElementById('syncPointDefense');
+const syncOnHitDeath = document.getElementById('syncOnHitDeath');
+const syncUpdateOnRandomize = document.getElementById('syncUpdateOnRandomize');
+
 const codeSbcXmlDirect = document.getElementById('codeSbcXmlDirect');
 const btnCopySbcXmlDirect = document.getElementById('btnCopySbcXmlDirect');
 const btnDownloadSbcDirect = document.getElementById('btnDownloadSbcDirect');
@@ -217,12 +419,7 @@ const fragChainVisual = document.getElementById('fragChainVisual');
 const dsShield = document.getElementById('dsShield');
 const dsLightArmor = document.getElementById('dsLightArmor');
 const dsHeavyArmor = document.getElementById('dsHeavyArmor');
-const dsHealthHit = document.getElementById('dsHealthHit');
 
-const aodEnable = document.getElementById('aodEnable');
-const aodRadius = document.getElementById('aodRadius');
-const aodDamage = document.getElementById('aodDamage');
-const aodDepth = document.getElementById('aodDepth');
 
 const tDesiredSpeed = document.getElementById('tDesiredSpeed');
 const tMaxTrajectory = document.getElementById('tMaxTrajectory');
@@ -946,69 +1143,200 @@ function renderAssignedAmmos() {
 
 function populateAmmoWorkbench() {
   if (!activeAmmo) return;
-  ammoSelectGlobal.value = activeAmmo.name;
-  scopeActiveAmmoLabel.textContent = activeAmmo.name;
+  if (ammoSelectGlobal) ammoSelectGlobal.value = activeAmmo.name;
+  if (scopeActiveAmmoLabel) scopeActiveAmmoLabel.textContent = activeAmmo.name;
 
-  aAmmoRound.value = activeAmmo.ammoRound || activeAmmo.name;
-  aAmmoMagazine.value = activeAmmo.ammoMagazine || activeAmmo.name;
-  aTerminalName.value = activeAmmo.terminalName || activeAmmo.name;
-  aBaseDamage.value = activeAmmo.baseDamage || 100;
-  aMass.value = activeAmmo.mass || 1.0;
+  // Core Identification & Physics
+  aAmmoRound.value = activeAmmo.ammoRound || activeAmmo.name || '';
+  aAmmoMagazine.value = activeAmmo.ammoMagazine || '';
+  aTerminalName.value = activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name || '';
+  aBaseDamage.value = activeAmmo.baseDamage || 0;
+  if (aBaseDamageCutoff) aBaseDamageCutoff.value = activeAmmo.baseDamageCutoff || 0;
+  aMass.value = activeAmmo.mass !== undefined ? activeAmmo.mass : 1.0;
   aHealth.value = activeAmmo.health || 0;
   aBackKick.value = activeAmmo.backKickForce || 0;
+  if (aDecayPerShot) aDecayPerShot.value = activeAmmo.decayPerShot || 0;
   aEnergyCost.value = activeAmmo.energyCost || 0;
-  aHardPointUsable.checked = activeAmmo.hardPointUsable !== false;
-  aNpcSafe.checked = activeAmmo.npcSafe === true;
-  aNoGridOrArmorScaling.checked = activeAmmo.noGridOrArmorScaling === true;
+  if (aEnergyMagazineSize) aEnergyMagazineSize.value = activeAmmo.energyMagazineSize || 0;
+  if (aHeatModifier) aHeatModifier.value = activeAmmo.heatModifier !== undefined ? activeAmmo.heatModifier : 1.0;
+  if (aHeatNeededToFire) aHeatNeededToFire.value = activeAmmo.heatNeededToFire || 0;
 
+  aHardPointUsable.checked = activeAmmo.hardPointUsable !== false;
+  if (aHybridRound) aHybridRound.checked = activeAmmo.hybridRound === true;
+  aNpcSafe.checked = activeAmmo.npcSafe !== false;
+  aNoGridOrArmorScaling.checked = activeAmmo.noGridOrArmorScaling === true;
+  if (aIgnoreWater) aIgnoreWater.checked = activeAmmo.ignoreWater === true;
+  if (aIgnoreVoxels) aIgnoreVoxels.checked = activeAmmo.ignoreVoxels === true;
+  if (aIgnoreGrids) aIgnoreGrids.checked = activeAmmo.ignoreGrids === true;
+  if (aAllowNegativeHeatModifier) aAllowNegativeHeatModifier.checked = activeAmmo.allowNegativeHeatModifier === true;
+  if (aGridsTargetSeekersTargetingThis) aGridsTargetSeekersTargetingThis.checked = activeAmmo.gridsTargetSeekersTargetingThis === true;
+
+  // TrajectoryDef & SmartsDef
+  const traj = activeAmmo.trajectory || {};
+  tDesiredSpeed.value = traj.desiredSpeed || activeAmmo.desiredSpeed || 1000;
+  if (tAccelPerSec) tAccelPerSec.value = traj.accelPerSec || 0;
+  tMaxTrajectory.value = traj.maxTrajectory || activeAmmo.maxTrajectory || 1500;
+  tMaxLifeTime.value = traj.maxLifeTime || 3600;
+  if (tSpeedVariance) tSpeedVariance.value = traj.speedVariance || 0;
+  if (tRangeVariance) tRangeVariance.value = traj.rangeVariance || 0;
+  if (tDeaccelTime) tDeaccelTime.value = traj.deaccelTime || 0;
+  if (tFieldExponent) tFieldExponent.value = traj.fieldExponent !== undefined ? traj.fieldExponent : 1.0;
+  if (tTargetLossDegree) tTargetLossDegree.value = traj.targetLossDegree || 0;
+  if (tTargetLossTime) tTargetLossTime.value = traj.targetLossTime || 0;
+  tGuidance.value = traj.guidance || 'None';
+
+  const sm = traj.smarts || {};
+  if (sInaccuracy) sInaccuracy.value = sm.inaccuracy || 0;
+  if (sAggressiveness) sAggressiveness.value = sm.aggressiveness !== undefined ? sm.aggressiveness : 1.0;
+  if (sNavAcceleration) sNavAcceleration.value = sm.navAcceleration || 0;
+  if (sMaxLateralThrust) sMaxLateralThrust.value = sm.maxLateralThrust !== undefined ? sm.maxLateralThrust : 0.5;
+  if (sNavAngle) sNavAngle.value = sm.navAngle || 0;
+  if (sMinArmingRange) sMinArmingRange.value = sm.minimumArmingRange || 0;
+  if (sScanRounds) sScanRounds.value = sm.scanRounds || 0;
+  if (sSpeedLimit) sSpeedLimit.value = sm.speedLimit || 0;
+  if (sVelocity) sVelocity.value = sm.velocity || 0;
+  if (sSteeringLimit) sSteeringLimit.value = sm.steeringLimit || 0;
+  if (sOverSteer) sOverSteer.checked = sm.overSteer === true;
+  if (sStepVel) sStepVel.checked = sm.stepVel === true;
+  if (sAltNavigation) sAltNavigation.checked = sm.altNavigation === true;
+
+  // ShapeDef & ObjectsHitDef
   aShape.value = activeAmmo.shape || 'LineShape';
   aDiameter.value = activeAmmo.diameter !== undefined ? activeAmmo.diameter : -1;
+  const objHit = activeAmmo.objectsHit || {};
+  if (oMaxObjectsHit) oMaxObjectsHit.value = objHit.maxObjectsHit || 1;
+  if (oCountBlocks) oCountBlocks.checked = objHit.countBlocks !== false;
+  if (oSkipBlocksForAOE) oSkipBlocksForAOE.checked = objHit.skipBlocksForAOE === true;
+
+  // DamageScaleDef
+  const ds = activeAmmo.damageScales || {};
+  if (dsMaxIntegrity) dsMaxIntegrity.value = ds.maxIntegrity || 0;
+  dsShield.value = ds.damageToShields !== undefined ? ds.damageToShields : 1.0;
+  if (dsCharacters) dsCharacters.value = ds.characters !== undefined ? ds.characters : 1.0;
+  if (dsDamageType) dsDamageType.value = ds.damageType || 'BaseDamage';
+
+  const arm = ds.armor || {};
+  if (dsArmorArmor) dsArmorArmor.value = arm.armor !== undefined ? arm.armor : -1;
+  dsLightArmor.value = arm.light !== undefined ? arm.light : -1;
+  dsHeavyArmor.value = arm.heavy !== undefined ? arm.heavy : -1;
+  if (dsNonArmor) dsNonArmor.value = arm.nonArmor !== undefined ? arm.nonArmor : -1;
+
+  const fo = ds.fallOff || {};
+  if (dsFalloffDistance) dsFalloffDistance.value = fo.distance || 0;
+  if (dsFalloffMinMult) dsFalloffMinMult.value = fo.minMultipler || 0;
+
+  const grd = ds.grids || {};
+  if (dsGridLarge) dsGridLarge.value = grd.large !== undefined ? grd.large : -1;
+  if (dsGridSmall) dsGridSmall.value = grd.small !== undefined ? grd.small : -1;
+
+  const shld = ds.shields || {};
+  if (dsShieldModifier) dsShieldModifier.value = shld.modifier !== undefined ? shld.modifier : (ds.damageToShields || 1.0);
+  if (dsShieldType) dsShieldType.value = shld.type || 'Default';
+  if (dsShieldBypassMod) dsShieldBypassMod.value = shld.bypassModifier || 0;
+
+  // AreaOfDamageDef
+  const aod = activeAmmo.areaOfDamage || {};
+  const aodBlock = aod.byBlockHit || {};
+  if (aodBlockEnable) aodBlockEnable.checked = aodBlock.enable === true;
+  if (aodBlockRadius) aodBlockRadius.value = aodBlock.radius || 0;
+  if (aodBlockDamage) aodBlockDamage.value = aodBlock.damage || 0;
+  if (aodBlockDepth) aodBlockDepth.value = aodBlock.depth || 0;
+  if (aodBlockMaxAbsorb) aodBlockMaxAbsorb.value = aodBlock.maxAbsorb || 0;
+  if (aodBlockFalloff) aodBlockFalloff.value = aodBlock.falloff || 'Linear';
+  if (aodBlockShape) aodBlockShape.value = aodBlock.shape || 'Sphere';
+
+  const aodEol = aod.endOfLife || {};
+  if (aodEolEnable) aodEolEnable.checked = aodEol.enable === true;
+  if (aodEolRadius) aodEolRadius.value = aodEol.radius || 0;
+  if (aodEolDamage) aodEolDamage.value = aodEol.damage || 0;
+  if (aodEolDepth) aodEolDepth.value = aodEol.depth || 0;
+  if (aodEolMaxAbsorb) aodEolMaxAbsorb.value = aodEol.maxAbsorb || 0;
+  if (aodEolFalloff) aodEolFalloff.value = aodEol.falloff || 'Linear';
+  if (aodEolShape) aodEolShape.value = aodEol.shape || 'Sphere';
 
   // FragmentDef
   const frag = activeAmmo.fragment || {};
   fEnable.checked = frag.enable === true;
   fReverse.checked = frag.reverse === true;
   fDropVelocity.checked = frag.dropVelocity === true;
+  if (fIgnoreArming) fIgnoreArming.checked = frag.ignoreArming === true;
+  if (fRadial) fRadial.checked = frag.radial === true;
   fFragments.value = frag.fragments || 0;
   fDegrees.value = frag.degrees || 15;
+  if (fBackwardDegrees) fBackwardDegrees.value = frag.backwardDegrees || 0;
+  if (fOffset) fOffset.value = frag.offset || 0;
   fChildAmmoRound.value = frag.ammoRound || '';
   fragStatusBadge.textContent = frag.enable ? `${frag.fragments} Frags Active` : 'Disabled';
   updateFragChainVisual();
 
-  // DamageScales
-  const ds = activeAmmo.damageScales || {};
-  dsShield.value = ds.shield !== undefined ? ds.shield : 1.0;
-  dsLightArmor.value = ds.lightArmor !== undefined ? ds.lightArmor : -1.0;
-  dsHeavyArmor.value = ds.heavyArmor !== undefined ? ds.heavyArmor : -1.0;
-  dsHealthHit.value = ds.healthHitModifier !== undefined ? ds.healthHitModifier : 1.0;
+  // PatternDef
+  const pat = activeAmmo.pattern || {};
+  if (pEnable) pEnable.checked = pat.enable === true;
+  if (pPatterns) pPatterns.value = Array.isArray(pat.patterns) ? pat.patterns.join(', ') : (pat.patterns || '');
+  if (pTriggerChance) pTriggerChance.value = pat.triggerChance !== undefined ? pat.triggerChance : 1.0;
+  if (pRandomMin) pRandomMin.value = pat.randomMin || 0;
+  if (pRandomMax) pRandomMax.value = pat.randomMax || 0;
+  if (pPatternSteps) pPatternSteps.value = pat.patternSteps || 1;
+  if (pMode) pMode.value = pat.mode || 'Never';
+  if (pSkipParent) pSkipParent.checked = pat.skipParent === true;
+  if (pRandom) pRandom.checked = pat.random === true;
 
-  // AreaOfDamage
-  const aod = activeAmmo.areaOfDamage || {};
-  aodEnable.checked = aod.enable === true;
-  aodRadius.value = aod.radius || 0;
-  aodDamage.value = aod.damage || 0;
-  aodDepth.value = aod.depth || 0;
+  // EwarDef
+  const ew = activeAmmo.ewar || {};
+  if (ewEnable) ewEnable.checked = ew.enable === true;
+  if (ewType) ewType.value = ew.type || 'AntiSmart';
+  if (ewMode) ewMode.value = ew.mode || 'Effect';
+  if (ewStrength) ewStrength.value = ew.strength || 100;
+  if (ewRadius) ewRadius.value = ew.radius || 50;
+  if (ewDuration) ewDuration.value = ew.duration || 600;
+  if (ewMaxStacks) ewMaxStacks.value = ew.maxStacks || 1;
+  if (ewStackDuration) ewStackDuration.checked = ew.stackDuration === true;
+  if (ewDeplete) ewDeplete.checked = ew.deplete === true;
 
-  // Trajectory
-  const traj = activeAmmo.trajectory || {};
-  tDesiredSpeed.value = traj.desiredSpeed || 1000;
-  tMaxTrajectory.value = traj.maxTrajectory || 1500;
-  tMaxLifeTime.value = traj.maxLifeTime || 3600;
-  tGuidance.value = traj.guidance || 'None';
+  // GraphicDef
+  const gfx = activeAmmo.graphic || {};
+  gVisualProb.value = gfx.visualProbability !== undefined ? gfx.visualProbability : 1.0;
+  if (gShieldHitDraw) gShieldHitDraw.checked = gfx.shieldHitDraw !== false;
 
-  // Graphics
-  const g = activeAmmo.graphics || {};
-  const tr = g.tracer || {};
-  gTracerEnable.checked = tr.enable !== false;
-  gTracerLength.value = tr.length || 10;
-  gTracerWidth.value = tr.width || 0.1;
-  gVisualProb.value = g.visualProbability !== undefined ? g.visualProbability : 1.0;
+  const trc = gfx.lines ? gfx.lines.tracer : {};
+  gTracerEnable.checked = trc.enable !== false;
+  gTracerLength.value = trc.length !== undefined ? trc.length : 10;
+  gTracerWidth.value = trc.width !== undefined ? trc.width : 0.1;
+  if (gTracerColor) gTracerColor.value = trc.color || '255, 120, 20, 255';
+  if (gTracerTexture) gTracerTexture.value = trc.texture || 'WeaponLaser';
+  if (gTracerSegmented) gTracerSegmented.checked = trc.segmentation === true;
+
+  const trl = gfx.lines ? gfx.lines.trail : {};
+  if (gTrailEnable) gTrailEnable.checked = trl.enable === true;
+  if (gTrailAlwaysDraw) gTrailAlwaysDraw.checked = trl.alwaysDraw === true;
+  if (gTrailDecay) gTrailDecay.value = trl.decayTime || 60;
+  if (gTrailWidth) gTrailWidth.value = trl.customWidth !== undefined ? trl.customWidth : 0.5;
+  if (gTrailColor) gTrailColor.value = trl.color || '200, 200, 200, 180';
+  if (gTrailTextures) gTrailTextures.value = Array.isArray(trl.textures) ? trl.textures.join(', ') : (trl.textures || 'WeaponLaser');
 
   // Audio
   const aud = activeAmmo.audio || {};
+  if (aSoundShot) aSoundShot.value = aud.shotSound || '';
   aSoundTravel.value = aud.travelSound || '';
-  aSoundHit.value = aud.hitSound || '';
+  aSoundHit.value = aud.hitSound || 'DOK_CannonHit';
   aSoundShieldHit.value = aud.shieldHitSound || '';
+  if (aSoundVoxelHit) aSoundVoxelHit.value = aud.voxelHitSound || '';
+  if (aSoundPlayerHit) aSoundPlayerHit.value = aud.playerHitSound || '';
+  if (aSoundWaterHit) aSoundWaterHit.value = aud.waterHitSound || '';
+  if (aHitPlayChance) aHitPlayChance.value = aud.hitPlayChance !== undefined ? aud.hitPlayChance : 1.0;
+  if (aHitPlayShield) aHitPlayShield.checked = aud.hitPlayShield !== false;
+
+  // SynchronizeDef
+  const sync = activeAmmo.sync || {};
+  if (syncInterval) syncInterval.value = sync.positionSyncInterval || 0;
+  if (syncPatchWindow) syncPatchWindow.value = sync.positionPatchWindow || 0;
+  if (syncFull) syncFull.checked = sync.full === true;
+  if (syncPointDefense) syncPointDefense.checked = sync.pointDefense !== false;
+  if (syncOnHitDeath) syncOnHitDeath.checked = sync.onHitDeath === true;
+  if (syncUpdateOnRandomize) syncUpdateOnRandomize.checked = sync.positionUpdateOnRandomize === true;
+
+  renderExtendedAmmoTags();
+  runWeaponCoreLinter();
 }
 
 function updateFragChainVisual() {
@@ -1158,7 +1486,7 @@ function updateCombatTelemetry() {
   const magSize = activeWeapon.magazineSize || 100;
 
   const baseDmg = parseFloat(aBaseDamage.value) || 0;
-  const aodDmg = (aodEnable.checked ? parseFloat(aodDamage.value) : 0) || 0;
+  const aodDmg = (aodBlockEnable && aodBlockEnable.checked ? safeFloat(aodBlockDamage.value, 0) : 0) + (aodEolEnable && aodEolEnable.checked ? safeFloat(aodEolDamage.value, 0) : 0);
 
   // Fragment damage
   let fragDmg = 0;
@@ -1265,7 +1593,7 @@ function updateTtkSimulator() {
   const sustainedDps = parseFloat(dpsText) || 1;
 
   const baseDmg = parseFloat(aBaseDamage.value) || 1;
-  const aodDmg = (aodEnable.checked ? parseFloat(aodDamage.value) : 0) || 0;
+  const aodDmg = (aodBlockEnable && aodBlockEnable.checked ? safeFloat(aodBlockDamage.value, 0) : 0) + (aodEolEnable && aodEolEnable.checked ? safeFloat(aodEolDamage.value, 0) : 0);
   const dmgPerShot = baseDmg + aodDmg;
 
   const ttkSeconds = (targetHp / sustainedDps);
@@ -1739,11 +2067,18 @@ function runWeaponCoreLinter() {
     }
 
     // Area of Damage Bounds
-    if (aodEnable && aodEnable.checked) {
-      const aoeRad = safeFloat(aodRadius.value, 0);
-      const aoeDmg = safeFloat(aodDamage.value, 0);
+    if (aodBlockEnable && aodBlockEnable.checked) {
+      const aoeRad = safeFloat(aodBlockRadius.value, 0);
+      const aoeDmg = safeFloat(aodBlockDamage.value, 0);
       if (aoeRad <= 0 || aoeDmg <= 0) {
-        warnings.push("AreaOfDamage is enabled but Radius or Damage is 0.");
+        warnings.push("ByBlockHit AOE is enabled but Radius or Damage is 0.");
+      }
+    }
+    if (aodEolEnable && aodEolEnable.checked) {
+      const aoeRad = safeFloat(aodEolRadius.value, 0);
+      const aoeDmg = safeFloat(aodEolDamage.value, 0);
+      if (aoeRad <= 0 || aoeDmg <= 0) {
+        warnings.push("EndOfLife AOE is enabled but Radius or Damage is 0.");
       }
     }
   }
@@ -1911,106 +2246,339 @@ function createMinimalAmmo() {
 function generateCSharpWeapon() {
   if (!activeWeapon) return "// No weapon selected";
 
-  const sub = wSubtypeId.value || activeWeapon.subtypeId;
-  const pName = wPartName.value || activeWeapon.partName;
+  const pName = wPartName.value || activeWeapon.partName || activeWeapon.name;
+  const sub = wSubtypeId.value || activeWeapon.subtypeId || activeWeapon.id;
   const dur = wDurabilityMod.value || 0.5;
-  const sc = wScope.value || "scope";
-  const muzz = wMuzzles.value.split(',').map(m => `"${m.trim()}"`).join(', ');
+  const scope = wScope.value || 'scope';
+  const muzzles = (wMuzzles.value || 'muzzle_missile_1').split(',').map(m => `"${m.trim()}"`).join(', ');
+  const spin = wSpinPartId ? wSpinPartId.value || 'None' : 'None';
+  const muzPart = wMuzzlePartId ? wMuzzlePartId.value : '';
+  const azPart = wAzimuthPartId ? wAzimuthPartId.value : '';
+  const elPart = wElevationPartId ? wElevationPartId.value : '';
+  const icon = wIconName ? wIconName.value : '';
 
-  const ammosList = (activeWeapon.assignedAmmos || [activeWeapon.ammoName]).join(',\n                ');
-  const animRef = selectAnimationDef.value ? `Animations = ${selectAnimationDef.value},` : `// Animations = None,`;
+  // Assigned ammos array
+  const ammosList = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
+    ? activeWeapon.assignedAmmos.join(', ')
+    : (activeWeapon.ammoName || 'NATO_25x184mm');
 
-  let code = `        WeaponDefinition ${sub} => new WeaponDefinition\n`;
-  code += `        {\n`;
-  code += `            Assignments = new ModelAssignmentsDef\n`;
-  code += `            {\n`;
-  code += `                MountPoints = new[]\n`;
-  code += `                {\n`;
-  code += `                    new MountPointDef\n`;
-  code += `                    {\n`;
-  code += `                        SubtypeId = "${sub}",\n`;
-  code += `                        SpinPartId = "",\n`;
-  code += `                        MuzzlePartId = "MissileTurretBarrels",\n`;
-  code += `                        AzimuthPartId = "MissileTurretBase1",\n`;
-  code += `                        ElevationPartId = "MissileTurretBarrels",\n`;
-  code += `                        DurabilityMod = ${dur}f,\n`;
-  code += `                    },\n`;
-  code += `                },\n`;
-  code += `                Muzzles = new[] {\n`;
-  code += `                    ${muzz}\n`;
-  code += `                },\n`;
-  code += `                Scope = "${sc}",\n`;
-  code += `            },\n`;
+  // Animation binding
+  const animRef = activeWeapon.assignedAnimation && activeWeapon.assignedAnimation !== 'None'
+    ? `Animations = ${activeWeapon.assignedAnimation},`
+    : `// Animations = None,`;
 
-  // TargetingDef (Preserve shared helper if not overridden)
-  if (activeWeapon.helpers && activeWeapon.helpers.targeting && !activeWeapon.targetingOverridden) {
-    code += `            Targeting = ${activeWeapon.helpers.targeting},\n`;
+  let code = `        WeaponDefinition ${activeWeapon.id || sub} => new WeaponDefinition
+`;
+  code += `        {
+`;
+  code += `            Assignments = new ModelAssignmentsDef
+`;
+  code += `            {
+`;
+  code += `                MountPoints = new[]
+`;
+  code += `                {
+`;
+  code += `                    new MountPointDef
+`;
+  code += `                    {
+`;
+  code += `                        SubtypeId = "${sub}",
+`;
+  code += `                        SpinPartId = "${spin}",
+`;
+  if (muzPart) code += `                        MuzzlePartId = "${muzPart}",
+`;
+  if (azPart) code += `                        AzimuthPartId = "${azPart}",
+`;
+  if (elPart) code += `                        ElevationPartId = "${elPart}",
+`;
+  code += `                        DurabilityMod = ${dur}f,
+`;
+  code += `                        IconName = "${icon}",
+`;
+  code += `                    },
+`;
+  code += `                },
+`;
+  code += `                Muzzles = new[]
+`;
+  code += `                {
+`;
+  code += `                    ${muzzles},
+`;
+  code += `                },
+`;
+  code += `                Scope = "${scope}",
+`;
+  code += `            },
+`;
+
+  // Threats array
+  const activeThreats = [];
+  if (wThreatGrids && wThreatGrids.checked) activeThreats.push('Grids');
+  if (wThreatProjectiles && wThreatProjectiles.checked) activeThreats.push('Projectiles');
+  if (wThreatCharacters && wThreatCharacters.checked) activeThreats.push('Characters');
+  if (wThreatMeteors && wThreatMeteors.checked) activeThreats.push('Meteors');
+  if (wThreatNeutrals && wThreatNeutrals.checked) activeThreats.push('Neutrals');
+  const threatsStr = activeThreats.length > 0 ? activeThreats.join(', ') : 'Grids';
+
+  // Subsystems array
+  const activeSubs = [];
+  if (wSubOffense && wSubOffense.checked) activeSubs.push('Offense');
+  if (wSubPower && wSubPower.checked) activeSubs.push('Power');
+  if (wSubProduction && wSubProduction.checked) activeSubs.push('Production');
+  if (wSubThrust && wSubThrust.checked) activeSubs.push('Thrust');
+  if (wSubJumping && wSubJumping.checked) activeSubs.push('Jumping');
+  if (wSubSteering && wSubSteering.checked) activeSubs.push('Steering');
+  if (wSubAny && wSubAny.checked) activeSubs.push('Any');
+  const subsStr = activeSubs.length > 0 ? activeSubs.join(', ') : 'Offense, Power, Thrust';
+
+  if (activeWeapon.targetingPreset && !activeWeapon.targetingCustomized) {
+    code += `            Targeting = ${activeWeapon.targetingPreset},
+`;
   } else {
-    code += `            Targeting = new TargetingDef\n`;
-    code += `            {\n`;
-    code += `                Threats = new[] { Projectiles, Characters, Grids },\n`;
-    code += `                SubSystems = new[] { Offense, Jumping, Utility, Power, Thrust, Production },\n`;
-    code += `                ClosestFirst = ${wClosestFirst.checked ? 'true' : 'false'},\n`;
-    code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},\n`;
-    code += `                MaxTargetDistance = ${wMaxTargetDistance.value},\n`;
-    code += `                MinTargetDistance = ${wMinTargetDistance.value},\n`;
-    code += `                TopTargets = ${wTopTargets.value},\n`;
-    code += `                TopBlocks = ${wTopBlocks.value},\n`;
-    code += `                StopTrackingSpeed = ${wStopTrackingSpeed.value},\n`;
-    code += `            },\n`;
+    code += `            Targeting = new TargetingDef
+`;
+    code += `            {
+`;
+    code += `                Threats = new[] { ${threatsStr} },
+`;
+    code += `                SubSystems = new[] { ${subsStr} },
+`;
+    code += `                ClosestFirst = ${wClosestFirst.checked ? 'true' : 'false'},
+`;
+    code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},
+`;
+    code += `                LockedTarget = ${wLockedSmartOnly.checked ? 'true' : 'false'},
+`;
+    code += `                MaxTargetDistance = ${wMaxTargetDistance.value},
+`;
+    code += `                MinTargetDistance = ${wMinTargetDistance.value},
+`;
+    code += `                TopTargets = ${wTopTargets.value},
+`;
+    code += `                TopBlocks = ${wTopBlocks.value},
+`;
+    code += `                StopTrackingSpeed = ${wStopTrackingSpeed.value},
+`;
+    if (wMaxCost && parseFloat(wMaxCost.value) > 0) code += `                MaxCost = ${wMaxCost.value},
+`;
+    code += `            },
+`;
   }
 
-  code += `            HardPoint = new HardPointDef\n`;
-  code += `            {\n`;
-  code += `                PartName = "${pName}",\n`;
-  code += `                DeviateShotAngle = ${wDeviateAngle.value}f,\n`;
-  code += `                AimingTolerance = ${wAimingTolerance.value}f,\n`;
-  code += `                AimLeadingPrediction = ${wAimLeading.value},\n`;
-  code += `                DelayCeaseFire = ${wDelayCeaseFire.value},\n`;
-  code += `                HardWare = new HardwareDef\n`;
-  code += `                {\n`;
-  code += `                    RotateRate = ${wRotateRate.value}f,\n`;
-  code += `                    ElevateRate = ${wElevateRate.value}f,\n`;
-  code += `                    MinAzimuth = ${wMinAzimuth.value},\n`;
-  code += `                    MaxAzimuth = ${wMaxAzimuth.value},\n`;
-  code += `                    MinElevation = ${wMinElevation.value},\n`;
-  code += `                    MaxElevation = ${wMaxElevation.value},\n`;
-  code += `                    InventorySize = ${wInventorySize.value}f,\n`;
-  code += `                    IdlePower = ${wIdlePower.value}f,\n`;
-  code += `                    Type = BlockWeapon,\n`;
-  code += `                },\n`;
-  code += `                Loading = new LoadingDef\n`;
-  code += `                {\n`;
-  code += `                    RateOfFire = ${wRateOfFire.value},\n`;
-  code += `                    BarrelsPerShot = ${wBarrelsPerShot.value},\n`;
-  code += `                    ReloadTime = ${wReloadTime.value},\n`;
-  code += `                    MagsToLoad = ${wMagsToLoad.value},\n`;
-  code += `                    HeatPerShot = ${wHeatPerShot.value}f,\n`;
-  code += `                    MaxHeat = ${wMaxHeat.value},\n`;
-  code += `                    HeatSinkRate = ${wHeatSinkRate.value},\n`;
-  code += `                    Cooldown = ${wCooldown.value}f,\n`;
-  code += `                },\n`;
-  code += `                Audio = new HardPointAudioDef\n`;
-  code += `                {\n`;
-  code += `                    FiringSound = "${wSoundFiring.value}",\n`;
-  code += `                    ReloadSound = "${wSoundReload.value}",\n`;
-  code += `                    HardPointRotationSound = "${wSoundRotate.value}",\n`;
-  code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",\n`;
-  code += `                },\n`;
-  code += `            },\n`;
-  code += `            Ammos = new[]\n`;
-  code += `            {\n`;
-  code += `                ${ammosList},\n`;
-  code += `            },\n`;
-    if (activeWeapon.extendedTags && Object.keys(activeWeapon.extendedTags).length > 0) {
-    code += `            // Extended / Auto-Discovered WeaponCore Tags\n`;
+  code += `            HardPoint = new HardPointDef
+`;
+  code += `            {
+`;
+  code += `                PartName = "${pName}",
+`;
+  code += `                DeviateShotAngle = ${wDeviateAngle.value}f,
+`;
+  code += `                AimingTolerance = ${wAimingTolerance.value}f,
+`;
+  code += `                AimLeadingPrediction = ${wAimLeading.value},
+`;
+  code += `                DelayCeaseFire = ${wDelayCeaseFire.value},
+`;
+  if (wAddToleranceToTracking && wAddToleranceToTracking.checked) code += `                AddToleranceToTracking = true,
+`;
+  if (wCanShootSubmerged && wCanShootSubmerged.checked) code += `                CanShootSubmerged = true,
+`;
+  if (wNpcSafe) code += `                NpcSafe = ${wNpcSafe.checked ? 'true' : 'false'},
+`;
+
+  // UiDef
+  code += `                Ui = new UiDef
+`;
+  code += `                {
+`;
+  code += `                    RateOfFire = ${wUiRateOfFire && wUiRateOfFire.checked ? 'true' : 'false'},
+`;
+  code += `                    DamageModifier = ${wUiDamageModifier && wUiDamageModifier.checked ? 'true' : 'false'},
+`;
+  code += `                    ToggleGuidance = ${wUiToggleGuidance && wUiToggleGuidance.checked ? 'true' : 'false'},
+`;
+  code += `                    EnableOverload = ${wUiEnableOverload && wUiEnableOverload.checked ? 'true' : 'false'},
+`;
+  code += `                },
+`;
+
+  // AiDef
+  code += `                Ai = new AiDef
+`;
+  code += `                {
+`;
+  code += `                    TrackTargets = ${wAiTrackTargets && wAiTrackTargets.checked ? 'true' : 'false'},
+`;
+  code += `                    TurretAttached = ${wAiTurretAttached && wAiTurretAttached.checked ? 'true' : 'false'},
+`;
+  code += `                    TurretController = ${wAiTurretController && wAiTurretController.checked ? 'true' : 'false'},
+`;
+  code += `                    PrimaryTracking = ${wAiPrimaryTracking && wAiPrimaryTracking.checked ? 'true' : 'false'},
+`;
+  code += `                    LockOnFocus = ${wAiLockOnFocus && wAiLockOnFocus.checked ? 'true' : 'false'},
+`;
+  code += `                    SuppressActivityWhenTargetInfracted = ${wAiSuppressInfracted && wAiSuppressInfracted.checked ? 'true' : 'false'},
+`;
+  code += `                },
+`;
+
+  code += `                HardWare = new HardwareDef
+`;
+  code += `                {
+`;
+  code += `                    RotateRate = ${wRotateRate.value}f,
+`;
+  code += `                    ElevateRate = ${wElevateRate.value}f,
+`;
+  code += `                    MinAzimuth = ${wMinAzimuth.value},
+`;
+  code += `                    MaxAzimuth = ${wMaxAzimuth.value},
+`;
+  code += `                    MinElevation = ${wMinElevation.value},
+`;
+  code += `                    MaxElevation = ${wMaxElevation.value},
+`;
+  if (wHomeAzimuth && parseFloat(wHomeAzimuth.value) !== 0) code += `                    HomeAzimuth = ${wHomeAzimuth.value},
+`;
+  if (wHomeElevation && parseFloat(wHomeElevation.value) !== 0) code += `                    HomeElevation = ${wHomeElevation.value},
+`;
+  code += `                    InventorySize = ${wInventorySize.value}f,
+`;
+  code += `                    IdlePower = ${wIdlePower.value}f,
+`;
+  code += `                    Type = ${wHardwareType ? wHardwareType.value : 'BlockWeapon'},
+`;
+  if (wCriticalChance && parseFloat(wCriticalChance.value) > 0) code += `                    CriticalChance = ${wCriticalChance.value}f,
+`;
+  if (wOffsetX && (parseFloat(wOffsetX.value) !== 0 || parseFloat(wOffsetY.value) !== 0 || parseFloat(wOffsetZ.value) !== 0)) {
+    code += `                    Offset = Vector(x: ${wOffsetX.value}f, y: ${wOffsetY.value}f, z: ${wOffsetZ.value}f),
+`;
+  }
+  code += `                },
+`;
+
+  code += `                Loading = new LoadingDef
+`;
+  code += `                {
+`;
+  code += `                    RateOfFire = ${wRateOfFire.value},
+`;
+  code += `                    BarrelsPerShot = ${wBarrelsPerShot.value},
+`;
+  if (wTrajectilesPerBarrel && parseInt(wTrajectilesPerBarrel.value, 10) > 1) code += `                    TrajectilesPerBarrel = ${wTrajectilesPerBarrel.value},
+`;
+  if (wSkipBarrels && parseInt(wSkipBarrels.value, 10) > 0) code += `                    SkipBarrels = ${wSkipBarrels.value},
+`;
+  code += `                    ReloadTime = ${wReloadTime.value},
+`;
+  code += `                    MagsToLoad = ${wMagsToLoad.value},
+`;
+  if (wDelayUntilFire && parseInt(wDelayUntilFire.value, 10) > 0) code += `                    DelayUntilFire = ${wDelayUntilFire.value},
+`;
+  code += `                    HeatPerShot = ${wHeatPerShot.value}f,
+`;
+  code += `                    MaxHeat = ${wMaxHeat.value},
+`;
+  code += `                    HeatSinkRate = ${wHeatSinkRate.value},
+`;
+  code += `                    Cooldown = ${wCooldown.value}f,
+`;
+  if (wShotsInBurst && parseInt(wShotsInBurst.value, 10) > 0) {
+    code += `                    ShotsInBurst = ${wShotsInBurst.value},
+`;
+    code += `                    DelayAfterBurst = ${wDelayAfterBurst.value},
+`;
+  }
+  if (wFireFull && wFireFull.checked) code += `                    FireFull = true,
+`;
+  if (wGiveUpAfter && wGiveUpAfter.checked) code += `                    GiveUpAfter = true,
+`;
+  if (wGoHomeToReload && wGoHomeToReload.checked) code += `                    GoHomeToReload = true,
+`;
+  if (wDropTargetUntilLoaded && wDropTargetUntilLoaded.checked) code += `                    DropTargetUntilLoaded = true,
+`;
+  if (wDegradeWithHeat && wDegradeWithHeat.checked) code += `                    DegradeWithHeat = true,
+`;
+  if (wUseFillSound && wUseFillSound.checked) code += `                    UseFillSound = true,
+`;
+  code += `                },
+`;
+
+  code += `                Audio = new HardPointAudioDef
+`;
+  code += `                {
+`;
+  code += `                    FiringSound = "${wSoundFiring.value}",
+`;
+  if (wSoundPreFiring && wSoundPreFiring.value) code += `                    PreFiringSound = "${wSoundPreFiring.value}",
+`;
+  if (wSoundFiringPerShot && wSoundFiringPerShot.checked) code += `                    FiringSoundPerShot = true,
+`;
+  code += `                    ReloadSound = "${wSoundReload.value}",
+`;
+  code += `                    HardPointRotationSound = "${wSoundRotate.value}",
+`;
+  code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",
+`;
+  code += `                },
+`;
+
+  // OtherDef
+  code += `                Other = new OtherDef
+`;
+  code += `                {
+`;
+  if (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) code += `                    ConstructPartCap = ${wConstructPartCap.value},
+`;
+  if (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) code += `                    EnergyPriority = ${wEnergyPriority.value},
+`;
+  if (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) code += `                    RestrictionRadius = ${wRestrictionRadius.value}f,
+`;
+  if (wOtherDebug && wOtherDebug.checked) code += `                    Debug = true,
+`;
+  if (wCheckInflatedBox && wCheckInflatedBox.checked) code += `                    CheckInflatedBox = true,
+`;
+  if (wCheckForAnySupport && wCheckForAnySupport.checked) code += `                    CheckForAnySupport = true,
+`;
+  if (wStayCharged && wStayCharged.checked) code += `                    StayCharged = true,
+`;
+  if (wRotateToTarget && wRotateToTarget.checked) code += `                    RotateToTarget = true,
+`;
+  if (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) code += `                    StopTrackingAfterFiring = true,
+`;
+  if (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked) code += `                    NoVoxelLOSCheck = true,
+`;
+  code += `                },
+`;
+  code += `            },
+`;
+
+  code += `            Ammos = new[]
+`;
+  code += `            {
+`;
+  code += `                ${ammosList},
+`;
+  code += `            },
+`;
+
+  if (activeWeapon.extendedTags && Object.keys(activeWeapon.extendedTags).length > 0) {
+    code += `            // Extended / Auto-Discovered WeaponCore Tags
+`;
     for (const [k, v] of Object.entries(activeWeapon.extendedTags)) {
       const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
-      code += `            // ${k} = ${formattedVal},\n`;
+      code += `            // ${k} = ${formattedVal},
+`;
     }
   }
-  code += `            ${animRef}\n`;
-  code += `        };\n`;
+
+  code += `            ${animRef}
+`;
+  code += `        };
+`;
 
   return code;
 }
@@ -2022,86 +2590,484 @@ function generateCSharpAmmo() {
   const aMag = aAmmoMagazine.value || `${aRound}_Mag`;
   const aTerm = aTerminalName.value || aRound;
 
-  let code = `        AmmoDef ${aRound} => new AmmoDef\n`;
-  code += `        {\n`;
-  code += `            AmmoMagazine = "${aMag}",\n`;
-  code += `            AmmoRound = "${aRound}",\n`;
-  code += `            TerminalName = "${aTerm}",\n`;
-  code += `            BaseDamage = ${aBaseDamage.value}f,\n`;
-  code += `            Mass = ${aMass.value}f,\n`;
-  code += `            Health = ${aHealth.value}f,\n`;
-  code += `            BackKickForce = ${aBackKick.value}f,\n`;
-  code += `            HardPointUsable = ${aHardPointUsable.checked ? 'true' : 'false'},\n`;
-  code += `            NpcSafe = ${aNpcSafe.checked ? 'true' : 'false'},\n`;
-  code += `            NoGridOrArmorScaling = ${aNoGridOrArmorScaling.checked ? 'true' : 'false'},\n`;
+  let code = `        AmmoDef ${aRound} => new AmmoDef
+`;
+  code += `        {
+`;
+  code += `            AmmoMagazine = "${aMag}",
+`;
+  code += `            AmmoRound = "${aRound}",
+`;
+  code += `            TerminalName = "${aTerm}",
+`;
+  code += `            BaseDamage = ${aBaseDamage.value}f,
+`;
+  if (aBaseDamageCutoff && parseInt(aBaseDamageCutoff.value, 10) > 0) code += `            BaseDamageCutoff = ${aBaseDamageCutoff.value},
+`;
+  code += `            Mass = ${aMass.value}f,
+`;
+  code += `            Health = ${aHealth.value}f,
+`;
+  code += `            BackKickForce = ${aBackKick.value}f,
+`;
+  if (aDecayPerShot && parseFloat(aDecayPerShot.value) > 0) code += `            DecayPerShot = ${aDecayPerShot.value}f,
+`;
+  if (aEnergyCost && parseFloat(aEnergyCost.value) > 0) code += `            EnergyCost = ${aEnergyCost.value}f,
+`;
+  if (aEnergyMagazineSize && parseInt(aEnergyMagazineSize.value, 10) > 0) code += `            EnergyMagazineSize = ${aEnergyMagazineSize.value},
+`;
+  if (aHeatModifier && parseFloat(aHeatModifier.value) !== 1.0) code += `            HeatModifier = ${aHeatModifier.value}f,
+`;
+  if (aHeatNeededToFire && parseFloat(aHeatNeededToFire.value) > 0) code += `            HeatNeededToFire = ${aHeatNeededToFire.value}f,
+`;
+  code += `            HardPointUsable = ${aHardPointUsable.checked ? 'true' : 'false'},
+`;
+  if (aHybridRound && aHybridRound.checked) code += `            HybridRound = true,
+`;
+  code += `            NpcSafe = ${aNpcSafe.checked ? 'true' : 'false'},
+`;
+  code += `            NoGridOrArmorScaling = ${aNoGridOrArmorScaling.checked ? 'true' : 'false'},
+`;
+  if (aIgnoreWater && aIgnoreWater.checked) code += `            IgnoreWater = true,
+`;
+  if (aIgnoreVoxels && aIgnoreVoxels.checked) code += `            IgnoreVoxels = true,
+`;
+  if (aIgnoreGrids && aIgnoreGrids.checked) code += `            IgnoreGrids = true,
+`;
+  if (aAllowNegativeHeatModifier && aAllowNegativeHeatModifier.checked) code += `            AllowNegativeHeatModifier = true,
+`;
+  if (aGridsTargetSeekersTargetingThis && aGridsTargetSeekersTargetingThis.checked) code += `            GridsTargetSeekersTargetingThis = true,
+`;
 
+  // ShapeDef
+  code += `            Shape = new ShapeDef
+`;
+  code += `            {
+`;
+  code += `                Shape = ${aShape.value},
+`;
+  code += `                Diameter = ${aDiameter.value}f,
+`;
+  code += `            },
+`;
+
+  // ObjectsHitDef
+  if (oMaxObjectsHit && (parseInt(oMaxObjectsHit.value, 10) > 1 || !oCountBlocks.checked || oSkipBlocksForAOE.checked)) {
+    code += `            ObjectsHit = new ObjectsHitDef
+`;
+    code += `            {
+`;
+    code += `                MaxObjectsHit = ${oMaxObjectsHit.value},
+`;
+    code += `                CountBlocks = ${oCountBlocks.checked ? 'true' : 'false'},
+`;
+    if (oSkipBlocksForAOE.checked) code += `                SkipBlocksForAOE = true,
+`;
+    code += `            },
+`;
+  }
+
+  // FragmentDef
   if (fEnable.checked && fChildAmmoRound.value) {
-    code += `            Fragment = new FragmentDef\n`;
-    code += `            {\n`;
-    code += `                AmmoRound = "${fChildAmmoRound.value}",\n`;
-    code += `                Fragments = ${fFragments.value},\n`;
-    code += `                Degrees = ${fDegrees.value}f,\n`;
-    code += `                Reverse = ${fReverse.checked ? 'true' : 'false'},\n`;
-    code += `                DropVelocity = ${fDropVelocity.checked ? 'true' : 'false'},\n`;
-    code += `            },\n`;
+    code += `            Fragment = new FragmentDef
+`;
+    code += `            {
+`;
+    code += `                AmmoRound = "${fChildAmmoRound.value}",
+`;
+    code += `                Fragments = ${fFragments.value},
+`;
+    code += `                Degrees = ${fDegrees.value}f,
+`;
+    if (fBackwardDegrees && parseFloat(fBackwardDegrees.value) > 0) code += `                BackwardDegrees = ${fBackwardDegrees.value}f,
+`;
+    if (fOffset && parseFloat(fOffset.value) !== 0) code += `                Offset = ${fOffset.value}f,
+`;
+    code += `                Reverse = ${fReverse.checked ? 'true' : 'false'},
+`;
+    code += `                DropVelocity = ${fDropVelocity.checked ? 'true' : 'false'},
+`;
+    if (fIgnoreArming && fIgnoreArming.checked) code += `                IgnoreArming = true,
+`;
+    if (fRadial && fRadial.checked) code += `                Radial = true,
+`;
+    code += `            },
+`;
   }
 
-  if (aodEnable.checked && parseFloat(aodRadius.value) > 0) {
-    code += `            AreaOfDamage = new AreaOfDamageDef\n`;
-    code += `            {\n`;
-    code += `                EndOfLife = new EndOfLifeDef\n`;
-    code += `                {\n`;
-    code += `                    Enable = true,\n`;
-    code += `                    Radius = ${aodRadius.value}f,\n`;
-    code += `                    Damage = ${aodDamage.value}f,\n`;
-    code += `                    Depth = ${aodDepth.value}f,\n`;
-    code += `                },\n`;
-    code += `            },\n`;
+  // AreaOfDamageDef
+  const hasBlockAoe = aodBlockEnable && aodBlockEnable.checked && parseFloat(aodBlockRadius.value) > 0;
+  const hasEolAoe = aodEolEnable && aodEolEnable.checked && parseFloat(aodEolRadius.value) > 0;
+
+  if (hasBlockAoe || hasEolAoe) {
+    code += `            AreaOfDamage = new AreaOfDamageDef
+`;
+    code += `            {
+`;
+    if (hasBlockAoe) {
+      code += `                ByBlockHit = new ByBlockHitDef
+`;
+      code += `                {
+`;
+      code += `                    Enable = true,
+`;
+      code += `                    Radius = ${aodBlockRadius.value}f,
+`;
+      code += `                    Damage = ${aodBlockDamage.value}f,
+`;
+      code += `                    Depth = ${aodBlockDepth.value}f,
+`;
+      if (parseFloat(aodBlockMaxAbsorb.value) > 0) code += `                    MaxAbsorb = ${aodBlockMaxAbsorb.value}f,
+`;
+      code += `                    Falloff = ${aodBlockFalloff.value},
+`;
+      code += `                    Shape = ${aodBlockShape.value},
+`;
+      code += `                },
+`;
+    }
+    if (hasEolAoe) {
+      code += `                EndOfLife = new EndOfLifeDef
+`;
+      code += `                {
+`;
+      code += `                    Enable = true,
+`;
+      code += `                    Radius = ${aodEolRadius.value}f,
+`;
+      code += `                    Damage = ${aodEolDamage.value}f,
+`;
+      code += `                    Depth = ${aodEolDepth.value}f,
+`;
+      if (parseFloat(aodEolMaxAbsorb.value) > 0) code += `                    MaxAbsorb = ${aodEolMaxAbsorb.value}f,
+`;
+      code += `                    Falloff = ${aodEolFalloff.value},
+`;
+      code += `                    Shape = ${aodEolShape.value},
+`;
+      code += `                },
+`;
+    }
+    code += `            },
+`;
   }
 
-  code += `            Trajectory = new TrajectoryDef\n`;
-  code += `            {\n`;
-  code += `                DesiredSpeed = ${tDesiredSpeed.value}f,\n`;
-  code += `                MaxTrajectory = ${tMaxTrajectory.value}f,\n`;
-  code += `                MaxLifeTime = ${tMaxLifeTime.value},\n`;
-  code += `                Guidance = ${tGuidance.value},\n`;
+  // TrajectoryDef
+  code += `            Trajectory = new TrajectoryDef
+`;
+  code += `            {
+`;
+  code += `                DesiredSpeed = ${tDesiredSpeed.value}f,
+`;
+  if (tAccelPerSec && parseFloat(tAccelPerSec.value) > 0) code += `                AccelPerSec = ${tAccelPerSec.value}f,
+`;
+  code += `                MaxTrajectory = ${tMaxTrajectory.value}f,
+`;
+  code += `                MaxLifeTime = ${tMaxLifeTime.value},
+`;
+  if (tSpeedVariance && parseFloat(tSpeedVariance.value) > 0) code += `                SpeedVariance = ${tSpeedVariance.value}f,
+`;
+  if (tRangeVariance && parseFloat(tRangeVariance.value) > 0) code += `                RangeVariance = ${tRangeVariance.value}f,
+`;
+  if (tDeaccelTime && parseInt(tDeaccelTime.value, 10) > 0) code += `                DeaccelTime = ${tDeaccelTime.value},
+`;
+  if (tFieldExponent && parseFloat(tFieldExponent.value) !== 1.0) code += `                FieldExponent = ${tFieldExponent.value}f,
+`;
+  if (tTargetLossDegree && parseFloat(tTargetLossDegree.value) > 0) code += `                TargetLossDegree = ${tTargetLossDegree.value}f,
+`;
+  if (tTargetLossTime && parseInt(tTargetLossTime.value, 10) > 0) code += `                TargetLossTime = ${tTargetLossTime.value},
+`;
+  code += `                Guidance = ${tGuidance.value},
+`;
+
+  // Smarts
+  if (tGuidance.value === 'Smart' || (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0)) {
+    code += `                Smarts = new SmartsDef
+`;
+    code += `                {
+`;
+    if (sInaccuracy && parseFloat(sInaccuracy.value) > 0) code += `                    Inaccuracy = ${sInaccuracy.value}f,
+`;
+    if (sAggressiveness) code += `                    Aggressiveness = ${sAggressiveness.value}f,
+`;
+    if (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0) code += `                    NavAcceleration = ${sNavAcceleration.value}f,
+`;
+    if (sMaxLateralThrust) code += `                    MaxLateralThrust = ${sMaxLateralThrust.value}f,
+`;
+    if (sNavAngle && parseFloat(sNavAngle.value) > 0) code += `                    NavAngle = ${sNavAngle.value}f,
+`;
+    if (sMinArmingRange && parseFloat(sMinArmingRange.value) > 0) code += `                    MinimumArmingRange = ${sMinArmingRange.value}f,
+`;
+    if (sScanRounds && parseInt(sScanRounds.value, 10) > 0) code += `                    ScanRounds = ${sScanRounds.value},
+`;
+    if (sSpeedLimit && parseFloat(sSpeedLimit.value) > 0) code += `                    SpeedLimit = ${sSpeedLimit.value}f,
+`;
+    if (sVelocity && parseFloat(sVelocity.value) > 0) code += `                    Velocity = ${sVelocity.value}f,
+`;
+    if (sSteeringLimit && parseFloat(sSteeringLimit.value) > 0) code += `                    SteeringLimit = ${sSteeringLimit.value}f,
+`;
+    if (sOverSteer && sOverSteer.checked) code += `                    OverSteer = true,
+`;
+    if (sStepVel && sStepVel.checked) code += `                    StepVel = true,
+`;
+    if (sAltNavigation && sAltNavigation.checked) code += `                    AltNavigation = true,
+`;
+    code += `                },
+`;
+  }
 
   // Lossless preservation of Approaches if present
   if (activeAmmo.approachesRef) {
     if (activeAmmo.approachesRef !== 'Inline') {
-      code += `                Approaches = ${activeAmmo.approachesRef},\n`;
+      code += `                Approaches = ${activeAmmo.approachesRef},
+`;
     } else {
-      code += `                // Approaches preserved in C# source\n`;
+      code += `                // Approaches preserved in C# source
+`;
+    }
+  }
+  code += `            },
+`;
+
+  // PatternDef
+  if (pEnable && pEnable.checked && pPatterns.value) {
+    const patList = pPatterns.value.split(',').map(p => `"${p.trim()}"`).join(', ');
+    code += `            Pattern = new PatternDef
+`;
+    code += `            {
+`;
+    code += `                Enable = true,
+`;
+    code += `                Patterns = new[] { ${patList} },
+`;
+    code += `                TriggerChance = ${pTriggerChance.value}f,
+`;
+    code += `                SkipParent = ${pSkipParent.checked ? 'true' : 'false'},
+`;
+    code += `                Random = ${pRandom.checked ? 'true' : 'false'},
+`;
+    code += `                PatternSteps = ${pPatternSteps.value},
+`;
+    code += `                Mode = ${pMode.value},
+`;
+    code += `            },
+`;
+  }
+
+  // EwarDef
+  if (ewEnable && ewEnable.checked) {
+    code += `            Ewar = new EwarDef
+`;
+    code += `            {
+`;
+    code += `                Enable = true,
+`;
+    code += `                Type = ${ewType.value},
+`;
+    code += `                Mode = ${ewMode.value},
+`;
+    code += `                Strength = ${ewStrength.value}f,
+`;
+    code += `                Radius = ${ewRadius.value}f,
+`;
+    code += `                Duration = ${ewDuration.value},
+`;
+    code += `                MaxStacks = ${ewMaxStacks.value},
+`;
+    code += `                StackDuration = ${ewStackDuration.checked ? 'true' : 'false'},
+`;
+    code += `                Deplete = ${ewDeplete.checked ? 'true' : 'false'},
+`;
+    code += `            },
+`;
+  }
+
+  // DamageScaleDef
+  code += `            DamageScales = new DamageScaleDef
+`;
+  code += `            {
+`;
+  if (dsMaxIntegrity && parseFloat(dsMaxIntegrity.value) > 0) code += `                MaxIntegrity = ${dsMaxIntegrity.value}f,
+`;
+  code += `                DamageToShields = ${dsShield.value}f,
+`;
+  if (dsCharacters) code += `                Characters = ${dsCharacters.value}f,
+`;
+  code += `                Armor = new ArmorDef
+`;
+  code += `                {
+`;
+  if (dsArmorArmor) code += `                    Armor = ${dsArmorArmor.value}f,
+`;
+  code += `                    Light = ${dsLightArmor.value}f,
+`;
+  code += `                    Heavy = ${dsHeavyArmor.value}f,
+`;
+  if (dsNonArmor) code += `                    NonArmor = ${dsNonArmor.value}f,
+`;
+  code += `                },
+`;
+  if (dsFalloffDistance && parseFloat(dsFalloffDistance.value) > 0) {
+    code += `                FallOff = new FallOffDef
+`;
+    code += `                {
+`;
+    code += `                    Distance = ${dsFalloffDistance.value}f,
+`;
+    code += `                    MinMultipler = ${dsFalloffMinMult.value}f,
+`;
+    code += `                },
+`;
+  }
+  if (dsGridLarge && (parseFloat(dsGridLarge.value) !== -1 || parseFloat(dsGridSmall.value) !== -1)) {
+    code += `                Grids = new GridSizeDef
+`;
+    code += `                {
+`;
+    code += `                    Large = ${dsGridLarge.value}f,
+`;
+    code += `                    Small = ${dsGridSmall.value}f,
+`;
+    code += `                },
+`;
+  }
+  code += `                DamageType = new DamageTypes
+`;
+  code += `                {
+`;
+  code += `                    BaseDamage = true,
+`;
+  code += `                },
+`;
+  code += `                Shields = new ShieldDef
+`;
+  code += `                {
+`;
+  code += `                    Modifier = ${dsShieldModifier.value}f,
+`;
+  code += `                    Type = ${dsShieldType.value},
+`;
+  if (dsShieldBypassMod && parseFloat(dsShieldBypassMod.value) > 0) code += `                    BypassModifier = ${dsShieldBypassMod.value}f,
+`;
+  code += `                },
+`;
+  code += `            },
+`;
+
+  // SynchronizeDef
+  code += `            Sync = new SynchronizeDef
+`;
+  code += `            {
+`;
+  code += `                Full = ${syncFull && syncFull.checked ? 'true' : 'false'},
+`;
+  code += `                PointDefense = ${syncPointDefense && syncPointDefense.checked ? 'true' : 'false'},
+`;
+  code += `                OnHitDeath = ${syncOnHitDeath && syncOnHitDeath.checked ? 'true' : 'false'},
+`;
+  if (syncInterval && parseInt(syncInterval.value, 10) > 0) code += `                PositionSyncInterval = ${syncInterval.value},
+`;
+  if (syncPatchWindow && parseInt(syncPatchWindow.value, 10) > 0) code += `                PositionPatchWindow = ${syncPatchWindow.value},
+`;
+  if (syncUpdateOnRandomize && syncUpdateOnRandomize.checked) code += `                PositionUpdateOnRandomize = true,
+`;
+  code += `            },
+`;
+
+  // GraphicDef
+  code += `            Graphic = new GraphicDef
+`;
+  code += `            {
+`;
+  code += `                VisualProbability = ${gVisualProb.value}f,
+`;
+  if (gShieldHitDraw) code += `                ShieldHitDraw = ${gShieldHitDraw.checked ? 'true' : 'false'},
+`;
+  code += `                Lines = new LineDef
+`;
+  code += `                {
+`;
+  code += `                    Tracer = new TracerBaseDef
+`;
+  code += `                    {
+`;
+  code += `                        Enable = ${gTracerEnable.checked ? 'true' : 'false'},
+`;
+  code += `                        Length = ${gTracerLength.value}f,
+`;
+  code += `                        Width = ${gTracerWidth.value}f,
+`;
+  if (gTracerColor) code += `                        Color = Color(${gTracerColor.value}),
+`;
+  if (gTracerTexture) code += `                        Textures = new[] { "${gTracerTexture.value}" },
+`;
+  if (gTracerSegmented && gTracerSegmented.checked) code += `                        Segmentation = true,
+`;
+  code += `                    },
+`;
+  if (gTrailEnable && gTrailEnable.checked) {
+    code += `                    Trail = new TrailDef
+`;
+    code += `                    {
+`;
+    code += `                        Enable = true,
+`;
+    code += `                        AlwaysDraw = ${gTrailAlwaysDraw.checked ? 'true' : 'false'},
+`;
+    code += `                        DecayTime = ${gTrailDecay.value},
+`;
+    code += `                        CustomWidth = ${gTrailWidth.value}f,
+`;
+    if (gTrailColor) code += `                        Color = Color(${gTrailColor.value}),
+`;
+    if (gTrailTextures) code += `                        Textures = new[] { "${gTrailTextures.value}" },
+`;
+    code += `                    },
+`;
+  }
+  code += `                },
+`;
+  code += `            },
+`;
+
+  // AudioDef
+  code += `            Audio = new AmmoAudioDef
+`;
+  code += `            {
+`;
+  if (aSoundShot && aSoundShot.value) code += `                ShotSound = "${aSoundShot.value}",
+`;
+  code += `                TravelSound = "${aSoundTravel.value}",
+`;
+  code += `                HitSound = "${aSoundHit.value}",
+`;
+  code += `                ShieldHitSound = "${aSoundShieldHit.value}",
+`;
+  if (aSoundVoxelHit && aSoundVoxelHit.value) code += `                VoxelHitSound = "${aSoundVoxelHit.value}",
+`;
+  if (aSoundPlayerHit && aSoundPlayerHit.value) code += `                PlayerHitSound = "${aSoundPlayerHit.value}",
+`;
+  if (aSoundWaterHit && aSoundWaterHit.value) code += `                WaterHitSound = "${aSoundWaterHit.value}",
+`;
+  if (aHitPlayChance) code += `                HitPlayChance = ${aHitPlayChance.value}f,
+`;
+  if (aHitPlayShield) code += `                HitPlayShield = ${aHitPlayShield.checked ? 'true' : 'false'},
+`;
+  code += `            },
+`;
+
+  if (activeAmmo.extendedTags && Object.keys(activeAmmo.extendedTags).length > 0) {
+    code += `            // Extended / Auto-Discovered WeaponCore Tags
+`;
+    for (const [k, v] of Object.entries(activeAmmo.extendedTags)) {
+      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
+      code += `            ${k} = ${formattedVal},
+`;
     }
   }
 
-  code += `            },\n`;
-  code += `            DamageScales = new DamageScaleDef\n`;
-  code += `            {\n`;
-  code += `                Shield = new ShieldDef { Modifier = ${dsShield.value}f },\n`;
-  code += `                DamageType = new DamageTypes { Light = ${dsLightArmor.value}f, Heavy = ${dsHeavyArmor.value}f },\n`;
-  code += `            },\n`;
-    if (activeAmmo.extendedTags && Object.keys(activeAmmo.extendedTags).length > 0) {
-    code += `            // Extended / Auto-Discovered WeaponCore Tags\n`;
-    for (const [k, v] of Object.entries(activeAmmo.extendedTags)) {
-      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
-      code += `            ${k} = ${formattedVal},\n`;
-    }
-  }
-  code += `            Graphic = new GraphicDef\n`;
-  code += `            {\n`;
-  code += `                VisualProbability = ${gVisualProb.value}f,\n`;
-  code += `                Lines = new LineDef\n`;
-  code += `                {\n`;
-  code += `                    Tracer = new TracerBaseDef\n`;
-  code += `                    {\n`;
-  code += `                        Enable = ${gTracerEnable.checked ? 'true' : 'false'},\n`;
-  code += `                        Length = ${gTracerLength.value}f,\n`;
-  code += `                        Width = ${gTracerWidth.value}f,\n`;
-  code += `                    },\n`;
-  code += `                },\n`;
-  code += `            },\n`;
-  code += `        };\n`;
+  code += `        };
+`;
 
   return code;
 }
@@ -2326,7 +3292,7 @@ function setupWorkbenchInputEvents() {
   // Live recalculation on any input change
   const liveInputs = [
     wRateOfFire, wBarrelsPerShot, wReloadTime, wMagsToLoad, wHeatPerShot, wMaxHeat, wHeatSinkRate, wCooldown,
-    wRotateRate, wElevateRate, aBaseDamage, aMass, aEnergyCost, aodEnable, aodRadius, aodDamage,
+    wRotateRate, wElevateRate, aBaseDamage, aMass, aEnergyCost, aodBlockEnable, aodBlockRadius, aodBlockDamage, aodEolEnable, aodEolRadius, aodEolDamage,
     fEnable, fFragments, fDegrees, fChildAmmoRound, tDesiredSpeed, tMaxTrajectory,
     sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcIsRelic, sbcHasCircuitry
   ];
