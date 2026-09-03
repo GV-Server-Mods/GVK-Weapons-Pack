@@ -511,6 +511,38 @@ header {
   font-weight: 400;
 }
 
+
+/* ==========================================================================
+   WEAPONCORE ENGINE DEFAULTS (Medium-Grey Visual Styling)
+   ========================================================================== */
+.control-input.is-wc-default,
+select.control-input.is-wc-default,
+input.control-input.is-wc-default {
+  color: #7b8e9f !important; /* Distinct medium-grey for unconfigured defaults */
+  border-color: rgba(123, 142, 159, 0.25) !important;
+  font-style: italic;
+}
+
+.control-input.is-wc-default:focus {
+  color: #fff !important;
+  border-color: var(--amber-primary) !important;
+  font-style: normal;
+}
+
+.control-input::placeholder {
+  color: #556575;
+  font-style: italic;
+}
+
+/* Badge indicating field is at engine default */
+.field-default-indicator {
+  font-size: 10px;
+  color: #7b8e9f;
+  font-style: italic;
+  font-family: var(--font-mono);
+  margin-left: 6px;
+}
+
 .control-input {
   background: var(--bg-input);
   border: 1px solid var(--border-color);

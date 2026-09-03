@@ -1287,6 +1287,36 @@ function renderExtendedAmmoTags() {
   });
 }
 
+
+// ==========================================================================
+// FIELD BINDING HELPERS FOR MEDIUM-GREY DEFAULT VISUALIZATION
+// ==========================================================================
+function bindInputVal(input, definedVal, defaultVal) {
+  if (!input) return;
+  if (definedVal !== undefined && definedVal !== null && definedVal !== '') {
+    input.value = definedVal;
+    input.classList.remove('is-wc-default');
+    if (input.removeAttribute) input.removeAttribute('title');
+  } else {
+    input.value = (defaultVal !== undefined && defaultVal !== null) ? defaultVal : '';
+    input.classList.add('is-wc-default');
+    if (input.setAttribute) input.setAttribute('title', 'WeaponCore Engine Default (Not defined in mod file)');
+  }
+}
+
+function bindCheckboxVal(input, definedVal, defaultVal) {
+  if (!input) return;
+  if (definedVal !== undefined && definedVal !== null) {
+    input.checked = (definedVal === true);
+    input.classList.remove('is-wc-default');
+    if (input.removeAttribute) input.removeAttribute('title');
+  } else {
+    input.checked = (defaultVal === true);
+    input.classList.add('is-wc-default');
+    if (input.setAttribute) input.setAttribute('title', 'WeaponCore Engine Default (Not defined in mod file)');
+  }
+}
+
 function populateWeaponWorkbench() {
   if (!activeWeapon) return;
 
@@ -1388,194 +1418,196 @@ function populateAmmoWorkbench() {
   if (ammoSelectGlobal) ammoSelectGlobal.value = activeAmmo.name;
   if (scopeActiveAmmoLabel) scopeActiveAmmoLabel.textContent = activeAmmo.name;
 
-  // Core Identification & Physics (No mock damage or mass fallbacks)
-  aAmmoRound.value = activeAmmo.ammoRound || activeAmmo.name || '';
-  aAmmoMagazine.value = activeAmmo.ammoMagazine || '';
-  aTerminalName.value = activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name || '';
-  aBaseDamage.value = activeAmmo.baseDamage !== undefined ? activeAmmo.baseDamage : 0;
-  if (aBaseDamageCutoff) aBaseDamageCutoff.value = activeAmmo.baseDamageCutoff || 0;
-  aMass.value = activeAmmo.mass !== undefined ? activeAmmo.mass : 0;
-  aHealth.value = activeAmmo.health || 0;
-  aBackKick.value = activeAmmo.backKickForce || 0;
-  if (aDecayPerShot) aDecayPerShot.value = activeAmmo.decayPerShot || 0;
-  aEnergyCost.value = activeAmmo.energyCost || 0;
-  if (aEnergyMagazineSize) aEnergyMagazineSize.value = activeAmmo.energyMagazineSize || 0;
-  if (aHeatModifier) aHeatModifier.value = activeAmmo.heatModifier !== undefined ? activeAmmo.heatModifier : 1.0;
-  if (aHeatNeededToFire) aHeatNeededToFire.value = activeAmmo.heatNeededToFire || 0;
+  // Core Identification & Physics
+  bindInputVal(aAmmoRound, activeAmmo.ammoRound || activeAmmo.name, '');
+  bindInputVal(aAmmoMagazine, activeAmmo.ammoMagazine, '');
+  bindInputVal(aTerminalName, activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name, '');
+  bindInputVal(aBaseDamage, activeAmmo.baseDamage, 0);
+  bindInputVal(aBaseDamageCutoff, activeAmmo.baseDamageCutoff, 0);
+  bindInputVal(aMass, activeAmmo.mass, 0);
+  bindInputVal(aHealth, activeAmmo.health, 0);
+  bindInputVal(aBackKick, activeAmmo.backKickForce, 0);
+  bindInputVal(aDecayPerShot, activeAmmo.decayPerShot, 0);
+  bindInputVal(aEnergyCost, activeAmmo.energyCost, 0);
+  bindInputVal(aEnergyMagazineSize, activeAmmo.energyMagazineSize, 0);
+  bindInputVal(aHeatModifier, activeAmmo.heatModifier, 1.0);
+  bindInputVal(aHeatNeededToFire, activeAmmo.heatNeededToFire, 0);
 
-  aHardPointUsable.checked = activeAmmo.hardPointUsable !== false;
-  if (aHybridRound) aHybridRound.checked = activeAmmo.hybridRound === true;
-  aNpcSafe.checked = activeAmmo.npcSafe !== false;
-  aNoGridOrArmorScaling.checked = activeAmmo.noGridOrArmorScaling === true;
-  if (aIgnoreWater) aIgnoreWater.checked = activeAmmo.ignoreWater === true;
-  if (aIgnoreVoxels) aIgnoreVoxels.checked = activeAmmo.ignoreVoxels === true;
-  if (aIgnoreGrids) aIgnoreGrids.checked = activeAmmo.ignoreGrids === true;
-  if (aAllowNegativeHeatModifier) aAllowNegativeHeatModifier.checked = activeAmmo.allowNegativeHeatModifier === true;
-  if (aGridsTargetSeekersTargetingThis) aGridsTargetSeekersTargetingThis.checked = activeAmmo.gridsTargetSeekersTargetingThis === true;
+  bindCheckboxVal(aHardPointUsable, activeAmmo.hardPointUsable, true);
+  bindCheckboxVal(aHybridRound, activeAmmo.hybridRound, false);
+  bindCheckboxVal(aNpcSafe, activeAmmo.npcSafe, true);
+  bindCheckboxVal(aNoGridOrArmorScaling, activeAmmo.noGridOrArmorScaling, false);
+  bindCheckboxVal(aIgnoreWater, activeAmmo.ignoreWater, false);
+  bindCheckboxVal(aIgnoreVoxels, activeAmmo.ignoreVoxels, false);
+  bindCheckboxVal(aIgnoreGrids, activeAmmo.ignoreGrids, false);
+  bindCheckboxVal(aAllowNegativeHeatModifier, activeAmmo.allowNegativeHeatModifier, false);
+  bindCheckboxVal(aGridsTargetSeekersTargetingThis, activeAmmo.gridsTargetSeekersTargetingThis, false);
 
   // TrajectoryDef & SmartsDef
   const traj = activeAmmo.trajectory || {};
-  tDesiredSpeed.value = traj.desiredSpeed !== undefined ? traj.desiredSpeed : (activeAmmo.desiredSpeed || 0);
-  if (tAccelPerSec) tAccelPerSec.value = traj.accelPerSec || 0;
-  tMaxTrajectory.value = traj.maxTrajectory !== undefined ? traj.maxTrajectory : (activeAmmo.maxTrajectory || 0);
-  tMaxLifeTime.value = traj.maxLifeTime !== undefined ? traj.maxLifeTime : 3600;
-  if (tSpeedVariance) tSpeedVariance.value = traj.speedVariance || 0;
-  if (tRangeVariance) tRangeVariance.value = traj.rangeVariance || 0;
-  if (tDeaccelTime) tDeaccelTime.value = traj.deaccelTime || 0;
-  if (tFieldExponent) tFieldExponent.value = traj.fieldExponent !== undefined ? traj.fieldExponent : 1.0;
-  if (tTargetLossDegree) tTargetLossDegree.value = traj.targetLossDegree || 0;
-  if (tTargetLossTime) tTargetLossTime.value = traj.targetLossTime || 0;
-  tGuidance.value = traj.guidance || 'None';
+  bindInputVal(tDesiredSpeed, traj.desiredSpeed !== undefined ? traj.desiredSpeed : activeAmmo.desiredSpeed, 0);
+  bindInputVal(tAccelPerSec, traj.accelPerSec, 0);
+  bindInputVal(tMaxTrajectory, traj.maxTrajectory !== undefined ? traj.maxTrajectory : activeAmmo.maxTrajectory, 0);
+  bindInputVal(tMaxLifeTime, traj.maxLifeTime, 3600);
+  bindInputVal(tSpeedVariance, traj.speedVariance, 0);
+  bindInputVal(tRangeVariance, traj.rangeVariance, 0);
+  bindInputVal(tDeaccelTime, traj.deaccelTime, 0);
+  bindInputVal(tFieldExponent, traj.fieldExponent, 1.0);
+  bindInputVal(tTargetLossDegree, traj.targetLossDegree, 0);
+  bindInputVal(tTargetLossTime, traj.targetLossTime, 0);
+  bindInputVal(tGuidance, traj.guidance, 'None');
 
   const sm = traj.smarts || {};
-  if (sInaccuracy) sInaccuracy.value = sm.inaccuracy || 0;
-  if (sAggressiveness) sAggressiveness.value = sm.aggressiveness !== undefined ? sm.aggressiveness : 1.0;
-  if (sNavAcceleration) sNavAcceleration.value = sm.navAcceleration || 0;
-  if (sMaxLateralThrust) sMaxLateralThrust.value = sm.maxLateralThrust !== undefined ? sm.maxLateralThrust : 0.5;
-  if (sNavAngle) sNavAngle.value = sm.navAngle || 0;
-  if (sMinArmingRange) sMinArmingRange.value = sm.minimumArmingRange || 0;
-  if (sScanRounds) sScanRounds.value = sm.scanRounds || 0;
-  if (sSpeedLimit) sSpeedLimit.value = sm.speedLimit || 0;
-  if (sVelocity) sVelocity.value = sm.velocity || 0;
-  if (sSteeringLimit) sSteeringLimit.value = sm.steeringLimit || 0;
-  if (sOverSteer) sOverSteer.checked = sm.overSteer === true;
-  if (sStepVel) sStepVel.checked = sm.stepVel === true;
-  if (sAltNavigation) sAltNavigation.checked = sm.altNavigation === true;
+  bindInputVal(sInaccuracy, sm.inaccuracy, 0);
+  bindInputVal(sAggressiveness, sm.aggressiveness, 1.0);
+  bindInputVal(sNavAcceleration, sm.navAcceleration, 0);
+  bindInputVal(sMaxLateralThrust, sm.maxLateralThrust, 0.5);
+  bindInputVal(sNavAngle, sm.navAngle, 0);
+  bindInputVal(sMinArmingRange, sm.minimumArmingRange, 0);
+  bindInputVal(sScanRounds, sm.scanRounds, 0);
+  bindInputVal(sSpeedLimit, sm.speedLimit, 0);
+  bindInputVal(sVelocity, sm.velocity, 0);
+  bindInputVal(sSteeringLimit, sm.steeringLimit, 0);
+  bindCheckboxVal(sOverSteer, sm.overSteer, false);
+  bindCheckboxVal(sStepVel, sm.stepVel, false);
+  bindCheckboxVal(sAltNavigation, sm.altNavigation, false);
 
   // ShapeDef & ObjectsHitDef
-  aShape.value = activeAmmo.shape || 'LineShape';
-  aDiameter.value = activeAmmo.diameter !== undefined ? activeAmmo.diameter : -1;
+  bindInputVal(aShape, activeAmmo.shape, 'LineShape');
+  bindInputVal(aDiameter, activeAmmo.diameter, -1);
   const objHit = activeAmmo.objectsHit || {};
-  if (oMaxObjectsHit) oMaxObjectsHit.value = objHit.maxObjectsHit !== undefined ? objHit.maxObjectsHit : 1;
-  if (oCountBlocks) oCountBlocks.checked = objHit.countBlocks !== false;
-  if (oSkipBlocksForAOE) oSkipBlocksForAOE.checked = objHit.skipBlocksForAOE === true;
+  bindInputVal(oMaxObjectsHit, objHit.maxObjectsHit, 1);
+  bindCheckboxVal(oCountBlocks, objHit.countBlocks, true);
+  bindCheckboxVal(oSkipBlocksForAOE, objHit.skipBlocksForAOE, false);
 
   // DamageScaleDef
   const ds = activeAmmo.damageScales || {};
-  if (dsMaxIntegrity) dsMaxIntegrity.value = ds.maxIntegrity || 0;
-  dsShield.value = ds.damageToShields !== undefined ? ds.damageToShields : 1.0;
-  if (dsCharacters) dsCharacters.value = ds.characters !== undefined ? ds.characters : -1;
-  if (dsDamageType) dsDamageType.value = ds.damageType || 'BaseDamage';
+  bindInputVal(dsMaxIntegrity, ds.maxIntegrity, 0);
+  bindInputVal(dsShield, ds.damageToShields, 1.0);
+  bindInputVal(dsCharacters, ds.characters, -1);
+  bindInputVal(dsDamageType, ds.damageType, 'BaseDamage');
 
   const arm = ds.armor || {};
-  if (dsArmorArmor) dsArmorArmor.value = arm.armor !== undefined ? arm.armor : -1;
-  dsLightArmor.value = arm.light !== undefined ? arm.light : -1;
-  dsHeavyArmor.value = arm.heavy !== undefined ? arm.heavy : -1;
-  if (dsNonArmor) dsNonArmor.value = arm.nonArmor !== undefined ? arm.nonArmor : -1;
+  bindInputVal(dsArmorArmor, arm.armor, -1);
+  bindInputVal(dsLightArmor, arm.light, -1);
+  bindInputVal(dsHeavyArmor, arm.heavy, -1);
+  bindInputVal(dsNonArmor, arm.nonArmor, -1);
 
   const fo = ds.fallOff || {};
-  if (dsFalloffDistance) dsFalloffDistance.value = fo.distance || 0;
-  if (dsFalloffMinMult) dsFalloffMinMult.value = fo.minMultipler || 0;
+  bindInputVal(dsFalloffDistance, fo.distance, 0);
+  bindInputVal(dsFalloffMinMult, fo.minMultipler, 0);
 
   const grd = ds.grids || {};
-  if (dsGridLarge) dsGridLarge.value = grd.large !== undefined ? grd.large : -1;
-  if (dsGridSmall) dsGridSmall.value = grd.small !== undefined ? grd.small : -1;
+  bindInputVal(dsGridLarge, grd.large, -1);
+  bindInputVal(dsGridSmall, grd.small, -1);
 
   const shld = ds.shields || {};
-  if (dsShieldModifier) dsShieldModifier.value = shld.modifier !== undefined ? shld.modifier : (ds.damageToShields !== undefined ? ds.damageToShields : 1.0);
-  if (dsShieldType) dsShieldType.value = shld.type || 'Default';
-  if (dsShieldBypassMod) dsShieldBypassMod.value = shld.bypassModifier || 0;
+  bindInputVal(dsShieldModifier, shld.modifier, 1.0);
+  bindInputVal(dsShieldType, shld.type, 'Default');
+  bindInputVal(dsShieldBypassMod, shld.bypassModifier, 0);
 
   // AreaOfDamageDef
   const aod = activeAmmo.areaOfDamage || {};
   const aodBlock = aod.byBlockHit || {};
-  if (aodBlockEnable) aodBlockEnable.checked = aodBlock.enable === true;
-  if (aodBlockRadius) aodBlockRadius.value = aodBlock.radius || 0;
-  if (aodBlockDamage) aodBlockDamage.value = aodBlock.damage || 0;
-  if (aodBlockDepth) aodBlockDepth.value = aodBlock.depth || 0;
-  if (aodBlockMaxAbsorb) aodBlockMaxAbsorb.value = aodBlock.maxAbsorb || 0;
-  if (aodBlockFalloff) aodBlockFalloff.value = aodBlock.falloff || 'Linear';
-  if (aodBlockShape) aodBlockShape.value = aodBlock.shape || 'Sphere';
+  bindCheckboxVal(aodBlockEnable, aodBlock.enable, false);
+  bindInputVal(aodBlockRadius, aodBlock.radius, 0);
+  bindInputVal(aodBlockDamage, aodBlock.damage, 0);
+  bindInputVal(aodBlockDepth, aodBlock.depth, 0);
+  bindInputVal(aodBlockMaxAbsorb, aodBlock.maxAbsorb, 0);
+  bindInputVal(aodBlockFalloff, aodBlock.falloff, 'Linear');
+  bindInputVal(aodBlockShape, aodBlock.shape, 'Sphere');
 
   const aodEol = aod.endOfLife || {};
-  if (aodEolEnable) aodEolEnable.checked = aodEol.enable === true;
-  if (aodEolRadius) aodEolRadius.value = aodEol.radius || 0;
-  if (aodEolDamage) aodEolDamage.value = aodEol.damage || 0;
-  if (aodEolDepth) aodEolDepth.value = aodEol.depth || 0;
-  if (aodEolMaxAbsorb) aodEolMaxAbsorb.value = aodEol.maxAbsorb || 0;
-  if (aodEolFalloff) aodEolFalloff.value = aodEol.falloff || 'Linear';
-  if (aodEolShape) aodEolShape.value = aodEol.shape || 'Sphere';
+  bindCheckboxVal(aodEolEnable, aodEol.enable, false);
+  bindInputVal(aodEolRadius, aodEol.radius, 0);
+  bindInputVal(aodEolDamage, aodEol.damage, 0);
+  bindInputVal(aodEolDepth, aodEol.depth, 0);
+  bindInputVal(aodEolMaxAbsorb, aodEol.maxAbsorb, 0);
+  bindInputVal(aodEolFalloff, aodEol.falloff, 'Linear');
+  bindInputVal(aodEolShape, aodEol.shape, 'Sphere');
 
   // FragmentDef
   const frag = activeAmmo.fragment || {};
-  fEnable.checked = frag.enable === true;
-  fReverse.checked = frag.reverse === true;
-  fDropVelocity.checked = frag.dropVelocity === true;
-  if (fIgnoreArming) fIgnoreArming.checked = frag.ignoreArming === true;
-  if (fRadial) fRadial.checked = frag.radial === true;
-  fFragments.value = frag.fragments || 0;
-  fDegrees.value = frag.degrees || 0;
-  if (fBackwardDegrees) fBackwardDegrees.value = frag.backwardDegrees || 0;
-  if (fOffset) fOffset.value = frag.offset || 0;
-  fChildAmmoRound.value = frag.ammoRound || '';
+  bindCheckboxVal(fEnable, frag.enable, false);
+  bindCheckboxVal(fReverse, frag.reverse, false);
+  bindCheckboxVal(fDropVelocity, frag.dropVelocity, false);
+  bindCheckboxVal(fIgnoreArming, frag.ignoreArming, false);
+  bindCheckboxVal(fRadial, frag.radial, false);
+  bindInputVal(fFragments, frag.fragments, 0);
+  bindInputVal(fDegrees, frag.degrees, 0);
+  bindInputVal(fBackwardDegrees, frag.backwardDegrees, 0);
+  bindInputVal(fOffset, frag.offset, 0);
+  bindInputVal(fChildAmmoRound, frag.ammoRound, '');
   fragStatusBadge.textContent = frag.enable ? `${frag.fragments} Frags Active` : 'Disabled';
   updateFragChainVisual();
 
   // PatternDef
   const pat = activeAmmo.pattern || {};
-  if (pEnable) pEnable.checked = pat.enable === true;
-  if (pPatterns) pPatterns.value = Array.isArray(pat.patterns) ? pat.patterns.join(', ') : (pat.patterns || '');
-  if (pTriggerChance) pTriggerChance.value = pat.triggerChance !== undefined ? pat.triggerChance : 1.0;
-  if (pRandomMin) pRandomMin.value = pat.randomMin || 0;
-  if (pRandomMax) pRandomMax.value = pat.randomMax || 0;
-  if (pPatternSteps) pPatternSteps.value = pat.patternSteps || 1;
-  if (pMode) pMode.value = pat.mode || 'Never';
-  if (pSkipParent) pSkipParent.checked = pat.skipParent === true;
-  if (pRandom) pRandom.checked = pat.random === true;
+  bindCheckboxVal(pEnable, pat.enable, false);
+  const patStr = Array.isArray(pat.patterns) ? pat.patterns.join(', ') : pat.patterns;
+  bindInputVal(pPatterns, patStr, '');
+  bindInputVal(pTriggerChance, pat.triggerChance, 1.0);
+  bindInputVal(pRandomMin, pat.randomMin, 0);
+  bindInputVal(pRandomMax, pat.randomMax, 0);
+  bindInputVal(pPatternSteps, pat.patternSteps, 1);
+  bindInputVal(pMode, pat.mode, 'Never');
+  bindCheckboxVal(pSkipParent, pat.skipParent, false);
+  bindCheckboxVal(pRandom, pat.random, false);
 
-  // EwarDef (No mock strength/radius fallbacks)
+  // EwarDef
   const ew = activeAmmo.ewar || {};
-  if (ewEnable) ewEnable.checked = ew.enable === true;
-  if (ewType) ewType.value = ew.type || 'AntiSmart';
-  if (ewMode) ewMode.value = ew.mode || 'Effect';
-  if (ewStrength) ewStrength.value = ew.strength || 0;
-  if (ewRadius) ewRadius.value = ew.radius || 0;
-  if (ewDuration) ewDuration.value = ew.duration || 0;
-  if (ewMaxStacks) ewMaxStacks.value = ew.maxStacks || 1;
-  if (ewStackDuration) ewStackDuration.checked = ew.stackDuration === true;
-  if (ewDeplete) ewDeplete.checked = ew.deplete === true;
+  bindCheckboxVal(ewEnable, ew.enable, false);
+  bindInputVal(ewType, ew.type, 'AntiSmart');
+  bindInputVal(ewMode, ew.mode, 'Effect');
+  bindInputVal(ewStrength, ew.strength, 0);
+  bindInputVal(ewRadius, ew.radius, 0);
+  bindInputVal(ewDuration, ew.duration, 0);
+  bindInputVal(ewMaxStacks, ew.maxStacks, 1);
+  bindCheckboxVal(ewStackDuration, ew.stackDuration, false);
+  bindCheckboxVal(ewDeplete, ew.deplete, false);
 
   // GraphicDef
   const gfx = activeAmmo.graphic || {};
-  gVisualProb.value = gfx.visualProbability !== undefined ? gfx.visualProbability : 1.0;
-  if (gShieldHitDraw) gShieldHitDraw.checked = gfx.shieldHitDraw !== false;
+  bindInputVal(gVisualProb, gfx.visualProbability, 1.0);
+  bindCheckboxVal(gShieldHitDraw, gfx.shieldHitDraw, true);
 
   const trc = gfx.lines ? gfx.lines.tracer : {};
-  gTracerEnable.checked = trc.enable !== false;
-  gTracerLength.value = trc.length !== undefined ? trc.length : 10;
-  gTracerWidth.value = trc.width !== undefined ? trc.width : 0.1;
-  if (gTracerColor) gTracerColor.value = trc.color || '255, 120, 20, 255';
-  if (gTracerTexture) gTracerTexture.value = trc.texture || 'WeaponLaser';
-  if (gTracerSegmented) gTracerSegmented.checked = trc.segmentation === true;
+  bindCheckboxVal(gTracerEnable, trc ? trc.enable : undefined, true);
+  bindInputVal(gTracerLength, trc ? trc.length : undefined, 10);
+  bindInputVal(gTracerWidth, trc ? trc.width : undefined, 0.1);
+  bindInputVal(gTracerColor, trc ? trc.color : undefined, '255, 120, 20, 255');
+  bindInputVal(gTracerTexture, trc ? trc.texture : undefined, 'WeaponLaser');
+  bindCheckboxVal(gTracerSegmented, trc ? trc.segmentation : undefined, false);
 
   const trl = gfx.lines ? gfx.lines.trail : {};
-  if (gTrailEnable) gTrailEnable.checked = trl.enable === true;
-  if (gTrailAlwaysDraw) gTrailAlwaysDraw.checked = trl.alwaysDraw === true;
-  if (gTrailDecay) gTrailDecay.value = trl.decayTime || 0;
-  if (gTrailWidth) gTrailWidth.value = trl.customWidth !== undefined ? trl.customWidth : 0;
-  if (gTrailColor) gTrailColor.value = trl.color || '200, 200, 200, 180';
-  if (gTrailTextures) gTrailTextures.value = Array.isArray(trl.textures) ? trl.textures.join(', ') : (trl.textures || 'WeaponLaser');
+  bindCheckboxVal(gTrailEnable, trl ? trl.enable : undefined, false);
+  bindCheckboxVal(gTrailAlwaysDraw, trl ? trl.alwaysDraw : undefined, false);
+  bindInputVal(gTrailDecay, trl ? trl.decayTime : undefined, 0);
+  bindInputVal(gTrailWidth, trl ? trl.customWidth : undefined, 0);
+  bindInputVal(gTrailColor, trl ? trl.color : undefined, '200, 200, 200, 180');
+  const trlTexStr = (trl && Array.isArray(trl.textures)) ? trl.textures.join(', ') : (trl ? trl.textures : '');
+  bindInputVal(gTrailTextures, trlTexStr, 'WeaponLaser');
 
-  // Audio (No mock DOK sound fallbacks)
+  // AudioDef (empty string default)
   const aud = activeAmmo.audio || {};
-  if (aSoundShot) aSoundShot.value = aud.shotSound || '';
-  aSoundTravel.value = aud.travelSound || '';
-  aSoundHit.value = aud.hitSound || '';
-  aSoundShieldHit.value = aud.shieldHitSound || '';
-  if (aSoundVoxelHit) aSoundVoxelHit.value = aud.voxelHitSound || '';
-  if (aSoundPlayerHit) aSoundPlayerHit.value = aud.playerHitSound || '';
-  if (aSoundWaterHit) aSoundWaterHit.value = aud.waterHitSound || '';
-  if (aHitPlayChance) aHitPlayChance.value = aud.hitPlayChance !== undefined ? aud.hitPlayChance : 1.0;
-  if (aHitPlayShield) aHitPlayShield.checked = aud.hitPlayShield !== false;
+  bindInputVal(aSoundShot, aud.shotSound, '');
+  bindInputVal(aSoundTravel, aud.travelSound, '');
+  bindInputVal(aSoundHit, aud.hitSound, '');
+  bindInputVal(aSoundShieldHit, aud.shieldHitSound, '');
+  bindInputVal(aSoundVoxelHit, aud.voxelHitSound, '');
+  bindInputVal(aSoundPlayerHit, aud.playerHitSound, '');
+  bindInputVal(aSoundWaterHit, aud.waterHitSound, '');
+  bindInputVal(aHitPlayChance, aud.hitPlayChance, 1.0);
+  bindCheckboxVal(aHitPlayShield, aud.hitPlayShield, true);
 
   // SynchronizeDef
   const sync = activeAmmo.sync || {};
-  if (syncInterval) syncInterval.value = sync.positionSyncInterval || 0;
-  if (syncPatchWindow) syncPatchWindow.value = sync.positionPatchWindow || 0;
-  if (syncFull) syncFull.checked = sync.full === true;
-  if (syncPointDefense) syncPointDefense.checked = sync.pointDefense !== false;
-  if (syncOnHitDeath) syncOnHitDeath.checked = sync.onHitDeath === true;
-  if (syncUpdateOnRandomize) syncUpdateOnRandomize.checked = sync.positionUpdateOnRandomize === true;
+  bindInputVal(syncInterval, sync.positionSyncInterval, 0);
+  bindInputVal(syncPatchWindow, sync.positionPatchWindow, 0);
+  bindCheckboxVal(syncFull, sync.full, false);
+  bindCheckboxVal(syncPointDefense, sync.pointDefense, true);
+  bindCheckboxVal(syncOnHitDeath, sync.onHitDeath, false);
+  bindCheckboxVal(syncUpdateOnRandomize, sync.positionUpdateOnRandomize, false);
 
   renderExtendedAmmoTags();
   runWeaponCoreLinter();
@@ -3821,6 +3853,19 @@ function setupWorkbenchInputEvents() {
     fEnable, fFragments, fDegrees, fChildAmmoRound, tDesiredSpeed, tMaxTrajectory,
     sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcIsRelic, sbcHasCircuitry
   ];
+
+  // Clear default styling on user input
+  const allInputs = document.querySelectorAll('.control-input');
+  allInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      input.classList.remove('is-wc-default');
+      if (input.removeAttribute) input.removeAttribute('title');
+    });
+    input.addEventListener('change', () => {
+      input.classList.remove('is-wc-default');
+      if (input.removeAttribute) input.removeAttribute('title');
+    });
+  });
 
   liveInputs.forEach(input => {
     if (input) {
