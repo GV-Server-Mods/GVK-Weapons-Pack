@@ -13,10 +13,10 @@ echo.
 where python >nul 2>nul
 if %ERRORLEVEL% equ 0 (
     echo Starting local web server on port 8080...
-    start http://localhost:8080/Docs/index.html
+    start http://localhost:8080/docs/index.html
     python -m http.server 8080
 ) else (
     echo Opening directly in default browser...
-    start "" "%~dp0Docs\index.html"
+    start "" "%~dp0docs\index.html"
 )
 
