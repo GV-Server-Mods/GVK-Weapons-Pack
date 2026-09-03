@@ -538,6 +538,8 @@ const outSustainedDps = document.getElementById('outSustainedDps');
 const outDpsBreakdown = document.getElementById('outDpsBreakdown');
 const outEffectiveDps = document.getElementById('outEffectiveDps');
 const teleDpsType = document.getElementById('teleDpsType');
+const teleAlphaType = document.getElementById('teleAlphaType');
+const outEffectiveAlpha = document.getElementById('outEffectiveAlpha');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
 const outDamagePerShot = document.getElementById('outDamagePerShot');
 const outShotsPerSec = document.getElementById('outShotsPerSec');
@@ -2323,16 +2325,24 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Update Hero Metrics (big number = effective vs best-fit target; blue line is the disclaimer)
+  // Update Hero Metrics (big numbers = effective vs best-fit target; blue lines are the disclaimers)
   const topProfile = getTopArmorProfile(activeAmmo.damageScales || {});
   const effectiveDps = Math.round(sustainedDps * topProfile.mult);
+  const effectiveAlphaVolley = Math.round(alphaVolley * topProfile.mult);
+  const multTag = (topProfile.label === 'All Targets' && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
   outSustainedDps.textContent = effectiveDps.toLocaleString();
   if (teleDpsType) {
     teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}`;
   }
   if (outEffectiveDps) {
-    const multTag = (topProfile.label === 'All Targets' && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
     outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Paper: ${sustainedDps.toLocaleString()} DPS`;
+  }
+  outAlphaDmg.textContent = effectiveAlphaVolley.toLocaleString();
+  if (teleAlphaType) {
+    teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}`;
+  }
+  if (outEffectiveAlpha) {
+    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Paper volley: ${Math.round(alphaVolley).toLocaleString()} hp`;
   }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
@@ -2344,7 +2354,6 @@ function updateCombatTelemetry() {
     outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
     outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
   }
-  outAlphaDmg.textContent = Math.round(alphaVolley).toLocaleString();
   outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
   outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
 
@@ -2875,7 +2884,7 @@ function getWeaponIconUrl(weapon) {
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
 function calculateWeaponMetrics(weapon, ammoKeyOverride) {
-  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
+  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, effectiveAlphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
 
   const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
@@ -2925,8 +2934,10 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
     integrity = weapon.effectiveIntegrity;
   }
 
-  const effectiveDps = Math.round(sustainedDps * getTopArmorProfile(a.damageScales || {}).mult);
-  return { sustainedDps, effectiveDps, alphaVolley, range, velocity, tracking, integrity };
+  const profile = getTopArmorProfile(a.damageScales || {});
+  const effectiveDps = Math.round(sustainedDps * profile.mult);
+  const effectiveAlphaVolley = Math.round(alphaVolley * profile.mult);
+  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity };
 }
 
 function getModMaxMetrics() {
@@ -2940,7 +2951,7 @@ function getModMaxMetrics() {
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
     if (m.effectiveDps > maxDps) maxDps = m.effectiveDps;
-    if (m.alphaVolley > maxAlpha) maxAlpha = m.alphaVolley;
+    if (m.effectiveAlphaVolley > maxAlpha) maxAlpha = m.effectiveAlphaVolley;
     if (m.range > maxRange) maxRange = m.range;
     if (m.velocity > maxVel) maxVel = m.velocity;
     if (m.tracking > maxTrack) maxTrack = m.tracking;
@@ -3080,7 +3091,7 @@ function updateComparisonRadar() {
 
     const bStats = [
       Math.min(1, Math.max(0, bMetrics.effectiveDps / modMax.maxDps)),
-      Math.min(1, Math.max(0, bMetrics.alphaVolley / modMax.maxAlpha)),
+      Math.min(1, Math.max(0, bMetrics.effectiveAlphaVolley / modMax.maxAlpha)),
       Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
       Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel)),
       Math.min(1, Math.max(0, bMetrics.tracking / modMax.maxTrack)),
@@ -3090,7 +3101,7 @@ function updateComparisonRadar() {
     drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
     const activeSustained = computeSustainedDps().sustainedDps;
     renderCompareTable(activeSustained, activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
-                       bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
+                       bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.effectiveAlphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {
     if (compBenchIcon) compBenchIcon.style.display = 'none';
     if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
@@ -3123,7 +3134,7 @@ function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg,
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
     { name: 'Effective DPS', a: aEffDps, b: bEffDps, unit: '' },
-    { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
+    { name: 'Effective Alpha Volley', a: aAlpha, b: bAlpha, unit: 'hp' },
     { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm' },
     { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
     { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s' },
