@@ -1,4 +1,4 @@
-window.GVK_DEFAULT_COMPONENTS = {
+const COMPONENTS_DATA = {
   "Explosives": {
     "name": "Explosives",
     "subtype": "Explosives",
@@ -383,11 +383,13 @@ window.GVK_DEFAULT_COMPONENTS = {
   },
   "PrototechFrame": {
     "name": "PrototechFrame",
+    "displayName": "[Tech] Gun Cradle",
     "subtype": "PrototechFrame",
-    "mass": 20,
-    "integrity": 20,
-    "value": 10,
+    "mass": 100.0,
+    "integrity": 20.0,
+    "value": 365490.0,
     "typeId": "Component",
+    "isTech": true,
     "prerequisites": {}
   },
   "ZoneChip": {
@@ -397,6 +399,83 @@ window.GVK_DEFAULT_COMPONENTS = {
     "integrity": 1,
     "value": 10,
     "typeId": "Component",
+    "prerequisites": {}
+  },
+  "PrototechPropulsionUnit": {
+    "name": "PrototechPropulsionUnit",
+    "displayName": "[Tech] Igniter",
+    "subtype": "PrototechPropulsionUnit",
+    "mass": 240.0,
+    "integrity": 20.0,
+    "value": 54824.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "PrototechCoolingUnit": {
+    "name": "PrototechCoolingUnit",
+    "displayName": "[Tech] Grav. Reflector",
+    "subtype": "PrototechCoolingUnit",
+    "mass": 250.0,
+    "integrity": 20.0,
+    "value": 27412.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "PrototechMachinery": {
+    "name": "PrototechMachinery",
+    "displayName": "[Tech] Bolt Carrier",
+    "subtype": "PrototechMachinery",
+    "mass": 80.0,
+    "integrity": 20.0,
+    "value": 109647.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "PrototechPanel": {
+    "name": "PrototechPanel",
+    "displayName": "[Tech] Launch Assem.",
+    "subtype": "PrototechPanel",
+    "mass": 30.0,
+    "integrity": 20.0,
+    "value": 365490.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "PrototechCapacitor": {
+    "name": "PrototechCapacitor",
+    "displayName": "[Tech] Particle Emit.",
+    "subtype": "PrototechCapacitor",
+    "mass": 20.0,
+    "integrity": 20.0,
+    "value": 730980.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "PrototechCircuitry": {
+    "name": "PrototechCircuitry",
+    "displayName": "[Tech] Data Core",
+    "subtype": "PrototechCircuitry",
+    "mass": 60.0,
+    "integrity": 50.0,
+    "value": 7309800.0,
+    "typeId": "Component",
+    "isTech": true,
+    "prerequisites": {}
+  },
+  "GVK_TurboEncabulator": {
+    "name": "GVK_TurboEncabulator",
+    "displayName": "Turbo Encabulator",
+    "subtype": "GVK_TurboEncabulator",
+    "mass": 50.0,
+    "integrity": 200.0,
+    "value": 1500000.0,
+    "typeId": "Component",
+    "isTech": true,
     "prerequisites": {}
   }
 };

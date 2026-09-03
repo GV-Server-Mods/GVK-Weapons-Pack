@@ -1549,10 +1549,11 @@
 
 <!-- SCOPE C: CubeBlocks SBC Editor & Standardizer -->
       <div id="scope-sbc" class="scope-content">
-        <!-- Accordion 1: Block Identity & Engine Standardization -->
+        
+        <!-- Accordion 1: Block Identity & Keen AI Suppression -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">1. Block Identity & Engine Standardization</span>
+            <span class="wc-title">1. Block Identity & Keen Engine Standardization</span>
             <span class="wc-tag" id="sbcBlockTypeTag">ConveyorSorter / LargeTurretBase</span>
           </summary>
           <div class="wc-body">
@@ -1601,37 +1602,83 @@
                 </select>
               </div>
               <div class="control-item">
-                <label class="control-label">Resource Sink Group</label>
-                <input type="text" id="sbcResourceSinkGroup" class="control-input" value="Defense" placeholder="Defense">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Build Time <span class="unit">seconds</span></label>
-                <input type="number" id="sbcBuildTime" class="control-input" value="78">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Utility Points (UPs / PCU)</label>
-                <input type="number" id="sbcUpCost" class="control-input" value="6">
-              </div>
-            </div>
-
-            <div class="control-grid" style="margin-top: 12px;">
-              <div class="control-item">
-                <label class="control-label">Tech Requirements <span class="unit">Auto-Derived</span></label>
-                <div id="sbcTechSummary" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="Calculated from Prototech components in the layer list below">
-                  6x PrototechMachinery
-                </div>
-              </div>
-              <div class="control-item">
-                <label class="control-label">Total Tech Count <span class="unit">Prototech Items</span></label>
-                <div id="sbcTechQtyDisplay" class="control-input" style="background: rgba(6, 182, 212, 0.08); border-color: var(--cyan-primary); color: var(--cyan-primary); font-weight: 700;">
-                  6
-                </div>
+                <label class="control-label">Edge Type</label>
+                <select id="sbcEdgeType" class="control-input">
+                  <option value="Light">Light</option>
+                  <option value="Heavy">Heavy</option>
+                </select>
               </div>
             </div>
 
             <div class="control-item" style="margin-top: 12px;">
               <label class="control-label">In-Game Description (Includes ammo usage tag like [Uses 25mm KE])</label>
               <textarea id="sbcDescription" class="control-input" rows="3" style="width: 100%; font-family: var(--font-sans); resize: vertical;" placeholder="Block description and ammo requirements..."></textarea>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- Accordion 2: Construction Recipe & Auto-Balancing (Keen Components order) -->
+        <details class="wc-accordion" open>
+          <summary class="wc-summary">
+            <span class="wc-title">2. Construction Components & Auto-Balancing (&lt;Components&gt;)</span>
+            <span class="wc-tag" id="sbcIntegritySummary">Integrity: 0 HP | BuildTime: 0s</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+              Adjust component layers in assembly order. Standard materials and GVK Tech Components can be added or tuned below. Build time and Utility Points (UPs) are automatically calculated in real-time.
+            </p>
+            
+            <div class="table-responsive">
+              <table class="compare-table" id="sbcComponentsTable">
+                <thead>
+                  <tr>
+                    <th>Component Type</th>
+                    <th style="width: 120px;">Quantity</th>
+                    <th style="width: 130px;">Layer Mass</th>
+                    <th style="width: 130px;">Layer HP</th>
+                    <th style="width: 70px; text-align: center;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="sbcComponentsBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
+              <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
+              <span id="sbcFormulaReadout" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">
+                Formula: MAX(5, Round(Integrity / 750))
+              </span>
+            </div>
+
+            <!-- Auto-Calculated Governance & Tech Card (Merged & Non-Editable) -->
+            <div class="control-grid" style="margin-top: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+              <div class="control-item">
+                <label class="control-label">Tech Requirements <span class="unit">Auto-Derived</span></label>
+                <div id="sbcTechSummary" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="Calculated from GVK Tech components in the recipe table above">
+                  None (Standard Hull Weapon)
+                </div>
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Utility Points (UPs / PCU) <span class="unit">Auto-Calculated</span></label>
+                <div id="sbcUpCostDisplay" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+                  <span id="sbcUpCostVal">0 UPs</span>
+                  <span style="font-size: 10px; color: var(--text-dim); font-weight: 400;">1 UP / Tech Item</span>
+                </div>
+                <input type="hidden" id="sbcUpCost" value="0">
+              </div>
+
+              <div class="control-item">
+                <label class="control-label">Build Time <span class="unit">seconds (Auto-Calculated)</span></label>
+                <div id="sbcBuildTimeDisplay" class="control-input" style="background: rgba(16, 185, 129, 0.08); border-color: var(--green-accent); color: var(--green-accent); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
+                  <span id="sbcBuildTimeVal">0s</span>
+                  <span style="font-size: 10px; color: var(--text-dim); font-weight: 400;">Total HP / 750</span>
+                </div>
+                <input type="hidden" id="sbcBuildTime" value="0">
+              </div>
             </div>
 
             <div class="checkbox-row" style="margin-top: 14px;">
@@ -1642,29 +1689,21 @@
           </div>
         </details>
 
-        <!-- Accordion 2: Physical Geometry, Visuals & Camera HUD -->
+        <!-- Accordion 3: Physical Geometry, Visuals & Mounts -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">2. Physical Dimensions, Visuals & Camera HUD</span>
-            <span class="wc-tag">Size, Mirroring, OverlayTexture, FOV</span>
+            <span class="wc-title">3. Physical Geometry, Models & Mirroring</span>
+            <span class="wc-tag">Size, ModelOffset, Mirroring</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
-              <div class="control-item">
-                <label class="control-label">Icon File Path</label>
-                <input type="text" id="sbcIcon" class="control-input" placeholder="Textures\GUI\Icons\...">
-              </div>
               <div class="control-item">
                 <label class="control-label">Model File Path</label>
                 <input type="text" id="sbcModel" class="control-input" placeholder="Models\...">
               </div>
               <div class="control-item">
-                <label class="control-label">HUD Overlay Texture</label>
-                <input type="text" id="sbcOverlayTexture" class="control-input" value="Textures\GUI\Screens\camera_overlay.dds">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Inventory Max Volume <span class="unit">m³</span></label>
-                <input type="number" id="sbcInventoryMaxVolume" class="control-input" step="0.001" value="0.384">
+                <label class="control-label">Icon File Path</label>
+                <input type="text" id="sbcIcon" class="control-input" placeholder="Textures\GUI\Icons\...">
               </div>
             </div>
 
@@ -1681,12 +1720,20 @@
                 <label class="control-label">Size Z (depth)</label>
                 <input type="number" id="sbcSizeZ" class="control-input" value="1">
               </div>
+            </div>
+
+            <div class="control-grid" style="margin-top: 12px;">
               <div class="control-item">
-                <label class="control-label">Edge Type</label>
-                <select id="sbcEdgeType" class="control-input">
-                  <option value="Light">Light</option>
-                  <option value="Heavy">Heavy</option>
-                </select>
+                <label class="control-label">Model Offset X</label>
+                <input type="number" id="sbcModelOffsetX" class="control-input" step="0.01" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Model Offset Y</label>
+                <input type="number" id="sbcModelOffsetY" class="control-input" step="0.01" value="0">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Model Offset Z</label>
+                <input type="number" id="sbcModelOffsetZ" class="control-input" step="0.01" value="0">
               </div>
             </div>
 
@@ -1702,6 +1749,34 @@
               <div class="control-item">
                 <label class="control-label">Mirroring Z</label>
                 <input type="text" id="sbcMirroringZ" class="control-input" value="Y" placeholder="Y">
+              </div>
+            </div>
+
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-dim);">
+              ℹ️ MountPoints and 3-stage BuildProgressModels are dynamically preserved with 100% fidelity from the original definition.
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 4: Systems, Camera HUD & Audio-Visual Effects -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">4. Systems, Camera HUD & Audio-Visual Effects</span>
+            <span class="wc-tag">ResourceSinkGroup, OverlayTexture, Sounds</span>
+          </summary>
+          <div class="wc-body">
+            <div class="control-grid">
+              <div class="control-item">
+                <label class="control-label">Resource Sink Group</label>
+                <input type="text" id="sbcResourceSinkGroup" class="control-input" value="Defense" placeholder="Defense">
+              </div>
+              <div class="control-item">
+                <label class="control-label">HUD Overlay Texture</label>
+                <input type="text" id="sbcOverlayTexture" class="control-input" value="Textures\GUI\Screens\camera_overlay.dds">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Inventory Max Volume <span class="unit">m³</span></label>
+                <input type="number" id="sbcInventoryMaxVolume" class="control-input" step="0.001" value="0.384">
               </div>
               <div class="control-item">
                 <label class="control-label">Camera Min / Max FOV</label>
@@ -1731,41 +1806,6 @@
               </div>
             </div>
 
-          </div>
-        </details>
-
-        <!-- Accordion 2: Full Component Recipe & Integrity -->
-        <details class="wc-accordion" open>
-          <summary class="wc-summary">
-            <span class="wc-title">2. Construction Components & Integrity Recipe (&lt;Components&gt;)</span>
-            <span class="wc-tag" id="sbcIntegritySummary">Integrity: 0 HP | BuildTime: 0s</span>
-          </summary>
-          <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-              Adjust every component layer in assembly order. Build time is dynamically derived using <code>=MAX(5, Round(WeaponIntegrity / BuildTime_Mult, 0))</code>.
-            </p>
-            <div class="table-responsive">
-              <table class="compare-table" id="sbcComponentsTable">
-                <thead>
-                  <tr>
-                    <th>Component Type</th>
-                    <th>Quantity</th>
-                    <th>Layer Mass (kg)</th>
-                    <th>Layer HP</th>
-                    <th style="text-align: center;">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="sbcComponentsBody">
-                  <!-- Rendered dynamically -->
-                </tbody>
-              </table>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
-              <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
-              <span id="sbcFormulaReadout" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">
-                Formula: MAX(5, Round(Integrity / 750))
-              </span>
-            </div>
           </div>
         </details>
 

@@ -677,32 +677,50 @@ const aSoundTravel = document.getElementById('aSoundTravel');
 const aSoundHit = document.getElementById('aSoundHit');
 const aSoundShieldHit = document.getElementById('aSoundShieldHit');
 
+// GVK Canonical Tech Component Dictionary
+const GVK_TECH_COMPONENTS = {
+  "PrototechPropulsionUnit": { displayName: "[Tech] Igniter", mass: 240, integrity: 20 },
+  "PrototechCoolingUnit": { displayName: "[Tech] Grav. Reflector", mass: 250, integrity: 20 },
+  "PrototechMachinery": { displayName: "[Tech] Bolt Carrier", mass: 80, integrity: 20 },
+  "PrototechFrame": { displayName: "[Tech] Gun Cradle", mass: 100, integrity: 20 },
+  "PrototechPanel": { displayName: "[Tech] Launch Assem.", mass: 30, integrity: 20 },
+  "PrototechCapacitor": { displayName: "[Tech] Particle Emit.", mass: 20, integrity: 20 },
+  "PrototechCircuitry": { displayName: "[Tech] Data Core", mass: 60, integrity: 50 },
+  "GVK_TurboEncabulator": { displayName: "Turbo Encabulator", mass: 50, integrity: 200 }
+};
+
 // DOM Elements - Definition Workbench (Scope C: CubeBlocks SBC)
 const sbcSubtypeId = document.getElementById('sbcSubtypeId');
 const sbcTypeId = document.getElementById('sbcTypeId');
 const sbcDisplayName = document.getElementById('sbcDisplayName');
 const sbcBlockPairName = document.getElementById('sbcBlockPairName');
 const sbcCubeSize = document.getElementById('sbcCubeSize');
-const sbcResourceSinkGroup = document.getElementById('sbcResourceSinkGroup');
-const sbcBuildTime = document.getElementById('sbcBuildTime');
-const sbcUpCost = document.getElementById('sbcUpCost');
-const sbcTechSummary = document.getElementById('sbcTechSummary');
-const sbcTechQtyDisplay = document.getElementById('sbcTechQtyDisplay');
-const badgeUps = document.getElementById('badgeUps');
+const sbcEdgeType = document.getElementById('sbcEdgeType');
 const sbcDescription = document.getElementById('sbcDescription');
+
+const sbcBuildTime = document.getElementById('sbcBuildTime');
+const sbcBuildTimeVal = document.getElementById('sbcBuildTimeVal');
+const sbcUpCost = document.getElementById('sbcUpCost');
+const sbcUpCostVal = document.getElementById('sbcUpCostVal');
+const sbcTechSummary = document.getElementById('sbcTechSummary');
 const sbcIsRelic = document.getElementById('sbcIsRelic');
 const sbcHasCircuitry = document.getElementById('sbcHasCircuitry');
-const sbcIcon = document.getElementById('sbcIcon');
+
 const sbcModel = document.getElementById('sbcModel');
-const sbcOverlayTexture = document.getElementById('sbcOverlayTexture');
-const sbcInventoryMaxVolume = document.getElementById('sbcInventoryMaxVolume');
+const sbcIcon = document.getElementById('sbcIcon');
 const sbcSizeX = document.getElementById('sbcSizeX');
 const sbcSizeY = document.getElementById('sbcSizeY');
 const sbcSizeZ = document.getElementById('sbcSizeZ');
-const sbcEdgeType = document.getElementById('sbcEdgeType');
+const sbcModelOffsetX = document.getElementById('sbcModelOffsetX');
+const sbcModelOffsetY = document.getElementById('sbcModelOffsetY');
+const sbcModelOffsetZ = document.getElementById('sbcModelOffsetZ');
 const sbcMirroringX = document.getElementById('sbcMirroringX');
 const sbcMirroringY = document.getElementById('sbcMirroringY');
 const sbcMirroringZ = document.getElementById('sbcMirroringZ');
+
+const sbcResourceSinkGroup = document.getElementById('sbcResourceSinkGroup');
+const sbcOverlayTexture = document.getElementById('sbcOverlayTexture');
+const sbcInventoryMaxVolume = document.getElementById('sbcInventoryMaxVolume');
 const sbcMinFov = document.getElementById('sbcMinFov');
 const sbcMaxFov = document.getElementById('sbcMaxFov');
 const sbcDamageEffectName = document.getElementById('sbcDamageEffectName');
@@ -710,6 +728,7 @@ const sbcDamagedSound = document.getElementById('sbcDamagedSound');
 const sbcDestroyEffect = document.getElementById('sbcDestroyEffect');
 const sbcDestroySound = document.getElementById('sbcDestroySound');
 const sbcBlockTypeTag = document.getElementById('sbcBlockTypeTag');
+const badgeUps = document.getElementById('badgeUps');
 
 // DOM Elements - Ammo Logistics ("Ammo Maths")
 const logActiveAmmoName = document.getElementById('logActiveAmmoName');
@@ -1091,8 +1110,7 @@ function selectAmmo(ammoKey) {
 // ==========================================================================
 function isTechComponent(compName) {
   if (!compName) return false;
-  const lower = compName.toLowerCase();
-  return lower.startsWith('prototech') || lower.includes('prototech');
+  return !!GVK_TECH_COMPONENTS[compName] || compName.startsWith('Prototech') || compName.includes('Prototech');
 }
 
 function getTechSummary(components) {
@@ -1105,7 +1123,10 @@ function getTechSummary(components) {
   
   let summaryStr = 'None';
   if (techLayers.length > 0) {
-    summaryStr = techLayers.map(c => `${c.count}x ${c.name.replace('Prototech', '')}`).join(', ');
+    summaryStr = techLayers.map(c => {
+      const friendly = GVK_TECH_COMPONENTS[c.name]?.displayName || c.name.replace('Prototech', '');
+      return `${c.count}x ${friendly}`;
+    }).join(', ');
   }
   return { totalQty, summaryStr, techLayers, hasCircuitry };
 }
@@ -1673,9 +1694,8 @@ function populateSbcWorkbench() {
   if (sbcDisplayName) sbcDisplayName.value = activeWeapon.displayName || activeWeapon.name || sbc.displayName || '';
   if (sbcBlockPairName) sbcBlockPairName.value = sbc.blockPairName || activeWeapon.subtypeId || '';
   if (sbcCubeSize) sbcCubeSize.value = activeWeapon.gridSize || activeWeapon.grid || sbc.cubeSize || 'Large';
-  if (sbcResourceSinkGroup) sbcResourceSinkGroup.value = sbc.resourceSinkGroup || 'Defense';
-  if (sbcBuildTime) sbcBuildTime.value = activeWeapon.buildTimeSeconds || activeWeapon.buildTime || sbc.buildTimeSeconds || 60;
-  if (sbcUpCost) sbcUpCost.value = activeWeapon.upCost || activeWeapon.pcu || sbc.pcu || 6;
+  if (sbcEdgeType) sbcEdgeType.value = sbc.edgeType || 'Light';
+
   if (sbcDescription) {
     sbcDescription.value = sbc.description || `${activeWeapon.name}.
 [Uses ${activeWeapon.ammoName || 'Ammunition'}]`;
@@ -1684,18 +1704,24 @@ function populateSbcWorkbench() {
 
   if (sbcIcon) sbcIcon.value = sbc.icon || `Textures\GUI\Icons\Cubes\${activeWeapon.subtypeId}.png`;
   if (sbcModel) sbcModel.value = sbc.model || `Models\Cubes\${activeWeapon.grid || 'Large'}\${activeWeapon.subtypeId}.mwm`;
-  if (sbcOverlayTexture) sbcOverlayTexture.value = sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
-  if (sbcInventoryMaxVolume) sbcInventoryMaxVolume.value = sbc.inventoryMaxVolume || 0.384;
 
   const sz = sbc.size || { x: 1, y: 1, z: 1 };
   if (sbcSizeX) sbcSizeX.value = sz.x !== undefined ? sz.x : 1;
   if (sbcSizeY) sbcSizeY.value = sz.y !== undefined ? sz.y : 1;
   if (sbcSizeZ) sbcSizeZ.value = sz.z !== undefined ? sz.z : 1;
 
-  if (sbcEdgeType) sbcEdgeType.value = sbc.edgeType || 'Light';
+  const mo = sbc.modelOffset || { x: 0, y: 0, z: 0 };
+  if (sbcModelOffsetX) sbcModelOffsetX.value = mo.x !== undefined ? mo.x : 0;
+  if (sbcModelOffsetY) sbcModelOffsetY.value = mo.y !== undefined ? mo.y : 0;
+  if (sbcModelOffsetZ) sbcModelOffsetZ.value = mo.z !== undefined ? mo.z : 0;
+
   if (sbcMirroringX) sbcMirroringX.value = sbc.mirroringX || '';
   if (sbcMirroringY) sbcMirroringY.value = sbc.mirroringY || 'Z';
   if (sbcMirroringZ) sbcMirroringZ.value = sbc.mirroringZ || 'Y';
+
+  if (sbcResourceSinkGroup) sbcResourceSinkGroup.value = sbc.resourceSinkGroup || 'Defense';
+  if (sbcOverlayTexture) sbcOverlayTexture.value = sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+  if (sbcInventoryMaxVolume) sbcInventoryMaxVolume.value = sbc.inventoryMaxVolume || 0.384;
 
   if (sbcMinFov) sbcMinFov.value = sbc.minFov || '0.1';
   if (sbcMaxFov) sbcMaxFov.value = sbc.maxFov || '1.04719755';
@@ -1801,7 +1827,6 @@ function renderSbcComponentsTable() {
   // Auto-Derive Tech Information from Prototech components
   const techInfo = getTechSummary(activeWeapon.components);
   if (sbcTechSummary) sbcTechSummary.textContent = techInfo.summaryStr;
-  if (sbcTechQtyDisplay) sbcTechQtyDisplay.textContent = `${techInfo.totalQty} Tech Items`;
   if (sbcHasCircuitry) sbcHasCircuitry.checked = techInfo.hasCircuitry;
 
   activeWeapon.techCount = techInfo.totalQty;
@@ -3720,30 +3745,31 @@ function generateSbcCubeBlocks() {
   }
 
   const grid = (sbcCubeSize && sbcCubeSize.value) || sbc.cubeSize || activeWeapon.grid || 'Large';
-  const bTime = (sbcBuildTime && sbcBuildTime.value) || sbc.buildTimeSeconds || 60;
-  const pcu = (sbcUpCost && sbcUpCost.value) || sbc.pcu || 6;
   const desc = (sbcDescription && sbcDescription.value.trim()) || sbc.description || `${name}.
 [Uses ${activeWeapon.ammoName || 'Ammunition'}]`;
   const icon = (sbcIcon && sbcIcon.value.trim()) || sbc.icon || `Textures\GUI\Icons\Cubes\${sub}.png`;
   const model = (sbcModel && sbcModel.value.trim()) || sbc.model || `Models\Cubes\${grid}\${sub}.mwm`;
   const pairName = (sbcBlockPairName && sbcBlockPairName.value.trim()) || sbc.blockPairName || sub;
-  const resGroup = (sbcResourceSinkGroup && sbcResourceSinkGroup.value.trim()) || sbc.resourceSinkGroup || 'Defense';
-  const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+  const edgeType = (sbcEdgeType && sbcEdgeType.value) || sbc.edgeType || 'Light';
 
   const sizeX = sbcSizeX ? sbcSizeX.value : (sbc.size ? sbc.size.x : 1);
   const sizeY = sbcSizeY ? sbcSizeY.value : (sbc.size ? sbc.size.y : 1);
   const sizeZ = sbcSizeZ ? sbcSizeZ.value : (sbc.size ? sbc.size.z : 1);
 
-  const moX = (sbc.modelOffset && sbc.modelOffset.x !== undefined) ? sbc.modelOffset.x : 0;
-  const moY = (sbc.modelOffset && sbc.modelOffset.y !== undefined) ? sbc.modelOffset.y : 0;
-  const moZ = (sbc.modelOffset && sbc.modelOffset.z !== undefined) ? sbc.modelOffset.z : 0;
+  const moX = sbcModelOffsetX ? sbcModelOffsetX.value : (sbc.modelOffset ? sbc.modelOffset.x : 0);
+  const moY = sbcModelOffsetY ? sbcModelOffsetY.value : (sbc.modelOffset ? sbc.modelOffset.y : 0);
+  const moZ = sbcModelOffsetZ ? sbcModelOffsetZ.value : (sbc.modelOffset ? sbc.modelOffset.z : 0);
 
   const mirrorX = (sbcMirroringX && sbcMirroringX.value.trim()) || sbc.mirroringX || '';
   const mirrorY = (sbcMirroringY && sbcMirroringY.value.trim()) || sbc.mirroringY || 'Z';
   const mirrorZ = (sbcMirroringZ && sbcMirroringZ.value.trim()) || sbc.mirroringZ || 'Y';
 
+  const bTime = activeWeapon.buildTimeSeconds || (sbcBuildTime && sbcBuildTime.value) || sbc.buildTimeSeconds || 60;
+  const pcu = (activeWeapon.upCost !== undefined ? activeWeapon.upCost : (sbcUpCost && sbcUpCost.value)) || sbc.pcu || 0;
+
+  const resGroup = (sbcResourceSinkGroup && sbcResourceSinkGroup.value.trim()) || sbc.resourceSinkGroup || 'Defense';
+  const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
   const invVol = (sbcInventoryMaxVolume && sbcInventoryMaxVolume.value) || sbc.inventoryMaxVolume || 0.384;
-  const edgeType = (sbcEdgeType && sbcEdgeType.value) || sbc.edgeType || 'Light';
 
   const isSorter = (typeId === 'ConveyorSorter');
 
@@ -3760,6 +3786,7 @@ function generateSbcCubeBlocks() {
     });
   }
 
+  // Strictly canonical Keen CubeBlock tag ordering:
   let xml = `		<Definition xsi:type="${xsiType}">
 `;
   xml += `			<Id>
@@ -3785,22 +3812,14 @@ function generateSbcCubeBlocks() {
 `;
   xml += `			<ModelOffset x="${moX}" y="${moY}" z="${moZ}"/>
 `;
-  if (sbc.showEdges !== undefined) xml += `			<ShowEdges>${sbc.showEdges}</ShowEdges>
-`;
   xml += `			<Model>${model}</Model>
 `;
   if (sbc.useModelIntersection) xml += `			<UseModelIntersection>true</UseModelIntersection>
 `;
-
-  // AiEnabled suppression for WeaponCore turrets
-  if (!isSorter) {
-    xml += `			<!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->
+  if (sbc.showEdges !== undefined) xml += `			<ShowEdges>${sbc.showEdges}</ShowEdges>
 `;
-    xml += `			<AiEnabled>false</AiEnabled>
-`;
-  }
 
-  // Components block (always dynamically synchronized with recipe table)
+  // Components block
   xml += `			<Components>
 `;
   if (activeWeapon.components && activeWeapon.components.length > 0) {
@@ -3828,16 +3847,6 @@ function generateSbcCubeBlocks() {
   const critIdx = (sbc.criticalComponent && sbc.criticalComponent.index !== undefined) ? sbc.criticalComponent.index : 0;
   xml += `			<CriticalComponent Subtype="${critSub}" Index="${critIdx}"/>
 `;
-  xml += `			<BuildTimeSeconds>${bTime}</BuildTimeSeconds>
-`;
-  xml += `			<PCU>${pcu}</PCU>
-`;
-
-  // Overlay texture for camera HUD
-  if (overlay) {
-    xml += `			<OverlayTexture>${overlay}</OverlayTexture>
-`;
-  }
 
   // MountPoints
   if (sbc.mountPoints && sbc.mountPoints.length > 0) {
@@ -3882,6 +3891,67 @@ function generateSbcCubeBlocks() {
   if (mirrorZ) xml += `			<MirroringZ>${mirrorZ}</MirroringZ>
 `;
 
+  xml += `			<BuildTimeSeconds>${bTime}</BuildTimeSeconds>
+`;
+  xml += `			<EdgeType>${edgeType}</EdgeType>
+`;
+  if (resGroup) xml += `			<ResourceSinkGroup>${resGroup}</ResourceSinkGroup>
+`;
+  if (overlay) xml += `			<OverlayTexture>${overlay}</OverlayTexture>
+`;
+
+  // Turret camera FOV
+  if (!isSorter) {
+    const minFov = (sbcMinFov && sbcMinFov.value) || sbc.minFov || '0.1';
+    const maxFov = (sbcMaxFov && sbcMaxFov.value) || sbc.maxFov || '1.04719755';
+    xml += `			<MinFov>${minFov}</MinFov>
+`;
+    xml += `			<MaxFov>${maxFov}</MaxFov>
+`;
+  }
+
+  if (invVol) xml += `			<InventoryMaxVolume>${invVol}</InventoryMaxVolume>
+`;
+
+  const dmgEff = (sbcDamageEffectName && sbcDamageEffectName.value) || sbc.damageEffectName || (isSorter ? 'Damage_Electrical_Damaged_Blue' : 'Damage_WeapExpl_Damaged');
+  const dmgSnd = (sbcDamagedSound && sbcDamagedSound.value) || sbc.damagedSound || (isSorter ? 'ParticleElectrical' : 'ParticleWeapExpl');
+  const dstEff = (sbcDestroyEffect && sbcDestroyEffect.value) || sbc.destroyEffect || 'BlockDestroyedExplosion_Small';
+  const dstSnd = (sbcDestroySound && sbcDestroySound.value) || sbc.destroySound || 'WepSmallWarheadExpl';
+
+  if (dmgEff) xml += `			<DamageEffectName>${dmgEff}</DamageEffectName>
+`;
+  if (dmgSnd) xml += `			<DamagedSound>${dmgSnd}</DamagedSound>
+`;
+  if (dstEff) xml += `			<DestroyEffect>${dstEff}</DestroyEffect>
+`;
+  if (dstSnd) xml += `			<DestroySound>${dstSnd}</DestroySound>
+`;
+  xml += `			<PCU>${pcu}</PCU>
+`;
+  xml += `			<EmissiveColorPreset>${sbc.emissiveColorPreset || 'Default'}</EmissiveColorPreset>
+`;
+  xml += `			<IsAirTight>${sbc.isAirTight === true}</IsAirTight>
+`;
+
+  // AiEnabled suppression for WeaponCore turrets
+  if (!isSorter) {
+    xml += `			<!-- MANDATORY KEEN AI SUPPRESSION FOR WEAPONCORE TURRETS -->
+`;
+    xml += `			<AiEnabled>false</AiEnabled>
+`;
+  }
+
+  // Targeting groups
+  xml += `			<TargetingGroups>
+`;
+  const tgList = sbc.targetingGroups && sbc.targetingGroups.length > 0 ? sbc.targetingGroups : ['Weapons'];
+  tgList.forEach(tg => {
+    xml += `				<string>${tg}</string>
+`;
+  });
+  xml += `			</TargetingGroups>
+`;
+
   // VoxelPlacement
   if (sbc.voxelPlacement && (sbc.voxelPlacement.staticMode || sbc.voxelPlacement.dynamicMode)) {
     xml += `			<VoxelPlacement>
@@ -3915,52 +3985,6 @@ function generateSbcCubeBlocks() {
     xml += `			</VoxelPlacement>
 `;
   }
-
-  xml += `			<EdgeType>${edgeType}</EdgeType>
-`;
-  if (resGroup) xml += `			<ResourceSinkGroup>${resGroup}</ResourceSinkGroup>
-`;
-  if (invVol) xml += `			<InventoryMaxVolume>${invVol}</InventoryMaxVolume>
-`;
-
-  // Camera / Turret FOV tags (for turrets)
-  if (!isSorter) {
-    const minFov = (sbcMinFov && sbcMinFov.value) || sbc.minFov || '0.1';
-    const maxFov = (sbcMaxFov && sbcMaxFov.value) || sbc.maxFov || '1.04719755';
-    xml += `			<MinFov>${minFov}</MinFov>
-`;
-    xml += `			<MaxFov>${maxFov}</MaxFov>
-`;
-  }
-
-  const dmgEff = (sbcDamageEffectName && sbcDamageEffectName.value) || sbc.damageEffectName || (isSorter ? 'Damage_Electrical_Damaged_Blue' : 'Damage_WeapExpl_Damaged');
-  const dmgSnd = (sbcDamagedSound && sbcDamagedSound.value) || sbc.damagedSound || (isSorter ? 'ParticleElectrical' : 'ParticleWeapExpl');
-  const dstEff = (sbcDestroyEffect && sbcDestroyEffect.value) || sbc.destroyEffect || 'BlockDestroyedExplosion_Small';
-  const dstSnd = (sbcDestroySound && sbcDestroySound.value) || sbc.destroySound || 'WepSmallWarheadExpl';
-
-  if (dmgEff) xml += `			<DamageEffectName>${dmgEff}</DamageEffectName>
-`;
-  if (dmgSnd) xml += `			<DamagedSound>${dmgSnd}</DamagedSound>
-`;
-  if (dstEff) xml += `			<DestroyEffect>${dstEff}</DestroyEffect>
-`;
-  if (dstSnd) xml += `			<DestroySound>${dstSnd}</DestroySound>
-`;
-  xml += `			<EmissiveColorPreset>${sbc.emissiveColorPreset || 'Default'}</EmissiveColorPreset>
-`;
-  xml += `			<IsAirTight>${sbc.isAirTight === true}</IsAirTight>
-`;
-
-  // Targeting groups
-  xml += `			<TargetingGroups>
-`;
-  const tgList = sbc.targetingGroups && sbc.targetingGroups.length > 0 ? sbc.targetingGroups : ['Weapons'];
-  tgList.forEach(tg => {
-    xml += `				<string>${tg}</string>
-`;
-  });
-  xml += `			</TargetingGroups>
-`;
 
   xml += `			<GuiVisible>false</GuiVisible>
 `;
@@ -4107,7 +4131,8 @@ function setupWorkbenchInputEvents() {
     sbcSubtypeId, sbcTypeId, sbcDisplayName, sbcBlockPairName, sbcCubeSize,
     sbcResourceSinkGroup, sbcBuildTime, sbcUpCost, sbcDescription,
     sbcIcon, sbcModel, sbcOverlayTexture, sbcInventoryMaxVolume,
-    sbcSizeX, sbcSizeY, sbcSizeZ, sbcEdgeType, sbcMirroringX, sbcMirroringY, sbcMirroringZ,
+    sbcSizeX, sbcSizeY, sbcSizeZ, sbcModelOffsetX, sbcModelOffsetY, sbcModelOffsetZ,
+    sbcEdgeType, sbcMirroringX, sbcMirroringY, sbcMirroringZ,
     sbcMinFov, sbcMaxFov, sbcDamageEffectName, sbcDamagedSound, sbcDestroyEffect, sbcDestroySound
   ];
   sbcInputs.forEach(inp => {
