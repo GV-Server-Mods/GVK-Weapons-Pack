@@ -490,7 +490,10 @@ const DEFAULT_BALANCE_MATRIX = {
   midSize: 1.0,
   maxSize: 125.0,
   assemblerEff: 3.0,
-  scrapYield: 0.25
+  scrapYield: 0.25,
+  mixHeavy: 1,
+  mixLight: 1,
+  mixNonArmor: 1
 };
 
 let balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
@@ -536,6 +539,7 @@ const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
 // DOM Elements - Telemetry Deck
 const outSustainedDps = document.getElementById('outSustainedDps');
 const outDpsBreakdown = document.getElementById('outDpsBreakdown');
+const outEffectiveDps = document.getElementById('outEffectiveDps');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
 const outDamagePerShot = document.getElementById('outDamagePerShot');
 const outShotsPerSec = document.getElementById('outShotsPerSec');
@@ -568,6 +572,7 @@ const tmNonArmorSub  = document.getElementById('tmNonArmorSub');
 const tmBlastRadius = document.getElementById('tmBlastRadius');
 const tmBlastDmg   = document.getElementById('tmBlastDmg');
 const tmBlastSub   = document.getElementById('tmBlastSub');
+const tmPenetrationChip = document.getElementById('tmPenetrationChip');
 
 // DOM Elements - Simulator Tools (TTK & Drift)
 const ttkTargetSelect = document.getElementById('ttkTargetSelect');
@@ -1334,6 +1339,10 @@ function updateTelemetryAmmoBadge() {
   if (nonArmorMult !== 1.0) {
     const effNonArmor = Math.round((dmg.base * nonArmorMult) + dmg.aoe + dmg.frag);
     modifierChips += ` &bull; <span class="badge ${nonArmorMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">⚙️ Non-Armor ${nonArmorMult}× (${effNonArmor.toLocaleString()}hp)</span>`;
+  }
+
+  if (dmg.cutoff > 0) {
+    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/block ×${dmg.penBlocks}</span>`;
   }
 
   telemetryAmmoBadge.innerHTML = `
@@ -2229,6 +2238,23 @@ function renderSbcComponentsTable() {
 // ==========================================================================
 // TELEMETRY & COMBAT CALCULATOR
 // ==========================================================================
+
+/// <summary>
+/// Blends heavy/light/non-armor multipliers into one effective multiplier using
+/// Balance Matrix target-mix weights (equal weights = simple average). Unset (-1) resolves to 1.0.
+/// </summary>
+function getBlendMultiplier(ds = {}) {
+  const heavy = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const light = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const nonArmor = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
+  const wH = (balanceMatrix.mixHeavy !== undefined) ? Math.max(0, balanceMatrix.mixHeavy) : 1;
+  const wL = (balanceMatrix.mixLight !== undefined) ? Math.max(0, balanceMatrix.mixLight) : 1;
+  const wN = (balanceMatrix.mixNonArmor !== undefined) ? Math.max(0, balanceMatrix.mixNonArmor) : 1;
+  const total = wH + wL + wN;
+  if (total <= 0) return 1.0;
+  return (wH * heavy + wL * light + wN * nonArmor) / total;
+}
+
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
@@ -2258,19 +2284,22 @@ function updateCombatTelemetry() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
-  // Extract Target Modifiers
+  // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
   const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
+  const blendMult = getBlendMultiplier(ds);
+  const perHit = dmgDetails.perBlockBase;
+  const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
 
-  const heavyDmg = (dmgDetails.base * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
+  const heavyDmg = (perHit * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
   const heavyVolley = Math.round(heavyDmg * barrels);
 
-  const lightDmg = (dmgDetails.base * lightMult) + dmgDetails.aoe + dmgDetails.frag;
+  const lightDmg = (perHit * lightMult) + dmgDetails.aoe + dmgDetails.frag;
   const lightVolley = Math.round(lightDmg * barrels);
 
-  const nonArmorDmg = (dmgDetails.base * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
+  const nonArmorDmg = (perHit * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
   const nonArmorVolley = Math.round(nonArmorDmg * barrels);
 
   // Blast stats
@@ -2290,6 +2319,9 @@ function updateCombatTelemetry() {
 
   // Update Hero Metrics
   outSustainedDps.textContent = sustainedDps.toLocaleString();
+  if (outEffectiveDps) {
+    outEffectiveDps.textContent = `⚡ Effective vs mixed hull: ${Math.round(sustainedDps * blendMult).toLocaleString()} DPS (×${blendMult.toFixed(2)})`;
+  }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
     outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
@@ -2308,6 +2340,14 @@ function updateCombatTelemetry() {
   if (targetMatrixMunitionLabel) {
     targetMatrixMunitionLabel.textContent = `Loaded: ${activeAmmo.terminalName || activeAmmo.ammoRound || activeAmmo.name}`;
   }
+  if (tmPenetrationChip) {
+    if (dmgDetails.cutoff > 0) {
+      tmPenetrationChip.textContent = `🪡 Overmatch: ${dmgDetails.penBlocks} blocks @ ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp`;
+      tmPenetrationChip.style.display = 'inline-flex';
+    } else {
+      tmPenetrationChip.style.display = 'none';
+    }
+  }
   if (tmHeavyMult) {
     tmHeavyMult.textContent = `${heavyMult.toFixed(1)}×`;
     tmHeavyMult.className = `target-multiplier-badge ${heavyMult > 1.0 ? 'buff' : (heavyMult < 1.0 ? 'nerf' : '')}`;
@@ -2317,7 +2357,7 @@ function updateCombatTelemetry() {
   }
   if (tmHeavySub) {
     const heavyNote = heavyMult > 1.0 ? '⚡ Armor Shredder' : (heavyMult < 1.0 ? '⚠️ Armor Resistance' : 'Standard Impact');
-    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp (${heavyNote})`;
+    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${heavyNote})`;
   }
 
   if (tmLightMult) {
@@ -2329,7 +2369,7 @@ function updateCombatTelemetry() {
   }
   if (tmLightSub) {
     const lightNote = lightMult < 1.0 ? '⚠️ Over-penetration' : (lightMult > 1.0 ? '⚡ Hull Shredder' : 'Standard Impact');
-    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp (${lightNote})`;
+    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${lightNote})`;
   }
 
   if (tmNonArmorMult) {
@@ -2341,7 +2381,7 @@ function updateCombatTelemetry() {
   }
   if (tmNonArmorSub) {
     const nonArmorNote = nonArmorMult > 1.0 ? '⚡ Systems Shredder' : (nonArmorMult < 1.0 ? '⚠️ Component Resistance' : 'Standard Impact');
-    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp (${nonArmorNote})`;
+    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${nonArmorNote})`;
   }
 
   if (tmBlastRadius) {
@@ -2497,7 +2537,8 @@ function updateTtkSimulator() {
 
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const barrels = parseFloat(wBarrelsPerShot.value) || 1;
-  const effectiveDmgPerShot = (dmgDetails.base * targetMult) + dmgDetails.aoe + dmgDetails.frag;
+  // Capped rounds can't dump full base damage into a single cube (WC BaseDamageCutoff)
+  const effectiveDmgPerShot = (dmgDetails.perBlockBase * targetMult) + dmgDetails.aoe + dmgDetails.frag;
   const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels);
   const shotsNeeded = Math.ceil(targetHp / effectiveVolley);
 
@@ -2513,8 +2554,9 @@ function updateTtkSimulator() {
     outTtkMain.textContent = `${ttkSeconds.toFixed(1)}s to Destroy`;
   }
 
+  const capLabel = dmgDetails.cutoff > 0 ? ` | per-block cap ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp` : '';
   const multLabel = targetMult !== 1.0 ? ` (${targetMult}× multiplier applied: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
-  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s) against ${targetName}${multLabel}`;
+  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s) against ${targetName}${multLabel}${capLabel}`;
   ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
 }
 
@@ -2737,8 +2779,12 @@ function setupLogisticsEvents() {
 // RECURSIVE DAMAGE & ICON RESOLUTION HELPERS
 // ==========================================================================
 function getAmmoDamageDetailed(ammo, depth = 0) {
-  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0 };
+  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1 };
   const base = parseFloat(ammo.baseDamage) || 0;
+  const cutoff = parseFloat(ammo.baseDamageCutoff) || 0;
+  // Penetrating rounds (WC BaseDamageCutoff) apply at most Cutoff per block hit and carry the remainder onward
+  const perBlockBase = cutoff > 0 ? Math.min(base, cutoff) : base;
+  const penBlocks = cutoff > 0 ? Math.max(1, Math.floor(base / cutoff)) : 1;
 
   let aoe = 0;
   if (ammo.areaOfDamage) {
@@ -2800,7 +2846,10 @@ function getAmmoDamageDetailed(ammo, depth = 0) {
     fragInstant: fragInstant,
     total: total,
     instantTotal: instantTotal,
-    deliverySec: deliverySec
+    deliverySec: deliverySec,
+    cutoff: cutoff,
+    perBlockBase: perBlockBase,
+    penBlocks: penBlocks
   };
 }
 
@@ -2818,7 +2867,7 @@ function getWeaponIconUrl(weapon) {
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
 function calculateWeaponMetrics(weapon, ammoKeyOverride) {
-  if (!weapon) return { sustainedDps: 0, alphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
+  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
 
   const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
@@ -2868,7 +2917,8 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
     integrity = weapon.effectiveIntegrity;
   }
 
-  return { sustainedDps, alphaVolley, range, velocity, tracking, integrity };
+  const blend = getBlendMultiplier(a.damageScales || {});
+  return { sustainedDps, effectiveDps: Math.round(sustainedDps * blend), alphaVolley, range, velocity, tracking, integrity };
 }
 
 function getModMaxMetrics() {
@@ -3030,8 +3080,9 @@ function updateComparisonRadar() {
     ];
 
     drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
-    renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
-                       bMetrics.sustainedDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
+    const activeBlend = getBlendMultiplier(activeAmmo ? (activeAmmo.damageScales || {}) : {});
+    renderCompareTable(activeDps, Math.round(activeDps * activeBlend), activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
+                       bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {
     if (compBenchIcon) compBenchIcon.style.display = 'none';
     if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
@@ -3060,9 +3111,10 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
   ctx.stroke();
 }
 
-function renderCompareTable(aDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bAlpha, bRange, bVel, bTrack, bInteg) {
+function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bEffDps, bAlpha, bRange, bVel, bTrack, bInteg) {
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
+    { name: 'Effective DPS (mix)', a: aEffDps, b: bEffDps, unit: '' },
     { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
     { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm' },
     { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
@@ -4898,6 +4950,9 @@ function syncBalanceMatrixInputs() {
   document.getElementById('matMaxSize').value = balanceMatrix.maxSize;
   document.getElementById('matAssemblerEff').value = balanceMatrix.assemblerEff;
   document.getElementById('matScrapYield').value = balanceMatrix.scrapYield;
+  document.getElementById('matMixHeavy').value = balanceMatrix.mixHeavy;
+  document.getElementById('matMixLight').value = balanceMatrix.mixLight;
+  document.getElementById('matMixNonArmor').value = balanceMatrix.mixNonArmor;
 }
 
 function applyBalanceMatrixInputs() {
@@ -4912,6 +4967,13 @@ function applyBalanceMatrixInputs() {
   balanceMatrix.maxSize = parseFloat(document.getElementById('matMaxSize').value) || 125;
   balanceMatrix.assemblerEff = parseFloat(document.getElementById('matAssemblerEff').value) || 3.0;
   balanceMatrix.scrapYield = parseFloat(document.getElementById('matScrapYield').value) || 0.25;
+  // Mix weights: 0 is a legitimate weight, so only NaN falls back to default
+  const mixHeavy = parseFloat(document.getElementById('matMixHeavy').value);
+  const mixLight = parseFloat(document.getElementById('matMixLight').value);
+  const mixNonArmor = parseFloat(document.getElementById('matMixNonArmor').value);
+  balanceMatrix.mixHeavy = isNaN(mixHeavy) ? 1 : Math.max(0, mixHeavy);
+  balanceMatrix.mixLight = isNaN(mixLight) ? 1 : Math.max(0, mixLight);
+  balanceMatrix.mixNonArmor = isNaN(mixNonArmor) ? 1 : Math.max(0, mixNonArmor);
 
   localStorage.setItem('GVK_BALANCE_MATRIX', JSON.stringify(balanceMatrix));
   updateCombatTelemetry();

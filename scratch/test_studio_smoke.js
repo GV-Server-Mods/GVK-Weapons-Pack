@@ -101,6 +101,20 @@ const testBody = `
   const weaponCs = generateCSharpWeapon();
   const sbcXml = generateSbcCubeBlocks();
   const dmg = getAmmoDamageDetailed(activeAmmo);
+  const blend155 = getBlendMultiplier(activeAmmo.damageScales);
+
+  // Overmatch scenario: Heavy Railgun (1M base, 20k/block cap)
+  activeAmmo = {
+    name: 'HeavyRailgunAmmo', ammoRound: 'HeavyRailgunAmmo',
+    ammoMagazine: 'Energy', terminalName: 'Heavy Railgun',
+    baseDamage: 1000000, baseDamageCutoff: 20000, mass: 4000,
+    damageScales: { lightArmor: 0.5, heavyArmor: 3.0, characters: 0.25, nonArmor: 1.0 },
+    fragment: null,
+    areaOfDamage: { enable: false, endOfLife: { enable: false }, areaEffect: { areaEffect: false } },
+    trajectory: { desiredSpeed: 400, maxTrajectory: 1000 }
+  };
+  const rgDmg = getAmmoDamageDetailed(activeAmmo);
+  const rgAmmoCs = generateCSharpAmmo();
 
   __report({
     ammoCsLength: ammoCs.length,
@@ -110,7 +124,11 @@ const testBody = `
     weaponCsShieldFree: !/shield/i.test(weaponCs),
     sbcXmlShieldFree: !/shield/i.test(sbcXml),
     dmgTotal: dmg.total,
-    dmgBase: dmg.base
+    dmgBase: dmg.base,
+    blend155: blend155,
+    rgPerBlock: rgDmg.perBlockBase,
+    rgPenBlocks: rgDmg.penBlocks,
+    rgShieldFree: !/shield/i.test(rgAmmoCs)
   });
 })();
 `;
@@ -127,6 +145,10 @@ check('AmmoDef export emits zero shield tags', report.ammoCsShieldFree);
 check('WeaponDef export emits zero shield tags', report.weaponCsShieldFree);
 check('SBC export emits zero shield tags', report.sbcXmlShieldFree);
 check('recursive damage total resolves (6000 base)', report.dmgTotal === 6000);
+check('blend multiplier for 155 AP mix (3.0/0.5/1.0) = 1.5', report.blend155 === 1.5);
+check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
+check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
+check('Railgun export emits zero shield tags', report.rgShieldFree);
 
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');

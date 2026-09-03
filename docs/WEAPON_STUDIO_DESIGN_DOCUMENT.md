@@ -112,6 +112,15 @@ Renders authentic weapon-to-target lethality across 4 key combat target profiles
 
 > **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Non-Armor (Systems)** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
 
+**Representative (Blended) Effective DPS** — raw Sustained DPS is pre-multiplier paper damage. The Studio blends the armor multipliers with a configurable target mix (Balance Matrix; equal weights = simple average):
+$$M_{\text{blend}} = \frac{w_H \cdot \text{Heavy} + w_L \cdot \text{Light} + w_N \cdot \text{NonArmor}}{w_H + w_L + w_N}, \quad \text{Effective DPS} = \text{Sustained DPS} \times M_{\text{blend}}$$
+Unset multipliers ($-1$) resolve to $1.0\times$. The hero card shows the blended figure beneath raw DPS, and the 1v1 compare table gains an "Effective DPS (mix)" row.
+
+**Overmatch (`BaseDamageCutoff`)** — per WeaponCore source, penetrating rounds apply at most Cutoff damage per block hit and carry the remainder onward:
+$$D_{\text{block}} = \min(\text{BaseDamage}, \text{Cutoff}) \times M_{\text{target}}, \quad N_{\text{blocks}} = \left\lfloor \frac{\text{BaseDamage}}{\text{Cutoff}} \right\rfloor$$
+- The cap **redistributes** damage, never destroys it: raw DPS and total alpha (e.g. the MAC's $2{,}000{,}001$) are unchanged.
+- Matrix volleys and the TTK simulator use $D_{\text{block}}$ (a single cube cannot absorb the full base damage of a capped round); the munition badge shows a `🪡 N blocks @ X hp` chip when a cap is active.
+
 #### 5. Effective Fire Rate & Combat Cycle
 Replaces static heat bars with operational sustainability metrics:
 - **Duty Cycle Percentage**: Real-time ratio of firing uptime vs reload downtime.
@@ -298,6 +307,9 @@ All balancing equations reference the persistent drawer modal:
 9. `Max Block Size`: `125.0 cubes`
 10. `Assembler Efficiency`: `3.0x`
 11. `Scrap Yield`: `0.25`
+12. `Target Mix — Heavy` weight: `1`
+13. `Target Mix — Light` weight: `1`
+14. `Target Mix — Non-Armor` weight: `1`
 
 Stored in `localStorage` under `GVK_BALANCE_MATRIX` with single-click reset capability.
 
