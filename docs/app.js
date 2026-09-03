@@ -818,7 +818,7 @@ function applyTheme(mode) {
     effectiveTheme = prefersDark ? 'dark' : 'light';
   }
 
-  if (typeof document !== 'undefined') {
+  if (typeof document !== 'undefined' && document.documentElement) {
     document.documentElement.setAttribute('data-theme', effectiveTheme);
 
     // Update button active state
@@ -918,6 +918,15 @@ function switchScope(targetScopeId) {
 }
 
 function setupNavigationEvents() {
+  // Theme switcher buttons
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-theme-mode');
+      applyTheme(mode);
+    });
+  });
+  applyTheme(currentThemeMode);
+
   wsTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       switchWorkspace(tab.getAttribute('data-ws'));
@@ -2244,14 +2253,18 @@ function updateComparisonRadar() {
   const h = radarCanvas.height;
   ctx.clearRect(0, 0, w, h);
 
+  const isLight = (typeof document !== 'undefined' && document.documentElement && typeof document.documentElement.getAttribute === 'function')
+    ? (document.documentElement.getAttribute('data-theme') === 'light')
+    : false;
+
   const cx = w / 2;
   const cy = h / 2;
   const radius = Math.min(cx, cy) - 40;
-  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Thermal'];
+  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Integrity'];
   const totalAxes = axes.length;
 
   // Draw Hexagonal Web
-  ctx.strokeStyle = '#263346';
+  ctx.strokeStyle = isLight ? '#cbd5e1' : '#263346';
   ctx.lineWidth = 1;
   for (let ring = 1; ring <= 4; ring++) {
     const r = (radius / 4) * ring;
@@ -2269,14 +2282,14 @@ function updateComparisonRadar() {
 
   // Draw Axis Lines & Labels
   ctx.font = '11px "JetBrains Mono", monospace';
-  ctx.fillStyle = '#94a3b8';
+  ctx.fillStyle = isLight ? '#475569' : '#94a3b8';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
   for (let i = 0; i < totalAxes; i++) {
     const angle = (Math.PI * 2 / totalAxes) * i - Math.PI / 2;
-    const lx = cx + (radius + 20) * Math.cos(angle);
-    const ly = cy + (radius + 20) * Math.sin(angle);
+    const lx = cx + (radius + 22) * Math.cos(angle);
+    const ly = cy + (radius + 22) * Math.sin(angle);
     ctx.beginPath();
     ctx.moveTo(cx, cy);
     ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
@@ -2284,21 +2297,40 @@ function updateComparisonRadar() {
     ctx.fillText(axes[i], lx, ly);
   }
 
+  // Calculate Dynamic Mod-Wide Max Ceilings
+  const modMax = getModMaxMetrics();
+
+  // Update Max Metrics Readout in Legend
+  const readout = document.getElementById('radarMaxMetrics');
+  if (readout) {
+    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()}`;
+  }
+
   // Calculate Normalized Stats for Active Weapon
-  const activeDps = parseFloat(outSustainedDps.textContent.replace(/,/g, '')) || 0;
-  const activeAlpha = parseFloat(outAlphaDmg.textContent.replace(/,/g, '')) || 0;
-  const activeRange = parseFloat(tMaxTrajectory.value) || 1500;
-  const activeVel = parseFloat(tDesiredSpeed.value) || 1000;
-  const activeTrack = parseFloat(outTraverseDeg.textContent) || 10;
-  const activeDuty = parseFloat(outHeatDutyRatio.textContent) || 100;
+  const activeDps = parseFloat(outSustainedDps ? outSustainedDps.textContent.replace(/,/g, '') : 0) || 0;
+  const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
+  const activeRange = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) || 1500;
+  const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
+  const activeTrack = (outTraverseDeg && parseFloat(outTraverseDeg.textContent)) || 10;
+  
+  let activeIntegrity = 0;
+  if (activeWeapon && activeWeapon.components && activeWeapon.components.length > 0) {
+    activeIntegrity = activeWeapon.components.reduce((sum, c) => {
+      const cMeta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { integrity: 100 };
+      return sum + (cMeta.integrity || 0) * (c.count || 0);
+    }, 0);
+  }
+  if (!activeIntegrity && activeWeapon && activeWeapon.effectiveIntegrity) {
+    activeIntegrity = activeWeapon.effectiveIntegrity;
+  }
 
   const activeStats = [
-    Math.min(1, activeDps / 12000),
-    Math.min(1, activeAlpha / 25000),
-    Math.min(1, activeRange / 6000),
-    Math.min(1, activeVel / 2500),
-    Math.min(1, activeTrack / 60),
-    activeDuty / 100
+    Math.min(1, Math.max(0, activeDps / modMax.maxDps)),
+    Math.min(1, Math.max(0, activeAlpha / modMax.maxAlpha)),
+    Math.min(1, Math.max(0, activeRange / modMax.maxRange)),
+    Math.min(1, Math.max(0, activeVel / modMax.maxVel)),
+    Math.min(1, Math.max(0, activeTrack / modMax.maxTrack)),
+    Math.min(1, Math.max(0, activeIntegrity / modMax.maxIntegrity))
   ];
 
   drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
@@ -2310,25 +2342,20 @@ function updateComparisonRadar() {
     legendBenchItem.style.display = 'flex';
     legendBenchName.textContent = benchmarkWeapon.name;
 
-    const bAmmo = ammosDb[benchmarkWeapon.ammoName] || {};
-    const bDps = benchmarkWeapon.sustainedDps || 5000;
-    const bAlpha = benchmarkWeapon.alphaDamage || 10000;
-    const bRange = bAmmo.trajectory ? bAmmo.trajectory.maxTrajectory : 2000;
-    const bVel = bAmmo.trajectory ? bAmmo.trajectory.desiredSpeed : 1000;
-    const bTrack = (benchmarkWeapon.rotateRate * 60 * 180 / Math.PI) || 10;
-    const bDuty = 100;
+    const bMetrics = calculateWeaponMetrics(benchmarkWeapon);
 
     const benchStats = [
-      Math.min(1, bDps / 12000),
-      Math.min(1, bAlpha / 25000),
-      Math.min(1, bRange / 6000),
-      Math.min(1, bVel / 2500),
-      Math.min(1, bTrack / 60),
-      bDuty / 100
+      Math.min(1, Math.max(0, bMetrics.sustainedDps / modMax.maxDps)),
+      Math.min(1, Math.max(0, bMetrics.alphaVolley / modMax.maxAlpha)),
+      Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
+      Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel)),
+      Math.min(1, Math.max(0, bMetrics.tracking / modMax.maxTrack)),
+      Math.min(1, Math.max(0, bMetrics.integrity / modMax.maxIntegrity))
     ];
 
     drawPolygon(ctx, cx, cy, radius, benchStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
-    renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, bDps, bAlpha, bRange, bVel, bTrack);
+    renderCompareTable(activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
+                       bMetrics.sustainedDps, bMetrics.alphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
   } else {
     compBenchIcon.style.display = 'none';
     legendBenchItem.style.display = 'none';
@@ -2341,7 +2368,7 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
   ctx.beginPath();
   for (let i = 0; i < total; i++) {
     const angle = (Math.PI * 2 / total) * i - Math.PI / 2;
-    const val = Math.max(0.1, stats[i]);
+    const val = Math.max(0.08, stats[i]);
     const x = cx + radius * val * Math.cos(angle);
     const y = cy + radius * val * Math.sin(angle);
     if (i === 0) ctx.moveTo(x, y);
@@ -2355,13 +2382,14 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
   ctx.stroke();
 }
 
-function renderCompareTable(aDps, aAlpha, aRange, aVel, aTrack, bDps, bAlpha, bRange, bVel, bTrack) {
+function renderCompareTable(aDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bAlpha, bRange, bVel, bTrack, bInteg) {
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
     { name: 'Alpha Salvo', a: aAlpha, b: bAlpha, unit: 'hp' },
     { name: 'Max Range', a: aRange, b: bRange, unit: 'm' },
     { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
     { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s' },
+    { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp' }
   ];
 
   compareTableBody.innerHTML = rows.map(r => {

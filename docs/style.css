@@ -52,16 +52,80 @@
 }
 
 [data-theme="light"] header {
+  background: #ffffff;
+  border-bottom: 1px solid #cbd5e1;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="light"] .sticky-hud-bar {
   background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid #cbd5e1;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] .hud-title {
+[data-theme="light"] .hud-title,
+[data-theme="light"] .logo-title h1,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] .stat-value,
+[data-theme="light"] .wc-title,
+[data-theme="light"] .sim-card-title,
+[data-theme="light"] .control-label,
+[data-theme="light"] .weapon-dropdown,
+[data-theme="light"] .compare-dropdown,
+[data-theme="light"] .sim-select {
   color: #0f172a;
+}
+
+[data-theme="light"] .hud-stat {
+  color: #475569;
+}
+
+[data-theme="light"] .panel,
+[data-theme="light"] .weapon-banner,
+[data-theme="light"] .sim-card,
+[data-theme="light"] .comparison-box,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .wc-accordion {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .wc-summary {
+  background: #f8fafc;
+  color: #0f172a;
+  border-bottom-color: #e2e8f0;
+}
+
+[data-theme="light"] .wc-summary:hover {
+  background: #f1f5f9;
+}
+
+[data-theme="light"] .control-input,
+[data-theme="light"] select.control-input,
+[data-theme="light"] textarea.control-input {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .control-input.is-wc-default {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .compare-table th,
+[data-theme="light"] .bom-table th {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .compare-table td,
+[data-theme="light"] .bom-table td {
+  border-color: #e2e8f0;
+  color: #334155;
 }
 
 [data-theme="light"] .code-box,
@@ -79,24 +143,65 @@
 [data-theme="light"] .modal-panel {
   background: #ffffff;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  border-color: #cbd5e1;
 }
 
-[data-theme="light"] .stat-card {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+[data-theme="light"] .tab-group,
+[data-theme="light"] .scope-toggle-bar {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
-[data-theme="light"] .control-input {
+[data-theme="light"] .tab-btn,
+[data-theme="light"] .scope-btn,
+[data-theme="light"] .ws-tab {
+  color: #475569;
+}
+
+[data-theme="light"] .tab-btn.active,
+[data-theme="light"] .scope-btn.active,
+[data-theme="light"] .ws-tab.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .theme-switcher {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .theme-btn {
+  color: #64748b;
+}
+
+[data-theme="light"] .theme-btn.active {
+  background: #d97706;
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn {
+  background: #ffffff;
+  border-color: #cbd5e1;
   color: #0f172a;
 }
 
-[data-theme="light"] .control-input.is-wc-default {
-  color: #64748b !important;
+[data-theme="light"] .btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
 }
 
-[data-theme="light"] .logo-title h1 {
-  color: #0f172a;
+[data-theme="light"] .btn-primary {
+  background: #d97706;
+  color: #ffffff;
+  border-color: #b45309;
 }
 
+[data-theme="light"] .badge {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
 
 * {
   box-sizing: border-box;
