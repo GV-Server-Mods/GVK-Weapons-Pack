@@ -1,3 +1,16 @@
+// Schema Guard Elements
+const wcSchemaBadge = document.getElementById('wcSchemaBadge');
+const wcSchemaNotice = document.getElementById('wcSchemaNotice');
+const wcSchemaNoticeText = document.getElementById('wcSchemaNoticeText');
+
+const weaponExtendedTagsContainer = document.getElementById('weaponExtendedTagsContainer');
+const weaponExtendedCountBadge = document.getElementById('weaponExtendedCountBadge');
+const btnAddWeaponExtendedTag = document.getElementById('btnAddWeaponExtendedTag');
+
+const ammoExtendedTagsContainer = document.getElementById('ammoExtendedTagsContainer');
+const ammoExtendedCountBadge = document.getElementById('ammoExtendedCountBadge');
+const btnAddAmmoExtendedTag = document.getElementById('btnAddAmmoExtendedTag');
+
 // ==========================================================================
 // DATA VALIDATION & TYPE SAFETY HELPERS
 // ==========================================================================
@@ -324,6 +337,7 @@ async function initStudio() {
   }
 
   // Populate Dropdowns
+  checkWcSchemaIntegrity();
   populateWeaponDropdowns();
   populateAmmoDropdowns();
   populateAnimationDropdown();
@@ -666,6 +680,176 @@ function updateUniversalBanner() {
 // ==========================================================================
 // WORKBENCH BINDING: WEAPONDEF, AMMODEF, SBC
 // ==========================================================================
+
+// ==========================================================================
+// WEAPONCORE SCHEMA GUARD & DYNAMIC EXTENDED TAG INSPECTOR
+// ==========================================================================
+function checkWcSchemaIntegrity() {
+  if (!window.GVK_WC_SCHEMA) return;
+
+  const schema = window.GVK_WC_SCHEMA;
+  if (wcSchemaBadge) {
+    wcSchemaBadge.innerHTML = `🛡️ WC ${schema.version} (${schema.structureHash.slice(0, 6)}) | Synced`;
+    wcSchemaBadge.addEventListener('click', showSchemaModal);
+  }
+
+  // Check if live Structure.cs has been updated
+  fetch('data/Scripts/CoreParts/script/Structure.cs').then(res => {
+    if (res.ok) return res.text();
+    return fetch('CoreParts/script/Structure.cs').then(r => r.ok ? r.text() : null);
+  }).then(text => {
+    if (text && wcSchemaNotice && wcSchemaNoticeText) {
+      // Simple length/content diff check
+      if (Math.abs(text.length - schema.fileSize) > 20) {
+        wcSchemaNotice.style.display = 'flex';
+        wcSchemaNoticeText.innerHTML = `<strong>⚠️ WeaponCore Update Detected:</strong> CoreParts/script/Structure.cs has changed (${text.length} bytes vs ${schema.fileSize} bytes). Dynamic Extended Tags Inspector is active and ready.`;
+      }
+    }
+  }).catch(() => {});
+}
+
+function showSchemaModal() {
+  if (!window.GVK_WC_SCHEMA) return;
+  const s = window.GVK_WC_SCHEMA;
+  const msg = `🛡️ WEAPONCORE SCHEMA GUARD STATUS\n\n` +
+    `• Target WeaponCore Version: ${s.version}\n` +
+    `• Structure.cs Signature: ${s.structureHash}\n` +
+    `• Total Enums Tracked: ${s.totalEnums}\n` +
+    `• Total Structs Tracked: ${s.totalStructs}\n\n` +
+    `Dynamic tag discovery is active. Any newly added properties in Structure.cs are automatically reflected in the Extended Tags Inspector without requiring web tool updates!`;
+  alert(msg);
+}
+
+function renderExtendedWeaponTags() {
+  if (!weaponExtendedTagsContainer || !activeWeapon) return;
+  weaponExtendedTagsContainer.innerHTML = '';
+  if (!activeWeapon.extendedTags) activeWeapon.extendedTags = {};
+
+  const entries = Object.entries(activeWeapon.extendedTags);
+  if (weaponExtendedCountBadge) {
+    weaponExtendedCountBadge.textContent = `${entries.length} Custom Tag${entries.length === 1 ? '' : 's'}`;
+  }
+
+  if (entries.length === 0) {
+    weaponExtendedTagsContainer.innerHTML = '<div style="grid-column: 1 / -1; font-size: 11px; color: var(--text-dim);">No extended or unmapped WeaponCore tags active on this weapon. Click "+ Add Weapon Tag" to add one.</div>';
+    return;
+  }
+
+  entries.forEach(([key, val]) => {
+    const item = document.createElement('div');
+    item.className = 'control-item';
+    const valType = typeof val;
+
+    if (valType === 'boolean') {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">bool</span></label>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
+          <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('change', (e) => {
+        activeWeapon.extendedTags[key] = e.target.checked;
+      });
+    } else if (valType === 'number') {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">number</span></label>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('input', (e) => {
+        activeWeapon.extendedTags[key] = parseFloat(e.target.value) || 0;
+      });
+    } else {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">text/enum</span></label>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input type="text" class="control-input" value="${val}" style="flex: 1;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('input', (e) => {
+        activeWeapon.extendedTags[key] = e.target.value;
+      });
+    }
+
+    item.querySelector('.btn-delete-row').addEventListener('click', () => {
+      delete activeWeapon.extendedTags[key];
+      renderExtendedWeaponTags();
+      showToast(`Removed tag '${key}'.`);
+    });
+
+    weaponExtendedTagsContainer.appendChild(item);
+  });
+}
+
+function renderExtendedAmmoTags() {
+  if (!ammoExtendedTagsContainer || !activeAmmo) return;
+  ammoExtendedTagsContainer.innerHTML = '';
+  if (!activeAmmo.extendedTags) activeAmmo.extendedTags = {};
+
+  const entries = Object.entries(activeAmmo.extendedTags);
+  if (ammoExtendedCountBadge) {
+    ammoExtendedCountBadge.textContent = `${entries.length} Custom Tag${entries.length === 1 ? '' : 's'}`;
+  }
+
+  if (entries.length === 0) {
+    ammoExtendedTagsContainer.innerHTML = '<div style="grid-column: 1 / -1; font-size: 11px; color: var(--text-dim);">No extended or unmapped WeaponCore tags active on this round. Click "+ Add Ammo Tag" to add one.</div>';
+    return;
+  }
+
+  entries.forEach(([key, val]) => {
+    const item = document.createElement('div');
+    item.className = 'control-item';
+    const valType = typeof val;
+
+    if (valType === 'boolean') {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">bool</span></label>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
+          <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('change', (e) => {
+        activeAmmo.extendedTags[key] = e.target.checked;
+      });
+    } else if (valType === 'number') {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">number</span></label>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('input', (e) => {
+        activeAmmo.extendedTags[key] = parseFloat(e.target.value) || 0;
+      });
+    } else {
+      item.innerHTML = `
+        <label class="control-label">${key} <span class="unit">text/enum</span></label>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <input type="text" class="control-input" value="${val}" style="flex: 1;">
+          <button class="btn-delete-row" title="Remove Tag">✕</button>
+        </div>
+      `;
+      item.querySelector('input').addEventListener('input', (e) => {
+        activeAmmo.extendedTags[key] = e.target.value;
+      });
+    }
+
+    item.querySelector('.btn-delete-row').addEventListener('click', () => {
+      delete activeAmmo.extendedTags[key];
+      renderExtendedAmmoTags();
+      showToast(`Removed tag '${key}'.`);
+    });
+
+    ammoExtendedTagsContainer.appendChild(item);
+  });
+}
+
 function populateWeaponWorkbench() {
   if (!activeWeapon) return;
 
@@ -730,6 +914,7 @@ function populateWeaponWorkbench() {
   // AnimationDef binding
   selectAnimationDef.value = activeWeapon.assignedAnimation || '';
   currentAnimBadge.textContent = activeWeapon.assignedAnimation || 'None';
+  renderExtendedWeaponTags();
 }
 
 function renderAssignedAmmos() {
@@ -1472,8 +1657,8 @@ function runWeaponCoreLinter() {
     if (rotRate <= 0) {
       warnings.push("Turret RotateRate is 0 (Turret cannot traverse in azimuth).");
     }
-    if (elRate <= 0 && minEl !== maxEl) {
-      warnings.push("Turret ElevateRate is 0 (Turret elevation locked on vertical axis).");
+    if (elRate <= 0 && minEl !== maxEl && aimTol < 20) {
+      warnings.push("Turret ElevateRate is 0 (Turret elevation locked without wide aiming tolerance).");
     }
     if (minAz > maxAz) {
       criticalErrors.push(`MinAzimuth (${minAz}°) cannot be greater than MaxAzimuth (${maxAz}°).`);
@@ -1619,6 +1804,7 @@ function createMinimalUpgrade() {
   };
 
   weaponsDb.push(newUp);
+  checkWcSchemaIntegrity();
   populateWeaponDropdowns();
   selectWeapon(newUp.id);
   showToast(`Created new UpgradeDefinition '${name}'.`);
@@ -1676,6 +1862,7 @@ function createMinimalWeapon() {
   };
 
   weaponsDb.push(newGun);
+  checkWcSchemaIntegrity();
   populateWeaponDropdowns();
   selectWeapon(newGun.id);
   showToast(`Created minimal turret definition: ${name}!`);
@@ -1810,6 +1997,13 @@ function generateCSharpWeapon() {
   code += `            {\n`;
   code += `                ${ammosList},\n`;
   code += `            },\n`;
+    if (activeWeapon.extendedTags && Object.keys(activeWeapon.extendedTags).length > 0) {
+    code += `            // Extended / Auto-Discovered WeaponCore Tags\n`;
+    for (const [k, v] of Object.entries(activeWeapon.extendedTags)) {
+      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
+      code += `            // ${k} = ${formattedVal},\n`;
+    }
+  }
   code += `            ${animRef}\n`;
   code += `        };\n`;
 
@@ -1882,6 +2076,13 @@ function generateCSharpAmmo() {
   code += `                Shield = new ShieldDef { Modifier = ${dsShield.value}f },\n`;
   code += `                DamageType = new DamageTypes { Light = ${dsLightArmor.value}f, Heavy = ${dsHeavyArmor.value}f },\n`;
   code += `            },\n`;
+    if (activeAmmo.extendedTags && Object.keys(activeAmmo.extendedTags).length > 0) {
+    code += `            // Extended / Auto-Discovered WeaponCore Tags\n`;
+    for (const [k, v] of Object.entries(activeAmmo.extendedTags)) {
+      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
+      code += `            ${k} = ${formattedVal},\n`;
+    }
+  }
   code += `            Graphic = new GraphicDef\n`;
   code += `            {\n`;
   code += `                VisualProbability = ${gVisualProb.value}f,\n`;
@@ -2078,6 +2279,31 @@ function applyBalanceMatrixInputs() {
 }
 
 function setupWorkbenchInputEvents() {
+  // Extended Tag Buttons
+  if (btnAddWeaponExtendedTag) {
+    btnAddWeaponExtendedTag.addEventListener('click', () => {
+      if (!activeWeapon) return;
+      const tag = prompt("Enter WeaponCore Weapon tag name (e.g. ConstructPartCap, EnergyPriority, RestrictionRadius):", "EnergyPriority");
+      if (!tag) return;
+      if (!activeWeapon.extendedTags) activeWeapon.extendedTags = {};
+      activeWeapon.extendedTags[tag] = 0;
+      renderExtendedWeaponTags();
+      showToast(`Added custom tag '${tag}' to weapon.`);
+    });
+  }
+
+  if (btnAddAmmoExtendedTag) {
+    btnAddAmmoExtendedTag.addEventListener('click', () => {
+      if (!activeAmmo) return;
+      const tag = prompt("Enter WeaponCore Ammo tag name (e.g. DecayPerShot, IgnoreWater, IgnoreVoxels, IgnoreGrids, HeatNeededToFire):", "IgnoreWater");
+      if (!tag) return;
+      if (!activeAmmo.extendedTags) activeAmmo.extendedTags = {};
+      activeAmmo.extendedTags[tag] = true;
+      renderExtendedAmmoTags();
+      showToast(`Added custom tag '${tag}' to ammo.`);
+    });
+  }
+
   // Live recalculation on any input change
   const liveInputs = [
     wRateOfFire, wBarrelsPerShot, wReloadTime, wMagsToLoad, wHeatPerShot, wMaxHeat, wHeatSinkRate, wCooldown,

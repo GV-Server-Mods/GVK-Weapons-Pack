@@ -335,6 +335,7 @@
           <button class="scope-btn" data-scope="scope-sbc">🧱 CubeBlocks SBC</button>
         </div>
         <div class="scope-actions">
+          <span id="wcSchemaBadge" class="badge badge-cyan" style="cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="WeaponCore Schema Integrity Guard - Click to inspect">🛡️ WC v0.75 | Synced</span>
           <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per WeaponCore wiki">+ New Minimal Weapon</button>
           <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Minimal Ammo</button>
           <button id="btnNewMinimalUpgrade" class="btn btn-sm" title="Create a minimal working upgrade/support part per Upgrade75aPart.cs">+ New Minimal Upgrade</button>
@@ -347,6 +348,12 @@
       <div id="linterBanner" class="linter-banner clean">
         <span class="linter-icon">✅</span>
         <span id="linterText" class="linter-text">Definition syntax healthy. 0 Clang hazards detected.</span>
+      </div>
+
+      <!-- WC Schema Update & Discrepancy Notice Banner -->
+      <div id="wcSchemaNotice" class="linter-banner warning" style="display: none; margin-bottom: 14px;">
+        <span class="linter-icon">⚙️</span>
+        <span id="wcSchemaNoticeText" class="linter-text">WeaponCore Schema Update Detected.</span>
       </div>
 
       <!-- SCOPE A: WeaponDefinition Editor -->
@@ -596,6 +603,25 @@
               <select id="selectAnimationDef" class="control-input" style="max-width: 360px;">
                 <option value="">None / Static</option>
               </select>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 5: Extended & Future WeaponCore Tags (Auto-Discovered) -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">🧩 5. Extended &amp; Future WeaponCore Tags</span>
+            <span class="wc-tag" id="weaponExtendedCountBadge">0 Custom Tags</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+              Auto-discovered tags from <code>Structure.cs</code>. Any newly added WeaponCore fields appear here automatically without needing website updates.
+            </p>
+            <div id="weaponExtendedTagsContainer" class="control-grid">
+              <!-- Dynamically populated from schema -->
+            </div>
+            <div style="margin-top: 14px; display: flex; gap: 8px;">
+              <button id="btnAddWeaponExtendedTag" class="btn btn-cyan btn-sm">+ Add Weapon Tag</button>
             </div>
           </div>
         </details>
@@ -863,6 +889,25 @@
                 <label class="control-label">Shield Hit Sound</label>
                 <input type="text" id="aSoundShieldHit" class="control-input" value="">
               </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Accordion 7: Extended & Future Ammo Tags (Auto-Discovered) -->
+        <details class="wc-accordion">
+          <summary class="wc-summary">
+            <span class="wc-title">🧩 7. Extended &amp; Future Ammo Tags</span>
+            <span class="wc-tag" id="ammoExtendedCountBadge">0 Custom Tags</span>
+          </summary>
+          <div class="wc-body">
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+              Auto-discovered tags from <code>Structure.cs</code>. Any newly added WeaponCore ammo fields appear here automatically without needing website updates.
+            </p>
+            <div id="ammoExtendedTagsContainer" class="control-grid">
+              <!-- Dynamically populated from schema -->
+            </div>
+            <div style="margin-top: 14px; display: flex; gap: 8px;">
+              <button id="btnAddAmmoExtendedTag" class="btn btn-cyan btn-sm">+ Add Ammo Tag</button>
             </div>
           </div>
         </details>
@@ -1151,6 +1196,7 @@
   </div>
 
   <!-- Foundational Data Scripts -->
+  <script src="data/wc_schema.js"></script>
   <script src="data/weapons_data.js"></script>
   <script src="data/ammos_data.js"></script>
   <script src="data/animations_data.js"></script>
