@@ -112,7 +112,9 @@ PhysicalItems.sbc staged for future use (ingot masses); pipeline ignores it toda
 2. **Animation files**: *_Animations.cs use C# generics/#region the parser can't handle. Fix: skip them in parseAll.
 3. **git push origin main silently dropped**: reported "Everything up-to-date" when local was ahead. Workaround:
    `git push origin <sha>:main` or `git push origin HEAD:main`.
-4. **onReapply never called in hosted mode (ec4a735)**: initHosted() parsed live data but never called opts.onReapply(),
+4. **onReapply never called in hosted mode (ec4a735)**: Fixed in ec4a735 — validateLiveData + onReapply wiring.
+5. **activeWeapon not reset in onReapply (3d976ff)**: After onReapply replaced datasets, refreshAfterDataLoad() skipped selectWeapon() (only runs when activeWeapon is null), so metrics never recalculated with live data → DPS=0. Fixed by resetting activeWeapon=null and activeAmmo=null in onReapply.
+6. **Browser caching of stale source_pipeline.js**: Verified via incognito export that parser produces correct array assignedAmmos. Regular browser may cache old parser — hard-refresh (Ctrl+F5) clears it. initHosted() parsed live data but never called opts.onReapply(),
    so the app kept using JSON-fetched bundled data → green chip but DPS=0 and missing icons. User spotted that
    the data was a hybrid (some live, some bundled) which is a credibility trap.
    Fix: added validateLiveData() — checks all four legs (weapons/ammos/magazines/blocks) and that every
