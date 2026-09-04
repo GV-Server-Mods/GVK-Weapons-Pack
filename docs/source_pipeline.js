@@ -354,7 +354,15 @@ function parseCubeBlocks(xmlText2) {
       cubeSize: xmlText(xmlKid(d, 'CubeSize')) || 'Large',
       pcu: xmlNum(xmlKid(d, 'PCU')),
       buildTimeSeconds: xmlNum(xmlKid(d, 'BuildTimeSeconds')),
-      components: comps ? xmlKids(comps, 'Component').map((c) => ({ name: c.attrs.Subtype, count: parseInt(c.attrs.Count) || 0 })) : [],
+      components: comps ? xmlKids(comps, 'Component').map((c) => {
+        const decomp = xmlKid(c, 'DeconstructId');
+        return {
+          name: c.attrs.Subtype,
+          count: parseInt(c.attrs.Count) || 0,
+          deconstructSubtype: decomp ? xmlText(xmlKid(decomp, 'SubtypeId')) : null,
+          deconstructType: decomp ? xmlText(xmlKid(decomp, 'TypeId')) : null,
+        };
+      }) : [],
       criticalComponent: crit ? crit.attrs.Subtype || null : null,
     };
   }
@@ -477,9 +485,13 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     ? (ammos[a0.fragment.ammoRound] || Object.values(ammos).find((x) => x.ammoRound === a0.fragment.ammoRound))
     : null;
   const fragEol = fragAmmo ? fragAmmo.areaOfDamage.endOfLife : null;
+  const threats = Array.isArray(tgt.Threats)
+    ? tgt.Threats.map((t) => (typeof t === 'string' ? t : (t && t.__id)) || '')
+    : [];
+  const pdProjectiles = threats.includes('Projectiles');
   return {
     id,
-    pdProjectiles: tgt.IgnoreDumbProjectiles === true,
+    pdProjectiles,
     pdSmartOnly: tgt.LockedSmartOnly === true,
     name: ov.name || '(' + grid[0] + ') ' + partName,
     grid, type,

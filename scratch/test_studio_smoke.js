@@ -169,7 +169,7 @@ check('recursive damage total resolves (6000 base)', report.dmgTotal === 6000);
 check('155 AP best-fit = Heavy Armor ×3.0 (1000 paper → 3000 eff)', report.eff155 === 3000 && report.prof155Label === 'Heavy Armor' && report.prof155Mult === 3.0);
 check('Heavy Railgun peak ideal = ×3.0 on full payload (100k → 300k, cap not diluting)', report.effRg === 300000 && report.profRgLabel === 'Heavy Armor');
 check('Non-Armor winner detected (×2.0)', report.profNaLabel === 'Non-Armor (Systems)' && report.profNaMult === 2.0);
-check('all-equal multipliers report All Targets', report.profAllLabel === 'All Targets');
+check('all-equal multipliers report All Blocks', report.profAllLabel === 'All Blocks');
 check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
 check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
 check('Railgun export emits zero shield tags', report.rgShieldFree);
@@ -262,6 +262,23 @@ vm.runInContext(`
     harbAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC')).alphaVolley,
     pdMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_PDT'), ammosDb['Lasers_AMS']),
     pdAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_PDT')).alphaVolley,
+    hurWId: hurW.id,
+    workbenchSelectVal: document.getElementById('weaponSelectWorkbench').value,
+    bannerDisplayWorkbench: (() => { switchWorkspace('ws-workbench'); return document.getElementById('weaponBanner').style.display; })(),
+    bannerDisplayTelemetry: (() => { switchWorkspace('ws-telemetry'); return document.getElementById('weaponBanner').style.display; })(),
+    pdWeaponsCount: weaponsDb.filter(w => w.pdProjectiles).length,
+    npcSbcXml: (() => {
+      const npcw = weaponsDb.find(w => w.subtypeId.includes('NPC') && w.components.some(c => c.name.includes('Prototech')));
+      if (!npcw) return '';
+      selectWeapon(npcw.id);
+      return generateSbcCubeBlocks();
+    })(),
+    playerSbcXml: (() => {
+      const plrw = weaponsDb.find(w => !w.subtypeId.includes('NPC') && w.components.some(c => c.name.includes('Prototech')));
+      if (!plrw) return '';
+      selectWeapon(plrw.id);
+      return generateSbcCubeBlocks();
+    })(),
   });
 `, sandbox);
 
@@ -291,6 +308,23 @@ check('Spartan Turret resolves 360-rd virtual magazine', lcReport.spartanMagSize
 check('Spartan Turret alpha volley spans 360-rd burst (54,000 hp)', lcReport.spartanAlpha === 54000);
 check('Harbinger Railgun resolves 1-rd energy magazine (1,000,000 hp)', lcReport.harbMagSize === 1 && lcReport.harbAlpha === 1000000);
 check('Point Defense Laser (continuous, no virtual mag) resolves 1 round (100 hp, NOT 10,000 hp fallback)', lcReport.pdMagSize === 1 && lcReport.pdAlpha === 100);
+
+check('Definition Workbench hides weaponBanner', lcReport.bannerDisplayWorkbench === 'none');
+check('Combat Telemetry displays weaponBanner', lcReport.bannerDisplayTelemetry === 'flex');
+check('Tuning Weapon dropdown matches activeWeapon', lcReport.workbenchSelectVal === lcReport.hurWId);
+check('Point defense weapons count is exactly 28 (smart ammo hunters only)', lcReport.pdWeaponsCount === 28);
+
+// Definition Workbench cleanup checks
+check('Upgrade button removed from workbench scope bar', !htmlSource.includes('id="btnNewMinimalUpgrade"'));
+check('Duplicate Export button removed from workbench scope bar', !htmlSource.includes('id="btnOpenCodeWorkbench"'));
+check('Auto-Assign NPC Tech Scrap button exists in SBC table', htmlSource.includes('id="btnAutoNpcScrap"'));
+check('Apply Scrap Yield Multiplier button exists in SBC table', htmlSource.includes('id="btnApplyScrapYield"'));
+check('Scrap Yield badge exists in SBC table', htmlSource.includes('id="sbcScrapYieldBadge"'));
+
+// SBC Component Scrap & DeconstructId checks
+check('NPC weapon SBC XML outputs <DeconstructId> for tech components',
+  lcReport.npcSbcXml.includes('<DeconstructId>') && lcReport.npcSbcXml.includes('<TypeId>Ore</TypeId>') && lcReport.npcSbcXml.includes('Scrap</SubtypeId>'));
+check('Player weapon SBC XML does not output <DeconstructId>', !lcReport.playerSbcXml.includes('<DeconstructId>'));
 
 // Commit date format check (mm.dd.yyyy)
 const sourceLiveContent = fs.readFileSync(path.join(root, 'docs', 'source_live.js'), 'utf8');

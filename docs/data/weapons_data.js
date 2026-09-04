@@ -5,7 +5,7 @@
 const BUNDLED_WEAPONS_DATA = [
   {
     "id": "L__ARYXCycloneCannon",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tsunami Turret",
     "grid": "Large",
@@ -48,43 +48,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/ARYXCycloneCannon.png",
@@ -115,7 +135,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__ARYXCycloneCannon_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tsunami Turret",
     "grid": "Large",
@@ -158,43 +178,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/ARYXCycloneCannon_NPC.png",
@@ -225,7 +265,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__GVK_CycloneCannonTurret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cyclone Turret",
     "grid": "Large",
@@ -268,43 +308,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/GVK_CycloneCannonTurret.png",
@@ -335,7 +395,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__GVK_CycloneCannonTurret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cyclone Turret",
     "grid": "Large",
@@ -378,43 +438,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/GVK_CycloneCannonTurret_NPC.png",
@@ -445,7 +525,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Turret",
     "grid": "Large",
@@ -488,43 +568,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Cannon_Turret.png",
@@ -555,7 +655,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Turret [NPC]",
     "grid": "Large",
@@ -598,43 +698,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 430
+        "count": 430,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 71
+        "count": 71,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 360
+        "count": 360,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Cannon_Turret_NPC.png",
@@ -665,7 +785,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Gun",
     "grid": "Large",
@@ -708,39 +828,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 70
+        "count": 70,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 47
+        "count": 47,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 24
+        "count": 24,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 47
+        "count": 47,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Cannon_Gun.png",
@@ -771,7 +909,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Turret",
     "grid": "Small",
@@ -814,39 +952,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 52
+        "count": 52,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Cannon_Turret.png",
@@ -877,7 +1033,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Turret [NPC]",
     "grid": "Small",
@@ -920,39 +1076,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 52
+        "count": 52,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Cannon_Turret_NPC.png",
@@ -983,7 +1157,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Gun",
     "grid": "Small",
@@ -1026,39 +1200,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 49
+        "count": 49,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Cannon_Gun.png",
@@ -1089,7 +1281,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Gun [NPC]",
     "grid": "Large",
@@ -1132,39 +1324,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 70
+        "count": 70,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 47
+        "count": 47,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 24
+        "count": 24,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 47
+        "count": 47,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Cannon_Gun_NPC.png",
@@ -1194,7 +1404,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Gun [NPC]",
     "grid": "Small",
@@ -1237,39 +1447,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 49
+        "count": 49,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Cannon_Gun_NPC.png",
@@ -1299,7 +1527,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Turret",
     "grid": "Large",
@@ -1342,35 +1570,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 40
+        "count": 40,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Turret.png",
@@ -1400,7 +1644,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Turret [NPC]",
     "grid": "Large",
@@ -1443,35 +1687,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 40
+        "count": 40,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Turret_NPC.png",
@@ -1501,7 +1761,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Khopesh Turret",
     "grid": "Large",
@@ -1544,35 +1804,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Khopesh_Turret.png",
@@ -1602,7 +1878,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Khopesh Turret [NPC]",
     "grid": "Large",
@@ -1645,35 +1921,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png",
@@ -1703,7 +1995,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Turret",
     "grid": "Small",
@@ -1746,35 +2038,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 15
+        "count": 15,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 56
+        "count": 56,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Chaingun_Turret.png",
@@ -1804,7 +2112,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Turret [NPC]",
     "grid": "Small",
@@ -1847,35 +2155,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 33
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 44
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Chaingun_Turret_NPC.png",
@@ -1905,7 +2229,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Gun",
     "grid": "Small",
@@ -1948,35 +2272,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Chaingun_Gun.png",
@@ -2006,7 +2346,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Gun [NPC]",
     "grid": "Small",
@@ -2049,35 +2389,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Chaingun_Gun_NPC.png",
@@ -2107,7 +2463,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Thrasher Turret",
     "grid": "Large",
@@ -2150,35 +2506,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 830
+        "count": 830,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 280
+        "count": 280,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Thrasher_Turret.png",
@@ -2208,7 +2580,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Thrasher Turret [NPC]",
     "grid": "Large",
@@ -2251,35 +2623,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 830
+        "count": 830,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 280
+        "count": 280,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png",
@@ -2352,39 +2740,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 390
+        "count": 390,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Flak_Turret.png",
@@ -2458,39 +2864,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 390
+        "count": 390,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Flak_Turret_NPC.png",
@@ -2564,39 +2988,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 85
+        "count": 85,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 43
+        "count": 43,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Flak_Turret.png",
@@ -2670,39 +3112,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 85
+        "count": 85,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 43
+        "count": 43,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Flak_Turret_NPC.png",
@@ -2776,39 +3236,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Flak_Gun.png",
@@ -2882,39 +3360,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Flak_Gun_NPC.png",
@@ -2988,35 +3484,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Gatling_Turret.png",
@@ -3089,35 +3601,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Gatling_Turret_NPC.png",
@@ -3258,35 +3786,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeGatlingTurret_NPC.png",
@@ -3359,35 +3903,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeGatlingTurretReskin.png",
@@ -3460,35 +4020,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 470
+        "count": 470,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 93
+        "count": 93,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 240
+        "count": 240,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeGatlingTurretReskin_NPC.png",
@@ -3561,35 +4137,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Gatling_Turret.png",
@@ -3662,35 +4254,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Gatling_Turret_NPC.png",
@@ -3763,35 +4371,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallGatlingTurretReskin.png",
@@ -3864,35 +4488,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 42
+        "count": 42,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallGatlingTurretReskin_NPC.png",
@@ -3922,7 +4562,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
     "grid": "Large",
@@ -3990,7 +4630,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingGunWarfare2",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
     "grid": "Small",
@@ -4033,35 +4673,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallGatlingGunWarfare2.png",
@@ -4091,7 +4747,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun [NPC]",
     "grid": "Small",
@@ -4134,35 +4790,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Gatling_Gun_NPC.png",
@@ -4192,7 +4864,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingGunWarfare2_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
     "grid": "Small",
@@ -4235,35 +4907,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallGatlingGunWarfare2_NPC.png",
@@ -4336,35 +5024,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Gatling_Gimbal.png",
@@ -4437,35 +5141,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Gatling_Gimbal_NPC.png",
@@ -4538,35 +5258,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 830
+        "count": 830,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 280
+        "count": 280,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
@@ -4639,35 +5375,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 830
+        "count": 830,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 280
+        "count": 280,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 420
+        "count": 420,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Gatling_Avenger_Turret_NPC.png",
@@ -4740,43 +5492,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 520
+        "count": 520,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 180
+        "count": 180,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 860
+        "count": 860,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
@@ -4849,43 +5621,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 520
+        "count": 520,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 180
+        "count": 180,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 860
+        "count": 860,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png",
@@ -4958,43 +5750,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 520
+        "count": 520,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 180
+        "count": 180,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 860
+        "count": 860,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
@@ -5067,43 +5879,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 520
+        "count": 520,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 180
+        "count": 180,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 350
+        "count": 350,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 860
+        "count": 860,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png",
@@ -5133,7 +5965,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Harbinger_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Harbinger Turret [NPC]",
     "grid": "Large",
@@ -5176,43 +6008,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 410
+        "count": 410,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 41
+        "count": 41,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 610
+        "count": 610,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/HarbingerTurret_NPC.png",
@@ -5242,7 +6094,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Interior_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Interior Turret",
     "grid": "Large",
@@ -5285,35 +6137,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "InteriorPlate",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 300
+        "count": 300,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 39
+        "count": 39,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Interior_Turret.png",
@@ -5343,7 +6211,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Interior_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Interior Turret [NPC]",
     "grid": "Large",
@@ -5386,35 +6254,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "InteriorPlate",
-        "count": 120
+        "count": 120,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechMachineryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "Construction",
-        "count": 300
+        "count": 300,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 39
+        "count": 39,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Interior_Turret_NPC.png",
@@ -5444,7 +6328,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__MAC_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) MAC Gun",
     "grid": "Large",
@@ -5487,31 +6371,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 50
+        "count": 50,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 60
+        "count": 60,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 300
+        "count": 300,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__MAC_Gun.png",
@@ -5541,7 +6439,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__MAC_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) MAC Gun [NPC]",
     "grid": "Large",
@@ -5584,43 +6482,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 260
+        "count": 260,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 26
+        "count": 26,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 64
+        "count": 64,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 190
+        "count": 190,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 380
+        "count": 380,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__MAC_Gun_NPC.png",
@@ -5650,7 +6568,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Turret",
     "grid": "Large",
@@ -5693,43 +6611,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 410
+        "count": 410,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 41
+        "count": 41,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 610
+        "count": 610,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Railgun_Turret.png",
@@ -5759,7 +6697,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Turret [NPC]",
     "grid": "Large",
@@ -5802,43 +6740,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 410
+        "count": 410,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechFrame",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 41
+        "count": 41,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 610
+        "count": 610,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Railgun_Turret_NPC.png",
@@ -5868,7 +6826,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Gun",
     "grid": "Large",
@@ -5911,39 +6869,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 40
+        "count": 40,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Railgun_Gun.png",
@@ -5973,7 +6949,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Railgun_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Railgun Gun",
     "grid": "Small",
@@ -6016,31 +6992,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Railgun_Gun.png",
@@ -6070,7 +7060,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Railgun_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Railgun Gun [NPC]",
     "grid": "Small",
@@ -6113,39 +7103,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 17
+        "count": 17,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 13
+        "count": 13,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 26
+        "count": 26,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Railgun_Gun_NPC.png",
@@ -6175,7 +7183,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Gun [NPC]",
     "grid": "Large",
@@ -6218,39 +7226,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechFrame",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechFrameScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 40
+        "count": 40,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Reactor",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Railgun_Gun_NPC.png",
@@ -6280,7 +7306,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__FlareGunItem",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Pistol",
     "grid": "Large",
@@ -6348,7 +7374,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__BasicHandHeldLauncherItem",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Launcher",
     "grid": "Large",
@@ -6484,7 +7510,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__ElitePistolItem",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Elite Pistol",
     "grid": "Large",
@@ -6552,7 +7578,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__RapidFireAutomaticRifleItem",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Basic Rifle",
     "grid": "Large",
@@ -6620,7 +7646,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__UltimateAutomaticRifleItem",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Basic Rifle",
     "grid": "Large",
@@ -6731,39 +7757,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__PD_Laser.png",
@@ -6836,39 +7880,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__PD_Laser.png",
@@ -6941,39 +8003,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__PD_Laser_NPC.png",
@@ -7046,39 +8126,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__PD_Laser_NPC.png",
@@ -7108,7 +8206,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Turret",
     "grid": "Large",
@@ -7151,39 +8249,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 43
+        "count": 43,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 45
+        "count": 45,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 15
+        "count": 15,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 370
+        "count": 370,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Laser_Turret.png",
@@ -7213,7 +8329,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Turret [NPC]",
     "grid": "Large",
@@ -7256,39 +8372,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 43
+        "count": 43,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 45
+        "count": 45,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 15
+        "count": 15,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 370
+        "count": 370,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Laser_Turret_NPC.png",
@@ -7318,7 +8452,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Gimbal",
     "grid": "Large",
@@ -7361,39 +8495,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 26
+        "count": 26,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 230
+        "count": 230,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Laser_Gimbal.png",
@@ -7423,7 +8575,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Gimbal [NPC]",
     "grid": "Large",
@@ -7466,39 +8618,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 26
+        "count": 26,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 28
+        "count": 28,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 86
+        "count": 86,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 230
+        "count": 230,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png",
@@ -7528,7 +8698,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Spartan Heavy Laser Turret",
     "grid": "Large",
@@ -7571,39 +8741,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 95
+        "count": 95,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 32
+        "count": 32,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 820
+        "count": 820,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
@@ -7633,7 +8821,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Spartan Heavy Laser Turret [NPC]",
     "grid": "Large",
@@ -7676,39 +8864,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 95
+        "count": 95,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 130
+        "count": 130,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 63
+        "count": 63,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 32
+        "count": 32,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 820
+        "count": 820,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png",
@@ -7738,7 +8944,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Gun",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Gun",
     "grid": "Small",
@@ -7781,39 +8987,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Light_Laser_Gun.png",
@@ -7843,7 +9067,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Gun [NPC]",
     "grid": "Small",
@@ -7886,39 +9110,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Light_Laser_Gun_NPC.png",
@@ -7991,39 +9233,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Light_Laser_Turret.png",
@@ -8096,39 +9356,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Light_Laser_Turret_NPC.png",
@@ -8201,39 +9479,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Light_Laser_Turret.png",
@@ -8306,39 +9602,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 31
+        "count": 31,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 200
+        "count": 200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Light_Laser_Turret_NPC.png",
@@ -8368,7 +9682,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Loki_Plasma_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Loki Plasma Turret",
     "grid": "Large",
@@ -8411,43 +9725,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 230
+        "count": 230,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCapacitor",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 250
+        "count": 250,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 760
+        "count": 760,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 190
+        "count": 190,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 2000
+        "count": 2000,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Loki_Plasma_Turret.png",
@@ -8477,7 +9811,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Loki Plasma Turret [NPC]",
     "grid": "Large",
@@ -8520,43 +9854,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 230
+        "count": 230,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechCapacitor",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": "PrototechCapacitorScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "SmallTube",
-        "count": 310
+        "count": 310,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 250
+        "count": 250,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Superconductor",
-        "count": 760
+        "count": 760,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "BulletproofGlass",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 190
+        "count": 190,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 76
+        "count": 76,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 2000
+        "count": 2000,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Loki_Plasma_Turret_NPC.png",
@@ -8629,43 +9983,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 290
+        "count": 290,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Tuukka_Missile_Turret.png",
@@ -8738,43 +10112,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 290
+        "count": 290,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Tuukka_Missile_Turret_NPC.png",
@@ -8804,7 +10198,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Turret",
     "grid": "Large",
@@ -8847,43 +10241,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 290
+        "count": 290,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Missile_Turret.png",
@@ -8913,7 +10327,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Turret [NPC]",
     "grid": "Large",
@@ -8956,43 +10370,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 57
+        "count": 57,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 29
+        "count": 29,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 290
+        "count": 290,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 34
+        "count": 34,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 570
+        "count": 570,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Missile_Turret_NPC.png",
@@ -9022,7 +10456,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Launcher",
     "grid": "Large",
@@ -9065,43 +10499,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 80
+        "count": 80,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 32
+        "count": 32,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Missile_Launcher.png",
@@ -9131,7 +10585,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Launcher [NPC]",
     "grid": "Large",
@@ -9174,43 +10628,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 80
+        "count": 80,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 32
+        "count": 32,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 16
+        "count": 16,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 160
+        "count": 160,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 320
+        "count": 320,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Missile_Launcher_NPC.png",
@@ -9240,7 +10714,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Missile_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Missile Launcher",
     "grid": "Small",
@@ -9283,39 +10757,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Missile_Launcher.png",
@@ -9345,7 +10837,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Missile_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Missile Launcher [NPC]",
     "grid": "Small",
@@ -9388,39 +10880,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Missile_Launcher_NPC.png",
@@ -9450,7 +10960,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGriffinLauncherWarfare2_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) NPC Griffin Launcher",
     "grid": "Small",
@@ -9493,35 +11003,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallGriffinLauncherWarfare2_NPC.png",
@@ -9551,7 +11077,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Turret",
     "grid": "Large",
@@ -9594,35 +11120,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 540
+        "count": 540,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Rocket_Turret.png",
@@ -9652,7 +11194,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Turret [NPC]",
     "grid": "Large",
@@ -9695,35 +11237,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 540
+        "count": 540,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Rocket_Turret_NPC.png",
@@ -9753,7 +11311,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
     "grid": "Large",
@@ -9821,7 +11379,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
     "grid": "Large",
@@ -9864,35 +11422,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 540
+        "count": 540,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeMissileTurret_NPC.png",
@@ -9922,7 +11496,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurretReskin",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
     "grid": "Large",
@@ -9965,35 +11539,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 540
+        "count": 540,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeMissileTurretReskin.png",
@@ -10023,7 +11613,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurretReskin_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
     "grid": "Large",
@@ -10066,35 +11656,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 67
+        "count": 67,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 81
+        "count": 81,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 170
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 540
+        "count": 540,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeMissileTurretReskin_NPC.png",
@@ -10124,7 +11730,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Turret",
     "grid": "Small",
@@ -10167,35 +11773,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 44
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Rocket_Turret.png",
@@ -10225,7 +11847,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Turret [NPC]",
     "grid": "Small",
@@ -10268,35 +11890,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 44
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Rocket_Turret_NPC.png",
@@ -10326,7 +11964,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileTurretReskin",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Turret",
     "grid": "Small",
@@ -10369,35 +12007,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 44
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallMissileTurretReskin.png",
@@ -10427,7 +12081,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileTurretReskin_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Turret",
     "grid": "Small",
@@ -10470,35 +12124,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 18
+        "count": 18,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 22
+        "count": 22,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 58
+        "count": 58,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 44
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 150
+        "count": 150,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 54
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallMissileTurretReskin_NPC.png",
@@ -10528,7 +12198,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Launcher",
     "grid": "Large",
@@ -10571,35 +12241,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 33
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 33
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 39
+        "count": 39,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 260
+        "count": 260,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Rocket_Launcher.png",
@@ -10629,7 +12315,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Launcher [NPC]",
     "grid": "Large",
@@ -10672,35 +12358,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 33
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 33
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 39
+        "count": 39,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 78
+        "count": 78,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 260
+        "count": 260,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 97
+        "count": 97,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Rocket_Launcher_NPC.png",
@@ -10730,7 +12432,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher",
     "grid": "Large",
@@ -10798,7 +12500,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileLauncherWarfare2",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Pod",
     "grid": "Small",
@@ -10841,35 +12543,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallMissileLauncherWarfare2.png",
@@ -10899,7 +12617,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher [NPC]",
     "grid": "Small",
@@ -10942,35 +12660,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Rocket_Launcher_NPC.png",
@@ -11000,7 +12734,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileLauncherWarfare2_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Pod",
     "grid": "Small",
@@ -11043,35 +12777,51 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 23
+        "count": 23,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallMissileLauncherWarfare2_NPC.png",
@@ -11101,7 +12851,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher Reloadable",
     "grid": "Small",
@@ -11144,39 +12894,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Rocket_Launcher_Reloadable.png",
@@ -11206,7 +12974,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher Reloadable [NPC]",
     "grid": "Small",
@@ -11249,39 +13017,57 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 19
+        "count": 19,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Rocket_Launcher_Reloadable_NPC.png",
@@ -11311,7 +13097,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__SRBM_Turret",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) SRBM Turret",
     "grid": "Large",
@@ -11354,43 +13140,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 550
+        "count": 550,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__SRBM_Turret.png",
@@ -11420,7 +13226,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__SRBM_Turret_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) SRBM Turret [NPC]",
     "grid": "Large",
@@ -11463,43 +13269,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 550
+        "count": 550,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 220
+        "count": 220,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 1100
+        "count": 1100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 2200
+        "count": 2200,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__SRBM_Turret_NPC.png",
@@ -11529,7 +13355,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Torpedo_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Torpedo Launcher",
     "grid": "Large",
@@ -11572,43 +13398,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 13
+        "count": 13,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Torpedo_Launcher.png",
@@ -11638,7 +13484,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Torpedo Launcher [NPC]",
     "grid": "Large",
@@ -11681,43 +13527,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 51
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 21
+        "count": 21,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 11
+        "count": 11,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 110
+        "count": 110,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 13
+        "count": 13,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210
+        "count": 210,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Torpedo_Launcher_NPC.png",
@@ -11747,7 +13613,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Torpedo_Launcher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Torpedo Launcher",
     "grid": "Small",
@@ -11790,43 +13656,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 70
+        "count": 70,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Torpedo_Launcher.png",
@@ -11856,7 +13742,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Torpedo Launcher [NPC]",
     "grid": "Small",
@@ -11899,43 +13785,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 35
+        "count": 35,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 7
+        "count": 7,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 70
+        "count": 70,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 9
+        "count": 9,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Torpedo_Launcher_NPC.png",
@@ -11965,7 +13871,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Drone_Bay",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Drone Bay",
     "grid": "Large",
@@ -12008,43 +13914,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 68
+        "count": 68,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "MetalGrid",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 17
+        "count": 17,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Drone_Bay.png",
@@ -12075,7 +14001,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Drone_Bay_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Drone Bay [NPC]",
     "grid": "Large",
@@ -12118,43 +14044,63 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 68
+        "count": 68,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechCircuitry",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": "PrototechCircuitryScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "PrototechPanel",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "MetalGrid",
-        "count": 27
+        "count": 27,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 14
+        "count": 14,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 140
+        "count": 140,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 17
+        "count": 17,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 270
+        "count": 270,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Drone_Bay_NPC.png",
@@ -12185,7 +14131,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeFlareLauncher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Launcher",
     "grid": "Large",
@@ -12228,31 +14174,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 50
+        "count": 50,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 50
+        "count": 50,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeFlareLauncher.png",
@@ -12289,7 +14249,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeFlareLauncher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Launcher",
     "grid": "Large",
@@ -12332,31 +14292,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "LargeTube",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 50
+        "count": 50,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 50
+        "count": 50,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 100
+        "count": 100,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeFlareLauncher_NPC.png",
@@ -12393,7 +14367,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallFlareLauncher",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flare Launcher",
     "grid": "Small",
@@ -12436,31 +14410,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallFlareLauncher.png",
@@ -12497,7 +14485,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallFlareLauncher_NPC",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flare Launcher",
     "grid": "Small",
@@ -12540,31 +14528,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "PrototechPanel",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": "PrototechPanelScrap",
+        "deconstructType": "Ore"
       },
       {
         "name": "LargeTube",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallFlareLauncher_NPC.png",
@@ -12601,7 +14603,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__OKIDesignator",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Radar",
     "grid": "Large",
@@ -12644,27 +14646,39 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Detector",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 20
+        "count": 20,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 25
+        "count": 25,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/OKIDesignator.png",
@@ -12694,7 +14708,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__ARYXSmallRadar",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
     "grid": "Small",
@@ -12737,27 +14751,39 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Detector",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 8
+        "count": 8,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 15
+        "count": 15,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/ARYXSmallRadar.png",
@@ -12787,7 +14813,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallBlockRadioAntenna_WCRadar",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
     "grid": "Small",
@@ -12830,27 +14856,39 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "RadioCommunication",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallBlockRadioAntenna_WCRadar.png",
@@ -12880,7 +14918,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallBlockCompactRadioAntennaReskin_WCRadar",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
     "grid": "Small",
@@ -12923,31 +14961,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "RadioCommunication",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallBlockCompactRadioAntennaReskin_WCRadar.png",
@@ -12977,7 +15029,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Warhead",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Warhead",
     "grid": "Large",
@@ -13020,31 +15072,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Girder",
-        "count": 24
+        "count": 24,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 12
+        "count": 12,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 5
+        "count": 5,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10
+        "count": 10,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/L__Warhead.png",
@@ -13074,7 +15140,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeExplosiveBarrel",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Large Warhead",
     "grid": "Large",
@@ -13117,31 +15183,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/LargeExplosiveBarrel.png",
@@ -13171,7 +15251,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Warhead",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Warhead",
     "grid": "Small",
@@ -13214,31 +15294,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Girder",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 3
+        "count": 3,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/S__Warhead.png",
@@ -13268,7 +15362,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallExplosiveBarrel",
-    "pdProjectiles": true,
+    "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Small Warhead",
     "grid": "Small",
@@ -13311,31 +15405,45 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 6
+        "count": 6,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 2
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 1
+        "count": 1,
+        "deconstructSubtype": null,
+        "deconstructType": null
       }
     ],
     "icon": "icons/SmallExplosiveBarrel.png",

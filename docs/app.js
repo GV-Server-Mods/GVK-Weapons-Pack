@@ -942,6 +942,17 @@ const GVK_TECH_COMPONENTS = {
   "GVK_TurboEncabulator": { displayName: "Turbo Encabulator", mass: 50, integrity: 200 }
 };
 
+// Canonical GVK Tech Component -> Deconstruct Scrap Dictionary
+const GVK_TECH_SCRAP_MAP = {
+  "PrototechPropulsionUnit": { scrapSubtype: "PrototechPropulsionUnitScrap", typeId: "Ore", displayName: "[Tech] Igniter [Scrap]" },
+  "PrototechCoolingUnit": { scrapSubtype: "PrototechCoolingUnitScrap", typeId: "Ore", displayName: "[Tech] Grav. Reflector [Scrap]" },
+  "PrototechMachinery": { scrapSubtype: "PrototechMachineryScrap", typeId: "Ore", displayName: "[Tech] Bolt Carrier [Scrap]" },
+  "PrototechFrame": { scrapSubtype: "PrototechFrameScrap", typeId: "Ore", displayName: "[Tech] Gun Cradle [Scrap]" },
+  "PrototechPanel": { scrapSubtype: "PrototechPanelScrap", typeId: "Ore", displayName: "[Tech] Launch Assem. [Scrap]" },
+  "PrototechCapacitor": { scrapSubtype: "PrototechCapacitorScrap", typeId: "Ore", displayName: "[Tech] Particle Emit. [Scrap]" },
+  "PrototechCircuitry": { scrapSubtype: "PrototechCircuitryScrap", typeId: "Ore", displayName: "[Tech] Data Core [Scrap]" }
+};
+
 // DOM Elements - Definition Workbench (Scope C: CubeBlocks SBC)
 const sbcSubtypeId = document.getElementById('sbcSubtypeId');
 const sbcTypeId = document.getElementById('sbcTypeId');
@@ -984,7 +995,7 @@ const sbcBlockTypeTag = document.getElementById('sbcBlockTypeTag');
 const badgeUps = document.getElementById('badgeUps');
 
 // DOM Elements - Ammo Logistics ("Ammo Maths")
-const weaponBanner = document.querySelector('.weapon-banner');
+const weaponBanner = document.getElementById('weaponBanner') || document.querySelector('.weapon-banner');
 const logisticsAmmoSelect = document.getElementById('logisticsAmmoSelect');
 const logisticsAmmoIcon = document.getElementById('logisticsAmmoIcon');
 const btnResetAmmoLogistics = document.getElementById('btnResetAmmoLogistics');
@@ -1221,7 +1232,7 @@ function switchWorkspace(targetWsId) {
     s.classList.toggle('active', s.id === targetWsId);
   });
   if (weaponBanner) {
-    weaponBanner.style.display = (targetWsId === 'ws-logistics') ? 'none' : 'flex';
+    weaponBanner.style.display = (targetWsId === 'ws-telemetry') ? 'flex' : 'none';
   }
   if (targetWsId === 'ws-logistics') {
     selectLogisticsMagazine(selectedLogisticsMagSubtype, false);
@@ -1369,6 +1380,17 @@ function populateWeaponDropdowns() {
       selectWeapon(e.target.value);
     });
     weaponSelect._changeBound = true;
+  }
+
+  const weaponSelectWorkbench = document.getElementById('weaponSelectWorkbench');
+  if (weaponSelectWorkbench) {
+    weaponSelectWorkbench.innerHTML = weaponSelect.innerHTML;
+    if (!weaponSelectWorkbench._changeBound) {
+      weaponSelectWorkbench.addEventListener('change', (e) => {
+        selectWeapon(e.target.value);
+      });
+      weaponSelectWorkbench._changeBound = true;
+    }
   }
 
   if (compareSelect && !compareSelect._changeBound) {
@@ -1656,7 +1678,9 @@ function selectWeapon(weaponId) {
   const found = weaponsDb.find(w => w.id === weaponId || w.subtypeId === weaponId);
   if (!found) return;
   activeWeapon = found;
-  weaponSelect.value = activeWeapon.id;
+  if (weaponSelect) weaponSelect.value = activeWeapon.id;
+  const weaponSelectWorkbench = document.getElementById('weaponSelectWorkbench');
+  if (weaponSelectWorkbench) weaponSelectWorkbench.value = activeWeapon.id;
 
   // Derive selectable user-terminal ammos (ensuring at least 1 valid munition)
   let selectableAmmos = getSelectableAmmos(activeWeapon);
@@ -1790,6 +1814,15 @@ function updateUniversalBanner() {
       compActiveIcon.src = wIcon;
       compActiveIcon.title = activeWeapon.displayName || activeWeapon.name;
     }
+    const scopeWeaponIcon = document.getElementById('scopeWeaponIcon');
+    if (scopeWeaponIcon) {
+      scopeWeaponIcon.onerror = () => {
+        scopeWeaponIcon.onerror = null;
+        scopeWeaponIcon.src = 'icons/L__Gatling_Avenger_Turret.png';
+      };
+      scopeWeaponIcon.src = wIcon;
+      scopeWeaponIcon.title = `Tuning Weapon: ${activeWeapon.displayName || activeWeapon.name}`;
+    }
   }
 
   // Ammo Icon (prefer current activeAmmo, fallback to primary assigned)
@@ -1814,17 +1847,25 @@ function updateUniversalBanner() {
   }
 
   // Badges
-  badgeGrid.innerHTML = `Grid: <strong>${activeWeapon.gridSize || activeWeapon.grid || 'Large'}</strong>`;
-  badgeType.innerHTML = `Mount: <strong>${activeWeapon.type}</strong>`;
+  const gridHtml = `Grid: <strong>${activeWeapon.gridSize || activeWeapon.grid || 'Large'}</strong>`;
+  const typeHtml = `Mount: <strong>${activeWeapon.type}</strong>`;
+  badgeGrid.innerHTML = gridHtml;
+  badgeType.innerHTML = typeHtml;
+  const scopeBadgeGrid = document.getElementById('scopeBadgeGrid');
+  const scopeBadgeType = document.getElementById('scopeBadgeType');
+  if (scopeBadgeGrid) scopeBadgeGrid.innerHTML = gridHtml;
+  if (scopeBadgeType) scopeBadgeType.innerHTML = typeHtml;
   
   const techInfo = getTechSummary(activeWeapon.components);
   const currentUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
-  if (badgeUps) {
-    badgeUps.innerHTML = `⚡ <strong>${currentUps} UPs</strong>`;
-  }
-  if (badgeTech) {
-    badgeTech.innerHTML = `Tech: <strong>${techInfo.summaryStr}</strong>`;
-  }
+  const upsHtml = `⚡ <strong>${currentUps} UPs</strong>`;
+  const techHtml = `Tech: <strong>${techInfo.summaryStr}</strong>`;
+  if (badgeUps) badgeUps.innerHTML = upsHtml;
+  if (badgeTech) badgeTech.innerHTML = techHtml;
+  const scopeBadgeUps = document.getElementById('scopeBadgeUps');
+  const scopeBadgeTech = document.getElementById('scopeBadgeTech');
+  if (scopeBadgeUps) scopeBadgeUps.innerHTML = upsHtml;
+  if (scopeBadgeTech) scopeBadgeTech.innerHTML = techHtml;
 
   // Circuitry / Data Core Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
   const hasDataCore = techInfo.hasCircuitry || ((activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000));
@@ -1832,23 +1873,39 @@ function updateUniversalBanner() {
     badgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
     badgeCircuitry.style.display = hasDataCore ? 'inline-flex' : 'none';
   }
+  const scopeBadgeCircuitry = document.getElementById('scopeBadgeCircuitry');
+  if (scopeBadgeCircuitry) {
+    scopeBadgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
+    scopeBadgeCircuitry.style.display = hasDataCore ? 'inline-flex' : 'none';
+  }
 
   // Relic Status Badge: non-craftable ammunition from raw scratch ingots
   if (badgeRelic) {
     badgeRelic.style.display = activeWeapon.isRelic ? 'inline-flex' : 'none';
   }
+  const scopeBadgeRelic = document.getElementById('scopeBadgeRelic');
+  if (scopeBadgeRelic) scopeBadgeRelic.style.display = activeWeapon.isRelic ? 'inline-flex' : 'none';
 
   // NPC Variant
+  const isNpc = (activeWeapon.name.includes('(NPC)') || activeWeapon.subtypeId.includes('_NPC'));
   if (badgeNpc) {
-    badgeNpc.style.display = (activeWeapon.name.includes('(NPC)') || activeWeapon.subtypeId.includes('_NPC')) ? 'inline-flex' : 'none';
+    badgeNpc.style.display = isNpc ? 'inline-flex' : 'none';
   }
+  const scopeBadgeNpc = document.getElementById('scopeBadgeNpc');
+  if (scopeBadgeNpc) scopeBadgeNpc.style.display = isNpc ? 'inline-flex' : 'none';
 
   // Point Defense capability - sourced from weapons data (pdProjectiles), mirrors TargetingDef.Threats
+  const pdTitle = activeWeapon.pdProjectiles
+    ? (activeWeapon.pdSmartOnly ? 'WeaponCore threat list includes Projectiles (smart projectiles only - dumb rounds ignored)' : 'WeaponCore threat list includes Projectiles')
+    : '';
   if (badgePd) {
     badgePd.style.display = activeWeapon.pdProjectiles ? 'inline-flex' : 'none';
-    badgePd.title = activeWeapon.pdProjectiles
-      ? (activeWeapon.pdSmartOnly ? 'WeaponCore threat list includes Projectiles (smart projectiles only - dumb rounds ignored)' : 'WeaponCore threat list includes Projectiles')
-      : '';
+    badgePd.title = pdTitle;
+  }
+  const scopeBadgePd = document.getElementById('scopeBadgePd');
+  if (scopeBadgePd) {
+    scopeBadgePd.style.display = activeWeapon.pdProjectiles ? 'inline-flex' : 'none';
+    scopeBadgePd.title = pdTitle;
   }
 
   // Bottom Sticky HUD
@@ -2441,12 +2498,27 @@ function renderSbcComponentsTable() {
   standardComps.sort((a, b) => a.displayName.localeCompare(b.displayName));
   techComps.sort((a, b) => a.displayName.localeCompare(b.displayName));
 
+  const isNpc = (activeWeapon.name && activeWeapon.name.includes('(NPC)')) || (activeWeapon.subtypeId && activeWeapon.subtypeId.includes('_NPC'));
+  const scrapYieldMult = balanceMatrix.scrapYield !== undefined ? balanceMatrix.scrapYield : 0.25;
+
   activeWeapon.components.forEach((c, idx) => {
     const cMeta = componentsDb[c.name] || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name]) || { mass: 20, integrity: 100 };
     const layerMass = (cMeta.mass || 0) * c.count;
     const layerHp = (cMeta.integrity || 0) * c.count;
     totalIntegrity += layerHp;
     totalMassKg += layerMass;
+
+    // Auto-map tech scrap for NPC weapons if not explicitly configured
+    if (c.deconstructSubtype === undefined && isNpc && GVK_TECH_SCRAP_MAP[c.name]) {
+      c.deconstructSubtype = GVK_TECH_SCRAP_MAP[c.name].scrapSubtype;
+      c.deconstructType = GVK_TECH_SCRAP_MAP[c.name].typeId || 'Ore';
+    }
+
+    const hasDeconstruct = !!c.deconstructSubtype;
+    const yieldCount = Math.max(1, Math.round(c.count * scrapYieldMult));
+    const yieldDetail = hasDeconstruct
+      ? `<div style="font-size: 10px; color: var(--amber-primary); font-family: var(--font-mono); margin-top: 2px;">Grinds: <strong>${c.count}</strong> rcvd (${yieldCount} @ ${Math.round(scrapYieldMult * 100)}%)</div>`
+      : '';
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -2465,22 +2537,53 @@ function renderSbcComponentsTable() {
       </td>
       <td style="font-family: var(--font-mono); color: var(--text-dim);">${layerMass.toFixed(1)} kg</td>
       <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${layerHp.toLocaleString()}</td>
+      <td>
+        <select class="sbc-decomp-select control-input" data-idx="${idx}" style="width: 100%; padding: 4px 6px; font-size: 11px;">
+          <option value="">None (returns self)</option>
+          <optgroup label="👑 Tech Scrap Items">
+            ${Object.values(GVK_TECH_SCRAP_MAP).map(s => `<option value="${s.scrapSubtype}" ${c.deconstructSubtype === s.scrapSubtype ? 'selected' : ''}>${s.displayName}</option>`).join('')}
+          </optgroup>
+        </select>
+        ${yieldDetail}
+      </td>
       <td style="text-align: center;">
         <button class="btn-delete-row" data-idx="${idx}" title="Delete Layer">✕</button>
       </td>
     `;
 
-    tr.querySelector('select').addEventListener('change', (e) => {
+    tr.querySelector('.sbc-comp-select').addEventListener('change', (e) => {
       activeWeapon.components[idx].name = e.target.value;
+      if (isNpc && GVK_TECH_SCRAP_MAP[e.target.value]) {
+        activeWeapon.components[idx].deconstructSubtype = GVK_TECH_SCRAP_MAP[e.target.value].scrapSubtype;
+        activeWeapon.components[idx].deconstructType = GVK_TECH_SCRAP_MAP[e.target.value].typeId || 'Ore';
+      } else if (!GVK_TECH_SCRAP_MAP[e.target.value]) {
+        activeWeapon.components[idx].deconstructSubtype = null;
+        activeWeapon.components[idx].deconstructType = null;
+      }
       renderSbcComponentsTable();
       updateCombatTelemetry();
+      updateDirectSbcXml();
     });
 
-    tr.querySelector('input').addEventListener('input', (e) => {
+    tr.querySelector('.sbc-comp-input').addEventListener('input', (e) => {
       const val = parseInt(e.target.value) || 1;
       activeWeapon.components[idx].count = val;
       renderSbcComponentsTable();
       updateCombatTelemetry();
+      updateDirectSbcXml();
+    });
+
+    tr.querySelector('.sbc-decomp-select').addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (val) {
+        activeWeapon.components[idx].deconstructSubtype = val;
+        activeWeapon.components[idx].deconstructType = 'Ore';
+      } else {
+        activeWeapon.components[idx].deconstructSubtype = null;
+        activeWeapon.components[idx].deconstructType = null;
+      }
+      renderSbcComponentsTable();
+      updateDirectSbcXml();
     });
 
     tr.querySelector('.btn-delete-row').addEventListener('click', () => {
@@ -2488,6 +2591,7 @@ function renderSbcComponentsTable() {
         activeWeapon.components.splice(idx, 1);
         renderSbcComponentsTable();
         updateCombatTelemetry();
+        updateDirectSbcXml();
       } else {
         showToast("Weapon must have at least 1 component layer.");
       }
@@ -2495,6 +2599,11 @@ function renderSbcComponentsTable() {
 
     tbody.appendChild(tr);
   });
+
+  const badgeScrapYield = document.getElementById('sbcScrapYieldBadge');
+  if (badgeScrapYield) {
+    badgeScrapYield.textContent = `Scrap Yield: ${Math.round(scrapYieldMult * 100)}%`;
+  }
 
   // Calculate Build Time with user's formula: =MAX(5, Round(WeaponIntegrity / BuildTime_Mult, 0))
   const buildTimeDiv = balanceMatrix.buildTimeDividend || 750;
@@ -2559,8 +2668,9 @@ function getTopArmorProfile(ds = {}) {
   if (heavy === max) names.push('Heavy Armor');
   if (light === max) names.push('Light Armor');
   if (nonArmor === max) names.push('Non-Armor (Systems)');
-  const label = (names.length === 3) ? 'All Targets' : names.join(' & ');
-  return { label, mult: max };
+  const allEqual = (names.length === 3);
+  const label = allEqual ? 'All Blocks' : names.join(' & ');
+  return { label, mult: max, allEqual, isHeavy: heavy === max, isLight: light === max, isNonArmor: nonArmor === max };
 }
 
 /// <summary>
@@ -2593,13 +2703,13 @@ function computeSustainedDps() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
-  return { rof, barrels, magSize, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
+  return { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
 }
 
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
+  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
 
   // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
@@ -2648,34 +2758,39 @@ function updateCombatTelemetry() {
   const topProfile = getTopArmorProfile(activeAmmo.damageScales || {});
   const effectiveDps = Math.round(sustainedDps * topProfile.mult);
   const effectiveAlphaVolley = Math.round(alphaVolley * topProfile.mult);
-  const multTag = (topProfile.label === 'All Targets' && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
+  const multTag = (topProfile.allEqual && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
   outSustainedDps.textContent = effectiveDps.toLocaleString();
   if (teleDpsType) {
     teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}`;
   }
   if (outEffectiveDps) {
-    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Paper: ${sustainedDps.toLocaleString()} DPS`;
+    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Base: ${sustainedDps.toLocaleString()} DPS`;
   }
   outAlphaDmg.textContent = effectiveAlphaVolley.toLocaleString();
   if (teleAlphaType) {
     teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}`;
   }
+  const teleAlphaUnit = document.getElementById('teleAlphaUnit');
+  if (teleAlphaUnit) {
+    teleAlphaUnit.textContent = `1 SALVO (${magsToLoad} ${magsToLoad === 1 ? 'MAG' : 'MAGS'})`;
+  }
   if (outEffectiveAlpha) {
-    const roundsTag = totalRounds > 1 ? ` (${totalRounds} rds)` : '';
-    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Paper volley: ${Math.round(alphaVolley).toLocaleString()} hp${roundsTag}`;
+    const magTag = `${magsToLoad} loaded ${magsToLoad === 1 ? 'mag' : 'mags'}${totalRounds > 1 ? ` · ${totalRounds} rds` : ''}`;
+    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Base volley: ${Math.round(alphaVolley).toLocaleString()} hp (${magTag})`;
   }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
-    outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
+    if (outDamagePerShot) outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
   } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
     outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
-    outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Heavy: ${Math.round(heavyDmg).toLocaleString()} [${heavyMult}×] | Light: ${Math.round(lightDmg).toLocaleString()} [${lightMult}×])`;
+    if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Heavy: ${Math.round(heavyDmg).toLocaleString()} [${heavyMult}×] | Light: ${Math.round(lightDmg).toLocaleString()} [${lightMult}×])`;
   } else {
     outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
-    outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
+    if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
   }
-  outShotsPerSec.innerHTML = `${effectiveRps.toFixed(1)} <span style="font-size: 14px; font-weight: 400;">sps</span>`;
-  outCycleTime.textContent = `Cycle: ${totalCycleSec.toFixed(1)}s (${fireDurationSec.toFixed(1)}s shoot + ${reloadSec.toFixed(1)}s reload)`;
+  const effectiveRpm = Math.round(effectiveRps * 60);
+  outShotsPerSec.innerHTML = `${effectiveRpm.toLocaleString()} <span style="font-size: 14px; font-weight: 400;">RPM</span>`;
+  outCycleTime.textContent = `Burst: ${Math.round(rof).toLocaleString()} RPM (${effectiveRps.toFixed(1)} sps sustained)`;
 
   // Update Target Damage & Multiplier Matrix
   if (tmPenetrationChip) {
@@ -2691,7 +2806,7 @@ function updateCombatTelemetry() {
     tmHeavyMult.className = `target-multiplier-badge ${heavyMult > 1.0 ? 'buff' : (heavyMult < 1.0 ? 'nerf' : '')}`;
   }
   if (tmHeavyDmg) {
-    tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp</span>`;
+    tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmHeavySub) {
     tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
@@ -2702,7 +2817,7 @@ function updateCombatTelemetry() {
     tmLightMult.className = `target-multiplier-badge ${lightMult > 1.0 ? 'buff' : (lightMult < 1.0 ? 'nerf' : '')}`;
   }
   if (tmLightDmg) {
-    tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp</span>`;
+    tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmLightSub) {
     tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
@@ -2713,11 +2828,22 @@ function updateCombatTelemetry() {
     tmNonArmorMult.className = `target-multiplier-badge ${nonArmorMult > 1.0 ? 'buff' : (nonArmorMult < 1.0 ? 'nerf' : '')}`;
   }
   if (tmNonArmorDmg) {
-    tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp</span>`;
+    tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmNonArmorSub) {
     tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
+
+  // Highlight highest damage per shot block type
+  const tmHeavyArmorBox = document.getElementById('tmHeavyArmorBox');
+  const tmLightArmorBox = document.getElementById('tmLightArmorBox');
+  const tmNonArmorBox = document.getElementById('tmNonArmorBox');
+  const maxTargetDmg = Math.max(heavyDmg, lightDmg, nonArmorDmg);
+  const isAllEqual = (heavyDmg === lightDmg && lightDmg === nonArmorDmg);
+
+  if (tmHeavyArmorBox) tmHeavyArmorBox.classList.toggle('top-damage', !isAllEqual && heavyDmg === maxTargetDmg);
+  if (tmLightArmorBox) tmLightArmorBox.classList.toggle('top-damage', !isAllEqual && lightDmg === maxTargetDmg);
+  if (tmNonArmorBox) tmNonArmorBox.classList.toggle('top-damage', !isAllEqual && nonArmorDmg === maxTargetDmg);
 
   if (tmBlastRadius) {
     if (blastKind === 'ewar' && blastRadius > 0) {
@@ -2735,7 +2861,7 @@ function updateCombatTelemetry() {
     }
   }
   if (tmBlastDmg) {
-    tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp</span>`;
+    tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmBlastSub) {
     if (blastKind === 'ewar') {
@@ -4999,15 +5125,36 @@ function generateSbcCubeBlocks() {
   // Components block
   xml += `			<Components>
 `;
+  const isNpcBlock = (name && name.includes('(NPC)')) || (sub && sub.includes('_NPC'));
+
+  function formatComponentXml(c) {
+    let decompSub = c.deconstructSubtype;
+    let decompType = c.deconstructType || 'Ore';
+    if (!decompSub && isNpcBlock && GVK_TECH_SCRAP_MAP[c.name]) {
+      decompSub = GVK_TECH_SCRAP_MAP[c.name].scrapSubtype;
+      decompType = GVK_TECH_SCRAP_MAP[c.name].typeId || 'Ore';
+    }
+
+    if (decompSub) {
+      return `				<Component Subtype="${c.name}" Count="${c.count}">
+					<DeconstructId>
+						<TypeId>${decompType}</TypeId>
+						<SubtypeId>${decompSub}</SubtypeId>
+					</DeconstructId>
+				</Component>
+`;
+    }
+    return `				<Component Subtype="${c.name}" Count="${c.count}"/>
+`;
+  }
+
   if (activeWeapon.components && activeWeapon.components.length > 0) {
     activeWeapon.components.forEach(c => {
-      xml += `				<Component Subtype="${c.name}" Count="${c.count}"/>
-`;
+      xml += formatComponentXml(c);
     });
   } else if (sbc.components && sbc.components.length > 0) {
     sbc.components.forEach(c => {
-      xml += `				<Component Subtype="${c.name}" Count="${c.count}"/>
-`;
+      xml += formatComponentXml(c);
     });
   } else {
     xml += `				<Component Subtype="SteelPlate" Count="150"/>
@@ -5308,11 +5455,12 @@ function applyBalanceMatrixInputs() {
   localStorage.setItem('GVK_BALANCE_MATRIX', JSON.stringify(balanceMatrix));
   updateCombatTelemetry();
   updateAmmoLogistics();
+  renderSbcComponentsTable();
+  updateDirectSbcXml();
 }
 
 // Applies WORKBENCH_FIELD_HELP tooltips to every Scope A/B Definition Workbench
 // control: native title on the input plus its label, and the has-help CSS class.
-// Checkboxes render their help text inline instead of as a hover title.
 function applyWorkbenchFieldHelp() {
   for (const id in WORKBENCH_FIELD_HELP) {
     const el = document.getElementById(id);
@@ -5479,27 +5627,69 @@ function setupWorkbenchInputEvents() {
       activeWeapon.components.push({ name: 'SteelPlate', count: 20 });
       renderSbcComponentsTable();
       updateCombatTelemetry();
+      updateDirectSbcXml();
       showToast("Added new component layer.");
     });
   }
 
-  const btnNewMinimalUpgrade = document.getElementById('btnNewMinimalUpgrade');
-  if (btnNewMinimalUpgrade) btnNewMinimalUpgrade.addEventListener('click', createMinimalUpgrade);
+  const btnAutoNpcScrap = document.getElementById('btnAutoNpcScrap');
+  if (btnAutoNpcScrap) {
+    btnAutoNpcScrap.addEventListener('click', () => {
+      if (!activeWeapon || !activeWeapon.components) return;
+      let count = 0;
+      activeWeapon.components.forEach(c => {
+        if (GVK_TECH_SCRAP_MAP[c.name]) {
+          c.deconstructSubtype = GVK_TECH_SCRAP_MAP[c.name].scrapSubtype;
+          c.deconstructType = GVK_TECH_SCRAP_MAP[c.name].typeId || 'Ore';
+          count++;
+        }
+      });
+      renderSbcComponentsTable();
+      updateDirectSbcXml();
+      showToast(`🛡️ Assigned canonical tech scrap targets to ${count} layer(s).`);
+    });
+  }
+
+  const btnApplyScrapYield = document.getElementById('btnApplyScrapYield');
+  if (btnApplyScrapYield) {
+    btnApplyScrapYield.addEventListener('click', () => {
+      if (!activeWeapon || !activeWeapon.components) return;
+      const mult = balanceMatrix.scrapYield || 0.25;
+      let scaled = 0;
+      activeWeapon.components.forEach(c => {
+        if (GVK_TECH_SCRAP_MAP[c.name] || c.deconstructSubtype) {
+          c.count = Math.max(1, Math.round(c.count * mult));
+          scaled++;
+        }
+      });
+      renderSbcComponentsTable();
+      updateDirectSbcXml();
+      updateCombatTelemetry();
+      showToast(`⚖️ Scaled ${scaled} tech scrap layer(s) by ${Math.round(mult * 100)}% scrap yield.`);
+    });
+  }
+
   if (btnNewMinimalWeapon) btnNewMinimalWeapon.addEventListener('click', createMinimalWeapon);
   if (btnNewMinimalAmmo) btnNewMinimalAmmo.addEventListener('click', createMinimalAmmo);
   if (btnNewFragAmmo) btnNewFragAmmo.addEventListener('click', createMinimalAmmo);
 
+  const handleResetWeapon = () => {
+    if (!activeWeapon) return;
+    const orig = window.GVK_DEFAULT_WEAPONS.find(w => w.id === activeWeapon.id);
+    if (orig) {
+      const idx = weaponsDb.findIndex(w => w.id === activeWeapon.id);
+      weaponsDb[idx] = JSON.parse(JSON.stringify(orig));
+      selectWeapon(activeWeapon.id);
+      showToast(`↺ Reset ${activeWeapon.name} to server defaults.`);
+    }
+  };
+
   if (btnResetDefaults) {
-    btnResetDefaults.addEventListener('click', () => {
-      if (!activeWeapon) return;
-      const orig = window.GVK_DEFAULT_WEAPONS.find(w => w.id === activeWeapon.id);
-      if (orig) {
-        const idx = weaponsDb.findIndex(w => w.id === activeWeapon.id);
-        weaponsDb[idx] = JSON.parse(JSON.stringify(orig));
-        selectWeapon(activeWeapon.id);
-        showToast(`↺ Reset ${activeWeapon.name} to server defaults.`);
-      }
-    });
+    btnResetDefaults.addEventListener('click', handleResetWeapon);
+  }
+  const btnResetDefaultsWorkbench = document.getElementById('btnResetDefaultsWorkbench');
+  if (btnResetDefaultsWorkbench) {
+    btnResetDefaultsWorkbench.addEventListener('click', handleResetWeapon);
   }
 }
 

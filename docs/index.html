@@ -115,7 +115,7 @@
   <div class="app-container">
     
     <!-- Universal Weapon Selector Banner -->
-    <div class="weapon-banner">
+    <div class="weapon-banner" id="weaponBanner">
       <div class="selector-left">
         <div class="weapon-icon-wrap" title="Active Weapon Model">
           <img id="activeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon">
@@ -169,23 +169,22 @@
         <!-- Hero Metrics -->
         <div class="hero-stats-grid">
           <div class="stat-card">
-            <div class="stat-title">Effective DPS <span id="teleDpsType">ALL TARGETS</span></div>
+            <div class="stat-title">Effective DPS <span id="teleDpsType">ALL BLOCKS</span></div>
             <div class="stat-value" id="outSustainedDps">0</div>
-            <div class="stat-sub" id="outDpsBreakdown">Base: 0 | Det: 0 | Frag: 0</div>
-            <div class="stat-sub" id="outEffectiveDps" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Targets · Paper: 0 DPS</div>
+            <div class="stat-sub" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
+            <div class="stat-sub" id="outEffectiveDps" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Blocks · Base: 0 DPS</div>
           </div>
 
           <div class="stat-card cyan">
-            <div class="stat-title">Effective Alpha Volley <span id="teleAlphaType">VS ALL TARGETS</span> <span class="unit">1 SALVO</span></div>
+            <div class="stat-title">Effective Alpha Volley <span id="teleAlphaType">VS ALL BLOCKS</span> <span class="unit" id="teleAlphaUnit">1 SALVO</span></div>
             <div class="stat-value" id="outAlphaDmg">0</div>
-            <div class="stat-sub" id="outDamagePerShot">Dmg / Shot: 0 hp</div>
-            <div class="stat-sub" id="outEffectiveAlpha" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Targets · Paper volley: 0 hp</div>
+            <div class="stat-sub" id="outEffectiveAlpha" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Blocks · Base volley: 0 hp</div>
           </div>
 
           <div class="stat-card green">
-            <div class="stat-title">Effective Rate <span class="unit">TRUE ROF</span></div>
-            <div class="stat-value" id="outShotsPerSec">0.0 <span style="font-size: 14px; font-weight: 400;">sps</span></div>
-            <div class="stat-sub" id="outCycleTime">Cycle: 0.0s (0.0s shoot + 0.0s reload)</div>
+            <div class="stat-title">Effective Rate <span class="unit">SUSTAINED</span></div>
+            <div class="stat-value" id="outShotsPerSec">0 <span style="font-size: 14px; font-weight: 400;">RPM</span></div>
+            <div class="stat-sub" id="outCycleTime">Burst: 0 RPM · 0.0 sps sustained</div>
           </div>
 
           <div class="stat-card blue">
@@ -212,13 +211,28 @@
             <div class="stat-sub" id="outBuildTime">Welding Time: 0 seconds</div>
           </div>
         </div>
+
+        <!-- Combat Cycle, Sustained Consumption & Thermal Profile -->
+        <div class="heat-box">
+          <div class="heat-header">
+            <span id="outCombatCycleTitle" style="color: var(--amber-primary); font-weight: 700;">🔥 THERMAL PROFILE & DUTY CYCLE</span>
+            <span id="outHeatDutyRatio">100% UPTIME</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="heatProgressBar" style="width: 100%;"></div>
+          </div>
+          <div class="heat-meta">
+            <span id="outTimeToOverheat">Continuous Fire: Unlimited</span>
+            <span id="outCooldownTime">Cooldown Window: 0s</span>
+          </div>
+        </div>
  
         <!-- Target Multipliers & Effective Damage Matrix -->
         <div class="target-matrix-card">
           <div class="target-matrix-header">
             <div class="target-matrix-title-wrap">
               <span class="target-matrix-title">🎯 TARGET DAMAGE & MULTIPLIER MATRIX</span>
-              <span class="target-matrix-sub">True penetration values scaled by heavy armor, light armor & internal systems</span>
+              <span class="target-matrix-sub">Damage per shot scaled by heavy armor, light armor & internal systems</span>
             </div>
             <span id="tmPenetrationChip" class="target-matrix-badge" style="display: none; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.4); color: var(--cyan-primary);" title="WC BaseDamageCutoff: per-block damage cap for penetrating rounds">🪡 Overpen</span>
           </div>
@@ -231,7 +245,8 @@
                 </div>
                 <span class="target-multiplier-badge buff" id="tmHeavyMult">3.0×</span>
               </div>
-              <div class="target-stat-value" id="tmHeavyDmg">18,000 <span class="unit">hp</span></div>
+              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
+              <div class="target-stat-value" id="tmHeavyDmg">18,000 <span class="unit">hp / shot</span></div>
               <div class="target-stat-sub" id="tmHeavySub">Volley: 18,000 hp</div>
             </div>
 
@@ -243,7 +258,8 @@
                 </div>
                 <span class="target-multiplier-badge nerf" id="tmLightMult">0.5×</span>
               </div>
-              <div class="target-stat-value" id="tmLightDmg">3,000 <span class="unit">hp</span></div>
+              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
+              <div class="target-stat-value" id="tmLightDmg">3,000 <span class="unit">hp / shot</span></div>
               <div class="target-stat-sub" id="tmLightSub">Volley: 3,000 hp</div>
             </div>
 
@@ -255,7 +271,8 @@
                 </div>
                 <span class="target-multiplier-badge" id="tmNonArmorMult">1.0×</span>
               </div>
-              <div class="target-stat-value" id="tmNonArmorDmg">6,000 <span class="unit">hp</span></div>
+              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
+              <div class="target-stat-value" id="tmNonArmorDmg">6,000 <span class="unit">hp / shot</span></div>
               <div class="target-stat-sub" id="tmNonArmorSub">Volley: 6,000 hp</div>
             </div>
 
@@ -267,7 +284,8 @@
                 </div>
                 <span class="target-multiplier-badge" id="tmBlastRadius">None</span>
               </div>
-              <div class="target-stat-value" id="tmBlastDmg">0 <span class="unit">hp</span></div>
+              <div class="target-stat-metric-label">EXPLOSIVE PAYLOAD</div>
+              <div class="target-stat-value" id="tmBlastDmg">0 <span class="unit">hp / shot</span></div>
               <div class="target-stat-sub" id="tmBlastSub">Direct Impact Only</div>
             </div>
           </div>
@@ -321,21 +339,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Combat Cycle, Sustained Consumption & Thermal Profile -->
-        <div class="heat-box">
-          <div class="heat-header">
-            <span id="outCombatCycleTitle" style="color: var(--amber-primary); font-weight: 700;">🔥 THERMAL PROFILE & DUTY CYCLE</span>
-            <span id="outHeatDutyRatio">100% UPTIME</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="heatProgressBar" style="width: 100%;"></div>
-          </div>
-          <div class="heat-meta">
-            <span id="outTimeToOverheat">Continuous Fire: Unlimited</span>
-            <span id="outCooldownTime">Cooldown Window: 0s</span>
-          </div>
         </div>
 
         <!-- 1v1 Weapon Comparison Matrix & Spider Graph -->
@@ -451,9 +454,7 @@
         <div class="scope-actions">
           <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per WeaponCore wiki">+ New Minimal Weapon</button>
           <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Minimal Ammo</button>
-          <button id="btnNewMinimalUpgrade" class="btn btn-sm" title="Create a minimal working upgrade/support part per Upgrade75aPart.cs">+ New Minimal Upgrade</button>
           <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
-          <button id="btnOpenCodeWorkbench" class="btn btn-primary btn-sm" title="Export syntax-complete C# and SBC">⚡ Export Code & SBC</button>
         </div>
       </div>
 
@@ -472,6 +473,34 @@
             <!-- SCOPE A: WeaponDefinition Editor -->
       <div id="scope-weapon" class="scope-content active">
         
+        <!-- Active Weapon Selector Strip (Tuning Weapon) -->
+        <div style="background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <div class="weapon-icon-wrap-sm" title="Active Weapon Model">
+              <img id="scopeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon-sm">
+            </div>
+            <div>
+              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING WEAPON:</span>
+              <div style="margin-top: 3px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <select id="weaponSelectWorkbench" class="weapon-dropdown" style="min-width: 260px;">
+                  <!-- Populated dynamically / synced with weaponSelect -->
+                </select>
+                <button id="btnResetDefaultsWorkbench" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
+              </div>
+            </div>
+          </div>
+          <div class="banner-badges" id="scopeWeaponBadges" style="margin-top: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+            <div class="badge" id="scopeBadgeGrid">Grid: <strong>Large</strong></div>
+            <div class="badge" id="scopeBadgeType">Mount: <strong>Turret</strong></div>
+            <div class="badge badge-amber" id="scopeBadgeUps">⚡ <strong>0 UPs</strong></div>
+            <div class="badge badge-tech" id="scopeBadgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
+            <div class="badge badge-cyan" id="scopeBadgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
+            <div class="badge badge-purple" id="scopeBadgeRelic" style="display: none;">👑 Relic Weapon</div>
+            <div class="badge badge-cyan" id="scopeBadgePd" style="display: none;" title="WeaponCore threat list includes Projectiles - engages smart munitions in flight">📡 POINT DEFENSE</div>
+            <div class="badge badge-red" id="scopeBadgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
+          </div>
+        </div>
+
         <!-- Accordion 1: Assignments & Model -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
@@ -1678,10 +1707,11 @@
                 <thead>
                   <tr>
                     <th>Component Type</th>
-                    <th style="width: 120px;">Quantity</th>
-                    <th style="width: 130px;">Layer Mass</th>
-                    <th style="width: 130px;">Layer HP</th>
-                    <th style="width: 70px; text-align: center;">Action</th>
+                    <th style="width: 100px;">Quantity</th>
+                    <th style="width: 100px;">Layer Mass</th>
+                    <th style="width: 110px;">Layer HP</th>
+                    <th style="width: 190px;">Deconstruct / Scrap</th>
+                    <th style="width: 60px; text-align: center;">Action</th>
                   </tr>
                 </thead>
                 <tbody id="sbcComponentsBody">
@@ -1691,7 +1721,12 @@
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
-              <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
+              <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
+                <button id="btnAutoNpcScrap" class="btn btn-sm" title="Automatically assign canonical [Tech] scrap items (Ore/Prototech...Scrap) to tech component layers">🛡️ Auto-Assign NPC Tech Scrap</button>
+                <button id="btnApplyScrapYield" class="btn btn-sm" title="Scale tech component quantities by Scrap Yield multiplier from Balance Matrix">⚖️ Apply Scrap Yield</button>
+                <span class="badge badge-amber" id="sbcScrapYieldBadge" title="Scrap Yield multiplier from Balance Matrix" style="font-size: 11px;">Scrap Yield: 25%</span>
+              </div>
               <span id="sbcFormulaReadout" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">
                 Formula: MAX(5, Round(Integrity / 750))
               </span>
