@@ -2463,7 +2463,10 @@ function updateCombatTelemetry() {
 
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
-  const operationalPwrNum = (idlePwr + (energyPerShot * (rof / 60) * 3600));
+  // WC energy draw: EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel; EffectStrength replaces BaseDamage for EWAR
+  const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
+  const wcEnergyBase = aEwar ? (aEwar.strength || 0) : (parseFloat(aBaseDamage.value) || 0);
+  const operationalPwrNum = idlePwr + (energyPerShot * wcEnergyBase * (rof / 3600) * barrels * trajPB);
   const operationalPwr = operationalPwrNum.toFixed(2);
   outPowerMw.innerHTML = `${operationalPwr} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
   outPowerIdle.textContent = `Idle Draw: ${idlePwr.toFixed(3)} MW`;
@@ -2959,8 +2962,10 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const velocity = (a.trajectory && a.trajectory.desiredSpeed) ? a.trajectory.desiredSpeed : 1000;
   const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
-  // Mirrors the Power Required card formula (idle + EnergyCost scaled to sustained firing draw)
-  const power = (weapon.idlePower || 0.01) + ((a.energyCost || 0) * (rof / 60) * 3600);
+  // Mirrors the Power Required card formula (WC: EnergyCost * BaseDamage * RateOfFire / 3600; EffectStrength for EWAR)
+  const wcEnergyBase = (a.ewar && a.ewar.enable) ? (a.ewar.strength || 0) : (a.baseDamage || 0);
+  const trajPB = weapon.trajectilesPerBarrel || 1;
+  const power = (weapon.idlePower || 0.01) + ((a.energyCost || 0) * wcEnergyBase * (rof / 3600) * barrels * trajPB);
 
   let integrity = 0;
   if (weapon.components && weapon.components.length > 0) {
