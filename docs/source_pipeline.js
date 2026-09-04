@@ -427,6 +427,17 @@ function ammoShape(name, d, file) {
       maxLifeTime: traj.MaxLifeTime || 0, speedVariance: randStart(traj.SpeedVariance),
       rangeVariance: randStart(traj.RangeVariance),
       guidance: (typeof traj.Guidance === 'string' && traj.Guidance) || 'None',
+      desiredElevation: (function() {
+        const apps = traj.Approaches;
+        if (Array.isArray(apps)) {
+          for (const a of apps) {
+            if (a && a.DesiredElevation !== undefined && parseFloat(a.DesiredElevation) > 0) return parseFloat(a.DesiredElevation);
+          }
+        } else if (apps && typeof apps === 'object' && apps.DesiredElevation !== undefined) {
+          return parseFloat(apps.DesiredElevation) || 0;
+        }
+        return 0;
+      })(),
     },
     damageScales: {
       shield: ds.Shields !== undefined ? ds.Shields : (ds.Shield !== undefined ? ds.Shield : 0),

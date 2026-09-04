@@ -113,6 +113,28 @@
 
   <!-- Main Container -->
   <div class="app-container">
+
+    <!-- Shipbuilder Filter Bar (Grid & Automated Roles) -->
+    <div class="shipbuilder-filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">GRID:</span>
+        <button class="filter-pill grid-filter-pill active" data-grid="all">All Grids</button>
+        <button class="filter-pill grid-filter-pill" data-grid="Large">Large Grid</button>
+        <button class="filter-pill grid-filter-pill" data-grid="Small">Small Grid</button>
+      </div>
+      <div class="filter-divider"></div>
+      <div class="filter-group">
+        <span class="filter-label">ROLE:</span>
+        <button class="filter-pill role-filter-pill active" data-role="all">All Roles</button>
+        <button class="filter-pill role-filter-pill" data-role="pd">📡 Point Defense</button>
+        <button class="filter-pill role-filter-pill" data-role="breaker">🎯 Armor Breaker</button>
+        <button class="filter-pill role-filter-pill" data-role="brawler">🥊 Kinetic Brawler</button>
+        <button class="filter-pill role-filter-pill" data-role="artillery">🔭 Standoff</button>
+        <button class="filter-pill role-filter-pill" data-role="guided">🚀 Guided</button>
+        <button class="filter-pill role-filter-pill" data-role="flak">💥 Flak / AoE</button>
+        <button class="filter-pill role-filter-pill" data-role="energy">⚡ Energy</button>
+      </div>
+    </div>
     
     <!-- Universal Weapon Selector Banner -->
     <div class="weapon-banner" id="weaponBanner">
@@ -127,14 +149,26 @@
               <option value="">Loading weapons database...</option>
             </select>
             <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
+            <div class="battery-multiplier-group" title="Scale combat telemetry for a multi-turret broadside or battery">
+              <span class="battery-label">BATTERY:</span>
+              <button class="battery-btn active" data-mult="1">1x</button>
+              <button class="battery-btn" data-mult="2">2x</button>
+              <button class="battery-btn" data-mult="4">4x</button>
+              <button class="battery-btn" data-mult="6">6x</button>
+              <button class="battery-btn" data-mult="8">8x</button>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="banner-badges">
+        <div class="badge badge-amber" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></div>
         <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
         <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
         <div class="badge badge-amber" id="badgeUps">⚡ <strong>0 UPs</strong></div>
+        <div class="badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></div>
+        <div class="badge" id="badgeMass">⚖️ <strong>0t</strong></div>
+        <div class="badge badge-red" id="badgeRecoil" style="display: none;">⚠️ Recoil</div>
         <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
         <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
         <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
@@ -163,6 +197,9 @@
           <!-- Dynamic details: Type | Damage | Velocity | Range -->
         </div>
       </div>
+
+      <!-- Dynamic Peer Benchmarks & Efficiency Bar -->
+      <div id="outPeerBenchmarks" class="peer-benchmarks-bar" style="display: none;"></div>
 
       <div class="telemetry-grid">
         
@@ -227,6 +264,28 @@
           </div>
         </div>
  
+        <!-- Dedicated Explosive & Splash Profile Card -->
+        <div class="explosive-profile-card" id="explosiveProfileBox">
+          <div class="explosive-profile-header">
+            <span class="explosive-profile-title">💥 EXPLOSIVE & PENETRATION PROFILE</span>
+            <span class="explosive-trigger-badge" id="outExplosiveTrigger">Direct Kinetic Penetration Only</span>
+          </div>
+          <div class="explosive-profile-grid">
+            <div class="explosive-stat-item">
+              <span class="explosive-stat-label">Blast Radius</span>
+              <span class="explosive-stat-val" id="outExplosiveRadius">0m</span>
+            </div>
+            <div class="explosive-stat-item">
+              <span class="explosive-stat-label">AoE Damage Pool</span>
+              <span class="explosive-stat-val" id="outExplosivePool">0 HP</span>
+            </div>
+            <div class="explosive-stat-item">
+              <span class="explosive-stat-label">Penetration Depth</span>
+              <span class="explosive-stat-val" id="outExplosiveDepth">Surface Direct</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Target Multipliers & Effective Damage Matrix -->
         <div class="target-matrix-card">
           <div class="target-matrix-header">
@@ -415,12 +474,15 @@
           </div>
         </div>
 
-        <!-- Bill of Materials (Components & Ingots) -->
-        <div class="panel">
-          <div class="panel-header">
-            <h2>📦 Bill of Materials & Ingot Costs</h2>
+        <!-- Collapsible Bill of Materials (Components & Ingots) -->
+        <details class="panel bom-accordion">
+          <summary class="panel-header" style="cursor: pointer; user-select: none;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h2>📦 Bill of Materials & Ingot Costs</h2>
+              <span class="badge bom-expand-badge" style="font-size: 11px;"><span class="bom-arrow">▶</span> <span class="bom-toggle-text"></span></span>
+            </div>
             <span id="outTotalValue" style="font-size: 12px; font-family: var(--font-mono); color: var(--green-accent);">$0</span>
-          </div>
+          </summary>
           <div style="padding: 12px; max-height: 560px; overflow-y: auto;">
             <table class="bom-table">
               <thead>
@@ -436,7 +498,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </details>
 
       </div>
     </div>

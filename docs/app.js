@@ -755,11 +755,26 @@ const badgeCircuitry = document.getElementById('badgeCircuitry');
 const badgeRelic = document.getElementById('badgeRelic');
 const badgeNpc = document.getElementById('badgeNpc');
 const badgePd = document.getElementById('badgePd');
+const badgeRole = document.getElementById('badgeRole');
+const badgeArc = document.getElementById('badgeArc');
+const badgeMass = document.getElementById('badgeMass');
+const badgeRecoil = document.getElementById('badgeRecoil');
+
+// Shipbuilder State
+let currentBatteryMultiplier = 1;
+let currentFilterGrid = 'all';
+let currentFilterRole = 'all';
 
 // DOM Elements - Telemetry Munition Bar (Workspace 1)
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
 const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
 const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
+const outPeerBenchmarks   = document.getElementById('outPeerBenchmarks');
+const explosiveProfileBox = document.getElementById('explosiveProfileBox');
+const outExplosiveRadius  = document.getElementById('outExplosiveRadius');
+const outExplosivePool    = document.getElementById('outExplosivePool');
+const outExplosiveDepth   = document.getElementById('outExplosiveDepth');
+const outExplosiveTrigger = document.getElementById('outExplosiveTrigger');
 
 // DOM Elements - Telemetry Deck
 const outSustainedDps = document.getElementById('outSustainedDps');
@@ -1337,36 +1352,111 @@ function parseUrlParams() {
 // ==========================================================================
 // WEAPON SELECTION & BINDING
 // ==========================================================================
+function filterMatchesWeapon(w) {
+  const grid = w.gridSize || w.grid || 'Large';
+  if (currentFilterGrid !== 'all' && grid.toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
+  if (currentFilterRole !== 'all') {
+    const aKey = getSelectableAmmos(w)[0] || w.ammoName;
+    const a = ammosDb[aKey];
+    const role = getAutomatedWeaponRole(w, a);
+    if (role.id !== currentFilterRole) return false;
+  }
+  return true;
+}
+
+function initBatteryMultiplier() {
+  const btns = document.querySelectorAll('.battery-btn');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentBatteryMultiplier = parseInt(btn.dataset.mult) || 1;
+      updateUniversalBanner();
+      updateCombatTelemetry();
+      updateTtkSimulator();
+    });
+  });
+}
+
+function initShipbuilderFilters() {
+  const gridPills = document.querySelectorAll('.grid-filter-pill');
+  gridPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      gridPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentFilterGrid = pill.dataset.grid || 'all';
+      populateWeaponDropdowns();
+      if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
+        const first = weaponsDb.find(filterMatchesWeapon);
+        if (first) selectWeapon(first.id);
+      }
+    });
+  });
+
+  const rolePills = document.querySelectorAll('.role-filter-pill');
+  rolePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      rolePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentFilterRole = pill.dataset.role || 'all';
+      populateWeaponDropdowns();
+      if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
+        const first = weaponsDb.find(filterMatchesWeapon);
+        if (first) selectWeapon(first.id);
+      }
+    });
+  });
+}
+
 function populateWeaponDropdowns() {
   weaponSelect.innerHTML = '';
   compareSelect.innerHTML = '<option value="">Select benchmark weapon to compare...</option>';
 
-  const playerGuns = weaponsDb.filter(w => !w.name.includes('(NPC)') && !w.subtypeId.includes('_NPC'));
-  const npcGuns = weaponsDb.filter(w => w.name.includes('(NPC)') || w.subtypeId.includes('_NPC'));
+  const isGunNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  const playerGuns = weaponsDb.filter(w => !isGunNpc(w));
+  const npcGuns = weaponsDb.filter(w => isGunNpc(w));
 
-  const pGroup = document.createElement('optgroup');
-  pGroup.label = "── Player Standard Armaments ──";
-  playerGuns.forEach(w => {
+  const filteredPlayerGuns = playerGuns.filter(filterMatchesWeapon);
+  const filteredNpcGuns = npcGuns.filter(filterMatchesWeapon);
+
+  if (filteredPlayerGuns.length === 0 && filteredNpcGuns.length === 0) {
     const opt = document.createElement('option');
-    opt.value = w.id;
-    const grid = w.gridSize || w.grid || 'Large';
-    opt.textContent = `${w.displayName || w.name} [${grid}]`;
-    pGroup.appendChild(opt);
-  });
-  weaponSelect.appendChild(pGroup);
+    opt.value = "";
+    opt.textContent = "No weapons match active filters";
+    weaponSelect.appendChild(opt);
+  }
 
-  const nGroup = document.createElement('optgroup');
-  nGroup.label = "── NPC / Relic / Enemy Armaments ──";
-  npcGuns.forEach(w => {
-    const opt = document.createElement('option');
-    opt.value = w.id;
-    const grid = w.gridSize || w.grid || 'Large';
-    opt.textContent = `⚔️ ${w.displayName || w.name} [${grid}]`;
-    nGroup.appendChild(opt);
-  });
-  weaponSelect.appendChild(nGroup);
+  if (filteredPlayerGuns.length > 0) {
+    const pGroup = document.createElement('optgroup');
+    pGroup.label = "── Player Standard Armaments ──";
+    filteredPlayerGuns.forEach(w => {
+      const opt = document.createElement('option');
+      opt.value = w.id;
+      const grid = w.gridSize || w.grid || 'Large';
+      opt.textContent = `${w.displayName || w.name} [${grid}]`;
+      pGroup.appendChild(opt);
+    });
+    weaponSelect.appendChild(pGroup);
+  }
 
-  // Compare dropdown
+  if (filteredNpcGuns.length > 0) {
+    const nGroup = document.createElement('optgroup');
+    nGroup.label = "── NPC / Relic / Enemy Armaments ──";
+    filteredNpcGuns.forEach(w => {
+      const opt = document.createElement('option');
+      opt.value = w.id;
+      const grid = w.gridSize || w.grid || 'Large';
+      opt.textContent = `⚔️ ${w.displayName || w.name} [${grid}]`;
+      nGroup.appendChild(opt);
+    });
+    weaponSelect.appendChild(nGroup);
+  }
+
+  if (activeWeapon) {
+    weaponSelect.value = activeWeapon.id;
+  }
+
+  // Compare dropdown (always includes all player guns of matching grid)
   playerGuns.forEach(w => {
     const opt = document.createElement('option');
     opt.value = w.id;
@@ -1374,6 +1464,10 @@ function populateWeaponDropdowns() {
     opt.textContent = `${w.displayName || w.name} [${grid}]`;
     compareSelect.appendChild(opt);
   });
+
+  if (benchmarkWeapon) {
+    compareSelect.value = benchmarkWeapon.id;
+  }
 
   if (weaponSelect && !weaponSelect._changeBound) {
     weaponSelect.addEventListener('change', (e) => {
@@ -1385,6 +1479,7 @@ function populateWeaponDropdowns() {
   const weaponSelectWorkbench = document.getElementById('weaponSelectWorkbench');
   if (weaponSelectWorkbench) {
     weaponSelectWorkbench.innerHTML = weaponSelect.innerHTML;
+    if (activeWeapon) weaponSelectWorkbench.value = activeWeapon.id;
     if (!weaponSelectWorkbench._changeBound) {
       weaponSelectWorkbench.addEventListener('change', (e) => {
         selectWeapon(e.target.value);
@@ -1659,6 +1754,10 @@ function updateTelemetryAmmoBadge() {
   if (dmg.cutoff > 0) {
     modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/block ×${dmg.penBlocks}</span>`;
   }
+  const clearance = getMunitionTerrainClearance(activeAmmo);
+  if (clearance) {
+    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">${clearance.text}</span>`;
+  }
 
   const isVirtualMag = !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine === 'Energy';
   const shotsPerMag = getShotsPerMag(activeWeapon, activeAmmo);
@@ -1709,6 +1808,17 @@ function selectWeapon(weaponId) {
   } else {
     const firstKey = Object.keys(ammosDb)[0];
     activeAmmo = ammosDb[firstKey];
+  }
+
+  // Auto-Select Nearest Benchmark Peer if none selected or same as active
+  if (!benchmarkWeapon || benchmarkWeapon.id === activeWeapon.id) {
+    const autoBench = getAutomatedPeerBenchmark(activeWeapon, weaponsDb);
+    if (autoBench) {
+      benchmarkWeapon = autoBench;
+      if (compareSelect) compareSelect.value = autoBench.id;
+      const bAmmos = getSelectableAmmos(benchmarkWeapon);
+      benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
+    }
   }
 
   // Update Universal Banner & Telemetry Munition Badge
@@ -1793,6 +1903,193 @@ function getTechSummary(components) {
   return { totalQty, techQtyExcludingDataCore, upCost, summaryStr, techLayers, hasCircuitry };
 }
 
+/// <summary>
+/// Calculates total dry mass (kg and metric tons) of a weapon block from its component recipe.
+/// </summary>
+function calculateWeaponDryMass(weapon) {
+  if (!weapon || !weapon.components) return { massKg: 0, massTons: 0, formatted: '0t' };
+  let totalKg = 0;
+  for (const c of weapon.components) {
+    const compMeta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { mass: 0 };
+    totalKg += (compMeta.mass || 0) * (parseInt(c.count) || 0);
+  }
+  const massTons = totalKg / 1000;
+  const formatted = massTons >= 1.0 ? `${massTons.toFixed(1)}t` : `${Math.round(totalKg).toLocaleString()} kg`;
+  return { massKg: totalKg, massTons, formatted };
+}
+
+/// <summary>
+/// Classifies weapon role deterministically from WeaponCore hardware/targeting/damage data.
+/// 100% automated and scalable with zero external metadata.
+/// </summary>
+function getAutomatedWeaponRole(weapon, ammo) {
+  if (!weapon) return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Direct ballistic fire' };
+  if (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD'))) {
+    return { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' };
+  }
+  const isGuided = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None';
+  const isLoiter = ammo?.fragment?.timedSpawns?.enable && (ammo.fragment.timedSpawns.maxSpawns > 1);
+  if (isGuided || isLoiter) {
+    return { id: 'guided', label: 'Guided Ordnance', icon: '🚀', desc: 'Guided missiles, torpedoes & loitering drones' };
+  }
+  const ds = ammo?.damageScales || {};
+  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const isPenetrator = (ammo?.baseDamageCutoff > 0 && (ammo?.baseDamage || 0) > 20000) || heavyMult >= 1.5;
+  if (isPenetrator || ((weapon.baseDamage || 0) >= 50000 && (weapon.rateOfFire || 0) <= 120)) {
+    return { id: 'breaker', label: 'Armor Breaker', icon: '🎯', desc: 'Heavy armor penetrator & anti-capital kinetic' };
+  }
+  const range = (weapon.type === 'Turret' && weapon.maxTargetDistance) ? weapon.maxTargetDistance : (ammo?.trajectory?.maxTrajectory || 0);
+  if (range >= 2200 && (weapon.rateOfFire || 0) <= 240) {
+    return { id: 'artillery', label: 'Standoff Artillery', icon: '🔭', desc: 'Long-range bombardment & siege' };
+  }
+  const dmg = getAmmoDamageDetailed(ammo);
+  if (dmg.aoe > dmg.base && dmg.aoe > 0) {
+    return { id: 'flak', label: 'Area Denial / Flak', icon: '💥', desc: 'Explosive splash & proximity fragmentation' };
+  }
+  if (ammo?.ammoMagazine === 'Energy' || (weapon.energyCost || 0) > 0) {
+    return { id: 'energy', label: 'Directed Energy', icon: '⚡', desc: 'Continuous or pulsed energy projection' };
+  }
+  return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Rapid-fire direct kinetic engagement' };
+}
+
+/// <summary>
+/// Detects terrain clearance cruise altitude from Approaches (DesiredElevation).
+/// Excludes SmartsDef.CheckFutureIntersection which does not detect voxels in WeaponCore.
+/// </summary>
+function getMunitionTerrainClearance(ammo) {
+  if (!ammo?.trajectory) return null;
+  let elev = ammo.trajectory.desiredElevation || 0;
+  if (!elev && ammo.ammoRound) {
+    if (ammo.ammoRound.includes('HeavyMissile') || ammo.ammoRound.includes('Tuukka')) elev = 500;
+    else if (ammo.ammoRound.includes('Siege') || ammo.ammoRound.includes('Longsword')) elev = 500;
+    else if (ammo.ammoRound.includes('Torpedo')) elev = 200;
+    else if (ammo.ammoRound.includes('Drone') || ammo.ammoRound.includes('Falcon')) elev = 200;
+  }
+  if (elev > 0) {
+    return {
+      hasClearance: true,
+      elevation: Math.round(elev),
+      text: `🏔️ Terrain Clearance: ${Math.round(elev)}m Altitude Cruise (Approaches)`
+    };
+  }
+  return null;
+}
+
+/// <summary>
+/// Extracts turret elevation arc and flags restricted gimbal cones.
+/// </summary>
+function getWeaponArcSummary(weapon) {
+  if (!weapon || weapon.type !== 'Turret') {
+    return { isTurret: false, isGimbal: false, text: 'Fixed Mount (0° Arc)', hasDepression: false };
+  }
+  const minAz = weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
+  const maxAz = weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
+  const minEl = weapon.minElevation !== undefined ? weapon.minElevation : -15;
+  const maxEl = weapon.maxElevation !== undefined ? weapon.maxElevation : 45;
+  const azSpan = Math.abs(maxAz - minAz);
+  const isGimbal = azSpan < 350;
+
+  if (isGimbal) {
+    const halfAz = Math.round(azSpan / 2);
+    return {
+      isTurret: true,
+      isGimbal: true,
+      minAz, maxAz, minEl, maxEl,
+      text: `🎯 Gimbal: ±${halfAz}° Az / ${minEl}° to +${maxEl}° El`,
+      hasDepression: minEl <= -10
+    };
+  }
+  return {
+    isTurret: true,
+    isGimbal: false,
+    minAz, maxAz, minEl, maxEl,
+    text: `📐 Elevation: ${minEl}° to +${maxEl}°`,
+    hasDepression: minEl <= -10
+  };
+}
+
+/// <summary>
+/// Determines if recoil kick force warrants a shipbuilder warning (Small Grid or severe heavy kick).
+/// </summary>
+function getWeaponRecoilWarning(weapon, ammo) {
+  if (!weapon) return { showRecoil: false, text: '', isHeavy: false };
+  const isSmallGrid = (weapon.gridSize === 'Small' || weapon.grid === 'Small');
+  const kick = (ammo && (ammo.backKickForce || (ammo.mass * (ammo.trajectory?.desiredSpeed || 500)))) || 0;
+  const isHeavyKick = kick >= 50000 || (ammo?.mass || 0) >= 800 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC')));
+
+  const kickKn = kick / 1000;
+  const kickStr = kickKn >= 10 ? `${Math.round(kickKn)} kN` : `${kickKn.toFixed(1)} kN`;
+
+  if (isSmallGrid && (kick >= 2000 || isHeavyKick)) {
+    return { showRecoil: true, text: `⚠️ Recoil: ${kickStr} (Small Grid sway)`, isHeavy: isHeavyKick };
+  }
+  if (isHeavyKick) {
+    return { showRecoil: true, text: `⚠️ Heavy Kick: ${kickStr} (High chassis torque)`, isHeavy: true };
+  }
+  return { showRecoil: false, text: '', isHeavy: false };
+}
+
+/// <summary>
+/// Finds the nearest mathematical rival weapon for auto-benchmarking (same grid & mount type).
+/// </summary>
+function getAutomatedPeerBenchmark(activeW, list) {
+  if (!activeW || !list || list.length === 0) return null;
+  const grid = activeW.gridSize || activeW.grid || 'Large';
+  const type = activeW.type || 'Turret';
+  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  const peers = list.filter(w => w.id !== activeW.id && (w.gridSize || w.grid || 'Large') === grid && w.type === type && !isNpc(w));
+  if (peers.length === 0) {
+    const anyGrid = list.filter(w => w.id !== activeW.id && (w.gridSize || w.grid || 'Large') === grid);
+    return anyGrid.length > 0 ? anyGrid[0] : null;
+  }
+  const activeUps = (activeW.upCost !== undefined) ? activeW.upCost : getTechSummary(activeW.components).upCost;
+  const activeDps = activeW.rateOfFire ? (activeW.rateOfFire / 60) * (activeW.baseDamage || 1000) : 1000;
+
+  let bestPeer = null;
+  let minDiff = Infinity;
+  for (const p of peers) {
+    const pUps = (p.upCost !== undefined) ? p.upCost : getTechSummary(p.components).upCost;
+    const pDps = p.rateOfFire ? (p.rateOfFire / 60) * (p.baseDamage || 1000) : 1000;
+    const diff = Math.abs(pUps - activeUps) * 5000 + Math.abs(pDps - activeDps);
+    if (diff < minDiff) {
+      minDiff = diff;
+      bestPeer = p;
+    }
+  }
+  return bestPeer;
+}
+
+/// <summary>
+/// Computes dynamic peer percentiles and efficiency metrics across the active weapon's category.
+/// </summary>
+function calculatePeerPercentiles(activeW, ammo, list) {
+  if (!activeW || !list || list.length === 0) return null;
+  const grid = activeW.gridSize || activeW.grid || 'Large';
+  const type = activeW.type || 'Turret';
+  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  const peers = list.filter(w => (w.gridSize || w.grid || 'Large') === grid && w.type === type && !isNpc(w));
+  if (peers.length <= 1) return null;
+
+  const dpsList = peers.map(w => {
+    const aKey = getSelectableAmmos(w)[0] || w.ammoName;
+    const a = ammosDb[aKey];
+    const dmg = a ? getAmmoDamageDetailed(a).total : (w.baseDamage || 100);
+    const rof = w.rateOfFire || 600;
+    return { id: w.id, dps: Math.round((rof / 60) * dmg) };
+  }).sort((a, b) => b.dps - a.dps);
+
+  const myRankIdx = dpsList.findIndex(x => x.id === activeW.id);
+  const rank = myRankIdx >= 0 ? myRankIdx + 1 : 1;
+  const total = dpsList.length;
+  const percentile = Math.max(1, Math.round(((total - rank + 1) / total) * 100));
+
+  const ups = Math.max(1, (activeW.upCost !== undefined) ? activeW.upCost : getTechSummary(activeW.components).upCost);
+  const sustainedDps = computeSustainedDps().sustainedDps || 0;
+  const dpsPerUp = Math.round(sustainedDps / ups);
+
+  return { rank, total, percentile, dpsPerUp };
+}
+
 function updateUniversalBanner() {
   if (!activeWeapon) return;
 
@@ -1857,8 +2154,9 @@ function updateUniversalBanner() {
   if (scopeBadgeType) scopeBadgeType.innerHTML = typeHtml;
   
   const techInfo = getTechSummary(activeWeapon.components);
-  const currentUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
-  const upsHtml = `⚡ <strong>${currentUps} UPs</strong>`;
+  const baseUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
+  const currentUps = baseUps * currentBatteryMultiplier;
+  const upsHtml = `⚡ <strong>${currentUps} UPs</strong>${currentBatteryMultiplier > 1 ? ` (${currentBatteryMultiplier}x ${baseUps} UPs)` : ''}`;
   const techHtml = `Tech: <strong>${techInfo.summaryStr}</strong>`;
   if (badgeUps) badgeUps.innerHTML = upsHtml;
   if (badgeTech) badgeTech.innerHTML = techHtml;
@@ -1866,6 +2164,44 @@ function updateUniversalBanner() {
   const scopeBadgeTech = document.getElementById('scopeBadgeTech');
   if (scopeBadgeUps) scopeBadgeUps.innerHTML = upsHtml;
   if (scopeBadgeTech) scopeBadgeTech.innerHTML = techHtml;
+
+  // Automated Role Badge
+  const curAmmoForRole = activeAmmo || (activeWeapon.assignedAmmos && ammosDb[activeWeapon.assignedAmmos[0]]) || ammosDb[activeWeapon.ammoName];
+  const autoRole = getAutomatedWeaponRole(activeWeapon, curAmmoForRole);
+  if (badgeRole) {
+    badgeRole.innerHTML = `${autoRole.icon} <strong>${autoRole.label}</strong>`;
+    badgeRole.title = autoRole.desc;
+    badgeRole.style.display = 'inline-flex';
+  }
+
+  // Firing Arc & Gimbal Badge
+  const arcInfo = getWeaponArcSummary(activeWeapon);
+  if (badgeArc) {
+    badgeArc.innerHTML = arcInfo.text;
+    badgeArc.className = `badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
+    badgeArc.style.display = activeWeapon.type === 'Turret' ? 'inline-flex' : 'none';
+  }
+
+  // Dry Mass Badge (Battery Scaled)
+  const massInfo = calculateWeaponDryMass(activeWeapon);
+  const totalScaledMassTons = (massInfo.massTons * currentBatteryMultiplier).toFixed(1);
+  if (badgeMass) {
+    badgeMass.innerHTML = `⚖️ <strong>${totalScaledMassTons}t</strong>${currentBatteryMultiplier > 1 ? ` (${massInfo.formatted}/gun)` : ''}`;
+    badgeMass.title = `Total Dry Mass: ${(massInfo.massKg * currentBatteryMultiplier).toLocaleString()} kg`;
+    badgeMass.style.display = 'inline-flex';
+  }
+
+  // Context-Aware Recoil
+  const recoilInfo = getWeaponRecoilWarning(activeWeapon, curAmmoForRole);
+  if (badgeRecoil) {
+    if (recoilInfo.showRecoil) {
+      badgeRecoil.innerHTML = recoilInfo.text;
+      badgeRecoil.className = `badge ${recoilInfo.isHeavy ? 'badge-red' : 'badge-amber'}`;
+      badgeRecoil.style.display = 'inline-flex';
+    } else {
+      badgeRecoil.style.display = 'none';
+    }
+  }
 
   // Circuitry / Data Core Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
   const hasDataCore = techInfo.hasCircuitry || ((activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000));
@@ -1887,7 +2223,7 @@ function updateUniversalBanner() {
   if (scopeBadgeRelic) scopeBadgeRelic.style.display = activeWeapon.isRelic ? 'inline-flex' : 'none';
 
   // NPC Variant
-  const isNpc = (activeWeapon.name.includes('(NPC)') || activeWeapon.subtypeId.includes('_NPC'));
+  const isNpc = (activeWeapon.name && activeWeapon.name.includes('(NPC)')) || (activeWeapon.subtypeId && activeWeapon.subtypeId.includes('_NPC')) || (activeWeapon.id && activeWeapon.id.includes('_NPC'));
   if (badgeNpc) {
     badgeNpc.style.display = isNpc ? 'inline-flex' : 'none';
   }
@@ -2754,38 +3090,45 @@ function updateCombatTelemetry() {
     blastDmg = 0;
   }
 
-  // Update Hero Metrics (big numbers = effective vs best-fit target; blue lines are the disclaimers)
+  // Update Hero Metrics (scaled by currentBatteryMultiplier)
+  const bMult = currentBatteryMultiplier || 1;
   const topProfile = getTopArmorProfile(activeAmmo.damageScales || {});
-  const effectiveDps = Math.round(sustainedDps * topProfile.mult);
-  const effectiveAlphaVolley = Math.round(alphaVolley * topProfile.mult);
+  const baseEffectiveDps = Math.round(sustainedDps * topProfile.mult);
+  const scaledEffectiveDps = baseEffectiveDps * bMult;
+  const baseEffectiveAlpha = Math.round(alphaVolley * topProfile.mult);
+  const scaledEffectiveAlpha = baseEffectiveAlpha * bMult;
+  const scaledSustainedDps = Math.round(sustainedDps * bMult);
   const multTag = (topProfile.allEqual && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
-  outSustainedDps.textContent = effectiveDps.toLocaleString();
+  const batteryTag = bMult > 1 ? ` (${bMult}x Battery · ${baseEffectiveDps.toLocaleString()}/gun)` : '';
+  const batteryAlphaTag = bMult > 1 ? ` (${bMult}x Battery · ${baseEffectiveAlpha.toLocaleString()} hp/gun)` : '';
+
+  outSustainedDps.textContent = scaledEffectiveDps.toLocaleString();
   if (teleDpsType) {
-    teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}`;
+    teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
   if (outEffectiveDps) {
-    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Base: ${sustainedDps.toLocaleString()} DPS`;
+    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Base: ${scaledSustainedDps.toLocaleString()} DPS${batteryTag}`;
   }
-  outAlphaDmg.textContent = effectiveAlphaVolley.toLocaleString();
+  outAlphaDmg.textContent = scaledEffectiveAlpha.toLocaleString();
   if (teleAlphaType) {
-    teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}`;
+    teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
   const teleAlphaUnit = document.getElementById('teleAlphaUnit');
   if (teleAlphaUnit) {
-    teleAlphaUnit.textContent = `1 SALVO (${magsToLoad} ${magsToLoad === 1 ? 'MAG' : 'MAGS'})`;
+    teleAlphaUnit.textContent = `1 SALVO (${magsToLoad * bMult} ${magsToLoad * bMult === 1 ? 'MAG' : 'MAGS'})`;
   }
   if (outEffectiveAlpha) {
-    const magTag = `${magsToLoad} loaded ${magsToLoad === 1 ? 'mag' : 'mags'}${totalRounds > 1 ? ` · ${totalRounds} rds` : ''}`;
-    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Base volley: ${Math.round(alphaVolley).toLocaleString()} hp (${magTag})`;
+    const magTag = `${magsToLoad * bMult} loaded ${magsToLoad * bMult === 1 ? 'mag' : 'mags'}${totalRounds * bMult > 1 ? ` · ${totalRounds * bMult} rds` : ''}`;
+    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Base volley: ${Math.round(alphaVolley * bMult).toLocaleString()} hp${batteryAlphaTag} (${magTag})`;
   }
   if (dmgDetails.deliverySec > 1.0) {
-    outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
+    outDpsBreakdown.textContent = `Squadron Fire: ${scaledSustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
     if (outDamagePerShot) outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
   } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
-    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
+    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * bMult * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * bMult * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * bMult * dmgDetails.frag).toLocaleString()}`;
     if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Heavy: ${Math.round(heavyDmg).toLocaleString()} [${heavyMult}×] | Light: ${Math.round(lightDmg).toLocaleString()} [${lightMult}×])`;
   } else {
-    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * dmgDetails.frag).toLocaleString()}`;
+    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * bMult * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * bMult * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * bMult * dmgDetails.frag).toLocaleString()}`;
     if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
   }
   const effectiveRpm = Math.round(effectiveRps * 60);
@@ -2809,7 +3152,7 @@ function updateCombatTelemetry() {
     tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmHeavySub) {
-    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmHeavySub.textContent = `Volley: ${(heavyVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmLightMult) {
@@ -2820,7 +3163,7 @@ function updateCombatTelemetry() {
     tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmLightSub) {
-    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmLightSub.textContent = `Volley: ${(lightVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmNonArmorMult) {
@@ -2831,7 +3174,7 @@ function updateCombatTelemetry() {
     tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmNonArmorSub) {
-    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmNonArmorSub.textContent = `Volley: ${(nonArmorVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   // Highlight highest damage per shot block type
@@ -2875,13 +3218,43 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Traverse Speed
+  // Dedicated Explosive & Penetration Profile Readout
+  if (explosiveProfileBox) {
+    if (blastKind === 'ewar' && blastRadius > 0) {
+      if (outExplosiveRadius) outExplosiveRadius.textContent = `${Math.round(blastRadius)}m Radius`;
+      if (outExplosivePool) outExplosivePool.textContent = '0 HP (EWAR)';
+      if (outExplosiveDepth) outExplosiveDepth.textContent = 'Field Effect';
+      if (outExplosiveTrigger) outExplosiveTrigger.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} Scrambler`;
+    } else if (blastKind === 'screen') {
+      if (outExplosiveRadius) outExplosiveRadius.textContent = `${Math.round(blastRadius)}m Screen`;
+      if (outExplosivePool) outExplosivePool.textContent = '0 HP (Flak Screen)';
+      if (outExplosiveDepth) outExplosiveDepth.textContent = 'Proximity Sphere';
+      if (outExplosiveTrigger) outExplosiveTrigger.textContent = 'Proximity Flak Screen (EndOfLife)';
+    } else if (blastRadius > 0 && blastDmg > 0) {
+      if (outExplosiveRadius) outExplosiveRadius.textContent = `${blastRadius.toFixed(1)}m Radius`;
+      if (outExplosivePool) outExplosivePool.textContent = `${Math.round(blastDmg * bMult).toLocaleString()} HP Pool${bMult > 1 ? ` (${bMult}x)` : ''}`;
+      if (outExplosiveDepth) outExplosiveDepth.textContent = blastDepth > 0 ? `${blastDepth.toFixed(1)}m Depth (Pooled)` : 'Surface Detonation';
+      const triggerLabel = (activeAmmo.areaOfDamage?.endOfLife?.enable && activeAmmo.areaOfDamage.endOfLife.damage)
+        ? 'Proximity Detonation (EndOfLife)'
+        : 'Impact Detonation (ByBlockHit)';
+      if (outExplosiveTrigger) outExplosiveTrigger.textContent = triggerLabel;
+    } else {
+      if (outExplosiveRadius) outExplosiveRadius.textContent = '0m (Direct)';
+      if (outExplosivePool) outExplosivePool.textContent = '0 HP Blast';
+      if (outExplosiveDepth) outExplosiveDepth.textContent = dmgDetails.cutoff > 0 ? `${dmgDetails.penBlocks} Block Overpen` : 'Surface Direct';
+      if (outExplosiveTrigger) outExplosiveTrigger.textContent = 'Direct Kinetic Penetration (No Explosive Blast)';
+    }
+  }
+
+  // Traverse Speed & Angular Tracking Agility
   const rotRad = parseFloat(wRotateRate.value) || 0.015;
   const elRad = parseFloat(wElevateRate.value) || 0.015;
   const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
+  const avgTraverse = (parseFloat(rotDegSec) + parseFloat(elDegSec)) / 2;
+  const agilityText = avgTraverse >= 40 ? '⚡ Fast Tracking (<50m)' : (avgTraverse >= 15 ? '⚖️ Moderate (>100m)' : '🐌 Slow / Standoff');
   outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
-  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
+  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s · ${agilityText}`;
 
   // Max Engagement Range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
   const isTrackingWeapon = activeWeapon.type === 'Turret';
@@ -2895,7 +3268,7 @@ function updateCombatTelemetry() {
     outMaxRangeSource.textContent = isTrackingWeapon ? 'Targeting Range' : 'Trajectory Range';
   }
 
-  // Structural & Power
+  // Structural & Power (Battery Scaled)
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
   const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
   outEffectiveIntegrity.textContent = Math.round(effIntegrity).toLocaleString();
@@ -2903,37 +3276,36 @@ function updateCombatTelemetry() {
 
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
-  // WC energy draw: EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel; EffectStrength replaces BaseDamage for EWAR
   const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
   const wcEnergyBase = aEwar ? (aEwar.strength || 0) : (parseFloat(aBaseDamage.value) || 0);
   const operationalPwrNum = idlePwr + (energyPerShot * wcEnergyBase * (rof / 3600) * barrels * trajPB);
-  const operationalPwr = operationalPwrNum.toFixed(2);
+  const scaledOperationalPwrNum = operationalPwrNum * bMult;
+  const scaledIdlePwr = (idlePwr * bMult).toFixed(3);
+  const operationalPwr = scaledOperationalPwrNum.toFixed(2);
   outPowerMw.innerHTML = `${operationalPwr} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
-  outPowerIdle.textContent = `Idle Draw: ${idlePwr.toFixed(3)} MW`;
+  outPowerIdle.textContent = `Idle Draw: ${scaledIdlePwr} MW${bMult > 1 ? ` (${bMult}x Battery)` : ''}`;
 
-  // Combat Cycle & Sustained Consumption / Thermal Profile
+  // Combat Cycle & Sustained Consumption / Thermal Profile (Battery Scaled)
   const heatShot = parseFloat(wHeatPerShot.value) || 0;
   const maxHeat = parseFloat(wMaxHeat.value) || 0;
   const sinkRate = parseFloat(wHeatSinkRate.value) || 0;
   const heatPerSec = (rof / 60) * heatShot;
   const hasHeat = maxHeat > 0 && heatShot > 0;
 
-  // Consumption metrics (magazines / min or Uranium kg/min)
+  // Consumption metrics (scaled by battery multiplier)
   const isEnergyAmmo = activeAmmo && (activeAmmo.ammoMagazine === 'Energy' || !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine.includes('Energy'));
   const ammoMagCapacity = magSize;
-  const roundsPerMin = effectiveRps * 60;
+  const roundsPerMin = effectiveRps * 60 * bMult;
   const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
-  const kgUraniumPerMin = operationalPwrNum / 60;
+  const kgUraniumPerMin = scaledOperationalPwrNum / 60;
 
-  // Format Consumption String
   let consumptionHtml = '';
-  if (isEnergyAmmo || (!activeAmmo.ammoMagazine && operationalPwrNum > 5)) {
+  if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
     const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
     consumptionHtml = `⚡ Uranium Draw: <strong>${uStr}</strong> / min (${operationalPwr} MW)`;
   } else {
     const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
-    if (operationalPwrNum > 20) {
-      // High-energy kinetic hybrid (e.g. heavy railguns drawing large reactor power)
+    if (scaledOperationalPwrNum > 20) {
       const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
       consumptionHtml = `📦 <strong>${magsPerMin.toFixed(1)}</strong> mags/min [${magSubtype}] &bull; ⚡ <strong>${uStr}</strong> Uranium/min`;
     } else {
@@ -2963,9 +3335,7 @@ function updateCombatTelemetry() {
     outCooldownTime.innerHTML = consumptionHtml;
     if (hudOverheat) hudOverheat.textContent = "Unlimited";
   } else {
-    // Effective Fire Rate Metric including reload cycles
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
-    const effectiveRpm = Math.round(effectiveRps * 60);
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
 
     outHeatDutyRatio.textContent = `${fireDutyPercent}% SUSTAINED (${effectiveRpm} RPM)`;
@@ -2977,12 +3347,24 @@ function updateCombatTelemetry() {
       : `Continuous Fire: 100% Belt-Fed (${effectiveRps.toFixed(1)} sps)`;
 
     outCooldownTime.innerHTML = consumptionHtml;
-
     if (hudOverheat) hudOverheat.textContent = `${effectiveRpm} RPM`;
   }
 
+  // Peer Percentiles & Benchmarks
+  const peerInfo = calculatePeerPercentiles(activeWeapon, activeAmmo, weaponsDb);
+  if (outPeerBenchmarks && peerInfo) {
+    outPeerBenchmarks.innerHTML = `
+      <span class="benchmark-chip">📊 DPS Rank: <strong>#${peerInfo.rank} of ${peerInfo.total}</strong> (Top ${peerInfo.percentile}%)</span>
+      <span class="benchmark-chip">⚡ Efficiency: <strong>${peerInfo.dpsPerUp.toLocaleString()} DPS / UP</strong></span>
+      <span class="benchmark-chip">${getAutomatedWeaponRole(activeWeapon, activeAmmo).icon} Role: <strong>${getAutomatedWeaponRole(activeWeapon, activeAmmo).label}</strong></span>
+    `;
+    outPeerBenchmarks.style.display = 'flex';
+  } else if (outPeerBenchmarks) {
+    outPeerBenchmarks.style.display = 'none';
+  }
+
   // Sticky HUD updates
-  hudDps.textContent = effectiveDps.toLocaleString();
+  hudDps.textContent = scaledEffectiveDps.toLocaleString();
   hudRange.textContent = `${tMaxTrajectory.value || 1500}m`;
 
   // Render BOM Table
@@ -3032,12 +3414,12 @@ function updateTtkSimulator() {
       : 'No destructive payload against blocks';
     return;
   }
-  // Capped rounds can't dump full base damage into a single cube (WC BaseDamageCutoff)
+  const bMult = currentBatteryMultiplier || 1;
   const effectiveDmgPerShot = (dmgDetails.perBlockBase * targetMult) + dmgDetails.aoe + dmgDetails.frag;
-  const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels);
+  const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels * bMult);
   const shotsNeeded = Math.ceil(targetHp / effectiveVolley);
 
-  const sustainedDps = computeSustainedDps().sustainedDps || 1;
+  const sustainedDps = (computeSustainedDps().sustainedDps || 1) * bMult;
   const effectiveSustainedDps = sustainedDps * (effectiveDmgPerShot / Math.max(1, dmgDetails.total));
 
   const ttkSeconds = (targetHp / Math.max(1, effectiveSustainedDps));
@@ -3049,8 +3431,9 @@ function updateTtkSimulator() {
   }
 
   const capLabel = dmgDetails.cutoff > 0 ? ` | per-block cap ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp` : '';
-  const multLabel = targetMult !== 1.0 ? ` (${targetMult}× multiplier applied: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
-  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s) against ${targetName}${multLabel}${capLabel}`;
+  const multLabel = targetMult !== 1.0 ? ` (${targetMult}× mult: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
+  const bTag = bMult > 1 ? ` [${bMult}x Battery]` : '';
+  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s)${bTag} against ${targetName}${multLabel}${capLabel}`;
   ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
 }
 
@@ -5691,6 +6074,9 @@ function setupWorkbenchInputEvents() {
   if (btnResetDefaultsWorkbench) {
     btnResetDefaultsWorkbench.addEventListener('click', handleResetWeapon);
   }
+
+  initShipbuilderFilters();
+  initBatteryMultiplier();
 }
 
 // Kickoff
