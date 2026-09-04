@@ -339,3 +339,69 @@ When modifying or extending the GVK Weapon Studio:
    node scratch/test_studio_smoke.js
    ```
 
+
+---
+
+## 7. Data Pipeline — Live Source Architecture
+
+The Studio reads the mod source **live** — hand-typed bundled datasets in `docs/data/` are fallback
+snapshots only. The C# definition files (`CoreParts/*.cs`) and SBC block/magazine/blueprint files
+(`Content/Data/*.sbc`) are the single source of truth for both the game and the Studio.
+
+### How it works
+
+On every page load, `docs/source_live.js` resolves data in this order:
+
+1. **Hosted (github.io)**: fetches `data/source/_manifest.json` (stamped with the commit SHA by the
+   deploy workflow), downloads only the source files listed in the manifest, parses them in-browser
+   via `docs/source_pipeline.js`. Status chip: `🟢 LIVE @ <sha> (<ref>)`.
+2. **Local (file://)**: the "📁 Link Mod Folder" button uses the File System Access API to read the
+   `CoreParts/` + `Content/Data/` folders straight off disk (your working tree, even uncommitted).
+   Folder handle persists in IndexedDB. Status chip: `🟢 LIVE — local folder`.
+3. **Fallback**: bundled `docs/data/*_data.js` + `*_db.json` datasets. The chip turns red
+   (`🔴 BUNDLED SNAPSHOT`) so you always know you are NOT looking at live data.
+
+### Data health severity
+
+The chip reflects the severity of any parse problems:
+
+| Severity | Chip | Meaning |
+|----------|------|---------|
+| clean | 🟢 LIVE | No problems — everything parsed |
+| warn | 🟡 LIVE | Data loaded, non-fatal quirks (amber banner) |
+| error | 🔴 LIVE | Partial data — some weapons/ammos missing (red banner) |
+| fallback | 🔴 BUNDLED SNAPSHOT | Could not load live data at all |
+
+Problems show in a top banner that auto-dismisses after 10 seconds (with a manual close button)
+so the studio stays usable even with non-fatal errors.
+
+### Deploy workflow (.github/workflows/deploy-studio.yml)
+
+On every push to main, GitHub Actions:
+1. Runs node tools/validate_studio_data.mjs — a zero-dep Node gate that reuses the browser parser.
+   Refuses to deploy if any weapon ammo reference is unresolved or any magazine is phantom.
+2. Stages docs/ (the app) plus a verbatim mirror of CoreParts/*.cs and the needed Content/Data/*.sbc
+   files into data/source/, and writes _manifest.json (commit SHA + ref).
+3. Deploys to Pages via actions/upload-pages-artifact + actions/deploy-pages.
+
+A balance change is: edit C# → push to main → ~1-2 min → Studio reflects it. Zero tool edits.
+
+### Generated files (never hand-edit)
+
+These are derived artifacts — regenerate, do not patch:
+- docs/data/weapons_data.js + weapons_db.json
+- docs/data/ammos_data.js + ammos_db.json
+- docs/data/magazines_blueprints_data.js
+
+Regenerate with: node scratch/export_snapshots.js
+
+Exception: docs/data/studio_overrides.js contains presentation-only data (curated ids, display
+names, icons, RUs) that does not exist in the C# and is safe to hand-edit.
+
+### Parser scope
+
+docs/source_pipeline.js brace-matches C# new AmmoDef/new WeaponDefinition initializers and evaluates
+getter-clones as deep-copy-plus-mutations (ensuring derived ammo rounds inherit the correct magazine,
+mass, and recoil from their base round). It does NOT parse *_Animation.cs files — those use C#
+generics/#region the parser does not handle, and they contribute no studio data (animations are referenced
+by name only).
