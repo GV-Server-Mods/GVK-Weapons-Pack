@@ -1309,6 +1309,19 @@ function ewarTypeLabel(t) {
   const map = { AntiSmart: 'Anti-Smart', AntiSmartv2: 'Anti-Smart', EnergySink: 'Energy Sink', Emp: 'EMP', Offense: 'Offense', Nav: 'Nav', Dot: 'DoT', JumpNull: 'Jump-Null', Anchor: 'Anchor', Tractor: 'Tractor', Pull: 'Pull', Push: 'Push' };
   return map[t] || t || 'EWAR';
 }
+// Shots per magazine: physical mags resolve from AmmoMagazines_Ship.sbc <Capacity> via MAGAZINES_BLUEPRINTS_DATA; energy mags use EnergyMagazineSize
+function getShotsPerMag(weapon, ammo) {
+  const fallback = (weapon && weapon.magazineSize) || 100;
+  if (!ammo) return fallback;
+  if (!ammo.ammoMagazine || ammo.ammoMagazine === 'Energy') {
+    return (ammo.energyMagazineSize > 0) ? ammo.energyMagazineSize : fallback;
+  }
+  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
+    ? MAGAZINES_BLUEPRINTS_DATA
+    : magazinesBlueprintsDb;
+  const mag = dataset.find(m => m.subtypeId === ammo.ammoMagazine);
+  return (mag && mag.capacity > 0) ? mag.capacity : fallback;
+}
 
 function updateTelemetryAmmoBadge() {
   if (!telemetryAmmoBadge || !activeAmmo) return;
@@ -1343,11 +1356,17 @@ function updateTelemetryAmmoBadge() {
     modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/block ×${dmg.penBlocks}</span>`;
   }
 
+  const isVirtualMag = !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine === 'Energy';
+  const shotsPerMag = getShotsPerMag(activeWeapon, activeAmmo);
+  const magChip = isVirtualMag
+    ? ` &bull; <span>⚡ ${shotsPerMag} rds (virtual mag)</span>`
+    : ` &bull; <span>${shotsPerMag} rds/mag</span>`;
+
   telemetryAmmoBadge.innerHTML = `
     <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span> &bull; 
     <span>${Math.round(dmg.total).toLocaleString()} Dmg/Shot</span> &bull; 
     <span>${Math.round(spd)} m/s</span> &bull; 
-    <span>${Math.round(rng)}m Range</span>${modifierChips}
+    <span>${Math.round(rng)}m Range</span>${magChip}${modifierChips}
   `;
 }
 
@@ -2271,7 +2290,7 @@ function computeSustainedDps() {
   const barrels = parseFloat(wBarrelsPerShot.value) || 1;
   const reloadTicks = parseFloat(wReloadTime.value) || 0;
   const magsToLoad = parseFloat(wMagsToLoad.value) || 1;
-  const magSize = activeWeapon ? (activeWeapon.magazineSize || 100) : 100;
+  const magSize = getShotsPerMag(activeWeapon, activeAmmo);
 
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const alphaVolley = dmgDetails.instantTotal * barrels;
@@ -2480,7 +2499,7 @@ function updateCombatTelemetry() {
 
   // Consumption metrics (magazines / min or Uranium kg/min)
   const isEnergyAmmo = activeAmmo && (activeAmmo.ammoMagazine === 'Energy' || !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine.includes('Energy'));
-  const ammoMagCapacity = magSize || (activeAmmo && activeAmmo.magazineSize) || 100;
+  const ammoMagCapacity = magSize;
   const roundsPerMin = effectiveRps * 60;
   const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
   const kgUraniumPerMin = operationalPwrNum / 60;
@@ -2932,7 +2951,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const barrels = weapon.barrelsPerShot || 1;
   const reloadTicks = weapon.reloadTime || 0;
   const mags = weapon.magsToLoad || 1;
-  const magSize = weapon.magazineSize || 100;
+  const magSize = getShotsPerMag(weapon, a);
 
   const dmgDetails = getAmmoDamageDetailed(a);
   const alphaVolley = Math.round(dmgDetails.instantTotal * barrels);
