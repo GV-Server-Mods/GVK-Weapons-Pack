@@ -1378,6 +1378,21 @@ function initBatteryMultiplier() {
   });
 }
 
+function initTelemetryDeckTabs() {
+  const tabs = document.querySelectorAll('.deck-tab-btn');
+  const panels = document.querySelectorAll('.deck-tab-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.deckTab;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) targetPanel.classList.add('active');
+    });
+  });
+}
+
 function initShipbuilderFilters() {
   const gridPills = document.querySelectorAll('.grid-filter-pill');
   gridPills.forEach(pill => {
@@ -2176,6 +2191,11 @@ function updateUniversalBanner() {
 
   // Firing Arc & Gimbal Badge
   const arcInfo = getWeaponArcSummary(activeWeapon);
+  const metaSubtitle = document.getElementById('weaponMetaSubtitle');
+  if (metaSubtitle) {
+    const grid = activeWeapon.gridSize || activeWeapon.grid || 'Large';
+    metaSubtitle.textContent = `[${grid} Grid · ${activeWeapon.type} · ${arcInfo.text}]`;
+  }
   if (badgeArc) {
     badgeArc.innerHTML = arcInfo.text;
     badgeArc.className = `badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
@@ -3246,33 +3266,70 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Traverse Speed & Angular Tracking Agility
+  // Traverse Speed & Angular Tracking Agility (Pillar 2)
   const rotRad = parseFloat(wRotateRate.value) || 0.015;
   const elRad = parseFloat(wElevateRate.value) || 0.015;
   const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
   const avgTraverse = (parseFloat(rotDegSec) + parseFloat(elDegSec)) / 2;
   const agilityText = avgTraverse >= 40 ? '⚡ Fast Tracking (<50m)' : (avgTraverse >= 15 ? '⚖️ Moderate (>100m)' : '🐌 Slow / Standoff');
-  outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
-  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s · ${agilityText}`;
+  outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span class="unit-sub">/s</span>`;
+  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
+  const outTraverseAgilityBadge = document.getElementById('outTraverseAgilityBadge');
+  if (outTraverseAgilityBadge) outTraverseAgilityBadge.textContent = agilityText;
 
-  // Max Engagement Range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
+  // Max Engagement Range & Velocity Preview (Pillar 2)
   const isTrackingWeapon = activeWeapon.type === 'Turret';
   const maxEngagementRange = isTrackingWeapon
     ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 0)
     : (parseFloat(tMaxTrajectory.value) || (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0);
   if (outMaxRange) {
-    outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span style="font-size: 14px; font-weight: 400;">m</span>`;
+    outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span class="unit-sub">m</span>`;
   }
   if (outMaxRangeSource) {
     outMaxRangeSource.textContent = isTrackingWeapon ? 'Targeting Range' : 'Trajectory Range';
   }
 
-  // Structural & Power (Battery Scaled)
+  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || (activeAmmo.trajectory && activeAmmo.trajectory.desiredSpeed) || 1000;
+  const outMuzzleVelocityPreview = document.getElementById('outMuzzleVelocityPreview');
+  if (outMuzzleVelocityPreview) {
+    outMuzzleVelocityPreview.innerHTML = `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
+  }
+  const outFlightDelay1km = document.getElementById('outFlightDelay1km');
+  if (outFlightDelay1km) {
+    outFlightDelay1km.textContent = `Flight to 1km: ${(1000 / Math.max(1, muzzleSpeed)).toFixed(2)}s`;
+  }
+
+  const arcInfo = getWeaponArcSummary(activeWeapon);
+  const outPillarArcSummary = document.getElementById('outPillarArcSummary');
+  if (outPillarArcSummary) outPillarArcSummary.textContent = arcInfo.text;
+  const outPillarDepressionNote = document.getElementById('outPillarDepressionNote');
+  if (outPillarDepressionNote) {
+    outPillarDepressionNote.textContent = arcInfo.hasDepression ? 'Depression allows downhill dune fire' : (arcInfo.isGimbal ? 'Restricted gimbal cone' : 'Standard horizontal traverse');
+  }
+
+  // Structural & Power (Pillar 3 Logistics, Battery Scaled)
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
   const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
   outEffectiveIntegrity.textContent = Math.round(effIntegrity).toLocaleString();
-  outBuildTime.textContent = `Welding Time: ${Math.round(effIntegrity / balanceMatrix.buildTimeDividend)} seconds`;
+  outBuildTime.textContent = `Welding: ${Math.round(effIntegrity / balanceMatrix.buildTimeDividend)}s`;
+
+  const techInfo = getTechSummary(activeWeapon.components);
+  const baseUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
+  const currentUps = baseUps * bMult;
+  const massInfo = calculateWeaponDryMass(activeWeapon);
+  const totalScaledMassTons = (massInfo.massTons * bMult).toFixed(1);
+
+  const outPillarGridTag = document.getElementById('outPillarGridTag');
+  if (outPillarGridTag) outPillarGridTag.textContent = `${activeWeapon.gridSize || activeWeapon.grid || 'Large'} Grid`;
+  const outPillarUps = document.getElementById('outPillarUps');
+  if (outPillarUps) outPillarUps.textContent = `${currentUps} UPs`;
+  const outPillarUpsDetail = document.getElementById('outPillarUpsDetail');
+  if (outPillarUpsDetail) outPillarUpsDetail.textContent = bMult > 1 ? `${bMult}x Broadside (${baseUps}/gun)` : 'Ship Core Allocation';
+  const outPillarMass = document.getElementById('outPillarMass');
+  if (outPillarMass) outPillarMass.textContent = `${totalScaledMassTons}t`;
+  const outPillarMassDetail = document.getElementById('outPillarMassDetail');
+  if (outPillarMassDetail) outPillarMassDetail.textContent = bMult > 1 ? `${massInfo.formatted}/gun` : 'Total Dry Mass';
 
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
@@ -3282,7 +3339,7 @@ function updateCombatTelemetry() {
   const scaledOperationalPwrNum = operationalPwrNum * bMult;
   const scaledIdlePwr = (idlePwr * bMult).toFixed(3);
   const operationalPwr = scaledOperationalPwrNum.toFixed(2);
-  outPowerMw.innerHTML = `${operationalPwr} <span style="font-size: 14px; font-weight: 400;">MW</span>`;
+  outPowerMw.innerHTML = `${operationalPwr} <span class="unit-sub">MW</span>`;
   outPowerIdle.textContent = `Idle Draw: ${scaledIdlePwr} MW${bMult > 1 ? ` (${bMult}x Battery)` : ''}`;
 
   // Combat Cycle & Sustained Consumption / Thermal Profile (Battery Scaled)
@@ -3361,6 +3418,29 @@ function updateCombatTelemetry() {
     outPeerBenchmarks.style.display = 'flex';
   } else if (outPeerBenchmarks) {
     outPeerBenchmarks.style.display = 'none';
+  }
+
+  // Conditional Explosive Profile Tab
+  const deckTabExplosive = document.getElementById('deckTabExplosive');
+  const hasExplosive = (blastRadius > 0 && blastDmg > 0) || blastKind === 'ewar' || blastKind === 'screen';
+  if (deckTabExplosive) {
+    deckTabExplosive.style.display = hasExplosive ? 'inline-block' : 'none';
+    if (!hasExplosive && deckTabExplosive.classList.contains('active')) {
+      const firstTab = document.querySelector('.deck-tab-btn[data-deck-tab="tab-ttk"]');
+      if (firstTab) firstTab.click();
+    }
+  }
+
+  // Terrain Clearance indicator in Flight Deck Tab
+  const deckTerrainClearance = document.getElementById('deckTerrainClearance');
+  const terrainNotice = getMunitionTerrainClearance(activeAmmo);
+  if (deckTerrainClearance) {
+    if (terrainNotice) {
+      deckTerrainClearance.style.display = 'block';
+      deckTerrainClearance.textContent = terrainNotice.text;
+    } else {
+      deckTerrainClearance.style.display = 'none';
+    }
   }
 
   // Sticky HUD updates
@@ -6077,6 +6157,7 @@ function setupWorkbenchInputEvents() {
 
   initShipbuilderFilters();
   initBatteryMultiplier();
+  initTelemetryDeckTabs();
 }
 
 // Kickoff

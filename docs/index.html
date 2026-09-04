@@ -117,21 +117,24 @@
     <!-- Shipbuilder Filter Bar (Grid & Automated Roles) -->
     <div class="shipbuilder-filter-bar">
       <div class="filter-group">
+    <!-- Shipbuilder Quick-Filter Bar -->
+    <div class="shipbuilder-filter-bar" id="shipbuilderFilterBar">
+      <div class="filter-group">
         <span class="filter-label">GRID:</span>
-        <button class="filter-pill grid-filter-pill active" data-grid="all">All Grids</button>
-        <button class="filter-pill grid-filter-pill" data-grid="Large">Large Grid</button>
-        <button class="filter-pill grid-filter-pill" data-grid="Small">Small Grid</button>
+        <button class="filter-pill grid-filter-pill active" data-grid="all">All</button>
+        <button class="filter-pill grid-filter-pill" data-grid="Large">Large</button>
+        <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
       </div>
       <div class="filter-divider"></div>
-      <div class="filter-group">
+      <div class="filter-group filter-group-roles">
         <span class="filter-label">ROLE:</span>
-        <button class="filter-pill role-filter-pill active" data-role="all">All Roles</button>
-        <button class="filter-pill role-filter-pill" data-role="pd">📡 Point Defense</button>
-        <button class="filter-pill role-filter-pill" data-role="breaker">🎯 Armor Breaker</button>
-        <button class="filter-pill role-filter-pill" data-role="brawler">🥊 Kinetic Brawler</button>
-        <button class="filter-pill role-filter-pill" data-role="artillery">🔭 Standoff</button>
+        <button class="filter-pill role-filter-pill active" data-role="all">All</button>
+        <button class="filter-pill role-filter-pill" data-role="pd">📡 PD</button>
+        <button class="filter-pill role-filter-pill" data-role="breaker">🎯 Breaker</button>
+        <button class="filter-pill role-filter-pill" data-role="brawler">🥊 Brawler</button>
+        <button class="filter-pill role-filter-pill" data-role="artillery">🔭 Artillery</button>
         <button class="filter-pill role-filter-pill" data-role="guided">🚀 Guided</button>
-        <button class="filter-pill role-filter-pill" data-role="flak">💥 Flak / AoE</button>
+        <button class="filter-pill role-filter-pill" data-role="flak">💥 Flak</button>
         <button class="filter-pill role-filter-pill" data-role="energy">⚡ Energy</button>
       </div>
     </div>
@@ -143,7 +146,10 @@
           <img id="activeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon">
         </div>
         <div>
-          <span class="selector-label">Active Weapon</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="selector-label">Active Weapon</span>
+            <span id="weaponMetaSubtitle" class="weapon-meta-subtitle">[Large Grid · Turret]</span>
+          </div>
           <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap;">
             <select id="weaponSelect" class="weapon-dropdown">
               <option value="">Loading weapons database...</option>
@@ -163,24 +169,25 @@
       
       <div class="banner-badges">
         <div class="badge badge-amber" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></div>
-        <div class="badge" id="badgeGrid">Grid: <strong>Large</strong></div>
-        <div class="badge" id="badgeType">Mount: <strong>Turret</strong></div>
         <div class="badge badge-amber" id="badgeUps">⚡ <strong>0 UPs</strong></div>
-        <div class="badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></div>
         <div class="badge" id="badgeMass">⚖️ <strong>0t</strong></div>
+        <div class="badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></div>
         <div class="badge badge-red" id="badgeRecoil" style="display: none;">⚠️ Recoil</div>
         <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
         <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
         <div class="badge badge-purple" id="badgeRelic" style="display: none;">👑 Relic Weapon</div>
-        <div class="badge badge-cyan" id="badgePd" style="display: none;" title="WeaponCore threat list includes Projectiles - engages smart munitions in flight">📡 POINT DEFENSE</div>
         <div class="badge badge-red" id="badgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
+        <!-- Hidden compat elements for scripts -->
+        <span id="badgeGrid" style="display: none;"></span>
+        <span id="badgeType" style="display: none;"></span>
+        <span id="badgePd" style="display: none;"></span>
       </div>
     </div>
 
     <!-- WORKSPACE 1: COMBAT TELEMETRY & BENCHMARKS (PLAYER DEFAULT) -->
     <div id="ws-telemetry" class="workspace-section active">
       
-      <!-- Loaded Munition Bar (Always visible for all weapons in Combat Telemetry) -->
+      <!-- Loaded Munition Bar -->
       <div id="telemetryAmmoBar" class="telemetry-ammo-bar">
         <div class="selector-left">
           <div class="ammo-icon-wrap" id="activeAmmoIconWrap" title="Loaded Munition Magazine Subtype">
@@ -198,185 +205,297 @@
         </div>
       </div>
 
-      <!-- Dynamic Peer Benchmarks & Efficiency Bar -->
-      <div id="outPeerBenchmarks" class="peer-benchmarks-bar" style="display: none;"></div>
-
-      <div class="telemetry-grid">
+      <!-- THE 3 SHIPBUILDER HERO PILLARS -->
+      <div class="hero-pillars-grid">
         
-        <!-- Hero Metrics -->
-        <div class="hero-stats-grid">
-          <div class="stat-card">
-            <div class="stat-title">Effective DPS <span id="teleDpsType">ALL BLOCKS</span></div>
-            <div class="stat-value" id="outSustainedDps">0</div>
-            <div class="stat-sub" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
-            <div class="stat-sub" id="outEffectiveDps" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Blocks · Base: 0 DPS</div>
+        <!-- Pillar 1: Lethality & Combat Cycle -->
+        <div class="hero-pillar-card pillar-lethality">
+          <div class="pillar-header">
+            <span class="pillar-title">⚔️ LETHALITY & COMBAT CYCLE</span>
+            <span class="pillar-tag" id="teleDpsType">VS ALL BLOCKS</span>
           </div>
-
-          <div class="stat-card cyan">
-            <div class="stat-title">Effective Alpha Volley <span id="teleAlphaType">VS ALL BLOCKS</span> <span class="unit" id="teleAlphaUnit">1 SALVO</span></div>
-            <div class="stat-value" id="outAlphaDmg">0</div>
-            <div class="stat-sub" id="outEffectiveAlpha" style="margin-top: 2px; color: var(--cyan-primary);">Effective against All Blocks · Base volley: 0 hp</div>
-          </div>
-
-          <div class="stat-card green">
-            <div class="stat-title">Effective Rate <span class="unit">SUSTAINED</span></div>
-            <div class="stat-value" id="outShotsPerSec">0 <span style="font-size: 14px; font-weight: 400;">RPM</span></div>
-            <div class="stat-sub" id="outCycleTime">Burst: 0 RPM · 0.0 sps sustained</div>
-          </div>
-
-          <div class="stat-card blue">
-            <div class="stat-title">Traverse Speed <span class="unit">ANGULAR</span></div>
-            <div class="stat-value" id="outTraverseDeg">0.0&deg;<span style="font-size: 14px; font-weight: 400;">/s</span></div>
-            <div class="stat-sub" id="outTraverseAzEl">Az: 0.0&deg;/s | El: 0.0&deg;/s</div>
-          </div>
-
-          <div class="stat-card purple">
-            <div class="stat-title">Max Range <span class="unit">ENGAGEMENT</span></div>
-            <div class="stat-value" id="outMaxRange">0 <span style="font-size: 14px; font-weight: 400;">m</span></div>
-            <div class="stat-sub" id="outMaxRangeSource">Targeting Range</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-title">Power Required <span class="unit">OPERATIONAL</span></div>
-            <div class="stat-value" id="outPowerMw">0.0 <span style="font-size: 14px; font-weight: 400;">MW</span></div>
-            <div class="stat-sub" id="outPowerIdle">Idle Draw: 0.0 MW</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-title">Effective Integrity <span class="unit">HP / BUILD</span></div>
-            <div class="stat-value" id="outEffectiveIntegrity">0</div>
-            <div class="stat-sub" id="outBuildTime">Welding Time: 0 seconds</div>
-          </div>
-        </div>
-
-        <!-- Combat Cycle, Sustained Consumption & Thermal Profile -->
-        <div class="heat-box">
-          <div class="heat-header">
-            <span id="outCombatCycleTitle" style="color: var(--amber-primary); font-weight: 700;">🔥 THERMAL PROFILE & DUTY CYCLE</span>
-            <span id="outHeatDutyRatio">100% UPTIME</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="heatProgressBar" style="width: 100%;"></div>
-          </div>
-          <div class="heat-meta">
-            <span id="outTimeToOverheat">Continuous Fire: Unlimited</span>
-            <span id="outCooldownTime">Cooldown Window: 0s</span>
-          </div>
-        </div>
- 
-        <!-- Dedicated Explosive & Splash Profile Card -->
-        <div class="explosive-profile-card" id="explosiveProfileBox">
-          <div class="explosive-profile-header">
-            <span class="explosive-profile-title">💥 EXPLOSIVE & PENETRATION PROFILE</span>
-            <span class="explosive-trigger-badge" id="outExplosiveTrigger">Direct Kinetic Penetration Only</span>
-          </div>
-          <div class="explosive-profile-grid">
-            <div class="explosive-stat-item">
-              <span class="explosive-stat-label">Blast Radius</span>
-              <span class="explosive-stat-val" id="outExplosiveRadius">0m</span>
+          <div class="pillar-body">
+            <div class="pillar-metric-main">
+              <span class="metric-label">EFFECTIVE DPS</span>
+              <div class="metric-big-val" id="outSustainedDps">0</div>
+              <div class="metric-sub-detail" id="outEffectiveDps">Effective against All Blocks · Base: 0 DPS</div>
+              <div class="metric-sub-detail" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
             </div>
-            <div class="explosive-stat-item">
-              <span class="explosive-stat-label">AoE Damage Pool</span>
-              <span class="explosive-stat-val" id="outExplosivePool">0 HP</span>
+
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">ALPHA VOLLEY <span id="teleAlphaUnit">(1 SALVO)</span></span>
+                <div class="metric-val" id="outAlphaDmg">0</div>
+                <div class="metric-sub-detail" id="outEffectiveAlpha">Base volley: 0 hp</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">EFFECTIVE RPM</span>
+                <div class="metric-val" id="outShotsPerSec">0 <span class="unit-sub">RPM</span></div>
+                <div class="metric-sub-detail" id="outCycleTime">Burst: 0 RPM</div>
+              </div>
             </div>
-            <div class="explosive-stat-item">
-              <span class="explosive-stat-label">Penetration Depth</span>
-              <span class="explosive-stat-val" id="outExplosiveDepth">Surface Direct</span>
+
+            <!-- Embedded Duty Cycle Bar -->
+            <div class="pillar-mini-cycle">
+              <div class="mini-cycle-header">
+                <span id="outCombatCycleTitle">🔥 THERMAL PROFILE</span>
+                <span id="outHeatDutyRatio">100% UPTIME</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="heatProgressBar" style="width: 100%;"></div>
+              </div>
+              <div class="mini-cycle-meta" id="outTimeToOverheat">Continuous Fire: Unlimited</div>
             </div>
           </div>
         </div>
 
-        <!-- Target Multipliers & Effective Damage Matrix -->
-        <div class="target-matrix-card">
-          <div class="target-matrix-header">
-            <div class="target-matrix-title-wrap">
-              <span class="target-matrix-title">🎯 TARGET DAMAGE & MULTIPLIER MATRIX</span>
-              <span class="target-matrix-sub">Damage per shot scaled by heavy armor, light armor & internal systems</span>
-            </div>
-            <span id="tmPenetrationChip" class="target-matrix-badge" style="display: none; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.4); color: var(--cyan-primary);" title="WC BaseDamageCutoff: per-block damage cap for penetrating rounds">🪡 Overpen</span>
+        <!-- Pillar 2: Handling, Reach & Agility -->
+        <div class="hero-pillar-card pillar-handling">
+          <div class="pillar-header">
+            <span class="pillar-title">🎯 HANDLING, REACH & AGILITY</span>
+            <span class="pillar-tag cyan" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
           </div>
-          <div class="target-matrix-grid">
-            <div class="target-stat-box" id="tmHeavyArmorBox">
-              <div class="target-stat-header">
-                <div class="target-type-label">
-                  <span class="target-type-icon">🛡️</span>
-                  <span class="target-type-name">Heavy Armor</span>
-                </div>
-                <span class="target-multiplier-badge buff" id="tmHeavyMult">3.0×</span>
-              </div>
-              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
-              <div class="target-stat-value" id="tmHeavyDmg">18,000 <span class="unit">hp / shot</span></div>
-              <div class="target-stat-sub" id="tmHeavySub">Volley: 18,000 hp</div>
+          <div class="pillar-body">
+            <div class="pillar-metric-main">
+              <span class="metric-label">TRAVERSE SLEW SPEED</span>
+              <div class="metric-big-val" id="outTraverseDeg">0.0&deg;<span class="unit-sub">/s</span></div>
+              <div class="metric-sub-detail" id="outTraverseAzEl">Az: 0.0°/s | El: 0.0°/s</div>
             </div>
 
-            <div class="target-stat-box" id="tmLightArmorBox">
-              <div class="target-stat-header">
-                <div class="target-type-label">
-                  <span class="target-type-icon">📄</span>
-                  <span class="target-type-name">Light Armor</span>
-                </div>
-                <span class="target-multiplier-badge nerf" id="tmLightMult">0.5×</span>
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">MAX RANGE</span>
+                <div class="metric-val" id="outMaxRange">0 <span class="unit-sub">m</span></div>
+                <div class="metric-sub-detail" id="outMaxRangeSource">Targeting Range</div>
               </div>
-              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
-              <div class="target-stat-value" id="tmLightDmg">3,000 <span class="unit">hp / shot</span></div>
-              <div class="target-stat-sub" id="tmLightSub">Volley: 3,000 hp</div>
+              <div style="text-align: right;">
+                <span class="metric-label">MUZZLE VELOCITY</span>
+                <div class="metric-val" id="outMuzzleVelocityPreview">1,000 <span class="unit-sub">m/s</span></div>
+                <div class="metric-sub-detail" id="outFlightDelay1km">Flight to 1km: 1.0s</div>
+              </div>
             </div>
 
-            <div class="target-stat-box" id="tmNonArmorBox">
-              <div class="target-stat-header">
-                <div class="target-type-label">
-                  <span class="target-type-icon">⚙️</span>
-                  <span class="target-type-name">Non-Armor (Systems)</span>
-                </div>
-                <span class="target-multiplier-badge" id="tmNonArmorMult">1.0×</span>
-              </div>
-              <div class="target-stat-metric-label">DAMAGE PER SHOT</div>
-              <div class="target-stat-value" id="tmNonArmorDmg">6,000 <span class="unit">hp / shot</span></div>
-              <div class="target-stat-sub" id="tmNonArmorSub">Volley: 6,000 hp</div>
-            </div>
+            <div class="pillar-divider"></div>
 
-            <div class="target-stat-box" id="tmBlastBox">
-              <div class="target-stat-header">
-                <div class="target-type-label">
-                  <span class="target-type-icon">💥</span>
-                  <span class="target-type-name">Blast & Splash</span>
-                </div>
-                <span class="target-multiplier-badge" id="tmBlastRadius">None</span>
-              </div>
-              <div class="target-stat-metric-label">EXPLOSIVE PAYLOAD</div>
-              <div class="target-stat-value" id="tmBlastDmg">0 <span class="unit">hp / shot</span></div>
-              <div class="target-stat-sub" id="tmBlastSub">Direct Impact Only</div>
+            <div class="pillar-metric-main">
+              <span class="metric-label">ELEVATION ARC & RESTRICTIONS</span>
+              <div class="metric-val" id="outPillarArcSummary">📐 Elevation: -15° to +75°</div>
+              <div class="metric-sub-detail" id="outPillarDepressionNote">Depression allows downhill dune fire</div>
             </div>
           </div>
         </div>
 
-        <!-- Combat Simulator Cards: TTK Target Dummy + Initial D Drift Meter -->
-        <div class="sim-tools-grid">
-          
-          <!-- Realistic Target Dummy / Time-To-Kill Simulator -->
+        <!-- Pillar 3: Ship Fitting & Logistics -->
+        <div class="hero-pillar-card pillar-logistics">
+          <div class="pillar-header">
+            <span class="pillar-title">⚖️ SHIP FITTING & LOGISTICS</span>
+            <span class="pillar-tag purple" id="outPillarGridTag">Large Grid</span>
+          </div>
+          <div class="pillar-body">
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">UTILITY POINTS</span>
+                <div class="metric-val amber" id="outPillarUps">0 UPs</div>
+                <div class="metric-sub-detail" id="outPillarUpsDetail">Ship Core Up Allocation</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">TOTAL DRY MASS</span>
+                <div class="metric-val" id="outPillarMass">0.0t</div>
+                <div class="metric-sub-detail" id="outPillarMassDetail">Keen Component Recipe</div>
+              </div>
+            </div>
+
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">OPERATIONAL POWER</span>
+                <div class="metric-val" id="outPowerMw">0.0 <span class="unit-sub">MW</span></div>
+                <div class="metric-sub-detail" id="outPowerIdle">Idle Draw: 0.0 MW</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">BLOCK INTEGRITY</span>
+                <div class="metric-val" id="outEffectiveIntegrity">0</div>
+                <div class="metric-sub-detail" id="outBuildTime">Welding: 0s</div>
+              </div>
+            </div>
+
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-main">
+              <span class="metric-label">SUSTAINED AMMO / FUEL DRAW</span>
+              <div class="metric-sub-detail" id="outCooldownTime" style="font-size: 12px; color: var(--text-normal);">📦 Ammo Draw: 0 mags/min</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CENTERPIECE: 1v1 WEAPON RADAR & LIVE BENCHMARK -->
+      <div class="comparison-box">
+        <div class="comparison-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="faceoff-badge">
+              <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm icon-active" title="Active Weapon">
+              <img id="compActiveAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Active Ammo" class="ammo-icon-sm icon-active" title="Active Weapon Munition">
+              <span class="vs-tag">VS</span>
+              <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon">
+              <img id="compBenchAmmoIcon" src="" alt="Benchmark Ammo" class="ammo-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon Munition">
+            </div>
+            <div>
+              <h3>⚔️ 1v1 Combat Radar & Live Benchmark</h3>
+              <div id="outPeerBenchmarks" class="peer-benchmarks-inline"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <select id="compareSelect" class="compare-dropdown">
+              <option value="">Select benchmark weapon to compare...</option>
+            </select>
+            <select id="compareAmmoSelect" class="compare-dropdown" style="display: none; max-width: 220px;" title="Select Benchmark Munition">
+            </select>
+          </div>
+        </div>
+
+        <!-- Radar Chart (Spider Graph) -->
+        <div class="radar-container">
+          <div style="position: relative; display: flex; justify-content: center;">
+            <canvas id="radarCanvas" width="360" height="340"></canvas>
+          </div>
+          <div class="radar-legend">
+            <!-- Active Weapon Profile -->
+            <div class="radar-profile-card active-card">
+              <div class="radar-profile-header">
+                <span class="legend-color" style="background: var(--amber-primary);"></span>
+                <span class="radar-profile-name active-name" id="legendActiveName">Active Weapon</span>
+              </div>
+              <div class="radar-profile-desc" id="legendActiveDesc">
+                Loading weapon description...
+              </div>
+            </div>
+
+            <!-- Benchmark Weapon Profile -->
+            <div class="radar-profile-card bench-card" id="legendBenchCard">
+              <div class="radar-profile-header">
+                <span class="legend-color" style="background: var(--cyan-primary);"></span>
+                <span class="radar-profile-name bench-name" id="legendBenchName">No Benchmark Selected</span>
+              </div>
+              <div class="radar-profile-desc" id="legendBenchDesc">
+                Select a benchmark weapon above to compare attributes and radar profile.
+              </div>
+            </div>
+
+            <!-- Mod Maximum Ceilings Readout -->
+            <div id="radarMaxMetrics" class="radar-max-metrics">
+              Mod Ceilings: Calculating...
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Active Gun</th>
+                <th>Benchmark</th>
+                <th>Delta %</th>
+              </tr>
+            </thead>
+            <tbody id="compareTableBody">
+              <tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TABBED DEEP TELEMETRY DECK -->
+      <div class="telemetry-deck" id="telemetryDeck">
+        <div class="deck-tabs-header">
+          <button class="deck-tab-btn active" data-deck-tab="tab-ttk">🎯 Target Dummy & TTK</button>
+          <button class="deck-tab-btn" data-deck-tab="tab-flight">💨 Flight Physics & Drift</button>
+          <button class="deck-tab-btn" data-deck-tab="tab-explosive" id="deckTabExplosive">💥 Explosive & Splash Profile</button>
+          <button class="deck-tab-btn" data-deck-tab="tab-bom">📦 Bill of Materials & Ingots</button>
+        </div>
+
+        <!-- Tab 1: Target Dummy & Armor Damage Matrix -->
+        <div class="deck-tab-panel active" id="tab-ttk">
+          <div class="deck-grid-2col">
+            <!-- TTK Simulator -->
+            <div class="sim-card">
+              <div class="sim-card-header">
+                <span class="sim-card-title">🎯 REALISTIC TARGET DUMMY & TTK</span>
+                <select id="ttkTargetSelect" class="sim-select">
+                  <option value="lightArmor">Light Armor Cube (3,000 HP)</option>
+                  <option value="heavyArmor" selected>Heavy Armor Cube (16,500 HP)</option>
+                  <option value="battery">Large Grid Battery (11,460 HP)</option>
+                  <option value="refinery">Large Grid Refinery (37,280 HP)</option>
+                </select>
+              </div>
+              <div class="ttk-display">
+                <div class="ttk-main" id="outTtkMain">0.38s to Destroy</div>
+                <div class="ttk-sub" id="outTtkRounds">Requires ~3.8 rounds of continuous fire</div>
+              </div>
+              <div class="ttk-progress-bar">
+                <div id="ttkProgressFill" class="ttk-progress-fill" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <!-- Target Multiplier Matrix -->
+            <div class="target-matrix-card compact">
+              <div class="target-matrix-header">
+                <span class="target-matrix-title">TARGET DAMAGE MATRIX</span>
+                <span id="tmPenetrationChip" class="target-matrix-badge" style="display: none;">🪡 Overpen</span>
+              </div>
+              <div class="target-matrix-grid">
+                <div class="target-stat-box" id="tmHeavyArmorBox">
+                  <div class="target-stat-header">
+                    <span class="target-type-name">🛡️ Heavy Armor</span>
+                    <span class="target-multiplier-badge buff" id="tmHeavyMult">1.0×</span>
+                  </div>
+                  <div class="target-stat-value" id="tmHeavyDmg">0 hp</div>
+                  <div class="target-stat-sub" id="tmHeavySub">Volley: 0 hp</div>
+                </div>
+
+                <div class="target-stat-box" id="tmLightArmorBox">
+                  <div class="target-stat-header">
+                    <span class="target-type-name">📄 Light Armor</span>
+                    <span class="target-multiplier-badge" id="tmLightMult">1.0×</span>
+                  </div>
+                  <div class="target-stat-value" id="tmLightDmg">0 hp</div>
+                  <div class="target-stat-sub" id="tmLightSub">Volley: 0 hp</div>
+                </div>
+
+                <div class="target-stat-box" id="tmNonArmorBox">
+                  <div class="target-stat-header">
+                    <span class="target-type-name">⚙️ Systems</span>
+                    <span class="target-multiplier-badge" id="tmNonArmorMult">1.0×</span>
+                  </div>
+                  <div class="target-stat-value" id="tmNonArmorDmg">0 hp</div>
+                  <div class="target-stat-sub" id="tmNonArmorSub">Volley: 0 hp</div>
+                </div>
+
+                <div class="target-stat-box" id="tmBlastBox">
+                  <div class="target-stat-header">
+                    <span class="target-type-name">💥 Blast / Splash</span>
+                    <span class="target-multiplier-badge" id="tmBlastRadius">None</span>
+                  </div>
+                  <div class="target-stat-value" id="tmBlastDmg">0 hp</div>
+                  <div class="target-stat-sub" id="tmBlastSub">Direct Impact Only</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Flight Physics & Initial D Drift Lead -->
+        <div class="deck-tab-panel" id="tab-flight">
           <div class="sim-card">
             <div class="sim-card-header">
-              <span class="sim-card-title">🎯 REALISTIC TARGET DUMMY & TTK</span>
-              <select id="ttkTargetSelect" class="sim-select">
-                <option value="lightArmor">Light Armor Cube (3,000 HP)</option>
-                <option value="heavyArmor" selected>Heavy Armor Cube (16,500 HP)</option>
-                <option value="battery">Large Grid Battery (11,460 HP)</option>
-                <option value="refinery">Large Grid Refinery (37,280 HP)</option>
-              </select>
-            </div>
-            <div class="ttk-display">
-              <div class="ttk-main" id="outTtkMain">0.38s to Destroy</div>
-              <div class="ttk-sub" id="outTtkRounds">Requires ~3.8 rounds of continuous fire</div>
-            </div>
-            <div class="ttk-progress-bar">
-              <div id="ttkProgressFill" class="ttk-progress-fill" style="width: 100%;"></div>
-            </div>
-          </div>
-
-          <!-- Initial D Dodgeability & Drift Lead Meter -->
-          <div class="sim-card">
-            <div class="sim-card-header">
-              <span class="sim-card-title">💨 FLIGHT DELAY & DRIFT LEAD (100 KM/H)</span>
+              <span class="sim-card-title">💨 FLIGHT DELAY & DRIFT LEAD (100 KM/H ROVER / MISSILE)</span>
               <span id="outFlightMuzzleSpd" class="drift-muzzle-chip">1000 m/s</span>
             </div>
             <div class="drift-readouts">
@@ -396,111 +515,62 @@
                 <span class="drift-lead" id="outLeadMax">41.7m drift</span>
               </div>
             </div>
-          </div>
-
-        </div>
-
-        <!-- 1v1 Weapon Comparison Matrix & Spider Graph -->
-        <div class="comparison-box">
-          <div class="comparison-header">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div class="faceoff-badge">
-                <img id="compActiveIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Active Gun" class="weapon-icon-sm icon-active" title="Active Weapon">
-                <img id="compActiveAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Active Ammo" class="ammo-icon-sm icon-active" title="Active Weapon Munition">
-                <span class="vs-tag">VS</span>
-                <img id="compBenchIcon" src="" alt="Benchmark Gun" class="weapon-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon">
-                <img id="compBenchAmmoIcon" src="" alt="Benchmark Ammo" class="ammo-icon-sm icon-bench" style="display: none;" title="Benchmark Weapon Munition">
-              </div>
-              <h3>⚔️ 1v1 Combat Radar & Comparison</h3>
-            </div>
-            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-              <select id="compareSelect" class="compare-dropdown">
-                <option value="">Select benchmark weapon to compare...</option>
-              </select>
-              <select id="compareAmmoSelect" class="compare-dropdown" style="display: none; max-width: 220px;" title="Select Benchmark Munition">
-              </select>
-            </div>
-          </div>
-
-          <!-- Radar Chart (Spider Graph) -->
-          <div class="radar-container">
-            <div style="position: relative; display: flex; justify-content: center;">
-              <canvas id="radarCanvas" width="360" height="340"></canvas>
-            </div>
-            <div class="radar-legend">
-              <!-- Active Weapon Profile -->
-              <div class="radar-profile-card active-card">
-                <div class="radar-profile-header">
-                  <span class="legend-color" style="background: var(--amber-primary);"></span>
-                  <span class="radar-profile-name active-name" id="legendActiveName">Active Weapon</span>
-                </div>
-                <div class="radar-profile-desc" id="legendActiveDesc">
-                  Loading weapon description...
-                </div>
-              </div>
-
-              <!-- Benchmark Weapon Profile -->
-              <div class="radar-profile-card bench-card" id="legendBenchCard">
-                <div class="radar-profile-header">
-                  <span class="legend-color" style="background: var(--cyan-primary);"></span>
-                  <span class="radar-profile-name bench-name" id="legendBenchName">No Benchmark Selected</span>
-                </div>
-                <div class="radar-profile-desc" id="legendBenchDesc">
-                  Select a benchmark weapon above to compare attributes and radar profile.
-                </div>
-              </div>
-
-              <!-- Mod Maximum Ceilings Readout -->
-              <div id="radarMaxMetrics" class="radar-max-metrics">
-                Mod Ceilings: Calculating...
-              </div>
-            </div>
-          </div>
-
-          <div class="table-responsive">
-            <table class="compare-table">
-              <thead>
-                <tr>
-                  <th>Attribute</th>
-                  <th>Active Gun</th>
-                  <th>Benchmark</th>
-                  <th>Delta %</th>
-                </tr>
-              </thead>
-              <tbody id="compareTableBody">
-                <tr><td colspan="4" style="text-align: center; color: var(--text-dim);">Select a benchmark weapon above to compare</td></tr>
-              </tbody>
-            </table>
+            <div id="deckTerrainClearance" style="margin-top: 12px; font-size: 12px; color: var(--cyan-primary); display: none;"></div>
           </div>
         </div>
 
-        <!-- Collapsible Bill of Materials (Components & Ingots) -->
-        <details class="panel bom-accordion">
-          <summary class="panel-header" style="cursor: pointer; user-select: none;">
-            <div style="display: flex; align-items: center; gap: 8px;">
+        <!-- Tab 3: Dedicated Explosive Profile (Conditional) -->
+        <div class="deck-tab-panel" id="tab-explosive">
+          <div class="explosive-profile-card" id="explosiveProfileBox">
+            <div class="explosive-profile-header">
+              <span class="explosive-profile-title">💥 EXPLOSIVE & PENETRATION PROFILE</span>
+              <span class="explosive-trigger-badge" id="outExplosiveTrigger">Direct Kinetic Penetration Only</span>
+            </div>
+            <div class="explosive-profile-grid">
+              <div class="explosive-stat-item">
+                <span class="explosive-stat-label">Blast Radius</span>
+                <span class="explosive-stat-val" id="outExplosiveRadius">0m</span>
+              </div>
+              <div class="explosive-stat-item">
+                <span class="explosive-stat-label">AoE Damage Pool</span>
+                <span class="explosive-stat-val" id="outExplosivePool">0 HP</span>
+              </div>
+              <div class="explosive-stat-item">
+                <span class="explosive-stat-label">Penetration Depth</span>
+                <span class="explosive-stat-val" id="outExplosiveDepth">Surface Direct</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Bill of Materials & Ingots -->
+        <div class="deck-tab-panel" id="tab-bom">
+          <div class="panel bom-panel">
+            <div class="panel-header">
               <h2>📦 Bill of Materials & Ingot Costs</h2>
-              <span class="badge bom-expand-badge" style="font-size: 11px;"><span class="bom-arrow">▶</span> <span class="bom-toggle-text"></span></span>
+              <span id="outTotalValue" style="font-size: 13px; font-family: var(--font-mono); color: var(--green-accent); font-weight: 700;">$0</span>
             </div>
-            <span id="outTotalValue" style="font-size: 12px; font-family: var(--font-mono); color: var(--green-accent);">$0</span>
-          </summary>
-          <div style="padding: 12px; max-height: 560px; overflow-y: auto;">
-            <table class="bom-table">
-              <thead>
-                <tr>
-                  <th>Component / Ingot</th>
-                  <th>Quantity</th>
-                  <th>Mass (kg)</th>
-                  <th>Integrity</th>
-                </tr>
-              </thead>
-              <tbody id="bomTableBody">
-                <!-- Populated dynamically -->
-              </tbody>
-            </table>
+            <div style="padding: 12px; max-height: 480px; overflow-y: auto;">
+              <table class="bom-table">
+                <thead>
+                  <tr>
+                    <th>Component / Ingot</th>
+                    <th>Quantity</th>
+                    <th>Mass (kg)</th>
+                    <th>Integrity</th>
+                  </tr>
+                </thead>
+                <tbody id="bomTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
           </div>
-        </details>
+        </div>
 
       </div>
+
+    </div>
     </div>
 
     <!-- WORKSPACE 2: DEFINITION WORKBENCH (DEEP C# & SBC EDITORS) -->
