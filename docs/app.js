@@ -1596,7 +1596,7 @@ function getShotsPerMag(weapon, ammo) {
   const fallback = (weapon && weapon.magazineSize) || 100;
   if (!ammo) return fallback;
   if (!ammo.ammoMagazine || ammo.ammoMagazine === 'Energy') {
-    return (ammo.energyMagazineSize > 0) ? ammo.energyMagazineSize : fallback;
+    return (ammo.energyMagazineSize > 0) ? ammo.energyMagazineSize : ((weapon && weapon.barrelsPerShot) || 1);
   }
   const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
     ? MAGAZINES_BLUEPRINTS_DATA
@@ -1641,7 +1641,7 @@ function updateTelemetryAmmoBadge() {
   const isVirtualMag = !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine === 'Energy';
   const shotsPerMag = getShotsPerMag(activeWeapon, activeAmmo);
   const magChip = isVirtualMag
-    ? ` &bull; <span>⚡ ${shotsPerMag} rds (virtual mag)</span>`
+    ? (activeAmmo.energyMagazineSize > 0 ? ` &bull; <span>⚡ ${shotsPerMag} rds (virtual mag)</span>` : ` &bull; <span>⚡ Continuous</span>`)
     : ` &bull; <span>${shotsPerMag} rds/mag</span>`;
 
   telemetryAmmoBadge.innerHTML = `
@@ -2571,13 +2571,13 @@ function computeSustainedDps() {
   const rof = parseFloat(wRateOfFire.value) || 1000;
   const barrels = parseFloat(wBarrelsPerShot.value) || 1;
   const reloadTicks = parseFloat(wReloadTime.value) || 0;
-  const magsToLoad = parseFloat(wMagsToLoad.value) || 1;
-  const magSize = getShotsPerMag(activeWeapon, activeAmmo);
-
-  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
-  const alphaVolley = dmgDetails.instantTotal * barrels;
+  const magsToLoad = Math.max(1, parseFloat(wMagsToLoad.value) || 1);
+  const magSize = Math.max(1, getShotsPerMag(activeWeapon, activeAmmo));
 
   const totalRounds = magSize * magsToLoad;
+  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
+  const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
+
   const fireDurationSec = (totalRounds / rof) * 60;
   const reloadSec = reloadTicks / 60;
   const totalCycleSec = fireDurationSec + reloadSec;
@@ -2593,13 +2593,13 @@ function computeSustainedDps() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
-  return { rof, barrels, magSize, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
+  return { rof, barrels, magSize, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
 }
 
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
+  const { rof, barrels, magSize, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
 
   // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
@@ -2611,13 +2611,13 @@ function updateCombatTelemetry() {
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
 
   const heavyDmg = (perHit * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
-  const heavyVolley = Math.round(heavyDmg * barrels);
+  const heavyVolley = Math.round(heavyDmg * totalRounds);
 
   const lightDmg = (perHit * lightMult) + dmgDetails.aoe + dmgDetails.frag;
-  const lightVolley = Math.round(lightDmg * barrels);
+  const lightVolley = Math.round(lightDmg * totalRounds);
 
   const nonArmorDmg = (perHit * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
-  const nonArmorVolley = Math.round(nonArmorDmg * barrels);
+  const nonArmorVolley = Math.round(nonArmorDmg * totalRounds);
 
   // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
   let blastKind = 'none';
@@ -2661,7 +2661,8 @@ function updateCombatTelemetry() {
     teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}`;
   }
   if (outEffectiveAlpha) {
-    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Paper volley: ${Math.round(alphaVolley).toLocaleString()} hp`;
+    const roundsTag = totalRounds > 1 ? ` (${totalRounds} rds)` : '';
+    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Paper volley: ${Math.round(alphaVolley).toLocaleString()} hp${roundsTag}`;
   }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${sustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
@@ -3250,13 +3251,12 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const rof = weapon.rateOfFire || 600;
   const barrels = weapon.barrelsPerShot || 1;
   const reloadTicks = weapon.reloadTime || 0;
-  const mags = weapon.magsToLoad || 1;
-  const magSize = getShotsPerMag(weapon, a);
-
-  const dmgDetails = getAmmoDamageDetailed(a);
-  const alphaVolley = Math.round(dmgDetails.instantTotal * barrels);
+  const mags = Math.max(1, weapon.magsToLoad || 1);
+  const magSize = Math.max(1, getShotsPerMag(weapon, a));
 
   const totalRounds = magSize * mags;
+  const dmgDetails = getAmmoDamageDetailed(a);
+  const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
   const fireDurationSec = (totalRounds / rof) * 60;
   const reloadSec = reloadTicks / 60;
   const totalCycleSec = fireDurationSec + reloadSec;

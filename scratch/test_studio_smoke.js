@@ -252,6 +252,16 @@ vm.runInContext(`
     thrRof: thrW && thrW.rateOfFire,
     thrDps: thrMetrics.sustainedDps,
     missingIcons,
+
+    // Energy Virtual Magazine checks
+    hLaserMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX'), ammosDb['Lasers_Laser_Large']),
+    hLaserAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).alphaVolley,
+    spartanMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret'), ammosDb['Lasers_Laser_Dual']),
+    spartanAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).alphaVolley,
+    harbMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC'), ammosDb['HeavyRailgunAmmo']),
+    harbAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC')).alphaVolley,
+    pdMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_PDT'), ammosDb['Lasers_AMS']),
+    pdAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_PDT')).alphaVolley,
   });
 `, sandbox);
 
@@ -266,13 +276,26 @@ check('Tsunami has non-zero effective DPS', lcReport.tsuEffectiveDps > 0);
 check('Tsunami has non-zero alpha volley', lcReport.tsuAlpha > 0);
 check('Tsunami has 3.0x heavy armor multiplier', lcReport.tsuArmorMult === 3.0);
 check('Hurricane selects Ballistics_HeavyCannon (480mm)', lcReport.hurAmmoRound === 'Ballistics_HeavyCannon');
-check('Hurricane alpha volley includes 70k EOL blast (80,000 hp)', lcReport.hurAlphaVolley === 80000);
+check('Hurricane alpha volley reflects loaded magazines capacity (2 rds * 80k = 160,000 hp)', lcReport.hurAlphaVolley === 160000);
 check('Hurricane sustained DPS reflects 80k payload (> 14,000 DPS)', lcReport.hurSustainedDps > 14000);
 check('Hurricane has 2.0x heavy armor multiplier', lcReport.hurArmorMult === 2.0);
 check('Khopesh has inlined rateOfFire 360 RPM', lcReport.khoRof === 360);
 check('Thrasher has rateOfFire 480 RPM', lcReport.thrRof === 480);
 check('Thrasher sustained DPS (~4500) > Khopesh sustained DPS (~2400)', lcReport.thrDps > lcReport.khoDps);
 check('All weapon icons resolve to icons/ paths (0 missing)', lcReport.missingIcons === 0);
+
+// Energy Virtual Magazine & Continuous Energy checks
+check('Heavy Laser resolves 240-rd virtual magazine', lcReport.hLaserMagSize === 240);
+check('Heavy Laser alpha volley spans 240-rd burst (36,000 hp)', lcReport.hLaserAlpha === 36000);
+check('Spartan Turret resolves 360-rd virtual magazine', lcReport.spartanMagSize === 360);
+check('Spartan Turret alpha volley spans 360-rd burst (54,000 hp)', lcReport.spartanAlpha === 54000);
+check('Harbinger Railgun resolves 1-rd energy magazine (1,000,000 hp)', lcReport.harbMagSize === 1 && lcReport.harbAlpha === 1000000);
+check('Point Defense Laser (continuous, no virtual mag) resolves 1 round (100 hp, NOT 10,000 hp fallback)', lcReport.pdMagSize === 1 && lcReport.pdAlpha === 100);
+
+// Commit date format check (mm.dd.yyyy)
+const sourceLiveContent = fs.readFileSync(path.join(root, 'docs', 'source_live.js'), 'utf8');
+const dateRegexMatch = sourceLiveContent.includes("d.getUTCFullYear()") && sourceLiveContent.includes("${mm}.${dd}.${yyyy}");
+check('source_live.js formats commit date as mm.dd.yyyy', dateRegexMatch);
 
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');

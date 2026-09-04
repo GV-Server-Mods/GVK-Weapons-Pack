@@ -201,6 +201,17 @@ function reportProblems(data, mode) {
   return sev;
 }
 
+function formatCommitDate(raw) {
+  if (!raw) return '';
+  if (/^\d{2}\.\d{2}\.\d{4}$/.test(raw)) return raw;
+  const d = new Date(raw);
+  if (isNaN(d.getTime())) return '';
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  const yyyy = d.getUTCFullYear();
+  return `${mm}.${dd}.${yyyy}`;
+}
+
 async function initHosted() {
   const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
   if (!manifestRes.ok) return null;
@@ -218,9 +229,31 @@ async function initHosted() {
   }
   const data = await buildFrom(csSources, { magazines, blueprints, cubeBlocks });
   const short = String(manifest.commit || '').slice(0, 7);
+  let dateStr = formatCommitDate(manifest.date);
   const sev = reportProblems(data, 'hosted @ ' + short);
   const chip = severityChip(sev);
-  return { data, label: chip.icon + ' LIVE @ ' + short + ' (' + manifest.ref + ')', mode: 'hosted', severity: sev };
+  const dateTag = dateStr ? ' · ' + dateStr : '';
+  const label = chip.icon + ' LIVE @ ' + short + dateTag + (manifest.ref ? ' (' + manifest.ref + ')' : '');
+
+  // Asynchronous fallback: if manifest.date was empty, fetch commit date from GitHub API
+  if (!dateStr && manifest.commit) {
+    fetch('https://api.github.com/repos/gv-server-mods/GVK-Weapons-Pack/commits/' + manifest.commit)
+      .then(res => res.ok ? res.json() : null)
+      .then(info => {
+        const d = info && info.commit && info.commit.committer && info.commit.committer.date;
+        const formatted = formatCommitDate(d);
+        const el = ensureChip();
+        if (formatted && el) {
+          const cur = el.textContent;
+          if (!cur.includes(formatted)) {
+            el.textContent = cur.replace(/(@\s*[0-9a-fA-F]+)/, `$1 · ${formatted}`);
+          }
+        }
+      })
+      .catch(() => {});
+  }
+
+  return { data, label, mode: 'hosted', severity: sev };
 }
 
 async function initFolderLink(onReapply) {
