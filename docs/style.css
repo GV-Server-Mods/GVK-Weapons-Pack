@@ -2769,6 +2769,232 @@ input.control-input.is-wc-default {
   box-shadow: none;
 }
 
+/* Quick Filter Bar & Cockpit Segmented Controls */
+.shipbuilder-filter-bar {
+  background: rgba(18, 22, 31, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color, #1e2433);
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.8px;
+  margin-right: 2px;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-color, #1e2433);
+  margin: 0 4px;
+}
+
+.filter-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.filter-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-pill.active {
+  background: rgba(245, 158, 11, 0.16);
+  color: var(--amber-primary);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);
+}
+
+/* Battery Multiplier Segmented Control */
+.battery-multiplier-group {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color, #1e2433);
+  border-radius: 6px;
+  padding: 2px 4px;
+  gap: 2px;
+  margin-left: 6px;
+}
+
+.battery-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+  padding-left: 2px;
+}
+
+.battery-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.battery-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.battery-btn.active {
+  background: rgba(245, 158, 11, 0.22);
+  color: var(--amber-primary);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+/* Pillar Header Badges & Fitting Clusters */
+.pillar-header-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pillar-badges-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+/* Compact Cards inside Pillars */
+.sim-card.compact {
+  margin-top: 4px;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.explosive-profile-card.compact {
+  margin-top: 4px;
+  box-shadow: none;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+/* Bill of Materials Bottom Accordion */
+.bom-accordion {
+  margin-top: 20px;
+  background: var(--card-bg, #11141d);
+  border: 1px solid var(--border-color, #1e2433);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s ease;
+}
+
+.bom-accordion:hover {
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.bom-summary-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  outline: none;
+  transition: background 0.15s ease;
+}
+
+.bom-summary-bar::-webkit-details-marker {
+  display: none;
+}
+
+.bom-summary-bar:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.bom-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bom-toggle-icon {
+  font-size: 10px;
+  color: var(--amber-primary);
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+details[open] .bom-toggle-icon {
+  transform: rotate(90deg);
+}
+
+.bom-summary-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+.bom-summary-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bom-badge-cost {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green-accent);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.bom-details-content {
+  border-top: 1px solid var(--border-color, #1e2433);
+  background: rgba(0, 0, 0, 0.15);
+}
+
 .bom-panel {
   box-shadow: none;
   border: none;
@@ -2776,16 +3002,23 @@ input.control-input.is-wc-default {
 
 /* Light Theme Parity */
 [data-theme="light"] .hero-pillar-card,
-[data-theme="light"] .telemetry-deck {
+[data-theme="light"] .telemetry-deck,
+[data-theme="light"] .bom-accordion {
   background: #ffffff;
   border-color: #e2e8f0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="light"] .pillar-header,
-[data-theme="light"] .deck-tabs-header {
+[data-theme="light"] .deck-tabs-header,
+[data-theme="light"] .bom-summary-bar {
   background: #f8fafc;
   border-bottom-color: #e2e8f0;
+}
+
+[data-theme="light"] .bom-details-content {
+  background: #ffffff;
+  border-top-color: #e2e8f0;
 }
 
 [data-theme="light"] .pillar-mini-cycle {
@@ -2806,6 +3039,44 @@ input.control-input.is-wc-default {
   color: #b45309;
   border-bottom-color: #b45309;
   background: #fffbeb;
+}
+
+[data-theme="light"] .shipbuilder-filter-bar {
+  background: rgba(241, 245, 249, 0.95);
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .filter-pill {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+[data-theme="light"] .filter-pill:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+[data-theme="light"] .filter-pill.active {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+[data-theme="light"] .battery-multiplier-group {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .battery-btn {
+  color: #475569;
+}
+
+[data-theme="light"] .battery-btn.active {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #f59e0b;
 }
 
 

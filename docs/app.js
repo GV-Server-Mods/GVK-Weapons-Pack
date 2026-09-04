@@ -2179,6 +2179,8 @@ function updateUniversalBanner() {
   const scopeBadgeTech = document.getElementById('scopeBadgeTech');
   if (scopeBadgeUps) scopeBadgeUps.innerHTML = upsHtml;
   if (scopeBadgeTech) scopeBadgeTech.innerHTML = techHtml;
+  const bomBadgeTech = document.getElementById('bomBadgeTech');
+  if (bomBadgeTech) bomBadgeTech.innerHTML = techHtml;
 
   // Automated Role Badge
   const curAmmoForRole = activeAmmo || (activeWeapon.assignedAmmos && ammosDb[activeWeapon.assignedAmmos[0]]) || ammosDb[activeWeapon.ammoName];
@@ -2233,6 +2235,11 @@ function updateUniversalBanner() {
   if (scopeBadgeCircuitry) {
     scopeBadgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
     scopeBadgeCircuitry.style.display = hasDataCore ? 'inline-flex' : 'none';
+  }
+  const bomBadgeCircuitry = document.getElementById('bomBadgeCircuitry');
+  if (bomBadgeCircuitry) {
+    bomBadgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
+    bomBadgeCircuitry.style.display = hasDataCore ? 'inline-flex' : 'none';
   }
 
   // Relic Status Badge: non-craftable ammunition from raw scratch ingots
@@ -3420,7 +3427,7 @@ function updateCombatTelemetry() {
     outPeerBenchmarks.style.display = 'none';
   }
 
-  // Conditional Explosive Profile Tab
+  // Conditional Explosive Profile
   const deckTabExplosive = document.getElementById('deckTabExplosive');
   const hasExplosive = (blastRadius > 0 && blastDmg > 0) || blastKind === 'ewar' || blastKind === 'screen';
   if (deckTabExplosive) {
@@ -3429,6 +3436,9 @@ function updateCombatTelemetry() {
       const firstTab = document.querySelector('.deck-tab-btn[data-deck-tab="tab-ttk"]');
       if (firstTab) firstTab.click();
     }
+  }
+  if (explosiveProfileBox) {
+    explosiveProfileBox.style.display = hasExplosive ? 'block' : 'none';
   }
 
   // Terrain Clearance indicator in Flight Deck Tab
