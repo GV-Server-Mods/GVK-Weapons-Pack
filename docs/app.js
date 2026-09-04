@@ -547,6 +547,8 @@ const outShotsPerSec = document.getElementById('outShotsPerSec');
 const outCycleTime = document.getElementById('outCycleTime');
 const outTraverseDeg = document.getElementById('outTraverseDeg');
 const outTraverseAzEl = document.getElementById('outTraverseAzEl');
+const outMaxRange = document.getElementById('outMaxRange');
+const outMaxRangeSource = document.getElementById('outMaxRangeSource');
 const outCombatCycleTitle = document.getElementById('outCombatCycleTitle');
 const outHeatDutyRatio = document.getElementById('outHeatDutyRatio');
 const heatProgressBar = document.getElementById('heatProgressBar');
@@ -2474,6 +2476,18 @@ function updateCombatTelemetry() {
   outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span style="font-size: 14px; font-weight: 400;">/s</span>`;
   outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
 
+  // Max Engagement Range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
+  const isTrackingWeapon = activeWeapon.type === 'Turret';
+  const maxEngagementRange = isTrackingWeapon
+    ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 0)
+    : (parseFloat(tMaxTrajectory.value) || (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0);
+  if (outMaxRange) {
+    outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span style="font-size: 14px; font-weight: 400;">m</span>`;
+  }
+  if (outMaxRangeSource) {
+    outMaxRangeSource.textContent = isTrackingWeapon ? 'Targeting Range' : 'Trajectory Range';
+  }
+
   // Structural & Power
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
   const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
@@ -2635,8 +2649,13 @@ function updateTtkSimulator() {
 // Initial D Dodgeability / Drift Lead Meter
 function updateInitialDDriftMeter() {
   const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 1000;
-  const maxRange = parseFloat(tMaxTrajectory.value) || 1500;
   const driftSpeedMs = 27.78; // 100 km/h in m/s
+
+  // Max engagement range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
+  const isTrackingWeapon = activeWeapon && activeWeapon.type === 'Turret';
+  const maxRange = isTrackingWeapon
+    ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 1500)
+    : (parseFloat(tMaxTrajectory.value) || 1500);
 
   outFlightMuzzleSpd.textContent = `${Math.round(muzzleSpeed)} m/s`;
 

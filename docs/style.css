@@ -1156,6 +1156,10 @@ input.control-input.is-wc-default {
   background: var(--blue-accent);
 }
 
+.stat-card.purple::before {
+  background: #a855f7;
+}
+
 .stat-title {
   font-size: 11px;
   color: var(--text-muted);
