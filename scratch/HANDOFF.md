@@ -112,6 +112,13 @@ PhysicalItems.sbc staged for future use (ingot masses); pipeline ignores it toda
 2. **Animation files**: *_Animations.cs use C# generics/#region the parser can't handle. Fix: skip them in parseAll.
 3. **git push origin main silently dropped**: reported "Everything up-to-date" when local was ahead. Workaround:
    `git push origin <sha>:main` or `git push origin HEAD:main`.
+4. **onReapply never called in hosted mode (ec4a735)**: initHosted() parsed live data but never called opts.onReapply(),
+   so the app kept using JSON-fetched bundled data → green chip but DPS=0 and missing icons. User spotted that
+   the data was a hybrid (some live, some bundled) which is a credibility trap.
+   Fix: added validateLiveData() — checks all four legs (weapons/ammos/magazines/blocks) and that every
+   assignedAmmos resolves in ammosDb BEFORE pushing any data to the app. On failure, fall back to bundled
+   with a red banner. validateLiveData lives in source_pipeline.js and is exported for CI reuse.
+   Added 7 atomic-swap tests (rejects null/empty/unresolved).
 
 ## M2 DECISIONS (locked — do not regress)
 - ammosDb keyed by C# DEF NAME (unique). AmmoRound is a terminal display name and is NOT unique
