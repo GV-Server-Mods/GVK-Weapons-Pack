@@ -3,6 +3,8 @@
 // Run: node scratch/migrate_overrides.js
 const fs = require('fs'), path = require('path');
 const dataDir = path.join(__dirname, '..', 'docs', 'data');
+const iconsDir = path.join(__dirname, '..', 'docs', 'icons');
+const diskIcons = new Set(fs.existsSync(iconsDir) ? fs.readdirSync(iconsDir) : []);
 
 function loadBundled(file) {
   let s = fs.readFileSync(path.join(dataDir, file), 'utf8');
@@ -14,11 +16,24 @@ function loadBundled(file) {
 const weapons = loadBundled('weapons_data.js');
 const mags = loadBundled('magazines_blueprints_data.js');
 
+function resolveIconFile(w) {
+  const iconBase = path.basename(w.icon || '');
+  if (diskIcons.has(iconBase)) return 'icons/' + iconBase;
+  const stripped = iconBase.replace(/^[LS]__/, '');
+  if (diskIcons.has(stripped)) return 'icons/' + stripped;
+  if (diskIcons.has(w.subtypeId + '.png')) return 'icons/' + w.subtypeId + '.png';
+  if (w.subtypeId === 'LargeGatlingTurret') return 'icons/L__Gatling_Turret.png';
+  if (w.subtypeId === 'LargeMissileTurret') return 'icons/L__Missile_Turret.png';
+  if (w.subtypeId === 'SmallGatlingGun') return 'icons/S__Gatling_Gun.png';
+  if (w.subtypeId === 'SmallMissileLauncher') return 'icons/S__Missile_Launcher.png';
+  return 'icons/L__Gatling_Avenger_Turret.png';
+}
+
 const wov = {};
 const dups = [];
 for (const w of weapons) {
   if (wov[w.subtypeId]) { dups.push(w.subtypeId); continue; }
-  wov[w.subtypeId] = { id: w.id, name: w.name, icon: w.icon };
+  wov[w.subtypeId] = { id: w.id, name: w.name, icon: resolveIconFile(w) };
 }
 const mov = {};
 for (const m of mags) {

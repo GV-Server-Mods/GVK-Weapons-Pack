@@ -374,6 +374,9 @@ function ammoShape(name, d, file) {
   const frag = d.Fragment || {};
   const traj = d.Trajectory || {};
   const ds = d.DamageScales || {};
+  const arm = ds.Armor || {};
+  const grids = ds.Grids || {};
+  const dmgType = ds.DamageType || {};
   const lines = (d.AmmoGraphics && d.AmmoGraphics.Lines) || {};
   const tracer = lines.Tracer || {};
   const col = (tracer.Color && tracer.Color.args) || {};
@@ -382,7 +385,7 @@ function ammoShape(name, d, file) {
     name, base_name: null, file,
     ammoMagazine: d.AmmoMagazine || 'Energy',
     ammoRound: d.AmmoRound || name,
-    terminalName: d.AmmoRound || name,
+    terminalName: d.TerminalName || d.AmmoRound || name,
     baseDamage: d.BaseDamage || 0,
     baseDamageCutoff: d.BaseDamageCutoff || 0,
     mass: d.Mass || 0,
@@ -418,10 +421,16 @@ function ammoShape(name, d, file) {
       guidance: (typeof traj.Guidance === 'string' && traj.Guidance) || 'None',
     },
     damageScales: {
-      shield: ds.Shields !== undefined ? ds.Shields : (ds.Shield || 0),
-      lightArmor: ds.Lights !== undefined ? ds.Lights : (ds.LightArmor || 0),
-      heavyArmor: ds.Heavies !== undefined ? ds.Heavies : (ds.HeavyArmor || 0),
-      characters: ds.Characters || 0, healthHitModifier: ds.HealthHitModifier || 0, nonArmor: ds.NonArmor || 0,
+      shield: ds.Shields !== undefined ? ds.Shields : (ds.Shield !== undefined ? ds.Shield : 0),
+      armorArmor: arm.Armor !== undefined ? arm.Armor : (ds.ArmorArmor !== undefined ? ds.ArmorArmor : -1),
+      lightArmor: arm.Light !== undefined ? arm.Light : (ds.Lights !== undefined ? ds.Lights : (ds.LightArmor !== undefined ? ds.LightArmor : -1)),
+      heavyArmor: arm.Heavy !== undefined ? arm.Heavy : (ds.Heavies !== undefined ? ds.Heavies : (ds.HeavyArmor !== undefined ? ds.HeavyArmor : -1)),
+      nonArmor: arm.NonArmor !== undefined ? arm.NonArmor : (ds.NonArmor !== undefined ? ds.NonArmor : -1),
+      characters: ds.Characters !== undefined ? ds.Characters : 1.0,
+      healthHitModifier: ds.HealthHitModifier !== undefined ? ds.HealthHitModifier : 0,
+      damageType: (typeof dmgType === 'string' ? dmgType : dmgType.Base) || 'Kinetic',
+      gridLarge: grids.Large !== undefined ? grids.Large : -1,
+      gridSmall: grids.Small !== undefined ? grids.Small : -1,
     },
     approachesRef: null,
     audio: { travelSound: audio.TravelSound || '', hitSound: audio.HitSound || '', shieldHitSound: '' },
@@ -497,7 +506,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     durabilityMod: mp.DurabilityMod === undefined ? 0 : mp.DurabilityMod,
     idlePower: hw.IdlePower || 0,
     components: block ? block.components : [],
-    icon: ov.icon || 'icons/' + id + '.png',
+    icon: ov.icon || ('icons/' + sub + '.png'),
     subtypeId: sub,
     ammoName: usable[0] || null,
     buildTimeSeconds: block ? block.buildTimeSeconds : 0,

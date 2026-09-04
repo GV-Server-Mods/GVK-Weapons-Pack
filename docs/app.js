@@ -1192,10 +1192,18 @@ function refreshAfterDataLoad() {
   // Populate Balance Matrix Modal inputs
   syncBalanceMatrixInputs();
 
-  // Select Default Weapon (Avenger Turret or First)
+  // Select Default Weapon (Avenger Turret or First) or re-sync existing selection
   if (!activeWeapon && weaponsDb.length > 0) {
-    const avenger = weaponsDb.find(w => w.name.includes("Avenger")) || weaponsDb[0];
+    const avenger = weaponsDb.find(w => (w.name || '').includes("Avenger") || (w.displayName || '').includes("Avenger")) || weaponsDb[0];
     selectWeapon(avenger.id);
+  } else if (activeWeapon) {
+    const stillExists = weaponsDb.find(w => w.id === activeWeapon.id || w.subtypeId === activeWeapon.subtypeId);
+    if (stillExists) {
+      selectWeapon(stillExists.id);
+    } else if (weaponsDb.length > 0) {
+      const avenger = weaponsDb.find(w => (w.name || '').includes("Avenger") || (w.displayName || '').includes("Avenger")) || weaponsDb[0];
+      selectWeapon(avenger.id);
+    }
   }
 
   // Initialize Default Logistics Magazine
@@ -1356,54 +1364,60 @@ function populateWeaponDropdowns() {
     compareSelect.appendChild(opt);
   });
 
-  weaponSelect.addEventListener('change', (e) => {
-    selectWeapon(e.target.value);
-  });
+  if (weaponSelect && !weaponSelect._changeBound) {
+    weaponSelect.addEventListener('change', (e) => {
+      selectWeapon(e.target.value);
+    });
+    weaponSelect._changeBound = true;
+  }
 
-  compareSelect.addEventListener('change', (e) => {
-    const val = e.target.value;
-    benchmarkWeapon = val ? weaponsDb.find(w => w.id === val) : null;
-    if (benchmarkWeapon) {
-      if (compBenchIcon) {
-        compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
-        compBenchIcon.style.display = 'inline-block';
-        compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
-      }
-      
-      const bAmmos = getSelectableAmmos(benchmarkWeapon);
-      benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
-
-      if (compareAmmoSelect) {
-        if (bAmmos.length > 1) {
-          compareAmmoSelect.innerHTML = bAmmos.map(k => {
-            const a = ammosDb[k] || {};
-            const label = a.terminalName || a.ammoRound || k;
-            const mag = a.ammoMagazine || 'Energy';
-            return `<option value="${k}">${label} [${mag}]</option>`;
-          }).join('');
-          compareAmmoSelect.value = benchmarkAmmoKey;
-          compareAmmoSelect.style.display = 'inline-block';
-        } else {
-          compareAmmoSelect.style.display = 'none';
+  if (compareSelect && !compareSelect._changeBound) {
+    compareSelect.addEventListener('change', (e) => {
+      const val = e.target.value;
+      benchmarkWeapon = val ? weaponsDb.find(w => w.id === val) : null;
+      if (benchmarkWeapon) {
+        if (compBenchIcon) {
+          compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
+          compBenchIcon.style.display = 'inline-block';
+          compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
         }
-      }
+        
+        const bAmmos = getSelectableAmmos(benchmarkWeapon);
+        benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
 
-      if (compBenchAmmoIcon) {
-        const bAmmo = ammosDb[benchmarkAmmoKey];
-        compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
-        compBenchAmmoIcon.style.display = 'inline-block';
-        compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
-      }
-    } else {
-      benchmarkAmmoKey = null;
-      if (compBenchIcon) compBenchIcon.style.display = 'none';
-      if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
-      if (compareAmmoSelect) compareAmmoSelect.style.display = 'none';
-    }
-    updateComparisonRadar();
-  });
+        if (compareAmmoSelect) {
+          if (bAmmos.length > 1) {
+            compareAmmoSelect.innerHTML = bAmmos.map(k => {
+              const a = ammosDb[k] || {};
+              const label = a.terminalName || a.ammoRound || k;
+              const mag = a.ammoMagazine || 'Energy';
+              return `<option value="${k}">${label} [${mag}]</option>`;
+            }).join('');
+            compareAmmoSelect.value = benchmarkAmmoKey;
+            compareAmmoSelect.style.display = 'inline-block';
+          } else {
+            compareAmmoSelect.style.display = 'none';
+          }
+        }
 
-  if (compareAmmoSelect) {
+        if (compBenchAmmoIcon) {
+          const bAmmo = ammosDb[benchmarkAmmoKey];
+          compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
+          compBenchAmmoIcon.style.display = 'inline-block';
+          compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+        }
+      } else {
+        benchmarkAmmoKey = null;
+        if (compBenchIcon) compBenchIcon.style.display = 'none';
+        if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
+        if (compareAmmoSelect) compareAmmoSelect.style.display = 'none';
+      }
+      updateComparisonRadar();
+    });
+    compareSelect._changeBound = true;
+  }
+
+  if (compareAmmoSelect && !compareAmmoSelect._changeBound) {
     compareAmmoSelect.addEventListener('change', (e) => {
       benchmarkAmmoKey = e.target.value;
       if (compBenchAmmoIcon) {
@@ -1413,6 +1427,7 @@ function populateWeaponDropdowns() {
       }
       updateComparisonRadar();
     });
+    compareAmmoSelect._changeBound = true;
   }
 }
 
@@ -1442,11 +1457,14 @@ function populateAmmoDropdowns() {
     }
   });
 
-  ammoSelectGlobal.addEventListener('change', (e) => {
-    selectAmmo(e.target.value);
-  });
+  if (ammoSelectGlobal && !ammoSelectGlobal._changeBound) {
+    ammoSelectGlobal.addEventListener('change', (e) => {
+      selectAmmo(e.target.value);
+    });
+    ammoSelectGlobal._changeBound = true;
+  }
 
-  if (btnAssignAmmo) {
+  if (btnAssignAmmo && !btnAssignAmmo._clickBound) {
     btnAssignAmmo.addEventListener('click', () => {
       const selected = assignAmmoDropdown.value;
       if (!selected || !activeWeapon) return;
@@ -1457,6 +1475,7 @@ function populateAmmoDropdowns() {
         showToast(`Assigned ${selected} to ${activeWeapon.name}!`);
       }
     });
+    btnAssignAmmo._clickBound = true;
   }
 }
 
@@ -1541,12 +1560,15 @@ function populateAnimationDropdown() {
     selectAnimationDef.appendChild(opt);
   });
 
-  selectAnimationDef.addEventListener('change', (e) => {
-    if (activeWeapon) {
-      activeWeapon.assignedAnimation = e.target.value || null;
-      currentAnimBadge.textContent = e.target.value || "None";
-    }
-  });
+  if (selectAnimationDef && !selectAnimationDef._changeBound) {
+    selectAnimationDef.addEventListener('change', (e) => {
+      if (activeWeapon) {
+        activeWeapon.assignedAnimation = e.target.value || null;
+        currentAnimBadge.textContent = e.target.value || "None";
+      }
+    });
+    selectAnimationDef._changeBound = true;
+  }
 }
 
 // Helper to get terminal-usable ammos for a weapon (filtering out internal submunitions)
@@ -1753,10 +1775,18 @@ function updateUniversalBanner() {
   // Weapon Icon
   if (activeWeaponIcon) {
     const wIcon = getWeaponIconUrl(activeWeapon);
+    activeWeaponIcon.onerror = () => {
+      activeWeaponIcon.onerror = null;
+      activeWeaponIcon.src = 'icons/L__Gatling_Avenger_Turret.png';
+    };
     activeWeaponIcon.src = wIcon;
     activeWeaponIcon.alt = activeWeapon.name || 'Weapon Icon';
     activeWeaponIcon.title = `${activeWeapon.displayName || activeWeapon.name} [${activeWeapon.gridSize || activeWeapon.grid || 'Large'}]`;
     if (compActiveIcon) {
+      compActiveIcon.onerror = () => {
+        compActiveIcon.onerror = null;
+        compActiveIcon.src = 'icons/L__Gatling_Avenger_Turret.png';
+      };
       compActiveIcon.src = wIcon;
       compActiveIcon.title = activeWeapon.displayName || activeWeapon.name;
     }
@@ -2520,8 +2550,9 @@ function renderSbcComponentsTable() {
 /// Two-way ties join labels; all-equal reports "All Targets".
 /// </summary>
 function getTopArmorProfile(ds = {}) {
-  const heavy = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
-  const light = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
+  const heavy = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
+  const light = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
   const nonArmor = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
   const max = Math.max(heavy, light, nonArmor);
   const names = [];
@@ -2572,8 +2603,9 @@ function updateCombatTelemetry() {
 
   // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
-  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
-  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
+  const heavyMult = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
+  const lightMult = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
   const perHit = dmgDetails.perBlockBase;
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
@@ -2841,8 +2873,9 @@ function updateTtkSimulator() {
   let targetMult = 1.0;
 
   const ds = activeAmmo.damageScales || {};
-  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
-  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
+  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
+  const heavyMult = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
+  const lightMult = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
 
   if (targetType === 'lightArmor') {
@@ -3203,8 +3236,6 @@ function getAmmoIconUrl(ammo) {
 }
 
 function getWeaponIconUrl(weapon) {
-  if (!weapon || !weapon.icon) return 'icons/L__Gatling_Avenger_Turret.png';
-  return weapon.icon;
 }
 
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
@@ -5149,6 +5180,15 @@ function setupModalEvents() {
   }
   if (btnHudExport) {
     btnHudExport.addEventListener('click', openCodeModal);
+  }
+  const btnExportSnapshots = document.getElementById('btnExportSnapshots');
+  if (btnExportSnapshots && !btnExportSnapshots._clickBound) {
+    btnExportSnapshots.addEventListener('click', () => {
+      if (window.GVKLiveSource && typeof window.GVKLiveSource.exportSnapshots === 'function') {
+        window.GVKLiveSource.exportSnapshots();
+      }
+    });
+    btnExportSnapshots._clickBound = true;
   }
   if (btnCloseModal) {
     btnCloseModal.addEventListener('click', () => {

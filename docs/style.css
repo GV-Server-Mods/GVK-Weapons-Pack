@@ -340,6 +340,16 @@
   color: #334155;
 }
 
+[data-theme="light"] .badge.badge-green {
+  border-color: var(--green-accent);
+  color: var(--green-accent);
+}
+
+[data-theme="light"] .badge.badge-red {
+  border-color: var(--red-accent);
+  color: var(--red-accent);
+}
+
 [data-theme="light"] .drift-item {
   background: #ffffff;
   border-color: #cbd5e1;
@@ -848,6 +858,21 @@ header {
 .badge.badge-cyan {
   border-color: var(--cyan-primary);
   color: var(--cyan-primary);
+}
+
+.badge.badge-green {
+  border-color: var(--green-accent);
+  color: var(--green-accent);
+}
+
+.badge.badge-red {
+  border-color: var(--red-accent);
+  color: var(--red-accent);
+}
+
+.badge[style*="cursor: pointer"]:hover,
+.badge[style*="cursor:pointer"]:hover {
+  filter: brightness(1.25);
 }
 
 /* Sandbox Advisory Banner */
@@ -2141,6 +2166,18 @@ input.control-input.is-wc-default {
 
 .hud-stat strong {
   color: var(--amber-primary);
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 11px;
 }
 
 .btn-xs {

@@ -2,14 +2,14 @@
 // This is a fallback snapshot only; the Studio parses CoreParts/*.cs + Content/Data/*.sbc live.
 // Do not hand-edit; regenerate via: node scratch/export_snapshots.js
 
-const BUNDLED_AMMOS = {
+const BUNDLED_AMMOS_DATA = {
   "LargeCalibreAmmo": {
     "name": "LargeCalibreAmmo",
     "base_name": null,
     "file": "Ballistics_Cannon_Ammos.cs",
     "ammoMagazine": "LargeCalibreAmmo",
     "ammoRound": "LargeCalibreAmmo",
-    "terminalName": "LargeCalibreAmmo",
+    "terminalName": "155 AP",
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -64,11 +64,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.5,
+      "heavyArmor": 3,
+      "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -97,7 +101,7 @@ const BUNDLED_AMMOS = {
     "file": "Ballistics_Cannon_Ammos.cs",
     "ammoMagazine": "LargeCalibreAmmo",
     "ammoRound": "LargeCalibreAmmoHE",
-    "terminalName": "LargeCalibreAmmoHE",
+    "terminalName": "155 HE",
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -152,11 +156,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -240,11 +248,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.5,
+      "heavyArmor": 3,
+      "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -273,7 +285,7 @@ const BUNDLED_AMMOS = {
     "file": "Ballistics_Cannon_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
-    "terminalName": "Ballistics_Cannon_NPC_Fragment1",
+    "terminalName": "155 AP",
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -328,11 +340,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.5,
+      "heavyArmor": 3,
+      "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -416,11 +432,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": 1.5,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -504,11 +524,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": 1.5,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -592,11 +616,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 10,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 0,
+      "gridSmall": 0
     },
     "approachesRef": null,
     "audio": {
@@ -680,11 +708,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": 1,
       "characters": 0.1,
       "healthHitModifier": 10,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -768,11 +800,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": -1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -801,7 +837,7 @@ const BUNDLED_AMMOS = {
     "file": "Ballistics_Gatling_Ammos.cs",
     "ammoMagazine": "NATO_25x184mm",
     "ammoRound": "NATO_25x184mm",
-    "terminalName": "NATO_25x184mm",
+    "terminalName": "NATO 25mm",
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -856,11 +892,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1
     },
     "approachesRef": null,
     "audio": {
@@ -889,7 +929,7 @@ const BUNDLED_AMMOS = {
     "file": "Ballistics_Gatling_Ammos.cs",
     "ammoMagazine": "NATO_25x184mm",
     "ammoRound": "NATO_25x184mm_Dual",
-    "terminalName": "NATO_25x184mm_Dual",
+    "terminalName": "NATO 25mm",
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -944,11 +984,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1
     },
     "approachesRef": null,
     "audio": {
@@ -977,7 +1021,7 @@ const BUNDLED_AMMOS = {
     "file": "Ballistics_Gatling_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "NATO_25x184mm_Dual_Fragment",
-    "terminalName": "NATO_25x184mm_Dual_Fragment",
+    "terminalName": "NATO 25mm",
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -1032,11 +1076,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1
     },
     "approachesRef": null,
     "audio": {
@@ -1120,11 +1168,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": 2,
+      "nonArmor": -1,
       "characters": 1e-7,
       "healthHitModifier": 5,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -1208,11 +1260,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": 2,
+      "nonArmor": -1,
       "characters": 1e-7,
       "healthHitModifier": 5,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -1296,11 +1352,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 500,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1384,11 +1444,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": 1,
+      "lightArmor": 1,
+      "heavyArmor": 1,
+      "nonArmor": 2,
       "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1
     },
     "approachesRef": null,
     "audio": {
@@ -1472,11 +1536,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 1000,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1560,11 +1628,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 1000,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1648,11 +1720,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 1000,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1736,11 +1812,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 500,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -1824,11 +1904,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 500,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -1912,11 +1996,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 500,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -2000,11 +2088,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -2092,11 +2184,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2180,11 +2276,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2272,11 +2372,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2364,11 +2468,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.5
     },
     "approachesRef": null,
     "audio": {
@@ -2456,11 +2564,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 0.5,
+      "gridSmall": 0.5
     },
     "approachesRef": null,
     "audio": {
@@ -2544,11 +2656,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": 1,
+      "lightArmor": 1,
+      "heavyArmor": 1,
+      "nonArmor": 2,
       "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1
     },
     "approachesRef": null,
     "audio": {
@@ -2632,11 +2748,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
+      "armorArmor": 0,
       "lightArmor": 0,
       "heavyArmor": 0,
-      "characters": 0,
+      "nonArmor": 0,
+      "characters": 1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": 0,
+      "gridSmall": 0
     },
     "approachesRef": null,
     "audio": {
@@ -2720,11 +2840,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
+      "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -2808,11 +2932,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
+      "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -2900,11 +3028,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
+      "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -2988,11 +3120,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
+      "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3076,11 +3212,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.8,
+      "heavyArmor": 0.6,
+      "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3164,11 +3304,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": -1,
+      "nonArmor": 0.2,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Energy",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3252,11 +3396,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3340,11 +3488,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3428,11 +3580,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -3516,11 +3672,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 2,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3604,11 +3764,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3692,11 +3856,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 10,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3780,11 +3948,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3868,11 +4040,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3956,11 +4132,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4044,11 +4224,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4132,11 +4316,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4220,11 +4408,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4308,11 +4500,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4396,11 +4592,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4484,11 +4684,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4572,11 +4776,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4660,11 +4868,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": 0.75,
+      "heavyArmor": 1.2,
+      "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 0.75
     },
     "approachesRef": null,
     "audio": {
@@ -4748,11 +4960,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 1,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4840,11 +5056,15 @@ const BUNDLED_AMMOS = {
         "Type": "Default",
         "BypassModifier": -1
       },
-      "lightArmor": 0,
-      "heavyArmor": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4928,11 +5148,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5016,11 +5240,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5104,11 +5332,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5192,11 +5424,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5280,11 +5516,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5368,11 +5608,15 @@ const BUNDLED_AMMOS = {
     },
     "damageScales": {
       "shield": 0,
-      "lightArmor": 0,
-      "heavyArmor": 0,
-      "characters": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 1,
       "healthHitModifier": 0,
-      "nonArmor": 0
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": -1
     },
     "approachesRef": null,
     "audio": {

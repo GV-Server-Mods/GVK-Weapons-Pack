@@ -2,7 +2,7 @@
 // This is a fallback snapshot only; the Studio parses CoreParts/*.cs + Content/Data/*.sbc live.
 // Do not hand-edit; regenerate via: node scratch/export_snapshots.js
 
-const BUNDLED_WEAPONS = [
+const BUNDLED_WEAPONS_DATA = [
   {
     "id": "L__ARYXCycloneCannon",
     "pdProjectiles": true,
@@ -87,7 +87,7 @@ const BUNDLED_WEAPONS = [
         "count": 360
       }
     ],
-    "icon": "icons/L__ARYXCycloneCannon.png",
+    "icon": "icons/ARYXCycloneCannon.png",
     "subtypeId": "ARYXCycloneCannon",
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138,
@@ -197,7 +197,7 @@ const BUNDLED_WEAPONS = [
         "count": 360
       }
     ],
-    "icon": "icons/L__ARYXCycloneCannon_NPC.png",
+    "icon": "icons/ARYXCycloneCannon_NPC.png",
     "subtypeId": "ARYXCycloneCannon_NPC",
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138,
@@ -307,7 +307,7 @@ const BUNDLED_WEAPONS = [
         "count": 360
       }
     ],
-    "icon": "icons/L__GVK_CycloneCannonTurret.png",
+    "icon": "icons/GVK_CycloneCannonTurret.png",
     "subtypeId": "GVK_CycloneCannonTurret",
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138,
@@ -417,7 +417,7 @@ const BUNDLED_WEAPONS = [
         "count": 360
       }
     ],
-    "icon": "icons/L__GVK_CycloneCannonTurret_NPC.png",
+    "icon": "icons/GVK_CycloneCannonTurret_NPC.png",
     "subtypeId": "GVK_CycloneCannonTurret_NPC",
     "ammoName": "LargeCalibreAmmo",
     "buildTimeSeconds": 138,
@@ -3196,7 +3196,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0.5,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__LargeGatlingTurret.png",
+    "icon": "icons/L__Gatling_Turret.png",
     "subtypeId": "LargeGatlingTurret",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 0,
@@ -3297,7 +3297,7 @@ const BUNDLED_WEAPONS = [
         "count": 240
       }
     ],
-    "icon": "icons/L__LargeGatlingTurret_NPC.png",
+    "icon": "icons/LargeGatlingTurret_NPC.png",
     "subtypeId": "LargeGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 78,
@@ -3398,7 +3398,7 @@ const BUNDLED_WEAPONS = [
         "count": 240
       }
     ],
-    "icon": "icons/L__LargeGatlingTurretReskin.png",
+    "icon": "icons/LargeGatlingTurretReskin.png",
     "subtypeId": "LargeGatlingTurretReskin",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 78,
@@ -3499,7 +3499,7 @@ const BUNDLED_WEAPONS = [
         "count": 240
       }
     ],
-    "icon": "icons/L__LargeGatlingTurretReskin_NPC.png",
+    "icon": "icons/LargeGatlingTurretReskin_NPC.png",
     "subtypeId": "LargeGatlingTurretReskin_NPC",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 78,
@@ -3802,7 +3802,7 @@ const BUNDLED_WEAPONS = [
         "count": 63
       }
     ],
-    "icon": "icons/S__SmallGatlingTurretReskin.png",
+    "icon": "icons/SmallGatlingTurretReskin.png",
     "subtypeId": "SmallGatlingTurretReskin",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 21,
@@ -3903,7 +3903,7 @@ const BUNDLED_WEAPONS = [
         "count": 63
       }
     ],
-    "icon": "icons/S__SmallGatlingTurretReskin_NPC.png",
+    "icon": "icons/SmallGatlingTurretReskin_NPC.png",
     "subtypeId": "SmallGatlingTurretReskin_NPC",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 21,
@@ -4072,7 +4072,7 @@ const BUNDLED_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__SmallGatlingGunWarfare2.png",
+    "icon": "icons/SmallGatlingGunWarfare2.png",
     "subtypeId": "SmallGatlingGunWarfare2",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 5,
@@ -4274,7 +4274,7 @@ const BUNDLED_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__SmallGatlingGunWarfare2_NPC.png",
+    "icon": "icons/SmallGatlingGunWarfare2_NPC.png",
     "subtypeId": "SmallGatlingGunWarfare2_NPC",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 5,
@@ -6333,7 +6333,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__FlareGunItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "FlareGunItem",
     "ammoName": "FlareWC",
     "buildTimeSeconds": 0,
@@ -6401,7 +6401,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__BasicHandHeldLauncherItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "BasicHandHeldLauncherItem",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 0,
@@ -6469,7 +6469,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__AdvancedHandHeldLauncherItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "AdvancedHandHeldLauncherItem",
     "ammoName": "Missiles_Missile",
     "buildTimeSeconds": 0,
@@ -6537,7 +6537,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__ElitePistolItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "ElitePistolItem",
     "ammoName": "ElitePistol_Ammo",
     "buildTimeSeconds": 0,
@@ -6605,7 +6605,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__RapidFireAutomaticRifleItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "RapidFireAutomaticRifleItem",
     "ammoName": "Ballistics_Interior",
     "buildTimeSeconds": 0,
@@ -6673,7 +6673,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0,
     "idlePower": 0,
     "components": [],
-    "icon": "icons/L__UltimateAutomaticRifleItem.png",
+    "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "UltimateAutomaticRifleItem",
     "ammoName": "UltimateAutomaticRifleGun_Ammo",
     "buildTimeSeconds": 0,
@@ -9536,7 +9536,7 @@ const BUNDLED_WEAPONS = [
         "count": 9
       }
     ],
-    "icon": "icons/S__SmallGriffinLauncherWarfare2_NPC.png",
+    "icon": "icons/SmallGriffinLauncherWarfare2_NPC.png",
     "subtypeId": "SmallGriffinLauncherWarfare2_NPC",
     "ammoName": "Missiles_Missile",
     "buildTimeSeconds": 5,
@@ -9806,7 +9806,7 @@ const BUNDLED_WEAPONS = [
     "durabilityMod": 0.5,
     "idlePower": 0.01,
     "components": [],
-    "icon": "icons/L__LargeMissileTurret.png",
+    "icon": "icons/L__Missile_Turret.png",
     "subtypeId": "LargeMissileTurret",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 0,
@@ -9907,7 +9907,7 @@ const BUNDLED_WEAPONS = [
         "count": 210
       }
     ],
-    "icon": "icons/L__LargeMissileTurret_NPC.png",
+    "icon": "icons/LargeMissileTurret_NPC.png",
     "subtypeId": "LargeMissileTurret_NPC",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 78,
@@ -10008,7 +10008,7 @@ const BUNDLED_WEAPONS = [
         "count": 210
       }
     ],
-    "icon": "icons/L__LargeMissileTurretReskin.png",
+    "icon": "icons/LargeMissileTurretReskin.png",
     "subtypeId": "LargeMissileTurretReskin",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 78,
@@ -10109,7 +10109,7 @@ const BUNDLED_WEAPONS = [
         "count": 210
       }
     ],
-    "icon": "icons/L__LargeMissileTurretReskin_NPC.png",
+    "icon": "icons/LargeMissileTurretReskin_NPC.png",
     "subtypeId": "LargeMissileTurretReskin_NPC",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 78,
@@ -10412,7 +10412,7 @@ const BUNDLED_WEAPONS = [
         "count": 54
       }
     ],
-    "icon": "icons/S__SmallMissileTurretReskin.png",
+    "icon": "icons/SmallMissileTurretReskin.png",
     "subtypeId": "SmallMissileTurretReskin",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 21,
@@ -10513,7 +10513,7 @@ const BUNDLED_WEAPONS = [
         "count": 54
       }
     ],
-    "icon": "icons/S__SmallMissileTurretReskin_NPC.png",
+    "icon": "icons/SmallMissileTurretReskin_NPC.png",
     "subtypeId": "SmallMissileTurretReskin_NPC",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 21,
@@ -10884,7 +10884,7 @@ const BUNDLED_WEAPONS = [
         "count": 9
       }
     ],
-    "icon": "icons/S__SmallMissileLauncherWarfare2.png",
+    "icon": "icons/SmallMissileLauncherWarfare2.png",
     "subtypeId": "SmallMissileLauncherWarfare2",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 5,
@@ -11086,7 +11086,7 @@ const BUNDLED_WEAPONS = [
         "count": 9
       }
     ],
-    "icon": "icons/S__SmallMissileLauncherWarfare2_NPC.png",
+    "icon": "icons/SmallMissileLauncherWarfare2_NPC.png",
     "subtypeId": "SmallMissileLauncherWarfare2_NPC",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 5,
@@ -12275,7 +12275,7 @@ const BUNDLED_WEAPONS = [
         "count": 100
       }
     ],
-    "icon": "icons/L__LargeFlareLauncher.png",
+    "icon": "icons/LargeFlareLauncher.png",
     "subtypeId": "LargeFlareLauncher",
     "ammoName": "FlareWC",
     "buildTimeSeconds": 30,
@@ -12379,7 +12379,7 @@ const BUNDLED_WEAPONS = [
         "count": 100
       }
     ],
-    "icon": "icons/L__LargeFlareLauncher_NPC.png",
+    "icon": "icons/LargeFlareLauncher_NPC.png",
     "subtypeId": "LargeFlareLauncher_NPC",
     "ammoName": "FlareWC",
     "buildTimeSeconds": 30,
@@ -12483,7 +12483,7 @@ const BUNDLED_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__SmallFlareLauncher.png",
+    "icon": "icons/SmallFlareLauncher.png",
     "subtypeId": "SmallFlareLauncher",
     "ammoName": "FlareWC",
     "buildTimeSeconds": 10,
@@ -12587,7 +12587,7 @@ const BUNDLED_WEAPONS = [
         "count": 10
       }
     ],
-    "icon": "icons/S__SmallFlareLauncher_NPC.png",
+    "icon": "icons/SmallFlareLauncher_NPC.png",
     "subtypeId": "SmallFlareLauncher_NPC",
     "ammoName": "FlareWC",
     "buildTimeSeconds": 10,
@@ -12687,7 +12687,7 @@ const BUNDLED_WEAPONS = [
         "count": 25
       }
     ],
-    "icon": "icons/L__OKIDesignator.png",
+    "icon": "icons/OKIDesignator.png",
     "subtypeId": "OKIDesignator",
     "ammoName": "designatorBeam1",
     "buildTimeSeconds": 40,
@@ -12780,7 +12780,7 @@ const BUNDLED_WEAPONS = [
         "count": 15
       }
     ],
-    "icon": "icons/S__ARYXSmallRadar.png",
+    "icon": "icons/ARYXSmallRadar.png",
     "subtypeId": "ARYXSmallRadar",
     "ammoName": "designatorBeam1",
     "buildTimeSeconds": 15,
@@ -12873,7 +12873,7 @@ const BUNDLED_WEAPONS = [
         "count": 1
       }
     ],
-    "icon": "icons/S__SmallBlockRadioAntenna_WCRadar.png",
+    "icon": "icons/SmallBlockRadioAntenna_WCRadar.png",
     "subtypeId": "SmallBlockRadioAntenna_WCRadar",
     "ammoName": "designatorBeam1",
     "buildTimeSeconds": 16,
@@ -12970,7 +12970,7 @@ const BUNDLED_WEAPONS = [
         "count": 1
       }
     ],
-    "icon": "icons/S__SmallBlockCompactRadioAntennaReskin_WCRadar.png",
+    "icon": "icons/SmallBlockCompactRadioAntennaReskin_WCRadar.png",
     "subtypeId": "SmallBlockCompactRadioAntennaReskin_WCRadar",
     "ammoName": "designatorBeam1",
     "buildTimeSeconds": 16,
@@ -13166,7 +13166,7 @@ const BUNDLED_WEAPONS = [
         "count": 1
       }
     ],
-    "icon": "icons/L__LargeExplosiveBarrel.png",
+    "icon": "icons/LargeExplosiveBarrel.png",
     "subtypeId": "LargeExplosiveBarrel",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
     "buildTimeSeconds": 10,
@@ -13364,7 +13364,7 @@ const BUNDLED_WEAPONS = [
         "count": 1
       }
     ],
-    "icon": "icons/S__SmallExplosiveBarrel.png",
+    "icon": "icons/SmallExplosiveBarrel.png",
     "subtypeId": "SmallExplosiveBarrel",
     "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
     "buildTimeSeconds": 10,

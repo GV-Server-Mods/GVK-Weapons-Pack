@@ -17,14 +17,23 @@ function check(name, cond) {
   else { failures++; console.error('  FAIL  ' + name); }
 }
 
+const mockCtx = {
+  clearRect() {}, beginPath() {}, arc() {}, stroke() {}, fill() {},
+  moveTo() {}, lineTo() {}, fillText() {}, measureText() { return { width: 10 }; },
+  closePath() {}, save() {}, restore() {}, strokeStyle: '', fillStyle: '', lineWidth: 1
+};
+
 function makeElement(id) {
   return {
     id, value: '', checked: false, textContent: '', innerHTML: '', title: '',
-    style: {}, disabled: false, dataset: {},
+    style: {}, disabled: false, dataset: {}, width: 400, height: 400,
     classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
     addEventListener() {}, removeEventListener() {},
     setAttribute() {}, removeAttribute() {},
-    appendChild() {}, querySelector() { return null; }, querySelectorAll() { return []; }
+    appendChild() {},
+    querySelector(sel) { return makeElement(sel); },
+    querySelectorAll() { return []; },
+    getContext() { return mockCtx; }
   };
 }
 
@@ -35,7 +44,7 @@ const documentStub = {
     if (!elements.has(id)) elements.set(id, makeElement(id));
     return elements.get(id);
   },
-  querySelector() { return null; },
+  querySelector(sel) { return makeElement(sel); },
   querySelectorAll() { return []; },
   createElement(tag) { return makeElement(tag); },
   addEventListener() {}
@@ -165,8 +174,76 @@ check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
 check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
 check('Railgun export emits zero shield tags', report.rgShieldFree);
 
+// Dynamic lifecycle checks: populate datasets and verify weapon selection + metrics
+const bundledW = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'weapons_db.json'), 'utf8'));
+const bundledA = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'ammos_db.json'), 'utf8'));
+const bundledM = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'magazines_blueprints_data.js'), 'utf8').replace(/^[\s\S]*?=\s*/, '').replace(/;\s*$/, ''));
+
+sandbox.__injectedWeapons = bundledW;
+sandbox.__injectedAmmos = bundledA;
+sandbox.__injectedMags = bundledM;
+
+let lcReport = null;
+sandbox.__lifecycleReport = (r) => { lcReport = r; };
+
+vm.runInContext(`
+  weaponsDb = __injectedWeapons;
+  ammosDb = __injectedAmmos;
+  magazinesBlueprintsDb = __injectedMags;
+  activeWeapon = null;
+  activeAmmo = null;
+
+  refreshAfterDataLoad();
+  const defaultW = activeWeapon;
+  const defaultA = activeAmmo;
+  const defaultSelVal = document.getElementById('weaponSelect').value;
+  const avengerMetrics = calculateWeaponMetrics(defaultW);
+
+  // Select Tsunami (Cyclone Cannon)
+  const tsunami = weaponsDb.find(w => w.subtypeId === 'ARYXCycloneCannon');
+  selectWeapon(tsunami.id);
+  const tsuW = activeWeapon;
+  const tsuA = activeAmmo;
+  const tsuMetrics = calculateWeaponMetrics(tsuW);
+
+  // Select Hurricane
+  const hurricane = weaponsDb.find(w => w.subtypeId === 'ARYXHurricaneCannon');
+  selectWeapon(hurricane.id);
+  const hurW = activeWeapon;
+  const hurA = activeAmmo;
+  const hurMetrics = calculateWeaponMetrics(hurW);
+
+  __lifecycleReport({
+    defaultWeaponId: defaultW && defaultW.id,
+    defaultSelectVal: defaultSelVal,
+    defaultAmmoRound: defaultA && defaultA.ammoRound,
+    avengerEffectiveDps: avengerMetrics.effectiveDps,
+    avengerAlpha: avengerMetrics.effectiveAlphaVolley,
+    tsuAmmoRound: tsuA && tsuA.ammoRound,
+    tsuEffectiveDps: tsuMetrics.effectiveDps,
+    tsuAlpha: tsuMetrics.effectiveAlphaVolley,
+    tsuArmorMult: getTopArmorProfile(tsuA.damageScales).mult,
+    hurAmmoRound: hurA && hurA.ammoRound,
+    hurEffectiveDps: hurMetrics.effectiveDps,
+    hurAlpha: hurMetrics.effectiveAlphaVolley,
+    hurArmorMult: getTopArmorProfile(hurA.damageScales).mult,
+  });
+`, sandbox);
+
+check('Default weapon dropdown matches activeWeapon (no desync)', lcReport.defaultWeaponId === lcReport.defaultSelectVal);
+check('Default weapon has primary ammo NATO_25x184mm_Dual', lcReport.defaultAmmoRound === 'NATO_25x184mm_Dual');
+check('Avenger has non-zero effective DPS', lcReport.avengerEffectiveDps > 0);
+check('Avenger has non-zero alpha volley', lcReport.avengerAlpha > 0);
+check('Tsunami selects LargeCalibreAmmo (155 AP)', lcReport.tsuAmmoRound === 'LargeCalibreAmmo');
+check('Tsunami has non-zero effective DPS', lcReport.tsuEffectiveDps > 0);
+check('Tsunami has non-zero alpha volley', lcReport.tsuAlpha > 0);
+check('Tsunami has 3.0x heavy armor multiplier', lcReport.tsuArmorMult === 3.0);
+check('Hurricane selects Ballistics_HeavyCannon (480mm)', lcReport.hurAmmoRound === 'Ballistics_HeavyCannon');
+check('Hurricane has non-zero effective DPS', lcReport.hurEffectiveDps > 0);
+check('Hurricane has non-zero alpha volley', lcReport.hurAlpha > 0);
+check('Hurricane has 2.0x heavy armor multiplier', lcReport.hurArmorMult === 2.0);
+
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');
   process.exit(1);
 }
-console.log('\nAll smoke checks passed. Studio is shieldless and exporters are healthy.');

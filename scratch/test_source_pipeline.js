@@ -157,8 +157,6 @@ for (const k of Object.keys(bundledAmmos)) {
     }
   }
 }
-console.log('info: ammo field parity vs bundled — mismatches:', mismatches);
-for (const s of mismatchSamples) console.log('   ', s);
 
 // --- validateLiveData (atomic-swap guard) tests ---
 function checkV(label, cond, detail) {

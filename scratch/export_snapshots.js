@@ -27,18 +27,17 @@ for (const f of fs.readdirSync(path.join('Content', 'Data', 'CubeBlocks'))) {
 }
 
 const ovText = fs.readFileSync('docs/data/studio_overrides.js', 'utf8');
-const ov = JSON.parse(ovText.slice(ovText.indexOf('=') + 1).trim().replace(/;s*$/, ''));
+const ov = JSON.parse(ovText.slice(ovText.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
 const d = SP.buildStudioData(cs, sbc, ov);
 if (d.errors.length) { console.error('BUILD ERRORS:', d.errors); process.exit(1); }
 
 const outDir = 'docs/data';
 
-const weaponsJs = HEADER + 'const BUNDLED_WEAPONS = ' + JSON.stringify(d.weapons, null, 2) + ';\n';
+const weaponsJs = HEADER + 'const BUNDLED_WEAPONS_DATA = ' + JSON.stringify(d.weapons, null, 2) + ';\n';
 fs.writeFileSync(path.join(outDir, 'weapons_data.js'), weaponsJs);
 fs.writeFileSync(path.join(outDir, 'weapons_db.json'), JSON.stringify(d.weapons, null, 2));
 
-const ammosJs = HEADER + 'const BUNDLED_AMMOS = ' + JSON.stringify(d.ammos, null, 2) + ';\n';
 fs.writeFileSync(path.join(outDir, 'ammos_data.js'), ammosJs);
 fs.writeFileSync(path.join(outDir, 'ammos_db.json'), JSON.stringify(d.ammos, null, 2));
 

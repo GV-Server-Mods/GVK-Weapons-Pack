@@ -19,6 +19,7 @@
         <h1>WEAPON <span>STUDIO</span></h1>
         <div style="display: flex; align-items: center; gap: 8px; margin-top: 3px; flex-wrap: wrap;">
           <span id="wcSchemaBadge" class="badge badge-cyan" style="cursor: pointer; padding: 2px 8px; font-size: 10px;" title="WeaponCore Schema Integrity Guard - Click to inspect">🛡️ WC v3.0 (Core v0.75) | Synced</span>
+          <span id="gvk-live-chip" class="badge badge-green" style="cursor: pointer; padding: 2px 8px; font-size: 10px;" title="Data source. Click: hosted=reload / snapshot=link mod folder.">🟢 LIVE (Connecting...)</span>
           <span id="repoStatus" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">GV-Server-Mods/GVK-Weapons-Pack</span>
         </div>
       </div>
@@ -2036,6 +2037,7 @@
       <span class="hud-stat">Overheat: <strong id="hudOverheat">Unlimited</strong></span>
     </div>
     <div class="hud-right">
+      <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
       <button id="btnHudExport" class="btn btn-primary btn-sm">⚡ Export Code & SBC</button>
     </div>
   </div>

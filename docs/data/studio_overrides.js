@@ -3,80 +3,35 @@
 // Edit by hand only to change presentation (labels/icons); never to change balance numbers.
 const STUDIO_OVERRIDES = {
   "weapons": {
-    "GVK_AvengerGatlingTurret": {
-      "id": "L__Gatling_Avenger_Turret",
-      "name": "(L) Gatling Avenger Turret",
-      "icon": "icons/L__Gatling_Avenger_Turret.png"
+    "ARYXCycloneCannon": {
+      "id": "L__ARYXCycloneCannon",
+      "name": "(L) Tsunami Turret",
+      "icon": "icons/ARYXCycloneCannon.png"
     },
-    "SentinelTurret": {
-      "id": "L__Gatling_Turret",
-      "name": "(L) Gatling Turret",
-      "icon": "icons/L__Gatling_Turret.png"
+    "ARYXCycloneCannon_NPC": {
+      "id": "L__ARYXCycloneCannon_NPC",
+      "name": "(L) Tsunami Turret",
+      "icon": "icons/ARYXCycloneCannon_NPC.png"
     },
-    "SmallGatlingTurret": {
-      "id": "S__Gatling_Turret",
-      "name": "(S) Gatling Turret",
-      "icon": "icons/S__Gatling_Turret.png"
+    "GVK_CycloneCannonTurret": {
+      "id": "L__GVK_CycloneCannonTurret",
+      "name": "(L) Cyclone Turret",
+      "icon": "icons/GVK_CycloneCannonTurret.png"
     },
-    "SmallGatlingGun": {
-      "id": "S__Gatling_Gun",
-      "name": "(S) Gatling Gun",
-      "icon": "icons/S__Gatling_Gun.png"
-    },
-    "SmallGatlingGun_Gimbal": {
-      "id": "S__Gatling_Gimbal",
-      "name": "(S) Gatling Gimbal",
-      "icon": "icons/S__Gatling_Gimbal.png"
-    },
-    "ARYXHeavyFlakTurret": {
-      "id": "L__Chaingun_Thrasher_Turret",
-      "name": "(L) Chaingun Thrasher Turret",
-      "icon": "icons/L__Chaingun_Thrasher_Turret.png"
-    },
-    "KhopeshTurret": {
-      "id": "L__Chaingun_Khopesh_Turret",
-      "name": "(L) Chaingun Khopesh Turret",
-      "icon": "icons/L__Chaingun_Khopesh_Turret.png"
-    },
-    "LargeAutoCannonTurret": {
-      "id": "L__Chaingun_Turret",
-      "name": "(L) Chaingun Turret",
-      "icon": "icons/L__Chaingun_Turret.png"
-    },
-    "AutoCannonTurret": {
-      "id": "S__Chaingun_Turret",
-      "name": "(S) Chaingun Turret",
-      "icon": "icons/S__Chaingun_Turret.png"
-    },
-    "SmallBlockAutocannon": {
-      "id": "S__Chaingun_Gun",
-      "name": "(S) Chaingun Gun",
-      "icon": "icons/S__Chaingun_Gun.png"
-    },
-    "LargeInteriorTurret": {
-      "id": "L__Interior_Turret",
-      "name": "(L) Interior Turret",
-      "icon": "icons/L__Interior_Turret.png"
-    },
-    "LargeBlockMediumCalibreTurret": {
-      "id": "L__Flak_Turret",
-      "name": "(L) Flak Turret",
-      "icon": "icons/L__Flak_Turret.png"
-    },
-    "SmallBlockMediumCalibreTurret": {
-      "id": "S__Flak_Turret",
-      "name": "(S) Flak Turret",
-      "icon": "icons/S__Flak_Turret.png"
-    },
-    "SmallBlockMediumCalibreGun": {
-      "id": "S__Flak_Gun",
-      "name": "(S) Flak Gun",
-      "icon": "icons/S__Flak_Gun.png"
+    "GVK_CycloneCannonTurret_NPC": {
+      "id": "L__GVK_CycloneCannonTurret_NPC",
+      "name": "(L) Cyclone Turret",
+      "icon": "icons/GVK_CycloneCannonTurret_NPC.png"
     },
     "LargeCalibreTurret": {
       "id": "L__Cannon_Turret",
       "name": "(L) Cannon Turret",
       "icon": "icons/L__Cannon_Turret.png"
+    },
+    "LargeCalibreTurret_NPC": {
+      "id": "L__Cannon_Turret_NPC",
+      "name": "(L) Cannon Turret [NPC]",
+      "icon": "icons/L__Cannon_Turret_NPC.png"
     },
     "LargeBlockLargeCalibreGun": {
       "id": "L__Cannon_Gun",
@@ -88,25 +43,250 @@ const STUDIO_OVERRIDES = {
       "name": "(S) Cannon Turret",
       "icon": "icons/S__Cannon_Turret.png"
     },
+    "OKI122mmVT_NPC": {
+      "id": "S__Cannon_Turret_NPC",
+      "name": "(S) Cannon Turret [NPC]",
+      "icon": "icons/S__Cannon_Turret_NPC.png"
+    },
     "OKI122mmSGfixed": {
       "id": "S__Cannon_Gun",
       "name": "(S) Cannon Gun",
       "icon": "icons/S__Cannon_Gun.png"
+    },
+    "LargeBlockLargeCalibreGun_NPC": {
+      "id": "L__Cannon_Gun_NPC",
+      "name": "(L) Cannon Gun [NPC]",
+      "icon": "icons/L__Cannon_Gun_NPC.png"
+    },
+    "OKI122mmSGfixed_NPC": {
+      "id": "S__Cannon_Gun_NPC",
+      "name": "(S) Cannon Gun [NPC]",
+      "icon": "icons/S__Cannon_Gun_NPC.png"
+    },
+    "LargeAutoCannonTurret": {
+      "id": "L__Chaingun_Turret",
+      "name": "(L) Chaingun Turret",
+      "icon": "icons/L__Chaingun_Turret.png"
+    },
+    "LargeAutoCannonTurret_NPC": {
+      "id": "L__Chaingun_Turret_NPC",
+      "name": "(L) Chaingun Turret [NPC]",
+      "icon": "icons/L__Chaingun_Turret_NPC.png"
+    },
+    "KhopeshTurret": {
+      "id": "L__Chaingun_Khopesh_Turret",
+      "name": "(L) Chaingun Khopesh Turret",
+      "icon": "icons/L__Chaingun_Khopesh_Turret.png"
+    },
+    "KhopeshTurret_NPC": {
+      "id": "L__Chaingun_Khopesh_Turret_NPC",
+      "name": "(L) Chaingun Khopesh Turret [NPC]",
+      "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png"
+    },
+    "AutoCannonTurret": {
+      "id": "S__Chaingun_Turret",
+      "name": "(S) Chaingun Turret",
+      "icon": "icons/S__Chaingun_Turret.png"
+    },
+    "AutoCannonTurret_NPC": {
+      "id": "S__Chaingun_Turret_NPC",
+      "name": "(S) Chaingun Turret [NPC]",
+      "icon": "icons/S__Chaingun_Turret_NPC.png"
+    },
+    "SmallBlockAutocannon": {
+      "id": "S__Chaingun_Gun",
+      "name": "(S) Chaingun Gun",
+      "icon": "icons/S__Chaingun_Gun.png"
+    },
+    "SmallBlockAutocannon_NPC": {
+      "id": "S__Chaingun_Gun_NPC",
+      "name": "(S) Chaingun Gun [NPC]",
+      "icon": "icons/S__Chaingun_Gun_NPC.png"
+    },
+    "ARYXHeavyFlakTurret": {
+      "id": "L__Chaingun_Thrasher_Turret",
+      "name": "(L) Chaingun Thrasher Turret",
+      "icon": "icons/L__Chaingun_Thrasher_Turret.png"
+    },
+    "ARYXHeavyFlakTurret_NPC": {
+      "id": "L__Chaingun_Thrasher_Turret_NPC",
+      "name": "(L) Chaingun Thrasher Turret [NPC]",
+      "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png"
+    },
+    "LargeBlockMediumCalibreTurret": {
+      "id": "L__Flak_Turret",
+      "name": "(L) Flak Turret",
+      "icon": "icons/L__Flak_Turret.png"
+    },
+    "LargeBlockMediumCalibreTurret_NPC": {
+      "id": "L__Flak_Turret_NPC",
+      "name": "(L) Flak Turret [NPC]",
+      "icon": "icons/L__Flak_Turret_NPC.png"
+    },
+    "SmallBlockMediumCalibreTurret": {
+      "id": "S__Flak_Turret",
+      "name": "(S) Flak Turret",
+      "icon": "icons/S__Flak_Turret.png"
+    },
+    "SmallBlockMediumCalibreTurret_NPC": {
+      "id": "S__Flak_Turret_NPC",
+      "name": "(S) Flak Turret [NPC]",
+      "icon": "icons/S__Flak_Turret_NPC.png"
+    },
+    "SmallBlockMediumCalibreGun": {
+      "id": "S__Flak_Gun",
+      "name": "(S) Flak Gun",
+      "icon": "icons/S__Flak_Gun.png"
+    },
+    "SmallBlockMediumCalibreGun_NPC": {
+      "id": "S__Flak_Gun_NPC",
+      "name": "(S) Flak Gun [NPC]",
+      "icon": "icons/S__Flak_Gun_NPC.png"
+    },
+    "SentinelTurret": {
+      "id": "L__Gatling_Turret",
+      "name": "(L) Gatling Turret",
+      "icon": "icons/L__Gatling_Turret.png"
+    },
+    "SentinelTurret_NPC": {
+      "id": "L__Gatling_Turret_NPC",
+      "name": "(L) Gatling Turret [NPC]",
+      "icon": "icons/L__Gatling_Turret_NPC.png"
+    },
+    "LargeGatlingTurret": {
+      "id": "L__LargeGatlingTurret",
+      "name": "(L) CIWS Large",
+      "icon": "icons/L__Gatling_Turret.png"
+    },
+    "LargeGatlingTurret_NPC": {
+      "id": "L__LargeGatlingTurret_NPC",
+      "name": "(L) CIWS Large",
+      "icon": "icons/LargeGatlingTurret_NPC.png"
+    },
+    "LargeGatlingTurretReskin": {
+      "id": "L__LargeGatlingTurretReskin",
+      "name": "(L) CIWS Large",
+      "icon": "icons/LargeGatlingTurretReskin.png"
+    },
+    "LargeGatlingTurretReskin_NPC": {
+      "id": "L__LargeGatlingTurretReskin_NPC",
+      "name": "(L) CIWS Large",
+      "icon": "icons/LargeGatlingTurretReskin_NPC.png"
+    },
+    "SmallGatlingTurret": {
+      "id": "S__Gatling_Turret",
+      "name": "(S) Gatling Turret",
+      "icon": "icons/S__Gatling_Turret.png"
+    },
+    "SmallGatlingTurret_NPC": {
+      "id": "S__Gatling_Turret_NPC",
+      "name": "(S) Gatling Turret [NPC]",
+      "icon": "icons/S__Gatling_Turret_NPC.png"
+    },
+    "SmallGatlingTurretReskin": {
+      "id": "S__SmallGatlingTurretReskin",
+      "name": "(S) CWIS",
+      "icon": "icons/SmallGatlingTurretReskin.png"
+    },
+    "SmallGatlingTurretReskin_NPC": {
+      "id": "S__SmallGatlingTurretReskin_NPC",
+      "name": "(S) CWIS",
+      "icon": "icons/SmallGatlingTurretReskin_NPC.png"
+    },
+    "SmallGatlingGun": {
+      "id": "S__Gatling_Gun",
+      "name": "(S) Gatling Gun",
+      "icon": "icons/S__Gatling_Gun.png"
+    },
+    "SmallGatlingGunWarfare2": {
+      "id": "S__SmallGatlingGunWarfare2",
+      "name": "(S) Gatling Gun",
+      "icon": "icons/SmallGatlingGunWarfare2.png"
+    },
+    "SmallGatlingGun_NPC": {
+      "id": "S__Gatling_Gun_NPC",
+      "name": "(S) Gatling Gun [NPC]",
+      "icon": "icons/S__Gatling_Gun_NPC.png"
+    },
+    "SmallGatlingGunWarfare2_NPC": {
+      "id": "S__SmallGatlingGunWarfare2_NPC",
+      "name": "(S) Gatling Gun",
+      "icon": "icons/SmallGatlingGunWarfare2_NPC.png"
+    },
+    "SmallGatlingGun_Gimbal": {
+      "id": "S__Gatling_Gimbal",
+      "name": "(S) Gatling Gimbal",
+      "icon": "icons/S__Gatling_Gimbal.png"
+    },
+    "SmallGatlingGun_Gimbal_NPC": {
+      "id": "S__Gatling_Gimbal_NPC",
+      "name": "(S) Gatling Gimbal [NPC]",
+      "icon": "icons/S__Gatling_Gimbal_NPC.png"
+    },
+    "GVK_AvengerGatlingTurret": {
+      "id": "L__Gatling_Avenger_Turret",
+      "name": "(L) Gatling Avenger Turret",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
+    },
+    "GVK_AvengerGatlingTurret_NPC": {
+      "id": "L__Gatling_Avenger_Turret_NPC",
+      "name": "(L) Gatling Avenger Turret [NPC]",
+      "icon": "icons/L__Gatling_Avenger_Turret_NPC.png"
     },
     "ARYXHurricaneCannon": {
       "id": "L__Heavy_Cannon_Hurricane_Turret",
       "name": "(L) Heavy Cannon Hurricane Turret",
       "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png"
     },
+    "ARYXHurricaneCannon_NPC": {
+      "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
+      "name": "(L) Heavy Cannon Hurricane Turret [NPC]",
+      "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png"
+    },
     "odin": {
       "id": "L__Heavy_Cannon_Odin_Turret",
       "name": "(L) Heavy Cannon Odin Turret",
       "icon": "icons/L__Heavy_Cannon_Odin_Turret.png"
     },
+    "odin_NPC": {
+      "id": "L__Heavy_Cannon_Odin_Turret_NPC",
+      "name": "(L) Heavy Cannon Odin Turret [NPC]",
+      "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png"
+    },
+    "HarbingerTurret_NPC": {
+      "id": "L__Harbinger_Turret_NPC",
+      "name": "(L) Harbinger Turret [NPC]",
+      "icon": "icons/HarbingerTurret_NPC.png"
+    },
+    "LargeInteriorTurret": {
+      "id": "L__Interior_Turret",
+      "name": "(L) Interior Turret",
+      "icon": "icons/L__Interior_Turret.png"
+    },
+    "LargeInteriorTurret_NPC": {
+      "id": "L__Interior_Turret_NPC",
+      "name": "(L) Interior Turret [NPC]",
+      "icon": "icons/L__Interior_Turret_NPC.png"
+    },
+    "LargeRailgun": {
+      "id": "L__MAC_Gun",
+      "name": "(L) MAC Gun",
+      "icon": "icons/L__MAC_Gun.png"
+    },
+    "LargeRailgun_NPC": {
+      "id": "L__MAC_Gun_NPC",
+      "name": "(L) MAC Gun [NPC]",
+      "icon": "icons/L__MAC_Gun_NPC.png"
+    },
     "ARYXRailgunTurret": {
       "id": "L__Railgun_Turret",
       "name": "(L) Railgun Turret",
       "icon": "icons/L__Railgun_Turret.png"
+    },
+    "ARYXRailgunTurret_NPC": {
+      "id": "L__Railgun_Turret_NPC",
+      "name": "(L) Railgun Turret [NPC]",
+      "icon": "icons/L__Railgun_Turret_NPC.png"
     },
     "ARYXRailgun": {
       "id": "L__Railgun_Gun",
@@ -118,105 +298,45 @@ const STUDIO_OVERRIDES = {
       "name": "(S) Railgun Gun",
       "icon": "icons/S__Railgun_Gun.png"
     },
-    "LargeRailgun": {
-      "id": "L__MAC_Gun",
-      "name": "(L) MAC Gun",
-      "icon": "icons/L__MAC_Gun.png"
+    "SmallRailgun_NPC": {
+      "id": "S__Railgun_Gun_NPC",
+      "name": "(S) Railgun Gun [NPC]",
+      "icon": "icons/S__Railgun_Gun_NPC.png"
     },
-    "ARYXHydraTurret": {
-      "id": "L__Rocket_Turret",
-      "name": "(L) Rocket Turret",
-      "icon": "icons/L__Rocket_Turret.png"
+    "ARYXRailgun_NPC": {
+      "id": "L__Railgun_Gun_NPC",
+      "name": "(L) Railgun Gun [NPC]",
+      "icon": "icons/L__Railgun_Gun_NPC.png"
     },
-    "SmallMissileTurret": {
-      "id": "S__Rocket_Turret",
-      "name": "(S) Rocket Turret",
-      "icon": "icons/S__Rocket_Turret.png"
+    "FlareGunItem": {
+      "id": "L__FlareGunItem",
+      "name": "(L) Flare Pistol",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
-    "LargeMissileLauncher": {
-      "id": "L__Rocket_Launcher",
-      "name": "(L) Rocket Launcher",
-      "icon": "icons/L__Rocket_Launcher.png"
+    "BasicHandHeldLauncherItem": {
+      "id": "L__BasicHandHeldLauncherItem",
+      "name": "(L) Hydra Launcher",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
-    "SmallMissileLauncher": {
-      "id": "S__Rocket_Launcher",
-      "name": "(S) Rocket Launcher",
-      "icon": "icons/S__Rocket_Launcher.png"
+    "AdvancedHandHeldLauncherItem": {
+      "id": "L__AdvancedHandHeldLauncherItem",
+      "name": "(L) Griffin Launcher",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
-    "Missiles_Rockets_SGReloadableLauncher": {
-      "id": "S__Rocket_Launcher_Reloadable",
-      "name": "(S) Rocket Launcher Reloadable",
-      "icon": "icons/S__Rocket_Launcher_Reloadable.png"
+    "ElitePistolItem": {
+      "id": "L__ElitePistolItem",
+      "name": "(L) Elite Pistol",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
-    "GVK_GriffinMissileTurret": {
-      "id": "L__Missile_Turret",
-      "name": "(L) Missile Turret",
-      "icon": "icons/L__Missile_Turret.png"
+    "RapidFireAutomaticRifleItem": {
+      "id": "L__RapidFireAutomaticRifleItem",
+      "name": "(L) Basic Rifle",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
-    "GVK_GriffinMissileLauncher": {
-      "id": "L__Missile_Launcher",
-      "name": "(L) Missile Launcher",
-      "icon": "icons/L__Missile_Launcher.png"
-    },
-    "SmallRocketLauncherReload": {
-      "id": "S__Missile_Launcher",
-      "name": "(S) Missile Launcher",
-      "icon": "icons/S__Missile_Launcher.png"
-    },
-    "missileBattery01": {
-      "id": "L__Tuukka_Missile_Turret",
-      "name": "(L) Tuukka Missile Turret",
-      "icon": "icons/L__Tuukka_Missile_Turret.png"
-    },
-    "Missile_Torpedo_Large": {
-      "id": "L__Torpedo_Launcher",
-      "name": "(L) Torpedo Launcher",
-      "icon": "icons/L__Torpedo_Launcher.png"
-    },
-    "Missile_Torpedo_Small": {
-      "id": "S__Torpedo_Launcher",
-      "name": "(S) Torpedo Launcher",
-      "icon": "icons/S__Torpedo_Launcher.png"
-    },
-    "ARYXMissileBattery": {
-      "id": "L__SRBM_Turret",
-      "name": "(L) SRBM Turret",
-      "icon": "icons/L__SRBM_Turret.png"
-    },
-    "ARYXSpartanTurret": {
-      "id": "L__Spartan_Heavy_Laser_Turret",
-      "name": "(L) Spartan Heavy Laser Turret",
-      "icon": "icons/L__Spartan_Heavy_Laser_Turret.png"
-    },
-    "MA_T2PDX": {
-      "id": "L__Heavy_Laser_Turret",
-      "name": "(L) Heavy Laser Turret",
-      "icon": "icons/L__Heavy_Laser_Turret.png"
-    },
-    "MA_Fixed_T2": {
-      "id": "L__Heavy_Laser_Gimbal",
-      "name": "(L) Heavy Laser Gimbal",
-      "icon": "icons/L__Heavy_Laser_Gimbal.png"
-    },
-    "ReceptorTurret": {
-      "id": "L__Light_Laser_Turret",
-      "name": "(L) Light Laser Turret",
-      "icon": "icons/L__Light_Laser_Turret.png"
-    },
-    "MA_PDX": {
-      "id": "S__Light_Laser_Turret",
-      "name": "(S) Light Laser Turret",
-      "icon": "icons/S__Light_Laser_Turret.png"
-    },
-    "ReceptorCoilGun": {
-      "id": "S__Light_Laser_Gun",
-      "name": "(S) Light Laser Gun",
-      "icon": "icons/S__Light_Laser_Gun.png"
-    },
-    "lokiCannon1": {
-      "id": "L__Loki_Plasma_Turret",
-      "name": "(L) Loki Plasma Turret",
-      "icon": "icons/L__Loki_Plasma_Turret.png"
+    "UltimateAutomaticRifleItem": {
+      "id": "L__UltimateAutomaticRifleItem",
+      "name": "(L) Basic Rifle",
+      "icon": "icons/L__Gatling_Avenger_Turret.png"
     },
     "MA_PDT": {
       "id": "L__PD_Laser",
@@ -228,236 +348,6 @@ const STUDIO_OVERRIDES = {
       "name": "(S) PD Laser",
       "icon": "icons/S__PD_Laser.png"
     },
-    "LargeWarhead": {
-      "id": "L__Warhead",
-      "name": "(L) Warhead",
-      "icon": "icons/L__Warhead.png"
-    },
-    "SmallWarhead": {
-      "id": "S__Warhead",
-      "name": "(S) Warhead",
-      "icon": "icons/S__Warhead.png"
-    },
-    "ARYX_Small_Sidekick_Hangar": {
-      "id": "L__Drone_Bay",
-      "name": "(L) Drone Bay",
-      "icon": "icons/L__Drone_Bay.png"
-    },
-    "GVK_AvengerGatlingTurret_NPC": {
-      "id": "L__Gatling_Avenger_Turret_NPC",
-      "name": "(L) Gatling Avenger Turret [NPC]",
-      "icon": "icons/L__Gatling_Avenger_Turret_NPC.png"
-    },
-    "SentinelTurret_NPC": {
-      "id": "L__Gatling_Turret_NPC",
-      "name": "(L) Gatling Turret [NPC]",
-      "icon": "icons/L__Gatling_Turret_NPC.png"
-    },
-    "SmallGatlingTurret_NPC": {
-      "id": "S__Gatling_Turret_NPC",
-      "name": "(S) Gatling Turret [NPC]",
-      "icon": "icons/S__Gatling_Turret_NPC.png"
-    },
-    "SmallGatlingGun_NPC": {
-      "id": "S__Gatling_Gun_NPC",
-      "name": "(S) Gatling Gun [NPC]",
-      "icon": "icons/S__Gatling_Gun_NPC.png"
-    },
-    "SmallGatlingGun_Gimbal_NPC": {
-      "id": "S__Gatling_Gimbal_NPC",
-      "name": "(S) Gatling Gimbal [NPC]",
-      "icon": "icons/S__Gatling_Gimbal_NPC.png"
-    },
-    "ARYXHeavyFlakTurret_NPC": {
-      "id": "L__Chaingun_Thrasher_Turret_NPC",
-      "name": "(L) Chaingun Thrasher Turret [NPC]",
-      "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png"
-    },
-    "KhopeshTurret_NPC": {
-      "id": "L__Chaingun_Khopesh_Turret_NPC",
-      "name": "(L) Chaingun Khopesh Turret [NPC]",
-      "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png"
-    },
-    "LargeAutoCannonTurret_NPC": {
-      "id": "L__Chaingun_Turret_NPC",
-      "name": "(L) Chaingun Turret [NPC]",
-      "icon": "icons/L__Chaingun_Turret_NPC.png"
-    },
-    "AutoCannonTurret_NPC": {
-      "id": "S__Chaingun_Turret_NPC",
-      "name": "(S) Chaingun Turret [NPC]",
-      "icon": "icons/S__Chaingun_Turret_NPC.png"
-    },
-    "SmallBlockAutocannon_NPC": {
-      "id": "S__Chaingun_Gun_NPC",
-      "name": "(S) Chaingun Gun [NPC]",
-      "icon": "icons/S__Chaingun_Gun_NPC.png"
-    },
-    "LargeInteriorTurret_NPC": {
-      "id": "L__Interior_Turret_NPC",
-      "name": "(L) Interior Turret [NPC]",
-      "icon": "icons/L__Interior_Turret_NPC.png"
-    },
-    "LargeBlockMediumCalibreTurret_NPC": {
-      "id": "L__Flak_Turret_NPC",
-      "name": "(L) Flak Turret [NPC]",
-      "icon": "icons/L__Flak_Turret_NPC.png"
-    },
-    "SmallBlockMediumCalibreTurret_NPC": {
-      "id": "S__Flak_Turret_NPC",
-      "name": "(S) Flak Turret [NPC]",
-      "icon": "icons/S__Flak_Turret_NPC.png"
-    },
-    "SmallBlockMediumCalibreGun_NPC": {
-      "id": "S__Flak_Gun_NPC",
-      "name": "(S) Flak Gun [NPC]",
-      "icon": "icons/S__Flak_Gun_NPC.png"
-    },
-    "LargeCalibreTurret_NPC": {
-      "id": "L__Cannon_Turret_NPC",
-      "name": "(L) Cannon Turret [NPC]",
-      "icon": "icons/L__Cannon_Turret_NPC.png"
-    },
-    "LargeBlockLargeCalibreGun_NPC": {
-      "id": "L__Cannon_Gun_NPC",
-      "name": "(L) Cannon Gun [NPC]",
-      "icon": "icons/L__Cannon_Gun_NPC.png"
-    },
-    "OKI122mmVT_NPC": {
-      "id": "S__Cannon_Turret_NPC",
-      "name": "(S) Cannon Turret [NPC]",
-      "icon": "icons/S__Cannon_Turret_NPC.png"
-    },
-    "OKI122mmSGfixed_NPC": {
-      "id": "S__Cannon_Gun_NPC",
-      "name": "(S) Cannon Gun [NPC]",
-      "icon": "icons/S__Cannon_Gun_NPC.png"
-    },
-    "ARYXHurricaneCannon_NPC": {
-      "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
-      "name": "(L) Heavy Cannon Hurricane Turret [NPC]",
-      "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png"
-    },
-    "odin_NPC": {
-      "id": "L__Heavy_Cannon_Odin_Turret_NPC",
-      "name": "(L) Heavy Cannon Odin Turret [NPC]",
-      "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png"
-    },
-    "ARYXRailgunTurret_NPC": {
-      "id": "L__Railgun_Turret_NPC",
-      "name": "(L) Railgun Turret [NPC]",
-      "icon": "icons/L__Railgun_Turret_NPC.png"
-    },
-    "ARYXRailgun_NPC": {
-      "id": "L__Railgun_Gun_NPC",
-      "name": "(L) Railgun Gun [NPC]",
-      "icon": "icons/L__Railgun_Gun_NPC.png"
-    },
-    "SmallRailgun_NPC": {
-      "id": "S__Railgun_Gun_NPC",
-      "name": "(S) Railgun Gun [NPC]",
-      "icon": "icons/S__Railgun_Gun_NPC.png"
-    },
-    "LargeRailgun_NPC": {
-      "id": "L__MAC_Gun_NPC",
-      "name": "(L) MAC Gun [NPC]",
-      "icon": "icons/L__MAC_Gun_NPC.png"
-    },
-    "ARYXHydraTurret_NPC": {
-      "id": "L__Rocket_Turret_NPC",
-      "name": "(L) Rocket Turret [NPC]",
-      "icon": "icons/L__Rocket_Turret_NPC.png"
-    },
-    "SmallMissileTurret_NPC": {
-      "id": "S__Rocket_Turret_NPC",
-      "name": "(S) Rocket Turret [NPC]",
-      "icon": "icons/S__Rocket_Turret_NPC.png"
-    },
-    "LargeMissileLauncher_NPC": {
-      "id": "L__Rocket_Launcher_NPC",
-      "name": "(L) Rocket Launcher [NPC]",
-      "icon": "icons/L__Rocket_Launcher_NPC.png"
-    },
-    "SmallMissileLauncher_NPC": {
-      "id": "S__Rocket_Launcher_NPC",
-      "name": "(S) Rocket Launcher [NPC]",
-      "icon": "icons/S__Rocket_Launcher_NPC.png"
-    },
-    "Missiles_Rockets_SGReloadableLauncher_NPC": {
-      "id": "S__Rocket_Launcher_Reloadable_NPC",
-      "name": "(S) Rocket Launcher Reloadable [NPC]",
-      "icon": "icons/S__Rocket_Launcher_Reloadable_NPC.png"
-    },
-    "GVK_GriffinMissileTurret_NPC": {
-      "id": "L__Missile_Turret_NPC",
-      "name": "(L) Missile Turret [NPC]",
-      "icon": "icons/L__Missile_Turret_NPC.png"
-    },
-    "GVK_GriffinMissileLauncher_NPC": {
-      "id": "L__Missile_Launcher_NPC",
-      "name": "(L) Missile Launcher [NPC]",
-      "icon": "icons/L__Missile_Launcher_NPC.png"
-    },
-    "SmallRocketLauncherReload_NPC": {
-      "id": "S__Missile_Launcher_NPC",
-      "name": "(S) Missile Launcher [NPC]",
-      "icon": "icons/S__Missile_Launcher_NPC.png"
-    },
-    "missileBattery01_NPC": {
-      "id": "L__Tuukka_Missile_Turret_NPC",
-      "name": "(L) Tuukka Missile Turret [NPC]",
-      "icon": "icons/L__Tuukka_Missile_Turret_NPC.png"
-    },
-    "Missile_Torpedo_Large_NPC": {
-      "id": "L__Torpedo_Launcher_NPC",
-      "name": "(L) Torpedo Launcher [NPC]",
-      "icon": "icons/L__Torpedo_Launcher_NPC.png"
-    },
-    "Missile_Torpedo_Small_NPC": {
-      "id": "S__Torpedo_Launcher_NPC",
-      "name": "(S) Torpedo Launcher [NPC]",
-      "icon": "icons/S__Torpedo_Launcher_NPC.png"
-    },
-    "ARYXMissileBattery_NPC": {
-      "id": "L__SRBM_Turret_NPC",
-      "name": "(L) SRBM Turret [NPC]",
-      "icon": "icons/L__SRBM_Turret_NPC.png"
-    },
-    "ARYXSpartanTurret_NPC": {
-      "id": "L__Spartan_Heavy_Laser_Turret_NPC",
-      "name": "(L) Spartan Heavy Laser Turret [NPC]",
-      "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png"
-    },
-    "MA_T2PDX_NPC": {
-      "id": "L__Heavy_Laser_Turret_NPC",
-      "name": "(L) Heavy Laser Turret [NPC]",
-      "icon": "icons/L__Heavy_Laser_Turret_NPC.png"
-    },
-    "MA_Fixed_T2_NPC": {
-      "id": "L__Heavy_Laser_Gimbal_NPC",
-      "name": "(L) Heavy Laser Gimbal [NPC]",
-      "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png"
-    },
-    "ReceptorTurret_NPC": {
-      "id": "L__Light_Laser_Turret_NPC",
-      "name": "(L) Light Laser Turret [NPC]",
-      "icon": "icons/L__Light_Laser_Turret_NPC.png"
-    },
-    "MA_PDX_NPC": {
-      "id": "S__Light_Laser_Turret_NPC",
-      "name": "(S) Light Laser Turret [NPC]",
-      "icon": "icons/S__Light_Laser_Turret_NPC.png"
-    },
-    "ReceptorCoilGun_NPC": {
-      "id": "S__Light_Laser_Gun_NPC",
-      "name": "(S) Light Laser Gun [NPC]",
-      "icon": "icons/S__Light_Laser_Gun_NPC.png"
-    },
-    "lokiCannon1_NPC": {
-      "id": "L__Loki_Plasma_Turret_NPC",
-      "name": "(L) Loki Plasma Turret [NPC]",
-      "icon": "icons/L__Loki_Plasma_Turret_NPC.png"
-    },
     "MA_PDT_NPC": {
       "id": "L__PD_Laser_NPC",
       "name": "(L) PD Laser [NPC]",
@@ -468,28 +358,319 @@ const STUDIO_OVERRIDES = {
       "name": "(S) PD Laser [NPC]",
       "icon": "icons/S__PD_Laser_NPC.png"
     },
-    "LargeWarhead_NPC": {
-      "id": "L__Warhead_NPC",
-      "name": "(L) Warhead [NPC]",
-      "icon": "icons/L__Warhead_NPC.png"
+    "MA_T2PDX": {
+      "id": "L__Heavy_Laser_Turret",
+      "name": "(L) Heavy Laser Turret",
+      "icon": "icons/L__Heavy_Laser_Turret.png"
     },
-    "SmallWarhead_NPC": {
-      "id": "S__Warhead_NPC",
-      "name": "(S) Warhead [NPC]",
-      "icon": "icons/S__Warhead_NPC.png"
+    "MA_T2PDX_NPC": {
+      "id": "L__Heavy_Laser_Turret_NPC",
+      "name": "(L) Heavy Laser Turret [NPC]",
+      "icon": "icons/L__Heavy_Laser_Turret_NPC.png"
+    },
+    "MA_Fixed_T2": {
+      "id": "L__Heavy_Laser_Gimbal",
+      "name": "(L) Heavy Laser Gimbal",
+      "icon": "icons/L__Heavy_Laser_Gimbal.png"
+    },
+    "MA_Fixed_T2_NPC": {
+      "id": "L__Heavy_Laser_Gimbal_NPC",
+      "name": "(L) Heavy Laser Gimbal [NPC]",
+      "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png"
+    },
+    "ARYXSpartanTurret": {
+      "id": "L__Spartan_Heavy_Laser_Turret",
+      "name": "(L) Spartan Heavy Laser Turret",
+      "icon": "icons/L__Spartan_Heavy_Laser_Turret.png"
+    },
+    "ARYXSpartanTurret_NPC": {
+      "id": "L__Spartan_Heavy_Laser_Turret_NPC",
+      "name": "(L) Spartan Heavy Laser Turret [NPC]",
+      "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png"
+    },
+    "ReceptorCoilGun": {
+      "id": "S__Light_Laser_Gun",
+      "name": "(S) Light Laser Gun",
+      "icon": "icons/S__Light_Laser_Gun.png"
+    },
+    "ReceptorCoilGun_NPC": {
+      "id": "S__Light_Laser_Gun_NPC",
+      "name": "(S) Light Laser Gun [NPC]",
+      "icon": "icons/S__Light_Laser_Gun_NPC.png"
+    },
+    "ReceptorTurret": {
+      "id": "L__Light_Laser_Turret",
+      "name": "(L) Light Laser Turret",
+      "icon": "icons/L__Light_Laser_Turret.png"
+    },
+    "ReceptorTurret_NPC": {
+      "id": "L__Light_Laser_Turret_NPC",
+      "name": "(L) Light Laser Turret [NPC]",
+      "icon": "icons/L__Light_Laser_Turret_NPC.png"
+    },
+    "MA_PDX": {
+      "id": "S__Light_Laser_Turret",
+      "name": "(S) Light Laser Turret",
+      "icon": "icons/S__Light_Laser_Turret.png"
+    },
+    "MA_PDX_NPC": {
+      "id": "S__Light_Laser_Turret_NPC",
+      "name": "(S) Light Laser Turret [NPC]",
+      "icon": "icons/S__Light_Laser_Turret_NPC.png"
+    },
+    "lokiCannon1": {
+      "id": "L__Loki_Plasma_Turret",
+      "name": "(L) Loki Plasma Turret",
+      "icon": "icons/L__Loki_Plasma_Turret.png"
+    },
+    "lokiCannon1_NPC": {
+      "id": "L__Loki_Plasma_Turret_NPC",
+      "name": "(L) Loki Plasma Turret [NPC]",
+      "icon": "icons/L__Loki_Plasma_Turret_NPC.png"
+    },
+    "missileBattery01": {
+      "id": "L__Tuukka_Missile_Turret",
+      "name": "(L) Tuukka Missile Turret",
+      "icon": "icons/L__Tuukka_Missile_Turret.png"
+    },
+    "missileBattery01_NPC": {
+      "id": "L__Tuukka_Missile_Turret_NPC",
+      "name": "(L) Tuukka Missile Turret [NPC]",
+      "icon": "icons/L__Tuukka_Missile_Turret_NPC.png"
+    },
+    "GVK_GriffinMissileTurret": {
+      "id": "L__Missile_Turret",
+      "name": "(L) Missile Turret",
+      "icon": "icons/L__Missile_Turret.png"
+    },
+    "GVK_GriffinMissileTurret_NPC": {
+      "id": "L__Missile_Turret_NPC",
+      "name": "(L) Missile Turret [NPC]",
+      "icon": "icons/L__Missile_Turret_NPC.png"
+    },
+    "GVK_GriffinMissileLauncher": {
+      "id": "L__Missile_Launcher",
+      "name": "(L) Missile Launcher",
+      "icon": "icons/L__Missile_Launcher.png"
+    },
+    "GVK_GriffinMissileLauncher_NPC": {
+      "id": "L__Missile_Launcher_NPC",
+      "name": "(L) Missile Launcher [NPC]",
+      "icon": "icons/L__Missile_Launcher_NPC.png"
+    },
+    "SmallRocketLauncherReload": {
+      "id": "S__Missile_Launcher",
+      "name": "(S) Missile Launcher",
+      "icon": "icons/S__Missile_Launcher.png"
+    },
+    "SmallRocketLauncherReload_NPC": {
+      "id": "S__Missile_Launcher_NPC",
+      "name": "(S) Missile Launcher [NPC]",
+      "icon": "icons/S__Missile_Launcher_NPC.png"
+    },
+    "SmallGriffinLauncherWarfare2_NPC": {
+      "id": "S__SmallGriffinLauncherWarfare2_NPC",
+      "name": "(S) NPC Griffin Launcher",
+      "icon": "icons/SmallGriffinLauncherWarfare2_NPC.png"
+    },
+    "ARYXHydraTurret": {
+      "id": "L__Rocket_Turret",
+      "name": "(L) Rocket Turret",
+      "icon": "icons/L__Rocket_Turret.png"
+    },
+    "ARYXHydraTurret_NPC": {
+      "id": "L__Rocket_Turret_NPC",
+      "name": "(L) Rocket Turret [NPC]",
+      "icon": "icons/L__Rocket_Turret_NPC.png"
+    },
+    "LargeMissileTurret": {
+      "id": "L__LargeMissileTurret",
+      "name": "(L) Hydra Turret",
+      "icon": "icons/L__Missile_Turret.png"
+    },
+    "LargeMissileTurret_NPC": {
+      "id": "L__LargeMissileTurret_NPC",
+      "name": "(L) Hydra Turret",
+      "icon": "icons/LargeMissileTurret_NPC.png"
+    },
+    "LargeMissileTurretReskin": {
+      "id": "L__LargeMissileTurretReskin",
+      "name": "(L) Hydra Turret",
+      "icon": "icons/LargeMissileTurretReskin.png"
+    },
+    "LargeMissileTurretReskin_NPC": {
+      "id": "L__LargeMissileTurretReskin_NPC",
+      "name": "(L) Hydra Turret",
+      "icon": "icons/LargeMissileTurretReskin_NPC.png"
+    },
+    "SmallMissileTurret": {
+      "id": "S__Rocket_Turret",
+      "name": "(S) Rocket Turret",
+      "icon": "icons/S__Rocket_Turret.png"
+    },
+    "SmallMissileTurret_NPC": {
+      "id": "S__Rocket_Turret_NPC",
+      "name": "(S) Rocket Turret [NPC]",
+      "icon": "icons/S__Rocket_Turret_NPC.png"
+    },
+    "SmallMissileTurretReskin": {
+      "id": "S__SmallMissileTurretReskin",
+      "name": "(S) Hydra Turret",
+      "icon": "icons/SmallMissileTurretReskin.png"
+    },
+    "SmallMissileTurretReskin_NPC": {
+      "id": "S__SmallMissileTurretReskin_NPC",
+      "name": "(S) Hydra Turret",
+      "icon": "icons/SmallMissileTurretReskin_NPC.png"
+    },
+    "LargeMissileLauncher": {
+      "id": "L__Rocket_Launcher",
+      "name": "(L) Rocket Launcher",
+      "icon": "icons/L__Rocket_Launcher.png"
+    },
+    "LargeMissileLauncher_NPC": {
+      "id": "L__Rocket_Launcher_NPC",
+      "name": "(L) Rocket Launcher [NPC]",
+      "icon": "icons/L__Rocket_Launcher_NPC.png"
+    },
+    "SmallMissileLauncher": {
+      "id": "S__Rocket_Launcher",
+      "name": "(S) Rocket Launcher",
+      "icon": "icons/S__Rocket_Launcher.png"
+    },
+    "SmallMissileLauncherWarfare2": {
+      "id": "S__SmallMissileLauncherWarfare2",
+      "name": "(S) Hydra Pod",
+      "icon": "icons/SmallMissileLauncherWarfare2.png"
+    },
+    "SmallMissileLauncher_NPC": {
+      "id": "S__Rocket_Launcher_NPC",
+      "name": "(S) Rocket Launcher [NPC]",
+      "icon": "icons/S__Rocket_Launcher_NPC.png"
+    },
+    "SmallMissileLauncherWarfare2_NPC": {
+      "id": "S__SmallMissileLauncherWarfare2_NPC",
+      "name": "(S) Hydra Pod",
+      "icon": "icons/SmallMissileLauncherWarfare2_NPC.png"
+    },
+    "Missiles_Rockets_SGReloadableLauncher": {
+      "id": "S__Rocket_Launcher_Reloadable",
+      "name": "(S) Rocket Launcher Reloadable",
+      "icon": "icons/S__Rocket_Launcher_Reloadable.png"
+    },
+    "Missiles_Rockets_SGReloadableLauncher_NPC": {
+      "id": "S__Rocket_Launcher_Reloadable_NPC",
+      "name": "(S) Rocket Launcher Reloadable [NPC]",
+      "icon": "icons/S__Rocket_Launcher_Reloadable_NPC.png"
+    },
+    "ARYXMissileBattery": {
+      "id": "L__SRBM_Turret",
+      "name": "(L) SRBM Turret",
+      "icon": "icons/L__SRBM_Turret.png"
+    },
+    "ARYXMissileBattery_NPC": {
+      "id": "L__SRBM_Turret_NPC",
+      "name": "(L) SRBM Turret [NPC]",
+      "icon": "icons/L__SRBM_Turret_NPC.png"
+    },
+    "Missile_Torpedo_Large": {
+      "id": "L__Torpedo_Launcher",
+      "name": "(L) Torpedo Launcher",
+      "icon": "icons/L__Torpedo_Launcher.png"
+    },
+    "Missile_Torpedo_Large_NPC": {
+      "id": "L__Torpedo_Launcher_NPC",
+      "name": "(L) Torpedo Launcher [NPC]",
+      "icon": "icons/L__Torpedo_Launcher_NPC.png"
+    },
+    "Missile_Torpedo_Small": {
+      "id": "S__Torpedo_Launcher",
+      "name": "(S) Torpedo Launcher",
+      "icon": "icons/S__Torpedo_Launcher.png"
+    },
+    "Missile_Torpedo_Small_NPC": {
+      "id": "S__Torpedo_Launcher_NPC",
+      "name": "(S) Torpedo Launcher [NPC]",
+      "icon": "icons/S__Torpedo_Launcher_NPC.png"
+    },
+    "ARYX_Small_Sidekick_Hangar": {
+      "id": "L__Drone_Bay",
+      "name": "(L) Drone Bay",
+      "icon": "icons/L__Drone_Bay.png"
     },
     "ARYX_Small_Sidekick_Hangar_NPC": {
       "id": "L__Drone_Bay_NPC",
       "name": "(L) Drone Bay [NPC]",
       "icon": "icons/L__Drone_Bay_NPC.png"
     },
-    "HarbingerTurret_NPC": {
-      "id": "L__Harbinger_Turret_NPC",
-      "name": "(L) Harbinger Turret [NPC]",
-      "icon": "icons/HarbingerTurret_NPC.png"
+    "LargeFlareLauncher": {
+      "id": "L__LargeFlareLauncher",
+      "name": "(L) Flare Launcher",
+      "icon": "icons/LargeFlareLauncher.png"
+    },
+    "LargeFlareLauncher_NPC": {
+      "id": "L__LargeFlareLauncher_NPC",
+      "name": "(L) Flare Launcher",
+      "icon": "icons/LargeFlareLauncher_NPC.png"
+    },
+    "SmallFlareLauncher": {
+      "id": "S__SmallFlareLauncher",
+      "name": "(S) Flare Launcher",
+      "icon": "icons/SmallFlareLauncher.png"
+    },
+    "SmallFlareLauncher_NPC": {
+      "id": "S__SmallFlareLauncher_NPC",
+      "name": "(S) Flare Launcher",
+      "icon": "icons/SmallFlareLauncher_NPC.png"
+    },
+    "OKIDesignator": {
+      "id": "L__OKIDesignator",
+      "name": "(L) Radar",
+      "icon": "icons/OKIDesignator.png"
+    },
+    "ARYXSmallRadar": {
+      "id": "S__ARYXSmallRadar",
+      "name": "(S) Radar",
+      "icon": "icons/ARYXSmallRadar.png"
+    },
+    "SmallBlockRadioAntenna_WCRadar": {
+      "id": "S__SmallBlockRadioAntenna_WCRadar",
+      "name": "(S) Radar",
+      "icon": "icons/SmallBlockRadioAntenna_WCRadar.png"
+    },
+    "SmallBlockCompactRadioAntennaReskin_WCRadar": {
+      "id": "S__SmallBlockCompactRadioAntennaReskin_WCRadar",
+      "name": "(S) Radar",
+      "icon": "icons/SmallBlockCompactRadioAntennaReskin_WCRadar.png"
+    },
+    "LargeWarhead": {
+      "id": "L__Warhead",
+      "name": "(L) Warhead",
+      "icon": "icons/L__Warhead.png"
+    },
+    "LargeExplosiveBarrel": {
+      "id": "L__LargeExplosiveBarrel",
+      "name": "(L) Large Warhead",
+      "icon": "icons/LargeExplosiveBarrel.png"
+    },
+    "SmallWarhead": {
+      "id": "S__Warhead",
+      "name": "(S) Warhead",
+      "icon": "icons/S__Warhead.png"
+    },
+    "SmallExplosiveBarrel": {
+      "id": "S__SmallExplosiveBarrel",
+      "name": "(S) Small Warhead",
+      "icon": "icons/SmallExplosiveBarrel.png"
     }
   },
   "magazines": {
+    "Blank": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
     "NATO_25x184mm": {
       "category": "Ship Standard Kinetics",
       "localIcon": "icons/ammo_NATO_25x184mm.png",
@@ -538,12 +719,6 @@ const STUDIO_OVERRIDES = {
       "roleMultiplier": 1.5,
       "defaultRUs": 84.8
     },
-    "Lasers_Plasma": {
-      "category": "High-Tech & Strategic",
-      "localIcon": "icons/ammo_Lasers_Plasma.png",
-      "roleMultiplier": 1.5,
-      "defaultRUs": 10.2
-    },
     "Missile200mm": {
       "category": "Missiles, Rockets & Torpedoes",
       "localIcon": "icons/ammo_Missile200mm.png",
@@ -574,6 +749,12 @@ const STUDIO_OVERRIDES = {
       "roleMultiplier": 1.5,
       "defaultRUs": 10.6
     },
+    "Lasers_Plasma": {
+      "category": "High-Tech & Strategic",
+      "localIcon": "icons/ammo_Lasers_Plasma.png",
+      "roleMultiplier": 1.5,
+      "defaultRUs": 10.2
+    },
     "Others_Drone_Falcon": {
       "category": "Missiles, Rockets & Torpedoes",
       "localIcon": "icons/ammo_Others_Drone_Falcon.png",
@@ -583,6 +764,36 @@ const STUDIO_OVERRIDES = {
     "FlareClip": {
       "category": "Countermeasures & Decoys",
       "localIcon": "icons/ammo_default.png",
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FireworksBoxBlue": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FireworksBoxGreen": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FireworksBoxRed": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FireworksBoxPink": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FireworksBoxYellow": {
+      "category": "",
+      "localIcon": null,
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
@@ -601,6 +812,42 @@ const STUDIO_OVERRIDES = {
     "UltimateAutomaticRifleGun_Mag_30rd": {
       "category": "Handheld & Small Arms",
       "localIcon": "icons/ammo_default.png",
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "Missile200mm_CsBlank": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "SemiAutoPistolMagazine": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "FullAutoPistolMagazine": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "AutomaticRifleGun_Mag_20rd": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "RapidFireAutomaticRifleGun_Mag_50rd": {
+      "category": "",
+      "localIcon": null,
+      "roleMultiplier": 1,
+      "defaultRUs": 0
+    },
+    "PreciseAutomaticRifleGun_Mag_5rd": {
+      "category": "",
+      "localIcon": null,
       "roleMultiplier": 1,
       "defaultRUs": 0
     }
