@@ -231,11 +231,21 @@ async function init(opts) {
     console.warn('Hosted source fetch failed:', e);
   }
   if (result && result.data) {
+    // Atomic swap: validate ALL legs before pushing ANY to the app.
+    const bad = window.SourcePipeline.validateLiveData(result.data);
+    if (bad) {
+      console.warn('Live data rejected, falling back to bundled:', bad);
+      showBanner('⚠ Live source data problem (showing bundled fallback where possible):\n[' + result.mode + '] ' + bad, 'error');
+      setChip('🔴 BUNDLED SNAPSHOT — click to link mod folder', '#a33');
+      chipEl.onclick = async () => { try { await initFolderLink(opts.onReapply); } catch (e) { console.warn(e); showBanner('Folder link failed: ' + (e && e.message || e)); } };
+      return { data: null, mode: 'snapshot' };
+    }
     lastData = result.data;
     showExportBtn();
     const sev = severityChip(result.severity || 'clean');
     setChip(result.label, sev.color);
     chipEl.onclick = () => location.reload();
+    if (opts.onReapply) opts.onReapply(result.data);
     return result;
   }
   // 2) Previously linked mod folder (persisted handle)

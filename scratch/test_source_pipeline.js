@@ -160,5 +160,19 @@ for (const k of Object.keys(bundledAmmos)) {
 console.log('info: ammo field parity vs bundled — mismatches:', mismatches);
 for (const s of mismatchSamples) console.log('   ', s);
 
+// --- validateLiveData (atomic-swap guard) tests ---
+function checkV(label, cond, detail) {
+  if (cond) { console.log('PASS', label); }
+  else { console.log('FAIL', label, '—', detail); failures++; }
+}
+const V = SP.validateLiveData;
+checkV('accepts complete data', V({weapons:[{assignedAmmos:['A'],ammoName:'A'}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{b:{}}}) === null);
+checkV('rejects null', V(null) === 'no data object');
+checkV('rejects empty weapons', V({weapons:[],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{b:{}}}).indexOf('weapons') >= 0);
+checkV('rejects empty ammos', V({weapons:[{assignedAmmos:['A']}],ammos:{},magazines:[{subtypeId:'m'}],blocks:{b:{}}}).indexOf('ammos') >= 0);
+checkV('rejects empty magazines', V({weapons:[{assignedAmmos:['A']}],ammos:{A:{}},magazines:[],blocks:{b:{}}}).indexOf('magazines') >= 0);
+checkV('rejects empty blocks', V({weapons:[{assignedAmmos:['A']}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{}}).indexOf('blocks') >= 0);
+checkV('rejects unresolved ammo ref', V({weapons:[{assignedAmmos:['Missing'],ammoName:'Missing'}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{b:{}}}).indexOf('unresolved') >= 0);
+
 console.log('\nRESULT:', failures === 0 ? 'ALL PASS' : failures + ' FAILURES');
 process.exit(failures === 0 ? 0 : 1);

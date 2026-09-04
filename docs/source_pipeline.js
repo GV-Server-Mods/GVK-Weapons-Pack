@@ -578,9 +578,39 @@ function buildStudioData(csSources, sbc, overrides) {
   return { weapons, ammos, magazines, blocks, errors, warnings };
 }
 
+// Atomic-swap validation: the app consumes weapons + ammos + magazines + blocks as a unit.
+// If any leg is missing or any weapon's ammo doesn't resolve, reject ALL of it — a hybrid
+// (some live, some bundled) is a credibility trap. Returns null if valid, else a reason string.
+function validateLiveData(data) {
+  if (!data) return 'no data object';
+  const need = ['weapons', 'ammos', 'magazines', 'blocks'];
+  for (const k of need) {
+    const v = data[k];
+    if (!v || (Array.isArray(v) && v.length === 0) || (!Array.isArray(v) && typeof v === 'object' && Object.keys(v).length === 0)) {
+      return 'missing or empty: ' + k;
+    }
+  }
+  const ammos = data.ammos;
+  let unresolved = 0;
+  const unresolvedList = [];
+  for (const w of data.weapons) {
+    const keys = (w.assignedAmmos && w.assignedAmmos.length) ? w.assignedAmmos : (w.ammoName ? [w.ammoName] : []);
+    for (const key of keys) {
+      if (!ammos[key]) {
+        unresolved++;
+        if (unresolvedList.length < 5) unresolvedList.push((w.subtypeId || w.id || '?') + ' → ' + key);
+      }
+    }
+  }
+  if (unresolved > 0) {
+    return 'unresolved weapon→ammo refs: ' + unresolved + ' (e.g. ' + unresolvedList.join(', ') + ')';
+  }
+  return null;
+}
+
 const SourcePipeline = {
   stripComments, braceMatch, exprParser, extractDefs, evalGetter, resolveTree, parseAll,
-  parseXml, parseMagazines, parseBlueprints, parseCubeBlocks, ammoShape, weaponEntry, magazineEntries, buildStudioData,
+  parseXml, parseMagazines, parseBlueprints, parseCubeBlocks, ammoShape, weaponEntry, magazineEntries, buildStudioData, validateLiveData,
 };
 if (typeof module !== 'undefined' && module.exports) module.exports = SourcePipeline;
 else root.SourcePipeline = SourcePipeline;
