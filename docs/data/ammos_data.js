@@ -3750,6 +3750,14 @@ const BUNDLED_AMMOS_DATA = {
   },
   "Missiles_Torpedo_Shrapnel": {
     "name": "Missiles_Torpedo_Shrapnel",
+    "ewar": {
+      "enable": true,
+      "type": "Offense",
+      "mode": "Effect",
+      "strength": 100000.0,
+      "radius": 100.0,
+      "duration": 2400
+    },
     "base_name": null,
     "file": "Missiles_Torpedo_Ammos.cs",
     "ammoMagazine": "Energy",
@@ -4728,6 +4736,14 @@ const BUNDLED_AMMOS_DATA = {
   },
   "FlareWC": {
     "name": "FlareWC",
+    "ewar": {
+      "enable": true,
+      "type": "AntiSmartv2",
+      "mode": "Field",
+      "strength": 99.0,
+      "radius": 700.0,
+      "duration": 1000
+    },
     "base_name": null,
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FlareClip",

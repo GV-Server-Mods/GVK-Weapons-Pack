@@ -527,6 +527,7 @@ const badgeTech = document.getElementById('badgeTech');
 const badgeCircuitry = document.getElementById('badgeCircuitry');
 const badgeRelic = document.getElementById('badgeRelic');
 const badgeNpc = document.getElementById('badgeNpc');
+const badgePd = document.getElementById('badgePd');
 
 // DOM Elements - Telemetry Munition Bar (Workspace 1)
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
@@ -1303,6 +1304,12 @@ function getSelectableAmmos(weapon) {
   return usable.length > 0 ? usable : (assigned.length > 0 ? [assigned[0]] : []);
 }
 
+// Friendly WeaponCore EwarDef.Type names for UI labels
+function ewarTypeLabel(t) {
+  const map = { AntiSmart: 'Anti-Smart', AntiSmartv2: 'Anti-Smart', EnergySink: 'Energy Sink', Emp: 'EMP', Offense: 'Offense', Nav: 'Nav', Dot: 'DoT', JumpNull: 'Jump-Null', Anchor: 'Anchor', Tractor: 'Tractor', Pull: 'Pull', Push: 'Push' };
+  return map[t] || t || 'EWAR';
+}
+
 function updateTelemetryAmmoBadge() {
   if (!telemetryAmmoBadge || !activeAmmo) return;
   const dmg = getAmmoDamageDetailed(activeAmmo);
@@ -1313,8 +1320,16 @@ function updateTelemetryAmmoBadge() {
     : null;
   const frag = (activeAmmo.fragment && activeAmmo.fragment.enable) ? activeAmmo.fragment : null;
 
+  const ewar = (activeAmmo.ewar && activeAmmo.ewar.enable) ? activeAmmo.ewar : null;
+  // Screen burst: wide EndOfLife with token damage exists only to trigger projectile-vs-projectile
+  // HealthHitModifier - block damage is zeroed via DamageScales.Grids = 0 (Flak PROX anti-smart screen)
+  const isScreenBurst = eol && eol.radius >= 10 && (eol.damage || 0) <= 1;
   let typeDesc = "Direct Kinetic AP";
-  if (eol && eol.damage > 0) {
+  if (ewar) {
+    typeDesc = `🧿 EWAR ${ewarTypeLabel(ewar.type)} (${ewar.radius || 0}m)`;
+  } else if (isScreenBurst) {
+    typeDesc = `🎯 Anti-Missile Burst (${eol.radius || 0}m)`;
+  } else if (eol && eol.damage > 0) {
     typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
   } else if (frag && frag.fragments > 0) {
     typeDesc = `Proximity Shrapnel (${frag.fragments} Frags)`;
@@ -1517,6 +1532,14 @@ function updateUniversalBanner() {
   // NPC Variant
   if (badgeNpc) {
     badgeNpc.style.display = (activeWeapon.name.includes('(NPC)') || activeWeapon.subtypeId.includes('_NPC')) ? 'inline-flex' : 'none';
+  }
+
+  // Point Defense capability - sourced from weapons data (pdProjectiles), mirrors TargetingDef.Threats
+  if (badgePd) {
+    badgePd.style.display = activeWeapon.pdProjectiles ? 'inline-flex' : 'none';
+    badgePd.title = activeWeapon.pdProjectiles
+      ? (activeWeapon.pdSmartOnly ? 'WeaponCore threat list includes Projectiles (smart projectiles only - dumb rounds ignored)' : 'WeaponCore threat list includes Projectiles')
+      : '';
   }
 
   // Bottom Sticky HUD
@@ -2294,11 +2317,17 @@ function updateCombatTelemetry() {
   const nonArmorDmg = (perHit * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
   const nonArmorVolley = Math.round(nonArmorDmg * barrels);
 
-  // Blast stats
+  // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
+  let blastKind = 'none';
+  const aEwar = (activeAmmo.ewar && activeAmmo.ewar.enable) ? activeAmmo.ewar : null;
   let blastRadius = 0;
   let blastDepth = 0;
   let blastDmg = dmgDetails.aoe;
-  if (activeAmmo.areaOfDamage) {
+  if (aEwar) {
+    blastKind = 'ewar';
+    blastRadius = aEwar.radius || 0;
+    blastDmg = 0;
+  } else if (activeAmmo.areaOfDamage) {
     if (activeAmmo.areaOfDamage.enable) {
       blastRadius = activeAmmo.areaOfDamage.radius || 0;
       blastDepth = activeAmmo.areaOfDamage.depth || 0;
@@ -2307,6 +2336,11 @@ function updateCombatTelemetry() {
       blastDepth = activeAmmo.areaOfDamage.endOfLife.depth || 0;
       blastDmg = activeAmmo.areaOfDamage.endOfLife.damage || blastDmg;
     }
+  }
+  if (blastRadius >= 10 && (blastDmg || 0) <= 1) {
+    // Token-damage wide burst (Flak PROX): anti-projectile screen, no real explosive payload
+    blastKind = 'screen';
+    blastDmg = 0;
   }
 
   // Update Hero Metrics (big numbers = effective vs best-fit target; blue lines are the disclaimers)
@@ -2384,7 +2418,13 @@ function updateCombatTelemetry() {
   }
 
   if (tmBlastRadius) {
-    if (blastRadius > 0) {
+    if (blastKind === 'ewar' && blastRadius > 0) {
+      tmBlastRadius.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} ${Math.round(blastRadius)}m`;
+      tmBlastRadius.className = 'target-multiplier-badge special';
+    } else if (blastKind === 'screen') {
+      tmBlastRadius.textContent = `${Math.round(blastRadius)}m Screen`;
+      tmBlastRadius.className = 'target-multiplier-badge special';
+    } else if (blastRadius > 0) {
       tmBlastRadius.textContent = `${blastRadius.toFixed(1)}m Radius`;
       tmBlastRadius.className = 'target-multiplier-badge special';
     } else {
@@ -2396,7 +2436,11 @@ function updateCombatTelemetry() {
     tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp</span>`;
   }
   if (tmBlastSub) {
-    if (blastRadius > 0) {
+    if (blastKind === 'ewar') {
+      tmBlastSub.textContent = 'EWAR effect — no block damage (disables base & AoE payload)';
+    } else if (blastKind === 'screen') {
+      tmBlastSub.textContent = 'Anti-projectile burst — no block damage (grid scaling zeroed)';
+    } else if (blastRadius > 0) {
       tmBlastSub.textContent = `${blastDepth > 0 ? blastDepth.toFixed(1) + 'm Depth | ' : ''}Area Detonation (Pooled)`;
     } else {
       tmBlastSub.textContent = 'Direct Kinetic Penetration Only';
@@ -2536,6 +2580,14 @@ function updateTtkSimulator() {
 
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const barrels = parseFloat(wBarrelsPerShot.value) || 1;
+  if (dmgDetails.ewar || dmgDetails.total <= 0) {
+    outTtkMain.textContent = 'No Block Damage';
+    ttkProgressFill.style.width = '5%';
+    outTtkRounds.textContent = dmgDetails.ewar
+      ? 'EWAR munition — no destructive payload, effect only'
+      : 'No destructive payload against blocks';
+    return;
+  }
   // Capped rounds can't dump full base damage into a single cube (WC BaseDamageCutoff)
   const effectiveDmgPerShot = (dmgDetails.perBlockBase * targetMult) + dmgDetails.aoe + dmgDetails.frag;
   const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels);
@@ -2777,9 +2829,11 @@ function setupLogisticsEvents() {
 // RECURSIVE DAMAGE & ICON RESOLUTION HELPERS
 // ==========================================================================
 function getAmmoDamageDetailed(ammo, depth = 0) {
-  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1 };
-  const base = parseFloat(ammo.baseDamage) || 0;
-  const cutoff = parseFloat(ammo.baseDamageCutoff) || 0;
+  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false };
+  // WC EwarDef.Enable disables base AND AoE damage - only the effect lands
+  const isEwar = !!(ammo.ewar && ammo.ewar.enable);
+  const base = isEwar ? 0 : (parseFloat(ammo.baseDamage) || 0);
+  const cutoff = isEwar ? 0 : (parseFloat(ammo.baseDamageCutoff) || 0);
   // Penetrating rounds (WC BaseDamageCutoff) apply at most Cutoff per block hit and carry the remainder onward
   const perBlockBase = cutoff > 0 ? Math.min(base, cutoff) : base;
   const penBlocks = cutoff > 0 ? Math.max(1, Math.floor(base / cutoff)) : 1;
@@ -2847,7 +2901,8 @@ function getAmmoDamageDetailed(ammo, depth = 0) {
     deliverySec: deliverySec,
     cutoff: cutoff,
     perBlockBase: perBlockBase,
-    penBlocks: penBlocks
+    penBlocks: penBlocks,
+    ewar: isEwar
   };
 }
 

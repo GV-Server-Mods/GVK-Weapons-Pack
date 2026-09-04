@@ -2,6 +2,8 @@
 const BUNDLED_WEAPONS_DATA = [
   {
     "id": "L__Gatling_Avenger_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Gatling Avenger Turret",
     "grid": "Large",
     "type": "Turret",
@@ -225,6 +227,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Gatling Turret",
     "grid": "Large",
     "type": "Turret",
@@ -429,6 +433,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Gatling Turret",
     "grid": "Small",
     "type": "Turret",
@@ -845,6 +851,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gimbal",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Gatling Gimbal",
     "grid": "Small",
     "type": "Gimbal",
@@ -2314,6 +2322,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Flak_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Flak Turret",
     "grid": "Large",
     "type": "Turret",
@@ -2527,6 +2537,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Flak Turret",
     "grid": "Small",
     "type": "Turret",
@@ -2723,6 +2735,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Gun",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Flak Gun",
     "grid": "Small",
     "type": "Fixed",
@@ -8417,6 +8431,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Light_Laser_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Light Laser Turret",
     "grid": "Small",
     "type": "Turret",
@@ -8654,6 +8670,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Turret",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Light Laser Turret",
     "grid": "Large",
     "type": "Turret",
@@ -9259,6 +9277,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__PD_Laser",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) PD Laser",
     "grid": "Large",
     "type": "Fixed",
@@ -9467,6 +9487,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__PD_Laser",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) PD Laser",
     "grid": "Small",
     "type": "Fixed",
@@ -10263,6 +10285,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Gatling Avenger Turret [NPC]",
     "grid": "Large",
     "type": "Turret",
@@ -10487,6 +10511,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Gatling Turret [NPC]",
     "grid": "Large",
     "type": "Turret",
@@ -10692,6 +10718,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Gatling Turret [NPC]",
     "grid": "Small",
     "type": "Turret",
@@ -11141,6 +11169,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Gatling Gimbal [NPC]",
     "grid": "Small",
     "type": "Gimbal",
@@ -12617,6 +12647,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Flak_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Flak Turret [NPC]",
     "grid": "Large",
     "type": "Turret",
@@ -12831,6 +12863,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Flak Turret [NPC]",
     "grid": "Small",
     "type": "Turret",
@@ -13028,6 +13062,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Gun_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Flak Gun [NPC]",
     "grid": "Small",
     "type": "Fixed",
@@ -18762,6 +18798,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) Light Laser Turret [NPC]",
     "grid": "Small",
     "type": "Turret",
@@ -19000,6 +19038,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) Light Laser Turret [NPC]",
     "grid": "Large",
     "type": "Turret",
@@ -19597,6 +19637,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__PD_Laser_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(L) PD Laser [NPC]",
     "grid": "Large",
     "type": "Fixed",
@@ -19806,6 +19848,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__PD_Laser_NPC",
+    "pdProjectiles": true,
+    "pdSmartOnly": true,
     "name": "(S) PD Laser [NPC]",
     "grid": "Small",
     "type": "Fixed",
