@@ -213,7 +213,11 @@ function resolveTree(v, defs, helpers) {
 // sources: {fileName: text}. Returns {defs, ammos, weapons, errors, warnings}.
 function parseAll(sources) {
   const defs = {}, errors = [], warnings = [];
-  for (const f of Object.keys(sources).sort()) extractDefs(sources[f], f, defs, errors, warnings);
+  for (const f of Object.keys(sources).sort()) {
+    // Animation files use C# generics/#region the parser doesn't handle and contribute no studio data.
+    if (f.includes('Animations') || f.endsWith('Animation.cs')) continue;
+    extractDefs(sources[f], f, defs, errors, warnings);
+  }
   for (let pass = 0; pass < 6; pass++) {
     let changed = false;
     for (const name of Object.keys(defs)) {
