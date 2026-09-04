@@ -221,7 +221,8 @@ const WC_CORE_DEFAULTS = {
 // ==========================================================================
 // WORKBENCH FIELD HELP (Definition Workbench Scope A & B tooltips)
 // Wording adapted from the canonical WeaponCore example definitions in
-// docs/data/Scripts/CoreParts/Weapon75Part.cs and Weapon75ammo.cs.
+// docs/data/Scripts/CoreParts/ — deprecated local copy removed. Canonical WeaponCore example definitions
+// now live in the mod repo's CoreParts/ folder (same files the live pipeline parses).
 // Keys are DOM element ids; values are hover tooltip descriptions.
 // ==========================================================================
 const WORKBENCH_FIELD_HELP = {
@@ -1140,6 +1141,45 @@ async function initStudio() {
     console.log("Running in static/local mode, using bundled datasets.");
   }
 
+  // Live-source pipeline: parse the repo's C#/SBC on the fly (hosted mirror or linked mod folder).
+  // On success this REPLACES the bundled datasets; on failure we keep them and show a banner.
+  try {
+    if (window.GVKLiveSource) {
+      const live = await window.GVKLiveSource.init({
+        onReapply: (data) => {
+          weaponsDb = data.weapons;
+          ammosDb = data.ammos;
+          magazinesBlueprintsDb = data.magazines;
+          refreshAfterDataLoad();
+        },
+      });
+      if (live && live.data) {
+        weaponsDb = live.data.weapons;
+        ammosDb = live.data.ammos;
+        magazinesBlueprintsDb = live.data.magazines;
+      }
+    }
+  } catch (e) {
+    console.warn('Live source pipeline failed; using bundled datasets.', e);
+    if (window.GVKLiveSource) window.GVKLiveSource.showBanner('Pipeline init failed: ' + (e && e.message || e));
+  }
+
+  refreshAfterDataLoad();
+
+  // Check URL Permalinks
+  parseUrlParams();
+
+  // Event Listeners
+  setupNavigationEvents();
+  setupWorkbenchInputEvents();
+  applyWorkbenchFieldHelp();
+  setupLogisticsEvents();
+  setupModalEvents();
+
+  console.log("GVK Weapon Studio Initialized with 3 Workspaces & Full Tag Definitions.");
+}
+
+function refreshAfterDataLoad() {
   // Populate Dropdowns
   checkWcSchemaIntegrity();
   populateWeaponDropdowns();
@@ -1150,9 +1190,6 @@ async function initStudio() {
   // Populate Balance Matrix Modal inputs
   syncBalanceMatrixInputs();
 
-  // Check URL Permalinks
-  parseUrlParams();
-
   // Select Default Weapon (Avenger Turret or First)
   if (!activeWeapon && weaponsDb.length > 0) {
     const avenger = weaponsDb.find(w => w.name.includes("Avenger")) || weaponsDb[0];
@@ -1161,15 +1198,6 @@ async function initStudio() {
 
   // Initialize Default Logistics Magazine
   selectLogisticsMagazine(selectedLogisticsMagSubtype, true);
-
-  // Event Listeners
-  setupNavigationEvents();
-  setupWorkbenchInputEvents();
-  applyWorkbenchFieldHelp();
-  setupLogisticsEvents();
-  setupModalEvents();
-
-  console.log("GVK Weapon Studio Initialized with 3 Workspaces & Full Tag Definitions.");
 }
 
 // ==========================================================================

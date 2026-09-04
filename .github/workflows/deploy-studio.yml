@@ -1,0 +1,51 @@
+name: Deploy Weapon Studio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate data (gate)
+        run: node tools/validate_studio_data.mjs
+
+      - name: Stage site
+        run: |
+          mkdir -p _site/data/source/CoreParts _site/data/source/CoreParts_script _site/data/source/Data/CubeBlocks
+          cp -r docs/. _site/
+          cp CoreParts/*.cs _site/data/source/CoreParts/
+          cp CoreParts/script/Structure.cs _site/data/source/CoreParts_script/
+          cp Content/Data/AmmoMagazines_Ship.sbc Content/Data/AmmoMagazines_Handheld.sbc \
+             Content/Data/Blueprints.sbc Content/Data/PhysicalItems.sbc _site/data/source/Data/
+          cp Content/Data/CubeBlocks/*.sbc _site/data/source/Data/CubeBlocks/
+
+      - name: Stamp source manifest
+        run: |
+          CS=$(cd CoreParts && ls *.cs | sed 's/^/"/;s/$/"/' | paste -sd, -)
+          CB=$(cd Content/Data/CubeBlocks && ls *.sbc | sed 's/^/"/;s/$/"/' | paste -sd, -)
+          printf '{"commit":"%s","ref":"%s","coreParts":[%s],"cubeBlocks":[%s]}\n' \
+            "$GITHUB_SHA" "$GITHUB_REF_NAME" "$CS" "$CB" > _site/data/source/_manifest.json
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - uses: actions/deploy-pages@v4
