@@ -204,6 +204,14 @@ Full canonical WeaponCore round engineering:
 - Tracks `CoreParts/script/Structure.cs` fingerprint. If WeaponCore updates and introduces new structs or tags, the dynamic tag inspector auto-renders typed UI controls and losslessly serializes them into C#.
 - **Lean Anti-Bloat Exporter**: Suppresses all default, zeroed, or inactive tags (e.g. disabled fragment blocks, zeroed offsets, unused audio), emitting clean C# code compliant with GVK anti-bloat rules.
 
+#### 5. Design Notes — Field Tooltips & Legacy Field Visibility Policy
+
+- **Tooltip source of truth**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry; auto-discovered Extended Tags get a generic tooltip automatically.
+- **Ground truth for "is this field live"**: GVK's own `CoreParts/*.cs` usage counts — not `data/wc_schema.json` (its structs are incomplete). A field counts as in use only if written non-default somewhere in the mod.
+- **Canonical enum dropdowns**: Guidance, AOE Falloff, and AOE Shape dropdowns contain only values that exist in WeaponCore's enums, so the exporter can never emit a non-compiling tag.
+- **Current-but-unused WC fields**: Fields WeaponCore supports but GVK never enables are kept out of the default UI — either fully absent (rarely-needed exotics, reachable via the **Extended & Future WeaponCore Tags** accordion) or parked in collapsed accordions (`CheckForAnyWeapon` in OtherDef, `DamageModifier` in AiDef & UiDef). `Radial` (FragmentDef) stays visible but intentionally `0` for all GVK fragment weapons; the exporter suppresses it at 0 (WC default), so exported fragment blocks omit the line.
+- **Deprecated fields**: `EnergyPriority` is marked "Deprecated." in the canonical sample and is fully removed from the UI and exporter.
+
 ---
 
 ### Workspace 3: 📦 Ammo Logistics & Blueprints (`#ws-logistics`)

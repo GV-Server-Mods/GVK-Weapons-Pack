@@ -5241,23 +5241,31 @@ function applyBalanceMatrixInputs() {
 
 // Applies WORKBENCH_FIELD_HELP tooltips to every Scope A/B Definition Workbench
 // control: native title on the input plus its label, and the has-help CSS class.
+// Checkboxes render their help text inline instead of as a hover title.
 function applyWorkbenchFieldHelp() {
   for (const id in WORKBENCH_FIELD_HELP) {
     const el = document.getElementById(id);
     if (!el) continue;
     const text = WORKBENCH_FIELD_HELP[id];
-    el.title = text;
+    const isCheckbox = el.type === 'checkbox';
+    if (!isCheckbox) el.title = text;
 
     let label = null;
-    if (el.type === 'checkbox' && el.parentElement && el.parentElement.tagName === 'LABEL') {
+    if (isCheckbox && el.parentElement && el.parentElement.tagName === 'LABEL') {
       label = el.parentElement;
     } else {
       const item = el.closest('.control-item');
       label = item ? item.querySelector('.control-label') : null;
     }
     if (label) {
-      label.title = text;
+      if (!isCheckbox) label.title = text;
       label.classList.add('has-help');
+      if (isCheckbox && !label.querySelector('.chk-help')) {
+        const span = document.createElement('span');
+        span.className = 'chk-help';
+        span.textContent = text;
+        label.appendChild(span);
+      }
     }
   }
 }

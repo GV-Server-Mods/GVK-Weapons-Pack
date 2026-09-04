@@ -1054,6 +1054,35 @@ header {
   margin-left: 4px;
 }
 
+/* Workbench checkbox lists: one per line with visible inline help text */
+#ws-workbench .checkbox-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#ws-workbench .checkbox-row .chk-label {
+  display: block;
+  padding-left: 22px;
+  text-indent: -22px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+#ws-workbench .chk-help {
+  color: var(--text-dim);
+  font-size: 10.5px;
+}
+
+#ws-workbench .chk-help::before {
+  content: "—  ";
+}
+
+#ws-workbench .chk-label:has(.chk-help)::after {
+  content: none;
+}
+
+
 
 
 /* ==========================================================================
