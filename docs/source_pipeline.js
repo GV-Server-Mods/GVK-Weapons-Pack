@@ -579,4 +579,5 @@ const SourcePipeline = {
   parseXml, parseMagazines, parseBlueprints, parseCubeBlocks, ammoShape, weaponEntry, magazineEntries, buildStudioData,
 };
 if (typeof module !== 'undefined' && module.exports) module.exports = SourcePipeline;
+else root.SourcePipeline = SourcePipeline;
 })(typeof window !== 'undefined' ? window : globalThis);
