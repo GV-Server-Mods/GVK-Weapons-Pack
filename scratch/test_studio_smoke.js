@@ -213,10 +213,28 @@ vm.runInContext(`
   const hurA = activeAmmo;
   const hurMetrics = calculateWeaponMetrics(hurW);
 
+  // Check Khopesh & Thrasher metrics
+  const khoW = weaponsDb.find(w => w.subtypeId === 'KhopeshTurret');
+  const khoMetrics = calculateWeaponMetrics(khoW);
+  const thrW = weaponsDb.find(w => w.subtypeId === 'ARYXHeavyFlakTurret');
+  const thrMetrics = calculateWeaponMetrics(thrW);
+
+  // Check selectable ammos for Avenger
+  const avengerSelectable = getSelectableAmmos(defaultW);
+
+  // Check weapon icons
+  let missingIcons = 0;
+  for (const w of weaponsDb) {
+    const iconPath = getWeaponIconUrl(w);
+    if (!iconPath || !iconPath.startsWith('icons/')) missingIcons++;
+  }
+
   __lifecycleReport({
     defaultWeaponId: defaultW && defaultW.id,
     defaultSelectVal: defaultSelVal,
     defaultAmmoRound: defaultA && defaultA.ammoRound,
+    avengerSelectableCount: avengerSelectable.length,
+    avengerSelectableFirst: avengerSelectable[0],
     avengerEffectiveDps: avengerMetrics.effectiveDps,
     avengerAlpha: avengerMetrics.effectiveAlphaVolley,
     tsuAmmoRound: tsuA && tsuA.ammoRound,
@@ -224,14 +242,23 @@ vm.runInContext(`
     tsuAlpha: tsuMetrics.effectiveAlphaVolley,
     tsuArmorMult: getTopArmorProfile(tsuA.damageScales).mult,
     hurAmmoRound: hurA && hurA.ammoRound,
+    hurAlphaVolley: hurMetrics.alphaVolley,
+    hurSustainedDps: hurMetrics.sustainedDps,
     hurEffectiveDps: hurMetrics.effectiveDps,
     hurAlpha: hurMetrics.effectiveAlphaVolley,
     hurArmorMult: getTopArmorProfile(hurA.damageScales).mult,
+    khoRof: khoW && khoW.rateOfFire,
+    khoDps: khoMetrics.sustainedDps,
+    thrRof: thrW && thrW.rateOfFire,
+    thrDps: thrMetrics.sustainedDps,
+    missingIcons,
   });
 `, sandbox);
 
 check('Default weapon dropdown matches activeWeapon (no desync)', lcReport.defaultWeaponId === lcReport.defaultSelectVal);
 check('Default weapon has primary ammo NATO_25x184mm_Dual', lcReport.defaultAmmoRound === 'NATO_25x184mm_Dual');
+check('Avenger has only 1 selectable ammo (no NATO 25mm [Energy] fragment)',
+  lcReport.avengerSelectableCount === 1 && lcReport.avengerSelectableFirst === 'NATO_25x184mm_Dual');
 check('Avenger has non-zero effective DPS', lcReport.avengerEffectiveDps > 0);
 check('Avenger has non-zero alpha volley', lcReport.avengerAlpha > 0);
 check('Tsunami selects LargeCalibreAmmo (155 AP)', lcReport.tsuAmmoRound === 'LargeCalibreAmmo');
@@ -239,9 +266,13 @@ check('Tsunami has non-zero effective DPS', lcReport.tsuEffectiveDps > 0);
 check('Tsunami has non-zero alpha volley', lcReport.tsuAlpha > 0);
 check('Tsunami has 3.0x heavy armor multiplier', lcReport.tsuArmorMult === 3.0);
 check('Hurricane selects Ballistics_HeavyCannon (480mm)', lcReport.hurAmmoRound === 'Ballistics_HeavyCannon');
-check('Hurricane has non-zero effective DPS', lcReport.hurEffectiveDps > 0);
-check('Hurricane has non-zero alpha volley', lcReport.hurAlpha > 0);
+check('Hurricane alpha volley includes 70k EOL blast (80,000 hp)', lcReport.hurAlphaVolley === 80000);
+check('Hurricane sustained DPS reflects 80k payload (> 14,000 DPS)', lcReport.hurSustainedDps > 14000);
 check('Hurricane has 2.0x heavy armor multiplier', lcReport.hurArmorMult === 2.0);
+check('Khopesh has inlined rateOfFire 360 RPM', lcReport.khoRof === 360);
+check('Thrasher has rateOfFire 480 RPM', lcReport.thrRof === 480);
+check('Thrasher sustained DPS (~4500) > Khopesh sustained DPS (~2400)', lcReport.thrDps > lcReport.khoDps);
+check('All weapon icons resolve to icons/ paths (0 missing)', lcReport.missingIcons === 0);
 
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');

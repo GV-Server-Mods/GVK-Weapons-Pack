@@ -391,7 +391,7 @@ function ammoShape(name, d, file) {
     mass: d.Mass || 0,
     health: d.Health || 0,
     backKickForce: d.BackKickForce || 0,
-    hardPointUsable: !(hp.HardPointUsable === false),
+    hardPointUsable: d.HardPointUsable !== false,
     npcSafe: !(d.NpcSafe === false),
     noGridOrArmorScaling: d.NoGridOrArmorScaling === true,
     hybridRound: d.HybridRound === true,
@@ -444,16 +444,24 @@ function ammoShape(name, d, file) {
 
 // Inline a def section that is a bare reference to a common def (e.g. HardPoint = Common_...).
 function inlineRef(v, defs) {
-  return (typeof v === 'string' && defs[v] && defs[v].value) ? defs[v].value : (v && typeof v === 'object' ? v : null);
+  if (!v) return null;
+  const name = typeof v === 'string' ? v : (v.__id || null);
+  if (name && defs[name] && defs[name].value) return defs[name].value;
+  if (typeof v === 'object' && !v.__id) return v;
+  return null;
 }
-function refName(v, defs) { return (typeof v === 'string' && defs[v]) ? v : null; }
+function refName(v, defs) {
+  if (!v) return null;
+  const name = typeof v === 'string' ? v : (v.__id || null);
+  return (name && defs[name]) ? name : null;
+}
 
 function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const def = w.def;
   const hp = inlineRef(def.HardPoint, defs) || {};
   const tgt = inlineRef(def.Targeting, defs) || {};
-  const loading = hp.Loading || def.Loading || {};
-  const hw = hp.HardWare || def.HardWare || {};
+  const loading = inlineRef(hp.Loading, defs) || inlineRef(def.Loading, defs) || {};
+  const hw = inlineRef(hp.HardWare, defs) || inlineRef(def.HardWare, defs) || {};
   const mp = (def.Assignments && def.Assignments.MountPoints && def.Assignments.MountPoints[idx]) || {};
   const allRounds = w.assignedAmmos || [];
   const usable = allRounds.filter((r) => !ammos[r] || ammos[r].hardPointUsable !== false);
@@ -514,9 +522,14 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     assignedAnimation: refName(def.Animations, defs) || (typeof def.Animations === 'string' ? def.Animations : null),
     assignedAmmos: usable,
     helpers: {
-      targeting: refName(def.Targeting, defs), hardware: refName(def.HardWare, defs),
-      loading: refName(def.Loading, defs), ui: refName(def.Ui, defs), ai: refName(def.Ai, defs),
-      audio: refName(def.Audio, defs), other: refName(def.Other, defs), graphics: refName(def.Graphics, defs),
+      targeting: refName(def.Targeting, defs),
+      hardware: refName(hp.HardWare, defs) || refName(def.HardWare, defs),
+      loading: refName(hp.Loading, defs) || refName(def.Loading, defs),
+      ui: refName(hp.Ui, defs) || refName(def.Ui, defs),
+      ai: refName(hp.Ai, defs) || refName(def.Ai, defs),
+      audio: refName(hp.Audio, defs) || refName(def.Audio, defs),
+      other: refName(hp.Other, defs) || refName(def.Other, defs),
+      graphics: refName(hp.Graphics, defs) || refName(def.Graphics, defs),
     },
     displayName: block ? block.displayName : partName,
     gridSize: grid, cubeSize: grid,

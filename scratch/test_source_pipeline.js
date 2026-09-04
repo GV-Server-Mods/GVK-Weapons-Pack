@@ -111,6 +111,23 @@ check('built Odin ammo = Odin round', bOdin && bOdin.ammoName === 'Ballistics_He
 check('built Odin maxTrajectory 4300 (from clone)', bOdin && bOdin.maxTrajectory === 4300, bOdin && bOdin.maxTrajectory);
 check('built Odin NPC entry exists', !!bOdinNpc, !!bOdinNpc);
 
+// Fix assertions: HardPointUsable and helper inlining
+const fragAmmo = built.ammos['NATO_25x184mm_Dual_Fragment'];
+check('NATO_25x184mm_Dual_Fragment hardPointUsable is false', fragAmmo && fragAmmo.hardPointUsable === false, fragAmmo && fragAmmo.hardPointUsable);
+
+const bAvenger = built.weapons.find((w) => w.subtypeId === 'GVK_AvengerGatlingTurret');
+check('Avenger excludes non-usable fragment round from assignedAmmos',
+  bAvenger && JSON.stringify(bAvenger.assignedAmmos) === '["NATO_25x184mm_Dual"]',
+  bAvenger && JSON.stringify(bAvenger.assignedAmmos));
+
+const bKhopesh = built.weapons.find((w) => w.subtypeId === 'KhopeshTurret');
+check('Khopesh inlined loading: rateOfFire === 360', bKhopesh && bKhopesh.rateOfFire === 360, bKhopesh && bKhopesh.rateOfFire);
+check('Khopesh inlined loading: reloadTime === 90', bKhopesh && bKhopesh.reloadTime === 90, bKhopesh && bKhopesh.reloadTime);
+check('Khopesh inlined hardware: rotateRate === 0.025', bKhopesh && bKhopesh.rotateRate === 0.025, bKhopesh && bKhopesh.rotateRate);
+
+const bThrasher = built.weapons.find((w) => w.subtypeId === 'ARYXHeavyFlakTurret');
+check('Thrasher rateOfFire === 480', bThrasher && bThrasher.rateOfFire === 480, bThrasher && bThrasher.rateOfFire);
+
 // Magazine parity: the real 480mm magazine must resolve with blueprint data.
 const bMag = built.magazines.find((m) => m.subtypeId === 'Ballistics_HeavyCannon');
 check('built 480mm magazine exists', !!bMag);

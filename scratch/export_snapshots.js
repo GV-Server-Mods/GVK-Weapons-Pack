@@ -38,6 +38,7 @@ const weaponsJs = HEADER + 'const BUNDLED_WEAPONS_DATA = ' + JSON.stringify(d.we
 fs.writeFileSync(path.join(outDir, 'weapons_data.js'), weaponsJs);
 fs.writeFileSync(path.join(outDir, 'weapons_db.json'), JSON.stringify(d.weapons, null, 2));
 
+const ammosJs = HEADER + 'const BUNDLED_AMMOS_DATA = ' + JSON.stringify(d.ammos, null, 2) + ';\n';
 fs.writeFileSync(path.join(outDir, 'ammos_data.js'), ammosJs);
 fs.writeFileSync(path.join(outDir, 'ammos_db.json'), JSON.stringify(d.ammos, null, 2));
 

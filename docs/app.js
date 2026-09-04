@@ -2630,14 +2630,13 @@ function updateCombatTelemetry() {
     blastRadius = aEwar.radius || 0;
     blastDmg = 0;
   } else if (activeAmmo.areaOfDamage) {
-    if (activeAmmo.areaOfDamage.enable) {
-      blastRadius = activeAmmo.areaOfDamage.radius || 0;
-      blastDepth = activeAmmo.areaOfDamage.depth || 0;
-    } else if (activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable) {
-      blastRadius = activeAmmo.areaOfDamage.endOfLife.radius || 0;
-      blastDepth = activeAmmo.areaOfDamage.endOfLife.depth || 0;
-      blastDmg = activeAmmo.areaOfDamage.endOfLife.damage || blastDmg;
-    }
+    const directRad = activeAmmo.areaOfDamage.radius || 0;
+    const directDepth = activeAmmo.areaOfDamage.depth || 0;
+    const eol = (activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable) ? activeAmmo.areaOfDamage.endOfLife : null;
+    const ae = (activeAmmo.areaOfDamage.areaEffect && activeAmmo.areaOfDamage.areaEffect.areaEffect) ? activeAmmo.areaOfDamage.areaEffect : null;
+    blastRadius = directRad || (eol ? eol.radius : 0) || (ae ? ae.radius : 0);
+    blastDepth = directDepth || (eol ? eol.depth : 0) || (ae ? ae.radius : 0);
+    if (eol && eol.damage) blastDmg = Math.max(blastDmg, eol.damage);
   }
   if (blastRadius >= 10 && (blastDmg || 0) <= 1) {
     // Token-damage wide burst (Flak PROX): anti-projectile screen, no real explosive payload
@@ -3163,13 +3162,10 @@ function getAmmoDamageDetailed(ammo, depth = 0) {
 
   let aoe = 0;
   if (ammo.areaOfDamage) {
-    if (ammo.areaOfDamage.enable) {
-      aoe = parseFloat(ammo.areaOfDamage.damage) || 0;
-    } else {
-      const eolDmg = (ammo.areaOfDamage.endOfLife && ammo.areaOfDamage.endOfLife.enable && parseFloat(ammo.areaOfDamage.endOfLife.damage)) || 0;
-      const aeDmg = (ammo.areaOfDamage.areaEffect && ammo.areaOfDamage.areaEffect.areaEffect && parseFloat(ammo.areaOfDamage.areaEffect.damage)) || 0;
-      aoe = eolDmg + aeDmg;
-    }
+    const directDmg = parseFloat(ammo.areaOfDamage.damage) || 0;
+    const eolDmg = (ammo.areaOfDamage.endOfLife && ammo.areaOfDamage.endOfLife.enable && parseFloat(ammo.areaOfDamage.endOfLife.damage)) || 0;
+    const aeDmg = (ammo.areaOfDamage.areaEffect && ammo.areaOfDamage.areaEffect.areaEffect && parseFloat(ammo.areaOfDamage.areaEffect.damage)) || 0;
+    aoe = directDmg + eolDmg + aeDmg;
   }
 
   let fragTotal = 0;
@@ -3236,6 +3232,11 @@ function getAmmoIconUrl(ammo) {
 }
 
 function getWeaponIconUrl(weapon) {
+  if (!weapon) return 'icons/L__Gatling_Avenger_Turret.png';
+  if (weapon.icon) return weapon.icon;
+  if (weapon.subtypeId) return `icons/${weapon.subtypeId}.png`;
+  if (weapon.id) return `icons/${weapon.id}.png`;
+  return 'icons/L__Gatling_Avenger_Turret.png';
 }
 
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
