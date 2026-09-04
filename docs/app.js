@@ -27,7 +27,6 @@ const WC_CORE_DEFAULTS = {
   inventorySize: 0,
   idlePower: 0,
   hardwareType: "BlockWeapon",
-  criticalChance: 0,
   offsetX: 0, offsetY: 0, offsetZ: 0,
 
   // LoadingDef
@@ -49,7 +48,6 @@ const WC_CORE_DEFAULTS = {
   goHomeToReload: false,
   dropTargetUntilLoaded: false,
   degradeWithHeat: false,
-  useFillSound: false,
 
   // HardPointDef
   deviateShotAngle: 0,
@@ -66,7 +64,6 @@ const WC_CORE_DEFAULTS = {
   topTargets: 1,
   topBlocks: 1,
   stopTrackingSpeed: 0,
-  maxCost: 0,
   closestFirst: true,
   ignoreDumbProjectiles: true,
   lockedSmartOnly: false,
@@ -81,14 +78,11 @@ const WC_CORE_DEFAULTS = {
 
   // OtherDef
   constructPartCap: 0,
-  energyPriority: 0,
   restrictionRadius: 0,
   otherDebug: false,
   checkInflatedBox: false,
-  checkForAnySupport: false,
+  checkForAnyWeapon: false,
   stayCharged: false,
-  rotateToTarget: false,
-  stopTrackingAfterFiring: false,
   noVoxelLOSCheck: false,
 
   // AmmoDef Core
@@ -136,7 +130,6 @@ const WC_CORE_DEFAULTS = {
   speedVariance: 0,
   rangeVariance: 0,
   deaccelTime: 0,
-  fieldExponent: 1.0,
   targetLossDegree: 0,
   targetLossTime: 0,
   guidance: "None",
@@ -144,14 +137,7 @@ const WC_CORE_DEFAULTS = {
   smartsAggressiveness: 1.0,
   smartsNavAcceleration: 0,
   smartsMaxLateralThrust: 0.5,
-  smartsNavAngle: 0,
-  smartsMinArmingRange: 0,
-  smartsScanRounds: 0,
-  smartsSpeedLimit: 0,
-  smartsVelocity: 0,
   smartsSteeringLimit: 0,
-  smartsOverSteer: false,
-  smartsStepVel: false,
   smartsAltNavigation: false,
 
   // AreaOfDamageDef
@@ -175,12 +161,11 @@ const WC_CORE_DEFAULTS = {
   fragmentAmmoRound: "",
   fragmentCount: 0,
   fragmentDegrees: 0,
-  fragmentBackwardDegrees: 0,
   fragmentOffset: 0,
   fragmentReverse: false,
   fragmentDropVelocity: false,
   fragmentIgnoreArming: false,
-  fragmentRadial: false,
+  fragmentRadial: 0,
 
   // PatternDef & EwarDef
   patternEnable: false,
@@ -234,6 +219,263 @@ const WC_CORE_DEFAULTS = {
 };
 
 // ==========================================================================
+// WORKBENCH FIELD HELP (Definition Workbench Scope A & B tooltips)
+// Wording adapted from the canonical WeaponCore example definitions in
+// docs/data/Scripts/CoreParts/Weapon75Part.cs and Weapon75ammo.cs.
+// Keys are DOM element ids; values are hover tooltip descriptions.
+// ==========================================================================
+const WORKBENCH_FIELD_HELP = {
+  // --- Scope A / 1. ModelAssignmentsDef ---
+  wSubtypeId: "MountPoint.SubtypeId — the block SubtypeId. Your CubeBlocks SBC contains this information.",
+  wPartName: "HardPoint.PartName — name of the weapon in terminal. Should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).",
+  wDurabilityMod: "MountPoint.DurabilityMod — general damage multiplier. 0.25f = 25% damage taken.",
+  wScope: "ModelAssignments.Scope — the dummy where line of sight checks are performed from. Must be clear of block collision.",
+  wSpinPartId: "For weapons with a spinning barrel such as gatling guns. Subpart_Boomsticks must be written as Boomsticks.",
+  wMuzzlePartId: "The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_X is written as X.",
+  wAzimuthPartId: "Your rotating subpart — the bit that moves sideways.",
+  wElevationPartId: "Your elevating subpart — the bit that moves up.",
+  wIconName: "Overlay for block inventory slots. Plain file names resolve from mod root\\Textures\\GUI\\Icons; paths starting with \\ resolve from the mod root (modded textures); other paths are used as-is (vanilla textures only).",
+  wMuzzles: "Where your projectiles spawn. Use numbers not letters, i.e. muzzle_01 not muzzle_A. Comma-separated list.",
+
+  // --- Scope A / 2. HardwareDef ---
+  wRotateRate: "Max traversal speed of the azimuth subpart in radians per tick (0.1 is approximately 360 degrees per second).",
+  wElevateRate: "Max traversal speed of the elevation subpart in radians per tick.",
+  wMinAzimuth: "MinAzimuth — lower azimuth (left/right) traverse limit, in degrees.",
+  wMaxAzimuth: "MaxAzimuth — upper azimuth (left/right) traverse limit, in degrees.",
+  wMinElevation: "MinElevation — lower elevation (up/down) traverse limit, in degrees.",
+  wMaxElevation: "MaxElevation — upper elevation (up/down) traverse limit, in degrees.",
+  wHomeAzimuth: "HomeAzimuth — default resting rotation angle.",
+  wHomeElevation: "HomeElevation — default resting elevation.",
+  wInventorySize: "Inventory capacity in kL (m³).",
+  wIdlePower: "Constant base power draw in MW.",
+  wHardwareType: "What type of weapon this is: BlockWeapon, HandWeapon, Phantom.",
+  wOffsetX: "Hardware.Offset — offsets the aiming/firing line of the weapon on the X axis, in metres.",
+  wOffsetY: "Hardware.Offset — offsets the aiming/firing line of the weapon on the Y axis, in metres.",
+  wOffsetZ: "Hardware.Offset — offsets the aiming/firing line of the weapon on the Z axis, in metres.",
+
+  // --- Scope A / 3. LoadingDef ---
+  wRateOfFire: "Loading.RateOfFire — how fast your gun fires per minute. Set this to 3600 for beam weapons.",
+  wBarrelsPerShot: "How many muzzles will fire a projectile per fire event.",
+  wTrajectilesPerBarrel: "Number of projectiles per muzzle per fire event.",
+  wSkipBarrels: "Number of muzzles to skip after each fire event.",
+  wReloadTime: "Measured in game ticks (6 = 100ms, 60 = 1 second).",
+  wMagsToLoad: "Number of physical magazines to consume on reload.",
+  wDelayUntilFire: "How long the weapon waits before shooting after being told to fire. Measured in game ticks.",
+  wShotsInBurst: "Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity. 0 = continuous fire.",
+  wDelayAfterBurst: "How long to spend 'reloading' after each burst. Measured in game ticks.",
+  wHeatPerShot: "Heat generated per shot. BarrelsPerShot × HeatPerShot is the total heat per firing event.",
+  wMaxHeat: "Max heat before the weapon enters cooldown (70% of max heat).",
+  wHeatSinkRate: "Amount of heat lost per second.",
+  wCooldown: "Percentage of max heat to be under to start firing again after overheat. Accepts 0 – 0.95.",
+  wFireFull: "Fire the full magazine (or full burst if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.",
+  wGiveUpAfter: "Whether the weapon should drop its current target and reacquire a new one after finishing its magazine or burst.",
+  wGoHomeToReload: "The weapon must be in the home position before it can reload.",
+  wDropTargetUntilLoaded: "The weapon drops its target when out of ammo, until it is reloaded.",
+  wDegradeWithHeat: "DegradeRof — progressively lower rate of fire when over the 80% heat threshold (80% of max heat).",
+
+  // --- Scope A / 4. HardPointDef ---
+  wDeviateAngle: "DeviateShotAngle — projectile inaccuracy in degrees.",
+  wAimingTolerance: "How many degrees off target a turret can fire at. 0 – 180 firing angle.",
+  wAimLeading: "AimLeadingPrediction — Off (aim straight at target), Basic (doesn't account for target acceleration), Accurate, Advanced (last two are identical).",
+  wDelayCeaseFire: "Length of time the weapon continues firing after the trigger is released — while a target is available. Measured in game ticks.",
+  wAddToleranceToTracking: "Allows the turret to track to the edge of the AimingTolerance cone instead of dead centre.",
+  wCanShootSubmerged: "Whether the weapon itself will be usable if submerged when using WaterMod.",
+  wNpcSafe: "Tells NPC modders that your weapon was designed with them in mind. Unless they tell you otherwise, set this to false.",
+
+  // --- Scope A / 5. TargetingDef ---
+  wMaxTargetDistance: "Maximum distance at which targets will be automatically shot at. 0 = unlimited.",
+  wMinTargetDistance: "Minimum distance at which targets will be automatically shot at.",
+  wTopTargets: "Number of potential grid targets to randomize, then go in list order. 0 = no randomization, goes in order of SortedThreats.",
+  wTopBlocks: "Number of potential block targets to randomize, then go in list order. 0 = no randomization.",
+  wStopTrackingSpeed: "Do not track projectiles traveling faster than this speed. 0 = unlimited.",
+  wThreatGrids: "Threat type: Grids (both large and small). Use ProhibitLGTargeting / ProhibitSGTargeting to further differentiate.",
+  wThreatProjectiles: "Threat type: Projectiles — the point-defense role.",
+  wThreatCharacters: "Threat type: Characters.",
+  wThreatMeteors: "Threat type: Meteors.",
+  wThreatNeutrals: "Threat type: Neutrals.",
+  wSubOffense: "Subsystem priority entry — order matters! The weapon targets checked subsystems in the order listed here. Offense = weapon blocks.",
+  wSubPower: "Subsystem priority entry — order matters! Power = reactors, batteries and other power sources.",
+  wSubProduction: "Subsystem priority entry — order matters! Production = assemblers, refineries and other production blocks.",
+  wSubThrust: "Subsystem priority entry — order matters! Thrust = thrusters (and hovers).",
+  wSubJumping: "Subsystem priority entry — order matters! Jumping = jump drives.",
+  wSubSteering: "Subsystem priority entry — order matters! Steering = gyros.",
+  wSubAny: "Subsystem priority entry — order matters! Any = fallback to any block.",
+  wClosestFirst: "Tries to pick closest targets first (blocks on grids, projectiles, etc...).",
+  wIgnoreDumb: "Don't fire at non-smart projectiles. If you're using projectile tags, keep this false as it overwrites the newer system.",
+  wLockedSmartOnly: "Only fire at smart projectiles that are locked on to the parent grid.",
+
+  // --- Scope A / 6. AiDef & UiDef ---
+  wAiTrackTargets: "Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking for target designation. Turrets need this true.",
+  wAiTurretAttached: "Whether this weapon is a turret and should have the UI and API options for such. Turrets need this true.",
+  wAiTurretController: "Whether this weapon can physically control the turret's movement. Turrets need this true.",
+  wAiPrimaryTracking: "For multiweapons: whether this weapon should designate targets for other weapons on the platform without their own tracking.",
+  wAiLockOnFocus: "If enabled, the weapon will only fire at targets that have been HUD selected AND locked onto by pressing Numpad 0.",
+  wAiSuppressInfracted: "SuppressFire — if enabled, the weapon can only be fired manually.",
+  wUiRateOfFire: "Enables the terminal slider for changing rate of fire.",
+  wUiDamageModifier: "Enables the terminal slider for changing damage per shot.",
+  wUiToggleGuidance: "Enables the terminal option to disable smart projectile guidance.",
+  wUiEnableOverload: "Enables the terminal Overload toggle: doubles damage per shot at quadrupled power draw and heat gain, and 2% self damage on overheat.",
+
+  // --- Scope A / 7. HardPointAudioDef ---
+  wSoundFiring: "FiringSound — audio SubtypeID for firing.",
+  wSoundPreFiring: "Audio for warmup effect.",
+  wSoundReload: "Sound SubtypeID for when your weapon is in a reloading state.",
+  wSoundRotate: "HardPointRotationSound — audio played when the turret is moving.",
+  wSoundNoAmmo: "Sound for if the user attempts to fire the gun without ammo.",
+  wSoundFiringPerShot: "Whether to replay the sound for each shot, or just loop over the entire track while firing.",
+
+  // --- Scope A / 8. OtherDef ---
+  wConstructPartCap: "Maximum number of blocks with this weapon on a grid. 0 = unlimited.",
+  wRestrictionRadius: "Prevents other blocks of this type from being placed within this distance of the centre of the block.",
+  wOtherDebug: "Force enables debug mode — will output damage stats to the WC log.",
+  wCheckInflatedBox: "If true, the RestrictionRadius distance check is performed from the edge of the block instead of the centre.",
+  wCheckForAnyWeapon: "If true, the RestrictionRadius check fails if ANY weapon is present, not just weapons of the same subtype.",
+  wStayCharged: "Will start recharging whenever the power cap is not full.",
+  wNoVoxelLOSCheck: "If true this ignores voxels for LOS checking — weapons will fire at targets behind voxels. Can save CPU in some situations, use with caution.",
+  // --- Scope B / 1. Ammo core ---
+  aAmmoRound: "AmmoRound — unique name used in server overrides and in the terminal (default). Should be different for each AmmoDef used by the same weapon. Referred to for shrapnel.",
+  aAmmoMagazine: "SubtypeId of the physical ammo magazine. Use 'Energy' for weapons without physical ammo.",
+  aTerminalName: "Optional terminal name for this ammo type, used when picking ammo / cycling consumables. Safe to have duplicates across different ammo defs.",
+  aBaseDamage: "Direct damage; one steel plate is worth 100.",
+  aBaseDamageCutoff: "Maximum amount of pen damage to apply per block hit. Penetration mechanic that damages blocks beyond the first hit without requiring destruction. 0 disables.",
+  aMass: "In kilograms; how much force the impact will apply to the target, multiplied by projectile speed at time of impact. Beams only use the Mass value, no multiplier.",
+  aHealth: "How much damage the projectile can take from other projectiles before dying. 0 disables this and makes the projectile untargetable.",
+  aBackKick: "BackKickForce — recoil. This is applied to the parent grid.",
+  aDecayPerShot: "Damage to the firing weapon itself. float.MaxValue drops the weapon to the first build state; if greater than cube integrity it removes the cube upon firing without deformation.",
+  aEnergyCost: "Scaler for energy per shot: EnergyCost × BaseDamage × (RateOfFire / 3600) × BarrelsPerShot × TrajectilesPerBarrel. Uses EffectStrength instead of BaseDamage if EWAR.",
+  aEnergyMagazineSize: "For energy weapons, how many shots to fire before reloading.",
+  aHeatModifier: "Allows this ammo to modify the amount of heat the weapon produces per shot.",
+  aHeatNeededToFire: "Makes this ammo require heat before it can be fired. Does NOT subtract the heat — use AllowNegativeHeatModifier to subtract the desired amount.",
+  aHardPointUsable: "Whether this is a primary ammo type fired directly by the turret. Set false if this is a shrapnel AmmoType the turret should not select directly.",
+  aHybridRound: "Use both a physical ammo magazine and energy per shot.",
+  aNpcSafe: "Tells NPC modders that your ammo was designed with them in mind. If they tell you otherwise, set this to false.",
+  aNoGridOrArmorScaling: "If you enable this you can remove the DamageScales section entirely.",
+  aIgnoreWater: "Whether the projectile should be able to penetrate water when using WaterMod.",
+  aIgnoreVoxels: "Whether the projectile should be able to penetrate voxels.",
+  aIgnoreGrids: "Disables collisions with grids and defense shields. Designed for fragments that time things, or for anti-projectile weapons firing through grids.",
+  aAllowNegativeHeatModifier: "Bypasses the HeatModifier > 0 check to allow ammo types to reduce heat on weapons. Useful for ammo that takes away rather than gives heat.",
+  aGridsTargetSeekersTargetingThis: "If true, any smart projectiles targeting this projectile will be added to grid threat lookups (and therefore will be shot at).",
+
+  // --- Scope B / 2. TrajectoryDef & SmartsDef ---
+  tDesiredSpeed: "Desired projectile speed in m/s. Voxel phasing if you go above 5100.",
+  tAccelPerSec: "Acceleration in meters per second². Projectile starts on tick 0 at its parent's (weapon/other projectile) travel velocity.",
+  tMaxTrajectory: "Max distance the projectile or beam can travel.",
+  tMaxLifeTime: "0 is disabled, measured in game ticks (6 = 100ms, 60 = 1s). Time must EXCEED this value to trigger expiry. Please have a value for this — it stops Bad things.",
+  tSpeedVariance: "Subtracts a random value from DesiredSpeed. Be warned: you can make your projectile go backwards.",
+  tRangeVariance: "Subtracts a random value from MaxTrajectory.",
+  tDeaccelTime: "EWAR & mines only — time to spend slowing down to a stop at end of trajectory. 0 is instant stop.",
+  tTargetLossDegree: "Degrees the target may leave the forward aim cone before the projectile loses lock.",
+  tTargetLossTime: "0 is disabled, measured in game ticks — time without a valid target before the projectile gives up.",
+  tGuidance: "Guidance type: None (no guidance, standard shells), TravelTo (tracks the aim point of the ammo's target when fired — flak), Smart (guided projectile based on SmartsDef), Detect* (mine behaviors).",
+  sInaccuracy: "0 is perfect; hit accuracy will be a random number of meters between 0 and this value.",
+  sAggressiveness: "Controls how responsive tracking is. Recommended value 3–5.",
+  sNavAcceleration: "Helps influence how the projectile steers. 0 defaults to half the Aggressiveness value (or 0 if that is 0); a value less than 0 disables this feature.",
+  sMaxLateralThrust: "Controls how sharp the projectile may turn — the cheaper but less realistic version of SteeringLimit (cost 2 on a 1–5 scale, 0 being basic smart).",
+  sSteeringLimit: "0 means no limit, value is in degrees — good starting point is 150. Enables advanced smart control (cost 3 on a 1–5 scale, 0 being basic smart).",
+  sAltNavigation: "If true, swaps the default navigation algorithm from ProNav to ZeroEffort Miss — more direct/precise but less cinematic.",
+
+  // --- Scope B / 3. ShapeDef & ObjectsHitDef ---
+  aShape: "Defines the collision shape of the projectile. LineShape or SphereShape. LineShape is deprecated — it boils down to a sphere with a diameter calculated from projectile speed.",
+  aDiameter: "For SphereShape this is the collision diameter. LineShape ignores this.",
+  oMaxObjectsHit: "Limits the number of grids or projectiles that damage can be applied to — useful to limit overpenetration. 0 = unlimited.",
+  oCountBlocks: "Counts individual blocks, not just entities hit. Every block touched by primary damage hits counts toward MaxObjectsHit.",
+  oSkipBlocksForAOE: "If CountBlocks is true, determines whether AOE hits are counted against MaxObjectsHit. Set true to skip counting for AOE.",
+
+  // --- Scope B / 4. DamageScaleDef ---
+  dsMaxIntegrity: "Blocks with integrity higher than this value will be immune to damage from this projectile. 0 = disabled.",
+  dsCharacters: "Character damage multiplier; defaults to 1 if zero or less.",
+  dsDamageType: "Damage type of the projectile's damage: Kinetic or Energy.",
+  dsArmorArmor: "Multiplier for damage against all armor — multiplied with the specific armor type multiplier (light, heavy). -1 = disabled (higher performance), 0 = no damage, 2 = 200% damage.",
+  dsLightArmor: "Multiplier for damage against light armor. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
+  dsHeavyArmor: "Multiplier for damage against heavy armor. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
+  dsNonArmor: "Multiplier for damage against everything else. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
+  dsGridLarge: "Multiplier for damage against large grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
+  dsGridSmall: "Multiplier for damage against small grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
+  dsFalloffDistance: "FallOff.Distance — distance at which damage begins falling off.",
+  dsFalloffMinMult: "FallOff.MinMultipler — value from 0.0001 to 1 where 0.1 would be a min damage of 10% of base damage.",
+
+  // --- Scope B / 5. AreaOfDamageDef ---
+  aodBlockEnable: "ByBlockHit — enable the impact explosion. Note: AOE only applies to the player/grid hit (and nearby projectiles), not nearby grids/players.",
+  aodBlockRadius: "ByBlockHit explosion radius, in meters.",
+  aodBlockDamage: "ByBlockHit explosion damage.",
+  aodBlockDepth: "Max depth of the ByBlockHit AOE effect, in meters. 0 = disabled, and the AOE reaches to a depth of the radius value.",
+  aodBlockMaxAbsorb: "Soft cutoff for damage (total, against shields or grids), except for pooled falloff. If pooled falloff, limits max damage per block.",
+  aodBlockFalloff: "Falloff options: NoFalloff (same damage in radius), Linear (even drop by distance), Curve, InvCurve, Squeeze, Pooled (damage ceases once exhausted), Exponential.",
+  aodBlockShape: "Round or Diamond shape. Diamond is more performance friendly.",
+  aodEolEnable: "EndOfLife — enable the blast when the projectile expires (proximity / range expiry).",
+  aodEolRadius: "Radius of the EndOfLife AOE effect, in meters.",
+  aodEolDamage: "EndOfLife explosion damage.",
+  aodEolDepth: "Max depth of the EndOfLife AOE effect, in meters. 0 = disabled, and the AOE reaches to a depth of the radius value.",
+  aodEolMaxAbsorb: "Soft cutoff for damage (total, against shields or grids), except for pooled falloff. If pooled falloff, limits max damage per block.",
+  aodEolFalloff: "Falloff options: NoFalloff (same damage in radius), Linear (even drop by distance), Curve, InvCurve, Squeeze, Pooled (damage ceases once exhausted), Exponential.",
+  aodEolShape: "Round or Diamond shape. Diamond is more performance friendly.",
+  // --- Scope B / 6. FragmentDef ---
+  fEnable: "Fragment (formerly Shrapnel) — spawns the specified ammo fragments on projectile death (via hit or detonation).",
+  fReverse: "Spawn fragments backward instead of forward.",
+  fDropVelocity: "Fragments will not inherit velocity from the parent.",
+  fIgnoreArming: "If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions.",
+  fRadial: "Radial — determines the starting angle for the Degrees spread, in degrees. E.g. 0 fires straight along the cone; 90 goes perpendicular to the travel path.",
+  fFragments: "Number of fragment projectiles to spawn.",
+  fDegrees: "Cone in which to randomize direction of spawned fragments.",
+  fOffset: "Offsets the fragment spawn by this amount, in meters — positive forward, negative backwards. Read from the parent ammo type.",
+  fChildAmmoRound: "AmmoRound field of the ammo to spawn.",
+
+  // --- Scope B / 7. PatternDef ---
+  pEnable: "Pattern — set of multiple ammos to fire in order instead of the main ammo.",
+  pSkipParent: "If Mode = Weapon, skip the ammo itself in the list. With SkipParent = false the initial ammo fires IN ADDITION to whatever pattern ammos are spawned per fire event.",
+  pRandom: "Randomizes the number spawned at once — NOT the list order.",
+  pPatterns: "Comma-separated list of AmmoRound names the pattern steps through.",
+  pTriggerChance: "Chance (0–1, i.e. %) that the pattern triggers.",
+  pRandomMin: "Minimum number of pattern rounds to spawn at once when Random is enabled.",
+  pRandomMax: "Maximum number of pattern rounds to spawn at once when Random is enabled.",
+  pPatternSteps: "Number of ammos activated per round — progresses in order and loops. Ignored if Random = true.",
+  pMode: "When the pattern applies: Weapon (mixed belts), Fragment (fragment RNG), Both, or Never (off).",
+
+  // --- Scope B / 8. EwarDef ---
+  ewEnable: "Enables EWAR effects AND DISABLES BASE DAMAGE AND AOE DAMAGE!!",
+  ewStackDuration: "StackDuration — combine durations of stacked applications.",
+  ewDeplete: "Depletable — the effect can be depleted.",
+  ewType: "EWAR type: EnergySink (shutdown power supplies), Emp (shutdown any powered block), Offense (shutdown weapons), Nav (lock down gyros), AntiSmart (scramble missile targeting), JumpNull (stop jumps), Anchor (shutdown thrusters), Tractor/Pull/Push (physics), Dot (radius damage).",
+  ewMode: "Effect (applied to the target entity) or Field (area pulse field).",
+  ewStrength: "EWAR strength. EWAR ammos use EffectStrength instead of BaseDamage in the energy cost formula.",
+  ewRadius: "Effect radius, in meters.",
+  ewDuration: "Duration, in game ticks.",
+  ewMaxStacks: "MaxStacks — max debuffs at once.",
+
+  // --- Scope B / 9. GraphicDef ---
+  gVisualProb: "VisualProbability — 0–1 chance of the AV appearing. Controls all audio AND visual.",
+  gTracerEnable: "Enable the tracer line. If this is false, Trail is also not used.",
+  gTracerSegmented: "Segmented tracer. If true, Tracer TextureMode is ignored.",
+  gTracerLength: "Length in meters to draw the tracer — goes from projectile center to projectile backwards × length.",
+  gTracerWidth: "Width in arbitrary keen™ units.",
+  gTracerColor: "RGBA color. RGB 255 is neon glowing, 100 is quite bright; for no glow, use 0–1.",
+  gTracerTexture: "Texture SubtypeID: WeaponLaser, ProjectileTrailLine, WarpBubble, etc. Please always have WeaponLaser set if this section is enabled.",
+  gTrailEnable: "Enable the persistent smoke/ribbon trail.",
+  gTrailAlwaysDraw: "Prevents this trail from being culled. Only use if you have a reason to (very long tracers/trails).",
+  gTrailDecay: "DecayTime in ticks. 1 = 1 additional tracer generated per motion, 33 is 33 lines drawn per projectile. Keep this number low.",
+  gTrailWidth: "CustomWidth — same as Tracer Width for the trail at t=0.",
+  gTrailColor: "Trail color, RGBA.",
+  gTrailTextures: "Trail texture SubtypeIDs. Please always have the primary line set if this section is enabled.",
+
+  // --- Scope B / 10. AmmoAudioDef ---
+  aSoundShot: "Sound when fired. With OverrideShotSound this ammo's ShotSound is used regardless of the weapon's shot sound.",
+  aSoundTravel: "Travel sound generated around your projectile in flight.",
+  aSoundHit: "Default hit sound, used unless the optional hit sounds are populated. MUST HAVE A VALUE FOR ANY HIT SOUND TO WORK!",
+  aSoundVoxelHit: "Voxel hit sound.",
+  aSoundPlayerHit: "Player character hit sound.",
+  aSoundWaterHit: "Water hit sound, if WaterMod is present.",
+  aHitPlayChance: "0–1 chance for any hit sound to play.",
+
+  // --- Scope B / 11. SynchronizeDef ---
+  syncFull: "Use only on PD-killable (guided) projectiles that need to be replicated precisely on the client. Increases network traffic: clients don't locally spawn the projectile, the server sends spawn packets instead.",
+  syncPointDefense: "Only if Full is enabled. Server will inform clients of what projectiles have died by PD defense and will trigger destruction.",
+  syncOnHitDeath: "Only if Full is enabled. Server will inform clients when projectiles die due to hitting something and will trigger destruction.",
+  syncUpdateOnRandomize: "Only if Full is enabled. When new random offsets are calculated by homing projectiles, sends an update with them to reduce overall deltas.",
+  syncInterval: "PositionSyncInterval — only if Full is enabled. Interval for sending position and velocity. Use carefully: adds constant network traffic while in flight. 0 disables.",
+  syncPatchWindow: "PositionPatchWindow — only if Full is enabled. When a client receives a large position difference, it reconciles over this window. Must be lower than the position sync interval. 0 disables."
+};
+
+// ==========================================================================
 // COMPREHENSIVE WEAPON & AMMO DOM REFERENCES
 // ==========================================================================
 // Scope A: ModelAssignmentsDef & HardwareDef
@@ -245,7 +487,6 @@ const wIconName = document.getElementById('wIconName');
 const wHomeAzimuth = document.getElementById('wHomeAzimuth');
 const wHomeElevation = document.getElementById('wHomeElevation');
 const wHardwareType = document.getElementById('wHardwareType');
-const wCriticalChance = document.getElementById('wCriticalChance');
 const wOffsetX = document.getElementById('wOffsetX');
 const wOffsetY = document.getElementById('wOffsetY');
 const wOffsetZ = document.getElementById('wOffsetZ');
@@ -261,7 +502,6 @@ const wGiveUpAfter = document.getElementById('wGiveUpAfter');
 const wGoHomeToReload = document.getElementById('wGoHomeToReload');
 const wDropTargetUntilLoaded = document.getElementById('wDropTargetUntilLoaded');
 const wDegradeWithHeat = document.getElementById('wDegradeWithHeat');
-const wUseFillSound = document.getElementById('wUseFillSound');
 
 // Scope A: HardPointDef extras
 const wAddToleranceToTracking = document.getElementById('wAddToleranceToTracking');
@@ -269,7 +509,6 @@ const wCanShootSubmerged = document.getElementById('wCanShootSubmerged');
 const wNpcSafe = document.getElementById('wNpcSafe');
 
 // Scope A: TargetingDef extras
-const wMaxCost = document.getElementById('wMaxCost');
 const wThreatGrids = document.getElementById('wThreatGrids');
 const wThreatProjectiles = document.getElementById('wThreatProjectiles');
 const wThreatCharacters = document.getElementById('wThreatCharacters');
@@ -299,14 +538,11 @@ const wUiEnableOverload = document.getElementById('wUiEnableOverload');
 const wSoundPreFiring = document.getElementById('wSoundPreFiring');
 const wSoundFiringPerShot = document.getElementById('wSoundFiringPerShot');
 const wConstructPartCap = document.getElementById('wConstructPartCap');
-const wEnergyPriority = document.getElementById('wEnergyPriority');
 const wRestrictionRadius = document.getElementById('wRestrictionRadius');
 const wOtherDebug = document.getElementById('wOtherDebug');
 const wCheckInflatedBox = document.getElementById('wCheckInflatedBox');
-const wCheckForAnySupport = document.getElementById('wCheckForAnySupport');
+const wCheckForAnyWeapon = document.getElementById('wCheckForAnyWeapon');
 const wStayCharged = document.getElementById('wStayCharged');
-const wRotateToTarget = document.getElementById('wRotateToTarget');
-const wStopTrackingAfterFiring = document.getElementById('wStopTrackingAfterFiring');
 const wNoVoxelLOSCheck = document.getElementById('wNoVoxelLOSCheck');
 
 // Scope B: Core AmmoDef extras
@@ -327,21 +563,13 @@ const tAccelPerSec = document.getElementById('tAccelPerSec');
 const tSpeedVariance = document.getElementById('tSpeedVariance');
 const tRangeVariance = document.getElementById('tRangeVariance');
 const tDeaccelTime = document.getElementById('tDeaccelTime');
-const tFieldExponent = document.getElementById('tFieldExponent');
 const tTargetLossDegree = document.getElementById('tTargetLossDegree');
 const tTargetLossTime = document.getElementById('tTargetLossTime');
 const sInaccuracy = document.getElementById('sInaccuracy');
 const sAggressiveness = document.getElementById('sAggressiveness');
 const sNavAcceleration = document.getElementById('sNavAcceleration');
 const sMaxLateralThrust = document.getElementById('sMaxLateralThrust');
-const sNavAngle = document.getElementById('sNavAngle');
-const sMinArmingRange = document.getElementById('sMinArmingRange');
-const sScanRounds = document.getElementById('sScanRounds');
-const sSpeedLimit = document.getElementById('sSpeedLimit');
-const sVelocity = document.getElementById('sVelocity');
 const sSteeringLimit = document.getElementById('sSteeringLimit');
-const sOverSteer = document.getElementById('sOverSteer');
-const sStepVel = document.getElementById('sStepVel');
 const sAltNavigation = document.getElementById('sAltNavigation');
 
 // Scope B: ObjectsHitDef
@@ -377,10 +605,8 @@ const aodEolFalloff = document.getElementById('aodEolFalloff');
 const aodEolShape = document.getElementById('aodEolShape');
 
 // Scope B: Fragment extras
-const fBackwardDegrees = document.getElementById('fBackwardDegrees');
 const fOffset = document.getElementById('fOffset');
 const fIgnoreArming = document.getElementById('fIgnoreArming');
-const fRadial = document.getElementById('fRadial');
 
 // Scope B: PatternDef
 const pEnable = document.getElementById('pEnable');
@@ -681,6 +907,7 @@ const fReverse = document.getElementById('fReverse');
 const fDropVelocity = document.getElementById('fDropVelocity');
 const fFragments = document.getElementById('fFragments');
 const fDegrees = document.getElementById('fDegrees');
+const fRadial = document.getElementById('fRadial');
 const fChildAmmoRound = document.getElementById('fChildAmmoRound');
 const fragStatusBadge = document.getElementById('fragStatusBadge');
 const fragChainVisual = document.getElementById('fragChainVisual');
@@ -938,6 +1165,7 @@ async function initStudio() {
   // Event Listeners
   setupNavigationEvents();
   setupWorkbenchInputEvents();
+  applyWorkbenchFieldHelp();
   setupLogisticsEvents();
   setupModalEvents();
 
@@ -1632,7 +1860,7 @@ function renderExtendedWeaponTags() {
 
     if (valType === 'boolean') {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">bool</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">bool</span></label>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
           <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1643,7 +1871,7 @@ function renderExtendedWeaponTags() {
       });
     } else if (valType === 'number') {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">number</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">number</span></label>
         <div style="display: flex; gap: 6px; align-items: center;">
           <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1654,7 +1882,7 @@ function renderExtendedWeaponTags() {
       });
     } else {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">text/enum</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">text/enum</span></label>
         <div style="display: flex; gap: 6px; align-items: center;">
           <input type="text" class="control-input" value="${val}" style="flex: 1;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1697,7 +1925,7 @@ function renderExtendedAmmoTags() {
 
     if (valType === 'boolean') {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">bool</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">bool</span></label>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
           <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1708,7 +1936,7 @@ function renderExtendedAmmoTags() {
       });
     } else if (valType === 'number') {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">number</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">number</span></label>
         <div style="display: flex; gap: 6px; align-items: center;">
           <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1719,7 +1947,7 @@ function renderExtendedAmmoTags() {
       });
     } else {
       item.innerHTML = `
-        <label class="control-label">${key} <span class="unit">text/enum</span></label>
+        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">text/enum</span></label>
         <div style="display: flex; gap: 6px; align-items: center;">
           <input type="text" class="control-input" value="${val}" style="flex: 1;">
           <button class="btn-delete-row" title="Remove Tag">✕</button>
@@ -1905,7 +2133,6 @@ function populateAmmoWorkbench() {
   bindInputVal(tSpeedVariance, traj.speedVariance, 0);
   bindInputVal(tRangeVariance, traj.rangeVariance, 0);
   bindInputVal(tDeaccelTime, traj.deaccelTime, 0);
-  bindInputVal(tFieldExponent, traj.fieldExponent, 1.0);
   bindInputVal(tTargetLossDegree, traj.targetLossDegree, 0);
   bindInputVal(tTargetLossTime, traj.targetLossTime, 0);
   bindInputVal(tGuidance, traj.guidance, 'None');
@@ -1915,14 +2142,7 @@ function populateAmmoWorkbench() {
   bindInputVal(sAggressiveness, sm.aggressiveness, 1.0);
   bindInputVal(sNavAcceleration, sm.navAcceleration, 0);
   bindInputVal(sMaxLateralThrust, sm.maxLateralThrust, 0.5);
-  bindInputVal(sNavAngle, sm.navAngle, 0);
-  bindInputVal(sMinArmingRange, sm.minimumArmingRange, 0);
-  bindInputVal(sScanRounds, sm.scanRounds, 0);
-  bindInputVal(sSpeedLimit, sm.speedLimit, 0);
-  bindInputVal(sVelocity, sm.velocity, 0);
   bindInputVal(sSteeringLimit, sm.steeringLimit, 0);
-  bindCheckboxVal(sOverSteer, sm.overSteer, false);
-  bindCheckboxVal(sStepVel, sm.stepVel, false);
   bindCheckboxVal(sAltNavigation, sm.altNavigation, false);
 
   // ShapeDef & ObjectsHitDef
@@ -1960,7 +2180,7 @@ function populateAmmoWorkbench() {
   bindInputVal(aodBlockDepth, aodBlock.depth, 0);
   bindInputVal(aodBlockMaxAbsorb, aodBlock.maxAbsorb, 0);
   bindInputVal(aodBlockFalloff, aodBlock.falloff, 'Linear');
-  bindInputVal(aodBlockShape, aodBlock.shape, 'Sphere');
+  bindInputVal(aodBlockShape, aodBlock.shape, 'Diamond');
 
   const aodEol = aod.endOfLife || {};
   bindCheckboxVal(aodEolEnable, aodEol.enable, false);
@@ -1969,7 +2189,7 @@ function populateAmmoWorkbench() {
   bindInputVal(aodEolDepth, aodEol.depth, 0);
   bindInputVal(aodEolMaxAbsorb, aodEol.maxAbsorb, 0);
   bindInputVal(aodEolFalloff, aodEol.falloff, 'Linear');
-  bindInputVal(aodEolShape, aodEol.shape, 'Sphere');
+  bindInputVal(aodEolShape, aodEol.shape, 'Diamond');
 
   // FragmentDef
   const frag = activeAmmo.fragment || {};
@@ -1977,10 +2197,9 @@ function populateAmmoWorkbench() {
   bindCheckboxVal(fReverse, frag.reverse, false);
   bindCheckboxVal(fDropVelocity, frag.dropVelocity, false);
   bindCheckboxVal(fIgnoreArming, frag.ignoreArming, false);
-  bindCheckboxVal(fRadial, frag.radial, false);
   bindInputVal(fFragments, frag.fragments, 0);
   bindInputVal(fDegrees, frag.degrees, 0);
-  bindInputVal(fBackwardDegrees, frag.backwardDegrees, 0);
+  bindInputVal(fRadial, frag.radial, 0);
   bindInputVal(fOffset, frag.offset, 0);
   bindInputVal(fChildAmmoRound, frag.ammoRound, '');
   fragStatusBadge.textContent = frag.enable ? `${frag.fragments} Frags Active` : 'Disabled';
@@ -3350,14 +3569,6 @@ function runWeaponCoreLinter() {
     }
   }
 
-  // Critical Chance Bounds
-  if (wCriticalChance) {
-    const crit = safeFloat(wCriticalChance.value, 0);
-    if (crit < 0 || crit > 1.0) {
-      criticalErrors.push(`CriticalChance must be between 0.0 and 1.0 (${crit}).`);
-    }
-  }
-
   // Burst Consistency
   if (wShotsInBurst && wDelayAfterBurst) {
     const burstShots = safeInt(wShotsInBurst.value, 0);
@@ -3595,7 +3806,6 @@ function createMinimalWeapon() {
     goHomeToReload: false,
     dropTargetUntilLoaded: false,
     degradeWithHeat: false,
-    useFillSound: false,
     ammoName: "NATO_25x184mm",
     assignedAmmos: ["NATO_25x184mm"],
     maxTargetDistance: 1500,
@@ -3603,7 +3813,6 @@ function createMinimalWeapon() {
     topTargets: 4,
     topBlocks: 4,
     stopTrackingSpeed: 1000,
-    maxCost: 0,
     closestFirst: true,
     ignoreDumbProjectiles: true,
     lockedSmartOnly: false,
@@ -3627,7 +3836,6 @@ function createMinimalWeapon() {
     inventorySize: 0.6,
     idlePower: 0.01,
     hardwareType: "BlockWeapon",
-    criticalChance: 0,
     offset: { x: 0, y: 0, z: 0 },
     ai: {
       trackTargets: true,
@@ -3653,14 +3861,11 @@ function createMinimalWeapon() {
     },
     other: {
       constructPartCap: 0,
-      energyPriority: 0,
       restrictionRadius: 0,
       debug: false,
       checkInflatedBox: false,
-      checkForAnySupport: false,
+      checkForAnyWeapon: false,
       stayCharged: false,
-      rotateToTarget: false,
-      stopTrackingAfterFiring: false,
       noVoxelLOSCheck: false
     },
     durabilityMod: 0.5,
@@ -3731,12 +3936,11 @@ function createMinimalAmmo() {
       ammoRound: "",
       fragments: 0,
       degrees: 15,
-      backwardDegrees: 0,
       offset: 0,
       reverse: false,
       dropVelocity: false,
       ignoreArming: false,
-      radial: false
+      radial: 0
     },
     pattern: {
       enable: false,
@@ -3761,8 +3965,8 @@ function createMinimalAmmo() {
       deplete: false
     },
     areaOfDamage: {
-      byBlockHit: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Sphere" },
-      endOfLife: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Sphere" }
+      byBlockHit: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Diamond" },
+      endOfLife: { enable: false, radius: 0, damage: 0, depth: 0, maxAbsorb: 0, falloff: "Linear", shape: "Diamond" }
     },
     trajectory: {
       desiredSpeed: 1200,
@@ -3772,7 +3976,6 @@ function createMinimalAmmo() {
       speedVariance: 0,
       rangeVariance: 0,
       deaccelTime: 0,
-      fieldExponent: 1.0,
       targetLossDegree: 0,
       targetLossTime: 0,
       guidance: "None",
@@ -3781,14 +3984,7 @@ function createMinimalAmmo() {
         aggressiveness: 1.0,
         navAcceleration: 0,
         maxLateralThrust: 0.5,
-        navAngle: 0,
-        minimumArmingRange: 0,
-        scanRounds: 0,
-        speedLimit: 0,
-        velocity: 0,
         steeringLimit: 0,
-        overSteer: false,
-        stepVel: false,
         altNavigation: false
       }
     },
@@ -3962,8 +4158,6 @@ function generateCSharpWeapon() {
 `;
     code += `                StopTrackingSpeed = ${wStopTrackingSpeed.value},
 `;
-    if (wMaxCost && parseFloat(wMaxCost.value) > 0) code += `                MaxCost = ${wMaxCost.value},
-`;
     code += `            },
 `;
   }
@@ -4014,8 +4208,6 @@ function generateCSharpWeapon() {
   code += `                    InventorySize = ${safeFloat(wInventorySize.value, 0.9)}f,\n`;
   code += `                    IdlePower = ${safeFloat(wIdlePower.value, 0.01)}f,\n`;
   if (wHardwareType && wHardwareType.value && wHardwareType.value !== 'BlockWeapon') code += `                    Type = ${wHardwareType.value},\n`;
-  const critChance = safeFloat(wCriticalChance ? wCriticalChance.value : 0, 0);
-  if (critChance > 0) code += `                    CriticalChance = ${critChance}f,\n`;
   const offX = safeFloat(wOffsetX ? wOffsetX.value : 0, 0);
   const offY = safeFloat(wOffsetY ? wOffsetY.value : 0, 0);
   const offZ = safeFloat(wOffsetZ ? wOffsetZ.value : 0, 0);
@@ -4069,8 +4261,6 @@ function generateCSharpWeapon() {
 `;
   if (wDegradeWithHeat && wDegradeWithHeat.checked) code += `                    DegradeWithHeat = true,
 `;
-  if (wUseFillSound && wUseFillSound.checked) code += `                    UseFillSound = true,
-`;
   code += `                },
 `;
 
@@ -4115,14 +4305,11 @@ function generateCSharpWeapon() {
 
   // OtherDef (only write if non-default)
   const hasOtherNonDefault = (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) ||
-    (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) ||
     (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) ||
     (wOtherDebug && wOtherDebug.checked) ||
     (wCheckInflatedBox && wCheckInflatedBox.checked) ||
-    (wCheckForAnySupport && wCheckForAnySupport.checked) ||
+    (wCheckForAnyWeapon && wCheckForAnyWeapon.checked) ||
     (wStayCharged && wStayCharged.checked) ||
-    (wRotateToTarget && wRotateToTarget.checked) ||
-    (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) ||
     (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked);
 
   if (hasOtherNonDefault) {
@@ -4132,21 +4319,15 @@ function generateCSharpWeapon() {
 `;
     if (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) code += `                    ConstructPartCap = ${wConstructPartCap.value},
 `;
-    if (wEnergyPriority && parseInt(wEnergyPriority.value, 10) > 0) code += `                    EnergyPriority = ${wEnergyPriority.value},
-`;
     if (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) code += `                    RestrictionRadius = ${wRestrictionRadius.value}f,
 `;
     if (wOtherDebug && wOtherDebug.checked) code += `                    Debug = true,
 `;
     if (wCheckInflatedBox && wCheckInflatedBox.checked) code += `                    CheckInflatedBox = true,
 `;
-    if (wCheckForAnySupport && wCheckForAnySupport.checked) code += `                    CheckForAnySupport = true,
+    if (wCheckForAnyWeapon && wCheckForAnyWeapon.checked) code += `                    CheckForAnyWeapon = true,
 `;
     if (wStayCharged && wStayCharged.checked) code += `                    StayCharged = true,
-`;
-    if (wRotateToTarget && wRotateToTarget.checked) code += `                    RotateToTarget = true,
-`;
-    if (wStopTrackingAfterFiring && wStopTrackingAfterFiring.checked) code += `                    StopTrackingAfterFiring = true,
 `;
     if (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked) code += `                    NoVoxelLOSCheck = true,
 `;
@@ -4284,7 +4465,7 @@ function generateCSharpAmmo() {
 `;
     code += `                Degrees = ${fDegrees.value}f,
 `;
-    if (fBackwardDegrees && parseFloat(fBackwardDegrees.value) > 0) code += `                BackwardDegrees = ${fBackwardDegrees.value}f,
+    if (fRadial && parseFloat(fRadial.value) !== 0) code += `                Radial = ${fRadial.value}f,
 `;
     if (fOffset && parseFloat(fOffset.value) !== 0) code += `                Offset = ${fOffset.value}f,
 `;
@@ -4293,8 +4474,6 @@ function generateCSharpAmmo() {
     if (fDropVelocity && fDropVelocity.checked) code += `                DropVelocity = true,
 `;
     if (fIgnoreArming && fIgnoreArming.checked) code += `                IgnoreArming = true,
-`;
-    if (fRadial && fRadial.checked) code += `                Radial = true,
 `;
     code += `            },
 `;
@@ -4376,8 +4555,6 @@ function generateCSharpAmmo() {
 `;
   if (tDeaccelTime && parseInt(tDeaccelTime.value, 10) > 0) code += `                DeaccelTime = ${tDeaccelTime.value},
 `;
-  if (tFieldExponent && parseFloat(tFieldExponent.value) !== 1.0) code += `                FieldExponent = ${tFieldExponent.value}f,
-`;
   if (tTargetLossDegree && parseFloat(tTargetLossDegree.value) > 0) code += `                TargetLossDegree = ${tTargetLossDegree.value}f,
 `;
   if (tTargetLossTime && parseInt(tTargetLossTime.value, 10) > 0) code += `                TargetLossTime = ${tTargetLossTime.value},
@@ -4399,21 +4576,7 @@ function generateCSharpAmmo() {
 `;
     code += `                    MaxLateralThrust = ${sMaxLateralThrust.value}f,
 `;
-    if (sNavAngle && parseFloat(sNavAngle.value) > 0) code += `                    NavAngle = ${sNavAngle.value}f,
-`;
-    if (sMinArmingRange && parseFloat(sMinArmingRange.value) > 0) code += `                    MinimumArmingRange = ${sMinArmingRange.value}f,
-`;
-    if (sScanRounds && parseInt(sScanRounds.value, 10) > 0) code += `                    ScanRounds = ${sScanRounds.value},
-`;
-    if (sSpeedLimit && parseFloat(sSpeedLimit.value) > 0) code += `                    SpeedLimit = ${sSpeedLimit.value}f,
-`;
-    if (sVelocity && parseFloat(sVelocity.value) > 0) code += `                    Velocity = ${sVelocity.value}f,
-`;
     if (sSteeringLimit && parseFloat(sSteeringLimit.value) > 0) code += `                    SteeringLimit = ${sSteeringLimit.value}f,
-`;
-    if (sOverSteer && sOverSteer.checked) code += `                    OverSteer = true,
-`;
-    if (sStepVel && sStepVel.checked) code += `                    StepVel = true,
 `;
     if (sAltNavigation && sAltNavigation.checked) code += `                    AltNavigation = true,
 `;
@@ -5076,6 +5239,29 @@ function applyBalanceMatrixInputs() {
   updateAmmoLogistics();
 }
 
+// Applies WORKBENCH_FIELD_HELP tooltips to every Scope A/B Definition Workbench
+// control: native title on the input plus its label, and the has-help CSS class.
+function applyWorkbenchFieldHelp() {
+  for (const id in WORKBENCH_FIELD_HELP) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const text = WORKBENCH_FIELD_HELP[id];
+    el.title = text;
+
+    let label = null;
+    if (el.type === 'checkbox' && el.parentElement && el.parentElement.tagName === 'LABEL') {
+      label = el.parentElement;
+    } else {
+      const item = el.closest('.control-item');
+      label = item ? item.querySelector('.control-label') : null;
+    }
+    if (label) {
+      label.title = text;
+      label.classList.add('has-help');
+    }
+  }
+}
+
 function setupWorkbenchInputEvents() {
   
   // Live binding for Scope C SBC fields
@@ -5119,7 +5305,7 @@ function setupWorkbenchInputEvents() {
   if (btnAddWeaponExtendedTag) {
     btnAddWeaponExtendedTag.addEventListener('click', () => {
       if (!activeWeapon) return;
-      const tag = prompt("Enter WeaponCore Weapon tag name (e.g. ConstructPartCap, EnergyPriority, RestrictionRadius):", "EnergyPriority");
+      const tag = prompt("Enter WeaponCore Weapon tag name (e.g. ConstructPartCap, RestrictionRadius, Debug):", "ConstructPartCap");
       if (!tag) return;
       if (!activeWeapon.extendedTags) activeWeapon.extendedTags = {};
       activeWeapon.extendedTags[tag] = 0;

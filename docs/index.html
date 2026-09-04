@@ -577,10 +577,6 @@
                 </select>
               </div>
               <div class="control-item">
-                <label class="control-label">Critical Chance <span class="unit">0.0 - 1.0</span></label>
-                <input type="number" id="wCriticalChance" class="control-input" step="0.05" min="0" max="1" value="0">
-              </div>
-              <div class="control-item">
                 <label class="control-label">Firing Line Offset <span class="unit">X, Y, Z (meters)</span></label>
                 <div style="display: flex; gap: 4px;">
                   <input type="number" id="wOffsetX" class="control-input" step="0.1" value="0" placeholder="X">
@@ -659,7 +655,6 @@
               <label class="chk-label"><input type="checkbox" id="wGoHomeToReload"> Go Home Position To Reload</label>
               <label class="chk-label"><input type="checkbox" id="wDropTargetUntilLoaded"> Drop Target Until Loaded</label>
               <label class="chk-label"><input type="checkbox" id="wDegradeWithHeat"> Degrade Accuracy With Heat</label>
-              <label class="chk-label"><input type="checkbox" id="wUseFillSound"> Use Fill Sound On Reload</label>
             </div>
           </div>
         </details>
@@ -732,10 +727,6 @@
               <div class="control-item">
                 <label class="control-label">Stop Tracking Speed <span class="unit">m/s</span></label>
                 <input type="number" id="wStopTrackingSpeed" class="control-input" min="0" value="1000">
-              </div>
-              <div class="control-item">
-                <label class="control-label">Max Target Cost</label>
-                <input type="number" id="wMaxCost" class="control-input" min="0" value="0">
               </div>
             </div>
             
@@ -845,10 +836,6 @@
                 <input type="number" id="wConstructPartCap" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
-                <label class="control-label">Energy Priority <span class="unit">0 = highest</span></label>
-                <input type="number" id="wEnergyPriority" class="control-input" min="0" value="0">
-              </div>
-              <div class="control-item">
                 <label class="control-label">Restriction Radius <span class="unit">meters</span></label>
                 <input type="number" id="wRestrictionRadius" class="control-input" min="0" value="0">
               </div>
@@ -856,10 +843,8 @@
             <div class="checkbox-row" style="margin-top: 12px;">
               <label class="chk-label"><input type="checkbox" id="wOtherDebug"> Debug Mode</label>
               <label class="chk-label"><input type="checkbox" id="wCheckInflatedBox"> Check Inflated Box</label>
-              <label class="chk-label"><input type="checkbox" id="wCheckForAnySupport"> Check For Any Support</label>
+              <label class="chk-label"><input type="checkbox" id="wCheckForAnyWeapon"> Check For Any Weapon</label>
               <label class="chk-label"><input type="checkbox" id="wStayCharged"> Stay Charged</label>
-              <label class="chk-label"><input type="checkbox" id="wRotateToTarget"> Rotate To Target</label>
-              <label class="chk-label"><input type="checkbox" id="wStopTrackingAfterFiring"> Stop Tracking After Firing</label>
               <label class="chk-label"><input type="checkbox" id="wNoVoxelLOSCheck"> No Voxel LOS Check</label>
             </div>
           </div>
@@ -1062,10 +1047,6 @@
                 <input type="number" id="tDeaccelTime" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
-                <label class="control-label">Field Exponent</label>
-                <input type="number" id="tFieldExponent" class="control-input" step="0.1" value="1.0">
-              </div>
-              <div class="control-item">
                 <label class="control-label">Target Loss Degree <span class="unit">deg cone</span></label>
                 <input type="number" id="tTargetLossDegree" class="control-input" min="0" value="0">
               </div>
@@ -1077,12 +1058,11 @@
                 <label class="control-label">Guidance Type</label>
                 <select id="tGuidance" class="control-input">
                   <option value="None" selected>None (Dumbfire / Ballistic)</option>
-                  <option value="Laser">Laser (Beam-Rider)</option>
-                  <option value="Radar">Radar (Active Radar Guidance)</option>
+                  <option value="TravelTo">TravelTo (Tracks Aim Point — Flak)</option>
                   <option value="Smart">Smart (Autonomous Seeker)</option>
-                  <option value="Heat">Heat (Infrared Seeker)</option>
-                  <option value="DetectTravelAbove">DetectTravelAbove</option>
-                  <option value="DetectTravelUs">DetectTravelUs</option>
+                  <option value="DetectTravelTo">DetectTravelTo (Mine)</option>
+                  <option value="DetectSmart">DetectSmart (Mine)</option>
+                  <option value="DetectFixed">DetectFixed (Mine)</option>
                 </select>
               </div>
             </div>
@@ -1108,33 +1088,11 @@
                   <input type="number" id="sMaxLateralThrust" class="control-input" step="0.1" min="0" max="1" value="0.5">
                 </div>
                 <div class="control-item">
-                  <label class="control-label">Nav Angle <span class="unit">degrees</span></label>
-                  <input type="number" id="sNavAngle" class="control-input" step="1" min="0" value="0">
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Minimum Arming Range <span class="unit">meters</span></label>
-                  <input type="number" id="sMinArmingRange" class="control-input" min="0" value="0">
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Scan Rounds</label>
-                  <input type="number" id="sScanRounds" class="control-input" min="0" value="0">
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Speed Limit <span class="unit">m/s</span></label>
-                  <input type="number" id="sSpeedLimit" class="control-input" min="0" value="0">
-                </div>
-                <div class="control-item">
-                  <label class="control-label">Velocity Tracking</label>
-                  <input type="number" id="sVelocity" class="control-input" min="0" value="0">
-                </div>
-                <div class="control-item">
                   <label class="control-label">Steering Limit</label>
                   <input type="number" id="sSteeringLimit" class="control-input" step="0.1" min="0" value="0">
                 </div>
               </div>
               <div class="checkbox-row" style="margin-top: 10px;">
-                <label class="chk-label"><input type="checkbox" id="sOverSteer"> OverSteer</label>
-                <label class="chk-label"><input type="checkbox" id="sStepVel"> StepVel</label>
                 <label class="chk-label"><input type="checkbox" id="sAltNavigation"> AltNavigation</label>
               </div>
             </div>
@@ -1267,16 +1225,20 @@
                 <div class="control-item">
                   <label class="control-label">Falloff Curve</label>
                   <select id="aodBlockFalloff" class="control-input">
-                    <option value="NoFalloff">NoFalloff</option>
-                    <option value="Linear" selected>Linear</option>
-                    <option value="Quadratic">Quadratic</option>
+                    <option value="NoFalloff">NoFalloff (flat damage in radius)</option>
+                    <option value="Linear" selected>Linear (even drop by distance)</option>
+                    <option value="Curve">Curve (sharp drop near max radius)</option>
+                    <option value="InvCurve">InvCurve (sharp drop from middle)</option>
+                    <option value="Squeeze">Squeeze (rises toward max radius)</option>
+                    <option value="Pooled">Pooled (damage pool exhausts)</option>
+                    <option value="Exponential">Exponential</option>
                   </select>
                 </div>
                 <div class="control-item">
                   <label class="control-label">AOE Shape</label>
                   <select id="aodBlockShape" class="control-input">
-                    <option value="Sphere" selected>Sphere</option>
-                    <option value="Capsule">Capsule</option>
+                    <option value="Round">Round</option>
+                    <option value="Diamond" selected>Diamond (performance friendly)</option>
                   </select>
                 </div>
               </div>
@@ -1308,16 +1270,20 @@
                 <div class="control-item">
                   <label class="control-label">Falloff Curve</label>
                   <select id="aodEolFalloff" class="control-input">
-                    <option value="NoFalloff">NoFalloff</option>
-                    <option value="Linear" selected>Linear</option>
-                    <option value="Quadratic">Quadratic</option>
+                    <option value="NoFalloff">NoFalloff (flat damage in radius)</option>
+                    <option value="Linear" selected>Linear (even drop by distance)</option>
+                    <option value="Curve">Curve (sharp drop near max radius)</option>
+                    <option value="InvCurve">InvCurve (sharp drop from middle)</option>
+                    <option value="Squeeze">Squeeze (rises toward max radius)</option>
+                    <option value="Pooled">Pooled (damage pool exhausts)</option>
+                    <option value="Exponential">Exponential</option>
                   </select>
                 </div>
                 <div class="control-item">
                   <label class="control-label">AOE Shape</label>
                   <select id="aodEolShape" class="control-input">
-                    <option value="Sphere" selected>Sphere</option>
-                    <option value="Capsule">Capsule</option>
+                    <option value="Round">Round</option>
+                    <option value="Diamond" selected>Diamond (performance friendly)</option>
                   </select>
                 </div>
               </div>
@@ -1338,7 +1304,6 @@
               <label class="chk-label"><input type="checkbox" id="fReverse"> Reverse Direction</label>
               <label class="chk-label"><input type="checkbox" id="fDropVelocity"> Drop Velocity</label>
               <label class="chk-label"><input type="checkbox" id="fIgnoreArming"> Ignore Arming Range</label>
-              <label class="chk-label"><input type="checkbox" id="fRadial"> Radial 360° Burst</label>
             </div>
             <div class="control-grid">
               <div class="control-item">
@@ -1350,8 +1315,8 @@
                 <input type="number" id="fDegrees" class="control-input" step="1" min="0" max="180" value="15">
               </div>
               <div class="control-item">
-                <label class="control-label">Backward Spread Cone <span class="unit">degrees</span></label>
-                <input type="number" id="fBackwardDegrees" class="control-input" step="1" min="0" max="180" value="0">
+                <label class="control-label">Radial Angle Offset <span class="unit">degrees</span></label>
+                <input type="number" id="fRadial" class="control-input" step="1" value="0">
               </div>
               <div class="control-item">
                 <label class="control-label">Spawn Offset <span class="unit">meters</span></label>

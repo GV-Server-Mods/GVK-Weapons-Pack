@@ -1040,6 +1040,21 @@ header {
   font-weight: 400;
 }
 
+/* Field help affordance for Definition Workbench tooltips (WORKBENCH_FIELD_HELP in app.js) */
+.control-label.has-help,
+.chk-label.has-help {
+  cursor: help;
+}
+
+.control-label.has-help::after,
+.chk-label.has-help::after {
+  content: "ⓘ";
+  font-size: 9px;
+  opacity: 0.45;
+  margin-left: 4px;
+}
+
+
 
 /* ==========================================================================
    WEAPONCORE ENGINE DEFAULTS (Medium-Grey Visual Styling)
