@@ -78,7 +78,7 @@ graph TD
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
 - Positioned directly beneath the active weapon banner and **permanently visible across all weapons** (single-ammo and multi-ammo alike).
 - Features matching orange border (`#d97706`), ammo magazine icon, and munition selector for dual-load weapons (e.g. High Explosive vs Armor Piercing).
-- Live badges displaying active ammo SubtypeId, Base Damage, Muzzle Speed, and Max Range.
+- Live badges display munition role, total damage per shot, muzzle speed, and max range (armor-multiplier chips live exclusively in the matrix below).
 
 #### 3. Recursive Damage Engine & Scalable TimedSpawns Architecture
 Calculates true damage potential through multi-stage fragment trees:
@@ -108,6 +108,7 @@ Renders authentic weapon-to-target lethality across 4 key combat target profiles
 - **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP [over-penetration], } 1.0\times\text{ on HE}$), and effective damage.
 - **Non-Armor (Systems)**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
 - **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
+- Row subtexts show salvo volley (plus the Overpen cap when present) only — the per-row multiplier badge already carries the shred/resist story.
 - **Target Dummy Time-to-Kill (TTK)**: Applies true target multipliers ($\text{Damage}_{\text{target}} = \text{Base} \times \text{Multiplier} + \text{AoE} + \text{Frag}$) when simulating shots and time to destroy Light Armor, Heavy Armor, Battery, and Refinery cubes. Demonstrates why 155 AP destroys a Heavy Armor Cube in 1 salvo ($18\text{k dmg} > 16.5\text{k hp}$) while 155 HE requires 2 salvos.
 
 > **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Non-Armor (Systems)** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
@@ -129,13 +130,14 @@ Replaces static heat bars with operational sustainability metrics:
   - **Energy Weapons**: For energy-draining systems, derives Uranium consumption ($\text{kg/min}$ based on $1\text{ MWh} = 1\text{ kg Uranium}$).
 
 #### 6. Hexagonal Tactical Radar (`#radarCanvas`)
-- Plots 6 normalized tactical axes dynamically scaled across the dataset:
+- Plots 7 normalized tactical axes dynamically scaled across the dataset:
   1. **DPS** (Sustained Damage Per Second)
   2. **Volley Alpha** (Single-shot burst payload)
   3. **Targeting Range** (Weapon's actual engagement range from `MaxTargetDistance`, **not** raw ammo flight trajectory)
   4. **Muzzle Velocity** (Projectile flight speed)
   5. **Tracking Rate** (Azimuth & Elevation traverse agility in deg/s)
   6. **Block Integrity** (Cube block durability)
+  7. **Power Draw** (Operational power draw in MW — idle + sustained firing energy)
 - **1v1 Benchmark Comparison**:
   - Active weapon in **Amber/Orange** (`#f59e0b`).
   - Benchmark weapon in **Cyan/Blue** (`#38bdf8`).

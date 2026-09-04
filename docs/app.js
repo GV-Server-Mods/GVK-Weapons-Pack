@@ -1313,11 +1313,6 @@ function updateTelemetryAmmoBadge() {
     : null;
   const frag = (activeAmmo.fragment && activeAmmo.fragment.enable) ? activeAmmo.fragment : null;
 
-  const ds = activeAmmo.damageScales || {};
-  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
-  const lightMult = (ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0;
-  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
-
   let typeDesc = "Direct Kinetic AP";
   if (eol && eol.damage > 0) {
     typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
@@ -1327,19 +1322,8 @@ function updateTelemetryAmmoBadge() {
     typeDesc = "High-Energy Sabot";
   }
 
+  // Armor-multiplier chips live only in the Target Damage Matrix - do not re-add here.
   let modifierChips = '';
-  if (heavyMult !== 1.0) {
-    const effHeavy = Math.round((dmg.base * heavyMult) + dmg.aoe + dmg.frag);
-    modifierChips += ` &bull; <span class="badge ${heavyMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">🛡️ Heavy ${heavyMult}× (${effHeavy.toLocaleString()}hp)</span>`;
-  }
-  if (lightMult !== 1.0) {
-    modifierChips += ` &bull; <span class="badge ${lightMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">📄 Light ${lightMult}×</span>`;
-  }
-  if (nonArmorMult !== 1.0) {
-    const effNonArmor = Math.round((dmg.base * nonArmorMult) + dmg.aoe + dmg.frag);
-    modifierChips += ` &bull; <span class="badge ${nonArmorMult > 1.0 ? 'badge-amber' : ''}" style="padding: 2px 6px;">⚙️ Non-Armor ${nonArmorMult}× (${effNonArmor.toLocaleString()}hp)</span>`;
-  }
-
   if (dmg.cutoff > 0) {
     modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/block ×${dmg.penBlocks}</span>`;
   }
@@ -2374,8 +2358,7 @@ function updateCombatTelemetry() {
     tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp</span>`;
   }
   if (tmHeavySub) {
-    const heavyNote = heavyMult > 1.0 ? '⚡ Armor Shredder' : (heavyMult < 1.0 ? '⚠️ Armor Resistance' : 'Standard Impact');
-    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${heavyNote})`;
+    tmHeavySub.textContent = `Volley: ${heavyVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmLightMult) {
@@ -2386,8 +2369,7 @@ function updateCombatTelemetry() {
     tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp</span>`;
   }
   if (tmLightSub) {
-    const lightNote = lightMult < 1.0 ? '⚠️ Over-penetration' : (lightMult > 1.0 ? '⚡ Hull Shredder' : 'Standard Impact');
-    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${lightNote})`;
+    tmLightSub.textContent = `Volley: ${lightVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmNonArmorMult) {
@@ -2398,8 +2380,7 @@ function updateCombatTelemetry() {
     tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp</span>`;
   }
   if (tmNonArmorSub) {
-    const nonArmorNote = nonArmorMult > 1.0 ? '⚡ Systems Shredder' : (nonArmorMult < 1.0 ? '⚠️ Component Resistance' : 'Standard Impact');
-    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''} (${nonArmorNote})`;
+    tmNonArmorSub.textContent = `Volley: ${nonArmorVolley.toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmBlastRadius) {
@@ -2884,7 +2865,7 @@ function getWeaponIconUrl(weapon) {
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
 function calculateWeaponMetrics(weapon, ammoKeyOverride) {
-  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, effectiveAlphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000 };
+  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, effectiveAlphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000, power: 0 };
 
   const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
@@ -2923,6 +2904,9 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const velocity = (a.trajectory && a.trajectory.desiredSpeed) ? a.trajectory.desiredSpeed : 1000;
   const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
+  // Mirrors the Power Required card formula (idle + EnergyCost scaled to sustained firing draw)
+  const power = (weapon.idlePower || 0.01) + ((a.energyCost || 0) * (rof / 60) * 3600);
+
   let integrity = 0;
   if (weapon.components && weapon.components.length > 0) {
     integrity = weapon.components.reduce((sum, c) => {
@@ -2937,7 +2921,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const profile = getTopArmorProfile(a.damageScales || {});
   const effectiveDps = Math.round(sustainedDps * profile.mult);
   const effectiveAlphaVolley = Math.round(alphaVolley * profile.mult);
-  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity };
+  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power };
 }
 
 function getModMaxMetrics() {
@@ -2947,6 +2931,7 @@ function getModMaxMetrics() {
   let maxVel = 500;
   let maxTrack = 10;
   let maxIntegrity = 5000;
+  let maxPower = 1;
 
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
@@ -2956,9 +2941,10 @@ function getModMaxMetrics() {
     if (m.velocity > maxVel) maxVel = m.velocity;
     if (m.tracking > maxTrack) maxTrack = m.tracking;
     if (m.integrity > maxIntegrity) maxIntegrity = m.integrity;
+    if (m.power > maxPower) maxPower = m.power;
   });
 
-  return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity };
+  return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity, maxPower };
 }
 
 function updateComparisonRadar() {
@@ -2975,7 +2961,7 @@ function updateComparisonRadar() {
   const cx = w / 2;
   const cy = h / 2;
   const radius = Math.min(cx, cy) - 40;
-  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Integrity'];
+  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Integrity', 'Power'];
   const totalAxes = axes.length;
 
   // Draw Hexagonal Web
@@ -3019,7 +3005,7 @@ function updateComparisonRadar() {
   // Update Max Metrics Readout in Legend
   const readout = document.getElementById('radarMaxMetrics');
   if (readout) {
-    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Target Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()}`;
+    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Target Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()} | <strong>Pwr:</strong> ${modMax.maxPower >= 100 ? Math.round(modMax.maxPower).toLocaleString() : modMax.maxPower.toFixed(2)} MW`;
   }
 
   // Calculate Normalized Stats for Active Weapon
@@ -3033,6 +3019,7 @@ function updateComparisonRadar() {
   }
   const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
   const activeTrack = (outTraverseDeg && parseFloat(outTraverseDeg.textContent)) || 10;
+  const activePower = (outPowerMw && parseFloat(outPowerMw.textContent)) || 0;
   
   let activeIntegrity = 0;
   if (activeWeapon && activeWeapon.components && activeWeapon.components.length > 0) {
@@ -3051,7 +3038,8 @@ function updateComparisonRadar() {
     Math.min(1, Math.max(0, activeRange / modMax.maxRange)),
     Math.min(1, Math.max(0, activeVel / modMax.maxVel)),
     Math.min(1, Math.max(0, activeTrack / modMax.maxTrack)),
-    Math.min(1, Math.max(0, activeIntegrity / modMax.maxIntegrity))
+    Math.min(1, Math.max(0, activeIntegrity / modMax.maxIntegrity)),
+    Math.min(1, Math.max(0, activePower / modMax.maxPower))
   ];
 
   drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
@@ -3095,7 +3083,8 @@ function updateComparisonRadar() {
       Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
       Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel)),
       Math.min(1, Math.max(0, bMetrics.tracking / modMax.maxTrack)),
-      Math.min(1, Math.max(0, bMetrics.integrity / modMax.maxIntegrity))
+      Math.min(1, Math.max(0, bMetrics.integrity / modMax.maxIntegrity)),
+      Math.min(1, Math.max(0, bMetrics.power / modMax.maxPower))
     ];
 
     drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');

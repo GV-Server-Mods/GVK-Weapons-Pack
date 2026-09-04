@@ -1694,6 +1694,18 @@ input.control-input.is-wc-default {
   color: var(--amber-light);
 }
 
+.drift-muzzle-chip {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--cyan-primary);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 4px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
 /* ==========================================================================
    DEFINITION WORKBENCH & C# ACCORDIONS
    ========================================================================== */
