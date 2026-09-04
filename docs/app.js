@@ -1150,6 +1150,8 @@ async function initStudio() {
           weaponsDb = data.weapons;
           ammosDb = data.ammos;
           magazinesBlueprintsDb = data.magazines;
+          activeWeapon = null;
+          activeAmmo = null;
           refreshAfterDataLoad();
         },
       });
