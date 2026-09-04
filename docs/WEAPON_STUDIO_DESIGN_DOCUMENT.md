@@ -68,6 +68,7 @@ graph TD
 
 #### 1. Universal Weapon Banner & Badges
 - **Active Weapon Icon & Dropdown**: Large weapon icon with orange border (`#d97706`). Dropdown separated into *Player Standard Armaments* and *⚔️ NPC / Relic / Enemy Armaments*.
+- **Dynamic Icon Resolution**: Weapon icons resolve dynamically through `getWeaponIconUrl(weapon)` using block subtype IDs, grid size markers (`(L)` / `(S)` derived from CubeBlock definitions), and `studio_overrides.js` mappings. This ensures large/small variants (e.g. Avenger Turret, Gatling, PD Laser, Light Laser) display their distinct grid textures rather than falling back to broken paths or getting stuck on a default icon.
 - **Dynamic GVK Status Badges**:
   - `[ ⚡ X UPs ]`: Utility Points dynamically calculated from total Prototech component count (excluding Data Cores). Matches server Spec Core balancing.
   - `[ 👑 Relic Weapon ]` vs `[ ⚙️ Standard Production ]`: Automatically derived from blueprint ingredients (`GVK_RUs` or non-craftable scavenged items).
@@ -79,7 +80,8 @@ graph TD
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
 - Positioned directly beneath the active weapon banner and **permanently visible across all weapons** (single-ammo and multi-ammo alike).
 - Features matching orange border (`#d97706`), ammo magazine icon, and munition selector for dual-load weapons (e.g. High Explosive vs Armor Piercing).
-- Live badges display munition role, total damage per shot, muzzle speed, and max range (armor-multiplier chips live exclusively in the matrix below).
+- **Terminal Munition Visibility Filtering (`getSelectableAmmos`)**: Strictly filters out internal fragments and sub-rounds (`hardPointUsable === false`). Weapons with internal sub-projectiles (e.g. Avenger Turret's `NATO 25mm [Energy]` fragment, or Flak/Cannon NPC sub-shrapnel) expose only the true player-selectable terminal rounds, while child projectile damage remains recursively factored into the parent round's telemetry.
+- Live badges display munition role, total damage per shot, muzzle speed, max range, and magazine capacity (e.g. `100 rds/mag`, `⚡ 240 rds (virtual mag)`, or `⚡ Continuous`).
 
 #### 3. Recursive Damage Engine & Scalable TimedSpawns Architecture
 Calculates true damage potential through multi-stage fragment trees:
@@ -88,16 +90,22 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 - **Scalable TimedSpawns Delivery Duration ($\Delta T_{\text{delivery}}$)**:
   Evaluates `TimedSpawnDef` (`maxSpawns`, `groupSize`, `interval`, `groupDelay`):
   $$\text{numBursts} = \left\lceil \frac{\text{totalSpawns}}{\text{groupSize}} \right\rceil, \quad \Delta T_{\text{delivery}} = \frac{(\text{numBursts} - 1) \times \text{groupDelay} + \text{groupSize} \times \text{interval}}{60\text{ ticks/sec}}$$
+- **Loaded Capacity & Alpha Volley Mechanics**:
+  Alpha Volley is calculated across the entire loaded magazine capacity before a reload cycle:
+  $$\text{TotalRounds} = \text{MagSize} \times \text{MagsToLoad}$$
+  $$\text{AlphaVolley} = \text{AlphaRound} \times \text{TotalRounds}$$
+  - **Physical Multi-Magazine Weapons**: Weapons loading multiple magazines (e.g., Cyclone Cannon with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds}$; Hurricane with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds} \times 80{,}000\text{ hp} = 160{,}000\text{ hp}$; Cannon Gun with $4 \text{ mags}$; Gatling Avenger with $14 \text{ mags} \times 100 \text{ rds} = 1{,}400 \text{ rds}$) evaluate the full burst payload delivered prior to cycling reload downtime.
+  - **Virtual Magazines for Energy Weapons**:
+    - *Recharge/Capacity Beams*: When `AmmoMagazine == "Energy"` and `EnergyMagazineSize > 0` (e.g., Heavy Laser Turret = 240 ticks / $36{,}000\text{ hp}$; Spartan Turret = 360 ticks / $54{,}000\text{ hp}$; Harbinger Railgun = 1 round / $1{,}000{,}000\text{ hp}$), `getShotsPerMag` resolves the virtual magazine capacity. Firing the virtual magazine triggers a recharge/reload cycle (`ReloadTime`). Badge indicates `⚡ <N> rds (virtual mag)`.
+    - *Continuous/Heat-Based Beams*: When `EnergyMagazineSize <= 0` and `ReloadTime == 0` (e.g., `MA_PDT` / `Lasers_AMS` Point Defense Laser, radar designators), the weapon operates continuously with no magazine reload downtime. Resolves 1 round per event (`BarrelsPerShot || 1`), displaying `⚡ Continuous` on the badge and preventing arbitrary 100-round virtual magazine fallbacks.
 - **Instantaneous Cluster vs Loitering Deployable Scaling**:
   - **If $\Delta T_{\text{delivery}} \le 1.0\text{s}$** (Flak, Proximity Warhead, Cluster Bomb):
     All fragments arrive in the initial strike:
     $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\text{totalSpawns} \times \text{ChildDamage})$$
-    $$\text{AlphaVolley} = \text{AlphaRound} \times \text{BarrelsPerShot}$$
     $$\text{Sustained DPS} = \text{RPS} \times \text{TotalLifetimeDamage}$$
   - **If $\Delta T_{\text{delivery}} > 1.0\text{s}$** (Drones, Loitering Minefields, Area Denial):
     Initial burst contributes to opening salvo; sustained payload delivers over time:
     $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\min(\text{groupSize}, \text{totalSpawns}) \times \text{ChildDamage})$$
-    $$\text{AlphaVolley} = \text{AlphaRound} \times \text{BarrelsPerShot}$$
     $$\text{LoiterDPS} = \frac{\text{TotalLifetimeDamage}}{\Delta T_{\text{delivery}}}$$
     $$\text{MaxConcurrent} = \min\left(\text{MagsToLoad}, \max\left(1.0, \frac{\Delta T_{\text{delivery}}}{\text{CycleSec}}\right)\right)$$
     $$\text{Sustained DPS} = \text{LoiterDPS} \times \text{MaxConcurrent}$$
@@ -115,9 +123,15 @@ Renders authentic weapon-to-target lethality across 4 key combat target profiles
 
 > **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Non-Armor (Systems)** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
 
-**Effective DPS (Best-Fit Target)** — raw paper DPS is pre-multiplier. The hero card's big number shows the round's peak ideal: the full sustained payload scaled by whichever armor multiplier is highest:
+**Effective DPS (Best-Fit Target)** — raw base DPS is pre-multiplier. The hero card's big number shows the round's peak ideal: the full sustained payload scaled by whichever armor multiplier is highest:
 $$M_{\text{best}} = \max(\text{Heavy}, \text{Light}, \text{NonArmor}), \quad \text{Effective DPS} = \text{Sustained DPS} \times M_{\text{best}}$$
-Unset multipliers ($-1$) resolve to $1.0\times$. The blue disclaimer beneath states where the multiplier bites — e.g. "Effective against Heavy Armor (×3.0) · Paper: X DPS" — preserving the raw figure; two-way ties join labels and all-equal rounds read "All Targets". The peak interpretation intentionally ignores the Overpen cap (the full payload does land on the grid, just spread across blocks) — per-block reality stays in the matrix volleys, TTK and 🪡 chip. The Alpha Volley hero follows the same best-fit theme (instant payload × $M_{\text{best}}$, paper volley in the blue disclaimer). Per the WeaponCore wiki, DamageScales armor modifiers multiply the projectile's BaseDamage (AreaEffect/Detonation carry their own damage types and are not documented as armor-scaled), which is the convention the matrix rows follow. The 1v1 radar and compare table use effective DPS and effective alpha volley for both weapons.
+Unset multipliers ($-1$) resolve to $1.0\times$. The blue disclaimer beneath states where the multiplier bites — e.g. "Effective against Heavy Armor (×3.0) · Base: X DPS" — preserving the raw figure; two-way ties join labels and all-equal rounds read "All Blocks". The peak interpretation intentionally ignores the Overpen cap (the full payload does land on the grid, just spread across blocks) — per-block reality stays in the matrix volleys, TTK and 🪡 chip. The Alpha Volley hero follows the same best-fit theme (instant payload × $M_{\text{best}}$, base volley in the blue disclaimer alongside loaded magazine count, e.g. "2 loaded mags · 80 rds"). Per the WeaponCore wiki, DamageScales armor modifiers multiply the projectile's BaseDamage (AreaEffect/Detonation carry their own damage types and are not documented as armor-scaled), which is the convention the matrix rows follow. The 1v1 radar and compare table use effective DPS and effective alpha volley for both weapons.
+
+**Effective Rate Hero Card** — displays true sustained fire rate in **Rounds Per Minute (RPM)**, reflecting cyclic fire time plus reload downtime:
+$$\text{Effective RPM} = \text{Effective RPS} \times 60 = \left(\frac{\text{Total Rounds}}{\text{Burst Time} + \text{Reload Time}}\right) \times 60$$
+The hero card subline provides the weapon's burst fire rate (`Burst: X RPM · Y sps sustained`), pairing seamlessly with the combat cycle bar below.
+
+**Target Damage & Multiplier Matrix** — clearly labels large readout numbers as damage per shot (`hp / shot`), with the card border dynamically highlighted in cyan for whichever block type takes peak damage per shot (Heavy Armor, Light Armor, or Systems).
 
 **Overpen (`BaseDamageCutoff`)** — per WeaponCore source, penetrating rounds apply at most Cutoff damage per block hit and carry the remainder onward:
 $$D_{\text{block}} = \min(\text{BaseDamage}, \text{Cutoff}) \times M_{\text{target}}, \quad N_{\text{blocks}} = \left\lfloor \frac{\text{BaseDamage}}{\text{Cutoff}} \right\rfloor$$
@@ -125,7 +139,8 @@ $$D_{\text{block}} = \min(\text{BaseDamage}, \text{Cutoff}) \times M_{\text{targ
 - Matrix volleys and the TTK simulator use $D_{\text{block}}$ (a single cube cannot absorb the full base damage of a capped round); the matrix header shows a `🪡 Overpen: N blocks @ X hp` chip whenever `BaseDamageCutoff > 0` (it replaces the retired "Loaded" munition badge, which duplicated the munition bar).
 
 #### 5. Effective Fire Rate & Combat Cycle
-Replaces static heat bars with operational sustainability metrics:
+Positioned directly beneath the 7 hero cards to explain sustained fire rate and duty cycle without repeating redundant cycle formulas in the hero card:
+- **Inlined Loading Rate of Fire**: Evaluates exact `LoadingDef.RateOfFire` values parsed per weapon (e.g. Khopesh Turret at 360 RPM, Thrasher Autocannon at 480 RPM, Hurricane Heavy Cannon at 120 RPM), preventing inverted DPS readings across similar weapon families.
 - **Duty Cycle Percentage**: Real-time ratio of firing uptime vs reload downtime.
 - **Consumption Rate**:
   - **Physical Munitions**: Computes exact magazine burn rate ($\text{mags/min}$).
@@ -334,11 +349,19 @@ When modifying or extending the GVK Weapon Studio:
    - `GVK_*.sbc` for custom mod content.
    - `Blueprints.sbc` for production recipes.
 4. **Theme Rigor**: Whenever adding new text or cards, ensure both dark mode and `[data-theme="light"]` selectors are verified for contrast.
-5. **Run Verification Script**: Always validate changes using the headless smoke harness (stubs a minimal DOM, loads `docs/app.js`, and asserts the WC exporters run clean with zero shield output):
-   ```cmd
-   node scratch/test_studio_smoke.js
-   ```
-
+5. **Run Verification Suites**: Always validate changes before pushing using the verification harnesses:
+   - **Headless Studio Smoke Suite** (asserts DOM bindings, weapon selections, multi-mag volleys, energy virtual magazines, commit date formats, and zero shield emissions):
+     ```cmd
+     node scratch/test_studio_smoke.js
+     ```
+   - **Source Pipeline Inheritance Suite** (verifies live C# parser, deep clone mutations, and magazine associations):
+     ```cmd
+     node scratch/test_source_pipeline.js
+     ```
+   - **Deployment Validation Gate** (the exact gate run by GitHub Actions):
+     ```cmd
+     node tools/validate_studio_data.mjs
+     ```
 
 ---
 
@@ -352,9 +375,16 @@ snapshots only. The C# definition files (`CoreParts/*.cs`) and SBC block/magazin
 
 On every page load, `docs/source_live.js` resolves data in this order:
 
-1. **Hosted (github.io)**: fetches `data/source/_manifest.json` (stamped with the commit SHA by the
-   deploy workflow), downloads only the source files listed in the manifest, parses them in-browser
-   via `docs/source_pipeline.js`. Status chip: `🟢 LIVE @ <sha> (<ref>)`.
+1. **Hosted (github.io)**: fetches `data/source/_manifest.json` (stamped with the commit SHA, git ref,
+   and commit date by the deploy workflow), downloads only the source files listed in the manifest,
+   and parses them in-browser via `docs/source_pipeline.js`.
+   - **Header Placement**: The database status chip is mounted in the top navigation header directly
+     alongside the WeaponCore sync indicator and theme toggle.
+   - **Status Chip Format**: `🟢 LIVE @ <shortSha> · MM.DD.YYYY (<ref>)`.
+   - **Non-Blocking Fallback**: If `manifest.date` is empty or not yet stamped, an asynchronous query
+     fetches the commit timestamp directly from the GitHub API and updates the chip smoothly.
+   - **Consolidated Export Controls**: All export buttons (`Export Code & SBC` and `Export Snapshots`)
+     are unified in the bottom-right of the fixed footer bar, preventing overlapping chips.
 2. **Local (file://)**: the "📁 Link Mod Folder" button uses the File System Access API to read the
    `CoreParts/` + `Content/Data/` folders straight off disk (your working tree, even uncommitted).
    Folder handle persists in IndexedDB. Status chip: `🟢 LIVE — local folder`.
@@ -367,41 +397,56 @@ The chip reflects the severity of any parse problems:
 
 | Severity | Chip | Meaning |
 |----------|------|---------|
-| clean | 🟢 LIVE | No problems — everything parsed |
+| clean | 🟢 LIVE | No problems — everything parsed cleanly |
 | warn | 🟡 LIVE | Data loaded, non-fatal quirks (amber banner) |
 | error | 🔴 LIVE | Partial data — some weapons/ammos missing (red banner) |
-| fallback | 🔴 BUNDLED SNAPSHOT | Could not load live data at all |
+| fallback | 🔴 BUNDLED SNAPSHOT | Could not load live data at all (using bundled snapshot) |
 
 Problems show in a top banner that auto-dismisses after 10 seconds (with a manual close button)
 so the studio stays usable even with non-fatal errors.
 
-### Deploy workflow (.github/workflows/deploy-studio.yml)
+### Deploy workflow (`.github/workflows/deploy-studio.yml`)
 
-On every push to main, GitHub Actions:
-1. Runs node tools/validate_studio_data.mjs — a zero-dep Node gate that reuses the browser parser.
-   Refuses to deploy if any weapon ammo reference is unresolved or any magazine is phantom.
-2. Stages docs/ (the app) plus a verbatim mirror of CoreParts/*.cs and the needed Content/Data/*.sbc
-   files into data/source/, and writes _manifest.json (commit SHA + ref).
-3. Deploys to Pages via actions/upload-pages-artifact + actions/deploy-pages.
+On every push to `main` (affecting `CoreParts/**`, `Content/Data/**`, `docs/**`, `tools/**`, or the workflow itself), GitHub Actions:
+1. **Verification Gate**: Runs `node tools/validate_studio_data.mjs` — a zero-dep Node gate that reuses
+   the browser parser. Refuses to deploy if any weapon ammo reference is unresolved, any magazine is
+   phantom, or any syntax errors are detected.
+2. **Verbatim Staging**: Stages `docs/` (the web app) plus a verbatim mirror of `CoreParts/*.cs` and
+   the needed `Content/Data/*.sbc` files into `_site/data/source/`.
+3. **Manifest Stamping**: Extracts the latest commit date via `git log -1 --format=%cd --date=format:'%m.%d.%Y'`
+   and generates `_site/data/source/_manifest.json` containing the commit SHA, ref, formatted date,
+   and file lists for C# and SBC definitions.
+4. **Pages Deployment**: Deploys the staged artifact directly to GitHub Pages via `actions/upload-pages-artifact@v3`
+   and `actions/deploy-pages@v4`.
 
-A balance change is: edit C# → push to main → ~1-2 min → Studio reflects it. Zero tool edits.
+A balance change is: edit C# / SBC → push to main → ~1-2 min → Studio automatically reflects the updated balance, commit SHA, and date. Zero manual tool edits needed.
 
 ### Generated files (never hand-edit)
 
-These are derived artifacts — regenerate, do not patch:
-- docs/data/weapons_data.js + weapons_db.json
-- docs/data/ammos_data.js + ammos_db.json
-- docs/data/magazines_blueprints_data.js
+These are derived fallback artifacts — regenerate, do not patch:
+- `docs/data/weapons_data.js` + `weapons_db.json`
+- `docs/data/ammos_data.js` + `ammos_db.json`
+- `docs/data/magazines_blueprints_data.js`
 
-Regenerate with: node scratch/export_snapshots.js
+Regenerate with: `node scratch/export_snapshots.js`
 
-Exception: docs/data/studio_overrides.js contains presentation-only data (curated ids, display
+Exception: `docs/data/studio_overrides.js` contains presentation-only data (curated ids, display
 names, icons, RUs) that does not exist in the C# and is safe to hand-edit.
 
 ### Parser scope
 
-docs/source_pipeline.js brace-matches C# new AmmoDef/new WeaponDefinition initializers and evaluates
+`docs/source_pipeline.js` brace-matches C# `new AmmoDef` / `new WeaponDefinition` initializers and evaluates
 getter-clones as deep-copy-plus-mutations (ensuring derived ammo rounds inherit the correct magazine,
-mass, and recoil from their base round). It does NOT parse *_Animation.cs files — those use C#
+mass, and recoil from their base round). It does NOT parse `*_Animation.cs` files — those use C#
 generics/#region the parser does not handle, and they contribute no studio data (animations are referenced
 by name only).
+
+---
+
+## 8. Future Roadmap & Architecture Backlog
+
+1. **Spreadsheet Ingestion for Economy & Rebalancing**:
+   - Enable importing balance sheets (CSV/TSV or periodic JSON/schema export) for component, ingot, and ore pricing/integrity instead of manually maintaining `components_data.js`.
+2. **Cross-Mod Ingestion (`GVK_Settings`)**:
+   - Ingest custom ingots, components, and scrap refining recipes directly from the `GVK_Settings` mod repo (`Content/Data/Components_*.sbc`, `PhysicalItems_*.sbc`, `Blueprints_*.sbc`) to keep server-wide tech costs, scrap yields, and refiner ratios in sync automatically.
+
