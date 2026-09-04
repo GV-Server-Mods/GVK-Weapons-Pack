@@ -55,18 +55,33 @@ function setChip(text, color) {
   el.textContent = text;
   el.style.borderColor = color;
 }
-function showBanner(msg) {
+function showBanner(msg, severity) {
   let b = document.getElementById('gvk-live-banner');
   if (!b) {
     b = document.createElement('div');
     b.id = 'gvk-live-banner';
     b.style.cssText = 'position:fixed;left:10px;top:10px;right:10px;z-index:99998;font:13px/1.5 monospace;'
-      + 'padding:10px 14px;border-radius:6px;background:#5c1a1a;color:#ffd9d9;border:1px solid #a33;'
+      + 'padding:10px 14px;border-radius:6px;'
       + 'white-space:pre-wrap;max-height:40vh;overflow:auto;';
     document.body.appendChild(b);
   }
-  b.textContent = '⚠ Live source data problem (showing bundled fallback where possible):\n' + msg;
+  const bg = severity === 'warn' ? '#5c4a1a' : '#5c1a1a';
+  const fg = severity === 'warn' ? '#ffe9b8' : '#ffd9d9';
+  const border = severity === 'warn' ? '#a38' : '#a33';
+  b.style.background = bg; b.style.color = fg; b.style.border = '1px solid ' + border;
+  b.textContent = '';
+  const span = document.createElement('span');
+  span.textContent = msg;
+  b.appendChild(span);
+  const x = document.createElement('span');
+  x.textContent = ' ✕';
+  x.style.cssText = 'cursor:pointer;float:right;font-weight:bold;margin-left:12px;';
+  x.onclick = () => { b.style.display = 'none'; };
+  b.appendChild(x);
   b.style.display = 'block';
+  // Auto-dismiss after 10s so the studio stays usable even with non-fatal problems.
+  clearTimeout(b._dismissTimer);
+  b._dismissTimer = setTimeout(() => { if (b) b.style.display = 'none'; }, 10000);
 }
 
 // ---------- source readers ----------
@@ -139,15 +154,33 @@ async function buildFrom(csSources, sbc) {
   return data;
 }
 
+// Classify data problems: 'error' (unresolved refs, missing data — real breakage),
+// 'warn' (non-fatal quirks), 'clean' (no problems).
+function classifySeverity(data) {
+  if (data.errors && data.errors.length) return 'error';
+  if (data.warnings && data.warnings.length) return 'warn';
+  return 'clean';
+}
+
+// Map a severity to chip emoji + border color so the chip reflects data health.
+function severityChip(sev) {
+  if (sev === 'error') return { icon: '🔴', color: '#a33' };
+  if (sev === 'warn') return { icon: '🟡', color: '#a38' };
+  return { icon: '🟢', color: '#3a7' };
+}
+
 function reportProblems(data, mode) {
+  const sev = classifySeverity(data);
   const probs = [];
   if (data.errors && data.errors.length) probs.push(...data.errors);
   if (data.warnings && data.warnings.length) probs.push(...data.warnings.map((w) => 'WARN: ' + w));
   if (probs.length) {
-    showBanner('[' + mode + '] ' + probs.join('\n'));
-    return false;
+    const prefix = sev === 'warn'
+      ? '⚠ Live source warnings (data loaded, some quirks):\n'
+      : '⚠ Live source data errors (showing partial data where possible):\n';
+    showBanner(prefix + '[' + mode + '] ' + probs.join('\n'), sev);
   }
-  return true;
+  return sev;
 }
 
 async function initHosted() {
@@ -167,7 +200,9 @@ async function initHosted() {
   }
   const data = await buildFrom(csSources, { magazines, blueprints, cubeBlocks });
   const short = String(manifest.commit || '').slice(0, 7);
-  return { data, label: '🟢 LIVE @ ' + short + ' (' + manifest.ref + ')', mode: 'hosted', problems: reportProblems(data, 'hosted @ ' + short) };
+  const sev = reportProblems(data, 'hosted @ ' + short);
+  const chip = severityChip(sev);
+  return { data, label: chip.icon + ' LIVE @ ' + short + ' (' + manifest.ref + ')', mode: 'hosted', severity: sev };
 }
 
 async function initFolderLink(onReapply) {
@@ -178,8 +213,9 @@ async function initFolderLink(onReapply) {
   const data = await buildFrom(src.csSources, src.sbc);
   lastData = data;
   showExportBtn();
-  const ok = reportProblems(data, 'local folder');
-  setChip('🟢 LIVE — local folder' + (ok ? '' : ' (see banner)'), ok ? '#3a7' : '#a33');
+  const sev = reportProblems(data, 'local folder');
+  const chip = severityChip(sev);
+  setChip(chip.icon + ' LIVE — local folder' + (sev === 'clean' ? '' : ' (see banner)'), chip.color);
   if (onReapply) onReapply(data);
   return { data };
 }
@@ -197,8 +233,9 @@ async function init(opts) {
   if (result && result.data) {
     lastData = result.data;
     showExportBtn();
-    setChip(result.label, result.problems ? '#a33' : '#3a7');
-    chip.onclick = () => location.reload();
+    const sev = severityChip(result.severity || 'clean');
+    setChip(result.label, sev.color);
+    chipEl.onclick = () => location.reload();
     return result;
   }
   // 2) Previously linked mod folder (persisted handle)
@@ -209,9 +246,10 @@ async function init(opts) {
       const data = await buildFrom(src.csSources, src.sbc);
       lastData = data;
       showExportBtn();
-      const ok = reportProblems(data, 'local folder');
-      setChip('🟢 LIVE — local folder' + (ok ? '' : ' (see banner)'), ok ? '#3a7' : '#a33');
-      chip.onclick = () => initFolderLink(opts.onReapply);
+      const sev = reportProblems(data, 'local folder');
+      const chipSev = severityChip(sev);
+      setChip(chipSev.icon + ' LIVE — local folder' + (sev === 'clean' ? '' : ' (see banner)'), chipSev.color);
+      chipEl.onclick = () => initFolderLink(opts.onReapply);
       return { data, mode: 'folder' };
     }
   } catch (e) {
