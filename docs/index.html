@@ -336,31 +336,22 @@
 
             <div class="pillar-divider"></div>
 
-            <!-- Initial D Flight Physics & Drift Lead Meter (Expanded in Pillar 2) -->
-            <div class="sim-card compact">
-              <div class="sim-card-header">
-                <span class="sim-card-title">💨 FLIGHT DELAY & DRIFT LEAD (90 M/S ROVER)</span>
-                <span id="outFlightMuzzleSpd" class="drift-muzzle-chip">1000 m/s</span>
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">SHOT DEVIATION</span>
+                <div class="metric-val" id="outShotDeviation">0.00&deg;</div>
+                <div class="metric-sub-detail" id="outShotDeviationDetail">&plusmn;0.0m spread @ 1km</div>
               </div>
-              <div class="drift-readouts">
-                <div class="drift-item">
-                  <span class="drift-dist">500m</span>
-                  <span class="drift-time" id="outDelay500m">0.50s</span>
-                  <span class="drift-lead" id="outLead500m">13.9m drift</span>
-                </div>
-                <div class="drift-item">
-                  <span class="drift-dist">1000m</span>
-                  <span class="drift-time" id="outDelay1000m">1.00s</span>
-                  <span class="drift-lead" id="outLead1000m">27.8m drift</span>
-                </div>
-                <div class="drift-item highlight">
-                  <span class="drift-dist" id="outMaxRangeLabel">1500m (Max)</span>
-                  <span class="drift-time" id="outDelayMax">1.50s</span>
-                  <span class="drift-lead" id="outLeadMax">41.7m drift</span>
-                </div>
+              <div style="text-align: right;">
+                <span class="metric-label">AIMING TOLERANCE</span>
+                <div class="metric-val" id="outAimingTolerance">0.0&deg;</div>
+                <div class="metric-sub-detail" id="outAimingToleranceDetail">Turret Fire Gate</div>
               </div>
-              <div id="deckTerrainClearance" style="margin-top: 10px; font-size: 11.5px; color: var(--cyan-primary); display: none;"></div>
             </div>
+
+            <div id="deckTerrainClearance" style="margin-top: 10px; font-size: 11.5px; color: var(--cyan-primary); display: none;"></div>
 
           </div>
         </div>

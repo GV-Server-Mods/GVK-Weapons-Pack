@@ -535,6 +535,8 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     trajectilesPerBarrel: loading.TrajectilesPerBarrel || 1,
     maxTargetDistance: tgt.MaxTargetDistance || 0,
     deviateShotAngle: hp.DeviateShotAngle || 0,
+    aimingTolerance: (hp.AimingTolerance !== undefined ? hp.AimingTolerance : (tgt.AimingTolerance !== undefined ? tgt.AimingTolerance : 0)),
+    addToleranceToTracking: (hp.AddToleranceToTracking === true || tgt.AddToleranceToTracking === true),
     rotateRate: hw.RotateRate || 0, elevateRate: hw.ElevateRate || 0,
     minAzimuth: hw.MinAzimuth || 0, maxAzimuth: hw.MaxAzimuth || 0,
     heatPerShot: (loading.HeatPerShot !== undefined ? loading.HeatPerShot : hw.HeatPerShot) || 0,

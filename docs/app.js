@@ -819,17 +819,13 @@ const tmBlastDmg   = document.getElementById('tmBlastDmg');
 const tmBlastSub   = document.getElementById('tmBlastSub');
 const tmPenetrationChip = document.getElementById('tmPenetrationChip');
 
-// DOM Elements - Simulator Tools (Drift)
+// DOM Elements - Pillar 2 Handling & Accuracy
 const outMuzzleVelocityPreview = document.getElementById('outMuzzleVelocityPreview');
 const outFlightDelay1km = document.getElementById('outFlightDelay1km');
-const outFlightMuzzleSpd = document.getElementById('outFlightMuzzleSpd');
-const outDelay500m = document.getElementById('outDelay500m');
-const outLead500m = document.getElementById('outLead500m');
-const outDelay1000m = document.getElementById('outDelay1000m');
-const outLead1000m = document.getElementById('outLead1000m');
-const outMaxRangeLabel = document.getElementById('outMaxRangeLabel');
-const outDelayMax = document.getElementById('outDelayMax');
-const outLeadMax = document.getElementById('outLeadMax');
+const outShotDeviation = document.getElementById('outShotDeviation');
+const outShotDeviationDetail = document.getElementById('outShotDeviationDetail');
+const outAimingTolerance = document.getElementById('outAimingTolerance');
+const outAimingToleranceDetail = document.getElementById('outAimingToleranceDetail');
 
 // DOM Elements - 1v1 Radar & Comparison
 const compareSelect = document.getElementById('compareSelect');
@@ -1925,7 +1921,6 @@ function selectWeapon(weaponId) {
 
   // Recalculate Telemetry, Simulator & Logistics
   updateCombatTelemetry();
-  updateInitialDDriftMeter();
   updateAmmoLogistics();
   updateComparisonRadar();
   runWeaponCoreLinter();
@@ -1945,7 +1940,6 @@ function selectAmmo(ammoKey) {
   updateTelemetryAmmoBadge();
   populateAmmoWorkbench();
   updateCombatTelemetry();
-  updateInitialDDriftMeter();
   updateAmmoLogistics();
   updateComparisonRadar();
 }
@@ -3248,15 +3242,23 @@ function updateCombatTelemetry() {
     const magTag = `${magsToLoad * bMult} loaded ${magsToLoad * bMult === 1 ? 'mag' : 'mags'}${totalRounds * bMult > 1 ? ` · ${totalRounds * bMult} rds` : ''}`;
     outEffectiveAlpha.textContent = `Base Volley: ${Math.round(alphaVolley * bMult).toLocaleString()} hp${batteryAlphaTag} · ${magTag}`;
   }
-  if (dmgDetails.deliverySec > 1.0) {
-    outDpsBreakdown.textContent = `Squadron Fire: ${scaledSustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
-    if (outDamagePerShot) outDamagePerShot.textContent = `Payload / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (${dmgDetails.deliverySec.toFixed(0)}s delivery | Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()})`;
-  } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
-    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * bMult * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * bMult * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * bMult * dmgDetails.frag).toLocaleString()}`;
-    if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Heavy: ${Math.round(heavyDmg).toLocaleString()} [${heavyMult}×] | Light: ${Math.round(lightDmg).toLocaleString()} [${lightMult}×])`;
-  } else {
-    outDpsBreakdown.textContent = `Direct: ${Math.round(effectiveRps * bMult * dmgDetails.base).toLocaleString()} | Blast: ${Math.round(effectiveRps * bMult * dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(effectiveRps * bMult * dmgDetails.frag).toLocaleString()}`;
-    if (outDamagePerShot) outDamagePerShot.textContent = `Dmg / Shot: ${Math.round(dmgDetails.total).toLocaleString()} hp (Direct:${Math.round(dmgDetails.base).toLocaleString()} + Blast:${Math.round(dmgDetails.aoe).toLocaleString()} + Frag:${Math.round(dmgDetails.frag).toLocaleString()})`;
+  // Damage Per Shot & Payload Breakdown
+  const shotTotalDmg = Math.round(dmgDetails.total * bMult);
+  if (outDamagePerShot) {
+    outDamagePerShot.innerHTML = `${shotTotalDmg.toLocaleString()} <span class="unit-sub">hp</span>${bMult > 1 ? ` (${Math.round(dmgDetails.total).toLocaleString()}/gun)` : ''}`;
+  }
+  if (outDpsBreakdown) {
+    if (dmgDetails.deliverySec > 1.0) {
+      outDpsBreakdown.textContent = `Loiter: ${dmgDetails.deliverySec.toFixed(0)}s deploy window · Initial: ${Math.round(dmgDetails.instantTotal).toLocaleString()} hp`;
+    } else if (dmgDetails.aoe > 0 || dmgDetails.frag > 0) {
+      outDpsBreakdown.textContent = `Direct: ${Math.round(dmgDetails.base).toLocaleString()} | Blast: ${Math.round(dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(dmgDetails.frag).toLocaleString()}`;
+    } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
+      outDpsBreakdown.textContent = `Direct AP · Heavy: ${Math.round(heavyDmg).toLocaleString()} (${heavyMult}×) | Light: ${Math.round(lightDmg).toLocaleString()} (${lightMult}×)`;
+    } else if (dmgDetails.cutoff > 0) {
+      outDpsBreakdown.textContent = `Direct: ${Math.round(dmgDetails.base).toLocaleString()} hp · Kinetic AP (Cutoff: ${dmgDetails.cutoff.toLocaleString()})`;
+    } else {
+      outDpsBreakdown.textContent = `Direct: ${Math.round(dmgDetails.base).toLocaleString()} hp · Single-hit kinetic`;
+    }
   }
   const effectiveRpm = Math.round(effectiveRps * 60);
   outShotsPerSec.innerHTML = `${effectiveRpm.toLocaleString()} <span style="font-size: 14px; font-weight: 400;">RPM</span>`;
@@ -3432,11 +3434,70 @@ function updateCombatTelemetry() {
       : 'Ammo Max Trajectory';
   }
 
+  const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
+  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
+  if (outMuzzleVelocityPreview) {
+    outMuzzleVelocityPreview.innerHTML = isBeam
+      ? `⚡ Hitscan <span class="unit-sub">(c)</span>`
+      : `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
+  }
+  if (outFlightDelay1km) {
+    outFlightDelay1km.textContent = isBeam
+      ? 'Flight to 1km: 0.00s (Instantaneous hit)'
+      : `Flight to 1km: ${(1000 / (muzzleSpeed || 1)).toFixed(2)}s`;
+  }
+
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
   if (outPillarArcSummary) outPillarArcSummary.textContent = arcInfo.text;
   const outPillarDepressionNote = document.getElementById('outPillarDepressionNote');
   if (outPillarDepressionNote) {
     outPillarDepressionNote.textContent = arcInfo.note;
+  }
+
+  // Accuracy & Fire Gate (Pillar 2 Handling)
+  const devAngle = (activeWeapon.deviateShotAngle !== undefined && activeWeapon.deviateShotAngle !== null)
+    ? activeWeapon.deviateShotAngle
+    : (parseFloat(wDeviateAngle?.value) || 0);
+  const aimTol = (activeWeapon.aimingTolerance !== undefined && activeWeapon.aimingTolerance !== null)
+    ? activeWeapon.aimingTolerance
+    : (parseFloat(wAimingTolerance?.value) || 0);
+  const addTolToTrack = activeWeapon.addToleranceToTracking !== undefined
+    ? activeWeapon.addToleranceToTracking
+    : (wAddToleranceToTracking?.checked || false);
+
+  if (outShotDeviation) {
+    outShotDeviation.innerHTML = `${devAngle.toFixed(2)}&deg;`;
+  }
+  if (outShotDeviationDetail) {
+    if (isBeam && devAngle === 0) {
+      outShotDeviationDetail.textContent = 'Pinpoint Coherent Beam';
+    } else if (devAngle === 0) {
+      outShotDeviationDetail.textContent = 'True Boresight (0.0m spread)';
+    } else {
+      const spread1km = 1000 * Math.tan(devAngle * Math.PI / 180);
+      outShotDeviationDetail.textContent = `±${spread1km.toFixed(1)}m spread @ 1km`;
+    }
+  }
+
+  if (outAimingTolerance) {
+    if (!isTrackingWeapon && !activeWeapon.rotateRate) {
+      outAimingTolerance.innerHTML = `Fixed`;
+    } else {
+      outAimingTolerance.innerHTML = `${aimTol.toFixed(1)}&deg;`;
+    }
+  }
+  if (outAimingToleranceDetail) {
+    if (!isTrackingWeapon && !activeWeapon.rotateRate) {
+      outAimingToleranceDetail.textContent = 'Rigid mount (Boresight only)';
+    } else if (addTolToTrack) {
+      outAimingToleranceDetail.textContent = `Tracks to cone edge (±${aimTol.toFixed(1)}°)`;
+    } else if (aimTol <= 0.5) {
+      outAimingToleranceDetail.textContent = `High-Precision Gate (±${aimTol.toFixed(1)}°)`;
+    } else if (aimTol >= 30) {
+      outAimingToleranceDetail.textContent = `Wide Snap-Fire (±${aimTol.toFixed(1)}°)`;
+    } else {
+      outAimingToleranceDetail.textContent = `Fires within ±${aimTol.toFixed(1)}° of lead pip`;
+    }
   }
 
   // Structural & Power (Pillar 3 Logistics, Battery Scaled)
@@ -3651,62 +3712,7 @@ function updateCombatTelemetry() {
   renderBomTable(effIntegrity, durMod);
 }
 
-// Initial D Dodgeability / Drift Lead Meter
-function updateInitialDDriftMeter() {
-  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 0;
-  const driftSpeedMs = 90; // 90 m/s rover target
-
-  // Max engagement range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
-  const isTrackingWeapon = activeWeapon && activeWeapon.type === 'Turret';
-  const maxRange = isTrackingWeapon
-    ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 1500)
-    : (parseFloat(tMaxTrajectory.value) || 1500);
-
-  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
-
-  if (isBeam) {
-    outFlightMuzzleSpd.textContent = '⚡ Hitscan (c)';
-    outDelay500m.textContent = '0.00s';
-    outLead500m.textContent = "0.0m (Can't out-drift light)";
-    outDelay1000m.textContent = '0.00s';
-    outLead1000m.textContent = '0.0m (Zero lead)';
-    outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
-    outDelayMax.textContent = '0.00s';
-    outLeadMax.textContent = '0.0m (Instantaneous)';
-    if (outMuzzleVelocityPreview) outMuzzleVelocityPreview.innerHTML = '⚡ Hitscan <span class="unit-sub">(c)</span>';
-    if (outFlightDelay1km) outFlightDelay1km.textContent = 'Flight to 1km: 0.00s (Instantaneous hit)';
-    return;
-  }
-
-  outFlightMuzzleSpd.textContent = `${Math.round(muzzleSpeed).toLocaleString()} m/s`;
-
-  // 500m
-  const t500 = 500 / muzzleSpeed;
-  outDelay500m.textContent = `${t500.toFixed(2)}s`;
-  outLead500m.textContent = `${(t500 * driftSpeedMs).toFixed(1)}m drift`;
-
-  // 1000m
-  const t1000 = 1000 / muzzleSpeed;
-  outDelay1000m.textContent = `${t1000.toFixed(2)}s`;
-  outLead1000m.textContent = `${(t1000 * driftSpeedMs).toFixed(1)}m drift`;
-
-  // Max Range
-  const tMax = maxRange / muzzleSpeed;
-  const maxDriftLead = tMax * driftSpeedMs;
-  outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
-  outDelayMax.textContent = `${tMax.toFixed(2)}s`;
-  if (maxDriftLead >= 250) {
-    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m (Postcard advance)`;
-  } else if (muzzleSpeed >= 3000) {
-    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m (Barely tap brake)`;
-  } else {
-    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m drift`;
-  }
-
-  // Muzzle Velocity Preview & Flight Delay to 1km (Pillar 2 Reach metric row)
-  if (outMuzzleVelocityPreview) outMuzzleVelocityPreview.innerHTML = `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
-  if (outFlightDelay1km) outFlightDelay1km.textContent = `Flight to 1km: ${t1000.toFixed(2)}s`;
-}
+// Drift meter removed per user request; shot deviation & aiming tolerance now handled in updateCombatTelemetry.
 
 // ==========================================================================
 // AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS")
@@ -6350,7 +6356,6 @@ function setupWorkbenchInputEvents() {
           updateFragChainVisual();
         }
         updateCombatTelemetry();
-        updateInitialDDriftMeter();
         updateAmmoLogistics();
         updateComparisonRadar();
         runWeaponCoreLinter();
