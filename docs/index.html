@@ -205,6 +205,7 @@
               <div class="metric-big-val" id="outSustainedDps">0</div>
               <div class="metric-sub-detail" id="outEffectiveDps">Effective against All Blocks · Base: 0 DPS</div>
               <div class="metric-sub-detail" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
+              <div class="metric-sub-detail" id="outDamagePerShot">Dmg / Shot: 0 hp</div>
             </div>
 
             <div class="pillar-divider"></div>
@@ -280,27 +281,6 @@
                   <div class="target-stat-sub" id="tmBlastTrigger" style="display:none; color: var(--amber-primary); font-weight: 600;"></div>
                   <div class="target-stat-sub" id="tmBlastDepth" style="display:none;"></div>
                 </div>
-              </div>
-            </div>
-
-            <!-- Realistic Target Dummy & TTK Simulator (Expanded in Pillar 1) -->
-            <div class="sim-card compact">
-              <div class="sim-card-header">
-                <span class="sim-card-title">🎯 TARGET DUMMY & TTK</span>
-                <select id="ttkTargetSelect" class="sim-select">
-                  <option value="sgLightArmor">SG Light Armor (750 HP)</option>
-                  <option value="lightArmor">LG Light Armor Cube (3,000 HP)</option>
-                  <option value="heavyArmor" selected>LG Heavy Armor Cube (16,500 HP)</option>
-                  <option value="battery">Large Grid Battery (11,460 HP)</option>
-                  <option value="refinery">Large Grid Refinery (37,280 HP)</option>
-                </select>
-              </div>
-              <div class="ttk-display">
-                <div class="ttk-main" id="outTtkMain">0.38s to Destroy</div>
-                <div class="ttk-sub" id="outTtkRounds">Requires ~3.8 rounds of continuous fire</div>
-              </div>
-              <div class="ttk-progress-bar">
-                <div id="ttkProgressFill" class="ttk-progress-fill" style="width: 100%;"></div>
               </div>
             </div>
 
@@ -382,19 +362,16 @@
         <div class="hero-pillar-card pillar-logistics">
           <div class="pillar-header">
             <span class="pillar-title">⚖️ SHIP FITTING & LOGISTICS</span>
-            <div class="pillar-header-badges">
-              <span class="badge badge-purple pillar-header-badge pillar-tag" id="outPillarGridTag">Large Grid</span>
-            </div>
           </div>
           <div class="pillar-body">
             
             <!-- Fitting Badges Cluster -->
             <div class="pillar-badges-cluster">
-              <div class="badge badge-amber" id="badgeUps">⚡ <strong>0 UPs</strong></div>
-              <div class="badge" id="badgeMass">⚖️ <strong>0t</strong></div>
-              <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
-              <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
-              <div class="badge badge-cyan" id="badgePd" style="display: none;">📡 Point Defense</div>
+              <span class="badge badge-purple pillar-header-badge pillar-tag" id="outPillarGridTag">Large Grid</span>
+              <div class="badge badge-amber pillar-header-badge" id="badgeUps">⚡ Tech / UPs: <strong>0</strong></div>
+              <div class="badge pillar-header-badge" id="badgeMass">⚖️ <strong>0t</strong></div>
+              <div class="badge badge-cyan pillar-header-badge" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
+              <div class="badge badge-cyan pillar-header-badge" id="badgePd" style="display: none;">📡 Point Defense</div>
             </div>
 
             <div class="pillar-metric-row">
@@ -458,7 +435,6 @@
             </div>
             <div>
               <h3>⚔️ 1v1 Combat Radar & Live Benchmark</h3>
-              <div id="outPeerBenchmarks" class="peer-benchmarks-inline"></div>
             </div>
           </div>
           <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -472,6 +448,39 @@
 
         <!-- Radar Chart (Spider Graph) -->
         <div class="radar-container">
+          <!-- Quick Badge Comparison: Active vs Benchmark -->
+          <div class="radar-quickcompare" id="radarQuickCompare">
+            <div class="qc-row qc-header-row">
+              <span class="qc-label"></span>
+              <span class="qc-col-label qc-active-label">Active</span>
+              <span class="qc-col-label qc-bench-label">Bench</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Role</span>
+              <span class="qc-val qc-active" id="qcRoleActive">—</span>
+              <span class="qc-val qc-bench" id="qcRoleBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Grid</span>
+              <span class="qc-val qc-active" id="qcGridActive">—</span>
+              <span class="qc-val qc-bench" id="qcGridBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Tech / UPs</span>
+              <span class="qc-val qc-active" id="qcUpsActive">—</span>
+              <span class="qc-val qc-bench" id="qcUpsBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Point Defense</span>
+              <span class="qc-val qc-active" id="qcPdActive">—</span>
+              <span class="qc-val qc-bench" id="qcPdBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Recoil</span>
+              <span class="qc-val qc-active" id="qcRecoilActive">—</span>
+              <span class="qc-val qc-bench" id="qcRecoilBench">—</span>
+            </div>
+          </div>
           <div style="position: relative; display: flex; justify-content: center;">
             <canvas id="radarCanvas" width="360" height="340"></canvas>
           </div>

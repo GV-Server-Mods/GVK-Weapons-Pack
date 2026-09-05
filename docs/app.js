@@ -750,7 +750,6 @@ const scopeAmmoIcon      = document.getElementById('scopeAmmoIcon');
 const btnResetDefaults   = document.getElementById('btnResetDefaults');
 const badgeGrid = document.getElementById('badgeGrid');
 const badgeType = document.getElementById('badgeType');
-const badgeTech = document.getElementById('badgeTech');
 const badgeCircuitry = document.getElementById('badgeCircuitry');
 const badgeRelic = document.getElementById('badgeRelic');
 const badgeNpc = document.getElementById('badgeNpc');
@@ -768,7 +767,6 @@ let currentFilterType = 'all';
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
 const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
 const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
-const outPeerBenchmarks   = document.getElementById('outPeerBenchmarks');
 // Blast sub-lines (folded from removed explosive profile card into tmBlastBox)
 const tmBlastTrigger  = document.getElementById('tmBlastTrigger');
 const tmBlastDepth    = document.getElementById('tmBlastDepth');
@@ -818,11 +816,9 @@ const tmBlastDmg   = document.getElementById('tmBlastDmg');
 const tmBlastSub   = document.getElementById('tmBlastSub');
 const tmPenetrationChip = document.getElementById('tmPenetrationChip');
 
-// DOM Elements - Simulator Tools (TTK & Drift)
-const ttkTargetSelect = document.getElementById('ttkTargetSelect');
-const outTtkMain = document.getElementById('outTtkMain');
-const outTtkRounds = document.getElementById('outTtkRounds');
-const ttkProgressFill = document.getElementById('ttkProgressFill');
+// DOM Elements - Simulator Tools (Drift)
+const outMuzzleVelocityPreview = document.getElementById('outMuzzleVelocityPreview');
+const outFlightDelay1km = document.getElementById('outFlightDelay1km');
 const outFlightMuzzleSpd = document.getElementById('outFlightMuzzleSpd');
 const outDelay500m = document.getElementById('outDelay500m');
 const outLead500m = document.getElementById('outLead500m');
@@ -1294,11 +1290,6 @@ function setupNavigationEvents() {
     });
   }
 
-  // Target Dummy Select
-  if (ttkTargetSelect) {
-    ttkTargetSelect.addEventListener('change', updateTtkSimulator);
-  }
-
   // Active Munition Selector (Workspace 1 Telemetry Bar)
   if (telemetryAmmoSelect) {
     telemetryAmmoSelect.addEventListener('change', (e) => {
@@ -1378,7 +1369,6 @@ function initBatteryMultiplier() {
       currentBatteryMultiplier = parseInt(btn.dataset.mult) || 1;
       updateUniversalBanner();
       updateCombatTelemetry();
-      updateTtkSimulator();
     });
   });
 }
@@ -1774,8 +1764,6 @@ function getShotsPerMag(weapon, ammo) {
 function updateTelemetryAmmoBadge() {
   if (!telemetryAmmoBadge || !activeAmmo) return;
   const dmg = getAmmoDamageDetailed(activeAmmo);
-  const spd = activeAmmo.trajectory ? (activeAmmo.trajectory.desiredSpeed || 0) : 0;
-  const rng = activeAmmo.trajectory ? (activeAmmo.trajectory.maxTrajectory || 0) : 0;
   const eol = (activeAmmo.areaOfDamage && activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable)
     ? activeAmmo.areaOfDamage.endOfLife
     : null;
@@ -1808,17 +1796,9 @@ function updateTelemetryAmmoBadge() {
     modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">${clearance.text}</span>`;
   }
 
-  const isVirtualMag = !activeAmmo.ammoMagazine || activeAmmo.ammoMagazine === 'Energy';
-  const shotsPerMag = getShotsPerMag(activeWeapon, activeAmmo);
-  const magChip = isVirtualMag
-    ? (activeAmmo.energyMagazineSize > 0 ? ` &bull; <span>⚡ ${shotsPerMag} rds (virtual mag)</span>` : ` &bull; <span>⚡ Continuous</span>`)
-    : ` &bull; <span>${shotsPerMag} rds/mag</span>`;
-
+  // Damage/velocity/range/mag figures live in the relevant hero pillar below - avoid duplicating them here.
   telemetryAmmoBadge.innerHTML = `
-    <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span> &bull; 
-    <span>${Math.round(dmg.total).toLocaleString()} Dmg/Shot</span> &bull; 
-    <span>${Math.round(spd)} m/s</span> &bull; 
-    <span>${Math.round(rng)}m Range</span>${magChip}${modifierChips}
+    <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span>${modifierChips}
   `;
 }
 
@@ -1881,7 +1861,6 @@ function selectWeapon(weaponId) {
 
   // Recalculate Telemetry, Simulator & Logistics
   updateCombatTelemetry();
-  updateTtkSimulator();
   updateInitialDDriftMeter();
   updateAmmoLogistics();
   updateComparisonRadar();
@@ -1902,7 +1881,6 @@ function selectAmmo(ammoKey) {
   updateTelemetryAmmoBadge();
   populateAmmoWorkbench();
   updateCombatTelemetry();
-  updateTtkSimulator();
   updateInitialDDriftMeter();
   updateAmmoLogistics();
   updateComparisonRadar();
@@ -2073,7 +2051,7 @@ function getWeaponRecoilWarning(weapon, ammo) {
     return { showRecoil: true, text: `⚠️ Recoil: ${kickStr} (Small Grid sway)`, isHeavy: isHeavyKick };
   }
   if (isHeavyKick) {
-    return { showRecoil: true, text: `⚠️ Heavy Kick: ${kickStr} (High chassis torque)`, isHeavy: true };
+    return { showRecoil: true, text: `⚠️ High Recoil: ${Math.round(kick).toLocaleString()} N`, isHeavy: true };
   }
   return { showRecoil: false, text: '', isHeavy: false };
 }
@@ -2207,8 +2185,9 @@ function updateUniversalBanner() {
   const currentUps = baseUps * currentBatteryMultiplier;
   const upsHtml = `⚡ <strong>${currentUps} UPs</strong>${currentBatteryMultiplier > 1 ? ` (${currentBatteryMultiplier}x ${baseUps} UPs)` : ''}`;
   const techHtml = `Tech: <strong>${techInfo.summaryStr}</strong>`;
-  if (badgeUps) badgeUps.innerHTML = upsHtml;
-  if (badgeTech) badgeTech.innerHTML = techHtml;
+  // Tech component count and UP cost are always the same quantity, so the pillar badge merges them into one.
+  const techUpsHtml = `⚡ Tech / UPs: <strong>${currentUps}</strong>${currentBatteryMultiplier > 1 ? ` (${currentBatteryMultiplier}x ${baseUps})` : ''}`;
+  if (badgeUps) badgeUps.innerHTML = techUpsHtml;
   const scopeBadgeUps = document.getElementById('scopeBadgeUps');
   const scopeBadgeTech = document.getElementById('scopeBadgeTech');
   if (scopeBadgeUps) scopeBadgeUps.innerHTML = upsHtml;
@@ -2230,7 +2209,7 @@ function updateUniversalBanner() {
   const metaSubtitle = document.getElementById('weaponMetaSubtitle');
   if (metaSubtitle) {
     const grid = activeWeapon.gridSize || activeWeapon.grid || 'Large';
-    metaSubtitle.textContent = `[${grid} Grid · ${activeWeapon.type} · ${arcInfo.text}]`;
+    metaSubtitle.textContent = `[${grid} Grid · ${activeWeapon.type}]`;
   }
   if (badgeArc) {
     badgeArc.innerHTML = arcInfo.text;
@@ -3033,10 +3012,7 @@ function renderSbcComponentsTable() {
   activeWeapon.hasCircuitry = techInfo.hasCircuitry;
 
   if (badgeUps) {
-    badgeUps.innerHTML = `⚡ <strong>${techInfo.upCost} UPs</strong>`;
-  }
-  if (badgeTech) {
-    badgeTech.innerHTML = `Tech: <strong>${techInfo.summaryStr}</strong>`;
+    badgeUps.innerHTML = `⚡ Tech / UPs: <strong>${techInfo.upCost}</strong>`;
   }
   if (badgeCircuitry) {
     badgeCircuitry.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
@@ -3332,6 +3308,13 @@ function updateCombatTelemetry() {
   if (outMaxRange) {
     outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span class="unit-sub">m</span>`;
   }
+  // Reach also depends on the loaded munition's own max trajectory, which can exceed a turret's targeting range gate.
+  const ammoMaxTrajectory = (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0;
+  if (outMaxRangeSource) {
+    outMaxRangeSource.textContent = isTrackingWeapon
+      ? (ammoMaxTrajectory > 0 ? `Targeting Range · Ammo Max: ${Math.round(ammoMaxTrajectory).toLocaleString()}m` : 'Targeting Range')
+      : 'Ammo Max Trajectory';
+  }
 
   const arcInfo = getWeaponArcSummary(activeWeapon);
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
@@ -3451,19 +3434,6 @@ function updateCombatTelemetry() {
     if (hudOverheat) hudOverheat.textContent = `${effectiveRpm} RPM`;
   }
 
-  // Peer Percentiles & Benchmarks
-  const peerInfo = calculatePeerPercentiles(activeWeapon, activeAmmo, weaponsDb);
-  if (outPeerBenchmarks && peerInfo) {
-    outPeerBenchmarks.innerHTML = `
-      <span class="benchmark-chip">📊 DPS Rank: <strong>#${peerInfo.rank} of ${peerInfo.total}</strong> (Top ${peerInfo.percentile}%)</span>
-      <span class="benchmark-chip">⚡ Efficiency: <strong>${peerInfo.dpsPerUp.toLocaleString()} DPS / UP</strong></span>
-      <span class="benchmark-chip">${getAutomatedWeaponRole(activeWeapon, activeAmmo).icon} Role: <strong>${getAutomatedWeaponRole(activeWeapon, activeAmmo).label}</strong></span>
-    `;
-    outPeerBenchmarks.style.display = 'flex';
-  } else if (outPeerBenchmarks) {
-    outPeerBenchmarks.style.display = 'none';
-  }
-
   // Conditional Explosive Profile
   const deckTabExplosive = document.getElementById('deckTabExplosive');
   const hasExplosive = (blastRadius > 0 && blastDmg > 0) || blastKind === 'ewar' || blastKind === 'screen';
@@ -3495,77 +3465,6 @@ function updateCombatTelemetry() {
   renderBomTable(effIntegrity, durMod);
 }
 
-// Target Dummy / TTK Simulator
-function updateTtkSimulator() {
-  if (!activeWeapon || !activeAmmo) return;
-
-  const targetType = ttkTargetSelect.value;
-  let targetHp = 16500;
-  let targetName = "Heavy Armor Cube";
-  let targetMult = 1.0;
-
-  const ds = activeAmmo.damageScales || {};
-  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
-  const heavyMult = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
-  const lightMult = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
-  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
-
-  if (targetType === 'sgLightArmor') {
-    targetHp = 750;
-    targetName = "SG Light Armor";
-    targetMult = lightMult;
-  } else if (targetType === 'lightArmor') {
-    targetHp = 3000;
-    targetName = "LG Light Armor Cube";
-    targetMult = lightMult;
-  } else if (targetType === 'heavyArmor') {
-    targetHp = 16500;
-    targetName = "LG Heavy Armor Cube";
-    targetMult = heavyMult;
-  } else if (targetType === 'battery') {
-    targetHp = 11460;
-    targetName = "Large Grid Battery";
-    targetMult = nonArmorMult;
-  } else if (targetType === 'refinery') {
-    targetHp = 37280;
-    targetName = "Large Grid Refinery";
-    targetMult = nonArmorMult;
-  }
-
-  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
-  const barrels = parseFloat(wBarrelsPerShot.value) || 1;
-  if (dmgDetails.ewar || dmgDetails.total <= 0) {
-    outTtkMain.textContent = 'No Block Damage';
-    ttkProgressFill.style.width = '5%';
-    outTtkRounds.textContent = dmgDetails.ewar
-      ? 'EWAR munition — no destructive payload, effect only'
-      : 'No destructive payload against blocks';
-    return;
-  }
-  const bMult = currentBatteryMultiplier || 1;
-  const effectiveDmgPerShot = (dmgDetails.perBlockBase * targetMult) + dmgDetails.aoe + dmgDetails.frag;
-  const effectiveVolley = Math.max(1, effectiveDmgPerShot * barrels * bMult);
-  const shotsNeeded = Math.ceil(targetHp / effectiveVolley);
-
-  const sustainedDps = (computeSustainedDps().sustainedDps || 1) * bMult;
-  const effectiveSustainedDps = sustainedDps * (effectiveDmgPerShot / Math.max(1, dmgDetails.total));
-
-  const ttkSeconds = (targetHp / Math.max(1, effectiveSustainedDps));
-
-  if (ttkSeconds < 1.0) {
-    outTtkMain.textContent = `${ttkSeconds.toFixed(2)}s to Destroy`;
-  } else {
-    outTtkMain.textContent = `${ttkSeconds.toFixed(1)}s to Destroy`;
-  }
-  const capLabel = dmgDetails.cutoff > 0 ? ` | per-block cap ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp` : '';
-  const multLabel = targetMult !== 1.0 ? ` (${targetMult}× mult: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
-  const bTag = bMult > 1 ? ` [${bMult}x Battery]` : '';
-  outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s)${bTag} against ${targetName}${multLabel}${capLabel}`;
-  if (ttkProgressFill) {
-    ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
-  }
-}
-
 // Initial D Dodgeability / Drift Lead Meter
 function updateInitialDDriftMeter() {
   const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 1000;
@@ -3594,6 +3493,10 @@ function updateInitialDDriftMeter() {
   outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
   outDelayMax.textContent = `${tMax.toFixed(2)}s`;
   outLeadMax.textContent = `${(tMax * driftSpeedMs).toFixed(1)}m drift`;
+
+  // Muzzle Velocity Preview & Flight Delay to 1km (Pillar 2 Reach metric row)
+  if (outMuzzleVelocityPreview) outMuzzleVelocityPreview.innerHTML = `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
+  if (outFlightDelay1km) outFlightDelay1km.textContent = `Flight to 1km: ${t1000.toFixed(2)}s`;
 }
 
 // ==========================================================================
@@ -3964,8 +3867,46 @@ function getModMaxMetrics() {
   return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity, maxPower };
 }
 
+/// <summary>
+/// Populates the Active vs Benchmark badge quick-compare panel to the left of the radar chart.
+/// </summary>
+function updateRadarQuickCompare() {
+  if (!activeWeapon) return;
+  const setPair = (idA, idB, aHtml, bHtml) => {
+    const elA = document.getElementById(idA);
+    const elB = document.getElementById(idB);
+    if (elA) elA.innerHTML = aHtml;
+    if (elB) elB.innerHTML = benchmarkWeapon ? bHtml : '<span class="qc-empty">—</span>';
+  };
+
+  const benchAmmo = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
+
+  const activeRole = getAutomatedWeaponRole(activeWeapon, activeAmmo);
+  const benchRole = benchmarkWeapon ? getAutomatedWeaponRole(benchmarkWeapon, benchAmmo) : null;
+  setPair('qcRoleActive', 'qcRoleBench', `${activeRole.icon} ${activeRole.label}`, benchRole ? `${benchRole.icon} ${benchRole.label}` : '');
+
+  setPair('qcGridActive', 'qcGridBench',
+    activeWeapon.gridSize || activeWeapon.grid || 'Large',
+    benchmarkWeapon ? (benchmarkWeapon.gridSize || benchmarkWeapon.grid || 'Large') : '');
+
+  const activeTech = getTechSummary(activeWeapon.components);
+  const benchTech = benchmarkWeapon ? getTechSummary(benchmarkWeapon.components) : null;
+  setPair('qcUpsActive', 'qcUpsBench', `${activeTech.upCost} UPs`, benchTech ? `${benchTech.upCost} UPs` : '');
+
+  setPair('qcPdActive', 'qcPdBench',
+    activeWeapon.pdProjectiles ? '📡 Yes' : '—',
+    benchmarkWeapon ? (benchmarkWeapon.pdProjectiles ? '📡 Yes' : '—') : '');
+
+  const activeRecoil = getWeaponRecoilWarning(activeWeapon, activeAmmo);
+  const benchRecoil = benchmarkWeapon ? getWeaponRecoilWarning(benchmarkWeapon, benchAmmo) : null;
+  setPair('qcRecoilActive', 'qcRecoilBench',
+    activeRecoil.showRecoil ? '⚠️ Yes' : '—',
+    benchmarkWeapon ? (benchRecoil.showRecoil ? '⚠️ Yes' : '—') : '');
+}
+
 function updateComparisonRadar() {
   if (!radarCanvas) return;
+  updateRadarQuickCompare();
   const ctx = radarCanvas.getContext('2d');
   const w = radarCanvas.width;
   const h = radarCanvas.height;
@@ -6093,7 +6034,6 @@ function setupWorkbenchInputEvents() {
           updateFragChainVisual();
         }
         updateCombatTelemetry();
-        updateTtkSimulator();
         updateInitialDDriftMeter();
         updateAmmoLogistics();
         updateComparisonRadar();

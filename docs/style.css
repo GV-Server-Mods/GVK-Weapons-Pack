@@ -139,6 +139,7 @@
 [data-theme="light"] .cargo-box,
 [data-theme="light"] .blueprint-mat-chip,
 [data-theme="light"] .target-matrix-card,
+[data-theme="light"] .radar-quickcompare,
 [data-theme="light"] .wc-accordion {
   background: #ffffff;
   border-color: #cbd5e1;
@@ -2681,22 +2682,67 @@ input.control-input.is-wc-default {
   font-family: var(--font-mono);
 }
 
-/* Inline Peer Benchmark Bar in Radar Header */
-.peer-benchmarks-inline {
+/* Quick Badge Comparison Panel (Active vs Benchmark, left of Radar Chart) */
+.radar-quickcompare {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 12px;
   display: flex;
-  gap: 8px;
-  margin-top: 4px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 7px;
+  flex: 0 0 220px;
+  min-width: 200px;
 }
 
-.peer-benchmarks-inline .benchmark-chip {
+.qc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.qc-header-row {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.qc-label {
+  color: var(--text-dim);
   font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: var(--cyan-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.qc-col-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.qc-active-label { color: var(--amber-primary); }
+.qc-bench-label { color: var(--cyan-primary); }
+
+.qc-val {
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qc-val.qc-active { color: var(--amber-primary); }
+.qc-val.qc-bench { color: var(--cyan-primary); }
+
+.qc-empty { color: var(--text-dim); font-weight: 400; }
+
+@media (max-width: 900px) {
+  .radar-quickcompare {
+    flex: 1 1 100%;
+    order: 3;
+  }
 }
 
 /* Tabbed Deep Telemetry Deck */
@@ -2930,8 +2976,8 @@ input.control-input.is-wc-default {
 .sim-card.compact {
   margin-top: 4px;
   box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
 }
 
 .explosive-profile-card.compact {
