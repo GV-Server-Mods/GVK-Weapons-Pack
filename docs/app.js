@@ -3378,6 +3378,7 @@ function updateCombatTelemetry() {
   const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
   const isFixedMount = rotRad <= 0 && elRad <= 0;
+  const arcInfo = getWeaponArcSummary(activeWeapon);
 
   if (outTraverseDeg) {
     if (isFixedMount) {
@@ -3431,7 +3432,6 @@ function updateCombatTelemetry() {
       : 'Ammo Max Trajectory';
   }
 
-  const arcInfo = getWeaponArcSummary(activeWeapon);
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
   if (outPillarArcSummary) outPillarArcSummary.textContent = arcInfo.text;
   const outPillarDepressionNote = document.getElementById('outPillarDepressionNote');
