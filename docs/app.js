@@ -763,25 +763,22 @@ const badgeRecoil = document.getElementById('badgeRecoil');
 // Shipbuilder State
 let currentBatteryMultiplier = 1;
 let currentFilterGrid = 'all';
-let currentFilterRole = 'all';
-
+let currentFilterType = 'all';
 // DOM Elements - Telemetry Munition Bar (Workspace 1)
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
 const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
 const telemetryAmmoBadge  = document.getElementById('telemetryAmmoBadge');
 const outPeerBenchmarks   = document.getElementById('outPeerBenchmarks');
-const explosiveProfileBox = document.getElementById('explosiveProfileBox');
-const outExplosiveRadius  = document.getElementById('outExplosiveRadius');
-const outExplosivePool    = document.getElementById('outExplosivePool');
-const outExplosiveDepth   = document.getElementById('outExplosiveDepth');
-const outExplosiveTrigger = document.getElementById('outExplosiveTrigger');
+// Blast sub-lines (folded from removed explosive profile card into tmBlastBox)
+const tmBlastTrigger  = document.getElementById('tmBlastTrigger');
+const tmBlastDepth    = document.getElementById('tmBlastDepth');
 
 // DOM Elements - Telemetry Deck
 const outSustainedDps = document.getElementById('outSustainedDps');
 const outDpsBreakdown = document.getElementById('outDpsBreakdown');
 const outEffectiveDps = document.getElementById('outEffectiveDps');
-const teleDpsType = document.getElementById('teleDpsType');
-const teleAlphaType = document.getElementById('teleAlphaType');
+const teleDpsType     = document.getElementById('teleDpsType');
+const teleAlphaType   = document.getElementById('teleAlphaType');
 const outEffectiveAlpha = document.getElementById('outEffectiveAlpha');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
 const outDamagePerShot = document.getElementById('outDamagePerShot');
@@ -796,12 +793,15 @@ const outHeatDutyRatio = document.getElementById('outHeatDutyRatio');
 const heatProgressBar = document.getElementById('heatProgressBar');
 const outTimeToOverheat = document.getElementById('outTimeToOverheat');
 const outCooldownTime = document.getElementById('outCooldownTime');
+const outAmmoDrawSub  = document.getElementById('outAmmoDrawSub');
+const outMagProfile   = document.getElementById('outMagProfile');
+const outMagReload    = document.getElementById('outMagReload');
 const outPowerMw = document.getElementById('outPowerMw');
 const outPowerIdle = document.getElementById('outPowerIdle');
 const outEffectiveIntegrity = document.getElementById('outEffectiveIntegrity');
-const outBuildTime = document.getElementById('outBuildTime');
-const outTotalValue = document.getElementById('outTotalValue');
-const bomTableBody = document.getElementById('bomTableBody');
+const outBuildTime          = document.getElementById('outBuildTime');
+const outTotalValue         = document.getElementById('outTotalValue');
+const bomTableBody          = document.getElementById('bomTableBody');
 
 // DOM Elements - Target Damage & Multiplier Matrix
 const tmHeavyMult = document.getElementById('tmHeavyMult');
@@ -1211,12 +1211,12 @@ function refreshAfterDataLoad() {
   // Populate Dropdowns
   checkWcSchemaIntegrity();
   populateWeaponDropdowns();
+  buildTypePills();
   populateAmmoDropdowns();
   populateAnimationDropdown();
   populateLogisticsAmmoDropdown();
 
   // Populate Balance Matrix Modal inputs
-  syncBalanceMatrixInputs();
 
   // Select Default Weapon (Avenger Turret or First) or re-sync existing selection
   if (!activeWeapon && weaponsDb.length > 0) {
@@ -1355,13 +1355,18 @@ function parseUrlParams() {
 function filterMatchesWeapon(w) {
   const grid = w.gridSize || w.grid || 'Large';
   if (currentFilterGrid !== 'all' && grid.toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
-  if (currentFilterRole !== 'all') {
-    const aKey = getSelectableAmmos(w)[0] || w.ammoName;
-    const a = ammosDb[aKey];
-    const role = getAutomatedWeaponRole(w, a);
-    if (role.id !== currentFilterRole) return false;
+  if (currentFilterType !== 'all') {
+    const wtype = getWeaponTypePrefix(w);
+    if (wtype !== currentFilterType) return false;
   }
   return true;
+}
+
+/// <summary>Extracts the *TYPE* prefix from weapon displayName (e.g. "*Gatling*" → "Gatling").</summary>
+function getWeaponTypePrefix(w) {
+  const name = w.displayName || w.name || '';
+  const m = name.match(/^\*(?:NPC-)?([^*]+)\*/);
+  return m ? m[1].trim() : '';
 }
 
 function initBatteryMultiplier() {
@@ -1400,6 +1405,7 @@ function initShipbuilderFilters() {
       gridPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentFilterGrid = pill.dataset.grid || 'all';
+      buildTypePills();
       populateWeaponDropdowns();
       if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
         const first = weaponsDb.find(filterMatchesWeapon);
@@ -1407,13 +1413,42 @@ function initShipbuilderFilters() {
       }
     });
   });
+  buildTypePills();
+}
 
-  const rolePills = document.querySelectorAll('.role-filter-pill');
-  rolePills.forEach(pill => {
+function buildTypePills() {
+  const container = document.getElementById('typeFilterGroup');
+  if (!container) return;
+
+  // Collect unique player weapon types (excluding NPC prefix), respecting current grid filter
+  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  const playerWeapons = weaponsDb.filter(w => !isNpc(w));
+  const relevantWeapons = currentFilterGrid === 'all'
+    ? playerWeapons
+    : playerWeapons.filter(w => (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase());
+
+  const types = new Set();
+  relevantWeapons.forEach(w => {
+    const t = getWeaponTypePrefix(w);
+    if (t) types.add(t);
+  });
+
+  container.innerHTML = `<span class="filter-label">TYPE:</span><button class="filter-pill type-filter-pill ${currentFilterType === 'all' ? 'active' : ''}" data-wtype="all">All</button>`;
+
+  Array.from(types).sort().forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = `filter-pill type-filter-pill ${currentFilterType === t ? 'active' : ''}`;
+    btn.dataset.wtype = t;
+    btn.textContent = t;
+    container.appendChild(btn);
+  });
+
+  const pills = container.querySelectorAll('.type-filter-pill');
+  pills.forEach(pill => {
     pill.addEventListener('click', () => {
-      rolePills.forEach(p => p.classList.remove('active'));
+      pills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
-      currentFilterRole = pill.dataset.role || 'all';
+      currentFilterType = pill.dataset.wtype || 'all';
       populateWeaponDropdowns();
       if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
         const first = weaponsDb.find(filterMatchesWeapon);
@@ -1425,7 +1460,6 @@ function initShipbuilderFilters() {
 
 function populateWeaponDropdowns() {
   weaponSelect.innerHTML = '';
-  compareSelect.innerHTML = '<option value="">Select benchmark weapon to compare...</option>';
 
   const isGunNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
   const playerGuns = weaponsDb.filter(w => !isGunNpc(w));
@@ -3245,31 +3279,36 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Dedicated Explosive & Penetration Profile Readout
-  if (explosiveProfileBox) {
+  // Blast trigger & depth detail lines (folded into tmBlastBox sub-rows)
+  const showBlastDetail = blastRadius > 0;
+  if (tmBlastTrigger) {
     if (blastKind === 'ewar' && blastRadius > 0) {
-      if (outExplosiveRadius) outExplosiveRadius.textContent = `${Math.round(blastRadius)}m Radius`;
-      if (outExplosivePool) outExplosivePool.textContent = '0 HP (EWAR)';
-      if (outExplosiveDepth) outExplosiveDepth.textContent = 'Field Effect';
-      if (outExplosiveTrigger) outExplosiveTrigger.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} Scrambler`;
+      tmBlastTrigger.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} Scrambler`;
+      tmBlastTrigger.style.display = '';
     } else if (blastKind === 'screen') {
-      if (outExplosiveRadius) outExplosiveRadius.textContent = `${Math.round(blastRadius)}m Screen`;
-      if (outExplosivePool) outExplosivePool.textContent = '0 HP (Flak Screen)';
-      if (outExplosiveDepth) outExplosiveDepth.textContent = 'Proximity Sphere';
-      if (outExplosiveTrigger) outExplosiveTrigger.textContent = 'Proximity Flak Screen (EndOfLife)';
+      tmBlastTrigger.textContent = 'Proximity Flak Screen (EndOfLife)';
+      tmBlastTrigger.style.display = '';
     } else if (blastRadius > 0 && blastDmg > 0) {
-      if (outExplosiveRadius) outExplosiveRadius.textContent = `${blastRadius.toFixed(1)}m Radius`;
-      if (outExplosivePool) outExplosivePool.textContent = `${Math.round(blastDmg * bMult).toLocaleString()} HP Pool${bMult > 1 ? ` (${bMult}x)` : ''}`;
-      if (outExplosiveDepth) outExplosiveDepth.textContent = blastDepth > 0 ? `${blastDepth.toFixed(1)}m Depth (Pooled)` : 'Surface Detonation';
       const triggerLabel = (activeAmmo.areaOfDamage?.endOfLife?.enable && activeAmmo.areaOfDamage.endOfLife.damage)
         ? 'Proximity Detonation (EndOfLife)'
         : 'Impact Detonation (ByBlockHit)';
-      if (outExplosiveTrigger) outExplosiveTrigger.textContent = triggerLabel;
+      tmBlastTrigger.textContent = triggerLabel;
+      tmBlastTrigger.style.display = '';
     } else {
-      if (outExplosiveRadius) outExplosiveRadius.textContent = '0m (Direct)';
-      if (outExplosivePool) outExplosivePool.textContent = '0 HP Blast';
-      if (outExplosiveDepth) outExplosiveDepth.textContent = dmgDetails.cutoff > 0 ? `${dmgDetails.penBlocks} Block Overpen` : 'Surface Direct';
-      if (outExplosiveTrigger) outExplosiveTrigger.textContent = 'Direct Kinetic Penetration (No Explosive Blast)';
+      tmBlastTrigger.style.display = 'none';
+    }
+  }
+
+  if (tmBlastDepth) {
+    if (showBlastDetail && blastKind !== 'ewar') {
+      const poolStr = blastDmg > 0
+        ? `${Math.round(blastDmg * bMult).toLocaleString()} HP Pool${bMult > 1 ? ` (${bMult}×)` : ''}`
+        : '';
+      const depthStr = blastDepth > 0 ? `${blastDepth.toFixed(1)}m Depth` : 'Surface Detonation';
+      tmBlastDepth.textContent = depthStr + (poolStr ? ` (${poolStr})` : '');
+      tmBlastDepth.style.display = '';
+    } else {
+      tmBlastDepth.style.display = 'none';
     }
   }
 
@@ -3280,8 +3319,8 @@ function updateCombatTelemetry() {
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
   const avgTraverse = (parseFloat(rotDegSec) + parseFloat(elDegSec)) / 2;
   const agilityText = avgTraverse >= 40 ? '⚡ Fast Tracking (<50m)' : (avgTraverse >= 15 ? '⚖️ Moderate (>100m)' : '🐌 Slow / Standoff');
-  outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span class="unit-sub">/s</span>`;
-  outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
+  if (outTraverseDeg) outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span class="unit-sub">/s</span>`;
+  if (outTraverseAzEl) outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
   const outTraverseAgilityBadge = document.getElementById('outTraverseAgilityBadge');
   if (outTraverseAgilityBadge) outTraverseAgilityBadge.textContent = agilityText;
 
@@ -3292,19 +3331,6 @@ function updateCombatTelemetry() {
     : (parseFloat(tMaxTrajectory.value) || (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0);
   if (outMaxRange) {
     outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span class="unit-sub">m</span>`;
-  }
-  if (outMaxRangeSource) {
-    outMaxRangeSource.textContent = isTrackingWeapon ? 'Targeting Range' : 'Trajectory Range';
-  }
-
-  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || (activeAmmo.trajectory && activeAmmo.trajectory.desiredSpeed) || 1000;
-  const outMuzzleVelocityPreview = document.getElementById('outMuzzleVelocityPreview');
-  if (outMuzzleVelocityPreview) {
-    outMuzzleVelocityPreview.innerHTML = `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
-  }
-  const outFlightDelay1km = document.getElementById('outFlightDelay1km');
-  if (outFlightDelay1km) {
-    outFlightDelay1km.textContent = `Flight to 1km: ${(1000 / Math.max(1, muzzleSpeed)).toFixed(2)}s`;
   }
 
   const arcInfo = getWeaponArcSummary(activeWeapon);
@@ -3366,15 +3392,22 @@ function updateCombatTelemetry() {
   let consumptionHtml = '';
   if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
     const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
-    consumptionHtml = `⚡ Uranium Draw: <strong>${uStr}</strong> / min (${operationalPwr} MW)`;
+    consumptionHtml = `⚡ ${uStr} Uranium / min`;
+    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW`;
+    if (outMagProfile) outMagProfile.textContent = ammoMagCapacity > 0 ? `${ammoMagCapacity} rds / mag` : 'Continuous';
+    if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult} mag buffer`;
   } else {
     const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
     if (scaledOperationalPwrNum > 20) {
       const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
-      consumptionHtml = `📦 <strong>${magsPerMin.toFixed(1)}</strong> mags/min [${magSubtype}] &bull; ⚡ <strong>${uStr}</strong> Uranium/min`;
+      consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags / min`;
+      if (outAmmoDrawSub) outAmmoDrawSub.textContent = `[${magSubtype}] + ⚡ ${uStr} Uranium/min`;
     } else {
-      consumptionHtml = `📦 Ammo Draw: <strong>${magsPerMin.toFixed(1)}</strong> mags/min (${Math.round(roundsPerMin).toLocaleString()} rds/min) [${magSubtype}]`;
+      consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags / min`;
+      if (outAmmoDrawSub) outAmmoDrawSub.textContent = `[${magSubtype}] · ${Math.round(roundsPerMin).toLocaleString()} rds/min`;
     }
+    if (outMagProfile) outMagProfile.innerHTML = `${ammoMagCapacity} rds / mag`;
+    if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult}×mag reload buffer`;
   }
 
   if (hasHeat && heatPerSec > sinkRate) {
@@ -3393,8 +3426,10 @@ function updateCombatTelemetry() {
   } else if (hasHeat) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
     outHeatDutyRatio.textContent = "100% UPTIME";
-    heatProgressBar.style.width = "100%";
-    heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--cyan-primary))';
+    if (heatProgressBar) {
+      heatProgressBar.style.width = "100%";
+      heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--cyan-primary))';
+    }
     outTimeToOverheat.textContent = "Continuous Fire: Unlimited (Sink > Heat)";
     outCooldownTime.innerHTML = consumptionHtml;
     if (hudOverheat) hudOverheat.textContent = "Unlimited";
@@ -3403,8 +3438,10 @@ function updateCombatTelemetry() {
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
 
     outHeatDutyRatio.textContent = `${fireDutyPercent}% SUSTAINED (${effectiveRpm} RPM)`;
-    heatProgressBar.style.width = `${fireDutyPercent}%`;
-    heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), var(--amber-primary))';
+    if (heatProgressBar) {
+      heatProgressBar.style.width = `${fireDutyPercent}%`;
+      heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), var(--amber-primary))';
+    }
 
     outTimeToOverheat.textContent = reloadSec > 0
       ? `Cycle: ${fireDurationSec.toFixed(1)}s burst + ${reloadSec.toFixed(1)}s reload (${effectiveRps.toFixed(1)} sps)`
@@ -3436,9 +3473,6 @@ function updateCombatTelemetry() {
       const firstTab = document.querySelector('.deck-tab-btn[data-deck-tab="tab-ttk"]');
       if (firstTab) firstTab.click();
     }
-  }
-  if (explosiveProfileBox) {
-    explosiveProfileBox.style.display = hasExplosive ? 'block' : 'none';
   }
 
   // Terrain Clearance indicator in Flight Deck Tab
@@ -3476,13 +3510,17 @@ function updateTtkSimulator() {
   const lightMult = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
 
-  if (targetType === 'lightArmor') {
+  if (targetType === 'sgLightArmor') {
+    targetHp = 750;
+    targetName = "SG Light Armor";
+    targetMult = lightMult;
+  } else if (targetType === 'lightArmor') {
     targetHp = 3000;
-    targetName = "Light Armor Cube";
+    targetName = "LG Light Armor Cube";
     targetMult = lightMult;
   } else if (targetType === 'heavyArmor') {
     targetHp = 16500;
-    targetName = "Heavy Armor Cube";
+    targetName = "LG Heavy Armor Cube";
     targetMult = heavyMult;
   } else if (targetType === 'battery') {
     targetHp = 11460;
@@ -3519,12 +3557,13 @@ function updateTtkSimulator() {
   } else {
     outTtkMain.textContent = `${ttkSeconds.toFixed(1)}s to Destroy`;
   }
-
   const capLabel = dmgDetails.cutoff > 0 ? ` | per-block cap ${Math.round(dmgDetails.perBlockBase).toLocaleString()} hp` : '';
   const multLabel = targetMult !== 1.0 ? ` (${targetMult}× mult: ${Math.round(effectiveVolley).toLocaleString()} hp/salvo)` : '';
   const bTag = bMult > 1 ? ` [${bMult}x Battery]` : '';
   outTtkRounds.textContent = `Requires ~${shotsNeeded.toLocaleString()} salvo(s)${bTag} against ${targetName}${multLabel}${capLabel}`;
-  ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
+  if (ttkProgressFill) {
+    ttkProgressFill.style.width = `${Math.min(100, Math.max(5, 100 - (ttkSeconds * 10)))}%`;
+  }
 }
 
 // Initial D Dodgeability / Drift Lead Meter

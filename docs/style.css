@@ -2769,6 +2769,14 @@ input.control-input.is-wc-default {
   box-shadow: none;
 }
 
+.target-matrix-card.compact .target-matrix-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.target-matrix-card.compact .target-stat-value {
+  font-size: 16px;
+}
+
 /* Quick Filter Bar & Cockpit Segmented Controls */
 .shipbuilder-filter-bar {
   background: rgba(18, 22, 31, 0.85);
@@ -2889,11 +2897,33 @@ input.control-input.is-wc-default {
   flex-wrap: wrap;
 }
 
+.pillar-header-badge {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.badge-purple {
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
 .pillar-badges-cluster {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 4px;
+}
+
+/* Belt-and-suspenders: battery group must never wrap */
+.battery-multiplier-group {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* Compact Cards inside Pillars */

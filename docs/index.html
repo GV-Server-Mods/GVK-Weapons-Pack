@@ -123,16 +123,10 @@
         <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
       </div>
       <div class="filter-divider"></div>
-      <div class="filter-group filter-group-roles">
-        <span class="filter-label">ROLE:</span>
-        <button class="filter-pill role-filter-pill active" data-role="all">All</button>
-        <button class="filter-pill role-filter-pill" data-role="pd">📡 PD</button>
-        <button class="filter-pill role-filter-pill" data-role="breaker">🎯 Breaker</button>
-        <button class="filter-pill role-filter-pill" data-role="brawler">🥊 Brawler</button>
-        <button class="filter-pill role-filter-pill" data-role="artillery">🔭 Artillery</button>
-        <button class="filter-pill role-filter-pill" data-role="guided">🚀 Guided</button>
-        <button class="filter-pill role-filter-pill" data-role="flak">💥 Flak</button>
-        <button class="filter-pill role-filter-pill" data-role="energy">⚡ Energy</button>
+      <div class="filter-group filter-group-types" id="typeFilterGroup">
+        <span class="filter-label">TYPE:</span>
+        <button class="filter-pill type-filter-pill active" data-wtype="all">All</button>
+        <!-- Additional type pills populated dynamically by initShipbuilderFilters() -->
       </div>
     </div>
     
@@ -147,12 +141,10 @@
             <span class="selector-label">Active Weapon</span>
             <span id="weaponMetaSubtitle" class="weapon-meta-subtitle">[Large Grid · Turret]</span>
           </div>
-          <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap;">
-            <select id="weaponSelect" class="weapon-dropdown">
-              <option value="">Loading weapons database...</option>
-            </select>
+          <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: nowrap;">
+            <select id="weaponSelect" class="weapon-dropdown"></select>
             <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
-            <div class="battery-multiplier-group" title="Scale combat telemetry for a multi-turret broadside or battery">
+            <div class="battery-multiplier-group" style="flex-shrink: 0;" title="Scale combat telemetry for a multi-turret broadside or battery">
               <span class="battery-label">BATTERY:</span>
               <button class="battery-btn active" data-mult="1">1x</button>
               <button class="battery-btn" data-mult="2">2x</button>
@@ -203,8 +195,8 @@
           <div class="pillar-header">
             <span class="pillar-title">⚔️ LETHALITY & COMBAT CYCLE</span>
             <div class="pillar-header-badges">
-              <span class="badge badge-amber" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
-              <span class="pillar-tag" id="teleDpsType">VS ALL BLOCKS</span>
+              <span class="badge badge-amber pillar-header-badge" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
+              <span class="badge pillar-header-badge pillar-tag" id="teleDpsType">VS ALL BLOCKS</span>
             </div>
           </div>
           <div class="pillar-body">
@@ -285,6 +277,8 @@
                   </div>
                   <div class="target-stat-value" id="tmBlastDmg">0 hp</div>
                   <div class="target-stat-sub" id="tmBlastSub">Direct Impact Only</div>
+                  <div class="target-stat-sub" id="tmBlastTrigger" style="display:none; color: var(--amber-primary); font-weight: 600;"></div>
+                  <div class="target-stat-sub" id="tmBlastDepth" style="display:none;"></div>
                 </div>
               </div>
             </div>
@@ -294,8 +288,9 @@
               <div class="sim-card-header">
                 <span class="sim-card-title">🎯 TARGET DUMMY & TTK</span>
                 <select id="ttkTargetSelect" class="sim-select">
-                  <option value="lightArmor">Light Armor Cube (3,000 HP)</option>
-                  <option value="heavyArmor" selected>Heavy Armor Cube (16,500 HP)</option>
+                  <option value="sgLightArmor">SG Light Armor (750 HP)</option>
+                  <option value="lightArmor">LG Light Armor Cube (3,000 HP)</option>
+                  <option value="heavyArmor" selected>LG Heavy Armor Cube (16,500 HP)</option>
                   <option value="battery">Large Grid Battery (11,460 HP)</option>
                   <option value="refinery">Large Grid Refinery (37,280 HP)</option>
                 </select>
@@ -309,28 +304,6 @@
               </div>
             </div>
 
-            <!-- Dedicated Explosive Profile (Conditional) -->
-            <div class="explosive-profile-card compact" id="explosiveProfileBox">
-              <div class="explosive-profile-header">
-                <span class="explosive-profile-title">💥 EXPLOSIVE PROFILE</span>
-                <span class="explosive-trigger-badge" id="outExplosiveTrigger">Direct Kinetic</span>
-              </div>
-              <div class="explosive-profile-grid">
-                <div class="explosive-stat-item">
-                  <span class="explosive-stat-label">Blast Radius</span>
-                  <span class="explosive-stat-val" id="outExplosiveRadius">0m</span>
-                </div>
-                <div class="explosive-stat-item">
-                  <span class="explosive-stat-label">Damage Pool</span>
-                  <span class="explosive-stat-val" id="outExplosivePool">0 HP</span>
-                </div>
-                <div class="explosive-stat-item">
-                  <span class="explosive-stat-label">Penetration</span>
-                  <span class="explosive-stat-val" id="outExplosiveDepth">Surface</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -339,8 +312,9 @@
           <div class="pillar-header">
             <span class="pillar-title">🎯 HANDLING, REACH & AGILITY</span>
             <div class="pillar-header-badges">
-              <span class="pillar-tag cyan" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
-              <span class="badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></span>
+              <span class="badge badge-cyan pillar-header-badge pillar-tag" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
+              <span class="badge pillar-header-badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></span>
+              <span class="badge badge-red pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
             </div>
           </div>
           <div class="pillar-body">
@@ -409,7 +383,7 @@
           <div class="pillar-header">
             <span class="pillar-title">⚖️ SHIP FITTING & LOGISTICS</span>
             <div class="pillar-header-badges">
-              <span class="pillar-tag purple" id="outPillarGridTag">Large Grid</span>
+              <span class="badge badge-purple pillar-header-badge pillar-tag" id="outPillarGridTag">Large Grid</span>
             </div>
           </div>
           <div class="pillar-body">
@@ -420,7 +394,6 @@
               <div class="badge" id="badgeMass">⚖️ <strong>0t</strong></div>
               <div class="badge badge-tech" id="badgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
               <div class="badge badge-cyan" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
-              <div class="badge badge-red" id="badgeRecoil" style="display: none;">⚠️ Recoil</div>
               <div class="badge badge-cyan" id="badgePd" style="display: none;">📡 Point Defense</div>
             </div>
 
@@ -454,9 +427,17 @@
 
             <div class="pillar-divider"></div>
 
-            <div class="pillar-metric-main">
-              <span class="metric-label">SUSTAINED AMMO / FUEL DRAW</span>
-              <div class="metric-sub-detail" id="outCooldownTime" style="font-size: 12px; color: var(--text-normal); margin-top: 4px;">📦 Ammo Draw: 0 mags/min</div>
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">SUSTAINED AMMO / FUEL DRAW</span>
+                <div class="metric-val" id="outCooldownTime" style="font-size: 13px;">📦 0 mags/min</div>
+                <div class="metric-sub-detail" id="outAmmoDrawSub"></div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">MAG PROFILE</span>
+                <div class="metric-val" id="outMagProfile" style="font-size: 13px;">0 rds/mag</div>
+                <div class="metric-sub-detail" id="outMagReload"></div>
+              </div>
             </div>
 
           </div>
