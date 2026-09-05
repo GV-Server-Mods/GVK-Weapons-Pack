@@ -345,13 +345,23 @@ function parseCubeBlocks(xmlText2) {
   for (const d of xmlKids(xmlKid(parseXml(xmlText2), 'CubeBlocks'), 'Definition')) {
     const comps = xmlKid(d, 'Components');
     const crit = xmlKid(d, 'CriticalComponent');
-    out[subId(d)] = {
-      subtypeId: subId(d),
+    const szNode = xmlKid(d, 'Size');
+    const idNode = xmlKid(d, 'Id');
+    const typeIdVal = xmlText(xmlKid(idNode, 'TypeId'));
+    const subIdVal = subId(d) || typeIdVal;
+    const blockData = {
+      subtypeId: subIdVal,
+      typeId: typeIdVal,
       xsiType: d.attrs['xsi:type'] || '',
       displayName: xmlText(xmlKid(d, 'DisplayName')),
       description: xmlText(xmlKid(d, 'Description')),
       icon: xmlText(xmlKid(d, 'Icon')),
       cubeSize: xmlText(xmlKid(d, 'CubeSize')) || 'Large',
+      size: szNode ? {
+        x: parseInt(szNode.attrs.x) || 1,
+        y: parseInt(szNode.attrs.y) || 1,
+        z: parseInt(szNode.attrs.z) || 1
+      } : null,
       pcu: xmlNum(xmlKid(d, 'PCU')),
       buildTimeSeconds: xmlNum(xmlKid(d, 'BuildTimeSeconds')),
       components: comps ? xmlKids(comps, 'Component').map((c) => {
@@ -365,6 +375,10 @@ function parseCubeBlocks(xmlText2) {
       }) : [],
       criticalComponent: crit ? crit.attrs.Subtype || null : null,
     };
+    out[subIdVal] = blockData;
+    if (subId(d) && typeIdVal && !out[typeIdVal]) {
+      out[typeIdVal] = blockData;
+    }
   }
   return out;
 }
@@ -558,6 +572,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     gridSize: grid, cubeSize: grid,
     description: block ? block.description : '',
     criticalComponent: block ? block.criticalComponent : null,
+    size: block && block.size ? block.size : null,
   };
 }
 

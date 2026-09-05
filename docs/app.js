@@ -756,6 +756,7 @@ const badgeNpc = document.getElementById('badgeNpc');
 const badgePd = document.getElementById('badgePd');
 const badgeRole = document.getElementById('badgeRole');
 const badgeArc = document.getElementById('badgeArc');
+const badgeDepression = document.getElementById('badgeDepression');
 const badgeMass = document.getElementById('badgeMass');
 const badgeRecoil = document.getElementById('badgeRecoil');
 
@@ -2036,24 +2037,25 @@ function getWeaponArcSummary(weapon) {
 }
 
 /// <summary>
-/// Determines if recoil kick force warrants a shipbuilder warning (Small Grid or severe heavy kick).
+/// Determines if recoil kick force warrants a shipbuilder badge.
+/// Bottom 1/3rd of weapons (by recoil <= 50 N) receive "Low Recoil" (green).
+/// Top 1/3rd of weapons (by recoil > 100 N or heavy kick) receive "High Recoil" (red).
 /// </summary>
 function getWeaponRecoilWarning(weapon, ammo) {
-  if (!weapon) return { showRecoil: false, text: '', isHeavy: false };
-  const isSmallGrid = (weapon.gridSize === 'Small' || weapon.grid === 'Small');
-  const kick = (ammo && (ammo.backKickForce || (ammo.mass * (ammo.trajectory?.desiredSpeed || 500)))) || 0;
-  const isHeavyKick = kick >= 50000 || (ammo?.mass || 0) >= 800 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC')));
+  if (!weapon) return { showRecoil: false, text: '', isHeavy: false, isLow: false };
+  const kick = (ammo && (ammo.backKickForce !== undefined ? ammo.backKickForce : (ammo.mass * (ammo.trajectory?.desiredSpeed || 500)))) || 0;
+  const isHeavyKick = kick > 100 || kick >= 50000 || (ammo?.mass || 0) >= 800 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC')));
 
   const kickKn = kick / 1000;
-  const kickStr = kickKn >= 10 ? `${Math.round(kickKn)} kN` : `${kickKn.toFixed(1)} kN`;
+  const kickStr = kickKn >= 10 ? `${Math.round(kickKn)} kN` : (kickKn >= 1 ? `${kickKn.toFixed(1)} kN` : `${Math.round(kick)} N`);
 
-  if (isSmallGrid && (kick >= 2000 || isHeavyKick)) {
-    return { showRecoil: true, text: `⚠️ Recoil: ${kickStr} (Small Grid sway)`, isHeavy: isHeavyKick };
-  }
   if (isHeavyKick) {
-    return { showRecoil: true, text: `⚠️ High Recoil: ${Math.round(kick).toLocaleString()} N`, isHeavy: true };
+    return { showRecoil: true, text: `⚠️ High Recoil: ${kickStr}`, isHeavy: true, isLow: false };
   }
-  return { showRecoil: false, text: '', isHeavy: false };
+  if (kick <= 50) {
+    return { showRecoil: true, text: `🛡️ Low Recoil: ${kickStr}`, isHeavy: false, isLow: true };
+  }
+  return { showRecoil: false, text: '', isHeavy: false, isLow: false };
 }
 
 /// <summary>
@@ -2204,7 +2206,7 @@ function updateUniversalBanner() {
     badgeRole.style.display = 'inline-flex';
   }
 
-  // Firing Arc & Gimbal Badge
+  // Firing Arc & Gimbal Badge / Good Depression Badge
   const arcInfo = getWeaponArcSummary(activeWeapon);
   const metaSubtitle = document.getElementById('weaponMetaSubtitle');
   if (metaSubtitle) {
@@ -2215,6 +2217,16 @@ function updateUniversalBanner() {
     badgeArc.innerHTML = arcInfo.text;
     badgeArc.className = `badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
     badgeArc.style.display = activeWeapon.type === 'Turret' ? 'inline-flex' : 'none';
+  }
+  if (badgeDepression) {
+    const minEl = activeWeapon.minElevation !== undefined ? activeWeapon.minElevation : (arcInfo.minEl !== undefined ? arcInfo.minEl : 0);
+    const hasGoodDepression = activeWeapon.type === 'Turret' && minEl <= -15;
+    if (hasGoodDepression) {
+      badgeDepression.innerHTML = `📐 Good Depression: ${minEl}°`;
+      badgeDepression.style.display = 'inline-flex';
+    } else {
+      badgeDepression.style.display = 'none';
+    }
   }
 
   // Dry Mass Badge (Battery Scaled)
@@ -2231,7 +2243,7 @@ function updateUniversalBanner() {
   if (badgeRecoil) {
     if (recoilInfo.showRecoil) {
       badgeRecoil.innerHTML = recoilInfo.text;
-      badgeRecoil.className = `badge ${recoilInfo.isHeavy ? 'badge-red' : 'badge-amber'}`;
+      badgeRecoil.className = `badge ${recoilInfo.isHeavy ? 'badge-red' : (recoilInfo.isLow ? 'badge-green' : 'badge-amber')}`;
       badgeRecoil.style.display = 'inline-flex';
     } else {
       badgeRecoil.style.display = 'none';
@@ -3144,7 +3156,8 @@ function updateCombatTelemetry() {
     teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
   if (outEffectiveDps) {
-    outEffectiveDps.textContent = `Effective against ${topProfile.label}${multTag} · Base: ${scaledSustainedDps.toLocaleString()} DPS${batteryTag}`;
+    const effPrefix = `Effective against ${topProfile.label}${multTag}`;
+    outEffectiveDps.innerHTML = `<strong>${effPrefix}</strong> · Base: ${scaledSustainedDps.toLocaleString()} DPS${batteryTag}`;
   }
   outAlphaDmg.textContent = scaledEffectiveAlpha.toLocaleString();
   if (teleAlphaType) {
@@ -3347,6 +3360,28 @@ function updateCombatTelemetry() {
   const outPillarMassDetail = document.getElementById('outPillarMassDetail');
   if (outPillarMassDetail) outPillarMassDetail.textContent = bMult > 1 ? `${massInfo.formatted}/gun` : 'Total Dry Mass';
 
+  // Cubeblock Dimensions & Volume
+  const isSmallGrid = (activeWeapon.gridSize === 'Small' || activeWeapon.grid === 'Small');
+  const blockScale = isSmallGrid ? 0.5 : 2.5;
+  const sz = activeWeapon.size || { x: 1, y: 1, z: 1 };
+  const sx = sz.x || 1;
+  const sy = sz.y || 1;
+  const sz_z = sz.z || 1;
+  const dimMetersX = (sx * blockScale).toFixed(1).replace(/\.0$/, '');
+  const dimMetersY = (sy * blockScale).toFixed(1).replace(/\.0$/, '');
+  const dimMetersZ = (sz_z * blockScale).toFixed(1).replace(/\.0$/, '');
+  const volBlocks = sx * sy * sz_z;
+  const volM3 = (volBlocks * Math.pow(blockScale, 3)).toFixed(1).replace(/\.0$/, '');
+
+  const outPillarDimensions = document.getElementById('outPillarDimensions');
+  if (outPillarDimensions) {
+    outPillarDimensions.textContent = `${sx}×${sy}×${sz_z} (${dimMetersX}×${dimMetersY}×${dimMetersZ}m)`;
+  }
+  const outPillarVolume = document.getElementById('outPillarVolume');
+  if (outPillarVolume) {
+    outPillarVolume.textContent = `${volBlocks} block${volBlocks > 1 ? 's' : ''} (${volM3} m³)`;
+  }
+
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
   const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
@@ -3468,7 +3503,7 @@ function updateCombatTelemetry() {
 // Initial D Dodgeability / Drift Lead Meter
 function updateInitialDDriftMeter() {
   const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 1000;
-  const driftSpeedMs = 27.78; // 100 km/h in m/s
+  const driftSpeedMs = 90; // 90 m/s rover target
 
   // Max engagement range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
   const isTrackingWeapon = activeWeapon && activeWeapon.type === 'Turret';

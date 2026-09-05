@@ -60,7 +60,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -152,7 +153,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -244,7 +246,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3000,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -336,7 +339,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -428,7 +432,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 420,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -520,7 +525,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 420,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -612,7 +618,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -704,7 +711,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 120,
       "speedVariance": 400,
       "rangeVariance": 80,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -796,7 +804,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -888,7 +897,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -980,7 +990,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1072,7 +1083,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1164,7 +1176,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1256,7 +1269,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1348,7 +1362,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1440,7 +1455,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1532,7 +1548,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1624,7 +1641,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1716,7 +1734,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1808,7 +1827,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1900,7 +1920,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3000,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -1992,7 +2013,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2084,7 +2106,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2176,7 +2199,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 1000,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -2272,7 +2296,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 35,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2364,7 +2389,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 720,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -2460,7 +2486,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 2,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -2556,7 +2583,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 60,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -2652,7 +2680,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2744,7 +2773,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2836,7 +2866,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 60,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -2928,7 +2959,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 60,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3020,7 +3052,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -3116,7 +3149,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3208,7 +3242,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3300,7 +3335,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3392,7 +3428,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 500
     },
     "damageScales": {
       "shield": 0,
@@ -3484,7 +3521,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 1200,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3576,7 +3614,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3668,7 +3707,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 500
     },
     "damageScales": {
       "shield": 0,
@@ -3760,7 +3800,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 50,
       "rangeVariance": 50,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -3852,7 +3893,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 3600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 200
     },
     "damageScales": {
       "shield": 0,
@@ -3944,7 +3986,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 900,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4036,7 +4079,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 10800,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 200
     },
     "damageScales": {
       "shield": 0,
@@ -4128,7 +4172,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 21600,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "Smart"
+      "guidance": "Smart",
+      "desiredElevation": 150
     },
     "damageScales": {
       "shield": 0,
@@ -4220,7 +4265,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 420,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4312,7 +4358,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4404,7 +4451,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4496,7 +4544,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4588,7 +4637,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4680,7 +4730,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4772,7 +4823,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4864,7 +4916,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 240,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -4956,7 +5009,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 1200,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5048,7 +5102,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": {
@@ -5144,7 +5199,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 1,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5236,7 +5292,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 30,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5328,7 +5385,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 5,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5420,7 +5478,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 1,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5512,7 +5571,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 30,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,
@@ -5604,7 +5664,8 @@ const BUNDLED_AMMOS_DATA = {
       "maxLifeTime": 5,
       "speedVariance": 0,
       "rangeVariance": 0,
-      "guidance": "None"
+      "guidance": "None",
+      "desiredElevation": 0
     },
     "damageScales": {
       "shield": 0,

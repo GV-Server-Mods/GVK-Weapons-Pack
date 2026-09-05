@@ -116,17 +116,20 @@
 
     <!-- Shipbuilder Quick-Filter Bar -->
     <div class="shipbuilder-filter-bar" id="shipbuilderFilterBar">
-      <div class="filter-group">
-        <span class="filter-label">GRID:</span>
-        <button class="filter-pill grid-filter-pill active" data-grid="all">All</button>
-        <button class="filter-pill grid-filter-pill" data-grid="Large">Large</button>
-        <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">GRID:</span>
+          <button class="filter-pill grid-filter-pill active" data-grid="all">All</button>
+          <button class="filter-pill grid-filter-pill" data-grid="Large">Large</button>
+          <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
+        </div>
       </div>
-      <div class="filter-divider"></div>
-      <div class="filter-group filter-group-types" id="typeFilterGroup">
-        <span class="filter-label">TYPE:</span>
-        <button class="filter-pill type-filter-pill active" data-wtype="all">All</button>
-        <!-- Additional type pills populated dynamically by initShipbuilderFilters() -->
+      <div class="filter-row">
+        <div class="filter-group filter-group-types" id="typeFilterGroup">
+          <span class="filter-label">TYPE:</span>
+          <button class="filter-pill type-filter-pill active" data-wtype="all">All</button>
+          <!-- Additional type pills populated dynamically by initShipbuilderFilters() -->
+        </div>
       </div>
     </div>
     
@@ -194,12 +197,11 @@
         <div class="hero-pillar-card pillar-lethality">
           <div class="pillar-header">
             <span class="pillar-title">⚔️ LETHALITY & COMBAT CYCLE</span>
-            <div class="pillar-header-badges">
-              <span class="badge badge-amber pillar-header-badge" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
-              <span class="badge pillar-header-badge pillar-tag" id="teleDpsType">VS ALL BLOCKS</span>
-            </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-badges-cluster">
+              <span class="badge badge-amber pillar-header-badge" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
+            </div>
             <div class="pillar-metric-main">
               <span class="metric-label">EFFECTIVE DPS</span>
               <div class="metric-big-val" id="outSustainedDps">0</div>
@@ -291,13 +293,13 @@
         <div class="hero-pillar-card pillar-handling">
           <div class="pillar-header">
             <span class="pillar-title">🎯 HANDLING, REACH & AGILITY</span>
-            <div class="pillar-header-badges">
-              <span class="badge badge-cyan pillar-header-badge pillar-tag" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
-              <span class="badge pillar-header-badge" id="badgeArc">📐 Elevation: <strong>-15° to +75°</strong></span>
-              <span class="badge badge-red pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
-            </div>
           </div>
           <div class="pillar-body">
+            <div class="pillar-badges-cluster">
+              <span class="badge badge-cyan pillar-header-badge pillar-tag" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
+              <span class="badge badge-green pillar-header-badge" id="badgeDepression" style="display: none;">📐 Good Depression</span>
+              <span class="badge pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
+            </div>
             <div class="pillar-metric-main">
               <span class="metric-label">TRAVERSE SLEW SPEED</span>
               <div class="metric-big-val" id="outTraverseDeg">0.0&deg;<span class="unit-sub">/s</span></div>
@@ -332,7 +334,7 @@
             <!-- Initial D Flight Physics & Drift Lead Meter (Expanded in Pillar 2) -->
             <div class="sim-card compact">
               <div class="sim-card-header">
-                <span class="sim-card-title">💨 FLIGHT DELAY & DRIFT LEAD (100 KM/H ROVER)</span>
+                <span class="sim-card-title">💨 FLIGHT DELAY & DRIFT LEAD (90 M/S ROVER)</span>
                 <span id="outFlightMuzzleSpd" class="drift-muzzle-chip">1000 m/s</span>
               </div>
               <div class="drift-readouts">
@@ -368,7 +370,6 @@
             <!-- Fitting Badges Cluster -->
             <div class="pillar-badges-cluster">
               <span class="badge badge-purple pillar-header-badge pillar-tag" id="outPillarGridTag">Large Grid</span>
-              <div class="badge badge-amber pillar-header-badge" id="badgeUps">⚡ Tech / UPs: <strong>0</strong></div>
               <div class="badge pillar-header-badge" id="badgeMass">⚖️ <strong>0t</strong></div>
               <div class="badge badge-cyan pillar-header-badge" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
               <div class="badge badge-cyan pillar-header-badge" id="badgePd" style="display: none;">📡 Point Defense</div>
@@ -377,12 +378,12 @@
             <div class="pillar-metric-row">
               <div>
                 <span class="metric-label">UTILITY POINTS</span>
-                <div class="metric-val amber" id="outPillarUps">0 UPs</div>
+                <div class="metric-big-val amber" id="outPillarUps">0 UPs</div>
                 <div class="metric-sub-detail" id="outPillarUpsDetail">Ship Core Up Allocation</div>
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">TOTAL DRY MASS</span>
-                <div class="metric-val" id="outPillarMass">0.0t</div>
+                <div class="metric-big-val" id="outPillarMass">0.0t</div>
                 <div class="metric-sub-detail" id="outPillarMassDetail">Keen Component Recipe</div>
               </div>
             </div>
@@ -391,9 +392,9 @@
 
             <div class="pillar-metric-row">
               <div>
-                <span class="metric-label">OPERATIONAL POWER</span>
-                <div class="metric-val" id="outPowerMw">0.0 <span class="unit-sub">MW</span></div>
-                <div class="metric-sub-detail" id="outPowerIdle">Idle Draw: 0.0 MW</div>
+                <span class="metric-label">FOOTPRINT & VOLUME</span>
+                <div class="metric-val" id="outPillarDimensions">1 × 1 × 1</div>
+                <div class="metric-sub-detail" id="outPillarVolume">Volume: 1 block</div>
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">BLOCK INTEGRITY</span>
@@ -406,11 +407,21 @@
 
             <div class="pillar-metric-row">
               <div>
+                <span class="metric-label">OPERATIONAL POWER</span>
+                <div class="metric-val" id="outPowerMw">0.0 <span class="unit-sub">MW</span></div>
+                <div class="metric-sub-detail" id="outPowerIdle">Idle Draw: 0.0 MW</div>
+              </div>
+              <div style="text-align: right;">
                 <span class="metric-label">SUSTAINED AMMO / FUEL DRAW</span>
                 <div class="metric-val" id="outCooldownTime" style="font-size: 13px;">📦 0 mags/min</div>
                 <div class="metric-sub-detail" id="outAmmoDrawSub"></div>
               </div>
-              <div style="text-align: right;">
+            </div>
+
+            <div class="pillar-divider"></div>
+
+            <div class="pillar-metric-row">
+              <div>
                 <span class="metric-label">MAG PROFILE</span>
                 <div class="metric-val" id="outMagProfile" style="font-size: 13px;">0 rds/mag</div>
                 <div class="metric-sub-detail" id="outMagReload"></div>

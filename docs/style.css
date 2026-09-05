@@ -2395,9 +2395,9 @@ input.control-input.is-wc-default {
 }
 
 .target-stat-box.top-damage {
-  border-color: var(--cyan-primary);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-  background: rgba(56, 189, 248, 0.08);
+  border-color: var(--amber-primary);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.08);
 }
 
 .target-stat-metric-label {
@@ -2656,6 +2656,15 @@ input.control-input.is-wc-default {
   line-height: 1.35;
 }
 
+#outEffectiveDps {
+  color: var(--text-secondary);
+}
+
+#outEffectiveDps strong {
+  color: var(--amber-primary);
+  font-weight: 700;
+}
+
 /* Embedded Mini Thermal / Duty Cycle */
 .pillar-mini-cycle {
   margin-top: 4px;
@@ -2691,8 +2700,8 @@ input.control-input.is-wc-default {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  flex: 0 0 220px;
-  min-width: 200px;
+  flex: 0 0 280px;
+  min-width: 260px;
 }
 
 .qc-row {
@@ -2831,9 +2840,16 @@ input.control-input.is-wc-default {
   border-radius: 8px;
   padding: 8px 14px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
   margin-bottom: 14px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
@@ -2945,12 +2961,16 @@ input.control-input.is-wc-default {
 
 .pillar-header-badge {
   font-size: 10px;
+  line-height: 1.4;
   padding: 2px 7px;
   border-radius: 4px;
   font-family: var(--font-mono);
   font-weight: 700;
   letter-spacing: 0.3px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .badge-purple {
