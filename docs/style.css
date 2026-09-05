@@ -2744,8 +2744,6 @@ input.control-input.is-wc-default {
 
 .pooled-tooltip {
   cursor: help;
-  text-decoration: underline dotted var(--amber-primary);
-  text-underline-offset: 3px;
 }
 
 .qc-header-row {

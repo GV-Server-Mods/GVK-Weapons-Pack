@@ -784,6 +784,7 @@ const outEffectiveAlpha = document.getElementById('outEffectiveAlpha');
 const outAlphaDmg = document.getElementById('outAlphaDmg');
 const outDamagePerShot = document.getElementById('outDamagePerShot');
 const outShotsPerSec = document.getElementById('outShotsPerSec');
+const lblEffectiveRpm = document.getElementById('lblEffectiveRpm');
 const outCycleTime = document.getElementById('outCycleTime');
 const outTraverseDeg = document.getElementById('outTraverseDeg');
 const outTraverseAzEl = document.getElementById('outTraverseAzEl');
@@ -3181,9 +3182,14 @@ function computeSustainedDps() {
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
 
-  const fireDurationSec = (totalRounds / rof) * 60;
+  let fireDurationSec = (totalRounds / rof) * 60;
   const reloadSec = reloadTicks / 60;
-  const totalCycleSec = fireDurationSec + reloadSec;
+  let totalCycleSec = fireDurationSec + reloadSec;
+
+  if (totalRounds === 1 && reloadSec > 0) {
+    fireDurationSec = 0;
+    totalCycleSec = reloadSec;
+  }
 
   const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : 0;
 
@@ -3308,8 +3314,16 @@ function updateCombatTelemetry() {
     }
   }
   const effectiveRpm = Math.round(effectiveRps * 60);
-  outShotsPerSec.innerHTML = `${effectiveRpm.toLocaleString()} <span style="font-size: 14px; font-weight: 400;">RPM</span>`;
-  outCycleTime.textContent = `Burst: ${Math.round(rof).toLocaleString()} RPM (${effectiveRps.toFixed(1)} sps sustained)`;
+  if (totalRounds === 1 && reloadSec > 0) {
+    if (lblEffectiveRpm) lblEffectiveRpm.textContent = "CYCLE INTERVAL";
+    outShotsPerSec.innerHTML = `${reloadSec.toFixed(1)}s <span style="font-size: 14px; font-weight: 400;">RELOAD</span>`;
+    const sustainedRpmStr = effectiveRpm > 0 ? `${effectiveRpm} RPM` : `${(60 / reloadSec).toFixed(1)} RPM`;
+    outCycleTime.textContent = `Single-shot breech · ${sustainedRpmStr} sustained`;
+  } else {
+    if (lblEffectiveRpm) lblEffectiveRpm.textContent = "EFFECTIVE RPM";
+    outShotsPerSec.innerHTML = `${effectiveRpm.toLocaleString()} <span style="font-size: 14px; font-weight: 400;">RPM</span>`;
+    outCycleTime.textContent = `Burst: ${Math.round(rof).toLocaleString()} RPM (${effectiveRps.toFixed(1)} sps sustained)`;
+  }
 
   // Update Target Damage & Multiplier Matrix
   if (tmPenetrationChip) {
@@ -3741,6 +3755,17 @@ function updateCombatTelemetry() {
     outTimeToOverheat.textContent = "Continuous Fire: Unlimited (Sink > Heat)";
     outCooldownTime.innerHTML = consumptionHtml;
     if (hudOverheat) hudOverheat.textContent = "Unlimited";
+  } else if (totalRounds === 1 && reloadSec > 0) {
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⏱️ SINGLE-SHOT BREECH CYCLE";
+    outHeatDutyRatio.textContent = `1 ROUND / ${reloadSec.toFixed(1)}s`;
+    if (heatProgressBar) {
+      heatProgressBar.style.width = "100%";
+      heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), #38bdf8)';
+    }
+    const sustainedRpmStr = effectiveRpm > 0 ? `${effectiveRpm} RPM` : `${(60 / reloadSec).toFixed(1)} RPM`;
+    outTimeToOverheat.textContent = `Breech Cycle: 1 round every ${reloadSec.toFixed(1)}s · ${sustainedRpmStr} sustained`;
+    outCooldownTime.innerHTML = consumptionHtml;
+    if (hudOverheat) hudOverheat.textContent = `${reloadSec.toFixed(1)}s reload`;
   } else {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
@@ -4108,9 +4133,14 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const totalRounds = magSize * mags;
   const dmgDetails = getAmmoDamageDetailed(a);
   const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
-  const fireDurationSec = (totalRounds / rof) * 60;
+  let fireDurationSec = (totalRounds / rof) * 60;
   const reloadSec = reloadTicks / 60;
-  const totalCycleSec = fireDurationSec + reloadSec;
+  let totalCycleSec = fireDurationSec + reloadSec;
+
+  if (totalRounds === 1 && reloadSec > 0) {
+    fireDurationSec = 0;
+    totalCycleSec = reloadSec;
+  }
 
   const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : (rof / 60);
 
