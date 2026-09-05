@@ -343,6 +343,9 @@ function parseBlueprints(xmlText2) {
 function parseCubeBlocks(xmlText2) {
   const out = {};
   for (const d of xmlKids(xmlKid(parseXml(xmlText2), 'CubeBlocks'), 'Definition')) {
+    if (d.attrs.Enabled === 'false' || d.attrs.enabled === 'false') {
+      continue;
+    }
     const comps = xmlKid(d, 'Components');
     const crit = xmlKid(d, 'CriticalComponent');
     const szNode = xmlKid(d, 'Size');

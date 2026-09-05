@@ -449,4 +449,7 @@ by name only).
    - Enable importing balance sheets (CSV/TSV or periodic JSON/schema export) for component, ingot, and ore pricing/integrity instead of manually maintaining `components_data.js`.
 2. **Cross-Mod Ingestion (`GVK_Settings`)**:
    - Ingest custom ingots, components, and scrap refining recipes directly from the `GVK_Settings` mod repo (`Content/Data/Components_*.sbc`, `PhysicalItems_*.sbc`, `Blueprints_*.sbc`) to keep server-wide tech costs, scrap yields, and refiner ratios in sync automatically.
+3. **Universal Weapon Badge System**:
+   - Implement a centralized, universal badge and tag engine covering all weapon attributes and operational classifications across the mod (e.g. Grid Size, Mount/Type, Targeting & PD Role, Tech Tier / Circuitry, Relic/Rare designation, Upgrade Module Slots [UPs], Penetration / Armor Role, Munition Types, and Subtype capabilities).
+   - Standardize visual presentation, color coding, and metadata tooltips so badges can be rendered consistently in multiple areas of the tool (Combat Telemetry banner, Definition Workbench scope bar, Comparison Matrix & Benchmark cards, and Logistics/Inventory breakdowns) for seamless weapon classification and side-by-side comparison.
 

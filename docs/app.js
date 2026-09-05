@@ -755,6 +755,8 @@ const badgeRelic = document.getElementById('badgeRelic');
 const badgeNpc = document.getElementById('badgeNpc');
 const badgePd = document.getElementById('badgePd');
 const badgeRole = document.getElementById('badgeRole');
+const badgeAmmoTypeDesc = document.getElementById('badgeAmmoTypeDesc');
+const badgeOverpen = document.getElementById('badgeOverpen');
 const badgeArc = document.getElementById('badgeArc');
 const badgeDepression = document.getElementById('badgeDepression');
 const badgeMass = document.getElementById('badgeMass');
@@ -1396,6 +1398,7 @@ function initShipbuilderFilters() {
       gridPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentFilterGrid = pill.dataset.grid || 'all';
+      updateFilterCounts();
       buildTypePills();
       populateWeaponDropdowns();
       if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
@@ -1404,7 +1407,35 @@ function initShipbuilderFilters() {
       }
     });
   });
+  updateFilterCounts();
   buildTypePills();
+}
+
+function updateFilterCounts() {
+  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  const playerWeapons = weaponsDb.filter(w => !isNpc(w));
+
+  // Update Grid filter button counts
+  const gridPills = document.querySelectorAll('.grid-filter-pill');
+  gridPills.forEach(pill => {
+    const g = pill.dataset.grid || 'all';
+    let count = 0;
+    if (g === 'all') {
+      count = playerWeapons.filter(w => {
+        if (currentFilterType === 'all') return true;
+        return getWeaponTypePrefix(w) === currentFilterType;
+      }).length;
+      pill.textContent = `All (${count})`;
+    } else {
+      count = playerWeapons.filter(w => {
+        const matchesGrid = (w.gridSize || w.grid || 'Large').toLowerCase() === g.toLowerCase();
+        if (!matchesGrid) return false;
+        if (currentFilterType === 'all') return true;
+        return getWeaponTypePrefix(w) === currentFilterType;
+      }).length;
+      pill.textContent = `${g} (${count})`;
+    }
+  });
 }
 
 function buildTypePills() {
@@ -1418,19 +1449,23 @@ function buildTypePills() {
     ? playerWeapons
     : playerWeapons.filter(w => (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase());
 
-  const types = new Set();
+  // Tally counts per weapon type
+  const typeCounts = {};
   relevantWeapons.forEach(w => {
     const t = getWeaponTypePrefix(w);
-    if (t) types.add(t);
+    if (t) {
+      typeCounts[t] = (typeCounts[t] || 0) + 1;
+    }
   });
 
-  container.innerHTML = `<span class="filter-label">TYPE:</span><button class="filter-pill type-filter-pill ${currentFilterType === 'all' ? 'active' : ''}" data-wtype="all">All</button>`;
+  const totalRelevant = relevantWeapons.length;
+  container.innerHTML = `<span class="filter-label">TYPE:</span><button class="filter-pill type-filter-pill ${currentFilterType === 'all' ? 'active' : ''}" data-wtype="all">All (${totalRelevant})</button>`;
 
-  Array.from(types).sort().forEach(t => {
+  Object.keys(typeCounts).sort().forEach(t => {
     const btn = document.createElement('button');
     btn.className = `filter-pill type-filter-pill ${currentFilterType === t ? 'active' : ''}`;
     btn.dataset.wtype = t;
-    btn.textContent = t;
+    btn.textContent = `${t} (${typeCounts[t]})`;
     container.appendChild(btn);
   });
 
@@ -1440,6 +1475,7 @@ function buildTypePills() {
       pills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentFilterType = pill.dataset.wtype || 'all';
+      updateFilterCounts();
       populateWeaponDropdowns();
       if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
         const first = weaponsDb.find(filterMatchesWeapon);
@@ -1479,18 +1515,7 @@ function populateWeaponDropdowns() {
     weaponSelect.appendChild(pGroup);
   }
 
-  if (filteredNpcGuns.length > 0) {
-    const nGroup = document.createElement('optgroup');
-    nGroup.label = "── NPC / Relic / Enemy Armaments ──";
-    filteredNpcGuns.forEach(w => {
-      const opt = document.createElement('option');
-      opt.value = w.id;
-      const grid = w.gridSize || w.grid || 'Large';
-      opt.textContent = `⚔️ ${w.displayName || w.name} [${grid}]`;
-      nGroup.appendChild(opt);
-    });
-    weaponSelect.appendChild(nGroup);
-  }
+  // Combat Telemetry excludes NPC armaments entirely per requirements.
 
   if (activeWeapon) {
     weaponSelect.value = activeWeapon.id;
@@ -1518,7 +1543,31 @@ function populateWeaponDropdowns() {
 
   const weaponSelectWorkbench = document.getElementById('weaponSelectWorkbench');
   if (weaponSelectWorkbench) {
-    weaponSelectWorkbench.innerHTML = weaponSelect.innerHTML;
+    weaponSelectWorkbench.innerHTML = '';
+    if (filteredPlayerGuns.length > 0) {
+      const pGroup = document.createElement('optgroup');
+      pGroup.label = "── Player Standard Armaments ──";
+      filteredPlayerGuns.forEach(w => {
+        const opt = document.createElement('option');
+        opt.value = w.id;
+        const grid = w.gridSize || w.grid || 'Large';
+        opt.textContent = `${w.displayName || w.name} [${grid}]`;
+        pGroup.appendChild(opt);
+      });
+      weaponSelectWorkbench.appendChild(pGroup);
+    }
+    if (filteredNpcGuns.length > 0) {
+      const nGroup = document.createElement('optgroup');
+      nGroup.label = "── NPC / Relic / Enemy Armaments ──";
+      filteredNpcGuns.forEach(w => {
+        const opt = document.createElement('option');
+        opt.value = w.id;
+        const grid = w.gridSize || w.grid || 'Large';
+        opt.textContent = `⚔️ ${w.displayName || w.name} [${grid}]`;
+        nGroup.appendChild(opt);
+      });
+      weaponSelectWorkbench.appendChild(nGroup);
+    }
     if (activeWeapon) weaponSelectWorkbench.value = activeWeapon.id;
     if (!weaponSelectWorkbench._changeBound) {
       weaponSelectWorkbench.addEventListener('change', (e) => {
@@ -1763,7 +1812,7 @@ function getShotsPerMag(weapon, ammo) {
 }
 
 function updateTelemetryAmmoBadge() {
-  if (!telemetryAmmoBadge || !activeAmmo) return;
+  if (!activeAmmo) return;
   const dmg = getAmmoDamageDetailed(activeAmmo);
   const eol = (activeAmmo.areaOfDamage && activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable)
     ? activeAmmo.areaOfDamage.endOfLife
@@ -1787,20 +1836,34 @@ function updateTelemetryAmmoBadge() {
     typeDesc = "High-Energy Sabot";
   }
 
-  // Armor-multiplier chips live only in the Target Damage Matrix - do not re-add here.
-  let modifierChips = '';
-  if (dmg.cutoff > 0) {
-    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/block ×${dmg.penBlocks}</span>`;
-  }
-  const clearance = getMunitionTerrainClearance(activeAmmo);
-  if (clearance) {
-    modifierChips += ` &bull; <span class="badge badge-cyan" style="padding: 2px 6px;">${clearance.text}</span>`;
+  // Populate ammo type description badge in Pillar 1 badges cluster
+  if (badgeAmmoTypeDesc) {
+    badgeAmmoTypeDesc.textContent = typeDesc;
+    badgeAmmoTypeDesc.style.display = 'inline-flex';
   }
 
-  // Damage/velocity/range/mag figures live in the relevant hero pillar below - avoid duplicating them here.
-  telemetryAmmoBadge.innerHTML = `
-    <span style="color: var(--cyan-primary); font-weight: 700;">${typeDesc}</span>${modifierChips}
-  `;
+  // Populate Overpenetration badge in Pillar 1 badges cluster
+  if (badgeOverpen) {
+    if (dmg.cutoff > 0) {
+      badgeOverpen.textContent = `🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/blk ×${dmg.penBlocks}`;
+      badgeOverpen.title = `Overpenetration: up to ${dmg.penBlocks} blocks penetrating at max ${Math.round(dmg.perBlockBase).toLocaleString()} hp per block.`;
+      badgeOverpen.style.display = 'inline-flex';
+    } else {
+      badgeOverpen.style.display = 'none';
+    }
+  }
+
+  // Remaining munition traits (e.g. terrain clearance) in loaded munition bar
+  if (telemetryAmmoBadge) {
+    const clearance = getMunitionTerrainClearance(activeAmmo);
+    if (clearance) {
+      telemetryAmmoBadge.innerHTML = `<span class="badge badge-cyan" style="padding: 2px 6px;">${clearance.text}</span>`;
+      telemetryAmmoBadge.style.display = 'inline-block';
+    } else {
+      telemetryAmmoBadge.innerHTML = '';
+      telemetryAmmoBadge.style.display = 'none';
+    }
+  }
 }
 
 function selectWeapon(weaponId) {
@@ -2215,7 +2278,7 @@ function updateUniversalBanner() {
   }
   if (badgeArc) {
     badgeArc.innerHTML = arcInfo.text;
-    badgeArc.className = `badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
+    badgeArc.className = `badge pillar-header-badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
     badgeArc.style.display = activeWeapon.type === 'Turret' ? 'inline-flex' : 'none';
   }
   if (badgeDepression) {
@@ -2223,6 +2286,7 @@ function updateUniversalBanner() {
     const hasGoodDepression = activeWeapon.type === 'Turret' && minEl <= -15;
     if (hasGoodDepression) {
       badgeDepression.innerHTML = `📐 Good Depression: ${minEl}°`;
+      badgeDepression.className = 'badge badge-green pillar-header-badge';
       badgeDepression.style.display = 'inline-flex';
     } else {
       badgeDepression.style.display = 'none';
@@ -2243,7 +2307,7 @@ function updateUniversalBanner() {
   if (badgeRecoil) {
     if (recoilInfo.showRecoil) {
       badgeRecoil.innerHTML = recoilInfo.text;
-      badgeRecoil.className = `badge ${recoilInfo.isHeavy ? 'badge-red' : (recoilInfo.isLow ? 'badge-green' : 'badge-amber')}`;
+      badgeRecoil.className = `badge pillar-header-badge ${recoilInfo.isHeavy ? 'badge-red' : (recoilInfo.isLow ? 'badge-green' : 'badge-amber')}`;
       badgeRecoil.style.display = 'inline-flex';
     } else {
       badgeRecoil.style.display = 'none';
@@ -3406,13 +3470,14 @@ function updateCombatTelemetry() {
   const roundsPerMin = effectiveRps * 60 * bMult;
   const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
   const kgUraniumPerMin = scaledOperationalPwrNum / 60;
+  const invVol = (activeWeapon && activeWeapon.inventorySize) ? activeWeapon.inventorySize : (parseFloat(wInventorySize?.value) || 0.9);
 
   let consumptionHtml = '';
   if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
     const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
     consumptionHtml = `⚡ ${uStr} Uranium / min`;
     if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW`;
-    if (outMagProfile) outMagProfile.textContent = ammoMagCapacity > 0 ? `${ammoMagCapacity} rds / mag` : 'Continuous';
+    if (outMagProfile) outMagProfile.textContent = ammoMagCapacity > 0 ? `${ammoMagCapacity} rds / mag · ${invVol} m³ cargo` : `Continuous · ${invVol} m³ cargo`;
     if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult} mag buffer`;
   } else {
     const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
@@ -3424,8 +3489,30 @@ function updateCombatTelemetry() {
       consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags / min`;
       if (outAmmoDrawSub) outAmmoDrawSub.textContent = `[${magSubtype}] · ${Math.round(roundsPerMin).toLocaleString()} rds/min`;
     }
-    if (outMagProfile) outMagProfile.innerHTML = `${ammoMagCapacity} rds / mag`;
+    if (outMagProfile) outMagProfile.innerHTML = `${ammoMagCapacity} rds / mag · ${invVol} m³ cargo`;
     if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult}×mag reload buffer`;
+  }
+
+  // Construction Recipe Summary (Pillar 3 Logistics)
+  const comps = activeWeapon.components || [];
+  let totalCompCount = 0;
+  let topCompName = 'SteelPlate';
+  let topCompCount = 0;
+  for (const c of comps) {
+    const cnt = parseInt(c.count) || 0;
+    totalCompCount += cnt;
+    if (cnt > topCompCount) {
+      topCompCount = cnt;
+      topCompName = c.name;
+    }
+  }
+  const outPillarCompSummary = document.getElementById('outPillarCompSummary');
+  if (outPillarCompSummary) {
+    outPillarCompSummary.textContent = `${(totalCompCount * bMult).toLocaleString()} parts (${comps.length} types)`;
+  }
+  const outPillarCompTop = document.getElementById('outPillarCompTop');
+  if (outPillarCompTop) {
+    outPillarCompTop.textContent = `Top: ${(topCompCount * bMult).toLocaleString()}× ${topCompName}`;
   }
 
   if (hasHeat && heatPerSec > sinkRate) {

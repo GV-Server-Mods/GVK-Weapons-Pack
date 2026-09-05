@@ -763,43 +763,43 @@ const STUDIO_OVERRIDES = {
     },
     "FlareClip": {
       "category": "Countermeasures & Decoys",
-      "localIcon": "icons/ammo_default.png",
+      "localIcon": "icons/ammo_FlareClip.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxBlue": {
       "category": "",
-      "localIcon": null,
+      "localIcon": "icons/ammo_FireworksBoxBlue.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxGreen": {
       "category": "",
-      "localIcon": null,
+      "localIcon": "icons/ammo_FireworksBoxGreen.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxRed": {
       "category": "",
-      "localIcon": null,
+      "localIcon": "icons/ammo_FireworksBoxRed.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxPink": {
       "category": "",
-      "localIcon": null,
+      "localIcon": "icons/ammo_FireworksBoxPink.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxYellow": {
       "category": "",
-      "localIcon": null,
+      "localIcon": "icons/ammo_FireworksBoxYellow.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },
     "FireworksBoxRainbow": {
       "category": "Countermeasures & Decoys",
-      "localIcon": "icons/ammo_default.png",
+      "localIcon": "icons/ammo_FireworksBoxRainbow.png",
       "roleMultiplier": 1,
       "defaultRUs": 0
     },

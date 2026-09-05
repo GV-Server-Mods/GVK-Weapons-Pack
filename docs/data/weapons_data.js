@@ -2079,7 +2079,7 @@ const BUNDLED_WEAPONS_DATA = [
     "pdSmartOnly": false,
     "name": "(S) Chaingun Turret",
     "grid": "Small",
-    "type": "Fixed",
+    "type": "Turret",
     "rateOfFire": 120,
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
@@ -2118,49 +2118,49 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10,
+        "count": 27,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "PrototechMachinery",
         "count": 4,
-        "deconstructSubtype": "PrototechMachineryScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "MetalGrid",
-        "count": 28,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "SmallTube",
-        "count": 12,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Motor",
-        "count": 15,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Computer",
-        "count": 19,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 56,
+        "count": 170,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "SmallTube",
+        "count": 33,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Motor",
+        "count": 44,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Computer",
+        "count": 54,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "MetalGrid",
+        "count": 81,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 28,
+        "count": 81,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -2168,7 +2168,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Chaingun_Turret.png",
     "subtypeId": "AutoCannonTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 9,
+    "buildTimeSeconds": 27,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -2184,10 +2184,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": "Ballistics_Chaingun_Hardpoint_Graphics"
     },
-    "displayName": "*Autocannon* Small 30mm Turret",
+    "displayName": "*Autocannon* 30mm Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "",
+    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -6734,43 +6734,61 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 50,
+        "count": 260,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "Construction",
-        "count": 150,
+        "name": "PrototechCapacitor",
+        "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "Superconductor",
-        "count": 150,
+        "name": "PrototechFrame",
+        "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "LargeTube",
-        "count": 60,
+        "name": "MetalGrid",
+        "count": 76,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 100,
+        "count": 26,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Superconductor",
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Motor",
+        "count": 51,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Reactor",
+        "count": 64,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 100,
+        "count": 190,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 300,
+        "count": 380,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -6778,8 +6796,8 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__MAC_Gun.png",
     "subtypeId": "LargeRailgun",
     "ammoName": "LargeRailgunSabot",
-    "buildTimeSeconds": 100,
-    "pcu": 1,
+    "buildTimeSeconds": 94,
+    "pcu": 12,
     "assignedAnimation": "LargeRailgunAnimation",
     "assignedAmmos": [
       "LargeRailgunSabot"
@@ -6797,7 +6815,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*MAC* 200mm Coilgun",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Damge falls off after 1km.\r\n\t\t\t\t[Uses 200mm DU]",
+    "description": "The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Damge falls off after 1km.\r\n\t\t\t\t[Uses 200mm DU + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -7380,43 +7398,55 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
+        "count": 17,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "PrototechFrame",
         "count": 5,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "Construction",
-        "count": 20,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Superconductor",
-        "count": 20,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "LargeTube",
+        "name": "MetalGrid",
         "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "PowerCell",
-        "count": 10,
+        "count": 2,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Superconductor",
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Motor",
+        "count": 4,
+        "deconstructSubtype": null,
+        "deconstructType": null
+      },
+      {
+        "name": "Reactor",
+        "count": 5,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 20,
+        "count": 13,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 20,
+        "count": 26,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -7424,8 +7454,8 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Railgun_Gun.png",
     "subtypeId": "SmallRailgun",
     "ammoName": "SmallRailgunAmmo_Ares",
-    "buildTimeSeconds": 30,
-    "pcu": 0,
+    "buildTimeSeconds": 6,
+    "pcu": 6,
     "assignedAnimation": "SmallRailgunAnimation",
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
@@ -7440,7 +7470,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "displayName": "*Railgun* 200mm Ares Gun",
+    "displayName": "*Railgun* Ares Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
@@ -15866,43 +15896,43 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 10,
+        "count": 122,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Girder",
-        "count": 24,
+        "count": 39,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 12,
+        "count": 19,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 12,
+        "count": 32,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 2,
+        "count": 4,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 5,
+        "count": 325,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 10,
+        "count": 8,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -15911,7 +15941,7 @@ const BUNDLED_WEAPONS_DATA = [
     "subtypeId": "LargeWarhead",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
     "buildTimeSeconds": 30,
-    "pcu": 2,
+    "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
@@ -15926,10 +15956,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": null,
       "graphics": null
     },
-    "displayName": "DisplayName_Block_Warhead",
+    "displayName": "Warhead (WC)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Description_Warhead",
+    "description": "WeaponCore Enabled Warhead.\r\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -15982,43 +16012,43 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4,
+        "count": 122,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "LargeTube",
-        "count": 1,
+        "name": "Girder",
+        "count": 39,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 6,
+        "count": 19,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SmallTube",
-        "count": 2,
+        "count": 32,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 1,
+        "count": 4,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Explosives",
-        "count": 2,
+        "count": 325,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 1,
+        "count": 8,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -16026,8 +16056,8 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeExplosiveBarrel.png",
     "subtypeId": "LargeExplosiveBarrel",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
-    "buildTimeSeconds": 10,
-    "pcu": 2,
+    "buildTimeSeconds": 30,
+    "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
@@ -16042,10 +16072,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": null,
       "graphics": null
     },
-    "displayName": "DisplayName_Block_ExplosiveBarrel",
+    "displayName": "Explosive Barrel (WC)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Description_ExplosiveBarrel",
+    "description": "WeaponCore Enabled Explosive Barrel.\r\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -16098,13 +16128,13 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 1,
+        "count": 5,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Girder",
-        "count": 1,
+        "count": 2,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -16128,13 +16158,13 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "Explosives",
-        "count": 2,
+        "count": 11,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 3,
+        "count": 1,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -16142,8 +16172,8 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Warhead.png",
     "subtypeId": "SmallWarhead",
     "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
-    "buildTimeSeconds": 10,
-    "pcu": 2,
+    "buildTimeSeconds": 5,
+    "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
@@ -16158,10 +16188,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": null,
       "graphics": null
     },
-    "displayName": "DisplayName_Block_Warhead",
+    "displayName": "Small Warhead (WC)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Description_Warhead",
+    "description": "WeaponCore Enabled Warhead.\r\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -16214,19 +16244,19 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 4,
+        "count": 5,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
-        "name": "LargeTube",
-        "count": 1,
+        "name": "Girder",
+        "count": 2,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 6,
+        "count": 1,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -16244,7 +16274,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "Explosives",
-        "count": 2,
+        "count": 11,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -16258,8 +16288,8 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallExplosiveBarrel.png",
     "subtypeId": "SmallExplosiveBarrel",
     "ammoName": "Other_Warheads_RegularWarhead_SG_Ammo",
-    "buildTimeSeconds": 10,
-    "pcu": 2,
+    "buildTimeSeconds": 5,
+    "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
@@ -16274,10 +16304,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": null,
       "graphics": null
     },
-    "displayName": "DisplayName_Block_ExplosiveBarrel",
+    "displayName": "Explosive Barrel (WC)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Description_ExplosiveBarrel",
+    "description": "WeaponCore Enabled Explosive barrel.\r\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 2,

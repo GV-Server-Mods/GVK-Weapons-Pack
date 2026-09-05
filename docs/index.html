@@ -201,22 +201,29 @@
           <div class="pillar-body">
             <div class="pillar-badges-cluster">
               <span class="badge badge-amber pillar-header-badge" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
+              <span class="badge badge-cyan pillar-header-badge" id="badgeAmmoTypeDesc" style="display: none;">Direct Kinetic AP</span>
+              <span class="badge badge-cyan pillar-header-badge" id="badgeOverpen" style="display: none;">🪡 Overpen</span>
             </div>
-            <div class="pillar-metric-main">
-              <span class="metric-label">EFFECTIVE DPS</span>
-              <div class="metric-big-val" id="outSustainedDps">0</div>
-              <div class="metric-sub-detail" id="outEffectiveDps">Effective against All Blocks · Base: 0 DPS</div>
-              <div class="metric-sub-detail" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
-              <div class="metric-sub-detail" id="outDamagePerShot">Dmg / Shot: 0 hp</div>
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">EFFECTIVE DPS</span>
+                <div class="metric-big-val" id="outSustainedDps">0</div>
+                <div class="metric-sub-detail" id="outEffectiveDps">Effective against All Blocks · Base: 0 DPS</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">ALPHA VOLLEY <span id="teleAlphaUnit">(1 SALVO)</span></span>
+                <div class="metric-big-val amber" id="outAlphaDmg">0</div>
+                <div class="metric-sub-detail" id="outEffectiveAlpha">Base volley: 0 hp</div>
+              </div>
             </div>
 
             <div class="pillar-divider"></div>
 
             <div class="pillar-metric-row">
               <div>
-                <span class="metric-label">ALPHA VOLLEY <span id="teleAlphaUnit">(1 SALVO)</span></span>
-                <div class="metric-val" id="outAlphaDmg">0</div>
-                <div class="metric-sub-detail" id="outEffectiveAlpha">Base volley: 0 hp</div>
+                <span class="metric-label">DAMAGE PER SHOT</span>
+                <div class="metric-val" id="outDamagePerShot">Dmg / Shot: 0 hp</div>
+                <div class="metric-sub-detail" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">EFFECTIVE RPM</span>
@@ -300,33 +307,32 @@
               <span class="badge badge-green pillar-header-badge" id="badgeDepression" style="display: none;">📐 Good Depression</span>
               <span class="badge pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
             </div>
-            <div class="pillar-metric-main">
-              <span class="metric-label">TRAVERSE SLEW SPEED</span>
-              <div class="metric-big-val" id="outTraverseDeg">0.0&deg;<span class="unit-sub">/s</span></div>
-              <div class="metric-sub-detail" id="outTraverseAzEl">Az: 0.0°/s | El: 0.0°/s</div>
-            </div>
-
-            <div class="pillar-divider"></div>
-
             <div class="pillar-metric-row">
               <div>
                 <span class="metric-label">MAX RANGE</span>
-                <div class="metric-val" id="outMaxRange">0 <span class="unit-sub">m</span></div>
+                <div class="metric-big-val cyan" id="outMaxRange">0 <span class="unit-sub">m</span></div>
                 <div class="metric-sub-detail" id="outMaxRangeSource">Targeting Range</div>
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">MUZZLE VELOCITY</span>
-                <div class="metric-val" id="outMuzzleVelocityPreview">1,000 <span class="unit-sub">m/s</span></div>
+                <div class="metric-big-val" id="outMuzzleVelocityPreview">1,000 <span class="unit-sub">m/s</span></div>
                 <div class="metric-sub-detail" id="outFlightDelay1km">Flight to 1km: 1.0s</div>
               </div>
             </div>
 
             <div class="pillar-divider"></div>
 
-            <div class="pillar-metric-main">
-              <span class="metric-label">ELEVATION ARC & RESTRICTIONS</span>
-              <div class="metric-val" id="outPillarArcSummary">📐 Elevation: -15° to +75°</div>
-              <div class="metric-sub-detail" id="outPillarDepressionNote">Depression allows downhill dune fire</div>
+            <div class="pillar-metric-row">
+              <div>
+                <span class="metric-label">TRAVERSE SLEW SPEED</span>
+                <div class="metric-val" id="outTraverseDeg">0.0&deg;<span class="unit-sub">/s</span></div>
+                <div class="metric-sub-detail" id="outTraverseAzEl">Az: 0.0°/s | El: 0.0°/s</div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">ELEVATION ARC</span>
+                <div class="metric-val" id="outPillarArcSummary">📐 -15° to +75°</div>
+                <div class="metric-sub-detail" id="outPillarDepressionNote">Standard horizontal traverse</div>
+              </div>
             </div>
 
             <div class="pillar-divider"></div>
@@ -422,9 +428,14 @@
 
             <div class="pillar-metric-row">
               <div>
-                <span class="metric-label">MAG PROFILE</span>
+                <span class="metric-label">MAG PROFILE & CARGO</span>
                 <div class="metric-val" id="outMagProfile" style="font-size: 13px;">0 rds/mag</div>
                 <div class="metric-sub-detail" id="outMagReload"></div>
+              </div>
+              <div style="text-align: right;">
+                <span class="metric-label">CONSTRUCTION & WELDING</span>
+                <div class="metric-val" id="outPillarCompSummary" style="font-size: 13px;">0 components</div>
+                <div class="metric-sub-detail" id="outPillarCompTop">Top: SteelPlate</div>
               </div>
             </div>
 
