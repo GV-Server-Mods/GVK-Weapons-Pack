@@ -1353,19 +1353,9 @@ function isHandheldWeapon(w) {
   return /Item$/i.test(sub) || /Item$/i.test(id) || /Pistol|Rifle|HandHeld/i.test(sub) || /Pistol|Rifle|HandHeld/i.test(name);
 }
 
-/// <summary>Resolves clean magazine DisplayName from .SBC file without subtype brackets.</summary>
+/// <summary>Resolves terminal display name for weapon munition selectors.</summary>
 function getAmmoSbcDisplayName(ammoKey) {
   const a = (ammosDb && ammosDb[ammoKey]) || {};
-  const magSubtype = a.ammoMagazine;
-  if (magSubtype && magSubtype !== 'Energy') {
-    const magList = (typeof magazinesBlueprintsDb !== 'undefined' && magazinesBlueprintsDb.length)
-      ? magazinesBlueprintsDb
-      : (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' ? MAGAZINES_BLUEPRINTS_DATA : []);
-    const magMeta = magList.find(m => m.subtypeId === magSubtype);
-    if (magMeta && magMeta.displayName && !magMeta.displayName.startsWith('zz*')) {
-      return magMeta.displayName;
-    }
-  }
   return a.terminalName || a.ammoRound || ammoKey;
 }
 
@@ -1944,6 +1934,18 @@ function selectWeapon(weaponId) {
       if (compareSelect) compareSelect.value = autoBench.id;
       const bAmmos = getSelectableAmmos(benchmarkWeapon);
       benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
+      if (compareAmmoSelect) {
+        if (bAmmos.length > 1) {
+          compareAmmoSelect.innerHTML = bAmmos.map(k => {
+            const label = getAmmoSbcDisplayName(k);
+            return `<option value="${k}">${label}</option>`;
+          }).join('');
+          compareAmmoSelect.value = benchmarkAmmoKey;
+          compareAmmoSelect.style.display = 'inline-block';
+        } else {
+          compareAmmoSelect.style.display = 'none';
+        }
+      }
     }
   }
 
@@ -3298,7 +3300,7 @@ function updateCombatTelemetry() {
     } else if (dmgDetails.aoe > 0 || dmgDetails.frag > 0) {
       outDpsBreakdown.textContent = `Direct: ${Math.round(dmgDetails.base).toLocaleString()} | Blast: ${Math.round(dmgDetails.aoe).toLocaleString()} | Frag: ${Math.round(dmgDetails.frag).toLocaleString()}`;
     } else if (heavyMult !== 1.0 || lightMult !== 1.0) {
-      outDpsBreakdown.textContent = `Direct AP · Heavy: ${Math.round(heavyDmg).toLocaleString()} (${heavyMult}×) | Light: ${Math.round(lightDmg).toLocaleString()} (${lightMult}×)`;
+      outDpsBreakdown.textContent = `Heavy: ${Math.round(heavyDmg).toLocaleString()} (${heavyMult}×) | Light: ${Math.round(lightDmg).toLocaleString()} (${lightMult}×)`;
     } else if (dmgDetails.cutoff > 0) {
       outDpsBreakdown.textContent = `Direct: ${Math.round(dmgDetails.base).toLocaleString()} hp · Kinetic AP (Cutoff: ${dmgDetails.cutoff.toLocaleString()})`;
     } else {
