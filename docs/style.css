@@ -2694,6 +2694,236 @@ input.control-input.is-wc-default {
   font-weight: 700;
 }
 
+/* Hero Stat Micro-Visuals */
+.hero-micro-visual {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 18px;
+  margin: 3px 0 3px 0;
+  overflow: hidden;
+}
+
+.hero-micro-visual.right {
+  justify-content: flex-end;
+}
+
+/* 1. Damage Composition Tri-Tone Strip */
+.dps-comp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.dps-comp-strip {
+  display: flex;
+  flex: 1;
+  max-width: 130px;
+  height: 5px;
+  border-radius: 2.5px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dps-comp-segment {
+  height: 100%;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dps-comp-kinetic {
+  background: var(--cyan-primary, #38bdf8);
+}
+.dps-comp-blast {
+  background: var(--amber-primary, #f59e0b);
+}
+.dps-comp-frag {
+  background: #a78bfa;
+}
+.dps-comp-legend {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* 2. Salvo Architecture Cells */
+.salvo-cluster {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.salvo-cell {
+  width: 5px;
+  height: 11px;
+  border-radius: 1px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  transition: all 0.2s ease;
+}
+.salvo-cell.active {
+  background: var(--amber-primary, #f59e0b);
+  box-shadow: 0 0 5px rgba(245, 158, 11, 0.45);
+  border-color: #fbbf24;
+}
+.salvo-cell.slug {
+  width: 13px;
+  height: 11px;
+}
+.salvo-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--amber-primary);
+  margin-left: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* 3. Concentric Artillery Radar Fan SVG */
+.radar-fan-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.radar-fan-svg {
+  width: 44px;
+  height: 18px;
+  overflow: visible;
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.25));
+}
+.radar-fan-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1;
+}
+.radar-fan-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+}
+.radar-fan-fill {
+  fill: rgba(56, 189, 248, 0.25);
+  stroke: var(--cyan-primary, #38bdf8);
+  stroke-width: 1.2;
+  transition: all 0.35s ease;
+}
+.radar-fan-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--cyan-primary);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* 4. Munition Flight Delivery Vector SVG */
+.propulsion-vector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.propulsion-vector-svg {
+  width: 38px;
+  height: 12px;
+  overflow: visible;
+}
+.propulsion-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--cyan-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  white-space: nowrap;
+}
+.propulsion-tag.beam {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+.propulsion-tag.rocket {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--amber-primary);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+.propulsion-tag.drone {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green-accent, #10b981);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* 5. Standalone UP Meter & Data Core Tech Socket */
+.up-tech-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.up-pip-rack {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.up-pip {
+  width: 5px;
+  height: 8px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+}
+.up-pip.active {
+  background: var(--amber-primary, #f59e0b);
+  border-color: #fbbf24;
+  box-shadow: 0 0 3px rgba(245, 158, 11, 0.4);
+}
+.data-core-socket {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-dim);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.data-core-socket.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--cyan-primary, #38bdf8);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.25);
+}
+
+/* 6. Isometric 3D Voxel Blueprint SVG */
+.voxel-blueprint-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.voxel-blueprint-svg {
+  width: 24px;
+  height: 18px;
+  overflow: visible;
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.2));
+}
+.voxel-block-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
 /* Embedded Mini Thermal / Duty Cycle */
 .pillar-mini-cycle {
   margin-top: 4px;

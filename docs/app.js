@@ -805,6 +805,14 @@ const outBuildTime          = document.getElementById('outBuildTime');
 const outTotalValue         = document.getElementById('outTotalValue');
 const bomTableBody          = document.getElementById('bomTableBody');
 
+// Hero Stat Micro-Visuals
+const pillarDpsStrip        = document.getElementById('pillarDpsStrip');
+const pillarAlphaSalvo      = document.getElementById('pillarAlphaSalvo');
+const pillarRangeRadar      = document.getElementById('pillarRangeRadar');
+const pillarPropulsionVector= document.getElementById('pillarPropulsionVector');
+const pillarUpTechMeter     = document.getElementById('pillarUpTechMeter');
+const pillarVoxelBlueprint  = document.getElementById('pillarVoxelBlueprint');
+
 // DOM Elements - Target Damage & Multiplier Matrix
 const tmHeavyMult = document.getElementById('tmHeavyMult');
 const tmHeavyDmg  = document.getElementById('tmHeavyDmg');
@@ -3145,6 +3153,232 @@ function renderSbcComponentsTable() {
 }
 
 // ==========================================================================
+// COMBAT TELEMETRY HERO MICRO-VISUALS
+// ==========================================================================
+
+/// <summary>
+/// Renders a 3-color kinetic/blast/frag composition strip under Effective DPS.
+/// </summary>
+function renderDpsCompositionStrip(dmgDetails, isBeam) {
+  if (!pillarDpsStrip) return;
+  const base = Math.max(0, dmgDetails?.base || 0);
+  const aoe = Math.max(0, dmgDetails?.aoe || 0);
+  const frag = Math.max(0, dmgDetails?.frag || 0);
+  const total = base + aoe + frag || 1;
+  const pctKinetic = Math.round((base / total) * 100);
+  const pctBlast = Math.round((aoe / total) * 100);
+  const pctFrag = Math.max(0, 100 - pctKinetic - pctBlast);
+
+  let label = '100% KINETIC';
+  if (isBeam) {
+    label = '100% BEAM';
+  } else if (pctBlast > 0 && pctFrag > 0) {
+    label = `${pctKinetic}% AP · ${pctBlast}% HE · ${pctFrag}% FRAG`;
+  } else if (pctBlast > 0) {
+    label = `${pctKinetic}% AP · ${pctBlast}% HE`;
+  } else if (pctFrag > 0) {
+    label = `${pctKinetic}% AP · ${pctFrag}% FRAG`;
+  } else if (dmgDetails?.cutoff > 0) {
+    label = 'AP OVERPEN';
+  }
+
+  pillarDpsStrip.innerHTML = `
+    <div class="dps-comp-wrap" title="Damage: ${pctKinetic}% Kinetic AP, ${pctBlast}% Blast, ${pctFrag}% Frag">
+      <div class="dps-comp-strip">
+        <div class="dps-comp-segment dps-comp-kinetic" style="width: ${pctKinetic}%;"></div>
+        <div class="dps-comp-segment dps-comp-blast" style="width: ${pctBlast}%;"></div>
+        <div class="dps-comp-segment dps-comp-frag" style="width: ${pctFrag}%;"></div>
+      </div>
+      <span class="dps-comp-legend">${label}</span>
+    </div>
+  `;
+}
+
+/// <summary>
+/// Renders salvo architecture cells under Alpha Volley.
+/// </summary>
+function renderAlphaSalvoCluster(totalRounds, bMult) {
+  if (!pillarAlphaSalvo) return;
+  const rounds = (totalRounds || 1) * (bMult || 1);
+  let mode = 'BURST';
+  let cells = '';
+
+  if (rounds === 1) {
+    mode = 'HEAVY SLUG';
+    cells = '<div class="salvo-cell active slug" title="Single-shot heavy kinetic slug"></div>';
+  } else if (rounds <= 6) {
+    mode = `${rounds}-RND SALVO`;
+    for (let i = 0; i < 6; i++) {
+      cells += `<div class="salvo-cell ${i < rounds ? 'active' : ''}"></div>`;
+    }
+  } else if (rounds <= 24) {
+    mode = 'BURST POD';
+    const activeCount = Math.min(8, Math.max(3, Math.round((rounds / 24) * 8)));
+    for (let i = 0; i < 8; i++) {
+      cells += `<div class="salvo-cell ${i < activeCount ? 'active' : ''}"></div>`;
+    }
+  } else {
+    mode = 'ROTARY DRUM';
+    for (let i = 0; i < 8; i++) {
+      cells += `<div class="salvo-cell active" style="opacity: ${0.45 + (i * 0.07)};"></div>`;
+    }
+  }
+
+  pillarAlphaSalvo.innerHTML = `
+    <div class="salvo-cluster" title="Salvo Pattern: ${mode} (${rounds} rds volley)">
+      ${cells}
+      <span class="salvo-label">${mode}</span>
+    </div>
+  `;
+}
+
+/// <summary>
+/// Renders an artillery radar sweep fan SVG scaled against an 8km horizon under Max Range.
+/// </summary>
+function renderRangeRadarFan(maxRange) {
+  if (!pillarRangeRadar) return;
+  const range = Math.max(0, parseFloat(maxRange) || 0);
+  const rFill = Math.max(4, Math.min(28, (range / 8000) * 28));
+  const xFillEnd = (2 + rFill * 0.866).toFixed(1);
+  const yFillEnd = (16 - rFill * 0.5).toFixed(1);
+  const xBottomEnd = (2 + rFill).toFixed(1);
+
+  const fillPath = `M 2 16 L ${xBottomEnd} 16 A ${rFill.toFixed(1)} ${rFill.toFixed(1)} 0 0 0 ${xFillEnd} ${yFillEnd} Z`;
+
+  pillarRangeRadar.innerHTML = `
+    <div class="radar-fan-wrap" title="Radar Reach: ${Math.round(range).toLocaleString()}m against 8,000m Kharak artillery horizon">
+      <svg class="radar-fan-svg" viewBox="0 0 44 18">
+        <path class="radar-fan-bg" d="M 2 16 L 30 16 M 2 16 L 26.2 2" />
+        <path class="radar-fan-ring" d="M 11 16 A 9 9 0 0 0 9.8 11.5" />
+        <path class="radar-fan-ring" d="M 20 16 A 18 18 0 0 0 17.6 7" />
+        <path class="radar-fan-ring" d="M 30 16 A 28 28 0 0 0 26.2 2" />
+        <path class="radar-fan-fill" d="${fillPath}" />
+      </svg>
+      <span class="radar-fan-label">${(range / 1000).toFixed(1)}km RADAR</span>
+    </div>
+  `;
+}
+
+/// <summary>
+/// Renders munition propulsion/delivery vector SVG under Muzzle Velocity.
+/// </summary>
+function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
+  if (!pillarPropulsionVector) return;
+
+  const ammoName = activeAmmo?.name || '';
+  const isDrone = (activeAmmo?.frag && activeAmmo.frag.fragments === 1 && /Drone/i.test(activeAmmo.frag.ammoRound || '')) || /Drone/i.test(ammoName);
+  const isGuided = Boolean(activeAmmo?.guidance || /guided|homing|torpedo|smart/i.test(ammoName));
+  const isRocket = !isGuided && (/rocket|missile/i.test(ammoName) || (activeAmmo?.trajectory?.accel || 0) > 0);
+  const isSabot = Boolean(activeAmmo?.hybridRound && !isBeam && (activeAmmo?.mass || 0) > 0);
+
+  let tag = 'BALLISTIC';
+  let tagClass = '';
+  let svgContent = '';
+
+  if (isBeam) {
+    tag = 'BEAM';
+    tagClass = 'beam';
+    svgContent = '<line x1="2" y1="6" x2="32" y2="6" stroke="#c084fc" stroke-width="2"/><circle cx="34" cy="6" r="2.5" fill="#c084fc"/>';
+  } else if (isDrone) {
+    tag = 'DRONE';
+    tagClass = 'drone';
+    svgContent = '<line x1="2" y1="6" x2="22" y2="6" stroke="#10b981" stroke-width="1.5"/><circle cx="28" cy="6" r="3.5" stroke="#10b981" stroke-width="1.2" fill="none"/><circle cx="28" cy="6" r="1.5" fill="#10b981"/>';
+  } else if (isGuided) {
+    tag = 'GUIDED';
+    tagClass = '';
+    svgContent = '<path d="M 2 9 Q 14 9 20 5 T 30 3" fill="none" stroke="#38bdf8" stroke-width="1.6"/><polygon points="30,1 35,3 30,5" fill="#38bdf8"/>';
+  } else if (isRocket) {
+    tag = 'ROCKET';
+    tagClass = 'rocket';
+    svgContent = '<path d="M 2 3 Q 6 6 2 9" fill="none" stroke="#ef4444" stroke-width="1.5"/><line x1="8" y1="6" x2="30" y2="6" stroke="#f59e0b" stroke-width="2"/><polygon points="30,3.5 35,6 30,8.5" fill="#f59e0b"/>';
+  } else if (isSabot) {
+    tag = 'SABOT';
+    tagClass = '';
+    svgContent = '<line x1="2" y1="6" x2="26" y2="6" stroke="#38bdf8" stroke-width="1.5"/><line x1="14" y1="6" x2="33" y2="6" stroke="#fff" stroke-width="2.2"/><polygon points="33,3.5 37,6 33,8.5" fill="#38bdf8"/>';
+  } else {
+    tag = 'BALLISTIC';
+    tagClass = '';
+    svgContent = '<line x1="2" y1="6" x2="28" y2="6" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5 2"/><polygon points="28,3.5 33,6 28,8.5" fill="#38bdf8"/>';
+  }
+
+  pillarPropulsionVector.innerHTML = `
+    <div class="propulsion-vector-wrap" title="Flight Profile: ${tag}">
+      <svg class="propulsion-vector-svg" viewBox="0 0 38 12">${svgContent}</svg>
+      <span class="propulsion-tag ${tagClass}">${tag}</span>
+    </div>
+  `;
+}
+
+/// <summary>
+/// Renders an 8-pip standalone UP weight rack with an integrated Data Core chip socket under Utility Points.
+/// </summary>
+function renderUpTechMeter(ups, hasDataCore) {
+  if (!pillarUpTechMeter) return;
+  const numUps = Math.max(0, parseInt(ups, 10) || 0);
+  const filledPips = Math.min(8, Math.max(numUps > 0 ? 1 : 0, Math.ceil(numUps / 5)));
+
+  let pips = '';
+  for (let i = 0; i < 8; i++) {
+    pips += `<div class="up-pip ${i < filledPips ? 'active' : ''}"></div>`;
+  }
+
+  const dataCoreHtml = hasDataCore
+    ? '<div class="data-core-socket active" title="Requires [Tech] Data Core research relic">◆ DATA CORE</div>'
+    : '<div class="data-core-socket" title="Standard industrial frontier tech">⬡ STANDARD</div>';
+
+  pillarUpTechMeter.innerHTML = `
+    <div class="up-tech-wrap" title="${numUps} Utility Points · ${hasDataCore ? 'Requires Data Core' : 'Standard Tech'}">
+      <div class="up-pip-rack">${pips}</div>
+      ${dataCoreHtml}
+    </div>
+  `;
+}
+
+/// <summary>
+/// Renders an isometric 3D blueprint voxel block dynamically sized to X×Y×Z under Dimensions.
+/// </summary>
+function renderVoxelBlueprint(sx, sy, sz_z, volBlocks) {
+  if (!pillarVoxelBlueprint) return;
+  const x = Math.max(1, parseInt(sx, 10) || 1);
+  const y = Math.max(1, parseInt(sy, 10) || 1);
+  const z = Math.max(1, parseInt(sz_z, 10) || 1);
+
+  const maxDim = Math.max(x, y, z);
+  const scale = Math.min(5, 10 / maxDim);
+  const dx = Math.min(7, Math.max(2, x * scale));
+  const dy = Math.min(7, Math.max(2, y * scale));
+  const dz = Math.min(6, Math.max(2, z * scale));
+
+  const cx = 12;
+  const cy = 10 + (dz / 2);
+
+  const p0 = [cx, cy];
+  const p1 = [cx + dx, cy - dx * 0.5];
+  const p2 = [cx - dy, cy - dy * 0.5];
+  const p3 = [cx + dx - dy, cy - (dx + dy) * 0.5];
+
+  const t0 = [cx, cy - dz];
+  const t1 = [cx + dx, cy - dz - dx * 0.5];
+  const t2 = [cx - dy, cy - dz - dy * 0.5];
+  const t3 = [cx + dx - dy, cy - dz - (dx + dy) * 0.5];
+
+  const topFace = `${t0[0]},${t0[1]} ${t1[0]},${t1[1]} ${t3[0]},${t3[1]} ${t2[0]},${t2[1]}`;
+  const leftFace = `${p0[0]},${p0[1]} ${t0[0]},${t0[1]} ${t2[0]},${t2[1]} ${p2[0]},${p2[1]}`;
+  const rightFace = `${p0[0]},${p0[1]} ${t0[0]},${t0[1]} ${t1[0]},${t1[1]} ${p1[0]},${p1[1]}`;
+
+  pillarVoxelBlueprint.innerHTML = `
+    <div class="voxel-blueprint-wrap" title="Physical Voxel Bounds: ${x}×${y}×${z} (${volBlocks} blocks)">
+      <svg class="voxel-blueprint-svg" viewBox="0 0 24 18">
+        <polygon points="${leftFace}" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" stroke-width="0.8"/>
+        <polygon points="${rightFace}" fill="rgba(56, 189, 248, 0.22)" stroke="#38bdf8" stroke-width="0.8"/>
+        <polygon points="${topFace}" fill="rgba(56, 189, 248, 0.35)" stroke="#38bdf8" stroke-width="0.8"/>
+      </svg>
+      <span class="voxel-block-tag">${volBlocks} BLK${volBlocks > 1 ? 'S' : ''}</span>
+    </div>
+  `;
+}
+
+// ==========================================================================
 // TELEMETRY & COMBAT CALCULATOR
 // ==========================================================================
 
@@ -3295,6 +3529,11 @@ function updateCombatTelemetry() {
       outEffectiveAlpha.textContent = `Base Volley: ${scaledBaseVolley.toLocaleString()} hp${batteryAlphaTag} · ${magTag}`;
     }
   }
+
+  // Render Pillar 1 Hero Micro-Visuals
+  renderDpsCompositionStrip(dmgDetails, isBeam);
+  renderAlphaSalvoCluster(totalRounds, bMult);
+
   // Damage Per Shot & Payload Breakdown
   const shotTotalDmg = Math.round(dmgDetails.total * bMult);
   if (outDamagePerShot) {
@@ -3508,6 +3747,10 @@ function updateCombatTelemetry() {
       : `Flight to 1km: ${(1000 / (muzzleSpeed || 1)).toFixed(2)}s`;
   }
 
+  // Render Pillar 2 Hero Micro-Visuals
+  renderRangeRadarFan(maxEngagementRange);
+  renderPropulsionVector(activeWeapon, activeAmmo, isBeam);
+
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
   if (outPillarArcSummary) outPillarArcSummary.textContent = arcInfo.text;
   const outPillarDepressionNote = document.getElementById('outPillarDepressionNote');
@@ -3630,6 +3873,11 @@ function updateCombatTelemetry() {
   if (outPillarVolume) {
     outPillarVolume.textContent = `${activeWeapon.gridSize || activeWeapon.grid || 'Large'} Grid · ${activeWeapon.pcu || 0} PCU`;
   }
+
+  // Render Pillar 3 Hero Micro-Visuals
+  const hasDataCore = Boolean(activeWeapon.hasCircuitry || (activeWeapon.techComponent && /Data\s*Core/i.test(activeWeapon.techComponent)));
+  renderUpTechMeter(currentUps, hasDataCore);
+  renderVoxelBlueprint(sx, sy, sz_z, volBlocks);
 
   // Dry Mass (Pillar 3 Metric Row 3)
   const outPillarMass = document.getElementById('outPillarMass');
