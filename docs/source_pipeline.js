@@ -505,9 +505,13 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const usable = allRounds.filter((r) => !ammos[r] || ammos[r].hardPointUsable !== false);
   const a0 = ammos[usable[0]];
   const grid = (block && block.cubeSize) || 'Large';
-  const type = block ? (block.xsiType.indexOf('Turret') >= 0 ? 'Turret' : 'Fixed')
-    : ((hw.MaxAzimuth || 0) !== 0 ? 'Turret' : 'Fixed');
   const partName = w.name;
+  const isTurret = (block && block.xsiType && block.xsiType.indexOf('Turret') >= 0)
+    || (block && /Turret/i.test(block.displayName || ''))
+    || /Turret/i.test(partName || '')
+    || /Turret/i.test(ov.name || '')
+    || (mp.AzimuthPartId && mp.AzimuthPartId !== 'None' && !/Gimbal/i.test((block && block.displayName) || partName || ov.name || ''));
+  const type = isTurret ? 'Turret' : 'Fixed';
   const id = ov.id || (grid[0] + '__' + sub);
   const mag = a0 && magByKey[a0.ammoMagazine];
   // Fragment rounds are referenced by terminal round name, which may differ from the def name.
@@ -525,6 +529,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     pdSmartOnly: tgt.LockedSmartOnly === true,
     name: ov.name || '(' + grid[0] + ') ' + partName,
     grid, type,
+    isHandheld: (hw.Type === 'HandWeapon') || (sub && /Item$/i.test(sub)) || false,
     rateOfFire: loading.RateOfFire || 0,
     shotsInBurst: loading.ShotsInBurst || 0,
     barrelsPerShot: loading.BarrelsPerShot || 1,
