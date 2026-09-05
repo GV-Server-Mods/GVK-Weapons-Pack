@@ -195,7 +195,6 @@
             <div class="pillar-badges-cluster">
               <span class="badge badge-amber pillar-header-badge" id="badgeRole">🥊 <strong>Kinetic Brawler</strong></span>
               <span class="badge badge-cyan pillar-header-badge" id="badgeAmmoTypeDesc" style="display: none;">Direct Kinetic AP</span>
-              <span class="badge badge-cyan pillar-header-badge" id="badgeOverpen" style="display: none;">🪡 Overpen</span>
             </div>
             <div class="pillar-metric-row">
               <div>
@@ -277,7 +276,7 @@
 
                 <div class="target-stat-box" id="tmBlastBox">
                   <div class="target-stat-header">
-                    <span class="target-type-name">💥 Blast / Splash</span>
+                    <span class="target-type-name" id="tmBlastTitle">💥 Blast / Splash</span>
                     <span class="target-multiplier-badge" id="tmBlastRadius">None</span>
                   </div>
                   <div class="target-stat-value" id="tmBlastDmg">0 hp</div>
@@ -300,6 +299,8 @@
             <div class="pillar-badges-cluster">
               <span class="badge badge-green pillar-header-badge" id="badgeDepression" style="display: none;">📐 Good Depression</span>
               <span class="badge pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
+              <span class="badge badge-cyan pillar-header-badge" id="badgeTerrainCruise" style="display: none;">🏔️ 500m Cruise</span>
+              <span class="badge badge-cyan pillar-header-badge" id="badgeMunitionHealth" style="display: none;">🛡️ Munition HP</span>
             </div>
             <div class="pillar-metric-row">
               <div>
@@ -313,6 +314,7 @@
                 <div class="metric-big-val" id="outMuzzleVelocityPreview">1,000 <span class="unit-sub">m/s</span></div>
                 <div class="hero-micro-visual right" id="pillarPropulsionVector" title="Munition Propulsion & Flight Delivery Vector"></div>
                 <div class="metric-sub-detail" id="outFlightDelay1km">Flight to 1km: 1.0s</div>
+                <div class="metric-sub-detail" id="outMunitionDurability" style="margin-top: 2px;"></div>
               </div>
             </div>
 
@@ -326,7 +328,7 @@
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">ELEVATION ARC</span>
-                <div class="metric-val" id="outPillarArcSummary">📐 -15° to +75°</div>
+                <div class="metric-val" id="outPillarArcSummary">-15° to +75°</div>
                 <div class="metric-sub-detail" id="outPillarDepressionNote">Standard horizontal traverse</div>
               </div>
             </div>
@@ -361,8 +363,6 @@
               </div>
             </div>
 
-            <div id="deckTerrainClearance" style="margin-top: 10px; font-size: 11.5px; color: var(--cyan-primary); display: none;"></div>
-
           </div>
         </div>
 
@@ -372,24 +372,16 @@
             <span class="pillar-title">⚖️ SHIP FITTING & LOGISTICS</span>
           </div>
           <div class="pillar-body">
-            
-            <!-- Fitting Badges Cluster -->
-            <div class="pillar-badges-cluster">
-              <span class="badge badge-purple pillar-header-badge pillar-tag" id="outPillarGridTag">Large Grid</span>
-              <div class="badge badge-cyan pillar-header-badge" id="badgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
-              <div class="badge badge-cyan pillar-header-badge" id="badgePd" style="display: none;">📡 Point Defense</div>
-            </div>
-
             <div class="pillar-metric-row">
               <div>
                 <span class="metric-label">UTILITY POINTS</span>
                 <div class="metric-big-val amber" id="outPillarUps">0 UPs</div>
-                <div class="hero-micro-visual" id="pillarUpTechMeter" title="Standalone UP Weight & Data Core Tech Socket"></div>
+                <div class="hero-micro-visual" id="pillarUpTechMeter" title="Required Tech Components"></div>
                 <div class="metric-sub-detail" id="outPillarUpsDetail">Ship Core Up Allocation</div>
               </div>
               <div style="text-align: right;">
                 <span class="metric-label">FOOTPRINT & VOLUME</span>
-                <div class="metric-big-val" id="outPillarDimensions">1×1×1 <span class="unit-sub">(1 blk)</span></div>
+                <div class="metric-big-val" id="outPillarDimensions">1×1×1</div>
                 <div class="hero-micro-visual right" id="pillarVoxelBlueprint" title="3D Voxel Blueprint Dimensions"></div>
                 <div class="metric-sub-detail" id="outPillarVolume">Physical Grid Bounds</div>
               </div>
@@ -591,10 +583,11 @@
           </div>
         </summary>
         <div class="bom-details-content">
-          <div style="padding: 12px; max-height: 480px; overflow-y: auto;">
+          <div class="bom-table-wrap">
             <table class="bom-table">
               <thead>
                 <tr>
+                  <th style="width: 70px; text-align: center;">Layer</th>
                   <th>Component</th>
                   <th>Quantity</th>
                   <th>Mass (kg)</th>

@@ -312,7 +312,7 @@ check('Point Defense Laser (continuous, no virtual mag) resolves 1 round (100 hp
 check('Definition Workbench hides weaponBanner', lcReport.bannerDisplayWorkbench === 'none');
 check('Combat Telemetry displays weaponBanner', lcReport.bannerDisplayTelemetry === 'flex');
 check('Tuning Weapon dropdown matches activeWeapon', lcReport.workbenchSelectVal === lcReport.hurWId);
-check('Point defense weapons count is exactly 28 (smart ammo hunters only)', lcReport.pdWeaponsCount === 28);
+check('Point defense weapons count is exactly 26 (turreted smart ammo hunters only, no fixed mounts)', lcReport.pdWeaponsCount === 26);
 
 // Definition Workbench cleanup checks
 check('Upgrade button removed from workbench scope bar', !htmlSource.includes('id="btnNewMinimalUpgrade"'));

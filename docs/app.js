@@ -823,6 +823,7 @@ const tmLightSub  = document.getElementById('tmLightSub');
 const tmNonArmorMult = document.getElementById('tmNonArmorMult');
 const tmNonArmorDmg  = document.getElementById('tmNonArmorDmg');
 const tmNonArmorSub  = document.getElementById('tmNonArmorSub');
+const tmBlastTitle = document.getElementById('tmBlastTitle');
 const tmBlastRadius = document.getElementById('tmBlastRadius');
 const tmBlastDmg   = document.getElementById('tmBlastDmg');
 const tmBlastSub   = document.getElementById('tmBlastSub');
@@ -831,6 +832,8 @@ const tmPenetrationChip = document.getElementById('tmPenetrationChip');
 // DOM Elements - Pillar 2 Handling & Accuracy
 const outMuzzleVelocityPreview = document.getElementById('outMuzzleVelocityPreview');
 const outFlightDelay1km = document.getElementById('outFlightDelay1km');
+const outMunitionDurability = document.getElementById('outMunitionDurability');
+const badgeMunitionHealth = document.getElementById('badgeMunitionHealth');
 const outShotDeviation = document.getElementById('outShotDeviation');
 const outShotDeviationDetail = document.getElementById('outShotDeviationDetail');
 const outAimingTolerance = document.getElementById('outAimingTolerance');
@@ -1876,28 +1879,9 @@ function updateTelemetryAmmoBadge() {
     badgeAmmoTypeDesc.style.display = 'inline-flex';
   }
 
-  // Populate Overpenetration badge in Pillar 1 badges cluster
-  if (badgeOverpen) {
-    if (dmg.cutoff > 0) {
-      badgeOverpen.textContent = `🪡 Pen ${Math.round(dmg.perBlockBase).toLocaleString()}/blk ×${dmg.penBlocks}`;
-      badgeOverpen.title = `Overpenetration: up to ${dmg.penBlocks} blocks penetrating at max ${Math.round(dmg.perBlockBase).toLocaleString()} hp per block.`;
-      badgeOverpen.style.display = 'inline-flex';
-    } else {
-      badgeOverpen.style.display = 'none';
-    }
-  }
 
-  // Remaining munition traits (e.g. terrain clearance) in loaded munition bar
-  if (telemetryAmmoBadge) {
-    const clearance = getMunitionTerrainClearance(activeAmmo);
-    if (clearance) {
-      telemetryAmmoBadge.innerHTML = `<span class="badge badge-cyan" style="padding: 2px 6px;">${clearance.text}</span>`;
-      telemetryAmmoBadge.style.display = 'inline-block';
-    } else {
-      telemetryAmmoBadge.innerHTML = '';
-      telemetryAmmoBadge.style.display = 'none';
-    }
-  }
+
+
 }
 
 function selectWeapon(weaponId) {
@@ -2057,7 +2041,8 @@ function calculateWeaponDryMass(weapon) {
 /// </summary>
 function getAutomatedWeaponRole(weapon, ammo) {
   if (!weapon) return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Direct ballistic fire' };
-  if (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD'))) {
+  const isFixedMount = weapon.type === 'Fixed' || (weapon.rotateRate <= 0 && weapon.elevateRate <= 0);
+  if (!isFixedMount && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD')))) {
     return { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' };
   }
   const isGuided = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None';
@@ -2069,7 +2054,7 @@ function getAutomatedWeaponRole(weapon, ammo) {
   const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
   const isPenetrator = (ammo?.baseDamageCutoff > 0 && (ammo?.baseDamage || 0) > 20000) || heavyMult >= 1.5;
   if (isPenetrator || ((weapon.baseDamage || 0) >= 50000 && (weapon.rateOfFire || 0) <= 120)) {
-    return { id: 'breaker', label: 'Armor Breaker', icon: '🎯', desc: 'Heavy armor penetrator & anti-capital kinetic' };
+    return { id: 'breaker', label: 'Armor Breaker', icon: '🔨', desc: 'Heavy armor penetrator & anti-capital kinetic' };
   }
   const range = (weapon.type === 'Turret' && weapon.maxTargetDistance) ? weapon.maxTargetDistance : (ammo?.trajectory?.maxTrajectory || 0);
   if (range >= 2200 && (weapon.rateOfFire || 0) <= 240) {
@@ -2114,7 +2099,7 @@ function getMunitionTerrainClearance(ammo) {
 /// </summary>
 function getWeaponArcSummary(weapon) {
   if (!weapon || weapon.type !== 'Turret') {
-    return { isTurret: false, isGimbal: false, text: 'Fixed Mount (0° Arc)', hasDepression: false, depressionLabel: 'Fixed Forward', note: 'Rigid Forward Mount' };
+    return { isTurret: false, isGimbal: false, text: 'Fixed (0°)', hasDepression: false, depressionLabel: 'Fixed Forward', note: 'Rigid forward mount' };
   }
   const minAz = weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
   const maxAz = weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
@@ -2129,8 +2114,10 @@ function getWeaponArcSummary(weapon) {
     ? `📐 Good Depression (${minEl}°)`
     : (isZeroDepression ? `Relentlessly Optimistic (0°)` : `Depression: ${minEl}°`);
   const depressionNote = hasGoodDepression
-    ? `Depression: ${minEl}° · Downward clearance enabled`
-    : (isZeroDepression ? `0° Depression · Cannot aim below horizon` : `Elevation: ${minEl}° to +${maxEl}°`);
+    ? `Depression: ${minEl}° · Downward clearance`
+    : (isZeroDepression ? `0° Depression · Cannot aim below horizon` : `Depression: ${minEl}°`);
+
+  const arcText = `${minEl > 0 ? '+' : ''}${minEl}° to +${maxEl}°`;
 
   if (isGimbal) {
     const halfAz = Math.round(azSpan / 2);
@@ -2138,17 +2125,17 @@ function getWeaponArcSummary(weapon) {
       isTurret: true,
       isGimbal: true,
       minAz, maxAz, minEl, maxEl,
-      text: `🎯 Gimbal: ±${halfAz}° Az / ${minEl}° to +${maxEl}° El`,
+      text: arcText,
       hasDepression: hasGoodDepression,
       depressionLabel,
-      note: isGimbal ? `Restricted Gimbal Cone (±${halfAz}° Az)` : depressionNote
+      note: `Gimbal Cone (±${halfAz}° Azimuth)`
     };
   }
   return {
     isTurret: true,
     isGimbal: false,
     minAz, maxAz, minEl, maxEl,
-    text: `📐 Elevation: ${minEl}° to +${maxEl}°`,
+    text: arcText,
     hasDepression: hasGoodDepression,
     depressionLabel,
     note: depressionNote
@@ -2167,11 +2154,14 @@ function getWeaponRecoilWarning(weapon, ammo) {
 
   if (isMonster) {
     const kickStr = kickKn >= 1000 ? `${(kickKn / 1000).toFixed(1)} MN` : `${Math.round(kickKn)} kN`;
-    const label = kickKn >= 20000 ? `⚠️ Spinal Compression: ${kickStr}` : `⚠️ Chassis Shaker: ${kickStr}`;
-    return { showRecoil: true, text: label, isHeavy: true, isLow: false, kickKn };
+    const label = kickKn >= 20000 ? `⚠️ Heavy Recoil: ${kickStr}` : `⚠️ Moderate Recoil: ${kickStr}`;
+    const tooltip = kickKn >= 20000
+      ? `Recoil: ${kickStr} (${Math.round(kickKn)} kN). Severe impulse — may summon Clang to send your rover into low Kharak orbit or permanently saturate the Havok solver.`
+      : `Recoil: ${kickStr}. Significant chassis shaker — will test your rover suspension dampening and structural integrity.`;
+    return { showRecoil: true, text: label, tooltip, isHeavy: true, isLow: false, kickKn };
   }
   if (kick <= 0) {
-    return { showRecoil: false, text: 'Clang-Approved (0 N)', isHeavy: false, isLow: true, kickKn: 0 };
+    return { showRecoil: false, text: 'Clang-Approved (0 N)', tooltip: 'Zero recoil kick — completely stabilized, Clang has no purchase here.', isHeavy: false, isLow: true, kickKn: 0 };
   }
   return { showRecoil: false, text: `${Math.round(kickKn)} kN Recoil`, isHeavy: false, isLow: false, kickKn };
 }
@@ -2399,17 +2389,14 @@ function updateUniversalBanner() {
   const scopeBadgeNpc = document.getElementById('scopeBadgeNpc');
   if (scopeBadgeNpc) scopeBadgeNpc.style.display = isNpc ? 'inline-flex' : 'none';
 
-  // Point Defense capability - sourced from weapons data (pdProjectiles), mirrors TargetingDef.Threats
-  const pdTitle = activeWeapon.pdProjectiles
-    ? (activeWeapon.pdSmartOnly ? 'WeaponCore threat list includes Projectiles (smart projectiles only - dumb rounds ignored)' : 'WeaponCore threat list includes Projectiles')
+  // Point Defense capability - turreted weapons engaging projectiles in flight
+  const isPd = Boolean(activeWeapon.pdProjectiles && activeWeapon.type !== 'Fixed');
+  const pdTitle = isPd
+    ? (activeWeapon.pdSmartOnly ? 'WeaponCore threat list includes Projectiles (smart projectiles only - dumb rounds ignored)' : 'WeaponCore threat list includes Projectiles (Anti-missile interception)')
     : '';
-  if (badgePd) {
-    badgePd.style.display = activeWeapon.pdProjectiles ? 'inline-flex' : 'none';
-    badgePd.title = pdTitle;
-  }
   const scopeBadgePd = document.getElementById('scopeBadgePd');
   if (scopeBadgePd) {
-    scopeBadgePd.style.display = activeWeapon.pdProjectiles ? 'inline-flex' : 'none';
+    scopeBadgePd.style.display = isPd ? 'inline-flex' : 'none';
     scopeBadgePd.title = pdTitle;
   }
 
@@ -3195,15 +3182,38 @@ function renderDpsCompositionStrip(dmgDetails, isBeam) {
 }
 
 /// <summary>
-/// Renders salvo architecture cells under Alpha Volley.
+/// Renders the weapon's native salvo architecture cells (does not scale with battery multipliers).
 /// </summary>
-function renderAlphaSalvoCluster(totalRounds, bMult) {
+function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma) {
   if (!pillarAlphaSalvo) return;
-  const rounds = (totalRounds || 1) * (bMult || 1);
+  const rounds = Math.max(1, parseInt(totalRounds, 10) || 1);
   let mode = 'BURST';
   let cells = '';
+  let labelClass = '';
 
-  if (rounds === 1) {
+  if (isBeam) {
+    labelClass = 'beam';
+    if (rounds === 1) {
+      mode = 'CONTINUOUS BEAM';
+      cells = '<div class="salvo-cell beam-cont" title="Continuous optical lance emitter"></div>';
+    } else {
+      mode = 'CAPACITOR BURST';
+      for (let i = 0; i < 8; i++) {
+        cells += `<div class="salvo-cell active beam" style="opacity: ${0.45 + (i * 0.07)};" title="Capacitor discharge energy tick"></div>`;
+      }
+    }
+  } else if (isPlasma) {
+    labelClass = 'plasma';
+    if (rounds === 1) {
+      mode = 'PLASMA ORB';
+      cells = '<div class="salvo-cell active plasma" title="Superheated magnetic plasma charge"></div>';
+    } else {
+      mode = `${rounds}-RND PLASMA`;
+      for (let i = 0; i < Math.min(8, rounds); i++) {
+        cells += `<div class="salvo-cell active plasma" title="Superheated magnetic plasma charge"></div>`;
+      }
+    }
+  } else if (rounds === 1) {
     mode = 'HEAVY SLUG';
     cells = '<div class="salvo-cell active slug" title="Single-shot heavy kinetic slug"></div>';
   } else if (rounds <= 6) {
@@ -3218,45 +3228,72 @@ function renderAlphaSalvoCluster(totalRounds, bMult) {
       cells += `<div class="salvo-cell ${i < activeCount ? 'active' : ''}"></div>`;
     }
   } else {
-    mode = 'ROTARY DRUM';
+    mode = 'BELT-FED';
     for (let i = 0; i < 8; i++) {
       cells += `<div class="salvo-cell active" style="opacity: ${0.45 + (i * 0.07)};"></div>`;
     }
   }
 
   pillarAlphaSalvo.innerHTML = `
-    <div class="salvo-cluster" title="Salvo Pattern: ${mode} (${rounds} rds volley)">
+    <div class="salvo-cluster" title="Native Salvo Pattern: ${mode} (${rounds} ${isBeam ? 'energy ticks' : 'rds'}/volley)">
       ${cells}
-      <span class="salvo-label">${mode}</span>
+      <span class="salvo-label ${labelClass}">${mode}</span>
     </div>
   `;
 }
 
 /// <summary>
-/// Renders an artillery radar sweep fan SVG scaled against an 8km horizon under Max Range.
+/// Renders an artillery radar fan for tracking turrets, or a linear boresight corridor for fixed weapons.
 /// </summary>
-function renderRangeRadarFan(maxRange) {
+function renderRangeVisual(rangeNum, isTrackingWeapon) {
   if (!pillarRangeRadar) return;
-  const range = Math.max(0, parseFloat(maxRange) || 0);
-  const rFill = Math.max(4, Math.min(28, (range / 8000) * 28));
-  const xFillEnd = (2 + rFill * 0.866).toFixed(1);
-  const yFillEnd = (16 - rFill * 0.5).toFixed(1);
-  const xBottomEnd = (2 + rFill).toFixed(1);
+  const range = Math.max(0, parseFloat(rangeNum) || 0);
 
-  const fillPath = `M 2 16 L ${xBottomEnd} 16 A ${rFill.toFixed(1)} ${rFill.toFixed(1)} 0 0 0 ${xFillEnd} ${yFillEnd} Z`;
+  if (isTrackingWeapon) {
+    const maxTargetHorizon = 4000;
+    const rRatio = Math.min(1.0, range / maxTargetHorizon);
+    const maxR = 64;
+    const rFill = Math.max(6, Math.min(maxR, rRatio * maxR));
+    const cos20 = 0.9397;
+    const sin20 = 0.3420;
+    const xFillEnd = (4 + rFill * cos20).toFixed(1);
+    const yFillEnd = (24 - rFill * sin20).toFixed(1);
+    const xBottomEnd = (4 + rFill).toFixed(1);
 
-  pillarRangeRadar.innerHTML = `
-    <div class="radar-fan-wrap" title="Radar Reach: ${Math.round(range).toLocaleString()}m against 8,000m Kharak artillery horizon">
-      <svg class="radar-fan-svg" viewBox="0 0 44 18">
-        <path class="radar-fan-bg" d="M 2 16 L 30 16 M 2 16 L 26.2 2" />
-        <path class="radar-fan-ring" d="M 11 16 A 9 9 0 0 0 9.8 11.5" />
-        <path class="radar-fan-ring" d="M 20 16 A 18 18 0 0 0 17.6 7" />
-        <path class="radar-fan-ring" d="M 30 16 A 28 28 0 0 0 26.2 2" />
-        <path class="radar-fan-fill" d="${fillPath}" />
-      </svg>
-      <span class="radar-fan-label">${(range / 1000).toFixed(1)}km RADAR</span>
-    </div>
-  `;
+    const fillPath = `M 4 24 L ${xBottomEnd} 24 A ${rFill.toFixed(1)} ${rFill.toFixed(1)} 0 0 0 ${xFillEnd} ${yFillEnd} Z`;
+
+    pillarRangeRadar.innerHTML = `
+      <div class="radar-fan-wrap" title="Tracking Radar: ${Math.round(range).toLocaleString()}m against 4,000m turret horizon">
+        <svg class="radar-fan-svg" viewBox="0 0 84 28">
+          <!-- Radar Sweep Baseline & 20-deg Top Ray -->
+          <path class="radar-fan-bg" d="M 4 24 L 68 24 M 4 24 L 64.1 2.1" />
+          <!-- Concentric Range Rings: 1.0km, 2.0km, 3.0km, 4.0km -->
+          <path class="radar-fan-ring" d="M 20 24 A 16 16 0 0 0 19.0 18.5" />
+          <path class="radar-fan-ring" d="M 36 24 A 32 32 0 0 0 34.1 13.1" />
+          <path class="radar-fan-ring" d="M 52 24 A 48 48 0 0 0 49.1 7.6" />
+          <path class="radar-fan-ring" d="M 68 24 A 64 64 0 0 0 64.1 2.1" />
+          <!-- Dynamic Weapon Range Arc Fill -->
+          <path class="radar-fan-fill" d="${fillPath}" />
+        </svg>
+        <span class="radar-fan-label">RADAR</span>
+      </div>
+    `;
+  } else {
+    const fillWidth = Math.max(14, Math.min(76, Math.round((range / 5000) * 76)));
+    pillarRangeRadar.innerHTML = `
+      <div class="boresight-reach-wrap" title="Direct Boresight Reach: ${Math.round(range).toLocaleString()}m (Fixed mount, manual aim)">
+        <svg class="boresight-reach-svg" viewBox="0 0 84 16">
+          <line class="boresight-reach-rail" x1="4" y1="8" x2="80" y2="8" />
+          <line class="boresight-reach-tick" x1="23" y1="5" x2="23" y2="11" />
+          <line class="boresight-reach-tick" x1="42" y1="4" x2="42" y2="12" />
+          <line class="boresight-reach-tick" x1="61" y1="5" x2="61" y2="11" />
+          <line x1="4" y1="8" x2="${fillWidth}" y2="8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="${fillWidth}" cy="8" r="3" fill="#38bdf8" stroke="#fff" stroke-width="0.8" />
+        </svg>
+        <span class="boresight-reach-label">BORESIGHT</span>
+      </div>
+    `;
+  }
 }
 
 /// <summary>
@@ -3266,112 +3303,228 @@ function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
   if (!pillarPropulsionVector) return;
 
   const ammoName = activeAmmo?.name || '';
-  const isDrone = (activeAmmo?.frag && activeAmmo.frag.fragments === 1 && /Drone/i.test(activeAmmo.frag.ammoRound || '')) || /Drone/i.test(ammoName);
-  const isGuided = Boolean(activeAmmo?.guidance || /guided|homing|torpedo|smart/i.test(ammoName));
-  const isRocket = !isGuided && (/rocket|missile/i.test(ammoName) || (activeAmmo?.trajectory?.accel || 0) > 0);
-  const isSabot = Boolean(activeAmmo?.hybridRound && !isBeam && (activeAmmo?.mass || 0) > 0);
+  const weaponName = activeWeapon?.name || '';
+  const isDrone = Boolean((activeAmmo?.frag && activeAmmo.frag.fragments === 1 && /Drone/i.test(activeAmmo.frag.ammoRound || '')) || /Drone/i.test(ammoName) || /Drone/i.test(weaponName));
+  const isChaffFlare = /flare|chaff|decoy/i.test(ammoName) || /flare|chaff|decoy/i.test(weaponName) || Boolean(activeAmmo?.ammoMagazine && /flare|firework/i.test(activeAmmo.ammoMagazine));
+  const isRadarSensor = /sensor|radar|designator/i.test(weaponName) || /sensor|radar|designator/i.test(ammoName);
+  const isPlasma = /plasma/i.test(ammoName) || /plasma/i.test(weaponName);
+  const isFlak = /flak/i.test(ammoName) || /flak/i.test(weaponName);
+  const isBallisticWeapon = /gatling|vulcan|avenger|autocannon|rotary|cannon|flak/i.test(weaponName) ||
+                            /gatling|vulcan|avenger|autocannon|rotary|cannon|flak/i.test(ammoName) ||
+                            Boolean(activeAmmo?.file && /Ballistics_/i.test(activeAmmo.file));
+  const isRailgun = !isPlasma && (/railgun|coilgun/i.test(weaponName) || /railgun|coilgun/i.test(ammoName) || (Boolean(activeAmmo?.hybridRound) && (activeAmmo?.mass || 0) > 0));
+  const isSabot = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && (isRailgun || /sabot|apfsds/i.test(ammoName) || /sabot|apfsds/i.test(weaponName));
+
+  const trajectoryGuidance = activeAmmo?.trajectory?.guidance || activeAmmo?.guidance;
+  const hasSmartGuidance = Boolean(!isFlak && !isBallisticWeapon && trajectoryGuidance && trajectoryGuidance !== 'None');
+  const isHoming = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isBallisticWeapon && (isPlasma || hasSmartGuidance || /torpedo|srbm|guided/i.test(ammoName) || (/missile/i.test(ammoName) && !/rocket|flak/i.test(ammoName)));
+  const isRocket = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isHoming && (/rocket/i.test(ammoName) || /rocket/i.test(weaponName) || (activeAmmo?.trajectory?.accel || 0) > 0);
 
   let tag = 'BALLISTIC';
   let tagClass = '';
   let svgContent = '';
 
-  if (isBeam) {
+  if (isRadarSensor) {
+    tag = 'RADAR PULSE';
+    tagClass = 'radar';
+    svgContent = `
+      <path d="M 6 13 A 6 6 0 0 1 6 5" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 6 16 A 10 10 0 0 1 6 2" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+      <line x1="2" y1="9" x2="6" y2="9" stroke="#38bdf8" stroke-width="2"/>
+      <line x1="8" y1="9" x2="34" y2="9" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="3 2"/>
+      <path d="M 38 4 A 8 8 0 0 1 38 14" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 44 2 A 12 12 0 0 1 44 16" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+      <path d="M 50 1 A 15 15 0 0 1 50 17" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+    `;
+  } else if (isChaffFlare) {
+    tag = 'CHAFF/FLARE';
+    tagClass = 'flare';
+    svgContent = `
+      <rect x="3" y="11" width="6" height="5" rx="1" fill="#f472b6" opacity="0.85"/>
+      <path d="M 9 13 Q 20 4 34 6" fill="none" stroke="#f472b6" stroke-width="1.6" stroke-dasharray="3 2"/>
+      <circle cx="36" cy="6" r="2.5" fill="#fff"/>
+      <line x1="36" y1="6" x2="45" y2="3" stroke="#f472b6" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="36" y1="6" x2="44" y2="10" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="36" y1="6" x2="52" y2="6" stroke="#f472b6" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2"/>
+      <circle cx="46" cy="3" r="1.5" fill="#f472b6"/>
+      <circle cx="44" cy="10" r="1.5" fill="#fbbf24"/>
+      <circle cx="53" cy="6" r="1.8" fill="#f472b6"/>
+      <circle cx="50" cy="12" r="1.2" fill="#fbbf24"/>
+      <circle cx="58" cy="4" r="1.2" fill="#fff"/>
+    `;
+  } else if (isBeam) {
     tag = 'BEAM';
     tagClass = 'beam';
-    svgContent = '<line x1="2" y1="6" x2="32" y2="6" stroke="#c084fc" stroke-width="2"/><circle cx="34" cy="6" r="2.5" fill="#c084fc"/>';
+    svgContent = '<line x1="3" y1="9" x2="52" y2="9" stroke="#c084fc" stroke-width="2.5"/><circle cx="56" cy="9" r="3.5" fill="#c084fc"/>';
   } else if (isDrone) {
     tag = 'DRONE';
     tagClass = 'drone';
-    svgContent = '<line x1="2" y1="6" x2="22" y2="6" stroke="#10b981" stroke-width="1.5"/><circle cx="28" cy="6" r="3.5" stroke="#10b981" stroke-width="1.2" fill="none"/><circle cx="28" cy="6" r="1.5" fill="#10b981"/>';
-  } else if (isGuided) {
-    tag = 'GUIDED';
-    tagClass = '';
-    svgContent = '<path d="M 2 9 Q 14 9 20 5 T 30 3" fill="none" stroke="#38bdf8" stroke-width="1.6"/><polygon points="30,1 35,3 30,5" fill="#38bdf8"/>';
+    svgContent = `
+      <polygon points="30,5 38,9 30,13 22,9" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1.5"/>
+      <circle cx="19" cy="5" r="2.5" fill="#10b981"/><circle cx="41" cy="5" r="2.5" fill="#10b981"/>
+      <circle cx="19" cy="13" r="2.5" fill="#10b981"/><circle cx="41" cy="13" r="2.5" fill="#10b981"/>
+      <line x1="19" y1="5" x2="41" y2="13" stroke="#10b981" stroke-width="1"/>
+      <line x1="19" y1="13" x2="41" y2="5" stroke="#10b981" stroke-width="1"/>
+      <circle cx="30" cy="9" r="1.5" fill="#fff"/>
+      <path d="M 46 6 A 4 4 0 0 1 46 12" fill="none" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 50 4 A 7 7 0 0 1 50 14" fill="none" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+    `;
+  } else if (isHoming) {
+    tag = 'HOMING';
+    tagClass = 'homing';
+    svgContent = `
+      <path d="M 3 13 Q 22 13 34 8 T 50 4" fill="none" stroke="#38bdf8" stroke-width="2"/>
+      <polygon points="48,1 56,4 48,7" fill="#38bdf8"/>
+      <path d="M 50 1 L 54 1 L 54 7 L 50 7" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+    `;
   } else if (isRocket) {
     tag = 'ROCKET';
     tagClass = 'rocket';
-    svgContent = '<path d="M 2 3 Q 6 6 2 9" fill="none" stroke="#ef4444" stroke-width="1.5"/><line x1="8" y1="6" x2="30" y2="6" stroke="#f59e0b" stroke-width="2"/><polygon points="30,3.5 35,6 30,8.5" fill="#f59e0b"/>';
+    svgContent = `
+      <path d="M 3 5 Q 8 9 3 13" fill="none" stroke="#ef4444" stroke-width="2"/>
+      <line x1="10" y1="9" x2="48" y2="9" stroke="#f59e0b" stroke-width="2.5"/>
+      <polygon points="48,5.5 56,9 48,12.5" fill="#f59e0b"/>
+    `;
   } else if (isSabot) {
     tag = 'SABOT';
-    tagClass = '';
-    svgContent = '<line x1="2" y1="6" x2="26" y2="6" stroke="#38bdf8" stroke-width="1.5"/><line x1="14" y1="6" x2="33" y2="6" stroke="#fff" stroke-width="2.2"/><polygon points="33,3.5 37,6 33,8.5" fill="#38bdf8"/>';
+    tagClass = 'sabot';
+    svgContent = `
+      <polygon points="5,3 10,3 14,8 6,8" fill="#38bdf8"/>
+      <polygon points="5,15 10,15 14,10 6,10" fill="#38bdf8"/>
+      <rect x="5" y="8" width="41" height="2" fill="#38bdf8"/>
+      <polygon points="46,7 61,9 46,11" fill="#e0f2fe"/>
+      <circle cx="61" cy="9" r="1" fill="#ffffff"/>
+      <path d="M 33 4 L 31 4 L 30 6 L 24 6 L 23 4 L 20 4 L 21 8 L 32 8 Z" fill="#f59e0b" stroke="#fbbf24" stroke-width="0.8"/>
+      <path d="M 33 14 L 31 14 L 30 12 L 24 12 L 23 14 L 20 14 L 21 10 L 32 10 Z" fill="#f59e0b" stroke="#fbbf24" stroke-width="0.8"/>
+      <rect x="20.5" y="4" width="2" height="10" fill="#fbbf24"/>
+      <line x1="20" y1="9" x2="33" y2="9" stroke="#0f172a" stroke-width="1"/>
+    `;
   } else {
     tag = 'BALLISTIC';
     tagClass = '';
-    svgContent = '<line x1="2" y1="6" x2="28" y2="6" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5 2"/><polygon points="28,3.5 33,6 28,8.5" fill="#38bdf8"/>';
+    svgContent = '<line x1="4" y1="9" x2="48" y2="9" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 2.5"/><polygon points="48,5.5 56,9 48,12.5" fill="#38bdf8"/>';
   }
 
   pillarPropulsionVector.innerHTML = `
     <div class="propulsion-vector-wrap" title="Flight Profile: ${tag}">
-      <svg class="propulsion-vector-svg" viewBox="0 0 38 12">${svgContent}</svg>
+      <svg class="propulsion-vector-svg" viewBox="0 0 64 18">${svgContent}</svg>
       <span class="propulsion-tag ${tagClass}">${tag}</span>
     </div>
   `;
 }
 
 /// <summary>
-/// Renders an 8-pip standalone UP weight rack with an integrated Data Core chip socket under Utility Points.
+/// Renders required tech components breakdown chips for the weapon chassis.
 /// </summary>
-function renderUpTechMeter(ups, hasDataCore) {
+function renderTechStack(weapon, bMult) {
   if (!pillarUpTechMeter) return;
-  const numUps = Math.max(0, parseInt(ups, 10) || 0);
-  const filledPips = Math.min(8, Math.max(numUps > 0 ? 1 : 0, Math.ceil(numUps / 5)));
-
-  let pips = '';
-  for (let i = 0; i < 8; i++) {
-    pips += `<div class="up-pip ${i < filledPips ? 'active' : ''}"></div>`;
+  const comps = weapon?.components || [];
+  const techComps = comps.filter(c => isTechComponent(c.name));
+  if (techComps.length === 0) {
+    pillarUpTechMeter.innerHTML = `
+      <div class="tech-stack-wrap" title="Standard Industrial Tech: Refined ingots only (zero Prototech or relic tech needed).">
+        <span class="tech-chip standard">⚙️ Standard Industrial</span>
+      </div>
+    `;
+    return;
   }
 
-  const dataCoreHtml = hasDataCore
-    ? '<div class="data-core-socket active" title="Requires [Tech] Data Core research relic">◆ DATA CORE</div>'
-    : '<div class="data-core-socket" title="Standard industrial frontier tech">⬡ STANDARD</div>';
+  const chipsHtml = techComps.map(c => {
+    const meta = GVK_TECH_COMPONENTS[c.name] || {};
+    const rawName = meta.displayName || c.name.replace('Prototech', '');
+    const cleanName = rawName.replace('[Tech]', '').trim();
+    const isDataCore = /Data\s*Core|Circuitry/i.test(c.name);
+    const isCradle = /Cradle|Carrier/i.test(cleanName);
+    const chipClass = isDataCore ? 'datacore' : (isCradle ? 'cradle' : 'exotic');
+    const icon = isDataCore ? '◆' : (isCradle ? '🏗️' : '⚡');
+    const qty = parseInt(c.count, 10) || 1;
+    const totalQty = bMult > 1 ? qty * bMult : qty;
+    const qtyLabel = bMult > 1 ? `${totalQty}× (${qty}/gun)` : `${qty}×`;
+    return `<span class="tech-chip ${chipClass}" title="${qty}x ${rawName} per gun">${icon} ${qtyLabel} ${cleanName}</span>`;
+  }).join('');
+
+  const fullSummary = techComps.map(c => {
+    const meta = GVK_TECH_COMPONENTS[c.name] || {};
+    const name = meta.displayName || c.name;
+    return `${c.count}x ${name}`;
+  }).join(', ');
 
   pillarUpTechMeter.innerHTML = `
-    <div class="up-tech-wrap" title="${numUps} Utility Points · ${hasDataCore ? 'Requires Data Core' : 'Standard Tech'}">
-      <div class="up-pip-rack">${pips}</div>
-      ${dataCoreHtml}
+    <div class="tech-stack-wrap" title="Required Tech Components: ${fullSummary}. High-grade Kiith engineering salvaged from players who didn't check their radar.">
+      ${chipsHtml}
     </div>
   `;
 }
 
 /// <summary>
-/// Renders an isometric 3D blueprint voxel block dynamically sized to X×Y×Z under Dimensions.
+/// Renders an isometric 3D blueprint voxel block dynamically sized against the largest turret outline for the grid.
 /// </summary>
-function renderVoxelBlueprint(sx, sy, sz_z, volBlocks) {
+function renderVoxelBlueprint(sx, sy, sz_z, volBlocks, isSmallGrid) {
   if (!pillarVoxelBlueprint) return;
   const x = Math.max(1, parseInt(sx, 10) || 1);
   const y = Math.max(1, parseInt(sy, 10) || 1);
   const z = Math.max(1, parseInt(sz_z, 10) || 1);
 
-  const maxDim = Math.max(x, y, z);
-  const scale = Math.min(5, 10 / maxDim);
-  const dx = Math.min(7, Math.max(2, x * scale));
-  const dy = Math.min(7, Math.max(2, y * scale));
-  const dz = Math.min(6, Math.max(2, z * scale));
+  // Maximum turret envelope for reference outline (7x7x7 on Large, 7x5x7 on Small)
+  const envX = 7;
+  const envY = isSmallGrid ? 5 : 7; // In SE, Y is vertical height
+  const envZ = 7;
 
-  const cx = 12;
-  const cy = 10 + (dz / 2);
+  // Fixed linear unit scale per block (fits in 74x58 viewBox)
+  const u = 3.0;
+  const cx = 37;
+  const cy = 52;
+
+  // Reference max bounding cage vertices (deck = X & Z, vertical = Y)
+  const cdx = envX * u;
+  const cdz = envZ * u;
+  const cdy = envY * u;
+
+  const cp0 = [cx, cy];
+  const cp1 = [cx + cdx, cy - cdx * 0.5];
+  const cp2 = [cx - cdz, cy - cdz * 0.5];
+  const cp3 = [cx + cdx - cdz, cy - (cdx + cdz) * 0.5];
+
+  const ct0 = [cx, cy - cdy];
+  const ct1 = [cx + cdx, cy - cdy - cdx * 0.5];
+  const ct2 = [cx - cdz, cy - cdy - cdz * 0.5];
+  const ct3 = [cx + cdx - cdz, cy - cdy - (cdx + cdz) * 0.5];
+
+  const cageSvg = `
+    <g class="voxel-blueprint-cage" title="Max Turret Reference Envelope: ${envY}H × ${envX}W × ${envZ}L">
+      <polygon points="${cp0[0]},${cp0[1]} ${cp1[0]},${cp1[1]} ${ct1[0]},${ct1[1]} ${ct0[0]},${ct0[1]}" />
+      <polygon points="${cp0[0]},${cp0[1]} ${cp2[0]},${cp2[1]} ${ct2[0]},${ct2[1]} ${ct0[0]},${ct0[1]}" />
+      <polygon points="${ct0[0]},${ct0[1]} ${ct1[0]},${ct1[1]} ${ct3[0]},${ct3[1]} ${ct2[0]},${ct2[1]}" />
+      <line x1="${cp3[0]}" y1="${cp3[1]}" x2="${ct3[0]}" y2="${ct3[1]}" stroke-dasharray="2 2" />
+    </g>
+  `;
+
+  // Current weapon linearly scaled inside the cage (ground plane X & Z, vertical height Y)
+  const dx = Math.min(cdx, x * u);
+  const dz = Math.min(cdz, z * u);
+  const dy = Math.min(cdy, y * u);
 
   const p0 = [cx, cy];
   const p1 = [cx + dx, cy - dx * 0.5];
-  const p2 = [cx - dy, cy - dy * 0.5];
-  const p3 = [cx + dx - dy, cy - (dx + dy) * 0.5];
+  const p2 = [cx - dz, cy - dz * 0.5];
+  const p3 = [cx + dx - dz, cy - (dx + dz) * 0.5];
 
-  const t0 = [cx, cy - dz];
-  const t1 = [cx + dx, cy - dz - dx * 0.5];
-  const t2 = [cx - dy, cy - dz - dy * 0.5];
-  const t3 = [cx + dx - dy, cy - dz - (dx + dy) * 0.5];
+  const t0 = [cx, cy - dy];
+  const t1 = [cx + dx, cy - dy - dx * 0.5];
+  const t2 = [cx - dz, cy - dy - dz * 0.5];
+  const t3 = [cx + dx - dz, cy - dy - (dx + dz) * 0.5];
 
   const topFace = `${t0[0]},${t0[1]} ${t1[0]},${t1[1]} ${t3[0]},${t3[1]} ${t2[0]},${t2[1]}`;
   const leftFace = `${p0[0]},${p0[1]} ${t0[0]},${t0[1]} ${t2[0]},${t2[1]} ${p2[0]},${p2[1]}`;
   const rightFace = `${p0[0]},${p0[1]} ${t0[0]},${t0[1]} ${t1[0]},${t1[1]} ${p1[0]},${p1[1]}`;
 
   pillarVoxelBlueprint.innerHTML = `
-    <div class="voxel-blueprint-wrap" title="Physical Voxel Bounds: ${x}×${y}×${z} (${volBlocks} blocks)">
-      <svg class="voxel-blueprint-svg" viewBox="0 0 24 18">
-        <polygon points="${leftFace}" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" stroke-width="0.8"/>
-        <polygon points="${rightFace}" fill="rgba(56, 189, 248, 0.22)" stroke="#38bdf8" stroke-width="0.8"/>
-        <polygon points="${topFace}" fill="rgba(56, 189, 248, 0.35)" stroke="#38bdf8" stroke-width="0.8"/>
+    <div class="voxel-blueprint-wrap" title="Voxel Footprint: ${y}H × ${x}W × ${z}L (${volBlocks} blocks). Ensure sufficient clearance to prevent summoning Clang into your chassis.">
+      <svg class="voxel-blueprint-svg" viewBox="0 0 74 58">
+        ${cageSvg}
+        <polygon points="${leftFace}" fill="rgba(56, 189, 248, 0.25)" stroke="#38bdf8" stroke-width="1.2"/>
+        <polygon points="${rightFace}" fill="rgba(56, 189, 248, 0.45)" stroke="#38bdf8" stroke-width="1.2"/>
+        <polygon points="${topFace}" fill="rgba(56, 189, 248, 0.65)" stroke="#38bdf8" stroke-width="1.2"/>
       </svg>
       <span class="voxel-block-tag">${volBlocks} BLK${volBlocks > 1 ? 'S' : ''}</span>
     </div>
@@ -3501,7 +3654,7 @@ function updateCombatTelemetry() {
   const batteryTag = bMult > 1 ? ` (${bMult}x Array · ${baseEffectiveDps.toLocaleString()}/gun)` : '';
   const batteryAlphaTag = bMult > 1 ? ` (${bMult}x Array · ${baseEffectiveAlpha.toLocaleString()} hp/gun)` : '';
 
-  outSustainedDps.textContent = scaledEffectiveDps.toLocaleString();
+  outSustainedDps.innerHTML = `${scaledEffectiveDps.toLocaleString()} <span class="unit-sub">hp/s</span>`;
   if (teleDpsType) {
     teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
@@ -3513,7 +3666,7 @@ function updateCombatTelemetry() {
       outEffectiveDps.innerHTML = `<strong>${effPrefix}</strong> · Base: ${scaledSustainedDps.toLocaleString()} DPS${batteryTag}`;
     }
   }
-  outAlphaDmg.textContent = scaledEffectiveAlpha.toLocaleString();
+  outAlphaDmg.innerHTML = `${scaledEffectiveAlpha.toLocaleString()} <span class="unit-sub">hp</span>`;
   if (teleAlphaType) {
     teleAlphaType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
@@ -3534,7 +3687,8 @@ function updateCombatTelemetry() {
 
   // Render Pillar 1 Hero Micro-Visuals
   renderDpsCompositionStrip(dmgDetails, isBeam);
-  renderAlphaSalvoCluster(totalRounds, bMult);
+  const isPlasma = /plasma/i.test(activeAmmo?.name || '') || /plasma/i.test(activeWeapon?.name || '');
+  renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma);
 
   // Damage Per Shot & Payload Breakdown
   const shotTotalDmg = Math.round(dmgDetails.total * bMult);
@@ -3575,88 +3729,154 @@ function updateCombatTelemetry() {
       tmPenetrationChip.style.display = 'none';
     }
   }
+  const isHeavyZero = heavyDmg <= 0.001 || heavyMult <= 0.001;
+  const isLightZero = lightDmg <= 0.001 || lightMult <= 0.001;
+  const isNonArmorZero = nonArmorDmg <= 0.001 || nonArmorMult <= 0.001;
+
   if (tmHeavyMult) {
-    tmHeavyMult.textContent = `${heavyMult.toFixed(1)}×`;
-    tmHeavyMult.className = `target-multiplier-badge ${heavyMult > 1.0 ? 'buff' : (heavyMult < 1.0 ? 'nerf' : '')}`;
+    tmHeavyMult.textContent = isHeavyZero ? (heavyMult <= 0.001 ? '0.0× (Immune)' : `${heavyMult.toFixed(1)}× (0 hp)`) : `${heavyMult.toFixed(1)}×`;
+    tmHeavyMult.className = `target-multiplier-badge ${isHeavyZero ? 'zero' : (heavyMult > 1.0 ? 'buff' : (heavyMult < 1.0 ? 'nerf' : ''))}`;
   }
   if (tmHeavyDmg) {
-    tmHeavyDmg.innerHTML = `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
+    tmHeavyDmg.innerHTML = isHeavyZero ? `0 <span class="unit">hp / shot</span>` : `${Math.round(heavyDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmHeavySub) {
-    tmHeavySub.textContent = `Volley: ${(heavyVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmHeavySub.textContent = isHeavyZero ? (heavyMult <= 0.001 ? 'Immune to Direct Damage' : 'Zero Direct Damage') : `Volley: ${(heavyVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmLightMult) {
-    tmLightMult.textContent = `${lightMult.toFixed(1)}×`;
-    tmLightMult.className = `target-multiplier-badge ${lightMult > 1.0 ? 'buff' : (lightMult < 1.0 ? 'nerf' : '')}`;
+    tmLightMult.textContent = isLightZero ? (lightMult <= 0.001 ? '0.0× (Immune)' : `${lightMult.toFixed(1)}× (0 hp)`) : `${lightMult.toFixed(1)}×`;
+    tmLightMult.className = `target-multiplier-badge ${isLightZero ? 'zero' : (lightMult > 1.0 ? 'buff' : (lightMult < 1.0 ? 'nerf' : ''))}`;
   }
   if (tmLightDmg) {
-    tmLightDmg.innerHTML = `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
+    tmLightDmg.innerHTML = isLightZero ? `0 <span class="unit">hp / shot</span>` : `${Math.round(lightDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmLightSub) {
-    tmLightSub.textContent = `Volley: ${(lightVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmLightSub.textContent = isLightZero ? (lightMult <= 0.001 ? 'Immune to Direct Damage' : 'Zero Direct Damage') : `Volley: ${(lightVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
   if (tmNonArmorMult) {
-    tmNonArmorMult.textContent = `${nonArmorMult.toFixed(1)}×`;
-    tmNonArmorMult.className = `target-multiplier-badge ${nonArmorMult > 1.0 ? 'buff' : (nonArmorMult < 1.0 ? 'nerf' : '')}`;
+    tmNonArmorMult.textContent = isNonArmorZero ? (nonArmorMult <= 0.001 ? '0.0× (Immune)' : `${nonArmorMult.toFixed(1)}× (0 hp)`) : `${nonArmorMult.toFixed(1)}×`;
+    tmNonArmorMult.className = `target-multiplier-badge ${isNonArmorZero ? 'zero' : (nonArmorMult > 1.0 ? 'buff' : (nonArmorMult < 1.0 ? 'nerf' : ''))}`;
   }
   if (tmNonArmorDmg) {
-    tmNonArmorDmg.innerHTML = `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
+    tmNonArmorDmg.innerHTML = isNonArmorZero ? `0 <span class="unit">hp / shot</span>` : `${Math.round(nonArmorDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
   }
   if (tmNonArmorSub) {
-    tmNonArmorSub.textContent = `Volley: ${(nonArmorVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
+    tmNonArmorSub.textContent = isNonArmorZero ? (nonArmorMult <= 0.001 ? 'Immune to Direct Damage' : 'Zero Direct Damage') : `Volley: ${(nonArmorVolley * bMult).toLocaleString()} hp${capNote ? ' | ' + capNote : ''}`;
   }
 
-  // Highlight highest damage per shot block type
+  // Highlight highest damage per shot block type (or explosive box if real AoE blast)
   const tmHeavyArmorBox = document.getElementById('tmHeavyArmorBox');
   const tmLightArmorBox = document.getElementById('tmLightArmorBox');
   const tmNonArmorBox = document.getElementById('tmNonArmorBox');
-  const maxTargetDmg = Math.max(heavyDmg, lightDmg, nonArmorDmg);
-  const isAllEqual = (heavyDmg === lightDmg && lightDmg === nonArmorDmg);
+  const tmBlastBox = document.getElementById('tmBlastBox');
+  if (tmHeavyArmorBox) tmHeavyArmorBox.classList.toggle('zero-damage', isHeavyZero);
+  if (tmLightArmorBox) tmLightArmorBox.classList.toggle('zero-damage', isLightZero);
+  if (tmNonArmorBox) tmNonArmorBox.classList.toggle('zero-damage', isNonArmorZero);
 
-  if (tmHeavyArmorBox) tmHeavyArmorBox.classList.toggle('top-damage', !isAllEqual && heavyDmg === maxTargetDmg);
-  if (tmLightArmorBox) tmLightArmorBox.classList.toggle('top-damage', !isAllEqual && lightDmg === maxTargetDmg);
-  if (tmNonArmorBox) tmNonArmorBox.classList.toggle('top-damage', !isAllEqual && nonArmorDmg === maxTargetDmg);
+  const maxArmorMult = Math.max(heavyMult, lightMult, nonArmorMult);
+  const maxTargetDmg = Math.max(heavyDmg, lightDmg, nonArmorDmg);
+  const isArmorEqual = Math.abs(heavyDmg - lightDmg) < 0.1 && Math.abs(lightDmg - nonArmorDmg) < 0.1;
+  const hasRealBlast = blastRadius > 0 && blastDmg > 10 && blastKind !== 'ewar' && blastKind !== 'screen';
+  const isBlastPrimary = hasRealBlast && maxArmorMult <= 1.001;
+
+  // Intercept Lethality (HealthHitModifier) & Dynamic 4th Card
+  const hhm = (ds.healthHitModifier !== undefined && ds.healthHitModifier > 0)
+    ? ds.healthHitModifier
+    : (ds.HealthHitModifier !== undefined && ds.HealthHitModifier > 0 ? ds.HealthHitModifier : 1);
+  const canTargetProjectiles = Boolean(activeWeapon.pdProjectiles || (activeWeapon.helpers?.targeting && activeWeapon.helpers.targeting.includes('PD')));
+  const isDirectIntercept = !hasRealBlast && blastKind !== 'screen' && blastKind !== 'ewar' && canTargetProjectiles && hhm >= 1;
+  const isCardInactive = !hasRealBlast && blastKind !== 'screen' && blastKind !== 'ewar' && !isDirectIntercept;
+
+  if (tmBlastBox) tmBlastBox.classList.toggle('zero-damage', isCardInactive);
+
+  if (isBlastPrimary) {
+    if (tmHeavyArmorBox) tmHeavyArmorBox.classList.remove('top-damage');
+    if (tmLightArmorBox) tmLightArmorBox.classList.remove('top-damage');
+    if (tmNonArmorBox) tmNonArmorBox.classList.remove('top-damage');
+    if (tmBlastBox) tmBlastBox.classList.add('top-damage');
+  } else if (blastKind === 'screen') {
+    // Flak screen: primary function is anti-munition area denial
+    if (tmHeavyArmorBox) tmHeavyArmorBox.classList.remove('top-damage');
+    if (tmLightArmorBox) tmLightArmorBox.classList.remove('top-damage');
+    if (tmNonArmorBox) tmNonArmorBox.classList.remove('top-damage');
+    if (tmBlastBox) tmBlastBox.classList.add('top-damage');
+  } else {
+    if (tmBlastBox) tmBlastBox.classList.remove('top-damage');
+    if (tmHeavyArmorBox) tmHeavyArmorBox.classList.toggle('top-damage', !isHeavyZero && !isArmorEqual && Math.abs(heavyDmg - maxTargetDmg) < 0.1);
+    if (tmLightArmorBox) tmLightArmorBox.classList.toggle('top-damage', !isLightZero && !isArmorEqual && Math.abs(lightDmg - maxTargetDmg) < 0.1);
+    if (tmNonArmorBox) tmNonArmorBox.classList.toggle('top-damage', !isNonArmorZero && !isArmorEqual && Math.abs(nonArmorDmg - maxTargetDmg) < 0.1);
+  }
+
+  const tmTitleElem = tmBlastTitle || (tmBlastBox ? tmBlastBox.querySelector('.target-type-name') : null);
+  if (tmTitleElem) {
+    if (blastKind === 'ewar') {
+      tmTitleElem.textContent = '🧿 EWAR / EMP Pulse';
+    } else if (blastKind === 'screen' || isDirectIntercept) {
+      tmTitleElem.textContent = '🎯 Point Defense';
+    } else {
+      tmTitleElem.textContent = '💥 Blast / Splash';
+    }
+  }
 
   if (tmBlastRadius) {
     if (blastKind === 'ewar' && blastRadius > 0) {
       tmBlastRadius.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} ${Math.round(blastRadius)}m`;
       tmBlastRadius.className = 'target-multiplier-badge special';
-    } else if (blastKind === 'screen') {
-      tmBlastRadius.textContent = `${Math.round(blastRadius)}m Screen`;
+    } else if (blastKind === 'screen' && blastRadius > 0) {
+      const radStr = blastRadius >= 100 ? `${Math.round(blastRadius)}m Radius` : `${blastRadius.toFixed(1)}m Radius`;
+      tmBlastRadius.textContent = radStr;
       tmBlastRadius.className = 'target-multiplier-badge special';
-    } else if (blastRadius > 0) {
+    } else if (isDirectIntercept) {
+      tmBlastRadius.textContent = 'Direct Hit';
+      tmBlastRadius.className = 'target-multiplier-badge special';
+    } else if (blastRadius > 0 && hasRealBlast) {
       tmBlastRadius.textContent = `${blastRadius.toFixed(1)}m Radius`;
       tmBlastRadius.className = 'target-multiplier-badge special';
     } else {
       tmBlastRadius.textContent = 'None';
-      tmBlastRadius.className = 'target-multiplier-badge';
+      tmBlastRadius.className = 'target-multiplier-badge zero';
     }
   }
   if (tmBlastDmg) {
-    tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
+    if (blastKind === 'screen') {
+      tmBlastDmg.innerHTML = `${hhm} <span class="unit">PD hp / target</span>`;
+    } else if (hasRealBlast) {
+      tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
+    } else if (isDirectIntercept) {
+      tmBlastDmg.innerHTML = `${hhm} <span class="unit">PD hp / hit</span>`;
+    } else {
+      tmBlastDmg.innerHTML = `0 <span class="unit">hp / shot</span>`;
+    }
   }
   if (tmBlastSub) {
     if (blastKind === 'ewar') {
       tmBlastSub.textContent = 'EWAR effect — disables target systems (no block damage)';
     } else if (blastKind === 'screen') {
-      tmBlastSub.textContent = 'Anti-projectile burst screen (grid damage zeroed)';
-    } else if (blastRadius > 0) {
+      tmBlastSub.textContent = '2 bursts per Heavy Missile · 15 / Torpedo';
+    } else if (hasRealBlast) {
       tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="Pooled AoE: Like misery, damage is shared equally across all blocks in the blast radius until the pool runs dry.">Area Detonation (Pooled Damage) ℹ️</span>`;
+    } else if (isDirectIntercept) {
+      if (hhm >= 500) {
+        tmBlastSub.textContent = '1-shot any incoming munition';
+      } else if (hhm >= 3) {
+        tmBlastSub.textContent = '5 hits per Heavy Missile · 50 / Torpedo';
+      } else if (hhm === 2) {
+        tmBlastSub.textContent = '8 hits per Heavy Missile · 75 / Torpedo';
+      } else {
+        tmBlastSub.textContent = '1 PD HP subtracted per bullet hit';
+      }
     } else {
-      tmBlastSub.textContent = 'Direct Kinetic Penetration Only';
+      const isRadar = /radar|sensor|designator/i.test(activeWeapon?.name || '') || /radar|sensor|designator/i.test(activeAmmo?.name || '');
+      tmBlastSub.textContent = isRadar ? 'Sensor Wave Only (No Explosive Payload)' : 'Direct Kinetic Penetration Only';
     }
   }
 
   // Blast trigger & depth detail lines (folded into tmBlastBox sub-rows)
-  const showBlastDetail = blastRadius > 0;
   if (tmBlastTrigger) {
     if (blastKind === 'ewar' && blastRadius > 0) {
       tmBlastTrigger.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} Scrambler`;
-      tmBlastTrigger.style.display = '';
-    } else if (blastKind === 'screen') {
-      tmBlastTrigger.textContent = 'Proximity Flak Screen (EndOfLife)';
       tmBlastTrigger.style.display = '';
     } else {
       tmBlastTrigger.style.display = 'none';
@@ -3664,7 +3884,7 @@ function updateCombatTelemetry() {
   }
 
   if (tmBlastDepth) {
-    if (showBlastDetail && blastKind !== 'ewar') {
+    if (hasRealBlast) {
       const poolStr = blastDmg > 0
         ? `${Math.round(blastDmg * bMult).toLocaleString()} HP Pool${bMult > 1 ? ` (${bMult}×)` : ''}`
         : '';
@@ -3702,7 +3922,7 @@ function updateCombatTelemetry() {
   if (badgeDepression) {
     if (arcInfo.hasDepression) {
       badgeDepression.textContent = '📐 Good Depression';
-      badgeDepression.title = `Downward clearance: ${arcInfo.minEl}° (For when life and dunes go downhill)`;
+      badgeDepression.title = `Downward clearance: ${arcInfo.minEl}° (For when life, terrain, and sim-speed go downhill)`;
       badgeDepression.style.display = 'inline-flex';
     } else {
       badgeDepression.style.display = 'none';
@@ -3713,10 +3933,52 @@ function updateCombatTelemetry() {
   if (badgeRecoil) {
     if (recoilInfo.showRecoil) {
       badgeRecoil.textContent = recoilInfo.text;
+      badgeRecoil.title = recoilInfo.tooltip || 'Chassis recoil impulse';
       badgeRecoil.className = 'badge badge-red pillar-header-badge';
       badgeRecoil.style.display = 'inline-flex';
     } else {
       badgeRecoil.style.display = 'none';
+    }
+  }
+  const badgeTerrainCruise = document.getElementById('badgeTerrainCruise');
+  const terrainNotice = getMunitionTerrainClearance(activeAmmo);
+  if (badgeTerrainCruise) {
+    if (terrainNotice) {
+      const elev = activeAmmo.trajectory?.elevation || 500;
+      badgeTerrainCruise.textContent = `🏔️ ${Math.round(elev)}m Cruise`;
+      badgeTerrainCruise.title = `${terrainNotice.text} — Assumes Keen's voxel collision solver doesn't phase you into the planet core today.`;
+      badgeTerrainCruise.style.display = 'inline-flex';
+    } else {
+      badgeTerrainCruise.style.display = 'none';
+    }
+  }
+  const ammoHealth = activeAmmo.health || 0;
+  if (badgeMunitionHealth) {
+    if (ammoHealth > 0) {
+      if (ammoHealth >= 150) {
+        badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Heavy Hull`;
+        badgeMunitionHealth.title = `Heavy Armored Munition: Absorbs ${ammoHealth} point-defense damage (15 Flak bursts or 50 Gatling rounds) before dying.`;
+        badgeMunitionHealth.className = 'badge badge-cyan pillar-header-badge';
+      } else if (ammoHealth >= 100) {
+        badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Armored Hull`;
+        badgeMunitionHealth.title = `Armored Munition: Absorbs ${ammoHealth} PD damage (10 Flak bursts or 34 Gatling rounds).`;
+        badgeMunitionHealth.className = 'badge badge-cyan pillar-header-badge';
+      } else if (ammoHealth >= 15) {
+        badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Reinforced Hull`;
+        badgeMunitionHealth.title = `Reinforced Munition: Absorbs ${ammoHealth} PD damage (survives 1 Flak burst, destroyed by 5 Gatling hits).`;
+        badgeMunitionHealth.className = 'badge badge-green pillar-header-badge';
+      } else if (ammoHealth >= 5) {
+        badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Light Munition`;
+        badgeMunitionHealth.title = `Light Munition: Absorbs ${ammoHealth} PD damage before destruction.`;
+        badgeMunitionHealth.className = 'badge badge-amber pillar-header-badge';
+      } else {
+        badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Fragile Munition`;
+        badgeMunitionHealth.title = `Fragile Munition: Vaporized by any single point-defense hit or flak burst.`;
+        badgeMunitionHealth.className = 'badge badge-red pillar-header-badge';
+      }
+      badgeMunitionHealth.style.display = 'inline-flex';
+    } else {
+      badgeMunitionHealth.style.display = 'none';
     }
   }
 
@@ -3742,13 +4004,22 @@ function updateCombatTelemetry() {
       : `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
   }
   if (outFlightDelay1km) {
+    const flightDist = ammoMaxTrajectory > 0 ? ammoMaxTrajectory : maxEngagementRange;
+    const flightTime = muzzleSpeed > 0 ? (flightDist / muzzleSpeed).toFixed(2) : '0.00';
     outFlightDelay1km.textContent = isBeam
-      ? 'Flight to 1km: 0.00s (Instantaneous hit)'
-      : `Flight to 1km: ${(1000 / (muzzleSpeed || 1)).toFixed(2)}s`;
+      ? `Flight to ${Math.round(flightDist).toLocaleString()}m: 0.00s (Instant hit)`
+      : (muzzleSpeed > 0 ? `Flight to ${Math.round(flightDist).toLocaleString()}m: ${flightTime}s` : 'Instantaneous hit');
+  }
+  if (outMunitionDurability) {
+    if (ammoHealth > 0) {
+      outMunitionDurability.innerHTML = `<span title="Interception Durability: Munition absorbs ${ammoHealth} PD damage before destruction.">🛡️ Munition Durability: <strong style="color: var(--cyan-primary);">${ammoHealth} HP</strong></span>`;
+    } else {
+      outMunitionDurability.innerHTML = `<span title="Untargetable by Point Defense: Kinetic shells, railgun slugs, and energy beams cannot be targeted or intercepted in flight.">🛡️ Interception: <span style="color: var(--text-muted);">Untargetable (PD Immune)</span></span>`;
+    }
   }
 
   // Render Pillar 2 Hero Micro-Visuals
-  renderRangeRadarFan(maxEngagementRange);
+  renderRangeVisual(maxEngagementRange, isTrackingWeapon);
   renderPropulsionVector(activeWeapon, activeAmmo, isBeam);
 
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
@@ -3811,17 +4082,29 @@ function updateCombatTelemetry() {
     const kickKn = (recoilInfo.kickKn || 0) * bMult;
     if (kickKn <= 0) {
       outRecoilImpulse.innerHTML = `0 <span class="unit-sub">kN</span>`;
-      if (outRecoilImpulseDetail) outRecoilImpulseDetail.textContent = 'Tofu Cup Safe (Zero Kick)';
+      if (outRecoilImpulseDetail) {
+        outRecoilImpulseDetail.textContent = 'Zero Kick (Stabilized)';
+        outRecoilImpulseDetail.title = 'Clang-Approved: Zero chassis impulse. Physics engine stays dormant.';
+      }
     } else if (kickKn < 200) {
       outRecoilImpulse.innerHTML = `${Math.round(kickKn)} <span class="unit-sub">kN</span>`;
-      if (outRecoilImpulseDetail) outRecoilImpulseDetail.textContent = bMult > 1 ? `Light Impulse (${Math.round(kickKn / bMult)} kN/gun)` : 'Light Rover Compatible';
+      if (outRecoilImpulseDetail) {
+        outRecoilImpulseDetail.textContent = bMult > 1 ? `Light Impulse (${Math.round(kickKn / bMult)} kN/gun)` : 'Light Rover Compatible';
+        outRecoilImpulseDetail.title = 'Negligible chassis recoil. Suspensions will barely notice.';
+      }
     } else if (kickKn < 1000) {
       outRecoilImpulse.innerHTML = `${Math.round(kickKn)} <span class="unit-sub">kN</span>`;
-      if (outRecoilImpulseDetail) outRecoilImpulseDetail.textContent = bMult > 1 ? `Moderate Impulse (${Math.round(kickKn / bMult)} kN/gun)` : 'Moderate Suspension Impulse';
+      if (outRecoilImpulseDetail) {
+        outRecoilImpulseDetail.textContent = bMult > 1 ? `Moderate Impulse (${Math.round(kickKn / bMult)} kN/gun)` : 'Moderate Suspension Impulse';
+        outRecoilImpulseDetail.title = 'Chassis impulse: manage rover center of mass to prevent spinouts or suspension bottoming.';
+      }
     } else {
       const kickStr = kickKn >= 10000 ? `${(kickKn / 1000).toFixed(1)} MN` : `${Math.round(kickKn)} kN`;
       outRecoilImpulse.innerHTML = `${kickStr}`;
-      if (outRecoilImpulseDetail) outRecoilImpulseDetail.textContent = kickKn >= 20000 ? '⚠️ Spinal Compression (Roll Hazard)' : '⚠️ Chassis Shaker (Drift Hazard)';
+      if (outRecoilImpulseDetail) {
+        outRecoilImpulseDetail.textContent = kickKn >= 20000 ? 'Heavy Suspension Impulse (Roll Hazard)' : 'Moderate Suspension Impulse';
+        outRecoilImpulseDetail.title = kickKn >= 20000 ? 'Warning: Broadside firing will flip light rovers or crush suspension blocks into voxels.' : 'Chassis impulse: manage rover center of mass to prevent spinouts or suspension bottoming.';
+      }
     }
   }
 
@@ -3842,7 +4125,7 @@ function updateCombatTelemetry() {
   // Structural & Power (Pillar 3 Logistics, Battery Scaled)
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
   const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
-  outEffectiveIntegrity.textContent = Math.round(effIntegrity).toLocaleString();
+  outEffectiveIntegrity.innerHTML = `${Math.round(effIntegrity).toLocaleString()} <span class="unit-sub">hp</span>`;
   outBuildTime.textContent = `Welding: ${Math.round(effIntegrity / balanceMatrix.buildTimeDividend)}s`;
 
   const techInfo = getTechSummary(activeWeapon.components);
@@ -3851,10 +4134,8 @@ function updateCombatTelemetry() {
   const massInfo = calculateWeaponDryMass(activeWeapon);
   const totalScaledMassTons = (massInfo.massTons * bMult).toFixed(1);
 
-  const outPillarGridTag = document.getElementById('outPillarGridTag');
-  if (outPillarGridTag) outPillarGridTag.textContent = `${activeWeapon.gridSize || activeWeapon.grid || 'Large'} Grid`;
   const outPillarUps = document.getElementById('outPillarUps');
-  if (outPillarUps) outPillarUps.textContent = `${currentUps} UPs`;
+  if (outPillarUps) outPillarUps.innerHTML = `${currentUps} <span class="unit-sub">UPs</span>`;
   const outPillarUpsDetail = document.getElementById('outPillarUpsDetail');
   if (outPillarUpsDetail) outPillarUpsDetail.textContent = bMult > 1 ? `${bMult}x Array (${baseUps}/gun)` : 'Ship Core Allocation';
 
@@ -3864,20 +4145,24 @@ function updateCombatTelemetry() {
   const sy = sz.y || 1;
   const sz_z = sz.z || 1;
   const volBlocks = sx * sy * sz_z;
+  const isSmallGrid = (activeWeapon.gridSize === 'Small' || activeWeapon.grid === 'Small');
+  const blockVolM3 = isSmallGrid ? 0.125 : 15.625;
+  const totalM3 = (volBlocks * blockVolM3).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
   const outPillarDimensions = document.getElementById('outPillarDimensions');
   if (outPillarDimensions) {
-    outPillarDimensions.innerHTML = `${sx}×${sy}×${sz_z} <span class="unit-sub">(${volBlocks} ${volBlocks === 1 ? 'block' : 'blocks'})</span>`;
+    outPillarDimensions.innerHTML = `${sy}×${sx}×${sz_z} <span class="unit-sub">H×W×L</span>`;
+    outPillarDimensions.title = `Height: ${sy} blk · Width: ${sx} blk · Length: ${sz_z} blk (${volBlocks} total blocks)`;
   }
   const outPillarVolume = document.getElementById('outPillarVolume');
   if (outPillarVolume) {
-    outPillarVolume.textContent = `${activeWeapon.gridSize || activeWeapon.grid || 'Large'} Grid · ${activeWeapon.pcu || 0} PCU`;
+    outPillarVolume.textContent = `${activeWeapon.gridSize || activeWeapon.grid || 'Large'} Grid · ${totalM3} m³`;
+    outPillarVolume.title = `Chassis Envelope: ${volBlocks} blocks (${totalM3} m³ physical displacement)`;
   }
 
   // Render Pillar 3 Hero Micro-Visuals
-  const hasDataCore = Boolean(activeWeapon.hasCircuitry || (activeWeapon.techComponent && /Data\s*Core/i.test(activeWeapon.techComponent)));
-  renderUpTechMeter(currentUps, hasDataCore);
-  renderVoxelBlueprint(sx, sy, sz_z, volBlocks);
+  renderTechStack(activeWeapon, bMult);
+  renderVoxelBlueprint(sx, sy, sz_z, volBlocks, isSmallGrid);
 
   // Dry Mass (Pillar 3 Metric Row 3)
   const outPillarMass = document.getElementById('outPillarMass');
@@ -4043,17 +4328,7 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Terrain Clearance indicator in Flight Deck Tab
-  const deckTerrainClearance = document.getElementById('deckTerrainClearance');
-  const terrainNotice = getMunitionTerrainClearance(activeAmmo);
-  if (deckTerrainClearance) {
-    if (terrainNotice) {
-      deckTerrainClearance.style.display = 'block';
-      deckTerrainClearance.textContent = terrainNotice.text;
-    } else {
-      deckTerrainClearance.style.display = 'none';
-    }
-  }
+
 
   // Sticky HUD updates
   hudDps.textContent = scaledEffectiveDps.toLocaleString();
@@ -4535,9 +4810,11 @@ function updateRadarQuickCompare() {
   const techFmt = (t) => t ? (t.techName ? `🔬 ${t.techName} (${t.upCost} UP)` : `Standard (${t.upCost} UP)`) : '—';
   setPair('qcTechActive', 'qcTechBench', techFmt(activeTech), techFmt(benchTech));
 
+  const isPdActive = Boolean(activeWeapon.pdProjectiles && activeWeapon.type !== 'Fixed');
+  const isPdBench = Boolean(benchmarkWeapon && benchmarkWeapon.pdProjectiles && benchmarkWeapon.type !== 'Fixed');
   setPair('qcPdActive', 'qcPdBench',
-    activeWeapon.pdProjectiles ? '📡 Active PD' : '—',
-    benchmarkWeapon ? (benchmarkWeapon.pdProjectiles ? '📡 Active PD' : '—') : '');
+    isPdActive ? '📡 Active PD' : '—',
+    benchmarkWeapon ? (isPdBench ? '📡 Active PD' : '—') : '');
 }
 
 function updateComparisonRadar() {
@@ -4788,6 +5065,16 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
   // and base mount layer at bottom matches the in-game display order.
   const displayComps = comps.slice().reverse();
 
+  // In SE, first Computer component in SBC sets OwnershipIntegrityRatio (Hacking threshold).
+  // CriticalComponent specifies CriticalIntegrityRatio (Functional threshold).
+  const critCompName = activeWeapon ? (activeWeapon.criticalComponent || 'Computer') : 'Computer';
+  let critSbcIdx = comps.findIndex(c => c.name === critCompName);
+  if (critSbcIdx === -1) critSbcIdx = comps.findIndex(c => c.name === 'Computer');
+  const compSbcIdx = comps.findIndex(c => c.name === 'Computer');
+
+  const critDisplayIdx = critSbcIdx !== -1 ? (comps.length - 1) - critSbcIdx : -1;
+  const compDisplayIdx = compSbcIdx !== -1 ? (comps.length - 1) - compSbcIdx : -1;
+
   displayComps.forEach((c, idx) => {
     const cMeta = componentsDb[c.name] || {};
     const mass = (cMeta.mass || 10) * c.count;
@@ -4795,13 +5082,31 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
     const price = (cMeta.price || 150) * c.count;
     totalValueCredits += price;
 
+    const layerNum = displayComps.length - idx;
     const tr = document.createElement('tr');
+    const isFunctional = (idx === critDisplayIdx);
+    const isHacking = (idx === compDisplayIdx);
+
+    if (isFunctional) tr.classList.add('bom-functional-row');
+    if (isHacking) tr.classList.add('bom-hacking-row');
+
     const compDisplayName = cMeta.displayName || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name] && GVK_TECH_COMPONENTS[c.name].displayName) || c.name;
-    const layerBadge = idx === 0
-      ? ' <span style="font-size: 10px; color: var(--amber-primary); font-family: var(--font-mono);">[Top Finish Layer]</span>'
-      : (idx === displayComps.length - 1 ? ' <span style="font-size: 10px; color: var(--cyan-primary); font-family: var(--font-mono);">[Base Mount Layer]</span>' : '');
+    let badgesHtml = '';
+    if (idx === 0) {
+      badgesHtml += ' <span style="font-size: 10px; color: var(--amber-primary); font-family: var(--font-mono);">[Top Finish Layer]</span>';
+    } else if (idx === displayComps.length - 1) {
+      badgesHtml += ' <span style="font-size: 10px; color: var(--cyan-primary); font-family: var(--font-mono);">[Base Mount Layer]</span>';
+    }
+    if (isFunctional) {
+      badgesHtml += ' <span class="bom-thresh-tag red" title="Functional Line: Block operates above this threshold.">[⚡ Functional Threshold]</span>';
+    }
+    if (isHacking) {
+      badgesHtml += ' <span class="bom-thresh-tag blue" title="Hacking Line: Block ownership is lost below this threshold.">[🔓 Hacking Threshold]</span>';
+    }
+
     tr.innerHTML = `
-      <td style="font-weight: 600;">${compDisplayName}${layerBadge}</td>
+      <td style="font-family: var(--font-mono); text-align: center; color: var(--text-muted); font-size: 11px;">Layer ${layerNum}</td>
+      <td style="font-weight: 600;">${compDisplayName}${badgesHtml}</td>
       <td style="font-family: var(--font-mono);">${c.count}</td>
       <td style="font-family: var(--font-mono); color: var(--text-dim);">${mass.toFixed(1)} kg</td>
       <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${integ.toLocaleString()}</td>

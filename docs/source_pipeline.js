@@ -379,9 +379,6 @@ function parseCubeBlocks(xmlText2) {
       criticalComponent: crit ? crit.attrs.Subtype || null : null,
     };
     out[subIdVal] = blockData;
-    if (subId(d) && typeIdVal && !out[typeIdVal]) {
-      out[typeIdVal] = blockData;
-    }
   }
   return out;
 }
@@ -522,7 +519,8 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const threats = Array.isArray(tgt.Threats)
     ? tgt.Threats.map((t) => (typeof t === 'string' ? t : (t && t.__id)) || '')
     : [];
-  const pdProjectiles = threats.includes('Projectiles');
+  const isFixed = type === 'Fixed' || (hw.RotateRate <= 0 && hw.ElevateRate <= 0);
+  const pdProjectiles = !isFixed && threats.includes('Projectiles');
   return {
     id,
     pdProjectiles,
@@ -543,7 +541,10 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     aimingTolerance: (hp.AimingTolerance !== undefined ? hp.AimingTolerance : (tgt.AimingTolerance !== undefined ? tgt.AimingTolerance : 0)),
     addToleranceToTracking: (hp.AddToleranceToTracking === true || tgt.AddToleranceToTracking === true),
     rotateRate: hw.RotateRate || 0, elevateRate: hw.ElevateRate || 0,
-    minAzimuth: hw.MinAzimuth || 0, maxAzimuth: hw.MaxAzimuth || 0,
+    minAzimuth: hw.MinAzimuth !== undefined ? hw.MinAzimuth : -180,
+    maxAzimuth: hw.MaxAzimuth !== undefined ? hw.MaxAzimuth : 180,
+    minElevation: hw.MinElevation !== undefined ? hw.MinElevation : -15,
+    maxElevation: hw.MaxElevation !== undefined ? hw.MaxElevation : 45,
     heatPerShot: (loading.HeatPerShot !== undefined ? loading.HeatPerShot : hw.HeatPerShot) || 0,
     maxHeat: (loading.MaxHeat !== undefined ? loading.MaxHeat : hw.MaxHeat) || 0,
     cooldown: (loading.Cooldown !== undefined ? loading.Cooldown : hw.Cooldown) || 0,

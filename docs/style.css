@@ -369,6 +369,32 @@
   color: #64748b;
 }
 
+/* Light Theme Telemetry Micro-Visual Contrast */
+[data-theme="light"] .radar-fan-bg,
+[data-theme="light"] .radar-fan-ring,
+[data-theme="light"] .boresight-reach-rail,
+[data-theme="light"] .boresight-reach-tick,
+[data-theme="light"] .voxel-blueprint-cage {
+  stroke: #475569;
+  opacity: 0.85;
+}
+
+[data-theme="light"] .up-rail-bg {
+  fill: #e2e8f0;
+  stroke: #cbd5e1;
+}
+
+[data-theme="light"] .up-rail-notch {
+  stroke: #94a3b8;
+  opacity: 0.7;
+}
+
+[data-theme="light"] .up-tech-tag.standard {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -590,18 +616,10 @@ header {
   filter: drop-shadow(0 2px 5px rgba(0,0,0,0.85));
 }
 
-.weapon-icon-sm {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.85));
-}
-
 .ammo-icon {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.85));
 }
 
 .weapon-icon-sm {
@@ -610,7 +628,7 @@ header {
   border-radius: 6px;
   padding: 3px;
   object-fit: contain;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  filter: none;
   transition: transform 0.15s ease;
 }
 
@@ -620,8 +638,13 @@ header {
   border-radius: 6px;
   padding: 2px;
   object-fit: contain;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  filter: none;
   transition: transform 0.15s ease;
+}
+
+.faceoff-badge .weapon-icon-sm,
+.faceoff-badge .ammo-icon-sm {
+  filter: none !important;
 }
 
 /* Active Weapon/Ammo = Consistent Orange Border & Background */
@@ -2421,6 +2444,17 @@ input.control-input.is-wc-default {
   background: rgba(245, 158, 11, 0.08);
 }
 
+.target-stat-box.zero-damage {
+  opacity: 0.35;
+  filter: grayscale(85%);
+  border-style: dashed;
+}
+
+.target-stat-box.zero-damage:hover {
+  opacity: 0.65;
+  border-color: var(--border-color);
+}
+
 .target-stat-metric-label {
   font-size: 9.5px;
   font-family: var(--font-mono);
@@ -2479,6 +2513,18 @@ input.control-input.is-wc-default {
   background: rgba(245, 158, 11, 0.15);
   color: var(--amber-primary);
   border-color: var(--amber-primary);
+}
+
+.target-multiplier-badge.zero {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-dim);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.target-multiplier-badge.intercept {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--cyan-primary);
+  border-color: rgba(56, 189, 248, 0.45);
 }
 
 .target-stat-value {
@@ -2698,32 +2744,34 @@ input.control-input.is-wc-default {
 .hero-micro-visual {
   display: flex;
   align-items: center;
-  gap: 6px;
-  min-height: 18px;
-  margin: 3px 0 3px 0;
-  overflow: hidden;
+  gap: 8px;
+  min-height: 26px;
+  margin: 4px 0 4px 0;
+  overflow: visible;
 }
 
 .hero-micro-visual.right {
   justify-content: flex-end;
 }
 
-/* 1. Damage Composition Tri-Tone Strip */
+/* 1. Damage Composition Tri-Tone Strip (Strict Fixed Width) */
 .dps-comp-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
-  width: 100%;
+  gap: 8px;
 }
 .dps-comp-strip {
   display: flex;
-  flex: 1;
-  max-width: 130px;
-  height: 5px;
-  border-radius: 2.5px;
-  background: rgba(255, 255, 255, 0.05);
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  flex: 0 0 120px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 .dps-comp-segment {
   height: 100%;
@@ -2740,7 +2788,7 @@ input.control-input.is-wc-default {
 }
 .dps-comp-legend {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--text-dim);
   white-space: nowrap;
@@ -2750,68 +2798,129 @@ input.control-input.is-wc-default {
 .salvo-cluster {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 .salvo-cell {
-  width: 5px;
-  height: 11px;
-  border-radius: 1px;
+  width: 7px;
+  height: 16px;
+  border-radius: 2px;
   background: rgba(245, 158, 11, 0.15);
   border: 1px solid rgba(245, 158, 11, 0.3);
   transition: all 0.2s ease;
 }
 .salvo-cell.active {
   background: var(--amber-primary, #f59e0b);
-  box-shadow: 0 0 5px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
   border-color: #fbbf24;
 }
 .salvo-cell.slug {
-  width: 13px;
-  height: 11px;
+  width: 20px;
+  height: 16px;
+}
+.salvo-cell.beam {
+  background: #c084fc;
+  border-color: #d8b4fe;
+  box-shadow: 0 0 6px rgba(192, 132, 252, 0.6);
+}
+.salvo-cell.beam-cont {
+  width: 44px;
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(192, 132, 252, 0.4), #c084fc, rgba(192, 132, 252, 0.4));
+  border: 1px solid #d8b4fe;
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+}
+.salvo-cell.plasma {
+  width: 7px;
+  height: 16px;
+  border-radius: 3px;
+  background: #22c55e;
+  border: 1px solid #86efac;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.95), 0 0 16px rgba(74, 222, 128, 0.6), inset 0 0 4px #86efac;
 }
 .salvo-label {
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 10.5px;
+  font-weight: 800;
   color: var(--amber-primary);
-  margin-left: 3px;
+  margin-left: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   white-space: nowrap;
 }
+.salvo-label.beam {
+  color: #c084fc;
+}
+.salvo-label.plasma {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.85), 0 0 16px rgba(34, 197, 94, 0.5);
+}
 
-/* 3. Concentric Artillery Radar Fan SVG */
+/* 3. Concentric Artillery Radar Fan SVG (Tracking Turrets) */
 .radar-fan-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 .radar-fan-svg {
-  width: 44px;
-  height: 18px;
+  width: 84px;
+  height: 28px;
   overflow: visible;
-  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.25));
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3));
 }
 .radar-fan-bg {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.12);
-  stroke-width: 1;
+  stroke: var(--text-dim);
+  opacity: 0.45;
+  stroke-width: 1.2;
 }
 .radar-fan-ring {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.18);
-  stroke-width: 0.8;
-  stroke-dasharray: 2 2;
+  stroke: var(--text-dim);
+  opacity: 0.45;
+  stroke-width: 1;
+  stroke-dasharray: 2.5 2;
 }
 .radar-fan-fill {
-  fill: rgba(56, 189, 248, 0.25);
+  fill: rgba(56, 189, 248, 0.3);
   stroke: var(--cyan-primary, #38bdf8);
-  stroke-width: 1.2;
+  stroke-width: 1.5;
   transition: all 0.35s ease;
 }
 .radar-fan-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--cyan-primary);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* 3B. Linear Boresight Range Tape (Fixed / Dumbfire Guns) */
+.boresight-reach-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.boresight-reach-svg {
+  width: 84px;
+  height: 16px;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.25));
+}
+.boresight-reach-rail {
+  stroke: var(--text-dim);
+  opacity: 0.45;
+  stroke-width: 1.2;
+}
+.boresight-reach-tick {
+  stroke: var(--text-dim);
+  opacity: 0.55;
+  stroke-width: 1;
+}
+.boresight-reach-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--cyan-primary);
   letter-spacing: 0.3px;
@@ -2822,105 +2931,183 @@ input.control-input.is-wc-default {
 .propulsion-vector-wrap {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 .propulsion-vector-svg {
-  width: 38px;
-  height: 12px;
+  width: 64px;
+  height: 18px;
   overflow: visible;
 }
 .propulsion-tag {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 1px 5px;
+  padding: 2px 6px;
   border-radius: 3px;
   letter-spacing: 0.3px;
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(56, 189, 248, 0.12);
   color: var(--cyan-primary);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   white-space: nowrap;
 }
+.propulsion-tag.homing,
+.propulsion-tag.missile {
+  background: rgba(56, 189, 248, 0.18);
+  color: var(--cyan-primary);
+  border-color: rgba(56, 189, 248, 0.45);
+}
 .propulsion-tag.beam {
-  background: rgba(168, 85, 247, 0.12);
+  background: rgba(168, 85, 247, 0.15);
   color: #c084fc;
-  border-color: rgba(168, 85, 247, 0.3);
+  border-color: rgba(168, 85, 247, 0.35);
 }
 .propulsion-tag.rocket {
-  background: rgba(245, 158, 11, 0.12);
+  background: rgba(245, 158, 11, 0.15);
   color: var(--amber-primary);
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: rgba(245, 158, 11, 0.35);
 }
 .propulsion-tag.drone {
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.15);
   color: var(--green-accent, #10b981);
-  border-color: rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.propulsion-tag.chaff,
+.propulsion-tag.flare {
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--amber-primary);
+  border-color: rgba(245, 158, 11, 0.45);
+}
+.propulsion-tag.radar {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--cyan-primary);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+.propulsion-tag.sabot {
+  background: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.45);
 }
 
-/* 5. Standalone UP Meter & Data Core Tech Socket */
-.up-tech-wrap {
+/* 5. Integrated Avionics & Data Core Hardware Module */
+.up-hardware-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
-.up-pip-rack {
+.up-hardware-svg {
+  width: 80px;
+  height: 20px;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.2));
+}
+.up-rail-bg {
+  fill: rgba(255, 255, 255, 0.05);
+  stroke: var(--border-color);
+  stroke-width: 1;
+}
+.up-rail-notch {
+  stroke: var(--text-dim);
+  opacity: 0.4;
+  stroke-width: 0.8;
+}
+.up-rail-fill {
+  transition: width 0.3s ease;
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.4));
+}
+.up-tech-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.up-tech-tag.datacore {
+  background: rgba(56, 189, 248, 0.18);
+  color: var(--cyan-primary, #38bdf8);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
+}
+.up-tech-tag.standard {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  border: 1px solid var(--border-color);
+}
+
+/* 5. Tech Components Reworked Display */
+.tech-stack-wrap {
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
   align-items: center;
-  gap: 2px;
+  max-width: 220px;
 }
-.up-pip {
-  width: 5px;
-  height: 8px;
-  border-radius: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.2s ease;
-}
-.up-pip.active {
-  background: var(--amber-primary, #f59e0b);
-  border-color: #fbbf24;
-  box-shadow: 0 0 3px rgba(245, 158, 11, 0.4);
-}
-.data-core-socket {
-  display: flex;
+.tech-chip {
+  display: inline-flex;
   align-items: center;
   gap: 3px;
   font-family: var(--font-mono);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 1px 5px;
+  padding: 2px 5px;
   border-radius: 3px;
-  letter-spacing: 0.3px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-dim);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
   white-space: nowrap;
+  line-height: 1.2;
 }
-.data-core-socket.active {
-  background: rgba(56, 189, 248, 0.15);
+.tech-chip.datacore {
+  background: rgba(56, 189, 248, 0.16);
   color: var(--cyan-primary, #38bdf8);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 6px rgba(56, 189, 248, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.2);
+}
+.tech-chip.cradle {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--amber-primary, #f59e0b);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.tech-chip.exotic {
+  background: rgba(192, 132, 252, 0.14);
+  color: #c084fc;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+}
+.tech-chip.standard {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  border: 1px solid var(--border-color);
+  font-weight: 500;
 }
 
 /* 6. Isometric 3D Voxel Blueprint SVG */
 .voxel-blueprint-wrap {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 .voxel-blueprint-svg {
-  width: 24px;
-  height: 18px;
+  width: 72px;
+  height: 52px;
   overflow: visible;
-  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.2));
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.35));
+}
+.voxel-blueprint-cage {
+  stroke: var(--text-dim);
+  opacity: 0.45;
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  fill: none;
 }
 .voxel-block-tag {
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--cyan-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 3px;
+  padding: 1px 6px;
   white-space: nowrap;
 }
 
@@ -3362,9 +3549,83 @@ details[open] .bom-toggle-icon {
   background: rgba(0, 0, 0, 0.15);
 }
 
+.bom-table-wrap {
+  padding: 12px 16px;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
 .bom-panel {
   box-shadow: none;
   border: none;
+}
+
+.bom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bom-table th,
+.bom-table td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.bom-table thead th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-color, #1e2433);
+}
+
+.bom-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.15s ease;
+}
+
+.bom-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* SE Functional (red top) & Hacking (blue bottom) Threshold Lines */
+.bom-table tr.bom-functional-row td {
+  border-top: 2px solid #ef4444 !important;
+}
+
+.bom-table tr.bom-hacking-row td {
+  border-bottom: 2px solid #38bdf8 !important;
+}
+
+.bom-table tr.bom-functional-row.bom-hacking-row td {
+  border-top: 2px solid #ef4444 !important;
+  border-bottom: 2px solid #38bdf8 !important;
+}
+
+.bom-thresh-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.bom-thresh-tag.red {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.bom-thresh-tag.blue {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
 /* Light Theme Parity */
@@ -3444,6 +3705,30 @@ details[open] .bom-toggle-icon {
   background: #fef3c7;
   color: #b45309;
   border-color: #f59e0b;
+}
+
+[data-theme="light"] .bom-table thead th {
+  border-bottom-color: #e2e8f0;
+}
+
+[data-theme="light"] .bom-table tbody tr {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .bom-table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .bom-thresh-tag.red {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+[data-theme="light"] .bom-thresh-tag.blue {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.3);
 }
 
 
