@@ -406,11 +406,13 @@ function ammoShape(name, d, file) {
   const tracer = lines.Tracer || {};
   const col = (tracer.Color && tracer.Color.args) || {};
   const audio = d.AmmoAudio || {};
+  const beams = d.Beams || {};
   return {
     name, base_name: null, file,
     ammoMagazine: d.AmmoMagazine || 'Energy',
     ammoRound: d.AmmoRound || name,
     terminalName: d.TerminalName || d.AmmoRound || name,
+    isBeam: ((traj.DesiredSpeed || 0) >= 10000) || ((traj.DesiredSpeed || 0) === 0 && ((beams.Enable === true) || (name && (name.toLowerCase().includes('laser') || name.toLowerCase().includes('beam'))))),
     baseDamage: d.BaseDamage || 0,
     baseDamageCutoff: d.BaseDamageCutoff || 0,
     mass: d.Mass || 0,
@@ -535,9 +537,11 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     deviateShotAngle: hp.DeviateShotAngle || 0,
     rotateRate: hw.RotateRate || 0, elevateRate: hw.ElevateRate || 0,
     minAzimuth: hw.MinAzimuth || 0, maxAzimuth: hw.MaxAzimuth || 0,
-    minElevation: hw.MinElevation || 0, maxElevation: hw.MaxElevation || 0,
-    heatPerShot: hw.HeatPerShot || 0, maxHeat: hw.MaxHeat || 0,
-    cooldown: hw.Cooldown || 0, heatSinkRate: hw.HeatSinkRate || 0,
+    heatPerShot: (loading.HeatPerShot !== undefined ? loading.HeatPerShot : hw.HeatPerShot) || 0,
+    maxHeat: (loading.MaxHeat !== undefined ? loading.MaxHeat : hw.MaxHeat) || 0,
+    cooldown: (loading.Cooldown !== undefined ? loading.Cooldown : hw.Cooldown) || 0,
+    heatSinkRate: (loading.HeatSinkRate !== undefined ? loading.HeatSinkRate : hw.HeatSinkRate) || 0,
+    degradeRof: loading.DegradeRof === true,
     energyCost: a0 ? a0.energyCost : 0,
     magazineSize: mag ? mag.capacity : 0,
     baseDamage: a0 ? a0.baseDamage : 0,

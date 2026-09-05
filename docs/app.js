@@ -2067,11 +2067,12 @@ function getMunitionTerrainClearance(ammo) {
 }
 
 /// <summary>
-/// Extracts turret elevation arc and flags restricted gimbal cones.
+/// <summary>
+/// Extracts turret elevation arc, flags restricted gimbal cones, and depression status.
 /// </summary>
 function getWeaponArcSummary(weapon) {
   if (!weapon || weapon.type !== 'Turret') {
-    return { isTurret: false, isGimbal: false, text: 'Fixed Mount (0° Arc)', hasDepression: false };
+    return { isTurret: false, isGimbal: false, text: 'Fixed Mount (0° Arc)', hasDepression: false, depressionLabel: 'Fixed Forward', note: 'Rigid Forward Mount' };
   }
   const minAz = weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
   const maxAz = weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
@@ -2080,6 +2081,15 @@ function getWeaponArcSummary(weapon) {
   const azSpan = Math.abs(maxAz - minAz);
   const isGimbal = azSpan < 350;
 
+  const hasGoodDepression = minEl <= -10;
+  const isZeroDepression = minEl >= 0;
+  const depressionLabel = hasGoodDepression
+    ? `📐 Good Depression (${minEl}°)`
+    : (isZeroDepression ? `Relentlessly Optimistic (0°)` : `Depression: ${minEl}°`);
+  const depressionNote = hasGoodDepression
+    ? `Depression: ${minEl}° · Downward clearance enabled`
+    : (isZeroDepression ? `0° Depression · Cannot aim below horizon` : `Elevation: ${minEl}° to +${maxEl}°`);
+
   if (isGimbal) {
     const halfAz = Math.round(azSpan / 2);
     return {
@@ -2087,7 +2097,9 @@ function getWeaponArcSummary(weapon) {
       isGimbal: true,
       minAz, maxAz, minEl, maxEl,
       text: `🎯 Gimbal: ±${halfAz}° Az / ${minEl}° to +${maxEl}° El`,
-      hasDepression: minEl <= -10
+      hasDepression: hasGoodDepression,
+      depressionLabel,
+      note: isGimbal ? `Restricted Gimbal Cone (±${halfAz}° Az)` : depressionNote
     };
   }
   return {
@@ -2095,30 +2107,31 @@ function getWeaponArcSummary(weapon) {
     isGimbal: false,
     minAz, maxAz, minEl, maxEl,
     text: `📐 Elevation: ${minEl}° to +${maxEl}°`,
-    hasDepression: minEl <= -10
+    hasDepression: hasGoodDepression,
+    depressionLabel,
+    note: depressionNote
   };
 }
 
 /// <summary>
 /// Determines if recoil kick force warrants a shipbuilder badge.
-/// Bottom 1/3rd of weapons (by recoil <= 50 N) receive "Low Recoil" (green).
-/// Top 1/3rd of weapons (by recoil > 100 N or heavy kick) receive "High Recoil" (red).
+/// High Recoil only flags true chassis-shaking monsters (MACs, 480mm, Hurricane, Odin >= 1,000 kN).
 /// </summary>
 function getWeaponRecoilWarning(weapon, ammo) {
-  if (!weapon) return { showRecoil: false, text: '', isHeavy: false, isLow: false };
+  if (!weapon) return { showRecoil: false, text: '', isHeavy: false, isLow: false, kickKn: 0 };
   const kick = (ammo && (ammo.backKickForce !== undefined ? ammo.backKickForce : (ammo.mass * (ammo.trajectory?.desiredSpeed || 500)))) || 0;
-  const isHeavyKick = kick > 100 || kick >= 50000 || (ammo?.mass || 0) >= 800 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC')));
-
   const kickKn = kick / 1000;
-  const kickStr = kickKn >= 10 ? `${Math.round(kickKn)} kN` : (kickKn >= 1 ? `${kickKn.toFixed(1)} kN` : `${Math.round(kick)} N`);
+  const isMonster = kick >= 1000000 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC') || weapon.subtypeId.includes('LargeRailgun')));
 
-  if (isHeavyKick) {
-    return { showRecoil: true, text: `⚠️ High Recoil: ${kickStr}`, isHeavy: true, isLow: false };
+  if (isMonster) {
+    const kickStr = kickKn >= 1000 ? `${(kickKn / 1000).toFixed(1)} MN` : `${Math.round(kickKn)} kN`;
+    const label = kickKn >= 20000 ? `⚠️ Spinal Compression: ${kickStr}` : `⚠️ Chassis Shaker: ${kickStr}`;
+    return { showRecoil: true, text: label, isHeavy: true, isLow: false, kickKn };
   }
-  if (kick <= 50) {
-    return { showRecoil: true, text: `🛡️ Low Recoil: ${kickStr}`, isHeavy: false, isLow: true };
+  if (kick <= 0) {
+    return { showRecoil: false, text: 'Clang-Approved (0 N)', isHeavy: false, isLow: true, kickKn: 0 };
   }
-  return { showRecoil: false, text: '', isHeavy: false, isLow: false };
+  return { showRecoil: false, text: `${Math.round(kickKn)} kN Recoil`, isHeavy: false, isLow: false, kickKn };
 }
 
 /// <summary>
@@ -3233,7 +3246,7 @@ function updateCombatTelemetry() {
   }
   if (outEffectiveAlpha) {
     const magTag = `${magsToLoad * bMult} loaded ${magsToLoad * bMult === 1 ? 'mag' : 'mags'}${totalRounds * bMult > 1 ? ` · ${totalRounds * bMult} rds` : ''}`;
-    outEffectiveAlpha.textContent = `Effective against ${topProfile.label}${multTag} · Base volley: ${Math.round(alphaVolley * bMult).toLocaleString()} hp${batteryAlphaTag} (${magTag})`;
+    outEffectiveAlpha.textContent = `Base Volley: ${Math.round(alphaVolley * bMult).toLocaleString()} hp${batteryAlphaTag} · ${magTag}`;
   }
   if (dmgDetails.deliverySec > 1.0) {
     outDpsBreakdown.textContent = `Squadron Fire: ${scaledSustainedDps.toLocaleString()} DPS across ${dmgDetails.deliverySec.toFixed(0)}s deploy window`;
@@ -3322,11 +3335,11 @@ function updateCombatTelemetry() {
   }
   if (tmBlastSub) {
     if (blastKind === 'ewar') {
-      tmBlastSub.textContent = 'EWAR effect — no block damage (disables base & AoE payload)';
+      tmBlastSub.textContent = 'EWAR effect — disables target systems (no block damage)';
     } else if (blastKind === 'screen') {
-      tmBlastSub.textContent = 'Anti-projectile burst — no block damage (grid scaling zeroed)';
+      tmBlastSub.textContent = 'Anti-projectile burst screen (grid damage zeroed)';
     } else if (blastRadius > 0) {
-      tmBlastSub.textContent = `${blastDepth > 0 ? blastDepth.toFixed(1) + 'm Depth | ' : ''}Area Detonation (Pooled)`;
+      tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="Pooled AoE: Like misery, damage is shared equally across all blocks in the blast radius until the pool runs dry.">Area Detonation (Pooled Damage) ℹ️</span>`;
     } else {
       tmBlastSub.textContent = 'Direct Kinetic Penetration Only';
     }
@@ -3341,12 +3354,6 @@ function updateCombatTelemetry() {
     } else if (blastKind === 'screen') {
       tmBlastTrigger.textContent = 'Proximity Flak Screen (EndOfLife)';
       tmBlastTrigger.style.display = '';
-    } else if (blastRadius > 0 && blastDmg > 0) {
-      const triggerLabel = (activeAmmo.areaOfDamage?.endOfLife?.enable && activeAmmo.areaOfDamage.endOfLife.damage)
-        ? 'Proximity Detonation (EndOfLife)'
-        : 'Impact Detonation (ByBlockHit)';
-      tmBlastTrigger.textContent = triggerLabel;
-      tmBlastTrigger.style.display = '';
     } else {
       tmBlastTrigger.style.display = 'none';
     }
@@ -3357,7 +3364,7 @@ function updateCombatTelemetry() {
       const poolStr = blastDmg > 0
         ? `${Math.round(blastDmg * bMult).toLocaleString()} HP Pool${bMult > 1 ? ` (${bMult}×)` : ''}`
         : '';
-      const depthStr = blastDepth > 0 ? `${blastDepth.toFixed(1)}m Depth` : 'Surface Detonation';
+      const depthStr = blastDepth > 0 ? `${blastDepth.toFixed(1)}m Depth` : 'Surface Blast';
       tmBlastDepth.textContent = depthStr + (poolStr ? ` (${poolStr})` : '');
       tmBlastDepth.style.display = '';
     } else {
@@ -3365,17 +3372,48 @@ function updateCombatTelemetry() {
     }
   }
 
-  // Traverse Speed & Angular Tracking Agility (Pillar 2)
-  const rotRad = parseFloat(wRotateRate.value) || 0.015;
-  const elRad = parseFloat(wElevateRate.value) || 0.015;
+  // Traverse Speed & Angular Tracking (Pillar 2)
+  const rotRad = parseFloat(wRotateRate.value) || 0;
+  const elRad = parseFloat(wElevateRate.value) || 0;
   const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
-  const avgTraverse = (parseFloat(rotDegSec) + parseFloat(elDegSec)) / 2;
-  const agilityText = avgTraverse >= 40 ? '⚡ Fast Tracking (<50m)' : (avgTraverse >= 15 ? '⚖️ Moderate (>100m)' : '🐌 Slow / Standoff');
-  if (outTraverseDeg) outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span class="unit-sub">/s</span>`;
-  if (outTraverseAzEl) outTraverseAzEl.textContent = `Az: ${rotDegSec}°/s | El: ${elDegSec}°/s`;
-  const outTraverseAgilityBadge = document.getElementById('outTraverseAgilityBadge');
-  if (outTraverseAgilityBadge) outTraverseAgilityBadge.textContent = agilityText;
+  const isFixedMount = rotRad <= 0 && elRad <= 0;
+
+  if (outTraverseDeg) {
+    if (isFixedMount) {
+      outTraverseDeg.innerHTML = `Fixed Mount`;
+    } else if (rotDegSec === elDegSec) {
+      outTraverseDeg.innerHTML = `${rotDegSec}&deg;<span class="unit-sub">/s</span>`;
+    } else {
+      outTraverseDeg.innerHTML = `Az: ${rotDegSec}&deg;/s <span style="opacity:0.35;">|</span> El: ${elDegSec}&deg;/s`;
+    }
+  }
+  if (outTraverseAzEl) {
+    outTraverseAzEl.textContent = isFixedMount ? 'Rigid Forward Mount' : (arcInfo.isGimbal ? 'Gimbal Traverse Cone' : 'Dual-Axis Turret Slew');
+  }
+
+  // Header badges for Pillar 2 (Depression & Recoil)
+  const badgeDepression = document.getElementById('badgeDepression');
+  if (badgeDepression) {
+    if (arcInfo.hasDepression) {
+      badgeDepression.textContent = '📐 Good Depression';
+      badgeDepression.title = `Downward clearance: ${arcInfo.minEl}° (For when life and dunes go downhill)`;
+      badgeDepression.style.display = 'inline-flex';
+    } else {
+      badgeDepression.style.display = 'none';
+    }
+  }
+  const recoilInfo = getWeaponRecoilWarning(activeWeapon, activeAmmo);
+  const badgeRecoil = document.getElementById('badgeRecoil');
+  if (badgeRecoil) {
+    if (recoilInfo.showRecoil) {
+      badgeRecoil.textContent = recoilInfo.text;
+      badgeRecoil.className = 'badge badge-red pillar-header-badge';
+      badgeRecoil.style.display = 'inline-flex';
+    } else {
+      badgeRecoil.style.display = 'none';
+    }
+  }
 
   // Max Engagement Range & Velocity Preview (Pillar 2)
   const isTrackingWeapon = activeWeapon.type === 'Turret';
@@ -3398,7 +3436,7 @@ function updateCombatTelemetry() {
   if (outPillarArcSummary) outPillarArcSummary.textContent = arcInfo.text;
   const outPillarDepressionNote = document.getElementById('outPillarDepressionNote');
   if (outPillarDepressionNote) {
-    outPillarDepressionNote.textContent = arcInfo.hasDepression ? 'Depression allows downhill dune fire' : (arcInfo.isGimbal ? 'Restricted gimbal cone' : 'Standard horizontal traverse');
+    outPillarDepressionNote.textContent = arcInfo.note;
   }
 
   // Structural & Power (Pillar 3 Logistics, Battery Scaled)
@@ -3439,11 +3477,11 @@ function updateCombatTelemetry() {
 
   const outPillarDimensions = document.getElementById('outPillarDimensions');
   if (outPillarDimensions) {
-    outPillarDimensions.textContent = `${sx}×${sy}×${sz_z} (${dimMetersX}×${dimMetersY}×${dimMetersZ}m)`;
+    outPillarDimensions.textContent = `${sx}W × ${sy}H × ${sz_z}D (${dimMetersX} × ${dimMetersY} × ${dimMetersZ}m)`;
   }
   const outPillarVolume = document.getElementById('outPillarVolume');
   if (outPillarVolume) {
-    outPillarVolume.textContent = `${volBlocks} block${volBlocks > 1 ? 's' : ''} (${volM3} m³)`;
+    outPillarVolume.textContent = `${volBlocks} block${volBlocks > 1 ? 's' : ''} (${volM3} m³) · Cross: ${sx*sy} blk`;
   }
 
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
@@ -3472,49 +3510,65 @@ function updateCombatTelemetry() {
   const kgUraniumPerMin = scaledOperationalPwrNum / 60;
   const invVol = (activeWeapon && activeWeapon.inventorySize) ? activeWeapon.inventorySize : (parseFloat(wInventorySize?.value) || 0.9);
 
+  // Magazine physical volume for cargo consumption planning
+  const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
+  const magMeta = (typeof magazinesBlueprintsDb !== 'undefined' ? magazinesBlueprintsDb : []).find(m => m.subtypeId === magSubtype)
+    || (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' ? MAGAZINES_BLUEPRINTS_DATA : []).find(m => m.subtypeId === magSubtype)
+    || { volume: 30 };
+  const magVolM3 = (magMeta.volume || 30) / 1000;
+  const m3PerMin = magsPerMin * magVolM3;
+  const m3PerMinStr = m3PerMin >= 0.01 ? `${m3PerMin.toFixed(2)} m³/min` : `${(m3PerMin * 1000).toFixed(1)} L/min`;
+  const minOfFire = m3PerMin > 0 ? (invVol / m3PerMin).toFixed(1) : '∞';
+
   let consumptionHtml = '';
   if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
     const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
     consumptionHtml = `⚡ ${uStr} Uranium / min`;
-    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW`;
+    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW Operational Draw`;
     if (outMagProfile) outMagProfile.textContent = ammoMagCapacity > 0 ? `${ammoMagCapacity} rds / mag · ${invVol} m³ cargo` : `Continuous · ${invVol} m³ cargo`;
     if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult} mag buffer`;
   } else {
-    const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
-    if (scaledOperationalPwrNum > 20) {
+    consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags/min (${m3PerMinStr})`;
+    if (outAmmoDrawSub) {
       const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
-      consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags / min`;
-      if (outAmmoDrawSub) outAmmoDrawSub.textContent = `[${magSubtype}] + ⚡ ${uStr} Uranium/min`;
-    } else {
-      consumptionHtml = `📦 ${magsPerMin.toFixed(1)} mags / min`;
-      if (outAmmoDrawSub) outAmmoDrawSub.textContent = `[${magSubtype}] · ${Math.round(roundsPerMin).toLocaleString()} rds/min`;
+      const pwrNote = scaledOperationalPwrNum > 20 ? ` + ⚡ ${uStr} U/min` : '';
+      outAmmoDrawSub.textContent = `[${magSubtype}] · ${Math.round(roundsPerMin).toLocaleString()} rds/min${pwrNote}`;
     }
-    if (outMagProfile) outMagProfile.innerHTML = `${ammoMagCapacity} rds / mag · ${invVol} m³ cargo`;
-    if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult}×mag reload buffer`;
+    if (outMagProfile) {
+      outMagProfile.innerHTML = `${ammoMagCapacity} rds/mag · ${m3PerMinStr}`;
+    }
+    if (outMagReload) {
+      outMagReload.textContent = `${invVol} m³ cargo (${minOfFire}m continuous fire)`;
+    }
   }
 
-  // Construction Recipe Summary (Pillar 3 Logistics)
+  // Functional Integrity (Pillar 3 Logistics: Up to Critical Component)
   const comps = activeWeapon.components || [];
-  let totalCompCount = 0;
-  let topCompName = 'SteelPlate';
-  let topCompCount = 0;
+  const critComp = activeWeapon.criticalComponent || 'Computer';
+  let funcHp = 0;
+  let reachedCrit = false;
   for (const c of comps) {
-    const cnt = parseInt(c.count) || 0;
-    totalCompCount += cnt;
-    if (cnt > topCompCount) {
-      topCompCount = cnt;
-      topCompName = c.name;
+    const cMeta = componentsDb[c.name] || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name]) || { integrity: 100 };
+    const layerHp = (cMeta.integrity || 100) * (parseInt(c.count) || 0);
+    funcHp += layerHp;
+    if (c.name === critComp) {
+      reachedCrit = true;
+      break;
     }
   }
-  const outPillarCompSummary = document.getElementById('outPillarCompSummary');
-  if (outPillarCompSummary) {
-    outPillarCompSummary.textContent = `${(totalCompCount * bMult).toLocaleString()} parts (${comps.length} types)`;
+  if (!reachedCrit || funcHp <= 0) funcHp = effIntegrity * 0.7;
+  const funcRatio = effIntegrity > 0 ? Math.round((funcHp / effIntegrity) * 100) : 70;
+
+  const outFunctionalIntegrity = document.getElementById('outFunctionalIntegrity');
+  if (outFunctionalIntegrity) {
+    outFunctionalIntegrity.innerHTML = `${Math.round(funcHp).toLocaleString()} <span class="unit-sub">hp</span>`;
   }
-  const outPillarCompTop = document.getElementById('outPillarCompTop');
-  if (outPillarCompTop) {
-    outPillarCompTop.textContent = `Top: ${(topCompCount * bMult).toLocaleString()}× ${topCompName}`;
+  const outFunctionalThreshold = document.getElementById('outFunctionalThreshold');
+  if (outFunctionalThreshold) {
+    outFunctionalThreshold.innerHTML = `<span title="Flatline Point: Weapon ceases function below this threshold (Critical: ${critComp})">Flatline Point: <strong>${funcRatio}%</strong> HP (${critComp})</span>`;
   }
 
+  const isDegradeRof = activeWeapon.degradeRof || (activeWeapon.loading && activeWeapon.loading.degradeRof);
   if (hasHeat && heatPerSec > sinkRate) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
     const netHeatSec = heatPerSec - sinkRate;
@@ -3522,10 +3576,20 @@ function updateCombatTelemetry() {
     const cooldownSec = (maxHeat * 0.7) / sinkRate;
     const dutyCycle = Math.round((timeToOverheat / (timeToOverheat + cooldownSec)) * 100);
 
-    outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
-    heatProgressBar.style.width = `${dutyCycle}%`;
-    heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--amber-primary), var(--red-accent))';
-    outTimeToOverheat.textContent = `Fire Limit: ${timeToOverheat.toFixed(1)}s (Cooldown: ${cooldownSec.toFixed(1)}s)`;
+    if (isDegradeRof) {
+      const burstSec = (maxHeat * 0.8) / netHeatSec;
+      const equilRps = Math.max(0.1, sinkRate / heatShot);
+      const equilRpm = Math.round(equilRps * 60);
+      outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME (Throttled)`;
+      heatProgressBar.style.width = `${dutyCycle}%`;
+      heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--amber-primary), var(--red-accent))';
+      outTimeToOverheat.innerHTML = `<span title="Thermal Choke: Fires at full ${Math.round(rof)} RPM for ${burstSec.toFixed(1)}s, then throttles to ${equilRpm} RPM to bleed heat">Burst: ${burstSec.toFixed(1)}s @ ${Math.round(rof)} RPM · Throttles to ${equilRpm} RPM</span>`;
+    } else {
+      outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
+      heatProgressBar.style.width = `${dutyCycle}%`;
+      heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--amber-primary), var(--red-accent))';
+      outTimeToOverheat.textContent = `Fire Limit: ${timeToOverheat.toFixed(1)}s (Cooldown: ${cooldownSec.toFixed(1)}s)`;
+    }
     outCooldownTime.innerHTML = consumptionHtml;
     if (hudOverheat) hudOverheat.textContent = `${timeToOverheat.toFixed(1)}s`;
   } else if (hasHeat) {
@@ -3542,7 +3606,7 @@ function updateCombatTelemetry() {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
 
-    outHeatDutyRatio.textContent = `${fireDutyPercent}% SUSTAINED (${effectiveRpm} RPM)`;
+    outHeatDutyRatio.textContent = `${fireDutyPercent}% UPTIME (${effectiveRpm} RPM)`;
     if (heatProgressBar) {
       heatProgressBar.style.width = `${fireDutyPercent}%`;
       heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), var(--amber-primary))';
@@ -3589,7 +3653,7 @@ function updateCombatTelemetry() {
 
 // Initial D Dodgeability / Drift Lead Meter
 function updateInitialDDriftMeter() {
-  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 1000;
+  const muzzleSpeed = parseFloat(tDesiredSpeed.value) || 0;
   const driftSpeedMs = 90; // 90 m/s rover target
 
   // Max engagement range: turrets use targeting range; fixed/dumb weapons use ammo trajectory
@@ -3598,7 +3662,23 @@ function updateInitialDDriftMeter() {
     ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 1500)
     : (parseFloat(tMaxTrajectory.value) || 1500);
 
-  outFlightMuzzleSpd.textContent = `${Math.round(muzzleSpeed)} m/s`;
+  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
+
+  if (isBeam) {
+    outFlightMuzzleSpd.textContent = '⚡ Hitscan (c)';
+    outDelay500m.textContent = '0.00s';
+    outLead500m.textContent = "0.0m (Can't out-drift light)";
+    outDelay1000m.textContent = '0.00s';
+    outLead1000m.textContent = '0.0m (Zero lead)';
+    outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
+    outDelayMax.textContent = '0.00s';
+    outLeadMax.textContent = '0.0m (Instantaneous)';
+    if (outMuzzleVelocityPreview) outMuzzleVelocityPreview.innerHTML = '⚡ Hitscan <span class="unit-sub">(c)</span>';
+    if (outFlightDelay1km) outFlightDelay1km.textContent = 'Flight to 1km: 0.00s (Instantaneous hit)';
+    return;
+  }
+
+  outFlightMuzzleSpd.textContent = `${Math.round(muzzleSpeed).toLocaleString()} m/s`;
 
   // 500m
   const t500 = 500 / muzzleSpeed;
@@ -3612,9 +3692,16 @@ function updateInitialDDriftMeter() {
 
   // Max Range
   const tMax = maxRange / muzzleSpeed;
+  const maxDriftLead = tMax * driftSpeedMs;
   outMaxRangeLabel.textContent = `${Math.round(maxRange)}m (Max)`;
   outDelayMax.textContent = `${tMax.toFixed(2)}s`;
-  outLeadMax.textContent = `${(tMax * driftSpeedMs).toFixed(1)}m drift`;
+  if (maxDriftLead >= 250) {
+    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m (Postcard advance)`;
+  } else if (muzzleSpeed >= 3000) {
+    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m (Barely tap brake)`;
+  } else {
+    outLeadMax.textContent = `${maxDriftLead.toFixed(1)}m drift`;
+  }
 
   // Muzzle Velocity Preview & Flight Delay to 1km (Pillar 2 Reach metric row)
   if (outMuzzleVelocityPreview) outMuzzleVelocityPreview.innerHTML = `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
@@ -3905,8 +3992,25 @@ function getWeaponIconUrl(weapon) {
 
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
+
+/// <summary>
+/// Identifies whether a weapon or munition operates as an instantaneous beam / directed energy weapon.
+/// Excludes non-ballistic beams from physical speed scaling.
+/// </summary>
+function isBeamWeapon(weapon, ammo) {
+  if (ammo) {
+    if (ammo.isBeam || (ammo.beams && ammo.beams.enable)) return true;
+    const spd = (ammo.trajectory && ammo.trajectory.desiredSpeed !== undefined) ? ammo.trajectory.desiredSpeed : 0;
+    if (spd >= 10000) return true;
+    if (spd === 0 && ((ammo.ammoRound && ammo.ammoRound.toLowerCase().includes('laser')) || (weapon && (weapon.name || '').toLowerCase().includes('laser')))) return true;
+    if (ammo.ammoRound && ammo.ammoRound.toLowerCase().includes('beam')) return true;
+  }
+  if (weapon && ((weapon.name || '').toLowerCase().includes('radar') || (weapon.name || '').toLowerCase().includes('designator'))) return true;
+  return false;
+}
+
 function calculateWeaponMetrics(weapon, ammoKeyOverride) {
-  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, effectiveAlphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000, power: 0 };
+  if (!weapon) return { sustainedDps: 0, effectiveDps: 0, alphaVolley: 0, effectiveAlphaVolley: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000, power: 0, ups: 0, isBeam: false };
 
   const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
@@ -3941,7 +4045,9 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
     range = (a.trajectory && a.trajectory.maxTrajectory) ? Math.min(4000, a.trajectory.maxTrajectory) : 1600;
   }
 
-  const velocity = (a.trajectory && a.trajectory.desiredSpeed) ? a.trajectory.desiredSpeed : 1000;
+  const rawVel = (a.trajectory && a.trajectory.desiredSpeed !== undefined) ? a.trajectory.desiredSpeed : (weapon.desiredSpeed || 1000);
+  const isBeam = isBeamWeapon(weapon, a);
+  const velocity = isBeam ? 0 : rawVel;
   const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
   // Mirrors the Power Required card formula (WC: EnergyCost * BaseDamage * RateOfFire / 3600; EffectStrength for EWAR)
@@ -3960,10 +4066,13 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
     integrity = weapon.effectiveIntegrity;
   }
 
+  const techInfo = getTechSummary(weapon.components);
+  const ups = (weapon.upCost !== undefined && weapon.upCost !== null) ? weapon.upCost : techInfo.upCost;
+
   const profile = getTopArmorProfile(a.damageScales || {});
   const effectiveDps = Math.round(sustainedDps * profile.mult);
   const effectiveAlphaVolley = Math.round(alphaVolley * profile.mult);
-  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power };
+  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power, ups, isBeam };
 }
 
 function getModMaxMetrics() {
@@ -3974,23 +4083,44 @@ function getModMaxMetrics() {
   let maxTrack = 10;
   let maxIntegrity = 5000;
   let maxPower = 1;
+  let maxUps = 1;
 
   weaponsDb.forEach(w => {
     const m = calculateWeaponMetrics(w);
     if (m.effectiveDps > maxDps) maxDps = m.effectiveDps;
     if (m.effectiveAlphaVolley > maxAlpha) maxAlpha = m.effectiveAlphaVolley;
     if (m.range > maxRange) maxRange = m.range;
-    if (m.velocity > maxVel) maxVel = m.velocity;
+    if (!m.isBeam && m.velocity > maxVel && m.velocity < 10000) maxVel = m.velocity;
     if (m.tracking > maxTrack) maxTrack = m.tracking;
     if (m.integrity > maxIntegrity) maxIntegrity = m.integrity;
     if (m.power > maxPower) maxPower = m.power;
+    if (m.ups > maxUps) maxUps = m.ups;
   });
 
-  return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity, maxPower };
+  return { maxDps, maxAlpha, maxRange, maxVel, maxTrack, maxIntegrity, maxPower, maxUps };
+}
+
+function getWeaponSpecialtyBadge(weapon, ammo) {
+  if (!ammo) return 'Standard Payload';
+  if (ammo.ewar && ammo.ewar.enable) return `🧿 ${ewarTypeLabel(ammo.ewar.type)}`;
+  if (ammo.baseDamageCutoff > 0) {
+    const penBlocks = Math.round(ammo.baseDamageCutoff / (weapon.gridSize === 'Small' || weapon.grid === 'Small' ? 500 : 2500));
+    return `🪡 Overpen (${penBlocks || 1} blk)`;
+  }
+  const aoe = ammo.areaOfDamage || {};
+  if ((aoe.radius > 0 && aoe.damage > 0) || (aoe.endOfLife && aoe.endOfLife.radius > 0 && aoe.endOfLife.damage > 0)) {
+    const r = (aoe.radius || (aoe.endOfLife && aoe.endOfLife.radius) || 0).toFixed(0);
+    return `💥 Blast (${r}m)`;
+  }
+  const ds = ammo.damageScales || {};
+  if (ds.shields > 1.2 || ds.shield > 1.2) return '⚡ Shield Stripper';
+  if (ds.armor && ds.armor.heavy > 1.2) return '🛡️ Anti-Heavy';
+  return 'Direct Kinetic AP';
 }
 
 /// <summary>
 /// Populates the Active vs Benchmark badge quick-compare panel to the left of the radar chart.
+/// Compares the topmost badges across the three pillars without duplicating the numeric attribute table.
 /// </summary>
 function updateRadarQuickCompare() {
   if (!activeWeapon) return;
@@ -4003,27 +4133,49 @@ function updateRadarQuickCompare() {
 
   const benchAmmo = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
 
+  // Pillar 1: Lethality Badges
   const activeRole = getAutomatedWeaponRole(activeWeapon, activeAmmo);
   const benchRole = benchmarkWeapon ? getAutomatedWeaponRole(benchmarkWeapon, benchAmmo) : null;
   setPair('qcRoleActive', 'qcRoleBench', `${activeRole.icon} ${activeRole.label}`, benchRole ? `${benchRole.icon} ${benchRole.label}` : '');
 
-  setPair('qcGridActive', 'qcGridBench',
-    activeWeapon.gridSize || activeWeapon.grid || 'Large',
-    benchmarkWeapon ? (benchmarkWeapon.gridSize || benchmarkWeapon.grid || 'Large') : '');
+  const aIsBeam = isBeamWeapon(activeWeapon, activeAmmo);
+  const bIsBeam = benchAmmo ? isBeamWeapon(benchmarkWeapon, benchAmmo) : false;
+  const activeMunition = aIsBeam ? `⚡ ${activeAmmo?.terminalName || activeAmmo?.ammoRound || 'Hitscan Beam'}` : (activeAmmo ? (activeAmmo.terminalName || activeAmmo.ammoRound || 'Standard') : 'Standard');
+  const benchMunition = bIsBeam ? `⚡ ${benchAmmo?.terminalName || benchAmmo?.ammoRound || 'Hitscan Beam'}` : (benchAmmo ? (benchAmmo.terminalName || benchAmmo.ammoRound || 'Standard') : 'Standard');
+  setPair('qcAmmoTypeActive', 'qcAmmoTypeBench', activeMunition, benchMunition);
 
-  const activeTech = getTechSummary(activeWeapon.components);
-  const benchTech = benchmarkWeapon ? getTechSummary(benchmarkWeapon.components) : null;
-  setPair('qcUpsActive', 'qcUpsBench', `${activeTech.upCost} UPs`, benchTech ? `${benchTech.upCost} UPs` : '');
+  const activeSpec = getWeaponSpecialtyBadge(activeWeapon, activeAmmo);
+  const benchSpec = benchmarkWeapon ? getWeaponSpecialtyBadge(benchmarkWeapon, benchAmmo) : null;
+  setPair('qcSpecialtyActive', 'qcSpecialtyBench', activeSpec, benchSpec || '');
 
-  setPair('qcPdActive', 'qcPdBench',
-    activeWeapon.pdProjectiles ? '📡 Yes' : '—',
-    benchmarkWeapon ? (benchmarkWeapon.pdProjectiles ? '📡 Yes' : '—') : '');
+  // Pillar 2: Handling & Reach Badges
+  const activeArc = getWeaponArcSummary(activeWeapon);
+  const benchArc = benchmarkWeapon ? getWeaponArcSummary(benchmarkWeapon) : null;
+  const mountLabel = (arc, w) => arc ? (!arc.isTurret ? 'Fixed (Steer rover)' : (arc.isGimbal ? `🎯 Gimbal (±${Math.round(Math.abs(arc.maxAz - arc.minAz)/2)}°)` : '🔄 360° Turret')) : '—';
+  setPair('qcMountActive', 'qcMountBench', mountLabel(activeArc, activeWeapon), mountLabel(benchArc, benchmarkWeapon));
+
+  const depLabel = (arc) => arc ? (arc.hasDepression ? `📐 ${arc.minEl}° (Good Depression)` : (arc.minEl >= 0 ? `0° (Relentlessly Optimistic)` : `${arc.minEl}°`)) : '—';
+  setPair('qcDepressionActive', 'qcDepressionBench', depLabel(activeArc), depLabel(benchArc));
 
   const activeRecoil = getWeaponRecoilWarning(activeWeapon, activeAmmo);
   const benchRecoil = benchmarkWeapon ? getWeaponRecoilWarning(benchmarkWeapon, benchAmmo) : null;
-  setPair('qcRecoilActive', 'qcRecoilBench',
-    activeRecoil.showRecoil ? '⚠️ Yes' : '—',
-    benchmarkWeapon ? (benchRecoil.showRecoil ? '⚠️ Yes' : '—') : '');
+  const recoilFmt = (r) => r ? (r.showRecoil ? r.text : (r.kickKn <= 0 ? 'Clang-Approved (0 N)' : `${Math.round(r.kickKn)} kN`)) : '—';
+  setPair('qcRecoilActive', 'qcRecoilBench', recoilFmt(activeRecoil), recoilFmt(benchRecoil));
+
+  // Pillar 3: Logistics Badges
+  const activeMass = calculateWeaponDryMass(activeWeapon);
+  const benchMass = benchmarkWeapon ? calculateWeaponDryMass(benchmarkWeapon) : null;
+  const gridMassFmt = (w, m) => w ? `${w.gridSize || w.grid || 'Large'} (${m ? m.formatted : '0t'})` : '—';
+  setPair('qcGridMassActive', 'qcGridMassBench', gridMassFmt(activeWeapon, activeMass), gridMassFmt(benchmarkWeapon, benchMass));
+
+  const activeTech = getTechSummary(activeWeapon.components);
+  const benchTech = benchmarkWeapon ? getTechSummary(benchmarkWeapon.components) : null;
+  const techFmt = (t) => t ? (t.techName ? `🔬 ${t.techName} (${t.upCost} UP)` : `Standard (${t.upCost} UP)`) : '—';
+  setPair('qcTechActive', 'qcTechBench', techFmt(activeTech), techFmt(benchTech));
+
+  setPair('qcPdActive', 'qcPdBench',
+    activeWeapon.pdProjectiles ? '📡 Active PD' : '—',
+    benchmarkWeapon ? (benchmarkWeapon.pdProjectiles ? '📡 Active PD' : '—') : '');
 }
 
 function updateComparisonRadar() {
@@ -4041,10 +4193,10 @@ function updateComparisonRadar() {
   const cx = w / 2;
   const cy = h / 2;
   const radius = Math.min(cx, cy) - 40;
-  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Integrity', 'Power'];
+  const axes = ['DPS', 'Alpha', 'Range', 'Velocity', 'Tracking', 'Integrity', 'Power', 'Tech/UP'];
   const totalAxes = axes.length;
 
-  // Draw Hexagonal Web
+  // Draw Octagonal Web
   ctx.strokeStyle = isLight ? '#cbd5e1' : '#263346';
   ctx.lineWidth = 1;
   for (let ring = 1; ring <= 4; ring++) {
@@ -4085,7 +4237,7 @@ function updateComparisonRadar() {
   // Update Max Metrics Readout in Legend
   const readout = document.getElementById('radarMaxMetrics');
   if (readout) {
-    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Target Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()} | <strong>Pwr:</strong> ${modMax.maxPower >= 100 ? Math.round(modMax.maxPower).toLocaleString() : modMax.maxPower.toFixed(2)} MW`;
+    readout.innerHTML = `Mod Max (100%): <strong>DPS:</strong> ${Math.round(modMax.maxDps).toLocaleString()} | <strong>Alpha:</strong> ${Math.round(modMax.maxAlpha).toLocaleString()} | <strong>Target Range:</strong> ${(modMax.maxRange / 1000).toFixed(1)}km | <strong>Vel:</strong> ${Math.round(modMax.maxVel).toLocaleString()}m/s (Ballistic) | <strong>Track:</strong> ${modMax.maxTrack.toFixed(1)}&deg;/s | <strong>HP:</strong> ${Math.round(modMax.maxIntegrity).toLocaleString()} | <strong>Pwr:</strong> ${modMax.maxPower >= 100 ? Math.round(modMax.maxPower).toLocaleString() : modMax.maxPower.toFixed(2)} MW | <strong>Tech/UP:</strong> ${modMax.maxUps} UPs`;
   }
 
   // Calculate Normalized Stats for Active Weapon
@@ -4112,14 +4264,21 @@ function updateComparisonRadar() {
     activeIntegrity = activeWeapon.effectiveIntegrity;
   }
 
+  const activeTechInfo = getTechSummary(activeWeapon ? activeWeapon.components : []);
+  const activeUps = (activeWeapon && activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : activeTechInfo.upCost;
+
+  const activeIsBeam = isBeamWeapon(activeWeapon, activeAmmo) || activeVel >= 10000 || (activeVel <= 0 && activeWeapon && (activeWeapon.name || '').includes('Laser'));
+  const activeVelStat = activeIsBeam ? 1.0 : Math.min(1, Math.max(0, activeVel / modMax.maxVel));
+
   const activeStats = [
     Math.min(1, Math.max(0, activeDps / modMax.maxDps)),
     Math.min(1, Math.max(0, activeAlpha / modMax.maxAlpha)),
     Math.min(1, Math.max(0, activeRange / modMax.maxRange)),
-    Math.min(1, Math.max(0, activeVel / modMax.maxVel)),
+    activeVelStat,
     Math.min(1, Math.max(0, activeTrack / modMax.maxTrack)),
     Math.min(1, Math.max(0, activeIntegrity / modMax.maxIntegrity)),
-    Math.min(1, Math.max(0, activePower / modMax.maxPower))
+    Math.min(1, Math.max(0, activePower / modMax.maxPower)),
+    Math.min(1, Math.max(0, activeUps / (modMax.maxUps || 1)))
   ];
 
   drawPolygon(ctx, cx, cy, radius, activeStats, 'rgba(245, 158, 11, 0.4)', '#f59e0b');
@@ -4157,20 +4316,26 @@ function updateComparisonRadar() {
       legendBenchDesc.textContent = getWeaponDescription(benchmarkWeapon);
     }
 
+    const benchAmmoObj = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
+    const benchIsBeam = bMetrics ? (bMetrics.isBeam || isBeamWeapon(benchmarkWeapon, benchAmmoObj)) : false;
+    const benchVelStat = benchIsBeam ? 1.0 : Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel));
+
     const bStats = [
       Math.min(1, Math.max(0, bMetrics.effectiveDps / modMax.maxDps)),
       Math.min(1, Math.max(0, bMetrics.effectiveAlphaVolley / modMax.maxAlpha)),
       Math.min(1, Math.max(0, bMetrics.range / modMax.maxRange)),
-      Math.min(1, Math.max(0, bMetrics.velocity / modMax.maxVel)),
+      benchVelStat,
       Math.min(1, Math.max(0, bMetrics.tracking / modMax.maxTrack)),
       Math.min(1, Math.max(0, bMetrics.integrity / modMax.maxIntegrity)),
-      Math.min(1, Math.max(0, bMetrics.power / modMax.maxPower))
+      Math.min(1, Math.max(0, bMetrics.power / modMax.maxPower)),
+      Math.min(1, Math.max(0, bMetrics.ups / (modMax.maxUps || 1)))
     ];
 
     drawPolygon(ctx, cx, cy, radius, bStats, 'rgba(56, 189, 248, 0.35)', '#38bdf8');
     const activeSustained = computeSustainedDps().sustainedDps;
     renderCompareTable(activeSustained, activeDps, activeAlpha, activeRange, activeVel, activeTrack, activeIntegrity,
-                       bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.effectiveAlphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity);
+                       bMetrics.sustainedDps, bMetrics.effectiveDps, bMetrics.effectiveAlphaVolley, bMetrics.range, bMetrics.velocity, bMetrics.tracking, bMetrics.integrity,
+                       activeIsBeam, benchIsBeam);
   } else {
     if (compBenchIcon) compBenchIcon.style.display = 'none';
     if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
@@ -4199,26 +4364,46 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
   ctx.stroke();
 }
 
-function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bEffDps, bAlpha, bRange, bVel, bTrack, bInteg) {
+function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bEffDps, bAlpha, bRange, bVel, bTrack, bInteg, aIsBeam, bIsBeam) {
   const rows = [
-    { name: 'Sustained DPS', a: aDps, b: bDps, unit: '' },
-    { name: 'Effective DPS', a: aEffDps, b: bEffDps, unit: '' },
-    { name: 'Effective Alpha Volley', a: aAlpha, b: bAlpha, unit: 'hp' },
-    { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm' },
-    { name: 'Velocity', a: aVel, b: bVel, unit: 'm/s' },
-    { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s' },
-    { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp' }
+    { name: 'Sustained DPS', a: aDps, b: bDps, unit: '', aStr: `${Math.round(aDps).toLocaleString()}`, bStr: `${Math.round(bDps).toLocaleString()}` },
+    { name: 'Effective DPS', a: aEffDps, b: bEffDps, unit: '', aStr: `${Math.round(aEffDps).toLocaleString()}`, bStr: `${Math.round(bEffDps).toLocaleString()}` },
+    { name: 'Effective Alpha Volley', a: aAlpha, b: bAlpha, unit: 'hp', aStr: `${Math.round(aAlpha).toLocaleString()} hp`, bStr: `${Math.round(bAlpha).toLocaleString()} hp` },
+    { name: 'Targeting Range', a: aRange, b: bRange, unit: 'm', aStr: `${Math.round(aRange).toLocaleString()} m`, bStr: `${Math.round(bRange).toLocaleString()} m` },
+    {
+      name: 'Velocity',
+      a: aIsBeam ? 999999 : aVel,
+      b: bIsBeam ? 999999 : bVel,
+      aStr: aIsBeam ? '⚡ Hitscan (c)' : `${Math.round(aVel).toLocaleString()} m/s`,
+      bStr: bIsBeam ? '⚡ Hitscan (c)' : `${Math.round(bVel).toLocaleString()} m/s`,
+      customDelta: (aIsBeam && bIsBeam)
+        ? { text: 'Matched (c)', color: 'var(--text-dim)' }
+        : (aIsBeam && !bIsBeam)
+          ? { text: '⚡ Instant', color: 'var(--green-accent)' }
+          : (!aIsBeam && bIsBeam)
+            ? { text: 'Sub-light', color: 'var(--red-accent)' }
+            : null
+    },
+    { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s', aStr: `${aTrack.toFixed(1)} °/s`, bStr: `${bTrack.toFixed(1)} °/s` },
+    { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp', aStr: `${Math.round(aInteg).toLocaleString()} hp`, bStr: `${Math.round(bInteg).toLocaleString()} hp` }
   ];
 
   compareTableBody.innerHTML = rows.map(r => {
-    const delta = ((r.a - r.b) / (r.b || 1)) * 100;
-    const deltaColor = delta > 0 ? 'var(--green-accent)' : (delta < 0 ? 'var(--red-accent)' : 'var(--text-dim)');
-    const deltaStr = (delta >= 0 ? '+' : '') + delta.toFixed(1) + '%';
+    let deltaStr = '—';
+    let deltaColor = 'var(--text-dim)';
+    if (r.customDelta) {
+      deltaStr = r.customDelta.text;
+      deltaColor = r.customDelta.color;
+    } else {
+      const delta = ((r.a - r.b) / (r.b || 1)) * 100;
+      deltaColor = delta > 0 ? 'var(--green-accent)' : (delta < 0 ? 'var(--red-accent)' : 'var(--text-dim)');
+      deltaStr = (delta >= 0 ? '+' : '') + delta.toFixed(1) + '%';
+    }
     return `
       <tr>
         <td style="font-weight: 600;">${r.name}</td>
-        <td style="font-family: var(--font-mono); color: var(--amber-primary);">${Math.round(r.a).toLocaleString()} ${r.unit}</td>
-        <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${Math.round(r.b).toLocaleString()} ${r.unit}</td>
+        <td style="font-family: var(--font-mono); color: var(--amber-primary);">${r.aStr}</td>
+        <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${r.bStr}</td>
         <td style="font-family: var(--font-mono); color: ${deltaColor}; font-weight: 700;">${deltaStr}</td>
       </tr>
     `;
@@ -4235,7 +4420,13 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
   const comps = activeWeapon ? (activeWeapon.components || []) : [];
   let totalValueCredits = 0;
 
-  comps.forEach(c => {
+  // Space Engineers In-Game Welder Stack:
+  // Base mount/foundation is index 0 (welded first), top finish/armor plates are last.
+  // In-game HUD displays bottom-to-top, so displaying top finishing layer at top
+  // and base mount layer at bottom matches the in-game display order.
+  const displayComps = comps.slice().reverse();
+
+  displayComps.forEach((c, idx) => {
     const cMeta = componentsDb[c.name] || {};
     const mass = (cMeta.mass || 10) * c.count;
     const integ = (cMeta.integrity || 100) * c.count;
@@ -4244,8 +4435,11 @@ function renderBomTable(effectiveIntegrity, durabilityMod) {
 
     const tr = document.createElement('tr');
     const compDisplayName = cMeta.displayName || (GVK_TECH_COMPONENTS && GVK_TECH_COMPONENTS[c.name] && GVK_TECH_COMPONENTS[c.name].displayName) || c.name;
+    const layerBadge = idx === 0
+      ? ' <span style="font-size: 10px; color: var(--amber-primary); font-family: var(--font-mono);">[Top Finish Layer]</span>'
+      : (idx === displayComps.length - 1 ? ' <span style="font-size: 10px; color: var(--cyan-primary); font-family: var(--font-mono);">[Base Mount Layer]</span>' : '');
     tr.innerHTML = `
-      <td style="font-weight: 600;">${compDisplayName}</td>
+      <td style="font-weight: 600;">${compDisplayName}${layerBadge}</td>
       <td style="font-family: var(--font-mono);">${c.count}</td>
       <td style="font-family: var(--font-mono); color: var(--text-dim);">${mass.toFixed(1)} kg</td>
       <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${integ.toLocaleString()}</td>

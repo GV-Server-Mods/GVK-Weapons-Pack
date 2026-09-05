@@ -303,7 +303,6 @@
           </div>
           <div class="pillar-body">
             <div class="pillar-badges-cluster">
-              <span class="badge badge-cyan pillar-header-badge pillar-tag" id="outTraverseAgilityBadge">⚡ Fast Tracking</span>
               <span class="badge badge-green pillar-header-badge" id="badgeDepression" style="display: none;">📐 Good Depression</span>
               <span class="badge pillar-header-badge" id="badgeRecoil" style="display: none;">⚠️ Recoil</span>
             </div>
@@ -403,7 +402,7 @@
                 <div class="metric-sub-detail" id="outPillarVolume">Volume: 1 block</div>
               </div>
               <div style="text-align: right;">
-                <span class="metric-label">BLOCK INTEGRITY</span>
+                <span class="metric-label">TOTAL INTEGRITY</span>
                 <div class="metric-val" id="outEffectiveIntegrity">0</div>
                 <div class="metric-sub-detail" id="outBuildTime">Welding: 0s</div>
               </div>
@@ -433,9 +432,9 @@
                 <div class="metric-sub-detail" id="outMagReload"></div>
               </div>
               <div style="text-align: right;">
-                <span class="metric-label">CONSTRUCTION & WELDING</span>
-                <div class="metric-val" id="outPillarCompSummary" style="font-size: 13px;">0 components</div>
-                <div class="metric-sub-detail" id="outPillarCompTop">Top: SteelPlate</div>
+                <span class="metric-label">FUNCTIONAL INTEGRITY</span>
+                <div class="metric-val cyan" id="outFunctionalIntegrity" style="font-size: 17px;">0 hp</div>
+                <div class="metric-sub-detail" id="outFunctionalThreshold">Threshold: 0% HP</div>
               </div>
             </div>
 
@@ -470,37 +469,60 @@
 
         <!-- Radar Chart (Spider Graph) -->
         <div class="radar-container">
-          <!-- Quick Badge Comparison: Active vs Benchmark -->
+          <!-- Quick Badge Comparison: Active vs Benchmark (Three Pillars Faceoff) -->
           <div class="radar-quickcompare" id="radarQuickCompare">
             <div class="qc-row qc-header-row">
-              <span class="qc-label"></span>
-              <span class="qc-col-label qc-active-label">Active</span>
-              <span class="qc-col-label qc-bench-label">Bench</span>
+              <span class="qc-label">Pillars</span>
+              <span class="qc-col-label qc-active-label">Active Gun</span>
+              <span class="qc-col-label qc-bench-label">Benchmark</span>
             </div>
+            <!-- Pillar 1: Lethality -->
             <div class="qc-row">
               <span class="qc-label">Role</span>
               <span class="qc-val qc-active" id="qcRoleActive">—</span>
               <span class="qc-val qc-bench" id="qcRoleBench">—</span>
             </div>
             <div class="qc-row">
-              <span class="qc-label">Grid</span>
-              <span class="qc-val qc-active" id="qcGridActive">—</span>
-              <span class="qc-val qc-bench" id="qcGridBench">—</span>
+              <span class="qc-label">Munition</span>
+              <span class="qc-val qc-active" id="qcAmmoTypeActive">—</span>
+              <span class="qc-val qc-bench" id="qcAmmoTypeBench">—</span>
             </div>
             <div class="qc-row">
-              <span class="qc-label">Tech / UPs</span>
-              <span class="qc-val qc-active" id="qcUpsActive">—</span>
-              <span class="qc-val qc-bench" id="qcUpsBench">—</span>
+              <span class="qc-label">Specialty</span>
+              <span class="qc-val qc-active" id="qcSpecialtyActive">—</span>
+              <span class="qc-val qc-bench" id="qcSpecialtyBench">—</span>
+            </div>
+            <!-- Pillar 2: Handling -->
+            <div class="qc-row">
+              <span class="qc-label">Mount / Arc</span>
+              <span class="qc-val qc-active" id="qcMountActive">—</span>
+              <span class="qc-val qc-bench" id="qcMountBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Depression</span>
+              <span class="qc-val qc-active" id="qcDepressionActive">—</span>
+              <span class="qc-val qc-bench" id="qcDepressionBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Recoil Kick</span>
+              <span class="qc-val qc-active" id="qcRecoilActive">—</span>
+              <span class="qc-val qc-bench" id="qcRecoilBench">—</span>
+            </div>
+            <!-- Pillar 3: Logistics -->
+            <div class="qc-row">
+              <span class="qc-label">Grid & Mass</span>
+              <span class="qc-val qc-active" id="qcGridMassActive">—</span>
+              <span class="qc-val qc-bench" id="qcGridMassBench">—</span>
+            </div>
+            <div class="qc-row">
+              <span class="qc-label">Tech / Core</span>
+              <span class="qc-val qc-active" id="qcTechActive">—</span>
+              <span class="qc-val qc-bench" id="qcTechBench">—</span>
             </div>
             <div class="qc-row">
               <span class="qc-label">Point Defense</span>
               <span class="qc-val qc-active" id="qcPdActive">—</span>
               <span class="qc-val qc-bench" id="qcPdBench">—</span>
-            </div>
-            <div class="qc-row">
-              <span class="qc-label">Recoil</span>
-              <span class="qc-val qc-active" id="qcRecoilActive">—</span>
-              <span class="qc-val qc-bench" id="qcRecoilBench">—</span>
             </div>
           </div>
           <div style="position: relative; display: flex; justify-content: center;">
@@ -553,12 +575,12 @@
         </div>
       </div>
 
-      <!-- MINIMIZED AT BOTTOM: BILL OF MATERIALS & INGOT COSTS ACCORDION -->
+      <!-- MINIMIZED AT BOTTOM: BILL OF MATERIALS ACCORDION -->
       <details class="bom-accordion" id="bomAccordion">
         <summary class="bom-summary-bar">
           <div class="bom-summary-left">
             <span class="bom-toggle-icon">▶</span>
-            <span class="bom-summary-title">📦 Bill of Materials & Ingot Costs</span>
+            <span class="bom-summary-title">📦 Component Bill of Materials</span>
           </div>
           <div class="bom-summary-badges">
             <span class="bom-badge-cost" id="outTotalValue">$0</span>
@@ -571,7 +593,7 @@
             <table class="bom-table">
               <thead>
                 <tr>
-                  <th>Component / Ingot</th>
+                  <th>Component</th>
                   <th>Quantity</th>
                   <th>Mass (kg)</th>
                   <th>Integrity</th>
