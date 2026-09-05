@@ -3443,6 +3443,8 @@ function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
   const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
+  const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
+  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
 
   // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
   const ds = activeAmmo.damageScales || {};
@@ -3734,8 +3736,6 @@ function updateCombatTelemetry() {
       : 'Ammo Max Trajectory';
   }
 
-  const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
-  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
   if (outMuzzleVelocityPreview) {
     outMuzzleVelocityPreview.innerHTML = isBeam
       ? `⚡ Hitscan <span class="unit-sub">(c)</span>`
