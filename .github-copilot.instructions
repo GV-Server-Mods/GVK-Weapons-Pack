@@ -10,15 +10,17 @@
 - `./content/` contains all of the SE block definitions, audio, models and textures.
   - XML definitions (block definitions, SBCs) live in `./content/Data/`.
 - `./CoreParts/` contains all of the WeaponCore C# script files that define this mod's weapon mechanics and behavior.
-- `./CorePartsReferences/` is a local, read-only repository clone of the CoreParts codebase and official examples.
-- CRITICAL: Treat `./CorePartsReferences/` as the absolute source of truth for:
+- Reference Code Repositories (External, read-only):
+  - `C:\Users\blayl\source\repos\Reference Code\CoreParts`: Official CoreParts codebase, definition structures (`Structure.cs`), and reference weapon/ammo examples.
+  - `C:\Users\blayl\source\repos\Reference Code\WeaponCore`: WeaponCore / CoreSystems framework engine source code, API contracts, and internal system definitions.
+- CRITICAL: Treat these reference repositories as the absolute sources of truth for:
   - Definition structures (`WeaponDef`, `AmmoDef`, `ArmorDef`, `PartAnimation`, etc.).
-  - Enums, flag options, and valid property fields.
-  - Never hallucinate properties or methods not found in the reference repository.
+  - Enums, flag options, valid property fields, and API contracts.
+  - Never hallucinate properties or methods not found in the reference repositories.
   - Note that commented notes sometimes contain errors, or misinterpretations from the WeaponCore dev community.
 
 ## III. DEFINITION INTEGRITY & VALIDATION
 - Cross-Match Names: Ensure SubtypeIds in `.sbc` files match the block assignments inside `WeaponDef.Assignments.MountPoints`.
 - Ammo & Particle Links: Cross-check that `AmmoDef` IDs match their respective `WeaponDef.HardPoint.Loading.Ammos` entries.
 - Dummy Alignment: Ensure weapon dummy names in scripts match standard Space Engineers / CoreParts conventions (e.g., `detector_barrel_01`, `muzzle_projectile_01`).
-- Isolation Boundary: Never suggest placing build tools, `.dll` references, or files from `./CorePartsReferences/` directly into the `./content/` folder.
+- Isolation Boundary: Never suggest placing build tools, `.dll` references, or files from the external reference repositories directly into the `./content/` folder.
