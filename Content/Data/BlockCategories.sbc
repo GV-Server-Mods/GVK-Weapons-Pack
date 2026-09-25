@@ -1,70 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CategoryClasses>
+		<!-- GVK tabs list one head block per variant group (StrictSearch shows every listed block) -->
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
 			<Id>
 				<TypeId>GuiBlockCategoryDefinition</TypeId>
-				<SubtypeId></SubtypeId>
+				<SubtypeId/>
 			</Id>
 			<DisplayName>GV Kharak Items</DisplayName>
 			<Name>GVK</Name>
-			<StrictSearch>false</StrictSearch>
+			<StrictSearch>true</StrictSearch>
 			<ItemIds>
-				<string>ARYXRailgun</string>
-				<string>ARYXRailgunTurret</string>
-				<string>Missile_Torpedo_Large</string>
-				<string>Missile_Torpedo_Small</string>
-				<string>LargeWarhead</string>
-				<string>LargeInteriorTurret</string>
-				<string>SmallInteriorTurret</string>
-				<string>SentinelTurret</string>
+				<string>LargeGatlingTurret/(null)</string>
+				<string>LargeGatlingTurret/LargeAutoCannonTurret</string>
+				<string>LargeMissileTurret/LargeCalibreTurret</string>
+				<string>LargeMissileTurret/ARYXHurricaneCannon</string>
+				<string>LargeMissileTurret/LargeBlockMediumCalibreTurret</string>
+				<string>ConveyorSorter/ARYXRailgun</string>
+				<string>ConveyorSorter/LargeRailgun</string>
+				<string>InteriorTurret/LargeInteriorTurret</string>
 				<string>LargeMissileTurret/(null)</string>
-				<string>SmallGatlingTurret</string>
-				<string>SmallMissileTurret</string>
-				<string>LargeMissileLauncher</string>
-				<string>SmallGatlingGun_Gimbal</string>
-				<string>SmallGatlingGun/(null)</string>
-				<string>SmallMissileLauncher/(null)</string>
-				<string>SmallRocketLauncherReload</string>
-				<string>MA_PDT</string>				
-				<string>MA_PDT_sm</string>
-				<string>MA_PDX</string>
-				<string>MA_T2PDX</string>
-				<string>ReceptorCoilGun</string>
-				<string>ReceptorTurret</string>
-				<string>OKI122mmSGfixed</string>
-				<string>OKI122mmVT</string>
-				<string>MA_Fixed_T2</string>
-				<string>LargeBlockMediumCalibreTurret</string>
-				<string>SmallBlockMediumCalibreTurret</string>
-				<string>LargeCalibreTurret</string>
-				<string>LargeBlockLargeCalibreGun</string>
-				<string>SmallBlockMediumCalibreGun</string>
-				<string>SmallRailgun</string>
-				<string>LargeRailgun</string>
-				<string>SmallMissileLauncherWarfare2</string>
-				<string>SmallGatlingGunWarfare2</string>
-				<string>AutoCannonTurret</string>
-				<string>KhopeshTurret</string>
-				<string>ARYXSmallRadar</string>
-				<string>OKIDesignator</string>
+				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
+				<string>ConveyorSorter/missileBattery01</string>
+				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>ConveyorSorter/ARYXMissileBattery</string>
+				<string>LargeMissileTurret/ARYXSpartanTurret</string>
+				<string>LargeMissileTurret/MA_PDX</string>
+				<string>LargeMissileTurret/lokiCannon1</string>
+				<string>LargeMissileTurret/MA_PDT</string>
+				<string>LargeMissileTurret/OKIDesignator</string>
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
-				<string>ARYXMissileBattery</string>
-				<string>ARYXHeavyFlakTurret</string>
-				<string>GVK_GriffinMissileLauncher</string>
-				<string>ARYXHurricaneCannon</string>
-				<string>ARYXSpartanTurret</string>
-				<string>lokiCannon1</string>
-				<string>missileBattery01</string>
-				<string>GVK_CycloneCannonTurret</string>
-				<string>GVK_GriffinMissileTurret</string>
-				<string>GVK_AvengerGatlingTurret</string>
-				<string>odin</string>
-				<string>SmallBlockRadioAntenna_WCRadar</string>
-				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
-				<string>Missiles_Rockets_SGReloadableLauncher</string>
-				<string>ARYXHydraTurret</string>
-				<string>ARYXCycloneCannon</string>
+				<string>SmallMissileLauncher/LargeFlareLauncher</string>
+				<string>ConveyorSorter/LargeWarhead</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -72,65 +39,81 @@
 				<TypeId>GuiBlockCategoryDefinition</TypeId>
 				<SubtypeId/>
 			</Id>
-            <DisplayName>   Weapons</DisplayName>
-            <Name>GVK_Weapons</Name>
+			<DisplayName>   Weapons</DisplayName>
+			<Name>GVK_Weapons</Name>
 			<StrictSearch>true</StrictSearch>
 			<ItemIds>
-				<string>ARYXRailgun</string>
-				<string>ARYXRailgunTurret</string>
-				<string>Missile_Torpedo_Large</string>
-				<string>Missile_Torpedo_Small</string>
-				<string>LargeWarhead</string>
-				<string>LargeInteriorTurret</string>
-				<string>SmallInteriorTurret</string>
-				<string>SentinelTurret</string>
+				<string>LargeGatlingTurret/(null)</string>
+				<string>LargeGatlingTurret/LargeAutoCannonTurret</string>
+				<string>LargeMissileTurret/LargeCalibreTurret</string>
+				<string>LargeMissileTurret/ARYXHurricaneCannon</string>
+				<string>LargeMissileTurret/LargeBlockMediumCalibreTurret</string>
+				<string>ConveyorSorter/ARYXRailgun</string>
+				<string>ConveyorSorter/LargeRailgun</string>
+				<string>InteriorTurret/LargeInteriorTurret</string>
 				<string>LargeMissileTurret/(null)</string>
-				<string>SmallGatlingTurret</string>
-				<string>SmallMissileTurret</string>
-				<string>LargeMissileLauncher</string>
-				<string>SmallGatlingGun_Gimbal</string>
-				<string>SmallGatlingGun/(null)</string>
-				<string>SmallMissileLauncher/(null)</string>
-				<string>SmallRocketLauncherReload</string>
-				<string>MA_PDT</string>				
-				<string>MA_PDT_sm</string>
-				<string>MA_PDX</string>
-				<string>MA_T2PDX</string>
-				<string>ReceptorCoilGun</string>
-				<string>ReceptorTurret</string>
-				<string>OKI122mmSGfixed</string>
-				<string>OKI122mmVT</string>
-				<string>MA_Fixed_T2</string>
-				<string>LargeBlockMediumCalibreTurret</string>
-				<string>SmallBlockMediumCalibreTurret</string>
-				<string>LargeCalibreTurret</string>
-				<string>LargeBlockLargeCalibreGun</string>
-				<string>SmallBlockMediumCalibreGun</string>
-				<string>SmallRailgun</string>
-				<string>LargeRailgun</string>
-				<string>SmallMissileLauncherWarfare2</string>
-				<string>SmallGatlingGunWarfare2</string>
-				<string>AutoCannonTurret</string>
-				<string>KhopeshTurret</string>
-				<string>ARYXSmallRadar</string>
-				<string>OKIDesignator</string>
+				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
+				<string>ConveyorSorter/missileBattery01</string>
+				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>ConveyorSorter/ARYXMissileBattery</string>
+				<string>LargeMissileTurret/ARYXSpartanTurret</string>
+				<string>LargeMissileTurret/MA_PDX</string>
+				<string>LargeMissileTurret/lokiCannon1</string>
+				<string>LargeMissileTurret/MA_PDT</string>
+				<string>LargeMissileTurret/OKIDesignator</string>
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
-				<string>ARYXMissileBattery</string>
-				<string>ARYXHeavyFlakTurret</string>
-				<string>GVK_GriffinMissileLauncher</string>
-				<string>ARYXHurricaneCannon</string>
-				<string>ARYXSpartanTurret</string>
-				<string>lokiCannon1</string>
-				<string>missileBattery01</string>
-				<string>GVK_CycloneCannonTurret</string>
-				<string>GVK_GriffinMissileTurret</string>
-				<string>GVK_AvengerGatlingTurret</string>
-				<string>odin</string>
-				<string>SmallBlockRadioAntenna_WCRadar</string>
-				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
-				<string>Missiles_Rockets_SGReloadableLauncher</string>
-				<string>ARYXHydraTurret</string>
-				<string>ARYXCycloneCannon</string>
+				<string>SmallMissileLauncher/LargeFlareLauncher</string>
+				<string>ConveyorSorter/LargeWarhead</string>
+			</ItemIds>
+		</Category>
+		<!-- Vanilla tabs - ItemIds merge into the vanilla category -->
+		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
+			<Id>
+				<TypeId>GuiBlockCategoryDefinition</TypeId>
+				<SubtypeId/>
+			</Id>
+			<DisplayName>DisplayName_Category_LargeBlocks</DisplayName>
+			<Name>Section1_Position1_LargeBlocks</Name>
+			<StrictSearch>true</StrictSearch>
+			<ItemIds>
+				<string>LargeMissileTurret/GVK_AvengerGatlingTurret</string>
+				<string>LargeMissileTurret/SentinelTurret</string>
+				<string>LargeGatlingTurret/(null)</string>
+				<string>LargeGatlingTurret/LargeGatlingTurretReskin</string>
+				<string>LargeMissileTurret/ARYXHeavyFlakTurret</string>
+				<string>LargeMissileTurret/KhopeshTurret</string>
+				<string>LargeGatlingTurret/LargeAutoCannonTurret</string>
+				<string>LargeMissileTurret/ARYXCycloneCannon</string>
+				<string>LargeMissileTurret/GVK_CycloneCannonTurret</string>
+				<string>LargeMissileTurret/LargeCalibreTurret</string>
+				<string>SmallMissileLauncher/LargeBlockLargeCalibreGun</string>
+				<string>LargeMissileTurret/ARYXHurricaneCannon</string>
+				<string>LargeMissileTurret/odin</string>
+				<string>LargeMissileTurret/LargeBlockMediumCalibreTurret</string>
+				<string>LargeMissileTurret/ARYXRailgunTurret</string>
+				<string>ConveyorSorter/ARYXRailgun</string>
+				<string>ConveyorSorter/LargeRailgun</string>
+				<string>InteriorTurret/LargeInteriorTurret</string>
+				<string>ConveyorSorter/ARYXHydraTurret</string>
+				<string>LargeMissileTurret/(null)</string>
+				<string>LargeMissileTurret/LargeMissileTurretReskin</string>
+				<string>SmallMissileLauncher/LargeMissileLauncher</string>
+				<string>ConveyorSorter/GVK_GriffinMissileTurret</string>
+				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
+				<string>ConveyorSorter/missileBattery01</string>
+				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>ConveyorSorter/ARYXMissileBattery</string>
+				<string>LargeMissileTurret/ARYXSpartanTurret</string>
+				<string>ConveyorSorter/MA_T2PDX</string>
+				<string>ConveyorSorter/MA_Fixed_T2</string>
+				<string>LargeMissileTurret/MA_PDX</string>
+				<string>LargeMissileTurret/lokiCannon1</string>
+				<string>LargeMissileTurret/MA_PDT</string>
+				<string>LargeMissileTurret/OKIDesignator</string>
+				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
+				<string>SmallMissileLauncher/LargeFlareLauncher</string>
+				<string>ConveyorSorter/LargeWarhead</string>
+				<string>ConveyorSorter/LargeExplosiveBarrel</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -138,65 +121,38 @@
 				<TypeId>GuiBlockCategoryDefinition</TypeId>
 				<SubtypeId/>
 			</Id>
-            <DisplayName>DisplayName_Category_Weapons</DisplayName>
-            <Name>Section1_Position3_Weapons</Name>
+			<DisplayName>DisplayName_Category_SmallBlocks</DisplayName>
+			<Name>Section1_Position1_SmallBlocks</Name>
 			<StrictSearch>true</StrictSearch>
 			<ItemIds>
-				<string>ARYXRailgun</string>
-				<string>ARYXRailgunTurret</string>
-				<string>Missile_Torpedo_Large</string>
-				<string>Missile_Torpedo_Small</string>
-				<string>LargeWarhead</string>
-				<string>LargeInteriorTurret</string>
-				<string>SmallInteriorTurret</string>
-				<string>SentinelTurret</string>
-				<string>LargeMissileTurret/(null)</string>
-				<string>SmallGatlingTurret</string>
-				<string>SmallMissileTurret</string>
-				<string>LargeMissileLauncher</string>
-				<string>SmallGatlingGun_Gimbal</string>
+				<string>LargeGatlingTurret/SmallGatlingTurret</string>
+				<string>LargeGatlingTurret/SmallGatlingTurretReskin</string>
 				<string>SmallGatlingGun/(null)</string>
+				<string>SmallGatlingGun/SmallGatlingGunWarfare2</string>
+				<string>LargeGatlingTurret/SmallGatlingGun_Gimbal</string>
+				<string>LargeMissileTurret/AutoCannonTurret</string>
+				<string>SmallGatlingGun/SmallBlockAutocannon</string>
+				<string>LargeMissileTurret/OKI122mmVT</string>
+				<string>SmallMissileLauncher/OKI122mmSGfixed</string>
+				<string>LargeMissileTurret/SmallBlockMediumCalibreTurret</string>
+				<string>SmallMissileLauncherReload/SmallBlockMediumCalibreGun</string>
+				<string>ConveyorSorter/SmallRailgun</string>
+				<string>LargeMissileTurret/SmallMissileTurret</string>
+				<string>LargeMissileTurret/SmallMissileTurretReskin</string>
 				<string>SmallMissileLauncher/(null)</string>
-				<string>SmallRocketLauncherReload</string>
-				<string>MA_PDT</string>				
-				<string>MA_PDT_sm</string>
-				<string>MA_PDX</string>
-				<string>MA_T2PDX</string>
-				<string>ReceptorCoilGun</string>
-				<string>ReceptorTurret</string>
-				<string>OKI122mmSGfixed</string>
-				<string>OKI122mmVT</string>
-				<string>MA_Fixed_T2</string>
-				<string>LargeBlockMediumCalibreTurret</string>
-				<string>SmallBlockMediumCalibreTurret</string>
-				<string>LargeCalibreTurret</string>
-				<string>LargeBlockLargeCalibreGun</string>
-				<string>SmallBlockMediumCalibreGun</string>
-				<string>SmallRailgun</string>
-				<string>LargeRailgun</string>
-				<string>SmallMissileLauncherWarfare2</string>
-				<string>SmallGatlingGunWarfare2</string>
-				<string>AutoCannonTurret</string>
-				<string>KhopeshTurret</string>
-				<string>ARYXSmallRadar</string>
-				<string>OKIDesignator</string>
-				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
-				<string>ARYXMissileBattery</string>
-				<string>ARYXHeavyFlakTurret</string>
-				<string>GVK_GriffinMissileLauncher</string>
-				<string>ARYXHurricaneCannon</string>
-				<string>ARYXSpartanTurret</string>
-				<string>lokiCannon1</string>
-				<string>missileBattery01</string>
-				<string>GVK_CycloneCannonTurret</string>
-				<string>GVK_GriffinMissileTurret</string>
-				<string>GVK_AvengerGatlingTurret</string>
-				<string>odin</string>
-				<string>SmallBlockRadioAntenna_WCRadar</string>
-				<string>SmallBlockCompactRadioAntennaReskin_WCRadar</string>
-				<string>Missiles_Rockets_SGReloadableLauncher</string>
-				<string>ARYXHydraTurret</string>
-				<string>ARYXCycloneCannon</string>
+				<string>SmallMissileLauncher/SmallMissileLauncherWarfare2</string>
+				<string>SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher</string>
+				<string>SmallMissileLauncherReload/SmallRocketLauncherReload</string>
+				<string>ConveyorSorter/Missile_Torpedo_Small</string>
+				<string>LargeMissileTurret/ReceptorTurret</string>
+				<string>ConveyorSorter/ReceptorCoilGun</string>
+				<string>LargeMissileTurret/MA_PDT_sm</string>
+				<string>ConveyorSorter/ARYXSmallRadar</string>
+				<string>ConveyorSorter/SmallBlockRadioAntenna_WCRadar</string>
+				<string>ConveyorSorter/SmallBlockCompactRadioAntennaReskin_WCRadar</string>
+				<string>SmallMissileLauncher/SmallFlareLauncher</string>
+				<string>ConveyorSorter/SmallWarhead</string>
+				<string>ConveyorSorter/SmallExplosiveBarrel</string>
 			</ItemIds>
 		</Category>
 	</CategoryClasses>
