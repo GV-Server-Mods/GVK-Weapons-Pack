@@ -36,7 +36,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -136,7 +154,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -236,7 +272,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.1,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 2400,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Direct",
+        "directAimCone": 15,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -336,7 +390,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -436,7 +508,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -536,7 +626,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -636,7 +744,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 30,
       "degrees": 45,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 100,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 0,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -736,7 +862,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -836,7 +980,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -936,7 +1098,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -1036,7 +1216,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.15,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 1,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 1700,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 5,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -1136,7 +1334,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -1236,7 +1452,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -1336,7 +1570,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -1436,7 +1688,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -1536,7 +1806,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -1636,7 +1924,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.05,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 2600,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Direct",
+        "directAimCone": 15,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -1736,7 +2042,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.05,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 2600,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Direct",
+        "directAimCone": 15,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -1836,7 +2160,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.05,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 2600,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Direct",
+        "directAimCone": 15,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -1936,7 +2278,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2036,7 +2396,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0.01,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 3300,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Direct",
+        "directAimCone": 10,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2136,7 +2514,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2236,7 +2632,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2336,7 +2750,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 30,
       "degrees": 90,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -2440,7 +2872,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2540,7 +2990,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 30,
       "degrees": 270,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -2644,7 +3112,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2748,7 +3234,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2852,7 +3356,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -2952,7 +3474,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3052,7 +3592,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3152,7 +3710,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3252,7 +3828,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 1000,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Predict",
+        "directAimCone": 0,
+        "groupSize": 5,
+        "groupDelay": 120
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3356,7 +3950,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3456,7 +4068,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -3556,7 +4186,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -3656,7 +4304,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 1,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 0,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Predict",
+        "directAimCone": 0,
+        "groupSize": 5,
+        "groupDelay": 120
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -3756,7 +4422,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -3856,7 +4540,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -3956,7 +4658,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 10,
       "degrees": 20,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 10,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 150,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 0,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -4056,7 +4776,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4156,7 +4894,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 2,
+        "maxSpawns": 1,
+        "proximity": 100,
+        "parentDies": false,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 0,
+        "groupSize": 1,
+        "groupDelay": 1
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4256,7 +5012,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -4356,7 +5130,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 4,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 6,
+        "maxSpawns": 260,
+        "proximity": 1000,
+        "parentDies": false,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 180,
+        "groupSize": 10,
+        "groupDelay": 180
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4456,7 +5248,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 1,
       "degrees": 4,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": true,
+        "startTime": 0,
+        "interval": 6,
+        "maxSpawns": 5000,
+        "proximity": 2500,
+        "parentDies": false,
+        "pointAtTarget": true,
+        "pointType": "Lead",
+        "directAimCone": 180,
+        "groupSize": 10,
+        "groupDelay": 120
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4556,7 +5366,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4656,7 +5484,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4756,7 +5602,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4856,7 +5720,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -4956,7 +5838,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -5056,7 +5956,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -5156,7 +6074,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -5256,7 +6192,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": true,
@@ -5356,7 +6310,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5456,7 +6428,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5560,7 +6550,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 100,
       "degrees": 360,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 1,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 1000,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Predict",
+        "directAimCone": 0,
+        "groupSize": 1,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5660,7 +6668,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5760,7 +6786,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5860,7 +6904,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 50,
       "degrees": 360,
       "reverse": false,
-      "dropVelocity": true
+      "dropVelocity": true,
+      "ignoreArming": true,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 1,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 1,
+        "proximity": 1000,
+        "parentDies": true,
+        "pointAtTarget": true,
+        "pointType": "Predict",
+        "directAimCone": 0,
+        "groupSize": 1,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -5960,7 +7022,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,
@@ -6060,7 +7140,25 @@ const BUNDLED_AMMOS_DATA = {
       "fragments": 0,
       "degrees": 0,
       "reverse": false,
-      "dropVelocity": false
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
     },
     "areaOfDamage": {
       "enable": false,

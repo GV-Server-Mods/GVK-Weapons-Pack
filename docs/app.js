@@ -3838,14 +3838,7 @@ function computeSustainedDps() {
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
-  let sustainedDps = 0;
-  if (dmgDetails.deliverySec > 1.0) {
-    const loiterDps = dmgDetails.total / dmgDetails.deliverySec;
-    const maxConcurrent = Math.min(magsToLoad, Math.max(1.0, dmgDetails.deliverySec / Math.max(0.1, totalCycleSec)));
-    sustainedDps = Math.round(loiterDps * maxConcurrent);
-  } else {
-    sustainedDps = Math.round(effectiveRps * dmgDetails.total);
-  }
+  const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, (activeWeapon && activeWeapon.maxActiveProjectiles) || 0);
 
   return { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails };
 }
@@ -4837,19 +4830,65 @@ function getCutoffArmorScale(ammo, kind) {
   return scale;
 }
 
+/// <summary>
+/// WC TimedSpawns cadence (Projectile.cs): a spawn fires when Age - LastFragTime > Interval, and after every
+/// GroupSize spawns it also waits >= GroupDelay. Spawn count is capped by MaxSpawns, MaxChildren (0 = unlimited)
+/// and the parent's MaxLifeTime. Assumes a target stays inside Proximity, so this is a best-case ceiling.
+/// </summary>
+function getTimedSpawnSchedule(ammo) {
+  const frag = ammo.fragment;
+  const ts = frag.timedSpawns;
+  const gap = Math.max(0, parseInt(ts.interval) || 0) + 1;
+  const groupSize = parseInt(ts.groupSize) || 0;
+  const hasGroup = groupSize > 0 && (parseInt(ts.groupDelay) || 0) > 0;
+  const groupGap = Math.max(gap, parseInt(ts.groupDelay) || 0);
+  const maxChildren = (parseInt(frag.maxChildren) || 0) > 0 ? parseInt(frag.maxChildren) : Infinity;
+  const cap = Math.min(Math.max(1, parseInt(ts.maxSpawns) || 0), maxChildren);
+  const life = (ammo.trajectory && ammo.trajectory.maxLifeTime) || 0;
+
+  const firstTick = Math.max(parseInt(ts.startTime) || 0, gap);
+  let tick = firstTick;
+  let lastTick = firstTick;
+  let spawns = 0;
+  while (spawns < cap && (life <= 0 || tick <= life)) {
+    spawns++;
+    lastTick = tick;
+    tick += (hasGroup && spawns % groupSize === 0) ? groupGap : gap;
+  }
+  spawns = Math.max(1, spawns);
+  return {
+    spawns,
+    deliverySec: (lastTick - firstTick) / 60,
+    firstVolley: Math.min(hasGroup ? groupSize : 1, spawns)
+  };
+}
+
+/// <summary>
+/// Steady-state DPS: every round eventually delivers dmg.total, so DPS = rounds/s x total. Loitering rounds
+/// (drones) hold one of MaxActiveProjectiles slots for their deliverySec, which caps the launch rate.
+/// </summary>
+function computeSteadyStateDps(dmg, effectiveRps, maxActive) {
+  let rps = effectiveRps;
+  if (maxActive > 0 && dmg.deliverySec > 0) rps = Math.min(rps, maxActive / dmg.deliverySec);
+  return Math.round(rps * dmg.total);
+}
+
 function getAmmoDamageDetailed(ammo, depth = 0) {
   if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false };
   // WC EwarDef.Enable disables base AND AoE damage - only the effect lands
   const isEwar = !!(ammo.ewar && ammo.ewar.enable);
-  const base = isEwar ? 0 : (parseFloat(ammo.baseDamage) || 0);
-  const cutoff = isEwar ? 0 : (parseFloat(ammo.baseDamageCutoff) || 0);
+  // TimedSpawns carrier (ParentDies): parent dies when it spawns its child, so its direct hit never lands
+  const timed = (ammo.fragment && ammo.fragment.enable && ammo.fragment.timedSpawns && ammo.fragment.timedSpawns.enable) ? ammo.fragment.timedSpawns : null;
+  const isCarrier = !!(timed && timed.parentDies && ammo.fragment.ammoRound);
+  const base = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamage) || 0);
+  const cutoff = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamageCutoff) || 0);
   // Penetrating rounds (WC BaseDamageCutoff) apply at most Cutoff per block hit and carry the remainder onward
   const perBlockBase = cutoff > 0 ? Math.min(base, cutoff) : base;
   const penBlocks = cutoff > 0 ? Math.max(1, Math.floor(base / cutoff)) : 1;
 
   let aoe = 0;
   if (ammo.areaOfDamage) {
-    const directDmg = parseFloat(ammo.areaOfDamage.damage) || 0;
+    const directDmg = isCarrier ? 0 : (parseFloat(ammo.areaOfDamage.damage) || 0);
     const eolDmg = (ammo.areaOfDamage.endOfLife && ammo.areaOfDamage.endOfLife.enable && parseFloat(ammo.areaOfDamage.endOfLife.damage)) || 0;
     const aeDmg = (ammo.areaOfDamage.areaEffect && ammo.areaOfDamage.areaEffect.areaEffect && parseFloat(ammo.areaOfDamage.areaEffect.damage)) || 0;
     aoe = directDmg + eolDmg + aeDmg;
@@ -4864,30 +4903,16 @@ function getAmmoDamageDetailed(ammo, depth = 0) {
     const child = rnd ? ammosDb[rnd] : null;
     const childD = child ? getAmmoDamageDetailed(child, depth + 1) : { total: 0, instantTotal: 0 };
     const childSingleDmg = childD.total;
+    const cnt = parseInt(ammo.fragment.fragments) || 0;
 
-    const timed = ammo.fragment.timedSpawns;
-    if (timed && timed.enable) {
-      const ms = parseInt(timed.maxSpawns) || 1;
-      const gs = parseInt(timed.groupSize) || 1;
-      const interval = parseInt(timed.interval) || 0;
-      const groupDelay = parseInt(timed.groupDelay) || 0;
-
-      const totalFrags = ms;
-      const numGroups = Math.ceil(totalFrags / Math.max(1, gs));
-      const totalDurationTicks = (numGroups - 1) * groupDelay + (gs * interval);
-      deliverySec = totalDurationTicks / 60.0;
-
-      fragTotal = totalFrags * childSingleDmg;
-
-      // If duration <= 1.0s, all fragments arrive in opening volley
-      if (deliverySec <= 1.0) {
-        fragInstant = fragTotal;
-      } else {
-        // Over-time loitering: Only first burst contributes to initial volley
-        fragInstant = Math.min(gs, totalFrags) * childSingleDmg;
-      }
+    if (timed) {
+      // Each spawn event releases `Fragments` children
+      const sched = getTimedSpawnSchedule(ammo);
+      deliverySec = sched.deliverySec;
+      fragTotal = sched.spawns * cnt * childSingleDmg;
+      // Loitering spawners: only the first group lands in the opening volley
+      fragInstant = deliverySec <= 1.0 ? fragTotal : sched.firstVolley * cnt * childSingleDmg;
     } else {
-      const cnt = parseInt(ammo.fragment.fragments) || 0;
       fragTotal = cnt * childSingleDmg;
       fragInstant = fragTotal;
       deliverySec = 0;
@@ -4967,14 +4992,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const dmgDetails = getAmmoDamageDetailed(a);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
-  let sustainedDps = 0;
-  if (dmgDetails.deliverySec > 1.0) {
-    const loiterDps = dmgDetails.total / dmgDetails.deliverySec;
-    const maxConcurrent = Math.min(mags, Math.max(1.0, dmgDetails.deliverySec / Math.max(0.1, totalCycleSec)));
-    sustainedDps = Math.round(loiterDps * maxConcurrent);
-  } else {
-    sustainedDps = Math.round(effectiveRps * dmgDetails.total);
-  }
+  const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, weapon.maxActiveProjectiles || 0);
 
   // Use Weapon's targeting range; fallback to trajectory if 0 or fixed weapon
   let range = weapon.maxTargetDistance || 0;
@@ -6433,6 +6451,30 @@ function generateCSharpAmmo() {
 `;
     if (fIgnoreArming && fIgnoreArming.checked) code += `                IgnoreArming = true,
 `;
+    // No UI for these yet: round-trip them from the parsed ammo so exports keep carrier/drone behavior
+    const srcFrag = (activeAmmo && activeAmmo.fragment) || {};
+    if (srcFrag.maxChildren > 0) code += `                MaxChildren = ${srcFrag.maxChildren},
+`;
+    if (srcFrag.armWhenHit) code += `                ArmWhenHit = true,
+`;
+    const ts = srcFrag.timedSpawns;
+    if (ts && ts.enable) {
+      code += `                TimedSpawns = new TimedSpawnDef
+                {
+                    Enable = true,
+                    Interval = ${ts.interval || 0},
+                    StartTime = ${ts.startTime || 0},
+                    MaxSpawns = ${ts.maxSpawns || 0},
+                    Proximity = ${ts.proximity || 0},
+                    ParentDies = ${ts.parentDies ? 'true' : 'false'},
+                    PointAtTarget = ${ts.pointAtTarget ? 'true' : 'false'},
+                    PointType = ${ts.pointType || 'Direct'},
+                    DirectAimCone = ${ts.directAimCone || 0}f,
+                    GroupSize = ${ts.groupSize || 0},
+                    GroupDelay = ${ts.groupDelay || 0},
+                },
+`;
+    }
     code += `            },
 `;
   }

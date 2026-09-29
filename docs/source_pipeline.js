@@ -394,6 +394,7 @@ function ammoShape(name, d, file) {
   const eol = ao.EndOfLife || {};
   const ae = ao.AreaEffect || {};
   const frag = d.Fragment || {};
+  const ts = frag.TimedSpawns || {};
   const traj = d.Trajectory || {};
   const ds = d.DamageScales || {};
   const arm = ds.Armor || {};
@@ -433,6 +434,14 @@ function ammoShape(name, d, file) {
       enable: frag.Enable === true || !!frag.Fragments,
       ammoRound: frag.AmmoRound || '', fragments: frag.Fragments || 0,
       degrees: frag.Degrees || 0, reverse: frag.Reverse === true, dropVelocity: frag.DropVelocity === true,
+      ignoreArming: frag.IgnoreArming === true, radial: frag.Radial || 0, offset: frag.Offset || 0,
+      maxChildren: frag.MaxChildren || 0, armWhenHit: frag.ArmWhenHit === true,
+      timedSpawns: {
+        enable: ts.Enable === true, startTime: ts.StartTime || 0, interval: ts.Interval || 0,
+        maxSpawns: ts.MaxSpawns || 0, proximity: ts.Proximity || 0, parentDies: ts.ParentDies === true,
+        pointAtTarget: ts.PointAtTarget === true, pointType: (typeof ts.PointType === 'string' && ts.PointType) || 'Direct',
+        directAimCone: ts.DirectAimCone || 0, groupSize: ts.GroupSize || 0, groupDelay: ts.GroupDelay || 0,
+      },
     },
     areaOfDamage: {
       enable: !!(ao.EndOfLife || ao.AreaEffect),
@@ -549,6 +558,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     delayAfterBurst: loading.DelayAfterBurst || 0,
     reloadTime: loading.ReloadTime || 0,
     magsToLoad: loading.MagsToLoad || 0,
+    maxActiveProjectiles: loading.MaxActiveProjectiles || 0,
     delayUntilFire: loading.DelayUntilFire || 0,
     trajectilesPerBarrel: loading.TrajectilesPerBarrel || 1,
     maxTargetDistance: tgt.MaxTargetDistance || 0,
