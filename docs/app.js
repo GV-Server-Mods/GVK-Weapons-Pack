@@ -1356,7 +1356,7 @@ function parseUrlParams() {
     if (found) selectWeapon(found.id);
   }
   if (vsParam) {
-    const foundBench = weaponsDb.find(w => w.subtypeId === vsParam || w.id === vsParam);
+    const foundBench = weaponsDb.find(w => (w.subtypeId === vsParam || w.id === vsParam) && !isNpcWeapon(w));
     if (foundBench) {
       benchmarkWeapon = foundBench;
       if (compareSelect) compareSelect.value = foundBench.id;
@@ -4849,6 +4849,14 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power, ups, isBeam };
 }
 
+function isNpcWeapon(w) {
+  return !!w && ((w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC')));
+}
+
+/// <summary>
+/// Radar 100% ceilings across player weapons only; NPC-only weapons (e.g. Harbinger at 125k DPS)
+/// would flatten every player weapon to the center of the web.
+/// </summary>
 function getModMaxMetrics() {
   let maxDps = 1000;
   let maxAlpha = 1000;
@@ -4860,6 +4868,7 @@ function getModMaxMetrics() {
   let maxUps = 1;
 
   weaponsDb.forEach(w => {
+    if (isNpcWeapon(w)) return;
     const m = calculateWeaponMetrics(w);
     if (m.effectiveDps > maxDps) maxDps = m.effectiveDps;
     if (m.effectiveAlphaVolley > maxAlpha) maxAlpha = m.effectiveAlphaVolley;
@@ -5126,7 +5135,7 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
   ctx.beginPath();
   for (let i = 0; i < total; i++) {
     const angle = (Math.PI * 2 / total) * i - Math.PI / 2;
-    const val = Math.max(0.08, stats[i]);
+    const val = Math.min(1, Math.max(0, stats[i]));
     const x = cx + radius * val * Math.cos(angle);
     const y = cy + radius * val * Math.sin(angle);
     if (i === 0) ctx.moveTo(x, y);
