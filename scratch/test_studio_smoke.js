@@ -261,6 +261,21 @@ vm.runInContext(`
     hLaserDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).sustainedDps,
     spartanDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).sustainedDps,
     tsuDps: tsuMetrics.sustainedDps,
+    hudBench: (() => {
+      selectWeapon(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret').id);
+      benchmarkWeapon = weaponsDb.find(w => w.subtypeId === 'MA_T2PDX');
+      benchmarkAmmoKey = getSelectableAmmos(benchmarkWeapon)[0];
+      updateCombatTelemetry();
+      updateComparisonRadar();
+      const out = {
+        chip: document.getElementById('hudTelBench').textContent,
+        range: document.getElementById('hudTelRange').textContent,
+        cycle: document.getElementById('hudTelCycle').textContent,
+        expectRange: Math.round(activeWeapon.maxTargetDistance).toLocaleString() + ' m'
+      };
+      selectWeapon(hurW.id); // later checks expect Hurricane selected
+      return out;
+    })(),
     railDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXRailgunTurret')).sustainedDps,
     railShotDmg: (() => { const w = weaponsDb.find(x => x.subtypeId === 'ARYXRailgunTurret'); return getAmmoDamageDetailed(ammosDb[getSelectableAmmos(w)[0] || w.ammoName]).total; })(),
     burstCycle: computeFireCycle({ rof: 480, barrels: 1, trajPerBarrel: 1, magSize: 18, mags: 1, reloadTicks: 410, shotsInBurst: 9, delayAfterBurst: 380, energy: false }),
@@ -321,6 +336,17 @@ check('Spartan Turret alpha volley spans 480-rd burst (72,000 hp)', lcReport.spa
 check('Heavy Laser sustained DPS is 4,500 (240-rd burst + 241-tick reload)', lcReport.hLaserDps === 4500);
 check('Spartan sustained DPS is 2x Heavy Laser (9,000)', lcReport.spartanDps === 9000);
 check('Tsunami sustained DPS within 2% of Cyclone', Math.abs(lcReport.tsuDps / lcReport.cycloneDps - 1) < 0.02);
+check('Footer benchmark chip: Spartan vs Heavy Laser = +100% DPS', lcReport.hudBench.chip.includes('+100% DPS'));
+check('Footer range is targeting range, not projectile travel', lcReport.hudBench.range === lcReport.hudBench.expectRange);
+check('Footer cycle shows fire / reload (no leftover Overheat)', /s fire \/ .*s reload/.test(lcReport.hudBench.cycle));
+const hudHtml = htmlSource.slice(htmlSource.indexOf('id="stickyHudBar"'), htmlSource.indexOf('<!-- Code Generation Modal'));
+check('Footer has no Overheat label', !/Overheat/i.test(hudHtml));
+check('Footer has telemetry, workbench and logistics groups',
+  ['ws-telemetry', 'ws-workbench', 'ws-logistics'].every(ws => hudHtml.includes(`data-hud="${ws}"`)));
+check('Export Code & SBC lives in the Workbench footer group',
+  hudHtml.indexOf('id="btnHudExport"') > hudHtml.indexOf('data-hud="ws-workbench"') && hudHtml.indexOf('id="btnHudExport"') < hudHtml.indexOf('data-hud="ws-logistics"'));
+const wbHtml = htmlSource.slice(htmlSource.indexOf('id="ws-workbench"'), htmlSource.indexOf('id="ws-logistics"'));
+check('Export Snapshots moved into the Workbench tab', wbHtml.includes('id="btnExportSnapshots"') && !hudHtml.includes('btnExportSnapshots'));
 check('ARYX Railgun cycle includes DelayUntilFire spool (120 + 600 ticks = 12s)', lcReport.railDps === Math.round(lcReport.railShotDmg / 12));
 check('Burst mode: 2x9 shots, 380-tick burst gap, reload overlaps final gap (902 ticks)',
   Math.round(lcReport.burstCycle.totalCycleSec * 60) === 902 && lcReport.burstCycle.bursts === 2);

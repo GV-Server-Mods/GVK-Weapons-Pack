@@ -2207,6 +2207,44 @@ input.control-input.is-wc-default {
   align-items: center;
   z-index: 90;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+/* Slides out while the active tab's own summary (banner / hero cards) is on screen */
+.sticky-hud-bar.hud-hidden {
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hud-group {
+  display: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hud-group.active {
+  display: flex;
+}
+
+.hud-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.hud-sub {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.hud-chip {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
 }
 
 .hud-left {
@@ -2238,6 +2276,7 @@ input.control-input.is-wc-default {
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  margin-left: auto; /* stays right-aligned when the group wraps */
 }
 
 .btn-sm {

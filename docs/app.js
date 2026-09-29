@@ -1073,10 +1073,25 @@ const codeBlueprintXml = document.getElementById('codeBlueprintXml');
 const btnCopyBlueprintXml = document.getElementById('btnCopyBlueprintXml');
 
 // Sticky HUD Elements
-const hudWeaponName = document.getElementById('hudWeaponName');
-const hudDps = document.getElementById('hudDps');
-const hudRange = document.getElementById('hudRange');
-const hudOverheat = document.getElementById('hudOverheat');
+const stickyHudBar = document.getElementById('stickyHudBar');
+const hudTelIcon = document.getElementById('hudTelIcon');
+const hudTelName = document.getElementById('hudTelName');
+const hudTelDps = document.getElementById('hudTelDps');
+const hudTelDpsProfile = document.getElementById('hudTelDpsProfile');
+const hudTelAlpha = document.getElementById('hudTelAlpha');
+const hudTelRange = document.getElementById('hudTelRange');
+const hudTelCycle = document.getElementById('hudTelCycle');
+const hudTelBench = document.getElementById('hudTelBench');
+const hudWbName = document.getElementById('hudWbName');
+const hudWbDps = document.getElementById('hudWbDps');
+const hudWbCycle = document.getElementById('hudWbCycle');
+const hudWbAlpha = document.getElementById('hudWbAlpha');
+const hudWbLint = document.getElementById('hudWbLint');
+const hudLogName = document.getElementById('hudLogName');
+const hudLogMagDmg = document.getElementById('hudLogMagDmg');
+const hudLogDensity = document.getElementById('hudLogDensity');
+const hudLogEmpty = document.getElementById('hudLogEmpty');
+const hudLogCargo = document.getElementById('hudLogCargo');
 const btnHudExport = document.getElementById('btnHudExport');
 
 // Linter Banner
@@ -1224,6 +1239,7 @@ async function initStudio() {
 
   // Event Listeners
   setupNavigationEvents();
+  setupHudVisibility();
   setupWorkbenchInputEvents();
   applyWorkbenchFieldHelp();
   setupLogisticsEvents();
@@ -1278,6 +1294,7 @@ function switchWorkspace(targetWsId) {
   if (targetWsId === 'ws-logistics') {
     selectLogisticsMagazine(selectedLogisticsMagSubtype, false);
   }
+  setHudWorkspace(targetWsId);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -2474,8 +2491,132 @@ function updateUniversalBanner() {
     scopeBadgePd.title = pdTitle;
   }
 
-  // Bottom Sticky HUD
-  hudWeaponName.textContent = activeWeapon.name;
+  if (hudTelIcon) hudTelIcon.src = getWeaponIconUrl(activeWeapon);
+}
+
+// ==========================================================================
+// STICKY FOOTER HUD (contextual per workspace tab)
+// ==========================================================================
+function setHudChip(el, text, tone) {
+  if (!el) return;
+  el.textContent = text;
+  el.classList.remove('badge-green', 'badge-red', 'badge-amber', 'badge-cyan');
+  if (tone) el.classList.add(tone);
+}
+
+/// <summary>Telemetry footer: identity, headline combat numbers and the per-gun verdict vs the benchmark.</summary>
+let hudTelLast = null;
+function updateHudTelemetry(v) {
+  if (!v || !activeWeapon || !hudTelName) return;
+  hudTelLast = v;
+  const ammoName = activeAmmo ? (activeAmmo.terminalName || activeAmmo.ammoRound) : '';
+  hudTelName.textContent = `${activeWeapon.displayName || activeWeapon.name}${ammoName ? ` · ${ammoName}` : ''}${v.bMult > 1 ? ` · ×${v.bMult}` : ''}`;
+  if (hudTelDps) hudTelDps.textContent = v.scaledEffectiveDps.toLocaleString();
+  if (hudTelDpsProfile) hudTelDpsProfile.textContent = `vs ${v.profileLabel}`;
+  if (hudTelAlpha) hudTelAlpha.textContent = `${v.scaledEffectiveAlpha.toLocaleString()} hp`;
+  // Same targeting-range fallback as the radar
+  let range = (wMaxTargetDistance && parseFloat(wMaxTargetDistance.value)) || 0;
+  if (range <= 0) range = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) ? Math.min(4000, parseFloat(tMaxTrajectory.value)) : 1600;
+  if (hudTelRange) hudTelRange.textContent = `${Math.round(range).toLocaleString()} m`;
+  if (hudTelCycle) hudTelCycle.textContent = v.cycle;
+
+  if (!hudTelBench) return;
+  if (!benchmarkWeapon || benchmarkWeapon.id === activeWeapon.id) {
+    hudTelBench.style.display = 'none';
+    return;
+  }
+  const benchDps = calculateWeaponMetrics(benchmarkWeapon, benchmarkAmmoKey).effectiveDps;
+  const pct = benchDps > 0 ? Math.round((v.baseEffectiveDps / benchDps - 1) * 100) : 0;
+  const benchName = benchmarkWeapon.displayName || benchmarkWeapon.name;
+  setHudChip(hudTelBench, `vs ${benchName}: ${pct > 0 ? '+' : ''}${pct}% DPS`, pct > 0 ? 'badge-green' : (pct < 0 ? 'badge-red' : 'badge-cyan'));
+  hudTelBench.style.display = '';
+}
+
+/// <summary>Workbench footer: effect of the current edits vs the server default, plus lint status.</summary>
+function updateHudWorkbench(errorCount, warningCount) {
+  if (!activeWeapon || !hudWbName) return;
+  hudWbName.textContent = `${activeWeapon.displayName || activeWeapon.name} (editing)`;
+  const now = computeSustainedDps();
+  const defaults = window.GVK_DEFAULT_WEAPONS ? window.GVK_DEFAULT_WEAPONS.find(w => w.id === activeWeapon.id) : null;
+  const baseDps = defaults ? calculateWeaponMetrics(defaults, activeAmmo ? activeAmmo.name : undefined).sustainedDps : now.sustainedDps;
+  const pct = baseDps > 0 ? Math.round((now.sustainedDps / baseDps - 1) * 100) : 0;
+  if (hudWbDps) {
+    hudWbDps.textContent = (defaults && now.sustainedDps !== baseDps)
+      ? `${baseDps.toLocaleString()} → ${now.sustainedDps.toLocaleString()} (${pct > 0 ? '+' : ''}${pct}%)`
+      : `${now.sustainedDps.toLocaleString()} (default)`;
+  }
+  if (hudWbCycle) {
+    hudWbCycle.textContent = now.reloadSec > 0
+      ? `${(now.spoolSec + now.fireDurationSec).toFixed(1)}s fire / ${now.reloadSec.toFixed(1)}s reload`
+      : `Continuous · ${Math.round(now.effectiveRps * 60).toLocaleString()} RPM`;
+  }
+  if (hudWbAlpha) hudWbAlpha.textContent = `${now.alphaVolley.toLocaleString()} hp`;
+  if (errorCount > 0) setHudChip(hudWbLint, `🚨 ${errorCount} error${errorCount === 1 ? '' : 's'}`, 'badge-red');
+  else if (warningCount > 0) setHudChip(hudWbLint, `⚠️ ${warningCount} warning${warningCount === 1 ? '' : 's'}`, 'badge-amber');
+  else setHudChip(hudWbLint, '✅ Healthy', 'badge-green');
+}
+
+/// <summary>Logistics footer: combat value of the selected magazine.</summary>
+function updateHudLogistics(v) {
+  if (!hudLogName) return;
+  hudLogName.textContent = v.name;
+  if (hudLogMagDmg) hudLogMagDmg.textContent = `${Math.round(v.magDamage).toLocaleString()} hp`;
+  if (hudLogDensity) hudLogDensity.textContent = `${Math.round(v.density).toLocaleString()} hp/L`;
+  if (hudLogEmpty) hudLogEmpty.textContent = v.emptySec < 60 ? `${v.emptySec.toFixed(1)}s` : formatTime(v.emptySec);
+  if (hudLogCargo) hudLogCargo.textContent = formatTime(v.cargoSec);
+}
+
+// Footer hides while the active tab's own summary (banner / hero cards) is on screen, so nothing shows twice.
+const HUD_ANCHORS = {
+  'ws-telemetry': ['#weaponBanner', '#ws-telemetry .hero-pillars-grid'],
+  'ws-logistics': ['#ws-logistics .logistics-ammo-bar', '#outMagVolume'],
+  'ws-workbench': []
+};
+const hudVisibleAnchors = new Set();
+let hudActiveWs = 'ws-telemetry';
+
+function refreshHudVisibility() {
+  if (!stickyHudBar) return;
+  const anchors = HUD_ANCHORS[hudActiveWs] || [];
+  const anchorOnScreen = anchors.some(sel => hudVisibleAnchors.has(sel));
+  stickyHudBar.classList.toggle('hud-hidden', anchorOnScreen);
+}
+
+function setHudWorkspace(wsId) {
+  hudActiveWs = wsId;
+  document.querySelectorAll('.hud-group').forEach(g => {
+    g.classList.toggle('active', g.getAttribute('data-hud') === wsId);
+  });
+  refreshHudVisibility();
+}
+
+function setupHudVisibility() {
+  if (hudTelBench) {
+    hudTelBench.addEventListener('click', () => {
+      if (radarCanvas && radarCanvas.scrollIntoView) radarCanvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+  if (hudWbLint) {
+    hudWbLint.addEventListener('click', () => {
+      if (linterBanner && linterBanner.scrollIntoView) linterBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+  // Without IntersectionObserver the footer simply stays visible
+  if (typeof IntersectionObserver === 'undefined' || !stickyHudBar) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) hudVisibleAnchors.add(e.target._hudSel);
+      else hudVisibleAnchors.delete(e.target._hudSel);
+    });
+    refreshHudVisibility();
+  });
+  Object.values(HUD_ANCHORS).flat().forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) {
+      el._hudSel = sel;
+      observer.observe(el);
+    }
+  });
 }
 
 // ==========================================================================
@@ -4376,6 +4517,7 @@ function updateCombatTelemetry() {
   }
 
   const isDegradeRof = activeWeapon.degradeRof || (activeWeapon.loading && activeWeapon.loading.degradeRof);
+  let hudCycle = '—';
   if (hasHeat && heatPerSec > sinkRate) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
     const netHeatSec = heatPerSec - sinkRate;
@@ -4398,7 +4540,9 @@ function updateCombatTelemetry() {
       outTimeToOverheat.textContent = `Fire Limit: ${timeToOverheat.toFixed(1)}s (Cooldown: ${cooldownSec.toFixed(1)}s)`;
     }
     outCooldownTime.innerHTML = consumptionHtml;
-    if (hudOverheat) hudOverheat.textContent = `${timeToOverheat.toFixed(1)}s`;
+    hudCycle = isDegradeRof
+      ? `Throttles after ${((maxHeat * 0.8) / netHeatSec).toFixed(1)}s`
+      : `Overheats in ${timeToOverheat.toFixed(1)}s`;
   } else if (hasHeat) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
     outHeatDutyRatio.textContent = "100% UPTIME";
@@ -4408,7 +4552,9 @@ function updateCombatTelemetry() {
     }
     outTimeToOverheat.textContent = "Continuous Fire: Unlimited (Sink > Heat)";
     outCooldownTime.innerHTML = consumptionHtml;
-    if (hudOverheat) hudOverheat.textContent = "Unlimited";
+    hudCycle = reloadSec > 0
+      ? `${(spoolSec + fireDurationSec).toFixed(1)}s fire / ${reloadSec.toFixed(1)}s reload`
+      : `Continuous · ${effectiveRpm} RPM`;
   } else if (totalRounds === 1 && reloadSec > 0) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⏱️ SINGLE-SHOT BREECH CYCLE";
     outHeatDutyRatio.textContent = `1 ROUND / ${totalCycleSec.toFixed(1)}s`;
@@ -4420,7 +4566,7 @@ function updateCombatTelemetry() {
     const spoolNote = spoolSec > 0 ? ` (${spoolSec.toFixed(1)}s spool + ${reloadSec.toFixed(1)}s reload)` : '';
     outTimeToOverheat.textContent = `Breech Cycle: 1 round every ${totalCycleSec.toFixed(1)}s${spoolNote} · ${sustainedRpmStr} sustained`;
     outCooldownTime.innerHTML = consumptionHtml;
-    if (hudOverheat) hudOverheat.textContent = `${reloadSec.toFixed(1)}s reload`;
+    hudCycle = `1 rd / ${totalCycleSec.toFixed(1)}s`;
   } else {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
@@ -4438,7 +4584,9 @@ function updateCombatTelemetry() {
       : `Continuous Fire: 100% Belt-Fed (${effectiveRps.toFixed(1)} sps)`;
 
     outCooldownTime.innerHTML = consumptionHtml;
-    if (hudOverheat) hudOverheat.textContent = `${effectiveRpm} RPM`;
+    hudCycle = reloadSec > 0
+      ? `${(spoolSec + fireDurationSec).toFixed(1)}s fire / ${reloadSec.toFixed(1)}s reload`
+      : `Continuous · ${effectiveRpm} RPM`;
   }
 
   // Conditional Explosive Profile
@@ -4454,9 +4602,7 @@ function updateCombatTelemetry() {
 
 
 
-  // Sticky HUD updates
-  hudDps.textContent = scaledEffectiveDps.toLocaleString();
-  hudRange.textContent = `${tMaxTrajectory.value || 1500}m`;
+  updateHudTelemetry({ scaledEffectiveDps, baseEffectiveDps, scaledEffectiveAlpha, profileLabel: topProfile.label, bMult, cycle: hudCycle });
 
   // Render BOM Table
   renderBomTable(effIntegrity, durMod);
@@ -4510,13 +4656,25 @@ function updateAmmoLogistics() {
   const suggestedWeaponVolKL = (magVolumeL * magsToLoad * 2.2) / 1000;
   if (outSuggestedVol) outSuggestedVol.textContent = `${suggestedWeaponVolKL.toFixed(2)} kL (2.2x)`;
 
-  const depletionSec = ((mag.capacity * magsToLoad) / rof) * 60;
+  // Same WC fire/reload cycle as Combat Telemetry (barrels, reload, spool, bursts)
+  const cycle = computeFireCycle({
+    rof, barrels: weaponUsingAmmo ? (weaponUsingAmmo.barrelsPerShot || 1) : 1, trajPerBarrel: 1,
+    magSize: mag.capacity, mags: magsToLoad,
+    reloadTicks: weaponUsingAmmo ? (weaponUsingAmmo.reloadTime || 0) : 0,
+    delayUntilFire: weaponUsingAmmo ? (weaponUsingAmmo.delayUntilFire || 0) : 0,
+    shotsInBurst: weaponUsingAmmo ? (weaponUsingAmmo.shotsInBurst || 0) : 0,
+    delayAfterBurst: weaponUsingAmmo ? (weaponUsingAmmo.delayAfterBurst || 0) : 0,
+    energy: false
+  });
+  const roundsPerSec = cycle.totalRounds / cycle.totalCycleSec;
+
+  const depletionSec = cycle.spoolSec + cycle.fireDurationSec;
   if (outDepletionTime) outDepletionTime.textContent = `${depletionSec.toFixed(1)} s`;
 
   // Cargo Packing & Fleet Endurance
   const smallMags = Math.floor(3375 / Math.max(0.1, magVolumeL));
   const smallTotalDmg = smallMags * totalMagDamage;
-  const smallFireTimeSec = (smallMags * mag.capacity / rof) * 60;
+  const smallFireTimeSec = (smallMags * mag.capacity) / roundsPerSec;
 
   if (outSmallCargoMags) outSmallCargoMags.textContent = `${smallMags.toLocaleString()} Mags`;
   if (outSmallCargoDmg) outSmallCargoDmg.textContent = `Total Damage Stored: ${Math.round(smallTotalDmg).toLocaleString()} hp`;
@@ -4525,12 +4683,17 @@ function updateAmmoLogistics() {
 
   const largeMags = Math.floor(421875 / Math.max(0.1, magVolumeL));
   const largeTotalDmg = largeMags * totalMagDamage;
-  const largeFireTimeSec = (largeMags * mag.capacity / rof) * 60;
+  const largeFireTimeSec = (largeMags * mag.capacity) / roundsPerSec;
 
   if (outLargeCargoMags) outLargeCargoMags.textContent = `${largeMags.toLocaleString()} Mags`;
   if (outLargeCargoDmg) outLargeCargoDmg.textContent = `Total Damage Stored: ${Math.round(largeTotalDmg).toLocaleString()} hp`;
   if (outLarge1GunTime) outLarge1GunTime.textContent = formatTime(largeFireTimeSec);
   if (outLarge20GunTime) outLarge20GunTime.textContent = formatTime(largeFireTimeSec / 20);
+
+  updateHudLogistics({
+    name: mag.displayName, magDamage: totalMagDamage, density: targetDmgDensity,
+    emptySec: mag.capacity / roundsPerSec, cargoSec: largeFireTimeSec
+  });
 
   // XML Blueprint Prerequisites Generation & Visual Breakdown
   const baseSbcMass = Math.max(0.1, mag.mass);
@@ -4966,6 +5129,7 @@ function updateRadarQuickCompare() {
 function updateComparisonRadar() {
   if (!radarCanvas) return;
   updateRadarQuickCompare();
+  updateHudTelemetry(hudTelLast); // benchmark changes don't re-run telemetry
   const ctx = radarCanvas.getContext('2d');
   const w = radarCanvas.width;
   const h = radarCanvas.height;
@@ -5407,7 +5571,8 @@ function runWeaponCoreLinter() {
     // Trajectory Bounds
     const speed = safeFloat(tDesiredSpeed.value, 0);
     const maxTraj = safeFloat(tMaxTrajectory.value, 0);
-    if (speed <= 0) {
+    // Beams (lasers) are hitscan and legitimately use DesiredSpeed = 0
+    if (speed <= 0 && !isBeamWeapon(activeWeapon, activeAmmo)) {
       criticalErrors.push("DesiredSpeed must be > 0 (Projectile is frozen in space).");
     }
     if (maxTraj <= 0) {
@@ -5506,6 +5671,9 @@ function runWeaponCoreLinter() {
     linterBanner.className = 'linter-banner clean';
     linterText.innerHTML = '<strong>🛡️ SYNTAX &amp; BALLISTICS HEALTHY:</strong> 0 Clang hazards detected. All types and numerical bounds valid.';
   }
+  const linterIcon = linterBanner.querySelector ? linterBanner.querySelector('.linter-icon') : null;
+  if (linterIcon) linterIcon.textContent = criticalErrors.length > 0 ? '🚨' : (warnings.length > 0 ? '⚠️' : '✅');
+  updateHudWorkbench(criticalErrors.length, warnings.length);
 }
 
 // ==========================================================================

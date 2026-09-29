@@ -618,6 +618,7 @@
           <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per WeaponCore wiki">+ New Minimal Weapon</button>
           <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Minimal Ammo</button>
           <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
+          <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
         </div>
       </div>
 
@@ -2258,16 +2259,43 @@
   </div>
 
   <!-- Persistent Bottom Sticky HUD Bar -->
-  <div class="sticky-hud-bar">
-    <div class="hud-left">
-      <span class="hud-title" id="hudWeaponName">(L) Gatling Avenger Turret</span>
-      <span class="hud-stat">DPS: <strong id="hudDps">0</strong></span>
-      <span class="hud-stat">Range: <strong id="hudRange">0m</strong></span>
-      <span class="hud-stat">Overheat: <strong id="hudOverheat">Unlimited</strong></span>
+  <div class="sticky-hud-bar" id="stickyHudBar">
+    <!-- Combat Telemetry: identity, headline numbers, benchmark verdict -->
+    <div class="hud-group active" data-hud="ws-telemetry">
+      <div class="hud-left">
+        <img id="hudTelIcon" class="hud-icon" src="icons/L__Gatling_Avenger_Turret.png" alt="">
+        <span class="hud-title" id="hudTelName">—</span>
+        <span class="hud-stat">Eff DPS: <strong id="hudTelDps">0</strong> <span class="hud-sub" id="hudTelDpsProfile"></span></span>
+        <span class="hud-stat">Alpha: <strong id="hudTelAlpha">0</strong></span>
+        <span class="hud-stat">Target Range: <strong id="hudTelRange">0 m</strong></span>
+        <span class="hud-stat">Cycle: <strong id="hudTelCycle">—</strong></span>
+      </div>
+      <div class="hud-right">
+        <button id="hudTelBench" class="badge hud-chip" type="button" style="display: none;" title="Jump to the 1v1 Combat Radar"></button>
+      </div>
     </div>
-    <div class="hud-right">
-      <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
-      <button id="btnHudExport" class="btn btn-primary btn-sm">⚡ Export Code & SBC</button>
+    <!-- Definition Workbench: effect of edits vs server default, lint status, export -->
+    <div class="hud-group" data-hud="ws-workbench">
+      <div class="hud-left">
+        <span class="hud-title" id="hudWbName">—</span>
+        <span class="hud-stat">Sustained DPS: <strong id="hudWbDps">0</strong></span>
+        <span class="hud-stat">Cycle: <strong id="hudWbCycle">—</strong></span>
+        <span class="hud-stat">Alpha: <strong id="hudWbAlpha">0</strong></span>
+      </div>
+      <div class="hud-right">
+        <button id="hudWbLint" class="badge hud-chip badge-green" type="button" title="Jump to the definition checks">✅ Healthy</button>
+        <button id="btnHudExport" class="btn btn-primary btn-sm">⚡ Export Code & SBC</button>
+      </div>
+    </div>
+    <!-- Ammo Logistics: combat value of the selected magazine -->
+    <div class="hud-group" data-hud="ws-logistics">
+      <div class="hud-left">
+        <span class="hud-title" id="hudLogName">—</span>
+        <span class="hud-stat">Damage / Mag: <strong id="hudLogMagDmg">0</strong></span>
+        <span class="hud-stat">Density: <strong id="hudLogDensity">0 hp/L</strong></span>
+        <span class="hud-stat">1 Gun Empties It: <strong id="hudLogEmpty">0 s</strong></span>
+        <span class="hud-stat">Large Cargo Lasts: <strong id="hudLogCargo">0 s</strong> <span class="hud-sub">(1 gun)</span></span>
+      </div>
     </div>
   </div>
 
