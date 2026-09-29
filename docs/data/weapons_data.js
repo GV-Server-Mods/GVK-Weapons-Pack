@@ -15,11 +15,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 60,
+    "reloadTime": 68,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -154,11 +159,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 60,
+    "reloadTime": 68,
     "magsToLoad": 1,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -298,6 +308,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -437,6 +452,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -576,6 +596,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -715,6 +740,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2200,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.8,
     "addToleranceToTracking": false,
@@ -854,6 +884,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -987,6 +1022,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.5,
     "addToleranceToTracking": false,
@@ -1120,6 +1160,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 0.5,
     "addToleranceToTracking": false,
@@ -1253,6 +1298,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -1386,6 +1436,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -1518,6 +1573,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -1650,6 +1710,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -1776,6 +1841,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -1902,6 +1972,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2028,6 +2103,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2154,6 +2234,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2280,6 +2365,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2406,6 +2496,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -2532,6 +2627,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -2658,6 +2758,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1900,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2784,6 +2889,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1900,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.075,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -2910,6 +3020,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -3043,6 +3158,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -3176,6 +3296,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -3309,6 +3434,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1800,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -3442,6 +3572,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -3575,6 +3710,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -3708,6 +3848,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -3834,6 +3979,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -3960,6 +4110,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4086,6 +4241,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4212,6 +4372,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4338,6 +4503,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4464,6 +4634,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4590,6 +4765,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4716,6 +4896,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4842,6 +5027,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -4968,6 +5158,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -5094,6 +5289,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -5220,6 +5420,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -5346,6 +5551,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -5472,6 +5682,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 7,
     "addToleranceToTracking": false,
@@ -5598,6 +5813,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 7,
     "addToleranceToTracking": false,
@@ -5724,6 +5944,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 3,
     "addToleranceToTracking": false,
@@ -5850,6 +6075,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.15,
     "aimingTolerance": 3,
     "addToleranceToTracking": false,
@@ -5976,6 +6206,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.03,
     "aimingTolerance": 0.5,
     "addToleranceToTracking": false,
@@ -6114,6 +6349,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.03,
     "aimingTolerance": 0.5,
     "addToleranceToTracking": false,
@@ -6252,6 +6492,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 4000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.003,
     "aimingTolerance": 0.03,
     "addToleranceToTracking": false,
@@ -6390,6 +6635,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 4000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.003,
     "aimingTolerance": 0.03,
     "addToleranceToTracking": false,
@@ -6528,6 +6778,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 4000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -6666,6 +6921,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 700,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 4,
     "addToleranceToTracking": false,
@@ -6792,6 +7052,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 700,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 4,
     "addToleranceToTracking": false,
@@ -6918,6 +7183,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.05,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -7056,6 +7326,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.05,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -7194,6 +7469,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -7332,6 +7612,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -7470,6 +7755,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -7602,6 +7892,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -7734,6 +8029,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 30,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -7866,6 +8166,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.01,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -7998,6 +8303,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8071,6 +8381,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8144,6 +8459,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 2,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8217,6 +8537,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8290,6 +8615,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 3,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8363,6 +8693,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1.5,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -8436,6 +8771,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -8568,6 +8908,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -8700,6 +9045,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -8832,6 +9182,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -8959,11 +9314,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 240,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9091,11 +9451,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 240,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9223,11 +9588,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 240,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9355,11 +9725,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 240,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9487,11 +9862,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 360,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9619,11 +9999,16 @@ const BUNDLED_WEAPONS_DATA = [
     "shotsInBurst": 0,
     "barrelsPerShot": 2,
     "delayAfterBurst": 0,
-    "reloadTime": 360,
+    "reloadTime": 241,
     "magsToLoad": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1600,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -9756,6 +10141,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -9888,6 +10278,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -10020,6 +10415,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1100,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -10152,6 +10552,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1100,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -10284,6 +10689,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1100,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -10416,6 +10826,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1100,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 10,
     "addToleranceToTracking": false,
@@ -10548,6 +10963,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 5,
     "addToleranceToTracking": false,
@@ -10686,6 +11106,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 5,
     "addToleranceToTracking": false,
@@ -10824,6 +11249,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 60,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -10962,6 +11392,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 60,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 2,
     "addToleranceToTracking": false,
@@ -11100,6 +11535,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2300,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -11238,6 +11678,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2300,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.2,
     "aimingTolerance": 60,
     "addToleranceToTracking": false,
@@ -11376,6 +11821,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2300,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -11514,6 +11964,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2300,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -11652,6 +12107,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -11784,6 +12244,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -11916,6 +12381,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -12042,6 +12512,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12168,6 +12643,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12294,6 +12774,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12420,6 +12905,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12546,6 +13036,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12672,6 +13167,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12798,6 +13298,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -12924,6 +13429,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -13050,6 +13560,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -13176,6 +13691,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 1000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.75,
     "aimingTolerance": 1,
     "addToleranceToTracking": false,
@@ -13302,6 +13822,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 3,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -13428,6 +13953,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 3,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -13554,6 +14084,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -13680,6 +14215,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -13806,6 +14346,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -13932,6 +14477,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -14058,6 +14608,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -14190,6 +14745,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -14322,6 +14882,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 4000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 5,
     "addToleranceToTracking": true,
@@ -14460,6 +15025,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 120,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 4000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.3,
     "aimingTolerance": 5,
     "addToleranceToTracking": true,
@@ -14598,6 +15168,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -14736,6 +15311,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0.1,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -14874,6 +15454,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -15012,6 +15597,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 3000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 180,
     "addToleranceToTracking": true,
@@ -15150,6 +15740,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": false,
@@ -15289,6 +15884,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 2500,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 1,
     "aimingTolerance": 180,
     "addToleranceToTracking": false,
@@ -15428,6 +16028,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 10,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -15555,6 +16160,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 10,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -15682,6 +16292,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -15809,6 +16424,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 5,
     "aimingTolerance": 30,
     "addToleranceToTracking": false,
@@ -15936,6 +16556,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 5000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 180,
     "addToleranceToTracking": false,
@@ -16050,6 +16675,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 5000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16164,6 +16794,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 5000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16278,6 +16913,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 5000,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16398,6 +17038,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16518,6 +17163,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16638,6 +17288,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,
@@ -16758,6 +17413,11 @@ const BUNDLED_WEAPONS_DATA = [
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
     "maxTargetDistance": 0,
+    "validControlModes": [
+      "Automatic",
+      "Manual",
+      "Painter"
+    ],
     "deviateShotAngle": 0,
     "aimingTolerance": 0,
     "addToleranceToTracking": false,

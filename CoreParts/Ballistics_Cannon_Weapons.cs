@@ -74,7 +74,7 @@ namespace Scripts
 				weapon.Assignments.Muzzles = new[] { "muzzle_projectile_1" };
 				weapon.Assignments.Scope = "muzzle_projectile_1";
 				weapon.HardPoint.PartName = "Tsunami Turret";
-				weapon.HardPoint.Loading.ReloadTime = 60;
+				weapon.HardPoint.Loading.ReloadTime = 68; // 1 shell / 68 ticks = 0.882 shots/s, ~Cyclone & 155 (0.889) without a double-tap that breaks the recoil animation
 				weapon.HardPoint.Loading.MagsToLoad = 1;
 				ConfigureCycloneMuzzleFx(weapon);
 				weapon.Animations = AryxCycloneAnims;

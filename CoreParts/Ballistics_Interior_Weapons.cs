@@ -95,7 +95,6 @@ namespace Scripts
                     ConstructPartCap = 0,
                     RotateBarrelAxis = 0,
                     EnergyPriority = 0,
-                    MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false,

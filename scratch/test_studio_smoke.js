@@ -258,6 +258,18 @@ vm.runInContext(`
     hLaserAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).alphaVolley,
     spartanMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret'), ammosDb['Lasers_Laser_Dual']),
     spartanAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).alphaVolley,
+    hLaserDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).sustainedDps,
+    spartanDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).sustainedDps,
+    tsuDps: tsuMetrics.sustainedDps,
+    railDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXRailgunTurret')).sustainedDps,
+    railShotDmg: (() => { const w = weaponsDb.find(x => x.subtypeId === 'ARYXRailgunTurret'); return getAmmoDamageDetailed(ammosDb[getSelectableAmmos(w)[0] || w.ammoName]).total; })(),
+    burstCycle: computeFireCycle({ rof: 480, barrels: 1, trajPerBarrel: 1, magSize: 18, mags: 1, reloadTicks: 410, shotsInBurst: 9, delayAfterBurst: 380, energy: false }),
+    shotDelayCycle: computeFireCycle({ rof: 480, barrels: 1, trajPerBarrel: 1, magSize: 4, mags: 1, reloadTicks: 100, shotsInBurst: 9, delayAfterBurst: 380, energy: false }),
+    derivedEnergyMag: getShotsPerMag({ reloadTime: 120, rateOfFire: 60, barrelsPerShot: 2, trajectilesPerBarrel: 1 }, { ammoMagazine: 'Energy', energyMagazineSize: 0, energyCost: 0.5, baseDamage: 1000 }),
+    cutScaleHeavy: getCutoffArmorScale({ damageScales: { cutoffArmorArmor: -1, cutoffLightArmor: 2, cutoffHeavyArmor: 0.5, cutoffNonArmor: -1 } }, 'heavy'),
+    cutScaleNon: getCutoffArmorScale({ damageScales: { cutoffArmorArmor: -1, cutoffLightArmor: 2, cutoffHeavyArmor: 0.5, cutoffNonArmor: -1 } }, 'nonArmor'),
+    cutScaleOff: getCutoffArmorScale({ damageScales: { cutoffArmorArmor: -1, cutoffLightArmor: -1, cutoffHeavyArmor: -1, cutoffNonArmor: -1 } }, 'heavy'),
+    cycloneDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'GVK_CycloneCannonTurret')).sustainedDps,
     harbMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC'), ammosDb['HeavyRailgunAmmo']),
     harbAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC')).alphaVolley,
     pdMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_PDT'), ammosDb['Lasers_AMS']),
@@ -304,8 +316,19 @@ check('All weapon icons resolve to icons/ paths (0 missing)', lcReport.missingIc
 // Energy Virtual Magazine & Continuous Energy checks
 check('Heavy Laser resolves 240-rd virtual magazine', lcReport.hLaserMagSize === 240);
 check('Heavy Laser alpha volley spans 240-rd burst (36,000 hp)', lcReport.hLaserAlpha === 36000);
-check('Spartan Turret resolves 360-rd virtual magazine', lcReport.spartanMagSize === 360);
-check('Spartan Turret alpha volley spans 360-rd burst (54,000 hp)', lcReport.spartanAlpha === 54000);
+check('Spartan Turret resolves 480-rd virtual magazine', lcReport.spartanMagSize === 480);
+check('Spartan Turret alpha volley spans 480-rd burst (72,000 hp)', lcReport.spartanAlpha === 72000);
+check('Heavy Laser sustained DPS is 4,500 (240-rd burst + 241-tick reload)', lcReport.hLaserDps === 4500);
+check('Spartan sustained DPS is 2x Heavy Laser (9,000)', lcReport.spartanDps === 9000);
+check('Tsunami sustained DPS within 2% of Cyclone', Math.abs(lcReport.tsuDps / lcReport.cycloneDps - 1) < 0.02);
+check('ARYX Railgun cycle includes DelayUntilFire spool (120 + 600 ticks = 12s)', lcReport.railDps === Math.round(lcReport.railShotDmg / 12));
+check('Burst mode: 2x9 shots, 380-tick burst gap, reload overlaps final gap (902 ticks)',
+  Math.round(lcReport.burstCycle.totalCycleSec * 60) === 902 && lcReport.burstCycle.bursts === 2);
+check('Shot-delay mode: mag smaller than burst fires straight through to reload (121 ticks)',
+  Math.round(lcReport.shotDelayCycle.totalCycleSec * 60) === 121);
+check('Energy mag derived from power x ReloadTime when EnergyMagazineSize = 0 (2,000)', lcReport.derivedEnergyMag === 2000);
+check('ArmorForCutoff scales cap vs heavy armor (0.5x), leaves -1 classes unchanged',
+  lcReport.cutScaleHeavy === 0.5 && lcReport.cutScaleNon === 1 && lcReport.cutScaleOff === 1);
 check('Harbinger Railgun resolves 1-rd energy magazine (1,000,000 hp)', lcReport.harbMagSize === 1 && lcReport.harbAlpha === 1000000);
 check('Point Defense Laser (continuous, no virtual mag) resolves 1 round (100 hp, NOT 10,000 hp fallback)', lcReport.pdMagSize === 1 && lcReport.pdAlpha === 100);
 
@@ -330,6 +353,31 @@ check('Player weapon SBC XML does not output <DeconstructId>', !lcReport.playerS
 const sourceLiveContent = fs.readFileSync(path.join(root, 'docs', 'source_live.js'), 'utf8');
 const dateRegexMatch = sourceLiveContent.includes("d.getUTCFullYear()") && sourceLiveContent.includes("${mm}.${dd}.${yyyy}");
 check('source_live.js formats commit date as mm.dd.yyyy', dateRegexMatch);
+
+// WeaponCore schema guard + new WC definition fields
+const SP = require(path.join(root, 'docs', 'source_pipeline.js'));
+const schemaSandbox = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'docs', 'data', 'wc_schema.js'), 'utf8'), schemaSandbox);
+const bundledSchema = schemaSandbox.window.GVK_WC_SCHEMA;
+const liveSchema = SP.extractWcSchema(fs.readFileSync(path.join(root, 'CoreParts', 'script', 'Structure.cs'), 'utf8'));
+check('Bundled wc_schema.js matches Structure.cs (re-run export_snapshots.js after syncing WC)',
+  SP.diffWcSchema(bundledSchema, liveSchema).length === 0 && !!bundledSchema.upstream);
+check('Schema diff flags added WC fields', SP.diffWcSchema(
+  { enums: {}, structs: { TargetingDef: {} } }, { enums: {}, structs: { TargetingDef: { ValidControlModes: 'ControlModes[]' } } }
+).includes('+ TargetingDef.ValidControlModes : ControlModes[]'));
+const wcFieldSrc = `namespace Scripts { partial class Parts {
+ private AmmoDef CutAmmo => new AmmoDef { AmmoRound = "CutAmmo", BaseDamage = 1000f, BaseDamageCutoff = 200f,
+   DamageScales = new DamageScaleDef { ArmorForCutoff = new ArmorDef { Armor = -1f, Heavy = 0.5f, Light = 2f }, GridSizeForCutoff = new GridSizeDef { Large = 1.5f } } };
+ WeaponDefinition CtrlW => new WeaponDefinition { Assignments = new ModelAssignmentsDef { MountPoints = new[] { new MountPointDef { SubtypeId = "CtrlW" } } },
+   Targeting = new TargetingDef { ValidControlModes = new[] { ControlModes.Automatic, ControlModes.Painter } },
+   HardPoint = new HardPointDef { PartName = "C", Loading = new LoadingDef { RateOfFire = 60 } }, Ammos = new[] { CutAmmo } };
+}}`;
+const wcParsed = SP.parseAll({ 'T.cs': wcFieldSrc });
+const cutDs = SP.ammoShape('CutAmmo', wcParsed.ammos.CutAmmo.def, 'T.cs').damageScales;
+check('Pipeline parses ArmorForCutoff (omitted field = 0, like C#) and GridSizeForCutoff',
+  cutDs.cutoffHeavyArmor === 0.5 && cutDs.cutoffLightArmor === 2 && cutDs.cutoffNonArmor === 0 && cutDs.cutoffGridLarge === 1.5 && cutDs.cutoffGridSmall === -1);
+const ctrlEntry = SP.weaponEntry(wcParsed.weapons[0], 'CtrlW', 0, null, {}, wcParsed.defs, {}, {});
+check('Pipeline parses Targeting.ValidControlModes', ctrlEntry.validControlModes.join(',') === 'Automatic,Painter');
 
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');

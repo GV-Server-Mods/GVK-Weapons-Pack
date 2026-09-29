@@ -42,7 +42,7 @@ namespace Scripts
 			RateOfFire = 3600,
 			BarrelsPerShot = 1,
 			TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-			ReloadTime = 240, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+			ReloadTime = 241, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). 241 offsets the 239-tick burst for an even 480-tick cycle (30 shots/s).
 			MagsToLoad = 0, // Number of physical magazines to consume on reload.
 			ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 			DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
@@ -257,7 +257,7 @@ namespace Scripts
                     RateOfFire = 3600,
                     BarrelsPerShot = 2,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-					ReloadTime = 360, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+					ReloadTime = 241, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). Matches Heavy Laser cycle; 2 barrels = 2x DPS.
 					MagsToLoad = 0, // Number of physical magazines to consume on reload.
 					ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
 					DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).

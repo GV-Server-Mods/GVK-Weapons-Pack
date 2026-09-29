@@ -74,7 +74,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -168,7 +174,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -262,7 +274,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -356,7 +374,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -450,7 +474,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 2,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -544,7 +574,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 2,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -638,7 +674,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 10,
       "damageType": "Kinetic",
       "gridLarge": 0,
-      "gridSmall": 0
+      "gridSmall": 0,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -732,7 +774,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 10,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -826,7 +874,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": -1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -920,7 +974,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 3,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 1
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1014,7 +1074,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 3,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 1
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1108,7 +1174,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 3,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 1
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1202,7 +1274,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 5,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1296,7 +1374,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 5,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1390,7 +1474,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 500,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1484,7 +1574,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 1
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1578,7 +1674,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1000,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1672,7 +1774,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1000,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1766,7 +1874,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1000,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1860,7 +1974,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 500,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -1954,7 +2074,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 500,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2048,7 +2174,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 500,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2142,7 +2274,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2240,7 +2378,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0.5,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2334,7 +2478,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2432,7 +2582,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2530,7 +2686,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.5
+      "gridSmall": 0.5,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2628,7 +2790,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": 0.5,
-      "gridSmall": 0.5
+      "gridSmall": 0.5,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2722,7 +2890,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 1
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2816,7 +2990,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Energy",
       "gridLarge": 0,
-      "gridSmall": 0
+      "gridSmall": 0,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2910,7 +3090,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": -1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -2951,7 +3137,7 @@ const BUNDLED_AMMOS_DATA = {
     "noGridOrArmorScaling": false,
     "hybridRound": false,
     "energyCost": 0.78,
-    "energyMagazineSize": 360,
+    "energyMagazineSize": 480,
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
@@ -3004,7 +3190,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": -1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3102,7 +3294,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": -1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3196,7 +3394,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3290,7 +3494,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3384,7 +3594,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Energy",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3478,7 +3694,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3572,7 +3794,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0.5,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3666,7 +3894,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3760,7 +3994,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 2,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3854,7 +4094,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -3948,7 +4194,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 10,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4042,7 +4294,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4136,7 +4394,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4230,7 +4494,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4324,7 +4594,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 2,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4418,7 +4694,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4512,7 +4794,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4606,7 +4894,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4700,7 +4994,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4794,7 +5094,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4888,7 +5194,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -4982,7 +5294,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": 1,
-      "gridSmall": 0.75
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5076,7 +5394,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 1,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5174,7 +5498,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0.5,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5268,7 +5598,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5362,7 +5698,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5456,7 +5798,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5550,7 +5898,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5644,7 +5998,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {
@@ -5738,7 +6098,13 @@ const BUNDLED_AMMOS_DATA = {
       "healthHitModifier": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
-      "gridSmall": -1
+      "gridSmall": -1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
     },
     "approachesRef": null,
     "audio": {

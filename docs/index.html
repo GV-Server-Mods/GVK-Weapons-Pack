@@ -948,6 +948,13 @@
               <label class="chk-label"><input type="checkbox" id="wIgnoreDumb" checked> Ignore Dumb Projectiles</label>
               <label class="chk-label"><input type="checkbox" id="wLockedSmartOnly"> Locked Smart Only</label>
             </div>
+
+            <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Valid Control Modes:</div>
+            <div class="checkbox-row" style="margin-top: 6px;">
+              <label class="chk-label"><input type="checkbox" id="wCtrlAutomatic" checked> Automatic</label>
+              <label class="chk-label"><input type="checkbox" id="wCtrlManual" checked> Manual</label>
+              <label class="chk-label"><input type="checkbox" id="wCtrlPainter" checked> Painter</label>
+            </div>
           </div>
         </details>
 
@@ -1371,6 +1378,30 @@
               <div class="control-item">
                 <label class="control-label">Small Grid Modifier <span class="unit">-1 = default</span></label>
                 <input type="number" id="dsGridSmall" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: General Armor <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffArmorArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: Light Armor <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffLightArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: Heavy Armor <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffHeavyArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: Non-Armor <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffNonArmor" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: Large Grid <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffGridLarge" class="control-input" step="0.1" value="-1">
+              </div>
+              <div class="control-item">
+                <label class="control-label">Cutoff: Small Grid <span class="unit">-1 = off</span></label>
+                <input type="number" id="dsCutoffGridSmall" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
                 <label class="control-label">Falloff Distance <span class="unit">meters</span></label>

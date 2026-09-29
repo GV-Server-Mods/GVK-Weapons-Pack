@@ -226,6 +226,10 @@ namespace Scripts
             [ProtoMember(3)] internal double KineticResistance;
             [ProtoMember(4)] internal double EnergeticResistance;
             [ProtoMember(5)] internal int DefinitionPriority;
+            [ProtoMember(6)] internal int MinDamage;
+            [ProtoMember(7)] internal bool IsSacrificialArmor;
+            [ProtoMember(8)] internal int MinDamageSacrificial;
+            [ProtoMember(9)] internal float SacrificialIntegrityThreshold;
         }
 
         [ProtoContract]
@@ -332,6 +336,16 @@ namespace Scripts
                 [ProtoMember(26)] internal bool AdvancedFireDistribution;
                 [ProtoMember(27)] internal string[] ProjectileTagsList;
                 [ProtoMember(28)] internal WhitelistSystem ProjectileTagsMeaning;
+                [ProtoMember(29)] internal ControlModes[] ValidControlModes;
+
+                [Flags]
+                public enum ControlModes : uint
+                {
+                    Invalid = 0,
+                    Automatic = 1,
+                    Manual = 2,
+                    Painter = 4
+                }
 
                 [ProtoContract]
                 public struct CommunicationDef
@@ -682,7 +696,7 @@ namespace Scripts
                     [ProtoMember(1)] internal int ConstructPartCap;
                     [ProtoMember(2)] internal int EnergyPriority;
                     [ProtoMember(3)] internal int RotateBarrelAxis;
-                    [ProtoMember(4)] internal bool MuzzleCheck;
+                    //[ProtoMember(4)] internal bool MuzzleCheck; //Deprecated
                     [ProtoMember(5)] internal bool Debug;
                     [ProtoMember(6)] internal double RestrictionRadius;
                     [ProtoMember(7)] internal bool CheckInflatedBox;
@@ -774,6 +788,8 @@ namespace Scripts
                     [ProtoMember(11)] internal double VoxelHitModifier;
                     [ProtoMember(12)] internal DamageTypes DamageType;
                     [ProtoMember(13)] internal DeformDef Deform;
+                    [ProtoMember(14)] internal ArmorDef ArmorForCutoff;
+                    [ProtoMember(15)] internal GridSizeDef GridSizeForCutoff;
 
                     [ProtoContract]
                     public struct FallOffDef
@@ -887,6 +903,7 @@ namespace Scripts
                 {
                     [ProtoMember(1)] internal string SubTypeId;
                     [ProtoMember(2)] internal float Modifier;
+                    [ProtoMember(3)] internal float CutoffModifier;
                 }
 
                 [ProtoContract]
@@ -1613,9 +1630,10 @@ namespace Scripts
                             ModelStoredEndLocalPosition,
                             ModelRelativeToShooterForwards,
                             ModelRelativeToShooterUp,
-                            ModelRelativeToOriginDirection,
+                            ModelRelativeToShooterDirection,
                             ModelOriginForwards,
                             ModelOriginUp,
+                            ModelRelativeToOriginDirection,
                             ModelAcceleration,
                         }
 

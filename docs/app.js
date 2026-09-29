@@ -304,6 +304,9 @@ const WORKBENCH_FIELD_HELP = {
   wClosestFirst: "Tries to pick closest targets first (blocks on grids, projectiles, etc...).",
   wIgnoreDumb: "Don't fire at non-smart projectiles. If you're using projectile tags, keep this false as it overwrites the newer system.",
   wLockedSmartOnly: "Only fire at smart projectiles that are locked on to the parent grid.",
+  wCtrlAutomatic: "Targeting.ValidControlModes — allow the weapon's AI to pick and shoot targets on its own. Leaving all three checked omits the tag (all modes allowed).",
+  wCtrlManual: "Targeting.ValidControlModes — allow direct player control (manual aim/fire).",
+  wCtrlPainter: "Targeting.ValidControlModes — allow HUD painter targeting. Servers can still ban it via ProhibitHUDPainter.",
 
   // --- Scope A / 6. AiDef & UiDef ---
   wAiTrackTargets: "Whether this weapon tracks its own targets, or (for multiweapons) relies on the weapon with PrimaryTracking for target designation. Turrets need this true.",
@@ -392,6 +395,12 @@ const WORKBENCH_FIELD_HELP = {
   dsNonArmor: "Multiplier for damage against everything else. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
   dsGridLarge: "Multiplier for damage against large grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
   dsGridSmall: "Multiplier for damage against small grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
+  dsCutoffArmorArmor: "ArmorForCutoff.Armor — scales BaseDamageCutoff (per-block penetration cap) against all armor. Stacks with the Light/Heavy cutoff scale. -1 = unchanged. 0 = zero cap (no damage) vs armor.",
+  dsCutoffLightArmor: "ArmorForCutoff.Light — scales BaseDamageCutoff against light armor. -1 = unchanged.",
+  dsCutoffHeavyArmor: "ArmorForCutoff.Heavy — scales BaseDamageCutoff against heavy armor. -1 = unchanged.",
+  dsCutoffNonArmor: "ArmorForCutoff.NonArmor — scales BaseDamageCutoff against non-armor blocks. -1 = unchanged.",
+  dsCutoffGridLarge: "GridSizeForCutoff.Large — scales BaseDamageCutoff against large grids. -1 or 0 = unchanged.",
+  dsCutoffGridSmall: "GridSizeForCutoff.Small — scales BaseDamageCutoff against small grids. -1 or 0 = unchanged.",
   dsFalloffDistance: "FallOff.Distance — distance at which damage begins falling off.",
   dsFalloffMinMult: "FallOff.MinMultipler — value from 0.0001 to 1 where 0.1 would be a min damage of 10% of base damage.",
 
@@ -586,6 +595,12 @@ const dsArmorArmor = document.getElementById('dsArmorArmor');
 const dsNonArmor = document.getElementById('dsNonArmor');
 const dsGridLarge = document.getElementById('dsGridLarge');
 const dsGridSmall = document.getElementById('dsGridSmall');
+const dsCutoffArmorArmor = document.getElementById('dsCutoffArmorArmor');
+const dsCutoffLightArmor = document.getElementById('dsCutoffLightArmor');
+const dsCutoffHeavyArmor = document.getElementById('dsCutoffHeavyArmor');
+const dsCutoffNonArmor = document.getElementById('dsCutoffNonArmor');
+const dsCutoffGridLarge = document.getElementById('dsCutoffGridLarge');
+const dsCutoffGridSmall = document.getElementById('dsCutoffGridSmall');
 const dsFalloffDistance = document.getElementById('dsFalloffDistance');
 const dsFalloffMinMult = document.getElementById('dsFalloffMinMult');
 
@@ -867,6 +882,9 @@ const wStopTrackingSpeed = document.getElementById('wStopTrackingSpeed');
 const wClosestFirst = document.getElementById('wClosestFirst');
 const wIgnoreDumb = document.getElementById('wIgnoreDumb');
 const wLockedSmartOnly = document.getElementById('wLockedSmartOnly');
+const wCtrlAutomatic = document.getElementById('wCtrlAutomatic');
+const wCtrlManual = document.getElementById('wCtrlManual');
+const wCtrlPainter = document.getElementById('wCtrlPainter');
 const badgeTargetingHelper = document.getElementById('badgeTargetingHelper');
 const btnRevertTargeting = document.getElementById('btnRevertTargeting');
 
@@ -1826,13 +1844,72 @@ function getShotsPerMag(weapon, ammo) {
   const fallback = (weapon && weapon.magazineSize) || 100;
   if (!ammo) return fallback;
   if (!ammo.ammoMagazine || ammo.ammoMagazine === 'Energy') {
-    return (ammo.energyMagazineSize > 0) ? ammo.energyMagazineSize : ((weapon && weapon.barrelsPerShot) || 1);
+    if (ammo.energyMagazineSize > 0) return ammo.energyMagazineSize;
+    // WC AmmoConstants.Energy(): charged weapons with no EnergyMagazineSize derive it from power per tick x ReloadTime
+    const reloadTicks = (weapon && weapon.reloadTime) || 0;
+    if (reloadTicks > 0 && ammo.energyCost > 0) {
+      const ewarOn = ammo.ewar && ammo.ewar.enable;
+      const shotCost = ammo.energyCost * (ewarOn ? (ammo.ewar.strength || 0) : (ammo.baseDamage || 0));
+      const perTick = shotCost * (((weapon && weapon.rateOfFire) || 0) / 3600)
+        * ((weapon && weapon.barrelsPerShot) || 1) * ((weapon && weapon.trajectilesPerBarrel) || 1);
+      const derived = Math.ceil(perTick * reloadTicks - 1e-6); // epsilon absorbs float noise on exact products
+      if (derived > 0) return derived;
+    }
+    return (weapon && weapon.barrelsPerShot) || 1;
   }
   const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
     ? MAGAZINES_BLUEPRINTS_DATA
     : magazinesBlueprintsDb;
   const mag = dataset.find(m => m.subtypeId === ammo.ammoMagazine);
   return (mag && mag.capacity > 0) ? mag.capacity : fallback;
+}
+
+/// <summary>
+/// Models the WC fire/reload cycle (WeaponShoot.cs / WeaponReload.cs):
+/// - each barrel spends 1 mag unit per fire event (trajectiles are free); events are floor(3600/RoF) ticks apart
+/// - reload starts on the last shot; DelayUntilFire replays after every reload (StopShooting resets it)
+/// - ShotsInBurst splits events into bursts separated by max(DelayAfterBurst, tick gap); true burst mode
+///   (energy, or mag capacity >= ShotsInBurst) also replays DelayUntilFire, overlapping the burst gap
+/// </summary>
+function computeFireCycle(p) {
+  const rof = p.rof || 0;
+  const reloadTicks = p.reloadTicks || 0;
+  const delayUntilFire = p.delayUntilFire || 0;
+  const shotsInBurst = p.shotsInBurst || 0;
+  const delayAfterBurst = p.delayAfterBurst || 0;
+  const ticksPerShot = Math.max(1, Math.floor(3600 / Math.max(1, rof)));
+  const totalRounds = p.magSize * p.mags;
+  const events = Math.max(1, Math.ceil(totalRounds / Math.max(1, p.barrels || 1)));
+  const projectiles = totalRounds * Math.max(1, p.trajPerBarrel || 1);
+
+  const burstMode = shotsInBurst > 0 && (p.energy || p.magSize >= shotsInBurst);
+  const shotDelayMode = !burstMode && shotsInBurst > 0 && delayAfterBurst > 0;
+  const burstSize = (burstMode || shotDelayMode) ? shotsInBurst : 0;
+  const bursts = burstSize > 0 ? Math.ceil(events / burstSize) : 1;
+  const burstGap = Math.max(delayAfterBurst, ticksPerShot, burstMode ? delayUntilFire : 0);
+  const lastBurstFull = burstSize > 0 && events % burstSize === 0;
+
+  // Non-reloadable (continuous energy) weapons never stop, so the spool-up is paid once, not per cycle
+  const reloadable = !p.energy || reloadTicks > 0;
+  const spoolTicks = reloadable ? delayUntilFire : 0;
+  const fireTicks = (events - 1) * ticksPerShot + (bursts - 1) * (burstGap - ticksPerShot);
+  const tailTicks = Math.max(reloadTicks, ticksPerShot, lastBurstFull ? delayAfterBurst : 0);
+  const totalCycleSec = (spoolTicks + fireTicks + tailTicks) / 60;
+  return {
+    totalRounds,
+    projectiles,
+    events,
+    bursts,
+    spoolSec: spoolTicks / 60,
+    fireDurationSec: fireTicks / 60,
+    reloadSec: reloadTicks / 60,
+    totalCycleSec,
+    effectiveRps: projectiles / totalCycleSec
+  };
+}
+
+function isEnergyAmmo(ammo) {
+  return !ammo || !ammo.ammoMagazine || ammo.ammoMagazine === 'Energy';
 }
 
 function updateTelemetryAmmoBadge() {
@@ -2180,13 +2257,13 @@ function getAutomatedPeerBenchmark(activeW, list) {
     return anyGrid.length > 0 ? anyGrid[0] : null;
   }
   const activeUps = (activeW.upCost !== undefined) ? activeW.upCost : getTechSummary(activeW.components).upCost;
-  const activeDps = activeW.rateOfFire ? (activeW.rateOfFire / 60) * (activeW.baseDamage || 1000) : 1000;
+  const activeDps = calculateWeaponMetrics(activeW).sustainedDps;
 
   let bestPeer = null;
   let minDiff = Infinity;
   for (const p of peers) {
     const pUps = (p.upCost !== undefined) ? p.upCost : getTechSummary(p.components).upCost;
-    const pDps = p.rateOfFire ? (p.rateOfFire / 60) * (p.baseDamage || 1000) : 1000;
+    const pDps = calculateWeaponMetrics(p).sustainedDps;
     const diff = Math.abs(pUps - activeUps) * 5000 + Math.abs(pDps - activeDps);
     if (diff < minDiff) {
       minDiff = diff;
@@ -2209,10 +2286,7 @@ function calculatePeerPercentiles(activeW, ammo, list) {
 
   const dpsList = peers.map(w => {
     const aKey = getSelectableAmmos(w)[0] || w.ammoName;
-    const a = ammosDb[aKey];
-    const dmg = a ? getAmmoDamageDetailed(a).total : (w.baseDamage || 100);
-    const rof = w.rateOfFire || 600;
-    return { id: w.id, dps: Math.round((rof / 60) * dmg) };
+    return { id: w.id, dps: calculateWeaponMetrics(w, aKey).sustainedDps };
   }).sort((a, b) => b.dps - a.dps);
 
   const myRankIdx = dpsList.findIndex(x => x.id === activeW.id);
@@ -2411,39 +2485,71 @@ function updateUniversalBanner() {
 // ==========================================================================
 // WEAPONCORE SCHEMA GUARD & DYNAMIC EXTENDED TAG INSPECTOR
 // ==========================================================================
+// Compares the bundled Structure.cs signature (data/wc_schema.js) against upstream WeaponCore's
+// CoreDefinitions.cs on GitHub, so a WC release that adds/removes/reorders definition fields is flagged.
+let wcUpstreamCheck = null;
+let wcUpstreamResult = { state: 'pending', diffs: [], date: '' };
+
+function setWcSchemaBadge(schema) {
+  if (!wcSchemaBadge) return;
+  const r = wcUpstreamResult;
+  const dateTag = r.date ? ` · WC ${r.date}` : '';
+  wcSchemaBadge.classList.remove('badge-cyan', 'badge-amber', 'badge-green');
+  if (r.state === 'synced') {
+    wcSchemaBadge.classList.add('badge-green');
+    wcSchemaBadge.innerHTML = `🛡️ WC Core ${schema.version} | Synced${dateTag}`;
+  } else if (r.state === 'drift') {
+    wcSchemaBadge.classList.add('badge-amber');
+    wcSchemaBadge.innerHTML = `⚠️ WC Update | ${r.diffs.length} schema change${r.diffs.length === 1 ? '' : 's'}${dateTag}`;
+  } else {
+    wcSchemaBadge.classList.add('badge-cyan');
+    wcSchemaBadge.innerHTML = `🛡️ WC Core ${schema.version} | ${r.state === 'pending' ? 'Checking…' : 'Unverified (offline)'}`;
+  }
+  wcSchemaBadge.onclick = showSchemaModal;
+}
+
 function checkWcSchemaIntegrity() {
   if (!window.GVK_WC_SCHEMA) return;
-
   const schema = window.GVK_WC_SCHEMA;
-  if (wcSchemaBadge) {
-    wcSchemaBadge.innerHTML = `🛡️ WC v3.0 (Core ${schema.version}) | Synced`;
-    wcSchemaBadge.addEventListener('click', showSchemaModal);
-  }
+  setWcSchemaBadge(schema);
+  if (wcUpstreamCheck || !schema.upstream || !window.SourcePipeline || !window.SourcePipeline.extractWcSchema) return;
 
-  // Check if live Structure.cs has been updated
-  fetch('data/Scripts/CoreParts/script/Structure.cs').then(res => {
-    if (res.ok) return res.text();
-    return fetch('CoreParts/script/Structure.cs').then(r => r.ok ? r.text() : null);
-  }).then(text => {
-    if (text && wcSchemaNotice && wcSchemaNoticeText) {
-      // Simple length/content diff check
-      if (Math.abs(text.length - schema.fileSize) > 20) {
-        wcSchemaNotice.style.display = 'flex';
-        wcSchemaNoticeText.innerHTML = `<strong>⚠️ WeaponCore Update Detected:</strong> CoreParts/script/Structure.cs has changed (${text.length} bytes vs ${schema.fileSize} bytes). Dynamic Extended Tags Inspector is active and ready.`;
-      }
+  const up = schema.upstream;
+  const rawUrl = `https://raw.githubusercontent.com/${up.repo}/${up.branch}/${up.path}`;
+  const commitsUrl = `https://api.github.com/repos/${up.repo}/commits?sha=${up.branch}&path=${encodeURIComponent(up.path)}&per_page=1`;
+  wcUpstreamCheck = Promise.all([
+    fetch(rawUrl, { cache: 'no-store' }).then(res => res.ok ? res.text() : Promise.reject(new Error(res.status))),
+    fetch(commitsUrl).then(res => res.ok ? res.json() : null).catch(() => null)
+  ]).then(([text, commits]) => {
+    const upstream = window.SourcePipeline.extractWcSchema(text);
+    const diffs = window.SourcePipeline.diffWcSchema(schema, upstream);
+    const iso = commits && commits[0] && commits[0].commit && commits[0].commit.committer && commits[0].commit.committer.date;
+    const d = iso ? new Date(iso) : null;
+    const date = d && !isNaN(d.getTime())
+      ? `${String(d.getUTCMonth() + 1).padStart(2, '0')}.${String(d.getUTCDate()).padStart(2, '0')}.${d.getUTCFullYear()}` : '';
+    wcUpstreamResult = { state: diffs.length ? 'drift' : 'synced', diffs, date };
+    if (diffs.length && wcSchemaNotice && wcSchemaNoticeText) {
+      wcSchemaNotice.style.display = 'flex';
+      wcSchemaNoticeText.innerHTML = `<strong>⚠️ WeaponCore Update Detected:</strong> upstream definitions differ from CoreParts/script/Structure.cs in ${diffs.length} place${diffs.length === 1 ? '' : 's'}. Click the WC badge for the list; sync Structure.cs, then run <code>node scratch/export_snapshots.js</code>.`;
     }
-  }).catch(() => {});
+  }).catch(() => {
+    wcUpstreamResult = { state: 'offline', diffs: [], date: '' };
+  }).then(() => setWcSchemaBadge(schema));
 }
 
 function showSchemaModal() {
   if (!window.GVK_WC_SCHEMA) return;
   const s = window.GVK_WC_SCHEMA;
+  const r = wcUpstreamResult;
+  const status = r.state === 'synced' ? '✓ Structure.cs matches upstream WeaponCore'
+    : r.state === 'drift' ? `⚠️ ${r.diffs.length} difference(s) vs upstream WeaponCore (+ added, - removed, ~ changed):`
+    : r.state === 'pending' ? 'Checking upstream WeaponCore…' : 'Upstream check failed (offline or GitHub rate limit)';
+  const list = r.state === 'drift' ? '\n' + r.diffs.slice(0, 40).map(x => '  ' + x).join('\n') + (r.diffs.length > 40 ? `\n  … +${r.diffs.length - 40} more` : '') : '';
   const msg = `🛡️ WEAPONCORE SCHEMA GUARD STATUS\n\n` +
-    `• Target WeaponCore Version: ${s.version}\n` +
+    `${status}${list}\n\n` +
+    `• Upstream: ${s.upstream ? `${s.upstream.repo}@${s.upstream.branch}` : 'n/a'}${r.date ? ` (definitions last changed ${r.date})` : ''}\n` +
     `• Structure.cs Signature: ${s.structureHash}\n` +
-    `• Total Enums Tracked: ${s.totalEnums}\n` +
-    `• Total Structs Tracked: ${s.totalStructs}\n\n` +
-    `Dynamic tag discovery is active. Any newly added properties in Structure.cs are automatically reflected in the Extended Tags Inspector without requiring web tool updates!`;
+    `• Enums / Structs Tracked: ${s.totalEnums} / ${s.totalStructs}`;
   alert(msg);
 }
 
@@ -2625,7 +2731,12 @@ function populateWeaponWorkbench() {
   wStopTrackingSpeed.value = activeWeapon.stopTrackingSpeed || 1000;
   wClosestFirst.checked = activeWeapon.closestFirst !== false;
   wIgnoreDumb.checked = activeWeapon.ignoreDumbProjectiles !== false;
-  wLockedSmartOnly.checked = activeWeapon.lockedSmartOnly === true;
+  wLockedSmartOnly.checked = activeWeapon.lockedSmartOnly === true || activeWeapon.pdSmartOnly === true;
+  const ctrlModes = (activeWeapon.validControlModes && activeWeapon.validControlModes.length)
+    ? activeWeapon.validControlModes : ['Automatic', 'Manual', 'Painter'];
+  if (wCtrlAutomatic) wCtrlAutomatic.checked = ctrlModes.includes('Automatic');
+  if (wCtrlManual) wCtrlManual.checked = ctrlModes.includes('Manual');
+  if (wCtrlPainter) wCtrlPainter.checked = ctrlModes.includes('Painter');
 
   // Targeting Helper / Preset status
   if (activeWeapon.helpers && activeWeapon.helpers.targeting) {
@@ -2646,6 +2757,10 @@ function populateWeaponWorkbench() {
   wBarrelsPerShot.value = activeWeapon.barrelsPerShot || 1;
   wReloadTime.value = activeWeapon.reloadTime || 0;
   wMagsToLoad.value = activeWeapon.magsToLoad || 1;
+  if (wTrajectilesPerBarrel) wTrajectilesPerBarrel.value = activeWeapon.trajectilesPerBarrel || 1;
+  if (wDelayUntilFire) wDelayUntilFire.value = activeWeapon.delayUntilFire || 0;
+  if (wShotsInBurst) wShotsInBurst.value = activeWeapon.shotsInBurst || 0;
+  if (wDelayAfterBurst) wDelayAfterBurst.value = activeWeapon.delayAfterBurst || 0;
   wHeatPerShot.value = activeWeapon.heatPerShot || 0;
   wMaxHeat.value = activeWeapon.maxHeat || 0;
   wHeatSinkRate.value = activeWeapon.heatSinkRate || 0;
@@ -2779,6 +2894,12 @@ function populateAmmoWorkbench() {
 
   bindInputVal(dsGridLarge, ds.gridLarge, -1);
   bindInputVal(dsGridSmall, ds.gridSmall, -1);
+  bindInputVal(dsCutoffArmorArmor, ds.cutoffArmorArmor, -1);
+  bindInputVal(dsCutoffLightArmor, ds.cutoffLightArmor, -1);
+  bindInputVal(dsCutoffHeavyArmor, ds.cutoffHeavyArmor, -1);
+  bindInputVal(dsCutoffNonArmor, ds.cutoffNonArmor, -1);
+  bindInputVal(dsCutoffGridLarge, ds.cutoffGridLarge, -1);
+  bindInputVal(dsCutoffGridSmall, ds.cutoffGridSmall, -1);
 
   // AreaOfDamageDef
   const aod = activeAmmo.areaOfDamage || {};
@@ -3564,21 +3685,17 @@ function computeSustainedDps() {
   const reloadTicks = parseFloat(wReloadTime.value) || 0;
   const magsToLoad = Math.max(1, parseFloat(wMagsToLoad.value) || 1);
   const magSize = Math.max(1, getShotsPerMag(activeWeapon, activeAmmo));
+  const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
 
-  const totalRounds = magSize * magsToLoad;
+  const { totalRounds, projectiles, bursts, spoolSec, fireDurationSec, reloadSec, totalCycleSec, effectiveRps } = computeFireCycle({
+    rof, barrels, trajPerBarrel: trajPB, magSize, mags: magsToLoad, reloadTicks,
+    delayUntilFire: parseFloat(wDelayUntilFire.value) || 0,
+    shotsInBurst: parseFloat(wShotsInBurst.value) || 0,
+    delayAfterBurst: parseFloat(wDelayAfterBurst.value) || 0,
+    energy: isEnergyAmmo(activeAmmo)
+  });
   const dmgDetails = getAmmoDamageDetailed(activeAmmo);
-  const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
-
-  let fireDurationSec = (totalRounds / rof) * 60;
-  const reloadSec = reloadTicks / 60;
-  let totalCycleSec = fireDurationSec + reloadSec;
-
-  if (totalRounds === 1 && reloadSec > 0) {
-    fireDurationSec = 0;
-    totalCycleSec = reloadSec;
-  }
-
-  const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : 0;
+  const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
   let sustainedDps = 0;
   if (dmgDetails.deliverySec > 1.0) {
@@ -3589,13 +3706,13 @@ function computeSustainedDps() {
     sustainedDps = Math.round(effectiveRps * dmgDetails.total);
   }
 
-  return { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails };
+  return { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails };
 }
 
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, alphaVolley, dmgDetails } = computeSustainedDps();
+  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails } = computeSustainedDps();
   const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
   const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
 
@@ -3607,14 +3724,18 @@ function updateCombatTelemetry() {
   const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
   const perHit = dmgDetails.perBlockBase;
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
+  // ArmorForCutoff rescales the per-block cap per armor class before the armor multiplier applies
+  const perHitVs = (kind) => dmgDetails.cutoff > 0
+    ? Math.min(dmgDetails.base, dmgDetails.cutoff * getCutoffArmorScale(activeAmmo, kind))
+    : perHit;
 
-  const heavyDmg = (perHit * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
+  const heavyDmg = (perHitVs('heavy') * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
   const heavyVolley = Math.round(heavyDmg * totalRounds);
 
-  const lightDmg = (perHit * lightMult) + dmgDetails.aoe + dmgDetails.frag;
+  const lightDmg = (perHitVs('light') * lightMult) + dmgDetails.aoe + dmgDetails.frag;
   const lightVolley = Math.round(lightDmg * totalRounds);
 
-  const nonArmorDmg = (perHit * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
+  const nonArmorDmg = (perHitVs('nonArmor') * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
   const nonArmorVolley = Math.round(nonArmorDmg * totalRounds);
 
   // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
@@ -3711,8 +3832,8 @@ function updateCombatTelemetry() {
   const effectiveRpm = Math.round(effectiveRps * 60);
   if (totalRounds === 1 && reloadSec > 0) {
     if (lblEffectiveRpm) lblEffectiveRpm.textContent = "CYCLE INTERVAL";
-    outShotsPerSec.innerHTML = `${reloadSec.toFixed(1)}s <span style="font-size: 14px; font-weight: 400;">RELOAD</span>`;
-    const sustainedRpmStr = effectiveRpm > 0 ? `${effectiveRpm} RPM` : `${(60 / reloadSec).toFixed(1)} RPM`;
+    outShotsPerSec.innerHTML = `${totalCycleSec.toFixed(1)}s <span style="font-size: 14px; font-weight: 400;">${spoolSec > 0 ? 'SPOOL + RELOAD' : 'RELOAD'}</span>`;
+    const sustainedRpmStr = `${(60 / totalCycleSec).toFixed(1)} RPM`;
     outCycleTime.textContent = `Single-shot breech · ${sustainedRpmStr} sustained`;
   } else {
     if (lblEffectiveRpm) lblEffectiveRpm.textContent = "EFFECTIVE RPM";
@@ -4290,13 +4411,14 @@ function updateCombatTelemetry() {
     if (hudOverheat) hudOverheat.textContent = "Unlimited";
   } else if (totalRounds === 1 && reloadSec > 0) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⏱️ SINGLE-SHOT BREECH CYCLE";
-    outHeatDutyRatio.textContent = `1 ROUND / ${reloadSec.toFixed(1)}s`;
+    outHeatDutyRatio.textContent = `1 ROUND / ${totalCycleSec.toFixed(1)}s`;
     if (heatProgressBar) {
       heatProgressBar.style.width = "100%";
       heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), #38bdf8)';
     }
-    const sustainedRpmStr = effectiveRpm > 0 ? `${effectiveRpm} RPM` : `${(60 / reloadSec).toFixed(1)} RPM`;
-    outTimeToOverheat.textContent = `Breech Cycle: 1 round every ${reloadSec.toFixed(1)}s · ${sustainedRpmStr} sustained`;
+    const sustainedRpmStr = `${(60 / totalCycleSec).toFixed(1)} RPM`;
+    const spoolNote = spoolSec > 0 ? ` (${spoolSec.toFixed(1)}s spool + ${reloadSec.toFixed(1)}s reload)` : '';
+    outTimeToOverheat.textContent = `Breech Cycle: 1 round every ${totalCycleSec.toFixed(1)}s${spoolNote} · ${sustainedRpmStr} sustained`;
     outCooldownTime.innerHTML = consumptionHtml;
     if (hudOverheat) hudOverheat.textContent = `${reloadSec.toFixed(1)}s reload`;
   } else {
@@ -4309,8 +4431,10 @@ function updateCombatTelemetry() {
       heatProgressBar.style.background = 'linear-gradient(90deg, var(--cyan-primary), var(--amber-primary))';
     }
 
+    const spoolTag = spoolSec > 0 ? `${spoolSec.toFixed(1)}s spool + ` : '';
+    const burstTag = bursts > 1 ? ` in ${bursts} bursts` : '';
     outTimeToOverheat.textContent = reloadSec > 0
-      ? `Cycle: ${fireDurationSec.toFixed(1)}s burst + ${reloadSec.toFixed(1)}s reload (${effectiveRps.toFixed(1)} sps)`
+      ? `Cycle: ${spoolTag}${fireDurationSec.toFixed(1)}s firing${burstTag} + ${reloadSec.toFixed(1)}s reload (${effectiveRps.toFixed(1)} sps)`
       : `Continuous Fire: 100% Belt-Fed (${effectiveRps.toFixed(1)} sps)`;
 
     outCooldownTime.innerHTML = consumptionHtml;
@@ -4533,6 +4657,23 @@ function setupLogisticsEvents() {
 // ==========================================================================
 // RECURSIVE DAMAGE & ICON RESOLUTION HELPERS
 // ==========================================================================
+/// <summary>
+/// WC ArmorForCutoff multiplier on BaseDamageCutoff vs an armor class ('heavy' | 'light' | 'nonArmor').
+/// Active only when a field is > 0 and NoGridOrArmorScaling is off; fields >= 0 then apply (SessionDamageMgr.cs).
+/// </summary>
+function getCutoffArmorScale(ammo, kind) {
+  const ds = (ammo && ammo.damageScales) || {};
+  const f = (v) => (v === undefined || v === null) ? -1 : v;
+  const armor = f(ds.cutoffArmorArmor), light = f(ds.cutoffLightArmor), heavy = f(ds.cutoffHeavyArmor), non = f(ds.cutoffNonArmor);
+  if (ammo && ammo.noGridOrArmorScaling) return 1;
+  if (!(armor > 0 || light > 0 || heavy > 0 || non > 0)) return 1;
+  if (kind === 'nonArmor') return non >= 0 ? non : 1;
+  let scale = armor >= 0 ? armor : 1;
+  const cls = kind === 'heavy' ? heavy : light;
+  if (cls >= 0) scale *= cls;
+  return scale;
+}
+
 function getAmmoDamageDetailed(ammo, depth = 0) {
   if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false };
   // WC EwarDef.Enable disables base AND AoE damage - only the effect lands
@@ -4653,19 +4794,15 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const mags = Math.max(1, weapon.magsToLoad || 1);
   const magSize = Math.max(1, getShotsPerMag(weapon, a));
 
-  const totalRounds = magSize * mags;
+  const { projectiles, totalCycleSec, effectiveRps } = computeFireCycle({
+    rof, barrels, trajPerBarrel: weapon.trajectilesPerBarrel || 1, magSize, mags, reloadTicks,
+    delayUntilFire: weapon.delayUntilFire || 0,
+    shotsInBurst: weapon.shotsInBurst || 0,
+    delayAfterBurst: weapon.delayAfterBurst || 0,
+    energy: isEnergyAmmo(a)
+  });
   const dmgDetails = getAmmoDamageDetailed(a);
-  const alphaVolley = Math.round(dmgDetails.instantTotal * totalRounds);
-  let fireDurationSec = (totalRounds / rof) * 60;
-  const reloadSec = reloadTicks / 60;
-  let totalCycleSec = fireDurationSec + reloadSec;
-
-  if (totalRounds === 1 && reloadSec > 0) {
-    fireDurationSec = 0;
-    totalCycleSec = reloadSec;
-  }
-
-  const effectiveRps = (totalCycleSec > 0) ? (totalRounds / totalCycleSec) : (rof / 60);
+  const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
   let sustainedDps = 0;
   if (dmgDetails.deliverySec > 1.0) {
@@ -5200,6 +5337,22 @@ function runWeaponCoreLinter() {
     if (burstShots > 0 && burstDelay <= 0) {
       warnings.push("ShotsInBurst > 0 but DelayAfterBurst is 0 (Burst weapon has no delay between bursts).");
     }
+  }
+
+  // Cutoff scaling (ArmorForCutoff / GridSizeForCutoff) only matters on penetrating rounds
+  const cutArmorVals = [dsCutoffArmorArmor, dsCutoffLightArmor, dsCutoffHeavyArmor, dsCutoffNonArmor].map(el => safeFloat(el ? el.value : -1, -1));
+  const cutGridVals = [dsCutoffGridLarge, dsCutoffGridSmall].map(el => safeFloat(el ? el.value : -1, -1));
+  const cutScalingOn = cutArmorVals.some(v => v > 0) || cutGridVals.some(v => v > 0);
+  if (cutScalingOn && !(safeFloat(aBaseDamageCutoff ? aBaseDamageCutoff.value : 0, 0) > 0)) {
+    warnings.push("ArmorForCutoff / GridSizeForCutoff set but BaseDamageCutoff is 0 (cutoff scaling has no effect).");
+  }
+  if (cutArmorVals.some(v => v > 0) && cutArmorVals.some(v => v === 0)) {
+    warnings.push("ArmorForCutoff has a field set to 0: the penetration cap (and damage) becomes 0 vs that armor class. Use -1 to leave it unchanged.");
+  }
+
+  // Valid Control Modes
+  if (wCtrlAutomatic && !wCtrlAutomatic.checked && !wCtrlManual.checked && !wCtrlPainter.checked) {
+    warnings.push("No Valid Control Modes checked: WC treats an empty list as all modes allowed.");
   }
 
   // Trajectiles Per Barrel
@@ -5770,7 +5923,11 @@ function generateCSharpWeapon() {
 `;
     code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},
 `;
-    if (wLockedSmartOnly && wLockedSmartOnly.checked) code += `                LockedTarget = true,
+    if (wLockedSmartOnly && wLockedSmartOnly.checked) code += `                LockedSmartOnly = true,
+`;
+    const ctrlModes = [[wCtrlAutomatic, 'Automatic'], [wCtrlManual, 'Manual'], [wCtrlPainter, 'Painter']]
+      .filter(([el]) => el && el.checked).map(([, m]) => `ControlModes.${m}`);
+    if (ctrlModes.length > 0 && ctrlModes.length < 3) code += `                ValidControlModes = new[] { ${ctrlModes.join(', ')} },
 `;
     code += `                MaxTargetDistance = ${wMaxTargetDistance.value},
 `;
@@ -6319,6 +6476,25 @@ function generateCSharpAmmo() {
     code += `                    Small = ${dsGridSmall.value}f,
 `;
     code += `                },
+`;
+  }
+  // WC only enables cutoff scaling when a field is > 0; all four are emitted because an omitted field is 0 (zero cap)
+  const cutArmorEls = [[dsCutoffArmorArmor, 'Armor'], [dsCutoffLightArmor, 'Light'], [dsCutoffHeavyArmor, 'Heavy'], [dsCutoffNonArmor, 'NonArmor']];
+  if (cutArmorEls.some(([el]) => el && parseFloat(el.value) > 0)) {
+    code += `                ArmorForCutoff = new ArmorDef
+                {
+`;
+    for (const [el, key] of cutArmorEls) code += `                    ${key} = ${safeFloat(el.value, -1)}f,
+`;
+    code += `                },
+`;
+  }
+  if ((dsCutoffGridLarge && parseFloat(dsCutoffGridLarge.value) > 0) || (dsCutoffGridSmall && parseFloat(dsCutoffGridSmall.value) > 0)) {
+    code += `                GridSizeForCutoff = new GridSizeDef
+                {
+                    Large = ${safeFloat(dsCutoffGridLarge.value, -1)}f,
+                    Small = ${safeFloat(dsCutoffGridSmall.value, -1)}f,
+                },
 `;
   }
   if (dsDamageType && dsDamageType.value !== 'BaseDamage') {
@@ -6992,6 +7168,7 @@ function setupWorkbenchInputEvents() {
   // Live recalculation on any input change
   const liveInputs = [
     wRateOfFire, wBarrelsPerShot, wReloadTime, wMagsToLoad, wHeatPerShot, wMaxHeat, wHeatSinkRate, wCooldown,
+    wTrajectilesPerBarrel, wDelayUntilFire, wShotsInBurst, wDelayAfterBurst,
     wRotateRate, wElevateRate, aBaseDamage, aMass, aEnergyCost, aodBlockEnable, aodBlockRadius, aodBlockDamage, aodEolEnable, aodEolRadius, aodEolDamage,
     fEnable, fFragments, fDegrees, fChildAmmoRound, tDesiredSpeed, tMaxTrajectory,
     sbcDisplayName, sbcCubeSize, sbcBuildTime, sbcUpCost, sbcIsRelic, sbcHasCircuitry
@@ -7025,7 +7202,8 @@ function setupWorkbenchInputEvents() {
   });
 
   // Targeting fields convert shared preset to custom override
-  const targetingInputs = [wMaxTargetDistance, wMinTargetDistance, wTopTargets, wTopBlocks, wStopTrackingSpeed, wClosestFirst, wIgnoreDumb];
+  const targetingInputs = [wMaxTargetDistance, wMinTargetDistance, wTopTargets, wTopBlocks, wStopTrackingSpeed, wClosestFirst, wIgnoreDumb,
+    wLockedSmartOnly, wCtrlAutomatic, wCtrlManual, wCtrlPainter];
   targetingInputs.forEach(input => {
     if (input) {
       input.addEventListener('input', () => {

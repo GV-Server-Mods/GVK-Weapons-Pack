@@ -142,7 +142,7 @@ namespace Scripts
             {
                 var laser = Lasers_Laser_Large;
                 laser.AmmoRound = "Lasers_Laser_Dual";
-				laser.EnergyMagazineSize = 360;
+				laser.EnergyMagazineSize = 480; // WC spends 1 per barrel: 2 barrels x 240 shots
 				//laser.Beams.VirtualBeams = true; //broken in WC
                 //laser.Beams.ConvergeBeams = true; //broken in WC
                 //laser.Beams.RotateRealBeam = true; //broken in WC

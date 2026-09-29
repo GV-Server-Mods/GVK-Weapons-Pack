@@ -90,7 +90,6 @@ namespace Scripts
 		{
 			ConstructPartCap = 0, // Maximum number of blocks with this weapon on a grid; 0 = unlimited.
 			RotateBarrelAxis = 3, // For spinning barrels, which axis to spin the barrel around; 0 = none.
-			MuzzleCheck = false, // Whether the weapon should check LOS from each individual muzzle in addition to the scope.
 			DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 			NoVoxelLosCheck = false, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
  			Debug = false, // Force enables debug mode.

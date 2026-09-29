@@ -119,7 +119,6 @@ namespace Scripts
                 Other = new OtherDef
                 {
                     ConstructPartCap = 0,
-                    MuzzleCheck = false,
 					DisableLosCheck = false, // Do not perform LOS checks at all... not advised for self tracking weapons
 					NoVoxelLosCheck = true, // If set to true this ignores voxels for LOS checking.. which means weapons will fire at targets behind voxels.  However, this can save cpu in some situations, use with caution.
                     Debug = false,
