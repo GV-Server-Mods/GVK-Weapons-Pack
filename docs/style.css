@@ -3770,4 +3770,218 @@ details[open] .bom-toggle-icon {
   border-color: rgba(2, 132, 199, 0.3);
 }
 
+/* ==========================================================================
+   ALL WEAPONCORE FIELDS EDITOR (wc_editor.js)
+   ========================================================================== */
+.wcf-intro {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
 
+.wcf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.wcf-filter {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.wcf-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.wcf-node {
+  border-left: 1px solid var(--border-color);
+  margin-left: 2px;
+}
+
+.wcf-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12.5px;
+  list-style: none;
+  user-select: none;
+}
+
+.wcf-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Expand/collapse arrow, matching the workbench accordions */
+.wcf-summary::before {
+  content: '▸';
+  color: var(--amber-primary);
+  display: inline-block;
+  width: 10px;
+  transition: transform 0.2s ease;
+}
+
+.wcf-node[open] > .wcf-summary::before {
+  transform: rotate(90deg);
+}
+
+.wcf-summary:hover {
+  background: var(--bg-card-hover);
+}
+
+.wcf-children {
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wcf-name {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.wcf-type {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.wcf-count {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.wcf-badge {
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+
+.wcf-shared {
+  color: var(--cyan-primary);
+  border-color: var(--cyan-primary);
+}
+
+.wcf-local {
+  color: var(--amber-primary);
+  border-color: var(--amber-primary);
+}
+
+.wcf-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 1.4fr) 26px 26px;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 8px 3px 24px; /* left pad lines field names up with expandable rows' names (past the arrow) */
+  border-radius: 4px;
+  border-left: 2px solid transparent;
+}
+
+.wcf-row:hover {
+  background: var(--bg-card-hover);
+}
+
+.wcf-row.is-unset .wcf-name {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.wcf-row.is-modified {
+  border-left-color: var(--amber-primary);
+}
+
+.wcf-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+
+.wcf-label[title] .wcf-name {
+  text-decoration: underline dotted var(--text-dim);
+  text-underline-offset: 3px;
+}
+
+.wcf-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.wcf-input .control-input {
+  flex: 1 1 120px;
+  min-width: 0;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.wcf-input .control-input.wcf-vec {
+  flex: 1 1 60px;
+}
+
+.wcf-raw.is-invalid {
+  border-color: var(--red-accent);
+}
+
+.wcf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 12px;
+}
+
+.wcf-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 6px;
+}
+
+.wcf-btn:hover {
+  color: var(--amber-primary);
+  border-color: var(--amber-primary);
+}
+
+.wcf-empty {
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 6px 8px;
+}
+
+[data-theme="light"] .wcf-name {
+  color: var(--text-main);
+}
+
+@media (max-width: 640px) {
+  .wcf-row {
+    grid-template-columns: minmax(0, 1fr) 26px 26px;
+  }
+
+  .wcf-row .wcf-input {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

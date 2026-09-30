@@ -1,7 +1,7 @@
 // Regenerate the bundled fallback datasets from the live mod source via the same pipeline the browser uses.
 // Run: node scratch/export_snapshots.js
 // Writes docs/data/weapons_data.js, weapons_db.json, ammos_data.js, ammos_db.json, magazines_blueprints_data.js,
-// and wc_schema.js (Structure.cs signature the Studio compares against upstream WeaponCore).
+// wc_defs_data.js (lossless def trees), and wc_schema.js (Structure.cs signature + typed schema).
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -66,8 +66,14 @@ const wcSchema = {
   upstream: { repo: 'Ash-LikeSnow/WeaponCore', branch: 'master', path: 'Data/Scripts/CoreSystems/Definitions/CoreDefinitions.cs' },
   enums: wcSig.enums,
   structs: wcSig.structs,
+  // Qualified type tree + CoreParts field comments drive the Studio's full-field editor and C# serializer
+  types: SP.extractWcTypes(structText),
+  help: SP.extractFieldHelp(cs),
 };
 writeCrlf(path.join(outDir, 'wc_schema.js'), HEADER + 'window.GVK_WC_SCHEMA = ' + JSON.stringify(wcSchema, null, 2) + ';\n');
+
+// Lossless def trees (ammos, weapons, shared helpers) for full-field editing and export
+writeCrlf(path.join(outDir, 'wc_defs_data.js'), HEADER + 'const BUNDLED_WC_DEFS = ' + JSON.stringify(d.wcDefs) + ';\n');
 
 console.log('Wrote snapshots:');
 console.log('  weapons     :', d.weapons.length, 'entries');

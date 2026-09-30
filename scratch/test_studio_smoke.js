@@ -9,6 +9,10 @@ const vm = require('vm');
 
 const root = path.join(__dirname, '..');
 const appSource = fs.readFileSync(path.join(root, 'docs', 'app.js'), 'utf8');
+// The C# exporters serialize the parsed def trees, so the studio needs the pipeline, schema and def snapshot too
+const studioSource = ['source_pipeline.js', 'data/wc_schema.js', 'data/wc_defs_data.js']
+  .map((f) => fs.readFileSync(path.join(root, 'docs', f), 'utf8')).join('\n;\n')
+  + '\n;\n' + appSource + '\n;\n' + fs.readFileSync(path.join(root, 'docs', 'wc_editor.js'), 'utf8');
 const htmlSource = fs.readFileSync(path.join(root, 'docs', 'index.html'), 'utf8');
 
 let failures = 0;
@@ -30,7 +34,7 @@ function makeElement(id) {
     classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
     addEventListener() {}, removeEventListener() {},
     setAttribute() {}, removeAttribute() {},
-    appendChild() {},
+    appendChild() {}, append() {}, childNodes: [],
     querySelector(sel) { return makeElement(sel); },
     querySelectorAll() { return []; },
     getContext() { return mockCtx; }
@@ -47,6 +51,7 @@ const documentStub = {
   querySelector(sel) { return makeElement(sel); },
   querySelectorAll() { return []; },
   createElement(tag) { return makeElement(tag); },
+  createTextNode(text) { return { textContent: text }; },
   addEventListener() {}
 };
 
@@ -66,7 +71,8 @@ const sandbox = {
   prompt() { return null; },
   alert() {},
   fetch() { return Promise.resolve({ ok: false }); },
-  URL, URLSearchParams
+  URL, URLSearchParams,
+  Option: function Option(text, value) { this.text = text; this.value = value; }
 };
 vm.createContext(sandbox);
 
@@ -132,9 +138,10 @@ const testBody = `
 
   __report({
     ammoCsLength: ammoCs.length,
-    ammoCsShieldFree: !/shield/i.test(ammoCs),
+    ammoCsShieldFree: !/shield/i.test(ammoCs) || /Shield/.test(JSON.stringify(BUNDLED_WC_DEFS.ammos.LargeCalibreAmmo.tree)),
     ammoCsHasDamageScales: ammoCs.includes('DamageScales'),
-    ammoCsHeavy: ammoCs.includes('Heavy = 3'),
+    ammoCsRoundTrip: JSON.stringify(window.SourcePipeline.parseAll({ 'x.cs': ammoCs }).defs.LargeCalibreAmmo.value)
+      === JSON.stringify(BUNDLED_WC_DEFS.ammos.LargeCalibreAmmo.tree),
     weaponCsShieldFree: !/shield/i.test(weaponCs),
     sbcXmlShieldFree: !/shield/i.test(sbcXml),
     dmgTotal: dmg.total,
@@ -149,7 +156,7 @@ const testBody = `
     profAllLabel: profAll.label,
     rgPerBlock: rgDmg.perBlockBase,
     rgPenBlocks: rgDmg.penBlocks,
-    rgShieldFree: !/shield/i.test(rgAmmoCs)
+    rgShieldFree: !/shield/i.test(rgAmmoCs) || /Shield/.test(JSON.stringify((BUNDLED_WC_DEFS.ammos.HeavyRailgunAmmo || {}).tree))
   });
 })();
 `;
@@ -157,12 +164,12 @@ const testBody = `
 let report = null;
 sandbox.__report = (r) => { report = r; };
 
-vm.runInContext(appSource + '\n;\n' + testBody, sandbox, { filename: 'app.js' });
+vm.runInContext(studioSource + '\n;\nsetWcDefs(null);\n' + testBody, sandbox, { filename: 'studio.js' });
 
 check('WC AmmoDef exporter runs without throwing (no phantom dsShield reference)', report !== null && report.ammoCsLength > 100);
 check('AmmoDef export contains DamageScales block', report.ammoCsHasDamageScales);
-check('AmmoDef export emits Heavy armor scale', report.ammoCsHeavy);
-check('AmmoDef export emits zero shield tags', report.ammoCsShieldFree);
+check('AmmoDef export round-trips the full LargeCalibreAmmo def tree', report.ammoCsRoundTrip);
+check('AmmoDef export adds no shield tags beyond the source def', report.ammoCsShieldFree);
 check('WeaponDef export emits zero shield tags', report.weaponCsShieldFree);
 check('SBC export emits zero shield tags', report.sbcXmlShieldFree);
 check('recursive damage total resolves (6000 base)', report.dmgTotal === 6000);
@@ -172,7 +179,7 @@ check('Non-Armor winner detected (×2.0)', report.profNaLabel === 'Non-Armor (Sy
 check('all-equal multipliers report All Blocks', report.profAllLabel === 'All Blocks');
 check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
 check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
-check('Railgun export emits zero shield tags', report.rgShieldFree);
+check('Railgun export adds no shield tags beyond the source def', report.rgShieldFree);
 
 // Dynamic lifecycle checks: populate datasets and verify weapon selection + metrics
 const bundledW = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'weapons_db.json'), 'utf8'));
@@ -404,6 +411,86 @@ check('Pipeline parses ArmorForCutoff (omitted field = 0, like C#) and GridSizeF
   cutDs.cutoffHeavyArmor === 0.5 && cutDs.cutoffLightArmor === 2 && cutDs.cutoffNonArmor === 0 && cutDs.cutoffGridLarge === 1.5 && cutDs.cutoffGridSmall === -1);
 const ctrlEntry = SP.weaponEntry(wcParsed.weapons[0], 'CtrlW', 0, null, {}, wcParsed.defs, {}, {});
 check('Pipeline parses Targeting.ValidControlModes', ctrlEntry.validControlModes.join(',') === 'Automatic,Painter');
+
+// Curated workbench bindings: every path exists in Structure.cs, every element exists, enum <select>s only offer WC members
+const wcTypesLive = SP.extractWcTypes(fs.readFileSync(path.join(root, 'CoreParts', 'script', 'Structure.cs'), 'utf8'));
+const editorSrc = fs.readFileSync(path.join(root, 'docs', 'wc_editor.js'), 'utf8');
+const bindingProblems = [];
+for (const m of editorSrc.matchAll(/\['(ammo|weapon)', '(\w+)', '([\w.#]+)', '(\w+)(?::\w+)?'/g)) {
+  const [, kind, id, bpath, mode] = m;
+  let t = SP.wcRootType(wcTypesLive, kind);
+  for (const k of bpath.split('.')) t = t && (k === '#' ? SP.wcElemType(t) : SP.wcFieldType(wcTypesLive, t, k));
+  if (!t) { bindingProblems.push(id + ' -> ' + bpath); continue; }
+  if (!htmlSource.includes('id="' + id + '"')) bindingProblems.push(id + ' (no element)');
+  if (mode === 'enum') {
+    const at = htmlSource.indexOf('<select id="' + id + '"');
+    const opts = [...htmlSource.slice(at, htmlSource.indexOf('</select>', at)).matchAll(/value="([^"]*)"/g)].map((x) => x[1]);
+    if (!opts.length || opts.some((o) => !t.members.includes(o))) bindingProblems.push(id + ' options ' + opts.join('|'));
+  }
+}
+check('Workbench bindings map to real Structure.cs fields and WC enum members', bindingProblems.length === 0);
+if (bindingProblems.length) console.error('    ' + bindingProblems.join('\n    '));
+
+// Full-tree export: every def round-trips through the studio exporter; curated + field edits land in the tree
+let rtReport = null;
+sandbox.__rtReport = (r) => { rtReport = r; };
+vm.runInContext(`
+  (() => {
+    const SPx = window.SourcePipeline;
+    const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+    const lost = [];
+    for (const k of Object.keys(ammosDb)) {
+      selectAmmo(k);
+      const back = SPx.parseAll({ 'x.cs': generateCSharpAmmo() }).defs[k];
+      if (!back || !same(back.value, BUNDLED_WC_DEFS.ammos[k].tree)) lost.push(k);
+    }
+    const seen = new Set();
+    for (const w of weaponsDb) {
+      if (!w.defName || seen.has(w.defName)) continue;
+      seen.add(w.defName);
+      selectWeapon(w.id);
+      const back = SPx.parseAll({ 'x.cs': generateCSharpWeapon() }).defs[w.defName];
+      if (!back || !same(back.value, BUNDLED_WC_DEFS.weapons[w.defName].tree)) lost.push(w.defName);
+    }
+    const bind = (id) => WC_BINDINGS.find((b) => b.id === id);
+    const av = weaponsDb.find((w) => w.subtypeId === 'GVK_AvengerGatlingTurret');
+    selectWeapon(av.id);
+    const rof = document.getElementById('wRateOfFire');
+    rof.value = '1500';
+    wcWriteBinding(bind('wRateOfFire'), rof);
+    const ui = document.getElementById('wUiEnableOverload');
+    ui.checked = true;
+    wcWriteBinding(bind('wUiEnableOverload'), ui);
+    const edited = generateCSharpWeapon();
+    const helperUntouched = BUNDLED_WC_DEFS.helpers.Common_Weapons_Hardpoint_Ui_FullDisable.tree.EnableOverload !== true;
+    delete wcWorking.weapon[av.defName];
+    const reverted = generateCSharpWeapon();
+    selectAmmo('NATO_25x184mm');
+    const bd = document.getElementById('aBaseDamage');
+    bd.value = '250';
+    wcWriteBinding(bind('aBaseDamage'), bd);
+    const shapeDamage = activeAmmo.baseDamage;
+    wcSet('ammo', ['Trajectory', 'DragPerSecond'], 12.5);
+    const ammoCs = generateCSharpAmmo();
+    delete wcWorking.ammo.NATO_25x184mm;
+    wcRefreshAmmoShape();
+    __rtReport({
+      defs: seen.size + Object.keys(ammosDb).length, lost,
+      rofEdited: /RateOfFire = 1500,/.test(edited),
+      uiDetached: /Ui = new UiDef/.test(edited) && /EnableOverload = true/.test(edited) && helperUntouched,
+      revertedRef: /Ui = Common_Weapons_Hardpoint_Ui_FullDisable,/.test(reverted) && /RateOfFire = 1000,/.test(reverted),
+      shapeDamage, newField: /DragPerSecond = 12.5f,/.test(ammoCs), restoredDamage: activeAmmo.baseDamage,
+    });
+  })();
+`, sandbox);
+check('Every ammo + weapon def round-trips losslessly through the studio exporter (' + (rtReport && rtReport.defs) + ' defs)',
+  !!rtReport && rtReport.lost.length === 0);
+if (rtReport && rtReport.lost.length) console.error('    lost fidelity:', rtReport.lost.join(', '));
+check('Curated input edit (Avenger RateOfFire) lands in the exported def', !!rtReport && rtReport.rofEdited);
+check('Editing a shared helper field detaches a local copy and leaves the helper untouched', !!rtReport && rtReport.uiDetached);
+check('Reverting restores the shared helper reference', !!rtReport && rtReport.revertedRef);
+check('Ammo edits rebuild the studio shape (DPS follows)', !!rtReport && rtReport.shapeDamage === 250 && rtReport.restoredDamage === 100);
+check('Fields with no curated input (Trajectory.DragPerSecond) export from the field editor', !!rtReport && rtReport.newField);
 
 if (failures > 0) {
   console.error('\n' + failures + ' check(s) failed.');

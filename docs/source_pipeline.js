@@ -55,7 +55,7 @@ function exprParser(s) {
       ws();
       if (s[i] === '[') { const m = /^\[\s*\]\s*\{/.exec(s.slice(i)); if (!m) fail('new[]'); i += m[0].length; return listv(); }
       const t = word(); ws();
-      if (s[i] === '(') return parseCall(t);
+      if (s[i] === '(') { const c = parseCall(t); c.__new = true; return c; }
       if (s[i] !== '{') fail('initializer');
       return objv();
     }
@@ -233,13 +233,14 @@ function parseAll(sources) {
   for (const name of Object.keys(defs)) {
     if (defs[name].value === undefined) errors.push('clone chain never resolved for ' + name);
   }
+  const wcDefs = collectWcDefs(defs);
   const ammos = {}, weapons = [];
   for (const name of Object.keys(defs)) {
     const d = defs[name];
     if (!d.value) continue;
     if (d.type === 'AmmoDef') {
       const helpers = new Set();
-      ammos[name] = { def: resolveTree(d.value, defs, helpers), helpers: [...helpers] };
+      ammos[name] = { def: resolveTree(inlineHelpers(d.value, wcDefs.helpers), defs, helpers), helpers: [...helpers] };
     } else if (d.type === 'WeaponDefinition') {
       const helpers = new Set();
       const def = resolveTree(d.value, defs, helpers);
@@ -268,7 +269,39 @@ function parseAll(sources) {
       });
     }
   }
-  return { defs, ammos, weapons, errors, warnings };
+  return { defs, ammos, weapons, wcDefs, errors, warnings };
+}
+
+// Lossless per-def source trees for the Studio's full-field editor and C# serializer. Bare identifiers stay
+// {__id} (enum literal or shared helper ref) and constructor calls stay {__call}, so export round-trips.
+function collectWcDefs(defs) {
+  const out = { ammos: {}, weapons: {}, helpers: {} };
+  for (const name of Object.keys(defs)) {
+    const d = defs[name];
+    if (!d.value) continue;
+    const entry = { type: d.type, file: d.file, tree: JSON.parse(JSON.stringify(d.value)) };
+    if (d.type === 'AmmoDef') out.ammos[name] = entry;
+    else if (d.type === 'WeaponDefinition') out.weapons[name] = entry;
+    else out.helpers[name] = entry;
+  }
+  return out;
+}
+
+// Replace shared-helper refs ({__id} naming a helper def) with that helper's tree; enum ids stay as-is.
+function inlineHelpers(v, helpers, depth) {
+  depth = depth || 0;
+  if (Array.isArray(v)) return v.map((x) => inlineHelpers(x, helpers, depth));
+  if (v && typeof v === 'object') {
+    if (v.__id !== undefined) {
+      const h = helpers[v.__id];
+      return (h && depth < 8) ? inlineHelpers(h.tree, helpers, depth + 1) : v;
+    }
+    if (v.__call !== undefined) return v;
+    const o = {};
+    for (const k in v) o[k] = inlineHelpers(v[k], helpers, depth);
+    return o;
+  }
+  return v;
 }
 
 // ---------- SBC (XML) parsing ----------
@@ -547,6 +580,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const pdProjectiles = !isFixed && threats.includes('Projectiles');
   return {
     id,
+    defName: w.defName, mountIndex: idx,
     pdProjectiles,
     pdSmartOnly: tgt.LockedSmartOnly === true,
     name: ov.name || '(' + grid[0] + ') ' + partName,
@@ -676,7 +710,7 @@ function buildStudioData(csSources, sbc, overrides) {
     if (am && am !== 'Energy' && !magByKey[am]) phantom.push(name + ' -> ' + am);
   }
   if (phantom.length) errors.push('PHANTOM MAGAZINES: ' + phantom.join(', '));
-  return { weapons, ammos, magazines, blocks, errors, warnings };
+  return { weapons, ammos, magazines, blocks, wcDefs: parsed.wcDefs, errors, warnings };
 }
 
 // Atomic-swap validation: the app consumes weapons + ammos + magazines + blocks as a unit.
@@ -772,7 +806,188 @@ function diffWcSchema(local, upstream) {
   return out;
 }
 
+// ---------- Typed WC schema (qualified struct/enum tree) for the full-field editor + serializer ----------
+// structs: { 'Structure.WeaponDefinition.AmmoDef': { Field: 'DeclaredType', ... } }, enums: { qualified: [members] }.
+function extractWcTypes(src) {
+  const s = stripComments(src.replace(/\r/g, ''));
+  const structs = {}, enums = {};
+  const stack = [];
+  let pending = null;
+  const owner = () => { for (let k = stack.length - 1; k >= 0; k--) if (stack[k]) return stack[k]; return ''; };
+  const re = /\b(struct|class|enum)\s+(\w+)|(\{)|(\})|\[ProtoMember\(\s*\d+\s*\)[^\]]*\]\s*internal\s+([\w.<>\[\], ]+?)\s+(\w+)\s*[;=]/g;
+  let m;
+  while ((m = re.exec(s)) !== null) {
+    if (m[1] === 'enum') {
+      const open = s.indexOf('{', re.lastIndex);
+      const close = open >= 0 ? braceMatch(s, open) : -1;
+      if (close < 0) break;
+      const q = (owner() ? owner() + '.' : '') + m[2];
+      enums[q] = s.slice(open + 1, close).split(',').map((x) => x.split('=')[0].trim()).filter((x) => /^\w+$/.test(x));
+      re.lastIndex = close + 1;
+    } else if (m[1]) {
+      pending = (owner() ? owner() + '.' : '') + m[2];
+    } else if (m[3]) {
+      stack.push(pending);
+      if (pending && !structs[pending]) structs[pending] = {};
+      pending = null;
+    } else if (m[4]) {
+      stack.pop();
+    } else if (m[6] && stack[stack.length - 1]) {
+      structs[stack[stack.length - 1]][m[6]] = m[5].replace(/\s+/g, '');
+    }
+  }
+  return { structs, enums };
+}
+
+const PRIM_TYPES = new Set(['bool', 'int', 'uint', 'long', 'short', 'byte', 'float', 'double', 'string']);
+const VECTOR_TYPES = new Set(['Vector2D', 'Vector3D', 'Vector4', 'Vector3']);
+
+// Resolve a declared field type within |scope| the way C# nested-type lookup does (innermost scope first).
+function resolveWcType(types, scope, decl) {
+  let t = decl, arr = false;
+  if (t.endsWith('[]')) { arr = true; t = t.slice(0, -2); }
+  if (PRIM_TYPES.has(t)) return { kind: 'prim', name: t, decl: t, arr };
+  if (VECTOR_TYPES.has(t)) return { kind: 'vector', name: t, decl: t, arr };
+  let sc = scope || '';
+  while (true) {
+    const q = sc ? sc + '.' + t : t;
+    if (types.structs[q]) return { kind: 'struct', q, name: t.split('.').pop(), decl: t, arr };
+    if (types.enums[q]) return { kind: 'enum', q, name: t.split('.').pop(), decl: t, arr, members: types.enums[q] };
+    if (!sc) break;
+    sc = sc.includes('.') ? sc.slice(0, sc.lastIndexOf('.')) : '';
+  }
+  return { kind: 'unknown', name: t, decl: t, arr };
+}
+
+function wcRootType(types, kind) {
+  const tail = kind === 'ammo' ? 'WeaponDefinition.AmmoDef' : 'WeaponDefinition';
+  const q = Object.keys(types.structs).filter((k) => k === tail || k.endsWith('.' + tail))
+    .sort((a, b) => a.length - b.length)[0];
+  return q ? { kind: 'struct', q, name: q.split('.').pop(), decl: q.split('.').pop(), arr: false } : null;
+}
+
+// Type of |field| on a resolved struct type, or null when the schema doesn't know it.
+function wcFieldType(types, structType, field) {
+  if (!structType || structType.kind !== 'struct') return null;
+  const decl = (types.structs[structType.q] || {})[field];
+  return decl ? resolveWcType(types, structType.q, decl) : null;
+}
+
+// Element type for an array type (same resolution, arr=false).
+function wcElemType(t) { return t ? Object.assign({}, t, { arr: false }) : null; }
+
+// ---------- Def tree helpers (paths are arrays of keys / indices) ----------
+function isHelperRef(v, helpers) { return !!(v && typeof v === 'object' && v.__id !== undefined && helpers && helpers[v.__id]); }
+
+// Read |path| from |tree|, seeing through shared-helper refs. Returns undefined when absent.
+function treeGet(tree, path, helpers) {
+  let cur = tree;
+  for (const k of path) {
+    if (isHelperRef(cur, helpers)) cur = helpers[cur.__id].tree;
+    if (cur === null || typeof cur !== 'object') return undefined;
+    cur = cur[k];
+    if (cur === undefined) return undefined;
+  }
+  return isHelperRef(cur, helpers) ? helpers[cur.__id].tree : cur;
+}
+
+// Write |value| at |path| (undefined deletes). Shared-helper refs along the path are detached into local
+// copies so the helper itself (and every other def using it) is untouched.
+function treeSet(tree, path, value, helpers) {
+  let cur = tree;
+  for (let k = 0; k < path.length - 1; k++) {
+    const key = path[k];
+    let next = cur[key];
+    if (isHelperRef(next, helpers)) { next = JSON.parse(JSON.stringify(helpers[next.__id].tree)); cur[key] = next; }
+    if (next === undefined || next === null || typeof next !== 'object' || next.__id !== undefined || next.__call !== undefined) {
+      if (value === undefined) return;
+      next = typeof path[k + 1] === 'number' ? [] : {};
+      cur[key] = next;
+    }
+    cur = next;
+  }
+  const last = path[path.length - 1];
+  if (value === undefined) { if (Array.isArray(cur)) cur.splice(last, 1); else delete cur[last]; }
+  else cur[last] = value;
+}
+
+// ---------- C# serializer (def tree -> CoreParts-style C#) ----------
+function csString(v) { return '"' + String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"'; }
+
+function csNumber(n, prim) {
+  if (prim === 'int' || prim === 'uint' || prim === 'long' || prim === 'short' || prim === 'byte') return String(Math.trunc(n));
+  const s = String(n);
+  if (prim === 'double') return s;
+  if (prim === 'float') return s + 'f';
+  return Number.isInteger(n) ? s : s + 'f'; // untyped (call args): float literals convert implicitly to double params
+}
+
+function csInline(v) {
+  if (v === null || v === undefined) return 'null';
+  if (typeof v === 'boolean') return v ? 'true' : 'false';
+  if (typeof v === 'number') return csNumber(v, null);
+  if (typeof v === 'string') return csString(v);
+  if (v.__id !== undefined) return v.__id;
+  if (v.__call !== undefined) {
+    const parts = v.args ? Object.keys(v.args).map((k) => k + ': ' + csInline(v.args[k])) : (v.pos || []).map(csInline);
+    return (v.__new ? 'new ' : '') + v.__call + '(' + parts.join(', ') + ')';
+  }
+  return null; // arrays / objects are not inline-able
+}
+
+function csValue(v, t, types, ind) {
+  const pad = ' '.repeat(ind);
+  if (typeof v === 'number' && t && t.kind === 'prim') return csNumber(v, t.name);
+  if (!Array.isArray(v)) { const simple = csInline(v); if (simple !== null) return simple; }
+  if (Array.isArray(v)) {
+    const et = t ? wcElemType(t) : null;
+    if (!v.length) return 'new ' + (t ? t.decl : 'object') + '[0]';
+    const items = v.map((x) => csValue(x, et, types, ind + 4));
+    const oneLine = 'new[] { ' + items.join(', ') + ' }';
+    if (!items.some((x) => x.includes('\n')) && oneLine.length <= 110) return oneLine;
+    return 'new[]\n' + pad + '{\n' + items.map((x) => pad + '    ' + x + ',\n').join('') + pad + '}';
+  }
+  const lines = Object.keys(v).map((k) => pad + '    ' + k + ' = ' + csValue(v[k], wcFieldType(types, t, k), types, ind + 4) + ',\n');
+  const head = t && t.kind === 'struct' ? 'new ' + t.decl : 'new';
+  return head + '\n' + pad + '{\n' + lines.join('') + pad + '}';
+}
+
+// Serialize a whole AmmoDef / WeaponDefinition tree as a CoreParts expression-bodied property.
+function serializeWcDef(kind, name, tree, types) {
+  const root = wcRootType(types, kind);
+  const decl = kind === 'ammo' ? 'AmmoDef' : 'WeaponDefinition';
+  return '        ' + decl + ' ' + name + ' => ' + csValue(tree, root || { kind: 'struct', q: '', decl, name: decl }, types, 8) + ';\n';
+}
+
+// Field comments harvested from CoreParts sources: { 'TypeName.Field': 'comment' } (first one wins).
+function extractFieldHelp(sources) {
+  const help = {};
+  for (const f of Object.keys(sources)) {
+    const stack = [];
+    let pendingType = null;
+    for (const line of sources[f].replace(/\r/g, '').split('\n')) {
+      const code = line.replace(/\/\/.*$/, '');
+      const cm = /\/\/\s*(.+?)\s*$/.exec(line);
+      const fm = /^\s*(\w+)\s*=\s*(.*)$/.exec(code);
+      const nm = /(?:=|=>)\s*new\s+(\w+)\s*(?:\[\s*\])?\s*$/.exec(code.trim()) || /(?:=|=>)\s*new\s+(\w+)\s*(?:\[\s*\])?\s*\{/.exec(code);
+      const top = stack.length ? stack[stack.length - 1] : null;
+      if (fm && cm && top) {
+        const key = top + '.' + fm[1];
+        if (!help[key] && cm[1].length > 3) help[key] = cm[1];
+      }
+      if (nm) pendingType = nm[1];
+      for (const ch of code) {
+        if (ch === '{') { stack.push(pendingType || top); pendingType = null; }
+        else if (ch === '}') stack.pop();
+      }
+    }
+  }
+  return help;
+}
+
 const SourcePipeline = {
+  extractWcTypes, resolveWcType, wcRootType, wcFieldType, wcElemType, treeGet, treeSet, isHelperRef,
+  serializeWcDef, csInline, extractFieldHelp, inlineHelpers, collectWcDefs,
   extractWcSchema, diffWcSchema,
   stripComments, braceMatch, exprParser, extractDefs, evalGetter, resolveTree, parseAll,
   parseXml, parseMagazines, parseBlueprints, parseCubeBlocks, ammoShape, weaponEntry, magazineEntries, buildStudioData, validateLiveData,

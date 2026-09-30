@@ -152,8 +152,10 @@ function exportSnapshots() {
   download('ammos_data.js', GEN_HEADER + 'const BUNDLED_AMMOS_DATA = ' + a + ';\n');
   download('ammos_db.json', a + '\n');
   download('magazines_blueprints_data.js', GEN_HEADER + 'const MAGAZINES_BLUEPRINTS_DATA = ' + m + ';\n');
+  const defs = data.wcDefs || (typeof BUNDLED_WC_DEFS !== 'undefined' ? BUNDLED_WC_DEFS : null);
+  if (defs) download('wc_defs_data.js', GEN_HEADER + 'const BUNDLED_WC_DEFS = ' + JSON.stringify(defs) + ';\n');
   if (typeof showToast === 'function') {
-    showToast('⬇ Exported 5 studio snapshot files to Downloads!');
+    showToast(`⬇ Exported ${defs ? 6 : 5} studio snapshot files to Downloads!`);
   }
 }
 function showExportBtn() {

@@ -5,6 +5,8 @@
 const BUNDLED_WEAPONS_DATA = [
   {
     "id": "L__ARYXCycloneCannon",
+    "defName": "AryxCycloneTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tsunami Turret",
@@ -150,6 +152,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__ARYXCycloneCannon_NPC",
+    "defName": "AryxCycloneTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tsunami Turret",
@@ -295,6 +299,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__GVK_CycloneCannonTurret",
+    "defName": "GVK_CycloneCannonTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cyclone Turret",
@@ -440,6 +446,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__GVK_CycloneCannonTurret_NPC",
+    "defName": "GVK_CycloneCannonTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cyclone Turret",
@@ -585,6 +593,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Turret",
+    "defName": "LargeBlockArtilleryTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Turret",
@@ -730,6 +740,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Turret_NPC",
+    "defName": "LargeBlockArtilleryTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Turret [NPC]",
@@ -875,6 +887,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Gun",
+    "defName": "LargeBlockArtillery",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Gun",
@@ -1014,6 +1028,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Turret",
+    "defName": "VehicleTurret122mm",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Turret",
@@ -1153,6 +1169,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Turret_NPC",
+    "defName": "VehicleTurret122mm",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Turret [NPC]",
@@ -1292,6 +1310,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Gun",
+    "defName": "SmallCannon122mm",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Gun",
@@ -1431,6 +1451,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Cannon_Gun_NPC",
+    "defName": "LargeBlockArtillery_NPC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Cannon Gun [NPC]",
@@ -1569,6 +1591,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Cannon_Gun_NPC",
+    "defName": "SmallCannon122mm_NPC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Cannon Gun [NPC]",
@@ -1707,6 +1731,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Turret",
+    "defName": "LargeAutoCannonTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Turret",
@@ -1839,6 +1865,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Turret_NPC",
+    "defName": "LargeAutoCannonTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Turret [NPC]",
@@ -1971,6 +1999,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Khopesh_Turret",
+    "defName": "KhopeshTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Khopesh Turret",
@@ -2103,6 +2133,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Khopesh_Turret_NPC",
+    "defName": "KhopeshTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Khopesh Turret [NPC]",
@@ -2235,6 +2267,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Turret",
+    "defName": "AutoCannonTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Turret",
@@ -2367,6 +2401,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Turret_NPC",
+    "defName": "AutoCannonTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Turret [NPC]",
@@ -2499,6 +2535,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Gun",
+    "defName": "SmallBlockAutocannon",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Gun",
@@ -2631,6 +2669,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Chaingun_Gun_NPC",
+    "defName": "SmallBlockAutocannon",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Chaingun Gun [NPC]",
@@ -2763,6 +2803,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Thrasher_Turret",
+    "defName": "ThrasherTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Thrasher Turret",
@@ -2895,6 +2937,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Chaingun_Thrasher_Turret_NPC",
+    "defName": "ThrasherTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Chaingun Thrasher Turret [NPC]",
@@ -3027,6 +3071,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Flak_Turret",
+    "defName": "LargeBlockAssaultCannonTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Flak Turret",
@@ -3166,6 +3212,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Flak_Turret_NPC",
+    "defName": "LargeBlockAssaultCannonTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Flak Turret [NPC]",
@@ -3305,6 +3353,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Turret",
+    "defName": "SmallBlockAssaultCannonTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Flak Turret",
@@ -3444,6 +3494,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Turret_NPC",
+    "defName": "SmallBlockAssaultCannonTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Flak Turret [NPC]",
@@ -3583,6 +3635,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Gun",
+    "defName": "SmallBlockAssaultCannon",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flak Gun",
@@ -3722,6 +3776,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Flak_Gun_NPC",
+    "defName": "SmallBlockAssaultCannon",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flak Gun [NPC]",
@@ -3861,6 +3917,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Turret",
+    "defName": "SentinelTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Gatling Turret",
@@ -3993,6 +4051,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Turret_NPC",
+    "defName": "SentinelTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Gatling Turret [NPC]",
@@ -4125,6 +4185,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeGatlingTurret",
+    "defName": "LargeGatlingTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) CIWS Large",
@@ -4257,6 +4319,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeGatlingTurret_NPC",
+    "defName": "LargeGatlingTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) CIWS Large",
@@ -4389,6 +4453,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeGatlingTurretReskin",
+    "defName": "LargeGatlingTurret",
+    "mountIndex": 2,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) CIWS Large",
@@ -4521,6 +4587,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeGatlingTurretReskin_NPC",
+    "defName": "LargeGatlingTurret",
+    "mountIndex": 3,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) CIWS Large",
@@ -4653,6 +4721,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Turret",
+    "defName": "SmallGatlingTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Gatling Turret",
@@ -4785,6 +4855,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Turret_NPC",
+    "defName": "SmallGatlingTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Gatling Turret [NPC]",
@@ -4917,6 +4989,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingTurretReskin",
+    "defName": "SmallGatlingTurret",
+    "mountIndex": 2,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) CWIS",
@@ -5049,6 +5123,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingTurretReskin_NPC",
+    "defName": "SmallGatlingTurret",
+    "mountIndex": 3,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) CWIS",
@@ -5181,6 +5257,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gun",
+    "defName": "SmallGatlingGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
@@ -5313,6 +5391,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingGunWarfare2",
+    "defName": "SmallGatlingGun",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
@@ -5445,6 +5525,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gun_NPC",
+    "defName": "SmallGatlingGun",
+    "mountIndex": 2,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun [NPC]",
@@ -5577,6 +5659,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGatlingGunWarfare2_NPC",
+    "defName": "SmallGatlingGun",
+    "mountIndex": 3,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gun",
@@ -5709,6 +5793,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gimbal",
+    "defName": "SmallGatlingGun_Gimbal",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gimbal",
@@ -5841,6 +5927,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Gatling_Gimbal_NPC",
+    "defName": "SmallGatlingGun_Gimbal",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Gatling Gimbal [NPC]",
@@ -5973,6 +6061,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Avenger_Turret",
+    "defName": "GVK_AvengerGatlingTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Gatling Avenger Turret",
@@ -6105,6 +6195,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
+    "defName": "GVK_AvengerGatlingTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Gatling Avenger Turret [NPC]",
@@ -6237,6 +6329,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
+    "defName": "AryxHurricaneTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Cannon Hurricane Turret",
@@ -6381,6 +6475,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret_NPC",
+    "defName": "AryxHurricaneTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Cannon Hurricane Turret [NPC]",
@@ -6525,6 +6621,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret",
+    "defName": "odin_def",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Cannon Odin Turret",
@@ -6669,6 +6767,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Cannon_Odin_Turret_NPC",
+    "defName": "odin_def",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Cannon Odin Turret [NPC]",
@@ -6813,6 +6913,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Harbinger_Turret_NPC",
+    "defName": "HarbingerTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Harbinger Turret [NPC]",
@@ -6957,6 +7059,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Interior_Turret",
+    "defName": "LargeInteriorTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Interior Turret",
@@ -7089,6 +7193,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Interior_Turret_NPC",
+    "defName": "LargeInteriorTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Interior Turret [NPC]",
@@ -7221,6 +7327,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__MAC_Gun",
+    "defName": "LargeBlockRailgun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) MAC Gun",
@@ -7365,6 +7473,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__MAC_Gun_NPC",
+    "defName": "LargeBlockRailgun_NPC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) MAC Gun [NPC]",
@@ -7509,6 +7619,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Turret",
+    "defName": "AryxRailgunTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Turret",
@@ -7653,6 +7765,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Turret_NPC",
+    "defName": "AryxRailgunTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Turret [NPC]",
@@ -7797,6 +7911,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Gun",
+    "defName": "AryxRailgun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Gun",
@@ -7935,6 +8051,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Railgun_Gun",
+    "defName": "SmallBlockRailgun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Railgun Gun",
@@ -8073,6 +8191,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Railgun_Gun_NPC",
+    "defName": "SmallBlockRailgun",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Railgun Gun [NPC]",
@@ -8211,6 +8331,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Railgun_Gun_NPC",
+    "defName": "AryxRailgun_NPC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Railgun Gun [NPC]",
@@ -8349,6 +8471,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__FlareGunItem",
+    "defName": "FlarePistolGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Pistol",
@@ -8428,6 +8552,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__BasicHandHeldLauncherItem",
+    "defName": "BasicHandHeldLauncherGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Launcher",
@@ -8507,6 +8633,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__AdvancedHandHeldLauncherItem",
+    "defName": "AdvancedHandHeldLauncherGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Griffin Launcher",
@@ -8586,6 +8714,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__ElitePistolItem",
+    "defName": "ElitePistolGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Elite Pistol",
@@ -8665,6 +8795,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__RapidFireAutomaticRifleItem",
+    "defName": "RapidFireAutomaticRifleGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Basic Rifle",
@@ -8744,6 +8876,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__UltimateAutomaticRifleItem",
+    "defName": "UltimateAutomaticRifleGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Basic Rifle",
@@ -8823,6 +8957,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__PD_Laser",
+    "defName": "MA_PDT",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) PD Laser",
@@ -8961,6 +9097,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__PD_Laser",
+    "defName": "MA_PDT",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) PD Laser",
@@ -9099,6 +9237,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__PD_Laser_NPC",
+    "defName": "MA_PDT",
+    "mountIndex": 2,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) PD Laser [NPC]",
@@ -9237,6 +9377,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__PD_Laser_NPC",
+    "defName": "MA_PDT",
+    "mountIndex": 3,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) PD Laser [NPC]",
@@ -9375,6 +9517,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Turret",
+    "defName": "MA_PDX_T2",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Turret",
@@ -9513,6 +9657,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Turret_NPC",
+    "defName": "MA_PDX_T2",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Turret [NPC]",
@@ -9651,6 +9797,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Gimbal",
+    "defName": "MA_Fixed_T2",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Gimbal",
@@ -9789,6 +9937,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Heavy_Laser_Gimbal_NPC",
+    "defName": "MA_Fixed_T2",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Heavy Laser Gimbal [NPC]",
@@ -9927,6 +10077,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret",
+    "defName": "AryxSpartanTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Spartan Heavy Laser Turret",
@@ -10065,6 +10217,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Spartan_Heavy_Laser_Turret_NPC",
+    "defName": "AryxSpartanTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Spartan Heavy Laser Turret [NPC]",
@@ -10203,6 +10357,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Gun",
+    "defName": "ReceptorCoilGun",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Gun",
@@ -10341,6 +10497,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Gun_NPC",
+    "defName": "ReceptorCoilGun",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Gun [NPC]",
@@ -10479,6 +10637,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Light_Laser_Turret",
+    "defName": "ReceptorTurret",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Light Laser Turret",
@@ -10617,6 +10777,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Light_Laser_Turret_NPC",
+    "defName": "ReceptorTurret",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(L) Light Laser Turret [NPC]",
@@ -10755,6 +10917,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Turret",
+    "defName": "MA_PDX",
+    "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Turret",
@@ -10893,6 +11057,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Light_Laser_Turret_NPC",
+    "defName": "MA_PDX",
+    "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
     "name": "(S) Light Laser Turret [NPC]",
@@ -11031,6 +11197,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Loki_Plasma_Turret",
+    "defName": "lokiCannon1_def",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Loki Plasma Turret",
@@ -11175,6 +11343,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Loki_Plasma_Turret_NPC",
+    "defName": "lokiCannon1_def",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Loki Plasma Turret [NPC]",
@@ -11319,6 +11489,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Tuukka_Missile_Turret",
+    "defName": "tukkaLauncher01",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tuukka Missile Turret",
@@ -11463,6 +11635,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Tuukka_Missile_Turret_NPC",
+    "defName": "tukkaLauncher01",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Tuukka Missile Turret [NPC]",
@@ -11607,6 +11781,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Turret",
+    "defName": "GVK_GriffinMissileTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Turret",
@@ -11751,6 +11927,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Turret_NPC",
+    "defName": "GVK_GriffinMissileTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Turret [NPC]",
@@ -11895,6 +12073,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Launcher",
+    "defName": "GVK_GriffinMissileLauncher",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Launcher",
@@ -12039,6 +12219,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Missile_Launcher_NPC",
+    "defName": "GVK_GriffinMissileLauncher",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Missile Launcher [NPC]",
@@ -12183,6 +12365,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Missile_Launcher",
+    "defName": "SmallRocketLauncherReload",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Missile Launcher",
@@ -12321,6 +12505,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Missile_Launcher_NPC",
+    "defName": "SmallRocketLauncherReload",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Missile Launcher [NPC]",
@@ -12459,6 +12645,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallGriffinLauncherWarfare2_NPC",
+    "defName": "SmallGriffinLauncherWarfare2",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) NPC Griffin Launcher",
@@ -12591,6 +12779,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Turret",
+    "defName": "ARYXHydraTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Turret",
@@ -12723,6 +12913,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Turret_NPC",
+    "defName": "ARYXHydraTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Turret [NPC]",
@@ -12855,6 +13047,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurret",
+    "defName": "LargeMissileTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
@@ -12987,6 +13181,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurret_NPC",
+    "defName": "LargeMissileTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
@@ -13119,6 +13315,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurretReskin",
+    "defName": "LargeMissileTurret",
+    "mountIndex": 2,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
@@ -13251,6 +13449,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeMissileTurretReskin_NPC",
+    "defName": "LargeMissileTurret",
+    "mountIndex": 3,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Hydra Turret",
@@ -13383,6 +13583,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Turret",
+    "defName": "SmallMissileTurret",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Turret",
@@ -13515,6 +13717,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Turret_NPC",
+    "defName": "SmallMissileTurret",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Turret [NPC]",
@@ -13647,6 +13851,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileTurretReskin",
+    "defName": "SmallMissileTurret",
+    "mountIndex": 2,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Turret",
@@ -13779,6 +13985,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileTurretReskin_NPC",
+    "defName": "SmallMissileTurret",
+    "mountIndex": 3,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Turret",
@@ -13911,6 +14119,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Launcher",
+    "defName": "LargeMissileLauncher",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Launcher",
@@ -14043,6 +14253,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Rocket_Launcher_NPC",
+    "defName": "LargeMissileLauncher",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Rocket Launcher [NPC]",
@@ -14175,6 +14387,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher",
+    "defName": "SmallMissileLauncher",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher",
@@ -14307,6 +14521,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileLauncherWarfare2",
+    "defName": "SmallMissileLauncher",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Pod",
@@ -14439,6 +14655,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_NPC",
+    "defName": "SmallMissileLauncher",
+    "mountIndex": 2,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher [NPC]",
@@ -14571,6 +14789,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallMissileLauncherWarfare2_NPC",
+    "defName": "SmallMissileLauncher",
+    "mountIndex": 3,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Hydra Pod",
@@ -14703,6 +14923,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_Reloadable",
+    "defName": "Missiles_Rockets_SGReloadableLauncher",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher Reloadable",
@@ -14841,6 +15063,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Rocket_Launcher_Reloadable_NPC",
+    "defName": "Missiles_Rockets_SGReloadableLauncher",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Rocket Launcher Reloadable [NPC]",
@@ -14979,6 +15203,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__SRBM_Turret",
+    "defName": "AryxLongswordMissileBattery",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) SRBM Turret",
@@ -15123,6 +15349,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__SRBM_Turret_NPC",
+    "defName": "AryxLongswordMissileBattery",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) SRBM Turret [NPC]",
@@ -15267,6 +15495,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Torpedo_Launcher",
+    "defName": "Torpedo_Crusader_Large",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Torpedo Launcher",
@@ -15411,6 +15641,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Torpedo_Launcher_NPC",
+    "defName": "Torpedo_Crusader_Large",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Torpedo Launcher [NPC]",
@@ -15555,6 +15787,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Torpedo_Launcher",
+    "defName": "Torpedo_Crusader_Small",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Torpedo Launcher",
@@ -15699,6 +15933,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Torpedo_Launcher_NPC",
+    "defName": "Torpedo_Crusader_Small",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Torpedo Launcher [NPC]",
@@ -15843,6 +16079,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Drone_Bay",
+    "defName": "AryxSmallFighterHangar",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Drone Bay",
@@ -15988,6 +16226,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Drone_Bay_NPC",
+    "defName": "AryxSmallFighterHangar",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Drone Bay [NPC]",
@@ -16133,6 +16373,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeFlareLauncher",
+    "defName": "LargeFlareWC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Launcher",
@@ -16266,6 +16508,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeFlareLauncher_NPC",
+    "defName": "LargeFlareWC",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Flare Launcher",
@@ -16399,6 +16643,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallFlareLauncher",
+    "defName": "SmallFlareWC",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flare Launcher",
@@ -16532,6 +16778,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallFlareLauncher_NPC",
+    "defName": "SmallFlareWC",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Flare Launcher",
@@ -16665,6 +16913,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__OKIDesignator",
+    "defName": "Other_Radar_Large",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Radar",
@@ -16785,6 +17035,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__ARYXSmallRadar",
+    "defName": "AryxRadar",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
@@ -16905,6 +17157,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallBlockRadioAntenna_WCRadar",
+    "defName": "AryxRadar",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
@@ -17025,6 +17279,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallBlockCompactRadioAntennaReskin_WCRadar",
+    "defName": "AryxRadar",
+    "mountIndex": 2,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Radar",
@@ -17151,6 +17407,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Warhead",
+    "defName": "Other_Warheads_RegularWarhead_LG_Weapon",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Warhead",
@@ -17277,6 +17535,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__LargeExplosiveBarrel",
+    "defName": "Other_Warheads_RegularWarhead_LG_Weapon",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(L) Large Warhead",
@@ -17403,6 +17663,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__Warhead",
+    "defName": "Other_Warheads_RegularWarhead_SG_Weapon",
+    "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Warhead",
@@ -17529,6 +17791,8 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "S__SmallExplosiveBarrel",
+    "defName": "Other_Warheads_RegularWarhead_SG_Weapon",
+    "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
     "name": "(S) Small Warhead",

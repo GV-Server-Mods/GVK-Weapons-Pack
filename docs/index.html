@@ -1092,22 +1092,18 @@
           </div>
         </details>
 
-        <!-- Accordion 11: Extended & Future WeaponCore Tags (Auto-Discovered) -->
+        <!-- 11. All WeaponCore Fields (schema-driven from Structure.cs) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">🧩 11. Extended &amp; Future WeaponCore Tags</span>
-            <span class="wc-tag" id="weaponExtendedCountBadge">0 Custom Tags</span>
+            <span class="wc-title">🧩 11. All WeaponCore Weapon Fields</span>
+            <span class="wc-tag" id="weaponWcFieldsBadge">0 set</span>
           </summary>
           <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-              Auto-discovered tags from <code>Structure.cs</code>. Any newly added WeaponCore fields appear here automatically without needing website updates.
+            <p class="wcf-intro">
+              Every field in <code>Structure.cs</code>, read from and exported to this definition's C#. The panels above edit the same values.
+              🔗 marks a shared helper (e.g. <code>Common_Weapons_Hardpoint_Ui_FullDisable</code>); editing inside one gives this definition its own copy and leaves the helper untouched.
             </p>
-            <div id="weaponExtendedTagsContainer" class="control-grid">
-              <!-- Dynamically populated from schema -->
-            </div>
-            <div style="margin-top: 14px; display: flex; gap: 8px;">
-              <button id="btnAddWeaponExtendedTag" class="btn btn-cyan btn-sm">+ Add Weapon Tag</button>
-            </div>
+            <div id="weaponWcFieldsPanel" class="wcf-panel"></div>
           </div>
         </details>
 
@@ -1348,12 +1344,10 @@
                 <input type="number" id="dsCharacters" class="control-input" step="0.1" min="0" value="1.0">
               </div>
               <div class="control-item">
-                <label class="control-label">Damage Type</label>
+                <label class="control-label">Base Damage Type</label>
                 <select id="dsDamageType" class="control-input">
-                  <option value="BaseDamage" selected>BaseDamage</option>
+                  <option value="Energy" selected>Energy</option>
                   <option value="Kinetic">Kinetic</option>
-                  <option value="Energy">Energy</option>
-                  <option value="EMP">EMP</option>
                 </select>
               </div>
               <div class="control-item">
@@ -1598,7 +1592,8 @@
                 <select id="pMode" class="control-input">
                   <option value="Never" selected>Never</option>
                   <option value="Weapon">Weapon</option>
-                  <option value="Ammo">Ammo</option>
+                  <option value="Fragment">Fragment</option>
+                  <option value="Both">Both</option>
                 </select>
               </div>
             </div>
@@ -1794,22 +1789,18 @@
           </div>
         </details>
 
-        <!-- 12. Extended & Future Ammo Tags (Auto-Discovered) -->
+        <!-- 12. All WeaponCore Fields (schema-driven from Structure.cs) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">🧩 12. Extended &amp; Future Ammo Tags</span>
-            <span class="wc-tag" id="ammoExtendedCountBadge">0 Custom Tags</span>
+            <span class="wc-title">🧩 12. All WeaponCore Ammo Fields</span>
+            <span class="wc-tag" id="ammoWcFieldsBadge">0 set</span>
           </summary>
           <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
-              Auto-discovered tags from <code>Structure.cs</code>. Any newly added WeaponCore ammo fields appear here automatically without needing website updates.
+            <p class="wcf-intro">
+              Every field in <code>Structure.cs</code>, read from and exported to this definition's C#. The panels above edit the same values.
+              🔗 marks a shared helper (e.g. <code>Common_Weapons_Hardpoint_Ui_FullDisable</code>); editing inside one gives this definition its own copy and leaves the helper untouched.
             </p>
-            <div id="ammoExtendedTagsContainer" class="control-grid">
-              <!-- Dynamically populated from schema -->
-            </div>
-            <div style="margin-top: 14px; display: flex; gap: 8px;">
-              <button id="btnAddAmmoExtendedTag" class="btn btn-cyan btn-sm">+ Add Ammo Tag</button>
-            </div>
+            <div id="ammoWcFieldsPanel" class="wcf-panel"></div>
           </div>
         </details>
 
@@ -2344,11 +2335,13 @@
   <script src="data/weapons_data.js"></script>
   <script src="data/ammos_data.js"></script>
   <script src="data/magazines_blueprints_data.js"></script>
+  <script src="data/wc_defs_data.js"></script>
   <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
   <script src="data/studio_overrides.js"></script>
   <script src="source_pipeline.js"></script>
   <script src="source_live.js"></script>
   <script src="app.js"></script>
+  <script src="wc_editor.js"></script>
 </body>
 </html>

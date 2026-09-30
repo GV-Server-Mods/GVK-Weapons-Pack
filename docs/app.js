@@ -680,14 +680,6 @@ const wcSchemaBadge = document.getElementById('wcSchemaBadge');
 const wcSchemaNotice = document.getElementById('wcSchemaNotice');
 const wcSchemaNoticeText = document.getElementById('wcSchemaNoticeText');
 
-const weaponExtendedTagsContainer = document.getElementById('weaponExtendedTagsContainer');
-const weaponExtendedCountBadge = document.getElementById('weaponExtendedCountBadge');
-const btnAddWeaponExtendedTag = document.getElementById('btnAddWeaponExtendedTag');
-
-const ammoExtendedTagsContainer = document.getElementById('ammoExtendedTagsContainer');
-const ammoExtendedCountBadge = document.getElementById('ammoExtendedCountBadge');
-const btnAddAmmoExtendedTag = document.getElementById('btnAddAmmoExtendedTag');
-
 // ==========================================================================
 // DATA VALIDATION & TYPE SAFETY HELPERS
 // ==========================================================================
@@ -1194,6 +1186,7 @@ async function initStudio() {
   else if (window.GVK_DEFAULT_COMPONENTS) componentsDb = { ...window.GVK_DEFAULT_COMPONENTS };
 
   if (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined') magazinesBlueprintsDb = JSON.parse(JSON.stringify(MAGAZINES_BLUEPRINTS_DATA));
+  setWcDefs(null); // bundled def trees; replaced below when the live pipeline succeeds
 
   // Fetch live JSON if served via HTTP
   try {
@@ -1216,6 +1209,7 @@ async function initStudio() {
           weaponsDb = data.weapons;
           ammosDb = data.ammos;
           magazinesBlueprintsDb = data.magazines;
+          setWcDefs(data.wcDefs);
           activeWeapon = null;
           activeAmmo = null;
           refreshAfterDataLoad();
@@ -1225,6 +1219,7 @@ async function initStudio() {
         weaponsDb = live.data.weapons;
         ammosDb = live.data.ammos;
         magazinesBlueprintsDb = live.data.magazines;
+        setWcDefs(live.data.wcDefs);
       }
     }
   } catch (e) {
@@ -1736,6 +1731,7 @@ function populateAmmoDropdowns() {
       if (!activeWeapon.assignedAmmos) activeWeapon.assignedAmmos = [];
       if (!activeWeapon.assignedAmmos.includes(selected)) {
         activeWeapon.assignedAmmos.push(selected);
+        wcSyncWeaponAmmos();
         renderAssignedAmmos();
         showToast(`Assigned ${selected} to ${activeWeapon.name}!`);
       }
@@ -2694,136 +2690,6 @@ function showSchemaModal() {
   alert(msg);
 }
 
-function renderExtendedWeaponTags() {
-  if (!weaponExtendedTagsContainer || !activeWeapon) return;
-  weaponExtendedTagsContainer.innerHTML = '';
-  if (!activeWeapon.extendedTags) activeWeapon.extendedTags = {};
-
-  const entries = Object.entries(activeWeapon.extendedTags);
-  if (weaponExtendedCountBadge) {
-    weaponExtendedCountBadge.textContent = `${entries.length} Custom Tag${entries.length === 1 ? '' : 's'}`;
-  }
-
-  if (entries.length === 0) {
-    weaponExtendedTagsContainer.innerHTML = '<div style="grid-column: 1 / -1; font-size: 11px; color: var(--text-dim);">No extended or unmapped WeaponCore tags active on this weapon. Click "+ Add Weapon Tag" to add one.</div>';
-    return;
-  }
-
-  entries.forEach(([key, val]) => {
-    const item = document.createElement('div');
-    item.className = 'control-item';
-    const valType = typeof val;
-
-    if (valType === 'boolean') {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">bool</span></label>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
-          <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('change', (e) => {
-        activeWeapon.extendedTags[key] = e.target.checked;
-      });
-    } else if (valType === 'number') {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">number</span></label>
-        <div style="display: flex; gap: 6px; align-items: center;">
-          <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('input', (e) => {
-        activeWeapon.extendedTags[key] = parseFloat(e.target.value) || 0;
-      });
-    } else {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">text/enum</span></label>
-        <div style="display: flex; gap: 6px; align-items: center;">
-          <input type="text" class="control-input" value="${val}" style="flex: 1;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('input', (e) => {
-        activeWeapon.extendedTags[key] = e.target.value;
-      });
-    }
-
-    item.querySelector('.btn-delete-row').addEventListener('click', () => {
-      delete activeWeapon.extendedTags[key];
-      renderExtendedWeaponTags();
-      showToast(`Removed tag '${key}'.`);
-    });
-
-    weaponExtendedTagsContainer.appendChild(item);
-  });
-}
-
-function renderExtendedAmmoTags() {
-  if (!ammoExtendedTagsContainer || !activeAmmo) return;
-  ammoExtendedTagsContainer.innerHTML = '';
-  if (!activeAmmo.extendedTags) activeAmmo.extendedTags = {};
-
-  const entries = Object.entries(activeAmmo.extendedTags);
-  if (ammoExtendedCountBadge) {
-    ammoExtendedCountBadge.textContent = `${entries.length} Custom Tag${entries.length === 1 ? '' : 's'}`;
-  }
-
-  if (entries.length === 0) {
-    ammoExtendedTagsContainer.innerHTML = '<div style="grid-column: 1 / -1; font-size: 11px; color: var(--text-dim);">No extended or unmapped WeaponCore tags active on this round. Click "+ Add Ammo Tag" to add one.</div>';
-    return;
-  }
-
-  entries.forEach(([key, val]) => {
-    const item = document.createElement('div');
-    item.className = 'control-item';
-    const valType = typeof val;
-
-    if (valType === 'boolean') {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">bool</span></label>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">
-          <input type="checkbox" ${val ? 'checked' : ''} style="transform: scale(1.2); cursor: pointer;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('change', (e) => {
-        activeAmmo.extendedTags[key] = e.target.checked;
-      });
-    } else if (valType === 'number') {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">number</span></label>
-        <div style="display: flex; gap: 6px; align-items: center;">
-          <input type="number" class="control-input" value="${val}" step="any" style="flex: 1;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('input', (e) => {
-        activeAmmo.extendedTags[key] = parseFloat(e.target.value) || 0;
-      });
-    } else {
-      item.innerHTML = `
-        <label class="control-label has-help" title="Auto-discovered WeaponCore tag from Structure.cs: ${key} — serialized losslessly into the C# export.">${key} <span class="unit">text/enum</span></label>
-        <div style="display: flex; gap: 6px; align-items: center;">
-          <input type="text" class="control-input" value="${val}" style="flex: 1;">
-          <button class="btn-delete-row" title="Remove Tag">✕</button>
-        </div>
-      `;
-      item.querySelector('input').addEventListener('input', (e) => {
-        activeAmmo.extendedTags[key] = e.target.value;
-      });
-    }
-
-    item.querySelector('.btn-delete-row').addEventListener('click', () => {
-      delete activeAmmo.extendedTags[key];
-      renderExtendedAmmoTags();
-      showToast(`Removed tag '${key}'.`);
-    });
-
-    ammoExtendedTagsContainer.appendChild(item);
-  });
-}
-
 
 // ==========================================================================
 // FIELD BINDING HELPERS FOR MEDIUM-GREY DEFAULT VISUALIZATION
@@ -2927,7 +2793,8 @@ function populateWeaponWorkbench() {
   // AnimationDef binding
   selectAnimationDef.value = activeWeapon.assignedAnimation || '';
   currentAnimBadge.textContent = activeWeapon.assignedAnimation || 'None';
-  renderExtendedWeaponTags();
+  wcSyncCurated('weapon');
+  renderWcFieldEditor('weapon');
 }
 
 function renderAssignedAmmos() {
@@ -2946,6 +2813,7 @@ function renderAssignedAmmos() {
     badge.addEventListener('click', (e) => {
       if (e.target.classList.contains('badge-remove')) {
         activeWeapon.assignedAmmos.splice(idx, 1);
+        wcSyncWeaponAmmos();
         renderAssignedAmmos();
         showToast(`Removed ${aKey} from weapon.`);
       } else {
@@ -3141,7 +3009,8 @@ function populateAmmoWorkbench() {
   bindCheckboxVal(syncOnHitDeath, sync.onHitDeath, false);
   bindCheckboxVal(syncUpdateOnRandomize, sync.positionUpdateOnRandomize, false);
 
-  renderExtendedAmmoTags();
+  wcSyncCurated('ammo');
+  renderWcFieldEditor('ammo');
   runWeaponCoreLinter();
 }
 
@@ -6008,856 +5877,18 @@ function createMinimalAmmo() {
 // ==========================================================================
 // CODE GENERATION & EXPORT
 // ==========================================================================
+/// <summary>
+/// C# export serializes the full parsed def tree (every WC field, shared helper refs kept unless edited),
+/// with curated workbench and "All WeaponCore Fields" edits already applied. See wc_editor.js.
+/// </summary>
 function generateCSharpWeapon() {
   if (!activeWeapon) return "// No weapon selected";
-
-  const pName = wPartName.value || activeWeapon.partName || activeWeapon.name;
-  const sub = wSubtypeId.value || activeWeapon.subtypeId || activeWeapon.id;
-  const dur = wDurabilityMod.value || 0.5;
-  const scope = wScope.value || 'scope';
-  const muzzles = (wMuzzles.value || 'muzzle_missile_1').split(',').map(m => `"${m.trim()}"`).join(', ');
-
-  // Optional mount subparts (only output if defined)
-  const spin = wSpinPartId ? wSpinPartId.value.trim() : '';
-  const muzPart = wMuzzlePartId ? wMuzzlePartId.value.trim() : '';
-  const azPart = wAzimuthPartId ? wAzimuthPartId.value.trim() : '';
-  const elPart = wElevationPartId ? wElevationPartId.value.trim() : '';
-  const icon = wIconName ? wIconName.value.trim() : '';
-
-  // Assigned ammos array
-  const ammosList = (activeWeapon.assignedAmmos && activeWeapon.assignedAmmos.length > 0)
-    ? activeWeapon.assignedAmmos.join(', ')
-    : (activeWeapon.ammoName || 'NATO_25x184mm');
-
-  // Animation binding
-  const animRef = activeWeapon.assignedAnimation && activeWeapon.assignedAnimation !== 'None'
-    ? `Animations = ${activeWeapon.assignedAnimation},`
-    : `// Animations = None,`;
-
-  let code = `        WeaponDefinition ${activeWeapon.id || sub} => new WeaponDefinition
-`;
-  code += `        {
-`;
-  code += `            Assignments = new ModelAssignmentsDef
-`;
-  code += `            {
-`;
-  code += `                MountPoints = new[]
-`;
-  code += `                {
-`;
-  code += `                    new MountPointDef
-`;
-  code += `                    {
-`;
-  code += `                        SubtypeId = "${sub}",
-`;
-  if (spin && spin !== 'None') code += `                        SpinPartId = "${spin}",
-`;
-  if (muzPart) code += `                        MuzzlePartId = "${muzPart}",
-`;
-  if (azPart) code += `                        AzimuthPartId = "${azPart}",
-`;
-  if (elPart) code += `                        ElevationPartId = "${elPart}",
-`;
-  code += `                        DurabilityMod = ${dur}f,
-`;
-  if (icon) code += `                        IconName = "${icon}",
-`;
-  code += `                    },
-`;
-  code += `                },
-`;
-  code += `                Muzzles = new[]
-`;
-  code += `                {
-`;
-  code += `                    ${muzzles},
-`;
-  code += `                },
-`;
-  if (scope && scope !== 'scope') code += `                Scope = "${scope}",
-`;
-  code += `            },
-`;
-
-  // Targeting: Helper or Inline
-  if (activeWeapon.targetingPreset && !activeWeapon.targetingCustomized) {
-    code += `            Targeting = ${activeWeapon.targetingPreset},
-`;
-  } else {
-    // Threats array
-    const activeThreats = [];
-    if (wThreatGrids && wThreatGrids.checked) activeThreats.push('Grids');
-    if (wThreatProjectiles && wThreatProjectiles.checked) activeThreats.push('Projectiles');
-    if (wThreatCharacters && wThreatCharacters.checked) activeThreats.push('Characters');
-    if (wThreatMeteors && wThreatMeteors.checked) activeThreats.push('Meteors');
-    if (wThreatNeutrals && wThreatNeutrals.checked) activeThreats.push('Neutrals');
-    const threatsStr = activeThreats.length > 0 ? activeThreats.join(', ') : 'Grids';
-
-    // Subsystems array
-    const activeSubs = [];
-    if (wSubOffense && wSubOffense.checked) activeSubs.push('Offense');
-    if (wSubPower && wSubPower.checked) activeSubs.push('Power');
-    if (wSubProduction && wSubProduction.checked) activeSubs.push('Production');
-    if (wSubThrust && wSubThrust.checked) activeSubs.push('Thrust');
-    if (wSubJumping && wSubJumping.checked) activeSubs.push('Jumping');
-    if (wSubSteering && wSubSteering.checked) activeSubs.push('Steering');
-    if (wSubAny && wSubAny.checked) activeSubs.push('Any');
-    const subsStr = activeSubs.length > 0 ? activeSubs.join(', ') : 'Offense, Power, Thrust';
-
-    code += `            Targeting = new TargetingDef
-`;
-    code += `            {
-`;
-    code += `                Threats = new[] { ${threatsStr} },
-`;
-    code += `                SubSystems = new[] { ${subsStr} },
-`;
-    code += `                ClosestFirst = ${wClosestFirst.checked ? 'true' : 'false'},
-`;
-    code += `                IgnoreDumbProjectiles = ${wIgnoreDumb.checked ? 'true' : 'false'},
-`;
-    if (wLockedSmartOnly && wLockedSmartOnly.checked) code += `                LockedSmartOnly = true,
-`;
-    const ctrlModes = [[wCtrlAutomatic, 'Automatic'], [wCtrlManual, 'Manual'], [wCtrlPainter, 'Painter']]
-      .filter(([el]) => el && el.checked).map(([, m]) => `ControlModes.${m}`);
-    if (ctrlModes.length > 0 && ctrlModes.length < 3) code += `                ValidControlModes = new[] { ${ctrlModes.join(', ')} },
-`;
-    code += `                MaxTargetDistance = ${wMaxTargetDistance.value},
-`;
-    if (parseFloat(wMinTargetDistance.value) > 0) code += `                MinTargetDistance = ${wMinTargetDistance.value},
-`;
-    code += `                TopTargets = ${wTopTargets.value},
-`;
-    code += `                TopBlocks = ${wTopBlocks.value},
-`;
-    code += `                StopTrackingSpeed = ${wStopTrackingSpeed.value},
-`;
-    code += `            },
-`;
-  }
-
-  // HardPoint
-  code += `            HardPoint = new HardPointDef
-`;
-  code += `            {
-`;
-  code += `                PartName = "${pName}",
-`;
-  code += `                DeviateShotAngle = ${wDeviateAngle.value}f,
-`;
-  code += `                AimingTolerance = ${wAimingTolerance.value}f,
-`;
-  code += `                AimLeadingPrediction = ${wAimLeading.value},
-`;
-  if (parseInt(wDelayCeaseFire.value, 10) > 0) code += `                DelayCeaseFire = ${wDelayCeaseFire.value},
-`;
-  if (wAddToleranceToTracking && wAddToleranceToTracking.checked) code += `                AddToleranceToTracking = true,
-`;
-  if (wCanShootSubmerged && wCanShootSubmerged.checked) code += `                CanShootSubmerged = true,
-`;
-  if (wNpcSafe && !wNpcSafe.checked) code += `                NpcSafe = false,
-`;
-
-  // HardwareDef
-  code += `                HardWare = new HardwareDef
-`;
-  code += `                {
-`;
-  code += `                    RotateRate = ${wRotateRate.value}f,
-`;
-  code += `                    ElevateRate = ${wElevateRate.value}f,
-`;
-  code += `                    MinAzimuth = ${wMinAzimuth.value},
-`;
-  code += `                    MaxAzimuth = ${wMaxAzimuth.value},
-`;
-  code += `                    MinElevation = ${wMinElevation.value},
-`;
-  code += `                    MaxElevation = ${wMaxElevation.value},
-`;
-  const homeAz = safeFloat(wHomeAzimuth ? wHomeAzimuth.value : 0, 0);
-  const homeEl = safeFloat(wHomeElevation ? wHomeElevation.value : 0, 0);
-  if (homeAz !== 0) code += `                    HomeAzimuth = ${homeAz},\n`;
-  if (homeEl !== 0) code += `                    HomeElevation = ${homeEl},\n`;
-  code += `                    InventorySize = ${safeFloat(wInventorySize.value, 0.9)}f,\n`;
-  code += `                    IdlePower = ${safeFloat(wIdlePower.value, 0.01)}f,\n`;
-  if (wHardwareType && wHardwareType.value && wHardwareType.value !== 'BlockWeapon') code += `                    Type = ${wHardwareType.value},\n`;
-  const offX = safeFloat(wOffsetX ? wOffsetX.value : 0, 0);
-  const offY = safeFloat(wOffsetY ? wOffsetY.value : 0, 0);
-  const offZ = safeFloat(wOffsetZ ? wOffsetZ.value : 0, 0);
-  if (offX !== 0 || offY !== 0 || offZ !== 0) {
-    code += `                    Offset = Vector(x: ${offX}f, y: ${offY}f, z: ${offZ}f),\n`;
-  }
-  code += `                },\n`;
-
-  // LoadingDef
-  code += `                Loading = new LoadingDef
-`;
-  code += `                {
-`;
-  code += `                    RateOfFire = ${wRateOfFire.value},
-`;
-  code += `                    BarrelsPerShot = ${wBarrelsPerShot.value},
-`;
-  if (wTrajectilesPerBarrel && parseInt(wTrajectilesPerBarrel.value, 10) > 1) code += `                    TrajectilesPerBarrel = ${wTrajectilesPerBarrel.value},
-`;
-  if (wSkipBarrels && parseInt(wSkipBarrels.value, 10) > 0) code += `                    SkipBarrels = ${wSkipBarrels.value},
-`;
-  code += `                    ReloadTime = ${wReloadTime.value},
-`;
-  code += `                    MagsToLoad = ${wMagsToLoad.value},
-`;
-  if (wDelayUntilFire && parseInt(wDelayUntilFire.value, 10) > 0) code += `                    DelayUntilFire = ${wDelayUntilFire.value},
-`;
-  if (parseFloat(wHeatPerShot.value) > 0 || parseFloat(wMaxHeat.value) > 0) {
-    code += `                    HeatPerShot = ${wHeatPerShot.value}f,
-`;
-    code += `                    MaxHeat = ${wMaxHeat.value},
-`;
-    code += `                    HeatSinkRate = ${wHeatSinkRate.value},
-`;
-    if (parseFloat(wCooldown.value) !== 0.5) code += `                    Cooldown = ${wCooldown.value}f,
-`;
-  }
-  if (wShotsInBurst && parseInt(wShotsInBurst.value, 10) > 0) {
-    code += `                    ShotsInBurst = ${wShotsInBurst.value},
-`;
-    code += `                    DelayAfterBurst = ${wDelayAfterBurst.value},
-`;
-  }
-  if (wFireFull && wFireFull.checked) code += `                    FireFull = true,
-`;
-  if (wGiveUpAfter && wGiveUpAfter.checked) code += `                    GiveUpAfter = true,
-`;
-  if (wGoHomeToReload && wGoHomeToReload.checked) code += `                    GoHomeToReload = true,
-`;
-  if (wDropTargetUntilLoaded && wDropTargetUntilLoaded.checked) code += `                    DropTargetUntilLoaded = true,
-`;
-  if (wDegradeWithHeat && wDegradeWithHeat.checked) code += `                    DegradeWithHeat = true,
-`;
-  code += `                },
-`;
-
-  // HardPointAudioDef
-  code += `                Audio = new HardPointAudioDef
-`;
-  code += `                {
-`;
-  code += `                    FiringSound = "${wSoundFiring.value}",
-`;
-  if (wSoundPreFiring && wSoundPreFiring.value) code += `                    PreFiringSound = "${wSoundPreFiring.value}",
-`;
-  if (wSoundFiringPerShot && wSoundFiringPerShot.checked) code += `                    FiringSoundPerShot = true,
-`;
-  if (wSoundReload && wSoundReload.value) code += `                    ReloadSound = "${wSoundReload.value}",
-`;
-  if (wSoundRotate && wSoundRotate.value) code += `                    HardPointRotationSound = "${wSoundRotate.value}",
-`;
-  if (wSoundNoAmmo && wSoundNoAmmo.value) code += `                    NoAmmoSound = "${wSoundNoAmmo.value}",
-`;
-  code += `                },
-`;
-
-  // UiDef (only write if customized)
-  const uiCustom = (wUiDamageModifier && wUiDamageModifier.checked) || (wUiToggleGuidance && wUiToggleGuidance.checked) || (wUiEnableOverload && wUiEnableOverload.checked) || (wUiRateOfFire && !wUiRateOfFire.checked);
-  if (uiCustom) {
-    code += `                Ui = new UiDef
-`;
-    code += `                {
-`;
-    code += `                    RateOfFire = ${wUiRateOfFire && wUiRateOfFire.checked ? 'true' : 'false'},
-`;
-    if (wUiDamageModifier && wUiDamageModifier.checked) code += `                    DamageModifier = true,
-`;
-    if (wUiToggleGuidance && wUiToggleGuidance.checked) code += `                    ToggleGuidance = true,
-`;
-    if (wUiEnableOverload && wUiEnableOverload.checked) code += `                    EnableOverload = true,
-`;
-    code += `                },
-`;
-  }
-
-  // OtherDef (only write if non-default)
-  const hasOtherNonDefault = (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) ||
-    (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) ||
-    (wOtherDebug && wOtherDebug.checked) ||
-    (wCheckInflatedBox && wCheckInflatedBox.checked) ||
-    (wCheckForAnyWeapon && wCheckForAnyWeapon.checked) ||
-    (wStayCharged && wStayCharged.checked) ||
-    (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked);
-
-  if (hasOtherNonDefault) {
-    code += `                Other = new OtherDef
-`;
-    code += `                {
-`;
-    if (wConstructPartCap && parseInt(wConstructPartCap.value, 10) > 0) code += `                    ConstructPartCap = ${wConstructPartCap.value},
-`;
-    if (wRestrictionRadius && parseFloat(wRestrictionRadius.value) > 0) code += `                    RestrictionRadius = ${wRestrictionRadius.value}f,
-`;
-    if (wOtherDebug && wOtherDebug.checked) code += `                    Debug = true,
-`;
-    if (wCheckInflatedBox && wCheckInflatedBox.checked) code += `                    CheckInflatedBox = true,
-`;
-    if (wCheckForAnyWeapon && wCheckForAnyWeapon.checked) code += `                    CheckForAnyWeapon = true,
-`;
-    if (wStayCharged && wStayCharged.checked) code += `                    StayCharged = true,
-`;
-    if (wNoVoxelLOSCheck && wNoVoxelLOSCheck.checked) code += `                    NoVoxelLOSCheck = true,
-`;
-    code += `                },
-`;
-  }
-
-  code += `            },
-`;
-
-  // Ammos Array
-  code += `            Ammos = new[]
-`;
-  code += `            {
-`;
-  code += `                ${ammosList},
-`;
-  code += `            },
-`;
-
-  // Extended / Auto-Discovered Tags
-  if (activeWeapon.extendedTags && Object.keys(activeWeapon.extendedTags).length > 0) {
-    code += `            // Extended / Auto-Discovered WeaponCore Tags
-`;
-    for (const [k, v] of Object.entries(activeWeapon.extendedTags)) {
-      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
-      code += `            // ${k} = ${formattedVal},
-`;
-    }
-  }
-
-  code += `            ${animRef}
-`;
-  code += `        };
-`;
-
-  return code;
+  return wcExportCSharp('weapon') || `// Definition source for ${activeWeapon.defName || activeWeapon.id} is not loaded`;
 }
 
 function generateCSharpAmmo() {
   if (!activeAmmo) return "// No ammo selected";
-
-  const aRound = aAmmoRound.value || activeAmmo.name;
-  const aMag = aAmmoMagazine.value || `${aRound}_Mag`;
-  const aTerm = aTerminalName.value || aRound;
-
-  let code = `        AmmoDef ${aRound} => new AmmoDef
-`;
-  code += `        {
-`;
-  code += `            AmmoMagazine = "${aMag}",
-`;
-  code += `            AmmoRound = "${aRound}",
-`;
-  code += `            TerminalName = "${aTerm}",
-`;
-  code += `            BaseDamage = ${aBaseDamage.value}f,
-`;
-  if (aBaseDamageCutoff && parseInt(aBaseDamageCutoff.value, 10) > 0) code += `            BaseDamageCutoff = ${aBaseDamageCutoff.value},
-`;
-  code += `            Mass = ${aMass.value}f,
-`;
-  if (parseFloat(aHealth.value) > 0) code += `            Health = ${aHealth.value}f,
-`;
-  if (parseFloat(aBackKick.value) > 0) code += `            BackKickForce = ${aBackKick.value}f,
-`;
-  if (aDecayPerShot && parseFloat(aDecayPerShot.value) > 0) code += `            DecayPerShot = ${aDecayPerShot.value}f,
-`;
-  if (aEnergyCost && parseFloat(aEnergyCost.value) > 0) code += `            EnergyCost = ${aEnergyCost.value}f,
-`;
-  if (aEnergyMagazineSize && parseInt(aEnergyMagazineSize.value, 10) > 0) code += `            EnergyMagazineSize = ${aEnergyMagazineSize.value},
-`;
-  if (aHeatModifier && parseFloat(aHeatModifier.value) !== 1.0) code += `            HeatModifier = ${aHeatModifier.value}f,
-`;
-  if (aHeatNeededToFire && parseFloat(aHeatNeededToFire.value) > 0) code += `            HeatNeededToFire = ${aHeatNeededToFire.value}f,
-`;
-  code += `            HardPointUsable = ${aHardPointUsable.checked ? 'true' : 'false'},
-`;
-  if (aHybridRound && aHybridRound.checked) code += `            HybridRound = true,
-`;
-  if (aNpcSafe && !aNpcSafe.checked) code += `            NpcSafe = false,
-`;
-  if (aNoGridOrArmorScaling && aNoGridOrArmorScaling.checked) code += `            NoGridOrArmorScaling = true,
-`;
-  if (aIgnoreWater && aIgnoreWater.checked) code += `            IgnoreWater = true,
-`;
-  if (aIgnoreVoxels && aIgnoreVoxels.checked) code += `            IgnoreVoxels = true,
-`;
-  if (aIgnoreGrids && aIgnoreGrids.checked) code += `            IgnoreGrids = true,
-`;
-  if (aAllowNegativeHeatModifier && aAllowNegativeHeatModifier.checked) code += `            AllowNegativeHeatModifier = true,
-`;
-  if (aGridsTargetSeekersTargetingThis && aGridsTargetSeekersTargetingThis.checked) code += `            GridsTargetSeekersTargetingThis = true,
-`;
-
-  // ShapeDef (only output diameter if non-default)
-  code += `            Shape = new ShapeDef
-`;
-  code += `            {
-`;
-  code += `                Shape = ${aShape.value},
-`;
-  if (parseFloat(aDiameter.value) > 0 || aShape.value === 'SphereShape') {
-    code += `                Diameter = ${aDiameter.value}f,
-`;
-  }
-  code += `            },
-`;
-
-  // ObjectsHitDef (only output if non-default)
-  if (oMaxObjectsHit && (parseInt(oMaxObjectsHit.value, 10) > 1 || !oCountBlocks.checked || oSkipBlocksForAOE.checked)) {
-    code += `            ObjectsHit = new ObjectsHitDef
-`;
-    code += `            {
-`;
-    code += `                MaxObjectsHit = ${oMaxObjectsHit.value},
-`;
-    code += `                CountBlocks = ${oCountBlocks.checked ? 'true' : 'false'},
-`;
-    if (oSkipBlocksForAOE.checked) code += `                SkipBlocksForAOE = true,
-`;
-    code += `            },
-`;
-  }
-
-  // FragmentDef (ONLY if enabled and populated)
-  if (fEnable.checked && fChildAmmoRound.value && parseInt(fFragments.value, 10) > 0) {
-    code += `            Fragment = new FragmentDef
-`;
-    code += `            {
-`;
-    code += `                AmmoRound = "${fChildAmmoRound.value}",
-`;
-    code += `                Fragments = ${fFragments.value},
-`;
-    code += `                Degrees = ${fDegrees.value}f,
-`;
-    if (fRadial && parseFloat(fRadial.value) !== 0) code += `                Radial = ${fRadial.value}f,
-`;
-    if (fOffset && parseFloat(fOffset.value) !== 0) code += `                Offset = ${fOffset.value}f,
-`;
-    if (fReverse && fReverse.checked) code += `                Reverse = true,
-`;
-    if (fDropVelocity && fDropVelocity.checked) code += `                DropVelocity = true,
-`;
-    if (fIgnoreArming && fIgnoreArming.checked) code += `                IgnoreArming = true,
-`;
-    // No UI for these yet: round-trip them from the parsed ammo so exports keep carrier/drone behavior
-    const srcFrag = (activeAmmo && activeAmmo.fragment) || {};
-    if (srcFrag.maxChildren > 0) code += `                MaxChildren = ${srcFrag.maxChildren},
-`;
-    if (srcFrag.armWhenHit) code += `                ArmWhenHit = true,
-`;
-    const ts = srcFrag.timedSpawns;
-    if (ts && ts.enable) {
-      code += `                TimedSpawns = new TimedSpawnDef
-                {
-                    Enable = true,
-                    Interval = ${ts.interval || 0},
-                    StartTime = ${ts.startTime || 0},
-                    MaxSpawns = ${ts.maxSpawns || 0},
-                    Proximity = ${ts.proximity || 0},
-                    ParentDies = ${ts.parentDies ? 'true' : 'false'},
-                    PointAtTarget = ${ts.pointAtTarget ? 'true' : 'false'},
-                    PointType = ${ts.pointType || 'Direct'},
-                    DirectAimCone = ${ts.directAimCone || 0}f,
-                    GroupSize = ${ts.groupSize || 0},
-                    GroupDelay = ${ts.groupDelay || 0},
-                },
-`;
-    }
-    code += `            },
-`;
-  }
-
-  // AreaOfDamageDef (ONLY if enabled and radius > 0)
-  const hasBlockAoe = aodBlockEnable && aodBlockEnable.checked && parseFloat(aodBlockRadius.value) > 0;
-  const hasEolAoe = aodEolEnable && aodEolEnable.checked && parseFloat(aodEolRadius.value) > 0;
-
-  if (hasBlockAoe || hasEolAoe) {
-    code += `            AreaOfDamage = new AreaOfDamageDef
-`;
-    code += `            {
-`;
-    if (hasBlockAoe) {
-      code += `                ByBlockHit = new ByBlockHitDef
-`;
-      code += `                {
-`;
-      code += `                    Enable = true,
-`;
-      code += `                    Radius = ${aodBlockRadius.value}f,
-`;
-      code += `                    Damage = ${aodBlockDamage.value}f,
-`;
-      code += `                    Depth = ${aodBlockDepth.value}f,
-`;
-      if (parseFloat(aodBlockMaxAbsorb.value) > 0) code += `                    MaxAbsorb = ${aodBlockMaxAbsorb.value}f,
-`;
-      code += `                    Falloff = ${aodBlockFalloff.value},
-`;
-      code += `                    Shape = ${aodBlockShape.value},
-`;
-      code += `                },
-`;
-    }
-    if (hasEolAoe) {
-      code += `                EndOfLife = new EndOfLifeDef
-`;
-      code += `                {
-`;
-      code += `                    Enable = true,
-`;
-      code += `                    Radius = ${aodEolRadius.value}f,
-`;
-      code += `                    Damage = ${aodEolDamage.value}f,
-`;
-      code += `                    Depth = ${aodEolDepth.value}f,
-`;
-      if (parseFloat(aodEolMaxAbsorb.value) > 0) code += `                    MaxAbsorb = ${aodEolMaxAbsorb.value}f,
-`;
-      code += `                    Falloff = ${aodEolFalloff.value},
-`;
-      code += `                    Shape = ${aodEolShape.value},
-`;
-      code += `                },
-`;
-    }
-    code += `            },
-`;
-  }
-
-  // TrajectoryDef
-  code += `            Trajectory = new TrajectoryDef
-`;
-  code += `            {
-`;
-  code += `                DesiredSpeed = ${tDesiredSpeed.value}f,
-`;
-  if (tAccelPerSec && parseFloat(tAccelPerSec.value) > 0) code += `                AccelPerSec = ${tAccelPerSec.value}f,
-`;
-  code += `                MaxTrajectory = ${tMaxTrajectory.value}f,
-`;
-  code += `                MaxLifeTime = ${tMaxLifeTime.value},
-`;
-  if (tSpeedVariance && parseFloat(tSpeedVariance.value) > 0) code += `                SpeedVariance = ${tSpeedVariance.value}f,
-`;
-  if (tRangeVariance && parseFloat(tRangeVariance.value) > 0) code += `                RangeVariance = ${tRangeVariance.value}f,
-`;
-  if (tDeaccelTime && parseInt(tDeaccelTime.value, 10) > 0) code += `                DeaccelTime = ${tDeaccelTime.value},
-`;
-  if (tTargetLossDegree && parseFloat(tTargetLossDegree.value) > 0) code += `                TargetLossDegree = ${tTargetLossDegree.value}f,
-`;
-  if (tTargetLossTime && parseInt(tTargetLossTime.value, 10) > 0) code += `                TargetLossTime = ${tTargetLossTime.value},
-`;
-  code += `                Guidance = ${tGuidance.value},
-`;
-
-  // Smarts (ONLY if smart guidance or non-default navigation)
-  if (tGuidance.value === 'Smart' || (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0)) {
-    code += `                Smarts = new SmartsDef
-`;
-    code += `                {
-`;
-    if (sInaccuracy && parseFloat(sInaccuracy.value) > 0) code += `                    Inaccuracy = ${sInaccuracy.value}f,
-`;
-    if (sAggressiveness && parseFloat(sAggressiveness.value) !== 1.0) code += `                    Aggressiveness = ${sAggressiveness.value}f,
-`;
-    if (sNavAcceleration && parseFloat(sNavAcceleration.value) > 0) code += `                    NavAcceleration = ${sNavAcceleration.value}f,
-`;
-    code += `                    MaxLateralThrust = ${sMaxLateralThrust.value}f,
-`;
-    if (sSteeringLimit && parseFloat(sSteeringLimit.value) > 0) code += `                    SteeringLimit = ${sSteeringLimit.value}f,
-`;
-    if (sAltNavigation && sAltNavigation.checked) code += `                    AltNavigation = true,
-`;
-    code += `                },
-`;
-  }
-
-  // Lossless preservation of Approaches if present
-  if (activeAmmo.approachesRef) {
-    if (activeAmmo.approachesRef !== 'Inline') {
-      code += `                Approaches = ${activeAmmo.approachesRef},
-`;
-    } else {
-      code += `                // Approaches preserved in C# source
-`;
-    }
-  }
-  code += `            },
-`;
-
-  // PatternDef (ONLY if enabled)
-  if (pEnable && pEnable.checked && pPatterns.value.trim()) {
-    const patList = pPatterns.value.split(',').map(p => `"${p.trim()}"`).join(', ');
-    code += `            Pattern = new PatternDef
-`;
-    code += `            {
-`;
-    code += `                Enable = true,
-`;
-    code += `                Patterns = new[] { ${patList} },
-`;
-    code += `                TriggerChance = ${pTriggerChance.value}f,
-`;
-    if (pSkipParent && pSkipParent.checked) code += `                SkipParent = true,
-`;
-    if (pRandom && pRandom.checked) code += `                Random = true,
-`;
-    if (parseInt(pPatternSteps.value, 10) > 1) code += `                PatternSteps = ${pPatternSteps.value},
-`;
-    if (pMode && pMode.value !== 'Never') code += `                Mode = ${pMode.value},
-`;
-    code += `            },
-`;
-  }
-
-  // EwarDef (ONLY if enabled)
-  if (ewEnable && ewEnable.checked) {
-    code += `            Ewar = new EwarDef
-`;
-    code += `            {
-`;
-    code += `                Enable = true,
-`;
-    code += `                Type = ${ewType.value},
-`;
-    code += `                Mode = ${ewMode.value},
-`;
-    code += `                Strength = ${ewStrength.value}f,
-`;
-    code += `                Radius = ${ewRadius.value}f,
-`;
-    code += `                Duration = ${ewDuration.value},
-`;
-    code += `                MaxStacks = ${ewMaxStacks.value},
-`;
-    if (ewStackDuration && ewStackDuration.checked) code += `                StackDuration = true,
-`;
-    if (ewDeplete && ewDeplete.checked) code += `                Deplete = true,
-`;
-    code += `            },
-`;
-  }
-
-  // DamageScaleDef
-  code += `            DamageScales = new DamageScaleDef
-`;
-  code += `            {
-`;
-  if (dsMaxIntegrity && parseFloat(dsMaxIntegrity.value) > 0) code += `                MaxIntegrity = ${dsMaxIntegrity.value}f,
-`;
-  if (dsCharacters && parseFloat(dsCharacters.value) !== 1.0) code += `                Characters = ${dsCharacters.value}f,
-`;
-  code += `                Armor = new ArmorDef
-`;
-  code += `                {
-`;
-  if (dsArmorArmor && parseFloat(dsArmorArmor.value) !== -1) code += `                    Armor = ${dsArmorArmor.value}f,
-`;
-  code += `                    Light = ${dsLightArmor.value}f,
-`;
-  code += `                    Heavy = ${dsHeavyArmor.value}f,
-`;
-  if (dsNonArmor && parseFloat(dsNonArmor.value) !== -1) code += `                    NonArmor = ${dsNonArmor.value}f,
-`;
-  code += `                },
-`;
-  if (dsFalloffDistance && parseFloat(dsFalloffDistance.value) > 0) {
-    code += `                FallOff = new FallOffDef
-`;
-    code += `                {
-`;
-    code += `                    Distance = ${dsFalloffDistance.value}f,
-`;
-    code += `                    MinMultipler = ${dsFalloffMinMult.value}f,
-`;
-    code += `                },
-`;
-  }
-  if (dsGridLarge && (parseFloat(dsGridLarge.value) !== -1 || parseFloat(dsGridSmall.value) !== -1)) {
-    code += `                Grids = new GridSizeDef
-`;
-    code += `                {
-`;
-    code += `                    Large = ${dsGridLarge.value}f,
-`;
-    code += `                    Small = ${dsGridSmall.value}f,
-`;
-    code += `                },
-`;
-  }
-  // WC only enables cutoff scaling when a field is > 0; all four are emitted because an omitted field is 0 (zero cap)
-  const cutArmorEls = [[dsCutoffArmorArmor, 'Armor'], [dsCutoffLightArmor, 'Light'], [dsCutoffHeavyArmor, 'Heavy'], [dsCutoffNonArmor, 'NonArmor']];
-  if (cutArmorEls.some(([el]) => el && parseFloat(el.value) > 0)) {
-    code += `                ArmorForCutoff = new ArmorDef
-                {
-`;
-    for (const [el, key] of cutArmorEls) code += `                    ${key} = ${safeFloat(el.value, -1)}f,
-`;
-    code += `                },
-`;
-  }
-  if ((dsCutoffGridLarge && parseFloat(dsCutoffGridLarge.value) > 0) || (dsCutoffGridSmall && parseFloat(dsCutoffGridSmall.value) > 0)) {
-    code += `                GridSizeForCutoff = new GridSizeDef
-                {
-                    Large = ${safeFloat(dsCutoffGridLarge.value, -1)}f,
-                    Small = ${safeFloat(dsCutoffGridSmall.value, -1)}f,
-                },
-`;
-  }
-  if (dsDamageType && dsDamageType.value !== 'BaseDamage') {
-    code += `                DamageType = new DamageTypes
-`;
-    code += `                {
-`;
-    code += `                    ${dsDamageType.value} = true,
-`;
-    code += `                },
-`;
-  }
-  code += `            },
-`;
-
-  // SynchronizeDef (ONLY if non-default)
-  const isSyncCustom = (syncFull && syncFull.checked) ||
-    (syncPointDefense && !syncPointDefense.checked) ||
-    (syncOnHitDeath && syncOnHitDeath.checked) ||
-    (syncInterval && parseInt(syncInterval.value, 10) > 0);
-
-  if (isSyncCustom) {
-    code += `            Sync = new SynchronizeDef
-`;
-    code += `            {
-`;
-    if (syncFull && syncFull.checked) code += `                Full = true,
-`;
-    if (syncPointDefense && !syncPointDefense.checked) code += `                PointDefense = false,
-`;
-    if (syncOnHitDeath && syncOnHitDeath.checked) code += `                OnHitDeath = true,
-`;
-    if (syncInterval && parseInt(syncInterval.value, 10) > 0) code += `                PositionSyncInterval = ${syncInterval.value},
-`;
-    if (syncPatchWindow && parseInt(syncPatchWindow.value, 10) > 0) code += `                PositionPatchWindow = ${syncPatchWindow.value},
-`;
-    if (syncUpdateOnRandomize && syncUpdateOnRandomize.checked) code += `                PositionUpdateOnRandomize = true,
-`;
-    code += `            },
-`;
-  }
-
-  // GraphicDef
-  code += `            Graphic = new GraphicDef
-`;
-  code += `            {
-`;
-  if (parseFloat(gVisualProb.value) !== 1.0) code += `                VisualProbability = ${gVisualProb.value}f,
-`;
-  code += `                Lines = new LineDef
-`;
-  code += `                {
-`;
-  code += `                    Tracer = new TracerBaseDef
-`;
-  code += `                    {
-`;
-  code += `                        Enable = ${gTracerEnable.checked ? 'true' : 'false'},
-`;
-  code += `                        Length = ${gTracerLength.value}f,
-`;
-  code += `                        Width = ${gTracerWidth.value}f,
-`;
-  if (gTracerColor && gTracerColor.value.trim()) code += `                        Color = Color(${gTracerColor.value}),
-`;
-  if (gTracerTexture && gTracerTexture.value.trim() && gTracerTexture.value !== 'WeaponLaser') {
-    code += `                        Textures = new[] { "${gTracerTexture.value}" },
-`;
-  }
-  if (gTracerSegmented && gTracerSegmented.checked) code += `                        Segmentation = true,
-`;
-  code += `                    },
-`;
-  if (gTrailEnable && gTrailEnable.checked) {
-    code += `                    Trail = new TrailDef
-`;
-    code += `                    {
-`;
-    code += `                        Enable = true,
-`;
-    if (gTrailAlwaysDraw && gTrailAlwaysDraw.checked) code += `                        AlwaysDraw = true,
-`;
-    code += `                        DecayTime = ${gTrailDecay.value},
-`;
-    code += `                        CustomWidth = ${gTrailWidth.value}f,
-`;
-    if (gTrailColor && gTrailColor.value.trim()) code += `                        Color = Color(${gTrailColor.value}),
-`;
-    if (gTrailTextures && gTrailTextures.value.trim()) code += `                        Textures = new[] { "${gTrailTextures.value}" },
-`;
-    code += `                    },
-`;
-  }
-  code += `                },
-`;
-  code += `            },
-`;
-
-  // AudioDef (only write sounds that are defined)
-  const hasAudio = (aSoundShot && aSoundShot.value.trim()) ||
-    (aSoundTravel && aSoundTravel.value.trim()) ||
-    (aSoundHit && aSoundHit.value.trim()) ||
-    (aSoundVoxelHit && aSoundVoxelHit.value.trim()) ||
-    (aSoundPlayerHit && aSoundPlayerHit.value.trim()) ||
-    (aSoundWaterHit && aSoundWaterHit.value.trim());
-
-  if (hasAudio) {
-    code += `            Audio = new AmmoAudioDef
-`;
-    code += `            {
-`;
-    if (aSoundShot && aSoundShot.value.trim()) code += `                ShotSound = "${aSoundShot.value}",
-`;
-    if (aSoundTravel && aSoundTravel.value.trim()) code += `                TravelSound = "${aSoundTravel.value}",
-`;
-    if (aSoundHit && aSoundHit.value.trim()) code += `                HitSound = "${aSoundHit.value}",
-`;
-    if (aSoundVoxelHit && aSoundVoxelHit.value.trim()) code += `                VoxelHitSound = "${aSoundVoxelHit.value}",
-`;
-    if (aSoundPlayerHit && aSoundPlayerHit.value.trim()) code += `                PlayerHitSound = "${aSoundPlayerHit.value}",
-`;
-    if (aSoundWaterHit && aSoundWaterHit.value.trim()) code += `                WaterHitSound = "${aSoundWaterHit.value}",
-`;
-    if (aHitPlayChance && parseFloat(aHitPlayChance.value) !== 1.0) code += `                HitPlayChance = ${aHitPlayChance.value}f,
-`;
-    code += `            },
-`;
-  }
-
-  // Extended / Auto-Discovered Tags
-  if (activeAmmo.extendedTags && Object.keys(activeAmmo.extendedTags).length > 0) {
-    code += `            // Extended / Auto-Discovered WeaponCore Tags
-`;
-    for (const [k, v] of Object.entries(activeAmmo.extendedTags)) {
-      const formattedVal = (typeof v === 'boolean') ? (v ? 'true' : 'false') : (typeof v === 'number' ? `${v}f` : `"${v}"`);
-      code += `            ${k} = ${formattedVal},
-`;
-    }
-  }
-
-  code += `        };
-`;
-
-  return code;
+  return wcExportCSharp('ammo') || `// Definition source for ${activeAmmo.name} is not loaded`;
 }
 
 function generateSbcCubeBlocks() {
@@ -7321,6 +6352,8 @@ function applyWorkbenchFieldHelp() {
 }
 
 function setupWorkbenchInputEvents() {
+  // Tree bindings first so the def tree (and ammo shape) update before the telemetry listeners below run
+  wcSetupBindings();
   
   // Live binding for Scope C SBC fields
   const sbcInputs = [
@@ -7356,31 +6389,6 @@ function setupWorkbenchInputEvents() {
     btnDownloadSbcDirect.addEventListener('click', () => {
       const sub = activeWeapon ? (activeWeapon.subtypeId || activeWeapon.id) : 'CubeBlock';
       downloadFile(`${sub}.sbc`, generateSbcCubeBlocks(), 'application/xml');
-    });
-  }
-
-  // Extended Tag Buttons
-  if (btnAddWeaponExtendedTag) {
-    btnAddWeaponExtendedTag.addEventListener('click', () => {
-      if (!activeWeapon) return;
-      const tag = prompt("Enter WeaponCore Weapon tag name (e.g. ConstructPartCap, RestrictionRadius, Debug):", "ConstructPartCap");
-      if (!tag) return;
-      if (!activeWeapon.extendedTags) activeWeapon.extendedTags = {};
-      activeWeapon.extendedTags[tag] = 0;
-      renderExtendedWeaponTags();
-      showToast(`Added custom tag '${tag}' to weapon.`);
-    });
-  }
-
-  if (btnAddAmmoExtendedTag) {
-    btnAddAmmoExtendedTag.addEventListener('click', () => {
-      if (!activeAmmo) return;
-      const tag = prompt("Enter WeaponCore Ammo tag name (e.g. DecayPerShot, IgnoreWater, IgnoreVoxels, IgnoreGrids, HeatNeededToFire):", "IgnoreWater");
-      if (!tag) return;
-      if (!activeAmmo.extendedTags) activeAmmo.extendedTags = {};
-      activeAmmo.extendedTags[tag] = true;
-      renderExtendedAmmoTags();
-      showToast(`Added custom tag '${tag}' to ammo.`);
     });
   }
 
@@ -7445,6 +6453,7 @@ function setupWorkbenchInputEvents() {
         badgeTargetingHelper.style.background = "rgba(56, 189, 248, 0.15)";
         badgeTargetingHelper.style.color = "var(--cyan-primary)";
         btnRevertTargeting.style.display = "none";
+        wcRevertTargeting();
         showToast(`↺ Reverted targeting to shared ${activeWeapon.helpers.targeting}`);
       }
     });

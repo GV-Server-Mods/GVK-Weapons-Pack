@@ -223,16 +223,20 @@ Full canonical WeaponCore round engineering:
   - Displays formatted `<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">` XML with syntax highlighting.
   - `📋 Copy SBC XML` and `💾 Download .sbc` buttons for immediate in-game testing.
 
-#### 4. WeaponCore Schema Guard & Dynamic Tag Inspector
-- Tracks `CoreParts/script/Structure.cs` fingerprint. If WeaponCore updates and introduces new structs or tags, the dynamic tag inspector auto-renders typed UI controls and losslessly serializes them into C#.
-- **Lean Anti-Bloat Exporter**: Suppresses all default, zeroed, or inactive tags (e.g. disabled fragment blocks, zeroed offsets, unused audio), emitting clean C# code compliant with GVK anti-bloat rules.
+#### 4. WeaponCore Schema Guard & All-Fields Editor
+- Tracks `CoreParts/script/Structure.cs` fingerprint against upstream WeaponCore. `export_snapshots.js` also writes the qualified type tree (every struct, field and enum) plus field comments harvested from `CoreParts/*.cs` into `wc_schema.js`.
+- **Def trees are the source of truth** (`wc_editor.js`): the pipeline keeps each AmmoDef/WeaponDefinition as a lossless tree (`wc_defs_data.js` snapshot, or live-parsed). Enum literals and shared helper refs stay bare identifiers; `Random()`/`Vector()`/`Color()` calls stay calls.
+- **All WeaponCore Fields accordion** (weapon §11, ammo §12): schema-driven editor for every Structure.cs field, with typed inputs, enum dropdowns, filter search, set-only view, per-field revert/unset, and add/remove for struct arrays (MountPoints, Approaches…). A newly synced WC field appears here automatically.
+- **Curated panels write the same tree** through the `WC_BINDINGS` table (element id → field path), so both views and the DPS model always agree.
+- **Shared helpers**: untouched helper refs (e.g. `Common_Weapons_Hardpoint_Ui_FullDisable`) export as the ref. Editing a field inside one detaches a local copy for that definition only; revert re-links it.
+- **Lossless exporter**: C# export serializes the tree — every field the source file sets is kept, edits are applied, and ✕ (unset) removes a field. The smoke test round-trips all 128 GVK defs byte-identically.
 
 #### 5. Design Notes — Field Tooltips & Legacy Field Visibility Policy
 
-- **Tooltip source of truth**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry; auto-discovered Extended Tags get a generic tooltip automatically.
+- **Tooltip source of truth**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry and a `WC_BINDINGS` row in `wc_editor.js`; the All-Fields editor uses the harvested CoreParts comments.
 - **Ground truth for "is this field live"**: GVK's own `CoreParts/*.cs` usage counts — not `data/wc_schema.json` (its structs are incomplete). A field counts as in use only if written non-default somewhere in the mod.
 - **Canonical enum dropdowns**: Guidance, AOE Falloff, and AOE Shape dropdowns contain only values that exist in WeaponCore's enums, so the exporter can never emit a non-compiling tag.
-- **Current-but-unused WC fields**: Fields WeaponCore supports but GVK never enables are kept out of the default UI — either fully absent (rarely-needed exotics, reachable via the **Extended & Future WeaponCore Tags** accordion) or parked in collapsed accordions (`CheckForAnyWeapon` in OtherDef, `DamageModifier` in AiDef & UiDef). `Radial` (FragmentDef) stays visible but intentionally `0` for all GVK fragment weapons; the exporter suppresses it at 0 (WC default), so exported fragment blocks omit the line.
+- **Current-but-unused WC fields**: Fields WeaponCore supports but GVK never enables are kept out of the default UI — either fully absent (rarely-needed exotics, reachable via the **All WeaponCore Fields** accordion) or parked in collapsed accordions (`CheckForAnyWeapon` in OtherDef, `DamageModifier` in AiDef & UiDef). `Radial` (FragmentDef) stays visible but intentionally `0` for all GVK fragment weapons; the exporter writes it only if the source sets it or it is edited.
 - **Deprecated fields**: `EnergyPriority` is marked "Deprecated." in the canonical sample and is fully removed from the UI and exporter.
 
 ---
