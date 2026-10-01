@@ -11,35 +11,42 @@
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
-  <header>
+  <!-- Top Navigation Header: one row on wide screens, tabs on their own row below 1440px,
+       compact and auto-hiding on phones (setupHeaderAutoHide in app.js) -->
+  <header id="appHeader">
     <div class="logo-group">
-      <div class="logo-badge">GVK // DOK</div>
+      <div class="logo-badge" aria-hidden="true">GVK // DOK</div>
       <div class="logo-title">
         <h1>WEAPON <span>STUDIO</span></h1>
-        <div style="display: flex; align-items: center; gap: 8px; margin-top: 3px; flex-wrap: wrap;">
-          <span id="wcSchemaBadge" class="badge badge-cyan" style="cursor: pointer; padding: 2px 8px; font-size: 10px;" title="WeaponCore Schema Integrity Guard - Click to inspect">🛡️ WC v3.0 (Core v0.75) | Synced</span>
-          <span id="gvk-live-chip" class="badge badge-green" style="cursor: pointer; padding: 2px 8px; font-size: 10px;" title="Data source. Click: hosted=reload / snapshot=link mod folder.">🟢 LIVE (Connecting...)</span>
-          <span id="repoStatus" style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">GV-Server-Mods/GVK-Weapons-Pack</span>
+        <div class="header-status">
+          <span id="wcSchemaBadge" class="badge badge-cyan header-chip" role="button" tabindex="0" title="WeaponCore Schema Integrity Guard - Click to inspect">🛡️ WC v3.0 (Core v0.75) | Synced</span>
+          <span id="gvk-live-chip" class="badge badge-green header-chip" role="button" tabindex="0" title="Data source. Click: hosted=reload / snapshot=link mod folder.">🟢 LIVE (Connecting...)</span>
+          <span id="repoStatus" class="header-repo">GV-Server-Mods/GVK-Weapons-Pack</span>
         </div>
       </div>
     </div>
 
     <!-- Workspace Tabs Navigation -->
-    <nav class="workspace-nav">
-      <button class="ws-tab active" data-ws="ws-telemetry">⚔️ Combat Telemetry</button>
-      <button class="ws-tab" data-ws="ws-workbench">🔧 Definition Workbench</button>
-      <button class="ws-tab" data-ws="ws-logistics">📦 Ammo Logistics & Blueprints</button>
+    <nav class="workspace-nav" aria-label="Workspaces">
+      <button class="ws-tab active" data-ws="ws-telemetry" title="Combat Telemetry">
+        <span class="ws-tab-icon" aria-hidden="true">⚔️</span><span class="ws-tab-long">Combat Telemetry</span><span class="ws-tab-short">Telemetry</span>
+      </button>
+      <button class="ws-tab" data-ws="ws-workbench" title="Definition Workbench">
+        <span class="ws-tab-icon" aria-hidden="true">🔧</span><span class="ws-tab-long">Definition Workbench</span><span class="ws-tab-short">Workbench</span>
+      </button>
+      <button class="ws-tab" data-ws="ws-logistics" title="Ammo Logistics &amp; Blueprints">
+        <span class="ws-tab-icon" aria-hidden="true">📦</span><span class="ws-tab-long">Ammo Logistics<span class="ws-tab-extra"> &amp; Blueprints</span></span><span class="ws-tab-short">Logistics</span>
+      </button>
     </nav>
-    
+
     <div class="header-actions">
-      <div class="theme-switcher" title="Color Mode (Dark / Light / System)">
-        <button class="theme-btn" data-theme-mode="dark" title="Dark Mode">🌙</button>
-        <button class="theme-btn" data-theme-mode="light" title="Light Mode">☀️</button>
-        <button class="theme-btn active" data-theme-mode="system" title="System Mode">💻</button>
+      <div class="theme-switcher" role="group" aria-label="Color mode" title="Color Mode (Dark / Light / System)">
+        <button class="theme-btn" data-theme-mode="dark" title="Dark Mode" aria-label="Dark mode">🌙</button>
+        <button class="theme-btn" data-theme-mode="light" title="Light Mode" aria-label="Light mode">☀️</button>
+        <button class="theme-btn active" data-theme-mode="system" title="System Mode" aria-label="Follow system">💻</button>
       </div>
-      <button id="btnShareUrl" class="btn" title="Copy shareable permalink to this weapon configuration">🔗 Share</button>
-      <button id="btnBalanceMatrix" class="btn" title="Open Global Server Balance Multipliers">⚙️ Balance Matrix</button>
+      <button id="btnShareUrl" class="btn header-btn" title="Copy shareable permalink to this weapon configuration" aria-label="Share"><span aria-hidden="true">🔗</span><span class="header-btn-label">Share</span></button>
+      <button id="btnBalanceMatrix" class="btn header-btn" title="Open Global Server Balance Multipliers" aria-label="Balance Matrix"><span aria-hidden="true">⚙️</span><span class="header-btn-label">Balance Matrix</span></button>
     </div>
   </header>
 

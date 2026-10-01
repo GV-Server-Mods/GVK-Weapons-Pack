@@ -1304,7 +1304,48 @@ function switchScope(targetScopeId) {
   });
 }
 
+/// <summary>Phone header: slides away while scrolling down and comes back on any scroll up or near the top.
+/// Header status chips are focusable (role=button), so Enter/Space click them.</summary>
+function setupHeaderAutoHide() {
+  const header = document.getElementById('appHeader');
+  if (!header) return;
+  header.querySelectorAll('.header-chip').forEach(chip => {
+    chip.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chip.click(); }
+    });
+  });
+  const narrow = window.matchMedia ? window.matchMedia('(max-width: 768px)') : null;
+  if (!narrow) return;
+  let lastY = window.scrollY;
+  let queued = false;
+  // Keyboard focus inside the header keeps it visible; a tapped tab keeping focus does not
+  const keyboardFocusInside = () => {
+    try { return !!header.querySelector(':focus-visible'); } catch (e) { return false; }
+  };
+  const update = () => {
+    queued = false;
+    const y = window.scrollY;
+    const dy = y - lastY;
+    if (!narrow.matches || y < header.offsetHeight || keyboardFocusInside()) {
+      header.classList.remove('header-tucked');
+    } else if (dy > 6) {
+      header.classList.add('header-tucked');
+    } else if (dy < -6) {
+      header.classList.remove('header-tucked');
+    }
+    if (Math.abs(dy) > 6) lastY = y;
+  };
+  window.addEventListener('scroll', () => {
+    if (!queued) { queued = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  header.addEventListener('focusin', () => { if (keyboardFocusInside()) header.classList.remove('header-tucked'); });
+  const onChange = () => header.classList.remove('header-tucked');
+  if (narrow.addEventListener) narrow.addEventListener('change', onChange);
+}
+
 function setupNavigationEvents() {
+  setupHeaderAutoHide();
+
   // Theme switcher buttons
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2656,6 +2697,7 @@ function setWcSchemaBadge(schema) {
     wcSchemaBadge.classList.add('badge-cyan');
     wcSchemaBadge.innerHTML = `🛡️ WC Core ${schema.version} | ${r.state === 'pending' ? 'Checking…' : 'Unverified (offline)'}`;
   }
+  wcSchemaBadge.title = `${wcSchemaBadge.textContent.trim()}. Click to inspect the WeaponCore schema guard.`;
   wcSchemaBadge.onclick = showSchemaModal;
 }
 

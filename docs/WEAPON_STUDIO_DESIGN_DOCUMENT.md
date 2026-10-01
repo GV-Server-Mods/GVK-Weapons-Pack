@@ -342,6 +342,14 @@ Every output shows its formula, with the live numbers plugged in, as a hover too
 
 ## 4. Design Tokens & Theme Engine
 
+### Header
+`<header id="appHeader">` is a CSS grid with three layouts:
+- **≥1500px**: brand · workspace tabs · actions in one row. Status chips cap at 190px (280px from 1800px, where "& Blueprints" also shows); the repo name appears from 2000px.
+- **<1500px**: brand + actions, tabs on a full-width second row with equal-width tabs.
+- **≤768px**: badge · title · icon-only actions, a full-width status line, and short tab labels (Telemetry / Workbench / Logistics; icon above label under 480px, where the badge also hides). `setupHeaderAutoHide()` slides the header away while scrolling down and brings it back on any scroll up, near the top, or when focus enters it.
+
+The status chips truncate with an ellipsis; their `title` always carries the full text (set by `setWcSchemaBadge` and `source_live.js setChip`). They are `role="button"` and open on Enter/Space.
+
 ### Tri-State Theme Switcher
 The studio supports **Dark**, **Light**, and **System** modes persisted in `localStorage` under `GVK_THEME_PREF`.
 

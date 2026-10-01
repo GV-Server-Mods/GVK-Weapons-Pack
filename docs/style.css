@@ -378,59 +378,360 @@ body {
   padding-bottom: 120px;
 }
 
-/* Header */
+/* ==========================================================================
+   HEADER
+   ≥1440px: brand | tabs | actions in one row
+   <1440px: brand + actions, tabs on a full-width second row
+   ≤768px:  compact brand + icon actions, one-line status strip, short tab
+            labels; slides away while scrolling down (setupHeaderAutoHide)
+   ========================================================================== */
 header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "brand nav actions";
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 10px;
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border-color);
   padding: 12px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.22s ease;
 }
 
 .logo-group {
+  grid-area: brand;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  min-width: 0;
 }
 
 .logo-badge {
+  flex-shrink: 0;
   background: var(--amber-glow);
   border: 1px solid var(--amber-primary);
   color: var(--amber-primary);
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 11px;
-  padding: 4px 8px;
+  line-height: 1.2;
+  padding: 6px 8px;
   border-radius: 4px;
   letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.logo-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .logo-title h1 {
   font-size: 18px;
   font-weight: 800;
+  line-height: 1.15;
   letter-spacing: 0.5px;
   color: #fff;
+  white-space: nowrap;
 }
 
 .logo-title h1 span {
   color: var(--amber-primary);
 }
 
-.logo-title p {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
-.header-actions {
+.header-status {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  min-width: 0;
+}
+
+.header-chip {
+  cursor: pointer;
+  padding: 2px 8px;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+  min-width: 0;
+}
+
+.header-chip:focus-visible {
+  outline: 2px solid var(--amber-primary);
+  outline-offset: 1px;
+}
+
+.header-repo {
+  display: none;
+  font-size: 11px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* --- Workspace tabs --- */
+.workspace-nav {
+  grid-area: nav;
+  justify-self: center;
+  display: flex;
+  gap: 4px;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  min-width: 0;
+}
+
+.ws-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 7px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ws-tab-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ws-tab-short,
+.ws-tab-extra {
+  display: none;
+}
+
+.ws-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ws-tab.active {
+  background: var(--amber-primary);
+  color: #000;
+  box-shadow: 0 0 12px var(--amber-glow);
+}
+
+.ws-tab:focus-visible {
+  outline: 2px solid var(--amber-primary);
+  outline-offset: 2px;
+}
+
+/* --- Actions --- */
+.header-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: end;
+}
+
+.header-btn {
+  white-space: nowrap;
+}
+
+/* Wide single row: room for the full chip text, "& Blueprints" and the repo name */
+@media (min-width: 1800px) {
+  .header-chip {
+    max-width: 280px;
+  }
+
+  .ws-tab-extra {
+    display: inline;
+  }
+}
+
+@media (min-width: 2000px) {
+  .header-repo {
+    display: inline;
+  }
+}
+
+/* Tabs move to their own full-width row */
+@media (max-width: 1499px) {
+  header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand actions"
+      "nav nav";
+    padding: 10px 20px;
+  }
+
+  .workspace-nav {
+    justify-self: stretch;
+  }
+
+  .ws-tab {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .ws-tab-extra {
+    display: inline;
+  }
+
+  .header-chip {
+    max-width: 280px;
+  }
+}
+
+/* Phones and small tablets: badge · title · actions / status line / tabs */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "badge title actions"
+      "status status status"
+      "nav nav nav";
+    padding: 8px 12px;
+    column-gap: 10px;
+    row-gap: 7px;
+  }
+
+  .logo-group,
+  .logo-title {
+    display: contents;
+  }
+
+  .logo-badge {
+    grid-area: badge;
+  }
+
+  .logo-title h1 {
+    grid-area: title;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-status {
+    grid-area: status;
+  }
+
+  .logo-badge {
+    font-size: 9.5px;
+    padding: 4px 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-title h1 {
+    font-size: 16px;
+  }
+
+  /* Status chips: one line, each shrinks to fit, full text in the tooltip */
+  .header-status {
+    gap: 4px;
+  }
+
+  .header-chip {
+    max-width: none;
+    flex: 0 1 auto;
+    font-size: 9.5px;
+    padding: 1px 6px;
+    line-height: 16px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .header-btn-label {
+    display: none;
+  }
+
+  .theme-btn {
+    padding: 6px 7px;
+  }
+
+  .workspace-nav {
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .ws-tab {
+    padding: 8px 6px;
+    font-size: 12.5px;
+    gap: 6px;
+  }
+
+  .ws-tab-long {
+    display: none;
+  }
+
+  .ws-tab-short {
+    display: inline;
+  }
+
+  /* Slides away while scrolling down, back on any scroll up */
+  header.header-tucked {
+    transform: translateY(-100%);
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-badge {
+    display: none;
+  }
+
+  .logo-title h1 {
+    grid-column: badge-start / title-end;
+  }
+
+  .theme-switcher {
+    padding: 1px;
+    gap: 0;
+  }
+
+  .theme-btn {
+    padding: 6px 6px;
+    font-size: 11px;
+  }
+
+  .ws-tab {
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 4px;
+    font-size: 11.5px;
+  }
+
+  .ws-tab-icon {
+    font-size: 15px;
+  }
+}
+
+[data-theme="light"] .ws-tab.active {
+  box-shadow: inset 0 -2px 0 var(--amber-primary), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header {
+    transition: none;
+  }
 }
 
 .btn {
@@ -1439,27 +1740,6 @@ input.control-input.is-wc-default {
     gap: 12px;
   }
 
-  .header {
-    padding: 10px 14px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .header-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .header-actions .btn {
-    flex: 1 1 calc(50% - 4px);
-    justify-content: center;
-    font-size: 11px;
-    padding: 7px 10px;
-  }
-
   #btnToggleDeck {
     flex: 1 1 100%;
   }
@@ -1613,39 +1893,6 @@ input.control-input.is-wc-default {
 /* ==========================================================================
    WORKSPACES & NAVIGATION
    ========================================================================== */
-.workspace-nav {
-  display: flex;
-  gap: 4px;
-  background: var(--bg-card);
-  padding: 4px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
-
-.ws-tab {
-  background: transparent;
-  color: var(--text-muted);
-  border: none;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.ws-tab:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.ws-tab.active {
-  background: var(--amber-primary);
-  color: #000;
-  box-shadow: 0 0 12px var(--amber-glow);
-}
-
 .workspace-section {
   display: none;
   animation: fadeIn 0.2s ease;

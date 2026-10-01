@@ -45,10 +45,9 @@ function ensureChip() {
   if (chipEl) return chipEl;
   chipEl = document.createElement('span');
   chipEl.id = 'gvk-live-chip';
-  chipEl.className = 'badge badge-green';
-  chipEl.style.cssText = 'cursor: pointer; padding: 2px 8px; font-size: 10px;';
+  chipEl.className = 'badge badge-green header-chip';
   chipEl.title = 'Data source. Click: hosted=reload / snapshot=link mod folder.';
-  const headerGroup = document.querySelector('.logo-title div');
+  const headerGroup = document.querySelector('.header-status');
   if (headerGroup) headerGroup.appendChild(chipEl);
   else document.body.appendChild(chipEl);
   return chipEl;
@@ -56,6 +55,7 @@ function ensureChip() {
 function setChip(text, color, severity) {
   const el = ensureChip();
   el.textContent = text;
+  el.title = `${text}. Click: hosted = reload, snapshot = link mod folder.`;
   el.classList.remove('badge-green', 'badge-amber', 'badge-red', 'badge-cyan');
   if (severity === 'error' || color === '#a33') {
     el.classList.add('badge-red');
