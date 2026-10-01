@@ -42,6 +42,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -129,6 +138,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -189,6 +202,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -276,6 +298,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -336,6 +362,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -423,6 +458,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -483,6 +522,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -570,6 +618,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -630,6 +682,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -717,6 +778,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -777,6 +842,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -864,6 +938,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_LargeTurret",
       "hardware": null,
@@ -924,6 +1002,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1005,6 +1092,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -1065,6 +1156,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1146,6 +1246,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_SmallTurret",
       "hardware": null,
@@ -1206,6 +1310,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1287,6 +1400,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Cannons_Targeting_SmallTurret",
       "hardware": null,
@@ -1347,6 +1464,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1428,6 +1554,10 @@ const BUNDLED_WEAPONS_DATA = [
       "LargeCalibreAmmo",
       "LargeCalibreAmmoHE"
     ],
+    "allAmmos": [
+      "LargeCalibreAmmo",
+      "LargeCalibreAmmoHE"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -1488,6 +1618,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1568,6 +1707,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_Cannon_NPC"
     ],
+    "allAmmos": [
+      "Ballistics_Cannon_NPC",
+      "Ballistics_Cannon_NPC_Fragment1"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -1628,6 +1771,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 6000,
@@ -1708,6 +1860,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_Cannon_NPC"
     ],
+    "allAmmos": [
+      "Ballistics_Cannon_NPC",
+      "Ballistics_Cannon_NPC_Fragment1"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -1768,6 +1924,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -1842,6 +2007,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -1902,6 +2070,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -1976,6 +2153,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -2036,6 +2216,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2110,6 +2299,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": "Ballistics_Chaingun_Targeting_Large",
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -2170,6 +2362,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2244,6 +2445,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": "Ballistics_Chaingun_Targeting_Large",
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -2304,6 +2508,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2378,6 +2591,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -2438,6 +2654,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2512,6 +2737,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": "Ballistics_Chaingun_Hardpoint_Hardware",
@@ -2572,6 +2800,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2646,6 +2883,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -2706,6 +2946,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2780,6 +3029,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -2840,6 +3092,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -2914,6 +3175,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -2974,6 +3238,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 6,
     "baseDamage": 1000,
@@ -3048,6 +3321,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "AutocannonClip"
     ],
+    "allAmmos": [
+      "AutocannonClip"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -3108,6 +3384,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3189,6 +3474,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Flak_Targeting",
       "hardware": null,
@@ -3249,6 +3539,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3330,6 +3629,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Flak_Targeting",
       "hardware": null,
@@ -3390,6 +3694,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3471,6 +3784,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Flak_Targeting",
       "hardware": null,
@@ -3531,6 +3849,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3612,6 +3939,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": "Ballistics_Flak_Targeting",
       "hardware": null,
@@ -3672,6 +4004,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3753,6 +4094,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -3813,6 +4159,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1000,
@@ -3894,6 +4249,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Ballistics_Flak",
       "Ballistics_Flak_HE"
     ],
+    "allAmmos": [
+      "Ballistics_Flak",
+      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_HE"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -3954,6 +4314,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4028,6 +4397,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4088,6 +4460,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4162,6 +4543,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4222,6 +4606,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4296,6 +4689,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4356,6 +4752,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4430,6 +4835,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4490,6 +4898,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4564,6 +4981,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4624,6 +5044,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4698,6 +5127,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": "Ballistics_Gatlings_Hardpoint_HardWare",
@@ -4758,6 +5190,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4832,6 +5273,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": null,
@@ -4892,6 +5336,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -4966,6 +5419,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": null,
@@ -5026,6 +5482,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5100,6 +5565,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": null,
@@ -5160,6 +5628,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5234,6 +5711,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting",
       "hardware": null,
@@ -5294,6 +5774,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5368,6 +5857,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -5428,6 +5920,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5502,6 +6003,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -5562,6 +6066,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5636,6 +6149,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -5696,6 +6212,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5770,6 +6295,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -5830,6 +6358,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -5904,6 +6441,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting_Long",
       "hardware": null,
@@ -5964,6 +6504,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -6038,6 +6587,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm"
     ],
+    "allAmmos": [
+      "NATO_25x184mm"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting_Long",
       "hardware": null,
@@ -6098,6 +6650,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -6172,6 +6733,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm_Dual"
     ],
+    "allAmmos": [
+      "NATO_25x184mm_Dual",
+      "NATO_25x184mm_Dual_Fragment"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting_Long",
       "hardware": null,
@@ -6232,6 +6797,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 100,
@@ -6306,6 +6880,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "NATO_25x184mm_Dual"
     ],
+    "allAmmos": [
+      "NATO_25x184mm_Dual",
+      "NATO_25x184mm_Dual_Fragment"
+    ],
     "helpers": {
       "targeting": "Ballistics_Gatlings_Targeting_Long",
       "hardware": null,
@@ -6366,6 +6944,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 10000,
@@ -6452,6 +7039,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_HeavyCannon"
     ],
+    "allAmmos": [
+      "Ballistics_HeavyCannon"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -6512,6 +7102,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 10000,
@@ -6598,6 +7197,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_HeavyCannon"
     ],
+    "allAmmos": [
+      "Ballistics_HeavyCannon"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -6658,6 +7260,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 10000,
@@ -6744,6 +7355,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_HeavyCannon_Odin"
     ],
+    "allAmmos": [
+      "Ballistics_HeavyCannon_Odin"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -6804,6 +7418,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 10000,
@@ -6890,6 +7513,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_HeavyCannon_Odin"
     ],
+    "allAmmos": [
+      "Ballistics_HeavyCannon_Odin"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -6950,6 +7576,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.001,
     "magazineSize": 0,
     "baseDamage": 1000000,
@@ -7036,6 +7671,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "HeavyRailgunAmmo"
     ],
+    "allAmmos": [
+      "HeavyRailgunAmmo"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -7096,6 +7734,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 25,
@@ -7170,6 +7817,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_Interior"
     ],
+    "allAmmos": [
+      "Ballistics_Interior"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -7230,6 +7880,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 25,
@@ -7304,6 +7963,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Ballistics_Interior"
     ],
+    "allAmmos": [
+      "Ballistics_Interior"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -7364,6 +8026,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.01071,
     "magazineSize": 1,
     "baseDamage": 2000000,
@@ -7450,6 +8121,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "LargeRailgunSabot"
     ],
+    "allAmmos": [
+      "LargeRailgunSabot"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": "Ballistics_MAC_Hardware",
@@ -7510,6 +8184,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.0001,
     "magazineSize": 0,
     "baseDamage": 2000000,
@@ -7596,6 +8279,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "LargeRailgunSabot_NPC"
     ],
+    "allAmmos": [
+      "LargeRailgunSabot_NPC",
+      "LargeRailgunSabot_NPC_Fragment"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": "Ballistics_MAC_Hardware",
@@ -7656,6 +8343,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500,
@@ -7742,6 +8438,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -7802,6 +8501,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500,
@@ -7888,6 +8596,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -7948,6 +8659,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500,
@@ -8028,6 +8748,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -8088,6 +8811,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.05413533835,
     "magazineSize": 1,
     "baseDamage": 33250,
@@ -8168,6 +8900,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo_Ares"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -8228,6 +8963,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.05413533835,
     "magazineSize": 1,
     "baseDamage": 33250,
@@ -8308,6 +9052,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo_Ares"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo_Ares"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -8368,6 +9115,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.1202255639,
     "magazineSize": 1,
     "baseDamage": 66500,
@@ -8448,6 +9204,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "SmallRailgunAmmo_NPC"
     ],
+    "allAmmos": [
+      "SmallRailgunAmmo_NPC",
+      "SmallRailgunAmmo_NPC_Fragment1"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -8508,6 +9268,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 4,
     "baseDamage": 1,
@@ -8531,6 +9300,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "FlareWC"
+    ],
+    "allAmmos": [
       "FlareWC"
     ],
     "helpers": {
@@ -8589,6 +9361,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -8612,6 +9393,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "Missiles_Rocket"
+    ],
+    "allAmmos": [
       "Missiles_Rocket"
     ],
     "helpers": {
@@ -8670,6 +9454,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -8693,6 +9486,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "Missiles_Missile"
+    ],
+    "allAmmos": [
       "Missiles_Missile"
     ],
     "helpers": {
@@ -8751,6 +9547,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 10,
     "baseDamage": 30,
@@ -8774,6 +9579,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "ElitePistol_Ammo"
+    ],
+    "allAmmos": [
       "ElitePistol_Ammo"
     ],
     "helpers": {
@@ -8832,6 +9640,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 30,
     "baseDamage": 25,
@@ -8855,6 +9672,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "Ballistics_Interior"
+    ],
+    "allAmmos": [
       "Ballistics_Interior"
     ],
     "helpers": {
@@ -8913,6 +9733,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": true,
     "energyCost": 0,
     "magazineSize": 20,
     "baseDamage": 40,
@@ -8936,6 +9765,9 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
+      "UltimateAutomaticRifleGun_Ammo"
+    ],
+    "allAmmos": [
       "UltimateAutomaticRifleGun_Ammo"
     ],
     "helpers": {
@@ -8994,6 +9826,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0.95,
     "heatSinkRate": 4,
     "degradeRof": true,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.3,
     "magazineSize": 0,
     "baseDamage": 100,
@@ -9074,6 +9915,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_AMS"
     ],
+    "allAmmos": [
+      "Lasers_AMS"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -9134,6 +9978,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0.95,
     "heatSinkRate": 4,
     "degradeRof": true,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.3,
     "magazineSize": 0,
     "baseDamage": 100,
@@ -9214,6 +10067,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_AMS"
     ],
+    "allAmmos": [
+      "Lasers_AMS"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -9274,6 +10130,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0.95,
     "heatSinkRate": 4,
     "degradeRof": true,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.3,
     "magazineSize": 0,
     "baseDamage": 100,
@@ -9354,6 +10219,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_AMS"
     ],
+    "allAmmos": [
+      "Lasers_AMS"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -9414,6 +10282,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0.95,
     "heatSinkRate": 4,
     "degradeRof": true,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.3,
     "magazineSize": 0,
     "baseDamage": 100,
@@ -9494,6 +10371,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_AMS"
     ],
+    "allAmmos": [
+      "Lasers_AMS"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -9554,6 +10434,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -9634,6 +10523,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Large"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Large"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -9694,6 +10586,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -9774,6 +10675,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Large"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Large"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -9834,6 +10738,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -9914,6 +10827,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Large"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Large"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -9974,6 +10890,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -10054,6 +10979,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Large"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Large"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -10114,6 +11042,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -10194,6 +11131,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Dual"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Dual"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -10254,6 +11194,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.78,
     "magazineSize": 0,
     "baseDamage": 150,
@@ -10334,6 +11283,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Dual"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Dual"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Large",
       "hardware": null,
@@ -10394,6 +11346,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.2,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -10474,6 +11435,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_SG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -10534,6 +11498,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.2,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -10614,6 +11587,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_SG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -10674,6 +11650,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.2,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -10754,6 +11739,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_SG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Small",
       "hardware": null,
@@ -10814,6 +11802,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.2,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -10894,6 +11891,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_SG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_SG"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Small",
       "hardware": null,
@@ -10954,6 +11954,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.6,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -11034,6 +12043,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_LG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_LG"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Small",
       "hardware": null,
@@ -11094,6 +12106,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0.6,
     "magazineSize": 0,
     "baseDamage": 75,
@@ -11174,6 +12195,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Laser_Light_LG"
     ],
+    "allAmmos": [
+      "Lasers_Laser_Light_LG"
+    ],
     "helpers": {
       "targeting": "Lasers_Laser_Targeting_Turret_Small",
       "hardware": null,
@@ -11234,6 +12258,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": true,
     "energyCost": 5865,
     "magazineSize": 3,
     "baseDamage": 1,
@@ -11320,6 +12353,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Plasma"
     ],
+    "allAmmos": [
+      "Lasers_Plasma"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -11380,6 +12416,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": true,
     "energyCost": 5865,
     "magazineSize": 3,
     "baseDamage": 1,
@@ -11466,6 +12511,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Lasers_Plasma"
     ],
+    "allAmmos": [
+      "Lasers_Plasma"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -11526,6 +12574,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -11612,6 +12669,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_HeavyMissile"
     ],
+    "allAmmos": [
+      "Missiles_HeavyMissile"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -11672,6 +12732,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -11758,6 +12827,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_HeavyMissile"
     ],
+    "allAmmos": [
+      "Missiles_HeavyMissile"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -11818,6 +12890,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -11904,6 +12985,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
       "hardware": null,
@@ -11964,6 +13048,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12050,6 +13143,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
       "hardware": null,
@@ -12110,6 +13206,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12196,6 +13301,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
       "hardware": "Missiles_Missile_Hardpoint_HardWare_Large",
@@ -12256,6 +13364,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12342,6 +13459,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
       "hardware": "Missiles_Missile_Hardpoint_HardWare_Large",
@@ -12402,6 +13522,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12482,6 +13611,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Small",
       "hardware": "Missiles_Missile_Hardpoint_HardWare_Small",
@@ -12542,6 +13674,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12622,6 +13763,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Small",
       "hardware": "Missiles_Missile_Hardpoint_HardWare_Small",
@@ -12682,6 +13826,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12756,6 +13909,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Missile"
     ],
+    "allAmmos": [
+      "Missiles_Missile"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": "Missiles_Missile_Hardpoint_HardWare_Small",
@@ -12816,6 +13972,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -12890,6 +14055,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -12950,6 +14118,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13024,6 +14201,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13084,6 +14264,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13158,6 +14347,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13218,6 +14410,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13292,6 +14493,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13352,6 +14556,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13426,6 +14639,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13486,6 +14702,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13560,6 +14785,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13620,6 +14848,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13694,6 +14931,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13754,6 +14994,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13828,6 +15077,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -13888,6 +15140,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -13962,6 +15223,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -14022,6 +15286,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14096,6 +15369,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Missiles_Rocket_Targeting",
       "hardware": null,
@@ -14156,6 +15432,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14230,6 +15515,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14290,6 +15578,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14364,6 +15661,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14424,6 +15724,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14498,6 +15807,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14558,6 +15870,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14632,6 +15953,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14692,6 +16016,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14766,6 +16099,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14826,6 +16162,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -14900,6 +16245,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -14960,6 +16308,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -15040,6 +16397,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": "Missiles_Rocket_Hardpoint_HardWare_Small",
@@ -15100,6 +16460,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -15180,6 +16549,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Rocket"
     ],
+    "allAmmos": [
+      "Missiles_Rocket"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": "Missiles_Rocket_Hardpoint_HardWare_Small",
@@ -15240,6 +16612,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -15326,6 +16707,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Siege"
     ],
+    "allAmmos": [
+      "Missiles_Siege",
+      "Missiles_Siege_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -15386,6 +16771,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -15472,6 +16866,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Siege"
     ],
+    "allAmmos": [
+      "Missiles_Siege",
+      "Missiles_Siege_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -15532,6 +16930,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 100,
@@ -15618,6 +17025,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Torpedo"
     ],
+    "allAmmos": [
+      "Missiles_Torpedo",
+      "Missiles_Torpedo_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -15678,6 +17089,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 100,
@@ -15764,6 +17184,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Torpedo"
     ],
+    "allAmmos": [
+      "Missiles_Torpedo",
+      "Missiles_Torpedo_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -15824,6 +17248,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 100,
@@ -15910,6 +17343,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Torpedo"
     ],
+    "allAmmos": [
+      "Missiles_Torpedo",
+      "Missiles_Torpedo_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -15970,6 +17407,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 100,
@@ -16056,6 +17502,10 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Missiles_Torpedo"
     ],
+    "allAmmos": [
+      "Missiles_Torpedo",
+      "Missiles_Torpedo_Shrapnel"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -16116,6 +17566,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -16203,6 +17662,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Others_Drone_Offense_Advanced",
       "Others_Drone_Defense_Main"
     ],
+    "allAmmos": [
+      "Others_Drone_Offense_Advanced",
+      "Others_Drone_Defense_Main",
+      "Others_Drone_Gunship"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -16263,6 +17727,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 1,
     "baseDamage": 1,
@@ -16350,6 +17823,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Others_Drone_Offense_Advanced",
       "Others_Drone_Defense_Main"
     ],
+    "allAmmos": [
+      "Others_Drone_Offense_Advanced",
+      "Others_Drone_Defense_Main",
+      "Others_Drone_Gunship"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -16410,6 +17888,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 4,
     "baseDamage": 1,
@@ -16485,6 +17972,16 @@ const BUNDLED_WEAPONS_DATA = [
       "FireworkPinkWC",
       "FireworkYellowWC"
     ],
+    "allAmmos": [
+      "FlareWC",
+      "FireworkBaseWC",
+      "FireworkRainbowWC",
+      "FireworkBlueWC",
+      "FireworkGreenWC",
+      "FireworkRedWC",
+      "FireworkPinkWC",
+      "FireworkYellowWC"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -16545,6 +18042,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 0,
     "magazineSize": 4,
     "baseDamage": 1,
@@ -16620,6 +18126,16 @@ const BUNDLED_WEAPONS_DATA = [
       "FireworkPinkWC",
       "FireworkYellowWC"
     ],
+    "allAmmos": [
+      "FlareWC",
+      "FireworkBaseWC",
+      "FireworkRainbowWC",
+      "FireworkBlueWC",
+      "FireworkGreenWC",
+      "FireworkRedWC",
+      "FireworkPinkWC",
+      "FireworkYellowWC"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -16680,6 +18196,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": true,
     "energyCost": 0,
     "magazineSize": 4,
     "baseDamage": 1,
@@ -16755,6 +18280,16 @@ const BUNDLED_WEAPONS_DATA = [
       "FireworkPinkWC",
       "FireworkYellowWC"
     ],
+    "allAmmos": [
+      "FlareWC",
+      "FireworkBaseWC",
+      "FireworkRainbowWC",
+      "FireworkBlueWC",
+      "FireworkGreenWC",
+      "FireworkRedWC",
+      "FireworkPinkWC",
+      "FireworkYellowWC"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -16815,6 +18350,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": true,
     "energyCost": 0,
     "magazineSize": 4,
     "baseDamage": 1,
@@ -16890,6 +18434,16 @@ const BUNDLED_WEAPONS_DATA = [
       "FireworkPinkWC",
       "FireworkYellowWC"
     ],
+    "allAmmos": [
+      "FlareWC",
+      "FireworkBaseWC",
+      "FireworkRainbowWC",
+      "FireworkBlueWC",
+      "FireworkGreenWC",
+      "FireworkRedWC",
+      "FireworkPinkWC",
+      "FireworkYellowWC"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -16950,6 +18504,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 0,
@@ -17012,6 +18575,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "designatorBeam1"
     ],
+    "allAmmos": [
+      "designatorBeam1"
+    ],
     "helpers": {
       "targeting": "Other_Radar_Targeting",
       "hardware": null,
@@ -17072,6 +18638,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 0,
@@ -17134,6 +18709,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "designatorBeam1"
     ],
+    "allAmmos": [
+      "designatorBeam1"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -17194,6 +18772,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 0,
@@ -17256,6 +18843,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "designatorBeam1"
     ],
+    "allAmmos": [
+      "designatorBeam1"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -17316,6 +18906,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 0,
@@ -17384,6 +18983,9 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "designatorBeam1"
     ],
+    "allAmmos": [
+      "designatorBeam1"
+    ],
     "helpers": {
       "targeting": null,
       "hardware": null,
@@ -17444,6 +19046,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 1,
@@ -17512,6 +19123,11 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
+    "allAmmos": [
+      "Other_Warheads_RegularWarhead_LG_Ammo",
+      "Other_Warheads_RegularWarhead_LG_Ammo_Particle",
+      "Other_Warheads_RegularWarhead_LG_Ammo_Fragment"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -17572,6 +19188,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 1,
@@ -17640,6 +19265,11 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_LG_Ammo"
     ],
+    "allAmmos": [
+      "Other_Warheads_RegularWarhead_LG_Ammo",
+      "Other_Warheads_RegularWarhead_LG_Ammo_Particle",
+      "Other_Warheads_RegularWarhead_LG_Ammo_Fragment"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -17700,6 +19330,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 1,
@@ -17768,6 +19407,11 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
     ],
+    "allAmmos": [
+      "Other_Warheads_RegularWarhead_SG_Ammo",
+      "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
+      "Other_Warheads_RegularWarhead_SG_Ammo_Fragment"
+    ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
       "hardware": null,
@@ -17828,6 +19472,15 @@ const BUNDLED_WEAPONS_DATA = [
     "cooldown": 0,
     "heatSinkRate": 0,
     "degradeRof": false,
+    "degradeRofSettings": {
+      "heatThresholdStart": 0,
+      "heatThresholdEnd": 0,
+      "rofAt0Heat": 0,
+      "rofAt100Heat": 0
+    },
+    "allowOverheatShooting": false,
+    "heatSinkRateOverheatMult": 0,
+    "fireFull": false,
     "energyCost": 1,
     "magazineSize": 0,
     "baseDamage": 1,
@@ -17895,6 +19548,11 @@ const BUNDLED_WEAPONS_DATA = [
     "assignedAnimation": null,
     "assignedAmmos": [
       "Other_Warheads_RegularWarhead_SG_Ammo"
+    ],
+    "allAmmos": [
+      "Other_Warheads_RegularWarhead_SG_Ammo",
+      "Other_Warheads_RegularWarhead_SG_Ammo_Particle",
+      "Other_Warheads_RegularWarhead_SG_Ammo_Fragment"
     ],
     "helpers": {
       "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",

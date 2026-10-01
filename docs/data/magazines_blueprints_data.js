@@ -15,8 +15,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 1,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Blank</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>Blank Ammo</DisplayName>\n\t\t\t<Icon/>\n\t\t\t<Size>\n\t\t\t\t<X>1</X>\n\t\t\t\t<Y>1</Y>\n\t\t\t\t<Z>1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>1</Mass>\n\t\t\t<Volume>1</Volume>\n\t\t\t<Model/>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "NATO_25x184mm",
@@ -30,7 +36,24 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 30,
     "productionTime": 13,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": 1,
+    "massMult": 1,
+    "craftMult": 1,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 3
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Nickel",
+        "weight": 10
+      }
+    ],
     "prerequisites": [
       {
         "amount": 4,
@@ -47,7 +70,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Nickel"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>NATO_25x184mm</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Gatling* 25mm KE x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Ammo_Box.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>30</Mass>\n\t\t\t<Volume>30</Volume>\n\t\t\t<Model>Models\\Weapons\\Ammo_Box.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>30</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>001_NATO_25x184mmMagazine</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Gatling* 25mm KE x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Ammo_Box.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"4\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"53.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"13.4\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>13</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"NATO_25x184mm\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "AutocannonClip",
@@ -60,8 +85,29 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 50,
     "mass": 80,
     "productionTime": 19,
-    "roleMultiplier": 1.1,
-    "defaultRUs": 0,
+    "roleMultiplier": 1,
+    "sizeMult": 1.0996,
+    "massMult": 1.3333,
+    "craftMult": 1.0335,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 3
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Nickel",
+        "weight": 10
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      }
+    ],
     "prerequisites": [
       {
         "amount": 6.6,
@@ -83,7 +129,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Cobalt"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>AutocannonClip</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Autocannon* 30mm API x6</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AutoCanonShellBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>80</Mass>\n\t\t\t<Volume>50</Volume>\n\t\t\t<Model>Models\\Weapons\\AutoCanonShellBox.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>6</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"AutocannonShell\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>003_AutocannonClip</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Chaingun* 30mm API x6</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AutoCanonShellBox.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"6.6\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"87.7\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"21.9\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t\t<Item Amount=\"13.2\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>19</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"AutocannonClip\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "NATO_5p56x45mm",
@@ -97,7 +145,24 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 20,
     "productionTime": 9,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": 1.5316,
+    "massMult": 2.6667,
+    "craftMult": 1.3846,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Nickel",
+        "weight": 10
+      }
+    ],
     "prerequisites": [
       {
         "amount": 2,
@@ -114,7 +179,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Nickel"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>NATO_5p56x45mm</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Interior/Sidearm* 5.56mm KE x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.2</X>\n\t\t\t\t<Y>0.05</Y>\n\t\t\t\t<Z>0.02</Z>\n\t\t\t</Size>\n\t\t\t<Mass>20</Mass>\n\t\t\t<Volume>20</Volume>\n\t\t\t<Model>Models\\Weapons\\Rifle_Ammo.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>30</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"SmallCaliber\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>002_NATO_5p56x45mmMagazine</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Interior/Sidearm* 5.56mm KE x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"2\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"20.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"5.1\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>9</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"NATO_5p56x45mm\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "MediumCalibreAmmo",
@@ -127,8 +194,29 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 40,
     "mass": 280,
     "productionTime": 16,
-    "roleMultiplier": 1.1,
-    "defaultRUs": 0,
+    "roleMultiplier": 1,
+    "sizeMult": 0.5804,
+    "massMult": 2.3333,
+    "craftMult": 0.6154,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Nickel",
+        "weight": 10
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      }
+    ],
     "prerequisites": [
       {
         "amount": 4.7,
@@ -150,7 +238,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Cobalt"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>MediumCalibreAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flak* 100mm PROX</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\MediumCalibreShell.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>280</Mass>\n\t\t\t<Volume>40</Volume>\n\t\t\t<Model>Models\\Weapons\\MediumCalibreShell.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"MediumCalibreShell\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>004_MediumCalibreAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flak* 100mm HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\MediumCalibreShell.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"4.7\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"46.7\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"11.7\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t\t<Item Amount=\"7\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>16</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"MediumCalibreAmmo\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "LargeCalibreAmmo",
@@ -164,7 +254,28 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 600,
     "productionTime": 22,
     "roleMultiplier": 1.1,
-    "defaultRUs": 0,
+    "sizeMult": 1.3195,
+    "massMult": 10,
+    "craftMult": 1.1966,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Nickel",
+        "weight": 10
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      }
+    ],
     "prerequisites": [
       {
         "amount": 7.7,
@@ -186,7 +297,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Cobalt"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>LargeCalibreAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*L.Cannon* 155mm AP</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\LargeCalibreShell.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.3</Y>\n\t\t\t\t<Z>0.3</Z>\n\t\t\t</Size>\n\t\t\t<Mass>600</Mass>\n\t\t\t<Volume>60</Volume>\n\t\t\t<Model>Models\\Weapons\\LargeCalibreShell.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"LargeCalibreShell\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>005_LargeCalibreAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*L.Cannon* 155mm AP x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\LargeCalibreShell.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"7.7\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"77.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"19.3\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t\t<Item Amount=\"11.6\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>22</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"LargeCalibreAmmo\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Ballistics_HeavyCannon",
@@ -199,8 +312,29 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 400,
     "mass": 4000,
     "productionTime": 150,
-    "roleMultiplier": 1.25,
-    "defaultRUs": 4.5,
+    "roleMultiplier": 1.1,
+    "sizeMult": 1.8593,
+    "massMult": 5,
+    "craftMult": 2.2344,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      },
+      {
+        "subtype": "Silver",
+        "weight": 1
+      }
+    ],
     "prerequisites": [
       {
         "amount": 4.5,
@@ -227,7 +361,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Silver"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Ballistics_HeavyCannon</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*H.Cannon* 480mm APHE</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AWEHurricaneAmmo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.8</X>\n\t\t\t\t<Y>0.4</Y>\n\t\t\t\t<Z>0.4</Z>\n\t\t\t</Size>\n\t\t\t<Mass>4000</Mass>\n\t\t\t<Volume>400</Volume>\n\t\t\t<Model>Models\\AWE_Ammo\\Aryx480mmShell.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>006_Ballistics_HeavyCannon</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*H.Cannon* 480mm APHE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AWEHurricaneAmmo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"4.5\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"93.4\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"933.9\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"140.1\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t\t<Item Amount=\"23.3\" TypeId=\"Ingot\" SubtypeId=\"Silver\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>150</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Ballistics_HeavyCannon\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "SmallRailgunAmmo",
@@ -240,8 +376,33 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 130,
     "mass": 1300,
     "productionTime": 38,
-    "roleMultiplier": 1.25,
-    "defaultRUs": 3.1,
+    "roleMultiplier": 1.2,
+    "sizeMult": 0.6752,
+    "massMult": 1.9549,
+    "craftMult": 0.6209,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Uranium",
+        "weight": 0.2
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      },
+      {
+        "subtype": "Silver",
+        "weight": 1
+      }
+    ],
     "prerequisites": [
       {
         "amount": 3.1,
@@ -273,7 +434,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Silver"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>SmallRailgunAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Railgun* 50mm FeW</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\RailgunAmmo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.1</Y>\n\t\t\t\t<Z>0.1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>1300</Mass>\n\t\t\t<Volume>130</Volume>\n\t\t\t<Model>Models\\Weapons\\RailgunAmmo.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"SmallRailgunSlug\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>007_SmallRailgunAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Railgun* 50mm FeW x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\RailgunAmmo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"3.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"12.3\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"122.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.6\" TypeId=\"Ingot\" SubtypeId=\"Uranium\"/>\n\t\t\t\t<Item Amount=\"18.4\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t\t<Item Amount=\"3.1\" TypeId=\"Ingot\" SubtypeId=\"Silver\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>38</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"SmallRailgunAmmo\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "LargeRailgunAmmo",
@@ -286,8 +449,33 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 1330,
     "mass": 13300,
     "productionTime": 419,
-    "roleMultiplier": 1.5,
-    "defaultRUs": 84.8,
+    "roleMultiplier": 1,
+    "sizeMult": 0.8962,
+    "massMult": 0.665,
+    "craftMult": 1.2483,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Uranium",
+        "weight": 0.2
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 6
+      },
+      {
+        "subtype": "Silver",
+        "weight": 1
+      }
+    ],
     "prerequisites": [
       {
         "amount": 84.8,
@@ -319,7 +507,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Silver"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>LargeRailgunAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*MAC* 200mm DU</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\RailgunAmmoLarge.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.0</X>\n\t\t\t\t<Y>0.3</Y>\n\t\t\t\t<Z>0.3</Z>\n\t\t\t</Size>\n\t\t\t<Mass>13300</Mass>\n\t\t\t<Volume>1330</Volume>\n\t\t\t<Model>Models\\Weapons\\RailgunAmmoLarge.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"LargeRailgunSlug\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>008_LargeRailgunAmmo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*MAC* 200mm DU x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\RailgunAmmoLarge.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"84.8\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"337.9\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"3378.6\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"16.9\" TypeId=\"Ingot\" SubtypeId=\"Uranium\"/>\n\t\t\t\t<Item Amount=\"506.8\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t\t<Item Amount=\"84.5\" TypeId=\"Ingot\" SubtypeId=\"Silver\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>419</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"LargeRailgunAmmo\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Missile200mm",
@@ -333,7 +523,28 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 80,
     "productionTime": 41,
     "roleMultiplier": 1.25,
-    "defaultRUs": 0,
+    "sizeMult": 1.396,
+    "massMult": 0.5333,
+    "craftMult": 1.4104,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      }
+    ],
     "prerequisites": [
       {
         "amount": 11,
@@ -355,7 +566,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Silicon"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missile200mm</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Rocket* Hydra HE</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Small_Rocket.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>80</Mass>\n\t\t\t<Volume>110</Volume>\n\t\t\t<Model>Models\\Weapons\\Projectile_Missile.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Missile\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>009_Missile200mm</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Rocket* Hydra HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Small_Rocket.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"11\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"110.4\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.3\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"11\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>41</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missile200mm\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Missiles_Missile",
@@ -369,7 +582,32 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 140,
     "productionTime": 34,
     "roleMultiplier": 1.25,
-    "defaultRUs": 0,
+    "sizeMult": 1.3058,
+    "massMult": 1.1666,
+    "craftMult": 1.3076,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 8.3,
@@ -396,7 +634,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missiles_Missile</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*L.Missile* Griffin HE</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\HWK_QuadMissileLauncher_Ammo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>140</Mass>\n\t\t\t<Volume>90</Volume>\n\t\t\t<Model>Models\\Cubes\\Large\\HWK_QuadMissileLauncher_Ammo.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>010_Missiles_Missile</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*L.Missile* Griffin HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\HWK_QuadMissileLauncher_Ammo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"8.3\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"83\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.2\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"8.3\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"0.6\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>34</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_Missile\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Missiles_HeavyMissile",
@@ -410,7 +650,32 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 600,
     "productionTime": 86,
     "roleMultiplier": 1.25,
-    "defaultRUs": 0,
+    "sizeMult": 2.5118,
+    "massMult": 1.9999,
+    "craftMult": 2.0919,
+    "usesRUs": false,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 27.5,
@@ -437,7 +702,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missiles_HeavyMissile</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*H.Missile* Tuukka HE</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Items\\mediumMissile01_model.png</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>4</X>\n\t\t\t\t<Y>1</Y>\n\t\t\t\t<Z>1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>600</Mass>\n\t\t\t<Volume>300</Volume>\n\t\t\t<Model>Models\\Cubes\\Large\\missileBattery01\\mediumMissile01_model.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>011_Missiles_HeavyMissile</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*H.Missile* Tuukka HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Items\\mediumMissile01_model.png</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"27.5\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"275.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.7\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"27.5\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"2.1\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>86</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_HeavyMissile\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Missiles_Torpedo",
@@ -450,8 +717,33 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 1500,
     "mass": 2250,
     "productionTime": 354,
-    "roleMultiplier": 1.5,
-    "defaultRUs": 96.1,
+    "roleMultiplier": 1.25,
+    "sizeMult": 1.2011,
+    "massMult": 0.15,
+    "craftMult": 1.2178,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 96.1,
@@ -483,7 +775,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missiles_Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Crusader EMP</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\CrusaderMissile.png</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1</X>\n\t\t\t\t<Y>5.0</Y>\n\t\t\t\t<Z>1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>2250</Mass>\n\t\t\t<Volume>1500</Volume>\n\t\t\t<Model>Models\\Akiad\\Small\\CrusaderMissile.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Missiles_Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Crusader EMP x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\CrusaderMissile.png</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_Torpedo\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Missiles_Siege",
@@ -497,7 +791,32 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 680,
     "productionTime": 98,
     "roleMultiplier": 1.5,
-    "defaultRUs": 10.6,
+    "sizeMult": 1.0054,
+    "massMult": 0.4,
+    "craftMult": 1.0014,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 10.6,
@@ -529,7 +848,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missiles_Siege</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*SRBM* Longsword MIRV</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\AWESabreMissile.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>4</X>\n\t\t\t\t<Y>1</Y>\n\t\t\t\t<Z>1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>680</Mass>\n\t\t\t<Volume>340</Volume>\n\t\t\t<Model>Models\\AWE_Ammo\\AryxSabreMissile.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>013_Missiles_Siege</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*SRBM* Longsword MRV x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\AWESabreMissile.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"10.6\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"140.9\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"1408.6\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"3.5\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"140.9\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"10.6\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>98</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_Siege\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Lasers_Plasma",
@@ -542,8 +863,33 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "volume": 240,
     "mass": 360,
     "productionTime": 72,
-    "roleMultiplier": 1.5,
-    "defaultRUs": 10.2,
+    "roleMultiplier": 1.1,
+    "sizeMult": 0.5771,
+    "massMult": 0.15,
+    "craftMult": 0.6192,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Uranium",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Cobalt",
+        "weight": 50
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 10.2,
@@ -575,7 +921,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Lasers_Plasma</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Plasma* Plasma Charge x3</DisplayName>\n\t\t\t<Icon>Textures\\Icons\\MD_Ammo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>360</Mass>\n\t\t\t<Volume>240</Volume>\n\t\t\t<Model>Models\\Ammo\\MD_Ammo.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>3</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>014_Lasers_Plasma</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Plasma* Plasma Charge x3</DisplayName>\n\t\t\t<Icon>Textures\\Icons\\MD_Ammo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"10.2\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"50.4\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"504.3\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"1.3\" TypeId=\"Ingot\" SubtypeId=\"Uranium\"/>\n\t\t\t\t<Item Amount=\"630.4\" TypeId=\"Ingot\" SubtypeId=\"Cobalt\"/>\n\t\t\t\t<Item Amount=\"3.8\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>72</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Lasers_Plasma\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "Others_Drone_Falcon",
@@ -589,7 +937,32 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 1730,
     "productionTime": 268,
     "roleMultiplier": 1.5,
-    "defaultRUs": 26.7,
+    "sizeMult": 1.4935,
+    "massMult": 0.2582,
+    "craftMult": 1.3795,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
     "prerequisites": [
       {
         "amount": 26.7,
@@ -621,7 +994,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Others_Drone_Falcon</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Drone* Falcon Gunship</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AWE_Drone_Falcon.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1</X>\n\t\t\t\t<Y>2</Y>\n\t\t\t\t<Z>0.5</Z>\n\t\t\t</Size>\n\t\t\t<Mass>1730</Mass>\n\t\t\t<Volume>1150</Volume>\n\t\t\t<Model>Models\\AWE_Ammo\\ARYX_SidekickDroneItem.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>015_Others_Drone_Falcon</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Drone* Falcon Gunship x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\AWE_Drone_Falcon.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"26.7\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"354.4\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"3543.9\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"8.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"354.4\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"26.6\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>268</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Others_Drone_Falcon\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "FlareClip",
@@ -635,7 +1010,11 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 1,
     "productionTime": 10,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
     "prerequisites": [
       {
         "amount": 0.2,
@@ -657,7 +1036,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Gold"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FlareClip</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Decoy Flare x4</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FlareGun_Ammo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.2</X>\n\t\t\t\t<Y>0.05</Y>\n\t\t\t\t<Z>0.02</Z>\n\t\t\t</Size>\n            <Mass>1</Mass>\n            <Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\Pistol_FlareGun_Magazine.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>4</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Flare\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>016_FlareGunMagazine</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Decoy Flare x4</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FlareGun_Ammo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"0.20\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.05\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t\t<Item Amount=\"0.02\" TypeId=\"Ingot\" SubtypeId=\"Silver\"/>\n\t\t\t\t<Item Amount=\"0.01\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"FlareClip\"/>\n\t\t\t<BaseProductionTimeInSeconds>10</BaseProductionTimeInSeconds>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "FireworksBoxBlue",
@@ -671,8 +1052,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxBlue</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxBlue</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxBlue.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkBlue\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FireworksBoxGreen",
@@ -686,8 +1073,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxGreen</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxGreen</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxGreen.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkGreen\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FireworksBoxRed",
@@ -701,8 +1094,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxRed</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxRed</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxRed.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkRed\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FireworksBoxPink",
@@ -716,8 +1115,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxPink</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxPink</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxPink.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkPink\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FireworksBoxYellow",
@@ -731,8 +1136,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxYellow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxYellow</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxYellow.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkYellow\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FireworksBoxRainbow",
@@ -746,7 +1157,11 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 10,
     "productionTime": 8,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
     "prerequisites": [
       {
         "amount": 0.5,
@@ -758,7 +1173,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Magnesium"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Fireworks Box x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>60</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxRainbow.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>30</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkRainbow\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>017_FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Fireworks Box x8</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t</Prerequisites>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"FireworksBoxRainbow\"/>\n\t\t\t<BaseProductionTimeInSeconds>8</BaseProductionTimeInSeconds>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "ElitePistolMagazine",
@@ -772,7 +1189,11 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.15,
     "productionTime": 5,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
     "prerequisites": [
       {
         "amount": 5,
@@ -784,7 +1205,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Nickel"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>ElitePistolMagazine</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Sidearm* 9mm KE x10</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Pistol_Warfare_Ammo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.2</X>\n\t\t\t\t<Y>0.05</Y>\n\t\t\t\t<Z>0.02</Z>\n\t\t\t</Size>\n\t\t\t<Mass>0.15</Mass>\n\t\t\t<Volume>0.1</Volume>\n\t\t\t<Model>Models\\Weapons\\Pistol_Elite_Magazine_Warfare.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>10</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimumOfferAmount>10</MinimumOfferAmount>\n\t\t\t<MaximumOfferAmount>100</MaximumOfferAmount>\n\t\t\t<MinimumOrderAmount>100</MinimumOrderAmount>\n\t\t\t<MaximumOrderAmount>2000</MaximumOrderAmount>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<CanSpawnFromScreen>false</CanSpawnFromScreen>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>ElitePistolMagazine</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Sidearm* 9mm KE x10</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Pistol_Warfare_Ammo.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"2\" TypeId=\"Ingot\" SubtypeId=\"Nickel\"/>\n\t\t\t</Prerequisites>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"ElitePistolMagazine\"/>\n\t\t\t<BaseProductionTimeInSeconds>5</BaseProductionTimeInSeconds>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "UltimateAutomaticRifleGun_Mag_30rd",
@@ -798,7 +1221,11 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.9,
     "productionTime": 15,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
     "prerequisites": [
       {
         "amount": 20,
@@ -815,7 +1242,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "typeId": "Ingot",
         "subtypeId": "Magnesium"
       }
-    ]
+    ],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>UltimateAutomaticRifleGun_Mag_30rd</SubtypeId>\n            </Id>\n            <DisplayName>*Sidearm* 7.62mm FMJ x20</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo_SemiAuto.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>0.9</Mass>\n            <Volume>0.2</Volume>\n            <Model>Models\\Weapons\\AutomaticRifle_Magazine.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>20</Capacity>\n            <AmmoDefinitionId Subtype=\"Blank\" />\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "Missile200mm_CsBlank",
@@ -829,8 +1258,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 45,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missile200mm_CsBlank</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>DisplayName_Item_Missile200mm</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Small_Rocket.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>45</Mass>\n\t\t\t<Volume>60</Volume>\n\t\t\t<Model>Models\\Weapons\\Projectile_Missile.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Missile_Blank\"/>\n\t\t\t<MinimumOfferAmount>50</MinimumOfferAmount>\n\t\t\t<MaximumOfferAmount>500</MaximumOfferAmount>\n\t\t\t<MinimumOrderAmount>100</MinimumOrderAmount>\n\t\t\t<MaximumOrderAmount>2000</MaximumOrderAmount>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<CanSpawnFromScreen>false</CanSpawnFromScreen>\n\t\t</AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "SemiAutoPistolMagazine",
@@ -844,8 +1279,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.15,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>SemiAutoPistolMagazine</SubtypeId>\n            </Id>\n            <DisplayName>zz*Do Not Use*zzSemiAutoPistolMagazine</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Pistol_Warfare_Ammo.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>0.15</Mass>\n            <Volume>0.1</Volume>\n            <Model>Models\\Weapons\\Pistol_Magazine_Warfare.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>10</Capacity>\n            <AmmoDefinitionId Subtype=\"PistolCaliber\" />\n\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "FullAutoPistolMagazine",
@@ -859,8 +1300,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.3,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>FullAutoPistolMagazine</SubtypeId>\n            </Id>\n            <DisplayName>zz*Do Not Use*zzFullAutoPistolMagazine</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Pistol_FullAuto_Warfare_Ammo.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>0.3</Mass>\n            <Volume>0.15</Volume>\n            <Model>Models\\Weapons\\Pistol_FullAuto_Magazine_Warfare.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>20</Capacity>\n            <AmmoDefinitionId Subtype=\"PistolCaliber\" />\n\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "AutomaticRifleGun_Mag_20rd",
@@ -874,8 +1321,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.6,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>AutomaticRifleGun_Mag_20rd</SubtypeId>\n            </Id>\n            <DisplayName>zz*Do Not Use*zzAutomaticRifleGun_Mag_20rd</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo_SemiAuto.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>0.6</Mass>\n            <Volume>0.2</Volume>\n            <Model>Models\\Weapons\\Rifle_SemiAuto_Magazine_Warfare.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>20</Capacity>\n            <AmmoDefinitionId Subtype=\"SmallCaliber\" />\n\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "RapidFireAutomaticRifleGun_Mag_50rd",
@@ -889,8 +1342,14 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 1.5,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>RapidFireAutomaticRifleGun_Mag_50rd</SubtypeId>\n            </Id>\n            <DisplayName>zz*Do Not Use*zzRapidFireAutomaticRifleGun_Mag_50rd</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo_RapidFire.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>1.5</Mass>\n            <Volume>0.5</Volume>\n            <Model>Models\\Weapons\\Rifle_RapidFire_Magazine_Warfare.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>50</Capacity>\n            <AmmoDefinitionId Subtype=\"SmallCaliber\" />\n\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   },
   {
     "subtypeId": "PreciseAutomaticRifleGun_Mag_5rd",
@@ -904,7 +1363,13 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "mass": 0.4,
     "productionTime": 0,
     "roleMultiplier": 1,
-    "defaultRUs": 0,
-    "prerequisites": []
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n            <Id>\n                <TypeId>AmmoMagazine</TypeId>\n                <SubtypeId>PreciseAutomaticRifleGun_Mag_5rd</SubtypeId>\n            </Id>\n            <DisplayName>zz*Do Not Use*zzPreciseAutomaticRifleGun_Mag_5rd</DisplayName>\n            <Icon>Textures\\GUI\\Icons\\ammo\\Rifle_Ammo_Precise.dds</Icon>\n            <Size>\n                <X>0.2</X>\n                <Y>0.05</Y>\n                <Z>0.02</Z>\n            </Size>\n            <Mass>0.4</Mass>\n            <Volume>0.15</Volume>\n            <Model>Models\\Weapons\\Rifle_Precise_Magazine_Warfare.mwm</Model>\n            <PhysicalMaterial>Ammo</PhysicalMaterial>\n            <Capacity>8</Capacity>\n            <AmmoDefinitionId Subtype=\"SmallCaliber\" />\n\n            <MinimumOfferAmount>10</MinimumOfferAmount>\n            <MaximumOfferAmount>100</MaximumOfferAmount>\n            <MinimumOrderAmount>100</MinimumOrderAmount>\n            <MaximumOrderAmount>2000</MaximumOrderAmount>\n            <CanPlayerOrder>true</CanPlayerOrder>\n        </AmmoMagazine>",
+    "bpXml": null
   }
 ];

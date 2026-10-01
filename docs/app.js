@@ -393,8 +393,8 @@ const WORKBENCH_FIELD_HELP = {
   dsLightArmor: "Multiplier for damage against light armor. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
   dsHeavyArmor: "Multiplier for damage against heavy armor. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
   dsNonArmor: "Multiplier for damage against everything else. -1 = disabled (higher performance), 0 = no damage, 0.01 = 1% damage, 2 = 200% damage.",
-  dsGridLarge: "Multiplier for damage against large grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
-  dsGridSmall: "Multiplier for damage against small grids. If both grid multipliers are -1, a 4x buff to SG weapons firing at LG and a 0.25x debuff to LG weapons firing at SG applies.",
+  dsGridLarge: "Multiplier for damage against large grids (-1 = unset). If both grid multipliers are unset, WeaponCore applies a 0.25x debuff to large-grid weapons firing at small grids (unless the server disables the small-vs-large buff).",
+  dsGridSmall: "Multiplier for damage against small grids (-1 = unset). If both grid multipliers are unset, WeaponCore applies a 0.25x debuff to large-grid weapons firing at small grids (unless the server disables the small-vs-large buff).",
   dsCutoffArmorArmor: "ArmorForCutoff.Armor — scales BaseDamageCutoff (per-block penetration cap) against all armor. Stacks with the Light/Heavy cutoff scale. -1 = unchanged. 0 = zero cap (no damage) vs armor.",
   dsCutoffLightArmor: "ArmorForCutoff.Light — scales BaseDamageCutoff against light armor. -1 = unchanged.",
   dsCutoffHeavyArmor: "ArmorForCutoff.Heavy — scales BaseDamageCutoff against heavy armor. -1 = unchanged.",
@@ -724,7 +724,23 @@ const DEFAULT_BALANCE_MATRIX = {
   midSize: 1.0,
   maxSize: 125.0,
   assemblerEff: 3.0,
-  scrapYield: 0.25
+  scrapYield: 0.25,
+  // Ammo Maths economy & logistics (ammo_maths.js)
+  ammoAnchorMsrp: 1500,          // Base MSRP of the anchor magazine; every other mag scales by damage
+  ammoAnchorMag: 'NATO_25x184mm',
+  hybridDiscount: 0.75,          // HybridRound ammo MSRP multiplier
+  ruShare: 0.75,                 // share of Adjusted MSRP converted to RUs (÷ CU value) for relic ammo
+  bufferReloads: 2.2,            // weapon inventory must hold this many reloads (× MagsToLoad)
+  smallCargoL: 3375,
+  largeCargoL: 421875,
+  playerInvL: 4500,              // GVK Character Changes (ws 2657570961): 1.5 m³ × server InventorySizeMultiplier 3
+  // Ammo baselines, each an independent curve of damage: X = refX × (dmg ÷ anchor dmg)^xExp
+  refVolL: 30,
+  sizeExp: 0.6,
+  refMassKg: 30,
+  massExp: 1,
+  refCraftS: 13,
+  craftExp: 0.5
 };
 
 let balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
@@ -1026,43 +1042,9 @@ const sbcDestroySound = document.getElementById('sbcDestroySound');
 const sbcBlockTypeTag = document.getElementById('sbcBlockTypeTag');
 const badgeUps = document.getElementById('badgeUps');
 
-// DOM Elements - Ammo Logistics ("Ammo Maths")
+// DOM Elements - Ammo Logistics (logic lives in ammo_maths.js)
 const weaponBanner = document.getElementById('weaponBanner') || document.querySelector('.weapon-banner');
-const logisticsAmmoSelect = document.getElementById('logisticsAmmoSelect');
-const logisticsAmmoIcon = document.getElementById('logisticsAmmoIcon');
-const btnResetAmmoLogistics = document.getElementById('btnResetAmmoLogistics');
-const badgeLogMagSubtype = document.getElementById('badgeLogMagSubtype');
-const badgeLogMagCap = document.getElementById('badgeLogMagCap');
-const badgeLogMagVol = document.getElementById('badgeLogMagVol');
-const badgeLogMagMass = document.getElementById('badgeLogMagMass');
-const badgeLogBlueprint = document.getElementById('badgeLogBlueprint');
-const blueprintVisualMaterials = document.getElementById('blueprintVisualMaterials');
-let selectedLogisticsMagSubtype = 'NATO_25x184mm';
-
-const logActiveAmmoName = document.getElementById('logActiveAmmoName');
-const inputDmgDensitySlider = document.getElementById('inputDmgDensitySlider');
-const inputDmgDensity = document.getElementById('inputDmgDensity');
-const inputPhysicalDensity = document.getElementById('inputPhysicalDensity');
-const selectRoleMultiplier = document.getElementById('selectRoleMultiplier');
-const inputRUs = document.getElementById('inputRUs');
-const inputCraftTime = document.getElementById('inputCraftTime');
-
-const outMagVolume = document.getElementById('outMagVolume');
-const outMagMass = document.getElementById('outMagMass');
-const outSuggestedVol = document.getElementById('outSuggestedVol');
-const outDepletionTime = document.getElementById('outDepletionTime');
-
-const outSmallCargoMags = document.getElementById('outSmallCargoMags');
-const outSmallCargoDmg = document.getElementById('outSmallCargoDmg');
-const outSmall1GunTime = document.getElementById('outSmall1GunTime');
-const outSmall20GunTime = document.getElementById('outSmall20GunTime');
-
-const outLargeCargoMags = document.getElementById('outLargeCargoMags');
-const outLargeCargoDmg = document.getElementById('outLargeCargoDmg');
-const outLarge1GunTime = document.getElementById('outLarge1GunTime');
-const outLarge20GunTime = document.getElementById('outLarge20GunTime');
 const codeBlueprintXml = document.getElementById('codeBlueprintXml');
-const btnCopyBlueprintXml = document.getElementById('btnCopyBlueprintXml');
 
 // Sticky HUD Elements
 const stickyHudBar = document.getElementById('stickyHudBar');
@@ -1079,11 +1061,6 @@ const hudWbDps = document.getElementById('hudWbDps');
 const hudWbCycle = document.getElementById('hudWbCycle');
 const hudWbAlpha = document.getElementById('hudWbAlpha');
 const hudWbLint = document.getElementById('hudWbLint');
-const hudLogName = document.getElementById('hudLogName');
-const hudLogMagDmg = document.getElementById('hudLogMagDmg');
-const hudLogDensity = document.getElementById('hudLogDensity');
-const hudLogEmpty = document.getElementById('hudLogEmpty');
-const hudLogCargo = document.getElementById('hudLogCargo');
 const btnHudExport = document.getElementById('btnHudExport');
 
 // Linter Banner
@@ -1143,6 +1120,7 @@ function applyTheme(mode) {
 
   if (typeof document !== 'undefined' && document.documentElement) {
     document.documentElement.setAttribute('data-theme', effectiveTheme);
+    if (typeof amRenderChart === 'function') amRenderChart(); // canvas colors are read from the theme tokens
 
     // Update button active state
     document.querySelectorAll('.theme-btn').forEach(btn => {
@@ -1243,7 +1221,28 @@ async function initStudio() {
   console.log("GVK Weapon Studio Initialized with 3 Workspaces & Full Tag Definitions.");
 }
 
+/// <summary>
+/// The studio balances ship weapons only: drop character handheld weapons, the ammos only they fire, and the
+/// magazines only those ammos load. Shared rounds (e.g. launcher missiles, the interior turret round) stay.
+/// </summary>
+function stripHandheldData() {
+  const handheld = weaponsDb.filter(isHandheldWeapon);
+  if (!handheld.length) return;
+  weaponsDb = weaponsDb.filter(w => !isHandheldWeapon(w));
+  const shipAmmo = new Set();
+  weaponsDb.forEach(w => (w.assignedAmmos || []).forEach(k => shipAmmo.add(k)));
+  const dropMags = new Set();
+  handheld.forEach(w => (w.assignedAmmos || []).forEach(k => {
+    if (shipAmmo.has(k) || !ammosDb[k]) return;
+    dropMags.add(ammosDb[k].ammoMagazine);
+    delete ammosDb[k];
+  }));
+  const stillUsed = new Set(Object.values(ammosDb).map(a => a.ammoMagazine));
+  magazinesBlueprintsDb = magazinesBlueprintsDb.filter(m => !(dropMags.has(m.subtypeId) && !stillUsed.has(m.subtypeId)));
+}
+
 function refreshAfterDataLoad() {
+  stripHandheldData();
   // Populate Dropdowns
   checkWcSchemaIntegrity();
   populateWeaponDropdowns();
@@ -1286,6 +1285,9 @@ function switchWorkspace(targetWsId) {
   if (weaponBanner) {
     weaponBanner.style.display = (targetWsId === 'ws-telemetry') ? 'flex' : 'none';
   }
+  // The GRID/TYPE pills filter weapons; Ammo Logistics lists magazines
+  const filterBar = document.getElementById('shipbuilderFilterBar');
+  if (filterBar) filterBar.style.display = (targetWsId === 'ws-logistics') ? 'none' : '';
   if (targetWsId === 'ws-logistics') {
     selectLogisticsMagazine(selectedLogisticsMagSubtype, false);
   }
@@ -1389,10 +1391,8 @@ function parseUrlParams() {
 function isHandheldWeapon(w) {
   if (!w) return false;
   if (w.isHandheld === true || w.hardwareType === 'HandWeapon') return true;
-  const sub = w.subtypeId || '';
-  const id = w.id || '';
-  const name = w.name || '';
-  return /Item$/i.test(sub) || /Item$/i.test(id) || /Pistol|Rifle|HandHeld/i.test(sub) || /Pistol|Rifle|HandHeld/i.test(name);
+  // SE convention: hand-held gun items (PhysicalGunObject) use an "...Item" SubtypeId
+  return /Item$/i.test(w.subtypeId || '') || /Item$/i.test(w.id || '');
 }
 
 /// <summary>Resolves terminal display name for weapon munition selectors.</summary>
@@ -1740,78 +1740,6 @@ function populateAmmoDropdowns() {
   }
 }
 
-function populateLogisticsAmmoDropdown() {
-  if (!logisticsAmmoSelect) return;
-
-  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
-    ? MAGAZINES_BLUEPRINTS_DATA
-    : magazinesBlueprintsDb;
-
-  if (!dataset || dataset.length === 0) return;
-
-  const categories = {};
-  dataset.forEach(m => {
-    const cat = m.category || 'Ship Standard Munitions';
-    if (!categories[cat]) categories[cat] = [];
-    categories[cat].push(m);
-  });
-
-  logisticsAmmoSelect.innerHTML = Object.entries(categories).map(([catName, mags]) => {
-    const opts = mags.map(m => `<option value="${m.subtypeId}">${m.displayName} [${m.subtypeId}]</option>`).join('');
-    return `<optgroup label="── ${catName} ──">${opts}</optgroup>`;
-  }).join('');
-
-  if (selectedLogisticsMagSubtype) {
-    logisticsAmmoSelect.value = selectedLogisticsMagSubtype;
-  }
-}
-
-function selectLogisticsMagazine(magSubtype, resetLevers = false) {
-  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
-    ? MAGAZINES_BLUEPRINTS_DATA
-    : magazinesBlueprintsDb;
-
-  const mag = dataset.find(m => m.subtypeId === magSubtype) || dataset[0];
-  if (!mag) return;
-
-  selectedLogisticsMagSubtype = mag.subtypeId;
-  if (logisticsAmmoSelect) logisticsAmmoSelect.value = mag.subtypeId;
-
-  if (logisticsAmmoIcon) {
-    logisticsAmmoIcon.src = mag.localIcon || `icons/ammo_${mag.subtypeId}.png`;
-    logisticsAmmoIcon.onerror = () => { logisticsAmmoIcon.src = 'icons/ammo_NATO_25x184mm.png'; };
-  }
-
-  if (badgeLogMagSubtype) badgeLogMagSubtype.innerHTML = `Subtype: <strong>${mag.subtypeId}</strong>`;
-  if (badgeLogMagCap) badgeLogMagCap.innerHTML = `Capacity: <strong>${mag.capacity} rds</strong>`;
-  if (badgeLogMagVol) badgeLogMagVol.innerHTML = `Volume: <strong>${mag.volume} L</strong>`;
-  if (badgeLogMagMass) badgeLogMagMass.innerHTML = `Mass: <strong>${mag.mass} kg</strong>`;
-  if (badgeLogBlueprint) badgeLogBlueprint.innerHTML = `⏱️ <strong>${mag.productionTime}s Craft</strong>`;
-  if (logActiveAmmoName) logActiveAmmoName.textContent = mag.displayName;
-
-  if (resetLevers) {
-    if (inputCraftTime) inputCraftTime.value = mag.productionTime;
-    if (inputRUs) inputRUs.value = mag.defaultRUs;
-    if (selectRoleMultiplier) selectRoleMultiplier.value = mag.roleMultiplier.toString();
-    const physDens = mag.volume > 0 ? (mag.mass / mag.volume).toFixed(1) : 4.0;
-    if (inputPhysicalDensity) inputPhysicalDensity.value = physDens;
-
-    let magDmg = 0;
-    const ammoObj = ammosDb[mag.subtypeId] || Object.values(ammosDb).find(a => a.ammoMagazine === mag.subtypeId);
-    if (ammoObj) {
-      const dmgDet = getAmmoDamageDetailed(ammoObj);
-      magDmg = dmgDet.total * mag.capacity;
-    }
-    if (magDmg > 0 && mag.volume > 0) {
-      const derivedDmgDens = Math.round(magDmg / mag.volume);
-      if (inputDmgDensity) inputDmgDensity.value = derivedDmgDens;
-      if (inputDmgDensitySlider) inputDmgDensitySlider.value = Math.min(30000, Math.max(500, derivedDmgDens));
-    }
-  }
-
-  updateAmmoLogistics();
-}
-
 function populateAnimationDropdown() {
   selectAnimationDef.innerHTML = '<option value="">None / Static (No Subpart Animations)</option>';
   animationsDb.forEach(anim => {
@@ -1852,73 +1780,165 @@ function ewarTypeLabel(t) {
   const map = { AntiSmart: 'Anti-Smart', AntiSmartv2: 'Anti-Smart', EnergySink: 'Energy Sink', Emp: 'EMP', Offense: 'Offense', Nav: 'Nav', Dot: 'DoT', JumpNull: 'Jump-Null', Anchor: 'Anchor', Tractor: 'Tractor', Pull: 'Pull', Push: 'Push' };
   return map[t] || t || 'EWAR';
 }
+// Physical magazine <Capacity> from AmmoMagazines_*.sbc (0 when unknown)
+function getMagCapacity(ammo) {
+  if (!ammo || isEnergyAmmo(ammo)) return 0;
+  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
+    ? MAGAZINES_BLUEPRINTS_DATA
+    : magazinesBlueprintsDb;
+  const mag = (dataset || []).find(m => m.subtypeId === ammo.ammoMagazine);
+  return (mag && mag.capacity > 0) ? mag.capacity : 0;
+}
+
+// WC AmmoConstants.Energy() for a weapon + ammo pair (MustCharge, reloadable, charge size, energy magazine)
+function getWcEnergy(weapon, ammo, overrides) {
+  const w = Object.assign({}, weapon || {}, overrides || {});
+  const a = ammo || {};
+  const ewarOn = !!(a.ewar && a.ewar.enable);
+  return WcMath.energy({
+    energy: isEnergyAmmo(a), hybrid: !!a.hybridRound, energyCost: a.energyCost, baseDamage: a.baseDamage,
+    ewar: ewarOn, ewarStrength: ewarOn ? a.ewar.strength : 0,
+    rof: w.rateOfFire, barrels: w.barrelsPerShot, traj: w.trajectilesPerBarrel, reloadTicks: w.reloadTime,
+    energyMagazineSize: a.energyMagazineSize, magCapacity: getMagCapacity(a),
+    shotsInBurst: w.shotsInBurst, delayAfterBurst: w.delayAfterBurst
+  });
+}
+
 // Shots per magazine: physical mags resolve from AmmoMagazines_Ship.sbc <Capacity> via MAGAZINES_BLUEPRINTS_DATA; energy mags use EnergyMagazineSize
 function getShotsPerMag(weapon, ammo) {
   const fallback = (weapon && weapon.magazineSize) || 100;
   if (!ammo) return fallback;
-  if (!ammo.ammoMagazine || ammo.ammoMagazine === 'Energy') {
+  if (isEnergyAmmo(ammo)) {
     if (ammo.energyMagazineSize > 0) return ammo.energyMagazineSize;
     // WC AmmoConstants.Energy(): charged weapons with no EnergyMagazineSize derive it from power per tick x ReloadTime
-    const reloadTicks = (weapon && weapon.reloadTime) || 0;
-    if (reloadTicks > 0 && ammo.energyCost > 0) {
-      const ewarOn = ammo.ewar && ammo.ewar.enable;
-      const shotCost = ammo.energyCost * (ewarOn ? (ammo.ewar.strength || 0) : (ammo.baseDamage || 0));
-      const perTick = shotCost * (((weapon && weapon.rateOfFire) || 0) / 3600)
-        * ((weapon && weapon.barrelsPerShot) || 1) * ((weapon && weapon.trajectilesPerBarrel) || 1);
-      const derived = Math.ceil(perTick * reloadTicks - 1e-6); // epsilon absorbs float noise on exact products
-      if (derived > 0) return derived;
-    }
+    const e = getWcEnergy(weapon, ammo);
+    if (e.reloadable && e.energyMagSize > 0) return e.energyMagSize;
+    // Continuous (non-reloadable) energy weapons never consume a magazine: one fire event per volley
     return (weapon && weapon.barrelsPerShot) || 1;
   }
-  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
-    ? MAGAZINES_BLUEPRINTS_DATA
-    : magazinesBlueprintsDb;
-  const mag = dataset.find(m => m.subtypeId === ammo.ammoMagazine);
-  return (mag && mag.capacity > 0) ? mag.capacity : fallback;
+  return getMagCapacity(ammo) || fallback;
 }
 
 /// <summary>
-/// Models the WC fire/reload cycle (WeaponShoot.cs / WeaponReload.cs):
-/// - each barrel spends 1 mag unit per fire event (trajectiles are free); events are floor(3600/RoF) ticks apart
-/// - reload starts on the last shot; DelayUntilFire replays after every reload (StopShooting resets it)
-/// - ShotsInBurst splits events into bursts separated by max(DelayAfterBurst, tick gap); true burst mode
-///   (energy, or mag capacity >= ShotsInBurst) also replays DelayUntilFire, overlapping the burst gap
+/// Builds the WeaponCore fire-cycle inputs for a weapon + ammo pair. live = read the Workbench inputs
+/// (the active weapon's edits) instead of the stored weapon values.
+/// </summary>
+function getFireCycleParams(weapon, ammo, live) {
+  const w = weapon || {};
+  const rd = (el, v) => {
+    if (!live || !el) return v;
+    const n = parseFloat(el.value);
+    return isFinite(n) ? n : v;
+  };
+  const chk = (el, v) => (live && el ? !!el.checked : !!v);
+  const rof = rd(wRateOfFire, w.rateOfFire || 0);
+  const barrels = rd(wBarrelsPerShot, w.barrelsPerShot || 1);
+  const trajPerBarrel = rd(wTrajectilesPerBarrel, w.trajectilesPerBarrel || 1);
+  const reloadTicks = rd(wReloadTime, w.reloadTime || 0);
+  const mags = Math.max(1, rd(wMagsToLoad, w.magsToLoad || 1));
+  const shotsInBurst = rd(wShotsInBurst, w.shotsInBurst || 0);
+  const delayAfterBurst = rd(wDelayAfterBurst, w.delayAfterBurst || 0);
+  const a = ammo || {};
+  const energy = getWcEnergy(w, a, { rateOfFire: rof, barrelsPerShot: barrels, trajectilesPerBarrel: trajPerBarrel, reloadTime: reloadTicks, shotsInBurst, delayAfterBurst });
+  // AmmoConstants: HeatModifier applies when > 0 (or AllowNegativeHeatModifier)
+  const heatMod = (a.heatModifier > 0 || a.allowNegativeHeatModifier) ? a.heatModifier : 1;
+  const deg = w.degradeRofSettings || {};
+  const magSize = !isEnergyAmmo(a) ? getShotsPerMag(w, a)
+    : (a.energyMagazineSize > 0 ? a.energyMagazineSize : (energy.reloadable && energy.energyMagSize > 0 ? energy.energyMagSize : barrels));
+  return {
+    rof, barrels, trajPerBarrel, reloadTicks, mags, shotsInBurst, delayAfterBurst,
+    magSize: Math.max(1, magSize),
+    delayUntilFire: rd(wDelayUntilFire, w.delayUntilFire || 0),
+    energy: isEnergyAmmo(a), hybrid: !!a.hybridRound, chargeTicks: energy.chargeTicks,
+    fireFull: chk(wFireFull, w.fireFull),
+    heatPerShot: rd(wHeatPerShot, w.heatPerShot || 0) * heatMod,
+    maxHeat: rd(wMaxHeat, w.maxHeat || 0),
+    heatSinkRate: rd(wHeatSinkRate, w.heatSinkRate || 0),
+    cooldown: rd(wCooldown, w.cooldown || 0),
+    degradeRof: chk(wDegradeWithHeat, w.degradeRof),
+    heatThresholdStart: deg.heatThresholdStart, heatThresholdEnd: deg.heatThresholdEnd,
+    rofAt0Heat: deg.rofAt0Heat, rofAt100Heat: deg.rofAt100Heat,
+    allowOverheatShooting: !!w.allowOverheatShooting, heatSinkRateOverheatMult: w.heatSinkRateOverheatMult || 0
+  };
+}
+
+const fireCycleCache = new Map();
+/// <summary>
+/// WeaponCore fire/reload/heat cycle via WcMath.simulateFire (tick replica of WeaponShoot.cs, WeaponReload.cs,
+/// SessionUpdate.cs shoot gate, SessionCharging.cs and Weapon.UpdateWeaponHeat). Rates are steady-state averages.
+/// Each barrel spends one magazine unit per fire event; trajectiles are free.
 /// </summary>
 function computeFireCycle(p) {
-  const rof = p.rof || 0;
-  const reloadTicks = p.reloadTicks || 0;
-  const delayUntilFire = p.delayUntilFire || 0;
+  const key = JSON.stringify(p);
+  const hit = fireCycleCache.get(key);
+  if (hit) return hit;
+  const sim = WcMath.simulateFire({
+    rof: p.rof, barrels: p.barrels, traj: p.trajPerBarrel, magSize: p.magSize, mags: p.mags, reloadTicks: p.reloadTicks,
+    delayUntilFire: p.delayUntilFire, shotsInBurst: p.shotsInBurst, delayAfterBurst: p.delayAfterBurst,
+    energy: p.energy, hybrid: p.hybrid, chargeTicks: p.chargeTicks, fireFull: p.fireFull,
+    heatPerShot: p.heatPerShot, maxHeat: p.maxHeat, heatSinkRate: p.heatSinkRate, cooldown: p.cooldown,
+    degradeRof: p.degradeRof, heatThresholdStart: p.heatThresholdStart, heatThresholdEnd: p.heatThresholdEnd,
+    rofAt0Heat: p.rofAt0Heat, rofAt100Heat: p.rofAt100Heat,
+    allowOverheatShooting: p.allowOverheatShooting, heatSinkRateOverheatMult: p.heatSinkRateOverheatMult
+  });
+  const traj = Math.max(1, p.trajPerBarrel || 1);
+  const totalRounds = Math.max(1, p.magSize || 1) * Math.max(1, p.mags || 1);
   const shotsInBurst = p.shotsInBurst || 0;
-  const delayAfterBurst = p.delayAfterBurst || 0;
-  const ticksPerShot = Math.max(1, Math.floor(3600 / Math.max(1, rof)));
-  const totalRounds = p.magSize * p.mags;
-  const events = Math.max(1, Math.ceil(totalRounds / Math.max(1, p.barrels || 1)));
-  const projectiles = totalRounds * Math.max(1, p.trajPerBarrel || 1);
-
-  const burstMode = shotsInBurst > 0 && (p.energy || p.magSize >= shotsInBurst);
-  const shotDelayMode = !burstMode && shotsInBurst > 0 && delayAfterBurst > 0;
-  const burstSize = (burstMode || shotDelayMode) ? shotsInBurst : 0;
-  const bursts = burstSize > 0 ? Math.ceil(events / burstSize) : 1;
-  const burstGap = Math.max(delayAfterBurst, ticksPerShot, burstMode ? delayUntilFire : 0);
-  const lastBurstFull = burstSize > 0 && events % burstSize === 0;
-
-  // Non-reloadable (continuous energy) weapons never stop, so the spool-up is paid once, not per cycle
-  const reloadable = !p.energy || reloadTicks > 0;
-  const spoolTicks = reloadable ? delayUntilFire : 0;
-  const fireTicks = (events - 1) * ticksPerShot + (bursts - 1) * (burstGap - ticksPerShot);
-  const tailTicks = Math.max(reloadTicks, ticksPerShot, lastBurstFull ? delayAfterBurst : 0);
-  const totalCycleSec = (spoolTicks + fireTicks + tailTicks) / 60;
-  return {
+  const roundsPerSec = sim.roundsPerSec;
+  const totalCycleSec = roundsPerSec > 0 ? totalRounds / roundsPerSec : Infinity;
+  const cycleTicks = totalCycleSec * 60;
+  // Phases of one load: DelayUntilFire spool, firing, then everything else (reload, burst tail, heat stalls)
+  const spoolTicks = sim.reloadable && sim.spoolTicks >= (p.delayUntilFire || 0) ? (p.delayUntilFire || 0) : 0;
+  const fireTicks = sim.reloadable ? Math.min(sim.fireTicks, Math.max(0, cycleTicks - spoolTicks)) : cycleTicks;
+  const out = {
     totalRounds,
-    projectiles,
-    events,
-    bursts,
+    projectiles: totalRounds * traj,
+    events: sim.events,
+    bursts: shotsInBurst > 0 ? Math.ceil(sim.events / shotsInBurst) : 1,
     spoolSec: spoolTicks / 60,
     fireDurationSec: fireTicks / 60,
-    reloadSec: reloadTicks / 60,
+    reloadSec: sim.reloadable ? Math.max(0, cycleTicks - spoolTicks - fireTicks) / 60 : 0,
     totalCycleSec,
-    effectiveRps: projectiles / totalCycleSec
+    roundsPerSec,
+    effectiveRps: roundsPerSec * traj,
+    heatLimited: sim.heatLimited,
+    stallShare: sim.stallShare
   };
+  if (fireCycleCache.size > 500) fireCycleCache.clear();
+  fireCycleCache.set(key, out);
+  return out;
+}
+
+/// <summary>
+/// Single source of truth for a weapon's engagement range (m), used by every range readout.
+/// WeaponCore only fires auto-targeting weapons (turrets) and guided munitions (Smart, drone, TravelTo…) at
+/// targets inside Targeting.MaxTargetDistance, so those are gated by the block's targeting range. A manually
+/// aimed fixed gun with unguided rounds is limited only by the round's reach (MaxTrajectory). Either way,
+/// nothing lands beyond the round's reach. live = read the Workbench inputs (edits) for the active weapon.
+/// </summary>
+function getEngagementRange(weapon, ammo, live) {
+  const num = (v) => { const n = parseFloat(v); return isFinite(n) && n > 0 ? n : 0; };
+  const targeting = live && wMaxTargetDistance ? num(wMaxTargetDistance.value) : num(weapon && weapon.maxTargetDistance);
+  const reach = live && tMaxTrajectory ? num(tMaxTrajectory.value) : num(ammo && ammo.trajectory && ammo.trajectory.maxTrajectory);
+  const guidance = (ammo && ammo.trajectory && ammo.trajectory.guidance) || 'None';
+  const guided = guidance !== 'None';
+  const gated = !!weapon && (weapon.type === 'Turret' || guided);
+  let range, source;
+  if (gated && targeting > 0) {
+    range = reach > 0 ? Math.min(targeting, reach) : targeting;
+    source = reach > 0 && reach < targeting ? 'reach' : 'targeting';
+  } else {
+    range = reach || targeting || 1600;
+    source = reach ? 'reach' : 'targeting';
+  }
+  let label;
+  if (source === 'targeting') {
+    label = reach > targeting ? `Targeting Range · Ammo Reach: ${Math.round(reach).toLocaleString()}m` : 'Targeting Range';
+    if (guided && weapon.type !== 'Turret') label += ` (${guidance} guidance)`;
+  } else {
+    label = gated ? `Ammo Reach · Targeting: ${Math.round(targeting).toLocaleString()}m` : 'Ammo Max Trajectory (manual aim)';
+  }
+  return { range, source, gated, guided, targeting, reach, label };
 }
 
 function isEnergyAmmo(ammo) {
@@ -1927,7 +1947,7 @@ function isEnergyAmmo(ammo) {
 
 function updateTelemetryAmmoBadge() {
   if (!activeAmmo) return;
-  const dmg = getAmmoDamageDetailed(activeAmmo);
+  const dmg = getAmmoDamageDetailed(activeAmmo, 0, activeWeapon);
   const eol = (activeAmmo.areaOfDamage && activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable)
     ? activeAmmo.areaOfDamage.endOfLife
     : null;
@@ -1945,14 +1965,22 @@ function updateTelemetryAmmoBadge() {
     typeDesc = `🎯 Anti-Missile Burst (${eol.radius || 0}m)`;
   } else if (activeAmmo.hybridRound && !activeAmmo.isBeam && (activeAmmo.mass || 0) > 0) {
     typeDesc = "High-Energy Sabot";
+  } else if (frag && frag.timedSpawns && frag.timedSpawns.enable && (frag.timedSpawns.maxSpawns || 0) > 1 && dmg.frag > dmg.base + dmg.aoe) {
+    // Loitering TimedSpawns carrier whose payload is the spawned sub-munitions
+    typeDesc = frag.fragments === 1 ? "🤖 Autonomous Drone Deployment" : `Loitering Spawner (${frag.timedSpawns.maxSpawns} x ${frag.fragments})`;
   } else if (eol && eol.damage > 10 && eol.radius > 1) {
     typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
   } else if (frag && frag.fragments > 1) {
     typeDesc = `Proximity Shrapnel (${frag.fragments} Frags)`;
   } else if (frag && frag.fragments === 1) {
-    if (frag.ammoRound && /Drone/i.test(frag.ammoRound)) {
+    // Classified from WC fields: loitering TimedSpawns / DroneAdvanced guidance, or a stage whose own payload is negligible
+    const child = resolveAmmoRound(frag.ammoRound, activeWeapon);
+    const ts = frag.timedSpawns && frag.timedSpawns.enable ? frag.timedSpawns : null;
+    const childGuidance = child && child.trajectory ? child.trajectory.guidance : 'None';
+    const ownPayload = dmg.base + dmg.aoe;
+    if ((ts && (ts.maxSpawns || 0) > 1) || childGuidance === 'DroneAdvanced') {
       typeDesc = "🤖 Autonomous Drone Deployment";
-    } else if (activeAmmo.name && /Launch/i.test(activeAmmo.name)) {
+    } else if (child && ownPayload < dmg.frag) {
       typeDesc = "🚀 Staged Kinetic Booster";
     } else {
       typeDesc = "🎯 Aim-Assist Sub-Munition";
@@ -2141,16 +2169,16 @@ function getAutomatedWeaponRole(weapon, ammo) {
     return { id: 'guided', label: 'Guided Ordnance', icon: '🚀', desc: 'Guided missiles, torpedoes & loitering drones' };
   }
   const ds = ammo?.damageScales || {};
-  const heavyMult = (ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0;
+  const heavyMult = (typeof ds.heavyArmor === 'number' && ds.heavyArmor >= 0) ? ds.heavyArmor : 1.0;
   const isPenetrator = (ammo?.baseDamageCutoff > 0 && (ammo?.baseDamage || 0) > 20000) || heavyMult >= 1.5;
   if (isPenetrator || ((weapon.baseDamage || 0) >= 50000 && (weapon.rateOfFire || 0) <= 120)) {
     return { id: 'breaker', label: 'Armor Breaker', icon: '🔨', desc: 'Heavy armor penetrator & anti-capital kinetic' };
   }
-  const range = (weapon.type === 'Turret' && weapon.maxTargetDistance) ? weapon.maxTargetDistance : (ammo?.trajectory?.maxTrajectory || 0);
+  const range = getEngagementRange(weapon, ammo, false).range;
   if (range >= 2200 && (weapon.rateOfFire || 0) <= 240) {
     return { id: 'artillery', label: 'Standoff Artillery', icon: '🔭', desc: 'Long-range bombardment & siege' };
   }
-  const dmg = getAmmoDamageDetailed(ammo);
+  const dmg = getAmmoDamageDetailed(ammo, 0, weapon);
   if (dmg.aoe > dmg.base && dmg.aoe > 0) {
     return { id: 'flak', label: 'Area Denial / Flak', icon: '💥', desc: 'Explosive splash & proximity fragmentation' };
   }
@@ -2166,13 +2194,7 @@ function getAutomatedWeaponRole(weapon, ammo) {
 /// </summary>
 function getMunitionTerrainClearance(ammo) {
   if (!ammo?.trajectory) return null;
-  let elev = ammo.trajectory.desiredElevation || 0;
-  if (!elev && ammo.ammoRound) {
-    if (ammo.ammoRound.includes('HeavyMissile') || ammo.ammoRound.includes('Tuukka')) elev = 500;
-    else if (ammo.ammoRound.includes('Siege') || ammo.ammoRound.includes('Longsword')) elev = 500;
-    else if (ammo.ammoRound.includes('Torpedo')) elev = 200;
-    else if (ammo.ammoRound.includes('Drone') || ammo.ammoRound.includes('Falcon')) elev = 200;
-  }
+  const elev = ammo.trajectory.desiredElevation || 0;
   if (elev > 0) {
     return {
       hasClearance: true,
@@ -2234,13 +2256,13 @@ function getWeaponArcSummary(weapon) {
 
 /// <summary>
 /// Determines if recoil kick force warrants a shipbuilder badge.
-/// High Recoil only flags true chassis-shaking monsters (MACs, 480mm, Hurricane, Odin >= 1,000 kN).
+/// High Recoil only flags true chassis-shaking monsters (BackKickForce >= 1,000 kN; WC applies it per barrel fired).
 /// </summary>
 function getWeaponRecoilWarning(weapon, ammo) {
   if (!weapon) return { showRecoil: false, text: '', isHeavy: false, isLow: false, kickKn: 0 };
   const kick = (ammo && (ammo.backKickForce !== undefined ? ammo.backKickForce : (ammo.mass * (ammo.trajectory?.desiredSpeed || 500)))) || 0;
   const kickKn = kick / 1000;
-  const isMonster = kick >= 1000000 || (weapon.subtypeId && (weapon.subtypeId.includes('480') || weapon.subtypeId.includes('MAC') || weapon.subtypeId.includes('LargeRailgun')));
+  const isMonster = kick >= 1000000;
 
   if (isMonster) {
     const kickStr = kickKn >= 1000 ? `${(kickKn / 1000).toFixed(1)} MN` : `${Math.round(kickKn)} kN`;
@@ -2510,10 +2532,11 @@ function updateHudTelemetry(v) {
   if (hudTelDps) hudTelDps.textContent = v.scaledEffectiveDps.toLocaleString();
   if (hudTelDpsProfile) hudTelDpsProfile.textContent = `vs ${v.profileLabel}`;
   if (hudTelAlpha) hudTelAlpha.textContent = `${v.scaledEffectiveAlpha.toLocaleString()} hp`;
-  // Same targeting-range fallback as the radar
-  let range = (wMaxTargetDistance && parseFloat(wMaxTargetDistance.value)) || 0;
-  if (range <= 0) range = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) ? Math.min(4000, parseFloat(tMaxTrajectory.value)) : 1600;
-  if (hudTelRange) hudTelRange.textContent = `${Math.round(range).toLocaleString()} m`;
+  const eng = getEngagementRange(activeWeapon, activeAmmo, true);
+  if (hudTelRange) {
+    hudTelRange.textContent = `${Math.round(eng.range).toLocaleString()} m`;
+    hudTelRange.title = eng.label;
+  }
   if (hudTelCycle) hudTelCycle.textContent = v.cycle;
 
   if (!hudTelBench) return;
@@ -2552,20 +2575,11 @@ function updateHudWorkbench(errorCount, warningCount) {
   else setHudChip(hudWbLint, '✅ Healthy', 'badge-green');
 }
 
-/// <summary>Logistics footer: combat value of the selected magazine.</summary>
-function updateHudLogistics(v) {
-  if (!hudLogName) return;
-  hudLogName.textContent = v.name;
-  if (hudLogMagDmg) hudLogMagDmg.textContent = `${Math.round(v.magDamage).toLocaleString()} hp`;
-  if (hudLogDensity) hudLogDensity.textContent = `${Math.round(v.density).toLocaleString()} hp/L`;
-  if (hudLogEmpty) hudLogEmpty.textContent = v.emptySec < 60 ? `${v.emptySec.toFixed(1)}s` : formatTime(v.emptySec);
-  if (hudLogCargo) hudLogCargo.textContent = formatTime(v.cargoSec);
-}
-
 // Footer hides while the active tab's own summary (banner / hero cards) is on screen, so nothing shows twice.
+// The Logistics footer is filled by amRenderHud (ammo_maths.js).
 const HUD_ANCHORS = {
   'ws-telemetry': ['#weaponBanner', '#ws-telemetry .hero-pillars-grid'],
-  'ws-logistics': ['#ws-logistics .logistics-ammo-bar', '#outMagVolume'],
+  'ws-logistics': ['#ws-logistics .logistics-ammo-bar'],
   'ws-workbench': []
 };
 const hudVisibleAnchors = new Set();
@@ -2771,7 +2785,7 @@ function populateWeaponWorkbench() {
   wHeatPerShot.value = activeWeapon.heatPerShot || 0;
   wMaxHeat.value = activeWeapon.maxHeat || 0;
   wHeatSinkRate.value = activeWeapon.heatSinkRate || 0;
-  wCooldown.value = activeWeapon.cooldown || 0.5;
+  wCooldown.value = activeWeapon.cooldown !== undefined ? activeWeapon.cooldown : 0.5;
 
   wRotateRate.value = activeWeapon.rotateRate || 0.015;
   wElevateRate.value = activeWeapon.elevateRate || 0.015;
@@ -3433,23 +3447,18 @@ function renderRangeVisual(rangeNum, isTrackingWeapon) {
 function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
   if (!pillarPropulsionVector) return;
 
-  const ammoName = activeAmmo?.name || '';
-  const weaponName = activeWeapon?.name || '';
-  const isDrone = Boolean((activeAmmo?.frag && activeAmmo.frag.fragments === 1 && /Drone/i.test(activeAmmo.frag.ammoRound || '')) || /Drone/i.test(ammoName) || /Drone/i.test(weaponName));
-  const isChaffFlare = /flare|chaff|decoy/i.test(ammoName) || /flare|chaff|decoy/i.test(weaponName) || Boolean(activeAmmo?.ammoMagazine && /flare|firework/i.test(activeAmmo.ammoMagazine));
-  const isRadarSensor = /sensor|radar|designator/i.test(weaponName) || /sensor|radar|designator/i.test(ammoName);
-  const isPlasma = /plasma/i.test(ammoName) || /plasma/i.test(weaponName);
-  const isFlak = /flak/i.test(ammoName) || /flak/i.test(weaponName);
-  const isBallisticWeapon = /gatling|vulcan|avenger|autocannon|rotary|cannon|flak/i.test(weaponName) ||
-                            /gatling|vulcan|avenger|autocannon|rotary|cannon|flak/i.test(ammoName) ||
-                            Boolean(activeAmmo?.file && /Ballistics_/i.test(activeAmmo.file));
-  const isRailgun = !isPlasma && (/railgun|coilgun/i.test(weaponName) || /railgun|coilgun/i.test(ammoName) || (Boolean(activeAmmo?.hybridRound) && (activeAmmo?.mass || 0) > 0));
-  const isSabot = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && (isRailgun || /sabot|apfsds/i.test(ammoName) || /sabot|apfsds/i.test(weaponName));
-
-  const trajectoryGuidance = activeAmmo?.trajectory?.guidance || activeAmmo?.guidance;
-  const hasSmartGuidance = Boolean(!isFlak && !isBallisticWeapon && trajectoryGuidance && trajectoryGuidance !== 'None');
-  const isHoming = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isBallisticWeapon && (isPlasma || hasSmartGuidance || /torpedo|srbm|guided/i.test(ammoName) || (/missile/i.test(ammoName) && !/rocket|flak/i.test(ammoName)));
-  const isRocket = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isHoming && (/rocket/i.test(ammoName) || /rocket/i.test(weaponName) || (activeAmmo?.trajectory?.accel || 0) > 0);
+  // Flight profile from WC def fields only (EwarDef, damage payload, Guidance, TimedSpawns, HybridRound, AccelPerSec)
+  const a = activeAmmo || {};
+  const ewar = (a.ewar && a.ewar.enable) ? a.ewar : null;
+  const dmg = getAmmoDamageDetailed(a, 0, activeWeapon);
+  const guidance = (a.trajectory && a.trajectory.guidance) || 'None';
+  const ts = a.fragment && a.fragment.enable && a.fragment.timedSpawns && a.fragment.timedSpawns.enable ? a.fragment.timedSpawns : null;
+  const isChaffFlare = Boolean(ewar && /^AntiSmart/.test(ewar.type || ''));
+  const isRadarSensor = !ewar && dmg.total <= 0;
+  const isDrone = !isChaffFlare && (guidance === 'DroneAdvanced' || Boolean(ts && (ts.maxSpawns || 0) > 1));
+  const isSabot = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && Boolean(a.hybridRound) && dmg.base >= dmg.aoe;
+  const isHoming = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && guidance !== 'None';
+  const isRocket = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isHoming && ((a.trajectory && a.trajectory.accelPerSec) || 0) > 0;
 
   let tag = 'BALLISTIC';
   let tagClass = '';
@@ -3667,14 +3676,15 @@ function renderVoxelBlueprint(sx, sy, sz_z, volBlocks, isSmallGrid) {
 // ==========================================================================
 
 /// <summary>
-/// Finds the highest armor multiplier (Heavy / Light / Non-Armor; unset (-1) = 1.0).
-/// Two-way ties join labels; all-equal reports "All Targets".
+/// Finds the highest DamageScales.Armor multiplier (Heavy / Light / Non-Armor; WC treats any value < 0 as unset = 1.0).
+/// Two-way ties join labels; all-equal reports "All Targets". Grid scales live in getEffectiveProfile.
 /// </summary>
 function getTopArmorProfile(ds = {}) {
-  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
-  const heavy = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
-  const light = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
-  const nonArmor = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
+  const v = (x) => (typeof x === 'number' && x >= 0) ? x : 1.0;
+  const armorMult = v(ds.armorArmor);
+  const heavy = v(ds.heavyArmor) * armorMult;
+  const light = v(ds.lightArmor) * armorMult;
+  const nonArmor = v(ds.nonArmor);
   const max = Math.max(heavy, light, nonArmor);
   const names = [];
   if (heavy === max) names.push('Heavy Armor');
@@ -3690,55 +3700,48 @@ function getTopArmorProfile(ds = {}) {
 /// Shared by telemetry, TTK and radar so paper vs effective never double-apply the multiplier.
 /// </summary>
 function computeSustainedDps() {
-  const rof = parseFloat(wRateOfFire.value) || 1000;
-  const barrels = parseFloat(wBarrelsPerShot.value) || 1;
-  const reloadTicks = parseFloat(wReloadTime.value) || 0;
-  const magsToLoad = Math.max(1, parseFloat(wMagsToLoad.value) || 1);
-  const magSize = Math.max(1, getShotsPerMag(activeWeapon, activeAmmo));
-  const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
-
-  const { totalRounds, projectiles, bursts, spoolSec, fireDurationSec, reloadSec, totalCycleSec, effectiveRps } = computeFireCycle({
-    rof, barrels, trajPerBarrel: trajPB, magSize, mags: magsToLoad, reloadTicks,
-    delayUntilFire: parseFloat(wDelayUntilFire.value) || 0,
-    shotsInBurst: parseFloat(wShotsInBurst.value) || 0,
-    delayAfterBurst: parseFloat(wDelayAfterBurst.value) || 0,
-    energy: isEnergyAmmo(activeAmmo)
-  });
-  const dmgDetails = getAmmoDamageDetailed(activeAmmo);
+  const fp = getFireCycleParams(activeWeapon, activeAmmo, true);
+  const cyc = computeFireCycle(fp);
+  const { totalRounds, projectiles, bursts, spoolSec, fireDurationSec, reloadSec, totalCycleSec, effectiveRps } = cyc;
+  const dmgDetails = getAmmoDamageDetailed(activeAmmo, 0, activeWeapon);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
   const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, (activeWeapon && activeWeapon.maxActiveProjectiles) || 0);
 
-  return { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails };
+  return {
+    rof: fp.rof, barrels: fp.barrels, magSize: fp.magSize, magsToLoad: fp.mags, totalRounds, sustainedDps, effectiveRps,
+    totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails,
+    heatLimited: cyc.heatLimited, stallShare: cyc.stallShare, fireParams: fp
+  };
 }
 
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails } = computeSustainedDps();
+  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails, fireParams, stallShare } = computeSustainedDps();
   const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
   const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
 
-  // Extract Target Modifiers (capped rounds apply min(base, cutoff) per block hit, per WC BaseDamageCutoff)
+  // Target modifiers: WC scales the whole payload (base pool, ByBlockHit, EndOfLife) by each ammo's per-block
+  // damageScale; BaseDamageCutoff only spreads the pool across more blocks, it does not change the total.
   const ds = activeAmmo.damageScales || {};
-  const armorMult = (ds.armorArmor !== undefined && ds.armorArmor !== -1) ? ds.armorArmor : 1.0;
-  const heavyMult = ((ds.heavyArmor !== undefined && ds.heavyArmor !== -1) ? ds.heavyArmor : 1.0) * armorMult;
-  const lightMult = ((ds.lightArmor !== undefined && ds.lightArmor !== -1) ? ds.lightArmor : 1.0) * armorMult;
-  const nonArmorMult = (ds.nonArmor !== undefined && ds.nonArmor !== -1) ? ds.nonArmor : 1.0;
+  // NoGridOrArmorScaling skips every armor multiplier (AmmoConstants.DamageScales)
+  const armorOn = !activeAmmo.noGridOrArmorScaling;
+  const armorMult = (armorOn && typeof ds.armorArmor === 'number' && ds.armorArmor >= 0) ? ds.armorArmor : 1.0;
+  const heavyMult = ((armorOn && typeof ds.heavyArmor === 'number' && ds.heavyArmor >= 0) ? ds.heavyArmor : 1.0) * armorMult;
+  const lightMult = ((armorOn && typeof ds.lightArmor === 'number' && ds.lightArmor >= 0) ? ds.lightArmor : 1.0) * armorMult;
+  const nonArmorMult = (armorOn && typeof ds.nonArmor === 'number' && ds.nonArmor >= 0) ? ds.nonArmor : 1.0;
   const perHit = dmgDetails.perBlockBase;
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
-  // ArmorForCutoff rescales the per-block cap per armor class before the armor multiplier applies
-  const perHitVs = (kind) => dmgDetails.cutoff > 0
-    ? Math.min(dmgDetails.base, dmgDetails.cutoff * getCutoffArmorScale(activeAmmo, kind))
-    : perHit;
+  const topProfile = getEffectiveProfile(dmgDetails, activeWeapon);
 
-  const heavyDmg = (perHitVs('heavy') * heavyMult) + dmgDetails.aoe + dmgDetails.frag;
+  const heavyDmg = topProfile.perClass.heavy;
   const heavyVolley = Math.round(heavyDmg * totalRounds);
 
-  const lightDmg = (perHitVs('light') * lightMult) + dmgDetails.aoe + dmgDetails.frag;
+  const lightDmg = topProfile.perClass.light;
   const lightVolley = Math.round(lightDmg * totalRounds);
 
-  const nonArmorDmg = (perHitVs('nonArmor') * nonArmorMult) + dmgDetails.aoe + dmgDetails.frag;
+  const nonArmorDmg = topProfile.perClass.nonArmor;
   const nonArmorVolley = Math.round(nonArmorDmg * totalRounds);
 
   // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
@@ -3746,21 +3749,22 @@ function updateCombatTelemetry() {
   const aEwar = (activeAmmo.ewar && activeAmmo.ewar.enable) ? activeAmmo.ewar : null;
   let blastRadius = 0;
   let blastDepth = 0;
-  let blastDmg = dmgDetails.aoe;
+  // Raw def damage of the area effect (Pooled = total pool; other falloffs = full damage per block in radius)
+  let blastDmg = 0;
   if (aEwar) {
     blastKind = 'ewar';
     blastRadius = aEwar.radius || 0;
     blastDmg = 0;
   } else if (activeAmmo.areaOfDamage) {
-    const directRad = activeAmmo.areaOfDamage.radius || 0;
-    const directDepth = activeAmmo.areaOfDamage.depth || 0;
-    const eol = (activeAmmo.areaOfDamage.endOfLife && activeAmmo.areaOfDamage.endOfLife.enable) ? activeAmmo.areaOfDamage.endOfLife : null;
-    const ae = (activeAmmo.areaOfDamage.areaEffect && activeAmmo.areaOfDamage.areaEffect.areaEffect) ? activeAmmo.areaOfDamage.areaEffect : null;
-    blastRadius = directRad || (eol ? eol.radius : 0) || (ae ? ae.radius : 0);
-    blastDepth = directDepth || (eol ? eol.depth : 0) || (ae ? ae.radius : 0);
-    if (eol && eol.damage) blastDmg = Math.max(blastDmg, eol.damage);
+    const aod = activeAmmo.areaOfDamage;
+    const bbh = (aod.byBlockHit && aod.byBlockHit.enable) ? aod.byBlockHit : null;
+    const eol = (aod.endOfLife && aod.endOfLife.enable) ? aod.endOfLife : null;
+    const ae = (aod.areaEffect && aod.areaEffect.areaEffect) ? aod.areaEffect : null;
+    blastRadius = (eol ? eol.radius : 0) || (bbh ? bbh.radius : 0) || (ae ? ae.radius : 0);
+    blastDepth = (eol ? eol.depth : 0) || (bbh ? bbh.depth : 0) || (ae ? ae.radius : 0);
+    blastDmg = Math.max(eol ? (eol.damage || 0) : 0, bbh ? (bbh.damage || 0) : 0, ae ? (ae.damage || 0) : 0);
   }
-  if (blastRadius >= 10 && (blastDmg || 0) <= 1) {
+  if (blastRadius >= 10 && isAntiProjectileArea(activeAmmo, { damage: blastDmg })) {
     // Token-damage wide burst (Flak PROX): anti-projectile screen, no real explosive payload
     blastKind = 'screen';
     blastDmg = 0;
@@ -3768,7 +3772,6 @@ function updateCombatTelemetry() {
 
   // Update Hero Metrics (scaled by currentBatteryMultiplier)
   const bMult = currentBatteryMultiplier || 1;
-  const topProfile = getTopArmorProfile(activeAmmo.damageScales || {});
   const baseEffectiveDps = Math.round(sustainedDps * topProfile.mult);
   const scaledEffectiveDps = baseEffectiveDps * bMult;
   const baseEffectiveAlpha = Math.round(alphaVolley * topProfile.mult);
@@ -3811,7 +3814,8 @@ function updateCombatTelemetry() {
 
   // Render Pillar 1 Hero Micro-Visuals
   renderDpsCompositionStrip(dmgDetails, isBeam);
-  const isPlasma = /plasma/i.test(activeAmmo?.name || '') || /plasma/i.test(activeWeapon?.name || '');
+  // Charged bolt: HybridRound whose area payload outweighs its kinetic core
+  const isPlasma = Boolean(activeAmmo.hybridRound) && dmgDetails.aoe > dmgDetails.base;
   renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma);
 
   // Damage Per Shot & Payload Breakdown
@@ -3978,22 +3982,19 @@ function updateCombatTelemetry() {
     if (blastKind === 'ewar') {
       tmBlastSub.textContent = 'EWAR effect — disables target systems (no block damage)';
     } else if (blastKind === 'screen') {
-      tmBlastSub.textContent = '2 bursts per Heavy Missile · 15 / Torpedo';
+      tmBlastSub.textContent = describePdKills(activeAmmo, 'bursts') || 'Anti-projectile burst (no block damage)';
     } else if (hasRealBlast) {
-      tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="Pooled AoE: Like misery, damage is shared equally across all blocks in the blast radius until the pool runs dry.">Area Detonation (Pooled Damage) ℹ️</span>`;
+      const aod = activeAmmo.areaOfDamage || {};
+      const area = (aod.endOfLife && aod.endOfLife.enable) ? aod.endOfLife : ((aod.byBlockHit && aod.byBlockHit.enable) ? aod.byBlockHit : {});
+      const falloff = area.falloff || 'Pooled';
+      const tip = falloff === 'Pooled'
+        ? 'Pooled AoE: Like misery, damage is shared equally across all blocks in the blast radius until the pool runs dry.'
+        : `${falloff} AoE: every block within ${area.radius} m (depth ${area.depth} m) takes the listed damage scaled by ${falloff} falloff (≈${Math.round(WcMath.aoeDamage(area, 'Large', false)).toLocaleString()} hp total on a solid large-grid hull).`;
+      tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="${tip}">Area Detonation (${falloff} Damage) ℹ️</span>`;
     } else if (isDirectIntercept) {
-      if (hhm >= 500) {
-        tmBlastSub.textContent = '1-shot any incoming munition';
-      } else if (hhm >= 3) {
-        tmBlastSub.textContent = '5 hits per Heavy Missile · 50 / Torpedo';
-      } else if (hhm === 2) {
-        tmBlastSub.textContent = '8 hits per Heavy Missile · 75 / Torpedo';
-      } else {
-        tmBlastSub.textContent = '1 PD HP subtracted per bullet hit';
-      }
+      tmBlastSub.textContent = describePdKills(activeAmmo, 'hits') || `${hhm} PD HP subtracted per hit`;
     } else {
-      const isRadar = /radar|sensor|designator/i.test(activeWeapon?.name || '') || /radar|sensor|designator/i.test(activeAmmo?.name || '');
-      tmBlastSub.textContent = isRadar ? 'Sensor Wave Only (No Explosive Payload)' : 'Direct Kinetic Penetration Only';
+      tmBlastSub.textContent = dmgDetails.total <= 0 ? 'No Damage Payload (sensor / utility round)' : 'Direct Kinetic Penetration Only';
     }
   }
 
@@ -4068,7 +4069,7 @@ function updateCombatTelemetry() {
   const terrainNotice = getMunitionTerrainClearance(activeAmmo);
   if (badgeTerrainCruise) {
     if (terrainNotice) {
-      const elev = activeAmmo.trajectory?.elevation || 500;
+      const elev = terrainNotice.elevation;
       badgeTerrainCruise.textContent = `🏔️ ${Math.round(elev)}m Cruise`;
       badgeTerrainCruise.title = `${terrainNotice.text} — Assumes Keen's voxel collision solver doesn't phase you into the planet core today.`;
       badgeTerrainCruise.style.display = 'inline-flex';
@@ -4081,23 +4082,23 @@ function updateCombatTelemetry() {
     if (ammoHealth > 0) {
       if (ammoHealth >= 150) {
         badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Heavy Hull`;
-        badgeMunitionHealth.title = `Heavy Armored Munition: Absorbs ${ammoHealth} point-defense damage (15 Flak bursts or 50 Gatling rounds) before dying.`;
+        badgeMunitionHealth.title = `Heavy Armored Munition: Absorbs ${ammoHealth} point-defense damage${describePdSurvival(activeAmmo)} before dying.`;
         badgeMunitionHealth.className = 'badge badge-cyan pillar-header-badge';
       } else if (ammoHealth >= 100) {
         badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Armored Hull`;
-        badgeMunitionHealth.title = `Armored Munition: Absorbs ${ammoHealth} PD damage (10 Flak bursts or 34 Gatling rounds).`;
+        badgeMunitionHealth.title = `Armored Munition: Absorbs ${ammoHealth} PD damage${describePdSurvival(activeAmmo)}.`;
         badgeMunitionHealth.className = 'badge badge-cyan pillar-header-badge';
       } else if (ammoHealth >= 15) {
         badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Reinforced Hull`;
-        badgeMunitionHealth.title = `Reinforced Munition: Absorbs ${ammoHealth} PD damage (survives 1 Flak burst, destroyed by 5 Gatling hits).`;
+        badgeMunitionHealth.title = `Reinforced Munition: Absorbs ${ammoHealth} PD damage${describePdSurvival(activeAmmo)}.`;
         badgeMunitionHealth.className = 'badge badge-green pillar-header-badge';
       } else if (ammoHealth >= 5) {
         badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Light Munition`;
-        badgeMunitionHealth.title = `Light Munition: Absorbs ${ammoHealth} PD damage before destruction.`;
+        badgeMunitionHealth.title = `Light Munition: Absorbs ${ammoHealth} PD damage${describePdSurvival(activeAmmo)} before destruction.`;
         badgeMunitionHealth.className = 'badge badge-amber pillar-header-badge';
       } else {
         badgeMunitionHealth.textContent = `🛡️ ${ammoHealth} HP Fragile Munition`;
-        badgeMunitionHealth.title = `Fragile Munition: Vaporized by any single point-defense hit or flak burst.`;
+        badgeMunitionHealth.title = `Fragile Munition: Absorbs ${ammoHealth} PD damage${describePdSurvival(activeAmmo)}.`;
         badgeMunitionHealth.className = 'badge badge-red pillar-header-badge';
       }
       badgeMunitionHealth.style.display = 'inline-flex';
@@ -4107,20 +4108,13 @@ function updateCombatTelemetry() {
   }
 
   // Max Engagement Range & Velocity Preview (Pillar 2)
-  const isTrackingWeapon = activeWeapon.type === 'Turret';
-  const maxEngagementRange = isTrackingWeapon
-    ? (parseFloat(wMaxTargetDistance.value) || activeWeapon.maxTargetDistance || 0)
-    : (parseFloat(tMaxTrajectory.value) || (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0);
+  const engagement = getEngagementRange(activeWeapon, activeAmmo, true);
+  const isTrackingWeapon = engagement.gated;
+  const maxEngagementRange = engagement.range;
   if (outMaxRange) {
     outMaxRange.innerHTML = `${Math.round(maxEngagementRange).toLocaleString()} <span class="unit-sub">m</span>`;
   }
-  // Reach also depends on the loaded munition's own max trajectory, which can exceed a turret's targeting range gate.
-  const ammoMaxTrajectory = (activeAmmo.trajectory && activeAmmo.trajectory.maxTrajectory) || 0;
-  if (outMaxRangeSource) {
-    outMaxRangeSource.textContent = isTrackingWeapon
-      ? (ammoMaxTrajectory > 0 ? `Targeting Range · Ammo Max: ${Math.round(ammoMaxTrajectory).toLocaleString()}m` : 'Targeting Range')
-      : 'Ammo Max Trajectory';
-  }
+  if (outMaxRangeSource) outMaxRangeSource.textContent = engagement.label;
 
   if (outMuzzleVelocityPreview) {
     outMuzzleVelocityPreview.innerHTML = isBeam
@@ -4128,7 +4122,7 @@ function updateCombatTelemetry() {
       : `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
   }
   if (outFlightDelay1km) {
-    const flightDist = ammoMaxTrajectory > 0 ? ammoMaxTrajectory : maxEngagementRange;
+    const flightDist = maxEngagementRange;
     const flightTime = muzzleSpeed > 0 ? (flightDist / muzzleSpeed).toFixed(2) : '0.00';
     outFlightDelay1km.textContent = isBeam
       ? `Flight to ${Math.round(flightDist).toLocaleString()}m: 0.00s (Instant hit)`
@@ -4297,8 +4291,9 @@ function updateCombatTelemetry() {
   const idlePwr = parseFloat(wIdlePower.value) || 0.01;
   const energyPerShot = parseFloat(aEnergyCost.value) || 0;
   const trajPB = parseFloat(wTrajectilesPerBarrel.value) || 1;
-  const wcEnergyBase = aEwar ? (aEwar.strength || 0) : (parseFloat(aBaseDamage.value) || 0);
-  const operationalPwrNum = idlePwr + (energyPerShot * wcEnergyBase * (rof / 3600) * barrels * trajPB);
+  // WC SinkPower: IdlePower plus the charge draw of energy / hybrid rounds (plain physical rounds never charge)
+  const liveAmmo = Object.assign({}, activeAmmo, { energyCost: energyPerShot, baseDamage: parseFloat(aBaseDamage.value) || 0 });
+  const operationalPwrNum = getWeaponPowerDraw(activeWeapon, liveAmmo, { rateOfFire: rof, barrelsPerShot: barrels, trajectilesPerBarrel: trajPB, idlePower: idlePwr }).operational;
   const scaledOperationalPwrNum = operationalPwrNum * bMult;
   const scaledIdlePwr = (idlePwr * bMult).toFixed(3);
   const operationalPwr = scaledOperationalPwrNum.toFixed(2);
@@ -4306,10 +4301,12 @@ function updateCombatTelemetry() {
   outPowerIdle.textContent = `Idle Draw: ${scaledIdlePwr} MW${bMult > 1 ? ` (${bMult}x Array)` : ''}`;
 
   // Combat Cycle & Sustained Consumption / Thermal Profile (Battery Scaled)
-  const heatShot = parseFloat(wHeatPerShot.value) || 0;
-  const maxHeat = parseFloat(wMaxHeat.value) || 0;
-  const sinkRate = parseFloat(wHeatSinkRate.value) || 0;
-  const heatPerSec = (rof / 60) * heatShot;
+  // WC heat: HeatPerShot x ammo HeatModifier per barrel fired; HeatSinkRate per second; overheat clears at MaxHeat x Cooldown
+  const heatShot = fireParams.heatPerShot;
+  const maxHeat = fireParams.maxHeat;
+  const sinkRate = fireParams.heatSinkRate;
+  const heatK = WcMath.heatConstants(fireParams);
+  const heatPerSec = (rof / 60) * barrels * heatShot;
   const hasHeat = maxHeat > 0 && heatShot > 0;
 
   // Consumption metrics (scaled by battery multiplier)
@@ -4318,7 +4315,8 @@ function updateCombatTelemetry() {
   const roundsPerMin = effectiveRps * 60 * bMult;
   const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
   const kgUraniumPerMin = scaledOperationalPwrNum / 60;
-  const invVol = (activeWeapon && activeWeapon.inventorySize) ? activeWeapon.inventorySize : (parseFloat(wInventorySize?.value) || 0.9);
+  // The input holds the working-tree value (curated binding), so edits and "Use suggested" show up here
+  const invVol = parseFloat(wInventorySize?.value) || (activeWeapon && activeWeapon.inventorySize) || 0.9;
 
   // Magazine physical volume for cargo consumption planning
   const magSubtype = activeAmmo ? (activeAmmo.ammoMagazine || 'Standard') : 'Standard';
@@ -4383,12 +4381,13 @@ function updateCombatTelemetry() {
   if (hasHeat && heatPerSec > sinkRate) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
     const netHeatSec = heatPerSec - sinkRate;
-    const timeToOverheat = (maxHeat * 0.7) / netHeatSec;
-    const cooldownSec = (maxHeat * 0.7) / sinkRate;
-    const dutyCycle = Math.round((timeToOverheat / (timeToOverheat + cooldownSec)) * 100);
+    const timeToOverheat = maxHeat / netHeatSec;
+    const cooldownSec = sinkRate > 0 ? (maxHeat * (1 - heatK.coolDown)) / sinkRate : Infinity;
+    // Measured by the WC tick replica: share of time the weapon is allowed to fire
+    const dutyCycle = Math.max(0, Math.min(100, Math.round((1 - (stallShare || 0)) * 100)));
 
     if (isDegradeRof) {
-      const burstSec = (maxHeat * 0.8) / netHeatSec;
+      const burstSec = (maxHeat * heatK.heatThresholdStart) / netHeatSec;
       const equilRps = Math.max(0.1, sinkRate / heatShot);
       const equilRpm = Math.round(equilRps * 60);
       outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME (Throttled)`;
@@ -4403,7 +4402,7 @@ function updateCombatTelemetry() {
     }
     outCooldownTime.innerHTML = consumptionHtml;
     hudCycle = isDegradeRof
-      ? `Throttles after ${((maxHeat * 0.8) / netHeatSec).toFixed(1)}s`
+      ? `Throttles after ${((maxHeat * heatK.heatThresholdStart) / netHeatSec).toFixed(1)}s`
       : `Overheats in ${timeToOverheat.toFixed(1)}s`;
   } else if (hasHeat) {
     if (outCombatCycleTitle) outCombatCycleTitle.textContent = "🔥 THERMAL PROFILE & DUTY CYCLE";
@@ -4475,202 +4474,13 @@ function updateCombatTelemetry() {
 // ==========================================================================
 // AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS")
 // ==========================================================================
-function updateAmmoLogistics() {
-  const dataset = (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' && MAGAZINES_BLUEPRINTS_DATA.length > 0)
-    ? MAGAZINES_BLUEPRINTS_DATA
-    : magazinesBlueprintsDb;
-
-  const mag = dataset.find(m => m.subtypeId === selectedLogisticsMagSubtype) || dataset[0];
-  if (!mag) return;
-
-  if (logActiveAmmoName) logActiveAmmoName.textContent = mag.displayName;
-
-  const targetDmgDensity = parseFloat(inputDmgDensity.value) || 5000;
-  const physicalDensity = parseFloat(inputPhysicalDensity.value) || 4.0;
-  const roleMult = parseFloat(selectRoleMultiplier.value) || 1.0;
-  const craftTime = parseFloat(inputCraftTime.value) || mag.productionTime;
-  const rus = parseFloat(inputRUs.value) || 0;
-
-  // Single-shot damage from ammosDb if available
-  const ammoObj = ammosDb[mag.subtypeId] || Object.values(ammosDb).find(a => a.ammoMagazine === mag.subtypeId);
-  const singleShotDmg = ammoObj ? getAmmoDamageDetailed(ammoObj).total : 100;
-  const totalMagDamage = singleShotDmg * mag.capacity;
-
-  // Derived Volume & Mass
-  const magVolumeL = totalMagDamage / targetDmgDensity;
-  const magMassKg = magVolumeL * physicalDensity;
-
-  if (outMagVolume) outMagVolume.textContent = `${magVolumeL.toFixed(1)} L`;
-  if (outMagMass) outMagMass.textContent = `${magMassKg.toFixed(1)} kg`;
-
-  // Internal Buffer & Depletion
-  const weaponUsingAmmo = weaponsDb.find(w => {
-    const ammos = w.assignedAmmos || [w.ammoName];
-    return ammos.some(aKey => {
-      const a = ammosDb[aKey];
-      return a && (a.ammoMagazine === mag.subtypeId || aKey === mag.subtypeId);
-    });
-  });
-
-  const magsToLoad = weaponUsingAmmo ? (weaponUsingAmmo.magsToLoad || 4) : 4;
-  const rof = weaponUsingAmmo ? (weaponUsingAmmo.rateOfFire || 600) : 600;
-
-  const suggestedWeaponVolKL = (magVolumeL * magsToLoad * 2.2) / 1000;
-  if (outSuggestedVol) outSuggestedVol.textContent = `${suggestedWeaponVolKL.toFixed(2)} kL (2.2x)`;
-
-  // Same WC fire/reload cycle as Combat Telemetry (barrels, reload, spool, bursts)
-  const cycle = computeFireCycle({
-    rof, barrels: weaponUsingAmmo ? (weaponUsingAmmo.barrelsPerShot || 1) : 1, trajPerBarrel: 1,
-    magSize: mag.capacity, mags: magsToLoad,
-    reloadTicks: weaponUsingAmmo ? (weaponUsingAmmo.reloadTime || 0) : 0,
-    delayUntilFire: weaponUsingAmmo ? (weaponUsingAmmo.delayUntilFire || 0) : 0,
-    shotsInBurst: weaponUsingAmmo ? (weaponUsingAmmo.shotsInBurst || 0) : 0,
-    delayAfterBurst: weaponUsingAmmo ? (weaponUsingAmmo.delayAfterBurst || 0) : 0,
-    energy: false
-  });
-  const roundsPerSec = cycle.totalRounds / cycle.totalCycleSec;
-
-  const depletionSec = cycle.spoolSec + cycle.fireDurationSec;
-  if (outDepletionTime) outDepletionTime.textContent = `${depletionSec.toFixed(1)} s`;
-
-  // Cargo Packing & Fleet Endurance
-  const smallMags = Math.floor(3375 / Math.max(0.1, magVolumeL));
-  const smallTotalDmg = smallMags * totalMagDamage;
-  const smallFireTimeSec = (smallMags * mag.capacity) / roundsPerSec;
-
-  if (outSmallCargoMags) outSmallCargoMags.textContent = `${smallMags.toLocaleString()} Mags`;
-  if (outSmallCargoDmg) outSmallCargoDmg.textContent = `Total Damage Stored: ${Math.round(smallTotalDmg).toLocaleString()} hp`;
-  if (outSmall1GunTime) outSmall1GunTime.textContent = formatTime(smallFireTimeSec);
-  if (outSmall20GunTime) outSmall20GunTime.textContent = formatTime(smallFireTimeSec / 20);
-
-  const largeMags = Math.floor(421875 / Math.max(0.1, magVolumeL));
-  const largeTotalDmg = largeMags * totalMagDamage;
-  const largeFireTimeSec = (largeMags * mag.capacity) / roundsPerSec;
-
-  if (outLargeCargoMags) outLargeCargoMags.textContent = `${largeMags.toLocaleString()} Mags`;
-  if (outLargeCargoDmg) outLargeCargoDmg.textContent = `Total Damage Stored: ${Math.round(largeTotalDmg).toLocaleString()} hp`;
-  if (outLarge1GunTime) outLarge1GunTime.textContent = formatTime(largeFireTimeSec);
-  if (outLarge20GunTime) outLarge20GunTime.textContent = formatTime(largeFireTimeSec / 20);
-
-  updateHudLogistics({
-    name: mag.displayName, magDamage: totalMagDamage, density: targetDmgDensity,
-    emptySec: mag.capacity / roundsPerSec, cargoSec: largeFireTimeSec
-  });
-
-  // XML Blueprint Prerequisites Generation & Visual Breakdown
-  const baseSbcMass = Math.max(0.1, mag.mass);
-  const massRatio = magMassKg / baseSbcMass;
-  const roleScale = roleMult / Math.max(0.1, mag.roleMultiplier);
-  const scale = massRatio * roleScale;
-
-  let calculatedPrereqs = [];
-  if (mag.prerequisites && mag.prerequisites.length > 0) {
-    calculatedPrereqs = mag.prerequisites.map(p => {
-      let amt = p.amount;
-      if (p.subtypeId === 'GVK_RUs') {
-        amt = rus > 0 ? rus : p.amount;
-      } else {
-        amt = (scale > 0.98 && scale < 1.02) ? p.amount : Math.round((p.amount * scale) * 10) / 10;
-      }
-      return {
-        typeId: p.typeId || 'Ingot',
-        subtypeId: p.subtypeId,
-        amount: Math.max(0.01, amt)
-      };
-    });
-
-    if (rus > 0 && !calculatedPrereqs.some(p => p.subtypeId === 'GVK_RUs')) {
-      calculatedPrereqs.unshift({ typeId: 'Ingot', subtypeId: 'GVK_RUs', amount: rus });
-    }
-  } else {
-    calculatedPrereqs = [
-      { typeId: 'Ingot', subtypeId: 'Iron', amount: Math.round(magMassKg * 0.70 * 10) / 10 },
-      { typeId: 'Ingot', subtypeId: 'Nickel', amount: Math.round(magMassKg * 0.15 * 10) / 10 },
-      { typeId: 'Ingot', subtypeId: 'Magnesium', amount: Math.round(magMassKg * 0.10 * 100) / 100 }
-    ];
-    if (rus > 0) {
-      calculatedPrereqs.unshift({ typeId: 'Ingot', subtypeId: 'GVK_RUs', amount: rus });
-    }
-  }
-
-  // Render Visual Materials Breakdown Chips
-  if (blueprintVisualMaterials) {
-    blueprintVisualMaterials.innerHTML = calculatedPrereqs.map(p => {
-      const unit = p.subtypeId === 'GVK_RUs' ? 'RUs' : 'kg';
-      const formattedAmt = p.amount >= 100 ? Math.round(p.amount).toLocaleString() : p.amount.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 2 });
-      return `
-        <div class="blueprint-mat-chip">
-          <span class="blueprint-mat-name">${p.subtypeId}</span>
-          <span class="blueprint-mat-amount">${formattedAmt} <span style="font-size: 10px; font-weight: normal; color: var(--text-muted);">${unit}</span></span>
-        </div>
-      `;
-    }).join('');
-  }
-
-  // Generate XML
-  let xml = `  <Blueprint>\n`;
-  xml += `    <Id>\n`;
-  xml += `      <TypeId>BlueprintDefinition</TypeId>\n`;
-  xml += `      <SubtypeId>${mag.blueprintSubtype || ('00_' + mag.subtypeId)}</SubtypeId>\n`;
-  xml += `    </Id>\n`;
-  xml += `    <DisplayName>${mag.displayName}</DisplayName>\n`;
-  xml += `    <Icon>${mag.icon || ('Textures\\GUI\\Icons\\ammo\\' + mag.subtypeId + '.dds')}</Icon>\n`;
-  xml += `    <Prerequisites>\n`;
-  calculatedPrereqs.forEach(p => {
-    xml += `      <Item Amount="${p.amount}" TypeId="${p.typeId}" SubtypeId="${p.subtypeId}" />\n`;
-  });
-  xml += `    </Prerequisites>\n`;
-  xml += `    <Result Amount="1" TypeId="AmmoMagazine" SubtypeId="${mag.subtypeId}" />\n`;
-  xml += `    <BaseProductionTimeInSeconds>${craftTime}</BaseProductionTimeInSeconds>\n`;
-  xml += `  </Blueprint>`;
-
-  if (codeBlueprintXml) {
-    codeBlueprintXml.textContent = xml;
-  }
-}
-
+/// <summary>Durations as "16s", "1m 18s", "2h 42m", "3d 4h" (a bare "m" reads as metres elsewhere in the studio).</summary>
 function formatTime(seconds) {
-  if (seconds < 60) return `${Math.round(seconds)}s`;
-  if (seconds < 3600) return `${(seconds / 60).toFixed(1)}m`;
-  return `${(seconds / 3600).toFixed(1)}h`;
-}
-
-function setupLogisticsEvents() {
-  if (inputDmgDensitySlider && inputDmgDensity) {
-    inputDmgDensitySlider.addEventListener('input', (e) => {
-      inputDmgDensity.value = e.target.value;
-      updateAmmoLogistics();
-    });
-    inputDmgDensity.addEventListener('input', (e) => {
-      inputDmgDensitySlider.value = e.target.value;
-      updateAmmoLogistics();
-    });
-  }
-
-  [inputPhysicalDensity, selectRoleMultiplier, inputRUs, inputCraftTime].forEach(el => {
-    if (el) el.addEventListener('input', updateAmmoLogistics);
-  });
-
-  if (logisticsAmmoSelect) {
-    logisticsAmmoSelect.addEventListener('change', (e) => {
-      selectLogisticsMagazine(e.target.value, true);
-    });
-  }
-
-  if (btnResetAmmoLogistics) {
-    btnResetAmmoLogistics.addEventListener('click', () => {
-      selectLogisticsMagazine(selectedLogisticsMagSubtype, true);
-      showToast("↺ Ammo Logistics levers reset to official SBC defaults!");
-    });
-  }
-
-  if (btnCopyBlueprintXml) {
-    btnCopyBlueprintXml.addEventListener('click', () => {
-      navigator.clipboard.writeText(codeBlueprintXml.textContent).then(() => {
-        showToast("📋 Blueprint <Prerequisites> XML copied to clipboard!");
-      });
-    });
-  }
+  const s = Math.round(seconds);
+  if (s < 60) return `${s}s`;
+  if (s < 3600) return `${Math.floor(s / 60)}m ${s % 60}s`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ${Math.floor((s % 3600) / 60)}m`;
+  return `${Math.floor(s / 86400)}d ${Math.floor((s % 86400) / 3600)}h`;
 }
 
 // ==========================================================================
@@ -4742,68 +4552,218 @@ function computeSteadyStateDps(dmg, effectiveRps, maxActive) {
   return Math.round(rps * dmg.total);
 }
 
-function getAmmoDamageDetailed(ammo, depth = 0) {
-  if (!ammo || depth > 3) return { base: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false };
-  // WC EwarDef.Enable disables base AND AoE damage - only the effect lands
-  const isEwar = !!(ammo.ewar && ammo.ewar.enable);
-  // TimedSpawns carrier (ParentDies): parent dies when it spawns its child, so its direct hit never lands
-  const timed = (ammo.fragment && ammo.fragment.enable && ammo.fragment.timedSpawns && ammo.fragment.timedSpawns.enable) ? ammo.fragment.timedSpawns : null;
-  const isCarrier = !!(timed && timed.parentDies && ammo.fragment.ammoRound);
-  const base = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamage) || 0);
-  const cutoff = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamageCutoff) || 0);
-  // Penetrating rounds (WC BaseDamageCutoff) apply at most Cutoff per block hit and carry the remainder onward
-  const perBlockBase = cutoff > 0 ? Math.min(base, cutoff) : base;
-  const penBlocks = cutoff > 0 ? Math.max(1, Math.floor(base / cutoff)) : 1;
-
-  let aoe = 0;
-  if (ammo.areaOfDamage) {
-    const directDmg = isCarrier ? 0 : (parseFloat(ammo.areaOfDamage.damage) || 0);
-    const eolDmg = (ammo.areaOfDamage.endOfLife && ammo.areaOfDamage.endOfLife.enable && parseFloat(ammo.areaOfDamage.endOfLife.damage)) || 0;
-    const aeDmg = (ammo.areaOfDamage.areaEffect && ammo.areaOfDamage.areaEffect.areaEffect && parseFloat(ammo.areaOfDamage.areaEffect.damage)) || 0;
-    aoe = directDmg + eolDmg + aeDmg;
+/// <summary>
+/// Resolves an AmmoRound reference the way WC does (AmmoConstants FragmentId / ComputeAmmoPattern): by AmmoRound
+/// among the weapon's full Ammos list, then among every parsed ammo. Keys double as rounds for ammos without one.
+/// </summary>
+function resolveAmmoRound(round, weapon) {
+  if (!round || !ammosDb) return null;
+  const pool = weapon ? (weapon.allAmmos || weapon.assignedAmmos || []) : [];
+  for (const k of pool) {
+    const a = ammosDb[k];
+    if (a && (a.ammoRound || k) === round) return a;
   }
+  const byKey = ammosDb[round];
+  if (byKey && (byKey.ammoRound || round) === round) return byKey;
+  for (const k in ammosDb) {
+    const a = ammosDb[k];
+    if (a && a.ammoRound === round) return a;
+  }
+  return null;
+}
 
-  let fragTotal = 0;
-  let fragInstant = 0;
-  let deliverySec = 0;
+// AreaOfDamage also applies HealthHitModifier damage to projectiles in the area. On an ammo with a HealthHitModifier,
+// a token blast (this many hp per block or less) is there for that anti-missile effect, not to damage blocks.
+const AOE_ANTI_PROJECTILE_MAX = 1;
+function isAntiProjectileArea(ammo, area) {
+  const hhm = parseFloat(((ammo && ammo.damageScales) || {}).healthHitModifier) || 0;
+  return hhm > 0 && (parseFloat(area && area.damage) || 0) <= AOE_ANTI_PROJECTILE_MAX;
+}
 
-  if (ammo.fragment && ammo.fragment.enable) {
-    const rnd = ammo.fragment.ammoRound;
-    const child = rnd ? ammosDb[rnd] : null;
-    const childD = child ? getAmmoDamageDetailed(child, depth + 1) : { total: 0, instantTotal: 0 };
-    const childSingleDmg = childD.total;
-    const cnt = parseInt(ammo.fragment.fragments) || 0;
+function emptyDamage() {
+  return { base: 0, bbh: 0, eol: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false, antiProjectile: false, parts: [], pattern: null };
+}
 
-    if (timed) {
-      // Each spawn event releases `Fragments` children
-      const sched = getTimedSpawnSchedule(ammo);
-      deliverySec = sched.deliverySec;
-      fragTotal = sched.spawns * cnt * childSingleDmg;
-      // Loitering spawners: only the first group lands in the opening volley
-      fragInstant = deliverySec <= 1.0 ? fragTotal : sched.firstVolley * cnt * childSingleDmg;
-    } else {
-      fragTotal = cnt * childSingleDmg;
-      fragInstant = fragTotal;
-      deliverySec = 0;
+/// <summary>
+/// Ideal per-trajectile payload (every hit lands, pools fully spent), following WeaponCore:
+/// - EWAR rounds deal no base or area damage (EwarDef.Enable)
+/// - ByBlockHit / EndOfLife only when Enable, spread over an ideal solid hull by RadiantAoe + falloff (Pooled = the pool)
+/// - on an ammo with a HealthHitModifier, an area of AOE_ANTI_PROJECTILE_MAX hp or less per block is an anti-projectile
+///   effect (e.g. Proximity Flak's 101 m / 1 hp blast vs missiles) and is not counted as block damage
+/// - fragments resolve by AmmoRound within the weapon's Ammos; TimedSpawns follow Projectile.cs cadence
+/// - a Weapon-mode Pattern spawns its expected member count per trajectile (Weapon.Shoot)
+/// parts = damage grouped by the ammo def that deals it, so each part takes its own DamageScales.
+/// </summary>
+function getAmmoDamageDetailed(ammo, depth = 0, weapon = null, opts = null) {
+  if (!ammo || depth > 10) return emptyDamage();
+  const resolve = (round) => resolveAmmoRound(round, weapon);
+
+  if (!(opts && opts.noPattern)) {
+    const pat = WcMath.weaponPattern(ammo, resolve);
+    if (pat.active) {
+      const out = emptyDamage();
+      const k = pat.members.length ? pat.count / pat.members.length : 0;
+      const sub = { noPattern: true, targetGrid: opts && opts.targetGrid };
+      const parentD = getAmmoDamageDetailed(ammo, depth, weapon, sub);
+      for (const m of pat.members) {
+        if (!m) continue;
+        const d = m === ammo ? parentD : getAmmoDamageDetailed(m, depth, weapon, sub);
+        for (const f of ['base', 'bbh', 'eol', 'aoe', 'frag', 'fragInstant', 'total', 'instantTotal']) out[f] += d[f] * k;
+        out.deliverySec = Math.max(out.deliverySec, d.deliverySec);
+        for (const p of d.parts) out.parts.push({ ammo: p.ammo, total: p.total * k, instant: p.instant * k });
+      }
+      out.cutoff = parentD.cutoff; out.perBlockBase = parentD.perBlockBase; out.penBlocks = parentD.penBlocks; out.ewar = parentD.ewar;
+      out.antiProjectile = parentD.antiProjectile;
+      out.pattern = { count: pat.count, members: pat.members.map((m) => (m ? (m.terminalName || m.name) : null)) };
+      out.source = { ammo, weapon, targetGrid: (opts && opts.targetGrid) || 'Large' };
+      return out;
     }
   }
 
-  const total = base + aoe + fragTotal;
-  const instantTotal = base + aoe + fragInstant;
+  const isEwar = !!(ammo.ewar && ammo.ewar.enable);
+  const frag = (ammo.fragment && ammo.fragment.enable) ? ammo.fragment : null;
+  const timed = (frag && frag.timedSpawns && frag.timedSpawns.enable) ? frag.timedSpawns : null;
+  // Fragment pattern (Mode Fragment/Both): each fragment is drawn from the pattern list instead of Fragment.AmmoRound
+  const pat = ammo.pattern || {};
+  const fragPatternNames = (pat.mode === 'Fragment' || pat.mode === 'Both') && Array.isArray(pat.patterns) ? pat.patterns.filter((n) => n) : [];
+  const children = frag ? (fragPatternNames.length ? fragPatternNames.map(resolve) : [resolve(frag.ammoRound)]).filter(Boolean) : [];
+  // TimedSpawns with ParentDies: the carrier ends on its final spawn, so its own impact is not counted
+  const isCarrier = !!(timed && timed.parentDies && children.length);
+  const base = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamage) || 0);
+  const cutoff = (isEwar || isCarrier) ? 0 : (parseFloat(ammo.baseDamageCutoff) || 0);
+  const pen = WcMath.penetration(base, cutoff);
+
+  let bbh = 0, eol = 0, legacy = 0;
+  const aod = ammo.areaOfDamage;
+  // Area effects land on an ideal solid hull of the target grid size (WcMath.aoeDamage mirrors RadiantAoe + falloff)
+  const targetGrid = (opts && opts.targetGrid) || 'Large';
+  let antiProjectile = false;
+  if (aod && !isEwar) {
+    const b = aod.byBlockHit, e = aod.endOfLife, ae = aod.areaEffect;
+    const blockAoe = (area, byBlockHit) => {
+      if (isAntiProjectileArea(ammo, area)) { antiProjectile = true; return 0; }
+      return WcMath.aoeDamage(area, targetGrid, byBlockHit);
+    };
+    if (b && b.enable && !isCarrier) bbh = blockAoe(b, true);
+    if (e && e.enable) eol = blockAoe(e, false);
+    if (ae && ae.areaEffect) legacy = parseFloat(ae.damage) || 0;
+  }
+  const aoe = bbh + eol + legacy;
+
+  let fragTotal = 0, fragInstant = 0, deliverySec = 0;
+  const parts = [{ ammo, total: base + aoe, instant: base + aoe }];
+  if (frag && children.length) {
+    const cnt = parseInt(frag.fragments) || 0;
+    const share = 1 / children.length;
+    let spawns = 1, firstVolley = 1;
+    if (timed) {
+      const sched = getTimedSpawnSchedule(ammo);
+      spawns = sched.spawns;
+      deliverySec = sched.deliverySec;
+      // Loitering spawners: only the first group lands in the opening volley
+      firstVolley = deliverySec <= 1.0 ? spawns : sched.firstVolley;
+    }
+    for (const child of children) {
+      const cd = getAmmoDamageDetailed(child, depth + 1, weapon, { noPattern: true, targetGrid });
+      const nTotal = spawns * cnt * share, nInstant = firstVolley * cnt * share;
+      fragTotal += nTotal * cd.total;
+      fragInstant += nInstant * cd.total;
+      deliverySec = Math.max(deliverySec, cd.deliverySec);
+      for (const p of cd.parts) parts.push({ ammo: p.ammo, total: p.total * nTotal, instant: p.total * nInstant });
+    }
+  }
 
   return {
-    base: base,
-    aoe: aoe,
+    base, bbh, eol, aoe,
     frag: fragTotal,
-    fragInstant: fragInstant,
-    total: total,
-    instantTotal: instantTotal,
-    deliverySec: deliverySec,
-    cutoff: cutoff,
-    perBlockBase: perBlockBase,
-    penBlocks: penBlocks,
-    ewar: isEwar
+    fragInstant,
+    total: base + aoe + fragTotal,
+    instantTotal: base + aoe + fragInstant,
+    deliverySec,
+    cutoff,
+    perBlockBase: pen.perBlock,
+    penBlocks: pen.blocks,
+    ewar: isEwar,
+    antiProjectile,
+    parts,
+    pattern: null,
+    source: { ammo, weapon, targetGrid }
   };
+}
+
+const TARGET_ARMOR_LABELS = { heavy: 'Heavy Armor', light: 'Light Armor', nonArmor: 'Non-Armor (Systems)' };
+/// <summary>
+/// Best-case target for a payload: each part takes its own ammo's per-block damageScale (WC SessionDamageMgr:
+/// Grids, Armor/Heavy/Light/NonArmor, NoGridOrArmorScaling, small-vs-large debuff) against large and small grids.
+/// mult = best effective payload / paper payload. perClass = best effective payload per armor class.
+/// </summary>
+function getEffectiveProfile(dmg, weapon) {
+  const shooterGrid = weapon && (weapon.grid || weapon.gridSize);
+  const total = dmg && dmg.total > 0 ? dmg.total : 0;
+  const parts = (dmg && dmg.parts) || [];
+  // Area effects reach more blocks on a small grid, so each target grid gets its own payload
+  const src = dmg && dmg.source;
+  const partsFor = (grid) => {
+    if (!src || !src.ammo || src.targetGrid === grid) return parts;
+    return getAmmoDamageDetailed(src.ammo, 0, src.weapon, { targetGrid: grid }).parts;
+  };
+  const gridParts = { Large: partsFor('Large'), Small: partsFor('Small') };
+  const perClass = {}, perClassGrid = {};
+  for (const armor of ['heavy', 'light', 'nonArmor']) {
+    perClass[armor] = 0; perClassGrid[armor] = [];
+    for (const grid of ['Large', 'Small']) {
+      const eff = gridParts[grid].reduce((s, p) => s + p.total * WcMath.blockDamageScale(p.ammo, { grid, armor }, shooterGrid), 0);
+      if (eff > perClass[armor] + 1e-9) { perClass[armor] = eff; perClassGrid[armor] = [grid]; }
+      else if (Math.abs(eff - perClass[armor]) <= 1e-9) perClassGrid[armor].push(grid);
+    }
+  }
+  const best = Math.max(perClass.heavy, perClass.light, perClass.nonArmor);
+  const winners = ['heavy', 'light', 'nonArmor'].filter((k) => Math.abs(perClass[k] - best) <= 1e-9 * Math.max(1, best));
+  const allEqual = winners.length === 3;
+  const grids = winners.reduce((g, k) => g.filter((x) => perClassGrid[k].includes(x)), ['Large', 'Small']);
+  // Large grids are the default reference; call out payloads that only peak against small grids
+  const gridTag = grids.length === 1 && grids[0] === 'Small' ? ' (Small Grid)' : '';
+  const label = (allEqual ? 'All Blocks' : winners.map((k) => TARGET_ARMOR_LABELS[k]).join(' & ')) + (best > 0 ? gridTag : '');
+  const mult = total > 0 ? Math.round((best / total) * 1e6) / 1e6 : 0;
+  return {
+    label, mult, allEqual, perClass,
+    isHeavy: winners.includes('heavy'), isLight: winners.includes('light'), isNonArmor: winners.includes('nonArmor')
+  };
+}
+
+/// <summary>
+/// PD reference targets: the sturdiest guided munitions in the loaded data (by Health), one per terminal name.
+/// </summary>
+function getPdReferenceTargets(limit) {
+  const seen = new Set();
+  return Object.values(ammosDb || {})
+    .filter((a) => a && a.hardPointUsable !== false && (a.health || 0) > 0 && a.trajectory && a.trajectory.guidance && a.trajectory.guidance !== 'None')
+    .sort((x, y) => (y.health || 0) - (x.health || 0))
+    .filter((a) => { const n = a.terminalName || a.name; if (seen.has(n)) return false; seen.add(n); return true; })
+    .slice(0, limit || 2);
+}
+
+// "N hits per <munition>" against the reference targets (WC DamageProjectile: HealthHitModifier per hit)
+function describePdKills(attacker, unit) {
+  const refs = getPdReferenceTargets(2);
+  if (!refs.length) return '';
+  const counts = refs.map((t) => WcMath.pdHitsToKill(attacker, t));
+  if (counts.every((c) => c <= 1)) return '1-shot any incoming munition';
+  return refs.map((t, i) => `${counts[i]} ${unit} per ${t.terminalName || t.name}`).join(' · ');
+}
+
+// " (N hits from <PD round>, ...)" for a munition vs the mod's player PD rounds (strongest and weakest HealthHitModifier)
+function describePdSurvival(target) {
+  const byName = new Map();
+  for (const w of weaponsDb || []) {
+    if (!w.pdProjectiles || isNpcWeapon(w)) continue;
+    const a = ammosDb[getSelectableAmmos(w)[0]];
+    if (a && !byName.has(a.terminalName || a.name)) byName.set(a.terminalName || a.name, a);
+  }
+  const rounds = [...byName.values()].sort((x, y) => WcMath.pdHitsToKill(x, target) - WcMath.pdHitsToKill(y, target));
+  if (!rounds.length) return '';
+  const pick = rounds.length > 1 ? [rounds[0], rounds[rounds.length - 1]] : rounds;
+  return ' (' + pick.map((a) => { const n = WcMath.pdHitsToKill(a, target); return `${n} ${n === 1 ? 'hit' : 'hits'} from ${a.terminalName || a.name}`; }).join(' to ') + ')';
 }
 
 function getAmmoIconUrl(ammo) {
@@ -4823,20 +4783,23 @@ function getWeaponIconUrl(weapon) {
 // DYNAMIC WEAPON METRICS & MOD-WIDE SCALING
 // ==========================================================================
 
-/// <summary>
-/// Identifies whether a weapon or munition operates as an instantaneous beam / directed energy weapon.
-/// Excludes non-ballistic beams from physical speed scaling.
+//// <summary>
+/// Hitscan munition (no flight time): WC AmmoConstants.IsBeamWeapon (Beams.Enable with Guidance None),
+/// or a round fast enough (>= 10 km/s) to arrive in the tick it is fired.
 /// </summary>
 function isBeamWeapon(weapon, ammo) {
-  if (ammo) {
-    if (ammo.isBeam || (ammo.beams && ammo.beams.enable)) return true;
-    const spd = (ammo.trajectory && ammo.trajectory.desiredSpeed !== undefined) ? ammo.trajectory.desiredSpeed : 0;
-    if (spd >= 10000) return true;
-    if (spd === 0 && ((ammo.ammoRound && ammo.ammoRound.toLowerCase().includes('laser')) || (weapon && (weapon.name || '').toLowerCase().includes('laser')))) return true;
-    if (ammo.ammoRound && ammo.ammoRound.toLowerCase().includes('beam')) return true;
-  }
-  if (weapon && ((weapon.name || '').toLowerCase().includes('radar') || (weapon.name || '').toLowerCase().includes('designator'))) return true;
-  return false;
+  return WcMath.isHitscan(ammo);
+}
+
+/// <summary>
+/// WC power sink (CoreComponent.SinkPower): IdlePower (min 0.001 MW) always, plus AssignedPower while a MustCharge
+/// (energy or hybrid) weapon charges = WeaponState.UpdateDesiredPower, ShotEnergyCost x shots per tick.
+/// </summary>
+function getWeaponPowerDraw(weapon, ammo, overrides) {
+  const w = Object.assign({}, weapon || {}, overrides || {});
+  const idle = Math.max(parseFloat(w.idlePower) || 0, 0.001);
+  const e = getWcEnergy(w, ammo || {});
+  return { idle, operational: idle + (e.mustCharge ? e.desiredPower : 0), mustCharge: e.mustCharge };
 }
 
 function calculateWeaponMetrics(weapon, ammoKeyOverride) {
@@ -4845,39 +4808,20 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
 
-  const rof = weapon.rateOfFire || 600;
-  const barrels = weapon.barrelsPerShot || 1;
-  const reloadTicks = weapon.reloadTime || 0;
-  const mags = Math.max(1, weapon.magsToLoad || 1);
-  const magSize = Math.max(1, getShotsPerMag(weapon, a));
-
-  const { projectiles, totalCycleSec, effectiveRps } = computeFireCycle({
-    rof, barrels, trajPerBarrel: weapon.trajectilesPerBarrel || 1, magSize, mags, reloadTicks,
-    delayUntilFire: weapon.delayUntilFire || 0,
-    shotsInBurst: weapon.shotsInBurst || 0,
-    delayAfterBurst: weapon.delayAfterBurst || 0,
-    energy: isEnergyAmmo(a)
-  });
-  const dmgDetails = getAmmoDamageDetailed(a);
+  const { projectiles, effectiveRps } = computeFireCycle(getFireCycleParams(weapon, a, false));
+  const dmgDetails = getAmmoDamageDetailed(a, 0, weapon);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
   const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, weapon.maxActiveProjectiles || 0);
 
-  // Use Weapon's targeting range; fallback to trajectory if 0 or fixed weapon
-  let range = weapon.maxTargetDistance || 0;
-  if (range <= 0) {
-    range = (a.trajectory && a.trajectory.maxTrajectory) ? Math.min(4000, a.trajectory.maxTrajectory) : 1600;
-  }
+  const range = getEngagementRange(weapon, a, false).range;
 
   const rawVel = (a.trajectory && a.trajectory.desiredSpeed !== undefined) ? a.trajectory.desiredSpeed : (weapon.desiredSpeed || 1000);
   const isBeam = isBeamWeapon(weapon, a);
   const velocity = isBeam ? 0 : rawVel;
   const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
-  // Mirrors the Power Required card formula (WC: EnergyCost * BaseDamage * RateOfFire / 3600; EffectStrength for EWAR)
-  const wcEnergyBase = (a.ewar && a.ewar.enable) ? (a.ewar.strength || 0) : (a.baseDamage || 0);
-  const trajPB = weapon.trajectilesPerBarrel || 1;
-  const power = (weapon.idlePower || 0.01) + ((a.energyCost || 0) * wcEnergyBase * (rof / 3600) * barrels * trajPB);
+  const power = getWeaponPowerDraw(weapon, a).operational;
 
   let integrity = 0;
   if (weapon.components && weapon.components.length > 0) {
@@ -4893,10 +4837,10 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const techInfo = getTechSummary(weapon.components);
   const ups = (weapon.upCost !== undefined && weapon.upCost !== null) ? weapon.upCost : techInfo.upCost;
 
-  const profile = getTopArmorProfile(a.damageScales || {});
+  const profile = getEffectiveProfile(dmgDetails, weapon);
   const effectiveDps = Math.round(sustainedDps * profile.mult);
   const effectiveAlphaVolley = Math.round(alphaVolley * profile.mult);
-  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power, ups, isBeam };
+  return { sustainedDps, effectiveDps, alphaVolley, effectiveAlphaVolley, range, velocity, tracking, integrity, power, ups, isBeam, profile };
 }
 
 function isNpcWeapon(w) {
@@ -5080,11 +5024,7 @@ function updateComparisonRadar() {
   const activeDps = parseFloat(outSustainedDps ? outSustainedDps.textContent.replace(/,/g, '') : 0) || 0;
   const activeAlpha = parseFloat(outAlphaDmg ? outAlphaDmg.textContent.replace(/,/g, '') : 0) || 0;
   
-  // Use weapon's targeting range, falling back to trajectory if 0 or fixed
-  let activeRange = (wMaxTargetDistance && parseFloat(wMaxTargetDistance.value)) || 0;
-  if (activeRange <= 0) {
-    activeRange = (tMaxTrajectory && parseFloat(tMaxTrajectory.value)) ? Math.min(4000, parseFloat(tMaxTrajectory.value)) : 1600;
-  }
+  const activeRange = activeWeapon ? getEngagementRange(activeWeapon, activeAmmo, true).range : 1600;
   const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
   const activeTrack = (outTraverseDeg && parseFloat(outTraverseDeg.textContent)) || 10;
   const activePower = (outPowerMw && parseFloat(outPowerMw.textContent)) || 0;
@@ -5103,7 +5043,7 @@ function updateComparisonRadar() {
   const activeTechInfo = getTechSummary(activeWeapon ? activeWeapon.components : []);
   const activeUps = (activeWeapon && activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : activeTechInfo.upCost;
 
-  const activeIsBeam = isBeamWeapon(activeWeapon, activeAmmo) || activeVel >= 10000 || (activeVel <= 0 && activeWeapon && (activeWeapon.name || '').includes('Laser'));
+  const activeIsBeam = isBeamWeapon(activeWeapon, activeAmmo) || activeVel >= 10000;
   const activeVelStat = activeIsBeam ? 1.0 : Math.min(1, Math.max(0, activeVel / modMax.maxVel));
 
   const activeStats = [
@@ -5546,6 +5486,9 @@ function runWeaponCoreLinter() {
       }
     }
   }
+
+  // Ammo Maths: InventorySize reload buffer + stale ammo recipe (ammo_maths.js)
+  if (typeof amCheckWorkbench === 'function') amCheckWorkbench(warnings);
 
   // Render Linter Status
   if (criticalErrors.length > 0) {
@@ -6234,6 +6177,7 @@ function setupModalEvents() {
   // Balance Matrix Modal
   if (btnBalanceMatrix) {
     btnBalanceMatrix.addEventListener('click', () => {
+      syncBalanceMatrixInputs();
       balanceMatrixModal.style.display = 'flex';
     });
   }
@@ -6299,6 +6243,7 @@ function syncBalanceMatrixInputs() {
   document.getElementById('matMaxSize').value = balanceMatrix.maxSize;
   document.getElementById('matAssemblerEff').value = balanceMatrix.assemblerEff;
   document.getElementById('matScrapYield').value = balanceMatrix.scrapYield;
+  if (typeof amSyncMatrixInputs === 'function') amSyncMatrixInputs();
 }
 
 function applyBalanceMatrixInputs() {
@@ -6313,6 +6258,7 @@ function applyBalanceMatrixInputs() {
   balanceMatrix.maxSize = parseFloat(document.getElementById('matMaxSize').value) || 125;
   balanceMatrix.assemblerEff = parseFloat(document.getElementById('matAssemblerEff').value) || 3.0;
   balanceMatrix.scrapYield = parseFloat(document.getElementById('matScrapYield').value) || 0.25;
+  if (typeof amApplyMatrixInputs === 'function') amApplyMatrixInputs();
 
   localStorage.setItem('GVK_BALANCE_MATRIX', JSON.stringify(balanceMatrix));
   updateCombatTelemetry();

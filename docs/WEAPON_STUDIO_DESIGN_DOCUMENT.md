@@ -19,9 +19,9 @@ The **GVK Weapon Studio** is an offline-capable, zero-dependency browser-based e
 2. **Dual Audience UX**:
    - **Combat Telemetry (Workspace 1)**: Player-facing tactical station. Instant readouts, 1v1 radar comparisons, time-to-kill against armor/modules, and drifting rover lead calculations.
    - **Definition Workbench (Workspace 2)**: Deep modder station. Form-based editing of all WeaponCore C# struct tags, SBC component layers, dynamic schema inspector, and anti-bloat C# exporter.
-   - **Ammo Logistics (Workspace 3)**: Fleet logistics and economy station. Automated damage/physical densities, cargo container fleet endurance, and authentic multi-metal blueprint generation.
+   - **Ammo Logistics (Workspace 3)**: Replaces the spreadsheet's Ammo Maths tab: rebalanced volumes, masses, craft times, prices, RUs and value-weighted blueprints, per-weapon InventorySize suggestions, and SBC export.
 3. **Engine-Accurate Ground Truth**:
-   - Weapon, ammo, animation, and blueprint datasets are extracted directly from the mod's official source files (`CoreParts/`, `CubeBlocks_Weapons.sbc`, `Blueprints.sbc`, `AmmoMagazines_Ship.sbc`).
+   - Weapon, ammo, animation, and blueprint datasets are extracted directly from the mod's official source files (`CoreParts/`, `CubeBlocks_Weapons.sbc`, `Blueprints.sbc`, `AmmoMagazines_Ship.sbc`). Character handheld weapons are dropped at load (`stripHandheldData()` in `app.js`), along with the ammos only they fire and the magazines only those ammos load; the studio covers ship weapons only.
    - Calculations rigorously match Space Engineers / WeaponCore engine mechanics (60-tick combat cycles, recursive fragment/AoE damage, burst/reload cycles, and conveyor volume constraints).
 
 ---
@@ -34,6 +34,7 @@ GVK_Weapons/
 │   ├── index.html                           # Single-page application shell & layout
 │   ├── style.css                            # Complete styling, design tokens & light/dark theme engine
 │   ├── app.js                               # Core controller, calculation engine & event handlers
+│   ├── ammo_maths.js                        # Ammo Logistics: Ammo Maths sheet port (computeAmmoMaths)
 │   ├── WEAPON_STUDIO_DESIGN_DOCUMENT.md     # This design document
 │   ├── data/
 │   │   ├── wc_schema.js                     # WeaponCore v0.75 structure & enum fingerprint
@@ -42,6 +43,7 @@ GVK_Weapons/
 │   │   ├── magazines_blueprints_data.js     # 19 official ammo magazines & authentic ingot blueprints
 │   │   ├── animations_data.js               # 18 subpart animation definitions
 │   │   ├── components_data.js               # Valid SE component definitions (ores filtered out)
+│   │   ├── economy_values.js                # Ingot & component SC values (sheet Components tab)
 │   │   ├── weapons_db.json                  # Standalone JSON database mirror
 │   │   ├── ammos_db.json                    # Standalone JSON database mirror
 │   │   └── components_db.json               # Standalone JSON database mirror
@@ -86,7 +88,8 @@ graph TD
 #### 3. Recursive Damage Engine & Scalable TimedSpawns Architecture
 Calculates true damage potential through multi-stage fragment trees:
 $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_{\text{frags}} (\text{Count} \times \text{Damage}_{\text{child}})$$
-- **Area of Damage (AoE)**: Evaluates both `ByBlockHit` (impact explosion) and `EndOfLife` (flak proximity burst). Excludes non-damaging EWAR effects.
+- **Area of Damage (AoE)**: `ByBlockHit` (per block hit, impact block excluded) and `EndOfLife` (detonation) count only when their `Enable` is true. `Pooled` spends the whole pool; every other falloff is replayed on an ideal solid hull of the target grid size with WC's `RadiantAoe` block rings (`Radius`/`Depth` in metres, Diamond = Manhattan, Round = rounded Euclidean) and the `DamageGrid` falloff formulas; `Legacy` (unset) deals nothing, `MaxAbsorb` caps the total. EWAR rounds (`Ewar.Enable`) deal no base or area damage.
+- **Fragments & Patterns**: fragment and pattern rounds resolve by `AmmoRound` within the weapon's full `Ammos` list (as `AmmoConstants` does). A Weapon-mode `Pattern` spawns its expected member count per trajectile (`PatternSteps`, or `Random` via WC's `XorShift Range(min, max)`); Fragment-mode patterns pick the fragment from the pattern list.
 - **Scalable TimedSpawns Delivery Duration ($\Delta T_{\text{delivery}}$)**:
   Evaluates `TimedSpawnDef` (`maxSpawns`, `groupSize`, `interval`, `groupDelay`):
   $$\text{numBursts} = \left\lceil \frac{\text{totalSpawns}}{\text{groupSize}} \right\rceil, \quad \Delta T_{\text{delivery}} = \frac{(\text{numBursts} - 1) \times \text{groupDelay} + \text{groupSize} \times \text{interval}}{60\text{ ticks/sec}}$$
@@ -97,14 +100,19 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
   - **Physical Multi-Magazine Weapons**: Weapons loading multiple magazines (e.g., Cyclone Cannon with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds}$; Hurricane with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds} \times 80{,}000\text{ hp} = 160{,}000\text{ hp}$; Cannon Gun with $4 \text{ mags}$; Gatling Avenger with $14 \text{ mags} \times 100 \text{ rds} = 1{,}400 \text{ rds}$) evaluate the full burst payload delivered prior to cycling reload downtime.
   - **Virtual Magazines for Energy Weapons**:
     - *Recharge/Capacity Beams*: When `AmmoMagazine == "Energy"` and `EnergyMagazineSize > 0` (e.g., Heavy Laser Turret = 240 ticks / $36{,}000\text{ hp}$; Spartan Turret = 480 rds / $72{,}000\text{ hp}$; Harbinger Railgun = 1 round / $1{,}000{,}000\text{ hp}$), `getShotsPerMag` resolves the virtual magazine capacity. Firing the virtual magazine triggers a recharge/reload cycle (`ReloadTime`). Badge indicates `⚡ <N> rds (virtual mag)`.
-    - *Derived Energy Magazines*: When `EnergyMagazineSize <= 0` and `ReloadTime > 0`, WC sizes the magazine as $\lceil \text{EnergyCost} \times \text{BaseDamage} \times \frac{\text{RoF}}{3600} \times \text{Barrels} \times \text{Trajectiles} \times \text{ReloadTime} \rceil$ (`AmmoConstants.Energy()`); `getShotsPerMag` mirrors this.
+    - *Derived Energy Magazines*: When `EnergyMagazineSize <= 0` and `ReloadTime > 0`, WC sizes the magazine as $\lceil \text{EnergyCost} \times \text{BaseDamage} \times \frac{\text{RoF}}{3600} \times \text{Barrels} \times \text{Trajectiles} \times \text{ReloadTime} \rceil$ (`AmmoConstants.Energy()`), evaluated in float32 like the C# source (so $2{,}000.0002 \rightarrow 2{,}001$). `WcMath.energy` mirrors this and the charge passes `SessionCharging` needs.
     - *Continuous/Heat-Based Beams*: When `EnergyMagazineSize <= 0` and `ReloadTime == 0` (e.g., `MA_PDT` / `Lasers_AMS` Point Defense Laser, radar designators), the weapon operates continuously with no magazine reload downtime. Resolves 1 round per event (`BarrelsPerShot || 1`), displaying `⚡ Continuous` on the badge and preventing arbitrary 100-round virtual magazine fallbacks.
-- **Fire Cycle (`computeFireCycle`)**, verified against WC `WeaponShoot.cs` / `WeaponReload.cs`:
-  - Each barrel spends 1 magazine unit per fire event (`TrajectilesPerBarrel` is free); events are $\lfloor 3600 / \text{RoF} \rfloor$ ticks apart.
-  - $\text{Cycle} = \text{DelayUntilFire} + (\text{Events} - 1) \times \text{TicksPerShot} + (\text{Bursts} - 1) \times (\text{BurstGap} - \text{TicksPerShot}) + \max(\text{ReloadTime}, \text{TicksPerShot}, \text{DelayAfterBurst if last burst full})$.
-  - `DelayUntilFire` replays after every reload (reloading stops the weapon and resets the spool counter). In true burst mode (energy ammo, or mag capacity $\ge$ `ShotsInBurst`) it also replays per burst, overlapping the burst gap: $\text{BurstGap} = \max(\text{DelayAfterBurst}, \text{TicksPerShot}, \text{DelayUntilFire})$.
-  - Sustained DPS $= \frac{\text{Rounds} \times \text{Trajectiles} \times \text{DamagePerRound}}{\text{Cycle}}$.
-- **Cutoff Scaling**: `ArmorForCutoff` / `GridSizeForCutoff` multiply `BaseDamageCutoff` per target class before the normal armor multiplier ($\text{PerHit} = \min(\text{Base}, \text{Cutoff} \times \text{CutoffScale}) \times \text{ArmorMult}$). WC enables it only when a field is $> 0$; any omitted `ArmorForCutoff` field is $0$ (zero cap), so the exporter always writes all four.
+- **Fire Cycle (`computeFireCycle` → `docs/wc_math.js` `WcMath.simulateFire`)**: a tick-by-tick replica of WC, in `Session.Simulate()` order: heat FutureEvents (`UpdateWeaponHeat` every 20 ticks), the AiLoop reload check and shoot gate, the charger, then `Weapon.Shoot()`. Rates are the steady state measured between reload (or overheat-recovery) boundaries.
+  - Each barrel spends 1 magazine unit per fire event (`TrajectilesPerBarrel` is free); events are `(uint)(3600f / RoF)` ticks apart (RoF above 3600 fires every tick).
+  - The reload starts the tick after the last shot and the next shot lands on `ReloadEndTick`, so a plain magazine cycles in $(\text{Events} - 1) \times \text{TicksPerShot} + \text{ReloadTime} + 1$ ticks; energy reloads take the charge passes instead, hybrids wait for both. `ReloadTime = 0` reloads in the same pass.
+  - `DelayUntilFire` replays whenever the shoot gate closes (every non-instant reload, overheat) and after each true burst.
+  - `ShotsInBurst`: true burst mode (energy, or capacity $\ge$ `ShotsInBurst`) resets per magazine; shot-reload mode (capacity < `ShotsInBurst`) keeps counting across reloads, and a burst ending on an empty magazine stretches the reload to `DelayAfterBurst`. `FireFull` follows `FinishMode`.
+  - Heat: `HeatPerShot × HeatModifier` per barrel, `HeatSinkRate / 3` removed every 20 ticks, overheat at `MaxHeat` until heat falls to `MaxHeat × Cooldown` (clamped 0–0.95), `DegradeRof` scales RoF by the heat lerp, `AllowOverheatShooting` clamps instead of stalling. A heat-limited weapon sustains about $\text{HeatSinkRate} / \text{HeatPerShot}$ shots/s.
+  - Sustained DPS $= \text{Trajectiles/s} \times \text{DamagePerRound}$.
+- **Effective DPS**: every damage part takes its own ammo's per-block `damageScale` (`Grids`, `Armor`/`Heavy`/`Light`/`NonArmor`, `NoGridOrArmorScaling`, the 0.25× large-vs-small debuff when both grid scales are unset) against large and small hulls; the best target sets the multiplier.
+- **Power**: every weapon draws `IdlePower` (min 0.001 MW); energy and hybrid rounds add `ShotEnergyCost × RoF/3600 × Barrels × Trajectiles` MW while charging (`SinkPower` / `UpdateDesiredPower`).
+- **Cutoff Scaling**: `ArmorForCutoff` / `GridSizeForCutoff` multiply `BaseDamageCutoff` per target class before the normal armor multiplier ($\text{PerHit} = \min(\text{Base}, \text{Cutoff} \times \text{CutoffScale}) \times \text{ArmorMult}$). WC enables it only when a field is $> 0$; any omitted `ArmorForCutoff` field is $0$ (zero cap), so the exporter always writes all four. The pool keeps penetrating while more than 0.5 remains: $\lceil (\text{Base} - 0.5) / \text{Cutoff} \rceil$ blocks.
+- **Tests**: `node scratch/run_studio_tests.js` runs every suite. `scratch/test_wc_parity.js` holds the WC tick traces, float32 energy cases, a literal `RadiantAoe` transcription, damage scaling, pipeline field fidelity and a lint that fails on any weapon- or ammo-name rule.
 - **WeaponCore Schema Guard**: `data/wc_schema.js` stores the `[ProtoMember]` field and enum signature of `CoreParts/script/Structure.cs`. On load the Studio fetches upstream `CoreDefinitions.cs` (Ash-LikeSnow/WeaponCore@master) and diffs it (`extractWcSchema` / `diffWcSchema`); the header badge shows Synced, `⚠️ WC Update` with the change list, or Unverified when offline. `node scratch/export_snapshots.js` regenerates the signature after Structure.cs is synced.
 - **Instantaneous Cluster vs Loitering Deployable Scaling**:
   - **If $\Delta T_{\text{delivery}} \le 1.0\text{s}$** (Flak, Proximity Warhead, Cluster Bomb):
@@ -158,7 +166,7 @@ Positioned directly beneath the 7 hero cards to explain sustained fire rate and 
 - Plots 7 normalized tactical axes dynamically scaled across the dataset:
   1. **DPS** (Sustained Damage Per Second)
   2. **Volley Alpha** (Single-shot burst payload)
-  3. **Targeting Range** (Weapon's actual engagement range from `MaxTargetDistance`, **not** raw ammo flight trajectory)
+  3. **Targeting Range**: engagement range from `getEngagementRange()` in `app.js`, the single resolver every range readout uses (pillar card, footer, radar, role tags). Turrets and guided munitions (any `Guidance` other than `None`, e.g. Smart missiles, torpedoes and drones) are gated by the block's `MaxTargetDistance`. Manually aimed fixed guns with unguided rounds use the round's `MaxTrajectory`. Either way, the range never exceeds the round's reach.
   4. **Muzzle Velocity** (Projectile flight speed)
   5. **Tracking Rate** (Azimuth & Elevation traverse agility in deg/s)
   6. **Block Integrity** (Cube block durability)
@@ -242,58 +250,84 @@ Full canonical WeaponCore round engineering:
 ---
 
 ### Workspace 3: 📦 Ammo Logistics & Blueprints (`#ws-logistics`)
-*Automated magazine mathematics, fleet logistics, and authentic manufacturing recipes.*
+*Replaces the "Ammo Maths" tab of `GVK Ship Weapon Scales Kharak.xlsx` (the pricing and recipe maths are the sheet's; size, mass and craft time use baseline curves × per-magazine multipliers). The logic lives in `ammo_maths.js`, where `computeAmmoMaths(mag, levers, env)` is a pure function shared by the tab, the overview, the Workbench check and the smoke test.*
 
-```mermaid
-graph TD
-    WS3[Ammo Logistics] --> IsolatedView[Universal Weapon Banner Hidden]
-    WS3 --> MagSelector[Dedicated Logistics Magazine Selector]
-    WS3 --> Levers[Rebalancing Levers: Densities & Role Mults]
-    WS3 --> DerivedFootprint[Derived Physical Footprint & Buffer]
-    WS3 --> FleetEndurance[Cargo Packing & Fleet Endurance]
-    WS3 --> VisualChips[Visual Material Breakdown Chips]
-    WS3 --> BlueprintXml[Authentic Multi-Metal Blueprints.sbc Generator]
-```
+#### Layout
+- **Header**: magazine dropdown, **◀ ▶** stepper (walks the All Magazines order and filter), Reset All Levers, ⚙ Ammo Settings (opens the Balance Matrix at the ammo section), then status chips: levers edited, recipe drift, SBC fields that change (or ✓ Matches SBC), weapons short on inventory, player fit under 2. Chips jump to the section they summarise. The GRID/TYPE weapon filter bar is hidden on this tab.
+- **Physical** panel: Damage Basis card, Volume / Mass / Craft Time levers, damage per mag / L / kg (vs the fleet median), Carrying Capacity table.
+- **Economy & Recipe** panel: Server Price headline (MSRP × role, Damage / SC vs median, Recipe Budget, RU cost when non-zero), Server Price lever, Hybrid round, Blueprint Recipe table.
+- **What Will Change in the SBC**: every SBC field export compares, unchanged rows muted, recipe value total; the per-magazine Blueprints / AmmoMagazines XML is a collapsible section.
+- **Weapons Using This Mag**, then **All Magazines** with the Ammo Comparison chart.
+- **Footer HUD**: Server Price, Damage / SC, Damage / Mag, One Mag Fires For, drift chip, "N mags changed" (filters All Magazines to Changed) and ⚡ Export Changed.
 
-#### 1. Workspace Isolation
-- When switching to `#ws-logistics`, the universal weapon banner is automatically hidden to eliminate clutter and allow standalone magazine analysis.
-- Returning to Combat Telemetry or the Workbench immediately restores the banner.
+#### 1. Baselines × multipliers (one multiplier per output)
+Every output starts from a baseline curve that scales with the magazine's damage relative to the Anchor Magazine (the Gatling, 3,000 dmg). Each magazine then has one multiplier per output, and a multiplier changes only its own output:
 
-#### 2. Dedicated Magazine Selector Bar (`.logistics-ammo-bar`)
-- Positioned at the top of Workspace 3 with an ammo icon, quick reset button, and live badges:
-  - SubtypeId, Round Capacity, Volume (L), Mass (kg), and Base Craft Time (s).
-- Categorized dropdown organizing all 19 official GVK magazines:
-  - **Ship Standard Kinetics** (25mm NATO, Dual 25mm, 35mm Bushmaster, 40mm Bofors, 75mm Heavy Autocannon)
-  - **Heavy Caliber & Flak** (155mm Flak, 480mm Heavy Cannon)
-  - **High-Tech & Strategic** (50mm Railgun, 200mm MAC, Plasma)
-  - **Missiles, Rockets & Torpedoes** (Griffin, Hydra, Tuukka, Crusader Torpedo, Longsword SRBM, Falcon Drone)
-  - **Countermeasures & Anti-Missile** (Flare Chaff Decoy)
-  - **Small Arms / Handheld** (NATO 5.56, Automatic Rifle, Precision Rifle)
+| Output | Baseline (Balance Matrix → Ammo Baselines) | Per-magazine multiplier |
+|---|---|---|
+| Volume | `Reference Volume (30 L) × (dmg ÷ anchor dmg)^Size Exponent (0.6)` | **Size ×** |
+| Mass | `Reference Mass (30 kg) × (dmg ÷ anchor dmg)^Mass Exponent (1)` | **Mass ×** (<1 = more damage per kg) |
+| Craft time | `Reference Craft Time (13 s) × (dmg ÷ anchor dmg)^Craft Exponent (0.5)` | **Craft ×** |
+| Price | `Anchor MSRP (1,500 SC) × (dmg ÷ anchor dmg)` | **Price ×** (ammo type) |
 
-#### 3. Rebalancing Levers (Ammo Maths)
-- **Target Damage Density**: Row 16 formula ($\text{dmg/L}$).
-- **Physical Density**: Row 6 formula ($\text{kg/L}$).
-- **Ammo Role Multiplier**: $1.0\times$ Kinetic, $1.1\times$ AP, $1.25\times$ Missile, $1.5\times$ Strategic/MIRV.
-- **Research Units (RUs)** & **Assembler Craft Time**.
+- The Size/Mass/Craft multipliers in `studio_overrides.js` were seeded from the live SBC, so the defaults reproduce every tracked magazine's current volume, mass and craft time exactly. Because they're stored, a damage change moves all four outputs along the curves while each magazine keeps its character. A magazine without stored multipliers reads them back from its SBC values.
+- This replaces the sheet's Damage Density, Ammo Density, the Volume Buff and the craft-time override. The size reduction from commit `351d2af` and Plasma's hand-set 72 s are now just those magazines' Size × and Craft × values.
+- **Two-way levers**: Volume, Mass, Craft Time and Server Price each show `× multiplier → target`. Typing a target solves the multiplier (4 decimals) from the curve value; leaving the field shows the value the rounding lands on. The Server Price role dropdown (Standard 1.0, AP 1.1, Railgun 1.2, Missiles 1.25, MIRV 1.5, Custom) sets the multiplier.
+- **Damage Basis** card: Reference Ammo (which AmmoDef supplies the damage per round), `dmg/hit × capacity = dmg/mag` (hover for base / area / fragment parts), the ratio to the Anchor Magazine and the three curve values at that ratio. **✎ Edit damage in Workbench** opens a player weapon firing that AmmoDef with BaseDamage in view; the anchor and curve settings link into the Balance Matrix.
+- Other levers:
+  - **Hybrid Round**: defaults to the WC `HybridRound` value.
+  - **RUs**: one control on the recipe's RU line: **None**, **Fixed** (a typed quantity, seeded with the auto value) or **Auto from price** (relic ammo, RU Share of the budget).
+- **Blueprint Recipe** table: Ingot | Weight | Value % (share of the recipe value) | New | SBC | Δ. Below it: total ingot kg vs magazine mass, ingots the SBC has that the composition dropped, a warning when the new recipe is worth over 2× or under 0.5× the live one, and the salvage estimate.
+- Lever edits are saved per magazine in localStorage (`GVK_AMMO_LEVERS`). Only values that differ from the defaults are stored, and keys from older models are dropped on load.
+  - An edited lever gets an amber rail and its own ↺ button.
+  - Edited mags get a ● in the dropdown and in the overview.
+  - **Reset All Levers** clears the magazine's saved edits.
 
-#### 4. Derived Footprint & Fleet Endurance
-- Computes magazine volume and mass.
-- Derives **Suggested Weapon Volume** using the minimum $2.2\times$ internal conveyor reload buffer standard.
-- **Cargo Packing**:
-  - Small Cargo Container ($3,375\text{ L}$) capacity, damage stored, and 1-gun / 20-gun battery endurance.
-  - Large Cargo Container ($421,875\text{ L}$) capacity, damage stored, and 1-gun / 20-gun battery endurance.
+#### 2. Formula chain
+| Output | Formula |
+|---|---|
+| Mag damage | damage per hit × capacity |
+| Volume | baseline × Size ×, rounded to 10 L from 100 L up (whole litres below) |
+| Mass | baseline × Mass ×, same rounding (independent of Size ×) |
+| Craft time | `ROUND(baseline × Craft ×)` |
+| Base MSRP | anchor MSRP ÷ anchor mag damage × magDmg × (hybrid ? Hybrid Discount : 1) |
+| Server Price | 2 significant figures of MSRP × Price × (what the player pays) |
+| Recipe Budget (the sheet's Adjusted MSRP) | MSRP × Price × × Assembler Efficiency, rounded at the **price's** 2nd significant figure. **Recipe budget only**: the server's assembler efficiency multiplier reduces ingot use, so the recipe is inflated to match. Players pay the Server Price. |
+| SC / Dmg | Adj ÷ magDmg ÷ Assembler Efficiency. The tab shows its inverse, **Damage / SC** (higher = cheaper damage). |
+| RUs | `ROUND(Adj × RU Share ÷ value(GVK_CUs), 1)` for relic ammo |
+| Recipe | `ROUND(baseVal_i ÷ ΣbaseVal × (Adj − RU cost) ÷ value_i, 1)`, where `baseVal_i = ROUND(value_i × weight_i)` |
+| Cargo | mags = ⌊C ÷ Vol⌋; damage = C ÷ Vol × magDmg; weight = C ÷ Vol × Mass |
 
-#### 5. Authentic Multi-Metal `Blueprints.sbc` Generator
-- Replaces generic placeholder recipes with authentic ingots parsed directly from `Blueprints.sbc`:
-  - **Railguns**: `GVK_RUs`, `Magnesium`, `Iron`, `Uranium`, `Cobalt`, `Silver`
-  - **Strategic (Torpedo / SRBM / Drone)**: `GVK_RUs`, `Magnesium`, `Iron`, `Platinum`, `Silicon`, `Gold`
-  - **Plasma**: `GVK_RUs`, `Magnesium`, `Iron`, `Uranium`, `Cobalt`, `Gold`
-  - **Heavy Cannon**: `GVK_RUs`, `Magnesium`, `Iron`, `Cobalt`, `Silver`
-  - **Flak & Autocannon**: `Magnesium`, `Iron`, `Nickel`, `Cobalt`
-  - **Kinetics**: `Magnesium`, `Iron`, `Nickel`
-- **Visual Material Breakdown Chips** (`#blueprintVisualMaterials`): Responsive card chips showing material name and formatted amount (`kg` or `RUs`).
-- **Dynamic Proportional Scaling**: Levers scale constituent metals proportionally to mass and cost multipliers while preserving exact SBC baselines upon reset.
-- **1-Click XML Export**: Outputs valid `<Blueprint>` XML ready for `Content/Data/Blueprints.sbc`.
+Every output shows its formula, with the live numbers plugged in, as a hover tooltip.
+
+#### 3. Economy settings & values (Server Balance Matrix)
+- **Ammo Economy & Logistics**: Anchor MSRP (1500), Anchor Magazine (the Gatling), Hybrid Discount (0.75), RU Share (0.75), Reload Buffer (2.2), Small and Large Cargo (3,375 L and 421,875 L) and Player Inventory (4,500 L = 1.5 m³ from the GVK Character Changes mod × the server's `InventorySizeMultiplier` of 3), plus the six **Ammo Baselines** (Reference Volume 30 L / Size Exponent 0.6, Reference Mass 30 kg / Mass Exponent 1, Reference Craft Time 13 s / Craft Exponent 0.5). All of these are stored in `balanceMatrix`.
+- **Ingot & Component Values**: this is the sheet's Components → Value column. The defaults are in `data/economy_values.js`, and edits are saved to `GVK_ECONOMY_VALUES`.
+- **Export / Import Ammo Settings**: all levers, value edits, economy settings and Auto-InventorySize flags as a single JSON file (`kind: gvk-ammo-settings`).
+
+#### 4. Weapons Using This Mag (per WeaponDefinition)
+- Each WeaponDefinition gets its own row, because MagsToLoad and InventorySize are set per definition. NPC weapons and NPC mount points are excluded.
+- **Suggested InventorySize** = `ROUNDUP(Vol × Reload Buffer × MagsToLoad, −1) ÷ 1000` kL. It is compared with the live WC `HardPoint.HardWare.InventorySize`. The SBC `InventoryMaxVolume` is ignored because WeaponCore overrides it.
+- Live inventory is flagged **⚠ short** (fewer than 2.2 × MagsToLoad reloads), **+N% over** (above the suggestion, so applying it would shrink it) or ✓.
+- Default columns: MagsToLoad, Rounds/s (from the shared `computeFireCycle`), DPS, Suggested Inv., Live Inv. (mags held), Live Inv. Lasts (continuous fire).
+- **Show throughput** adds L/s, Min Mags, Mags/min, SC/min (hover for ingot kg/min) and one-gun small / large cargo endurance.
+- Click a row to pin that weapon for the Carrying Capacity fire times and the HUD. Row actions:
+  - **Set X kL** opens the weapon in the Workbench with the suggested InventorySize set (disabled when it already matches).
+  - **📋 C#** copies the `InventorySize = x` line.
+- **Carrying Capacity** (Physical panel): player inventory, small and large cargo in one table: capacity, mags, damage stored, weight and how long one gun of the pinned weapon fires from it. Durations read `1m 18s` / `2h 41m`.
+
+#### 5. All Magazines, comparison chart, export
+- **Overview table**: the sheet's side-by-side column view, with SBC → new values, Damage / SC (amber outside ±15% of the median), Fits (player / small cargo; red below 2, the target from commit `351d2af`), recipe drift (Ammo Maths recipe value vs the SBC recipe value; highlighted red above ±5%), a count of weapons with short inventory, and the number of SBC fields that would change. Headers sort; filter chips (All / Changed / Drift / Short Inv / Fits < 2) scope the table and the ◀ ▶ stepper. Click a row to select that magazine.
+- **Ammo Comparison chart**: ranked bars for damage / SC, damage / L or damage / kg, with a median line. The selected magazine is shown in amber; click a bar to open it.
+- **Export All Changed Mags**: shows an old → new diff for each field, then two outputs, a **Blueprints.sbc** block and an **AmmoMagazines.sbc** block. Both patch the raw source definitions (captured by `source_pipeline.js` as `bpXml` / `sbcXml`), so any tags that weren't edited are kept.
+- **Export All SBC**: one click downloads `GVK_AmmoBlueprints.sbc` and `GVK_AmmoMagazines.sbc`. They are complete `<Definitions>` files covering every tracked magazine, changed or not, with the Ammo Maths values applied through the same patching. They replace the matching definitions in the existing SBCs, so remove those to avoid duplicates.
+
+#### 6. Workbench link
+- Under **Inventory Size** there is a hint: `Suggested: X kL (2.2 × N mags × Vol L)`.
+  - **Use** writes the suggestion into the WC tree, so it appears in the C# export.
+  - **Auto** keeps the field synced, saved per definition in `GVK_AUTO_INVSIZE`.
+- A value below the buffer turns the input red and adds a lint warning.
+- If the active ammo's recipe has drifted more than ±5% from its Ammo Maths value, a **Recipe drift** chip appears in the Workbench HUD, a lint warning is added, and the chip opens that magazine in Logistics.
 
 ---
 

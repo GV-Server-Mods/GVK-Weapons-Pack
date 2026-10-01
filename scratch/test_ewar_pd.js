@@ -1,93 +1,75 @@
+// EWAR / point-defense functional checks on hand-built WC ammo fixtures.
+// Run: node scratch/test_ewar_pd.js
 'use strict';
-const fs = require('fs'), path = require('path'), vm = require('vm');
-const appSource = fs.readFileSync(path.join(__dirname, '..', 'docs', 'app.js'), 'utf8');
-let failures = 0;
-function check(n, c) { if (c) console.log('  PASS  ' + n); else { failures++; console.error('  FAIL  ' + n); } }
-function makeElement(id) {
-  return { id, value: '', checked: false, textContent: '', innerHTML: '', title: '', style: {}, disabled: false, dataset: {},
-    classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
-    addEventListener() {}, removeEventListener() {}, setAttribute() {}, removeAttribute() {}, appendChild() {}, querySelector() { return null; }, querySelectorAll() { return [] } };
-}
-const elements = new Map();
-const sandbox = {
-  console, setTimeout, clearTimeout,
-  document: { documentElement: { getAttribute() { return null; }, setAttribute() {} }, getElementById(id) { if (!elements.has(id)) elements.set(id, makeElement(id)); return elements.get(id); }, querySelector() { return null; }, querySelectorAll() { return []; }, createElement(t) { return makeElement(t); }, addEventListener() {} },
-  window: { addEventListener() {}, matchMedia: null, location: { href: 'file:///t', search: '' }, scrollTo() {} },
-  localStorage: { getItem() { return null; }, setItem() {}, removeItem() {} },
-  navigator: { clipboard: { writeText() { return Promise.resolve(); } } }, prompt() { return null; }, alert() {},
-  fetch() { return Promise.resolve({ ok: false }); }, URL, URLSearchParams
-};
-vm.createContext(sandbox);
+const { loadStudio, makeChecker } = require('./studio_harness.js');
+const { check, done } = makeChecker();
+const studio = loadStudio();
 
-
-const testBody = `
-(() => {
+const r = studio.run(`(() => {
   const r = {};
-  ammosDb.Ballistics_Flak_Shrapnel = { name: 'Ballistics_Flak_Shrapnel', baseDamage: 400, fragment: null, areaOfDamage: { enable: false, endOfLife: { enable: false }, areaEffect: { areaEffect: false } } };
+  const noAoe = { enable: false, byBlockHit: { enable: false }, endOfLife: { enable: false }, areaEffect: { areaEffect: false } };
+  ammosDb.Ballistics_Flak_Shrapnel = { name: 'Ballistics_Flak_Shrapnel', ammoRound: 'Ballistics_Flak_Shrapnel', baseDamage: 400, fragment: null, areaOfDamage: noAoe };
   const flak = {
-    name: 'Ballistics_Flak', terminalName: 'Proximity Flak', ammoMagazine: 'MediumCalibreAmmo',
-    baseDamage: 1000, damageScales: { shield: 10, lightArmor: -1, heavyArmor: -1, characters: 0.1, healthHitModifier: 10, nonArmor: -1 },
+    name: 'Ballistics_Flak', ammoRound: 'Proximity Flak', terminalName: 'Proximity Flak', ammoMagazine: 'MediumCalibreAmmo',
+    baseDamage: 1000, damageScales: { lightArmor: -1, heavyArmor: -1, characters: 0.1, healthHitModifier: 10, nonArmor: -1 },
     fragment: { enable: true, ammoRound: 'Ballistics_Flak_Shrapnel', fragments: 30, degrees: 45, reverse: false, dropVelocity: false },
-    areaOfDamage: { enable: true, radius: 101, damage: 1, depth: 1, endOfLife: { enable: true, damage: 1, radius: 101, depth: 1 }, areaEffect: { areaEffect: false, damage: 0, radius: 0 } },
+    areaOfDamage: { enable: true, byBlockHit: { enable: false }, endOfLife: { enable: true, damage: 1, radius: 101, depth: 1, falloff: 'Pooled' }, areaEffect: { areaEffect: false, damage: 0, radius: 0 } },
     trajectory: { desiredSpeed: 900, maxTrajectory: 2000 }
   };
   const flare = {
-    name: 'FlareWC', terminalName: 'Flare', ammoMagazine: 'FlareClip', baseDamage: 1,
-    areaOfDamage: { enable: false, radius: 0, damage: 0, depth: 0, endOfLife: { enable: false, damage: 0, radius: 0, depth: 0 }, areaEffect: { areaEffect: false, damage: 0, radius: 0 } },
+    name: 'FlareWC', ammoRound: 'Flare', terminalName: 'Flare', ammoMagazine: 'FlareClip', baseDamage: 1,
+    areaOfDamage: { enable: true, byBlockHit: { enable: false }, endOfLife: { enable: true, damage: 1, radius: 5, depth: 5, falloff: 'Pooled' }, areaEffect: { areaEffect: false } },
     ewar: { enable: true, type: 'AntiSmartv2', mode: 'Field', strength: 99, radius: 700, duration: 1000 },
     trajectory: { desiredSpeed: 100, maxTrajectory: 400 }
   };
-  const shrap = { name: 'Missiles_Torpedo_Shrapnel', baseDamage: 1, fragment: null, areaOfDamage: { enable: false, endOfLife: { enable: false }, areaEffect: { areaEffect: false } }, ewar: { enable: true, type: 'Offense', mode: 'Effect', strength: 100000, radius: 100, duration: 2400 } };
+  const shrap = { name: 'Missiles_Torpedo_Shrapnel', ammoRound: 'Missiles_Torpedo_Shrapnel', baseDamage: 1, fragment: null, areaOfDamage: noAoe,
+    ewar: { enable: true, type: 'Offense', mode: 'Effect', strength: 100000, radius: 100, duration: 2400 } };
   ammosDb.Missiles_Torpedo_Shrapnel = shrap;
-  const torpedo = { name: 'Missiles_Torpedo', baseDamage: 100, fragment: { enable: true, ammoRound: 'Missiles_Torpedo_Shrapnel', fragments: 1, degrees: 0.1 }, areaOfDamage: { enable: false, endOfLife: { enable: true, damage: 1500000, radius: 25, depth: 25 }, areaEffect: { areaEffect: false } } };
+  const torpedo = { name: 'Missiles_Torpedo', ammoRound: 'Missiles_Torpedo', baseDamage: 100,
+    fragment: { enable: true, ammoRound: 'Missiles_Torpedo_Shrapnel', fragments: 1, degrees: 0.1 },
+    areaOfDamage: { enable: true, byBlockHit: { enable: false }, endOfLife: { enable: true, damage: 1500000, radius: 25, depth: 25, falloff: 'Pooled' }, areaEffect: { areaEffect: false } } };
 
   const dFlak = getAmmoDamageDetailed(flak);
-  r.flakTotal = dFlak.total;             // 1000 base + 1 EoL + 30x400 shrapnel
+  r.flakTotal = dFlak.total;
   r.flakEwar = dFlak.ewar;
   const dFlare = getAmmoDamageDetailed(flare);
   r.flareTotal = dFlare.total;
   r.flareEwar = dFlare.ewar;
-  const dTorp = getAmmoDamageDetailed(torpedo);
-  r.torpTotal = dTorp.total;             // 100 + 1500000, EWAR shrapnel child = 0
+  r.torpTotal = getAmmoDamageDetailed(torpedo).total;
 
-  activeAmmo = flak;
-  updateTelemetryAmmoBadge();
-  r.flakBadge = document.getElementById('telemetryAmmoBadge').innerHTML;
-  activeAmmo = flare;
-  updateTelemetryAmmoBadge();
-  r.flareBadge = document.getElementById('telemetryAmmoBadge').innerHTML;
+  const badge = (ammo, weapon) => { activeWeapon = weapon; activeAmmo = ammo; updateTelemetryAmmoBadge(); return document.getElementById('badgeAmmoTypeDesc').textContent; };
+  const pdW = weaponsDb.find((w) => w.pdProjectiles && !isNpcWeapon(w));
+  r.flakBadge = badge(flak, pdW);
+  r.flareBadge = badge(flare, pdW);
+  // Sub-munition classification from WC fields (no names): loitering TimedSpawns carrier, launch stage
+  const owner = (key) => weaponsDb.find((w) => (w.allAmmos || w.assignedAmmos || []).includes(key));
+  const loiter = Object.values(ammosDb).find((a) => a.fragment && a.fragment.enable && a.fragment.fragments === 1
+    && a.fragment.timedSpawns && a.fragment.timedSpawns.enable && a.fragment.timedSpawns.maxSpawns > 1);
+  r.droneBadge = loiter ? badge(loiter, owner(loiter.name)) : '';
+  const stage = Object.values(ammosDb).find((a) => a.fragment && a.fragment.enable && a.fragment.fragments === 1
+    && !(a.fragment.timedSpawns && a.fragment.timedSpawns.enable) && (a.baseDamage || 0) <= 1 && resolveAmmoRound(a.fragment.ammoRound, owner(a.name)));
+  r.stageBadge = stage ? badge(stage, owner(stage.name)) : '';
 
-  activeWeapon = { id: 'L__Flak_Turret', name: '(L) Flak Turret', subtypeId: 'LargeBlockMediumCalibreTurret', pdProjectiles: true, pdSmartOnly: true };
-  updateUniversalBanner();
-  r.pdOn = document.getElementById('badgePd').style.display;
-  activeWeapon = { id: 'S__Gatling_Gun', name: '(S) Gatling Gun', subtypeId: 'SmallGatlingGun' };
-  updateUniversalBanner();
-  r.pdOff = document.getElementById('badgePd').style.display;
+  // PD kill counts come from data: the sturdiest guided munitions in the loaded mod, HealthHitModifier per hit
+  const refs = getPdReferenceTargets(2);
+  r.refs = refs.map((a) => ({ name: a.terminalName || a.name, health: a.health }));
+  r.flakKills = describePdKills(flak, 'bursts');
+  r.expectKills = refs.map((a) => Math.ceil(a.health / 10) + ' bursts per ' + (a.terminalName || a.name)).join(' · ');
+  const hvy = refs[0];
+  r.survival = describePdSurvival(hvy);
+  return r;
+})()`);
 
-  // TTK guard against EWAR round
-  activeAmmo = flare;
-  document.getElementById('wBarrelsPerShot').value = '1';
-  updateTtkSimulator ? updateTtkSimulator() : null;
-  r.ttkText = document.getElementById('outTtkMain').textContent;
-  __report(r);
-})();
-`;
-let r = null;
-sandbox.__report = (x) => { r = x; };
-vm.runInContext(appSource + '\n;\n' + testBody, sandbox, { filename: 'app.js' });
-
-check('Flak PROX total = 13001 (1000 base + 1 EoL + 30x400 shrapnel)', r.flakTotal === 13001);
+check('Flak PROX total = 13000 (1000 base + 30 x 400 shrapnel; the 1 hp anti-missile EoL is not block damage)', r.flakTotal === 13000, r.flakTotal);
 check('Flak PROX not flagged ewar', r.flakEwar === false);
-check('FlareWC EWAR zeroes payload (total 0)', r.flareTotal === 0 && r.flareEwar === true);
-check('Torpedo EWAR shrapnel child contributes 0 (total 1500100)', r.torpTotal === 1500100);
-check('Flak badge shows Anti-Missile Burst (101m)', r.flakBadge.includes('Anti-Missile Burst (101m)'));
-check('Flak badge shows 13,001 Dmg/Shot', r.flakBadge.includes('13,001 Dmg/Shot'));
-check('Flare badge shows EWAR Anti-Smart (700m)', r.flareBadge.includes('Anti-Smart (700m)'));
-check('Flare badge shows 0 Dmg/Shot', r.flareBadge.includes('0 Dmg/Shot'));
-check('PD badge visible for Flak turret', r.pdOn === 'inline-flex');
-check('PD badge hidden for fixed gatling gun', r.pdOff === 'none');
-check('TTK reports No Block Damage for EWAR round', r.ttkText === 'No Block Damage');
+check('FlareWC EWAR zeroes base and area payload (total 0)', r.flareTotal === 0 && r.flareEwar === true, r.flareTotal);
+check('Torpedo EWAR shrapnel child contributes 0 (total 1,500,100)', r.torpTotal === 1500100, r.torpTotal);
+check('Flak badge shows Anti-Missile Burst (101m)', r.flakBadge.includes('Anti-Missile Burst (101m)'), r.flakBadge);
+check('Flare badge shows EWAR Anti-Smart (700m)', r.flareBadge.includes('EWAR Anti-Smart (700m)'), r.flareBadge);
+check('Loitering TimedSpawns carrier is badged as a drone deployment', r.droneBadge.includes('Drone Deployment'), r.droneBadge);
+check('Single-fragment launch stage is badged as a staged booster', r.stageBadge.includes('Staged Kinetic Booster'), r.stageBadge);
+check('PD reference munitions are the two healthiest guided rounds in the data', r.refs.length === 2 && r.refs[0].health >= r.refs[1].health, r.refs);
+check('PD kill line = ceil(Health / HealthHitModifier) per reference munition (no hard-coded names)', r.flakKills === r.expectKills, r.flakKills);
+check('Munition survival tooltip lists hits from the mod\'s own PD rounds', /\(\d+ hits? from .+\)/.test(r.survival), r.survival);
 
-if (failures) { console.error('\n' + failures + ' failed'); process.exit(1); }
-console.log('\nAll EWAR/PD functional checks passed.');
-
+done('EWAR / PD checks');

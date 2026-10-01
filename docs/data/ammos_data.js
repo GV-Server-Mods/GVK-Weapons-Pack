@@ -11,6 +11,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "LargeCalibreAmmo",
     "terminalName": "155 AP",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -25,10 +29,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -58,14 +88,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -77,6 +120,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 2400,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -90,6 +134,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -129,6 +176,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "LargeCalibreAmmoHE",
     "terminalName": "155 HE",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -143,10 +194,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -176,14 +253,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 6000,
         "radius": 4,
-        "depth": 4
+        "depth": 4,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -195,6 +285,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 2400,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -208,6 +299,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -247,6 +341,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "LargeCalibreAmmo",
     "terminalName": "LargeCalibreAmmo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -261,10 +359,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -294,14 +418,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -313,6 +450,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 2400,
       "maxLifeTime": 3000,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -326,6 +464,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -365,6 +506,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Ballistics_Cannon_NPC_Fragment1",
     "terminalName": "155 AP",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 6000,
     "baseDamageCutoff": 0,
     "mass": 300,
@@ -379,10 +524,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -412,14 +583,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -431,6 +615,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 2400,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -444,6 +629,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -483,6 +671,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "AutocannonClip",
     "terminalName": "AutocannonClip",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1000,
     "baseDamageCutoff": 0,
     "mass": 10,
@@ -497,10 +689,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -530,14 +748,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -549,6 +780,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 900,
       "maxTrajectory": 2000,
       "maxLifeTime": 420,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -562,6 +794,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -601,6 +836,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "AutocannonClip_Drone",
     "terminalName": "AutocannonClip_Drone",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1000,
     "baseDamageCutoff": 0,
     "mass": 10,
@@ -615,10 +854,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -648,14 +913,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -667,6 +945,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 900,
       "maxTrajectory": 2000,
       "maxLifeTime": 420,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -680,6 +959,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -719,6 +1001,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Proximity Flak",
     "terminalName": "Proximity Flak",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1000,
     "baseDamageCutoff": 0,
     "mass": 100,
@@ -733,10 +1019,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -766,14 +1078,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 101,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "NoFalloff",
+        "shape": "Round",
+        "minArmingTime": 20,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -785,6 +1110,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 900,
       "maxTrajectory": 2000,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -798,6 +1124,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 10,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 0,
       "gridSmall": 0,
@@ -837,6 +1166,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Ballistics_Flak_Shrapnel",
     "terminalName": "Ballistics_Flak_Shrapnel",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 400,
     "baseDamageCutoff": 0,
     "mass": 50,
@@ -851,10 +1184,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -884,14 +1243,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
-      "endOfLife": {
+      "byBlockHit": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
+      "endOfLife": {
+        "enable": true,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "NoFalloff",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -903,6 +1275,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1200,
       "maxTrajectory": 240,
       "maxLifeTime": 120,
+      "accelPerSec": 0,
       "speedVariance": 400,
       "rangeVariance": 80,
       "guidance": "None",
@@ -916,6 +1289,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 1,
       "characters": 0.1,
       "healthHitModifier": 10,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -955,6 +1331,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Impact Flak",
     "terminalName": "Impact Flak",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1000,
     "baseDamageCutoff": 0,
     "mass": 100,
@@ -969,10 +1349,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1002,14 +1408,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 3000,
         "radius": 2,
-        "depth": 2
+        "depth": 2,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1021,6 +1440,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 900,
       "maxTrajectory": 2000,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1034,6 +1454,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": -1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -1073,6 +1496,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "NATO_25x184mm",
     "terminalName": "NATO 25mm",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -1087,10 +1514,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1120,14 +1573,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1139,6 +1605,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1000,
       "maxTrajectory": 1700,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1152,6 +1619,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 1,
@@ -1191,6 +1661,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "NATO_25x184mm_Dual",
     "terminalName": "NATO 25mm",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -1205,10 +1679,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -1238,14 +1738,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1257,6 +1770,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1000,
       "maxTrajectory": 1700,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -1270,6 +1784,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 1,
@@ -1309,6 +1826,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "NATO_25x184mm_Dual_Fragment",
     "terminalName": "NATO 25mm",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -1323,10 +1844,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1356,14 +1903,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1375,6 +1935,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1000,
       "maxTrajectory": 1700,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1388,6 +1949,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.2,
       "healthHitModifier": 3,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 1,
@@ -1427,6 +1991,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Ballistics_HeavyCannon",
     "terminalName": "Ballistics_HeavyCannon",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 10000,
     "baseDamageCutoff": 0,
     "mass": 2000,
@@ -1441,10 +2009,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1474,14 +2068,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 70000,
         "radius": 5,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1493,6 +2100,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 3300,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1506,6 +2114,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1e-7,
       "healthHitModifier": 5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -1545,6 +2156,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Ballistics_HeavyCannon_Odin",
     "terminalName": "Ballistics_HeavyCannon_Odin",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 10000,
     "baseDamageCutoff": 0,
     "mass": 2000,
@@ -1559,10 +2174,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1592,14 +2233,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 70000,
         "radius": 5,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1611,6 +2265,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 600,
       "maxTrajectory": 4300,
       "maxLifeTime": 3600,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1624,6 +2279,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1e-7,
       "healthHitModifier": 5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -1663,6 +2321,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "HeavyRailgunAmmo",
     "terminalName": "HeavyRailgunAmmo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1000000,
     "baseDamageCutoff": 20000,
     "mass": 4000,
@@ -1677,10 +2339,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1710,14 +2398,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1729,6 +2430,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 3000,
       "maxTrajectory": 4200,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1742,6 +2444,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 500,
+      "maxIntegrity": 0,
+      "falloffDistance": 3000,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -1781,6 +2486,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Ballistics_Interior",
     "terminalName": "Ballistics_Interior",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 25,
     "baseDamageCutoff": 0,
     "mass": 0.25,
@@ -1795,10 +2504,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -1828,14 +2563,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1847,6 +2595,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 950,
       "maxTrajectory": 900,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1860,6 +2609,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 2,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 1,
@@ -1898,7 +2650,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "LargeRailgunAmmo",
     "ammoRound": "200mm DU",
     "terminalName": "200mm DU",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 2000000,
     "baseDamageCutoff": 20000,
     "mass": 20000,
@@ -1913,10 +2669,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -1946,14 +2728,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 20000,
+        "radius": 5,
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "NoFalloff",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "Linear",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -1965,6 +2760,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 4100,
       "maxTrajectory": 3000,
       "maxLifeTime": 300,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -1978,6 +2774,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 1000,
+      "maxIntegrity": 0,
+      "falloffDistance": 1000,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -2016,7 +2815,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "LargeRailgunSabot_NPC",
     "terminalName": "LargeRailgunSabot_NPC",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 2000000,
     "baseDamageCutoff": 20000,
     "mass": 20000,
@@ -2031,10 +2834,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -2064,14 +2893,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 20000,
+        "radius": 5,
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "NoFalloff",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "Linear",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2083,6 +2925,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 4100,
       "maxTrajectory": 3000,
       "maxLifeTime": 300,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2096,6 +2939,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 1000,
+      "maxIntegrity": 0,
+      "falloffDistance": 1000,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -2134,7 +2980,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "LargeRailgunSabot_NPC_Fragment",
     "terminalName": "LargeRailgunSabot_NPC_Fragment",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 2000000,
     "baseDamageCutoff": 20000,
     "mass": 20000,
@@ -2149,10 +2999,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -2182,14 +3058,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 20000,
+        "radius": 5,
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "NoFalloff",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "Linear",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2201,6 +3090,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 4100,
       "maxTrajectory": 3000,
       "maxLifeTime": 300,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2214,6 +3104,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 1000,
+      "maxIntegrity": 0,
+      "falloffDistance": 1000,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -2253,6 +3146,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "SmallRailgunAmmo",
     "terminalName": "SmallRailgunAmmo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 66500,
     "baseDamageCutoff": 8000,
     "mass": 2000,
@@ -2267,10 +3164,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -2300,14 +3223,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2319,6 +3255,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 3000,
       "maxTrajectory": 3300,
       "maxLifeTime": 300,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2332,6 +3269,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 500,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -2371,6 +3311,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "SmallRailgunAmmo",
     "terminalName": "SmallRailgunAmmo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 66500,
     "baseDamageCutoff": 8000,
     "mass": 2000,
@@ -2385,10 +3329,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -2418,14 +3388,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2437,6 +3420,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 3000,
       "maxTrajectory": 3300,
       "maxLifeTime": 3000,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -2450,6 +3434,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 500,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -2489,6 +3476,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "SmallRailgunAmmo_NPC_Fragment1",
     "terminalName": "SmallRailgunAmmo_NPC_Fragment1",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 66500,
     "baseDamageCutoff": 8000,
     "mass": 2000,
@@ -2503,10 +3494,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -2536,14 +3553,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2555,6 +3585,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 3000,
       "maxTrajectory": 3300,
       "maxLifeTime": 300,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2568,6 +3599,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 500,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -2607,6 +3641,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "SmallRailgunAmmo",
     "terminalName": "SmallRailgunAmmo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 33250,
     "baseDamageCutoff": 6000,
     "mass": 1000,
@@ -2621,10 +3659,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -2654,14 +3718,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2673,6 +3750,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 2000,
       "maxTrajectory": 3300,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2686,6 +3764,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -2725,6 +3806,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Basic_Rocket",
     "terminalName": "Basic_Rocket",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -2739,10 +3824,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": -1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -2772,14 +3883,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 500,
         "radius": 5,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "Linear",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2791,6 +3915,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 250,
       "maxTrajectory": 3000,
       "maxLifeTime": 1000,
+      "accelPerSec": 2500,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -2808,6 +3933,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -2847,6 +3975,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Advanced_Rocket_Launch",
     "terminalName": "Advanced_Rocket_Launch",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -2861,10 +3993,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -2894,14 +4052,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -2913,6 +4084,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 500,
       "maxTrajectory": 4000,
       "maxLifeTime": 35,
+      "accelPerSec": 60,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -2926,6 +4098,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -2965,6 +4140,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Advanced_Rocket",
     "terminalName": "Advanced_Rocket",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 50,
@@ -2979,10 +4158,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -3012,14 +4217,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 500,
         "radius": 5,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 0,
+        "falloff": "Linear",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3031,6 +4249,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 500,
       "maxTrajectory": 4000,
       "maxLifeTime": 720,
+      "accelPerSec": 100,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -3048,6 +4267,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -3087,6 +4309,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Rocket_Frag",
     "terminalName": "Rocket_Frag",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3101,10 +4327,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3134,14 +4386,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3153,6 +4418,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 5000,
       "maxTrajectory": 15,
       "maxLifeTime": 2,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3170,6 +4436,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 100,
+      "falloffMinMult": 0.1,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.5,
@@ -3209,6 +4478,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Pistol",
     "terminalName": "Pistol",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 30,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3223,10 +4496,38 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Fragment",
+      "patterns": [
+        ""
+      ],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 1,
+      "randomMax": 1,
+      "skipParent": false,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -3256,14 +4557,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3275,6 +4589,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 400,
       "maxTrajectory": 400,
       "maxLifeTime": 60,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3292,6 +4607,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 100,
+      "falloffMinMult": 0.1,
       "damageType": "Kinetic",
       "gridLarge": 0.5,
       "gridSmall": 0.5,
@@ -3331,6 +4649,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "RifleTrace",
     "terminalName": "RifleTrace",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 40,
     "baseDamageCutoff": 0,
     "mass": 0.25,
@@ -3345,10 +4667,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3378,14 +4726,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3397,6 +4758,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 800,
       "maxTrajectory": 800,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3410,6 +4772,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 2,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 1,
@@ -3449,6 +4814,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_AMS",
     "terminalName": "Lasers_AMS",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3463,10 +4832,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3496,14 +4891,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3515,6 +4923,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1200,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3528,6 +4937,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0,
       "characters": 1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": 0,
       "gridSmall": 0,
@@ -3567,6 +4979,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Laser_Large",
     "terminalName": "Lasers_Laser_Large",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 150,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3581,10 +4997,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3614,14 +5056,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3633,6 +5088,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1800,
       "maxLifeTime": 60,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3646,6 +5102,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -3685,6 +5144,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Laser_Dual",
     "terminalName": "Lasers_Laser_Dual",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 150,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3699,10 +5162,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3732,14 +5221,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3751,6 +5253,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1800,
       "maxLifeTime": 60,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3764,6 +5267,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -3803,6 +5309,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Lightning",
     "terminalName": "Lasers_Lightning",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 250,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3817,10 +5327,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -3850,14 +5386,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3869,6 +5418,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1500,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -3886,6 +5436,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": -1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 1,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -3925,6 +5478,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Laser_Light_LG",
     "terminalName": "Lasers_Laser_Light_LG",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 75,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -3939,10 +5496,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -3972,14 +5555,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -3991,6 +5587,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1100,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -4004,6 +5601,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -4043,6 +5643,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Laser_Light_SG",
     "terminalName": "Lasers_Laser_Light_SG",
     "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 75,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -4057,10 +5661,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -4090,14 +5720,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4109,6 +5752,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 0,
       "maxTrajectory": 1100,
       "maxLifeTime": 0,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -4122,6 +5766,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.25,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -4161,6 +5808,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Lasers_Plasma",
     "terminalName": "Lasers_Plasma",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 100,
@@ -4175,10 +5826,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -4208,14 +5885,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 80000,
         "radius": 7,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 5000,
+        "falloff": "Pooled",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4227,6 +5917,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 500,
       "maxTrajectory": 3000,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -4240,6 +5931,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.2,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Energy",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -4279,6 +5973,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Missiles_HeavyMissile",
     "terminalName": "Missiles_HeavyMissile",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 400,
@@ -4293,10 +5991,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -4326,14 +6050,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 30000,
         "radius": 6,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 60,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4345,6 +6082,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 250,
       "maxTrajectory": 4000,
       "maxLifeTime": 3600,
+      "accelPerSec": 200,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -4358,6 +6096,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -4397,6 +6138,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Griffin HE",
     "terminalName": "Griffin HE",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 200,
@@ -4411,10 +6156,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -4444,14 +6215,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 12000,
         "radius": 4,
-        "depth": 4
+        "depth": 4,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 30,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4463,6 +6247,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 450,
       "maxTrajectory": 2800,
       "maxLifeTime": 1200,
+      "accelPerSec": 300,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -4476,6 +6261,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -4515,6 +6303,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Missiles_Rocket",
     "terminalName": "Missiles_Rocket",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 200,
@@ -4529,10 +6321,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -4562,14 +6380,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 15000,
         "radius": 7,
-        "depth": 7
+        "depth": 7,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4581,6 +6412,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1000,
       "maxTrajectory": 1200,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -4594,6 +6426,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -4633,6 +6468,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Missiles_Siege",
     "terminalName": "Missiles_Siege",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 500,
@@ -4647,10 +6486,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -4680,14 +6545,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4699,6 +6577,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 300,
       "maxTrajectory": 6000,
       "maxLifeTime": 3600,
+      "accelPerSec": 200,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -4712,6 +6591,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 2,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -4751,6 +6633,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Missiles_Siege_Shrapnel",
     "terminalName": "Missiles_Siege_Shrapnel",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 200,
@@ -4765,10 +6651,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -4798,14 +6710,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 17000,
         "radius": 5,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4817,6 +6742,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 300,
       "maxTrajectory": 500,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 50,
       "rangeVariance": 50,
       "guidance": "None",
@@ -4830,6 +6756,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -4869,6 +6798,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Missiles_Torpedo",
     "terminalName": "Missiles_Torpedo",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 100,
     "baseDamageCutoff": 0,
     "mass": 200,
@@ -4883,10 +6816,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -4916,14 +6875,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1500000,
         "radius": 25,
-        "depth": 25
+        "depth": 25,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 120,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -4935,6 +6907,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 200,
       "maxTrajectory": 3500,
       "maxLifeTime": 3600,
+      "accelPerSec": 50,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -4948,6 +6921,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 10,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -4986,7 +6962,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "Missiles_Torpedo_Shrapnel",
     "terminalName": "Missiles_Torpedo_Shrapnel",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 1,
@@ -5001,10 +6981,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": true,
+      "type": "Offense",
+      "mode": "Effect",
+      "strength": 100000,
+      "radius": 100,
+      "duration": 2400,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -5034,14 +7040,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5053,6 +7072,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 500,
       "maxTrajectory": 200,
       "maxLifeTime": 900,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5066,6 +7086,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -5105,6 +7128,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Offense Falcon V2",
     "terminalName": "Offense Falcon V2",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 500,
@@ -5119,10 +7146,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -5152,14 +7205,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 20000,
         "radius": 5,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5171,6 +7237,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 150,
       "maxTrajectory": 30000,
       "maxLifeTime": 10800,
+      "accelPerSec": 200,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -5184,6 +7251,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -5223,6 +7293,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Defense Falcon Mode",
     "terminalName": "Defense Falcon Mode",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 500,
@@ -5237,10 +7311,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": true,
@@ -5270,14 +7370,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 20000,
         "radius": 5,
-        "depth": 5
+        "depth": 5,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5289,6 +7402,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 150,
       "maxTrajectory": 30000,
       "maxLifeTime": 21600,
+      "accelPerSec": 200,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
@@ -5302,6 +7416,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -5341,6 +7458,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Others_Drone_Gunship",
     "terminalName": "Others_Drone_Gunship",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 2500,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5355,10 +7476,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -5387,15 +7534,28 @@ const BUNDLED_AMMOS_DATA = {
       }
     },
     "areaOfDamage": {
-      "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "enable": false,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
-        "enable": true,
+        "enable": false,
         "damage": 2500,
         "radius": 4,
-        "depth": 4
+        "depth": 4,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 0,
+        "armOnlyOnHit": true
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5407,6 +7567,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 500,
       "maxTrajectory": 1500,
       "maxLifeTime": 420,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5420,6 +7581,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 0.1,
       "healthHitModifier": 2,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": 0.75,
@@ -5459,6 +7623,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkRandom",
     "terminalName": "FireworkRandom",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5473,10 +7641,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Weapon",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -5506,14 +7707,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5525,6 +7739,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5538,6 +7753,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -5577,6 +7795,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkRainbow",
     "terminalName": "FireworkRainbow",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5591,10 +7813,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -5624,14 +7879,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5643,6 +7911,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5656,6 +7925,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -5695,6 +7967,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkGreen",
     "terminalName": "FireworkGreen",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5709,10 +7985,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -5742,14 +8051,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5761,6 +8083,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5774,6 +8097,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -5813,6 +8139,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkRed",
     "terminalName": "FireworkRed",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5827,10 +8157,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -5860,14 +8223,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5879,6 +8255,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -5892,6 +8269,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -5931,6 +8311,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkPink",
     "terminalName": "FireworkPink",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -5945,10 +8329,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -5978,14 +8395,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -5997,6 +8427,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6010,6 +8441,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -6049,6 +8483,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkYellow",
     "terminalName": "FireworkYellow",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -6063,10 +8501,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -6096,14 +8567,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6115,6 +8599,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6128,6 +8613,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -6167,6 +8655,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "FireworkBlue",
     "terminalName": "FireworkBlue",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 20,
@@ -6181,10 +8673,43 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [
+        "FireworkYellow",
+        "FireworkBlue",
+        "FireworkGreen",
+        "FireworkRed",
+        "FireworkPink",
+        "FireworkRainbow"
+      ],
+      "triggerChance": 1,
+      "random": true,
+      "randomMin": 1,
+      "randomMax": 2,
+      "skipParent": true,
+      "patternSteps": 1
     },
     "fragment": {
       "enable": false,
@@ -6214,14 +8739,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": true,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": true,
         "damage": 1,
         "radius": 1,
-        "depth": 1
+        "depth": 1,
+        "maxAbsorb": 1,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 1,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6233,6 +8771,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 100,
       "maxTrajectory": 300,
       "maxLifeTime": 240,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6246,6 +8785,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": 0.8,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": 1,
       "gridSmall": 0.75,
@@ -6285,6 +8827,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Flare",
     "terminalName": "Flare",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 50,
@@ -6299,10 +8845,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": true,
+      "type": "AntiSmartv2",
+      "mode": "Field",
+      "strength": 99,
+      "radius": 700,
+      "duration": 1000,
+      "maxStacks": 1,
+      "stackDuration": true,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -6332,14 +8904,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6351,6 +8936,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 50,
       "maxTrajectory": 1500,
       "maxLifeTime": 1200,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6364,6 +8950,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 1,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6403,6 +8992,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "designatorBeam",
     "terminalName": "designatorBeam",
     "isBeam": true,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 0,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -6417,10 +9010,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -6450,14 +9069,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6469,6 +9101,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 50000,
       "maxTrajectory": 20000,
       "maxLifeTime": 0,
+      "accelPerSec": 50000,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6486,6 +9119,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": -1,
       "healthHitModifier": 0.5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0.5,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6524,7 +9160,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "Large HE",
     "terminalName": "Large HE",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -6539,10 +9179,38 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Weapon",
+      "patterns": [
+        "Large HE Particle"
+      ],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 1,
+      "randomMax": 1,
+      "skipParent": false,
+      "patternSteps": 2
     },
     "fragment": {
       "enable": true,
@@ -6572,14 +9240,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6591,6 +9272,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 1,
       "maxLifeTime": 1,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6604,6 +9286,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6643,6 +9328,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Large HE Particle",
     "terminalName": "Large HE Particle",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -6657,10 +9346,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -6690,14 +9405,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6709,6 +9437,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 1,
       "maxLifeTime": 30,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6722,6 +9451,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6760,7 +9492,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "Large HE Fragment",
     "terminalName": "Large HE Fragment",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 2000,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -6775,10 +9511,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -6808,14 +9570,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6827,6 +9602,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 20,
       "maxLifeTime": 5,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6840,6 +9616,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6878,7 +9657,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "Small HE",
     "terminalName": "Small HE",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -6893,10 +9676,38 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Weapon",
+      "patterns": [
+        "Small HE Particle"
+      ],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 1,
+      "randomMax": 1,
+      "skipParent": false,
+      "patternSteps": 2
     },
     "fragment": {
       "enable": true,
@@ -6926,14 +9737,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -6945,6 +9769,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 1,
       "maxLifeTime": 1,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -6958,6 +9783,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -6997,6 +9825,10 @@ const BUNDLED_AMMOS_DATA = {
     "ammoRound": "Small HE Particle",
     "terminalName": "Small HE Particle",
     "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
     "baseDamage": 1,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -7011,10 +9843,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -7044,14 +9902,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -7063,6 +9934,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 1,
       "maxLifeTime": 30,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -7076,6 +9948,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,
@@ -7114,7 +9989,11 @@ const BUNDLED_AMMOS_DATA = {
     "ammoMagazine": "Energy",
     "ammoRound": "Small HE Fragment",
     "terminalName": "Small HE Fragment",
-    "isBeam": false,
+    "isBeam": true,
+    "beams": {
+      "enable": true,
+      "virtualBeams": false
+    },
     "baseDamage": 1000,
     "baseDamageCutoff": 0,
     "mass": 0,
@@ -7129,10 +10008,36 @@ const BUNDLED_AMMOS_DATA = {
     "decayPerShot": 0,
     "heatPerShot": 0,
     "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
     "shape": "LineShape",
     "diameter": -1,
     "objectsHit": {
-      "maxHits": 1
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
     },
     "fragment": {
       "enable": false,
@@ -7162,14 +10067,27 @@ const BUNDLED_AMMOS_DATA = {
     },
     "areaOfDamage": {
       "enable": false,
-      "radius": 0,
-      "damage": 0,
-      "depth": 0,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
       "endOfLife": {
         "enable": false,
         "damage": 0,
         "radius": 0,
-        "depth": 0
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
       },
       "areaEffect": {
         "areaEffect": false,
@@ -7181,6 +10099,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 1,
       "maxTrajectory": 7.5,
       "maxLifeTime": 5,
+      "accelPerSec": 0,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
@@ -7194,6 +10113,9 @@ const BUNDLED_AMMOS_DATA = {
       "nonArmor": -1,
       "characters": 1,
       "healthHitModifier": 0,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
       "damageType": "Kinetic",
       "gridLarge": -1,
       "gridSmall": -1,

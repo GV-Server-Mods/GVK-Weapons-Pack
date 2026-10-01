@@ -136,8 +136,6 @@
 [data-theme="light"] .heat-box,
 [data-theme="light"] .comparison-box,
 [data-theme="light"] .stat-card,
-[data-theme="light"] .cargo-box,
-[data-theme="light"] .blueprint-mat-chip,
 [data-theme="light"] .target-matrix-card,
 [data-theme="light"] .radar-quickcompare,
 [data-theme="light"] .wc-accordion {
@@ -146,40 +144,9 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
-[data-theme="light"] .cargo-header,
-[data-theme="light"] .cargo-header span:first-child,
-[data-theme="light"] .cargo-box span {
-  color: #0f172a;
-}
-
-[data-theme="light"] .cargo-sub {
-  color: #475569;
-}
-
-[data-theme="light"] .cargo-endurance {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-}
-
-[data-theme="light"] .cargo-endurance span {
-  color: #64748b;
-}
-
-[data-theme="light"] .cargo-endurance strong {
-  color: #0f172a;
-}
-
 [data-theme="light"] .derived-footprint-box {
   background: #f8fafc !important;
   border-color: #cbd5e1 !important;
-}
-
-[data-theme="light"] .blueprint-mat-name {
-  color: #475569;
-}
-
-[data-theme="light"] .blueprint-mat-amount {
-  color: #0f172a;
 }
 
 [data-theme="light"] .sandbox-disclaimer p strong {
@@ -1108,6 +1075,13 @@ header {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-width: 0;
+}
+
+/* Paired inputs (Min/Max, Az/El): let them shrink to the cell instead of overflowing into the next one */
+.control-item > div[style*="flex"] > .control-input {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .control-label {
@@ -2094,88 +2068,8 @@ input.control-input.is-wc-default {
    ========================================================================== */
 .logistics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
   gap: 20px;
-}
-
-.cargo-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 12px;
-}
-
-.cargo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 4px;
-}
-
-.cargo-sub {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-
-.cargo-endurance {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-  background: var(--bg-input);
-  padding: 6px 10px;
-  border-radius: 4px;
-}
-
-.cargo-endurance strong {
-  color: var(--amber-light);
-}
-
-/* Visual Blueprint Materials Grid */
-.blueprint-materials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.blueprint-mat-chip {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  transition: border-color 0.15s, transform 0.1s;
-}
-
-.blueprint-mat-chip:hover {
-  border-color: var(--amber-primary);
-  transform: translateY(-1px);
-}
-
-.blueprint-mat-name {
-  font-size: 10px;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.blueprint-mat-amount {
-  font-size: 13px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--amber-primary);
 }
 
 .xml-box {
@@ -3985,3 +3879,142 @@ details[open] .bom-toggle-icon {
     grid-row: 2;
   }
 }
+
+/* ==========================================================================
+   Ammo Logistics ("Ammo Maths", ammo_maths.js)
+   ========================================================================== */
+:root { --am-red-tint: rgba(239, 68, 68, 0.14); --am-row-sel: rgba(245, 158, 11, 0.10); }
+[data-theme="light"] { --am-red-tint: rgba(220, 38, 38, 0.08); --am-row-sel: rgba(217, 119, 6, 0.10); }
+
+.am-muted { color: var(--text-dim); font-size: 11px; font-weight: normal; }
+.am-lever-desc { margin-top: 4px; font-size: 11px; line-height: 1.4; color: var(--text-dim); }
+#ws-logistics .control-item.full-width { grid-column: 1 / -1; }
+#ws-logistics .control-label { white-space: normal; flex-wrap: wrap; }
+.am-unit { font-size: 10px; font-weight: normal; color: var(--text-muted); }
+.am-check { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); cursor: pointer; }
+.am-card { margin-top: 16px; background: var(--bg-card); padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border-color); }
+.am-card-title { font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.am-table { font-size: 12px; }
+.am-table th, .am-table td { padding: 6px 8px; white-space: nowrap; }
+.am-formula { cursor: help; text-decoration: underline dotted var(--text-dim); text-underline-offset: 3px; }
+.am-delta { color: var(--amber-light); font-weight: 700; }
+.am-short, .am-table td.am-short { color: var(--red-accent); background: var(--am-red-tint); font-weight: 700; }
+.am-row-selected td { background: var(--am-row-sel); }
+.am-click { cursor: pointer; }
+.am-click:hover td { background: var(--bg-card-hover); }
+.am-dot { color: var(--amber-primary); }
+.am-actions { display: flex; gap: 4px; }
+.am-warn { margin-top: 8px; color: var(--red-accent); font-size: 12px; }
+.am-stat-note { margin-top: 4px; font-size: 10px; line-height: 1.3; color: var(--text-dim); }
+.am-xml-tabs { display: flex; gap: 6px; align-items: center; }
+.am-matrix-heading { margin: 18px 0 10px; font-size: 12px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; }
+.am-values-details { margin-top: 14px; }
+.am-values-details summary { cursor: pointer; font-size: 12px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700; }
+.am-values-details .control-input { max-width: 140px; padding: 4px 6px; }
+.am-modified-row td { background: var(--am-row-sel); }
+
+/* Modified levers: amber rail + revert button */
+.am-lever-reset { display: none; margin-left: 6px; padding: 0 6px; font-size: 11px; line-height: 16px; border-radius: 4px;
+  border: 1px solid var(--amber-primary); background: transparent; color: var(--amber-primary); cursor: pointer; }
+.am-lever.am-modified .am-lever-reset, .am-modified > .am-lever-reset { display: inline-block; }
+.control-item.am-lever.am-modified { box-shadow: inset 3px 0 0 var(--amber-primary); padding-left: 8px; }
+.control-item.am-lever.am-modified .control-label::before { content: '● '; color: var(--amber-primary); }
+
+/* Workbench InventorySize vs the reload buffer */
+.control-input.input-below-min { border-color: var(--red-accent) !important; background: var(--am-red-tint); color: var(--red-accent); }
+.am-inv-hint { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: space-between;
+  font-size: 11px; font-family: var(--font-mono); color: var(--text-muted); }
+.am-inv-hint.am-inv-short { color: var(--red-accent); font-weight: 700; }
+.am-inv-actions { display: inline-flex; gap: 8px; align-items: center; }
+
+/* Ammo Logistics XML follows the theme (the Workbench/modal code views stay dark for their syntax colors) */
+[data-theme="light"] #ws-logistics .xml-box,
+[data-theme="light"] #amExportModal .xml-box { background: #f8fafc; color: #0369a1; border-color: #cbd5e1; }
+
+/* ==========================================================================
+   Ammo Logistics layout
+   ========================================================================== */
+.am-section { margin-top: 20px; }
+.am-filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.am-filter-chips .filter-pill[disabled] { opacity: 0.4; cursor: default; }
+.banner-badges { flex-wrap: wrap; }
+button.badge { cursor: pointer; }
+button.badge:hover { filter: brightness(1.2); }
+
+/* Two-way levers: × multiplier ↔ target value */
+.am-twoway-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 14px; }
+.am-twoway { margin-top: 12px; }
+.am-twoway-list .am-twoway { margin-top: 0; }
+.am-twoway-inputs { display: flex; align-items: center; gap: 6px; margin: 4px 0; }
+.am-twoway-inputs .control-input { flex: 1 1 0; min-width: 0; }
+.am-twoway-inputs .am-role-select { flex: 2 1 0; }
+.am-op { color: var(--text-dim); font-family: var(--font-mono); font-size: 12px; }
+.am-unit-lg { color: var(--text-muted); font-family: var(--font-mono); font-size: 12px; min-width: 18px; }
+.am-twoway > .control-label, .am-twoway > .am-check { justify-content: flex-start; gap: 6px; }
+a.am-bm-link { color: var(--amber-primary); text-decoration: underline dotted; text-underline-offset: 2px; }
+.am-twoway.am-modified { box-shadow: inset 3px 0 0 var(--amber-primary); padding-left: 8px; }
+.am-twoway.am-modified > .control-label::before { content: '● '; color: var(--amber-primary); }
+.am-density { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px; padding: 8px 10px; background: var(--bg-card);
+  border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.am-density strong { color: var(--text-main); }
+.am-basis-card #amAmmoSelect { width: 100%; margin-top: 4px; }
+.am-basis { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+.am-basis strong { color: var(--text-main); }
+.am-basis-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.am-basis-row .btn { margin-left: auto; }
+.am-basis-total strong { color: var(--amber-primary); font-size: 14px; }
+.am-basis-curves { display: flex; flex-wrap: wrap; gap: 4px 16px; padding-top: 8px; border-top: 1px dashed var(--border-color); font-size: 11px; }
+.am-basis-curves .am-bm-link { margin-left: auto; }
+.am-vs { font-size: 10px; color: var(--text-dim); margin-left: 4px; }
+.am-vs-out, .am-table td.am-vs-out { color: var(--amber-primary); font-weight: 700; }
+
+/* Economy headline */
+.am-price-hero { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 1.4fr); gap: 16px; padding: 12px 14px; margin-bottom: 4px;
+  background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid var(--cyan-primary); border-radius: 6px; }
+.am-hero-value { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--cyan-primary); margin: 2px 0; }
+.am-hero-unit { font-size: 14px; color: var(--text-muted); }
+.am-hero-side { display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.am-hero-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-family: var(--font-mono); font-size: 13px; }
+.am-hero-line .stat-title { min-width: 110px; margin: 0; }
+@media (max-width: 700px) { .am-price-hero { grid-template-columns: 1fr; } }
+
+/* Recipe table: ingot | weight | share | new | SBC | Δ | remove */
+.am-bc-head, .am-bc-row { display: grid; grid-template-columns: minmax(110px, 1.6fr) 72px 44px 92px 60px 60px 30px; gap: 6px; align-items: center; }
+.am-bc-head { font-size: 10px; font-family: var(--font-mono); color: var(--text-dim); text-transform: uppercase; padding-bottom: 4px; }
+.am-bc-row { margin-bottom: 5px; font-family: var(--font-mono); font-size: 12px; }
+.am-bc-head span:nth-child(n+3), .am-bc-row > span { text-align: right; }
+.am-bc-add { display: flex; gap: 8px; margin-top: 8px; }
+.am-bc-add .control-input { max-width: 260px; }
+.am-recipe-foot { margin-top: 8px; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.5; }
+.am-ru-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--border-color); }
+.am-ru-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text-muted); min-width: 32px; }
+.am-seg { display: inline-flex; border: 1px solid var(--border-color); border-radius: 5px; overflow: hidden; }
+.am-seg-btn { padding: 4px 10px; font-size: 11px; font-family: var(--font-mono); background: transparent; color: var(--text-muted);
+  border: none; border-right: 1px solid var(--border-color); cursor: pointer; }
+.am-seg-btn:last-child { border-right: none; }
+.am-seg-btn:hover { background: var(--bg-card-hover); }
+.am-seg-btn.active { background: var(--amber-primary); color: #fff; font-weight: 700; }
+.am-ru-row .am-bc-ru-qty { width: 90px; }
+.am-ru-auto { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+
+/* What will change in the SBC */
+.am-table tr.am-row-same td { color: var(--text-dim); }
+.am-table tr.am-row-same td strong { font-weight: normal; color: var(--text-dim); }
+.am-table tr.am-row-changed td:first-child { font-weight: 700; }
+.am-table tr.am-row-summary td { border-top: 2px solid var(--border-color); }
+.am-change-count { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--amber-primary); }
+.am-xml-details { margin-top: 14px; }
+.am-xml-details > summary { cursor: pointer; font-size: 12px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700; }
+.am-xml-details .xml-box { max-height: 420px; overflow: auto; }
+
+/* Weapons table inventory status */
+.am-inv-flag { margin-left: 4px; padding: 0 5px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+.am-inv-flag-short { color: var(--red-accent); }
+.am-inv-flag-over { color: var(--amber-primary); background: var(--am-row-sel); }
+.am-inv-flag-ok { color: var(--green-accent); }
+.am-sortable { cursor: pointer; user-select: none; }
+.am-sortable:hover { color: var(--amber-primary); }
+
+/* Balance Matrix link target */
+@keyframes amFlash { 0%, 100% { box-shadow: none; } 30% { box-shadow: 0 0 0 3px var(--amber-glow); } }
+.am-flash { animation: amFlash 0.8s ease-in-out 2; }

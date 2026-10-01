@@ -52,7 +52,7 @@
       </div>
       <div style="padding: 16px;">
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
-          These 11 global server multipliers govern structural integrity curves, build times, Space Credits valuations, and assembler logistics across all GVK weapons.
+          These global server multipliers govern structural integrity curves, build times, Space Credits valuations, and assembler logistics across all GVK weapons and ammo.
         </p>
         <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
           <div class="control-item">
@@ -100,6 +100,80 @@
             <input type="number" id="matScrapYield" class="control-input" step="0.05" value="0.25">
           </div>
         </div>
+        <h4 class="am-matrix-heading" id="amMatrixAmmo">📦 Ammo Economy & Logistics</h4>
+        <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div class="control-item">
+            <label class="control-label" title="Base MSRP of the anchor magazine; every other magazine's MSRP scales with its damage">Anchor Mag MSRP (SC)</label>
+            <input type="number" id="matAmmoAnchorMsrp" class="control-input" value="1500">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Anchor Magazine</label>
+            <select id="matAmmoAnchorMag" class="control-input"></select>
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="MSRP multiplier for HybridRound ammo">Hybrid Discount</label>
+            <input type="number" id="matHybridDiscount" class="control-input" step="0.05" value="0.75">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Share of Adjusted MSRP turned into RUs (÷ CU value) for relic ammo">RU Share</label>
+            <input type="number" id="matRuShare" class="control-input" step="0.05" value="0.75">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Weapon inventory must hold this many reloads (× MagsToLoad)">Reload Buffer (× MagsToLoad)</label>
+            <input type="number" id="matBufferReloads" class="control-input" step="0.1" value="2.2">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Small Cargo (L)</label>
+            <input type="number" id="matSmallCargoL" class="control-input" value="3375">
+          </div>
+          <div class="control-item">
+            <label class="control-label">Large Cargo (L)</label>
+            <input type="number" id="matLargeCargoL" class="control-input" value="421875">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Character inventory: 1.5 m³ (GVK Character Changes mod) × the server's InventorySizeMultiplier (3)">Player Inventory (L)</label>
+            <input type="number" id="matPlayerInvL" class="control-input" value="4500">
+          </div>
+        </div>
+        <h4 class="am-matrix-heading">📐 Ammo Baselines <span class="am-muted">(anchored to the Anchor Magazine; each mag's Size × / Mass × / Craft × tweak these)</span></h4>
+        <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+          <div class="control-item">
+            <label class="control-label" title="Baseline volume of the anchor magazine">Reference Volume (L)</label>
+            <input type="number" id="matRefVolL" class="control-input" value="30">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Volume = Reference Volume × (mag damage ÷ anchor damage)^exponent. 1 = linear with damage; lower keeps big ammo compact">Size Curve Exponent</label>
+            <input type="number" id="matSizeExp" class="control-input" step="0.05" value="0.6">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Baseline mass of the anchor magazine">Reference Mass (kg)</label>
+            <input type="number" id="matRefMassKg" class="control-input" value="30">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Mass = Reference Mass × (mag damage ÷ anchor damage)^exponent. 1 = every magazine carries the same damage per kg at Mass × 1">Mass Curve Exponent</label>
+            <input type="number" id="matMassExp" class="control-input" step="0.05" value="1">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Baseline craft time of the anchor magazine">Reference Craft Time (s)</label>
+            <input type="number" id="matRefCraftS" class="control-input" value="13">
+          </div>
+          <div class="control-item">
+            <label class="control-label" title="Craft = Reference Craft Time × (mag damage ÷ anchor damage)^exponent">Craft Curve Exponent</label>
+            <input type="number" id="matCraftExp" class="control-input" step="0.05" value="0.5">
+          </div>
+        </div>
+        <details class="am-values-details" open>
+          <summary>💎 Ingot & Component Values <span class="am-muted">(prices ammo recipes; edits apply immediately)</span></summary>
+          <div style="display: flex; justify-content: flex-end; margin: 8px 0;">
+            <button id="btnAmResetValues" class="btn btn-sm">↺ Reset Values</button>
+          </div>
+          <div class="table-responsive" style="max-height: 320px;"><table class="bom-table am-table" id="amValuesTable"></table></div>
+        </details>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+          <button id="btnAmExportSettings" class="btn btn-sm" title="Download all ammo levers, values and ammo economy settings as JSON">⬇ Export Ammo Settings</button>
+          <button id="btnAmImportSettings" class="btn btn-sm" title="Load a settings JSON exported from another browser">⬆ Import Ammo Settings</button>
+          <input type="file" id="amImportFile" accept=".json,application/json" style="display: none;">
+        </div>
         <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
           <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">Changes persist locally in browser storage.</span>
           <div style="display: flex; gap: 8px;">
@@ -107,6 +181,27 @@
             <button id="btnApplyMatrix" class="btn btn-primary">Apply Multipliers</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ammo Logistics: export every magazine whose Ammo Maths result differs from the SBC -->
+  <div id="amExportModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-panel" style="max-width: 960px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="panel-header">
+        <h2>⚡ Changed Magazines → SBC</h2>
+        <button id="btnAmCloseExport" class="btn btn-sm">✕</button>
+      </div>
+      <div style="padding: 12px 16px; overflow: auto;">
+        <div id="amExportDiff"></div>
+        <div class="tab-group am-xml-tabs" style="margin-top: 12px;">
+          <button class="tab-btn active" data-amexport="bp">Blueprints.sbc</button>
+          <button class="tab-btn" data-amexport="mag">AmmoMagazines_*.sbc</button>
+          <button id="btnAmExportCopy" class="btn btn-sm" style="margin-left: auto;">📋 Copy</button>
+          <button id="btnAmExportDownload" class="btn btn-sm">💾 Download</button>
+        </div>
+        <pre id="amExportBp" class="xml-box" style="margin-top: 8px;"></pre>
+        <pre id="amExportMag" class="xml-box" style="margin-top: 8px; display: none;"></pre>
       </div>
     </div>
   </div>
@@ -757,6 +852,13 @@
               <div class="control-item">
                 <label class="control-label">Inventory Size <span class="unit">m³ (kL)</span></label>
                 <input type="number" id="wInventorySize" class="control-input" step="0.1" min="0.01" value="0.9">
+                <div class="am-inv-hint" id="wInvSuggestBox" style="display: none;">
+                  <span id="wInvSuggestHint"></span>
+                  <span class="am-inv-actions">
+                    <button id="btnUseSuggestedInv" class="btn btn-sm" type="button" title="Set InventorySize to the Ammo Maths suggestion">Use</button>
+                    <label class="am-check" title="Keep InventorySize synced to the suggestion for this weapon (saved per weapon definition)"><input type="checkbox" id="chkAutoInvSize"> Auto</label>
+                  </span>
+                </div>
               </div>
               <div class="control-item">
                 <label class="control-label">Idle Power Draw <span class="unit">MW</span></label>
@@ -2095,9 +2197,8 @@
 
     </div>
 
-    <!-- WORKSPACE 3: AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS") -->
+    <!-- WORKSPACE 3: AMMO LOGISTICS & BLUEPRINTS ("AMMO MATHS", logic in ammo_maths.js) -->
     <div id="ws-logistics" class="workspace-section">
-      <!-- Dedicated Ammo Magazine Selector Bar -->
       <div class="logistics-ammo-bar">
         <div class="selector-left">
           <div class="ammo-icon-wrap" title="Ammo Magazine Icon">
@@ -2109,144 +2210,189 @@
               <select id="logisticsAmmoSelect" class="telemetry-ammo-dropdown" style="font-size: 14px; min-width: 320px;">
                 <option value="">Loading ammo magazines...</option>
               </select>
-              <button id="btnResetAmmoLogistics" class="btn btn-sm" title="Reset this magazine back to official SBC defaults">↺ Reset</button>
+              <button id="btnAmPrev" class="btn btn-sm" title="Previous magazine (All Magazines order and filter)">◀</button>
+              <button id="btnAmNext" class="btn btn-sm" title="Next magazine (All Magazines order and filter)">▶</button>
+              <button id="btnResetAmmoLogistics" class="btn btn-sm" title="Reset every lever of this magazine back to its Ammo Maths defaults">↺ Reset All Levers</button>
+              <button class="btn btn-sm am-bm-link" data-bm-focus="amMatrixAmmo" title="Anchor magazine, baseline curves, RU share and ingot values (Balance Matrix)">⚙ Ammo Settings</button>
             </div>
           </div>
         </div>
-        <div class="banner-badges">
-          <div class="badge" id="badgeLogMagSubtype">Subtype: <strong>NATO_25x184mm</strong></div>
-          <div class="badge badge-amber" id="badgeLogMagCap">Capacity: <strong>30 rds</strong></div>
-          <div class="badge badge-cyan" id="badgeLogMagVol">Volume: <strong>30 L</strong></div>
-          <div class="badge badge-green" id="badgeLogMagMass">Mass: <strong>30 kg</strong></div>
-          <div class="badge badge-purple" id="badgeLogBlueprint">⏱️ <strong>13s Craft</strong></div>
-        </div>
+        <div class="banner-badges" id="amStatusChips"></div>
       </div>
 
       <div class="logistics-grid">
-        
-        <!-- Left: Logistics Balancing Controls -->
+
+        <!-- Physical levers: volume, mass, craft time -->
         <div class="panel">
           <div class="panel-header">
-            <h2>⚖️ Rebalancing Levers (Ammo Maths)</h2>
-            <span id="logActiveAmmoName" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">NATO 25x184mm</span>
+            <h2>📐 Physical</h2>
+            <span class="am-muted">volume · mass · craft time</span>
           </div>
           <div style="padding: 16px;">
-            <div class="control-grid">
-              <div class="control-item full-width">
-                <label class="control-label">Target Damage Density <span class="unit">dmg / Liter (Row 16)</span></label>
-                <div class="slider-container">
-                  <input type="range" id="inputDmgDensitySlider" min="500" max="30000" step="250" value="5000">
-                  <input type="number" id="inputDmgDensity" class="control-input" min="100" max="100000" value="5000">
+            <!-- Damage basis: where this magazine's damage comes from and what the curves scale it against -->
+            <div class="am-card am-basis-card" style="margin-top: 0;">
+              <div class="am-card-title">💥 Damage Basis <span class="am-muted">drives every curve and the price</span></div>
+              <div class="am-lever" data-lever="ammoKey">
+                <label class="control-label">Reference Ammo <span class="unit">AmmoDef whose damage counts</span>
+                  <button class="am-lever-reset" data-lever-reset="ammoKey" title="Revert to default">↺</button></label>
+                <select id="amAmmoSelect" class="control-input"></select>
+              </div>
+              <div id="amDamageBasis" class="am-basis"></div>
+            </div>
+            <p class="am-lever-desc" style="margin: 14px 0 0;">Each output = curve value × multiplier. Type the multiplier or the value you want; the other follows.</p>
+            <div class="am-twoway-list">
+              <div class="am-lever am-twoway" data-lever="sizeMult">
+                <label class="control-label">Volume
+                  <button class="am-lever-reset" data-lever-reset="sizeMult" title="Revert to default">↺</button></label>
+                <div class="am-twoway-inputs">
+                  <span class="am-op">×</span><input type="number" id="inputSizeMult" class="control-input" step="0.05" min="0.01" value="1" title="Size multiplier">
+                  <span class="am-op">→</span><input type="number" id="amTargetVol" class="control-input" step="any" min="0.01" title="Target volume: the multiplier is solved for you">
+                  <span class="am-unit-lg">L</span>
                 </div>
+                <span class="am-muted am-formula" id="amSizeHint"></span>
               </div>
-
-              <div class="control-item">
-                <label class="control-label">Physical Density <span class="unit">kg / Liter (Row 6)</span></label>
-                <input type="number" id="inputPhysicalDensity" class="control-input" step="0.1" value="4.0">
+              <div class="am-lever am-twoway" data-lever="massMult">
+                <label class="control-label">Mass
+                  <button class="am-lever-reset" data-lever-reset="massMult" title="Revert to default">↺</button></label>
+                <div class="am-twoway-inputs">
+                  <span class="am-op">×</span><input type="number" id="inputMassMult" class="control-input" step="0.1" min="0.01" value="1" title="Mass multiplier (&lt;1 = more damage per kg)">
+                  <span class="am-op">→</span><input type="number" id="amTargetMass" class="control-input" step="any" min="0.01" title="Target mass: the multiplier is solved for you">
+                  <span class="am-unit-lg">kg</span>
+                </div>
+                <span class="am-muted am-formula" id="amMassHint"></span>
               </div>
+              <div class="am-lever am-twoway" data-lever="craftMult">
+                <label class="control-label">Craft Time
+                  <button class="am-lever-reset" data-lever-reset="craftMult" title="Revert to default">↺</button></label>
+                <div class="am-twoway-inputs">
+                  <span class="am-op">×</span><input type="number" id="inputCraftMult" class="control-input" step="0.05" min="0.01" value="1" title="Craft multiplier">
+                  <span class="am-op">→</span><input type="number" id="amTargetCraft" class="control-input" step="1" min="1" title="Target craft time: the multiplier is solved for you">
+                  <span class="am-unit-lg">s</span>
+                </div>
+                <span class="am-muted am-formula" id="amCraftHint"></span>
+              </div>
+            </div>
+            <div class="am-density" id="amDensity"></div>
+            <div id="amVolWarning" class="am-warn" style="display: none;"></div>
 
-              <div class="control-item">
-                <label class="control-label">Ammo Role Multiplier <span class="unit">Row 46</span></label>
-                <select id="selectRoleMultiplier" class="control-input">
-                  <option value="1.0" selected>1.0x (Standard Kinetic)</option>
-                  <option value="1.1">1.1x (Armor Piercing AP)</option>
-                  <option value="1.25">1.25x (Rockets / Missiles)</option>
-                  <option value="1.5">1.5x (MIRV / Torpedo / Drone)</option>
+            <div class="am-card">
+              <div class="am-card-title">📦 Carrying Capacity</div>
+              <div class="table-responsive"><table class="bom-table am-table" id="amCarryTable"></table></div>
+              <p class="am-muted" id="amCarryNote" style="margin: 6px 0 0;"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economy levers: price, hybrid, RUs, recipe -->
+        <div class="panel">
+          <div class="panel-header">
+            <h2>💰 Economy & Recipe</h2>
+            <span class="am-muted" id="amAnchorNote"></span>
+          </div>
+          <div style="padding: 16px;">
+            <div id="amPriceHero" class="am-price-hero"></div>
+            <div class="am-lever am-twoway" data-lever="roleMult">
+              <label class="control-label">Server Price <span class="unit">ammo role</span>
+                <button class="am-lever-reset" data-lever-reset="roleMult" title="Revert to default">↺</button></label>
+              <div class="am-twoway-inputs">
+                <select id="amRoleSelect" class="control-input am-role-select" title="Role preset: sets the price multiplier">
+                  <option value="1">Standard kinetic · 1.0</option>
+                  <option value="1.1">AP / heavy shell / plasma · 1.1</option>
+                  <option value="1.2">Railgun · 1.2</option>
+                  <option value="1.25">Rockets / missiles / torpedo · 1.25</option>
+                  <option value="1.5">MIRV / drone · 1.5</option>
+                  <option value="custom">Custom</option>
                 </select>
+                <span class="am-op">×</span><input type="number" id="inputRoleMult" class="control-input" step="0.05" min="0" value="1.0" title="Price multiplier">
+                <span class="am-op">→</span><input type="number" id="amTargetPrice" class="control-input" step="any" min="0" title="Target server price: the multiplier is solved for you (prices round to 2 significant figures)">
+                <span class="am-unit-lg">SC</span>
               </div>
-
-              <div class="control-item">
-                <label class="control-label">Research Units (RUs) <span class="unit">tech tier cost</span></label>
-                <input type="number" id="inputRUs" class="control-input" min="0" value="0">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Assembler Craft Time <span class="unit">seconds</span></label>
-                <input type="number" id="inputCraftTime" class="control-input" min="1" value="13">
-              </div>
+              <span class="am-muted am-formula" id="amPriceHint"></span>
+            </div>
+            <div class="am-lever am-twoway" data-lever="hybrid">
+              <label class="am-check"><input type="checkbox" id="chkHybridRound"> Hybrid round: part of each shot is paid in power
+                <button class="am-lever-reset" data-lever-reset="hybrid" title="Revert to default">↺</button></label>
+              <div class="am-lever-desc">Discounts the price by <a href="#" class="am-bm-link" data-bm-focus="matHybridDiscount">Balance Matrix → Hybrid Discount</a>.</div>
             </div>
 
-            <!-- Derived Footprint Output Card -->
-            <div class="derived-footprint-box" style="margin-top: 16px; background: var(--bg-card); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
-              <h4 style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); text-transform: uppercase; margin-bottom: 10px;">
-                📏 DERIVED PHYSICAL FOOTPRINT & BUFFER
-              </h4>
-              <div class="hero-stats-grid" style="grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                <div class="stat-card">
-                  <div class="stat-title">Magazine Volume</div>
-                  <div class="stat-value" id="outMagVolume">0.0 <span style="font-size: 12px; font-weight: 400;">L</span></div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-title">Magazine Mass</div>
-                  <div class="stat-value" id="outMagMass">0.0 <span style="font-size: 12px; font-weight: 400;">kg</span></div>
-                </div>
-                <div class="stat-card cyan">
-                  <div class="stat-title">Suggested Weapon Vol</div>
-                  <div class="stat-value" id="outSuggestedVol">0.0 <span style="font-size: 12px; font-weight: 400;">kL (2.2x)</span></div>
-                </div>
-                <div class="stat-card green">
-                  <div class="stat-title">Buffer Depletion</div>
-                  <div class="stat-value" id="outDepletionTime">0.0 <span style="font-size: 12px; font-weight: 400;">s</span></div>
-                </div>
+            <div class="am-card am-recipe-card">
+              <div class="am-card-title am-lever" data-lever="baseComp">🏭 Blueprint Recipe <span class="am-muted" id="amRecipeValueNote"></span>
+                <button class="am-lever-reset" data-lever-reset="baseComp" title="Revert to default composition">↺</button></div>
+              <div id="amBaseCompRU" class="am-lever" data-lever="usesRUs"></div>
+              <div class="am-bc-head">
+                <span>Ingot</span><span title="Relative weight; each ingot's share of the recipe value is weight × ingot value">Weight</span>
+                <span title="Share of the recipe value (weight × ingot value)">Value %</span><span>New</span><span>SBC</span><span>Δ</span><span></span>
               </div>
+              <div id="amBaseComp"></div>
+              <div class="am-bc-add">
+                <select id="amBaseCompAdd" class="control-input"></select>
+                <button id="btnAmBaseCompAdd" class="btn btn-sm">＋ Add Ingot</button>
+              </div>
+              <div class="am-recipe-foot" id="amRecipeTotals"></div>
+              <div class="am-warn" id="amRecipeWarn" style="display: none;"></div>
+              <div class="am-recipe-foot" id="amScrap"></div>
             </div>
-
           </div>
         </div>
+      </div>
 
-        <!-- Right: Cargo Packing & Blueprint Generator -->
-        <div class="panel">
-          <div class="panel-header">
-            <h2>📦 Cargo Packing & Fleet Endurance</h2>
-            <span style="font-size: 11px; font-family: var(--font-mono); color: var(--cyan-primary);">1x Realistic Inventory</span>
-          </div>
-          <div style="padding: 16px;">
-            
-            <!-- Small Cargo (3,375 L) -->
-            <div class="cargo-box">
-              <div class="cargo-header">
-                <span>SMALL CARGO CONTAINER (3,375 L)</span>
-                <span id="outSmallCargoMags" style="color: var(--cyan-primary); font-weight: 700;">0 Mags</span>
-              </div>
-              <div class="cargo-sub" id="outSmallCargoDmg">Total Damage Stored: 0 hp</div>
-              <div class="cargo-endurance">
-                <span>1 Gun Fire: <strong id="outSmall1GunTime">0s</strong></span>
-                <span>20-Gun Battery: <strong id="outSmall20GunTime">0s</strong></span>
-              </div>
+      <!-- What export writes: every SBC field this magazine compares, unchanged rows muted -->
+      <div class="panel am-section">
+        <div class="panel-header">
+          <h2>📝 What Will Change in the SBC</h2>
+          <span id="amChangeCount" class="am-muted"></span>
+        </div>
+        <div style="padding: 12px 16px;">
+          <table class="compare-table am-table" id="amCompareTable"></table>
+          <details class="am-xml-details" id="amXmlDetails">
+            <summary>SBC output for this magazine</summary>
+            <div class="tab-group am-xml-tabs" style="margin-top: 10px;">
+              <button class="tab-btn active" data-amxml="bp">Blueprints.sbc</button>
+              <button class="tab-btn" data-amxml="mag">AmmoMagazines.sbc</button>
+              <button id="btnCopyBlueprintXml" class="btn btn-sm" style="margin-left: auto;">📋 Copy XML</button>
             </div>
+            <pre id="codeBlueprintXml" class="xml-box" style="margin-top: 8px;">&lt;!-- Calculating Ingot Recipe... --&gt;</pre>
+            <pre id="codeMagazineXml" class="xml-box" style="margin-top: 8px; display: none;"></pre>
+          </details>
+        </div>
+      </div>
 
-            <!-- Large Cargo (421,875 L) -->
-            <div class="cargo-box" style="margin-top: 12px;">
-              <div class="cargo-header">
-                <span>LARGE CARGO CONTAINER (421,875 L)</span>
-                <span id="outLargeCargoMags" style="color: var(--green-accent); font-weight: 700;">0 Mags</span>
-              </div>
-              <div class="cargo-sub" id="outLargeCargoDmg">Total Damage Stored: 0 hp</div>
-              <div class="cargo-endurance">
-                <span>1 Gun Fire: <strong id="outLarge1GunTime">0s</strong></span>
-                <span>20-Gun Battery: <strong id="outLarge20GunTime">0s</strong></span>
-              </div>
-            </div>
+      <!-- Weapons firing this magazine (suggested InventorySize is unique per WeaponDefinition) -->
+      <div class="panel am-section">
+        <div class="panel-header">
+          <h2>🔫 Weapons Using This Mag <span class="am-muted" style="text-transform: none; letter-spacing: 0;">click a row to use it for the fire times</span></h2>
+          <label class="am-check" title="Adds L/s, buffer, mags/min, SC/min and per-cargo fire times"><input type="checkbox" id="chkAmThroughput"> Show throughput</label>
+        </div>
+        <div style="padding: 12px 16px;">
+          <div class="table-responsive"><table class="bom-table am-table" id="amWeaponsTable"></table></div>
+          <p class="am-muted" id="amWeaponsNote" style="margin-top: 8px;"></p>
+        </div>
+      </div>
 
-            <!-- XML Blueprint Prerequisites Output -->
-            <div style="margin-top: 18px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">
-                  XML BLUEPRINT &lt;Prerequisites&gt; (Blueprints.sbc)
-                </span>
-                <button id="btnCopyBlueprintXml" class="btn btn-sm">📋 Copy XML</button>
-              </div>
-              <!-- Visual Materials Breakdown Chips -->
-              <div id="blueprintVisualMaterials" class="blueprint-materials-grid"></div>
-              <pre id="codeBlueprintXml" class="xml-box" style="margin-top: 10px;">&lt;!-- Calculating Ingot Recipe... --&gt;</pre>
-            </div>
-
+      <!-- All magazines side by side (the sheet's column view) -->
+      <div class="panel am-section">
+        <div class="panel-header">
+          <h2>📊 All Magazines</h2>
+          <div style="display: flex; gap: 8px;">
+            <button id="btnAmExportAllSbc" class="btn btn-sm" title="Download every tracked magazine's Blueprint and AmmoMagazine definition (Ammo Maths values applied) as two complete SBC files">⬇ Export All SBC</button>
+            <button id="btnAmExportChanged" class="btn btn-primary btn-sm">⚡ Export All Changed Mags</button>
           </div>
         </div>
-
+        <div style="padding: 12px 16px;">
+          <div class="am-filter-chips" data-am-filters style="margin-bottom: 8px;"></div>
+          <div class="table-responsive"><table class="bom-table am-table" id="amOverviewTable"></table></div>
+          <div style="display: flex; gap: 8px; align-items: center; margin: 16px 0 8px; flex-wrap: wrap;">
+            <span class="am-card-title" style="margin: 0;">Ammo Comparison</span>
+            <div class="tab-group" id="amChartTabs">
+              <button class="tab-btn active" data-amchart="dmgPerSc" title="Damage per space credit">Damage / SC</button>
+              <button class="tab-btn" data-amchart="dmgPerL">Damage / L</button>
+              <button class="tab-btn" data-amchart="dmgPerKg">Damage / kg</button>
+            </div>
+          </div>
+          <canvas id="amChart" height="360" style="width: 100%;"></canvas>
+        </div>
       </div>
     </div>
-
   </div>
 
   <!-- Persistent Bottom Sticky HUD Bar -->
@@ -2274,18 +2420,24 @@
         <span class="hud-stat">Alpha: <strong id="hudWbAlpha">0</strong></span>
       </div>
       <div class="hud-right">
+        <button id="hudWbDrift" class="badge hud-chip badge-amber" type="button" style="display: none;" title="The Ammo Maths recipe for this weapon's magazine no longer matches the SBC — open it in Ammo Logistics"></button>
         <button id="hudWbLint" class="badge hud-chip badge-green" type="button" title="Jump to the definition checks">✅ Healthy</button>
         <button id="btnHudExport" class="btn btn-primary btn-sm">⚡ Export Code & SBC</button>
       </div>
     </div>
-    <!-- Ammo Logistics: combat value of the selected magazine -->
+    <!-- Ammo Logistics: price, drift and pending SBC changes of the selected magazine -->
     <div class="hud-group" data-hud="ws-logistics">
       <div class="hud-left">
         <span class="hud-title" id="hudLogName">—</span>
+        <span class="hud-stat">Server Price: <strong id="hudLogPrice">0 SC</strong></span>
+        <span class="hud-stat">Damage / SC: <strong id="hudLogDmgSc">0</strong></span>
         <span class="hud-stat">Damage / Mag: <strong id="hudLogMagDmg">0</strong></span>
-        <span class="hud-stat">Density: <strong id="hudLogDensity">0 hp/L</strong></span>
-        <span class="hud-stat">1 Gun Empties It: <strong id="hudLogEmpty">0 s</strong></span>
-        <span class="hud-stat">Large Cargo Lasts: <strong id="hudLogCargo">0 s</strong> <span class="hud-sub">(1 gun)</span></span>
+        <span class="hud-stat">One Mag Fires For: <strong id="hudLogMagLasts">0 s</strong></span>
+      </div>
+      <div class="hud-right">
+        <span id="hudLogDrift" class="badge hud-chip badge-red" style="display: none;"></span>
+        <button id="hudLogChanged" class="badge hud-chip" type="button" title="Show the changed magazines in All Magazines"></button>
+        <button id="btnHudAmExport" class="btn btn-primary btn-sm">⚡ Export Changed</button>
       </div>
     </div>
   </div>
@@ -2338,10 +2490,13 @@
   <script src="data/wc_defs_data.js"></script>
   <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
+  <script src="data/economy_values.js"></script>
   <script src="data/studio_overrides.js"></script>
   <script src="source_pipeline.js"></script>
   <script src="source_live.js"></script>
+  <script src="wc_math.js"></script>
   <script src="app.js"></script>
+  <script src="ammo_maths.js"></script>
   <script src="wc_editor.js"></script>
 </body>
 </html>

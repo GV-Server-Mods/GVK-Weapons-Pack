@@ -342,9 +342,21 @@ function xmlText(node) { return node ? (node.text || '').trim() : ''; }
 function xmlNum(node) { const t = xmlText(node); return t ? parseFloat(t) || 0 : 0; }
 function subId(defNode) { return xmlText(xmlKid(xmlKid(defNode, 'Id'), 'SubtypeId')); }
 
+// Raw source text of each <tag>…</tag> element, keyed by its first <SubtypeId> (the Id block's).
+function rawElements(xmlText2, tag) {
+  const out = {};
+  const re = new RegExp('<' + tag + '(\\s[^>]*)?>[\\s\\S]*?</' + tag + '>', 'g');
+  let m;
+  while ((m = re.exec(xmlText2))) {
+    const sub = /<SubtypeId>([^<]*)<\/SubtypeId>/.exec(m[0]);
+    if (sub && !(sub[1].trim() in out)) out[sub[1].trim()] = m[0].replace(/\r\n/g, '\n');
+  }
+  return out;
+}
 function parseMagazines(xmlText2) {
   const out = {};
-  for (const d of xmlKids(xmlKid(parseXml(xmlText2), 'AmmoMagazines'), 'AmmoMagazine')) {
+  const raws = rawElements(xmlText2, 'AmmoMagazine');
+  xmlKids(xmlKid(parseXml(xmlText2), 'AmmoMagazines'), 'AmmoMagazine').forEach((d) => {
     out[subId(d)] = {
       subtypeId: subId(d),
       displayName: xmlText(xmlKid(d, 'DisplayName')),
@@ -352,15 +364,18 @@ function parseMagazines(xmlText2) {
       capacity: xmlNum(xmlKid(d, 'Capacity')),
       volume: xmlNum(xmlKid(d, 'Volume')),
       mass: xmlNum(xmlKid(d, 'Mass')),
+      xml: raws[subId(d)] || null,
     };
-  }
+  });
   return out;
 }
 function parseBlueprints(xmlText2) {
   const out = [];
+  const raws = rawElements(xmlText2, 'Blueprint');
   for (const b of xmlKids(xmlKid(parseXml(xmlText2), 'Blueprints'), 'Blueprint')) {
     const res = xmlKid(b, 'Result');
     out.push({
+      xml: raws[subId(b)] || null,
       blueprintSubtype: subId(b),
       resultSubtype: res ? res.attrs.SubtypeId : null,
       productionTime: xmlNum(xmlKid(b, 'BaseProductionTimeInSeconds')),
@@ -421,11 +436,24 @@ function randStart(v) {
   if (v && v.__call === 'Random') return (v.args && v.args.start) || 0;
   return typeof v === 'number' ? v : 0;
 }
+// WC AreaOfDamageDef.ByBlockHit / EndOfLife: only Enable switches the effect on (AmmoConstants.AreaEffects)
+function aoeShape(x) {
+  x = x || {};
+  return {
+    enable: x.Enable === true, damage: x.Damage || 0, radius: x.Radius || 0, depth: x.Depth || 0,
+    maxAbsorb: x.MaxAbsorb || 0, falloff: (typeof x.Falloff === 'string' && x.Falloff) || 'Legacy',
+    shape: (typeof x.Shape === 'string' && x.Shape) || 'Round', minArmingTime: x.MinArmingTime || 0,
+    armOnlyOnHit: x.ArmOnlyOnHit === true,
+  };
+}
 function ammoShape(name, d, file) {
   const hp = d.HardPoint || {};
   const ao = d.AreaOfDamage || {};
-  const eol = ao.EndOfLife || {};
   const ae = ao.AreaEffect || {};
+  const ew = d.Ewar || {};
+  const pat = d.Pattern || {};
+  const oh = d.ObjectsHit || {};
+  const fo = (d.DamageScales && d.DamageScales.FallOff) || {};
   const frag = d.Fragment || {};
   const ts = frag.TimedSpawns || {};
   const traj = d.Trajectory || {};
@@ -445,7 +473,9 @@ function ammoShape(name, d, file) {
     ammoMagazine: d.AmmoMagazine || 'Energy',
     ammoRound: d.AmmoRound || name,
     terminalName: d.TerminalName || d.AmmoRound || name,
-    isBeam: ((traj.DesiredSpeed || 0) >= 10000) || ((traj.DesiredSpeed || 0) === 0 && ((beams.Enable === true) || (name && (name.toLowerCase().includes('laser') || name.toLowerCase().includes('beam'))))),
+    // AmmoConstants.IsBeamWeapon = Beams.Enable && Guidance None; >= 10 km/s rounds are hitscan in practice
+    isBeam: (beams.Enable === true && (traj.Guidance || 'None') === 'None') || (traj.DesiredSpeed || 0) >= 10000,
+    beams: { enable: beams.Enable === true, virtualBeams: beams.VirtualBeams === true },
     baseDamage: d.BaseDamage || 0,
     baseDamageCutoff: d.BaseDamageCutoff || 0,
     mass: d.Mass || 0,
@@ -460,9 +490,22 @@ function ammoShape(name, d, file) {
     decayPerShot: d.DecayPerShot || 0,
     heatPerShot: d.HeatPerShot || 0,
     heatModifier: d.HeatModifier === undefined ? 1 : d.HeatModifier,
+    allowNegativeHeatModifier: d.AllowNegativeHeatModifier === true,
+    heatNeededToFire: d.HeatNeededToFire || 0,
     shape: typeof d.Shape === 'string' ? d.Shape : 'LineShape',
     diameter: d.Diameter === undefined ? -1 : d.Diameter,
-    objectsHit: { maxHits: (d.ObjectsHit && d.ObjectsHit.MaxObjects) || 1 },
+    objectsHit: { maxObjectsHit: oh.MaxObjectsHit || 0, countBlocks: oh.CountBlocks === true, skipBlocksForAOE: oh.SkipBlocksForAOE === true },
+    ewar: {
+      enable: ew.Enable === true, type: (typeof ew.Type === 'string' && ew.Type) || 'AntiSmart',
+      mode: (typeof ew.Mode === 'string' && ew.Mode) || 'Effect', strength: ew.Strength || 0, radius: ew.Radius || 0,
+      duration: ew.Duration || 0, maxStacks: ew.MaxStacks || 0, stackDuration: ew.StackDuration === true, deplete: ew.Depletable === true,
+    },
+    pattern: {
+      enable: pat.Enable === true, mode: (typeof pat.Mode === 'string' && pat.Mode) || 'Never',
+      patterns: Array.isArray(pat.Patterns) ? pat.Patterns.map((x) => (typeof x === 'string' ? x : '')) : [],
+      triggerChance: pat.TriggerChance === undefined ? 1 : pat.TriggerChance, random: pat.Random === true,
+      randomMin: pat.RandomMin || 0, randomMax: pat.RandomMax || 0, skipParent: pat.SkipParent === true, patternSteps: pat.PatternSteps || 0,
+    },
     fragment: {
       enable: frag.Enable === true || !!frag.Fragments,
       ammoRound: frag.AmmoRound || '', fragments: frag.Fragments || 0,
@@ -477,14 +520,14 @@ function ammoShape(name, d, file) {
       },
     },
     areaOfDamage: {
-      enable: !!(ao.EndOfLife || ao.AreaEffect),
-      radius: ao.Radius || 0, damage: ao.Damage || 0, depth: ao.Depth || 0,
-      endOfLife: { enable: !!(eol.Damage || eol.Radius), damage: eol.Damage || 0, radius: eol.Radius || 0, depth: eol.Depth || 0 },
+      enable: (ao.ByBlockHit && ao.ByBlockHit.Enable === true) || (ao.EndOfLife && ao.EndOfLife.Enable === true) || false,
+      byBlockHit: aoeShape(ao.ByBlockHit),
+      endOfLife: aoeShape(ao.EndOfLife),
       areaEffect: { areaEffect: ae.AreaEffect === true, damage: ae.Damage || 0, radius: ae.Radius || 0 },
     },
     trajectory: {
       desiredSpeed: traj.DesiredSpeed || 0, maxTrajectory: traj.MaxTrajectory || 0,
-      maxLifeTime: traj.MaxLifeTime || 0, speedVariance: randStart(traj.SpeedVariance),
+      maxLifeTime: traj.MaxLifeTime || 0, accelPerSec: traj.AccelPerSec || 0, speedVariance: randStart(traj.SpeedVariance),
       rangeVariance: randStart(traj.RangeVariance),
       guidance: (typeof traj.Guidance === 'string' && traj.Guidance) || 'None',
       desiredElevation: (function() {
@@ -507,6 +550,9 @@ function ammoShape(name, d, file) {
       nonArmor: arm.NonArmor !== undefined ? arm.NonArmor : (ds.NonArmor !== undefined ? ds.NonArmor : -1),
       characters: ds.Characters !== undefined ? ds.Characters : 1.0,
       healthHitModifier: ds.HealthHitModifier !== undefined ? ds.HealthHitModifier : 0,
+      maxIntegrity: ds.MaxIntegrity || 0,
+      falloffDistance: fo.Distance || 0,
+      falloffMinMult: fo.MinMultipler || 0,
       damageType: (typeof dmgType === 'string' ? dmgType : dmgType.Base) || 'Kinetic',
       gridLarge: grids.Large !== undefined ? grids.Large : -1,
       gridSmall: grids.Small !== undefined ? grids.Small : -1,
@@ -610,6 +656,13 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     cooldown: (loading.Cooldown !== undefined ? loading.Cooldown : hw.Cooldown) || 0,
     heatSinkRate: (loading.HeatSinkRate !== undefined ? loading.HeatSinkRate : hw.HeatSinkRate) || 0,
     degradeRof: loading.DegradeRof === true,
+    degradeRofSettings: (function() {
+      const s = inlineRef(loading.DegradeRofSettings, defs) || {};
+      return { heatThresholdStart: s.HeatThresholdStart || 0, heatThresholdEnd: s.HeatThresholdEnd || 0, rofAt0Heat: s.RofAt0Heat || 0, rofAt100Heat: s.RofAt100Heat || 0 };
+    })(),
+    allowOverheatShooting: loading.AllowOverheatShooting === true,
+    heatSinkRateOverheatMult: loading.HeatSinkRateOverheatMult || 0,
+    fireFull: loading.FireFull === true,
     energyCost: a0 ? a0.energyCost : 0,
     magazineSize: mag ? mag.capacity : 0,
     baseDamage: a0 ? a0.baseDamage : 0,
@@ -633,6 +686,8 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     pcu: block ? block.pcu : 0,
     assignedAnimation: refName(def.Animations, defs) || (typeof def.Animations === 'string' ? def.Animations : null),
     assignedAmmos: usable,
+    // Full WeaponDefinition.Ammos list: WC resolves Fragment / Pattern AmmoRound references only within it
+    allAmmos: allRounds.slice(),
     helpers: {
       targeting: refName(def.Targeting, defs),
       hardware: refName(hp.HardWare, defs) || refName(def.HardWare, defs),
@@ -670,8 +725,16 @@ function magazineEntries(magSbc, blueprints, overrides) {
       mass: m.mass,
       productionTime: b ? b.productionTime : (o.productionTime || 0),
       roleMultiplier: o.roleMultiplier === undefined ? 1 : o.roleMultiplier,
-      defaultRUs: o.defaultRUs || 0,
+      // Ammo Logistics design inputs (baseline × multiplier per output); absent -> derived from the SBC values
+      sizeMult: o.sizeMult || null,
+      massMult: o.massMult || null,
+      craftMult: o.craftMult || null,
+      usesRUs: o.usesRUs === undefined ? null : o.usesRUs,
+      baseComp: o.baseComp || null,
       prerequisites: b ? b.prerequisites : [],
+      // Raw SBC definitions, patched (not regenerated) on export so untouched tags survive
+      sbcXml: m.xml || null,
+      bpXml: b ? b.xml || null : null,
     });
   }
   return out;
