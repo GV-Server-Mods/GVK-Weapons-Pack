@@ -4711,7 +4711,7 @@ const BUNDLED_WEAPONS_DATA = [
         "deconstructType": null
       }
     ],
-    "icon": "icons/L__Gatling_Turret.png",
+    "icon": "icons/LargeGatlingTurret.png",
     "subtypeId": "LargeGatlingTurret",
     "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 78,
@@ -14435,7 +14435,7 @@ const BUNDLED_WEAPONS_DATA = [
         "deconstructType": null
       }
     ],
-    "icon": "icons/L__Missile_Turret.png",
+    "icon": "icons/LargeMissileTurret.png",
     "subtypeId": "LargeMissileTurret",
     "ammoName": "Missiles_Rocket",
     "buildTimeSeconds": 78,

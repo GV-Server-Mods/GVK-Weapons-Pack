@@ -159,7 +159,7 @@ const STUDIO_OVERRIDES = {
     "LargeGatlingTurret": {
       "id": "L__LargeGatlingTurret",
       "name": "(L) CIWS Large",
-      "icon": "icons/L__Gatling_Turret.png"
+      "icon": "icons/LargeGatlingTurret.png"
     },
     "LargeGatlingTurret_NPC": {
       "id": "L__LargeGatlingTurret_NPC",
@@ -489,7 +489,7 @@ const STUDIO_OVERRIDES = {
     "LargeMissileTurret": {
       "id": "L__LargeMissileTurret",
       "name": "(L) Hydra Turret",
-      "icon": "icons/L__Missile_Turret.png"
+      "icon": "icons/LargeMissileTurret.png"
     },
     "LargeMissileTurret_NPC": {
       "id": "L__LargeMissileTurret_NPC",
