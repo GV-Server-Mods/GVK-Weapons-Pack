@@ -412,19 +412,20 @@ When modifying or extending the GVK Weapon Studio:
    - `GVK_*.sbc` for custom mod content.
    - `Blueprints.sbc` for production recipes.
 4. **Theme Rigor**: Whenever adding new text or cards, ensure both dark mode and `[data-theme="light"]` selectors are verified for contrast.
-5. **Run Verification Suites**: Always validate changes before pushing using the verification harnesses:
-   - **Headless Studio Smoke Suite** (asserts DOM bindings, weapon selections, multi-mag volleys, energy virtual magazines, commit date formats, and zero shield emissions):
-     ```cmd
-     node scratch/test_studio_smoke.js
-     ```
-   - **Source Pipeline Inheritance Suite** (verifies live C# parser, deep clone mutations, and magazine associations):
-     ```cmd
-     node scratch/test_source_pipeline.js
-     ```
-   - **Deployment Validation Gate** (the exact gate run by GitHub Actions):
-     ```cmd
-     node tools/validate_studio_data.mjs
-     ```
+5. **Run Verification Suites**: Always validate changes before pushing. One command runs every suite plus the CI gate:
+   ```cmd
+   node scratch/run_studio_tests.js
+   ```
+   All suites load the Studio through `scratch/studio_harness.js` (stubbed DOM that reads tag and input types from `index.html` and keeps `innerHTML` / `textContent` in sync like a browser).
+   - `test_source_pipeline.js`: C# parser, clone inheritance, magazines, `criticalReaction` and Smarts steering flags.
+   - `test_wc_parity.js`: WC tick traces, float32 energy, `RadiantAoe`, damage scaling, field fidelity, no-name-rules lint.
+   - `test_studio_smoke.js`: exporters (lossless round-trip, zero shield output), weapon selection, magazines, footer HUD, Ammo Maths, engagement range.
+   - `test_ewar_pd.js`, `test_max_range_card.js`: EWAR / point-defense payloads and the Max Range card.
+   - `test_detonations.js`: warheads and explosive barrels (no DPS, blast reach, telemetry, comparison table, linter).
+   - `test_wc_defaults.js`: Workbench defaults are WC's omitted-field values, and choosing one removes the line from the export.
+   - `test_flight_profile.js`: HOMING needs Smarts steering; AIR BURST vs BALLISTIC for proximity-fuse rounds.
+   - `test_catalog.js`: icons match their NPC twins, the class filter bar covers every weapon once, fixed mounts read as fixed.
+   - `tools/validate_studio_data.mjs`: the deployment gate GitHub Actions runs before publishing.
 
 ---
 

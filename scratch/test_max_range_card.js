@@ -6,7 +6,7 @@ const { check, done } = makeChecker();
 const studio = loadStudio({ data: false });
 
 const defaults = {
-  wMaxTargetDistance: '1600', tMaxTrajectory: '1500', tDesiredSpeed: '1000', wRotateRate: '0.015', wElevateRate: '0.015',
+  wMaxTargetDistance: '1600', tMaxTrajectory: '1500', tDesiredSpeed: '1000', wRotateRate: '0', wElevateRate: '0',
   wDurabilityMod: '0.5', wIdlePower: '0.01', aEnergyCost: '0', aBaseDamage: '0', wTrajectilesPerBarrel: '1', wHeatPerShot: '0',
   wMaxHeat: '0', wHeatSinkRate: '0', wCooldown: '0.5', wRateOfFire: '600', wBarrelsPerShot: '1', wReloadTime: '0',
   wMagsToLoad: '1', wInventorySize: '0.9'

@@ -5231,7 +5231,8 @@ function updateComparisonRadar() {
   
   const activeRange = activeWeapon ? getEngagementRange(activeWeapon, activeAmmo, true).range : 1600;
   const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
-  const activeTrack = (outTraverseDeg && parseFloat(outTraverseDeg.textContent)) || 10;
+  // Same basis as calculateWeaponMetrics (RotateRate); the traverse readout says "Fixed Mount" on fixed guns
+  const activeTrack = ((wRotateRate && parseFloat(wRotateRate.value)) || 0) * 60 * 180 / Math.PI;
   const activePower = (outPowerMw && parseFloat(outPowerMw.textContent)) || 0;
   
   let activeIntegrity = 0;

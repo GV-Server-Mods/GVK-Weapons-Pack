@@ -15,11 +15,7 @@ console.log('files parsed:', Object.keys(sources).length,
   '| ammoDefs:', Object.keys(r.ammos).length,
   '| weaponDefs:', r.weapons.length);
 
-let failures = 0;
-function check(label, cond, extra) {
-  console.log((cond ? 'PASS ' : 'FAIL ') + label + (cond ? '' : '   got: ' + extra));
-  if (!cond) failures++;
-}
+const { check, done } = require('./studio_harness.js').makeChecker();
 
 const base = r.ammos['Ballistics_HeavyCannon'] && r.ammos['Ballistics_HeavyCannon'].def;
 const odin = r.ammos['Ballistics_HeavyCannon_Odin'] && r.ammos['Ballistics_HeavyCannon_Odin'].def;
@@ -128,6 +124,24 @@ check('Khopesh inlined hardware: rotateRate === 0.025', bKhopesh && bKhopesh.rot
 const bThrasher = built.weapons.find((w) => w.subtypeId === 'ARYXHeavyFlakTurret');
 check('Thrasher rateOfFire === 480', bThrasher && bThrasher.rateOfFire === 480, bThrasher && bThrasher.rateOfFire);
 
+// HardwareDef.CriticalReaction.Enable (WC warhead flag) -> weapon.criticalReaction
+const detSubs = built.weapons.filter((w) => w.criticalReaction).map((w) => w.subtypeId).sort();
+check('criticalReaction set on exactly the warheads and explosive barrels',
+  JSON.stringify(detSubs) === '["LargeExplosiveBarrel","LargeWarhead","SmallExplosiveBarrel","SmallWarhead"]', JSON.stringify(detSubs));
+check('criticalReaction is false (not missing) on every other weapon',
+  built.weapons.every((w) => w.criticalReaction === true || w.criticalReaction === false));
+
+// SmartsDef steering: needs Aggressiveness > 0 and MaxLateralThrust > 0
+const steerBad = [];
+for (const [name, entry] of Object.entries(r.ammos)) {
+  const sm = ((entry.def.Trajectory || {}).Smarts) || {};
+  const want = (parseFloat(sm.Aggressiveness) || 0) > 0 && (parseFloat(sm.MaxLateralThrust) || 0) > 0;
+  if (SP.ammoShape(name, entry.def, '').trajectory.steers !== want) steerBad.push(name);
+}
+check('trajectory.steers follows Smarts Aggressiveness + MaxLateralThrust on every ammo', steerBad.length === 0, steerBad.join(', '));
+check('Flak PROX does not steer; at least one Smart missile does',
+  built.ammos.Ballistics_Flak.trajectory.steers === false && Object.values(built.ammos).some((a) => a.trajectory.guidance === 'Smart' && a.trajectory.steers));
+
 // Magazine parity: the real 480mm magazine must resolve with blueprint data.
 const bMag = built.magazines.find((m) => m.subtypeId === 'Ballistics_HeavyCannon');
 check('built 480mm magazine exists', !!bMag);
@@ -176,10 +190,7 @@ for (const k of Object.keys(bundledAmmos)) {
 }
 
 // --- validateLiveData (atomic-swap guard) tests ---
-function checkV(label, cond, detail) {
-  if (cond) { console.log('PASS', label); }
-  else { console.log('FAIL', label, '—', detail); failures++; }
-}
+const checkV = check;
 const V = SP.validateLiveData;
 checkV('accepts complete data', V({weapons:[{assignedAmmos:['A'],ammoName:'A'}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{b:{}}}) === null);
 checkV('rejects null', V(null) === 'no data object');
@@ -189,5 +200,4 @@ checkV('rejects empty magazines', V({weapons:[{assignedAmmos:['A']}],ammos:{A:{}
 checkV('rejects empty blocks', V({weapons:[{assignedAmmos:['A']}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{}}).indexOf('blocks') >= 0);
 checkV('rejects unresolved ammo ref', V({weapons:[{assignedAmmos:['Missing'],ammoName:'Missing'}],ammos:{A:{}},magazines:[{subtypeId:'m'}],blocks:{b:{}}}).indexOf('unresolved') >= 0);
 
-console.log('\nRESULT:', failures === 0 ? 'ALL PASS' : failures + ' FAILURES');
-process.exit(failures === 0 ? 0 : 1);
+done('Source pipeline');

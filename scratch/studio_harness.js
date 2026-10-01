@@ -9,11 +9,36 @@ const vm = require('vm');
 const root = path.join(__dirname, '..');
 const docs = (f) => path.join(root, 'docs', f);
 
-function makeElement(id) {
+function makeClassList() {
+  const set = new Set();
   return {
-    id, value: '', checked: false, textContent: '', innerHTML: '', title: '', className: '',
+    add(...c) { c.forEach((x) => set.add(x)); }, remove(...c) { c.forEach((x) => set.delete(x)); },
+    toggle(c, force) { const on = force === undefined ? !set.has(c) : !!force; if (on) set.add(c); else set.delete(c); return on; },
+    contains(c) { return set.has(c); }
+  };
+}
+
+// Tag and input type per id from index.html, so checkbox/select-aware code (default markers, bindings) runs as in the page
+const htmlTags = new Map();
+for (const m of fs.readFileSync(docs('index.html'), 'utf8').matchAll(/<(\w+)\b([^>]*?)\bid="([^"]+)"([^>]*)>/g)) {
+  const attrs = m[2] + m[4];
+  const type = (attrs.match(/\btype="([^"]+)"/) || [])[1];
+  htmlTags.set(m[3], { tagName: m[1].toUpperCase(), type: type || (m[1] === 'select' ? 'select-one' : m[1] === 'input' ? 'text' : undefined) });
+}
+
+const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", nbsp: ' ', deg: '°', middot: '·', times: '×', plusmn: '±' };
+const htmlToText = (h) => String(h).replace(/<[^>]*>/g, '').replace(/&(#?\w+);/g, (m, e) => ENTITIES[e] !== undefined ? ENTITIES[e] : m);
+
+function makeElement(id) {
+  const tag = htmlTags.get(id) || {};
+  // innerHTML and textContent stay in sync like the DOM, so code that reads back a rendered value sees what a browser would
+  let html = '', text = '';
+  return {
+    get innerHTML() { return html; }, set innerHTML(v) { html = String(v); text = htmlToText(html); },
+    get textContent() { return text; }, set textContent(v) { text = String(v); html = text.replace(/&/g, '&amp;').replace(/</g, '&lt;'); },
+    id, tagName: tag.tagName || 'DIV', type: tag.type, value: '', checked: false, title: '', className: '',
     style: {}, disabled: false, dataset: {}, width: 400, height: 400, childNodes: [], options: [],
-    classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
+    classList: makeClassList(),
     addEventListener() {}, removeEventListener() {}, setAttribute() {}, removeAttribute() {},
     appendChild() {}, append() {}, remove() {}, focus() {}, blur() {},
     querySelector(sel) { return makeElement(sel); }, querySelectorAll() { return []; },

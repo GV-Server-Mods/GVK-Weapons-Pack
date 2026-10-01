@@ -6,77 +6,14 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { root, docs, loadStudio, makeChecker, readData } = require('./studio_harness.js');
+const { check, done } = makeChecker();
 
-const root = path.join(__dirname, '..');
-const appSource = fs.readFileSync(path.join(root, 'docs', 'app.js'), 'utf8');
-// The C# exporters serialize the parsed def trees, so the studio needs the pipeline, schema and def snapshot too
-const studioSource = ['source_pipeline.js', 'wc_math.js', 'data/wc_schema.js', 'data/wc_defs_data.js', 'data/economy_values.js']
-  .map((f) => fs.readFileSync(path.join(root, 'docs', f), 'utf8')).join('\n;\n')
-  + '\n;\n' + appSource
-  + '\n;\n' + fs.readFileSync(path.join(root, 'docs', 'ammo_maths.js'), 'utf8')
-  + '\n;\n' + fs.readFileSync(path.join(root, 'docs', 'wc_editor.js'), 'utf8');
-const htmlSource = fs.readFileSync(path.join(root, 'docs', 'index.html'), 'utf8');
-
-let failures = 0;
-function check(name, cond) {
-  if (cond) console.log('  PASS  ' + name);
-  else { failures++; console.error('  FAIL  ' + name); }
-}
-
-const mockCtx = {
-  clearRect() {}, beginPath() {}, arc() {}, stroke() {}, fill() {},
-  moveTo() {}, lineTo() {}, fillText() {}, measureText() { return { width: 10 }; },
-  closePath() {}, save() {}, restore() {}, strokeStyle: '', fillStyle: '', lineWidth: 1
-};
-
-function makeElement(id) {
-  return {
-    id, value: '', checked: false, textContent: '', innerHTML: '', title: '',
-    style: {}, disabled: false, dataset: {}, width: 400, height: 400,
-    classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
-    addEventListener() {}, removeEventListener() {},
-    setAttribute() {}, removeAttribute() {},
-    appendChild() {}, append() {}, childNodes: [],
-    querySelector(sel) { return makeElement(sel); },
-    querySelectorAll() { return []; },
-    getContext() { return mockCtx; }
-  };
-}
-
-const elements = new Map();
-const documentStub = {
-  documentElement: { getAttribute() { return null; }, setAttribute() {} },
-  getElementById(id) {
-    if (!elements.has(id)) elements.set(id, makeElement(id));
-    return elements.get(id);
-  },
-  querySelector(sel) { return makeElement(sel); },
-  querySelectorAll() { return []; },
-  createElement(tag) { return makeElement(tag); },
-  createTextNode(text) { return { textContent: text }; },
-  addEventListener() {}
-};
-
-const windowStub = {
-  addEventListener() {},
-  matchMedia: null,
-  location: { href: 'file:///smoke-test', search: '' },
-  scrollTo() {}
-};
-
-const sandbox = {
-  console, setTimeout, clearTimeout,
-  document: documentStub,
-  window: windowStub,
-  localStorage: { getItem() { return null; }, setItem() {}, removeItem() {} },
-  navigator: { clipboard: { writeText() { return Promise.resolve(); } } },
-  prompt() { return null; },
-  alert() {},
-  fetch() { return Promise.resolve({ ok: false }); },
-  URL, URLSearchParams,
-  Option: function Option(text, value) { this.text = text; this.value = value; }
-};
-vm.createContext(sandbox);
+const appSource = fs.readFileSync(docs('app.js'), 'utf8');
+const htmlSource = fs.readFileSync(docs('index.html'), 'utf8');
+// Exporter checks run on hand-built fixtures first, so the bundled data is injected later
+const studio = loadStudio({ data: false });
+const sandbox = studio.sandbox;
 
 // Static checks on tool sources (bundled data intentionally keeps WC shield fields)
 check('docs/app.js has no shield code paths',
@@ -166,7 +103,7 @@ const testBody = `
 let report = null;
 sandbox.__report = (r) => { report = r; };
 
-vm.runInContext(studioSource + '\n;\nsetWcDefs(null);\n' + testBody, sandbox, { filename: 'studio.js' });
+studio.run(testBody);
 
 check('WC AmmoDef exporter runs without throwing (no phantom dsShield reference)', report !== null && report.ammoCsLength > 100);
 check('AmmoDef export contains DamageScales block', report.ammoCsHasDamageScales);
@@ -184,18 +121,14 @@ check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 5
 check('Railgun export adds no shield tags beyond the source def', report.rgShieldFree);
 
 // Dynamic lifecycle checks: populate datasets and verify weapon selection + metrics
-const bundledW = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'weapons_db.json'), 'utf8'));
-const bundledA = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'ammos_db.json'), 'utf8'));
-const bundledM = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'data', 'magazines_blueprints_data.js'), 'utf8').replace(/^[\s\S]*?=\s*/, '').replace(/;\s*$/, ''));
-
-sandbox.__injectedWeapons = bundledW;
-sandbox.__injectedAmmos = bundledA;
-sandbox.__injectedMags = bundledM;
+sandbox.__injectedWeapons = readData('data/weapons_db.json');
+sandbox.__injectedAmmos = readData('data/ammos_db.json');
+sandbox.__injectedMags = readData('data/magazines_blueprints_data.js');
 
 let lcReport = null;
 sandbox.__lifecycleReport = (r) => { lcReport = r; };
 
-vm.runInContext(`
+studio.run(`
   weaponsDb = __injectedWeapons;
   ammosDb = __injectedAmmos;
   magazinesBlueprintsDb = __injectedMags;
@@ -316,7 +249,7 @@ vm.runInContext(`
       return generateSbcCubeBlocks();
     })(),
   });
-`, sandbox);
+`);
 
 check('Default weapon dropdown matches activeWeapon (no desync)', lcReport.defaultWeaponId === lcReport.defaultSelectVal);
 check('Default weapon has primary ammo NATO_25x184mm_Dual', lcReport.defaultAmmoRound === 'NATO_25x184mm_Dual');
@@ -437,7 +370,7 @@ if (bindingProblems.length) console.error('    ' + bindingProblems.join('\n    '
 // Full-tree export: every def round-trips through the studio exporter; curated + field edits land in the tree
 let rtReport = null;
 sandbox.__rtReport = (r) => { rtReport = r; };
-vm.runInContext(`
+studio.run(`
   (() => {
     const SPx = window.SourcePipeline;
     const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
@@ -485,7 +418,7 @@ vm.runInContext(`
       shapeDamage, newField: /DragPerSecond = 12.5f,/.test(ammoCs), restoredDamage: activeAmmo.baseDamage,
     });
   })();
-`, sandbox);
+`);
 check('Every ammo + weapon def round-trips losslessly through the studio exporter (' + (rtReport && rtReport.defs) + ' defs)',
   !!rtReport && rtReport.lost.length === 0);
 if (rtReport && rtReport.lost.length) console.error('    lost fidelity:', rtReport.lost.join(', '));
@@ -498,7 +431,7 @@ check('Fields with no curated input (Trajectory.DragPerSecond) export from the f
 // Ammo Maths: reproduces the xlsx "Ammo Maths" tab (cached sheet values; these mags match their live SBC)
 let amReport = null;
 sandbox.__amReport = (r) => { amReport = r; };
-vm.runInContext(`
+studio.run(`
   (() => {
     const pick = (sub) => {
       const r = amCompute(amMag(sub));
@@ -539,7 +472,7 @@ vm.runInContext(`
       footprintDiffs: amTrackedMags().map((m) => m.subtypeId)
         .filter((k) => amCompute(amMag(k), { weapons: false }).changes.some((c) => /^(Volume|Mass|Craft Time)$/.test(c.field))) });
   })();
-`, sandbox);
+`);
 const am = amReport || {};
 const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 check('Ammo Maths: Gatling = baseline anchor (30 L, 30 kg, 13 s, 1500 / 4500 SC, Mg 4 Fe 53.5 Ni 13.4)',
@@ -570,7 +503,7 @@ if (am.footprintDiffs && am.footprintDiffs.length) console.error('    differs:',
 // Engagement range: one resolver gates turrets and guided munitions by the block's targeting range
 let erReport = null;
 sandbox.__erReport = (r) => { erReport = r; };
-vm.runInContext(`
+studio.run(`
   (() => {
     const er = (sub) => { const w = weaponsDb.find((x) => x.subtypeId === sub); return getEngagementRange(w, ammosDb[w.ammoName], false); };
     const fixedUnguided = weaponsDb.find((w) => w.type === 'Fixed' && ammosDb[w.ammoName]
@@ -579,14 +512,11 @@ vm.runInContext(`
       fixed: getEngagementRange(fixedUnguided, ammosDb[fixedUnguided.ammoName], false),
       fixedReach: ammosDb[fixedUnguided.ammoName].trajectory.maxTrajectory });
   })();
-`, sandbox);
+`);
 const er = erReport || {};
 check('Drone Bay range = its 2,500 m targeting range, not the 30 km drone trajectory',
   !!er.drone && er.drone.range === 2500 && er.drone.source === 'targeting');
 check('Guided fixed launchers are gated by targeting range (Torpedo 3,000 m < 3,500 m reach)', !!er.torpedo && er.torpedo.range === 3000);
 check('Manually aimed fixed guns with unguided rounds use the reach of the round', !!er.fixed && er.fixed.range === er.fixedReach && !er.fixed.gated);
 
-if (failures > 0) {
-  console.error('\n' + failures + ' check(s) failed.');
-  process.exit(1);
-}
+done('Studio smoke');

@@ -11,6 +11,10 @@ const suites = [
   ['Studio smoke', 'scratch/test_studio_smoke.js'],
   ['EWAR / PD', 'scratch/test_ewar_pd.js'],
   ['Max Range card', 'scratch/test_max_range_card.js'],
+  ['Detonations', 'scratch/test_detonations.js'],
+  ['WC defaults', 'scratch/test_wc_defaults.js'],
+  ['Flight profile', 'scratch/test_flight_profile.js'],
+  ['Catalog', 'scratch/test_catalog.js'],
   ['CI data gate', 'tools/validate_studio_data.mjs'],
 ];
 
