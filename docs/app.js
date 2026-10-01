@@ -2232,6 +2232,9 @@ function calculateWeaponDryMass(weapon) {
 /// </summary>
 function getAutomatedWeaponRole(weapon, ammo) {
   if (!weapon) return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Direct ballistic fire' };
+  if (isDetonationWeapon(weapon)) {
+    return { id: 'demolition', label: 'Demolition Charge', icon: '💣', desc: 'Single-use detonation; no sustained fire' };
+  }
   const isFixedMount = weapon.type === 'Fixed' || (weapon.rotateRate <= 0 && weapon.elevateRate <= 0);
   if (!isFixedMount && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD')))) {
     return { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' };
@@ -2602,7 +2605,7 @@ function updateHudTelemetry(v) {
   hudTelLast = v;
   const ammoName = activeAmmo ? (activeAmmo.terminalName || activeAmmo.ammoRound) : '';
   hudTelName.textContent = `${activeWeapon.displayName || activeWeapon.name}${ammoName ? ` · ${ammoName}` : ''}${v.bMult > 1 ? ` · ×${v.bMult}` : ''}`;
-  if (hudTelDps) hudTelDps.textContent = v.scaledEffectiveDps.toLocaleString();
+  if (hudTelDps) hudTelDps.textContent = isDetonationWeapon(activeWeapon) ? 'n/a (single use)' : v.scaledEffectiveDps.toLocaleString();
   if (hudTelDpsProfile) hudTelDpsProfile.textContent = `vs ${v.profileLabel}`;
   if (hudTelAlpha) hudTelAlpha.textContent = `${v.scaledEffectiveAlpha.toLocaleString()} hp`;
   const eng = getEngagementRange(activeWeapon, activeAmmo, true);
@@ -2632,13 +2635,14 @@ function updateHudWorkbench(errorCount, warningCount) {
   const defaults = window.GVK_DEFAULT_WEAPONS ? window.GVK_DEFAULT_WEAPONS.find(w => w.id === activeWeapon.id) : null;
   const baseDps = defaults ? calculateWeaponMetrics(defaults, activeAmmo ? activeAmmo.name : undefined).sustainedDps : now.sustainedDps;
   const pct = baseDps > 0 ? Math.round((now.sustainedDps / baseDps - 1) * 100) : 0;
+  const singleUse = isDetonationWeapon(activeWeapon);
   if (hudWbDps) {
-    hudWbDps.textContent = (defaults && now.sustainedDps !== baseDps)
+    hudWbDps.textContent = singleUse ? 'n/a (single use)' : (defaults && now.sustainedDps !== baseDps)
       ? `${baseDps.toLocaleString()} → ${now.sustainedDps.toLocaleString()} (${pct > 0 ? '+' : ''}${pct}%)`
       : `${now.sustainedDps.toLocaleString()} (default)`;
   }
   if (hudWbCycle) {
-    hudWbCycle.textContent = now.reloadSec > 0
+    hudWbCycle.textContent = singleUse ? 'Detonates once' : now.reloadSec > 0
       ? `${(now.spoolSec + now.fireDurationSec).toFixed(1)}s fire / ${now.reloadSec.toFixed(1)}s reload`
       : `Continuous · ${Math.round(now.effectiveRps * 60).toLocaleString()} RPM`;
   }
@@ -3406,14 +3410,17 @@ function renderDpsCompositionStrip(dmgDetails, isBeam) {
 /// <summary>
 /// Renders the weapon's native salvo architecture cells (does not scale with battery multipliers).
 /// </summary>
-function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma) {
+function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
   if (!pillarAlphaSalvo) return;
   const rounds = Math.max(1, parseInt(totalRounds, 10) || 1);
   let mode = 'BURST';
   let cells = '';
   let labelClass = '';
 
-  if (isBeam) {
+  if (isDetonation) {
+    mode = 'SINGLE DETONATION';
+    cells = '<div class="salvo-cell active" title="Fires once when the block detonates"></div>';
+  } else if (isBeam) {
     labelClass = 'beam';
     if (rounds === 1) {
       mode = 'CONTINUOUS BEAM';
@@ -3541,7 +3548,18 @@ function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
   let tagClass = '';
   let svgContent = '';
 
-  if (isRadarSensor) {
+  if (isDetonationWeapon(activeWeapon)) {
+    tag = 'DETONATION';
+    tagClass = 'flare';
+    svgContent = `
+      <circle cx="30" cy="9" r="4" fill="#f59e0b"/>
+      <circle cx="30" cy="9" r="7" fill="none" stroke="#f59e0b" stroke-width="1.4" opacity="0.6"/>
+      ${[0, 45, 90, 135, 180, 225, 270, 315].map(d => {
+        const r = d * Math.PI / 180;
+        return `<line x1="${(30 + Math.cos(r) * 9).toFixed(1)}" y1="${(9 + Math.sin(r) * 9 * 0.9).toFixed(1)}" x2="${(30 + Math.cos(r) * 16).toFixed(1)}" y2="${(9 + Math.sin(r) * 16 * 0.5).toFixed(1)}" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>`;
+      }).join('')}
+    `;
+  } else if (isRadarSensor) {
     tag = 'RADAR PULSE';
     tagClass = 'radar';
     svgContent = `
@@ -3783,7 +3801,8 @@ function computeSustainedDps() {
   const dmgDetails = getAmmoDamageDetailed(activeAmmo, 0, activeWeapon);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
-  const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, (activeWeapon && activeWeapon.maxActiveProjectiles) || 0);
+  const sustainedDps = isDetonationWeapon(activeWeapon) ? 0
+    : computeSteadyStateDps(dmgDetails, effectiveRps, (activeWeapon && activeWeapon.maxActiveProjectiles) || 0);
 
   return {
     rof: fp.rof, barrels: fp.barrels, magSize: fp.magSize, magsToLoad: fp.mags, totalRounds, sustainedDps, effectiveRps,
@@ -3797,7 +3816,8 @@ function updateCombatTelemetry() {
 
   const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, alphaVolley, dmgDetails, fireParams, stallShare } = computeSustainedDps();
   const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
-  const isBeam = isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0;
+  const isDetonation = isDetonationWeapon(activeWeapon);
+  const isBeam = !isDetonation && (isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0);
 
   // Target modifiers: WC scales the whole payload (base pool, ByBlockHit, EndOfLife) by each ammo's per-block
   // damageScale; BaseDamageCutoff only spreads the pool across more blocks, it does not change the total.
@@ -3893,7 +3913,7 @@ function updateCombatTelemetry() {
   renderDpsCompositionStrip(dmgDetails, isBeam);
   // Charged bolt: HybridRound whose area payload outweighs its kinetic core
   const isPlasma = Boolean(activeAmmo.hybridRound) && dmgDetails.aoe > dmgDetails.base;
-  renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma);
+  renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation);
 
   // Damage Per Shot & Payload Breakdown
   const shotTotalDmg = Math.round(dmgDetails.total * bMult);
@@ -4540,6 +4560,23 @@ function updateCombatTelemetry() {
 
 
 
+  if (isDetonation) {
+    // Single-use block: payload once, no rate of fire
+    outSustainedDps.innerHTML = 'Single use';
+    if (outEffectiveDps) outEffectiveDps.innerHTML = '<strong>No sustained DPS</strong> · fires once when the block detonates';
+    const teleAlphaUnitDet = document.getElementById('teleAlphaUnit');
+    if (teleAlphaUnitDet) teleAlphaUnitDet.textContent = '(DETONATION)';
+    if (outEffectiveAlpha) outEffectiveAlpha.textContent = 'Max if every fragment hits';
+    if (lblEffectiveRpm) lblEffectiveRpm.textContent = 'FIRE MODE';
+    outShotsPerSec.innerHTML = 'Detonation';
+    outCycleTime.textContent = 'Fires once; the block is destroyed';
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = '💣 DETONATION';
+    outHeatDutyRatio.textContent = 'SINGLE USE';
+    if (heatProgressBar) heatProgressBar.style.width = '0%';
+    outTimeToOverheat.textContent = 'No fire cycle: the payload is released once when the block detonates.';
+    hudCycle = 'Single use';
+  }
+
   updateHudTelemetry({ scaledEffectiveDps, baseEffectiveDps, scaledEffectiveAlpha, profileLabel: topProfile.label, bMult, cycle: hudCycle });
 
   // Render BOM Table
@@ -4865,7 +4902,14 @@ function getWeaponIconUrl(weapon) {
 /// or a round fast enough (>= 10 km/s) to arrive in the tick it is fired.
 /// </summary>
 function isBeamWeapon(weapon, ammo) {
+  if (isDetonationWeapon(weapon)) return false;
   return WcMath.isHitscan(ammo);
+}
+
+/// <summary>WC warhead (HardwareDef.CriticalReaction.Enable): fires its ammo once when the block detonates. The def's
+/// 1 m Beams.Enable round is only the trigger, so it is not a beam and has no rate of fire or sustained DPS.</summary>
+function isDetonationWeapon(weapon) {
+  return !!weapon && weapon.criticalReaction === true;
 }
 
 /// <summary>
@@ -4889,7 +4933,7 @@ function calculateWeaponMetrics(weapon, ammoKeyOverride) {
   const dmgDetails = getAmmoDamageDetailed(a, 0, weapon);
   const alphaVolley = Math.round(dmgDetails.instantTotal * projectiles);
 
-  const sustainedDps = computeSteadyStateDps(dmgDetails, effectiveRps, weapon.maxActiveProjectiles || 0);
+  const sustainedDps = isDetonationWeapon(weapon) ? 0 : computeSteadyStateDps(dmgDetails, effectiveRps, weapon.maxActiveProjectiles || 0);
 
   const range = getEngagementRange(weapon, a, false).range;
 

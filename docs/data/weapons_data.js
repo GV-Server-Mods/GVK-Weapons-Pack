@@ -66,6 +66,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -226,6 +227,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -386,6 +388,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -546,6 +549,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -706,6 +710,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -866,6 +871,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1026,6 +1032,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1180,6 +1187,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1334,6 +1342,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1488,6 +1497,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1642,6 +1652,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1795,6 +1806,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1948,6 +1960,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2094,6 +2107,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2240,6 +2254,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2386,6 +2401,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2532,6 +2548,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2678,6 +2695,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2824,6 +2842,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2970,6 +2989,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3116,6 +3136,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3262,6 +3283,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3408,6 +3430,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3563,6 +3586,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3718,6 +3742,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3873,6 +3898,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4028,6 +4054,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4183,6 +4210,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4338,6 +4366,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4484,6 +4513,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4630,6 +4660,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4776,6 +4807,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4922,6 +4954,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5068,6 +5101,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5214,6 +5248,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5360,6 +5395,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5506,6 +5542,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5652,6 +5689,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5798,6 +5836,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5944,6 +5983,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6090,6 +6130,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6236,6 +6277,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6382,6 +6424,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6528,6 +6571,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6674,6 +6718,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6821,6 +6866,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6968,6 +7014,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7126,6 +7173,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7284,6 +7332,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7442,6 +7491,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7600,6 +7650,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.25,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7758,6 +7809,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "InteriorPlate",
@@ -7904,6 +7956,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "InteriorPlate",
@@ -8050,6 +8103,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8208,6 +8262,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8367,6 +8422,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8525,6 +8581,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8683,6 +8740,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8835,6 +8893,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8987,6 +9046,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -9139,6 +9199,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -9292,6 +9353,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "FlareGunItem",
@@ -9385,6 +9447,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "BasicHandHeldLauncherItem",
@@ -9478,6 +9541,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "AdvancedHandHeldLauncherItem",
@@ -9571,6 +9635,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "ElitePistolItem",
@@ -9664,6 +9729,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "RapidFireAutomaticRifleItem",
@@ -9757,6 +9823,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "UltimateAutomaticRifleItem",
@@ -9850,6 +9917,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10002,6 +10070,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10154,6 +10223,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10306,6 +10376,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10458,6 +10529,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10610,6 +10682,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10762,6 +10835,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10914,6 +10988,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11066,6 +11141,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11218,6 +11294,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11370,6 +11447,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11522,6 +11600,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11674,6 +11753,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11826,6 +11906,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11978,6 +12059,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12130,6 +12212,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12282,6 +12365,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12440,6 +12524,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12598,6 +12683,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12756,6 +12842,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12914,6 +13001,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13072,6 +13160,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13230,6 +13319,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13388,6 +13478,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13546,6 +13637,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13698,6 +13790,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13850,6 +13943,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13996,6 +14090,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14142,6 +14237,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14288,6 +14384,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14434,6 +14531,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14580,6 +14678,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14726,6 +14825,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14872,6 +14972,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15018,6 +15119,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15164,6 +15266,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15310,6 +15413,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15456,6 +15560,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15602,6 +15707,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15748,6 +15854,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15894,6 +16001,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16040,6 +16148,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16186,6 +16295,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16332,6 +16442,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16484,6 +16595,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16636,6 +16748,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 1,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16795,6 +16908,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 1,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16954,6 +17068,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17113,6 +17228,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17272,6 +17388,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17431,6 +17548,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17590,6 +17708,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.2,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17751,6 +17870,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.2,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17912,6 +18032,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.32,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18066,6 +18187,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.32,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18220,6 +18342,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18374,6 +18497,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18528,6 +18652,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18662,6 +18787,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18796,6 +18922,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18930,6 +19057,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -19070,6 +19198,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19212,6 +19341,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19354,6 +19484,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19496,6 +19627,7 @@ const BUNDLED_WEAPONS_DATA = [
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",

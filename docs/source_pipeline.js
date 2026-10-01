@@ -678,6 +678,8 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     chanceToHit: 1,
     durabilityMod: mp.DurabilityMod === undefined ? 0 : mp.DurabilityMod,
     idlePower: hw.IdlePower || 0,
+    // HardwareDef.CriticalReaction.Enable: WC warhead behaviour (fires once when the block detonates)
+    criticalReaction: !!(hw.CriticalReaction && hw.CriticalReaction.Enable === true),
     components: block ? block.components : [],
     icon: ov.icon || ('icons/' + sub + '.png'),
     subtypeId: sub,

@@ -62,6 +62,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -222,6 +223,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -382,6 +384,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -542,6 +545,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -702,6 +706,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -862,6 +867,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1022,6 +1028,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1176,6 +1183,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1330,6 +1338,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1484,6 +1493,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1638,6 +1648,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1791,6 +1802,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -1944,6 +1956,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2090,6 +2103,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2236,6 +2250,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2382,6 +2397,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2528,6 +2544,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2674,6 +2691,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2820,6 +2838,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -2966,6 +2985,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3112,6 +3132,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3258,6 +3279,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3404,6 +3426,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3559,6 +3582,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3714,6 +3738,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -3869,6 +3894,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4024,6 +4050,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4179,6 +4206,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4334,6 +4362,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4480,6 +4509,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4626,6 +4656,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4772,6 +4803,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -4918,6 +4950,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5064,6 +5097,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5210,6 +5244,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5356,6 +5391,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5502,6 +5538,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5648,6 +5685,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5794,6 +5832,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -5940,6 +5979,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6086,6 +6126,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6232,6 +6273,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6378,6 +6420,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6524,6 +6567,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6670,6 +6714,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6817,6 +6862,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -6964,6 +7010,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7122,6 +7169,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7280,6 +7328,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7438,6 +7487,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7596,6 +7646,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.25,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -7754,6 +7805,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "InteriorPlate",
@@ -7900,6 +7952,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "InteriorPlate",
@@ -8046,6 +8099,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8204,6 +8258,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8363,6 +8418,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8521,6 +8577,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8679,6 +8736,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8831,6 +8889,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -8983,6 +9042,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -9135,6 +9195,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -9288,6 +9349,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "FlareGunItem",
@@ -9381,6 +9443,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "BasicHandHeldLauncherItem",
@@ -9474,6 +9537,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "AdvancedHandHeldLauncherItem",
@@ -9567,6 +9631,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "ElitePistolItem",
@@ -9660,6 +9725,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "RapidFireAutomaticRifleItem",
@@ -9753,6 +9819,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0,
     "idlePower": 0,
+    "criticalReaction": false,
     "components": [],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "UltimateAutomaticRifleItem",
@@ -9846,6 +9913,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -9998,6 +10066,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10150,6 +10219,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10302,6 +10372,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10454,6 +10525,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10606,6 +10678,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10758,6 +10831,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -10910,6 +10984,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11062,6 +11137,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11214,6 +11290,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11366,6 +11443,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11518,6 +11596,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.005,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11670,6 +11749,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11822,6 +11902,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -11974,6 +12055,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12126,6 +12208,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12278,6 +12361,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12436,6 +12520,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12594,6 +12679,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12752,6 +12838,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -12910,6 +12997,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13068,6 +13156,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13226,6 +13315,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13384,6 +13474,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13542,6 +13633,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13694,6 +13786,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13846,6 +13939,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -13992,6 +14086,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14138,6 +14233,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14284,6 +14380,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14430,6 +14527,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14576,6 +14674,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14722,6 +14821,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -14868,6 +14968,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15014,6 +15115,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15160,6 +15262,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15306,6 +15409,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15452,6 +15556,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15598,6 +15703,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15744,6 +15850,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -15890,6 +15997,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16036,6 +16144,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16182,6 +16291,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16328,6 +16438,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16480,6 +16591,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16632,6 +16744,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 1,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16791,6 +16904,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 1,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -16950,6 +17064,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17109,6 +17224,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17268,6 +17384,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17427,6 +17544,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17586,6 +17704,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.2,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17747,6 +17866,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.2,
     "idlePower": 0.01,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -17908,6 +18028,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.32,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18062,6 +18183,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.32,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18216,6 +18338,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18370,6 +18493,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18524,6 +18648,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.25,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18658,6 +18783,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18792,6 +18918,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -18926,6 +19053,7 @@
     "chanceToHit": 1,
     "durabilityMod": 0.5,
     "idlePower": 0.001,
+    "criticalReaction": false,
     "components": [
       {
         "name": "SteelPlate",
@@ -19066,6 +19194,7 @@
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19208,6 +19337,7 @@
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19350,6 +19480,7 @@
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
@@ -19492,6 +19623,7 @@
     "chanceToHit": 1,
     "durabilityMod": 1,
     "idlePower": 0.25,
+    "criticalReaction": true,
     "components": [
       {
         "name": "SteelPlate",
