@@ -1993,6 +1993,14 @@ function getEngagementRange(weapon, ammo, live) {
   const num = (v) => { const n = parseFloat(v); return isFinite(n) && n > 0 ? n : 0; };
   const targeting = live && wMaxTargetDistance ? num(wMaxTargetDistance.value) : num(weapon && weapon.maxTargetDistance);
   const reach = live && tMaxTrajectory ? num(tMaxTrajectory.value) : num(ammo && ammo.trajectory && ammo.trajectory.maxTrajectory);
+  if (isDetonationWeapon(weapon)) {
+    // No projectile flight: reach is how far the fragments travel from the block
+    const frag = ammo && ammo.fragment && ammo.fragment.enable ? ammo.fragment : null;
+    const fragAmmo = frag ? resolveAmmoRound(frag.ammoRound, weapon) : null;
+    const blast = num(fragAmmo && fragAmmo.trajectory && fragAmmo.trajectory.maxTrajectory);
+    const label = frag ? `Blast reach · ${frag.fragments || 0} fragments, ${frag.degrees || 0}° spread` : 'Blast reach';
+    return { range: blast, source: 'blast', gated: false, guided: false, targeting, reach: blast, label, blast: true };
+  }
   const guidance = (ammo && ammo.trajectory && ammo.trajectory.guidance) || 'None';
   const guided = guidance !== 'None';
   const gated = !!weapon && (weapon.type === 'Turret' || guided);
@@ -2620,6 +2628,10 @@ function updateHudTelemetry(v) {
     hudTelBench.style.display = 'none';
     return;
   }
+  if (isDetonationWeapon(activeWeapon) || isDetonationWeapon(benchmarkWeapon)) {
+    hudTelBench.style.display = 'none';
+    return;
+  }
   const benchDps = calculateWeaponMetrics(benchmarkWeapon, benchmarkAmmoKey).effectiveDps;
   const pct = benchDps > 0 ? Math.round((v.baseEffectiveDps / benchDps - 1) * 100) : 0;
   const benchName = benchmarkWeapon.displayName || benchmarkWeapon.name;
@@ -2865,8 +2877,8 @@ function populateWeaponWorkbench() {
   wHeatSinkRate.value = activeWeapon.heatSinkRate || 0;
   wCooldown.value = activeWeapon.cooldown !== undefined ? activeWeapon.cooldown : 0.5;
 
-  wRotateRate.value = activeWeapon.rotateRate || 0.015;
-  wElevateRate.value = activeWeapon.elevateRate || 0.015;
+  wRotateRate.value = activeWeapon.rotateRate || 0;
+  wElevateRate.value = activeWeapon.elevateRate || 0;
   wMinAzimuth.value = activeWeapon.minAzimuth !== undefined ? activeWeapon.minAzimuth : -180;
   wMaxAzimuth.value = activeWeapon.maxAzimuth !== undefined ? activeWeapon.maxAzimuth : 180;
   wMinElevation.value = activeWeapon.minElevation !== undefined ? activeWeapon.minElevation : -15;
@@ -3474,9 +3486,25 @@ function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
 /// <summary>
 /// Renders an artillery radar fan for tracking turrets, or a linear boresight corridor for fixed weapons.
 /// </summary>
-function renderRangeVisual(rangeNum, isTrackingWeapon) {
+function renderRangeVisual(rangeNum, isTrackingWeapon, isBlast) {
   if (!pillarRangeRadar) return;
   const range = Math.max(0, parseFloat(rangeNum) || 0);
+
+  if (isBlast) {
+    pillarRangeRadar.innerHTML = `
+      <div class="boresight-reach-wrap" title="Fragments burst ${Math.round(range).toLocaleString()}m from the block">
+        <svg class="boresight-reach-svg" viewBox="0 0 84 16">
+          <line class="boresight-reach-rail" x1="4" y1="8" x2="33" y2="8" />
+          <line class="boresight-reach-rail" x1="51" y1="8" x2="80" y2="8" />
+          <circle cx="42" cy="8" r="2.5" fill="#f59e0b" />
+          <circle cx="42" cy="8" r="5" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity="0.7" />
+          <circle cx="42" cy="8" r="7.3" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2" opacity="0.5" />
+        </svg>
+        <span class="boresight-reach-label">BLAST</span>
+      </div>
+    `;
+    return;
+  }
 
   if (isTrackingWeapon) {
     const maxTargetHorizon = 4000;
@@ -4045,8 +4073,14 @@ function updateCombatTelemetry() {
     }
   }
 
+  const detFrag = isDetonation && activeAmmo.fragment && activeAmmo.fragment.enable ? activeAmmo.fragment : null;
+  const detReach = isDetonation ? getEngagementRange(activeWeapon, activeAmmo, true).range : 0;
+  if (tmTitleElem && detFrag) tmTitleElem.textContent = '💣 Detonation';
   if (tmBlastRadius) {
-    if (blastKind === 'ewar' && blastRadius > 0) {
+    if (detFrag) {
+      tmBlastRadius.textContent = `${Math.round(detReach)}m Burst`;
+      tmBlastRadius.className = 'target-multiplier-badge special';
+    } else if (blastKind === 'ewar' && blastRadius > 0) {
       tmBlastRadius.textContent = `🧿 ${ewarTypeLabel(aEwar.type)} ${Math.round(blastRadius)}m`;
       tmBlastRadius.className = 'target-multiplier-badge special';
     } else if (blastKind === 'screen' && blastRadius > 0) {
@@ -4065,7 +4099,9 @@ function updateCombatTelemetry() {
     }
   }
   if (tmBlastDmg) {
-    if (blastKind === 'screen') {
+    if (detFrag) {
+      tmBlastDmg.innerHTML = `${Math.round(dmgDetails.frag).toLocaleString()} <span class="unit">hp max</span>`;
+    } else if (blastKind === 'screen') {
       tmBlastDmg.innerHTML = `${hhm} <span class="unit">PD hp / target</span>`;
     } else if (hasRealBlast) {
       tmBlastDmg.innerHTML = `${Math.round(blastDmg).toLocaleString()} <span class="unit">hp / shot</span>`;
@@ -4076,7 +4112,10 @@ function updateCombatTelemetry() {
     }
   }
   if (tmBlastSub) {
-    if (blastKind === 'ewar') {
+    if (detFrag) {
+      const each = detFrag.fragments > 0 ? Math.round(dmgDetails.frag / detFrag.fragments) : 0;
+      tmBlastSub.textContent = `${detFrag.fragments} fragments × ${each.toLocaleString()} hp, ${detFrag.degrees}° spread (max if all hit)`;
+    } else if (blastKind === 'ewar') {
       tmBlastSub.textContent = 'EWAR effect — disables target systems (no block damage)';
     } else if (blastKind === 'screen') {
       tmBlastSub.textContent = describePdKills(activeAmmo, 'bursts') || 'Anti-projectile burst (no block damage)';
@@ -4214,14 +4253,16 @@ function updateCombatTelemetry() {
   if (outMaxRangeSource) outMaxRangeSource.textContent = engagement.label;
 
   if (outMuzzleVelocityPreview) {
-    outMuzzleVelocityPreview.innerHTML = isBeam
+    outMuzzleVelocityPreview.innerHTML = isDetonation ? 'Detonation' : isBeam
       ? `⚡ Hitscan <span class="unit-sub">(c)</span>`
       : `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
   }
   if (outFlightDelay1km) {
     const flightDist = maxEngagementRange;
     const flightTime = muzzleSpeed > 0 ? (flightDist / muzzleSpeed).toFixed(2) : '0.00';
-    outFlightDelay1km.textContent = isBeam
+    outFlightDelay1km.textContent = isDetonation
+      ? 'No flight: fragments burst from the block'
+      : isBeam
       ? `Flight to ${Math.round(flightDist).toLocaleString()}m: 0.00s (Instant hit)`
       : (muzzleSpeed > 0 ? `Flight to ${Math.round(flightDist).toLocaleString()}m: ${flightTime}s` : 'Instantaneous hit');
   }
@@ -4234,7 +4275,7 @@ function updateCombatTelemetry() {
   }
 
   // Render Pillar 2 Hero Micro-Visuals
-  renderRangeVisual(maxEngagementRange, isTrackingWeapon);
+  renderRangeVisual(maxEngagementRange, isTrackingWeapon, isDetonation);
   renderPropulsionVector(activeWeapon, activeAmmo, isBeam);
 
   const outPillarArcSummary = document.getElementById('outPillarArcSummary');
@@ -4574,6 +4615,14 @@ function updateCombatTelemetry() {
     outHeatDutyRatio.textContent = 'SINGLE USE';
     if (heatProgressBar) heatProgressBar.style.width = '0%';
     outTimeToOverheat.textContent = 'No fire cycle: the payload is released once when the block detonates.';
+    outCooldownTime.innerHTML = 'No ammo consumed';
+    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW idle draw`;
+    if (outMagProfile) outMagProfile.textContent = 'No magazine';
+    if (outMagReload) outMagReload.textContent = 'Detonates once';
+    [[tmHeavyDmg, tmHeavySub, heavyDmg], [tmLightDmg, tmLightSub, lightDmg], [tmNonArmorDmg, tmNonArmorSub, nonArmorDmg]].forEach(([dmgEl, subEl, d]) => {
+      if (dmgEl) dmgEl.innerHTML = `${Math.round(d).toLocaleString()} <span class="unit">hp / detonation</span>`;
+      if (subEl) subEl.textContent = 'Max if every fragment hits';
+    });
     hudCycle = 'Single use';
   }
 
@@ -4919,6 +4968,7 @@ function isDetonationWeapon(weapon) {
 function getWeaponPowerDraw(weapon, ammo, overrides) {
   const w = Object.assign({}, weapon || {}, overrides || {});
   const idle = Math.max(parseFloat(w.idlePower) || 0, 0.001);
+  if (isDetonationWeapon(weapon)) return { idle, operational: idle, mustCharge: false };
   const e = getWcEnergy(w, ammo || {});
   return { idle, operational: idle + (e.mustCharge ? e.desiredPower : 0), mustCharge: e.mustCharge };
 }
@@ -5000,6 +5050,7 @@ function getModMaxMetrics() {
 
 function getWeaponSpecialtyBadge(weapon, ammo) {
   if (!ammo) return 'Standard Payload';
+  if (isDetonationWeapon(weapon)) return '💥 Fragment Burst';
   if (ammo.ewar && ammo.ewar.enable) return `🧿 ${ewarTypeLabel(ammo.ewar.type)}`;
   if (ammo.baseDamageCutoff > 0) {
     const penBlocks = Math.round(ammo.baseDamageCutoff / (weapon.gridSize === 'Small' || weapon.grid === 'Small' ? 500 : 2500));
@@ -5052,7 +5103,7 @@ function updateRadarQuickCompare() {
   const mountLabel = (arc, w) => arc ? (!arc.isTurret ? 'Fixed (Steer rover)' : (arc.isGimbal ? `🎯 Gimbal (±${Math.round(Math.abs(arc.maxAz - arc.minAz)/2)}°)` : '🔄 360° Turret')) : '—';
   setPair('qcMountActive', 'qcMountBench', mountLabel(activeArc, activeWeapon), mountLabel(benchArc, benchmarkWeapon));
 
-  const depLabel = (arc) => arc ? (arc.hasDepression ? `📐 ${arc.minEl}° (Good Depression)` : (arc.minEl >= 0 ? `0° (Relentlessly Optimistic)` : `${arc.minEl}°`)) : '—';
+  const depLabel = (arc) => arc ? (!arc.isTurret ? 'Fixed Forward' : arc.hasDepression ? `📐 ${arc.minEl}° (Good Depression)` : (arc.minEl >= 0 ? `0° (Relentlessly Optimistic)` : `${arc.minEl}°`)) : '—';
   setPair('qcDepressionActive', 'qcDepressionBench', depLabel(activeArc), depLabel(benchArc));
 
   const activeRecoil = getWeaponRecoilWarning(activeWeapon, activeAmmo);
@@ -5262,6 +5313,9 @@ function drawPolygon(ctx, cx, cy, radius, stats, fillStyle, strokeStyle) {
 }
 
 function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg, bDps, bEffDps, bAlpha, bRange, bVel, bTrack, bInteg, aIsBeam, bIsBeam) {
+  // Single-use detonations have no DPS or flight: n/a instead of a -100% delta
+  const aDet = isDetonationWeapon(activeWeapon);
+  const bDet = isDetonationWeapon(benchmarkWeapon);
   const rows = [
     { name: 'Sustained DPS', a: aDps, b: bDps, unit: '', aStr: `${Math.round(aDps).toLocaleString()}`, bStr: `${Math.round(bDps).toLocaleString()}` },
     { name: 'Effective DPS', a: aEffDps, b: bEffDps, unit: '', aStr: `${Math.round(aEffDps).toLocaleString()}`, bStr: `${Math.round(bEffDps).toLocaleString()}` },
@@ -5284,6 +5338,25 @@ function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg,
     { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s', aStr: `${aTrack.toFixed(1)} °/s`, bStr: `${bTrack.toFixed(1)} °/s` },
     { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp', aStr: `${Math.round(aInteg).toLocaleString()} hp`, bStr: `${Math.round(bInteg).toLocaleString()} hp` }
   ];
+
+  if (aDet || bDet) {
+    const na = 'n/a (single use)';
+    rows.forEach(r => {
+      if (/DPS/.test(r.name)) {
+        if (aDet) r.aStr = na;
+        if (bDet) r.bStr = na;
+        r.customDelta = { text: '—', color: 'var(--text-dim)' };
+      } else if (r.name === 'Velocity') {
+        if (aDet) r.aStr = 'Detonation';
+        if (bDet) r.bStr = 'Detonation';
+        r.customDelta = { text: '—', color: 'var(--text-dim)' };
+      } else if (r.name === 'Targeting Range') {
+        r.name = 'Range';
+        if (aDet) r.aStr += ' (blast)';
+        if (bDet) r.bStr += ' (blast)';
+      }
+    });
+  }
 
   compareTableBody.innerHTML = rows.map(r => {
     let deltaStr = '—';
@@ -5406,7 +5479,7 @@ function runWeaponCoreLinter() {
   }
 
   const muzzles = (wMuzzles.value || '').trim();
-  if (!muzzles) {
+  if (!muzzles && !isDetonationWeapon(activeWeapon)) {
     criticalErrors.push("Muzzle dummy list is empty (Projectiles will spawn inside the block).");
   }
 
