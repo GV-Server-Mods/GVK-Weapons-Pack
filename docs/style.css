@@ -4492,6 +4492,64 @@ input.control-input.is-wc-default {
   box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);
 }
 
+.filter-pill:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.category-filter-pill,
+.type-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-pill-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.filter-pill-count {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0 5px;
+  line-height: 15px;
+}
+
+.filter-pill.active .filter-pill-count {
+  color: var(--amber-primary);
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* Type sub-row under the selected class */
+.filter-subrow {
+  padding-left: 12px;
+  border-left: 2px solid rgba(245, 158, 11, 0.4);
+  margin-left: 4px;
+}
+
+.filter-subrow[hidden] {
+  display: none;
+}
+
+.filter-subrow .filter-pill {
+  font-size: 10.5px;
+  padding: 3px 9px;
+}
+
+@media (max-width: 768px) {
+  .filter-row > .filter-divider {
+    display: none;
+  }
+}
+
+[data-theme="light"] .filter-pill-count {
+  background: rgba(15, 23, 42, 0.06);
+}
+
 /* Battery Multiplier Segmented Control */
 .battery-multiplier-group {
   display: inline-flex;

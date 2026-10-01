@@ -789,6 +789,19 @@ const badgeRecoil = document.getElementById('badgeRecoil');
 let currentBatteryMultiplier = 1;
 let currentFilterGrid = 'all';
 let currentFilterType = 'all';
+let currentFilterCategory = 'all';
+
+// Weapon class groups for the filter bar, keyed by the *TYPE* display-name prefix.
+// Unlisted prefixes (and unprefixed blocks like warheads) fall into "Other".
+const WEAPON_CATEGORIES = [
+  { key: 'ballistic', label: 'Ballistic', icon: '🔫', types: ['Gatling', 'Autocannon', 'L.Cannon', 'H.Cannon', 'Interior'] },
+  { key: 'kinetic', label: 'Kinetic', icon: '⚡', types: ['Railgun', 'MAC'] },
+  { key: 'missile', label: 'Missile', icon: '🚀', types: ['Rocket', 'L.Missile', 'H.Missile', 'SRBM', 'Torpedo'] },
+  { key: 'energy', label: 'Energy', icon: '🔆', types: ['L.Laser', 'H.Laser', 'Plasma'] },
+  { key: 'defense', label: 'Defense', icon: '🛡️', types: ['AMS', 'Flak', 'Flare'] },
+  { key: 'utility', label: 'Utility', icon: '📡', types: ['Sensor', 'Drone'] }
+];
+const WEAPON_CATEGORY_OTHER = { key: 'other', label: 'Other', icon: '💣', types: [] };
 // DOM Elements - Telemetry Munition Bar (Workspace 1)
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
 const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
@@ -1246,7 +1259,7 @@ function refreshAfterDataLoad() {
   // Populate Dropdowns
   checkWcSchemaIntegrity();
   populateWeaponDropdowns();
-  buildTypePills();
+  refreshShipbuilderFilters(false);
   populateAmmoDropdowns();
   populateAnimationDropdown();
   populateLogisticsAmmoDropdown();
@@ -1446,10 +1459,20 @@ function filterMatchesWeapon(w) {
   if (isHandheldWeapon(w)) return false;
   const grid = w.gridSize || w.grid || 'Large';
   if (currentFilterGrid !== 'all' && grid.toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
-  if (currentFilterType !== 'all') {
-    const wtype = getWeaponTypePrefix(w);
-    if (wtype !== currentFilterType) return false;
-  }
+  return matchesClassFilter(w);
+}
+
+/// <summary>Category key for a weapon from its *TYPE* prefix ("other" when unlisted or unprefixed).</summary>
+function getWeaponCategory(w) {
+  const t = getWeaponTypePrefix(w);
+  const c = WEAPON_CATEGORIES.find(cat => cat.types.includes(t));
+  return c ? c.key : WEAPON_CATEGORY_OTHER.key;
+}
+
+/// <summary>Category + type part of the filter (grid excluded), so pill counts can reuse it.</summary>
+function matchesClassFilter(w) {
+  if (currentFilterCategory !== 'all' && getWeaponCategory(w) !== currentFilterCategory) return false;
+  if (currentFilterType !== 'all' && getWeaponTypePrefix(w) !== currentFilterType) return false;
   return true;
 }
 
@@ -1495,91 +1518,100 @@ function initShipbuilderFilters() {
       gridPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       currentFilterGrid = pill.dataset.grid || 'all';
-      updateFilterCounts();
-      buildTypePills();
-      populateWeaponDropdowns();
-      if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
-        const first = weaponsDb.find(filterMatchesWeapon);
-        if (first) selectWeapon(first.id);
-      }
+      refreshShipbuilderFilters();
     });
   });
-  updateFilterCounts();
-  buildTypePills();
+  refreshShipbuilderFilters(false);
 }
+
+/// <summary>Rebuilds the pill counts and reselects a weapon if the active one no longer matches.</summary>
+function refreshShipbuilderFilters(reselect) {
+  updateFilterCounts();
+  buildCategoryPills();
+  buildTypePills();
+  if (reselect === false) return;
+  populateWeaponDropdowns();
+  if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
+    const first = weaponsDb.find(filterMatchesWeapon);
+    if (first) selectWeapon(first.id);
+  }
+}
+
+/// <summary>Player, non-handheld weapons (what the filter bar counts).</summary>
+function getFilterableWeapons() {
+  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
+  return weaponsDb.filter(w => !isNpc(w) && !isHandheldWeapon(w));
+}
+
+const matchesGridFilter = (w) => currentFilterGrid === 'all'
+  || (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase();
 
 function updateFilterCounts() {
-  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
-  const playerWeapons = weaponsDb.filter(w => !isNpc(w));
-
-  // Update Grid filter button counts
-  const gridPills = document.querySelectorAll('.grid-filter-pill');
-  gridPills.forEach(pill => {
+  const weapons = getFilterableWeapons().filter(matchesClassFilter);
+  document.querySelectorAll('.grid-filter-pill').forEach(pill => {
     const g = pill.dataset.grid || 'all';
-    let count = 0;
-    if (g === 'all') {
-      count = playerWeapons.filter(w => {
-        if (currentFilterType === 'all') return true;
-        return getWeaponTypePrefix(w) === currentFilterType;
-      }).length;
-      pill.textContent = `All (${count})`;
-    } else {
-      count = playerWeapons.filter(w => {
-        const matchesGrid = (w.gridSize || w.grid || 'Large').toLowerCase() === g.toLowerCase();
-        if (!matchesGrid) return false;
-        if (currentFilterType === 'all') return true;
-        return getWeaponTypePrefix(w) === currentFilterType;
-      }).length;
-      pill.textContent = `${g} (${count})`;
-    }
+    const count = g === 'all' ? weapons.length
+      : weapons.filter(w => (w.gridSize || w.grid || 'Large').toLowerCase() === g.toLowerCase()).length;
+    pill.textContent = `${g === 'all' ? 'All' : g} (${count})`;
   });
 }
 
+/// <summary>CLASS pills: All + each category with weapons; counts follow the grid filter.</summary>
+function buildCategoryPills() {
+  const container = document.getElementById('categoryFilterGroup');
+  if (!container) return;
+  const weapons = getFilterableWeapons().filter(matchesGridFilter);
+  const counts = {};
+  weapons.forEach(w => { const k = getWeaponCategory(w); counts[k] = (counts[k] || 0) + 1; });
+
+  container.innerHTML = '<span class="filter-label">CLASS:</span>';
+  const addPill = (key, label, icon, count, title) => {
+    const btn = document.createElement('button');
+    btn.className = `filter-pill category-filter-pill ${currentFilterCategory === key ? 'active' : ''}`;
+    btn.dataset.category = key;
+    btn.title = title || label;
+    btn.innerHTML = `${icon ? `<span class="filter-pill-icon" aria-hidden="true">${icon}</span>` : ''}${label} <span class="filter-pill-count">${count}</span>`;
+    if (count === 0 && key !== 'all') btn.disabled = true;
+    btn.addEventListener('click', () => {
+      currentFilterCategory = key;
+      currentFilterType = 'all';
+      refreshShipbuilderFilters();
+    });
+    container.appendChild(btn);
+  };
+  addPill('all', 'All', '', weapons.length);
+  WEAPON_CATEGORIES.concat(counts.other ? [WEAPON_CATEGORY_OTHER] : []).forEach(cat => {
+    addPill(cat.key, cat.label, cat.icon, counts[cat.key] || 0, cat.types.length ? cat.types.join(' · ') : 'Untyped blocks (warheads, explosive barrels)');
+  });
+}
+
+/// <summary>Type sub-row for the selected category; hidden for "All" or single-type categories.</summary>
 function buildTypePills() {
+  const row = document.getElementById('typeFilterRow');
   const container = document.getElementById('typeFilterGroup');
   if (!container) return;
-
-  // Collect unique player weapon types (excluding NPC prefix), respecting current grid filter
-  const isNpc = (w) => (w.name && w.name.includes('(NPC)')) || (w.subtypeId && w.subtypeId.includes('_NPC')) || (w.id && w.id.includes('_NPC'));
-  const playerWeapons = weaponsDb.filter(w => !isNpc(w) && !isHandheldWeapon(w));
-  const relevantWeapons = currentFilterGrid === 'all'
-    ? playerWeapons
-    : playerWeapons.filter(w => (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase());
-
-  // Tally counts per weapon type
+  container.innerHTML = '';
+  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && getWeaponCategory(w) === currentFilterCategory);
   const typeCounts = {};
-  relevantWeapons.forEach(w => {
-    const t = getWeaponTypePrefix(w);
-    if (t) {
-      typeCounts[t] = (typeCounts[t] || 0) + 1;
-    }
-  });
+  weapons.forEach(w => { const t = getWeaponTypePrefix(w); if (t) typeCounts[t] = (typeCounts[t] || 0) + 1; });
+  const cat = WEAPON_CATEGORIES.find(c => c.key === currentFilterCategory);
+  const types = (cat ? cat.types : Object.keys(typeCounts).sort()).filter(t => typeCounts[t]);
+  if (row) row.hidden = currentFilterCategory === 'all' || types.length < 2;
+  if (currentFilterCategory === 'all' || types.length < 2) return;
 
-  const totalRelevant = relevantWeapons.length;
-  container.innerHTML = `<span class="filter-label">TYPE:</span><button class="filter-pill type-filter-pill ${currentFilterType === 'all' ? 'active' : ''}" data-wtype="all">All (${totalRelevant})</button>`;
-
-  Object.keys(typeCounts).sort().forEach(t => {
+  const addPill = (t, label, count) => {
     const btn = document.createElement('button');
     btn.className = `filter-pill type-filter-pill ${currentFilterType === t ? 'active' : ''}`;
     btn.dataset.wtype = t;
-    btn.textContent = `${t} (${typeCounts[t]})`;
-    container.appendChild(btn);
-  });
-
-  const pills = container.querySelectorAll('.type-filter-pill');
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentFilterType = pill.dataset.wtype || 'all';
-      updateFilterCounts();
-      populateWeaponDropdowns();
-      if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
-        const first = weaponsDb.find(filterMatchesWeapon);
-        if (first) selectWeapon(first.id);
-      }
+    btn.innerHTML = `${label} <span class="filter-pill-count">${count}</span>`;
+    btn.addEventListener('click', () => {
+      currentFilterType = t;
+      refreshShipbuilderFilters();
     });
-  });
+    container.appendChild(btn);
+  };
+  addPill('all', `All ${cat ? cat.label : ''}`.trim(), weapons.length);
+  types.forEach(t => addPill(t, t, typeCounts[t]));
 }
 
 function populateWeaponDropdowns() {

@@ -225,12 +225,15 @@
           <button class="filter-pill grid-filter-pill" data-grid="Large">Large</button>
           <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
         </div>
+        <span class="filter-divider" aria-hidden="true"></span>
+        <div class="filter-group" id="categoryFilterGroup">
+          <span class="filter-label">CLASS:</span>
+          <!-- Category pills (WEAPON_CATEGORIES) built by buildCategoryPills() -->
+        </div>
       </div>
-      <div class="filter-row">
+      <div class="filter-row filter-subrow" id="typeFilterRow" hidden>
         <div class="filter-group filter-group-types" id="typeFilterGroup">
-          <span class="filter-label">TYPE:</span>
-          <button class="filter-pill type-filter-pill active" data-wtype="all">All</button>
-          <!-- Additional type pills populated dynamically by initShipbuilderFilters() -->
+          <!-- Type pills for the selected category, built by buildTypePills() -->
         </div>
       </div>
     </div>
