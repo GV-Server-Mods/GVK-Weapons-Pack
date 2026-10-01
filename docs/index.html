@@ -701,69 +701,103 @@
 
     <!-- WORKSPACE 2: DEFINITION WORKBENCH (DEEP C# & SBC EDITORS) -->
     <div id="ws-workbench" class="workspace-section">
-      
-      <!-- Scope Toggle Bar -->
+
+      <!-- Editing context: the weapon every scope below belongs to -->
+      <div class="wb-context">
+        <div class="wb-context-main">
+          <div class="weapon-icon-wrap-sm" title="Active weapon model">
+            <img id="scopeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon icon" class="weapon-icon-sm">
+          </div>
+          <div class="wb-context-picker">
+            <label class="selector-label" for="weaponSelectWorkbench">Editing weapon</label>
+            <div class="wb-context-row">
+              <select id="weaponSelectWorkbench" class="weapon-dropdown">
+                <!-- Populated dynamically / synced with weaponSelect -->
+              </select>
+              <button id="btnResetDefaultsWorkbench" class="btn btn-sm" title="Discard edits and reset this weapon to the server defaults">↺ Reset to defaults</button>
+            </div>
+          </div>
+        </div>
+        <div class="wb-context-badges" id="scopeWeaponBadges">
+          <div class="badge" id="scopeBadgeGrid">Grid: <strong>Large</strong></div>
+          <div class="badge" id="scopeBadgeType">Mount: <strong>Turret</strong></div>
+          <div class="badge badge-amber" id="scopeBadgeUps">⚡ <strong>0 UPs</strong></div>
+          <div class="badge badge-amber" id="scopeBadgeTech">Tech: <strong>None</strong></div>
+          <div class="badge badge-cyan" id="scopeBadgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
+          <div class="badge badge-purple" id="scopeBadgeRelic" style="display: none;">👑 Relic Weapon</div>
+          <div class="badge badge-cyan" id="scopeBadgePd" style="display: none;" title="WeaponCore threat list includes Projectiles - engages smart munitions in flight">📡 Point Defense</div>
+          <div class="badge badge-red" id="scopeBadgeNpc" style="display: none;">⚔️ NPC Variant</div>
+        </div>
+      </div>
+
+      <!-- Scope switcher + definition actions -->
       <div class="scope-toggle-bar">
-        <div class="scope-tabs">
-          <button class="scope-btn active" data-scope="scope-weapon">🔫 WeaponDefinition</button>
-          <button class="scope-btn" data-scope="scope-ammo">💥 AmmoDef (<span id="scopeActiveAmmoLabel">Primary</span>)</button>
-          <button class="scope-btn" data-scope="scope-sbc">🧱 CubeBlocks SBC</button>
+        <div class="scope-tabs" role="tablist" aria-label="Definition to edit">
+          <button class="scope-btn active" data-scope="scope-weapon" role="tab">
+            <span class="scope-btn-icon" aria-hidden="true">🔫</span>
+            <span class="scope-btn-text"><span class="scope-btn-title">Weapon</span><span class="scope-btn-sub">WeaponDefinition</span></span>
+          </button>
+          <button class="scope-btn" data-scope="scope-ammo" role="tab">
+            <span class="scope-btn-icon" aria-hidden="true">💥</span>
+            <span class="scope-btn-text"><span class="scope-btn-title">Ammo</span><span class="scope-btn-sub">AmmoDef · <span id="scopeActiveAmmoLabel">Primary</span></span></span>
+          </button>
+          <button class="scope-btn" data-scope="scope-sbc" role="tab">
+            <span class="scope-btn-icon" aria-hidden="true">🧱</span>
+            <span class="scope-btn-text"><span class="scope-btn-title">Block</span><span class="scope-btn-sub">CubeBlocks .sbc</span></span>
+          </button>
         </div>
         <div class="scope-actions">
-          <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per WeaponCore wiki">+ New Minimal Weapon</button>
-          <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Minimal Ammo</button>
-          <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
-          <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
+          <div class="scope-action-group" aria-label="Create">
+            <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per the WeaponCore wiki">+ New Weapon</button>
+            <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Ammo</button>
+          </div>
+          <div class="scope-action-group" aria-label="Mod folder">
+            <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to your local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
+            <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
+          </div>
         </div>
       </div>
 
       <!-- Live WeaponCore Linter & Clang Hazard Banner -->
-      <div id="linterBanner" class="linter-banner clean">
+      <div id="linterBanner" class="linter-banner clean" role="status" aria-live="polite">
         <span class="linter-icon">✅</span>
-        <span id="linterText" class="linter-text">Definition syntax healthy. 0 Clang hazards detected.</span>
+        <div id="linterText" class="linter-text">Definition syntax healthy. 0 Clang hazards detected.</div>
       </div>
 
       <!-- WC Schema Update & Discrepancy Notice Banner -->
-      <div id="wcSchemaNotice" class="linter-banner warning" style="display: none; margin-bottom: 14px;">
+      <div id="wcSchemaNotice" class="linter-banner warning" style="display: none;">
         <span class="linter-icon">⚙️</span>
         <span id="wcSchemaNoticeText" class="linter-text">WeaponCore Schema Update Detected.</span>
       </div>
 
+      <div class="wb-layout">
+        <!-- Section navigator + field search (built by workbench_ui.js) -->
+        <aside class="wb-nav" id="wbNav" aria-label="Workbench sections">
+          <div class="wb-search">
+            <span class="wb-search-icon" aria-hidden="true">⌕</span>
+            <input type="search" id="wbFieldSearch" class="wb-search-input" placeholder="Find a field…" autocomplete="off" spellcheck="false" aria-label="Find a field in this definition">
+            <kbd class="wb-kbd" title="Press / to search">/</kbd>
+          </div>
+          <div class="wb-search-status" id="wbSearchStatus" hidden></div>
+          <div class="wb-nav-tools">
+            <span class="wb-nav-heading">Sections</span>
+            <span class="wb-nav-tool-btns">
+              <button type="button" class="wb-link-btn" id="wbExpandAll" title="Open every section">Expand all</button>
+              <button type="button" class="wb-link-btn" id="wbCollapseAll" title="Close every section">Collapse all</button>
+            </span>
+          </div>
+          <nav class="wb-nav-list" id="wbNavList"></nav>
+        </aside>
+
+        <div class="wb-main">
+
             <!-- SCOPE A: WeaponDefinition Editor -->
       <div id="scope-weapon" class="scope-content active">
         
-        <!-- Active Weapon Selector Strip (Tuning Weapon) -->
-        <div style="background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <div class="weapon-icon-wrap-sm" title="Active Weapon Model">
-              <img id="scopeWeaponIcon" src="icons/L__Gatling_Avenger_Turret.png" alt="Weapon Icon" class="weapon-icon-sm">
-            </div>
-            <div>
-              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING WEAPON:</span>
-              <div style="margin-top: 3px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                <select id="weaponSelectWorkbench" class="weapon-dropdown" style="min-width: 260px;">
-                  <!-- Populated dynamically / synced with weaponSelect -->
-                </select>
-                <button id="btnResetDefaultsWorkbench" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
-              </div>
-            </div>
-          </div>
-          <div class="banner-badges" id="scopeWeaponBadges" style="margin-top: 0; display: flex; flex-wrap: wrap; gap: 6px;">
-            <div class="badge" id="scopeBadgeGrid">Grid: <strong>Large</strong></div>
-            <div class="badge" id="scopeBadgeType">Mount: <strong>Turret</strong></div>
-            <div class="badge badge-amber" id="scopeBadgeUps">⚡ <strong>0 UPs</strong></div>
-            <div class="badge badge-tech" id="scopeBadgeTech" style="border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">Tech: <strong>None</strong></div>
-            <div class="badge badge-cyan" id="scopeBadgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
-            <div class="badge badge-purple" id="scopeBadgeRelic" style="display: none;">👑 Relic Weapon</div>
-            <div class="badge badge-cyan" id="scopeBadgePd" style="display: none;" title="WeaponCore threat list includes Projectiles - engages smart munitions in flight">📡 POINT DEFENSE</div>
-            <div class="badge badge-red" id="scopeBadgeNpc" style="display: none;">⚔️ NPC VARIANT</div>
-          </div>
-        </div>
-
         <!-- Accordion 1: Assignments & Model -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">1. ModelAssignmentsDef (Assignments, Mounts & Subparts)</span>
+            <span class="wc-title"><span class="wc-num">1</span><span class="wc-name">Model &amp; Mounts</span><code class="wc-def">ModelAssignmentsDef</code></span>
             <span class="wc-tag">SubtypeId, Muzzles, MountPoints</span>
           </summary>
           <div class="wc-body">
@@ -805,7 +839,7 @@
                 <input type="text" id="wIconName" class="control-input" placeholder="Overlay icon name (optional)">
               </div>
               <div class="control-item full-width">
-                <label class="control-label">Muzzle Dummies <span class="unit">(comma-separated)</span></label>
+                <label class="control-label">Muzzle Dummies <span class="unit">comma-separated</span></label>
                 <input type="text" id="wMuzzles" class="control-input" value="muzzle_missile_1, muzzle_missile_2">
               </div>
             </div>
@@ -815,13 +849,13 @@
         <!-- Accordion 2: Hardware & Gimbal Traversal -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">2. HardwareDef (Gimbal Traversal, Inventory & Offsets)</span>
+            <span class="wc-title"><span class="wc-num">2</span><span class="wc-name">Hardware &amp; Gimbal</span><code class="wc-def">HardwareDef</code></span>
             <span class="wc-tag">Rotation, Angles, Inventory</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
               <div class="control-item">
-                <label class="control-label">Rotate Rate <span class="unit">rad/tick (0.1 ≈ 360°/s)</span></label>
+                <label class="control-label">Rotate Rate <span class="unit">rad/tick</span></label>
                 <input type="number" id="wRotateRate" class="control-input" step="0.001" min="0" value="0.015">
               </div>
               <div class="control-item">
@@ -830,27 +864,27 @@
               </div>
               <div class="control-item">
                 <label class="control-label">Min / Max Azimuth <span class="unit">deg</span></label>
-                <div style="display: flex; gap: 4px;">
+                <div class="wb-pair">
                   <input type="number" id="wMinAzimuth" class="control-input" min="-180" max="0" value="-180">
                   <input type="number" id="wMaxAzimuth" class="control-input" min="0" max="180" value="180">
                 </div>
               </div>
               <div class="control-item">
                 <label class="control-label">Min / Max Elevation <span class="unit">deg</span></label>
-                <div style="display: flex; gap: 4px;">
+                <div class="wb-pair">
                   <input type="number" id="wMinElevation" class="control-input" min="-90" max="0" value="-15">
                   <input type="number" id="wMaxElevation" class="control-input" min="0" max="90" value="80">
                 </div>
               </div>
               <div class="control-item">
                 <label class="control-label" title="Resting gimbal angles when target is not acquired">Home Az / Elevation <span class="unit">deg</span></label>
-                <div style="display: flex; gap: 4px;">
+                <div class="wb-pair">
                   <input type="number" id="wHomeAzimuth" class="control-input" value="0">
                   <input type="number" id="wHomeElevation" class="control-input" value="0">
                 </div>
               </div>
               <div class="control-item">
-                <label class="control-label">Inventory Size <span class="unit">m³ (kL)</span></label>
+                <label class="control-label">Inventory Size <span class="unit">kL (m³)</span></label>
                 <input type="number" id="wInventorySize" class="control-input" step="0.1" min="0.01" value="0.9">
                 <div class="am-inv-hint" id="wInvSuggestBox" style="display: none;">
                   <span id="wInvSuggestHint"></span>
@@ -873,8 +907,8 @@
                 </select>
               </div>
               <div class="control-item">
-                <label class="control-label">Firing Line Offset <span class="unit">X, Y, Z (meters)</span></label>
-                <div style="display: flex; gap: 4px;">
+                <label class="control-label">Firing Line Offset <span class="unit">X · Y · Z m</span></label>
+                <div class="wb-pair">
                   <input type="number" id="wOffsetX" class="control-input" step="0.1" value="0" placeholder="X">
                   <input type="number" id="wOffsetY" class="control-input" step="0.1" value="0" placeholder="Y">
                   <input type="number" id="wOffsetZ" class="control-input" step="0.1" value="0" placeholder="Z">
@@ -887,7 +921,7 @@
         <!-- Accordion 3: LoadingDef (Cycle Timings, Bursts & Heat) -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">3. LoadingDef (Cycle Timings, Burst &amp; Heat Management)</span>
+            <span class="wc-title"><span class="wc-num">3</span><span class="wc-name">Loading, Bursts &amp; Heat</span><code class="wc-def">LoadingDef</code></span>
             <span class="wc-tag">RoF, Burst, Overheat</span>
           </summary>
           <div class="wc-body">
@@ -909,15 +943,15 @@
                 <input type="number" id="wSkipBarrels" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
-                <label class="control-label">Reload Time <span class="unit">ticks (60=1s)</span></label>
+                <label class="control-label">Reload Time <span class="unit">ticks · 60 = 1s</span></label>
                 <input type="number" id="wReloadTime" class="control-input" min="0" value="4">
               </div>
               <div class="control-item">
-                <label class="control-label">Mags To Load <span class="unit">magazine buffer</span></label>
+                <label class="control-label">Mags To Load <span class="unit">mags</span></label>
                 <input type="number" id="wMagsToLoad" class="control-input" min="1" value="14">
               </div>
               <div class="control-item">
-                <label class="control-label">Delay Until Fire <span class="unit">ticks spool-up</span></label>
+                <label class="control-label">Delay Until Fire <span class="unit">ticks</span></label>
                 <input type="number" id="wDelayUntilFire" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
@@ -925,7 +959,7 @@
                 <input type="number" id="wShotsInBurst" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
-                <label class="control-label">Delay After Burst <span class="unit">ticks burst cooldown</span></label>
+                <label class="control-label">Delay After Burst <span class="unit">ticks</span></label>
                 <input type="number" id="wDelayAfterBurst" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
@@ -941,11 +975,11 @@
                 <input type="number" id="wHeatSinkRate" class="control-input" min="0" value="0">
               </div>
               <div class="control-item full-width">
-                <label class="control-label">Cooldown Threshold <span class="unit">0.05 - 0.95 (reset % from overheat)</span></label>
+                <label class="control-label">Cooldown Threshold <span class="unit">0.05 – 0.95</span></label>
                 <input type="number" id="wCooldown" class="control-input" step="0.05" min="0.05" max="0.95" value="0.5">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wFireFull"> Fire Full Magazine/Burst</label>
               <label class="chk-label"><input type="checkbox" id="wGiveUpAfter"> Give Up Target After Burst</label>
               <label class="chk-label"><input type="checkbox" id="wGoHomeToReload"> Go Home Position To Reload</label>
@@ -958,17 +992,17 @@
         <!-- Accordion 4: HardPointDef (Aiming Physics & Inaccuracy) -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">4. HardPointDef (Aiming Physics &amp; Prediction)</span>
+            <span class="wc-title"><span class="wc-num">4</span><span class="wc-name">Aiming &amp; Prediction</span><code class="wc-def">HardPointDef</code></span>
             <span class="wc-tag">Accuracy, Prediction, Submerged</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
               <div class="control-item">
-                <label class="control-label">Inaccuracy (DeviateShotAngle) <span class="unit">degrees</span></label>
+                <label class="control-label">Deviate Shot Angle <span class="unit">deg</span></label>
                 <input type="number" id="wDeviateAngle" class="control-input" step="0.01" min="0" value="0.15">
               </div>
               <div class="control-item">
-                <label class="control-label">Aiming Tolerance <span class="unit">degrees firing cone</span></label>
+                <label class="control-label">Aiming Tolerance <span class="unit">deg</span></label>
                 <input type="number" id="wAimingTolerance" class="control-input" step="0.5" min="0.1" value="3.0">
               </div>
               <div class="control-item">
@@ -985,7 +1019,7 @@
                 <input type="number" id="wDelayCeaseFire" class="control-input" min="0" value="0">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wAddToleranceToTracking"> Add Tolerance To Tracking</label>
               <label class="chk-label"><input type="checkbox" id="wCanShootSubmerged"> Can Shoot Submerged</label>
               <label class="chk-label"><input type="checkbox" id="wNpcSafe" checked> NPC Safe (WeaponCore Hint)</label>
@@ -996,8 +1030,8 @@
         <!-- Accordion 5: TargetingDef (Targeting & Threat Priority) -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">5. TargetingDef (Targeting Ranges, Threats &amp; Subsystems)</span>
-            <div style="display: flex; gap: 8px; align-items: center;">
+            <span class="wc-title"><span class="wc-num">5</span><span class="wc-name">Targeting &amp; Threats</span><code class="wc-def">TargetingDef</code></span>
+            <div class="wc-summary-actions">
               <span id="badgeTargetingHelper" class="helper-badge" style="display: none;">Shared Preset</span>
               <button id="btnRevertTargeting" class="btn btn-xs" style="display: none;">↺ Revert to Shared</button>
             </div>
@@ -1026,8 +1060,8 @@
               </div>
             </div>
             
-            <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Threat Acquisition Filters:</div>
-            <div class="checkbox-row" style="margin-top: 6px;">
+            <div class="wb-subhead">Threat Acquisition Filters</div>
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wThreatGrids" checked> Grids</label>
               <label class="chk-label"><input type="checkbox" id="wThreatProjectiles" checked> Projectiles</label>
               <label class="chk-label"><input type="checkbox" id="wThreatCharacters" checked> Characters</label>
@@ -1035,8 +1069,8 @@
               <label class="chk-label"><input type="checkbox" id="wThreatNeutrals"> Neutrals</label>
             </div>
 
-            <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Subsystems Targeting Priority:</div>
-            <div class="checkbox-row" style="margin-top: 6px;">
+            <div class="wb-subhead">Subsystems Targeting Priority</div>
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wSubOffense" checked> Offense</label>
               <label class="chk-label"><input type="checkbox" id="wSubPower" checked> Power</label>
               <label class="chk-label"><input type="checkbox" id="wSubProduction"> Production</label>
@@ -1046,14 +1080,14 @@
               <label class="chk-label"><input type="checkbox" id="wSubAny" checked> Any</label>
             </div>
 
-            <div class="checkbox-row" style="margin-top: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wClosestFirst" checked> Closest First</label>
               <label class="chk-label"><input type="checkbox" id="wIgnoreDumb" checked> Ignore Dumb Projectiles</label>
               <label class="chk-label"><input type="checkbox" id="wLockedSmartOnly"> Locked Smart Only</label>
             </div>
 
-            <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">Valid Control Modes:</div>
-            <div class="checkbox-row" style="margin-top: 6px;">
+            <div class="wb-subhead">Valid Control Modes</div>
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wCtrlAutomatic" checked> Automatic</label>
               <label class="chk-label"><input type="checkbox" id="wCtrlManual" checked> Manual</label>
               <label class="chk-label"><input type="checkbox" id="wCtrlPainter" checked> Painter</label>
@@ -1064,12 +1098,12 @@
         <!-- Accordion 6: AiDef & UiDef (Automation & Controls) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">6. AiDef &amp; UiDef (AI Automation &amp; Player UI Controls)</span>
+            <span class="wc-title"><span class="wc-num">6</span><span class="wc-name">AI &amp; Terminal Controls</span><code class="wc-def">AiDef · UiDef</code></span>
             <span class="wc-tag">TrackTargets, TurretController, Sliders</span>
           </summary>
           <div class="wc-body">
-            <div style="font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">AiDef (Target Tracking &amp; Slave Logic):</div>
-            <div class="checkbox-row" style="margin-top: 6px;">
+            <div class="wb-subhead">AiDef (Target Tracking &amp; Slave Logic)</div>
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wAiTrackTargets" checked> Track Targets</label>
               <label class="chk-label"><input type="checkbox" id="wAiTurretAttached" checked> Turret Attached</label>
               <label class="chk-label"><input type="checkbox" id="wAiTurretController" checked> Turret Controller</label>
@@ -1078,8 +1112,8 @@
               <label class="chk-label"><input type="checkbox" id="wAiSuppressInfracted"> Suppress Activity When Infracted</label>
             </div>
 
-            <div style="margin-top: 14px; font-weight: 600; font-size: 11px; color: var(--text-dim); text-transform: uppercase;">UiDef (In-Game Terminal Sliders &amp; Toggles):</div>
-            <div class="checkbox-row" style="margin-top: 6px;">
+            <div class="wb-subhead">UiDef (In-Game Terminal Sliders &amp; Toggles)</div>
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wUiRateOfFire" checked> Rate of Fire Terminal Slider</label>
               <label class="chk-label"><input type="checkbox" id="wUiDamageModifier"> Damage Modifier Terminal Slider</label>
               <label class="chk-label"><input type="checkbox" id="wUiToggleGuidance"> Toggle Guidance Button</label>
@@ -1091,7 +1125,7 @@
         <!-- Accordion 7: HardPointAudioDef (Audio & Sound Effects) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">7. HardPointAudioDef (Sounds &amp; Audio Events)</span>
+            <span class="wc-title"><span class="wc-num">7</span><span class="wc-name">Weapon Audio</span><code class="wc-def">HardPointAudioDef</code></span>
             <span class="wc-tag">Firing, Reload, Rotation</span>
           </summary>
           <div class="wc-body">
@@ -1117,11 +1151,10 @@
                 <input type="text" id="wSoundNoAmmo" class="control-input" value="WepShipGatlingNoAmmo">
               </div>
               <div class="control-item">
-                <label class="control-label">Sound Play Mode</label>
-                <div style="margin-top: 6px;">
-                  <label class="chk-label"><input type="checkbox" id="wSoundFiringPerShot"> Firing Sound Per Shot (Individual Bangs)</label>
-                </div>
               </div>
+            </div>
+            <div class="checkbox-row">
+              <label class="chk-label"><input type="checkbox" id="wSoundFiringPerShot"> Firing Sound Per Shot (Individual Bangs)</label>
             </div>
           </div>
         </details>
@@ -1129,7 +1162,7 @@
         <!-- Accordion 8: OtherDef (Energy, Part Caps & Physics Checks) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">8. OtherDef (Energy Priorities, Part Caps &amp; Collision Checks)</span>
+            <span class="wc-title"><span class="wc-num">8</span><span class="wc-name">Power, Caps &amp; LOS Checks</span><code class="wc-def">OtherDef</code></span>
             <span class="wc-tag">PartCap, LOS, Energy</span>
           </summary>
           <div class="wc-body">
@@ -1143,7 +1176,7 @@
                 <input type="number" id="wRestrictionRadius" class="control-input" min="0" value="0">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="wOtherDebug"> Debug Mode</label>
               <label class="chk-label"><input type="checkbox" id="wCheckInflatedBox"> Check Inflated Box</label>
               <label class="chk-label"><input type="checkbox" id="wCheckForAnyWeapon"> Check For Any Weapon</label>
@@ -1156,22 +1189,22 @@
         <!-- Accordion 9: Assigned Ammos Array -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">9. Ammos = new[] { ... } (Assigned Ammunitions)</span>
+            <span class="wc-title"><span class="wc-num">9</span><span class="wc-name">Assigned Ammo</span><code class="wc-def">Ammos = new[] { … }</code></span>
             <span class="wc-tag" id="assignedAmmosCountBadge">2 Rounds Loaded</span>
           </summary>
           <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+            <p class="wb-note">
               These are the ammo definitions loaded by this weapon. The <strong>Primary Round</strong> drives live combat DPS, range, and velocity calculations.
             </p>
             <div id="assignedAmmosList" class="assigned-ammo-badges">
               <!-- Rendered dynamically -->
             </div>
-            <div style="display: flex; gap: 8px; margin-top: 12px; align-items: center; flex-wrap: wrap;">
-              <select id="assignAmmoDropdown" class="control-input" style="max-width: 280px;">
-                <option value="">Choose ammo to assign...</option>
+            <div class="wb-inline-actions">
+              <select id="assignAmmoDropdown" class="control-input" aria-label="Ammo to assign">
+                <option value="">Choose ammo to assign…</option>
               </select>
-              <button id="btnAssignAmmo" class="btn btn-cyan btn-sm">+ Assign Ammo</button>
-              <button id="btnTuneActiveAmmo" class="btn btn-primary btn-sm">👉 Tune in AmmoDef Editor</button>
+              <button id="btnAssignAmmo" class="btn btn-cyan btn-sm">+ Assign</button>
+              <button id="btnTuneActiveAmmo" class="btn btn-primary btn-sm wb-push-right">Edit primary ammo →</button>
             </div>
           </div>
         </details>
@@ -1179,15 +1212,15 @@
         <!-- Accordion 10: Animations Assignment -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">10. Animations (AnimationDef Binding)</span>
+            <span class="wc-title"><span class="wc-num">10</span><span class="wc-name">Animations</span><code class="wc-def">AnimationDef</code></span>
             <span class="wc-tag" id="currentAnimBadge">GVK_AvengerGatlingTurretAnimations</span>
           </summary>
           <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
-              Select the assigned AnimationDef from your mod's 18 existing subpart animation definitions. Keeping this assigned ensures your spinning barrels and recoil motions are never dropped on export.
+            <p class="wb-note">
+              The AnimationDef bound to this weapon. Keep it assigned so spinning barrels and recoil motions survive export.
             </p>
-            <div style="display: flex; gap: 8px; align-items: center;">
-              <select id="selectAnimationDef" class="control-input" style="max-width: 360px;">
+            <div class="wb-inline-actions">
+              <select id="selectAnimationDef" class="control-input" aria-label="AnimationDef">
                 <option value="">None / Static</option>
               </select>
             </div>
@@ -1197,7 +1230,7 @@
         <!-- 11. All WeaponCore Fields (schema-driven from Structure.cs) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">🧩 11. All WeaponCore Weapon Fields</span>
+            <span class="wc-title"><span class="wc-num">11</span><span class="wc-name">All WeaponCore Fields</span><code class="wc-def">Structure.cs</code></span>
             <span class="wc-tag" id="weaponWcFieldsBadge">0 set</span>
           </summary>
           <div class="wc-body">
@@ -1215,29 +1248,27 @@
       <div id="scope-ammo" class="scope-content">
         
         <!-- Active Ammo Selector Strip -->
-        <div style="background: var(--bg-card); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="ammo-icon-wrap-sm" title="Active Munition Magazine Icon">
-              <img id="scopeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Ammo Magazine" class="ammo-icon">
+        <div class="wb-subcontext">
+          <div class="wb-context-main">
+            <div class="ammo-icon-wrap-sm" title="Magazine icon">
+              <img id="scopeAmmoIcon" src="icons/ammo_NATO_25x184mm.png" alt="Ammo magazine" class="ammo-icon">
             </div>
-            <div>
-              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary); font-weight: 700;">TUNING AMMO:</span>
-              <div style="margin-top: 3px;">
-                <select id="ammoSelectGlobal" class="weapon-dropdown" style="min-width: 240px;">
+            <div class="wb-context-picker">
+              <label class="selector-label" for="ammoSelectGlobal">Editing ammo</label>
+              <div class="wb-context-row">
+                <select id="ammoSelectGlobal" class="weapon-dropdown">
                   <!-- Populated dynamically -->
                 </select>
               </div>
             </div>
           </div>
-          <div style="display: flex; gap: 8px;">
-            <button id="btnNewFragAmmo" class="btn btn-sm">+ Create Child Fragment Ammo</button>
-          </div>
+          <button id="btnNewFragAmmo" class="btn btn-sm" title="Create a new AmmoDef spawned as this round's fragment">+ New Child Fragment</button>
         </div>
 
         <!-- 1. Header & Core Identification -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">1. Ammo Identification, Mass, Energy &amp; Core Heat</span>
+            <span class="wc-title"><span class="wc-num">1</span><span class="wc-name">Identity, Damage &amp; Energy</span><code class="wc-def">AmmoDef</code></span>
             <span class="wc-tag">AmmoRound, Damage, Mass, Health</span>
           </summary>
           <div class="wc-body">
@@ -1255,11 +1286,11 @@
                 <input type="text" id="aTerminalName" class="control-input">
               </div>
               <div class="control-item">
-                <label class="control-label">Base Kinetic / Energy Damage</label>
+                <label class="control-label">Base Damage <span class="unit">hp / hit</span></label>
                 <input type="number" id="aBaseDamage" class="control-input" step="10" min="0" value="100">
               </div>
               <div class="control-item">
-                <label class="control-label">Base Damage Cutoff <span class="unit">falloff threshold</span></label>
+                <label class="control-label">Base Damage Cutoff</label>
                 <input type="number" id="aBaseDamageCutoff" class="control-input" min="0" value="0">
               </div>
               <div class="control-item">
@@ -1291,11 +1322,11 @@
                 <input type="number" id="aHeatModifier" class="control-input" step="0.1" value="1.0">
               </div>
               <div class="control-item full-width">
-                <label class="control-label">Heat Needed To Fire <span class="unit">minimum threshold</span></label>
+                <label class="control-label">Heat Needed To Fire</label>
                 <input type="number" id="aHeatNeededToFire" class="control-input" min="0" value="0">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="aHardPointUsable" checked> HardPoint Usable (Primary)</label>
               <label class="chk-label"><input type="checkbox" id="aHybridRound"> Hybrid Round (Consumes Energy &amp; Item)</label>
               <label class="chk-label"><input type="checkbox" id="aNpcSafe" checked> NPC Safe</label>
@@ -1312,7 +1343,7 @@
         <!-- 2. TrajectoryDef & SmartsDef -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">2. TrajectoryDef &amp; SmartsDef (Ballistics, Velocity &amp; Smart Guidance)</span>
+            <span class="wc-title"><span class="wc-num">2</span><span class="wc-name">Trajectory &amp; Guidance</span><code class="wc-def">TrajectoryDef · SmartsDef</code></span>
             <span class="wc-tag">Speed, Accel, Range, Smarts</span>
           </summary>
           <div class="wc-body">
@@ -1330,7 +1361,7 @@
                 <input type="number" id="tMaxTrajectory" class="control-input" step="100" min="10" value="1500">
               </div>
               <div class="control-item">
-                <label class="control-label">Max LifeTime <span class="unit">ticks (60=1s)</span></label>
+                <label class="control-label">Max Lifetime <span class="unit">ticks · 60 = 1s</span></label>
                 <input type="number" id="tMaxLifeTime" class="control-input" min="1" value="3600">
               </div>
               <div class="control-item">
@@ -1357,17 +1388,19 @@
                 <label class="control-label">Guidance Type</label>
                 <select id="tGuidance" class="control-input">
                   <option value="None" selected>None (Dumbfire / Ballistic)</option>
+                  <option value="Remote">Remote (Player-Steered)</option>
                   <option value="TravelTo">TravelTo (Tracks Aim Point — Flak)</option>
                   <option value="Smart">Smart (Autonomous Seeker)</option>
                   <option value="DetectTravelTo">DetectTravelTo (Mine)</option>
                   <option value="DetectSmart">DetectSmart (Mine)</option>
                   <option value="DetectFixed">DetectFixed (Mine)</option>
+                  <option value="DroneAdvanced">DroneAdvanced (Drone)</option>
                 </select>
               </div>
             </div>
 
             <!-- Smarts Sub-Panel -->
-            <div class="nested-card" style="margin-top: 14px;">
+            <div class="nested-card">
               <div class="nested-card-title">🎯 SmartsDef (Guidance Flight Mechanics)</div>
               <div class="control-grid">
                 <div class="control-item">
@@ -1391,7 +1424,7 @@
                   <input type="number" id="sSteeringLimit" class="control-input" step="0.1" min="0" value="0">
                 </div>
               </div>
-              <div class="checkbox-row" style="margin-top: 10px;">
+              <div class="checkbox-row">
                 <label class="chk-label"><input type="checkbox" id="sAltNavigation"> AltNavigation</label>
               </div>
             </div>
@@ -1401,7 +1434,7 @@
         <!-- 3. ShapeDef & ObjectsHitDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">3. ShapeDef &amp; ObjectsHitDef (Collision Hitbox &amp; Penetration)</span>
+            <span class="wc-title"><span class="wc-num">3</span><span class="wc-name">Hitbox &amp; Penetration</span><code class="wc-def">ShapeDef · ObjectsHitDef</code></span>
             <span class="wc-tag">LineShape, Sphere, MaxObjectsHit</span>
           </summary>
           <div class="wc-body">
@@ -1418,11 +1451,11 @@
                 <input type="number" id="aDiameter" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
-                <label class="control-label">Max Objects Hit <span class="unit">penetration count</span></label>
+                <label class="control-label">Max Objects Hit <span class="unit">penetration</span></label>
                 <input type="number" id="oMaxObjectsHit" class="control-input" min="1" value="1">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 10px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="oCountBlocks" checked> Count Blocks Towards Max Hit</label>
               <label class="chk-label"><input type="checkbox" id="oSkipBlocksForAOE"> Skip Blocks For AOE</label>
             </div>
@@ -1432,7 +1465,7 @@
         <!-- 4. DamageScaleDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">4. DamageScaleDef (Armor, Grids &amp; Falloff)</span>
+            <span class="wc-title"><span class="wc-num">4</span><span class="wc-name">Damage Scaling</span><code class="wc-def">DamageScaleDef</code></span>
             <span class="wc-tag">Light/Heavy/Non-Armor, Grids, Falloff</span>
           </summary>
           <div class="wc-body">
@@ -1515,7 +1548,7 @@
         <!-- 5. AreaOfDamageDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">5. AreaOfDamageDef (Explosive Blast Payloads)</span>
+            <span class="wc-title"><span class="wc-num">5</span><span class="wc-name">Area of Effect</span><code class="wc-def">AreaOfDamageDef</code></span>
             <span class="wc-tag">BlockHit &amp; EndOfLife AOE</span>
           </summary>
           <div class="wc-body">
@@ -1523,7 +1556,7 @@
             <!-- ByBlockHit -->
             <div class="nested-card">
               <div class="nested-card-title">💥 ByBlockHit (Impact Explosion)</div>
-              <div class="checkbox-row" style="margin-bottom: 10px;">
+              <div class="checkbox-row">
                 <label class="chk-label"><input type="checkbox" id="aodBlockEnable"> Enable Blast On Block Impact</label>
               </div>
               <div class="control-grid">
@@ -1546,6 +1579,7 @@
                 <div class="control-item">
                   <label class="control-label">Falloff Curve</label>
                   <select id="aodBlockFalloff" class="control-input">
+                    <option value="Legacy">Legacy (pre-falloff behaviour)</option>
                     <option value="NoFalloff">NoFalloff (flat damage in radius)</option>
                     <option value="Linear" selected>Linear (even drop by distance)</option>
                     <option value="Curve">Curve (sharp drop near max radius)</option>
@@ -1566,9 +1600,9 @@
             </div>
 
             <!-- EndOfLife -->
-            <div class="nested-card" style="margin-top: 14px;">
+            <div class="nested-card">
               <div class="nested-card-title">⌛ EndOfLife (Proximity / Range Expiry Blast)</div>
-              <div class="checkbox-row" style="margin-bottom: 10px;">
+              <div class="checkbox-row">
                 <label class="chk-label"><input type="checkbox" id="aodEolEnable"> Enable Blast On End-Of-Life</label>
               </div>
               <div class="control-grid">
@@ -1591,6 +1625,7 @@
                 <div class="control-item">
                   <label class="control-label">Falloff Curve</label>
                   <select id="aodEolFalloff" class="control-input">
+                    <option value="Legacy">Legacy (pre-falloff behaviour)</option>
                     <option value="NoFalloff">NoFalloff (flat damage in radius)</option>
                     <option value="Linear" selected>Linear (even drop by distance)</option>
                     <option value="Curve">Curve (sharp drop near max radius)</option>
@@ -1616,11 +1651,11 @@
         <!-- 6. FragmentDef -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">6. FragmentDef (Proximity Shrapnel &amp; Submunitions)</span>
+            <span class="wc-title"><span class="wc-num">6</span><span class="wc-name">Fragments</span><code class="wc-def">FragmentDef</code></span>
             <span class="wc-tag" id="fragStatusBadge">Disabled</span>
           </summary>
           <div class="wc-body">
-            <div class="checkbox-row" style="margin-bottom: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="fEnable"> 💥 Enable Fragment Spawning</label>
               <label class="chk-label"><input type="checkbox" id="fReverse"> Reverse Direction</label>
               <label class="chk-label"><input type="checkbox" id="fDropVelocity"> Drop Velocity</label>
@@ -1660,19 +1695,19 @@
         <!-- 7. PatternDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">7. PatternDef (Spread Sequences &amp; Shot Waves)</span>
+            <span class="wc-title"><span class="wc-num">7</span><span class="wc-name">Shot Patterns</span><code class="wc-def">PatternDef</code></span>
             <span class="wc-tag">Spiral, Ripple, Random</span>
           </summary>
           <div class="wc-body">
-            <div class="checkbox-row" style="margin-bottom: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="pEnable"> Enable Pattern</label>
               <label class="chk-label"><input type="checkbox" id="pSkipParent"> Skip Parent Shot</label>
               <label class="chk-label"><input type="checkbox" id="pRandom"> Randomize Patterns</label>
             </div>
             <div class="control-grid">
               <div class="control-item full-width">
-                <label class="control-label">Patterns List <span class="unit">(comma-separated angles/offsets)</span></label>
-                <input type="text" id="pPatterns" class="control-input" placeholder="e.g. 0, 15, -15, 30, -30">
+                <label class="control-label">Patterns <span class="unit">comma-separated AmmoRounds</span></label>
+                <input type="text" id="pPatterns" class="control-input" placeholder="e.g. Missile_A, Missile_B">
               </div>
               <div class="control-item">
                 <label class="control-label">Trigger Chance <span class="unit">0.0 - 1.0</span></label>
@@ -1680,7 +1715,7 @@
               </div>
               <div class="control-item">
                 <label class="control-label">Random Min / Max</label>
-                <div style="display: flex; gap: 4px;">
+                <div class="wb-pair">
                   <input type="number" id="pRandomMin" class="control-input" value="0">
                   <input type="number" id="pRandomMax" class="control-input" value="0">
                 </div>
@@ -1705,11 +1740,11 @@
         <!-- 8. EwarDef (Electronic Warfare) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">8. EwarDef (Electronic Warfare, EMP &amp; Energy Drains)</span>
+            <span class="wc-title"><span class="wc-num">8</span><span class="wc-name">Electronic Warfare</span><code class="wc-def">EwarDef</code></span>
             <span class="wc-tag">EMP, Drain, Jamming</span>
           </summary>
           <div class="wc-body">
-            <div class="checkbox-row" style="margin-bottom: 12px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="ewEnable"> Enable Electronic Warfare</label>
               <label class="chk-label"><input type="checkbox" id="ewStackDuration"> Stack Duration</label>
               <label class="chk-label"><input type="checkbox" id="ewDeplete"> Deplete</label>
@@ -1725,6 +1760,11 @@
                   <option value="Emp">Emp (Disrupt Systems)</option>
                   <option value="Offense">Offense (Disable Weapons)</option>
                   <option value="Nav">Nav (Disrupt Gyros/Thrusters)</option>
+                  <option value="Dot">Dot (Damage Over Time)</option>
+                  <option value="Push">Push (Repel)</option>
+                  <option value="Pull">Pull (Attract)</option>
+                  <option value="Tractor">Tractor (Hold &amp; Tow)</option>
+                  <option value="AntiSmartv2">AntiSmartv2 (Disrupt Missiles, v2)</option>
                 </select>
               </div>
               <div class="control-item">
@@ -1757,7 +1797,7 @@
         <!-- 9. GraphicDef (Tracers, Trails & Visual FX) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">9. GraphicDef (Tracers, Trails &amp; Visual FX)</span>
+            <span class="wc-title"><span class="wc-num">9</span><span class="wc-name">Tracers &amp; Trails</span><code class="wc-def">GraphicDef</code></span>
             <span class="wc-tag">Lines, Tracers, Trails</span>
           </summary>
           <div class="wc-body">
@@ -1769,9 +1809,9 @@
             </div>
 
             <!-- Tracer -->
-            <div class="nested-card" style="margin-top: 14px;">
+            <div class="nested-card">
               <div class="nested-card-title">✨ TracerDef (Projectile Geometry &amp; Color)</div>
-              <div class="checkbox-row" style="margin-bottom: 10px;">
+              <div class="checkbox-row">
                 <label class="chk-label"><input type="checkbox" id="gTracerEnable" checked> Enable Tracer Line</label>
                 <label class="chk-label"><input type="checkbox" id="gTracerSegmented"> Segmented Tracer</label>
               </div>
@@ -1796,9 +1836,9 @@
             </div>
 
             <!-- Trail -->
-            <div class="nested-card" style="margin-top: 14px;">
+            <div class="nested-card">
               <div class="nested-card-title">💨 TrailDef (Smoke &amp; Persistent Ribbon)</div>
-              <div class="checkbox-row" style="margin-bottom: 10px;">
+              <div class="checkbox-row">
                 <label class="chk-label"><input type="checkbox" id="gTrailEnable"> Enable Smoke/Ribbon Trail</label>
                 <label class="chk-label"><input type="checkbox" id="gTrailAlwaysDraw"> Always Draw</label>
               </div>
@@ -1828,7 +1868,7 @@
         <!-- 10. AmmoAudioDef -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">10. AmmoAudioDef (Flight, Hits &amp; Environmental Sounds)</span>
+            <span class="wc-title"><span class="wc-num">10</span><span class="wc-name">Ammo Audio</span><code class="wc-def">AmmoAudioDef</code></span>
             <span class="wc-tag">Travel, Hit, Voxel, Water</span>
           </summary>
           <div class="wc-body">
@@ -1868,7 +1908,7 @@
         <!-- 11. SynchronizeDef (Network Replication) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">11. SynchronizeDef (Multiplayer Network Replication)</span>
+            <span class="wc-title"><span class="wc-num">11</span><span class="wc-name">Network Sync</span><code class="wc-def">SynchronizeDef</code></span>
             <span class="wc-tag">Network sync, PointDefense, SyncInterval</span>
           </summary>
           <div class="wc-body">
@@ -1882,7 +1922,7 @@
                 <input type="number" id="syncPatchWindow" class="control-input" min="0" value="0">
               </div>
             </div>
-            <div class="checkbox-row" style="margin-top: 10px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="syncFull"> Full Network Sync</label>
               <label class="chk-label"><input type="checkbox" id="syncPointDefense" checked> Point Defense Targetable</label>
               <label class="chk-label"><input type="checkbox" id="syncOnHitDeath"> On Hit Death</label>
@@ -1894,7 +1934,7 @@
         <!-- 12. All WeaponCore Fields (schema-driven from Structure.cs) -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">🧩 12. All WeaponCore Ammo Fields</span>
+            <span class="wc-title"><span class="wc-num">12</span><span class="wc-name">All WeaponCore Fields</span><code class="wc-def">Structure.cs</code></span>
             <span class="wc-tag" id="ammoWcFieldsBadge">0 set</span>
           </summary>
           <div class="wc-body">
@@ -1914,24 +1954,22 @@
         <!-- Accordion 1: Block Identity & Keen AI Suppression -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">1. Block Identity & Keen Engine Standardization</span>
+            <span class="wc-title"><span class="wc-num">1</span><span class="wc-name">Block Identity</span><code class="wc-def">Definition · Id</code></span>
             <span class="wc-tag" id="sbcBlockTypeTag">ConveyorSorter / LargeTurretBase</span>
           </summary>
           <div class="wc-body">
             
             <div class="standardizer-status-card">
-              <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="font-size: 20px;">🛡️</span>
-                <div>
-                  <strong style="color: var(--green-accent); font-size: 13px;">Keen Vanilla AI Conflict Suppression Active</strong>
-                  <p style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">
-                    Turrets automatically include <code>&lt;AiEnabled&gt;false&lt;/AiEnabled&gt;</code> and strip redundant Keen targeting loops so WeaponCore has 100% exclusive control.
-                  </p>
-                </div>
+              <span class="standardizer-icon" aria-hidden="true">🛡️</span>
+              <div>
+                <strong class="standardizer-title">Keen vanilla AI suppressed</strong>
+                <p class="standardizer-text">
+                  Turrets export with <code>&lt;AiEnabled&gt;false&lt;/AiEnabled&gt;</code> and without Keen's targeting loops, so WeaponCore has exclusive control.
+                </p>
               </div>
             </div>
 
-            <div class="control-grid" style="margin-top: 14px;">
+            <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Block SubtypeId</label>
                 <input type="text" id="sbcSubtypeId" class="control-input" placeholder="e.g. MA_T2PDX">
@@ -1971,9 +2009,9 @@
               </div>
             </div>
 
-            <div class="control-item" style="margin-top: 12px;">
-              <label class="control-label">In-Game Description (Includes ammo usage tag like [Uses 25mm KE])</label>
-              <textarea id="sbcDescription" class="control-input" rows="3" style="width: 100%; font-family: var(--font-sans); resize: vertical;" placeholder="Block description and ammo requirements..."></textarea>
+            <div class="control-item">
+              <label class="control-label">In-Game Description <span class="unit">include the ammo tag, e.g. [Uses 25mm KE]</span></label>
+              <textarea id="sbcDescription" class="control-input wb-textarea" rows="3" placeholder="Block description and ammo requirements…"></textarea>
             </div>
 
           </div>
@@ -1982,11 +2020,11 @@
         <!-- Accordion 2: Construction Recipe & Auto-Balancing (Keen Components order) -->
         <details class="wc-accordion" open>
           <summary class="wc-summary">
-            <span class="wc-title">2. Construction Components & Auto-Balancing (&lt;Components&gt;)</span>
+            <span class="wc-title"><span class="wc-num">2</span><span class="wc-name">Components &amp; Build Time</span><code class="wc-def">&lt;Components&gt;</code></span>
             <span class="wc-tag" id="sbcIntegritySummary">Integrity: 0 HP | BuildTime: 0s</span>
           </summary>
           <div class="wc-body">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+            <p class="wb-note">
               Adjust component layers in assembly order. Standard materials and GVK Tech Components can be added or tuned below. Build time and Utility Points (UPs) are automatically calculated in real-time.
             </p>
             
@@ -1995,11 +2033,11 @@
                 <thead>
                   <tr>
                     <th>Component Type</th>
-                    <th style="width: 100px;">Quantity</th>
-                    <th style="width: 100px;">Layer Mass</th>
-                    <th style="width: 110px;">Layer HP</th>
-                    <th style="width: 190px;">Deconstruct / Scrap</th>
-                    <th style="width: 60px; text-align: center;">Action</th>
+                    <th class="col-qty">Qty</th>
+                    <th class="col-num">Layer Mass</th>
+                    <th class="col-num">Layer HP</th>
+                    <th class="col-scrap">Deconstructs To</th>
+                    <th class="col-act"><span class="sr-only">Remove</span></th>
                   </tr>
                 </thead>
                 <tbody id="sbcComponentsBody">
@@ -2008,47 +2046,40 @@
               </table>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
-              <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Component Layer</button>
-                <button id="btnAutoNpcScrap" class="btn btn-sm" title="Automatically assign canonical [Tech] scrap items (Ore/Prototech...Scrap) to tech component layers">🛡️ Auto-Assign NPC Tech Scrap</button>
-                <button id="btnApplyScrapYield" class="btn btn-sm" title="Scale tech component quantities by Scrap Yield multiplier from Balance Matrix">⚖️ Apply Scrap Yield</button>
-                <span class="badge badge-amber" id="sbcScrapYieldBadge" title="Scrap Yield multiplier from Balance Matrix" style="font-size: 11px;">Scrap Yield: 25%</span>
+            <div class="wb-table-toolbar">
+              <div class="wb-inline-actions">
+                <button id="btnAddSbcComponent" class="btn btn-cyan btn-sm">+ Add Layer</button>
+                <button id="btnAutoNpcScrap" class="btn btn-sm" title="Assign the canonical [Tech] scrap items (Ore/Prototech…Scrap) to tech component layers">🛡️ Auto-Assign NPC Tech Scrap</button>
+                <button id="btnApplyScrapYield" class="btn btn-sm" title="Scale tech component quantities by the Scrap Yield multiplier from the Balance Matrix">⚖️ Apply Scrap Yield</button>
+                <span class="badge badge-amber" id="sbcScrapYieldBadge" title="Scrap Yield multiplier from the Balance Matrix">Scrap Yield: 25%</span>
               </div>
-              <span id="sbcFormulaReadout" style="font-size: 11px; font-family: var(--font-mono); color: var(--amber-primary);">
+              <span id="sbcFormulaReadout" class="wb-formula">
                 Formula: MAX(5, Round(Integrity / 750))
               </span>
             </div>
 
             <!-- Auto-Calculated Governance & Tech Card (Merged & Non-Editable) -->
-            <div class="control-grid" style="margin-top: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-              <div class="control-item">
-                <label class="control-label">Tech Requirements <span class="unit">Auto-Derived</span></label>
-                <div id="sbcTechSummary" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="Calculated from GVK Tech components in the recipe table above">
-                  None (Standard Hull Weapon)
-                </div>
+            <div class="wb-computed-grid">
+              <div class="wb-computed" title="Derived from the GVK Tech components in the table above">
+                <span class="wb-computed-label">Tech Requirements</span>
+                <span id="sbcTechSummary" class="wb-computed-value">None (Standard Hull Weapon)</span>
+                <span class="wb-computed-hint">Derived from tech layers</span>
               </div>
-
-              <div class="control-item">
-                <label class="control-label">Utility Points (UPs / PCU) <span class="unit">Auto-Calculated</span></label>
-                <div id="sbcUpCostDisplay" class="control-input" style="background: rgba(245, 158, 11, 0.08); border-color: var(--amber-primary); color: var(--amber-primary); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
-                  <span id="sbcUpCostVal">0 UPs</span>
-                  <span style="font-size: 10px; color: var(--text-dim); font-weight: 400;">1 UP / Tech Item</span>
-                </div>
+              <div class="wb-computed" id="sbcUpCostDisplay">
+                <span class="wb-computed-label">Utility Points (UPs / PCU)</span>
+                <span id="sbcUpCostVal" class="wb-computed-value">0 UPs</span>
+                <span class="wb-computed-hint">1 UP per tech item</span>
                 <input type="hidden" id="sbcUpCost" value="0">
               </div>
-
-              <div class="control-item">
-                <label class="control-label">Build Time <span class="unit">seconds (Auto-Calculated)</span></label>
-                <div id="sbcBuildTimeDisplay" class="control-input" style="background: rgba(16, 185, 129, 0.08); border-color: var(--green-accent); color: var(--green-accent); font-weight: 700; display: flex; justify-content: space-between; align-items: center;">
-                  <span id="sbcBuildTimeVal">0s</span>
-                  <span style="font-size: 10px; color: var(--text-dim); font-weight: 400;">Total HP / 750</span>
-                </div>
+              <div class="wb-computed wb-computed-green" id="sbcBuildTimeDisplay">
+                <span class="wb-computed-label">Build Time</span>
+                <span id="sbcBuildTimeVal" class="wb-computed-value">0s</span>
+                <span class="wb-computed-hint" id="sbcBuildTimeHint">Total HP ÷ 750</span>
                 <input type="hidden" id="sbcBuildTime" value="0">
               </div>
             </div>
 
-            <div class="checkbox-row" style="margin-top: 14px;">
+            <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="sbcIsRelic"> 👑 Relic Weapon (Non-Craftable Ammunition)</label>
               <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry" disabled> 🔬 PrototechCircuitry Layer Present (&gt;2km Range Gate)</label>
             </div>
@@ -2059,7 +2090,7 @@
         <!-- Accordion 3: Physical Geometry, Visuals & Mounts -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">3. Physical Geometry, Models & Mirroring</span>
+            <span class="wc-title"><span class="wc-num">3</span><span class="wc-name">Geometry, Model &amp; Mirroring</span><code class="wc-def">Size · ModelOffset</code></span>
             <span class="wc-tag">Size, ModelOffset, Mirroring</span>
           </summary>
           <div class="wc-body">
@@ -2074,7 +2105,7 @@
               </div>
             </div>
 
-            <div class="control-grid" style="margin-top: 12px;">
+            <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Size X (width)</label>
                 <input type="number" id="sbcSizeX" class="control-input" value="1">
@@ -2089,7 +2120,7 @@
               </div>
             </div>
 
-            <div class="control-grid" style="margin-top: 12px;">
+            <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Model Offset X</label>
                 <input type="number" id="sbcModelOffsetX" class="control-input" step="0.01" value="0">
@@ -2104,7 +2135,7 @@
               </div>
             </div>
 
-            <div class="control-grid" style="margin-top: 12px;">
+            <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Mirroring X</label>
                 <input type="text" id="sbcMirroringX" class="control-input" placeholder="e.g. OffsetX (or none)">
@@ -2119,16 +2150,16 @@
               </div>
             </div>
 
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-dim);">
-              ℹ️ MountPoints and 3-stage BuildProgressModels are dynamically preserved with 100% fidelity from the original definition.
-            </div>
+            <p class="wb-note wb-note-muted">
+              ℹ️ MountPoints and BuildProgressModels are carried over unchanged from the original definition.
+            </p>
           </div>
         </details>
 
         <!-- Accordion 4: Systems, Camera HUD & Audio-Visual Effects -->
         <details class="wc-accordion">
           <summary class="wc-summary">
-            <span class="wc-title">4. Systems, Camera HUD & Audio-Visual Effects</span>
+            <span class="wc-title"><span class="wc-num">4</span><span class="wc-name">Systems, Camera &amp; Effects</span><code class="wc-def">ResourceSink · FX</code></span>
             <span class="wc-tag">ResourceSinkGroup, OverlayTexture, Sounds</span>
           </summary>
           <div class="wc-body">
@@ -2147,14 +2178,14 @@
               </div>
               <div class="control-item">
                 <label class="control-label">Camera Min / Max FOV</label>
-                <div style="display: flex; gap: 6px;">
-                  <input type="text" id="sbcMinFov" class="control-input" style="flex: 1;" value="0.1" placeholder="Min FOV">
-                  <input type="text" id="sbcMaxFov" class="control-input" style="flex: 1;" value="1.04719755" placeholder="Max FOV">
+                <div class="wb-pair">
+                  <input type="text" id="sbcMinFov" class="control-input" value="0.1" placeholder="Min FOV">
+                  <input type="text" id="sbcMaxFov" class="control-input" value="1.04719755" placeholder="Max FOV">
                 </div>
               </div>
             </div>
 
-            <div class="control-grid" style="margin-top: 12px;">
+            <div class="control-grid">
               <div class="control-item">
                 <label class="control-label">Damage Effect Name</label>
                 <input type="text" id="sbcDamageEffectName" class="control-input" placeholder="Damage_Electrical_Damaged_Blue">
@@ -2177,22 +2208,25 @@
         </details>
 
         <!-- Live CubeBlocks SBC XML Exporter Panel -->
-        <div class="panel" style="margin-top: 20px;">
-          <div class="panel-header">
-            <h2>⚡ CUBEBLOCKS SBC DEFINITION (CubeBlocks_*.sbc)</h2>
-            <div style="display: flex; gap: 8px;">
-              <button id="btnCopySbcXmlDirect" class="btn btn-sm">📋 Copy SBC XML</button>
+        <section class="wb-output" data-wb-section="Generated SBC">
+          <div class="wb-output-header">
+            <span class="wc-title"><span class="wc-num">⚡</span><span class="wc-name">Generated SBC</span><code class="wc-def">CubeBlocks_*.sbc</code></span>
+            <div class="wb-inline-actions">
+              <button id="btnCopySbcXmlDirect" class="btn btn-sm">📋 Copy XML</button>
               <button id="btnDownloadSbcDirect" class="btn btn-sm btn-cyan">💾 Download .sbc</button>
             </div>
           </div>
-          <div style="padding: 16px;">
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
-              Real-time generated XML definition for your weapon block. Automatically syncs as you edit display name, grid size, build time, and component layers above.
+          <div class="wb-output-body">
+            <p class="wb-note">
+              Live XML for this block. Updates as you edit the fields and component layers above.
             </p>
-            <pre id="codeSbcXmlDirect" class="xml-box" style="max-height: 420px; overflow-y: auto; font-size: 12px; line-height: 1.5;"><!-- Generating CubeBlocks XML... --></pre>
+            <pre id="codeSbcXmlDirect" class="xml-box wb-xml"><!-- Generating CubeBlocks XML... --></pre>
           </div>
-        </div>
+        </section>
 
+      </div>
+
+        </div>
       </div>
 
     </div>
@@ -2498,5 +2532,6 @@
   <script src="app.js"></script>
   <script src="ammo_maths.js"></script>
   <script src="wc_editor.js"></script>
+  <script src="workbench_ui.js"></script>
 </body>
 </html>

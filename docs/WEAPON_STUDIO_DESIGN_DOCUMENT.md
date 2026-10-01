@@ -35,6 +35,7 @@ GVK_Weapons/
 │   ├── style.css                            # Complete styling, design tokens & light/dark theme engine
 │   ├── app.js                               # Core controller, calculation engine & event handlers
 │   ├── ammo_maths.js                        # Ammo Logistics: Ammo Maths sheet port (computeAmmoMaths)
+│   ├── workbench_ui.js                      # Workbench section navigator, field search, wbReveal()
 │   ├── WEAPON_STUDIO_DESIGN_DOCUMENT.md     # This design document
 │   ├── data/
 │   │   ├── wc_schema.js                     # WeaponCore v0.75 structure & enum fingerprint
@@ -197,6 +198,14 @@ graph TD
     WS2 --> Exporter[Anti-Bloat Exporter]
 ```
 
+#### Layout & navigation
+Top to bottom: the **editing context** strip (weapon picker, reset, grid/mount/UP/tech badges; shared by all three scopes since the ammo and block both belong to that weapon), the **scope switcher** (Weapon · Ammo · Block, with New Weapon/Ammo and mod-folder actions), the **lint banner** (one line for a single issue, a list for several), then a two-column body:
+- **Section navigator** (`workbench_ui.js`, sticky left column; chips under 1100px): one entry per accordion in the active scope with scroll-spy, Expand all / Collapse all, and **Find a field** (`/` to focus, Enter jumps to the first match, Esc clears). Search matches label, WC field name with or without spaces, control id and help text; non-matching fields, notes and empty groups hide, matching sections open and close again when the search clears. A section whose title matches but none of its fields do is shown whole.
+- **Section headers** read `[n] Plain-English name  WcDefName  [status tag]`, so the C# struct name stays visible without being the headline.
+- **Checkbox options** are cards in a responsive grid: label, help text underneath, amber when on, and a `default` pill when the mod file doesn't set the flag (WeaponCore's default applies).
+- Open/closed state per section is remembered in `localStorage` (`GVK_WB_SECTIONS_OPEN`).
+- `wbReveal(el)` (global) switches to the field's scope, clears a search that hides it, opens its section and scrolls to it; Ammo Logistics' "Edit damage" and "Set X kL" use it.
+
 #### 1. Scope A: `WeaponDefinition` Editor
 Form controls categorized strictly matching the C# struct layout:
 - `ModelAssignmentsDef` (Subtypes, dummy muzzles, elevation/azimuth subparts)
@@ -243,7 +252,7 @@ Full canonical WeaponCore round engineering:
 
 - **Tooltip source of truth**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry and a `WC_BINDINGS` row in `wc_editor.js`; the All-Fields editor uses the harvested CoreParts comments.
 - **Ground truth for "is this field live"**: GVK's own `CoreParts/*.cs` usage counts — not `data/wc_schema.json` (its structs are incomplete). A field counts as in use only if written non-default somewhere in the mod.
-- **Canonical enum dropdowns**: Guidance, AOE Falloff, and AOE Shape dropdowns contain only values that exist in WeaponCore's enums, so the exporter can never emit a non-compiling tag.
+- **Canonical enum dropdowns**: Guidance, AOE Falloff, AOE Shape and EWAR Type dropdowns list every value of the matching Structure.cs enum (including `Legacy` falloff, `Remote`/`DroneAdvanced` guidance and the `Dot`/`Push`/`Pull`/`Tractor`/`AntiSmartv2` EWAR types) and nothing else, so a source value always displays and the exporter can never emit a non-compiling tag.
 - **Current-but-unused WC fields**: Fields WeaponCore supports but GVK never enables are kept out of the default UI — either fully absent (rarely-needed exotics, reachable via the **All WeaponCore Fields** accordion) or parked in collapsed accordions (`CheckForAnyWeapon` in OtherDef, `DamageModifier` in AiDef & UiDef). `Radial` (FragmentDef) stays visible but intentionally `0` for all GVK fragment weapons; the exporter writes it only if the source sets it or it is edited.
 - **Deprecated fields**: `EnergyPriority` is marked "Deprecated." in the canonical sample and is fully removed from the UI and exporter.
 

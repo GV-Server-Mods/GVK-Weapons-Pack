@@ -3066,8 +3066,8 @@ function populateSbcWorkbench() {
   }
   if (sbcIsRelic) sbcIsRelic.checked = activeWeapon.isRelic === true;
 
-  if (sbcIcon) sbcIcon.value = sbc.icon || `Textures\GUI\Icons\Cubes\${activeWeapon.subtypeId}.png`;
-  if (sbcModel) sbcModel.value = sbc.model || `Models\Cubes\${activeWeapon.grid || 'Large'}\${activeWeapon.subtypeId}.mwm`;
+  if (sbcIcon) sbcIcon.value = sbc.icon || `Textures\\GUI\\Icons\\Cubes\\${activeWeapon.subtypeId}.png`;
+  if (sbcModel) sbcModel.value = sbc.model || `Models\\Cubes\\${activeWeapon.grid || 'Large'}\\${activeWeapon.subtypeId}.mwm`;
 
   const sz = sbc.size || { x: 1, y: 1, z: 1 };
   if (sbcSizeX) sbcSizeX.value = sz.x !== undefined ? sz.x : 1;
@@ -3084,7 +3084,7 @@ function populateSbcWorkbench() {
   if (sbcMirroringZ) sbcMirroringZ.value = sbc.mirroringZ || 'Y';
 
   if (sbcResourceSinkGroup) sbcResourceSinkGroup.value = sbc.resourceSinkGroup || 'Defense';
-  if (sbcOverlayTexture) sbcOverlayTexture.value = sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+  if (sbcOverlayTexture) sbcOverlayTexture.value = sbc.overlayTexture || 'Textures\\GUI\\Screens\\camera_overlay.dds';
   if (sbcInventoryMaxVolume) sbcInventoryMaxVolume.value = sbc.inventoryMaxVolume || 0.384;
 
   if (sbcMinFov) sbcMinFov.value = sbc.minFov || '0.1';
@@ -3154,13 +3154,13 @@ function renderSbcComponentsTable() {
     const hasDeconstruct = !!c.deconstructSubtype;
     const yieldCount = Math.max(1, Math.round(c.count * scrapYieldMult));
     const yieldDetail = hasDeconstruct
-      ? `<div style="font-size: 10px; color: var(--amber-primary); font-family: var(--font-mono); margin-top: 2px;">Grinds: <strong>${c.count}</strong> rcvd (${yieldCount} @ ${Math.round(scrapYieldMult * 100)}%)</div>`
+      ? `<div class="sbc-yield-detail">Grinds: <strong>${c.count}</strong> received (${yieldCount} at ${Math.round(scrapYieldMult * 100)}% yield)</div>`
       : '';
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>
-        <select class="sbc-comp-select control-input" data-idx="${idx}" style="width: 100%; padding: 4px 8px;">
+        <select class="sbc-comp-select control-input" data-idx="${idx}" aria-label="Component">
           <optgroup label="Standard Components">
             ${standardComps.map(sc => `<option value="${sc.subtype}" ${sc.subtype === c.name ? 'selected' : ''}>${sc.displayName}</option>`).join('')}
           </optgroup>
@@ -3170,12 +3170,12 @@ function renderSbcComponentsTable() {
         </select>
       </td>
       <td>
-        <input type="number" class="sbc-comp-input" data-idx="${idx}" min="1" max="50000" value="${c.count}">
+        <input type="number" class="sbc-comp-input" data-idx="${idx}" min="1" max="50000" value="${c.count}" aria-label="Quantity">
       </td>
-      <td style="font-family: var(--font-mono); color: var(--text-dim);">${layerMass.toFixed(1)} kg</td>
-      <td style="font-family: var(--font-mono); color: var(--cyan-primary);">${layerHp.toLocaleString()}</td>
+      <td class="col-num sbc-cell-mass">${layerMass.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg</td>
+      <td class="col-num sbc-cell-hp">${layerHp.toLocaleString()}</td>
       <td>
-        <select class="sbc-decomp-select control-input" data-idx="${idx}" style="width: 100%; padding: 4px 6px; font-size: 11px;">
+        <select class="sbc-decomp-select control-input" data-idx="${idx}" aria-label="Deconstructs to">
           <option value="">None (returns self)</option>
           <optgroup label="👑 Tech Scrap Items">
             ${Object.values(GVK_TECH_SCRAP_MAP).map(s => `<option value="${s.scrapSubtype}" ${c.deconstructSubtype === s.scrapSubtype ? 'selected' : ''}>${s.displayName}</option>`).join('')}
@@ -3183,8 +3183,8 @@ function renderSbcComponentsTable() {
         </select>
         ${yieldDetail}
       </td>
-      <td style="text-align: center;">
-        <button class="btn-delete-row" data-idx="${idx}" title="Delete Layer">✕</button>
+      <td class="col-act">
+        <button class="btn-delete-row" data-idx="${idx}" title="Remove this layer" aria-label="Remove layer">✕</button>
       </td>
     `;
 
@@ -3247,6 +3247,9 @@ function renderSbcComponentsTable() {
   const calculatedBuildTime = Math.max(5, Math.round(totalIntegrity / buildTimeDiv));
   activeWeapon.buildTime = calculatedBuildTime;
   if (sbcBuildTime) sbcBuildTime.value = calculatedBuildTime;
+  const sbcBuildTimeHint = document.getElementById('sbcBuildTimeHint');
+  if (sbcBuildTimeHint) sbcBuildTimeHint.textContent = `Total HP ÷ ${buildTimeDiv}, min 5s`;
+  if (sbcBuildTimeVal) sbcBuildTimeVal.textContent = calculatedBuildTime >= 60 ? `${calculatedBuildTime}s (${formatTime(calculatedBuildTime)})` : `${calculatedBuildTime}s`;
 
   if (summary) {
     summary.textContent = `Integrity: ${Math.round(totalIntegrity).toLocaleString()} HP | BuildTime: ${calculatedBuildTime}s`;
@@ -5490,16 +5493,19 @@ function runWeaponCoreLinter() {
   // Ammo Maths: InventorySize reload buffer + stale ammo recipe (ammo_maths.js)
   if (typeof amCheckWorkbench === 'function') amCheckWorkbench(warnings);
 
-  // Render Linter Status
+  // Render Linter Status: one line for a single issue, a list for several
+  const lintBody = (title, items) => items.length === 1
+    ? `<strong class="linter-title">${title}</strong> <span>${items[0]}</span>`
+    : `<strong class="linter-title">${title} (${items.length})</strong><ul class="linter-list">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
   if (criticalErrors.length > 0) {
     linterBanner.className = 'linter-banner danger';
-    linterText.innerHTML = `<strong>🚨 CRITICAL CLANG / SYNTAX HAZARD:</strong> ${criticalErrors.join(' | ')}`;
+    linterText.innerHTML = lintBody(criticalErrors.length === 1 ? 'Error:' : 'Errors', criticalErrors);
   } else if (warnings.length > 0) {
     linterBanner.className = 'linter-banner warning';
-    linterText.innerHTML = `<strong>⚠️ ENGINE / BALANCE WARNING:</strong> ${warnings.join(' | ')}`;
+    linterText.innerHTML = lintBody(warnings.length === 1 ? 'Warning:' : 'Warnings', warnings);
   } else {
     linterBanner.className = 'linter-banner clean';
-    linterText.innerHTML = '<strong>🛡️ SYNTAX &amp; BALLISTICS HEALTHY:</strong> 0 Clang hazards detected. All types and numerical bounds valid.';
+    linterText.innerHTML = '<strong class="linter-title">No issues.</strong> <span>Types, bounds and balance checks all pass.</span>';
   }
   const linterIcon = linterBanner.querySelector ? linterBanner.querySelector('.linter-icon') : null;
   if (linterIcon) linterIcon.textContent = criticalErrors.length > 0 ? '🚨' : (warnings.length > 0 ? '⚠️' : '✅');
@@ -5855,8 +5861,8 @@ function generateSbcCubeBlocks() {
   const grid = (sbcCubeSize && sbcCubeSize.value) || sbc.cubeSize || activeWeapon.grid || 'Large';
   const desc = (sbcDescription && sbcDescription.value.trim()) || sbc.description || `${name}.
 [Uses ${activeWeapon.ammoName || 'Ammunition'}]`;
-  const icon = (sbcIcon && sbcIcon.value.trim()) || sbc.icon || `Textures\GUI\Icons\Cubes\${sub}.png`;
-  const model = (sbcModel && sbcModel.value.trim()) || sbc.model || `Models\Cubes\${grid}\${sub}.mwm`;
+  const icon = (sbcIcon && sbcIcon.value.trim()) || sbc.icon || `Textures\\GUI\\Icons\\Cubes\\${sub}.png`;
+  const model = (sbcModel && sbcModel.value.trim()) || sbc.model || `Models\\Cubes\\${grid}\\${sub}.mwm`;
   const pairName = (sbcBlockPairName && sbcBlockPairName.value.trim()) || sbc.blockPairName || sub;
   const edgeType = (sbcEdgeType && sbcEdgeType.value) || sbc.edgeType || 'Light';
 
@@ -5876,7 +5882,7 @@ function generateSbcCubeBlocks() {
   const pcu = (activeWeapon.upCost !== undefined ? activeWeapon.upCost : (sbcUpCost && sbcUpCost.value)) || sbc.pcu || 0;
 
   const resGroup = (sbcResourceSinkGroup && sbcResourceSinkGroup.value.trim()) || sbc.resourceSinkGroup || 'Defense';
-  const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\GUI\Screens\camera_overlay.dds';
+  const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\\GUI\\Screens\\camera_overlay.dds';
   const invVol = (sbcInventoryMaxVolume && sbcInventoryMaxVolume.value) || sbc.inventoryMaxVolume || 0.384;
 
   const isSorter = (typeId === 'ConveyorSorter');

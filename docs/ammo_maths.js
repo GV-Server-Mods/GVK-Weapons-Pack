@@ -820,6 +820,7 @@ function amEditDamageInWorkbench(ammoKey) {
   switchWorkspace('ws-workbench');
   const inp = $am('aBaseDamage');
   if (!inp) return;
+  if (typeof wbReveal === 'function') { wbReveal(inp, { delay: 350 }); return; }
   setTimeout(() => {
     amScrollTo(inp, 'center');
     inp.classList.add('am-flash');
@@ -1305,7 +1306,8 @@ function amApplyInWorkbench(defName, value) {
   switchWorkspace('ws-workbench');
   amApplyInventorySize(value);
   const inp = $am('wInventorySize');
-  if (inp && inp.scrollIntoView) inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (inp && typeof wbReveal === 'function') wbReveal(inp, { delay: 350 });
+  else if (inp && inp.scrollIntoView) inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 /// <summary>Runs inside runWeaponCoreLinter: hint + red flag under InventorySize, auto-sync, drift chip; adds lint warnings.</summary>
