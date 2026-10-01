@@ -530,6 +530,11 @@ function ammoShape(name, d, file) {
       maxLifeTime: traj.MaxLifeTime || 0, accelPerSec: traj.AccelPerSec || 0, speedVariance: randStart(traj.SpeedVariance),
       rangeVariance: randStart(traj.RangeVariance),
       guidance: (typeof traj.Guidance === 'string' && traj.Guidance) || 'None',
+      // SmartsDef steering: WC's proportional nav needs both a gain and lateral thrust to turn
+      steers: (function() {
+        const sm = (traj.Smarts && typeof traj.Smarts === 'object') ? traj.Smarts : {};
+        return (parseFloat(sm.Aggressiveness) || 0) > 0 && (parseFloat(sm.MaxLateralThrust) || 0) > 0;
+      })(),
       desiredElevation: (function() {
         const apps = traj.Approaches;
         if (Array.isArray(apps)) {

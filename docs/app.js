@@ -2247,10 +2247,13 @@ function getAutomatedWeaponRole(weapon, ammo) {
   if (!isFixedMount && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD')))) {
     return { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' };
   }
-  const isGuided = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None';
+  const isGuided = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None' && isSteeringAmmo(ammo);
   const isLoiter = ammo?.fragment?.timedSpawns?.enable && (ammo.fragment.timedSpawns.maxSpawns > 1);
   if (isGuided || isLoiter) {
     return { id: 'guided', label: 'Guided Ordnance', icon: '🚀', desc: 'Guided missiles, torpedoes & loitering drones' };
+  }
+  if (isAirBurstAmmo(ammo)) {
+    return { id: 'flak', label: 'Area Denial / Flak', icon: '💥', desc: 'Explosive splash & proximity fragmentation' };
   }
   const ds = ammo?.damageScales || {};
   const heavyMult = (typeof ds.heavyArmor === 'number' && ds.heavyArmor >= 0) ? ds.heavyArmor : 1.0;
@@ -2803,11 +2806,9 @@ function bindInputVal(input, definedVal, defaultVal) {
   if (definedVal !== undefined && definedVal !== null && definedVal !== '') {
     input.value = definedVal;
     input.classList.remove('is-wc-default');
-    if (input.removeAttribute) input.removeAttribute('title');
   } else {
     input.value = (defaultVal !== undefined && defaultVal !== null) ? defaultVal : '';
     input.classList.add('is-wc-default');
-    if (input.setAttribute) input.setAttribute('title', 'WeaponCore Engine Default (Not defined in mod file)');
   }
 }
 
@@ -2816,11 +2817,9 @@ function bindCheckboxVal(input, definedVal, defaultVal) {
   if (definedVal !== undefined && definedVal !== null) {
     input.checked = (definedVal === true);
     input.classList.remove('is-wc-default');
-    if (input.removeAttribute) input.removeAttribute('title');
   } else {
     input.checked = (defaultVal === true);
     input.classList.add('is-wc-default');
-    if (input.setAttribute) input.setAttribute('title', 'WeaponCore Engine Default (Not defined in mod file)');
   }
 }
 
@@ -3430,7 +3429,7 @@ function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
   let labelClass = '';
 
   if (isDetonation) {
-    mode = 'SINGLE DETONATION';
+    mode = 'ONE-SHOT';
     cells = '<div class="salvo-cell active" title="Fires once when the block detonates"></div>';
   } else if (isBeam) {
     labelClass = 'beam';
@@ -3569,7 +3568,9 @@ function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
   const isRadarSensor = !ewar && dmg.total <= 0;
   const isDrone = !isChaffFlare && (guidance === 'DroneAdvanced' || Boolean(ts && (ts.maxSpawns || 0) > 1));
   const isSabot = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && Boolean(a.hybridRound) && dmg.base >= dmg.aoe;
-  const isHoming = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && guidance !== 'None';
+  const steers = guidance !== 'None' && isSteeringAmmo(a);
+  const isAirBurst = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && isAirBurstAmmo(a);
+  const isHoming = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && steers;
   const isRocket = !isDrone && !isBeam && !isRadarSensor && !isChaffFlare && !isSabot && !isHoming && ((a.trajectory && a.trajectory.accelPerSec) || 0) > 0;
 
   let tag = 'BALLISTIC';
@@ -3577,7 +3578,7 @@ function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
   let svgContent = '';
 
   if (isDetonationWeapon(activeWeapon)) {
-    tag = 'DETONATION';
+    tag = 'FRAG BURST';
     tagClass = 'flare';
     svgContent = `
       <circle cx="30" cy="9" r="4" fill="#f59e0b"/>
@@ -3631,6 +3632,17 @@ function renderPropulsionVector(activeWeapon, activeAmmo, isBeam) {
       <circle cx="30" cy="9" r="1.5" fill="#fff"/>
       <path d="M 46 6 A 4 4 0 0 1 46 12" fill="none" stroke="#10b981" stroke-width="1.2" stroke-linecap="round"/>
       <path d="M 50 4 A 7 7 0 0 1 50 14" fill="none" stroke="#10b981" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+    `;
+  } else if (isAirBurst) {
+    tag = 'AIR BURST';
+    tagClass = 'rocket';
+    svgContent = `
+      <path d="M 3 15 Q 22 4 40 7" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="3 2"/>
+      <circle cx="44" cy="8" r="3" fill="#f59e0b"/>
+      <circle cx="44" cy="8" r="6.5" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity="0.55"/>
+      <line x1="48" y1="4" x2="54" y2="1" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="50" y1="8" x2="57" y2="8" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="48" y1="12" x2="54" y2="15" stroke="#fbbf24" stroke-width="1.2" stroke-linecap="round"/>
     `;
   } else if (isHoming) {
     tag = 'HOMING';
@@ -4075,7 +4087,6 @@ function updateCombatTelemetry() {
 
   const detFrag = isDetonation && activeAmmo.fragment && activeAmmo.fragment.enable ? activeAmmo.fragment : null;
   const detReach = isDetonation ? getEngagementRange(activeWeapon, activeAmmo, true).range : 0;
-  if (tmTitleElem && detFrag) tmTitleElem.textContent = '💣 Detonation';
   if (tmBlastRadius) {
     if (detFrag) {
       tmBlastRadius.textContent = `${Math.round(detReach)}m Burst`;
@@ -4253,7 +4264,7 @@ function updateCombatTelemetry() {
   if (outMaxRangeSource) outMaxRangeSource.textContent = engagement.label;
 
   if (outMuzzleVelocityPreview) {
-    outMuzzleVelocityPreview.innerHTML = isDetonation ? 'Detonation' : isBeam
+    outMuzzleVelocityPreview.innerHTML = isDetonation ? 'Static' : isBeam
       ? `⚡ Hitscan <span class="unit-sub">(c)</span>`
       : `${Math.round(muzzleSpeed).toLocaleString()} <span class="unit-sub">m/s</span>`;
   }
@@ -4261,7 +4272,7 @@ function updateCombatTelemetry() {
     const flightDist = maxEngagementRange;
     const flightTime = muzzleSpeed > 0 ? (flightDist / muzzleSpeed).toFixed(2) : '0.00';
     outFlightDelay1km.textContent = isDetonation
-      ? 'No flight: fragments burst from the block'
+      ? 'Fragments burst from the block'
       : isBeam
       ? `Flight to ${Math.round(flightDist).toLocaleString()}m: 0.00s (Instant hit)`
       : (muzzleSpeed > 0 ? `Flight to ${Math.round(flightDist).toLocaleString()}m: ${flightTime}s` : 'Instantaneous hit');
@@ -4604,24 +4615,27 @@ function updateCombatTelemetry() {
   if (isDetonation) {
     // Single-use block: payload once, no rate of fire
     outSustainedDps.innerHTML = 'Single use';
-    if (outEffectiveDps) outEffectiveDps.innerHTML = '<strong>No sustained DPS</strong> · fires once when the block detonates';
+    if (outEffectiveDps) outEffectiveDps.innerHTML = '<strong>No sustained DPS</strong> · the payload is released once';
     const teleAlphaUnitDet = document.getElementById('teleAlphaUnit');
-    if (teleAlphaUnitDet) teleAlphaUnitDet.textContent = '(DETONATION)';
+    if (teleAlphaUnitDet) teleAlphaUnitDet.textContent = '';
     if (outEffectiveAlpha) outEffectiveAlpha.textContent = 'Max if every fragment hits';
     if (lblEffectiveRpm) lblEffectiveRpm.textContent = 'FIRE MODE';
-    outShotsPerSec.innerHTML = 'Detonation';
-    outCycleTime.textContent = 'Fires once; the block is destroyed';
-    if (outCombatCycleTitle) outCombatCycleTitle.textContent = '💣 DETONATION';
-    outHeatDutyRatio.textContent = 'SINGLE USE';
-    if (heatProgressBar) heatProgressBar.style.width = '0%';
-    outTimeToOverheat.textContent = 'No fire cycle: the payload is released once when the block detonates.';
+    outShotsPerSec.innerHTML = 'One-shot';
+    outCycleTime.textContent = 'The block is destroyed when it fires';
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = '💣 SINGLE-USE CHARGE';
+    outHeatDutyRatio.textContent = 'ONE-SHOT';
+    if (heatProgressBar) {
+      heatProgressBar.style.width = '100%';
+      heatProgressBar.style.background = 'linear-gradient(90deg, #94a3b8, #cbd5e1)';
+    }
+    outTimeToOverheat.textContent = 'No reload, heat or cooldown.';
     outCooldownTime.innerHTML = 'No ammo consumed';
     if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW idle draw`;
     if (outMagProfile) outMagProfile.textContent = 'No magazine';
-    if (outMagReload) outMagReload.textContent = 'Detonates once';
+    if (outMagReload) outMagReload.textContent = 'No reload';
     [[tmHeavyDmg, tmHeavySub, heavyDmg], [tmLightDmg, tmLightSub, lightDmg], [tmNonArmorDmg, tmNonArmorSub, nonArmorDmg]].forEach(([dmgEl, subEl, d]) => {
-      if (dmgEl) dmgEl.innerHTML = `${Math.round(d).toLocaleString()} <span class="unit">hp / detonation</span>`;
-      if (subEl) subEl.textContent = 'Max if every fragment hits';
+      if (dmgEl) dmgEl.innerHTML = `${Math.round(d).toLocaleString()} <span class="unit">hp max</span>`;
+      if (subEl) subEl.textContent = 'If every fragment hits';
     });
     hudCycle = 'Single use';
   }
@@ -4950,6 +4964,25 @@ function getWeaponIconUrl(weapon) {
 /// Hitscan munition (no flight time): WC AmmoConstants.IsBeamWeapon (Beams.Enable with Guidance None),
 /// or a round fast enough (>= 10 km/s) to arrive in the tick it is fired.
 /// </summary>
+/// <summary>Whether guided flight actually steers: SmartsDef Aggressiveness and MaxLateralThrust above 0.
+/// Unknown (no smarts data) counts as steering.</summary>
+function isSteeringAmmo(ammo) {
+  const t = ammo && ammo.trajectory;
+  return !t || t.steers !== false;
+}
+
+/// <summary>Proximity air burst (Flak PROX): guided but non-steering, so Smart only acquires a target for the
+/// TimedSpawns proximity fuse, which then bursts into an area blast or several fragments.</summary>
+function isAirBurstAmmo(ammo) {
+  const t = ammo && ammo.trajectory;
+  if (!t || !t.guidance || t.guidance === 'None' || isSteeringAmmo(ammo)) return false;
+  const f = ammo.fragment;
+  const ts = f && f.enable && f.timedSpawns && f.timedSpawns.enable ? f.timedSpawns : null;
+  if (!ts || !((ts.proximity || 0) > 0)) return false;
+  const eol = (ammo.areaOfDamage || {}).endOfLife || {};
+  return (eol.enable && (eol.radius || 0) > 0) || (f.fragments || 0) > 1;
+}
+
 function isBeamWeapon(weapon, ammo) {
   if (isDetonationWeapon(weapon)) return false;
   return WcMath.isHitscan(ammo);
@@ -5347,8 +5380,8 @@ function renderCompareTable(aDps, aEffDps, aAlpha, aRange, aVel, aTrack, aInteg,
         if (bDet) r.bStr = na;
         r.customDelta = { text: '—', color: 'var(--text-dim)' };
       } else if (r.name === 'Velocity') {
-        if (aDet) r.aStr = 'Detonation';
-        if (bDet) r.bStr = 'Detonation';
+        if (aDet) r.aStr = 'Static';
+        if (bDet) r.bStr = 'Static';
         r.customDelta = { text: '—', color: 'var(--text-dim)' };
       } else if (r.name === 'Targeting Range') {
         r.name = 'Range';
@@ -6545,8 +6578,10 @@ function setupWorkbenchInputEvents() {
   ];
 
   // Clear default styling on user input
+  // Bound WC fields keep their at-default marking live (wcMarkDefault in wc_editor.js)
   const allInputs = document.querySelectorAll('.control-input');
   allInputs.forEach(input => {
+    if (input.dataset && input.dataset.wcBound) return;
     input.addEventListener('input', () => {
       input.classList.remove('is-wc-default');
       if (input.removeAttribute) input.removeAttribute('title');

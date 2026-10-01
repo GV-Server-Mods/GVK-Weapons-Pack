@@ -124,6 +124,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -289,6 +290,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -454,6 +456,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -619,6 +622,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -784,6 +788,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -949,6 +954,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1114,6 +1120,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1279,6 +1286,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 400,
       "rangeVariance": 80,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1444,6 +1452,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1609,6 +1618,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1774,6 +1784,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -1939,6 +1950,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2104,6 +2116,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2269,6 +2282,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2434,6 +2448,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2599,6 +2614,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2764,6 +2780,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -2929,6 +2946,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3094,6 +3112,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3259,6 +3278,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3424,6 +3444,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3589,6 +3610,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3754,6 +3776,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -3919,6 +3942,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4088,6 +4112,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4253,6 +4278,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4422,6 +4448,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4593,6 +4620,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4762,6 +4790,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -4927,6 +4956,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5092,6 +5122,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5257,6 +5288,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5422,6 +5454,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5591,6 +5624,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5756,6 +5790,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -5921,6 +5956,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -6086,6 +6122,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 500
     },
     "damageScales": {
@@ -6251,6 +6288,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -6416,6 +6454,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -6581,6 +6620,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 500
     },
     "damageScales": {
@@ -6746,6 +6786,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 50,
       "rangeVariance": 50,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -6911,6 +6952,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 200
     },
     "damageScales": {
@@ -7076,6 +7118,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -7241,6 +7284,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 200
     },
     "damageScales": {
@@ -7406,6 +7450,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",
+      "steers": true,
       "desiredElevation": 150
     },
     "damageScales": {
@@ -7571,6 +7616,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -7743,6 +7789,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -7915,6 +7962,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8087,6 +8135,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8259,6 +8308,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8431,6 +8481,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8603,6 +8654,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8775,6 +8827,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -8940,6 +8993,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9105,6 +9159,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9276,6 +9331,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9441,6 +9497,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9606,6 +9663,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9773,6 +9831,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -9938,6 +9997,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {
@@ -10103,6 +10163,7 @@ const BUNDLED_AMMOS_DATA = {
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "None",
+      "steers": false,
       "desiredElevation": 0
     },
     "damageScales": {

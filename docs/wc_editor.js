@@ -91,8 +91,8 @@ function wcAfterEdit(kind, fromCurated) {
 // ==========================================================================
 // CURATED INPUT BINDINGS (workbench panels <-> def tree paths)
 // ==========================================================================
-// [kind, elementId, path ('#' = active mount point index), mode, value shown when the field is unset]
-// Unset displays keep the studio's long-standing fallbacks (telemetry reads these inputs); export is unaffected.
+// [kind, elementId, path ('#' = active mount point index), mode]. The 5th column is unused legacy data: an unset
+// field displays WeaponCore's own default (wcDefaultDom), i.e. what WC uses when the line is left out.
 const WC_BINDINGS = [
   ['weapon', 'wSubtypeId', 'Assignments.MountPoints.#.SubtypeId', 'str', ''],
   ['weapon', 'wSpinPartId', 'Assignments.MountPoints.#.SpinPartId', 'str', ''],
@@ -326,22 +326,85 @@ function wcCallArg(v, key, idx) {
   return v.pos ? v.pos[idx] : undefined;
 }
 
+/// <summary>WeaponCore's value for a field the definition leaves out (the C# struct default), as a DOM value:
+/// false / 0 / '' / the enum's first member (value 0). ValidControlModes left out allows all three modes.</summary>
+function wcDefaultDom(b) {
+  const mode = b.mode.split(':')[0];
+  switch (mode) {
+    case 'bool': case 'member': case 'fragEnable': return false;
+    case 'ctrl': return true;
+    case 'num': case 'vec': case 'rand': return 0;
+    case 'enum': {
+      const t = wcTypeAt(b.kind, wcBindingPath(b));
+      return t && t.members && t.members.length ? String(t.members[0]).split('=')[0].trim() : '';
+    }
+    default: return '';
+  }
+}
+
+/// <summary>True when the element's current value is what WC uses with the field left out.</summary>
+function wcIsDefaultDom(b, el) {
+  const d = wcDefaultDom(b);
+  if (el.type === 'checkbox') return el.checked === d;
+  const text = typeof el.value === 'string' ? el.value.trim() : '';
+  if (typeof d === 'number') return text === '' || parseFloat(text) === d;
+  if (b.mode === 'ref') return text === '' || text === 'None';
+  return text === d;
+}
+
+/// <summary>Marks a curated control as at / off WC's default. Checkboxes get the "default" pill only when they
+/// match it; other controls show their default value when it is greyed (matching) and a reset chip when not.</summary>
+function wcMarkDefault(b, el) {
+  if (!el || !el.classList) return;
+  const isDef = wcIsDefaultDom(b, el);
+  el.classList.toggle('is-wc-default', isDef);
+  if (el.type === 'checkbox') return;
+  const item = el.closest ? el.closest('.control-item') : null;
+  const label = item ? item.querySelector('.control-label') : null;
+  if (!label) return;
+  // Paired inputs (Min/Max, X/Y/Z) share one label: the chip resets only the members that are off default
+  const members = WC_BINDINGS.filter((o) => o.kind === b.kind && item.contains(document.getElementById(o.id)));
+  const off = members.filter((o) => !wcIsDefaultDom(o, document.getElementById(o.id)));
+  let chip = label.querySelector('.wb-default-chip');
+  if (!off.length) { if (chip) chip.remove(); return; }
+  const fmt = (o) => { const d = wcDefaultDom(o); return d === '' ? '(none)' : String(d); };
+  const text = members.length > 1 ? members.map(fmt).join(' / ') : fmt(b);
+  if (!chip) {
+    chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'wb-default-chip';
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const offNow = WC_BINDINGS.filter((o) => o.kind === b.kind && item.contains(document.getElementById(o.id)))
+        .filter((o) => !wcIsDefaultDom(o, document.getElementById(o.id)));
+      offNow.forEach((o) => wcSet(o.kind, wcBindingPath(o), undefined));
+      wcAfterEdit(b.kind, false);
+      wcScheduleRender(b.kind);
+    });
+    label.appendChild(chip);
+  }
+  chip.textContent = `↺ ${text}`;
+  chip.title = `WeaponCore default: ${text}. Click to remove the setting from the definition and use the default.`;
+}
+
 // Read a binding from the tree: { set: bool, value: DOM value (string or bool) }
 function wcReadBinding(b, tree) {
   const path = wcBindingPath(b);
   const v = wcGet(tree, path);
   const [mode, arg] = b.mode.split(':');
+  const def = wcDefaultDom(b);
   switch (mode) {
     case 'bool': return { set: v !== undefined, value: v === true };
-    case 'num': return { set: typeof v === 'number', value: typeof v === 'number' ? v : b.def };
-    case 'str': return { set: typeof v === 'string', value: typeof v === 'string' ? v : b.def };
-    case 'enum': return { set: v !== undefined, value: v !== undefined ? wcIdName(v) : b.def };
+    case 'num': return { set: typeof v === 'number', value: typeof v === 'number' ? v : def };
+    case 'str': return { set: typeof v === 'string', value: typeof v === 'string' ? v : def };
+    case 'enum': return { set: v !== undefined, value: v !== undefined ? wcIdName(v) : def };
     case 'ref': return { set: v !== undefined, value: v !== undefined ? wcIdName(wcRawGet(tree, path)) : '' };
-    case 'csv': return { set: Array.isArray(v), value: Array.isArray(v) ? v.join(', ') : b.def };
-    case 'first': return { set: Array.isArray(v) && v.length > 0, value: Array.isArray(v) && v.length ? v[0] : b.def };
+    case 'csv': return { set: Array.isArray(v), value: Array.isArray(v) ? v.join(', ') : def };
+    case 'first': return { set: Array.isArray(v) && v.length > 0, value: Array.isArray(v) && v.length ? v[0] : def };
     case 'rand': { const end = wcCallArg(v, 'end', 1); return { set: end !== undefined, value: end !== undefined ? end : 0 }; }
     case 'color': {
-      if (!v || v.__call === undefined) return { set: false, value: b.def };
+      if (!v || v.__call === undefined) return { set: false, value: def };
       const parts = [['red', 0], ['green', 1], ['blue', 2], ['alpha', 3]].map(([k, i]) => wcCallArg(v, k, i));
       return { set: true, value: parts.map((x) => (x === undefined ? 0 : x)).join(', ') };
     }
@@ -349,7 +412,7 @@ function wcReadBinding(b, tree) {
     case 'member': return { set: Array.isArray(v), value: Array.isArray(v) && v.some((x) => wcIdName(x) === arg) };
     case 'ctrl': return { set: Array.isArray(v), value: !Array.isArray(v) || !v.length || v.some((x) => wcIdName(x) === arg) };
     case 'fragEnable': return { set: true, value: !!(v && v.AmmoRound && v.Fragments > 0) };
-    default: return { set: false, value: b.def };
+    default: return { set: false, value: def };
   }
 }
 
@@ -419,6 +482,11 @@ function wcWriteBinding(b, el) {
     }
     default: return;
   }
+  // Picking WC's default removes the line from the definition instead of writing it out
+  if (mode === 'vec' && v && ['x', 'y', 'z'].every((k) => !v.args[k])) v = undefined;
+  else if (mode === 'rand' && v && !v.args.start && !v.args.end) v = undefined;
+  else if (mode === 'member' && Array.isArray(v) && !v.length) v = undefined;
+  else if (['bool', 'num', 'enum', 'str'].includes(mode) && v !== undefined && wcIsDefaultDom(b, el)) v = undefined;
   wcSet(b.kind, path, v);
 }
 
@@ -439,6 +507,7 @@ function wcSyncCurated(kind) {
     } else {
       el.value = r.value;
     }
+    wcMarkDefault(b, el);
   }
   if (kind === 'ammo' && typeof updateFragChainVisual === 'function') updateFragChainVisual();
 }
@@ -447,7 +516,14 @@ function wcSetupBindings() {
   for (const b of WC_BINDINGS) {
     const el = document.getElementById(b.id);
     if (!el) continue;
-    const handler = () => { wcWriteBinding(b, el); wcAfterEdit(b.kind, true); };
+    if (el.dataset) el.dataset.wcBound = '1';
+    const handler = () => {
+      wcWriteBinding(b, el);
+      WC_BINDINGS.filter((o) => o.kind === b.kind && o.path === b.path)
+        .forEach((o) => wcMarkDefault(o, document.getElementById(o.id)));
+      wcMarkDefault(b, el);
+      wcAfterEdit(b.kind, true);
+    };
     el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', handler);
   }
 }

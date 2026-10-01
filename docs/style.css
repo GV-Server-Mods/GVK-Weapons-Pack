@@ -2785,6 +2785,32 @@ input.control-input.is-wc-default {
   font-size: 10px;
 }
 
+/* Off WeaponCore's default: shows the default value; click to drop the setting (wcMarkDefault) */
+.wb-default-chip {
+  flex-shrink: 0;
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.wb-default-chip:hover {
+  color: var(--amber-primary);
+  border-color: var(--amber-primary);
+}
+
+#ws-workbench .control-label:has(.wb-default-chip).has-help::after {
+  margin-left: 4px;
+}
+
 #ws-workbench .control-input:hover:not(:focus):not(:disabled) {
   border-color: rgba(148, 163, 184, 0.45);
 }
