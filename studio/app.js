@@ -4122,7 +4122,7 @@ function updateCombatTelemetry() {
   const tmTitleElem = tmBlastTitle || (tmBlastBox ? tmBlastBox.querySelector('.target-type-name') : null);
   if (tmTitleElem) {
     if (blastKind === 'ewar') {
-      tmTitleElem.textContent = '🧿 EWAR / EMP Pulse';
+      tmTitleElem.textContent = '🧿 EWAR Pulse';
     } else if (blastKind === 'screen' || isDirectIntercept) {
       tmTitleElem.textContent = '🎯 Point Defense';
     } else {

@@ -189,7 +189,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>012_Missiles_Torpedo</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Crusader EMP x1</DisplayName>
+			<DisplayName>*Torpedo* Crusader Disruptor x1</DisplayName>
 			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
 			<Prerequisites>
 				<Item Amount="96.1" TypeId="Ingot" SubtypeId="GVK_RUs"/>

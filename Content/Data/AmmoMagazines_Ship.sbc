@@ -280,7 +280,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Missiles_Torpedo</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Crusader EMP</DisplayName>
+			<DisplayName>*Torpedo* Crusader Disruptor</DisplayName>
 			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
 			<Size>
 				<X>1</X>
