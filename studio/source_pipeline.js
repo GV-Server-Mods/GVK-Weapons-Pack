@@ -431,7 +431,7 @@ function parseCubeBlocks(xmlText2) {
   return out;
 }
 
-// ---------- Studio data-shape builders (match docs/data bundled shapes exactly) ----------
+// ---------- Studio data-shape builders (match studio/data bundled shapes exactly) ----------
 function randStart(v) {
   if (v && v.__call === 'Random') return (v.args && v.args.start) || 0;
   return typeof v === 'number' ? v : 0;

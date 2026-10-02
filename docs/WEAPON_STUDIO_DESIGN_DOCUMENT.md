@@ -2,9 +2,9 @@
 
 > **Status**: Active Reference Document  
 > **Repository**: `GV-Server-Mods/GVK-Weapons-Pack`  
-> **Directory**: `docs/`  
+> **Directory**: `studio/` (this document lives in `studio/`)  
 > **Primary Maintainer**: GVK Modding & Systems Engineering Pair Programming  
-> **Live Tool**: Open [`docs/index.html`](file:///C:/Users/blayl/OneDrive/Documents/Space%20Engineers/MDK2%20Mods/GVK_Weapons/docs/index.html) or run `run_studio.bat`
+> **Live Tool**: Open [`studio/index.html`](../studio/index.html) or run `run_studio.bat`
 
 ---
 
@@ -30,13 +30,12 @@ The **GVK Weapon Studio** is an offline-capable, zero-dependency browser-based e
 
 ```
 GVK_Weapons/
-├── docs/
+├── studio/
 │   ├── index.html                           # Single-page application shell & layout
 │   ├── style.css                            # Complete styling, design tokens & light/dark theme engine
 │   ├── app.js                               # Core controller, calculation engine & event handlers
 │   ├── ammo_maths.js                        # Ammo Logistics: Ammo Maths sheet port (computeAmmoMaths)
 │   ├── workbench_ui.js                      # Workbench section navigator, field search, wbReveal()
-│   ├── WEAPON_STUDIO_DESIGN_DOCUMENT.md     # This design document
 │   ├── data/
 │   │   ├── wc_schema.js                     # WeaponCore v0.75 structure & enum fingerprint
 │   │   ├── weapons_data.js                  # 96 mod weapons bundled dataset
@@ -49,6 +48,7 @@ GVK_Weapons/
 │   │   ├── ammos_db.json                    # Standalone JSON database mirror
 │   │   └── components_db.json               # Standalone JSON database mirror
 │   └── icons/                               # High-res weapon & ammo DDS-converted PNG icons
+├── docs/WEAPON_STUDIO_DESIGN_DOCUMENT.md   # This design document
 └── run_studio.bat                           # 1-click launcher for Windows pair programming
 ```
 
@@ -103,7 +103,7 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
     - *Recharge/Capacity Beams*: When `AmmoMagazine == "Energy"` and `EnergyMagazineSize > 0` (e.g., Heavy Laser Turret = 240 ticks / $36{,}000\text{ hp}$; Spartan Turret = 480 rds / $72{,}000\text{ hp}$; Harbinger Railgun = 1 round / $1{,}000{,}000\text{ hp}$), `getShotsPerMag` resolves the virtual magazine capacity. Firing the virtual magazine triggers a recharge/reload cycle (`ReloadTime`). Badge indicates `⚡ <N> rds (virtual mag)`.
     - *Derived Energy Magazines*: When `EnergyMagazineSize <= 0` and `ReloadTime > 0`, WC sizes the magazine as $\lceil \text{EnergyCost} \times \text{BaseDamage} \times \frac{\text{RoF}}{3600} \times \text{Barrels} \times \text{Trajectiles} \times \text{ReloadTime} \rceil$ (`AmmoConstants.Energy()`), evaluated in float32 like the C# source (so $2{,}000.0002 \rightarrow 2{,}001$). `WcMath.energy` mirrors this and the charge passes `SessionCharging` needs.
     - *Continuous/Heat-Based Beams*: When `EnergyMagazineSize <= 0` and `ReloadTime == 0` (e.g., `MA_PDT` / `Lasers_AMS` Point Defense Laser, radar designators), the weapon operates continuously with no magazine reload downtime. Resolves 1 round per event (`BarrelsPerShot || 1`), displaying `⚡ Continuous` on the badge and preventing arbitrary 100-round virtual magazine fallbacks.
-- **Fire Cycle (`computeFireCycle` → `docs/wc_math.js` `WcMath.simulateFire`)**: a tick-by-tick replica of WC, in `Session.Simulate()` order: heat FutureEvents (`UpdateWeaponHeat` every 20 ticks), the AiLoop reload check and shoot gate, the charger, then `Weapon.Shoot()`. Rates are the steady state measured between reload (or overheat-recovery) boundaries.
+- **Fire Cycle (`computeFireCycle` → `studio/wc_math.js` `WcMath.simulateFire`)**: a tick-by-tick replica of WC, in `Session.Simulate()` order: heat FutureEvents (`UpdateWeaponHeat` every 20 ticks), the AiLoop reload check and shoot gate, the charger, then `Weapon.Shoot()`. Rates are the steady state measured between reload (or overheat-recovery) boundaries.
   - Each barrel spends 1 magazine unit per fire event (`TrajectilesPerBarrel` is free); events are `(uint)(3600f / RoF)` ticks apart (RoF above 3600 fires every tick).
   - The reload starts the tick after the last shot and the next shot lands on `ReloadEndTick`, so a plain magazine cycles in $(\text{Events} - 1) \times \text{TicksPerShot} + \text{ReloadTime} + 1$ ticks; energy reloads take the charge passes instead, hybrids wait for both. `ReloadTime = 0` reloads in the same pass.
   - `DelayUntilFire` replays whenever the shoot gate closes (every non-instant reload, overheat) and after each true burst.
@@ -405,7 +405,7 @@ Stored in `localStorage` under `GVK_BALANCE_MATRIX` with single-click reset capa
 ## 6. Pair Programming & Contributor Guidelines
 
 When modifying or extending the GVK Weapon Studio:
-1. **Preserve Offline Capability**: Do not import external CDN scripts or remote styles. All datasets must have bundled JS fallbacks in `docs/data/`.
+1. **Preserve Offline Capability**: Do not import external CDN scripts or remote styles. All datasets must have bundled JS fallbacks in `studio/data/`.
 2. **Adhere to the Comment Budget**: Explain *why* for non-obvious algorithms; avoid narrating *what* adjacent code does.
 3. **Keep SBC & ModAdjuster Conventions Intact**:
    - `CubeBlocks_*.sbc` for pure vanilla tweaks.
@@ -431,17 +431,17 @@ When modifying or extending the GVK Weapon Studio:
 
 ## 7. Data Pipeline — Live Source Architecture
 
-The Studio reads the mod source **live** — hand-typed bundled datasets in `docs/data/` are fallback
+The Studio reads the mod source **live** — hand-typed bundled datasets in `studio/data/` are fallback
 snapshots only. The C# definition files (`CoreParts/*.cs`) and SBC block/magazine/blueprint files
 (`Content/Data/*.sbc`) are the single source of truth for both the game and the Studio.
 
 ### How it works
 
-On every page load, `docs/source_live.js` resolves data in this order:
+On every page load, `studio/source_live.js` resolves data in this order:
 
 1. **Hosted (github.io)**: fetches `data/source/_manifest.json` (stamped with the commit SHA, git ref,
    and commit date by the deploy workflow), downloads only the source files listed in the manifest,
-   and parses them in-browser via `docs/source_pipeline.js`.
+   and parses them in-browser via `studio/source_pipeline.js`.
    - **Header Placement**: The database status chip is mounted in the top navigation header directly
      alongside the WeaponCore sync indicator and theme toggle.
    - **Status Chip Format**: `🟢 LIVE @ <shortSha> · MM.DD.YYYY (<ref>)`.
@@ -452,7 +452,7 @@ On every page load, `docs/source_live.js` resolves data in this order:
 2. **Local (file://)**: the "📁 Link Mod Folder" button uses the File System Access API to read the
    `CoreParts/` + `Content/Data/` folders straight off disk (your working tree, even uncommitted).
    Folder handle persists in IndexedDB. Status chip: `🟢 LIVE — local folder`.
-3. **Fallback**: bundled `docs/data/*_data.js` + `*_db.json` datasets. The chip turns red
+3. **Fallback**: bundled `studio/data/*_data.js` + `*_db.json` datasets. The chip turns red
    (`🔴 BUNDLED SNAPSHOT`) so you always know you are NOT looking at live data.
 
 ### Data health severity
@@ -471,11 +471,11 @@ so the studio stays usable even with non-fatal errors.
 
 ### Deploy workflow (`.github/workflows/deploy-studio.yml`)
 
-On every push to `main` (affecting `CoreParts/**`, `Content/Data/**`, `docs/**`, `tools/**`, or the workflow itself), GitHub Actions:
+On every push to `main` (affecting `CoreParts/**`, `Content/Data/**`, `studio/**`, `tools/**`, or the workflow itself), GitHub Actions:
 1. **Verification Gate**: Runs `node tools/validate_studio_data.mjs` — a zero-dep Node gate that reuses
    the browser parser. Refuses to deploy if any weapon ammo reference is unresolved, any magazine is
    phantom, or any syntax errors are detected.
-2. **Verbatim Staging**: Stages `docs/` (the web app) plus a verbatim mirror of `CoreParts/*.cs` and
+2. **Verbatim Staging**: Stages `studio/` (the web app) plus a verbatim mirror of `CoreParts/*.cs` and
    the needed `Content/Data/*.sbc` files into `_site/data/source/`.
 3. **Manifest Stamping**: Extracts the latest commit date via `git log -1 --format=%cd --date=format:'%m.%d.%Y'`
    and generates `_site/data/source/_manifest.json` containing the commit SHA, ref, formatted date,
@@ -488,18 +488,18 @@ A balance change is: edit C# / SBC → push to main → ~1-2 min → Studio auto
 ### Generated files (never hand-edit)
 
 These are derived fallback artifacts — regenerate, do not patch:
-- `docs/data/weapons_data.js` + `weapons_db.json`
-- `docs/data/ammos_data.js` + `ammos_db.json`
-- `docs/data/magazines_blueprints_data.js`
+- `studio/data/weapons_data.js` + `weapons_db.json`
+- `studio/data/ammos_data.js` + `ammos_db.json`
+- `studio/data/magazines_blueprints_data.js`
 
 Regenerate with: `node scratch/export_snapshots.js`
 
-Exception: `docs/data/studio_overrides.js` contains presentation-only data (curated ids, display
+Exception: `studio/data/studio_overrides.js` contains presentation-only data (curated ids, display
 names, icons, RUs) that does not exist in the C# and is safe to hand-edit.
 
 ### Parser scope
 
-`docs/source_pipeline.js` brace-matches C# `new AmmoDef` / `new WeaponDefinition` initializers and evaluates
+`studio/source_pipeline.js` brace-matches C# `new AmmoDef` / `new WeaponDefinition` initializers and evaluates
 getter-clones as deep-copy-plus-mutations (ensuring derived ammo rounds inherit the correct magazine,
 mass, and recoil from their base round). It does NOT parse `*_Animation.cs` files — those use C#
 generics/#region the parser does not handle, and they contribute no studio data (animations are referenced

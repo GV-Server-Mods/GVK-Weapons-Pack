@@ -1,9 +1,9 @@
 // One-time migration: extract presentation-only fields from the bundled hand-typed datasets
-// into docs/data/studio_overrides.js. Everything numeric stays source-derived (C#/SBC).
+// into studio/data/studio_overrides.js. Everything numeric stays source-derived (C#/SBC).
 // Run: node scratch/migrate_overrides.js
 const fs = require('fs'), path = require('path');
-const dataDir = path.join(__dirname, '..', 'docs', 'data');
-const iconsDir = path.join(__dirname, '..', 'docs', 'icons');
+const dataDir = path.join(__dirname, '..', 'studio', 'data');
+const iconsDir = path.join(__dirname, '..', 'studio', 'icons');
 const diskIcons = new Set(fs.existsSync(iconsDir) ? fs.readdirSync(iconsDir) : []);
 
 function loadBundled(file) {

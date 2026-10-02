@@ -4,16 +4,16 @@
 'use strict';
 const fs = require('fs');
 const crypto = require('crypto');
-const { docs, loadStudio, makeChecker } = require('./studio_harness.js');
+const { studioFile, loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();
 const studio = loadStudio();
-const html = fs.readFileSync(docs('index.html'), 'utf8');
+const html = fs.readFileSync(studioFile('index.html'), 'utf8');
 
 // --- Icons ---
 const icons = studio.run(`weaponsDb.map((w) => ({ sub: w.subtypeId, npc: isNpcWeapon(w), icon: getWeaponIconUrl(w) }))`);
-const hash = (p) => crypto.createHash('sha1').update(fs.readFileSync(docs(p))).digest('hex');
-const missing = icons.filter((w) => !fs.existsSync(docs(w.icon)));
-check('Every weapon icon file exists in docs/icons', missing.length === 0, missing.map((w) => w.sub + ' -> ' + w.icon));
+const hash = (p) => crypto.createHash('sha1').update(fs.readFileSync(studioFile(p))).digest('hex');
+const missing = icons.filter((w) => !fs.existsSync(studioFile(w.icon)));
+check('Every weapon icon file exists in studio/icons', missing.length === 0, missing.map((w) => w.sub + ' -> ' + w.icon));
 const bySub = Object.fromEntries(icons.map((w) => [w.sub, w]));
 const twins = icons.filter((w) => /_NPC$/.test(w.sub) && bySub[w.sub.replace(/_NPC$/, '')]);
 const iconDiff = missing.length ? [] : twins.filter((n) => hash(n.icon) !== hash(bySub[n.sub.replace(/_NPC$/, '')].icon)).map((n) => n.sub);

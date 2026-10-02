@@ -1,11 +1,11 @@
 // Regenerate the bundled fallback datasets from the live mod source via the same pipeline the browser uses.
 // Run: node scratch/export_snapshots.js
-// Writes docs/data/weapons_data.js, weapons_db.json, ammos_data.js, ammos_db.json, magazines_blueprints_data.js,
+// Writes studio/data/weapons_data.js, weapons_db.json, ammos_data.js, ammos_db.json, magazines_blueprints_data.js,
 // wc_defs_data.js (lossless def trees), and wc_schema.js (Structure.cs signature + typed schema).
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const SP = require('../docs/source_pipeline.js');
+const SP = require('../studio/source_pipeline.js');
 
 // Working copy is CRLF (core.autocrlf=true); write generated files the same way.
 function writeCrlf(file, text) {
@@ -33,13 +33,13 @@ for (const f of fs.readdirSync(path.join('Content', 'Data', 'CubeBlocks'))) {
   if (f.endsWith('.sbc')) sbc.cubeBlocks[f] = fs.readFileSync(path.join('Content', 'Data', 'CubeBlocks', f), 'utf8');
 }
 
-const ovText = fs.readFileSync('docs/data/studio_overrides.js', 'utf8');
+const ovText = fs.readFileSync('studio/data/studio_overrides.js', 'utf8');
 const ov = JSON.parse(ovText.slice(ovText.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
 const d = SP.buildStudioData(cs, sbc, ov);
 if (d.errors.length) { console.error('BUILD ERRORS:', d.errors); process.exit(1); }
 
-const outDir = 'docs/data';
+const outDir = 'studio/data';
 
 const weaponsJs = HEADER + 'const BUNDLED_WEAPONS_DATA = ' + JSON.stringify(d.weapons, null, 2) + ';\n';
 writeCrlf(path.join(outDir, 'weapons_data.js'), weaponsJs);

@@ -1,6 +1,6 @@
-// Test harness for docs/source_pipeline.js (M1). Run: node scratch/test_source_pipeline.js
+// Test harness for studio/source_pipeline.js (M1). Run: node scratch/test_source_pipeline.js
 const fs = require('fs'), path = require('path');
-const SP = require('../docs/source_pipeline.js');
+const SP = require('../studio/source_pipeline.js');
 
 const dir = path.join(__dirname, '..', 'CoreParts');
 const sources = {};
@@ -63,7 +63,7 @@ for (const w of r.weapons) {
     '|', w.rateOfFire, '|', w.reloadTime);
 }
 // ---------------- M2: full studio data build from C# + SBC + overrides ----------------
-const dataDir = path.join(__dirname, '..', 'docs', 'data');
+const dataDir = path.join(__dirname, '..', 'studio', 'data');
 function loadBundledJs(file) {
   let s = fs.readFileSync(path.join(dataDir, file), 'utf8');
   s = s.replace(/^\/\/.*$/gm, '');

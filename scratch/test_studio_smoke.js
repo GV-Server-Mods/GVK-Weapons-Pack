@@ -1,4 +1,4 @@
-// Headless smoke test: loads docs/app.js with a stubbed DOM and asserts the
+// Headless smoke test: loads studio/app.js with a stubbed DOM and asserts the
 // WC C# exporters run clean with zero shield output (GVK is a shieldless server).
 // Run: node scratch/test_studio_smoke.js
 'use strict';
@@ -6,19 +6,19 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { root, docs, loadStudio, makeChecker, readData } = require('./studio_harness.js');
+const { root, studioFile, loadStudio, makeChecker, readData } = require('./studio_harness.js');
 const { check, done } = makeChecker();
 
-const appSource = fs.readFileSync(docs('app.js'), 'utf8');
-const htmlSource = fs.readFileSync(docs('index.html'), 'utf8');
+const appSource = fs.readFileSync(studioFile('app.js'), 'utf8');
+const htmlSource = fs.readFileSync(studioFile('index.html'), 'utf8');
 // Exporter checks run on hand-built fixtures first, so the bundled data is injected later
 const studio = loadStudio({ data: false });
 const sandbox = studio.sandbox;
 
 // Static checks on tool sources (bundled data intentionally keeps WC shield fields)
-check('docs/app.js has no shield code paths',
+check('studio/app.js has no shield code paths',
   !/dsShield|ShieldHitDraw|ShieldHitSound|HitPlayShield|DamageToShields|damageToShields|shieldHitDraw|shieldHitSound|hitPlayShield/.test(appSource));
-check('docs/index.html has no shield UI', !/shield/i.test(htmlSource));
+check('studio/index.html has no shield UI', !/shield/i.test(htmlSource));
 
 // Dynamic checks: exercise the exporters inside app.js's shared script scope
 const testBody = `
@@ -319,14 +319,14 @@ check('NPC weapon SBC XML outputs <DeconstructId> for tech components',
 check('Player weapon SBC XML does not output <DeconstructId>', !lcReport.playerSbcXml.includes('<DeconstructId>'));
 
 // Commit date format check (mm.dd.yyyy)
-const sourceLiveContent = fs.readFileSync(path.join(root, 'docs', 'source_live.js'), 'utf8');
+const sourceLiveContent = fs.readFileSync(path.join(root, 'studio', 'source_live.js'), 'utf8');
 const dateRegexMatch = sourceLiveContent.includes("d.getUTCFullYear()") && sourceLiveContent.includes("${mm}.${dd}.${yyyy}");
 check('source_live.js formats commit date as mm.dd.yyyy', dateRegexMatch);
 
 // WeaponCore schema guard + new WC definition fields
-const SP = require(path.join(root, 'docs', 'source_pipeline.js'));
+const SP = require(path.join(root, 'studio', 'source_pipeline.js'));
 const schemaSandbox = { window: {} };
-vm.runInNewContext(fs.readFileSync(path.join(root, 'docs', 'data', 'wc_schema.js'), 'utf8'), schemaSandbox);
+vm.runInNewContext(fs.readFileSync(path.join(root, 'studio', 'data', 'wc_schema.js'), 'utf8'), schemaSandbox);
 const bundledSchema = schemaSandbox.window.GVK_WC_SCHEMA;
 const liveSchema = SP.extractWcSchema(fs.readFileSync(path.join(root, 'CoreParts', 'script', 'Structure.cs'), 'utf8'));
 check('Bundled wc_schema.js matches Structure.cs (re-run export_snapshots.js after syncing WC)',
@@ -350,7 +350,7 @@ check('Pipeline parses Targeting.ValidControlModes', ctrlEntry.validControlModes
 
 // Curated workbench bindings: every path exists in Structure.cs, every element exists, enum <select>s only offer WC members
 const wcTypesLive = SP.extractWcTypes(fs.readFileSync(path.join(root, 'CoreParts', 'script', 'Structure.cs'), 'utf8'));
-const editorSrc = fs.readFileSync(path.join(root, 'docs', 'wc_editor.js'), 'utf8');
+const editorSrc = fs.readFileSync(path.join(root, 'studio', 'wc_editor.js'), 'utf8');
 const bindingProblems = [];
 for (const m of editorSrc.matchAll(/\['(ammo|weapon)', '(\w+)', '([\w.#]+)', '(\w+)(?::\w+)?'/g)) {
   const [, kind, id, bpath, mode] = m;

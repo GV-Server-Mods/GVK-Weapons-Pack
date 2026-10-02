@@ -1,4 +1,4 @@
-// Shared headless loader for the Weapon Studio: stubs the DOM, loads docs/ scripts in index.html order and
+// Shared headless loader for the Weapon Studio: stubs the DOM, loads studio/ scripts in index.html order and
 // injects the bundled snapshot data. Used by the scratch/test_*.js suites.
 'use strict';
 
@@ -7,7 +7,7 @@ const path = require('path');
 const vm = require('vm');
 
 const root = path.join(__dirname, '..');
-const docs = (f) => path.join(root, 'docs', f);
+const studioFile = (f) => path.join(root, 'studio', f);
 
 function makeClassList() {
   const set = new Set();
@@ -20,7 +20,7 @@ function makeClassList() {
 
 // Tag and input type per id from index.html, so checkbox/select-aware code (default markers, bindings) runs as in the page
 const htmlTags = new Map();
-for (const m of fs.readFileSync(docs('index.html'), 'utf8').matchAll(/<(\w+)\b([^>]*?)\bid="([^"]+)"([^>]*)>/g)) {
+for (const m of fs.readFileSync(studioFile('index.html'), 'utf8').matchAll(/<(\w+)\b([^>]*?)\bid="([^"]+)"([^>]*)>/g)) {
   const attrs = m[2] + m[4];
   const type = (attrs.match(/\btype="([^"]+)"/) || [])[1];
   htmlTags.set(m[3], { tagName: m[1].toUpperCase(), type: type || (m[1] === 'select' ? 'select-one' : m[1] === 'input' ? 'text' : undefined) });
@@ -50,7 +50,7 @@ function makeElement(id) {
 }
 
 function readData(file) {
-  const s = fs.readFileSync(docs(file), 'utf8');
+  const s = fs.readFileSync(studioFile(file), 'utf8');
   return file.endsWith('.json') ? JSON.parse(s) : JSON.parse(s.replace(/^[\s\S]*?=\s*/, '').replace(/;\s*$/, ''));
 }
 
@@ -76,7 +76,7 @@ function loadStudio(opts) {
   vm.createContext(sandbox);
   const files = ['source_pipeline.js', 'wc_math.js', 'data/wc_schema.js', 'data/wc_defs_data.js', 'data/economy_values.js',
     'data/magazines_blueprints_data.js', 'app.js', 'ammo_maths.js', 'wc_editor.js'];
-  vm.runInContext(files.map((f) => fs.readFileSync(docs(f), 'utf8')).join('\n;\n') + '\n;\nsetWcDefs(null);\n', sandbox, { filename: 'studio.js' });
+  vm.runInContext(files.map((f) => fs.readFileSync(studioFile(f), 'utf8')).join('\n;\n') + '\n;\nsetWcDefs(null);\n', sandbox, { filename: 'studio.js' });
   if (opts.data !== false) {
     sandbox.__w = readData('data/weapons_db.json');
     sandbox.__a = readData('data/ammos_db.json');
@@ -104,4 +104,4 @@ function makeChecker() {
   return { check, done };
 }
 
-module.exports = { root, docs, loadStudio, makeChecker, readData };
+module.exports = { root, studioFile, loadStudio, makeChecker, readData };

@@ -1,10 +1,10 @@
 // CI validation gate — fails the deploy if the parsed Studio data has any unresolved reference.
-// Reuses the SAME parser the browser runs (docs/source_pipeline.js), so CI and the page can't disagree.
+// Reuses the SAME parser the browser runs (studio/source_pipeline.js), so CI and the page can't disagree.
 // Run: node tools/validate_studio_data.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import SP from '../docs/source_pipeline.js';
+import SP from '../studio/source_pipeline.js';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const csSources = {};
@@ -19,7 +19,7 @@ const cubeBlocks = {};
 for (const f of fs.readdirSync(path.join(dataDir, 'CubeBlocks'))) {
   if (f.endsWith('.sbc')) cubeBlocks[f] = fs.readFileSync(path.join(dataDir, 'CubeBlocks', f), 'utf8');
 }
-const ovSrc = fs.readFileSync(path.join(root, 'docs', 'data', 'studio_overrides.js'), 'utf8');
+const ovSrc = fs.readFileSync(path.join(root, 'studio', 'data', 'studio_overrides.js'), 'utf8');
 const overrides = JSON.parse(ovSrc.slice(ovSrc.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
 const built = SP.buildStudioData(csSources, {

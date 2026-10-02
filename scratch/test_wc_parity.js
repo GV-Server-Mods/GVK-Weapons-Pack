@@ -7,8 +7,8 @@
 const fs = require('fs');
 const path = require('path');
 const { root, loadStudio, makeChecker } = require('./studio_harness.js');
-const W = require('../docs/wc_math.js');
-const SP = require('../docs/source_pipeline.js');
+const W = require('../studio/wc_math.js');
+const SP = require('../studio/source_pipeline.js');
 const { check, done } = makeChecker();
 
 const range = (from, step, n) => Array.from({ length: n }, (_, i) => from + i * step);
@@ -355,7 +355,7 @@ console.log('\n[G] Scalability lint');
   const vocab = new Set();
   const add = (s) => { if (s && s.length >= 4) vocab.add(s.toLowerCase()); };
   const words = (s) => String(s || '').split(/[^A-Za-z0-9]+/).forEach(add);
-  const data = { w: JSON.parse(fs.readFileSync(path.join(root, 'docs/data/weapons_db.json'), 'utf8')), a: JSON.parse(fs.readFileSync(path.join(root, 'docs/data/ammos_db.json'), 'utf8')) };
+  const data = { w: JSON.parse(fs.readFileSync(path.join(root, 'studio/data/weapons_db.json'), 'utf8')), a: JSON.parse(fs.readFileSync(path.join(root, 'studio/data/ammos_db.json'), 'utf8')) };
   for (const w of data.w) { add(w.subtypeId); add(w.id); words(w.name); }
   for (const [k, a] of Object.entries(data.a)) { add(k); add(a.ammoRound); add(a.ammoMagazine); words(a.terminalName); }
   ['laser', 'plasma', 'railgun', 'coilgun', 'flak', 'gatling', 'torpedo', 'missile', 'rocket', 'drone', 'radar', 'designator', 'sensor', 'flare', 'sabot', 'cannon', 'warhead', 'falcon', 'tuukka', 'longsword'].forEach(add);
@@ -363,14 +363,14 @@ console.log('\n[G] Scalability lint');
   // (Heavy/Light armor classes, Fragment pattern mode, ...) and UI theme names
   const allow = new Set(['smallgatlinggun', 'smallmissilelauncher', 'interiorturret', 'md_largegatlingloopfire', 'wepturretgatlingrotate', 'wepshipgatlingnoammo',
     'icons/l__gatling_avenger_turret.png', 'energy', 'none', 'large', 'small', 'fixed', 'turret', 'heavy', 'light', 'nonarmor', 'dark']);
-  const schemaSrc = fs.readFileSync(path.join(root, 'docs/data/wc_schema.js'), 'utf8');
+  const schemaSrc = fs.readFileSync(path.join(root, 'studio/data/wc_schema.js'), 'utf8');
   const schema = JSON.parse(schemaSrc.slice(schemaSrc.indexOf('{'), schemaSrc.lastIndexOf('}') + 1));
   for (const members of Object.values(schema.enums || {})) for (const m of (Array.isArray(members) ? members : Object.keys(members))) allow.add(String(m).toLowerCase());
   // UI-only: the landing page preselects the Avenger when present and falls back to the first weapon otherwise
   const uiDefaults = [/const avenger = nonHandheld\.find\(/];
   const hits = [];
   for (const f of files) {
-    const src = strip(fs.readFileSync(path.join(root, 'docs', f), 'utf8'));
+    const src = strip(fs.readFileSync(path.join(root, 'studio', f), 'utf8'));
     const lines = src.split(/\r?\n/);
     lines.forEach((line, i) => {
       if (uiDefaults.some((re) => re.test(line))) return;

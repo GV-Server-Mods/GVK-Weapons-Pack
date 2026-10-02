@@ -30,7 +30,7 @@ jobs:
       - name: Stage site
         run: |
           mkdir -p _site/data/source/CoreParts _site/data/source/CoreParts_script _site/data/source/Data/CubeBlocks
-          cp -r docs/. _site/
+          cp -r studio/. _site/
           cp CoreParts/*.cs _site/data/source/CoreParts/
           cp CoreParts/script/Structure.cs _site/data/source/CoreParts_script/
           cp Content/Data/AmmoMagazines_Ship.sbc Content/Data/AmmoMagazines_Handheld.sbc \

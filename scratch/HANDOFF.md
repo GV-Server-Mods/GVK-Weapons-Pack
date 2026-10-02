@@ -4,9 +4,9 @@ Pick-up instructions for any model: read this file fully, then continue at the f
 milestone. This file is the complete working contract; rationale detail lives in chat history.
 
 ## Mission
-Studio (`docs/` web app, hosted `https://gv-server-mods.github.io/GVK-Weapons-Pack/`) must parse
-the mod source LIVE (C# + SBC, in-browser) instead of using hand-typed `docs/data/*` datasets.
-Deploy = GitHub Actions workflow staging `docs/` + verbatim source mirror into `data/source/`,
+Studio (`studio/` web app, hosted `https://gv-server-mods.github.io/GVK-Weapons-Pack/`) must parse
+the mod source LIVE (C# + SBC, in-browser) instead of using hand-typed `studio/data/*` datasets.
+Deploy = GitHub Actions workflow staging `studio/` + verbatim source mirror into `data/source/`,
 stamping `_manifest.json` (commit SHA), running a zero-dep Node validation gate, deploying via
 upload-pages-artifact/deploy-pages. URL stays the same. Local file:// mode = File System Access
 "Link Mod Folder" button. Fallback = frozen snapshots (regenerated once via an in-app Export button).
@@ -23,7 +23,7 @@ upload-pages-artifact/deploy-pages. URL stays the same. Local file:// mode = Fil
 - app.js initStudio (~1109): BUNDLED_* globals then fetch data/*_db.json. Replace the load block only.
 - CoreParts root: 71 .cs files (largest are *_Animations.cs — SKIP parsing those; only need names as strings).
 - Content/Data/CubeBlocks: 22 .sbc. AmmoMagazines_Ship.sbc 16KB, Blueprints.sbc 27KB, PhysicalItems.sbc 9KB.
-- docs/ root: app.js (245KB), index.html (120KB), style.css, WEAPON_STUDIO_DESIGN_DOCUMENT.md. No .nojekyll (fine under Actions).
+- studio/ root: app.js (245KB), index.html (120KB), style.css, WEAPON_STUDIO_DESIGN_DOCUMENT.md. No .nojekyll (fine under Actions).
 - Repo has no .github/ yet. Node available locally. Branch gvk-weapon-studio, deploys from main.
 - Ammo file naming varies: *_Ammos.cs AND *_Ammo.cs (Railgun, LightMissile). Don't glob by exact suffix.
 
@@ -63,13 +63,13 @@ upload-pages-artifact/deploy-pages. URL stays the same. Local file:// mode = Fil
 7. Parse *_Weapons.cs, *_Ammo(s).cs, _Common_*.cs, _MasterConfig.cs, Armor_Blocks.cs; SKIP *_Animations*.cs.
 
 ## DELIVERABLES
-D1 docs/source_pipeline.js (parser, zero deps, isomorphic browser+Node). D2 app.js/index.html wiring:
+D1 studio/source_pipeline.js (parser, zero deps, isomorphic browser+Node). D2 app.js/index.html wiring:
 load chain + status chip (🟢 LIVE @ <sha> / 🔴 SNAPSHOT) + red error banner + "⬇ Export snapshots" dev
 button (the regen mechanism — browser has DOMParser so regen needs no Node tooling). D3 one-time snapshot
-regen via Export → commit (lands the Hurricane/Odin + phantom-magazine fixes). D4 docs/data/studio_overrides.js
+regen via Export → commit (lands the Hurricane/Odin + phantom-magazine fixes). D4 studio/data/studio_overrides.js
 (category labels, localIcon mappings, roleMultiplier, defaultRUs only). D5 .github/workflows/deploy-studio.yml +
-tools/validate_studio_data.mjs (Node gate reusing D1's C# parser). D6 cleanup: delete docs/data/Scripts/
-(15 stale symlink-copy files), delete orphan docs/data SBCs (Cubeblocks, Particles, TransparentMaterials,
+tools/validate_studio_data.mjs (Node gate reusing D1's C# parser). D6 cleanup: delete studio/data/Scripts/
+(15 stale symlink-copy files), delete orphan studio/data SBCs (Cubeblocks, Particles, TransparentMaterials,
 BlockCategories, BlueprintClasses, Weapons .sbc), fix stale app.js:224 comment (Weapon75 refs), update
 WEAPON_STUDIO_DESIGN_DOCUMENT.md. D7 scratch/test_source_pipeline.js harness; keep scratch/test_studio_smoke.js green.
 
@@ -78,7 +78,7 @@ on: push branches [main] + workflow_dispatch. permissions: contents:read, pages:
 concurrency: group pages, cancel-in-progress. Steps:
 1. checkout@v4; setup-node@v4 (node 20); gate: node tools/validate_studio_data.mjs (reuses source_pipeline.js;
    asserts zero errors, zero phantom magazines, zero unresolved Ammos refs; exit 1 on any).
-2. Stage _site: cp -r docs/. _site/; mkdir -p _site/data/source/{CoreParts,Data/CubeBlocks};
+2. Stage _site: cp -r studio/. _site/; mkdir -p _site/data/source/{CoreParts,Data/CubeBlocks};
    cp CoreParts/*.cs → _site/data/source/CoreParts/; CoreParts/script/Structure.cs → _site/data/source/CoreParts_script/;
    cp Content/Data/AmmoMagazines_Ship.sbc + AmmoMagazines_Handheld.sbc + Blueprints.sbc + PhysicalItems.sbc
    → _site/data/source/Data/; cp Content/Data/CubeBlocks/*.sbc → _site/data/source/Data/CubeBlocks/.
@@ -88,20 +88,20 @@ concurrency: group pages, cancel-in-progress. Steps:
    printf '{"commit":"%s","ref":"%s","coreParts":[%s],"cubeBlocks":[%s]}\n' "$GITHUB_SHA" "$GITHUB_REF_NAME" "$CS" "$CB" \
      > _site/data/source/_manifest.json
 4. upload-pages-artifact@v3 (path _site); deploy-pages@v4. Artifact ~6MB. First deploy auto-runs on main.
-Note: studio_overrides.js is a <script> in docs/data/ — it ships with the app, no staging needed.
+Note: studio_overrides.js is a <script> in studio/data/ — it ships with the app, no staging needed.
 PhysicalItems.sbc staged for future use (ingot masses); pipeline ignores it today.
 
 ## MILESTONES — ALL COMPLETE
 
-- [x] M1: Parser core (docs/source_pipeline.js C# extractor w/ clone-getter eval).
+- [x] M1: Parser core (studio/source_pipeline.js C# extractor w/ clone-getter eval).
       node scratch/test_source_pipeline.js ALL PASS: 55 files, 192 defs, 61 ammo, 67 weapons.
 - [x] M2: SBC parsers + full data build. Built: 132 weapons, 61 ammos, 31 mags, 123 blocks; zero errors.
-- [x] M3: app.js wiring + Export button (docs/source_live.js). initStudio → GVKLiveSource.init() → refreshAfterDataLoad().
+- [x] M3: app.js wiring + Export button (studio/source_live.js). initStudio → GVKLiveSource.init() → refreshAfterDataLoad().
 - [x] M4: Snapshots regenerated + committed (scratch/export_snapshots.js). Fixes Hurricane/Odin + 17 phantom magazines.
       The Studio's in-browser Export button can also regenerate them post-deploy.
 - [x] M5: Workflow (.github/workflows/deploy-studio.yml) + gate (tools/validate_studio_data.mjs).
       Pages source flipped to GitHub Actions by user. Site confirmed LIVE with green chip.
-- [x] M6 cleanup: deleted docs/data/Scripts/ + 6 orphan SBCs; fixed stale app.js:224 comment.
+- [x] M6 cleanup: deleted studio/data/Scripts/ + 6 orphan SBCs; fixed stale app.js:224 comment.
 - [x] M6b: WEAPON_STUDIO_DESIGN_DOCUMENT.md Data Pipeline section added (section 7).
 - [x] M6c: severity-aware chip (green/yellow/red) + auto-dismiss error banner (10s timer + close button).
 

@@ -221,7 +221,7 @@ const WC_CORE_DEFAULTS = {
 // ==========================================================================
 // WORKBENCH FIELD HELP (Definition Workbench Scope A & B tooltips)
 // Wording adapted from the canonical WeaponCore example definitions in
-// docs/data/Scripts/CoreParts/ — deprecated local copy removed. Canonical WeaponCore example definitions
+// studio/data/Scripts/CoreParts/ — deprecated local copy removed. Canonical WeaponCore example definitions
 // now live in the mod repo's CoreParts/ folder (same files the live pipeline parses).
 // Keys are DOM element ids; values are hover tooltip descriptions.
 // ==========================================================================
