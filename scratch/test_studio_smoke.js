@@ -435,7 +435,7 @@ studio.run(`
   (() => {
     const pick = (sub) => {
       const r = amCompute(amMag(sub));
-      return { vol: r.vol, mass: r.mass, craft: r.craft, price: r.serverPrice, adj: r.adjMsrp, rus: r.rus,
+      return { vol: r.vol, mass: r.mass, craft: r.craft, price: r.serverPrice, adj: r.recipeBudget, rus: r.rus,
         recipe: r.prereqs.map((p) => p.subtypeId + ':' + p.amount).join(' '), drift: r.driftPct, weapons: r.weapons };
     };
     const gat = pick('NATO_25x184mm'), hc = pick('Ballistics_HeavyCannon'), rail = pick('SmallRailgunAmmo');

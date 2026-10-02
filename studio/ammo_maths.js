@@ -38,7 +38,7 @@ let amChartMetric = 'dmgPerSc';
 
 // Balance-matrix keys owned by this tab (defaults live in DEFAULT_BALANCE_MATRIX, app.js)
 const AM_MATRIX_INPUTS = [
-  ['ammoAnchorMsrp', 'matAmmoAnchorMsrp', 'num'], ['ammoAnchorMag', 'matAmmoAnchorMag', 'str'],
+  ['baselineMagPrice', 'matBaselineMagPrice', 'num'], ['baselineMag', 'matBaselineMag', 'str'],
   ['hybridDiscount', 'matHybridDiscount', 'num'], ['ruShare', 'matRuShare', 'num'],
   ['bufferReloads', 'matBufferReloads', 'num'], ['smallCargoL', 'matSmallCargoL', 'num'],
   ['largeCargoL', 'matLargeCargoL', 'num'],
@@ -66,7 +66,7 @@ function amExcelRound(x, digits) {
 }
 /// <summary>
 /// Sheet price rounding: ROUND(x, 2 - (1 + INT(LOG10(|ref|)))) — two significant figures of ref (default x).
-/// Adjusted MSRP passes ref = price before assembler efficiency, exactly as the sheet does.
+/// The Recipe Budget passes ref = price before assembler efficiency, exactly as the sheet does.
 /// </summary>
 function amRound2Sig(x, ref) {
   const r = ref === undefined ? x : ref;
@@ -134,13 +134,13 @@ function amValue(sub) {
 function amTypeId(sub) { const d = amValueDefaults()[sub]; return d ? d.typeId : 'Ingot'; }
 
 // ==========================================================================
-// BASELINE CURVES: every output scales with magazine damage relative to the reference (anchor) magazine
+// BASELINE CURVES: every output scales with magazine damage relative to the Baseline Magazine
 // ==========================================================================
 function amRefDmg() {
-  const anchor = amMag(balanceMatrix.ammoAnchorMag);
-  if (!anchor) return 0;
-  const key = (amLevers[anchor.subtypeId] || {}).ammoKey || amDefaultAmmoKey(anchor);
-  return amMagDamage(ammosDb[key], anchor.capacity);
+  const baseMag = amMag(balanceMatrix.baselineMag);
+  if (!baseMag) return 0;
+  const key = (amLevers[baseMag.subtypeId] || {}).ammoKey || amDefaultAmmoKey(baseMag);
+  return amMagDamage(ammosDb[key], baseMag.capacity);
 }
 /// <summary>Baseline volume (L), mass (kg) and craft time (s) for a magazine carrying magDmg damage; each has its own curve.</summary>
 function amBaseline(magDmg, refDmg) {
@@ -198,10 +198,10 @@ function amIsModified(sub) { return !!(amLevers[sub] && Object.keys(amLevers[sub
 
 function amEnv() {
   const bm = balanceMatrix;
-  const anchor = amMag(bm.ammoAnchorMag);
-  const anchorMagDmg = amRefDmg();
+  const baseMag = amMag(bm.baselineMag);
+  const baselineMagDmg = amRefDmg();
   return {
-    anchorMsrp: bm.ammoAnchorMsrp, anchorMagDmg, anchorName: anchor ? anchor.displayName : '(none)',
+    baselineMagPrice: bm.baselineMagPrice, baselineMagDmg, baselineMagName: baseMag ? baseMag.displayName : '(none)',
     hybridDiscount: bm.hybridDiscount, ruShare: bm.ruShare, assemblerEff: bm.assemblerEff || 3,
     bufferReloads: bm.bufferReloads, scrapYield: bm.scrapYield !== undefined ? bm.scrapYield : 0.25,
     cargo: [
@@ -272,8 +272,8 @@ function computeAmmoMaths(mag, L, env, opts) {
 
   // Physical footprint: baseline curve × this magazine's multiplier, one region each
   const bm = balanceMatrix;
-  const base = amBaseline(magDmg, env.anchorMagDmg);
-  const ratioTxt = `(${amFmt(magDmg)} ÷ ${amFmt(env.anchorMagDmg)} dmg)`;
+  const base = amBaseline(magDmg, env.baselineMagDmg);
+  const ratioTxt = `(${amFmt(magDmg)} ÷ ${amFmt(env.baselineMagDmg)} dmg)`;
   f.baseVol = `${bm.refVolL} L × ${ratioTxt}^${bm.sizeExp} = ${amFmt(base.vol, 1)} L`;
   f.baseMass = `${bm.refMassKg} kg × ${ratioTxt}^${bm.massExp} = ${amFmt(base.mass, 1)} kg`;
   f.baseCraft = `${bm.refCraftS} s × ${ratioTxt}^${bm.craftExp} = ${amFmt(base.craft, 1)} s`;
@@ -286,39 +286,39 @@ function computeAmmoMaths(mag, L, env, opts) {
 
   // Economy (rows 44-50)
   const hybridMult = L.hybrid ? env.hybridDiscount : 1;
-  const msrp = env.anchorMagDmg > 0 ? env.anchorMsrp / env.anchorMagDmg * magDmg * hybridMult : 0;
-  f.msrp = `${amFmt(env.anchorMsrp)} SC ÷ ${amFmt(env.anchorMagDmg)} dmg (${env.anchorName}) × ${amFmt(magDmg)} dmg`
-    + (L.hybrid ? ` × ${env.hybridDiscount} hybrid` : '') + ` = ${amFmt(msrp)} SC`;
-  const serverPrice = amRound2Sig(msrp * L.roleMult);
-  f.serverPrice = `2 sig. figs of ${amFmt(msrp)} × ${L.roleMult} role = ${amFmt(serverPrice)} SC`;
-  const adjMsrp = amRound2Sig(msrp * L.roleMult * env.assemblerEff, msrp * L.roleMult);
-  f.adjMsrp = `${amFmt(msrp * L.roleMult)} × ${env.assemblerEff} assembler eff., rounded at the price's 2nd sig. fig = ${amFmt(adjMsrp)} SC. `
+  const baselinePrice = env.baselineMagDmg > 0 ? env.baselineMagPrice / env.baselineMagDmg * magDmg * hybridMult : 0;
+  f.baselinePrice = `${amFmt(env.baselineMagPrice)} SC ÷ ${amFmt(env.baselineMagDmg)} dmg (${env.baselineMagName}) × ${amFmt(magDmg)} dmg`
+    + (L.hybrid ? ` × ${env.hybridDiscount} hybrid` : '') + ` = ${amFmt(baselinePrice)} SC`;
+  const serverPrice = amRound2Sig(baselinePrice * L.roleMult);
+  f.serverPrice = `2 sig. figs of ${amFmt(baselinePrice)} × ${L.roleMult} Price Tier = ${amFmt(serverPrice)} SC`;
+  const recipeBudget = amRound2Sig(baselinePrice * L.roleMult * env.assemblerEff, baselinePrice * L.roleMult);
+  f.recipeBudget = `${amFmt(baselinePrice * L.roleMult)} × ${env.assemblerEff} assembler eff., rounded at the price's 2nd sig. fig = ${amFmt(recipeBudget)} SC. `
     + `Only used to size the recipe: the server's assembler efficiency multiplier cuts ingot use, so the recipe is inflated to match. Players pay the Server Price.`;
-  const scPerDmg = magDmg > 0 ? adjMsrp / magDmg / env.assemblerEff : 0;
-  f.scPerDmg = `${amFmt(adjMsrp)} ÷ ${amFmt(magDmg)} dmg ÷ ${env.assemblerEff} = ${amFmt(scPerDmg, 4)} SC/dmg`;
+  const scPerDmg = magDmg > 0 ? recipeBudget / magDmg / env.assemblerEff : 0;
+  f.scPerDmg = `${amFmt(recipeBudget)} ÷ ${amFmt(magDmg)} dmg ÷ ${env.assemblerEff} = ${amFmt(scPerDmg, 4)} SC/dmg`;
   const cuValue = env.value('GVK_CUs'), ruValue = env.value('GVK_RUs');
-  const rus = L.usesRUs ? (cuValue > 0 ? amExcelRound(adjMsrp * env.ruShare / cuValue, 1) : 0) : (L.rusManual || 0);
+  const rus = L.usesRUs ? (cuValue > 0 ? amExcelRound(recipeBudget * env.ruShare / cuValue, 1) : 0) : (L.rusManual || 0);
   f.rus = L.usesRUs
-    ? `ROUND(${amFmt(adjMsrp)} × ${env.ruShare} ÷ ${amFmt(cuValue)} (CU value), 1) = ${rus} RUs`
+    ? `ROUND(${amFmt(recipeBudget)} × ${env.ruShare} ÷ ${amFmt(cuValue)} (CU value), 1) = ${rus} RUs`
     : `Manual: ${rus} RUs`;
   const ruCost = Math.round(ruValue * rus);
   f.ruCost = `ROUND(${rus} RUs × ${amFmt(ruValue)} (RU value)) = ${amFmt(ruCost)} SC`;
 
-  // Recipe (rows 53-90): split the budget across the base composition by value share
+  // Recipe (rows 53-90): split the ingot budget across the base composition by value share
   const comps = (L.baseComp || []).filter((c) => c.subtype && c.weight > 0 && env.value(c.subtype) > 0);
   const baseVals = comps.map((c) => Math.round(env.value(c.subtype) * c.weight));
   const baseSum = baseVals.reduce((a, b) => a + b, 0);
-  const budget = Math.max(0, adjMsrp - ruCost);
-  f.budget = `${amFmt(adjMsrp)} − ${amFmt(ruCost)} RU cost = ${amFmt(budget)} SC across ingots`;
+  const ingotBudget = Math.max(0, recipeBudget - ruCost);
+  f.ingotBudget = `${amFmt(recipeBudget)} − ${amFmt(ruCost)} RU cost = ${amFmt(ingotBudget)} SC across ingots`;
   const prereqs = [];
   if (rus > 0) prereqs.push({ typeId: env.typeId('GVK_RUs'), subtypeId: 'GVK_RUs', amount: rus, formula: f.rus });
   comps.forEach((c, i) => {
     const val = env.value(c.subtype);
-    const amount = baseSum > 0 ? amExcelRound(baseVals[i] / baseSum * budget / val, 1) : 0;
+    const amount = baseSum > 0 ? amExcelRound(baseVals[i] / baseSum * ingotBudget / val, 1) : 0;
     if (amount > 0) {
       prereqs.push({
         typeId: env.typeId(c.subtype), subtypeId: c.subtype, amount,
-        formula: `ROUND(${amFmt(baseVals[i])} ÷ ${amFmt(baseSum)} × ${amFmt(budget)} ÷ ${amFmt(val)}, 1) = ${amount}`,
+        formula: `ROUND(${amFmt(baseVals[i])} ÷ ${amFmt(baseSum)} × ${amFmt(ingotBudget)} ÷ ${amFmt(val)}, 1) = ${amount}`,
       });
     }
   });
@@ -371,8 +371,8 @@ function computeAmmoMaths(mag, L, env, opts) {
       dmgPerL: mag.volume > 0 ? magDmg / mag.volume : 0, dmgPerKg: mag.mass > 0 ? magDmg / mag.mass : 0,
     },
     baseVol: base.vol, baseMass: base.mass, baseCraft: base.craft, vol, mass, dmgPerL: vol > 0 ? magDmg / vol : 0,
-    playerFits: vol > 0 ? Math.floor(env.playerInvL / vol) : 0, dmgPerKg: mass > 0 ? magDmg / mass : 0,
-    craft, msrp, serverPrice, adjMsrp, scPerDmg, rus, ruCost, budget,
+    playerMags: vol > 0 ? Math.floor(env.playerInvL / vol) : 0, dmgPerKg: mass > 0 ? magDmg / mass : 0,
+    craft, baselinePrice, serverPrice, recipeBudget, scPerDmg, rus, ruCost, ingotBudget,
     prereqs, compRows, recipeValue, driftPct, fields, changes, cargo, scrap, scrapValue, formulas: f, weapons: [],
   };
   if (opts.weapons !== false) r.weapons = amWeaponRows(r, env);
@@ -477,7 +477,7 @@ const AM_FILTERS = [
   ['changed', 'Changed', (r) => r.changes.length > 0],
   ['drift', 'Drift', (r) => r.driftPct !== null && Math.abs(r.driftPct) > AM_DRIFT_PCT],
   ['short', 'Short Inv', (r) => r.weapons.some((w) => w.short)],
-  ['fits', 'Fits < 2', (r) => r.playerFits < 2 || r.cargo[0].mags < 2],
+  ['carried', 'Mags Carried < 2', (r) => r.playerMags < 2 || r.cargo[0].mags < 2],
 ];
 const AM_OUTLIER_PCT = 15;   // "vs median" tolerance band
 let amFilter = 'all';
@@ -496,10 +496,10 @@ function populateLogisticsAmmoDropdown() {
       + '</optgroup>').join('');
     sel.value = selectedLogisticsMagSubtype;
   }
-  const anchor = $am('matAmmoAnchorMag');
-  if (anchor) {
-    anchor.innerHTML = amTrackedMags().map((m) => `<option value="${amEsc(m.subtypeId)}">${amEsc(m.displayName)}</option>`).join('');
-    anchor.value = balanceMatrix.ammoAnchorMag;
+  const baseSel = $am('matBaselineMag');
+  if (baseSel) {
+    baseSel.innerHTML = amTrackedMags().map((m) => `<option value="${amEsc(m.subtypeId)}">${amEsc(m.displayName)}</option>`).join('');
+    baseSel.value = balanceMatrix.baselineMag;
   }
 }
 
@@ -549,7 +549,7 @@ function amSyncLeverInputs() {
   amRenderBaseComp(L);
 }
 
-/// <summary>Role preset dropdown follows the Price × value ("Custom" when no preset matches).</summary>
+/// <summary>Price Tier dropdown follows the Price × value ("Custom" when no preset matches).</summary>
 function amSyncRoleSelect(v) {
   const sel = $am('amRoleSelect');
   if (!sel) return;
@@ -621,7 +621,7 @@ function amRenderRuRow(L, r) {
   }
   const auto = box.querySelector ? box.querySelector('.am-ru-auto') : null;
   if (auto) {
-    auto.textContent = state === 'none' ? '' : `${state === 'auto' ? `${amFmt(r.rus, 1)} RUs · ` : ''}${amFmt(r.ruCost)} SC of the budget`;
+    auto.textContent = state === 'none' ? '' : `${state === 'auto' ? `${amFmt(r.rus, 1)} RUs · ` : ''}${amFmt(r.ruCost)} SC of the Recipe Budget`;
     auto.title = `${r.formulas.rus}\n${r.formulas.ruCost}`;
   }
   const add = $am('amBaseCompAdd');
@@ -736,7 +736,7 @@ function amRenderStatus(mag, r) {
   const d = r.driftPct;
   let html = amChip('', `Subtype: <strong>${amEsc(mag.subtypeId)}</strong>`)
     + amChip('', `Capacity: <strong>${mag.capacity} rd${mag.capacity === 1 ? '' : 's'}</strong>`);
-  if (edited) html += amChip('badge-amber', `● <strong>${edited}</strong> lever${edited === 1 ? '' : 's'} edited`, 'Levers that differ from the Ammo Maths defaults');
+  if (edited) html += amChip('badge-amber', `● <strong>${edited}</strong> lever${edited === 1 ? '' : 's'} edited`, 'Levers that differ from the Shipped values');
   if (amIsTracked(mag) && d !== null && Math.abs(d) > AM_DRIFT_PCT) {
     html += amChip('badge-red', `⚠ Recipe drift <strong>${d > 0 ? '+' : ''}${d.toFixed(1)}%</strong>`, 'Ammo Maths recipe value vs the SBC recipe value', 'amCompareTable');
   }
@@ -744,7 +744,7 @@ function amRenderStatus(mag, r) {
     ? amChip('badge-amber', `<strong>${r.changes.length}</strong> SBC field${r.changes.length === 1 ? '' : 's'} change`, 'Show what export writes', 'amCompareTable')
     : amChip('badge-green', '✓ Matches SBC', 'Export would not change this magazine');
   if (shortN) html += amChip('badge-red', `⚠ ${shortN} weapon${shortN === 1 ? '' : 's'} short on inventory`, 'Live InventorySize below the reload buffer', 'amWeaponsTable');
-  if (r.playerFits < 2) html += amChip('badge-red', `⚠ Player carries ${r.playerFits}`, 'Fewer than 2 magazines fit in a player inventory', 'amCarryTable');
+  if (r.playerMags < 2) html += amChip('badge-red', `⚠ Player carries ${r.playerMags}`, 'Fewer than 2 magazines carried in a player inventory', 'amCarryTable');
   box.innerHTML = html;
 }
 
@@ -779,7 +779,7 @@ function amRenderPhysical(r, force) {
 }
 
 /// <summary>
-/// Damage Basis card: the AmmoDef's damage per hit (edited in the Workbench) × capacity, its ratio to the anchor
+/// Damage Basis card: the AmmoDef's damage per hit (edited in the Workbench) × capacity, its ratio to the Baseline Magazine
 /// magazine (Balance Matrix), and the curve values that ratio produces before the multipliers.
 /// </summary>
 function amRenderBasis(r) {
@@ -791,18 +791,18 @@ function amRenderBasis(r) {
   const parts = d ? [['base', d.base], ['area', d.aoe], ['end-of-life', d.eol], ['fragments', d.frag], ['block HP bonus', d.bbh]]
     .filter(([, v]) => v > 0).map(([k, v]) => `${amFmt(v)} ${k}`).join(' + ')
     + (d.antiProjectile ? ' (anti-missile blast not counted: HealthHitModifier with 1 hp or less per block)' : '') : '';
-  const ratio = env.anchorMagDmg > 0 ? r.magDmg / env.anchorMagDmg : 0;
-  const isAnchor = r.mag.subtypeId === bm.ammoAnchorMag;
-  const anchorLink = `<a href="#" class="am-bm-link" data-bm-focus="matAmmoAnchorMag" title="Change the anchor magazine (Balance Matrix)">${amEsc(env.anchorName)}</a>`;
+  const ratio = env.baselineMagDmg > 0 ? r.magDmg / env.baselineMagDmg : 0;
+  const isBaselineMag = r.mag.subtypeId === bm.baselineMag;
+  const baselineLink = `<a href="#" class="am-bm-link" data-bm-focus="matBaselineMag" title="Change the Baseline Magazine (Balance Matrix)">${amEsc(env.baselineMagName)}</a>`;
   box.innerHTML = `<div class="am-basis-row">
       <span class="am-formula" title="${amEsc(parts ? `Per hit: ${parts}` : 'No AmmoDef')}"><strong>${amFmt(r.dmgPerHit)}</strong> dmg/hit</span>
       <span class="am-op">×</span><span><strong>${r.shots}</strong> rd${r.shots === 1 ? '' : 's'}</span>
       <span class="am-op">=</span><span class="am-basis-total"><strong>${amFmt(r.magDmg)}</strong> dmg / mag</span>
       ${key ? `<button type="button" class="btn btn-sm" data-am-edit-damage="${amEsc(key)}" title="Open ${amEsc(key)} in the Definition Workbench to change its damage">✎ Edit damage in Workbench</button>` : ''}
     </div>
-    <div class="am-basis-row">${isAnchor
-      ? `<span>This is the <strong>anchor magazine</strong>: every curve sits at its reference value (1×).</span>`
-      : `<span>Anchor ${anchorLink} = ${amFmt(env.anchorMagDmg)} dmg / mag</span><span class="am-op">→</span><span><strong>${amFmt(ratio, 2)}×</strong> anchor damage</span>`}</div>
+    <div class="am-basis-row">${isBaselineMag
+      ? `<span>This is the <strong>Baseline Magazine</strong>: every curve sits at its reference value (1×).</span>`
+      : `<span>Baseline Magazine ${baselineLink} = ${amFmt(env.baselineMagDmg)} dmg / mag</span><span class="am-op">→</span><span><strong>${amFmt(ratio, 2)}×</strong> its damage</span>`}</div>
     <div class="am-basis-curves">
       <span class="am-formula" title="${amEsc(r.formulas.baseVol)}">Volume curve <strong>${amFmt(r.baseVol, 1)} L</strong> <span class="am-muted">(${bm.refVolL} L × ratio^${bm.sizeExp})</span></span>
       <span class="am-formula" title="${amEsc(r.formulas.baseMass)}">Mass curve <strong>${amFmt(r.baseMass, 1)} kg</strong> <span class="am-muted">(${bm.refMassKg} kg × ratio^${bm.massExp})</span></span>
@@ -836,25 +836,25 @@ function amSyncTargets(r, force) {
   });
 }
 
-/// <summary>Economy headline: Server Price first; MSRP, value vs the fleet and the recipe budget as supporting lines.</summary>
+/// <summary>Economy headline: Server Price first; Baseline price, value vs the fleet and the Recipe Budget as supporting lines.</summary>
 function amRenderPrice(r, env) {
-  const note = $am('amAnchorNote');
-  if (note) note.textContent = `anchor: ${env.anchorName} = ${amFmt(env.anchorMsrp)} SC`;
+  const note = $am('amBaselineNote');
+  if (note) note.textContent = `Baseline Magazine: ${env.baselineMagName} = ${amFmt(env.baselineMagPrice)} SC`;
   const hint = $am('amPriceHint');
-  if (hint) { hint.textContent = `MSRP ${amFmt(r.msrp)} × ${r.levers.roleMult} → ${amFmt(r.serverPrice)} SC (2 sig. figs)`; hint.title = `${r.formulas.msrp}\n${r.formulas.serverPrice}`; }
+  if (hint) { hint.textContent = `Baseline price ${amFmt(r.baselinePrice)} × ${r.levers.roleMult} → ${amFmt(r.serverPrice)} SC (2 sig. figs)`; hint.title = `${r.formulas.baselinePrice}\n${r.formulas.serverPrice}`; }
   const g = $am('amPriceHero');
   if (!g) return;
   const f = r.formulas;
   g.innerHTML = `<div class="am-hero-main">
       <div class="stat-title">Server Price</div>
       <div class="am-hero-value am-formula" title="${amEsc(f.serverPrice)}">${amFmt(r.serverPrice)} <span class="am-hero-unit">SC</span></div>
-      <div class="am-stat-note">what the player pays · <span class="am-formula" title="${amEsc(f.msrp)}">MSRP ${amFmt(r.msrp)}</span> × ${r.levers.roleMult} role${r.levers.hybrid ? ' (hybrid discount applied)' : ''}</div>
+      <div class="am-stat-note">what the player pays · <span class="am-formula" title="${amEsc(f.baselinePrice)}">Baseline price ${amFmt(r.baselinePrice)}</span> × ${r.levers.roleMult} Price Tier${r.levers.hybrid ? ' (hybrid discount applied)' : ''}</div>
     </div>
     <div class="am-hero-side">
       <div class="am-hero-line"><span class="stat-title">Damage / SC</span>
         <strong class="am-formula" title="${amEsc(f.scPerDmg)} (inverse shown)">${amFmt(amMetric(r, 'dmgPerSc'), 2)}</strong> ${amVsMedian(r, 'dmgPerSc')}</div>
       <div class="am-hero-line"><span class="stat-title">Recipe Budget</span>
-        <strong class="am-formula" title="${amEsc(f.adjMsrp)}">${amFmt(r.adjMsrp)} SC</strong>
+        <strong class="am-formula" title="${amEsc(f.recipeBudget)}">${amFmt(r.recipeBudget)} SC</strong>
         <span class="am-muted">× ${env.assemblerEff} assembler eff. · sizes the recipe, not a price</span></div>
       ${r.rus > 0 ? `<div class="am-hero-line"><span class="stat-title">RU Cost</span>
         <strong class="am-formula" title="${amEsc(f.ruCost)}">${amFmt(r.ruCost)} SC</strong> <span class="am-muted">${amFmt(r.rus, 1)} RUs</span></div>` : ''}
@@ -877,7 +877,7 @@ function amRenderCompare(r) {
     + `<td>${c.changed ? (amDelta(c.old, c.new) || '<span class="am-delta">new</span>') : '<span class="am-muted">=</span>'}</td></tr>`;
   t.innerHTML = '<thead><tr><th>SBC Field</th><th>SBC (live)</th><th>New</th><th>Δ vs SBC</th></tr></thead><tbody>'
     + r.fields.map(row).join('')
-    + `<tr class="am-row-summary" title="${amEsc(r.formulas.budget)}"><td>Recipe value <span class="am-muted">total, not an SBC field</span></td>`
+    + `<tr class="am-row-summary" title="${amEsc(r.formulas.ingotBudget)}"><td>Recipe value <span class="am-muted">total, not an SBC field</span></td>`
     + `<td>${amFmt(r.sbc.recipeValue)} SC</td><td><strong>${amFmt(r.recipeValue)} SC</strong></td>`
     + `<td>${r.driftPct === null ? '' : amDelta(r.sbc.recipeValue, r.recipeValue)}</td></tr>`
     + '</tbody>';
@@ -889,7 +889,7 @@ function amRenderRecipe(mag, r, env) {
   if (note) {
     note.textContent = `value ${amFmt(r.recipeValue)} SC (= Recipe Budget) · SBC ${amFmt(r.sbc.recipeValue)} SC`
       + (r.driftPct === null ? '' : ` (${r.driftPct > 0 ? '+' : ''}${r.driftPct.toFixed(1)}%)`);
-    note.title = r.formulas.budget;
+    note.title = r.formulas.ingotBudget;
   }
   const tot = $am('amRecipeTotals');
   if (tot) {
@@ -926,7 +926,7 @@ function amPinned(r) {
 function amRenderCarry(r, env) {
   const t = $am('amCarryTable');
   const w = amPinned(r);
-  const rows = [{ label: 'Player inventory', liters: env.playerInvL, mags: r.playerFits, sec: w ? w.playerSec : Infinity, warn: r.playerFits < 2 }]
+  const rows = [{ label: 'Player inventory', liters: env.playerInvL, mags: r.playerMags, sec: w ? w.playerSec : Infinity, warn: r.playerMags < 2 }]
     .concat(r.cargo.map((c, i) => ({ label: c.label, liters: c.liters, mags: c.mags, sec: w ? w.cargoSec[i] : Infinity, warn: c.mags < 2 })));
   if (t) {
     t.innerHTML = `<thead><tr><th>Container</th><th>Capacity</th><th>Mags</th><th>Damage Stored</th><th>Weight</th><th>1 Gun Fires For</th></tr></thead><tbody>`
@@ -1003,7 +1003,7 @@ function amFiltered() {
 const AM_SORT_KEYS = {
   name: ({ m }) => m.displayName, magDmg: ({ r }) => r.magDmg, vol: ({ r }) => r.vol, mass: ({ r }) => r.mass,
   craft: ({ r }) => r.craft, price: ({ r }) => r.serverPrice, dmgPerSc: ({ r }) => amMetric(r, 'dmgPerSc'), rus: ({ r }) => r.rus,
-  fits: ({ r }) => r.playerFits, drift: ({ r }) => (r.driftPct === null ? -Infinity : Math.abs(r.driftPct)),
+  carried: ({ r }) => r.playerMags, drift: ({ r }) => (r.driftPct === null ? -Infinity : Math.abs(r.driftPct)),
   short: ({ r }) => r.weapons.filter((w) => w.short).length, changes: ({ r }) => r.changes.length,
 };
 
@@ -1039,7 +1039,7 @@ function amRenderOverview() {
   const medSc = amFleetMedian('dmgPerSc');
   t.innerHTML = '<thead><tr>' + th('name', 'Magazine') + th('magDmg', 'Dmg / Mag') + th('vol', 'Volume') + th('mass', 'Mass')
     + th('craft', 'Craft') + th('price', 'Server Price') + th('dmgPerSc', 'Dmg / SC', 'Damage per space credit (higher = cheaper damage)')
-    + th('rus', 'RUs') + th('fits', 'Fits (Player / Small Cargo)', 'Magazines per player inventory / per small cargo container (aim for 2+)')
+    + th('rus', 'RUs') + th('carried', 'Mags Carried (Player / Small Cargo)', 'Magazines per player inventory / per small cargo container (aim for 2+)')
     + th('drift', 'Recipe Drift') + th('short', 'Short Inv.') + th('changes', 'SBC Changes') + '</tr></thead><tbody>'
     + rows.map(({ m, r }) => {
       const shortN = r.weapons.filter((w) => w.short).length;
@@ -1053,7 +1053,7 @@ function amRenderOverview() {
         <td>${cell(m.productionTime, r.craft, ' s')}</td><td>${amFmt(r.serverPrice)}</td>
         <td class="${scOut ? 'am-vs-out' : ''}" title="${amEsc(r.formulas.scPerDmg)} (inverse shown)">${amFmt(dps, 2)}</td>
         <td>${r.rus ? amFmt(r.rus, 1) : '—'}</td>
-        <td class="${r.playerFits < 2 || r.cargo[0].mags < 2 ? 'am-short' : ''}" title="${amFmt(r.vol)} L vs ${amFmt(amEnv().playerInvL)} L player / ${amFmt(r.cargo[0].liters)} L small cargo">${r.playerFits} / ${r.cargo[0].mags}</td>
+        <td class="${r.playerMags < 2 || r.cargo[0].mags < 2 ? 'am-short' : ''}" title="${amFmt(r.vol)} L vs ${amFmt(amEnv().playerInvL)} L player / ${amFmt(r.cargo[0].liters)} L small cargo">${r.playerMags} / ${r.cargo[0].mags}</td>
         <td class="${driftBad ? 'am-short' : ''}">${drift}</td>
         <td class="${shortN ? 'am-short' : ''}">${shortN ? `⚠ ${shortN}` : '—'}</td>
         <td>${r.changes.length ? `${r.changes.length} field${r.changes.length === 1 ? '' : 's'}` : '✓'}</td></tr>`;
@@ -1247,7 +1247,8 @@ function amImportSettings(data) {
   amValueEdits = obj(data.economyValues);
   amAutoInv = obj(data.autoInventorySize);
   const bal = obj(data.balance);
-  for (const k of Object.keys(bal)) if (k in DEFAULT_BALANCE_MATRIX) balanceMatrix[k] = bal[k];
+  const balNow = migrateBalanceMatrix(bal);
+  for (const k of Object.keys(balNow)) if (k in DEFAULT_BALANCE_MATRIX) balanceMatrix[k] = balNow[k];
   amStore(AM_LS.levers, amLevers);
   amStore(AM_LS.values, amValueEdits);
   amStore(AM_LS.autoInv, amAutoInv);
@@ -1381,7 +1382,7 @@ function setupLogisticsEvents() {
     amStore(AM_LS.levers, amLevers);
     amSyncLeverInputs();
     amAfterLeverEdit();
-    showToast('↺ Levers reset to the Ammo Maths defaults for this magazine.');
+    showToast('↺ Levers reset to the Shipped values for this magazine.');
   });
 
   amOn('amAmmoSelect', 'change', (e) => {
@@ -1425,7 +1426,7 @@ function setupLogisticsEvents() {
   target('amTargetVol', 'inputSizeMult', 'sizeMult', (r) => r.baseVol);
   target('amTargetMass', 'inputMassMult', 'massMult', (r) => r.baseMass);
   target('amTargetCraft', 'inputCraftMult', 'craftMult', (r) => r.baseCraft);
-  target('amTargetPrice', 'inputRoleMult', 'roleMult', (r) => r.msrp, amSyncRoleSelect);
+  target('amTargetPrice', 'inputRoleMult', 'roleMult', (r) => r.baselinePrice, amSyncRoleSelect);
   amOn('chkHybridRound', 'change', (e) => amEditLever('hybrid', e.target.checked));
 
   // RU mode (None / Fixed / Auto from price) + fixed quantity

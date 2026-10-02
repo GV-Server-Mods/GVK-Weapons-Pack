@@ -110,19 +110,19 @@
         <h4 class="am-matrix-heading" id="amMatrixAmmo">📦 Ammo Economy & Logistics</h4>
         <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
           <div class="control-item">
-            <label class="control-label" title="Base MSRP of the anchor magazine; every other magazine's MSRP scales with its damage">Anchor Mag MSRP (SC)</label>
-            <input type="number" id="matAmmoAnchorMsrp" class="control-input" value="1500">
+            <label class="control-label" title="Baseline price of the Baseline Magazine; every other magazine's Baseline price scales with its damage">Baseline Magazine Price (SC)</label>
+            <input type="number" id="matBaselineMagPrice" class="control-input" value="1500">
           </div>
           <div class="control-item">
-            <label class="control-label">Anchor Magazine</label>
-            <select id="matAmmoAnchorMag" class="control-input"></select>
+            <label class="control-label" title="The magazine every Baseline is scaled against">Baseline Magazine</label>
+            <select id="matBaselineMag" class="control-input"></select>
           </div>
           <div class="control-item">
-            <label class="control-label" title="MSRP multiplier for HybridRound ammo">Hybrid Discount</label>
+            <label class="control-label" title="Baseline price multiplier for HybridRound ammo">Hybrid Discount</label>
             <input type="number" id="matHybridDiscount" class="control-input" step="0.05" value="0.75">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Share of Adjusted MSRP turned into RUs (÷ CU value) for relic ammo">RU Share</label>
+            <label class="control-label" title="Share of the Recipe Budget turned into RUs (÷ CU value) for relic ammo">RU Share</label>
             <input type="number" id="matRuShare" class="control-input" step="0.05" value="0.75">
           </div>
           <div class="control-item">
@@ -142,30 +142,30 @@
             <input type="number" id="matPlayerInvL" class="control-input" value="4500">
           </div>
         </div>
-        <h4 class="am-matrix-heading">📐 Ammo Baselines <span class="am-muted">(anchored to the Anchor Magazine; each mag's Size × / Mass × / Craft × tweak these)</span></h4>
+        <h4 class="am-matrix-heading">📐 Ammo Baselines <span class="am-muted">(scaled against the Baseline Magazine; each mag's Size × / Mass × / Craft × tweak these)</span></h4>
         <div class="control-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
           <div class="control-item">
-            <label class="control-label" title="Baseline volume of the anchor magazine">Reference Volume (L)</label>
+            <label class="control-label" title="Baseline volume of the Baseline Magazine">Reference Volume (L)</label>
             <input type="number" id="matRefVolL" class="control-input" value="30">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Volume = Reference Volume × (mag damage ÷ anchor damage)^exponent. 1 = linear with damage; lower keeps big ammo compact">Size Curve Exponent</label>
+            <label class="control-label" title="Volume = Reference Volume × (mag damage ÷ Baseline Magazine damage)^exponent. 1 = linear with damage; lower keeps big ammo compact">Size Curve Exponent</label>
             <input type="number" id="matSizeExp" class="control-input" step="0.05" value="0.6">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Baseline mass of the anchor magazine">Reference Mass (kg)</label>
+            <label class="control-label" title="Baseline mass of the Baseline Magazine">Reference Mass (kg)</label>
             <input type="number" id="matRefMassKg" class="control-input" value="30">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Mass = Reference Mass × (mag damage ÷ anchor damage)^exponent. 1 = every magazine carries the same damage per kg at Mass × 1">Mass Curve Exponent</label>
+            <label class="control-label" title="Mass = Reference Mass × (mag damage ÷ Baseline Magazine damage)^exponent. 1 = every magazine carries the same damage per kg at Mass × 1">Mass Curve Exponent</label>
             <input type="number" id="matMassExp" class="control-input" step="0.05" value="1">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Baseline craft time of the anchor magazine">Reference Craft Time (s)</label>
+            <label class="control-label" title="Baseline craft time of the Baseline Magazine">Reference Craft Time (s)</label>
             <input type="number" id="matRefCraftS" class="control-input" value="13">
           </div>
           <div class="control-item">
-            <label class="control-label" title="Craft = Reference Craft Time × (mag damage ÷ anchor damage)^exponent">Craft Curve Exponent</label>
+            <label class="control-label" title="Craft = Reference Craft Time × (mag damage ÷ Baseline Magazine damage)^exponent">Craft Curve Exponent</label>
             <input type="number" id="matCraftExp" class="control-input" step="0.05" value="0.5">
           </div>
         </div>
@@ -184,7 +184,7 @@
         <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 12px;">
           <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">Changes persist locally in browser storage.</span>
           <div style="display: flex; gap: 8px;">
-            <button id="btnResetMatrix" class="btn">↺ Reset Defaults</button>
+            <button id="btnResetMatrix" class="btn" title="Reset the Balance Matrix to its Shipped values">↺ Reset Balance Matrix</button>
             <button id="btnApplyMatrix" class="btn btn-primary">Apply Multipliers</button>
           </div>
         </div>
@@ -2263,8 +2263,8 @@
               </select>
               <button id="btnAmPrev" class="btn btn-sm" title="Previous magazine (All Magazines order and filter)">◀</button>
               <button id="btnAmNext" class="btn btn-sm" title="Next magazine (All Magazines order and filter)">▶</button>
-              <button id="btnResetAmmoLogistics" class="btn btn-sm" title="Reset every lever of this magazine back to its Ammo Maths defaults">↺ Reset All Levers</button>
-              <button class="btn btn-sm am-bm-link" data-bm-focus="amMatrixAmmo" title="Anchor magazine, baseline curves, RU share and ingot values (Balance Matrix)">⚙ Ammo Settings</button>
+              <button id="btnResetAmmoLogistics" class="btn btn-sm" title="Reset every lever of this magazine back to its Shipped values">↺ Reset All Levers</button>
+              <button class="btn btn-sm am-bm-link" data-bm-focus="amMatrixAmmo" title="Baseline Magazine, Baseline curves, RU share and ingot values (Balance Matrix)">⚙ Ammo Settings</button>
             </div>
           </div>
         </div>
@@ -2285,7 +2285,7 @@
               <div class="am-card-title">💥 Damage Basis <span class="am-muted">drives every curve and the price</span></div>
               <div class="am-lever" data-lever="ammoKey">
                 <label class="control-label">Reference Ammo <span class="unit">AmmoDef whose damage counts</span>
-                  <button class="am-lever-reset" data-lever-reset="ammoKey" title="Revert to default">↺</button></label>
+                  <button class="am-lever-reset" data-lever-reset="ammoKey" title="Revert to the Shipped value">↺</button></label>
                 <select id="amAmmoSelect" class="control-input"></select>
               </div>
               <div id="amDamageBasis" class="am-basis"></div>
@@ -2294,7 +2294,7 @@
             <div class="am-twoway-list">
               <div class="am-lever am-twoway" data-lever="sizeMult">
                 <label class="control-label">Volume
-                  <button class="am-lever-reset" data-lever-reset="sizeMult" title="Revert to default">↺</button></label>
+                  <button class="am-lever-reset" data-lever-reset="sizeMult" title="Revert to the Shipped value">↺</button></label>
                 <div class="am-twoway-inputs">
                   <span class="am-op">×</span><input type="number" id="inputSizeMult" class="control-input" step="0.05" min="0.01" value="1" title="Size multiplier">
                   <span class="am-op">→</span><input type="number" id="amTargetVol" class="control-input" step="any" min="0.01" title="Target volume: the multiplier is solved for you">
@@ -2304,7 +2304,7 @@
               </div>
               <div class="am-lever am-twoway" data-lever="massMult">
                 <label class="control-label">Mass
-                  <button class="am-lever-reset" data-lever-reset="massMult" title="Revert to default">↺</button></label>
+                  <button class="am-lever-reset" data-lever-reset="massMult" title="Revert to the Shipped value">↺</button></label>
                 <div class="am-twoway-inputs">
                   <span class="am-op">×</span><input type="number" id="inputMassMult" class="control-input" step="0.1" min="0.01" value="1" title="Mass multiplier (&lt;1 = more damage per kg)">
                   <span class="am-op">→</span><input type="number" id="amTargetMass" class="control-input" step="any" min="0.01" title="Target mass: the multiplier is solved for you">
@@ -2314,7 +2314,7 @@
               </div>
               <div class="am-lever am-twoway" data-lever="craftMult">
                 <label class="control-label">Craft Time
-                  <button class="am-lever-reset" data-lever-reset="craftMult" title="Revert to default">↺</button></label>
+                  <button class="am-lever-reset" data-lever-reset="craftMult" title="Revert to the Shipped value">↺</button></label>
                 <div class="am-twoway-inputs">
                   <span class="am-op">×</span><input type="number" id="inputCraftMult" class="control-input" step="0.05" min="0.01" value="1" title="Craft multiplier">
                   <span class="am-op">→</span><input type="number" id="amTargetCraft" class="control-input" step="1" min="1" title="Target craft time: the multiplier is solved for you">
@@ -2338,15 +2338,15 @@
         <div class="panel">
           <div class="panel-header">
             <h2>💰 Economy & Recipe</h2>
-            <span class="am-muted" id="amAnchorNote"></span>
+            <span class="am-muted" id="amBaselineNote"></span>
           </div>
           <div style="padding: 16px;">
             <div id="amPriceHero" class="am-price-hero"></div>
             <div class="am-lever am-twoway" data-lever="roleMult">
-              <label class="control-label">Server Price <span class="unit">ammo role</span>
-                <button class="am-lever-reset" data-lever-reset="roleMult" title="Revert to default">↺</button></label>
+              <label class="control-label">Server Price <span class="unit">Price Tier</span>
+                <button class="am-lever-reset" data-lever-reset="roleMult" title="Revert to the Shipped value">↺</button></label>
               <div class="am-twoway-inputs">
-                <select id="amRoleSelect" class="control-input am-role-select" title="Role preset: sets the price multiplier">
+                <select id="amRoleSelect" class="control-input am-role-select" title="Price Tier: sets the price multiplier">
                   <option value="1">Standard kinetic · 1.0</option>
                   <option value="1.1">AP / heavy shell / plasma · 1.1</option>
                   <option value="1.2">Railgun · 1.2</option>
@@ -2362,13 +2362,13 @@
             </div>
             <div class="am-lever am-twoway" data-lever="hybrid">
               <label class="am-check"><input type="checkbox" id="chkHybridRound"> Hybrid round: part of each shot is paid in power
-                <button class="am-lever-reset" data-lever-reset="hybrid" title="Revert to default">↺</button></label>
+                <button class="am-lever-reset" data-lever-reset="hybrid" title="Revert to the Shipped value">↺</button></label>
               <div class="am-lever-desc">Discounts the price by <a href="#" class="am-bm-link" data-bm-focus="matHybridDiscount">Balance Matrix → Hybrid Discount</a>.</div>
             </div>
 
             <div class="am-card am-recipe-card">
               <div class="am-card-title am-lever" data-lever="baseComp">🏭 Blueprint Recipe <span class="am-muted" id="amRecipeValueNote"></span>
-                <button class="am-lever-reset" data-lever-reset="baseComp" title="Revert to default composition">↺</button></div>
+                <button class="am-lever-reset" data-lever-reset="baseComp" title="Revert to the Shipped composition">↺</button></div>
               <div id="amBaseCompRU" class="am-lever" data-lever="usesRUs"></div>
               <div class="am-bc-head">
                 <span>Ingot</span><span title="Relative weight; each ingot's share of the recipe value is weight × ingot value">Weight</span>

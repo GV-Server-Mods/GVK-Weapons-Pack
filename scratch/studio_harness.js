@@ -54,9 +54,11 @@ function readData(file) {
   return file.endsWith('.json') ? JSON.parse(s) : JSON.parse(s.replace(/^[\s\S]*?=\s*/, '').replace(/;\s*$/, ''));
 }
 
-/// Loads the studio into a fresh VM context. opts.data = false skips injecting the bundled snapshots.
+/// Loads the studio into a fresh VM context. opts.data = false skips injecting the Snapshot data;
+/// opts.storage seeds localStorage ({ key: string }) so saved-settings migrations can be tested.
 function loadStudio(opts) {
   opts = opts || {};
+  const storage = Object.assign({}, opts.storage);
   const elements = new Map();
   const document = {
     documentElement: { getAttribute() { return null; }, setAttribute() {} },
@@ -68,7 +70,11 @@ function loadStudio(opts) {
   const sandbox = {
     console, setTimeout, clearTimeout, URL, URLSearchParams, document,
     window: { addEventListener() {}, matchMedia: null, location: { href: 'file:///harness', search: '' }, scrollTo() {} },
-    localStorage: { getItem() { return null; }, setItem() {}, removeItem() {} },
+    localStorage: {
+      getItem(k) { return k in storage ? storage[k] : null; },
+      setItem(k, v) { storage[k] = String(v); },
+      removeItem(k) { delete storage[k]; }
+    },
     navigator: { clipboard: { writeText() { return Promise.resolve(); } } },
     prompt() { return null; }, alert() {}, fetch() { return Promise.resolve({ ok: false }); },
     Option: function Option(text, value) { this.text = text; this.value = value; }
@@ -86,6 +92,7 @@ function loadStudio(opts) {
   return {
     sandbox,
     elements,
+    storage,
     run(code) { return vm.runInContext(code, sandbox); },
     call(fn, ...args) { sandbox.__args = args; return vm.runInContext(fn + '(...__args)', sandbox); }
   };

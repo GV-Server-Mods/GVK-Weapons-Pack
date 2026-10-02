@@ -89,4 +89,41 @@ check('CI data check speaks of unresolved magazines', !/phantom/i.test(gateSrc),
 const docWbOld = found(docSection('### Workspace 2', '### Workspace 3') + docSection('## 7. Data Pipeline', '## 8.'), OLD_WORKBENCH.concat([/phantom,/i]));
 check('Design doc Workbench and data-pipeline sections use the new terms', docWbOld.length === 0, docWbOld);
 
+// --- Logistics and the Balance Matrix (#58) ---
+const OLD_LOGISTICS = [/\bMSRP\b/, /anchor/i, /\bFits\b/, /Ammo Maths defaults/i, /official GVK defaults/i, /GVK defaults/i, /(?<!-)\brole\b(?![-="])/]; // lowercase "role" was the Price Tier; capital Role is the weapon's
+seen.clear();
+studio.run(`(() => {
+  populateLogisticsAmmoDropdown();
+  for (const m of amTrackedMags()) {
+    selectLogisticsMagazine(m.subtypeId, true);
+    updateAmmoLogistics({ force: true });
+    __grab();
+  }
+})()`);
+const logMarkup = html.slice(html.indexOf('id="ws-logistics"'), html.indexOf('data-hud="ws-telemetry"'))
+  + html.slice(html.indexOf('id="balanceMatrixModal"'), html.indexOf('<!-- Main Container -->'))
+  + html.slice(html.indexOf('data-hud="ws-logistics"'));
+const toasts = ['app.js', 'ammo_maths.js'].map((f) => fs.readFileSync(studioFile(f), 'utf8')).join('\n')
+  .split(/\r?\n/).filter((l) => /showToast\(/.test(l)).join('\n');
+const logOld = found([...seen].join('\n') + logMarkup + toasts, OLD_LOGISTICS);
+check('Logistics, the Balance Matrix and their toasts show none of the retired terms', logOld.length === 0, logOld);
+const logNew = ['Baseline Magazine', 'Baseline price', 'Recipe Budget', 'Mags Carried', 'Price Tier', 'Shipped'].filter((t) => !([...seen].join('\n') + logMarkup + toasts).includes(t));
+check('Logistics uses Baseline Magazine, Baseline price, Recipe Budget, Mags Carried, Price Tier and Shipped', logNew.length === 0, logNew);
+check('The Anchor EWAR stays named Anchor in the Workbench',
+  /<option value="Anchor">Anchor \(/.test(htmlSection('ws-workbench', 'ws-logistics')) && studio.run(`ewarTypeLabel('Anchor')`) === 'Anchor');
+
+// Settings saved before the rename still load
+const legacyMatrix = { ammoAnchorMsrp: 1800, ammoAnchorMag: 'LargeCalibreAmmo', ruShare: 0.6 };
+const legacyLevers = { NATO_25x184mm: { sizeMult: 1.2, roleMult: 1.1 } };
+const old = loadStudio({ storage: { GVK_BALANCE_MATRIX: JSON.stringify(legacyMatrix), GVK_AMMO_LEVERS: JSON.stringify(legacyLevers) } });
+const mig = old.run(`({ bm: balanceMatrix, env: amEnv(), lev: amLeversFor(amMag('NATO_25x184mm')) })`);
+check('A Balance Matrix saved with the old Anchor keys loads as the Baseline Magazine and its Baseline price',
+  mig.bm.baselineMagPrice === 1800 && mig.bm.baselineMag === 'LargeCalibreAmmo' && mig.bm.ruShare === 0.6 && !('ammoAnchorMsrp' in mig.bm) && !('ammoAnchorMag' in mig.bm), mig.bm);
+check('Lever edits saved before the rename still load', mig.lev.sizeMult === 1.2 && mig.lev.roleMult === 1.1, mig.lev);
+const imp = old.run(`(() => { amImportSettings({ kind: 'gvk-ammo-settings', version: 1, levers: {}, economyValues: {}, autoInventorySize: {},
+  balance: { ammoAnchorMsrp: 2100, ammoAnchorMag: 'NATO_25x184mm' } }); return balanceMatrix; })()`);
+check('An exported settings file with the old Anchor keys still imports', imp.baselineMagPrice === 2100 && imp.baselineMag === 'NATO_25x184mm', imp);
+const docLogOld = found(docSection('### Workspace 3', '## 4. Design Tokens'), OLD_LOGISTICS.filter((t) => String(t) !== '/anchor/i').concat([/anchor mag/i, /Anchor MSRP/]));
+check('Design doc Logistics section uses the new terms', docLogOld.length === 0, docLogOld);
+
 done('Glossary checks');

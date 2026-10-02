@@ -270,35 +270,35 @@ Full canonical WeaponCore round engineering:
 *Replaces the "Ammo Maths" tab of `GVK Ship Weapon Scales Kharak.xlsx` (the pricing and recipe maths are the sheet's; size, mass and craft time use baseline curves × per-magazine multipliers). The logic lives in `ammo_maths.js`, where `computeAmmoMaths(mag, levers, env)` is a pure function shared by the tab, the overview, the Workbench check and the smoke test.*
 
 #### Layout
-- **Header**: magazine dropdown, **◀ ▶** stepper (walks the All Magazines order and filter), Reset All Levers, ⚙ Ammo Settings (opens the Balance Matrix at the ammo section), then status chips: levers edited, recipe drift, SBC fields that change (or ✓ Matches SBC), weapons short on inventory, player fit under 2. Chips jump to the section they summarise. The weapon filter bar (GRID / CLASS / ROLE) is hidden on this tab.
+- **Header**: magazine dropdown, **◀ ▶** stepper (walks the All Magazines order and filter), Reset All Levers, ⚙ Ammo Settings (opens the Balance Matrix at the ammo section), then status chips: levers edited, recipe drift, SBC fields that change (or ✓ Matches SBC), weapons short on inventory, player Mags Carried under 2. Chips jump to the section they summarise. The weapon filter bar (GRID / CLASS / ROLE) is hidden on this tab.
 - **Physical** panel: Damage Basis card, Volume / Mass / Craft Time levers, damage per mag / L / kg (vs the fleet median), Carrying Capacity table.
-- **Economy & Recipe** panel: Server Price headline (MSRP × role, Damage / SC vs median, Recipe Budget, RU cost when non-zero), Server Price lever, Hybrid round, Blueprint Recipe table.
+- **Economy & Recipe** panel: Server Price headline (Baseline price × Price Tier, Damage / SC vs median, Recipe Budget, RU cost when non-zero), Server Price lever, Hybrid round, Blueprint Recipe table.
 - **What Will Change in the SBC**: every SBC field export compares, unchanged rows muted, recipe value total; the per-magazine Blueprints / AmmoMagazines XML is a collapsible section.
 - **Weapons Using This Mag**, then **All Magazines** with the Ammo Comparison chart.
 - **Footer HUD**: Server Price, Damage / SC, Damage / Mag, One Mag Fires For, drift chip, "N mags changed" (filters All Magazines to Changed) and ⚡ Export Changed.
 
 #### 1. Baselines × multipliers (one multiplier per output)
-Every output starts from a baseline curve that scales with the magazine's damage relative to the Anchor Magazine (the Gatling, 3,000 dmg). Each magazine then has one multiplier per output, and a multiplier changes only its own output:
+Every output starts from a baseline curve that scales with the magazine's damage relative to the Baseline Magazine (the Gatling, 3,000 dmg). Each magazine then has one multiplier per output, and a multiplier changes only its own output:
 
 | Output | Baseline (Balance Matrix → Ammo Baselines) | Per-magazine multiplier |
 |---|---|---|
-| Volume | `Reference Volume (30 L) × (dmg ÷ anchor dmg)^Size Exponent (0.6)` | **Size ×** |
-| Mass | `Reference Mass (30 kg) × (dmg ÷ anchor dmg)^Mass Exponent (1)` | **Mass ×** (<1 = more damage per kg) |
-| Craft time | `Reference Craft Time (13 s) × (dmg ÷ anchor dmg)^Craft Exponent (0.5)` | **Craft ×** |
-| Price | `Anchor MSRP (1,500 SC) × (dmg ÷ anchor dmg)` | **Price ×** (ammo type) |
+| Volume | `Reference Volume (30 L) × (dmg ÷ Baseline Magazine dmg)^Size Exponent (0.6)` | **Size ×** |
+| Mass | `Reference Mass (30 kg) × (dmg ÷ Baseline Magazine dmg)^Mass Exponent (1)` | **Mass ×** (<1 = more damage per kg) |
+| Craft time | `Reference Craft Time (13 s) × (dmg ÷ Baseline Magazine dmg)^Craft Exponent (0.5)` | **Craft ×** |
+| Price | `Baseline Magazine Price (1,500 SC) × (dmg ÷ Baseline Magazine dmg)` | **Price ×** (Price Tier) |
 
-- The Size/Mass/Craft multipliers in `studio_overrides.js` were seeded from the live SBC, so the defaults reproduce every tracked magazine's current volume, mass and craft time exactly. Because they're stored, a damage change moves all four outputs along the curves while each magazine keeps its character. A magazine without stored multipliers reads them back from its SBC values.
+- The Size/Mass/Craft multipliers in `studio_overrides.js` were seeded from the Shipped SBC, so the Shipped levers reproduce every tracked magazine's current volume, mass and craft time exactly. Because they're stored, a damage change moves all four outputs along the curves while each magazine keeps its character. A magazine without stored multipliers reads them back from its SBC values.
 - This replaces the sheet's Damage Density, Ammo Density, the Volume Buff and the craft-time override. The size reduction from commit `351d2af` and Plasma's hand-set 72 s are now just those magazines' Size × and Craft × values.
-- **Two-way levers**: Volume, Mass, Craft Time and Server Price each show `× multiplier → target`. Typing a target solves the multiplier (4 decimals) from the curve value; leaving the field shows the value the rounding lands on. The Server Price role dropdown (Standard 1.0, AP 1.1, Railgun 1.2, Missiles 1.25, MIRV 1.5, Custom) sets the multiplier.
-- **Damage Basis** card: Reference Ammo (which AmmoDef supplies the damage per round), `dmg/hit × capacity = dmg/mag` (hover for base / area / fragment parts), the ratio to the Anchor Magazine and the three curve values at that ratio. **✎ Edit damage in Workbench** opens a player weapon firing that AmmoDef with BaseDamage in view; the anchor and curve settings link into the Balance Matrix.
+- **Two-way levers**: Volume, Mass, Craft Time and Server Price each show `× multiplier → target`. Typing a target solves the multiplier (4 decimals) from the curve value; leaving the field shows the value the rounding lands on. The Server Price **Price Tier** dropdown (Standard 1.0, AP 1.1, Railgun 1.2, Missiles 1.25, MIRV 1.5, Custom) sets the multiplier.
+- **Damage Basis** card: Reference Ammo (which AmmoDef supplies the damage per round), `dmg/hit × capacity = dmg/mag` (hover for base / area / fragment parts), the ratio to the Baseline Magazine and the three curve values at that ratio. **✎ Edit damage in Workbench** opens a player weapon firing that AmmoDef with BaseDamage in view; the Baseline Magazine and curve settings link into the Balance Matrix.
 - Other levers:
   - **Hybrid Round**: defaults to the WC `HybridRound` value.
   - **RUs**: one control on the recipe's RU line: **None**, **Fixed** (a typed quantity, seeded with the auto value) or **Auto from price** (relic ammo, RU Share of the budget).
 - **Blueprint Recipe** table: Ingot | Weight | Value % (share of the recipe value) | New | SBC | Δ. Below it: total ingot kg vs magazine mass, ingots the SBC has that the composition dropped, a warning when the new recipe is worth over 2× or under 0.5× the live one, and the salvage estimate.
-- Lever edits are saved per magazine in localStorage (`GVK_AMMO_LEVERS`). Only values that differ from the defaults are stored, and keys from older models are dropped on load.
+- Lever edits are saved per magazine in localStorage (`GVK_AMMO_LEVERS`). Only values that differ from the Shipped values are stored, and keys from older models are dropped on load.
   - An edited lever gets an amber rail and its own ↺ button.
   - Edited mags get a ● in the dropdown and in the overview.
-  - **Reset All Levers** clears the magazine's saved edits.
+  - **Reset All Levers** clears the magazine's saved edits, returning it to its Shipped values.
 
 #### 2. Formula chain
 | Output | Formula |
@@ -307,9 +307,9 @@ Every output starts from a baseline curve that scales with the magazine's damage
 | Volume | baseline × Size ×, rounded to 10 L from 100 L up (whole litres below) |
 | Mass | baseline × Mass ×, same rounding (independent of Size ×) |
 | Craft time | `ROUND(baseline × Craft ×)` |
-| Base MSRP | anchor MSRP ÷ anchor mag damage × magDmg × (hybrid ? Hybrid Discount : 1) |
-| Server Price | 2 significant figures of MSRP × Price × (what the player pays) |
-| Recipe Budget (the sheet's Adjusted MSRP) | MSRP × Price × × Assembler Efficiency, rounded at the **price's** 2nd significant figure. **Recipe budget only**: the server's assembler efficiency multiplier reduces ingot use, so the recipe is inflated to match. Players pay the Server Price. |
+| Baseline price | Baseline Magazine Price ÷ Baseline Magazine damage × magDmg × (hybrid ? Hybrid Discount : 1) |
+| Server Price | 2 significant figures of Baseline price × Price × (what the player pays) |
+| Recipe Budget | Baseline price × Price × × Assembler Efficiency, rounded at the **price's** 2nd significant figure. **Recipe budget only**: the server's assembler efficiency multiplier reduces ingot use, so the recipe is inflated to match. Players pay the Server Price. |
 | SC / Dmg | Adj ÷ magDmg ÷ Assembler Efficiency. The tab shows its inverse, **Damage / SC** (higher = cheaper damage). |
 | RUs | `ROUND(Adj × RU Share ÷ value(GVK_CUs), 1)` for relic ammo |
 | Recipe | `ROUND(baseVal_i ÷ ΣbaseVal × (Adj − RU cost) ÷ value_i, 1)`, where `baseVal_i = ROUND(value_i × weight_i)` |
@@ -318,7 +318,7 @@ Every output starts from a baseline curve that scales with the magazine's damage
 Every output shows its formula, with the live numbers plugged in, as a hover tooltip.
 
 #### 3. Economy settings & values (Server Balance Matrix)
-- **Ammo Economy & Logistics**: Anchor MSRP (1500), Anchor Magazine (the Gatling), Hybrid Discount (0.75), RU Share (0.75), Reload Buffer (2.2), Small and Large Cargo (3,375 L and 421,875 L) and Player Inventory (4,500 L = 1.5 m³ from the GVK Character Changes mod × the server's `InventorySizeMultiplier` of 3), plus the six **Ammo Baselines** (Reference Volume 30 L / Size Exponent 0.6, Reference Mass 30 kg / Mass Exponent 1, Reference Craft Time 13 s / Craft Exponent 0.5). All of these are stored in `balanceMatrix`.
+- **Ammo Economy & Logistics**: Baseline Magazine Price (1500), Baseline Magazine (the Gatling), Hybrid Discount (0.75), RU Share (0.75), Reload Buffer (2.2), Small and Large Cargo (3,375 L and 421,875 L) and Player Inventory (4,500 L = 1.5 m³ from the GVK Character Changes mod × the server's `InventorySizeMultiplier` of 3), plus the six **Ammo Baselines** (Reference Volume 30 L / Size Exponent 0.6, Reference Mass 30 kg / Mass Exponent 1, Reference Craft Time 13 s / Craft Exponent 0.5). All of these are stored in `balanceMatrix` (`baselineMagPrice` and `baselineMag` were `ammoAnchorMsrp` and `ammoAnchorMag`; `migrateBalanceMatrix()` in `app.js` renames them when older saved or exported settings load).
 - **Ingot & Component Values**: this is the sheet's Components → Value column. The defaults are in `data/economy_values.js`, and edits are saved to `GVK_ECONOMY_VALUES`.
 - **Export / Import Ammo Settings**: all levers, value edits, economy settings and Auto-InventorySize flags as a single JSON file (`kind: gvk-ammo-settings`).
 
@@ -334,7 +334,7 @@ Every output shows its formula, with the live numbers plugged in, as a hover too
 - **Carrying Capacity** (Physical panel): player inventory, small and large cargo in one table: capacity, mags, damage stored, weight and how long one gun of the pinned weapon fires from it. Durations read `1m 18s` / `2h 41m`.
 
 #### 5. All Magazines, comparison chart, export
-- **Overview table**: the sheet's side-by-side column view, with SBC → new values, Damage / SC (amber outside ±15% of the median), Fits (player / small cargo; red below 2, the target from commit `351d2af`), recipe drift (Ammo Maths recipe value vs the SBC recipe value; highlighted red above ±5%), a count of weapons with short inventory, and the number of SBC fields that would change. Headers sort; filter chips (All / Changed / Drift / Short Inv / Fits < 2) scope the table and the ◀ ▶ stepper. Click a row to select that magazine.
+- **Overview table**: the sheet's side-by-side column view, with SBC → new values, Damage / SC (amber outside ±15% of the median), Mags Carried (player / small cargo; red below 2, the target from commit `351d2af`), recipe drift (Ammo Maths recipe value vs the SBC recipe value; highlighted red above ±5%), a count of weapons with short inventory, and the number of SBC fields that would change. Headers sort; filter chips (All / Changed / Drift / Short Inv / Mags Carried < 2) scope the table and the ◀ ▶ stepper. Click a row to select that magazine.
 - **Ammo Comparison chart**: ranked bars for damage / SC, damage / L or damage / kg, with a median line. The selected magazine is shown in amber; click a bar to open it.
 - **Export All Changed Mags**: shows an old → new diff for each field, then two outputs, a **Blueprints.sbc** block and an **AmmoMagazines.sbc** block. Both patch the raw source definitions (captured by `source_pipeline.js` as `bpXml` / `sbcXml`), so any tags that weren't edited are kept.
 - **Export All SBC**: one click downloads `GVK_AmmoBlueprints.sbc` and `GVK_AmmoMagazines.sbc`. They are complete `<Definitions>` files covering every tracked magazine, changed or not, with the Ammo Maths values applied through the same patching. They replace the matching definitions in the existing SBCs, so remove those to avoid duplicates.

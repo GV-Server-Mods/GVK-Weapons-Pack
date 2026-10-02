@@ -726,15 +726,15 @@ const DEFAULT_BALANCE_MATRIX = {
   assemblerEff: 3.0,
   scrapYield: 0.25,
   // Ammo Maths economy & logistics (ammo_maths.js)
-  ammoAnchorMsrp: 1500,          // Base MSRP of the anchor magazine; every other mag scales by damage
-  ammoAnchorMag: 'NATO_25x184mm',
-  hybridDiscount: 0.75,          // HybridRound ammo MSRP multiplier
-  ruShare: 0.75,                 // share of Adjusted MSRP converted to RUs (÷ CU value) for relic ammo
+  baselineMagPrice: 1500,        // Baseline price of the Baseline Magazine; every other mag scales by damage
+  baselineMag: 'NATO_25x184mm',
+  hybridDiscount: 0.75,          // HybridRound ammo Baseline price multiplier
+  ruShare: 0.75,                 // share of the Recipe Budget converted to RUs (÷ CU value) for relic ammo
   bufferReloads: 2.2,            // weapon inventory must hold this many reloads (× MagsToLoad)
   smallCargoL: 3375,
   largeCargoL: 421875,
   playerInvL: 4500,              // GVK Character Changes (ws 2657570961): 1.5 m³ × server InventorySizeMultiplier 3
-  // Ammo baselines, each an independent curve of damage: X = refX × (dmg ÷ anchor dmg)^xExp
+  // Ammo baselines, each an independent curve of damage: X = refX × (dmg ÷ Baseline Magazine dmg)^xExp
   refVolL: 30,
   sizeExp: 0.6,
   refMassKg: 30,
@@ -745,11 +745,22 @@ const DEFAULT_BALANCE_MATRIX = {
 
 let balanceMatrix = { ...DEFAULT_BALANCE_MATRIX };
 
+// Balance Matrix keys renamed to the glossary terms; settings saved or exported under the old names still load
+const BALANCE_MATRIX_RENAMES = { ammoAnchorMsrp: 'baselineMagPrice', ammoAnchorMag: 'baselineMag' };
+function migrateBalanceMatrix(saved) {
+  const out = { ...saved };
+  for (const [oldKey, newKey] of Object.entries(BALANCE_MATRIX_RENAMES)) {
+    if (oldKey in out && !(newKey in out)) out[newKey] = out[oldKey];
+    delete out[oldKey];
+  }
+  return out;
+}
+
 // Load stored balance matrix if present
 try {
   const savedMatrix = localStorage.getItem('GVK_BALANCE_MATRIX');
   if (savedMatrix) {
-    balanceMatrix = { ...DEFAULT_BALANCE_MATRIX, ...JSON.parse(savedMatrix) };
+    balanceMatrix = { ...DEFAULT_BALANCE_MATRIX, ...migrateBalanceMatrix(JSON.parse(savedMatrix)) };
   }
 } catch (e) {
   console.warn("Using default balance matrix:", e);
@@ -6462,7 +6473,7 @@ function setupModalEvents() {
       localStorage.removeItem('GVK_BALANCE_MATRIX');
       updateCombatTelemetry();
       updateAmmoLogistics();
-      showToast("↺ Reset Balance Matrix to official GVK defaults.");
+      showToast("↺ Balance Matrix reset to its Shipped values.");
     });
   }
 
