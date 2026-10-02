@@ -360,10 +360,10 @@ namespace Scripts
             }
         }*/
 		
-        private AmmoDef Missiles_Torpedo_Shrapnel => new AmmoDef // Your ID, for slotting into the Weapon CS
+        private AmmoDef Missiles_Torpedo_Fragment => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
-            AmmoRound = "Missiles_Torpedo_Shrapnel", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            AmmoRound = "Missiles_Torpedo_Fragment", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.1f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
             BaseDamage = 1f, // Direct damage; one steel plate is worth 100.

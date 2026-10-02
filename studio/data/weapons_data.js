@@ -3499,7 +3499,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -3655,7 +3655,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -3811,7 +3811,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -3967,7 +3967,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -4123,7 +4123,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -4279,7 +4279,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Ballistics_Flak",
-      "Ballistics_Flak_Shrapnel",
+      "Ballistics_Flak_Fragment",
       "Ballistics_Flak_HE"
     ],
     "helpers": {
@@ -16822,7 +16822,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Siege",
-      "Missiles_Siege_Shrapnel"
+      "Missiles_Siege_Fragment"
     ],
     "helpers": {
       "targeting": null,
@@ -16982,7 +16982,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Siege",
-      "Missiles_Siege_Shrapnel"
+      "Missiles_Siege_Fragment"
     ],
     "helpers": {
       "targeting": null,
@@ -17142,7 +17142,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Torpedo",
-      "Missiles_Torpedo_Shrapnel"
+      "Missiles_Torpedo_Fragment"
     ],
     "helpers": {
       "targeting": null,
@@ -17302,7 +17302,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Torpedo",
-      "Missiles_Torpedo_Shrapnel"
+      "Missiles_Torpedo_Fragment"
     ],
     "helpers": {
       "targeting": null,
@@ -17462,7 +17462,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Torpedo",
-      "Missiles_Torpedo_Shrapnel"
+      "Missiles_Torpedo_Fragment"
     ],
     "helpers": {
       "targeting": null,
@@ -17622,7 +17622,7 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "allAmmos": [
       "Missiles_Torpedo",
-      "Missiles_Torpedo_Shrapnel"
+      "Missiles_Torpedo_Fragment"
     ],
     "helpers": {
       "targeting": null,

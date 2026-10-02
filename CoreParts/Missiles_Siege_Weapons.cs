@@ -159,7 +159,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Missiles_Siege,
-				Missiles_Siege_Shrapnel,
+				Missiles_Siege_Fragment,
             },
             Animations = AryxMissileBatteryAnims,
         };

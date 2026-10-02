@@ -8,11 +8,11 @@ const studio = loadStudio();
 const r = studio.run(`(() => {
   const r = {};
   const noAoe = { enable: false, byBlockHit: { enable: false }, endOfLife: { enable: false }, areaEffect: { areaEffect: false } };
-  ammosDb.Ballistics_Flak_Shrapnel = { name: 'Ballistics_Flak_Shrapnel', ammoRound: 'Ballistics_Flak_Shrapnel', baseDamage: 400, fragment: null, areaOfDamage: noAoe };
+  ammosDb.Ballistics_Flak_Fragment = { name: 'Ballistics_Flak_Fragment', ammoRound: 'Ballistics_Flak_Fragment', baseDamage: 400, fragment: null, areaOfDamage: noAoe };
   const flak = {
     name: 'Ballistics_Flak', ammoRound: 'Proximity Flak', terminalName: 'Proximity Flak', ammoMagazine: 'MediumCalibreAmmo',
     baseDamage: 1000, damageScales: { lightArmor: -1, heavyArmor: -1, characters: 0.1, healthHitModifier: 10, nonArmor: -1 },
-    fragment: { enable: true, ammoRound: 'Ballistics_Flak_Shrapnel', fragments: 30, degrees: 45, reverse: false, dropVelocity: false },
+    fragment: { enable: true, ammoRound: 'Ballistics_Flak_Fragment', fragments: 30, degrees: 45, reverse: false, dropVelocity: false },
     areaOfDamage: { enable: true, byBlockHit: { enable: false }, endOfLife: { enable: true, damage: 1, radius: 101, depth: 1, falloff: 'Pooled' }, areaEffect: { areaEffect: false, damage: 0, radius: 0 } },
     trajectory: { desiredSpeed: 900, maxTrajectory: 2000 }
   };
@@ -22,11 +22,11 @@ const r = studio.run(`(() => {
     ewar: { enable: true, type: 'AntiSmartv2', mode: 'Field', strength: 99, radius: 700, duration: 1000 },
     trajectory: { desiredSpeed: 100, maxTrajectory: 400 }
   };
-  const shrap = { name: 'Missiles_Torpedo_Shrapnel', ammoRound: 'Missiles_Torpedo_Shrapnel', baseDamage: 1, fragment: null, areaOfDamage: noAoe,
+  const shrap = { name: 'Missiles_Torpedo_Fragment', ammoRound: 'Missiles_Torpedo_Fragment', baseDamage: 1, fragment: null, areaOfDamage: noAoe,
     ewar: { enable: true, type: 'Offense', mode: 'Effect', strength: 100000, radius: 100, duration: 2400 } };
-  ammosDb.Missiles_Torpedo_Shrapnel = shrap;
+  ammosDb.Missiles_Torpedo_Fragment = shrap;
   const torpedo = { name: 'Missiles_Torpedo', ammoRound: 'Missiles_Torpedo', baseDamage: 100,
-    fragment: { enable: true, ammoRound: 'Missiles_Torpedo_Shrapnel', fragments: 1, degrees: 0.1 },
+    fragment: { enable: true, ammoRound: 'Missiles_Torpedo_Fragment', fragments: 1, degrees: 0.1 },
     areaOfDamage: { enable: true, byBlockHit: { enable: false }, endOfLife: { enable: true, damage: 1500000, radius: 25, depth: 25, falloff: 'Pooled' }, areaEffect: { areaEffect: false } } };
 
   const dFlak = getAmmoDamageDetailed(flak);

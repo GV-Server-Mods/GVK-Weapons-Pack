@@ -1054,7 +1054,7 @@
     },
     "fragment": {
       "enable": true,
-      "ammoRound": "Ballistics_Flak_Shrapnel",
+      "ammoRound": "Ballistics_Flak_Fragment",
       "fragments": 30,
       "degrees": 45,
       "reverse": false,
@@ -1161,13 +1161,13 @@
       }
     }
   },
-  "Ballistics_Flak_Shrapnel": {
-    "name": "Ballistics_Flak_Shrapnel",
+  "Ballistics_Flak_Fragment": {
+    "name": "Ballistics_Flak_Fragment",
     "base_name": null,
     "file": "Ballistics_Flak_Ammos.cs",
     "ammoMagazine": "Energy",
-    "ammoRound": "Ballistics_Flak_Shrapnel",
-    "terminalName": "Ballistics_Flak_Shrapnel",
+    "ammoRound": "Ballistics_Flak_Fragment",
+    "terminalName": "Ballistics_Flak_Fragment",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -5329,176 +5329,6 @@
       }
     }
   },
-  "Lasers_Lightning": {
-    "name": "Lasers_Lightning",
-    "base_name": null,
-    "file": "Lasers_Heavy_Ammos.cs",
-    "ammoMagazine": "Energy",
-    "ammoRound": "Lasers_Lightning",
-    "terminalName": "Lasers_Lightning",
-    "isBeam": true,
-    "beams": {
-      "enable": true,
-      "virtualBeams": false
-    },
-    "baseDamage": 250,
-    "baseDamageCutoff": 0,
-    "mass": 0,
-    "health": 0,
-    "backKickForce": 0,
-    "hardPointUsable": true,
-    "npcSafe": true,
-    "noGridOrArmorScaling": false,
-    "hybridRound": false,
-    "energyCost": 0.52,
-    "energyMagazineSize": 0,
-    "decayPerShot": 0,
-    "heatPerShot": 0,
-    "heatModifier": 1,
-    "allowNegativeHeatModifier": false,
-    "heatNeededToFire": 0,
-    "shape": "LineShape",
-    "diameter": -1,
-    "objectsHit": {
-      "maxObjectsHit": 0,
-      "countBlocks": false,
-      "skipBlocksForAOE": false
-    },
-    "ewar": {
-      "enable": false,
-      "type": "AntiSmart",
-      "mode": "Effect",
-      "strength": 0,
-      "radius": 0,
-      "duration": 0,
-      "maxStacks": 0,
-      "stackDuration": false,
-      "deplete": false
-    },
-    "pattern": {
-      "enable": false,
-      "mode": "Never",
-      "patterns": [],
-      "triggerChance": 1,
-      "random": false,
-      "randomMin": 0,
-      "randomMax": 0,
-      "skipParent": false,
-      "patternSteps": 0
-    },
-    "fragment": {
-      "enable": true,
-      "ammoRound": "Lasers_Laser_Small_Shrapnel",
-      "fragments": 1,
-      "degrees": 0,
-      "reverse": false,
-      "dropVelocity": false,
-      "ignoreArming": true,
-      "radial": 0,
-      "offset": 0,
-      "maxChildren": 0,
-      "armWhenHit": false,
-      "timedSpawns": {
-        "enable": false,
-        "startTime": 0,
-        "interval": 0,
-        "maxSpawns": 1,
-        "proximity": 1000,
-        "parentDies": true,
-        "pointAtTarget": true,
-        "pointType": "Predict",
-        "directAimCone": 0,
-        "groupSize": 5,
-        "groupDelay": 120
-      }
-    },
-    "areaOfDamage": {
-      "enable": false,
-      "byBlockHit": {
-        "enable": false,
-        "damage": 0,
-        "radius": 0,
-        "depth": 0,
-        "maxAbsorb": 0,
-        "falloff": "Legacy",
-        "shape": "Round",
-        "minArmingTime": 0,
-        "armOnlyOnHit": false
-      },
-      "endOfLife": {
-        "enable": false,
-        "damage": 0,
-        "radius": 0,
-        "depth": 0,
-        "maxAbsorb": 0,
-        "falloff": "Legacy",
-        "shape": "Round",
-        "minArmingTime": 0,
-        "armOnlyOnHit": false
-      },
-      "areaEffect": {
-        "areaEffect": false,
-        "damage": 0,
-        "radius": 0
-      }
-    },
-    "trajectory": {
-      "desiredSpeed": 0,
-      "maxTrajectory": 1500,
-      "maxLifeTime": 0,
-      "accelPerSec": 0,
-      "speedVariance": 0,
-      "rangeVariance": 0,
-      "guidance": "None",
-      "steers": false,
-      "desiredElevation": 0
-    },
-    "damageScales": {
-      "shield": {
-        "Modifier": 1,
-        "Type": "Default",
-        "BypassModifier": -1
-      },
-      "armorArmor": -1,
-      "lightArmor": 0.8,
-      "heavyArmor": 0.6,
-      "nonArmor": -1,
-      "characters": 0.25,
-      "healthHitModifier": -1,
-      "maxIntegrity": 0,
-      "falloffDistance": 0,
-      "falloffMinMult": 1,
-      "damageType": "Energy",
-      "gridLarge": -1,
-      "gridSmall": 0.75,
-      "cutoffArmorArmor": -1,
-      "cutoffLightArmor": -1,
-      "cutoffHeavyArmor": -1,
-      "cutoffNonArmor": -1,
-      "cutoffGridLarge": -1,
-      "cutoffGridSmall": -1
-    },
-    "approachesRef": null,
-    "audio": {
-      "travelSound": "",
-      "hitSound": "",
-      "shieldHitSound": ""
-    },
-    "graphics": {
-      "visualProbability": 1,
-      "tracer": {
-        "enable": true,
-        "length": 5,
-        "width": 0.15,
-        "color": {
-          "r": 30,
-          "g": 25,
-          "b": 100,
-          "a": 1
-        }
-      }
-    }
-  },
   "Lasers_Laser_Light_LG": {
     "name": "Lasers_Laser_Light_LG",
     "base_name": null,
@@ -6554,7 +6384,7 @@
     },
     "fragment": {
       "enable": true,
-      "ammoRound": "Missiles_Siege_Shrapnel",
+      "ammoRound": "Missiles_Siege_Fragment",
       "fragments": 10,
       "degrees": 20,
       "reverse": false,
@@ -6661,13 +6491,13 @@
       }
     }
   },
-  "Missiles_Siege_Shrapnel": {
-    "name": "Missiles_Siege_Shrapnel",
+  "Missiles_Siege_Fragment": {
+    "name": "Missiles_Siege_Fragment",
     "base_name": null,
     "file": "Missiles_Siege_Ammos.cs",
     "ammoMagazine": "Energy",
-    "ammoRound": "Missiles_Siege_Shrapnel",
-    "terminalName": "Missiles_Siege_Shrapnel",
+    "ammoRound": "Missiles_Siege_Fragment",
+    "terminalName": "Missiles_Siege_Fragment",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -6993,13 +6823,13 @@
       }
     }
   },
-  "Missiles_Torpedo_Shrapnel": {
-    "name": "Missiles_Torpedo_Shrapnel",
+  "Missiles_Torpedo_Fragment": {
+    "name": "Missiles_Torpedo_Fragment",
     "base_name": null,
     "file": "Missiles_Torpedo_Ammos.cs",
     "ammoMagazine": "Energy",
-    "ammoRound": "Missiles_Torpedo_Shrapnel",
-    "terminalName": "Missiles_Torpedo_Shrapnel",
+    "ammoRound": "Missiles_Torpedo_Fragment",
+    "terminalName": "Missiles_Torpedo_Fragment",
     "isBeam": true,
     "beams": {
       "enable": true,

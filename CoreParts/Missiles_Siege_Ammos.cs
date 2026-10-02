@@ -57,7 +57,7 @@ namespace Scripts
             },
 			Fragment = new FragmentDef 
 			{
-                AmmoRound = "Missiles_Siege_Shrapnel", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "Missiles_Siege_Fragment", // AmmoRound field of the ammo to spawn.
                 Fragments = 10, // Number of projectiles to spawn.
                 Degrees = 20, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -345,10 +345,10 @@ namespace Scripts
             },
         };	  
 
-        private AmmoDef Missiles_Siege_Shrapnel => new AmmoDef
+        private AmmoDef Missiles_Siege_Fragment => new AmmoDef
         {
             AmmoMagazine = "Energy",
-            AmmoRound = "Missiles_Siege_Shrapnel",
+            AmmoRound = "Missiles_Siege_Fragment",
             BaseDamage = 1f,
 			EnergyCost = 0.1f,
 			EnergyMagazineSize = 1, // For energy weapons, how many shots to fire before reloading.

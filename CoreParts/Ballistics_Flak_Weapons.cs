@@ -151,7 +151,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Ballistics_Flak,
-				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_Fragment,
 				Ballistics_Flak_HE,
             },
         };
@@ -231,7 +231,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Ballistics_Flak,
-				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_Fragment,
 				Ballistics_Flak_HE,
             },
         };
@@ -318,7 +318,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Ballistics_Flak,
-				Ballistics_Flak_Shrapnel,
+				Ballistics_Flak_Fragment,
 				Ballistics_Flak_HE,
             },
         };

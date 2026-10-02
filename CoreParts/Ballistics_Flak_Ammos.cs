@@ -55,7 +55,7 @@ namespace Scripts
             },
             Fragment = new FragmentDef 
 			{
-                AmmoRound = "Ballistics_Flak_Shrapnel", // AmmoRound field of the ammo to spawn.
+                AmmoRound = "Ballistics_Flak_Fragment", // AmmoRound field of the ammo to spawn.
                 Fragments = 30, // Number of projectiles to spawn.
                 Degrees = 45, // Cone in which to randomize direction of spawned projectiles.
                 Reverse = false, // Spawn projectiles backward instead of forward.
@@ -181,10 +181,10 @@ namespace Scripts
             }, // Don't edit below this line
         };
 
-        private AmmoDef Ballistics_Flak_Shrapnel => new AmmoDef
+        private AmmoDef Ballistics_Flak_Fragment => new AmmoDef
         {
             AmmoMagazine = "Energy",
-            AmmoRound = "Ballistics_Flak_Shrapnel",
+            AmmoRound = "Ballistics_Flak_Fragment",
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 400f,

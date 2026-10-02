@@ -113,7 +113,7 @@ namespace Scripts
             Ammos = new[] 
 			{
 				Missiles_Torpedo,
-                Missiles_Torpedo_Shrapnel,
+                Missiles_Torpedo_Fragment,
             },
             Animations = Crusader_Fire,
         };
@@ -215,7 +215,7 @@ namespace Scripts
             },
             Ammos = new[] {
 				Missiles_Torpedo,
-                Missiles_Torpedo_Shrapnel,
+                Missiles_Torpedo_Fragment,
             },
             Animations = Crusader_Fire_Small,
             //Upgrades = UpgradeModules,
