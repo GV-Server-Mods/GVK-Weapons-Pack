@@ -606,11 +606,13 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const a0 = ammos[usable[0]];
   const grid = (block && block.cubeSize) || 'Large';
   const partName = w.name;
-  const isTurret = (block && block.xsiType && block.xsiType.indexOf('Turret') >= 0)
+  // Gimbals are Fixed weapons (GLOSSARY.md) even when the block is built on a turret base, like the 25mm Gatling Gimbal
+  const isGimbal = /Gimbal/i.test((block && block.displayName) || partName || ov.name || '');
+  const isTurret = !isGimbal && ((block && block.xsiType && block.xsiType.indexOf('Turret') >= 0)
     || (block && /Turret/i.test(block.displayName || ''))
     || /Turret/i.test(partName || '')
     || /Turret/i.test(ov.name || '')
-    || (mp.AzimuthPartId && mp.AzimuthPartId !== 'None' && !/Gimbal/i.test((block && block.displayName) || partName || ov.name || ''));
+    || (mp.AzimuthPartId && mp.AzimuthPartId !== 'None'));
   const type = isTurret ? 'Turret' : 'Fixed';
   const id = ov.id || (grid[0] + '__' + sub);
   const mag = a0 && magByKey[a0.ammoMagazine];

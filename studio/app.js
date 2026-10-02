@@ -2318,19 +2318,21 @@ function getMunitionTerrainClearance(ammo) {
 }
 
 /// <summary>
-/// <summary>
-/// Extracts turret elevation arc, flags restricted gimbal cones, and depression status.
+/// Extracts the firing arc and depression. A Turret under 350° of azimuth is a limited-arc Turret; a Fixed weapon
+/// that can steer within a narrower cone is a Gimbal (GLOSSARY.md).
 /// </summary>
 function getWeaponArcSummary(weapon) {
+  const minAz = weapon && weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
+  const maxAz = weapon && weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
+  const azSpan = Math.abs(maxAz - minAz);
   if (!weapon || weapon.type !== 'Turret') {
-    return { isTurret: false, isGimbal: false, text: 'Fixed (0°)', hasDepression: false, depressionLabel: 'Fixed Forward', note: 'Rigid forward mount' };
+    const isGimbal = !!weapon && azSpan < 350 && (weapon.rotateRate > 0 || weapon.elevateRate > 0);
+    return { isTurret: false, isGimbal, isLimitedArc: false, minAz, maxAz, text: 'Fixed (0°)', hasDepression: false, depressionLabel: 'Fixed Forward',
+      note: isGimbal ? `Gimbal (±${Math.round(azSpan / 2)}° cone)` : 'Fires along block facing' };
   }
-  const minAz = weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
-  const maxAz = weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
   const minEl = weapon.minElevation !== undefined ? weapon.minElevation : -15;
   const maxEl = weapon.maxElevation !== undefined ? weapon.maxElevation : 45;
-  const azSpan = Math.abs(maxAz - minAz);
-  const isGimbal = azSpan < 350;
+  const isLimitedArc = azSpan < 350;
 
   const hasGoodDepression = minEl <= -10;
   const isZeroDepression = minEl >= 0;
@@ -2343,21 +2345,23 @@ function getWeaponArcSummary(weapon) {
 
   const arcText = `${minEl > 0 ? '+' : ''}${minEl}° to +${maxEl}°`;
 
-  if (isGimbal) {
+  if (isLimitedArc) {
     const halfAz = Math.round(azSpan / 2);
     return {
       isTurret: true,
-      isGimbal: true,
+      isGimbal: false,
+      isLimitedArc: true,
       minAz, maxAz, minEl, maxEl,
       text: arcText,
       hasDepression: hasGoodDepression,
       depressionLabel,
-      note: `Gimbal Cone (±${halfAz}° Azimuth)`
+      note: `Limited-arc Turret (±${halfAz}° Azimuth)`
     };
   }
   return {
     isTurret: true,
     isGimbal: false,
+    isLimitedArc: false,
     minAz, maxAz, minEl, maxEl,
     text: arcText,
     hasDepression: hasGoodDepression,
@@ -2535,7 +2539,7 @@ function updateUniversalBanner() {
     badgeRole.style.display = 'inline-flex';
   }
 
-  // Firing Arc & Gimbal Badge / Good Depression Badge
+  // Firing Arc Badge (amber for a limited-arc Turret) / Good Depression Badge
   const arcInfo = getWeaponArcSummary(activeWeapon);
   const metaSubtitle = document.getElementById('weaponMetaSubtitle');
   if (metaSubtitle) {
@@ -2544,7 +2548,7 @@ function updateUniversalBanner() {
   }
   if (badgeArc) {
     badgeArc.innerHTML = arcInfo.text;
-    badgeArc.className = `badge pillar-header-badge ${arcInfo.isGimbal ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
+    badgeArc.className = `badge pillar-header-badge ${arcInfo.isLimitedArc ? 'badge-amber' : (arcInfo.hasDepression ? 'badge-green' : '')}`;
     badgeArc.style.display = activeWeapon.type === 'Turret' ? 'inline-flex' : 'none';
   }
   if (badgeDepression) {
@@ -4211,7 +4215,8 @@ function updateCombatTelemetry() {
     }
   }
   if (outTraverseAzEl) {
-    outTraverseAzEl.textContent = isFixedMount ? 'Rigid Forward Mount' : (arcInfo.isGimbal ? 'Gimbal Traverse Cone' : 'Dual-Axis Turret Slew');
+    outTraverseAzEl.textContent = isFixedMount ? 'Fires Along Block Facing'
+      : arcInfo.isGimbal ? 'Gimbal Steering Cone' : (arcInfo.isLimitedArc ? 'Limited-Arc Turret Slew' : 'Dual-Axis Turret Slew');
   }
 
   // Header badges for Pillar 2 (Depression & Recoil)
@@ -4355,7 +4360,7 @@ function updateCombatTelemetry() {
   }
   if (outAimingToleranceDetail) {
     if (!isTrackingWeapon && !activeWeapon.rotateRate) {
-      outAimingToleranceDetail.textContent = 'Rigid mount (Boresight only)';
+      outAimingToleranceDetail.textContent = 'Fixed (boresight only)';
     } else if (addTolToTrack) {
       outAimingToleranceDetail.textContent = `Tracks to cone edge (±${aimTol.toFixed(1)}°)`;
     } else if (aimTol <= 0.5) {
@@ -5158,8 +5163,11 @@ function updateRadarQuickCompare() {
   // Pillar 2: Handling & Reach Badges
   const activeArc = getWeaponArcSummary(activeWeapon);
   const benchArc = benchmarkWeapon ? getWeaponArcSummary(benchmarkWeapon) : null;
-  const mountLabel = (arc, w) => arc ? (!arc.isTurret ? 'Fixed (Steer rover)' : (arc.isGimbal ? `🎯 Gimbal (±${Math.round(Math.abs(arc.maxAz - arc.minAz)/2)}°)` : '🔄 360° Turret')) : '—';
-  setPair('qcMountActive', 'qcMountBench', mountLabel(activeArc, activeWeapon), mountLabel(benchArc, benchmarkWeapon));
+  const halfArc = (arc) => Math.round(Math.abs(arc.maxAz - arc.minAz) / 2);
+  const mountLabel = (arc) => !arc ? '—'
+    : !arc.isTurret ? (arc.isGimbal ? `Fixed · 🎯 Gimbal (±${halfArc(arc)}°)` : 'Fixed (Steer rover)')
+    : arc.isLimitedArc ? `🎯 Limited-arc Turret (±${halfArc(arc)}°)` : '🔄 360° Turret';
+  setPair('qcMountActive', 'qcMountBench', mountLabel(activeArc), mountLabel(benchArc));
 
   const depLabel = (arc) => arc ? (!arc.isTurret ? 'Fixed Forward' : arc.hasDepression ? `📐 ${arc.minEl}° (Good Depression)` : (arc.minEl >= 0 ? `0° (Relentlessly Optimistic)` : `${arc.minEl}°`)) : '—';
   setPair('qcDepressionActive', 'qcDepressionBench', depLabel(activeArc), depLabel(benchArc));

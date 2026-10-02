@@ -107,7 +107,7 @@ const m = studio.run(`(() => {
     selectWeapon(w.id);
     updateCombatTelemetry();
     const row = [document.getElementById('wRotateRate').value, document.getElementById('wElevateRate').value, text('outTraverseDeg'), text('outTraverseAzEl')];
-    if (String(row[0]) !== '0' || String(row[1]) !== '0' || row[2] !== 'Fixed Mount' || row[3] !== 'Rigid Forward Mount') bad.push(w.subtypeId + ': ' + row.join(' | '));
+    if (String(row[0]) !== '0' || String(row[1]) !== '0' || row[2] !== 'Fixed Mount' || row[3] !== 'Fires Along Block Facing') bad.push(w.subtypeId + ': ' + row.join(' | '));
   }
   // Quick compare and comparison table: a fixed gun against a turret, then the turret against itself
   const gun = weaponsDb.find((x) => x.subtypeId === 'SmallGatlingGun');
@@ -125,7 +125,7 @@ const m = studio.run(`(() => {
   const self = trackRow();
   return { bad, fixedCount, fixedVsTurret, self, metricsTrack: calculateWeaponMetrics(gun).tracking };
 })()`);
-check(`Fixed guns with no RotateRate/ElevateRate show 0 and "Fixed Mount", not a 51.6°/s turret slew (${m.fixedCount} guns)`,
+check(`Fixed guns with no RotateRate/ElevateRate show 0, "Fixed Mount" and "Fires Along Block Facing", not a 51.6°/s turret slew (${m.fixedCount} guns)`,
   m.fixedCount > 20 && m.bad.length === 0, m.bad.slice(0, 6));
 check('Quick compare reads "Fixed Forward" depression on a fixed gun (no "undefined°")',
   m.fixedVsTurret.dep === 'Fixed Forward' && !/undefined/.test(m.fixedVsTurret.dep + m.fixedVsTurret.mount), m.fixedVsTurret);
@@ -133,5 +133,35 @@ check('Comparison table tracking rate for a fixed gun is 0.0 °/s, same as its r
   !!m.fixedVsTurret.track && m.fixedVsTurret.track[0] === '0.0 °/s' && m.metricsTrack === 0, m.fixedVsTurret.track);
 check('A turret compared with itself shows the same tracking rate on both sides (+0.0%)',
   !!m.self && m.self[0] === m.self[1] && m.self[2] === '+0.0%', m.self);
+
+// --- Limited-arc Turrets vs Gimbals ---
+const g = studio.run(`(() => {
+  const text = (id) => document.getElementById(id).textContent;
+  const readout = (w) => {
+    selectWeapon(w.id);
+    updateCombatTelemetry();
+    updateRadarQuickCompare();
+    const arc = getWeaponArcSummary(w);
+    return { sub: w.subtypeId, type: w.type, pd: !!w.pdProjectiles, gimbal: arc.isGimbal, limited: arc.isLimitedArc,
+      mount: text('qcMountActive'), azEl: text('outTraverseAzEl'), role: getWeaponRole(w).id };
+  };
+  const base = weaponsDb.find((x) => x.subtypeId === 'GVK_AvengerGatlingTurret');
+  const narrow = Object.assign({}, base, { id: 'TEST_NarrowTurret', subtypeId: 'TEST_NarrowTurret', minAzimuth: -60, maxAzimuth: 60 });
+  weaponsDb.push(narrow);
+  const out = {
+    gimbals: weaponsDb.filter((x) => /Gimbal/.test(x.displayName || '')).map(readout),
+    narrow: readout(narrow), full: readout(base)
+  };
+  weaponsDb.pop();
+  return out;
+})()`);
+check('A Turret with under 350° of traverse reads as a limited-arc Turret, never Gimbal',
+  g.narrow.limited && !g.narrow.gimbal && /Limited-arc Turret/.test(g.narrow.mount) && !/Gimbal/i.test(g.narrow.mount + g.narrow.azEl), g.narrow);
+check('A full-traverse Turret is not limited-arc', !g.full.limited && /360° Turret/.test(g.full.mount), g.full);
+check(`Gimbal blocks (25mm Gatling Gimbal, XFEL-H Gimbal) read as Fixed Gimbals, not Turrets or PD (${g.gimbals.length})`,
+  g.gimbals.length >= 4 && g.gimbals.every((x) => x.type === 'Fixed' && x.gimbal && !x.limited && !x.pd && x.role !== 'pd' && /^Fixed/.test(x.mount) && /Gimbal/.test(x.azEl)), g.gimbals);
+const doc = fs.readFileSync(require('path').join(__dirname, '..', 'docs', 'WEAPON_STUDIO_DESIGN_DOCUMENT.md'), 'utf8');
+const pdLine = doc.split(/\r?\n/).find((l) => l.includes('[ 📡 Point Defense ]')) || '';
+check('Design doc no longer lists gimbals as point defense', pdLine && !/turrets\/Gimbal/i.test(pdLine) && /Point Defense needs a Turret/.test(pdLine), pdLine);
 
 done('Catalog checks');

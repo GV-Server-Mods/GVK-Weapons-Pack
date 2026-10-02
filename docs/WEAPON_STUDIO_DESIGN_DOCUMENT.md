@@ -84,7 +84,7 @@ graph TD
   - `[ 🔬 Circuitry: 1 (>2km) ]`: GVK rule gate ensuring any weapon engaging beyond $2\text{km}$ mandates `PrototechCircuitry`.
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
   - `[ ⚔️ NPC Variant ]`: Flags non-player enemy armaments (e.g. Harbinger Cruiser, Gaalsien Raiders).
-  - `[ 📡 Point Defense ]`: Flags weapons whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak, Gatling turrets/Gimbal/Avenger, AMS PD lasers, light laser turrets). These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
+  - `[ 📡 Point Defense ]`: Flags weapons whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak turrets, Gatling turrets including the Avenger, AMS lasers, light laser turrets). Point Defense needs a Turret, so Fixed weapons and Gimbals never carry it. These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
   - `[ 🥊 Brawler ]`: the weapon's **Role**, judged from the weapon and its loaded ammo by `getAutomatedWeaponRole()` (`WEAPON_ROLES` in `app.js`): Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery or Demolition Charge. The 1v1 quick compare shows the same Role for both weapons.
 
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
