@@ -22,37 +22,62 @@ const sameImage = (a, b) => !missing.length && hash(bySub[a].icon) === hash(bySu
 check('Hydra Turret [Large] and CIWS Turret [Large] no longer borrow the Griffin / Sentinel icons',
   !sameImage('LargeMissileTurret', 'GVK_GriffinMissileTurret') && !sameImage('LargeGatlingTurret', 'SentinelTurret'));
 
-// --- Class filter bar ---
+// --- Class filter bar (the four glossary Classes) ---
 const f = studio.run(`(() => {
   const list = getFilterableWeapons();
-  const declared = WEAPON_CATEGORIES.flatMap((c) => c.types);
-  const byCat = {};
-  list.forEach((w) => { const k = getWeaponCategory(w); (byCat[k] = byCat[k] || []).push(w); });
+  const declared = WEAPON_CLASSES.flatMap((c) => c.types);
+  const byClass = {};
+  list.forEach((w) => { const k = getWeaponClass(w); (byClass[k] = byClass[k] || []).push(w); });
   const grid = (g) => { currentFilterGrid = g; const n = list.filter(matchesGridFilter).length;
-    const sum = Object.keys(byCat).reduce((s, k) => s + list.filter((w) => matchesGridFilter(w) && getWeaponCategory(w) === k).length, 0);
+    const sum = Object.keys(byClass).reduce((s, k) => s + list.filter((w) => matchesGridFilter(w) && getWeaponClass(w) === k).length, 0);
     currentFilterGrid = 'all'; return [n, sum]; };
-  currentFilterCategory = 'missile'; currentFilterType = 'Torpedo';
+  currentFilterClass = 'missile'; currentFilterType = 'Torpedo';
   const torp = weaponsDb.filter(filterMatchesWeapon).map(getWeaponTypePrefix);
   currentFilterType = 'all';
   const missiles = weaponsDb.filter(filterMatchesWeapon).map(getWeaponTypePrefix);
-  currentFilterCategory = 'all';
+  currentFilterClass = 'all';
+  const classOf = (t) => (WEAPON_CLASSES.find((c) => c.types.includes(t)) || {}).key;
+  const bySub = Object.fromEntries(weaponsDb.map((w) => [w.subtypeId, w]));
+  const npcMismatch = weaponsDb.filter((w) => isNpcWeapon(w) && bySub[w.subtypeId.replace(/_NPC$/, '')] && getWeaponClass(w) !== getWeaponClass(bySub[w.subtypeId.replace(/_NPC$/, '')])).map((w) => w.subtypeId);
   return {
-    total: list.length, catTotal: Object.values(byCat).reduce((s, a) => s + a.length, 0),
+    labels: WEAPON_CLASSES.map((c) => c.label),
+    total: list.length, classTotal: Object.values(byClass).reduce((s, a) => s + a.length, 0),
     dupTypes: declared.filter((t, i) => declared.indexOf(t) !== i),
-    unmapped: list.filter((w) => getWeaponTypePrefix(w) && !declared.includes(getWeaponTypePrefix(w))).map((w) => w.subtypeId),
-    other: (byCat.other || []).map((w) => ({ sub: w.subtypeId, prefix: getWeaponTypePrefix(w), det: isDetonationWeapon(w) })),
+    unclassed: weaponsDb.filter((w) => !isHandheldWeapon(w) && !WEAPON_CLASSES.some((c) => c.key === getWeaponClass(w))).map((w) => w.subtypeId),
+    untyped: list.filter((w) => !getWeaponTypePrefix(w)).map((w) => getWeaponClass(w)),
+    flak: classOf('Flak'), ams: classOf('AMS'), heavyRailgun: classOf('Heavy Railgun'),
+    special: ['Flare', 'Drone', 'Sensor'].map(classOf),
+    npcCount: weaponsDb.filter(isNpcWeapon).length, npcMismatch,
     large: grid('Large'), small: grid('Small'), torp, missiles,
-    missileTypes: WEAPON_CATEGORIES.find((c) => c.key === 'missile').types
+    missileTypes: WEAPON_CLASSES.find((c) => c.key === 'missile').types
   };
 })()`);
-check('Class counts add up to the filterable weapon list', f.catTotal === f.total && f.total > 0, [f.catTotal, f.total]);
+check('Filter bar Classes are exactly Ballistic / Laser / Missile / Special', JSON.stringify(f.labels) === '["Ballistic","Laser","Missile","Special"]', f.labels);
+check('Class counts add up to the filterable weapon list', f.classTotal === f.total && f.total > 0, [f.classTotal, f.total]);
 check('Class counts follow the grid filter (Large / Small)', f.large[0] === f.large[1] && f.small[0] === f.small[1] && f.large[0] + f.small[0] === f.total, [f.large, f.small]);
-check('Each type belongs to exactly one class', f.dupTypes.length === 0, f.dupTypes);
-check('Every typed player weapon maps to a declared class (no *TYPE* falls into Other)', f.unmapped.length === 0, f.unmapped);
-check('Other holds only untyped blocks (the warheads and explosive barrels)', f.other.length === 4 && f.other.every((w) => !w.prefix && w.det), f.other);
+check('Each type belongs to exactly one Class', f.dupTypes.length === 0, f.dupTypes);
+check('Every weapon, NPC included, lands in one of the four Classes', f.unclassed.length === 0, f.unclassed);
+check('Flak and Heavy Railgun are Ballistic, AMS is Laser', f.flak === 'ballistic' && f.heavyRailgun === 'ballistic' && f.ams === 'laser', [f.flak, f.heavyRailgun, f.ams]);
+check('Flares, Drones, Sensors and the untyped Warheads are Special', f.special.every((k) => k === 'special') && f.untyped.length === 4 && f.untyped.every((k) => k === 'special'), [f.special, f.untyped]);
+check(`NPC weapons share their player twin's Class (${f.npcCount} NPC weapons)`, f.npcCount > 40 && f.npcMismatch.length === 0, f.npcMismatch);
 check('Class + type filter narrows to the picked type (Missile → Torpedo)', f.torp.length > 0 && f.torp.every((t) => t === 'Torpedo'), f.torp);
-check('Class filter keeps only that class\'s types (Missile)', f.missiles.length > f.torp.length && f.missiles.every((t) => f.missileTypes.includes(t)), f.missiles);
-check('index.html has the CLASS row and the type sub-row', html.includes('id="categoryFilterGroup"') && html.includes('id="typeFilterRow"') && html.includes('id="typeFilterGroup"'));
+check('Class filter keeps only that Class\'s types (Missile)', f.missiles.length > f.torp.length && f.missiles.every((t) => f.missileTypes.includes(t)), f.missiles);
+check('index.html has the CLASS row, the type sub-row and the ROLE filter',
+  html.includes('id="classFilterGroup"') && html.includes('id="typeFilterRow"') && html.includes('id="typeFilterGroup"') && html.includes('id="roleFilterSelect"'));
+
+// --- Role filter ---
+const rf = studio.run(`(() => {
+  currentFilterRole = 'pd';
+  const pd = weaponsDb.filter(filterMatchesWeapon);
+  const pdRoles = pd.map((w) => getWeaponRole(w).id);
+  buildRoleFilter();
+  const options = document.getElementById('roleFilterSelect').innerHTML;
+  currentFilterRole = 'all';
+  const all = weaponsDb.filter(filterMatchesWeapon).length;
+  return { pdCount: pd.length, pdRoles, all, options };
+})()`);
+check('Role filter set to Point Defense shows only Point Defense weapons', rf.pdCount > 0 && rf.pdCount < rf.all && rf.pdRoles.every((r) => r === 'pd'), rf.pdRoles);
+check('Role filter lists the Roles with an All option', /All Roles/.test(rf.options) && /Point Defense/.test(rf.options) && /Homing Ordnance/.test(rf.options), rf.options);
 
 // --- Roles (GLOSSARY.md names) ---
 const GLOSSARY_ROLES = ['Point Defense', 'Brawler', 'Armor Breaker', 'Area Denial', 'Beam', 'Homing Ordnance', 'Standoff Artillery', 'Demolition Charge'];

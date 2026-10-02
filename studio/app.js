@@ -789,19 +789,17 @@ const badgeRecoil = document.getElementById('badgeRecoil');
 let currentBatteryMultiplier = 1;
 let currentFilterGrid = 'all';
 let currentFilterType = 'all';
-let currentFilterCategory = 'all';
+let currentFilterClass = 'all';
+let currentFilterRole = 'all';
 
-// Weapon class groups for the filter bar, keyed by the *TYPE* display-name prefix.
-// Unlisted prefixes (and unprefixed blocks like warheads) fall into "Other".
-const WEAPON_CATEGORIES = [
-  { key: 'ballistic', label: 'Ballistic', icon: '🔫', types: ['Gatling', 'Autocannon', 'L.Cannon', 'H.Cannon', 'Interior'] },
-  { key: 'kinetic', label: 'Kinetic', icon: '⚡', types: ['Railgun', 'MAC'] },
+// The four Classes from GLOSSARY.md, keyed by the *TYPE* display-name prefix.
+// Unlisted prefixes and unprefixed blocks (warheads, explosive barrels) are Special.
+const WEAPON_CLASSES = [
+  { key: 'ballistic', label: 'Ballistic', icon: '🔫', types: ['Gatling', 'Autocannon', 'L.Cannon', 'H.Cannon', 'Interior', 'Flak', 'Railgun', 'Heavy Railgun', 'MAC'] },
+  { key: 'laser', label: 'Laser', icon: '🔆', types: ['L.Laser', 'H.Laser', 'Plasma', 'AMS'] },
   { key: 'missile', label: 'Missile', icon: '🚀', types: ['Rocket', 'L.Missile', 'H.Missile', 'SRBM', 'Torpedo'] },
-  { key: 'energy', label: 'Energy', icon: '🔆', types: ['L.Laser', 'H.Laser', 'Plasma'] },
-  { key: 'defense', label: 'Defense', icon: '🛡️', types: ['AMS', 'Flak', 'Flare'] },
-  { key: 'utility', label: 'Utility', icon: '📡', types: ['Sensor', 'Drone'] }
+  { key: 'special', label: 'Special', icon: '📡', types: ['Drone', 'Flare', 'Sensor'] }
 ];
-const WEAPON_CATEGORY_OTHER = { key: 'other', label: 'Other', icon: '💣', types: [] };
 // DOM Elements - Telemetry Munition Bar (Workspace 1)
 const telemetryAmmoBar    = document.getElementById('telemetryAmmoBar');
 const telemetryAmmoSelect = document.getElementById('telemetryAmmoSelect');
@@ -1459,22 +1457,29 @@ function filterMatchesWeapon(w) {
   if (isHandheldWeapon(w)) return false;
   const grid = w.gridSize || w.grid || 'Large';
   if (currentFilterGrid !== 'all' && grid.toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
-  return matchesClassFilter(w);
+  return matchesClassFilter(w) && matchesRoleFilter(w);
 }
 
-/// <summary>Category key for a weapon from its *TYPE* prefix ("other" when unlisted or unprefixed).</summary>
-function getWeaponCategory(w) {
+/// <summary>Class key for a weapon from its *TYPE* prefix ("special" when unlisted or unprefixed).</summary>
+function getWeaponClass(w) {
   const t = getWeaponTypePrefix(w);
-  const c = WEAPON_CATEGORIES.find(cat => cat.types.includes(t));
-  return c ? c.key : WEAPON_CATEGORY_OTHER.key;
+  const c = WEAPON_CLASSES.find(cls => cls.types.includes(t));
+  return c ? c.key : 'special';
 }
 
-/// <summary>Category + type part of the filter (grid excluded), so pill counts can reuse it.</summary>
+/// <summary>Class + type part of the filter (grid and role excluded), so pill counts can reuse it.</summary>
 function matchesClassFilter(w) {
-  if (currentFilterCategory !== 'all' && getWeaponCategory(w) !== currentFilterCategory) return false;
+  if (currentFilterClass !== 'all' && getWeaponClass(w) !== currentFilterClass) return false;
   if (currentFilterType !== 'all' && getWeaponTypePrefix(w) !== currentFilterType) return false;
   return true;
 }
+
+/// <summary>A weapon's Role with the ammo it loads first, which is what its Role badge shows on selection.</summary>
+function getWeaponRole(w) {
+  return getAutomatedWeaponRole(w, ammosDb[getSelectableAmmos(w)[0]]);
+}
+
+const matchesRoleFilter = (w) => currentFilterRole === 'all' || getWeaponRole(w).id === currentFilterRole;
 
 /// <summary>Extracts the *TYPE* prefix from weapon displayName (e.g. "*Gatling*" → "Gatling").</summary>
 function getWeaponTypePrefix(w) {
@@ -1521,14 +1526,20 @@ function initShipbuilderFilters() {
       refreshShipbuilderFilters();
     });
   });
+  const roleSelect = document.getElementById('roleFilterSelect');
+  if (roleSelect) roleSelect.addEventListener('change', () => {
+    currentFilterRole = roleSelect.value || 'all';
+    refreshShipbuilderFilters();
+  });
   refreshShipbuilderFilters(false);
 }
 
 /// <summary>Rebuilds the pill counts and reselects a weapon if the active one no longer matches.</summary>
 function refreshShipbuilderFilters(reselect) {
   updateFilterCounts();
-  buildCategoryPills();
+  buildClassPills();
   buildTypePills();
+  buildRoleFilter();
   if (reselect === false) return;
   populateWeaponDropdowns();
   if (activeWeapon && !filterMatchesWeapon(activeWeapon)) {
@@ -1547,7 +1558,7 @@ const matchesGridFilter = (w) => currentFilterGrid === 'all'
   || (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase();
 
 function updateFilterCounts() {
-  const weapons = getFilterableWeapons().filter(matchesClassFilter);
+  const weapons = getFilterableWeapons().filter(w => matchesClassFilter(w) && matchesRoleFilter(w));
   document.querySelectorAll('.grid-filter-pill').forEach(pill => {
     const g = pill.dataset.grid || 'all';
     const count = g === 'all' ? weapons.length
@@ -1556,48 +1567,63 @@ function updateFilterCounts() {
   });
 }
 
-/// <summary>CLASS pills: All + each category with weapons; counts follow the grid filter.</summary>
-function buildCategoryPills() {
-  const container = document.getElementById('categoryFilterGroup');
+/// <summary>CLASS pills: All + each Class; counts follow the grid and role filters.</summary>
+function buildClassPills() {
+  const container = document.getElementById('classFilterGroup');
   if (!container) return;
-  const weapons = getFilterableWeapons().filter(matchesGridFilter);
+  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesRoleFilter(w));
   const counts = {};
-  weapons.forEach(w => { const k = getWeaponCategory(w); counts[k] = (counts[k] || 0) + 1; });
+  weapons.forEach(w => { const k = getWeaponClass(w); counts[k] = (counts[k] || 0) + 1; });
 
   container.innerHTML = '<span class="filter-label">CLASS:</span>';
   const addPill = (key, label, icon, count, title) => {
     const btn = document.createElement('button');
-    btn.className = `filter-pill category-filter-pill ${currentFilterCategory === key ? 'active' : ''}`;
-    btn.dataset.category = key;
+    btn.className = `filter-pill class-filter-pill ${currentFilterClass === key ? 'active' : ''}`;
+    btn.dataset.class = key;
     btn.title = title || label;
     btn.innerHTML = `${icon ? `<span class="filter-pill-icon" aria-hidden="true">${icon}</span>` : ''}${label} <span class="filter-pill-count">${count}</span>`;
     if (count === 0 && key !== 'all') btn.disabled = true;
     btn.addEventListener('click', () => {
-      currentFilterCategory = key;
+      currentFilterClass = key;
       currentFilterType = 'all';
       refreshShipbuilderFilters();
     });
     container.appendChild(btn);
   };
   addPill('all', 'All', '', weapons.length);
-  WEAPON_CATEGORIES.concat(counts.other ? [WEAPON_CATEGORY_OTHER] : []).forEach(cat => {
-    addPill(cat.key, cat.label, cat.icon, counts[cat.key] || 0, cat.types.length ? cat.types.join(' · ') : 'Untyped blocks (warheads, explosive barrels)');
+  WEAPON_CLASSES.forEach(cls => {
+    addPill(cls.key, cls.label, cls.icon, counts[cls.key] || 0, cls.key === 'special' ? `${cls.types.join(' · ')} · Warheads` : cls.types.join(' · '));
   });
 }
 
-/// <summary>Type sub-row for the selected category; hidden for "All" or single-type categories.</summary>
+/// <summary>ROLE dropdown: All Roles + each Role with its count under the grid, class and type filters.</summary>
+function buildRoleFilter() {
+  const select = document.getElementById('roleFilterSelect');
+  if (!select) return;
+  const counts = {};
+  getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesClassFilter(w))
+    .forEach(w => { const id = getWeaponRole(w).id; counts[id] = (counts[id] || 0) + 1; });
+  const total = Object.values(counts).reduce((s, n) => s + n, 0);
+  select.innerHTML = [`<option value="all">All Roles (${total})</option>`]
+    .concat(WEAPON_ROLES.map(r => `<option value="${r.id}"${counts[r.id] || r.id === currentFilterRole ? '' : ' disabled'}>${r.icon} ${r.label} (${counts[r.id] || 0})</option>`))
+    .join('');
+  select.value = currentFilterRole;
+  select.classList.toggle('active', currentFilterRole !== 'all');
+}
+
+/// <summary>Type sub-row for the selected Class; hidden for "All" or single-type Classes.</summary>
 function buildTypePills() {
   const row = document.getElementById('typeFilterRow');
   const container = document.getElementById('typeFilterGroup');
   if (!container) return;
   container.innerHTML = '';
-  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && getWeaponCategory(w) === currentFilterCategory);
+  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesRoleFilter(w) && getWeaponClass(w) === currentFilterClass);
   const typeCounts = {};
   weapons.forEach(w => { const t = getWeaponTypePrefix(w); if (t) typeCounts[t] = (typeCounts[t] || 0) + 1; });
-  const cat = WEAPON_CATEGORIES.find(c => c.key === currentFilterCategory);
+  const cat = WEAPON_CLASSES.find(c => c.key === currentFilterClass);
   const types = (cat ? cat.types : Object.keys(typeCounts).sort()).filter(t => typeCounts[t]);
-  if (row) row.hidden = currentFilterCategory === 'all' || types.length < 2;
-  if (currentFilterCategory === 'all' || types.length < 2) return;
+  if (row) row.hidden = currentFilterClass === 'all' || types.length < 2;
+  if (currentFilterClass === 'all' || types.length < 2) return;
 
   const addPill = (t, label, count) => {
     const btn = document.createElement('button');

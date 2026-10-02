@@ -4523,11 +4523,53 @@ input.control-input.is-wc-default {
   cursor: default;
 }
 
-.category-filter-pill,
+.class-filter-pill,
 .type-filter-pill {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+}
+
+/* Role dropdown, styled to sit with the pills */
+.filter-select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.filter-select:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-select.active {
+  background: rgba(245, 158, 11, 0.16);
+  color: var(--amber-primary);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.filter-select option {
+  background: var(--bg-panel);
+  color: var(--text-main);
+}
+
+[data-theme="light"] .filter-select {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+[data-theme="light"] .filter-select.active {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #f59e0b;
 }
 
 .filter-pill-icon {

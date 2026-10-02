@@ -226,9 +226,16 @@
           <button class="filter-pill grid-filter-pill" data-grid="Small">Small</button>
         </div>
         <span class="filter-divider" aria-hidden="true"></span>
-        <div class="filter-group" id="categoryFilterGroup">
+        <div class="filter-group" id="classFilterGroup">
           <span class="filter-label">CLASS:</span>
-          <!-- Category pills (WEAPON_CATEGORIES) built by buildCategoryPills() -->
+          <!-- Class pills (WEAPON_CLASSES) built by buildClassPills() -->
+        </div>
+        <span class="filter-divider" aria-hidden="true"></span>
+        <div class="filter-group">
+          <label class="filter-label" for="roleFilterSelect">ROLE:</label>
+          <select id="roleFilterSelect" class="filter-select" title="Show only weapons with this Role (judged with the ammo they load first)">
+            <!-- Role options (WEAPON_ROLES) built by buildRoleFilter() -->
+          </select>
         </div>
       </div>
       <div class="filter-row filter-subrow" id="typeFilterRow" hidden>

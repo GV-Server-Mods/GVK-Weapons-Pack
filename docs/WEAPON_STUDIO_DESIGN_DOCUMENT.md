@@ -69,6 +69,12 @@ graph TD
     WS1 --> DriftMeter[Initial D Flight Delay & Lead Meter]
 ```
 
+#### Weapon Filter Bar (`#shipbuilderFilterBar`)
+- **GRID**: All, Large or Small.
+- **CLASS**: All plus the four Classes (`WEAPON_CLASSES` in `app.js`), keyed by the block's `*TYPE*` prefix: **Ballistic** (Gatling, Autocannon, L.Cannon, H.Cannon, Interior, Flak, Railgun, Heavy Railgun, MAC), **Laser** (L.Laser, H.Laser, Plasma, AMS), **Missile** (Rocket, L.Missile, H.Missile, SRBM, Torpedo) and **Special** (Drone, Flare, Sensor, plus the unprefixed Warheads and explosive barrels). NPC weapons strip the `NPC-` prefix, so they share their player twin's Class. Picking a Class with more than one type opens a type sub-row.
+- **ROLE**: a dropdown of the Roles (`WEAPON_ROLES`) with counts. A weapon's Role here is the one it gets with the ammo it loads first (`getWeaponRole()`), the same Role its badge shows on selection. Point Defense is a Role, not a Class, so PD turrets of every Class are one pick away.
+- Every count follows the other filters, and the weapon dropdown (player and NPC lists) applies all of them.
+
 #### 1. Universal Weapon Banner & Badges
 - **Active Weapon Icon & Dropdown**: Large weapon icon with orange border (`#d97706`). Dropdown separated into *Player Standard Armaments* and *⚔️ NPC / Relic / Enemy Armaments*.
 - **Dynamic Icon Resolution**: Weapon icons resolve dynamically through `getWeaponIconUrl(weapon)` using block subtype IDs, grid size markers (`(L)` / `(S)` derived from CubeBlock definitions), and `studio_overrides.js` mappings. This ensures large/small variants (e.g. Avenger Turret, Gatling, PD Laser, Light Laser) display their distinct grid textures rather than falling back to broken paths or getting stuck on a default icon.
@@ -263,7 +269,7 @@ Full canonical WeaponCore round engineering:
 *Replaces the "Ammo Maths" tab of `GVK Ship Weapon Scales Kharak.xlsx` (the pricing and recipe maths are the sheet's; size, mass and craft time use baseline curves × per-magazine multipliers). The logic lives in `ammo_maths.js`, where `computeAmmoMaths(mag, levers, env)` is a pure function shared by the tab, the overview, the Workbench check and the smoke test.*
 
 #### Layout
-- **Header**: magazine dropdown, **◀ ▶** stepper (walks the All Magazines order and filter), Reset All Levers, ⚙ Ammo Settings (opens the Balance Matrix at the ammo section), then status chips: levers edited, recipe drift, SBC fields that change (or ✓ Matches SBC), weapons short on inventory, player fit under 2. Chips jump to the section they summarise. The GRID/TYPE weapon filter bar is hidden on this tab.
+- **Header**: magazine dropdown, **◀ ▶** stepper (walks the All Magazines order and filter), Reset All Levers, ⚙ Ammo Settings (opens the Balance Matrix at the ammo section), then status chips: levers edited, recipe drift, SBC fields that change (or ✓ Matches SBC), weapons short on inventory, player fit under 2. Chips jump to the section they summarise. The weapon filter bar (GRID / CLASS / ROLE) is hidden on this tab.
 - **Physical** panel: Damage Basis card, Volume / Mass / Craft Time levers, damage per mag / L / kg (vs the fleet median), Carrying Capacity table.
 - **Economy & Recipe** panel: Server Price headline (MSRP × role, Damage / SC vs median, Recipe Budget, RU cost when non-zero), Server Price lever, Hybrid round, Blueprint Recipe table.
 - **What Will Change in the SBC**: every SBC field export compares, unchanged rows muted, recipe value total; the per-magazine Blueprints / AmmoMagazines XML is a collapsible section.
@@ -425,7 +431,7 @@ When modifying or extending the GVK Weapon Studio:
    - `test_detonations.js`: warheads and explosive barrels (no DPS, blast reach, telemetry, comparison table, linter).
    - `test_wc_defaults.js`: Workbench defaults are WC's omitted-field values, and choosing one removes the line from the export.
    - `test_flight_profile.js`: HOMING needs Smarts steering; AIR BURST vs BALLISTIC for proximity-fuse rounds.
-   - `test_catalog.js`: icons match their NPC twins, the class filter bar covers every weapon once, fixed mounts read as fixed.
+   - `test_catalog.js`: icons match their NPC twins, the four Classes cover every weapon once, the Role filter and Role names, fixed mounts read as fixed.
    - `tools/validate_studio_data.mjs`: the deployment gate GitHub Actions runs before publishing.
 
 ---
