@@ -126,4 +126,10 @@ check('An exported settings file with the old Anchor keys still imports', imp.ba
 const docLogOld = found(docSection('### Workspace 3', '## 4. Design Tokens'), OLD_LOGISTICS.filter((t) => String(t) !== '/anchor/i').concat([/anchor mag/i, /Anchor MSRP/]));
 check('Design doc Logistics section uses the new terms', docLogOld.length === 0, docLogOld);
 
+// --- Design doc wording (#59) ---
+check('Design doc has no "over-penetration" for the AP Light Armor multiplier', !/over-penetration/i.test(doc), doc.match(/.{0,60}over-penetration.{0,20}/i));
+check('Design doc expands UPs as Utility Points everywhere', !/Upgrade Module/i.test(doc) && /Utility Points \(UPs\)/.test(doc), doc.match(/.{0,40}Upgrade Module.{0,30}/i));
+const truthLines = doc.split(/\r?\n/).filter((l) => /source of truth/i.test(l));
+check('"Source of truth" appears only for the Mod Source', truthLines.length > 0 && truthLines.every((l) => /Mod Source/.test(l)), truthLines.map((l) => l.slice(0, 90)));
+
 done('Glossary checks');

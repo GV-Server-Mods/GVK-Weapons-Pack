@@ -79,7 +79,7 @@ graph TD
 - **Active Weapon Icon & Dropdown**: Large weapon icon with orange border (`#d97706`). Dropdown separated into *Player Standard Armaments* and *⚔️ NPC / Relic / Enemy Armaments*.
 - **Dynamic Icon Resolution**: Weapon icons resolve dynamically through `getWeaponIconUrl(weapon)` using block subtype IDs, grid size markers (`(L)` / `(S)` derived from CubeBlock definitions), and `studio_overrides.js` mappings. This ensures large/small variants (e.g. Avenger Turret, Gatling, PD Laser, Light Laser) display their distinct grid textures rather than falling back to broken paths or getting stuck on a default icon.
 - **Dynamic GVK Status Badges**:
-  - `[ ⚡ X UPs ]`: Utility Points dynamically calculated from total Prototech component count (excluding Data Cores). Matches server Spec Core balancing.
+  - `[ ⚡ X UPs ]`: Utility Points (UPs) dynamically calculated from total Prototech component count (excluding Data Cores). Matches server Spec Core balancing.
   - `[ 👑 Relic Weapon ]` vs `[ ⚙️ Standard Production ]`: Automatically derived from blueprint ingredients (`GVK_RUs` or non-craftable scavenged items).
   - `[ 🔬 [Tech] Data Core ]`: GVK rule gate ensuring any weapon engaging beyond $2\text{km}$ includes a Data Core (subtype `PrototechCircuitry`).
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
@@ -139,7 +139,7 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 #### 4. Target Damage & Multiplier Matrix (`.target-matrix-card`)
 Renders authentic weapon-to-target lethality across 4 key combat target profiles:
 - **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and Magazine Damage. Highlights armor-shredding penetration.
-- **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP [over-penetration], } 1.0\times\text{ on HE}$), and effective damage.
+- **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP, } 1.0\times\text{ on HE}$), and effective damage. AP's 0.5× here is simply a low Armor Multiplier against Light Armor; **Overpenetration** means the per-block damage cap (`BaseDamageCutoff`, below).
 - **Systems**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
 - **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
 - Row subtexts show Magazine Damage (plus the Overpen cap when present) only — the per-row multiplier badge already carries the shred/resist story.
@@ -243,14 +243,14 @@ Full canonical WeaponCore round engineering:
   - **Dynamic Build Time Calculation**:
     $$\text{BuildTime} = \max\left(5, \operatorname{round}\left(\frac{\text{WeaponIntegrity}}{\text{BuildTime\_Dividend}}\right)\right) \quad (\text{Default Dividend} = 750)$$
   - **Auto-Derived Prototech Tech Requirements**:
-    Scans layers for Prototech items (`Machinery`, `Frame`, `Circuitry`, `Capacitor`, `Propulsion`), derives total UPs, and automatically verifies $>2\text{km}$ Circuitry rules.
+    Scans layers for Prototech items (`Machinery`, `Frame`, `Circuitry`, `Capacitor`, `Propulsion`), derives total UPs, and automatically verifies the $>2\text{km}$ Data Core rule (`Circuitry` here is the Prototech subtype suffix).
 - **Embedded Real-Time SBC Exporter**:
   - Displays formatted `<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">` XML with syntax highlighting.
   - `📋 Copy SBC XML` and `💾 Download .sbc` buttons for immediate in-game testing.
 
 #### 4. WeaponCore Schema Guard & All-Fields Editor
 - Tracks `CoreParts/script/Structure.cs` fingerprint against upstream WeaponCore. `export_snapshots.js` also writes the qualified type tree (every struct, field and enum) plus field comments harvested from `CoreParts/*.cs` into `wc_schema.js`.
-- **Def trees are the source of truth** (`wc_editor.js`): the pipeline keeps each AmmoDef/WeaponDefinition as a lossless tree (`wc_defs_data.js` snapshot, or live-parsed). Enum literals and shared helper refs stay bare identifiers; `Random()`/`Vector()`/`Color()` calls stay calls.
+- **Def trees drive the editors** (`wc_editor.js`): the pipeline keeps each AmmoDef/WeaponDefinition as a lossless tree (`wc_defs_data.js` snapshot, or live-parsed). Enum literals and shared helper refs stay bare identifiers; `Random()`/`Vector()`/`Color()` calls stay calls.
 - **All WeaponCore Fields accordion** (weapon §11, ammo §12): schema-driven editor for every Structure.cs field, with typed inputs, enum dropdowns, filter search, set-only view, per-field revert/unset, and add/remove for struct arrays (MountPoints, Approaches…). A newly synced WC field appears here automatically.
 - **Curated panels write the same tree** through the `WC_BINDINGS` table (element id → field path), so both views and the DPS model always agree.
 - **Shared helpers**: untouched helper refs (e.g. `Common_Weapons_Hardpoint_Ui_FullDisable`) export as the ref. Editing a field inside one detaches a local copy for that definition only; revert re-links it.
@@ -258,7 +258,7 @@ Full canonical WeaponCore round engineering:
 
 #### 5. Design Notes — Field Tooltips & Legacy Field Visibility Policy
 
-- **Tooltip source of truth**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry and a `WC_BINDINGS` row in `wc_editor.js`; the All-Fields editor uses the harvested CoreParts comments.
+- **Where tooltips come from**: Workbench field help is adapted from the canonical comments in `data/Scripts/CoreParts/Weapon75Part.cs` / `Weapon75ammo.cs`, stored in the `WORKBENCH_FIELD_HELP` dictionary in `app.js` (keyed by control id, applied at init via `applyWorkbenchFieldHelp()`). New controls need a matching dictionary entry and a `WC_BINDINGS` row in `wc_editor.js`; the All-Fields editor uses the harvested CoreParts comments.
 - **Ground truth for "is this field live"**: GVK's own `CoreParts/*.cs` usage counts — not `data/wc_schema.json` (its structs are incomplete). A field counts as in use only if written non-default somewhere in the mod.
 - **Canonical enum dropdowns**: Guidance, AOE Falloff, AOE Shape and EWAR Type dropdowns list every value of the matching Structure.cs enum (including `Legacy` falloff, `Remote`/`DroneAdvanced` guidance and the `Dot`/`Push`/`Pull`/`Tractor`/`AntiSmartv2` EWAR types) and nothing else, so a source value always displays and the exporter can never emit a non-compiling tag.
 - **Current-but-unused WC fields**: Fields WeaponCore supports but GVK never enables are kept out of the default UI — either fully absent (rarely-needed exotics, reachable via the **All WeaponCore Fields** accordion) or parked in collapsed accordions (`CheckForAnyWeapon` in OtherDef, `DamageModifier` in AiDef & UiDef). `Radial` (FragmentDef) stays visible but intentionally `0` for all GVK fragment weapons; the exporter writes it only if the source sets it or it is edited.
@@ -442,7 +442,7 @@ When modifying or extending the GVK Weapon Studio:
 
 The Studio reads the mod source **live** — hand-typed bundled datasets in `studio/data/` are fallback
 snapshots only. The C# definition files (`CoreParts/*.cs`) and SBC block/magazine/blueprint files
-(`Content/Data/*.sbc`) are the single source of truth for both the game and the Studio.
+(`Content/Data/*.sbc`) form the **Mod Source**, the single source of truth for both the game and the Studio.
 
 ### How it works
 
@@ -523,6 +523,6 @@ by name only).
 2. **Cross-Mod Ingestion (`GVK_Settings`)**:
    - Ingest custom ingots, components, and scrap refining recipes directly from the `GVK_Settings` mod repo (`Content/Data/Components_*.sbc`, `PhysicalItems_*.sbc`, `Blueprints_*.sbc`) to keep server-wide tech costs, scrap yields, and refiner ratios in sync automatically.
 3. **Universal Weapon Badge System**:
-   - Implement a centralized, universal badge and tag engine covering all weapon attributes and operational classifications across the mod (e.g. Grid Size, Mount/Type, Targeting & PD Role, Tech Tier / Circuitry, Relic/Rare designation, Upgrade Module Slots [UPs], Penetration / Armor Role, Munition Types, and Subtype capabilities).
+   - Implement a centralized, universal badge and tag engine covering all weapon attributes and operational classifications across the mod (e.g. Grid Size, Mount/Type, Targeting & PD Role, Tech Tier / Data Core, Relic/Rare designation, Utility Points (UPs), Penetration / Armor Role, Munition Types, and Subtype capabilities).
    - Standardize visual presentation, color coding, and metadata tooltips so badges can be rendered consistently in multiple areas of the tool (Combat Telemetry banner, Definition Workbench scope bar, Comparison Matrix & Benchmark cards, and Logistics/Inventory breakdowns) for seamless weapon classification and side-by-side comparison.
 
