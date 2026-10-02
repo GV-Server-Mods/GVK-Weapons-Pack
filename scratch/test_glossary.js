@@ -42,7 +42,7 @@ const tel = studio.run(`(() => {
   selectWeapon(gat.id);
   updateCombatTelemetry();
   const cyc = computeSustainedDps();
-  return { pairs, gat: { mag: cyc.magazineDamage, alpha: cyc.alphaDamage, rounds: cyc.totalRounds,
+  return { pairs, gat: { mag: cyc.magazineDamage, loaded: cyc.loadedDamage, alpha: cyc.alphaDamage, rounds: cyc.totalRounds,
     sub: document.getElementById('outMagDamageSub').textContent, hud: document.getElementById('hudTelAlpha').textContent } };
 })()`);
 const telText = [...seen].join('\n');
@@ -54,6 +54,8 @@ check('Telemetry hero cards read MAGAZINE DAMAGE and SUSTAINED RPM',
   /MAGAZINE DAMAGE/.test(htmlSection('ws-telemetry', 'ws-workbench')) && /SUSTAINED RPM/.test(telText));
 check('Magazine Damage and Alpha differ when a magazine holds more than one Burst (Gatling turret)',
   tel.gat.rounds > 1 && tel.gat.alpha > 0 && tel.gat.mag > tel.gat.alpha && /Alpha: /.test(tel.gat.sub), tel.gat);
+check('Magazine Damage headlines one magazine and the subline adds the loaded total (Gatling turret, 4 mags)',
+  tel.gat.mag * 4 === tel.gat.loaded && /× 4 loaded = /.test(tel.gat.sub), tel.gat);
 check('Telemetry footer Alpha shows one trigger pull, not the magazine', tel.gat.hud.replace(/[^0-9]/g, '') === String(tel.gat.alpha), tel.gat);
 const telNew = ['Systems', 'Anti-Missile Screen', 'Missile Scramble', 'Data Core'].filter((t) => !telText.includes(t));
 check('Systems, Anti-Missile Screen, Missile Scramble and Data Core appear in Telemetry', telNew.length === 0, telNew);

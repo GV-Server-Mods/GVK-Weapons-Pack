@@ -3855,6 +3855,11 @@ function getTopArmorProfile(ds = {}) {
   return { label, mult: max, allEqual, isHeavy: heavy === max, isLight: light === max, isNonArmor: nonArmor === max };
 }
 
+/// <summary>Projectiles one full magazine delivers (Magazine Damage): every round in it, times its trajectiles.</summary>
+function getMagazineProjectiles(fp) {
+  return Math.max(1, fp.magSize || 1) * Math.max(1, fp.trajPerBarrel || 1);
+}
+
 /// <summary>
 /// Projectiles one trigger pull delivers (Alpha): one fire event, or a full ShotsInBurst burst, each event firing
 /// every barrel's trajectiles, capped at the loaded rounds.
@@ -3873,7 +3878,8 @@ function computeSustainedDps() {
   const cyc = computeFireCycle(fp);
   const { totalRounds, projectiles, bursts, spoolSec, fireDurationSec, reloadSec, totalCycleSec, effectiveRps } = cyc;
   const dmgDetails = getAmmoDamageDetailed(activeAmmo, 0, activeWeapon);
-  const magazineDamage = Math.round(dmgDetails.instantTotal * projectiles);
+  const magazineDamage = Math.round(dmgDetails.instantTotal * getMagazineProjectiles(fp));
+  const loadedDamage = Math.round(dmgDetails.instantTotal * projectiles);
   const alphaDamage = Math.round(dmgDetails.instantTotal * getAlphaProjectiles(fp, totalRounds));
 
   const sustainedDps = isDetonationWeapon(activeWeapon) ? 0
@@ -3881,7 +3887,7 @@ function computeSustainedDps() {
 
   return {
     rof: fp.rof, barrels: fp.barrels, magSize: fp.magSize, magsToLoad: fp.mags, totalRounds, sustainedDps, effectiveRps,
-    totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, alphaDamage, dmgDetails,
+    totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, loadedDamage, alphaDamage, dmgDetails,
     heatLimited: cyc.heatLimited, stallShare: cyc.stallShare, fireParams: fp
   };
 }
@@ -3889,7 +3895,7 @@ function computeSustainedDps() {
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, alphaDamage, dmgDetails, fireParams, stallShare } = computeSustainedDps();
+  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, loadedDamage, alphaDamage, dmgDetails, fireParams, stallShare } = computeSustainedDps();
   const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
   const isDetonation = isDetonationWeapon(activeWeapon);
   const isBeam = !isDetonation && (isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0);
@@ -3908,13 +3914,13 @@ function updateCombatTelemetry() {
   const topProfile = getEffectiveProfile(dmgDetails, activeWeapon);
 
   const heavyDmg = topProfile.perClass.heavy;
-  const heavyMagDmg = Math.round(heavyDmg * totalRounds);
+  const heavyMagDmg = Math.round(heavyDmg * magSize);
 
   const lightDmg = topProfile.perClass.light;
-  const lightMagDmg = Math.round(lightDmg * totalRounds);
+  const lightMagDmg = Math.round(lightDmg * magSize);
 
   const nonArmorDmg = topProfile.perClass.nonArmor;
-  const nonArmorMagDmg = Math.round(nonArmorDmg * totalRounds);
+  const nonArmorMagDmg = Math.round(nonArmorDmg * magSize);
 
   // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
   let blastKind = 'none';
@@ -3971,19 +3977,20 @@ function updateCombatTelemetry() {
     teleMagType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
   }
   const teleMagUnit = document.getElementById('teleMagUnit');
-  if (teleMagUnit) {
-    const totalMags = magsToLoad * bMult;
-    teleMagUnit.textContent = `(${totalMags} ${totalMags === 1 ? 'MAG' : 'MAGS'})`;
-  }
+  if (teleMagUnit) teleMagUnit.textContent = bMult > 1 ? `(${bMult} GUNS)` : '';
   if (outMagDamageSub) {
-    const magTag = `${magsToLoad * bMult} loaded ${magsToLoad * bMult === 1 ? 'mag' : 'mags'}${totalRounds * bMult > 1 ? ` · ${totalRounds * bMult} rds` : ''}`;
+    const magRounds = Math.round(totalRounds / Math.max(1, magsToLoad));
+    // One magazine is the headline; a weapon that loads several also shows the loaded total
+    const loadTag = magsToLoad > 1
+      ? `× ${magsToLoad} loaded = ${(Math.round(loadedDamage * topProfile.mult) * bMult).toLocaleString()} hp`
+      : `${magRounds > 1 ? `${magRounds} rds` : '1 rd'} / mag`;
     const scaledBaseMagDmg = Math.round(magazineDamage * bMult);
-    // Alpha is one trigger pull; it differs from Magazine Damage whenever the load holds more than one Burst
+    // Alpha is one trigger pull; it differs from Magazine Damage whenever a magazine holds more than one Burst
     const alphaTag = `Alpha: ${scaledEffectiveAlpha.toLocaleString()} hp`;
     if (scaledEffectiveMagDmg === scaledBaseMagDmg) {
-      outMagDamageSub.textContent = `${alphaTag} · ${magTag}${batteryMagTag}`;
+      outMagDamageSub.textContent = `${alphaTag} · ${loadTag}${batteryMagTag}`;
     } else {
-      outMagDamageSub.textContent = `Base: ${scaledBaseMagDmg.toLocaleString()} hp${batteryMagTag} · ${alphaTag} · ${magTag}`;
+      outMagDamageSub.textContent = `Base: ${scaledBaseMagDmg.toLocaleString()} hp${batteryMagTag} · ${alphaTag} · ${loadTag}`;
     }
   }
 
@@ -5051,9 +5058,10 @@ function calculateWeaponMetrics(weapon, forcedAmmoKey) {
   const aKey = forcedAmmoKey || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
 
-  const { projectiles, effectiveRps } = computeFireCycle(getFireCycleParams(weapon, a, false));
+  const fp = getFireCycleParams(weapon, a, false);
+  const { effectiveRps } = computeFireCycle(fp);
   const dmgDetails = getAmmoDamageDetailed(a, 0, weapon);
-  const magazineDamage = Math.round(dmgDetails.instantTotal * projectiles);
+  const magazineDamage = Math.round(dmgDetails.instantTotal * getMagazineProjectiles(fp));
 
   const sustainedDps = isDetonationWeapon(weapon) ? 0 : computeSteadyStateDps(dmgDetails, effectiveRps, weapon.maxActiveProjectiles || 0);
 
