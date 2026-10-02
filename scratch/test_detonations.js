@@ -19,7 +19,7 @@ const r = studio.run(`(() => {
     r.weapons.push({
       sub: w.subtypeId, grid: w.gridSize, triggerIsBeamDef: !!(a.beams && a.beams.enable), beam: isBeamWeapon(w, a),
       range: eng.range, source: eng.source, label: eng.label, blastReach: child.trajectory.maxTrajectory,
-      fragments: frag.fragments, degrees: frag.degrees, sustained: m.sustainedDps, alpha: m.alphaVolley,
+      fragments: frag.fragments, degrees: frag.degrees, sustained: m.sustainedDps, alpha: m.magazineDamage,
       role: getAutomatedWeaponRole(w, a).id, spec: getWeaponSpecialtyBadge(w, a),
       idle: p.idle, operational: p.operational, mustCharge: p.mustCharge
     });
@@ -81,7 +81,7 @@ const dpsRows = ['Sustained DPS', 'Effective DPS'].map((k) => rows[k] || []);
 check('Comparison table: DPS rows read n/a (single use) with no delta instead of -100%',
   dpsRows.every((x) => x[0] === 'n/a (single use)' && x[2] === '—'), dpsRows);
 check('Comparison table: velocity reads Static, range is marked (blast), alpha is the payload (not 0 hp)',
-  (rows.Velocity || [])[0] === 'Static' && /^20 m \(blast\)$/.test((rows.Range || [])[0]) && !/^0 hp/.test((rows['Effective Alpha Volley'] || [''])[0]), rows);
+  (rows.Velocity || [])[0] === 'Static' && /^20 m \(blast\)$/.test((rows.Range || [])[0]) && !/^0 hp/.test((rows['Effective Magazine Damage'] || [''])[0]), rows);
 check('Linter does not flag the empty muzzle list on a warhead', !/Muzzle dummy list is empty/.test(t.lint), t.lint);
 check('Linter still flags an empty muzzle list on a gun', /Muzzle dummy list is empty/.test(r.gunLint), r.gunLint);
 

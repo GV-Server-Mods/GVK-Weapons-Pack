@@ -290,7 +290,7 @@ const studio = loadStudio();
       const cap = Math.max(1, Math.floor(fp.rof)) / 60 * fp.barrels;
       if (cyc.roundsPerSec > Math.max(cap, 60 * fp.barrels) + 1e-9) out.rateOver.push(w.subtypeId);
       const m = calculateWeaponMetrics(w);
-      if (![m.sustainedDps, m.effectiveDps, m.alphaVolley, m.power].every(Number.isFinite)) out.nonFinite.push(w.subtypeId);
+      if (![m.sustainedDps, m.effectiveDps, m.magazineDamage, m.power].every(Number.isFinite)) out.nonFinite.push(w.subtypeId);
     }
     const W = (sub) => weaponsDb.find((w) => w.subtypeId === sub);
     const byAmmo = (key) => weaponsDb.find((w) => (w.allAmmos || []).includes(key) && !isNpcWeapon(w));

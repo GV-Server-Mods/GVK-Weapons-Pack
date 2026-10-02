@@ -114,7 +114,7 @@ check('SBC export emits zero shield tags', report.sbcXmlShieldFree);
 check('recursive damage total resolves (6000 base)', report.dmgTotal === 6000);
 check('155 AP best-fit = Heavy Armor ×3.0 (1000 paper → 3000 eff)', report.eff155 === 3000 && report.prof155Label === 'Heavy Armor' && report.prof155Mult === 3.0);
 check('Heavy Railgun peak ideal = ×3.0 on full payload (100k → 300k, cap not diluting)', report.effRg === 300000 && report.profRgLabel === 'Heavy Armor');
-check('Non-Armor winner detected (×2.0)', report.profNaLabel === 'Non-Armor (Systems)' && report.profNaMult === 2.0);
+check('Systems winner detected (×2.0)', report.profNaLabel === 'Systems' && report.profNaMult === 2.0);
 check('all-equal multipliers report All Blocks', report.profAllLabel === 'All Blocks');
 check('Heavy Railgun per-block cap = 20000 hp', report.rgPerBlock === 20000);
 check('Heavy Railgun penetration capacity = 50 blocks', report.rgPenBlocks === 50);
@@ -178,16 +178,16 @@ studio.run(`
     avengerSelectableCount: avengerSelectable.length,
     avengerSelectableFirst: avengerSelectable[0],
     avengerEffectiveDps: avengerMetrics.effectiveDps,
-    avengerAlpha: avengerMetrics.effectiveAlphaVolley,
+    avengerAlpha: avengerMetrics.effectiveMagazineDamage,
     tsuAmmoRound: tsuA && tsuA.ammoRound,
     tsuEffectiveDps: tsuMetrics.effectiveDps,
-    tsuAlpha: tsuMetrics.effectiveAlphaVolley,
+    tsuAlpha: tsuMetrics.effectiveMagazineDamage,
     tsuArmorMult: getTopArmorProfile(tsuA.damageScales).mult,
     hurAmmoRound: hurA && hurA.ammoRound,
-    hurAlphaVolley: hurMetrics.alphaVolley,
+    hurAlphaVolley: hurMetrics.magazineDamage,
     hurSustainedDps: hurMetrics.sustainedDps,
     hurEffectiveDps: hurMetrics.effectiveDps,
-    hurAlpha: hurMetrics.effectiveAlphaVolley,
+    hurAlpha: hurMetrics.effectiveMagazineDamage,
     hurArmorMult: getTopArmorProfile(hurA.damageScales).mult,
     khoRof: khoW && khoW.rateOfFire,
     khoDps: khoMetrics.sustainedDps,
@@ -197,9 +197,9 @@ studio.run(`
 
     // Energy Virtual Magazine checks
     hLaserMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX'), ammosDb['Lasers_Laser_Large']),
-    hLaserAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).alphaVolley,
+    hLaserAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).magazineDamage,
     spartanMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret'), ammosDb['Lasers_Laser_Dual']),
-    spartanAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).alphaVolley,
+    spartanAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).magazineDamage,
     hLaserDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_T2PDX')).sustainedDps,
     spartanDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXSpartanTurret')).sustainedDps,
     tsuDps: tsuMetrics.sustainedDps,
@@ -228,9 +228,9 @@ studio.run(`
     cutScaleOff: getCutoffArmorScale({ damageScales: { cutoffArmorArmor: -1, cutoffLightArmor: -1, cutoffHeavyArmor: -1, cutoffNonArmor: -1 } }, 'heavy'),
     cycloneDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'GVK_CycloneCannonTurret')).sustainedDps,
     harbMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC'), ammosDb['HeavyRailgunAmmo']),
-    harbAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC')).alphaVolley,
+    harbAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'HarbingerTurret_NPC')).magazineDamage,
     pdMagSize: getShotsPerMag(weaponsDb.find(w => w.subtypeId === 'MA_PDT'), ammosDb['Lasers_AMS']),
-    pdAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_PDT')).alphaVolley,
+    pdAlpha: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'MA_PDT')).magazineDamage,
     hurWId: hurW.id,
     workbenchSelectVal: document.getElementById('weaponSelectWorkbench').value,
     bannerDisplayWorkbench: (() => { switchWorkspace('ws-workbench'); return document.getElementById('weaponBanner').style.display; })(),
@@ -256,13 +256,13 @@ check('Default weapon has primary ammo NATO_25x184mm_Dual', lcReport.defaultAmmo
 check('Avenger has only 1 selectable ammo (no NATO 25mm [Energy] fragment)',
   lcReport.avengerSelectableCount === 1 && lcReport.avengerSelectableFirst === 'NATO_25x184mm_Dual');
 check('Avenger has non-zero effective DPS', lcReport.avengerEffectiveDps > 0);
-check('Avenger has non-zero alpha volley', lcReport.avengerAlpha > 0);
+check('Avenger has non-zero magazine damage', lcReport.avengerAlpha > 0);
 check('Tsunami selects LargeCalibreAmmo (155 AP)', lcReport.tsuAmmoRound === 'LargeCalibreAmmo');
 check('Tsunami has non-zero effective DPS', lcReport.tsuEffectiveDps > 0);
-check('Tsunami has non-zero alpha volley', lcReport.tsuAlpha > 0);
+check('Tsunami has non-zero magazine damage', lcReport.tsuAlpha > 0);
 check('Tsunami has 3.0x heavy armor multiplier', lcReport.tsuArmorMult === 3.0);
 check('Hurricane selects Ballistics_HeavyCannon (480mm)', lcReport.hurAmmoRound === 'Ballistics_HeavyCannon');
-check('Hurricane alpha volley reflects loaded magazines capacity (2 rds * 80k = 160,000 hp)', lcReport.hurAlphaVolley === 160000);
+check('Hurricane magazine damage reflects loaded magazines capacity (2 rds * 80k = 160,000 hp)', lcReport.hurAlphaVolley === 160000);
 check('Hurricane sustained DPS reflects 80k payload (> 14,000 DPS)', lcReport.hurSustainedDps > 14000);
 check('Hurricane has 2.0x heavy armor multiplier', lcReport.hurArmorMult === 2.0);
 check('Khopesh has inlined rateOfFire 360 RPM', lcReport.khoRof === 360);
@@ -272,9 +272,9 @@ check('All weapon icons resolve to icons/ paths (0 missing)', lcReport.missingIc
 
 // Energy Virtual Magazine & Continuous Energy checks
 check('Heavy Laser resolves 240-rd virtual magazine', lcReport.hLaserMagSize === 240);
-check('Heavy Laser alpha volley spans 240-rd burst (36,000 hp)', lcReport.hLaserAlpha === 36000);
+check('Heavy Laser magazine damage spans 240-rd burst (36,000 hp)', lcReport.hLaserAlpha === 36000);
 check('Spartan Turret resolves 480-rd virtual magazine', lcReport.spartanMagSize === 480);
-check('Spartan Turret alpha volley spans 480-rd burst (72,000 hp)', lcReport.spartanAlpha === 72000);
+check('Spartan Turret magazine damage spans 480-rd burst (72,000 hp)', lcReport.spartanAlpha === 72000);
 // WC: 240 shots span 239 ticks; the reload starts the tick after the last shot and needs 241 charge passes -> 481-tick cycle
 check('Heavy Laser sustained DPS is 4,491 (240 rds x 150 hp per 481-tick WC cycle)', lcReport.hLaserDps === Math.round(36000 * 60 / 481));
 check('Spartan sustained DPS is 2x Heavy Laser (8,981)', lcReport.spartanDps === Math.round(72000 * 60 / 481));

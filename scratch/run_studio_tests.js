@@ -15,6 +15,7 @@ const suites = [
   ['WC defaults', 'scratch/test_wc_defaults.js'],
   ['Flight profile', 'scratch/test_flight_profile.js'],
   ['Catalog', 'scratch/test_catalog.js'],
+  ['Glossary wording', 'scratch/test_glossary.js'],
   ['CI data gate', 'tools/validate_studio_data.mjs'],
 ];
 

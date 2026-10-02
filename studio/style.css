@@ -4136,7 +4136,6 @@ input.control-input.is-wc-default {
   color: var(--green-accent, #10b981);
   border-color: rgba(16, 185, 129, 0.35);
 }
-.propulsion-tag.chaff,
 .propulsion-tag.flare {
   background: rgba(245, 158, 11, 0.18);
   color: var(--amber-primary);
@@ -4146,11 +4145,6 @@ input.control-input.is-wc-default {
   background: rgba(56, 189, 248, 0.15);
   color: var(--cyan-primary);
   border-color: rgba(56, 189, 248, 0.4);
-}
-.propulsion-tag.sabot {
-  background: rgba(56, 189, 248, 0.16);
-  color: #7dd3fc;
-  border-color: rgba(56, 189, 248, 0.45);
 }
 
 /* 5. Integrated Avionics & Data Core Hardware Module */

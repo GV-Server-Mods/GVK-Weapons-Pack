@@ -81,7 +81,7 @@ graph TD
 - **Dynamic GVK Status Badges**:
   - `[ ⚡ X UPs ]`: Utility Points dynamically calculated from total Prototech component count (excluding Data Cores). Matches server Spec Core balancing.
   - `[ 👑 Relic Weapon ]` vs `[ ⚙️ Standard Production ]`: Automatically derived from blueprint ingredients (`GVK_RUs` or non-craftable scavenged items).
-  - `[ 🔬 Circuitry: 1 (>2km) ]`: GVK rule gate ensuring any weapon engaging beyond $2\text{km}$ mandates `PrototechCircuitry`.
+  - `[ 🔬 [Tech] Data Core ]`: GVK rule gate ensuring any weapon engaging beyond $2\text{km}$ includes a Data Core (subtype `PrototechCircuitry`).
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
   - `[ ⚔️ NPC Variant ]`: Flags non-player enemy armaments (e.g. Harbinger Cruiser, Gaalsien Raiders).
   - `[ 📡 Point Defense ]`: Flags weapons whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak turrets, Gatling turrets including the Avenger, AMS lasers, light laser turrets). Point Defense needs a Turret, so Fixed weapons and Gimbals never carry it. These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
@@ -101,10 +101,11 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 - **Scalable TimedSpawns Delivery Duration ($\Delta T_{\text{delivery}}$)**:
   Evaluates `TimedSpawnDef` (`maxSpawns`, `groupSize`, `interval`, `groupDelay`):
   $$\text{numBursts} = \left\lceil \frac{\text{totalSpawns}}{\text{groupSize}} \right\rceil, \quad \Delta T_{\text{delivery}} = \frac{(\text{numBursts} - 1) \times \text{groupDelay} + \text{groupSize} \times \text{interval}}{60\text{ ticks/sec}}$$
-- **Loaded Capacity & Alpha Volley Mechanics**:
-  Alpha Volley is calculated across the entire loaded magazine capacity before a reload cycle:
+- **Magazine Damage & Alpha**:
+  **Magazine Damage** is calculated across the entire loaded magazine capacity before a reload cycle; **Alpha** is one trigger pull (one fire event, or one full `ShotsInBurst` burst, every barrel firing, capped at the loaded rounds):
   $$\text{TotalRounds} = \text{MagSize} \times \text{MagsToLoad}$$
-  $$\text{AlphaVolley} = \text{AlphaRound} \times \text{TotalRounds}$$
+  $$\text{MagazineDamage} = \text{RoundDamage} \times \text{TotalRounds}$$
+  $$\text{Alpha} = \text{RoundDamage} \times \min(\max(1, \text{ShotsInBurst}) \times \text{Barrels}, \text{TotalRounds}) \times \text{Trajectiles}$$
   - **Physical Multi-Magazine Weapons**: Weapons loading multiple magazines (e.g., Cyclone Cannon with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds}$; Hurricane with $2 \text{ mags} \times 1 \text{ rd} = 2 \text{ rds} \times 80{,}000\text{ hp} = 160{,}000\text{ hp}$; Cannon Gun with $4 \text{ mags}$; Gatling Avenger with $14 \text{ mags} \times 100 \text{ rds} = 1{,}400 \text{ rds}$) evaluate the full burst payload delivered prior to cycling reload downtime.
   - **Virtual Magazines for Energy Weapons**:
     - *Recharge/Capacity Beams*: When `AmmoMagazine == "Energy"` and `EnergyMagazineSize > 0` (e.g., Heavy Laser Turret = 240 ticks / $36{,}000\text{ hp}$; Spartan Turret = 480 rds / $72{,}000\text{ hp}$; Harbinger Railgun = 1 round / $1{,}000{,}000\text{ hp}$), `getShotsPerMag` resolves the virtual magazine capacity. Firing the virtual magazine triggers a recharge/reload cycle (`ReloadTime`). Badge indicates `⚡ <N> rds (virtual mag)`.
@@ -125,11 +126,11 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 - **Instantaneous Cluster vs Loitering Deployable Scaling**:
   - **If $\Delta T_{\text{delivery}} \le 1.0\text{s}$** (Flak, Proximity Warhead, Cluster Bomb):
     All fragments arrive in the initial strike:
-    $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\text{totalSpawns} \times \text{ChildDamage})$$
+    $$\text{RoundDamage} = \text{BaseDamage} + \text{AreaOfDamage} + (\text{totalSpawns} \times \text{ChildDamage})$$
     $$\text{Sustained DPS} = \text{RPS} \times \text{TotalLifetimeDamage}$$
   - **If $\Delta T_{\text{delivery}} > 1.0\text{s}$** (Drones, Loitering Minefields, Area Denial):
     Initial burst contributes to opening salvo; sustained payload delivers over time:
-    $$\text{AlphaRound} = \text{BaseDamage} + \text{AreaOfDamage} + (\min(\text{groupSize}, \text{totalSpawns}) \times \text{ChildDamage})$$
+    $$\text{RoundDamage} = \text{BaseDamage} + \text{AreaOfDamage} + (\min(\text{groupSize}, \text{totalSpawns}) \times \text{ChildDamage})$$
     $$\text{LoiterDPS} = \frac{\text{TotalLifetimeDamage}}{\Delta T_{\text{delivery}}}$$
     $$\text{MaxConcurrent} = \min\left(\text{MagsToLoad}, \max\left(1.0, \frac{\Delta T_{\text{delivery}}}{\text{CycleSec}}\right)\right)$$
     $$\text{Sustained DPS} = \text{LoiterDPS} \times \text{MaxConcurrent}$$
@@ -137,22 +138,22 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 
 #### 4. Target Damage & Multiplier Matrix (`.target-matrix-card`)
 Renders authentic weapon-to-target lethality across 4 key combat target profiles:
-- **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and salvo volley. Highlights armor-shredding penetration.
+- **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and Magazine Damage. Highlights armor-shredding penetration.
 - **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP [over-penetration], } 1.0\times\text{ on HE}$), and effective damage.
-- **Non-Armor (Systems)**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
+- **Systems**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
 - **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
-- Row subtexts show salvo volley (plus the Overpen cap when present) only — the per-row multiplier badge already carries the shred/resist story.
+- Row subtexts show Magazine Damage (plus the Overpen cap when present) only — the per-row multiplier badge already carries the shred/resist story.
 - **Blast classification**: rows are labeled High Explosive only when the burst can actually damage blocks. Token-damage wide bursts (Flak PROX: 101m @ 1 hp with grid scaling zeroed) display as an Anti-Missile Screen with 0 hp, and WeaponCore EWAR rounds (flare AntiSmartv2 field, torpedo Offense shrapnel) show the EWAR type/radius with 0 hp — per WC source, `Ewar.Enable` disables the base and AoE payload entirely. The TTK dummy reports `No Block Damage` for zero-payload munitions.
 - **Target Dummy Time-to-Kill (TTK)**: Applies true target multipliers ($\text{Damage}_{\text{target}} = \text{Base} \times \text{Multiplier} + \text{AoE} + \text{Frag}$) when simulating shots and time to destroy Light Armor, Heavy Armor, Battery, and Refinery cubes. Demonstrates why 155 AP destroys a Heavy Armor Cube in 1 salvo ($18\text{k dmg} > 16.5\text{k hp}$) while 155 HE requires 2 salvos.
 
-> **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Non-Armor (Systems)** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
+> **Shieldless Migration Note**: The GVK server runs without shield mods, so all shield surfaces were removed from the Studio — matrix column, Workbench controls, WC C# exporter output, and minimal-def seeds. The **Systems** profile took the Shields slot in the matrix. WeaponCore's upstream shield fields remain in the reference source and bundled data, but are never displayed or emitted by this tool.
 
 **Effective DPS (Best-Fit Target)** — raw base DPS is pre-multiplier. The hero card's big number shows the round's peak ideal: the full sustained payload scaled by whichever armor multiplier is highest:
-$$M_{\text{best}} = \max(\text{Heavy}, \text{Light}, \text{NonArmor}), \quad \text{Effective DPS} = \text{Sustained DPS} \times M_{\text{best}}$$
-Unset multipliers ($-1$) resolve to $1.0\times$. The blue disclaimer beneath states where the multiplier bites — e.g. "Effective against Heavy Armor (×3.0) · Base: X DPS" — preserving the raw figure; two-way ties join labels and all-equal rounds read "All Blocks". The peak interpretation intentionally ignores the Overpen cap (the full payload does land on the grid, just spread across blocks) — per-block reality stays in the matrix volleys, TTK and 🪡 chip. The Alpha Volley hero follows the same best-fit theme (instant payload × $M_{\text{best}}$, base volley in the blue disclaimer alongside loaded magazine count, e.g. "2 loaded mags · 80 rds"). Per the WeaponCore wiki, DamageScales armor modifiers multiply the projectile's BaseDamage (AreaEffect/Detonation carry their own damage types and are not documented as armor-scaled), which is the convention the matrix rows follow. The 1v1 radar and compare table use effective DPS and effective alpha volley for both weapons.
+$$M_{\text{best}} = \max(\text{Heavy}, \text{Light}, \text{Systems}), \quad \text{Effective DPS} = \text{Sustained DPS} \times M_{\text{best}}$$
+Unset multipliers ($-1$) resolve to $1.0\times$. The blue disclaimer beneath states where the multiplier bites — e.g. "Effective against Heavy Armor (×3.0) · Base: X DPS" — preserving the raw figure; two-way ties join labels and all-equal rounds read "All Blocks". The peak interpretation intentionally ignores the Overpen cap (the full payload does land on the grid, just spread across blocks) — per-block reality stays in the matrix rows, TTK and 🪡 chip. The Magazine Damage hero follows the same best-fit theme (instant payload × $M_{\text{best}}$; the blue disclaimer carries the base Magazine Damage, the Alpha of one trigger pull and the loaded magazine count, e.g. "Alpha: 3,000 hp · 2 loaded mags · 80 rds"). The footer's Alpha is that same one-trigger-pull figure. Per the WeaponCore wiki, DamageScales armor modifiers multiply the projectile's BaseDamage (AreaEffect/Detonation carry their own damage types and are not documented as armor-scaled), which is the convention the matrix rows follow. The 1v1 radar and compare table use Effective DPS and effective Magazine Damage for both weapons.
 
-**Effective Rate Hero Card** — displays true sustained fire rate in **Rounds Per Minute (RPM)**, reflecting cyclic fire time plus reload downtime:
-$$\text{Effective RPM} = \text{Effective RPS} \times 60 = \left(\frac{\text{Total Rounds}}{\text{Burst Time} + \text{Reload Time}}\right) \times 60$$
+**Sustained RPM Hero Card** — displays true sustained fire rate in **Rounds Per Minute (RPM)**, reflecting cyclic fire time plus reload downtime:
+$$\text{Sustained RPM} = \text{Sustained RPS} \times 60 = \left(\frac{\text{Total Rounds}}{\text{Burst Time} + \text{Reload Time}}\right) \times 60$$
 The hero card subline provides the weapon's burst fire rate (`Burst: X RPM · Y sps sustained`), pairing seamlessly with the combat cycle bar below.
 
 **Target Damage & Multiplier Matrix** — clearly labels large readout numbers as damage per shot (`hp / shot`), with the card border dynamically highlighted in cyan for whichever block type takes peak damage per shot (Heavy Armor, Light Armor, or Systems).
@@ -173,7 +174,7 @@ Positioned directly beneath the 7 hero cards to explain sustained fire rate and 
 #### 6. Hexagonal Tactical Radar (`#radarCanvas`)
 - Plots 7 normalized tactical axes dynamically scaled across the dataset:
   1. **DPS** (Sustained Damage Per Second)
-  2. **Volley Alpha** (Single-shot burst payload)
+  2. **Mag Dmg** (Magazine Damage: the loaded magazines' payload)
   3. **Targeting Range**: engagement range from `getEngagementRange()` in `app.js`, the single resolver every range readout uses (pillar card, footer, radar, role tags). Turrets and guided munitions (any `Guidance` other than `None`, e.g. Smart missiles, torpedoes and drones) are gated by the block's `MaxTargetDistance`. Manually aimed fixed guns with unguided rounds use the round's `MaxTrajectory`. Either way, the range never exceeds the round's reach.
   4. **Muzzle Velocity** (Projectile flight speed)
   5. **Tracking Rate** (Azimuth & Elevation traverse agility in deg/s)
@@ -432,6 +433,7 @@ When modifying or extending the GVK Weapon Studio:
    - `test_wc_defaults.js`: Workbench defaults are WC's omitted-field values, and choosing one removes the line from the export.
    - `test_flight_profile.js`: HOMING needs Smarts steering; AIR BURST vs BALLISTIC for proximity-fuse rounds.
    - `test_catalog.js`: icons match their NPC twins, the four Classes cover every weapon once, the Role filter and Role names, fixed mounts read as fixed.
+   - `test_glossary.js`: each workspace's visible text and its design-doc section use the `GLOSSARY.md` terms, not the retired ones.
    - `tools/validate_studio_data.mjs`: the deployment gate GitHub Actions runs before publishing.
 
 ---

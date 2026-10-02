@@ -64,8 +64,8 @@ check('Flak PROX total = 13000 (1000 base + 30 x 400 shrapnel; the 1 hp anti-mis
 check('Flak PROX not flagged ewar', r.flakEwar === false);
 check('FlareWC EWAR zeroes base and area payload (total 0)', r.flareTotal === 0 && r.flareEwar === true, r.flareTotal);
 check('Torpedo EWAR shrapnel child contributes 0 (total 1,500,100)', r.torpTotal === 1500100, r.torpTotal);
-check('Flak badge shows Anti-Missile Burst (101m)', r.flakBadge.includes('Anti-Missile Burst (101m)'), r.flakBadge);
-check('Flare badge shows EWAR Anti-Smart (700m)', r.flareBadge.includes('EWAR Anti-Smart (700m)'), r.flareBadge);
+check('Flak badge shows Anti-Missile Screen (101m)', r.flakBadge.includes('Anti-Missile Screen (101m)'), r.flakBadge);
+check('Flare badge shows EWAR Missile Scramble (700m)', r.flareBadge.includes('EWAR Missile Scramble (700m)'), r.flareBadge);
 check('Loitering TimedSpawns carrier is badged as a drone deployment', r.droneBadge.includes('Drone Deployment'), r.droneBadge);
 check('Single-fragment launch stage is badged as a staged booster', r.stageBadge.includes('Staged Kinetic Booster'), r.stageBadge);
 check('PD reference munitions are the two healthiest guided rounds in the data', r.refs.length === 2 && r.refs[0].health >= r.refs[1].health, r.refs);

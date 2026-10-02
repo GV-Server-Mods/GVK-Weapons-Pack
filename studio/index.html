@@ -316,10 +316,10 @@
                 <div class="metric-sub-detail" id="outEffectiveDps">Effective against All Blocks · Base: 0 DPS</div>
               </div>
               <div style="text-align: right;">
-                <span class="metric-label">ALPHA VOLLEY <span id="teleAlphaUnit">(1 MAG)</span></span>
-                <div class="metric-big-val amber" id="outAlphaDmg">0</div>
+                <span class="metric-label" title="Total damage the loaded magazines deliver before a reload">MAGAZINE DAMAGE <span id="teleMagUnit">(1 MAG)</span></span>
+                <div class="metric-big-val amber" id="outMagDamage">0</div>
                 <div class="hero-micro-visual right" id="pillarAlphaSalvo" title="Salvo Architecture"></div>
-                <div class="metric-sub-detail" id="outEffectiveAlpha">Base volley: 0 hp</div>
+                <div class="metric-sub-detail" id="outMagDamageSub">Alpha: 0 hp</div>
               </div>
             </div>
 
@@ -332,7 +332,7 @@
                 <div class="metric-sub-detail" id="outDpsBreakdown">Direct: 0 | Blast: 0 | Frag: 0</div>
               </div>
               <div style="text-align: right;">
-                <span class="metric-label" id="lblEffectiveRpm">EFFECTIVE RPM</span>
+                <span class="metric-label" id="lblSustainedRpm">SUSTAINED RPM</span>
                 <div class="metric-val" id="outShotsPerSec">0 <span class="unit-sub">RPM</span></div>
                 <div class="metric-sub-detail" id="outCycleTime">Burst: 0 RPM</div>
               </div>
@@ -365,7 +365,7 @@
                     <span class="target-multiplier-badge buff" id="tmHeavyMult">1.0×</span>
                   </div>
                   <div class="target-stat-value" id="tmHeavyDmg">0 hp</div>
-                  <div class="target-stat-sub" id="tmHeavySub">Volley: 0 hp</div>
+                  <div class="target-stat-sub" id="tmHeavySub">Mag Damage: 0 hp</div>
                 </div>
 
                 <div class="target-stat-box" id="tmLightArmorBox">
@@ -374,7 +374,7 @@
                     <span class="target-multiplier-badge" id="tmLightMult">1.0×</span>
                   </div>
                   <div class="target-stat-value" id="tmLightDmg">0 hp</div>
-                  <div class="target-stat-sub" id="tmLightSub">Volley: 0 hp</div>
+                  <div class="target-stat-sub" id="tmLightSub">Mag Damage: 0 hp</div>
                 </div>
 
                 <div class="target-stat-box" id="tmNonArmorBox">
@@ -383,7 +383,7 @@
                     <span class="target-multiplier-badge" id="tmNonArmorMult">1.0×</span>
                   </div>
                   <div class="target-stat-value" id="tmNonArmorDmg">0 hp</div>
-                  <div class="target-stat-sub" id="tmNonArmorSub">Volley: 0 hp</div>
+                  <div class="target-stat-sub" id="tmNonArmorSub">Mag Damage: 0 hp</div>
                 </div>
 
                 <div class="target-stat-box" id="tmBlastBox">
@@ -691,7 +691,7 @@
           <div class="bom-summary-badges">
             <span class="bom-badge-cost" id="outTotalValue">$0</span>
             <span class="badge badge-tech" id="bomBadgeTech">Tech: <strong>None</strong></span>
-            <span class="badge badge-cyan" id="bomBadgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></span>
+            <span class="badge badge-cyan" id="bomBadgeDataCore" style="display: none;">🔬 <strong>[Tech] Data Core</strong></span>
           </div>
         </summary>
         <div class="bom-details-content">
@@ -740,7 +740,7 @@
           <div class="badge" id="scopeBadgeType">Mount: <strong>Turret</strong></div>
           <div class="badge badge-amber" id="scopeBadgeUps">⚡ <strong>0 UPs</strong></div>
           <div class="badge badge-amber" id="scopeBadgeTech">Tech: <strong>None</strong></div>
-          <div class="badge badge-cyan" id="scopeBadgeCircuitry" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
+          <div class="badge badge-cyan" id="scopeBadgeDataCore" style="display: none;">🔬 <strong>[Tech] Data Core</strong></div>
           <div class="badge badge-purple" id="scopeBadgeRelic" style="display: none;">👑 Relic Weapon</div>
           <div class="badge badge-cyan" id="scopeBadgePd" style="display: none;" title="WeaponCore threat list includes Projectiles - engages smart munitions in flight">📡 Point Defense</div>
           <div class="badge badge-red" id="scopeBadgeNpc" style="display: none;">⚔️ NPC Variant</div>
@@ -1483,7 +1483,7 @@
         <details class="wc-accordion">
           <summary class="wc-summary">
             <span class="wc-title"><span class="wc-num">4</span><span class="wc-name">Damage Scaling</span><code class="wc-def">DamageScaleDef</code></span>
-            <span class="wc-tag">Light/Heavy/Non-Armor, Grids, Falloff</span>
+            <span class="wc-tag">Light/Heavy Armor, Systems, Grids, Falloff</span>
           </summary>
           <div class="wc-body">
             <div class="control-grid">
@@ -1515,7 +1515,7 @@
                 <input type="number" id="dsHeavyArmor" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
-                <label class="control-label">Non-Armor Modifier <span class="unit">-1 = default</span></label>
+                <label class="control-label">Systems Modifier (NonArmor) <span class="unit">-1 = default</span></label>
                 <input type="number" id="dsNonArmor" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
@@ -1539,7 +1539,7 @@
                 <input type="number" id="dsCutoffHeavyArmor" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
-                <label class="control-label">Cutoff: Non-Armor <span class="unit">-1 = off</span></label>
+                <label class="control-label">Cutoff: Systems (NonArmor) <span class="unit">-1 = off</span></label>
                 <input type="number" id="dsCutoffNonArmor" class="control-input" step="0.1" value="-1">
               </div>
               <div class="control-item">
@@ -2098,7 +2098,7 @@
 
             <div class="checkbox-row">
               <label class="chk-label"><input type="checkbox" id="sbcIsRelic"> 👑 Relic Weapon (Non-Craftable Ammunition)</label>
-              <label class="chk-label"><input type="checkbox" id="sbcHasCircuitry" disabled> 🔬 PrototechCircuitry Layer Present (&gt;2km Range Gate)</label>
+              <label class="chk-label"><input type="checkbox" id="sbcHasDataCore" disabled> 🔬 [Tech] Data Core Layer Present (&gt;2km Range Gate)</label>
             </div>
 
           </div>
@@ -2454,7 +2454,7 @@
         <img id="hudTelIcon" class="hud-icon" src="icons/L__Gatling_Avenger_Turret.png" alt="">
         <span class="hud-title" id="hudTelName">—</span>
         <span class="hud-stat">Eff DPS: <strong id="hudTelDps">0</strong> <span class="hud-sub" id="hudTelDpsProfile"></span></span>
-        <span class="hud-stat">Alpha: <strong id="hudTelAlpha">0</strong></span>
+        <span class="hud-stat" title="Damage of one trigger pull">Alpha: <strong id="hudTelAlpha">0</strong></span>
         <span class="hud-stat">Target Range: <strong id="hudTelRange">0 m</strong></span>
         <span class="hud-stat">Cycle: <strong id="hudTelCycle">—</strong></span>
       </div>
@@ -2468,7 +2468,7 @@
         <span class="hud-title" id="hudWbName">—</span>
         <span class="hud-stat">Sustained DPS: <strong id="hudWbDps">0</strong></span>
         <span class="hud-stat">Cycle: <strong id="hudWbCycle">—</strong></span>
-        <span class="hud-stat">Alpha: <strong id="hudWbAlpha">0</strong></span>
+        <span class="hud-stat" title="Damage of one trigger pull">Alpha: <strong id="hudWbAlpha">0</strong></span>
       </div>
       <div class="hud-right">
         <button id="hudWbDrift" class="badge hud-chip badge-amber" type="button" style="display: none;" title="The Ammo Maths recipe for this weapon's magazine no longer matches the SBC — open it in Ammo Logistics"></button>
