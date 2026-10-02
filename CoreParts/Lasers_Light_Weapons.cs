@@ -23,7 +23,7 @@ namespace Scripts
 		private TargetingDef Lasers_Laser_Targeting_Turret_Small => new TargetingDef {
 			Threats = new[]
 			{
-				Grids, Characters, Projectiles,  // threats percieved automatically without changing menu settings  Grids, Characters, Projectiles, Meteors,
+                Projectiles, Characters, Grids, // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[]
 			{

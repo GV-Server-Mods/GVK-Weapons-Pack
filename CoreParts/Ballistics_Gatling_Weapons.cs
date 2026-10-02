@@ -24,7 +24,7 @@ namespace Scripts
 		{
 			Threats = new[] 
 			{
-				Projectiles, Characters, Grids,   // threats percieved automatically without changing menu settings
+				Projectiles, Characters, Grids, // threats percieved automatically without changing menu settings
 			},
 			SubSystems = new[] 
 			{
