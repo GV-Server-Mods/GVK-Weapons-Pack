@@ -33,10 +33,10 @@ for (const f of fs.readdirSync(path.join('Content', 'Data', 'CubeBlocks'))) {
   if (f.endsWith('.sbc')) sbc.cubeBlocks[f] = fs.readFileSync(path.join('Content', 'Data', 'CubeBlocks', f), 'utf8');
 }
 
-const ovText = fs.readFileSync('studio/data/curation.js', 'utf8');
-const ov = JSON.parse(ovText.slice(ovText.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
+const curationText = fs.readFileSync('studio/data/curation.js', 'utf8');
+const curation = JSON.parse(curationText.slice(curationText.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
-const d = SP.buildStudioData(cs, sbc, ov);
+const d = SP.buildStudioData(cs, sbc, curation);
 if (d.errors.length) { console.error('BUILD ERRORS:', d.errors); process.exit(1); }
 
 const outDir = 'studio/data';

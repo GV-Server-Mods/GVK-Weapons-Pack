@@ -45,6 +45,7 @@ const f = studio.run(`(() => {
     dupTypes: declared.filter((t, i) => declared.indexOf(t) !== i),
     unclassed: weaponsDb.filter((w) => !isHandheldWeapon(w) && !WEAPON_CLASSES.some((c) => c.key === getWeaponClass(w))).map((w) => w.subtypeId),
     untyped: list.filter((w) => !getWeaponTypePrefix(w)).map((w) => getWeaponClass(w)),
+    undeclared: weaponsDb.filter((w) => !isHandheldWeapon(w) && getWeaponTypePrefix(w) && !declared.includes(getWeaponTypePrefix(w))).map((w) => w.subtypeId),
     flak: classOf('Flak'), ams: classOf('AMS'), heavyRailgun: classOf('Heavy Railgun'),
     special: ['Flare', 'Drone', 'Sensor'].map(classOf),
     npcCount: weaponsDb.filter(isNpcWeapon).length, npcMismatch,
@@ -57,6 +58,7 @@ check('Class counts add up to the filterable weapon list', f.classTotal === f.to
 check('Class counts follow the grid filter (Large / Small)', f.large[0] === f.large[1] && f.small[0] === f.small[1] && f.large[0] + f.small[0] === f.total, [f.large, f.small]);
 check('Each type belongs to exactly one Class', f.dupTypes.length === 0, f.dupTypes);
 check('Every weapon, NPC included, lands in one of the four Classes', f.unclassed.length === 0, f.unclassed);
+check('Every *TYPE* prefix is declared in a Class (a new or misspelled type must not fall into Special unnoticed)', f.undeclared.length === 0, f.undeclared);
 check('Flak and Heavy Railgun are Ballistic, AMS is Laser', f.flak === 'ballistic' && f.heavyRailgun === 'ballistic' && f.ams === 'laser', [f.flak, f.heavyRailgun, f.ams]);
 check('Flares, Drones, Sensors and the untyped Warheads are Special', f.special.every((k) => k === 'special') && f.untyped.length === 4 && f.untyped.every((k) => k === 'special'), [f.special, f.untyped]);
 check(`NPC weapons share their player twin's Class (${f.npcCount} NPC weapons)`, f.npcCount > 40 && f.npcMismatch.length === 0, f.npcMismatch);

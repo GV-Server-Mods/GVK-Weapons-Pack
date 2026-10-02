@@ -184,7 +184,7 @@ studio.run(`
     tsuAlpha: tsuMetrics.effectiveMagazineDamage,
     tsuArmorMult: getTopArmorProfile(tsuA.damageScales).mult,
     hurAmmoRound: hurA && hurA.ammoRound,
-    hurAlphaVolley: hurMetrics.magazineDamage,
+    hurMagDamage: hurMetrics.magazineDamage,
     hurSustainedDps: hurMetrics.sustainedDps,
     hurEffectiveDps: hurMetrics.effectiveDps,
     hurAlpha: hurMetrics.effectiveMagazineDamage,
@@ -262,7 +262,7 @@ check('Tsunami has non-zero effective DPS', lcReport.tsuEffectiveDps > 0);
 check('Tsunami has non-zero magazine damage', lcReport.tsuAlpha > 0);
 check('Tsunami has 3.0x heavy armor multiplier', lcReport.tsuArmorMult === 3.0);
 check('Hurricane selects Ballistics_HeavyCannon (480mm)', lcReport.hurAmmoRound === 'Ballistics_HeavyCannon');
-check('Hurricane magazine damage reflects loaded magazines capacity (2 rds * 80k = 160,000 hp)', lcReport.hurAlphaVolley === 160000);
+check('Hurricane magazine damage reflects loaded magazines capacity (2 rds * 80k = 160,000 hp)', lcReport.hurMagDamage === 160000);
 check('Hurricane sustained DPS reflects 80k payload (> 14,000 DPS)', lcReport.hurSustainedDps > 14000);
 check('Hurricane has 2.0x heavy armor multiplier', lcReport.hurArmorMult === 2.0);
 check('Khopesh has inlined rateOfFire 360 RPM', lcReport.khoRof === 360);

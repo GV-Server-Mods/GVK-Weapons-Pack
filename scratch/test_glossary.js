@@ -20,7 +20,7 @@ const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const found = (text, terms) => terms.filter((t) => (t instanceof RegExp ? t : new RegExp(escape(t), 'i')).test(text)).map(String);
 
 // --- Telemetry (#56) ---
-const OLD_TELEMETRY = ['Alpha Volley', 'Volley Alpha', 'Effective RPM', 'Non-Armor', 'Anti-Missile Burst', 'anti-smart screen',
+const OLD_TELEMETRY = ['Alpha Volley', 'Volley Alpha', 'Effective RPM', /Effective Fire Rate/i, 'Non-Armor', 'Anti-Missile Burst', 'anti-smart screen',
   'Anti-Smart', 'chaff', /(?<!Prototech)Circuitry/, /\bSabot\b/];
 // Renders Telemetry for every player weapon and each ammo it can load
 const tel = studio.run(`(() => {
@@ -61,7 +61,7 @@ const docTelOld = found(docSection('### Workspace 1', '### Workspace 2'), OLD_TE
 check('Design doc Telemetry section uses the new terms', docTelOld.length === 0, docTelOld);
 
 // --- Workbench and data-source labels (#57) ---
-const OLD_WORKBENCH = [/server defaults?/i, 'Detonation Depth', /Area Detonation/i, /phantom mag/i, /BUNDLED SNAPSHOT/i, /bundled fallback/i];
+const OLD_WORKBENCH = [/server defaults?/i, /non-craftable/i, 'Detonation Depth', /Area Detonation/i, /phantom mag/i, /BUNDLED SNAPSHOT/i, /bundled fallback/i];
 seen.clear();
 studio.run(`(() => {
   for (const w of getFilterableWeapons()) {
@@ -86,7 +86,7 @@ const magError = noMags.errors.find((e) => /MAGAZINE/i.test(e)) || '';
 check('Data health names a missing magazine an Unresolved magazine, not a phantom one', /^UNRESOLVED MAGAZINES: /.test(magError) && !/phantom/i.test(noMags.errors.join(' ')), magError.slice(0, 80));
 const gateSrc = fs.readFileSync(path.join(root, 'tools', 'validate_studio_data.mjs'), 'utf8');
 check('CI data check speaks of unresolved magazines', !/phantom/i.test(gateSrc), gateSrc.match(/.*phantom.*/i));
-const docWbOld = found(docSection('### Workspace 2', '### Workspace 3') + docSection('## 7. Data Pipeline', '## 8.'), OLD_WORKBENCH.concat([/phantom,/i]));
+const docWbOld = found(docSection('### Workspace 2', '### Workspace 3') + docSection('## 7. Data Pipeline', '## 8.'), OLD_WORKBENCH.concat([/phantom,/i, /Non-Armor/i, /bundled datasets/i]));
 check('Design doc Workbench and data-pipeline sections use the new terms', docWbOld.length === 0, docWbOld);
 
 // --- Logistics and the Balance Matrix (#58) ---

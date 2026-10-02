@@ -594,7 +594,7 @@ function refName(v, defs) {
   return (name && defs[name]) ? name : null;
 }
 
-function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
+function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, cur) {
   const def = w.def;
   const hp = inlineRef(def.HardPoint, defs) || {};
   const tgt = inlineRef(def.Targeting, defs) || {};
@@ -606,15 +606,15 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   const a0 = ammos[usable[0]];
   const grid = (block && block.cubeSize) || 'Large';
   const partName = w.name;
-  // Gimbals are Fixed weapons (GLOSSARY.md) even when the block is built on a turret base, like the 25mm Gatling Gimbal
-  const isGimbal = /Gimbal/i.test((block && block.displayName) || partName || ov.name || '');
+  // GVK definition (GLOSSARY.md): Gimbals are Fixed weapons, even on a turret base like the 25mm Gatling Gimbal, so they never count as Point Defense
+  const isGimbal = /Gimbal/i.test((block && block.displayName) || partName || cur.name || '');
   const isTurret = !isGimbal && ((block && block.xsiType && block.xsiType.indexOf('Turret') >= 0)
     || (block && /Turret/i.test(block.displayName || ''))
     || /Turret/i.test(partName || '')
-    || /Turret/i.test(ov.name || '')
+    || /Turret/i.test(cur.name || '')
     || (mp.AzimuthPartId && mp.AzimuthPartId !== 'None'));
   const type = isTurret ? 'Turret' : 'Fixed';
-  const id = ov.id || (grid[0] + '__' + sub);
+  const id = cur.id || (grid[0] + '__' + sub);
   const mag = a0 && magByKey[a0.ammoMagazine];
   // Fragment rounds are referenced by terminal round name, which may differ from the def name.
   const fragAmmo = a0 && a0.fragment.ammoRound
@@ -636,7 +636,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     defName: w.defName, mountIndex: idx,
     pdProjectiles,
     pdSmartOnly: tgt.LockedSmartOnly === true,
-    name: ov.name || '(' + grid[0] + ') ' + partName,
+    name: cur.name || '(' + grid[0] + ') ' + partName,
     grid, type,
     isHandheld: (hw.Type === 'HandWeapon') || (sub && /Item$/i.test(sub)) || false,
     rateOfFire: loading.RateOfFire || 0,
@@ -688,7 +688,7 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
     // HardwareDef.CriticalReaction.Enable: WC warhead behaviour (fires once when the block detonates)
     criticalReaction: !!(hw.CriticalReaction && hw.CriticalReaction.Enable === true),
     components: block ? block.components : [],
-    icon: ov.icon || ('icons/' + sub + '.png'),
+    icon: cur.icon || ('icons/' + sub + '.png'),
     subtypeId: sub,
     ammoName: usable[0] || null,
     buildTimeSeconds: block ? block.buildTimeSeconds : 0,
@@ -718,10 +718,10 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
 function magazineEntries(magSbc, blueprints, curation) {
   const bpByResult = {};
   for (const b of blueprints) bpByResult[b.resultSubtype] = b;
-  const ov = (curation && curation.magazines) || {};
+  const curMags = (curation && curation.magazines) || {};
   const out = [];
   for (const sub of Object.keys(magSbc)) {
-    const m = magSbc[sub], o = ov[sub] || {}, b = bpByResult[sub];
+    const m = magSbc[sub], o = curMags[sub] || {}, b = bpByResult[sub];
     out.push({
       subtypeId: sub,
       blueprintSubtype: b ? b.blueprintSubtype : (o.blueprintSubtype || null),
@@ -772,8 +772,8 @@ function buildStudioData(csSources, sbc, curation) {
   for (const w of parsed.weapons) {
     const subs = w.subtypeIds.length ? w.subtypeIds : [null];
     subs.forEach((sub, idx) => {
-      const ov = (curation.weapons || {})[sub] || {};
-      weapons.push(weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, ov));
+      const cur = (curation.weapons || {})[sub] || {};
+      weapons.push(weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, cur));
     });
   }
   const unresolved = [];

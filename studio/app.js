@@ -1465,32 +1465,32 @@ function getAmmoSbcDisplayName(ammoKey) {
 }
 
 function filterMatchesWeapon(w) {
-  if (isHandheldWeapon(w)) return false;
-  const grid = w.gridSize || w.grid || 'Large';
-  if (currentFilterGrid !== 'all' && grid.toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
-  return matchesClassFilter(w) && matchesRoleFilter(w);
+  return !isHandheldWeapon(w) && matchesFilters(w);
 }
 
-/// <summary>Class key for a weapon from its *TYPE* prefix ("special" when unlisted or unprefixed).</summary>
+/// <summary>
+/// The filter bar's grid, Class, type and Role filters. `except` leaves one out ('grid', 'class', 'type' or 'role')
+/// so that filter's own counts show every option; leaving out Class also drops its type sub-filter.
+/// </summary>
+function matchesFilters(w, except) {
+  if (except !== 'grid' && currentFilterGrid !== 'all'
+    && (w.gridSize || w.grid || 'Large').toLowerCase() !== currentFilterGrid.toLowerCase()) return false;
+  if (except !== 'class' && currentFilterClass !== 'all' && getWeaponClass(w) !== currentFilterClass) return false;
+  if (except !== 'class' && except !== 'type' && currentFilterType !== 'all' && getWeaponTypePrefix(w) !== currentFilterType) return false;
+  return except === 'role' || currentFilterRole === 'all' || getWeaponRole(w).id === currentFilterRole;
+}
+
+/// <summary>Class key for a weapon from its *TYPE* prefix ("special" when unprefixed, like the Warheads).</summary>
 function getWeaponClass(w) {
   const t = getWeaponTypePrefix(w);
   const c = WEAPON_CLASSES.find(cls => cls.types.includes(t));
   return c ? c.key : 'special';
 }
 
-/// <summary>Class + type part of the filter (grid and role excluded), so pill counts can reuse it.</summary>
-function matchesClassFilter(w) {
-  if (currentFilterClass !== 'all' && getWeaponClass(w) !== currentFilterClass) return false;
-  if (currentFilterType !== 'all' && getWeaponTypePrefix(w) !== currentFilterType) return false;
-  return true;
-}
-
 /// <summary>A weapon's Role with the ammo it loads first, which is what its Role badge shows on selection.</summary>
 function getWeaponRole(w) {
   return getAutomatedWeaponRole(w, ammosDb[getSelectableAmmos(w)[0]]);
 }
-
-const matchesRoleFilter = (w) => currentFilterRole === 'all' || getWeaponRole(w).id === currentFilterRole;
 
 /// <summary>Extracts the *TYPE* prefix from weapon displayName (e.g. "*Gatling*" → "Gatling").</summary>
 function getWeaponTypePrefix(w) {
@@ -1569,7 +1569,7 @@ const matchesGridFilter = (w) => currentFilterGrid === 'all'
   || (w.gridSize || w.grid || 'Large').toLowerCase() === currentFilterGrid.toLowerCase();
 
 function updateFilterCounts() {
-  const weapons = getFilterableWeapons().filter(w => matchesClassFilter(w) && matchesRoleFilter(w));
+  const weapons = getFilterableWeapons().filter(w => matchesFilters(w, 'grid'));
   document.querySelectorAll('.grid-filter-pill').forEach(pill => {
     const g = pill.dataset.grid || 'all';
     const count = g === 'all' ? weapons.length
@@ -1582,7 +1582,7 @@ function updateFilterCounts() {
 function buildClassPills() {
   const container = document.getElementById('classFilterGroup');
   if (!container) return;
-  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesRoleFilter(w));
+  const weapons = getFilterableWeapons().filter(w => matchesFilters(w, 'class'));
   const counts = {};
   weapons.forEach(w => { const k = getWeaponClass(w); counts[k] = (counts[k] || 0) + 1; });
 
@@ -1612,7 +1612,7 @@ function buildRoleFilter() {
   const select = document.getElementById('roleFilterSelect');
   if (!select) return;
   const counts = {};
-  getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesClassFilter(w))
+  getFilterableWeapons().filter(w => matchesFilters(w, 'role'))
     .forEach(w => { const id = getWeaponRole(w).id; counts[id] = (counts[id] || 0) + 1; });
   const total = Object.values(counts).reduce((s, n) => s + n, 0);
   select.innerHTML = [`<option value="all">All Roles (${total})</option>`]
@@ -1628,7 +1628,7 @@ function buildTypePills() {
   const container = document.getElementById('typeFilterGroup');
   if (!container) return;
   container.innerHTML = '';
-  const weapons = getFilterableWeapons().filter(w => matchesGridFilter(w) && matchesRoleFilter(w) && getWeaponClass(w) === currentFilterClass);
+  const weapons = getFilterableWeapons().filter(w => matchesFilters(w, 'type'));
   const typeCounts = {};
   weapons.forEach(w => { const t = getWeaponTypePrefix(w); if (t) typeCounts[t] = (typeCounts[t] || 0) + 1; });
   const cat = WEAPON_CLASSES.find(c => c.key === currentFilterClass);
@@ -1901,8 +1901,8 @@ function getMagCapacity(ammo) {
 }
 
 // WC AmmoConstants.Energy() for a weapon + ammo pair (MustCharge, reloadable, charge size, energy magazine)
-function getWcEnergy(weapon, ammo, patch) {
-  const w = Object.assign({}, weapon || {}, patch || {});
+function getWcEnergy(weapon, ammo, fieldEdits) {
+  const w = Object.assign({}, weapon || {}, fieldEdits || {});
   const a = ammo || {};
   const ewarOn = !!(a.ewar && a.ewar.enable);
   return WcMath.energy({
@@ -2338,7 +2338,7 @@ function getWeaponArcSummary(weapon) {
   const azSpan = Math.abs(maxAz - minAz);
   if (!weapon || weapon.type !== 'Turret') {
     const isGimbal = !!weapon && azSpan < 350 && (weapon.rotateRate > 0 || weapon.elevateRate > 0);
-    return { isTurret: false, isGimbal, isLimitedArc: false, minAz, maxAz, text: 'Fixed (0°)', hasDepression: false, depressionLabel: 'Fixed Forward',
+    return { isTurret: false, isGimbal, isLimitedArc: false, minAz, maxAz, text: isGimbal ? `Gimbal ±${Math.round(azSpan / 2)}°` : 'Fixed (0°)', hasDepression: false, depressionLabel: 'Fixed Forward',
       note: isGimbal ? `Gimbal (±${Math.round(azSpan / 2)}° cone)` : 'Fires along block facing' };
   }
   const minEl = weapon.minElevation !== undefined ? weapon.minElevation : -15;
@@ -2593,7 +2593,7 @@ function updateUniversalBanner() {
     }
   }
 
-  // Circuitry / Data Core Rule: smart/turret with range > 2000m requires 1 PrototechCircuitry
+  // Data Core rule: a smart or turret weapon reaching past 2000 m needs one [Tech] Data Core
   const hasDataCore = techInfo.hasDataCore || ((activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000));
   if (badgeDataCore) {
     badgeDataCore.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
@@ -2610,7 +2610,7 @@ function updateUniversalBanner() {
     bomBadgeDataCore.style.display = hasDataCore ? 'inline-flex' : 'none';
   }
 
-  // Relic Status Badge: non-craftable ammunition from raw scratch ingots
+  // Relic Weapon badge: the weapon takes a Relic Weapon Slot
   if (badgeRelic) {
     badgeRelic.style.display = activeWeapon.isRelic ? 'inline-flex' : 'none';
   }
@@ -4617,7 +4617,7 @@ function updateCombatTelemetry() {
     outCooldownTime.innerHTML = consumptionHtml;
     hudCycle = `1 rd / ${totalCycleSec.toFixed(1)}s`;
   } else {
-    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ EFFECTIVE FIRE RATE & COMBAT CYCLE";
+    if (outCombatCycleTitle) outCombatCycleTitle.textContent = "⚡ SUSTAINED FIRE RATE & COMBAT CYCLE";
     const fireDutyPercent = totalCycleSec > 0 ? Math.min(100, Math.round((fireDurationSec / totalCycleSec) * 100)) : 100;
 
     outHeatDutyRatio.textContent = `${fireDutyPercent}% UPTIME (${sustainedRpm} RPM)`;
@@ -5037,8 +5037,8 @@ function isDetonationWeapon(weapon) {
 /// WC power sink (CoreComponent.SinkPower): IdlePower (min 0.001 MW) always, plus AssignedPower while a MustCharge
 /// (energy or hybrid) weapon charges = WeaponState.UpdateDesiredPower, ShotEnergyCost x shots per tick.
 /// </summary>
-function getWeaponPowerDraw(weapon, ammo, patch) {
-  const w = Object.assign({}, weapon || {}, patch || {});
+function getWeaponPowerDraw(weapon, ammo, fieldEdits) {
+  const w = Object.assign({}, weapon || {}, fieldEdits || {});
   const idle = Math.max(parseFloat(w.idlePower) || 0, 0.001);
   if (isDetonationWeapon(weapon)) return { idle, operational: idle, mustCharge: false };
   const e = getWcEnergy(w, ammo || {});

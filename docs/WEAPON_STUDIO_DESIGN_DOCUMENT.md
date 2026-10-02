@@ -85,7 +85,7 @@ graph TD
   - `[ 🔬 [Tech] Data Core ]`: GVK rule gate ensuring any weapon engaging beyond $2\text{km}$ includes a Data Core (subtype `PrototechCircuitry`).
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
   - `[ ⚔️ NPC Variant ]`: Flags non-player enemy armaments (e.g. Harbinger Cruiser, Gaalsien Raiders).
-  - `[ 📡 Point Defense ]`: Flags weapons whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak turrets, Gatling turrets including the Avenger, AMS lasers, light laser turrets). Point Defense needs a Turret, so Fixed weapons and Gimbals never carry it. These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
+  - `[ 📡 Point Defense ]`: Flags Turrets whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak turrets, Gatling turrets including the Avenger, AMS lasers, light laser turrets). Point Defense needs a Turret, so Fixed weapons never carry it. Gimbals count as Fixed by GVK definition (`GLOSSARY.md`), even the 25mm Gatling Gimbal, which is built on a turret base and will still fire at missiles inside its ±15° cone in game. These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
   - `[ 🥊 Brawler ]`: the weapon's **Role**, judged from the weapon and its loaded ammo by `getAutomatedWeaponRole()` (`WEAPON_ROLES` in `app.js`): Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery or Demolition Charge. The 1v1 quick compare shows the same Role for both weapons.
 
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
@@ -141,7 +141,7 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 Renders authentic weapon-to-target lethality across 4 key combat target profiles:
 - **Heavy Armor**: Multiplier ($\text{e.g. } 3.0\times\text{ on AP, } 1.0\times\text{ on HE}$), effective shot damage ($\text{e.g. } 18,000\text{ hp vs } 12,000\text{ hp}$), and Magazine Damage. Highlights armor-shredding penetration.
 - **Light Armor**: Multiplier ($\text{e.g. } 0.5\times\text{ on AP, } 1.0\times\text{ on HE}$), and effective damage. AP's 0.5× here is simply a low Armor Multiplier against Light Armor; **Overpenetration** means the per-block damage cap (`BaseDamageCutoff`, below).
-- **Systems**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP, } 2.0\times\text{ WeaponCore default when unset}$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
+- **Systems**: Multiplier ($\text{e.g. } 1.0\times\text{ on 155 AP; unset } (-1) \text{ resolves to } 1.0\times$) and effective damage against internal systems (batteries, refineries, thrusters, gyros).
 - **Blast & Splash**: Detonation radius ($\text{e.g. } 4.0\text{m}$), blast damage ($6,000\text{ hp}$), and penetration depth ($4.0\text{m}$ Pooled).
 - Row subtexts show Magazine Damage (plus the Overpen cap when present) only — the per-row multiplier badge already carries the shred/resist story.
 - **Blast classification**: rows are labeled High Explosive only when the burst can actually damage blocks. Token-damage wide bursts (Flak PROX: 101m @ 1 hp with grid scaling zeroed) display as an Anti-Missile Screen with 0 hp, and WeaponCore EWAR rounds (flare AntiSmartv2 field, torpedo Offense shrapnel) show the EWAR type/radius with 0 hp — per WC source, `Ewar.Enable` disables the base and AoE payload entirely. The TTK dummy reports `No Block Damage` for zero-payload munitions.
@@ -164,7 +164,7 @@ $$D_{\text{block}} = \min(\text{BaseDamage}, \text{Cutoff}) \times M_{\text{targ
 - The cap **redistributes** damage, never destroys it: raw DPS and total alpha (e.g. the MAC's $2{,}000{,}001$) are unchanged.
 - Matrix volleys and the TTK simulator use $D_{\text{block}}$ (a single cube cannot absorb the full base damage of a capped round); the matrix header shows a `🪡 Overpen: N blocks @ X hp` chip whenever `BaseDamageCutoff > 0` (it replaces the retired "Loaded" munition badge, which duplicated the munition bar).
 
-#### 5. Effective Fire Rate & Combat Cycle
+#### 5. Sustained Fire Rate & Combat Cycle
 Positioned directly beneath the 7 hero cards to explain sustained fire rate and duty cycle without repeating redundant cycle formulas in the hero card:
 - **Inlined Loading Rate of Fire**: Evaluates exact `LoadingDef.RateOfFire` values parsed per weapon (e.g. Khopesh Turret at 360 RPM, Thrasher Autocannon at 480 RPM, Hurricane Heavy Cannon at 120 RPM), preventing inverted DPS readings across similar weapon families.
 - **Duty Cycle Percentage**: Real-time ratio of firing uptime vs reload downtime.
@@ -231,7 +231,7 @@ Form controls categorized strictly matching the C# struct layout:
 Full canonical WeaponCore round engineering:
 - Header & Core (Base damage, cutoff, mass, health, kick force)
 - `TrajectoryDef` & `SmartsDef` (Speed, acceleration, lifetime, pro-nav guidance, scan rates)
-- `DamageScaleDef` (Armor & Non-Armor multipliers, grid scaling, falloff)
+- `DamageScaleDef` (Heavy Armor, Light Armor and Systems multipliers, grid scaling, falloff)
 - `AreaOfDamageDef` (impact `ByBlockHit` and End-of-Life AoE `EndOfLife` radii, damage and AoE Depth)
 - `FragmentDef` (Child ammo round triggers, spawn counts, radial dispersion)
 - `PatternDef`, `EwarDef`, `GraphicDef` (Tracers & ribbon trails), and `AmmoAudioDef`.
@@ -441,8 +441,8 @@ When modifying or extending the GVK Weapon Studio:
 
 ## 7. Data Pipeline — Live Source Architecture
 
-The Studio reads the mod source **live** — hand-typed bundled datasets in `studio/data/` are fallback
-snapshots only. The C# definition files (`CoreParts/*.cs`) and SBC block/magazine/blueprint files
+The Studio reads the Mod Source **live**; the datasets in `studio/data/` are the Snapshot, used only when
+the Live read fails. The C# definition files (`CoreParts/*.cs`) and SBC block/magazine/blueprint files
 (`Content/Data/*.sbc`) form the **Mod Source**, the single source of truth for both the game and the Studio.
 
 ### How it works

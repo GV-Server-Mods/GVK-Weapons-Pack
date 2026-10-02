@@ -4560,6 +4560,12 @@ input.control-input.is-wc-default {
   color: #475569;
 }
 
+[data-theme="light"] .filter-select:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
 [data-theme="light"] .filter-select.active {
   background: #fef3c7;
   color: #b45309;
