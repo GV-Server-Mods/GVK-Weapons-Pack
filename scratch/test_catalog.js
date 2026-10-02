@@ -54,6 +54,20 @@ check('Class + type filter narrows to the picked type (Missile → Torpedo)', f.
 check('Class filter keeps only that class\'s types (Missile)', f.missiles.length > f.torp.length && f.missiles.every((t) => f.missileTypes.includes(t)), f.missiles);
 check('index.html has the CLASS row and the type sub-row', html.includes('id="categoryFilterGroup"') && html.includes('id="typeFilterRow"') && html.includes('id="typeFilterGroup"'));
 
+// --- Roles (GLOSSARY.md names) ---
+const GLOSSARY_ROLES = ['Point Defense', 'Brawler', 'Armor Breaker', 'Area Denial', 'Beam', 'Homing Ordnance', 'Standoff Artillery', 'Demolition Charge'];
+const roles = studio.run(`(() => {
+  const seen = new Set();
+  weaponsDb.forEach((w) => getSelectableAmmos(w).concat([null]).forEach((k) => seen.add(getAutomatedWeaponRole(w, k && ammosDb[k]).label)));
+  seen.add(getAutomatedWeaponRole(null).label);
+  return { seen: [...seen], declared: WEAPON_ROLES.map((r) => r.label) };
+})()`);
+check('Every Role the studio assigns is a glossary Role', roles.seen.every((l) => GLOSSARY_ROLES.includes(l)), roles.seen);
+check('WEAPON_ROLES lists exactly the eight glossary Roles', JSON.stringify(roles.declared) === JSON.stringify(GLOSSARY_ROLES), roles.declared);
+const studioText = ['app.js', 'index.html', 'ammo_maths.js', 'workbench_ui.js'].map((f) => fs.readFileSync(studioFile(f), 'utf8')).join('\n');
+const oldRoleNames = ['Kinetic Brawler', 'Directed Energy', 'Area Denial / Flak', 'Guided Ordnance'].filter((n) => studioText.includes(n));
+check('No studio screen uses the old Role names', oldRoleNames.length === 0, oldRoleNames);
+
 // --- Fixed mounts ---
 const m = studio.run(`(() => {
   const text = (id) => document.getElementById(id).textContent;

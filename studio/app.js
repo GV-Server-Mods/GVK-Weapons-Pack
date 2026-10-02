@@ -2234,45 +2234,44 @@ function calculateWeaponDryMass(weapon) {
   return { massKg: totalKg, massTons, formatted };
 }
 
+// The Roles from GLOSSARY.md, in filter order. getAutomatedWeaponRole picks one per weapon + ammo.
+const WEAPON_ROLES = [
+  { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' },
+  { id: 'brawler', label: 'Brawler', icon: '🥊', desc: 'Rapid-fire direct engagement' },
+  { id: 'breaker', label: 'Armor Breaker', icon: '🔨', desc: 'Heavy armor penetrator & anti-capital fire' },
+  { id: 'areaDenial', label: 'Area Denial', icon: '💥', desc: 'Explosive splash & proximity fragmentation' },
+  { id: 'beam', label: 'Beam', icon: '⚡', desc: 'Continuous or pulsed energy projection' },
+  { id: 'homing', label: 'Homing Ordnance', icon: '🚀', desc: 'Homing missiles, torpedoes & loitering drones' },
+  { id: 'artillery', label: 'Standoff Artillery', icon: '🔭', desc: 'Long-range bombardment & siege' },
+  { id: 'demolition', label: 'Demolition Charge', icon: '💣', desc: 'Single-use detonation; no sustained fire' }
+];
+const roleById = (id) => WEAPON_ROLES.find((r) => r.id === id);
+
 /// <summary>
 /// Classifies weapon role deterministically from WeaponCore hardware/targeting/damage data.
 /// 100% automated and scalable with zero external metadata.
 /// </summary>
 function getAutomatedWeaponRole(weapon, ammo) {
-  if (!weapon) return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Direct ballistic fire' };
-  if (isDetonationWeapon(weapon)) {
-    return { id: 'demolition', label: 'Demolition Charge', icon: '💣', desc: 'Single-use detonation; no sustained fire' };
-  }
+  if (!weapon) return roleById('brawler');
+  if (isDetonationWeapon(weapon)) return roleById('demolition');
   const isFixedMount = weapon.type === 'Fixed' || (weapon.rotateRate <= 0 && weapon.elevateRate <= 0);
   if (!isFixedMount && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD')))) {
-    return { id: 'pd', label: 'Point Defense', icon: '📡', desc: 'Anti-missile & anti-projectile interception' };
+    return roleById('pd');
   }
-  const isGuided = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None' && isSteeringAmmo(ammo);
+  const isHoming = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None' && isSteeringAmmo(ammo);
   const isLoiter = ammo?.fragment?.timedSpawns?.enable && (ammo.fragment.timedSpawns.maxSpawns > 1);
-  if (isGuided || isLoiter) {
-    return { id: 'guided', label: 'Guided Ordnance', icon: '🚀', desc: 'Guided missiles, torpedoes & loitering drones' };
-  }
-  if (isAirBurstAmmo(ammo)) {
-    return { id: 'flak', label: 'Area Denial / Flak', icon: '💥', desc: 'Explosive splash & proximity fragmentation' };
-  }
+  if (isHoming || isLoiter) return roleById('homing');
+  if (isAirBurstAmmo(ammo)) return roleById('areaDenial');
   const ds = ammo?.damageScales || {};
   const heavyMult = (typeof ds.heavyArmor === 'number' && ds.heavyArmor >= 0) ? ds.heavyArmor : 1.0;
   const isPenetrator = (ammo?.baseDamageCutoff > 0 && (ammo?.baseDamage || 0) > 20000) || heavyMult >= 1.5;
-  if (isPenetrator || ((weapon.baseDamage || 0) >= 50000 && (weapon.rateOfFire || 0) <= 120)) {
-    return { id: 'breaker', label: 'Armor Breaker', icon: '🔨', desc: 'Heavy armor penetrator & anti-capital kinetic' };
-  }
+  if (isPenetrator || ((weapon.baseDamage || 0) >= 50000 && (weapon.rateOfFire || 0) <= 120)) return roleById('breaker');
   const range = getEngagementRange(weapon, ammo, false).range;
-  if (range >= 2200 && (weapon.rateOfFire || 0) <= 240) {
-    return { id: 'artillery', label: 'Standoff Artillery', icon: '🔭', desc: 'Long-range bombardment & siege' };
-  }
+  if (range >= 2200 && (weapon.rateOfFire || 0) <= 240) return roleById('artillery');
   const dmg = getAmmoDamageDetailed(ammo, 0, weapon);
-  if (dmg.aoe > dmg.base && dmg.aoe > 0) {
-    return { id: 'flak', label: 'Area Denial / Flak', icon: '💥', desc: 'Explosive splash & proximity fragmentation' };
-  }
-  if (ammo?.ammoMagazine === 'Energy' || (weapon.energyCost || 0) > 0) {
-    return { id: 'energy', label: 'Directed Energy', icon: '⚡', desc: 'Continuous or pulsed energy projection' };
-  }
-  return { id: 'brawler', label: 'Kinetic Brawler', icon: '🥊', desc: 'Rapid-fire direct kinetic engagement' };
+  if (dmg.aoe > dmg.base && dmg.aoe > 0) return roleById('areaDenial');
+  if (ammo?.ammoMagazine === 'Energy' || (weapon.energyCost || 0) > 0) return roleById('beam');
+  return roleById('brawler');
 }
 
 /// <summary>

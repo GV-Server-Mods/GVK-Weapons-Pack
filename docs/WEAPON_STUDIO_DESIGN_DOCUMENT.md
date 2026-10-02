@@ -79,12 +79,13 @@ graph TD
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
   - `[ ⚔️ NPC Variant ]`: Flags non-player enemy armaments (e.g. Harbinger Cruiser, Gaalsien Raiders).
   - `[ 📡 Point Defense ]`: Flags weapons whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak, Gatling turrets/Gimbal/Avenger, AMS PD lasers, light laser turrets). These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
+  - `[ 🥊 Brawler ]`: the weapon's **Role**, judged from the weapon and its loaded ammo by `getAutomatedWeaponRole()` (`WEAPON_ROLES` in `app.js`): Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery or Demolition Charge. The 1v1 quick compare shows the same Role for both weapons.
 
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
 - Positioned directly beneath the active weapon banner and **permanently visible across all weapons** (single-ammo and multi-ammo alike).
 - Features matching orange border (`#d97706`), ammo magazine icon, and munition selector for dual-load weapons (e.g. High Explosive vs Armor Piercing).
 - **Terminal Munition Visibility Filtering (`getSelectableAmmos`)**: Strictly filters out internal fragments and sub-rounds (`hardPointUsable === false`). Weapons with internal sub-projectiles (e.g. Avenger Turret's `NATO 25mm [Energy]` fragment, or Flak/Cannon NPC sub-shrapnel) expose only the true player-selectable terminal rounds, while child projectile damage remains recursively factored into the parent round's telemetry.
-- Live badges display munition role, total damage per shot, muzzle speed, max range, and magazine capacity (e.g. `100 rds/mag`, `⚡ 240 rds (virtual mag)`, or `⚡ Continuous`).
+- Live badges display the Role, total damage per shot, muzzle speed, max range, and magazine capacity (e.g. `100 rds/mag`, `⚡ 240 rds (virtual mag)`, or `⚡ Continuous`).
 
 #### 3. Recursive Damage Engine & Scalable TimedSpawns Architecture
 Calculates true damage potential through multi-stage fragment trees:
