@@ -420,7 +420,7 @@ const WORKBENCH_FIELD_HELP = {
   aodEolFalloff: "Falloff options: NoFalloff (same damage in radius), Linear (even drop by distance), Curve, InvCurve, Squeeze, Pooled (damage ceases once exhausted), Exponential.",
   aodEolShape: "Round or Diamond shape. Diamond is more performance friendly.",
   // --- Scope B / 6. FragmentDef ---
-  fEnable: "Fragment (formerly Shrapnel) — spawns the specified ammo fragments on projectile death (via hit or detonation).",
+  fEnable: "Fragment (formerly Shrapnel) — spawns the specified ammo fragments on projectile death (via hit or end of life).",
   fReverse: "Spawn fragments backward instead of forward.",
   fDropVelocity: "Fragments will not inherit velocity from the parent.",
   fIgnoreArming: "If true, ignore ArmOnHit or MinArmingTime in EndOfLife definitions.",
@@ -2671,7 +2671,7 @@ function updateHudTelemetry(v) {
   hudTelBench.style.display = '';
 }
 
-/// <summary>Workbench footer: effect of the current edits vs the server default, plus lint status.</summary>
+/// <summary>Workbench footer: effect of the current edits vs the Shipped values, plus lint status.</summary>
 function updateHudWorkbench(errorCount, warningCount) {
   if (!activeWeapon || !hudWbName) return;
   hudWbName.textContent = `${activeWeapon.displayName || activeWeapon.name} (editing)`;
@@ -2683,7 +2683,7 @@ function updateHudWorkbench(errorCount, warningCount) {
   if (hudWbDps) {
     hudWbDps.textContent = singleUse ? 'n/a (single use)' : (defaults && now.sustainedDps !== baseDps)
       ? `${baseDps.toLocaleString()} → ${now.sustainedDps.toLocaleString()} (${pct > 0 ? '+' : ''}${pct}%)`
-      : `${now.sustainedDps.toLocaleString()} (default)`;
+      : `${now.sustainedDps.toLocaleString()} (Shipped)`;
   }
   if (hudWbCycle) {
     hudWbCycle.textContent = singleUse ? 'Detonates once' : now.reloadSec > 0
@@ -4164,7 +4164,7 @@ function updateCombatTelemetry() {
       const tip = falloff === 'Pooled'
         ? 'Pooled AoE: Like misery, damage is shared equally across all blocks in the blast radius until the pool runs dry.'
         : `${falloff} AoE: every block within ${area.radius} m (depth ${area.depth} m) takes the listed damage scaled by ${falloff} falloff (≈${Math.round(WcMath.aoeDamage(area, 'Large', false)).toLocaleString()} hp total on a solid large-grid hull).`;
-      tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="${tip}">Area Detonation (${falloff} Damage) ℹ️</span>`;
+      tmBlastSub.innerHTML = `<span class="pooled-tooltip" title="${tip}">Area Blast (${falloff} Damage) ℹ️</span>`;
     } else if (isDirectIntercept) {
       tmBlastSub.textContent = describePdKills(activeAmmo, 'hits') || `${hhm} PD HP subtracted per hit`;
     } else {
@@ -6730,7 +6730,7 @@ function setupWorkbenchInputEvents() {
       const idx = weaponsDb.findIndex(w => w.id === activeWeapon.id);
       weaponsDb[idx] = JSON.parse(JSON.stringify(orig));
       selectWeapon(activeWeapon.id);
-      showToast(`↺ Reset ${activeWeapon.name} to server defaults.`);
+      showToast(`↺ Reset ${activeWeapon.name} to its Shipped values.`);
     }
   };
 

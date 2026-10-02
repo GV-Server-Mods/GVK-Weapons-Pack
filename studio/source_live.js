@@ -287,9 +287,9 @@ async function init(opts) {
     // Atomic swap: validate ALL legs before pushing ANY to the app.
     const bad = window.SourcePipeline.validateLiveData(result.data);
     if (bad) {
-      console.warn('Live data rejected, falling back to bundled:', bad);
-      showBanner('⚠ Live source data problem (showing bundled fallback where possible):\n[' + result.mode + '] ' + bad, 'error');
-      setChip('🔴 BUNDLED SNAPSHOT — click to link mod folder', '#a33');
+      console.warn('Live data rejected, using the Snapshot:', bad);
+      showBanner('⚠ Live source data problem (showing the Snapshot instead):\n[' + result.mode + '] ' + bad, 'error');
+      setChip('🔴 SNAPSHOT — click to link mod folder', '#a33');
       chipEl.onclick = async () => { try { await initFolderLink(opts.onReapply); } catch (e) { console.warn(e); showBanner('Folder link failed: ' + (e && e.message || e)); } };
       return { data: null, mode: 'snapshot' };
     }
@@ -318,9 +318,9 @@ try {
 } catch (e) {
   console.warn('Linked-folder read failed:', e);
 }
-// 3) Bundled snapshot fallback
+// 3) The Snapshot bundled with the studio
 showExportBtn();
-setChip('🔴 BUNDLED SNAPSHOT — click to link mod folder', '#a33', 'error');
+setChip('🔴 SNAPSHOT — click to link mod folder', '#a33', 'error');
 chip.onclick = async () => {
     try {
       await initFolderLink(opts.onReapply);

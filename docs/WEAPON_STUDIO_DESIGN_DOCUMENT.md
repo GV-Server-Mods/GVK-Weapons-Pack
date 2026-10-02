@@ -207,7 +207,7 @@ graph TD
 ```
 
 #### Layout & navigation
-Top to bottom: the **editing context** strip (weapon picker, reset, grid/mount/UP/tech badges; shared by all three scopes since the ammo and block both belong to that weapon), the **scope switcher** (Weapon · Ammo · Block, with New Weapon/Ammo and mod-folder actions), the **lint banner** (one line for a single issue, a list for several), then a two-column body:
+Top to bottom: the **editing context** strip (weapon picker, **↺ Reset to Shipped** to discard the Draft, grid/mount/UP/tech badges; shared by all three scopes since the ammo and block both belong to that weapon), the **scope switcher** (Weapon · Ammo · Block, with New Weapon/Ammo and mod-folder actions), the **lint banner** (one line for a single issue, a list for several), then a two-column body:
 - **Section navigator** (`workbench_ui.js`, sticky left column; chips under 1100px): one entry per accordion in the active scope with scroll-spy, Expand all / Collapse all, and **Find a field** (`/` to focus, Enter jumps to the first match, Esc clears). Search matches label, WC field name with or without spaces, control id and help text; non-matching fields, notes and empty groups hide, matching sections open and close again when the search clears. A section whose title matches but none of its fields do is shown whole.
 - **Section headers** read `[n] Plain-English name  WcDefName  [status tag]`, so the C# struct name stays visible without being the headline.
 - **Checkbox options** are cards in a responsive grid: label, help text underneath, amber when on, and a `default` pill when the mod file doesn't set the flag (WeaponCore's default applies).
@@ -231,7 +231,7 @@ Full canonical WeaponCore round engineering:
 - Header & Core (Base damage, cutoff, mass, health, kick force)
 - `TrajectoryDef` & `SmartsDef` (Speed, acceleration, lifetime, pro-nav guidance, scan rates)
 - `DamageScaleDef` (Armor & Non-Armor multipliers, grid scaling, falloff)
-- `AreaOfDamageDef` (Impact `ByBlockHit` & Proximity `EndOfLife` explosive radii)
+- `AreaOfDamageDef` (impact `ByBlockHit` and End-of-Life AoE `EndOfLife` radii, damage and AoE Depth)
 - `FragmentDef` (Child ammo round triggers, spawn counts, radial dispersion)
 - `PatternDef`, `EwarDef`, `GraphicDef` (Tracers & ribbon trails), and `AmmoAudioDef`.
 
@@ -461,8 +461,8 @@ On every page load, `studio/source_live.js` resolves data in this order:
 2. **Local (file://)**: the "📁 Link Mod Folder" button uses the File System Access API to read the
    `CoreParts/` + `Content/Data/` folders straight off disk (your working tree, even uncommitted).
    Folder handle persists in IndexedDB. Status chip: `🟢 LIVE — local folder`.
-3. **Fallback**: bundled `studio/data/*_data.js` + `*_db.json` datasets. The chip turns red
-   (`🔴 BUNDLED SNAPSHOT`) so you always know you are NOT looking at live data.
+3. **Snapshot**: the `studio/data/*_data.js` + `*_db.json` copy of the Mod Source that ships with the studio. The chip turns red
+   (`🔴 SNAPSHOT`) so you always know you are NOT looking at Live data.
 
 ### Data health severity
 
@@ -473,7 +473,7 @@ The chip reflects the severity of any parse problems:
 | clean | 🟢 LIVE | No problems — everything parsed cleanly |
 | warn | 🟡 LIVE | Data loaded, non-fatal quirks (amber banner) |
 | error | 🔴 LIVE | Partial data — some weapons/ammos missing (red banner) |
-| fallback | 🔴 BUNDLED SNAPSHOT | Could not load live data at all (using bundled snapshot) |
+| snapshot | 🔴 SNAPSHOT | Could not load Live data at all (using the Snapshot) |
 
 Problems show in a top banner that auto-dismisses after 10 seconds (with a manual close button)
 so the studio stays usable even with non-fatal errors.
@@ -482,8 +482,8 @@ so the studio stays usable even with non-fatal errors.
 
 On every push to `main` (affecting `CoreParts/**`, `Content/Data/**`, `studio/**`, `tools/**`, or the workflow itself), GitHub Actions:
 1. **Verification Gate**: Runs `node tools/validate_studio_data.mjs` — a zero-dep Node gate that reuses
-   the browser parser. Refuses to deploy if any weapon ammo reference is unresolved, any magazine is
-   phantom, or any syntax errors are detected.
+   the browser parser. Refuses to deploy if any weapon ammo reference is unresolved, any ammo points to an
+   Unresolved magazine (one that does not exist), or any syntax errors are detected.
 2. **Verbatim Staging**: Stages `studio/` (the web app) plus a verbatim mirror of `CoreParts/*.cs` and
    the needed `Content/Data/*.sbc` files into `_site/data/source/`.
 3. **Manifest Stamping**: Extracts the latest commit date via `git log -1 --format=%cd --date=format:'%m.%d.%Y'`

@@ -60,4 +60,33 @@ check('Systems, Anti-Missile Screen, Missile Scramble and Data Core appear in Te
 const docTelOld = found(docSection('### Workspace 1', '### Workspace 2'), OLD_TELEMETRY);
 check('Design doc Telemetry section uses the new terms', docTelOld.length === 0, docTelOld);
 
+// --- Workbench and data-source labels (#57) ---
+const OLD_WORKBENCH = [/server defaults?/i, 'Detonation Depth', /Area Detonation/i, /phantom mag/i, /BUNDLED SNAPSHOT/i, /bundled fallback/i];
+seen.clear();
+studio.run(`(() => {
+  for (const w of getFilterableWeapons()) {
+    selectWeapon(w.id);
+    updateCombatTelemetry();
+    __grab();
+  }
+})()`);
+const htmlOutsideLogistics = html.slice(0, html.indexOf('id="ws-logistics"'))
+  + html.slice(html.indexOf('data-hud="ws-workbench"'), html.indexOf('data-hud="ws-logistics"'));
+const wbOld = found([...seen].join('\n') + htmlOutsideLogistics, OLD_WORKBENCH);
+check('Workbench text, tooltips and footer show none of the retired terms', wbOld.length === 0, wbOld);
+check('Workbench uses AoE Depth and Shipped', /AoE Depth/.test(htmlSection('ws-workbench', 'ws-logistics')) && /Shipped/.test(html));
+const liveSrc = fs.readFileSync(studioFile('source_live.js'), 'utf8');
+const liveOld = found(liveSrc.split(/\r?\n/).filter((l) => /setChip\(|showBanner\(/.test(l)).join('\n'), OLD_WORKBENCH.concat([/bundled/i]));
+check('Data-source chip reads SNAPSHOT and its messages never say bundled', liveOld.length === 0 && /'🔴 SNAPSHOT/.test(liveSrc), liveOld);
+const SP = require('../studio/source_pipeline.js');
+const coreParts = {};
+for (const f of fs.readdirSync(path.join(root, 'CoreParts'))) if (f.endsWith('.cs') && !/Animation/.test(f)) coreParts[f] = fs.readFileSync(path.join(root, 'CoreParts', f), 'utf8');
+const noMags = SP.buildStudioData(coreParts, { magazines: [], blueprints: '', cubeBlocks: {} }, {});
+const magError = noMags.errors.find((e) => /MAGAZINE/i.test(e)) || '';
+check('Data health names a missing magazine an Unresolved magazine, not a phantom one', /^UNRESOLVED MAGAZINES: /.test(magError) && !/phantom/i.test(noMags.errors.join(' ')), magError.slice(0, 80));
+const gateSrc = fs.readFileSync(path.join(root, 'tools', 'validate_studio_data.mjs'), 'utf8');
+check('CI data check speaks of unresolved magazines', !/phantom/i.test(gateSrc), gateSrc.match(/.*phantom.*/i));
+const docWbOld = found(docSection('### Workspace 2', '### Workspace 3') + docSection('## 7. Data Pipeline', '## 8.'), OLD_WORKBENCH.concat([/phantom,/i]));
+check('Design doc Workbench and data-pipeline sections use the new terms', docWbOld.length === 0, docWbOld);
+
 done('Glossary checks');

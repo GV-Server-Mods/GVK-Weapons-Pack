@@ -41,8 +41,8 @@ info(`parsed ${Object.keys(csSources).length} C# files, ${built.weapons.length} 
 // PASS lines use the same format as the scratch/ suites so run_studio_tests.js can count them
 const gate = (label, problem) => { if (problem) die(problem); else console.log('  PASS  ' + label); };
 
-// Hard gate: any parse error (includes the phantom-magazine scan) or unresolved weapon->ammo ref.
-gate('zero parse errors (incl. phantom-magazine scan)', built.errors.length && built.errors.join('\nGATE FAIL: '));
+// Hard gate: any parse error (includes the unresolved-magazine scan) or unresolved weapon->ammo ref.
+gate('zero parse errors (incl. unresolved-magazine scan)', built.errors.length && built.errors.join('\nGATE FAIL: '));
 gate('zero unresolved weapon -> ammo references', built.warnings.length && built.warnings.join('\nGATE FAIL: '));
 
 // Spot checks on the pair that started all this — cheap insurance against parser regressions.

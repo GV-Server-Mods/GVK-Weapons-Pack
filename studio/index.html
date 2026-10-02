@@ -258,7 +258,7 @@
           </div>
           <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: nowrap;">
             <select id="weaponSelect" class="weapon-dropdown"></select>
-            <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to official server defaults">↺ Reset</button>
+            <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to its Shipped values">↺ Reset</button>
             <div class="battery-multiplier-group" style="flex-shrink: 0;" title="Scale combat telemetry for multiple guns (e.g. 2x, 4x, 8x broadside array)">
               <span class="battery-label">GUN ARRAY:</span>
               <button class="battery-btn active" data-mult="1">1x</button>
@@ -731,7 +731,7 @@
               <select id="weaponSelectWorkbench" class="weapon-dropdown">
                 <!-- Populated dynamically / synced with weaponSelect -->
               </select>
-              <button id="btnResetDefaultsWorkbench" class="btn btn-sm" title="Discard edits and reset this weapon to the server defaults">↺ Reset to defaults</button>
+              <button id="btnResetDefaultsWorkbench" class="btn btn-sm" title="Discard edits and reset this weapon to its Shipped values">↺ Reset to Shipped</button>
             </div>
           </div>
         </div>
@@ -770,7 +770,7 @@
           </div>
           <div class="scope-action-group" aria-label="Mod folder">
             <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to your local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
-            <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed live data as bundled fallback datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
+            <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed Live data as the Snapshot datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
           </div>
         </div>
       </div>
@@ -1586,7 +1586,7 @@
                   <input type="number" id="aodBlockDamage" class="control-input" step="100" min="0" value="0">
                 </div>
                 <div class="control-item">
-                  <label class="control-label">Detonation Depth <span class="unit">penetration</span></label>
+                  <label class="control-label">AoE Depth <span class="unit">penetration</span></label>
                   <input type="number" id="aodBlockDepth" class="control-input" step="0.1" min="0" value="0">
                 </div>
                 <div class="control-item">
@@ -1632,7 +1632,7 @@
                   <input type="number" id="aodEolDamage" class="control-input" step="100" min="0" value="0">
                 </div>
                 <div class="control-item">
-                  <label class="control-label">Detonation Depth <span class="unit">penetration</span></label>
+                  <label class="control-label">AoE Depth <span class="unit">penetration</span></label>
                   <input type="number" id="aodEolDepth" class="control-input" step="0.1" min="0" value="0">
                 </div>
                 <div class="control-item">
@@ -2462,7 +2462,7 @@
         <button id="hudTelBench" class="badge hud-chip" type="button" style="display: none;" title="Jump to the 1v1 Combat Radar"></button>
       </div>
     </div>
-    <!-- Definition Workbench: effect of edits vs server default, lint status, export -->
+    <!-- Definition Workbench: effect of edits vs Shipped, lint status, export -->
     <div class="hud-group" data-hud="ws-workbench">
       <div class="hud-left">
         <span class="hud-title" id="hudWbName">—</span>

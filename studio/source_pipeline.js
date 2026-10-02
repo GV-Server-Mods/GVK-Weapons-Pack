@@ -776,12 +776,12 @@ function buildStudioData(csSources, sbc, overrides) {
       weapons.push(weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, ov));
     });
   }
-  const phantom = [];
+  const unresolved = [];
   for (const name of Object.keys(ammos)) {
     const am = ammos[name].ammoMagazine;
-    if (am && am !== 'Energy' && !magByKey[am]) phantom.push(name + ' -> ' + am);
+    if (am && am !== 'Energy' && !magByKey[am]) unresolved.push(name + ' -> ' + am);
   }
-  if (phantom.length) errors.push('PHANTOM MAGAZINES: ' + phantom.join(', '));
+  if (unresolved.length) errors.push('UNRESOLVED MAGAZINES: ' + unresolved.join(', '));
   return { weapons, ammos, magazines, blocks, wcDefs: parsed.wcDefs, errors, warnings };
 }
 
