@@ -132,4 +132,24 @@ check('Design doc expands UPs as Utility Points everywhere', !/Upgrade Module/i.
 const truthLines = doc.split(/\r?\n/).filter((l) => /source of truth/i.test(l));
 check('"Source of truth" appears only for the Mod Source', truthLines.length > 0 && truthLines.every((l) => /Mod Source/.test(l)), truthLines.map((l) => l.slice(0, 90)));
 
+// --- Curation, not overrides (#60) ---
+const listFiles = (dir) => fs.readdirSync(dir, { withFileTypes: true })
+  .flatMap((e) => (e.isDirectory() ? listFiles(path.join(dir, e.name)) : [path.join(dir, e.name)]));
+const studioDir = path.join(root, 'studio');
+const overrideFiles = listFiles(studioDir).filter((f) => /override/i.test(path.basename(f)));
+check('No studio file is named for overrides; the curated data is studio/data/curation.js',
+  overrideFiles.length === 0 && fs.existsSync(path.join(studioDir, 'data', 'curation.js')), overrideFiles);
+// WeaponCore's own server overrides and its OverrideShotSound field keep their names
+const WC_OVERRIDE = /server overrides|OverrideShotSound/;
+const codeFiles = listFiles(studioDir).filter((f) => /\.(js|html|css)$/.test(f) && !/[\\/]data[\\/](weapons_|ammos_|wc_defs_|wc_schema\.)/.test(f))
+  .concat(['tools/validate_studio_data.mjs', 'scratch/export_snapshots.js', 'scratch/test_source_pipeline.js', '.github/workflows/deploy-studio.yml'].map((f) => path.join(root, f)));
+const overrideLines = codeFiles.flatMap((f) => fs.readFileSync(f, 'utf8').split(/\r?\n/)
+  .map((l, i) => ({ f: path.relative(root, f), i: i + 1, l }))
+  .filter((x) => /override/i.test(x.l) && !WC_OVERRIDE.test(x.l)));
+check('No studio code, export script, test or CI check calls studio data or edits "overrides"', overrideLines.length === 0,
+  overrideLines.slice(0, 8).map((x) => `${x.f}:${x.i}: ${x.l.trim().slice(0, 80)}`));
+check('The studio still loads the Curation data', /<script src="data\/curation\.js"><\/script>/.test(html)
+  && /window\.STUDIO_CURATION/.test(fs.readFileSync(studioFile('source_live.js'), 'utf8')));
+check('Design doc calls the hand-maintained data Curation', !/studio_overrides/.test(doc) && /curation\.js/.test(doc));
+
 done('Glossary checks');

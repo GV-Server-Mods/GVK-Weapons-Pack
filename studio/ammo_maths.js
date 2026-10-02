@@ -157,8 +157,8 @@ function amBaseline(magDmg, refDmg) {
 // ==========================================================================
 // LEVERS (one multiplier per output region; defaults reproduce the live SBC)
 // ==========================================================================
-function amDefaults(mag, ammoKeyOverride) {
-  const ammoKey = (ammoKeyOverride && ammosDb[ammoKeyOverride]) ? ammoKeyOverride : amDefaultAmmoKey(mag);
+function amDefaults(mag, forcedAmmoKey) {
+  const ammoKey = (forcedAmmoKey && ammosDb[forcedAmmoKey]) ? forcedAmmoKey : amDefaultAmmoKey(mag);
   const magDmg = amMagDamage(ammosDb[ammoKey], mag.capacity);
   const base = amBaseline(magDmg, amRefDmg());
   const r4 = (x) => Math.round(x * 10000) / 10000;
@@ -168,7 +168,7 @@ function amDefaults(mag, ammoKeyOverride) {
     : prereqs.filter((p) => p.subtypeId !== 'GVK_RUs').map((p) => ({ subtype: p.subtypeId, weight: p.amount }));
   return {
     ammoKey: amDefaultAmmoKey(mag),
-    // Stored multipliers (studio_overrides) lock a magazine's character so damage changes flow through the curves;
+    // Stored multipliers (Curation, studio/data/curation.js) lock a magazine's character so damage changes flow through the curves;
     // without one the multiplier is read back from the SBC, which reproduces the live values exactly.
     sizeMult: mag.sizeMult || (base.vol > 0 && mag.volume > 0 ? r4(mag.volume / base.vol) : 1),
     massMult: mag.massMult || (base.mass > 0 && mag.mass > 0 ? r4(mag.mass / base.mass) : 1),

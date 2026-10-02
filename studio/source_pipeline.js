@@ -715,10 +715,10 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, ov) {
   };
 }
 
-function magazineEntries(magSbc, blueprints, overrides) {
+function magazineEntries(magSbc, blueprints, curation) {
   const bpByResult = {};
   for (const b of blueprints) bpByResult[b.resultSubtype] = b;
-  const ov = (overrides && overrides.magazines) || {};
+  const ov = (curation && curation.magazines) || {};
   const out = [];
   for (const sub of Object.keys(magSbc)) {
     const m = magSbc[sub], o = ov[sub] || {}, b = bpByResult[sub];
@@ -750,9 +750,9 @@ function magazineEntries(magSbc, blueprints, overrides) {
 }
 
 // Build the full Studio datasets. csSources: {file: text}; sbc: {magazines, blueprints, cubeBlocks:{file: text}};
-// overrides: {weapons:{[subtypeId]:{id,name,icon}}, magazines:{[subtypeId]:{category,localIcon,...}}}.
-function buildStudioData(csSources, sbc, overrides) {
-  overrides = overrides || {};
+// curation (studio/data/curation.js): {weapons:{[subtypeId]:{id,name,icon}}, magazines:{[subtypeId]:{category,localIcon,...}}}.
+function buildStudioData(csSources, sbc, curation) {
+  curation = curation || {};
   const parsed = parseAll(csSources);
   const errors = parsed.errors.slice(), warnings = parsed.warnings.slice();
   const magSbc = {};
@@ -765,14 +765,14 @@ function buildStudioData(csSources, sbc, overrides) {
   for (const name of Object.keys(parsed.ammos)) {
     ammos[name] = ammoShape(name, parsed.ammos[name].def, parsed.defs[name] && parsed.defs[name].file);
   }
-  const magazines = magazineEntries(magSbc, blueprints, overrides);
+  const magazines = magazineEntries(magSbc, blueprints, curation);
   const magByKey = {};
   for (const m of magazines) magByKey[m.subtypeId] = m;
   const weapons = [];
   for (const w of parsed.weapons) {
     const subs = w.subtypeIds.length ? w.subtypeIds : [null];
     subs.forEach((sub, idx) => {
-      const ov = (overrides.weapons || {})[sub] || {};
+      const ov = (curation.weapons || {})[sub] || {};
       weapons.push(weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, ov));
     });
   }

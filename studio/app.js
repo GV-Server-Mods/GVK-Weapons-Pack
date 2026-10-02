@@ -1901,8 +1901,8 @@ function getMagCapacity(ammo) {
 }
 
 // WC AmmoConstants.Energy() for a weapon + ammo pair (MustCharge, reloadable, charge size, energy magazine)
-function getWcEnergy(weapon, ammo, overrides) {
-  const w = Object.assign({}, weapon || {}, overrides || {});
+function getWcEnergy(weapon, ammo, patch) {
+  const w = Object.assign({}, weapon || {}, patch || {});
   const a = ammo || {};
   const ewarOn = !!(a.ewar && a.ewar.enable);
   return WcMath.energy({
@@ -5037,18 +5037,18 @@ function isDetonationWeapon(weapon) {
 /// WC power sink (CoreComponent.SinkPower): IdlePower (min 0.001 MW) always, plus AssignedPower while a MustCharge
 /// (energy or hybrid) weapon charges = WeaponState.UpdateDesiredPower, ShotEnergyCost x shots per tick.
 /// </summary>
-function getWeaponPowerDraw(weapon, ammo, overrides) {
-  const w = Object.assign({}, weapon || {}, overrides || {});
+function getWeaponPowerDraw(weapon, ammo, patch) {
+  const w = Object.assign({}, weapon || {}, patch || {});
   const idle = Math.max(parseFloat(w.idlePower) || 0, 0.001);
   if (isDetonationWeapon(weapon)) return { idle, operational: idle, mustCharge: false };
   const e = getWcEnergy(w, ammo || {});
   return { idle, operational: idle + (e.mustCharge ? e.desiredPower : 0), mustCharge: e.mustCharge };
 }
 
-function calculateWeaponMetrics(weapon, ammoKeyOverride) {
+function calculateWeaponMetrics(weapon, forcedAmmoKey) {
   if (!weapon) return { sustainedDps: 0, effectiveDps: 0, magazineDamage: 0, effectiveMagazineDamage: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000, power: 0, ups: 0, isBeam: false };
 
-  const aKey = ammoKeyOverride || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
+  const aKey = forcedAmmoKey || ((weapon.assignedAmmos && weapon.assignedAmmos.length > 0) ? weapon.assignedAmmos[0] : weapon.ammoName);
   const a = ammosDb[aKey] || {};
 
   const { projectiles, effectiveRps } = computeFireCycle(getFireCycleParams(weapon, a, false));
@@ -6649,15 +6649,15 @@ function setupWorkbenchInputEvents() {
     }
   });
 
-  // Targeting fields convert shared preset to custom override
+  // Editing a targeting field detaches the weapon from its shared preset
   const targetingInputs = [wMaxTargetDistance, wMinTargetDistance, wTopTargets, wTopBlocks, wStopTrackingSpeed, wClosestFirst, wIgnoreDumb,
     wLockedSmartOnly, wCtrlAutomatic, wCtrlManual, wCtrlPainter];
   targetingInputs.forEach(input => {
     if (input) {
       input.addEventListener('input', () => {
         if (activeWeapon && activeWeapon.helpers && activeWeapon.helpers.targeting) {
-          activeWeapon.targetingOverridden = true;
-          badgeTargetingHelper.textContent = "Custom Override";
+          activeWeapon.targetingDetached = true;
+          badgeTargetingHelper.textContent = "Custom (detached)";
           badgeTargetingHelper.style.background = "rgba(245, 158, 11, 0.2)";
           badgeTargetingHelper.style.color = "var(--amber-primary)";
           btnRevertTargeting.style.display = "inline-block";
@@ -6669,7 +6669,7 @@ function setupWorkbenchInputEvents() {
   if (btnRevertTargeting) {
     btnRevertTargeting.addEventListener('click', () => {
       if (activeWeapon && activeWeapon.helpers && activeWeapon.helpers.targeting) {
-        activeWeapon.targetingOverridden = false;
+        activeWeapon.targetingDetached = false;
         badgeTargetingHelper.textContent = `Shared: ${activeWeapon.helpers.targeting}`;
         badgeTargetingHelper.style.background = "rgba(56, 189, 248, 0.15)";
         badgeTargetingHelper.style.color = "var(--cyan-primary)";

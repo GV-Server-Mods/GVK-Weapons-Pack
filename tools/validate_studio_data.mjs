@@ -19,8 +19,8 @@ const cubeBlocks = {};
 for (const f of fs.readdirSync(path.join(dataDir, 'CubeBlocks'))) {
   if (f.endsWith('.sbc')) cubeBlocks[f] = fs.readFileSync(path.join(dataDir, 'CubeBlocks', f), 'utf8');
 }
-const ovSrc = fs.readFileSync(path.join(root, 'studio', 'data', 'studio_overrides.js'), 'utf8');
-const overrides = JSON.parse(ovSrc.slice(ovSrc.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
+const curationSrc = fs.readFileSync(path.join(root, 'studio', 'data', 'curation.js'), 'utf8');
+const curation = JSON.parse(curationSrc.slice(curationSrc.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
 const built = SP.buildStudioData(csSources, {
   magazines: [
@@ -29,7 +29,7 @@ const built = SP.buildStudioData(csSources, {
   ],
   blueprints: fs.readFileSync(path.join(dataDir, 'Blueprints.sbc'), 'utf8'),
   cubeBlocks,
-}, overrides);
+}, curation);
 
 let fail = 0;
 const die = (msg) => { console.error('GATE FAIL: ' + msg); fail++; };

@@ -33,7 +33,7 @@ for (const f of fs.readdirSync(path.join('Content', 'Data', 'CubeBlocks'))) {
   if (f.endsWith('.sbc')) sbc.cubeBlocks[f] = fs.readFileSync(path.join('Content', 'Data', 'CubeBlocks', f), 'utf8');
 }
 
-const ovText = fs.readFileSync('studio/data/studio_overrides.js', 'utf8');
+const ovText = fs.readFileSync('studio/data/curation.js', 'utf8');
 const ov = JSON.parse(ovText.slice(ovText.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 
 const d = SP.buildStudioData(cs, sbc, ov);

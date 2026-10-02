@@ -41,6 +41,7 @@ GVK_Weapons/
 │   │   ├── weapons_data.js                  # 96 mod weapons bundled dataset
 │   │   ├── ammos_data.js                    # 63 WeaponCore ammo rounds bundled dataset
 │   │   ├── magazines_blueprints_data.js     # 19 official ammo magazines & authentic ingot blueprints
+│   │   ├── curation.js                      # Curation: hand-maintained names, icons, magazine categories & multipliers
 │   │   ├── animations_data.js               # 18 subpart animation definitions
 │   │   ├── components_data.js               # Valid SE component definitions (ores filtered out)
 │   │   ├── economy_values.js                # Ingot & component SC values (sheet Components tab)
@@ -77,7 +78,7 @@ graph TD
 
 #### 1. Universal Weapon Banner & Badges
 - **Active Weapon Icon & Dropdown**: Large weapon icon with orange border (`#d97706`). Dropdown separated into *Player Standard Armaments* and *⚔️ NPC / Relic / Enemy Armaments*.
-- **Dynamic Icon Resolution**: Weapon icons resolve dynamically through `getWeaponIconUrl(weapon)` using block subtype IDs, grid size markers (`(L)` / `(S)` derived from CubeBlock definitions), and `studio_overrides.js` mappings. This ensures large/small variants (e.g. Avenger Turret, Gatling, PD Laser, Light Laser) display their distinct grid textures rather than falling back to broken paths or getting stuck on a default icon.
+- **Dynamic Icon Resolution**: Weapon icons resolve dynamically through `getWeaponIconUrl(weapon)` using block subtype IDs, grid size markers (`(L)` / `(S)` derived from CubeBlock definitions), and Curation (`data/curation.js`) mappings. This ensures large/small variants (e.g. Avenger Turret, Gatling, PD Laser, Light Laser) display their distinct grid textures rather than falling back to broken paths or getting stuck on a default icon.
 - **Dynamic GVK Status Badges**:
   - `[ ⚡ X UPs ]`: Utility Points (UPs) dynamically calculated from total Prototech component count (excluding Data Cores). Matches server Spec Core balancing.
   - `[ 👑 Relic Weapon ]` vs `[ ⚙️ Standard Production ]`: Automatically derived from blueprint ingredients (`GVK_RUs` or non-craftable scavenged items).
@@ -287,7 +288,7 @@ Every output starts from a baseline curve that scales with the magazine's damage
 | Craft time | `Reference Craft Time (13 s) × (dmg ÷ Baseline Magazine dmg)^Craft Exponent (0.5)` | **Craft ×** |
 | Price | `Baseline Magazine Price (1,500 SC) × (dmg ÷ Baseline Magazine dmg)` | **Price ×** (Price Tier) |
 
-- The Size/Mass/Craft multipliers in `studio_overrides.js` were seeded from the Shipped SBC, so the Shipped levers reproduce every tracked magazine's current volume, mass and craft time exactly. Because they're stored, a damage change moves all four outputs along the curves while each magazine keeps its character. A magazine without stored multipliers reads them back from its SBC values.
+- The Size/Mass/Craft multipliers in the Curation (`data/curation.js`) were seeded from the Shipped SBC, so the Shipped levers reproduce every tracked magazine's current volume, mass and craft time exactly. Because they're stored, a damage change moves all four outputs along the curves while each magazine keeps its character. A magazine without stored multipliers reads them back from its SBC values.
 - This replaces the sheet's Damage Density, Ammo Density, the Volume Buff and the craft-time override. The size reduction from commit `351d2af` and Plasma's hand-set 72 s are now just those magazines' Size × and Craft × values.
 - **Two-way levers**: Volume, Mass, Craft Time and Server Price each show `× multiplier → target`. Typing a target solves the multiplier (4 decimals) from the curve value; leaving the field shows the value the rounding lands on. The Server Price **Price Tier** dropdown (Standard 1.0, AP 1.1, Railgun 1.2, Missiles 1.25, MIRV 1.5, Custom) sets the multiplier.
 - **Damage Basis** card: Reference Ammo (which AmmoDef supplies the damage per round), `dmg/hit × capacity = dmg/mag` (hover for base / area / fragment parts), the ratio to the Baseline Magazine and the three curve values at that ratio. **✎ Edit damage in Workbench** opens a player weapon firing that AmmoDef with BaseDamage in view; the Baseline Magazine and curve settings link into the Balance Matrix.
@@ -503,7 +504,7 @@ These are derived fallback artifacts — regenerate, do not patch:
 
 Regenerate with: `node scratch/export_snapshots.js`
 
-Exception: `studio/data/studio_overrides.js` contains presentation-only data (curated ids, display
+Exception: `studio/data/curation.js` holds the **Curation**, hand-maintained presentation data (curated ids, display
 names, icons, RUs) that does not exist in the C# and is safe to hand-edit.
 
 ### Parser scope

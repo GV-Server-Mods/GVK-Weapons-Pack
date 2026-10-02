@@ -169,8 +169,8 @@ function showExportBtn() {
 }
 
 async function buildFrom(csSources, sbc) {
-  const overrides = window.STUDIO_OVERRIDES || {};
-  const data = window.SourcePipeline.buildStudioData(csSources, sbc, overrides);
+  const curation = window.STUDIO_CURATION || {};
+  const data = window.SourcePipeline.buildStudioData(csSources, sbc, curation);
   return data;
 }
 

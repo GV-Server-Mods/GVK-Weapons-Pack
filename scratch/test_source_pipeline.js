@@ -62,7 +62,7 @@ for (const w of r.weapons) {
   console.log(w.defName, '|', w.subtypeIds.join(','), '=>', JSON.stringify(w.assignedAmmos),
     '|', w.rateOfFire, '|', w.reloadTime);
 }
-// ---------------- M2: full studio data build from C# + SBC + overrides ----------------
+// ---------------- M2: full studio data build from C# + SBC + Curation ----------------
 const dataDir = path.join(__dirname, '..', 'studio', 'data');
 function loadBundledJs(file) {
   let s = fs.readFileSync(path.join(dataDir, file), 'utf8');
@@ -71,8 +71,8 @@ function loadBundledJs(file) {
   const end = Math.max(s.lastIndexOf('}'), s.lastIndexOf(']')); // trailing window-guard lines exist in some files
   return JSON.parse(s.slice(0, end + 1));
 }
-const overridesSrc = fs.readFileSync(path.join(dataDir, 'studio_overrides.js'), 'utf8');
-const overrides = JSON.parse(overridesSrc.slice(overridesSrc.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
+const curationSrc = fs.readFileSync(path.join(dataDir, 'curation.js'), 'utf8');
+const curation = JSON.parse(curationSrc.slice(curationSrc.indexOf('=') + 1).trim().replace(/;\s*$/, ''));
 const sbcDir = path.join(__dirname, '..', 'Content', 'Data');
 const cubeBlocks = {};
 for (const f of fs.readdirSync(path.join(sbcDir, 'CubeBlocks'))) {
@@ -85,7 +85,7 @@ const built = SP.buildStudioData(sources, {
   ],
   blueprints: fs.readFileSync(path.join(sbcDir, 'Blueprints.sbc'), 'utf8'),
   cubeBlocks,
-}, overrides);
+}, curation);
 
 console.log('\n--- M2: buildStudioData ---');
 console.log('built: weapons', built.weapons.length, '| ammos', Object.keys(built.ammos).length,
@@ -150,7 +150,7 @@ if (bMag) {
   check('480mm magazine has blueprint + prerequisites',
     !!bMag.blueprintSubtype && bMag.prerequisites.length > 0 && bMag.productionTime > 0,
     JSON.stringify([bMag.blueprintSubtype, bMag.prerequisites.length, bMag.productionTime]));
-  check('480mm magazine localIcon from overrides', !!bMag.localIcon, bMag.localIcon);
+  check('480mm magazine localIcon from Curation', !!bMag.localIcon, bMag.localIcon);
 }
 
 // Ammo parity vs bundled for the plain def; for the Odin clone assert the CORRECTED values
