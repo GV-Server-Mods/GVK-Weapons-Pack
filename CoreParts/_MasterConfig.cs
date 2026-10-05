@@ -64,6 +64,8 @@ namespace Scripts
 							MA_PDX,
 							LargeFlareWC,
 							SmallFlareWC,
+							LargeFlareWC_NPC,
+							SmallFlareWC_NPC,
 							FlarePistolGun,
 							odin_def,
 							GVK_GriffinMissileTurret,

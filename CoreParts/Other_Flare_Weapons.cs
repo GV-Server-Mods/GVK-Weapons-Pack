@@ -43,15 +43,6 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    new MountPointDef {
-                        SubtypeId = "LargeFlareLauncher_NPC", // Block Subtypeid. Your Cubeblocks contain this information
-                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
-                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
-                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
-                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
-                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
-                        IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
-                    },
                  },
                 Muzzles = new[] {
                     "muzzle_missile_033", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
@@ -167,15 +158,6 @@ namespace Scripts {
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    new MountPointDef {
-                        SubtypeId = "SmallFlareLauncher_NPC", // Block Subtypeid. Your Cubeblocks contain this information
-                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
-                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
-                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
-                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
-                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
-                        IconName = "TestIcon.dds" // Overlay for block inventory slots, like reactors, refineries, etc.
-                    },
                  },
                 Muzzles = new[] {
                     "muzzle_missile_033", // Where your Projectiles spawn. Use numbers not Letters. IE Muzzle_01 not Muzzle_A
@@ -254,5 +236,50 @@ namespace Scripts {
                 FlareWC, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
             },
         };
+
+        // NPC flares fire on their own: WeaponCore targets smart projectiles locked onto this grid
+        // (DisableSupportingPD in Other_Flare_Hardpoint_Ui) and, on Auto, ignores MES fire commands.
+        // LockedSmartOnly stays false: it is inverted in WeaponCore's AcquireProjectile (GVK-Settings#696).
+        private TargetingDef Other_Flare_Targeting_NPC => new TargetingDef
+        {
+            Threats = new[] {
+                Projectiles,
+            },
+            SubSystems = new[] {
+                Any,
+            },
+            ClosestFirst = true,
+            IgnoreDumbProjectiles = true,
+            LockedSmartOnly = false,
+            MinimumDiameter = 0,
+            MaximumDiameter = 0,
+            MaxTargetDistance = 1000,
+            MinTargetDistance = 0,
+            TopTargets = 0,
+            CycleTargets = 0,
+            TopBlocks = 0,
+            CycleBlocks = 0,
+            StopTrackingSpeed = 2000,
+        };
+
+        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId, int shotsInBurst)
+        {
+            weapon.Assignments.MountPoints[0].SubtypeId = subtypeId;
+            weapon.Targeting = Other_Flare_Targeting_NPC;
+            weapon.HardPoint.AimingTolerance = 180f;
+            weapon.HardPoint.NpcSafe = true;
+            weapon.HardPoint.Ui = Other_Flare_Hardpoint_Ui;
+            weapon.HardPoint.Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking;
+            weapon.HardPoint.Loading.ShotsInBurst = shotsInBurst;
+            weapon.HardPoint.Loading.DelayAfterBurst = 300;
+            weapon.HardPoint.Loading.FireFull = false;
+            weapon.Ammos = new[] {
+                FlareWC,
+            };
+            return weapon;
+        }
+
+        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC", 3);
+        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC", 2);
     }
 }
