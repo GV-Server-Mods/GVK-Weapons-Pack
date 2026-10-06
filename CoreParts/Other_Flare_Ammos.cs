@@ -457,12 +457,13 @@ namespace Scripts
 
         // WeaponCore only auto-fires a fixed weapon at a projectile when its own ammo is Smart (SessionUpdate.cs AiShooting).
         // NoSteering keeps the flare flying straight; IgnoreAntiSmarts stops other flares decoying it.
-        private AmmoDef FlareWC_NPC
+        // FlareWC stays dumb for the handheld flare gun.
+        private AmmoDef FlareWC_Smart
         {
             get
             {
                 var ammo = FlareWC;
-                ammo.AmmoRound = "FlareNPC";
+                ammo.AmmoRound = "Smart Flare";
                 ammo.Trajectory.Guidance = Smart;
                 ammo.Trajectory.Smarts = new SmartsDef
                 {

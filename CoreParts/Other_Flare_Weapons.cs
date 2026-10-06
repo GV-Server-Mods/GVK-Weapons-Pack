@@ -80,17 +80,17 @@ namespace Scripts {
                 },
                 Scope = "muzzle_missile_052", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
+			Targeting = Other_Flare_Targeting, // self-launches at missiles locked on this grid
             HardPoint = new HardPointDef
             {
                 PartName = "Flare Launcher", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 10f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = false, // This is how you tell npc modders that your wep was designed with them in mind, unless they tell you otherwise set this to false.
                 ScanTrackOnly = false, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
                 Ui = Other_Flare_Hardpoint_Ui,
-                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 0.396f, // Inventory capacity in kL.
@@ -141,7 +141,7 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                FlareWC, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
+                FlareWC_Smart, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
             },
         };
         WeaponDefinition SmallFlareWC => new WeaponDefinition
@@ -174,17 +174,17 @@ namespace Scripts {
                 Ejector = "", // Optional; empty from which to eject "shells" if specified.
                 Scope = "muzzle_missile_037", // Where line of sight checks are performed from. Must be clear of block collision.
             },
-			Targeting = Common_Weapons_Targeting_Fixed_NoTargeting, //shared targeting def
+			Targeting = Other_Flare_Targeting, // self-launches at missiles locked on this grid
             HardPoint = new HardPointDef
             {
                 PartName = "Flare Launcher", // Name of the weapon in terminal, should be unique for each weapon definition that shares a SubtypeId (i.e. multiweapons).
                 DeviateShotAngle = 5f, // Projectile inaccuracy in degrees.
-                AimingTolerance = 30f, // 0 - 180 firing angle
+                AimingTolerance = 180f, // 0 - 180 firing angle
                 AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
                 NpcSafe = false, // This is how you tell npc modders that your wep was designed with them in mind, unless they tell you otherwise set this to false.
                 ScanTrackOnly = false, // This weapon only scans and tracks entities, this disables un-needed functionality and customizes for this purpose. 
-                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_FullDisable,
+                Ui = Other_Flare_Hardpoint_Ui,
+                Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking,
                 HardWare = new HardwareDef
                 {
                     InventorySize = 0.132f, // Inventory capacity in kL.
@@ -233,15 +233,15 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                FlareWC, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
+                FlareWC_Smart, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
             },
         };
 
-        // NPC flares fire on their own: WeaponCore targets smart projectiles locked onto this grid
+        // Flare launchers fire on their own: WeaponCore targets smart projectiles locked onto this grid
         // (DisableSupportingPD in Other_Flare_Hardpoint_Ui) and, on Auto, ignores MES fire commands.
-        // Fixed weapons only auto-fire Smart ammo, hence FlareWC_NPC.
+        // Fixed weapons only auto-fire Smart ammo, hence FlareWC_Smart.
         // LockedSmartOnly stays false: it is inverted in WeaponCore's AcquireProjectile (GVK-Settings#696).
-        private TargetingDef Other_Flare_Targeting_NPC => new TargetingDef
+        private TargetingDef Other_Flare_Targeting => new TargetingDef
         {
             Threats = new[] {
                 Projectiles,
@@ -270,14 +270,14 @@ namespace Scripts {
             // Unique name: MES looks definitions up by PartName and takes the first match, so a shared
             // name made it restock the player launcher's ammo (fireworks) instead of FlareClips.
             weapon.HardPoint.PartName = "NPC Flare Launcher";
-            weapon.Targeting = Other_Flare_Targeting_NPC;
+            weapon.Targeting = Other_Flare_Targeting;
             weapon.HardPoint.AimingTolerance = 180f;
             weapon.HardPoint.NpcSafe = true;
             weapon.HardPoint.Ui = Other_Flare_Hardpoint_Ui;
             weapon.HardPoint.Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking;
             weapon.HardPoint.Loading.FireFull = false;
             weapon.Ammos = new[] {
-                FlareWC_NPC,
+                FlareWC_Smart,
             };
             return weapon;
         }
