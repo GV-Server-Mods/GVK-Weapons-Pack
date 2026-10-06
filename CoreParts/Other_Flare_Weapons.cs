@@ -239,6 +239,7 @@ namespace Scripts {
 
         // NPC flares fire on their own: WeaponCore targets smart projectiles locked onto this grid
         // (DisableSupportingPD in Other_Flare_Hardpoint_Ui) and, on Auto, ignores MES fire commands.
+        // Fixed weapons only auto-fire Smart ammo, hence FlareWC_NPC.
         // LockedSmartOnly stays false: it is inverted in WeaponCore's AcquireProjectile (GVK-Settings#696).
         private TargetingDef Other_Flare_Targeting_NPC => new TargetingDef
         {
@@ -274,7 +275,7 @@ namespace Scripts {
             weapon.HardPoint.Loading.DelayAfterBurst = 300;
             weapon.HardPoint.Loading.FireFull = false;
             weapon.Ammos = new[] {
-                FlareWC,
+                FlareWC_NPC,
             };
             return weapon;
         }
