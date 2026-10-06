@@ -267,6 +267,9 @@ namespace Scripts {
         private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId)
         {
             weapon.Assignments.MountPoints[0].SubtypeId = subtypeId;
+            // Unique name: MES looks definitions up by PartName and takes the first match, so a shared
+            // name made it restock the player launcher's ammo (fireworks) instead of FlareClips.
+            weapon.HardPoint.PartName = "NPC Flare Launcher";
             weapon.Targeting = Other_Flare_Targeting_NPC;
             weapon.HardPoint.AimingTolerance = 180f;
             weapon.HardPoint.NpcSafe = true;
