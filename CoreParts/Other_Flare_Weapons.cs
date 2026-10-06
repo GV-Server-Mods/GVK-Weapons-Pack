@@ -263,7 +263,8 @@ namespace Scripts {
             StopTrackingSpeed = 2000,
         };
 
-        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId, int shotsInBurst)
+        // Fires like the player launcher (rate, magazine, reload), but stops as soon as the missile is gone.
+        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId)
         {
             weapon.Assignments.MountPoints[0].SubtypeId = subtypeId;
             weapon.Targeting = Other_Flare_Targeting_NPC;
@@ -271,8 +272,6 @@ namespace Scripts {
             weapon.HardPoint.NpcSafe = true;
             weapon.HardPoint.Ui = Other_Flare_Hardpoint_Ui;
             weapon.HardPoint.Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking;
-            weapon.HardPoint.Loading.ShotsInBurst = shotsInBurst;
-            weapon.HardPoint.Loading.DelayAfterBurst = 300;
             weapon.HardPoint.Loading.FireFull = false;
             weapon.Ammos = new[] {
                 FlareWC_NPC,
@@ -280,7 +279,7 @@ namespace Scripts {
             return weapon;
         }
 
-        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC", 3);
-        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC", 2);
+        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC");
+        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC");
     }
 }
