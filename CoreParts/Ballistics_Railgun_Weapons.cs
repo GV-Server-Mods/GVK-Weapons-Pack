@@ -1,4 +1,4 @@
-﻿using VRageMath;
+using VRageMath;
 using System.Collections.Generic;
 using static Scripts.Structure;
 using static Scripts.Structure.WeaponDefinition;
@@ -85,7 +85,7 @@ namespace Scripts {
                     MinAzimuth = -180,
                     MaxAzimuth =180,
                     MinElevation = -15,
-                    MaxElevation = 30,
+                    MaxElevation = 45,
                     InventorySize = 2.7f,
                     Offset = Vector(x: 0, y: 0, z: 0),
 					Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
@@ -94,10 +94,10 @@ namespace Scripts {
                 Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef 
 				{
-                    RateOfFire = 60,
+                    RateOfFire = 72,
                     BarrelsPerShot = 1,
                     TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
-                    ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 500, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     DelayUntilFire = 120, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                     GiveUpAfter = false,
 					MagsToLoad = 1, // Number of physical magazines to consume on reload.

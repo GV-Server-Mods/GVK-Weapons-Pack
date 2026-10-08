@@ -1,4 +1,4 @@
-﻿using VRageMath;
+using VRageMath;
 using System.Collections.Generic;
 using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
@@ -241,6 +241,68 @@ namespace Scripts
 				},
 			},
 		};
+
+		private CustomScalesDef Common_Ammos_DamageScales_Railgun
+		{
+			get
+			{
+				var list = new List<CustomBlocksDef>(Common_Ammos_DamageScales_Cockpits_BigNerf.Types);
+				string[] powerProducers = new[]
+				{
+					// Reactors
+					"LargeBlockLargeGenerator",
+					"LargeBlockSmallGenerator",
+					"SmallBlockLargeGenerator",
+					"SmallBlockSmallGenerator",
+					"LargeBlockLargeGeneratorWarfare2",
+					"LargeBlockSmallGeneratorWarfare2",
+					"SmallBlockLargeGeneratorWarfare2",
+					"SmallBlockSmallGeneratorWarfare2",
+					"ProprietaryLargeBlockLargeGenerator",
+					"ProprietarySmallBlockLargeGenerator",
+					// Hydrogen Engines
+					"LargeHydrogenEngine",
+					"SmallHydrogenEngine",
+					"LargeHydrogenEngineReskin",
+					"SmallHydrogenEngineReskin",
+					// Batteries
+					"LargeBlockBatteryBlock",
+					"SmallBlockBatteryBlock",
+					"SmallBlockSmallBatteryBlock",
+					"LargeBlockBatteryBlockWarfare2",
+					"SmallBlockBatteryBlockWarfare2",
+					"LargeBlockBatteryReskin",
+					"LargeBlockBatteryReskinOffset",
+					"SmallBlockBatteryReskin",
+					"LargeBlockPrototechBattery",
+					"SmallBlockPrototechBattery",
+					// Turbines & Solar
+					"LargeBlockWindTurbine",
+					"LargeBlockWindTurbineReskin",
+					"LargeBlockSolarPanel",
+					"SmallBlockSolarPanel",
+					"LargeBlockColorableSolarPanel",
+					"LargeBlockColorableSolarPanelCorner",
+					"LargeBlockColorableSolarPanelCornerInverted",
+					"SmallBlockColorableSolarPanel",
+					"SmallBlockColorableSolarPanelCorner",
+					"SmallBlockColorableSolarPanelCornerInverted",
+				};
+				foreach (var subtype in powerProducers)
+				{
+					list.Add(new CustomBlocksDef
+					{
+						SubTypeId = subtype,
+						Modifier = 2.0f,
+					});
+				}
+				return new CustomScalesDef
+				{
+					SkipOthers = NoSkip,
+					Types = list.ToArray(),
+				};
+			}
+		}
 
 		private DecalDef Common_Ammos_Decals_GunBullet = new DecalDef
 		{

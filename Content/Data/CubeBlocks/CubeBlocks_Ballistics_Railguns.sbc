@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
 		<!-- Player Weapons -->
@@ -9,7 +9,7 @@
 			</Id>
 			<DisplayName>*Railgun* Apollo Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AWERailgunTurret.dds</Icon>
-			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.
+			<Description>A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 45 degree elevation range. Designed by ARYX Weapon Enterprises.
 				[Uses 50mm FeW + Energy]
 			</Description>
 			<CubeSize>Large</CubeSize>
@@ -21,7 +21,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="410"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
-				<Component Subtype="PrototechFrame" Count="10"/>
+				<Component Subtype="PrototechFrame" Count="12"/>
 				<Component Subtype="MetalGrid" Count="130"/>
 				<Component Subtype="PowerCell" Count="41"/>
 				<Component Subtype="Superconductor" Count="81"/>
@@ -31,7 +31,7 @@
 				<Component Subtype="SteelPlate" Count="610"/>
 			</Components>
 			<BuildTimeSeconds>150</BuildTimeSeconds>
-			<PCU>10</PCU>
+			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="4.0"/>
@@ -205,7 +205,7 @@
                         <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="PrototechFrame" Count="10">
+				<Component Subtype="PrototechFrame" Count="12">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>PrototechFrameScrap</SubtypeId>
@@ -220,7 +220,7 @@
 				<Component Subtype="SteelPlate" Count="610"/>
 			</Components>
 			<BuildTimeSeconds>150</BuildTimeSeconds>
-			<PCU>10</PCU>
+			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1.0" StartY="1.0" EndX="2.0" EndY="4.0"/>
