@@ -130,7 +130,7 @@ namespace Scripts
 					OffsetMinRange = 0,
 					FocusOnly = false,
 					FocusEviction = false,
-					ScanRange = 2500, // Matches hangar 2500m targeting range
+					ScanRange = 3000, // Matches hangar 3000m targeting range
 					NoSteering = false,
 					MinTurnSpeed = 50,
 					NoTargetApproach = false, // Skips approach until target is acquired (prevents Frame-1 zero-target leash trips)
@@ -309,7 +309,7 @@ namespace Scripts
 					Interval = 6, // 100ms
 					StartTime = 0,
 					MaxSpawns = 5000, // Ample ammunition for 6-minute continuous CAP patrol
-					Proximity = 2500, // Engages enemies anywhere within 2500m scan bubble
+					Proximity = 3000, // Engages enemies anywhere within 3000m scan bubble
 					ParentDies = false, // Stays alive on CAP patrol even if all ammo is expended
 					PointAtTarget = true, // Aims gunship turret at enemy
 					PointType = Lead, // Full lead intercept prediction matching Offense mode accuracy
@@ -368,7 +368,7 @@ namespace Scripts
 					OffsetMinRange = 0,
 					FocusOnly = false,
 					FocusEviction = false, // Fire-and-forget: continues engaging closest hostiles when HUD target is deselected
-					ScanRange = 2500, // 2500m hostile detection bubble
+					ScanRange = 3000, // 3000m hostile detection bubble
 					NoSteering = false,
 					MinTurnSpeed = 50,
 					NoTargetApproach = true, // Launches and begins CAP orbit without requiring target lock
