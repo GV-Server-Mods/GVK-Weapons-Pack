@@ -486,7 +486,7 @@
 			<Length>1</Length>
 			<DurationMin>1</DurationMin>
 			<DurationMax>0</DurationMax>
-			<DistanceMax>400</DistanceMax>
+			<DistanceMax>1500</DistanceMax>
 			<Loop>true</Loop>
 			<ParticleGenerations>
 				<ParticleGeneration Name="SparkCenter" Version="0">

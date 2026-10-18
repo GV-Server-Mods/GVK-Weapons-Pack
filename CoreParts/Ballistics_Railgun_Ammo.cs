@@ -114,6 +114,7 @@ namespace Scripts
                         {
                             Scale = 1,
                             HitPlayChance = 1f,
+                            MaxDistance = 3000, // unset = WC culls hit particles past 600 m
                         },
                     },
                 },
@@ -285,6 +286,7 @@ namespace Scripts
                         {
                             Scale = 1,
                             HitPlayChance = 1f,
+                            MaxDistance = 3000, // unset = WC culls hit particles past 600 m
                         },
                     },
                 },
@@ -414,6 +416,7 @@ namespace Scripts
                         {
                             Scale = 1,
                             HitPlayChance = 1f,
+                            MaxDistance = 3000, // unset = WC culls hit particles past 600 m
                         },
                     },
                 },
