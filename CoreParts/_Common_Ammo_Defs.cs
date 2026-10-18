@@ -49,284 +49,114 @@ namespace Scripts
 			OnHitDeath = true, // Server will inform clients when projectiles die due to them hitting something and will trigger destruction.
 		};
 
-		private CustomScalesDef Common_Ammos_DamageScales_Cockpits_BigNerf = new CustomScalesDef 
+		// Custom block damage. A group names blocks once, a rule pairs a group with a multiplier, and each ammo
+		// lists its rules: Custom = BlockScales(CockpitNerf, PowerBuster). A block in two rules takes the later one.
+		// Groups must stay above rules (static fields initialise in file order).
+		private static readonly string[] Cockpits =
 		{
-            SkipOthers = NoSkip, // Controls how projectile interacts with other blocks in relation to those defined here, NoSkip, Exclusive, Inclusive.
-			Types = new[]
-			{
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCockpitSeat",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "DBSmallBlockFighterCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "CockpitOpen",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "RoverCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "OpenCockpitSmall",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "OpenCockpitLarge",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockCockpitIndustrial",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCockpitIndustrial",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "BuggyCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "RivalAIRemoteControlLarge",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "RivalAIRemoteControlSmall",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockFlushCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockCapCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockConsoleModuleInvertedCorner",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockConsoleModuleScreens",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerBench",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockStandingCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockStandingCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockModularBridgeCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SpeederCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SpeederCockpitCompact",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockCaptainDesk",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockSuspendedControlSeat",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockSuspendedControlSeatB",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockSuspendedControlSeat",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockSuspendedControlSeatB",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockOpenSlopedCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockClosedSlopedCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockOpenSlopedCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "SmallBlockClosedSlopedCockpit",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "LargeBlockLabDeskSeat",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerSeatLarge",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerSeatSmall",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerSeatSmallNew",
-					Modifier = 0.6f,
-				},
-				new CustomBlocksDef
-				{
-					SubTypeId = "PassengerSeatSmallOffset",
-					Modifier = 0.6f,
-				},
-			},
+			"LargeBlockCockpit",
+			"LargeBlockCockpitSeat",
+			"SmallBlockCockpit",
+			"DBSmallBlockFighterCockpit",
+			"CockpitOpen",
+			"RoverCockpit",
+			"OpenCockpitSmall",
+			"OpenCockpitLarge",
+			"SmallBlockCockpitIndustrial",
+			"LargeBlockCockpitIndustrial",
+			"BuggyCockpit",
+			"RivalAIRemoteControlLarge",
+			"RivalAIRemoteControlSmall",
+			"SmallBlockFlushCockpit",
+			"SmallBlockCapCockpit",
+			"LargeBlockConsoleModuleInvertedCorner",
+			"LargeBlockConsoleModuleScreens",
+			"PassengerBench",
+			"SmallBlockStandingCockpit",
+			"LargeBlockStandingCockpit",
+			"LargeBlockModularBridgeCockpit",
+			"SpeederCockpit",
+			"SpeederCockpitCompact",
+			"LargeBlockCaptainDesk",
+			"LargeBlockSuspendedControlSeat",
+			"LargeBlockSuspendedControlSeatB",
+			"SmallBlockSuspendedControlSeat",
+			"SmallBlockSuspendedControlSeatB",
+			"LargeBlockOpenSlopedCockpit",
+			"LargeBlockClosedSlopedCockpit",
+			"SmallBlockOpenSlopedCockpit",
+			"SmallBlockClosedSlopedCockpit",
+			"LargeBlockLabDeskSeat",
+			"PassengerSeatLarge",
+			"PassengerSeatSmall",
+			"PassengerSeatSmallNew",
+			"PassengerSeatSmallOffset",
 		};
 
-		// Cockpit nerf + 2x vs power producers. Literal (not a List-building getter) so the Weapon Studio parser can read it;
-		// keep the cockpit entries in sync with Common_Ammos_DamageScales_Cockpits_BigNerf.
-		private CustomScalesDef Common_Ammos_DamageScales_Railgun = new CustomScalesDef
+		private static readonly string[] PowerProducers =
 		{
-			SkipOthers = NoSkip,
-			Types = new[]
-			{
-				// Cockpits
-				new CustomBlocksDef { SubTypeId = "LargeBlockCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockCockpitSeat", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "DBSmallBlockFighterCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "CockpitOpen", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "RoverCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "OpenCockpitSmall", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "OpenCockpitLarge", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockCockpitIndustrial", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockCockpitIndustrial", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "BuggyCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "RivalAIRemoteControlLarge", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "RivalAIRemoteControlSmall", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockFlushCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockCapCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockConsoleModuleInvertedCorner", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockConsoleModuleScreens", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "PassengerBench", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockStandingCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockStandingCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockModularBridgeCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SpeederCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SpeederCockpitCompact", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockCaptainDesk", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockSuspendedControlSeat", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockSuspendedControlSeatB", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSuspendedControlSeat", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSuspendedControlSeatB", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockOpenSlopedCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockClosedSlopedCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockOpenSlopedCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockClosedSlopedCockpit", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockLabDeskSeat", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "PassengerSeatLarge", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "PassengerSeatSmall", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "PassengerSeatSmallNew", Modifier = 0.6f, },
-				new CustomBlocksDef { SubTypeId = "PassengerSeatSmallOffset", Modifier = 0.6f, },
-				// Reactors
-				new CustomBlocksDef { SubTypeId = "LargeBlockLargeGenerator", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockSmallGenerator", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockLargeGenerator", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSmallGenerator", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockLargeGeneratorWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockSmallGeneratorWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockLargeGeneratorWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSmallGeneratorWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "ProprietaryLargeBlockLargeGenerator", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "ProprietarySmallBlockLargeGenerator", Modifier = 2.0f, },
-				// Hydrogen Engines
-				new CustomBlocksDef { SubTypeId = "LargeHydrogenEngine", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallHydrogenEngine", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeHydrogenEngineReskin", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallHydrogenEngineReskin", Modifier = 2.0f, },
-				// Batteries
-				new CustomBlocksDef { SubTypeId = "LargeBlockBatteryBlock", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockBatteryBlock", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSmallBatteryBlock", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockBatteryBlockWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockBatteryBlockWarfare2", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockBatteryReskin", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockBatteryReskinOffset", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockBatteryReskin", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockPrototechBattery", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockPrototechBattery", Modifier = 2.0f, },
-				// Turbines & Solar
-				new CustomBlocksDef { SubTypeId = "LargeBlockWindTurbine", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockWindTurbineReskin", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockSolarPanel", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockSolarPanel", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockColorableSolarPanel", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockColorableSolarPanelCorner", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "LargeBlockColorableSolarPanelCornerInverted", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockColorableSolarPanel", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockColorableSolarPanelCorner", Modifier = 2.0f, },
-				new CustomBlocksDef { SubTypeId = "SmallBlockColorableSolarPanelCornerInverted", Modifier = 2.0f, },
-			},
+			// Reactors
+			"LargeBlockLargeGenerator",
+			"LargeBlockSmallGenerator",
+			"SmallBlockLargeGenerator",
+			"SmallBlockSmallGenerator",
+			"LargeBlockLargeGeneratorWarfare2",
+			"LargeBlockSmallGeneratorWarfare2",
+			"SmallBlockLargeGeneratorWarfare2",
+			"SmallBlockSmallGeneratorWarfare2",
+			"ProprietaryLargeBlockLargeGenerator",
+			"ProprietarySmallBlockLargeGenerator",
+			// Hydrogen Engines
+			"LargeHydrogenEngine",
+			"SmallHydrogenEngine",
+			"LargeHydrogenEngineReskin",
+			"SmallHydrogenEngineReskin",
+			// Batteries
+			"LargeBlockBatteryBlock",
+			"SmallBlockBatteryBlock",
+			"SmallBlockSmallBatteryBlock",
+			"LargeBlockBatteryBlockWarfare2",
+			"SmallBlockBatteryBlockWarfare2",
+			"LargeBlockBatteryReskin",
+			"LargeBlockBatteryReskinOffset",
+			"SmallBlockBatteryReskin",
+			"LargeBlockPrototechBattery",
+			"SmallBlockPrototechBattery",
+			// Turbines & Solar
+			"LargeBlockWindTurbine",
+			"LargeBlockWindTurbineReskin",
+			"LargeBlockSolarPanel",
+			"SmallBlockSolarPanel",
+			"LargeBlockColorableSolarPanel",
+			"LargeBlockColorableSolarPanelCorner",
+			"LargeBlockColorableSolarPanelCornerInverted",
+			"SmallBlockColorableSolarPanel",
+			"SmallBlockColorableSolarPanelCorner",
+			"SmallBlockColorableSolarPanelCornerInverted",
 		};
+
+		private static readonly CustomBlocksDef[] CockpitNerf = Scale(Cockpits, 0.6f);
+		private static readonly CustomBlocksDef[] PowerBuster = Scale(PowerProducers, 2.0f);
+
+		private static CustomBlocksDef[] Scale(string[] subtypes, float modifier)
+		{
+			var rule = new CustomBlocksDef[subtypes.Length];
+			for (int i = 0; i < subtypes.Length; i++)
+				rule[i] = new CustomBlocksDef { SubTypeId = subtypes[i], Modifier = modifier };
+			return rule;
+		}
+
+		// WC adds every entry to a dictionary, so a duplicate subtype would throw at load; later rules win instead.
+		private static CustomScalesDef BlockScales(params CustomBlocksDef[][] rules)
+		{
+			var bySubtype = new Dictionary<string, CustomBlocksDef>();
+			foreach (var rule in rules)
+				foreach (var block in rule)
+					bySubtype[block.SubTypeId] = block;
+			var types = new CustomBlocksDef[bySubtype.Count];
+			bySubtype.Values.CopyTo(types, 0);
+			return new CustomScalesDef { SkipOthers = NoSkip, Types = types };
+		}
 
 		private DecalDef Common_Ammos_Decals_GunBullet = new DecalDef
 		{

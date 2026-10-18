@@ -83,7 +83,7 @@ namespace Scripts
                     Heavy = -1f,
                     NonArmor = -1f,
                 },
-                Custom = Common_Ammos_DamageScales_Cockpits_BigNerf,
+                Custom = BlockScales(CockpitNerf),
             },
             Trajectory = new TrajectoryDef 
 			{

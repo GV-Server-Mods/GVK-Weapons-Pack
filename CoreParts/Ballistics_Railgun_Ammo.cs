@@ -77,7 +77,7 @@ namespace Scripts
                     Heavy = -1f,
                     NonArmor = -1f,
                 },
-                Custom = Common_Ammos_DamageScales_Railgun,
+                Custom = BlockScales(CockpitNerf, PowerBuster),
             },
             Trajectory = new TrajectoryDef 
 			{
@@ -223,7 +223,7 @@ namespace Scripts
                     Heavy = -1f,
                     NonArmor = -1f,
                 },
-                Custom = Common_Ammos_DamageScales_Railgun,
+                Custom = BlockScales(CockpitNerf, PowerBuster),
             },
             Trajectory = new TrajectoryDef 
 			{
@@ -380,7 +380,7 @@ namespace Scripts
                     Heavy = -1f,
                     NonArmor = -1f,
                 },
-                Custom = Common_Ammos_DamageScales_Railgun,
+                Custom = BlockScales(CockpitNerf, PowerBuster),
             },
             Trajectory = new TrajectoryDef 
 			{
