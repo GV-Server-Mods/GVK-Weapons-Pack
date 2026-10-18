@@ -122,6 +122,7 @@ namespace Scripts
                         {
                             Scale = 1f,
                             HitPlayChance = 1f,
+                            MaxDistance = 3000, // unset = WC culls hit particles past 600 m; matches MD_155_Hit DistanceMax
                         },
                     },
                 },
