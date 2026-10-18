@@ -61,7 +61,7 @@ namespace Scripts
 				ClosestFirst = true, // Prioritizes closest hostile targets first
 				IgnoreDumbProjectiles = true, // Don't fire at non-smart projectiles.
 				LockedSmartOnly = false, // Only fire at smart projectiles that are locked on to parent grid.
-				MaxTargetDistance = 3000, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
+				MaxTargetDistance = 2500, // 0 = unlimited, Maximum target distance that targets will be automatically shot at.
 				TopTargets = 0, // 0 = disabled (strictly picks closest target without random shuffling).
 				TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 				StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed

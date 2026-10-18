@@ -210,6 +210,10 @@ namespace Scripts
                 Ai = Other_Radar_HardPoint_Ai,
                 HardWare = new HardwareDef 
 				{
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -15,
+                    MaxElevation = 90,
                     InventorySize = 0.0f,
                     Offset = Vector(x: 0, y: 0, z: 0),
                     Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
