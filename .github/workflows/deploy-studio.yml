@@ -45,8 +45,8 @@ jobs:
           printf '{"commit":"%s","ref":"%s","date":"%s","coreParts":[%s],"cubeBlocks":[%s]}\n' \
             "$GITHUB_SHA" "$GITHUB_REF_NAME" "$COMMIT_DATE" "$CS" "$CB" > _site/data/source/_manifest.json
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
