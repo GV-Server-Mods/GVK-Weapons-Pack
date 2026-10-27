@@ -1,6 +1,6 @@
 // Headless smoke test: loads studio/app.js with a stubbed DOM and asserts the
 // WC C# exporters run clean with zero shield output (GVK is a shieldless server).
-// Run: node scratch/test_studio_smoke.js
+// Run: node tests/test_studio_smoke.js
 'use strict';
 
 const fs = require('fs');

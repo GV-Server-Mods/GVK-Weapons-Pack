@@ -1,5 +1,5 @@
 // Warheads and explosive barrels (HardwareDef.CriticalReaction): single-use detonations, never beams or sustained DPS.
-// Run: node scratch/test_detonations.js
+// Run: node tests/test_detonations.js
 'use strict';
 const { loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();

@@ -1,5 +1,5 @@
 // Max Range card: turrets are gated by targeting range, manually aimed fixed guns by the round's reach.
-// Run: node scratch/test_max_range_card.js
+// Run: node tests/test_max_range_card.js
 'use strict';
 const { loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();

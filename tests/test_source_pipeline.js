@@ -1,4 +1,4 @@
-// Test harness for studio/source_pipeline.js (M1). Run: node scratch/test_source_pipeline.js
+// Test harness for studio/source_pipeline.js (M1). Run: node tests/test_source_pipeline.js
 const fs = require('fs'), path = require('path');
 const SP = require('../studio/source_pipeline.js');
 

@@ -1,5 +1,5 @@
 // Glossary wording: each workspace's visible text uses the GLOSSARY.md terms, not the retired ones.
-// Run: node scratch/test_glossary.js
+// Run: node tests/test_glossary.js
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -144,7 +144,7 @@ check('No studio file is named for overrides; the curated data is studio/data/cu
 // WeaponCore's own server overrides and its OverrideShotSound field keep their names
 const WC_OVERRIDE = /server overrides|OverrideShotSound/;
 const codeFiles = listFiles(studioDir).filter((f) => /\.(js|html|css)$/.test(f) && !/[\\/]data[\\/](weapons_|ammos_|wc_defs_|wc_schema\.)/.test(f))
-  .concat(['tools/validate_studio_data.mjs', 'scratch/export_snapshots.js', 'scratch/test_source_pipeline.js', '.github/workflows/deploy-studio.yml'].map((f) => path.join(root, f)));
+  .concat(['tools/validate_studio_data.mjs', 'tools/export_snapshots.js', 'tests/test_source_pipeline.js', '.github/workflows/deploy-studio.yml'].map((f) => path.join(root, f)));
 const overrideLines = codeFiles.flatMap((f) => fs.readFileSync(f, 'utf8').split(/\r?\n/)
   .map((l, i) => ({ f: path.relative(root, f), i: i + 1, l }))
   .filter((x) => /override/i.test(x.l) && !WC_OVERRIDE.test(x.l)));

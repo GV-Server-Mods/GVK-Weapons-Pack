@@ -2814,7 +2814,7 @@ function checkWcSchemaIntegrity() {
     wcUpstreamResult = { state: diffs.length ? 'drift' : 'synced', diffs, date };
     if (diffs.length && wcSchemaNotice && wcSchemaNoticeText) {
       wcSchemaNotice.style.display = 'flex';
-      wcSchemaNoticeText.innerHTML = `<strong>⚠️ WeaponCore Update Detected:</strong> upstream definitions differ from CoreParts/script/Structure.cs in ${diffs.length} place${diffs.length === 1 ? '' : 's'}. Click the WC badge for the list; sync Structure.cs, then run <code>node scratch/export_snapshots.js</code>.`;
+      wcSchemaNoticeText.innerHTML = `<strong>⚠️ WeaponCore Update Detected:</strong> upstream definitions differ from CoreParts/script/Structure.cs in ${diffs.length} place${diffs.length === 1 ? '' : 's'}. Click the WC badge for the list; sync Structure.cs, then run <code>node tools/export_snapshots.js</code>.`;
     }
   }).catch(() => {
     wcUpstreamResult = { state: 'offline', diffs: [], date: '' };

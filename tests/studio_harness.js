@@ -1,5 +1,5 @@
 // Shared headless loader for the Weapon Studio: stubs the DOM, loads studio/ scripts in index.html order and
-// injects the bundled snapshot data. Used by the scratch/test_*.js suites.
+// injects the bundled snapshot data. Used by the tests/test_*.js suites.
 'use strict';
 
 const fs = require('fs');

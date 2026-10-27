@@ -1,6 +1,6 @@
 // Definition Workbench defaults: "default" = WeaponCore's value for an omitted field (C# struct default), unset fields
 // display it, and choosing it removes the line from the exported definition.
-// Run: node scratch/test_wc_defaults.js
+// Run: node tests/test_wc_defaults.js
 'use strict';
 const { loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();

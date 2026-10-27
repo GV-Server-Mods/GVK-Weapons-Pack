@@ -1,8 +1,39 @@
+# Visual Studio / VS Code
 .vs/
-bin/
-obj/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+.vscode/*
+!.vscode/tasks.json
+
+# Build outputs
+bin/
+obj/
+[Tt]emp/
+
+# MDK2
 .mdk/
-mdk.ini
+mdk.local.ini
+mdk.paths.props
 CorePartsReferences/
+
+# IDE / Agent configurations
+.claude/
+.gemini/
+.idea/
+
+# OS / Tool metadata
+Thumbs.db
+desktop.ini
+*.DS_Store
+*.bak
+*.tmp
+*.orig
+
+# Node / Scratch
+node_modules/
+npm-debug.log*
+__pycache__/
+*.pyc
+scratch/

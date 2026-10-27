@@ -1,6 +1,6 @@
 // Flight profile tags and roles: HOMING needs SmartsDef steering; a non-steering Smart round with a bursting proximity
 // fuse is an AIR BURST; non-steering proximity-split rounds stay BALLISTIC.
-// Run: node scratch/test_flight_profile.js
+// Run: node tests/test_flight_profile.js
 'use strict';
 const { loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();

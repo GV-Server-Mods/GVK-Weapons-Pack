@@ -2,7 +2,7 @@
 // Expectations are hand-derived from the WC source (tick traces, float32 energy maths, RadiantAoe loops, damage
 // scaling) and are independent of the Studio code under test. Also verifies the source pipeline maps every WC field
 // the maths reads, and that no calculation keys off a specific weapon or ammo name.
-// Run: node scratch/test_wc_parity.js
+// Run: node tests/test_wc_parity.js
 'use strict';
 const fs = require('fs');
 const path = require('path');

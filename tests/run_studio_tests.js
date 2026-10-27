@@ -1,21 +1,21 @@
 // Runs every Weapon Studio test suite plus the CI data gate and prints one summary.
-// Run: node scratch/run_studio_tests.js
+// Run: node tests/run_studio_tests.js
 'use strict';
 const { spawnSync } = require('child_process');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
 const suites = [
-  ['Source pipeline', 'scratch/test_source_pipeline.js'],
-  ['WeaponCore parity', 'scratch/test_wc_parity.js'],
-  ['Studio smoke', 'scratch/test_studio_smoke.js'],
-  ['EWAR / PD', 'scratch/test_ewar_pd.js'],
-  ['Max Range card', 'scratch/test_max_range_card.js'],
-  ['Detonations', 'scratch/test_detonations.js'],
-  ['WC defaults', 'scratch/test_wc_defaults.js'],
-  ['Flight profile', 'scratch/test_flight_profile.js'],
-  ['Catalog', 'scratch/test_catalog.js'],
-  ['Glossary wording', 'scratch/test_glossary.js'],
+  ['Source pipeline', 'tests/test_source_pipeline.js'],
+  ['WeaponCore parity', 'tests/test_wc_parity.js'],
+  ['Studio smoke', 'tests/test_studio_smoke.js'],
+  ['EWAR / PD', 'tests/test_ewar_pd.js'],
+  ['Max Range card', 'tests/test_max_range_card.js'],
+  ['Detonations', 'tests/test_detonations.js'],
+  ['WC defaults', 'tests/test_wc_defaults.js'],
+  ['Flight profile', 'tests/test_flight_profile.js'],
+  ['Catalog', 'tests/test_catalog.js'],
+  ['Glossary wording', 'tests/test_glossary.js'],
   ['CI data gate', 'tools/validate_studio_data.mjs'],
 ];
 

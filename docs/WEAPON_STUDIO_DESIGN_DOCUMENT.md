@@ -122,8 +122,8 @@ $$\text{Total Lifetime Damage} = \text{BaseDamage} + \text{AreaOfDamage} + \sum_
 - **Effective DPS**: every damage part takes its own ammo's per-block `damageScale` (`Grids`, `Armor`/`Heavy`/`Light`/`NonArmor`, `NoGridOrArmorScaling`, the 0.25× large-vs-small debuff when both grid scales are unset) against large and small hulls; the best target sets the multiplier.
 - **Power**: every weapon draws `IdlePower` (min 0.001 MW); energy and hybrid rounds add `ShotEnergyCost × RoF/3600 × Barrels × Trajectiles` MW while charging (`SinkPower` / `UpdateDesiredPower`).
 - **Cutoff Scaling**: `ArmorForCutoff` / `GridSizeForCutoff` multiply `BaseDamageCutoff` per target class before the normal armor multiplier ($\text{PerHit} = \min(\text{Base}, \text{Cutoff} \times \text{CutoffScale}) \times \text{ArmorMult}$). WC enables it only when a field is $> 0$; any omitted `ArmorForCutoff` field is $0$ (zero cap), so the exporter always writes all four. The pool keeps penetrating while more than 0.5 remains: $\lceil (\text{Base} - 0.5) / \text{Cutoff} \rceil$ blocks.
-- **Tests**: `node scratch/run_studio_tests.js` runs every suite. `scratch/test_wc_parity.js` holds the WC tick traces, float32 energy cases, a literal `RadiantAoe` transcription, damage scaling, pipeline field fidelity and a lint that fails on any weapon- or ammo-name rule.
-- **WeaponCore Schema Guard**: `data/wc_schema.js` stores the `[ProtoMember]` field and enum signature of `CoreParts/script/Structure.cs`. On load the Studio fetches upstream `CoreDefinitions.cs` (Ash-LikeSnow/WeaponCore@master) and diffs it (`extractWcSchema` / `diffWcSchema`); the header badge shows Synced, `⚠️ WC Update` with the change list, or Unverified when offline. `node scratch/export_snapshots.js` regenerates the signature after Structure.cs is synced.
+- **Tests**: `node tests/run_studio_tests.js` runs every suite. `tests/test_wc_parity.js` holds the WC tick traces, float32 energy cases, a literal `RadiantAoe` transcription, damage scaling, pipeline field fidelity and a lint that fails on any weapon- or ammo-name rule.
+- **WeaponCore Schema Guard**: `data/wc_schema.js` stores the `[ProtoMember]` field and enum signature of `CoreParts/script/Structure.cs`. On load the Studio fetches upstream `CoreDefinitions.cs` (Ash-LikeSnow/WeaponCore@master) and diffs it (`extractWcSchema` / `diffWcSchema`); the header badge shows Synced, `⚠️ WC Update` with the change list, or Unverified when offline. `node tools/export_snapshots.js` regenerates the signature after Structure.cs is synced.
 - **Instantaneous Cluster vs Loitering Deployable Scaling**:
   - **If $\Delta T_{\text{delivery}} \le 1.0\text{s}$** (Flak, Proximity Warhead, Cluster Bomb):
     All fragments arrive in the initial strike:
@@ -423,9 +423,9 @@ When modifying or extending the GVK Weapon Studio:
 4. **Theme Rigor**: Whenever adding new text or cards, ensure both dark mode and `[data-theme="light"]` selectors are verified for contrast.
 5. **Run Verification Suites**: Always validate changes before pushing. One command runs every suite plus the CI gate:
    ```cmd
-   node scratch/run_studio_tests.js
+   node tests/run_studio_tests.js
    ```
-   All suites load the Studio through `scratch/studio_harness.js` (stubbed DOM that reads tag and input types from `index.html` and keeps `innerHTML` / `textContent` in sync like a browser).
+   All suites load the Studio through `tests/studio_harness.js` (stubbed DOM that reads tag and input types from `index.html` and keeps `innerHTML` / `textContent` in sync like a browser).
    - `test_source_pipeline.js`: C# parser, clone inheritance, magazines, `criticalReaction` and Smarts steering flags.
    - `test_wc_parity.js`: WC tick traces, float32 energy, `RadiantAoe`, damage scaling, field fidelity, no-name-rules lint.
    - `test_studio_smoke.js`: exporters (lossless round-trip, zero shield output), weapon selection, magazines, footer HUD, Ammo Maths, engagement range.
@@ -502,7 +502,7 @@ These are derived fallback artifacts — regenerate, do not patch:
 - `studio/data/ammos_data.js` + `ammos_db.json`
 - `studio/data/magazines_blueprints_data.js`
 
-Regenerate with: `node scratch/export_snapshots.js`
+Regenerate with: `node tools/export_snapshots.js`
 
 Exception: `studio/data/curation.js` holds the **Curation**, hand-maintained presentation data (curated ids, display
 names, icons, RUs) that does not exist in the C# and is safe to hand-edit.

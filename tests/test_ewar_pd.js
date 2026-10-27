@@ -1,5 +1,5 @@
 // EWAR / point-defense functional checks on hand-built WC ammo fixtures.
-// Run: node scratch/test_ewar_pd.js
+// Run: node tests/test_ewar_pd.js
 'use strict';
 const { loadStudio, makeChecker } = require('./studio_harness.js');
 const { check, done } = makeChecker();

@@ -1,6 +1,6 @@
 // Weapon catalog: icons match their NPC twins, the class filter bar covers every weapon once, and fixed mounts read
 // as fixed everywhere (WC's RotateRate/ElevateRate default is 0).
-// Run: node scratch/test_catalog.js
+// Run: node tests/test_catalog.js
 'use strict';
 const fs = require('fs');
 const crypto = require('crypto');
