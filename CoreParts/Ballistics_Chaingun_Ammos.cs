@@ -1,4 +1,4 @@
-﻿using static Scripts.Structure.WeaponDefinition;
+using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.EjectionDef.SpawnType;
@@ -111,7 +111,7 @@ namespace Scripts
                         Enable = true,
                         Length = 27f, //
                         Width = 0.10f, //
-                        Color = Color(red: 4f, green: 10, blue: 3f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
+                        Color = Color(red: 6f, green: 15f, blue: 4.5f, alpha: 1), // RBG 255 is Neon Glowing, 100 is Quite Bright.
                         Textures = new[] { "WeaponLaser", },// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                     OffsetEffect = new OffsetEffectDef

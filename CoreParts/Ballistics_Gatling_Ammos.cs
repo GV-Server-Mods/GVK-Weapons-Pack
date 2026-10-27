@@ -1,4 +1,4 @@
-﻿using static Scripts.Structure.WeaponDefinition;
+using static Scripts.Structure.WeaponDefinition;
 using static Scripts.Structure.WeaponDefinition.AmmoDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef;
 using static Scripts.Structure.WeaponDefinition.AmmoDef.AreaOfDamageDef.AoeShape;
@@ -119,7 +119,7 @@ namespace Scripts
                         Length = 30f,
                         Width = 0.07f,
                         FactionColor = DontUse, // DontUse, Foreground, Background.
-                        Color = Color(red: 10f, green: 4f, blue: 3f, alpha: 1),
+                        Color = Color(red: 15f, green: 6f, blue: 4.5f, alpha: 1),
                         Textures = new[] { "WeaponLaser", },// WeaponLaser, ProjectileTrailLine, WarpBubble, etc..
                     },
                     OffsetEffect = new OffsetEffectDef
@@ -221,7 +221,7 @@ namespace Scripts
 				ammo.AmmoGraphics.Lines.WidthVariance = Random(start: -0.05f, end: 0.05f);
 				ammo.AmmoGraphics.Lines.Tracer.Length = 25f;
 				ammo.AmmoGraphics.Lines.Tracer.Width = 0.10f;
-				ammo.AmmoGraphics.Lines.Tracer.Color = Color(red: 22f, green: 10f, blue: 10f, alpha: 1);
+				ammo.AmmoGraphics.Lines.Tracer.Color = Color(red: 33f, green: 15f, blue: 15f, alpha: 1);
 				ammo.AmmoGraphics.Lines.Tracer.Textures = new[] { "ProjectileTrailLine" };
 				ammo.AmmoGraphics.Lines.OffsetEffect = new OffsetEffectDef();
 				return ammo;
