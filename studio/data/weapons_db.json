@@ -8365,11 +8365,11 @@
     "grid": "Large",
     "type": "Turret",
     "isHandheld": false,
-    "rateOfFire": 60,
+    "rateOfFire": 72,
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 600,
+    "reloadTime": 500,
     "magsToLoad": 1,
     "maxActiveProjectiles": 0,
     "delayUntilFire": 120,
@@ -8388,7 +8388,7 @@
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
-    "maxElevation": 30,
+    "maxElevation": 45,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0,
@@ -8434,7 +8434,7 @@
       },
       {
         "name": "PrototechFrame",
-        "count": 10,
+        "count": 12,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -8485,7 +8485,7 @@
     "subtypeId": "ARYXRailgunTurret",
     "ammoName": "SmallRailgunAmmo",
     "buildTimeSeconds": 150,
-    "pcu": 10,
+    "pcu": 12,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
       "SmallRailgunAmmo"
@@ -8506,7 +8506,7 @@
     "displayName": "*Railgun* Apollo Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 35 degree elevation range. Designed by ARYX Weapon Enterprises.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
+    "description": "A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 45 degree elevation range. Designed by ARYX Weapon Enterprises.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -8524,11 +8524,11 @@
     "grid": "Large",
     "type": "Turret",
     "isHandheld": false,
-    "rateOfFire": 60,
+    "rateOfFire": 72,
     "shotsInBurst": 0,
     "barrelsPerShot": 1,
     "delayAfterBurst": 0,
-    "reloadTime": 600,
+    "reloadTime": 500,
     "magsToLoad": 1,
     "maxActiveProjectiles": 0,
     "delayUntilFire": 120,
@@ -8547,7 +8547,7 @@
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
-    "maxElevation": 30,
+    "maxElevation": 45,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0,
@@ -8593,7 +8593,7 @@
       },
       {
         "name": "PrototechFrame",
-        "count": 10,
+        "count": 12,
         "deconstructSubtype": "PrototechFrameScrap",
         "deconstructType": "Ore"
       },
@@ -8644,7 +8644,7 @@
     "subtypeId": "ARYXRailgunTurret_NPC",
     "ammoName": "SmallRailgunAmmo",
     "buildTimeSeconds": 150,
-    "pcu": 10,
+    "pcu": 12,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
       "SmallRailgunAmmo"
@@ -17660,7 +17660,7 @@
     "maxActiveProjectiles": 3,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 3000,
     "validControlModes": [
       "Automatic",
       "Manual",
@@ -17822,7 +17822,7 @@
     "maxActiveProjectiles": 3,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 2500,
+    "maxTargetDistance": 3000,
     "validControlModes": [
       "Automatic",
       "Manual",
@@ -17984,14 +17984,14 @@
     "maxActiveProjectiles": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
+    "maxTargetDistance": 1000,
     "validControlModes": [
       "Automatic",
       "Manual",
       "Painter"
     ],
     "deviateShotAngle": 10,
-    "aimingTolerance": 30,
+    "aimingTolerance": 180,
     "addToleranceToTracking": false,
     "rotateRate": 0,
     "elevateRate": 0,
@@ -18075,12 +18075,12 @@
     ],
     "icon": "icons/LargeFlareLauncher.png",
     "subtypeId": "LargeFlareLauncher",
-    "ammoName": "FlareWC",
+    "ammoName": "FlareWC_Smart",
     "buildTimeSeconds": 30,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
-      "FlareWC",
+      "FlareWC_Smart",
       "FireworkBaseWC",
       "FireworkRainbowWC",
       "FireworkBlueWC",
@@ -18090,7 +18090,7 @@
       "FireworkYellowWC"
     ],
     "allAmmos": [
-      "FlareWC",
+      "FlareWC_Smart",
       "FireworkBaseWC",
       "FireworkRainbowWC",
       "FireworkBlueWC",
@@ -18100,11 +18100,11 @@
       "FireworkYellowWC"
     ],
     "helpers": {
-      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "targeting": "Other_Flare_Targeting",
       "hardware": null,
       "loading": null,
       "ui": "Other_Flare_Hardpoint_Ui",
-      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
       "audio": null,
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
@@ -18113,161 +18113,6 @@
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\r\n\t\t\t\t[700m Effective Radius]\r\n\t\t\t\t[Uses Decoy Flare]",
-    "criticalComponent": "Computer",
-    "size": {
-      "x": 1,
-      "y": 1,
-      "z": 1
-    }
-  },
-  {
-    "id": "L__LargeFlareLauncher_NPC",
-    "defName": "LargeFlareWC",
-    "mountIndex": 1,
-    "pdProjectiles": false,
-    "pdSmartOnly": false,
-    "name": "(L) Flare Launcher",
-    "grid": "Large",
-    "type": "Fixed",
-    "isHandheld": false,
-    "rateOfFire": 240,
-    "shotsInBurst": 0,
-    "barrelsPerShot": 1,
-    "delayAfterBurst": 0,
-    "reloadTime": 1200,
-    "magsToLoad": 4,
-    "maxActiveProjectiles": 0,
-    "delayUntilFire": 0,
-    "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
-    "validControlModes": [
-      "Automatic",
-      "Manual",
-      "Painter"
-    ],
-    "deviateShotAngle": 10,
-    "aimingTolerance": 30,
-    "addToleranceToTracking": false,
-    "rotateRate": 0,
-    "elevateRate": 0,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
-    "heatPerShot": 0,
-    "maxHeat": 0,
-    "cooldown": 0,
-    "heatSinkRate": 0,
-    "degradeRof": false,
-    "degradeRofSettings": {
-      "heatThresholdStart": 0,
-      "heatThresholdEnd": 0,
-      "rofAt0Heat": 0,
-      "rofAt100Heat": 0
-    },
-    "allowOverheatShooting": false,
-    "heatSinkRateOverheatMult": 0,
-    "fireFull": false,
-    "energyCost": 0,
-    "magazineSize": 4,
-    "baseDamage": 1,
-    "maxTrajectory": 1500,
-    "desiredSpeed": 50,
-    "detRadius": 0,
-    "detDamage": 0,
-    "fragments": 0,
-    "fragmentDegrees": 0,
-    "shrapnelBaseDmg": 0,
-    "shrapnelDetRadius": 0,
-    "shrapnelDetDmg": 0,
-    "chanceToHit": 1,
-    "durabilityMod": 0.5,
-    "idlePower": 0.32,
-    "criticalReaction": false,
-    "components": [
-      {
-        "name": "SteelPlate",
-        "count": 25,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "PrototechPanel",
-        "count": 4,
-        "deconstructSubtype": "PrototechPanelScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "LargeTube",
-        "count": 5,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Motor",
-        "count": 50,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Computer",
-        "count": 50,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Construction",
-        "count": 100,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "SteelPlate",
-        "count": 100,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      }
-    ],
-    "icon": "icons/LargeFlareLauncher_NPC.png",
-    "subtypeId": "LargeFlareLauncher_NPC",
-    "ammoName": "FlareWC",
-    "buildTimeSeconds": 30,
-    "pcu": 4,
-    "assignedAnimation": null,
-    "assignedAmmos": [
-      "FlareWC",
-      "FireworkBaseWC",
-      "FireworkRainbowWC",
-      "FireworkBlueWC",
-      "FireworkGreenWC",
-      "FireworkRedWC",
-      "FireworkPinkWC",
-      "FireworkYellowWC"
-    ],
-    "allAmmos": [
-      "FlareWC",
-      "FireworkBaseWC",
-      "FireworkRainbowWC",
-      "FireworkBlueWC",
-      "FireworkGreenWC",
-      "FireworkRedWC",
-      "FireworkPinkWC",
-      "FireworkYellowWC"
-    ],
-    "helpers": {
-      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
-      "hardware": null,
-      "loading": null,
-      "ui": "Other_Flare_Hardpoint_Ui",
-      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
-      "audio": null,
-      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
-      "graphics": null
-    },
-    "displayName": "*NPC-Flare* Flare/Fireworks Launcher",
-    "gridSize": "Large",
-    "cubeSize": "Large",
-    "description": "",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -18294,14 +18139,14 @@
     "maxActiveProjectiles": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
+    "maxTargetDistance": 1000,
     "validControlModes": [
       "Automatic",
       "Manual",
       "Painter"
     ],
     "deviateShotAngle": 5,
-    "aimingTolerance": 30,
+    "aimingTolerance": 180,
     "addToleranceToTracking": false,
     "rotateRate": 0,
     "elevateRate": 0,
@@ -18385,12 +18230,12 @@
     ],
     "icon": "icons/SmallFlareLauncher.png",
     "subtypeId": "SmallFlareLauncher",
-    "ammoName": "FlareWC",
+    "ammoName": "FlareWC_Smart",
     "buildTimeSeconds": 10,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
-      "FlareWC",
+      "FlareWC_Smart",
       "FireworkBaseWC",
       "FireworkRainbowWC",
       "FireworkBlueWC",
@@ -18400,7 +18245,7 @@
       "FireworkYellowWC"
     ],
     "allAmmos": [
-      "FlareWC",
+      "FlareWC_Smart",
       "FireworkBaseWC",
       "FireworkRainbowWC",
       "FireworkBlueWC",
@@ -18410,11 +18255,11 @@
       "FireworkYellowWC"
     ],
     "helpers": {
-      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
+      "targeting": "Other_Flare_Targeting",
       "hardware": null,
       "loading": null,
-      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
-      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
+      "ui": "Other_Flare_Hardpoint_Ui",
+      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
       "audio": null,
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
@@ -18423,161 +18268,6 @@
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\r\n\t\t\t\t[700m Effective Radius]\r\n\t\t\t\t[Uses Decoy Flare]",
-    "criticalComponent": "Computer",
-    "size": {
-      "x": 1,
-      "y": 1,
-      "z": 1
-    }
-  },
-  {
-    "id": "S__SmallFlareLauncher_NPC",
-    "defName": "SmallFlareWC",
-    "mountIndex": 1,
-    "pdProjectiles": false,
-    "pdSmartOnly": false,
-    "name": "(S) Flare Launcher",
-    "grid": "Small",
-    "type": "Fixed",
-    "isHandheld": false,
-    "rateOfFire": 140,
-    "shotsInBurst": 0,
-    "barrelsPerShot": 1,
-    "delayAfterBurst": 0,
-    "reloadTime": 600,
-    "magsToLoad": 2,
-    "maxActiveProjectiles": 0,
-    "delayUntilFire": 0,
-    "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
-    "validControlModes": [
-      "Automatic",
-      "Manual",
-      "Painter"
-    ],
-    "deviateShotAngle": 5,
-    "aimingTolerance": 30,
-    "addToleranceToTracking": false,
-    "rotateRate": 0,
-    "elevateRate": 0,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
-    "heatPerShot": 0,
-    "maxHeat": 0,
-    "cooldown": 0,
-    "heatSinkRate": 0,
-    "degradeRof": false,
-    "degradeRofSettings": {
-      "heatThresholdStart": 0,
-      "heatThresholdEnd": 0,
-      "rofAt0Heat": 0,
-      "rofAt100Heat": 0
-    },
-    "allowOverheatShooting": false,
-    "heatSinkRateOverheatMult": 0,
-    "fireFull": true,
-    "energyCost": 0,
-    "magazineSize": 4,
-    "baseDamage": 1,
-    "maxTrajectory": 1500,
-    "desiredSpeed": 50,
-    "detRadius": 0,
-    "detDamage": 0,
-    "fragments": 0,
-    "fragmentDegrees": 0,
-    "shrapnelBaseDmg": 0,
-    "shrapnelDetRadius": 0,
-    "shrapnelDetDmg": 0,
-    "chanceToHit": 1,
-    "durabilityMod": 0.5,
-    "idlePower": 0.25,
-    "criticalReaction": false,
-    "components": [
-      {
-        "name": "SteelPlate",
-        "count": 2,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "PrototechPanel",
-        "count": 2,
-        "deconstructSubtype": "PrototechPanelScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "LargeTube",
-        "count": 2,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Motor",
-        "count": 5,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Computer",
-        "count": 5,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Construction",
-        "count": 10,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "SteelPlate",
-        "count": 10,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      }
-    ],
-    "icon": "icons/SmallFlareLauncher_NPC.png",
-    "subtypeId": "SmallFlareLauncher_NPC",
-    "ammoName": "FlareWC",
-    "buildTimeSeconds": 10,
-    "pcu": 2,
-    "assignedAnimation": null,
-    "assignedAmmos": [
-      "FlareWC",
-      "FireworkBaseWC",
-      "FireworkRainbowWC",
-      "FireworkBlueWC",
-      "FireworkGreenWC",
-      "FireworkRedWC",
-      "FireworkPinkWC",
-      "FireworkYellowWC"
-    ],
-    "allAmmos": [
-      "FlareWC",
-      "FireworkBaseWC",
-      "FireworkRainbowWC",
-      "FireworkBlueWC",
-      "FireworkGreenWC",
-      "FireworkRedWC",
-      "FireworkPinkWC",
-      "FireworkYellowWC"
-    ],
-    "helpers": {
-      "targeting": "Common_Weapons_Targeting_Fixed_NoTargeting",
-      "hardware": null,
-      "loading": null,
-      "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
-      "ai": "Common_Weapons_Hardpoint_Ai_FullDisable",
-      "audio": null,
-      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
-      "graphics": null
-    },
-    "displayName": "*NPC-Flare* Flare/Fireworks Launcher",
-    "gridSize": "Small",
-    "cubeSize": "Small",
-    "description": "",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -18753,7 +18443,7 @@
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
-    "maxElevation": 45,
+    "maxElevation": 90,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0,
@@ -18888,7 +18578,7 @@
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
-    "maxElevation": 45,
+    "maxElevation": 90,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0,
@@ -19023,7 +18713,7 @@
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
-    "maxElevation": 45,
+    "maxElevation": 90,
     "heatPerShot": 0,
     "maxHeat": 0,
     "cooldown": 0,
@@ -19514,7 +19204,7 @@
       },
       {
         "name": "Explosives",
-        "count": 11,
+        "count": 55,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -19657,7 +19347,7 @@
       },
       {
         "name": "Explosives",
-        "count": 11,
+        "count": 55,
         "deconstructSubtype": null,
         "deconstructType": null
       },
