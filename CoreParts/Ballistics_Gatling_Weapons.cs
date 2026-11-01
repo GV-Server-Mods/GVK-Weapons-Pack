@@ -216,18 +216,10 @@ namespace Scripts
                 },
                 Muzzles = new []
                 {
-					//"MissileTurretBarrels",
 					"Sentinelmuzzle_1",
-					"Sentinelmuzzle_2",
-					"Sentinelmuzzle_3",
-					"Sentinelmuzzle_4",
-					"Sentinelmuzzle_5",
-					"Sentinelmuzzle_6",
-					"Sentinelmuzzle_7",
-					"Sentinelmuzzle_8",
                 },
 				Ejector = "ejector",
-				Scope = "camera", // Where line of sight checks are performed from. Must be clear of block collision.
+				Scope = "Sentinelmuzzle_1", // Where line of sight checks are performed from. Must be clear of block collision.
             },
             Targeting = Ballistics_Gatlings_Targeting,
             HardPoint = new HardPointDef

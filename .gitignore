@@ -37,3 +37,6 @@ npm-debug.log*
 __pycache__/
 *.pyc
 scratch/
+
+# Blender backups
+*.blend1
