@@ -241,7 +241,7 @@ namespace Scripts
                     Effect1 = new ParticleDef
                     {
                         Name = "MD_Muzzle_Flash_Vulcan", // SubtypeId of muzzle particle effect. Muzzle_Flash_Large
-                        Offset = Vector(x: 0, y: 0, z: -5), // Offsets the effect from the muzzle empty.
+                        Offset = Vector(x: 0, y: 0, z: 0), // Offsets the effect from the muzzle empty.
                         DisableCameraCulling = false, // If not true will not cull when not in view of camera, be careful with this and only use if you know you need it
                         Extras = new ParticleOptionDef
                         {
