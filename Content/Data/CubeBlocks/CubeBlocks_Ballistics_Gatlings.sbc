@@ -66,7 +66,7 @@
 				<SubtypeId>SentinelTurret</SubtypeId>
 			</Id>
 			<DisplayName>*Gatling* Sentinel Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
+			<Icon>Textures\GUI\Icons\GVK_GatlingTurret.png</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[Uses 25mm KE]
 			</Description>
@@ -787,7 +787,7 @@
 				<SubtypeId>SentinelTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-Gatling* Sentinel Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\SentinelTurretBase.png</Icon>
+			<Icon>Textures\GUI\Icons\GVK_GatlingTurret.png</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
