@@ -8,7 +8,7 @@ How the GVK weapons pack is built, one file per topic, next to the files it desc
 
 | Doc | Covered files | Checked |
 | --- | --- | --- |
-| [Drone orbit terrain following](drone-orbit-terrain-following.md) | 2 | - |
+| [Drone orbit terrain following](drone-orbit-terrain-following.md) | 2 | 2026-11-01 |
 | [Falcon combat drone architecture (`AryxSmallFighterHangar`)](falcon-drone-architecture.md) | 2 | - |
-| [WeaponCore ModAPI discoveries and engine quirks](weaponcore-quirks.md) | 1 | - |
+| [WeaponCore ModAPI discoveries and engine quirks](weaponcore-quirks.md) | 1 | 2026-11-01 |
 <!-- /GENERATED:design-docs -->

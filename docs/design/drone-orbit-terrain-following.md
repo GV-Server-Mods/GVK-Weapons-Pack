@@ -3,6 +3,7 @@ title: Drone orbit terrain following
 covers:
   - CoreParts/Other_Drones_Weapons.cs
   - CoreParts/Other_Drones_Ammos.cs
+checked: 2026-11-01
 ---
 
 # Drone orbit terrain following
