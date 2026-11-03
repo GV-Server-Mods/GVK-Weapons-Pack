@@ -77,8 +77,8 @@ be iterated on silhouette renders before any detail.
 | Mantlet cones | 4.40 to 6.00 | 1.9 to 3.4 | elevation | x = +-1.5; 1.6 m across at the drum, 0.85 m at the tip; dark |
 | Gun shields | 5.50 to 6.30 | 1.0 to 2.6 | elevation | Dark wedge plate over each cone, reaching back over the drum |
 | Mantlet lamps | about 6.05 | about 2.4 | elevation | One small lens on top of each cone, `Emissive` |
-| Barrels | 5.20 axis | 3.4 to 13.5 | recoil part | x = +-1.5 (3.0 m apart, art ratio); 0.7 m across, a collar ring by the cone; each barrel mesh runs 2.3 m back into the cone so the 2 m recoil never shows its end |
-| Muzzle brakes | 5.20 axis | 11.9 to 13.5 | recoil part | 0.9 m across, 1.6 m long, 4 slots per side cut as geometry (silhouette, and decals break on curved faces); shallow dark bore recess, no rifling. At -10 degrees their undersides sit 2.6 m above the mount face, clear of a one-block wall in front |
+| Barrels | 5.20 axis | 3.4 to 13.5 | recoil part | x = +-1.5 (3.0 m apart, art ratio); 0.6 m across at the cone, tapering to 0.53 m at the brake (the art's proportions). Straight for the first 2.05 m past the cone, so the 2 m recoil never opens a gap at the collar; a seam groove 1.2 m out. A fixed collar ring on the cone tip (elevation part, 0.74 m across, 5 mm clear of the barrel). Each barrel mesh runs 1.2 m back into the cone: its end never shows, and at full recoil it stays inside the drum (2.3 m would take it out of the drum) |
+| Muzzle brakes | 5.20 axis | 11.9 to 13.5 | recoil part | 0.62 m across, 1.5 m long (the art: about 12% wider than the barrel beside it): a worn steel sleeve, a dark body with 3 round-ended slots per side cut as geometry into a black-lined chamber (silhouette, and decals break on curved faces), a dark cap with a stepped, shallow black bore, no rifling. Stencils on the sleeve's outer side. At -10 degrees their undersides sit 2.6 m above the mount face, clear of a one-block wall in front |
 | Muzzle dummies | 5.20 | 13.5 | elevation | Barrel tips at rest, +Y along the barrel (0.8 m further than the old muzzles, 7.25 m past the front face) |
 | Camera dummy | about 6.30 | about 1.9 | elevation | Centred between the cones on top of the drum, looking forward |
 | Periscope | 6.80 to 7.10 | about 1.6 | azimuth | Roof front-left, centre x = +2.3 (outside the barrel lanes), small housing with an `Emissive` lens |
@@ -99,7 +99,7 @@ Target: a second Hurricane one block (2.5 m) higher and directly behind fires fo
 - With the trunnion axis at 5.2 m, the twin's axis is at 7.7 m and its muzzle brakes' undersides at 7.25 m
   at 0 degrees.
 - This turret's collision top is the roof (6.8 m), so the twin's scope ray clears it down to about -4 degrees.
-- The barrel lanes are x = +-1.5 m, each 0.9 m wide at the brakes. Nothing in them rises above the roof, and
+- The barrel lanes are x = +-1.5 m, each 0.62 m wide at the brakes. Nothing in them rises above the roof, and
   the roof gear sits outside them (periscope at x = +2.3, sensor dome at x = -2.6) and below 7.2 m, so the
   twin's barrels never touch this turret when both face forward.
 - The old model's axis was 5.5 m with a taller top; compare the two in game with a stacked pair.
@@ -165,8 +165,12 @@ recoil animation's `(0, 0, 2)` still moves them backward.
 | Ports and keypads | as imported (`PaintedMetal_Yellow`, `Metal_Dull`, `Conveyor`, `PaintedMetal_Darker`, `Terminal`) | no |
 | Drum bands, base disc rim ring | `PaintedMetal_Colorable`, framed by dark trim | yes |
 | Bustle, cones, gun shields, sill, side boxes, bearing ring, disc body | `PaintedMetal_Darker` | no |
-| Barrels | dark gun metal, chosen from the catalog in the build | no |
-| Muzzle brakes, sensor dome | `Chrome` or a dull metal, chosen in the build | no |
+| Barrels, collars | `PaintedMetal_VeryDark` | no |
+| Muzzle brakes | body and cap `PaintedMetal_VeryDark`, sleeve `MetalMilitary_Scratched`, slot chamber and bore `BlackMetal` | no |
+| Rear hatch, feed tube, grille box and its handles, hose collars and bands | `MetalMilitary_Scratched` (the rear art's bare steel) | no |
+| Rear hoses, hatch arrow, the side recesses' vent, bezels, switch box and louvre rim | `PaintedMetal_Darker` | no |
+| Side recesses: louvre blades, push button | `PaintedMetal_VeryDark`; vent and louvre backs `BlackMetal`; sensor lens `CameraLens`; switch box pill light and LED `Emissive` | no |
+| Sensor dome | `Chrome` or a dull metal, chosen in the build | no |
 | Lamps, periscope lens | `Emissive` (real geometry, state colours) | no |
 | Sensor dome lens | glass from the catalog | no |
 
@@ -184,7 +188,7 @@ Large features:
 | Surface | Decal | Size and placement |
 |---|---|---|
 | Plinth side bays (16) | X panel: four copies of the debossed `Atlas3_Colorable` triangle (42), turned 90 degrees apart | About 1.5 m square, one per bay, all the same size |
-| Rear bustle face | Same X panel on `Atlas3_Darker` (relief on the dark bustle) | About 1.6 m, centred |
+| Rear bustle face | The rear art's features, sized to it: `Atlas1` 3 louvres in the grille box's three bays; on the access panel `PanelingColorable` 17 bar and 29 ribs (raised), `Atlas3_Colorable` 21 label strip (recessed), `ButtonsAtlas_Darker` 59 button; `Atlas3_Darker` 15 slots on the hatch door. The side recesses are cut in without frames, with small chamfered corners (as the art), each 0.2 m in from every edge of its face, and hold 3D parts traced off the full art: a barred vent (upper left); a lens, push button and switch box (upper right); a bladed louvre (lower right). Their decals (round 13) and round 15's generic 3D boxes were rejected | See the build log, checkpoint 3 rounds 13 to 17 |
 | Plinth top corners (4) | `Atlas3_Darker` triangular corner plate with diagonal slots (29), as vents | Legs about 2.5 m, clear of the disc |
 | Roof rear-left | `Atlas3_Colorable` slatted vent | The art's roof grille, about 1.4 x 0.4 m |
 | Gunhouse sides, lower rear | `Atlas3_Colorable` louvre vents | Both sides (symmetric trim) |

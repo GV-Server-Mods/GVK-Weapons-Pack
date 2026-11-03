@@ -15,8 +15,8 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 |---|---|---|
 | 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
 | 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built. Reopened (owner, 2026-11-02): the top side needs a lot more work; the underside not yet reviewed |
-| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Still open (owner, 2026-11-02): the bustle's whole rear face |
-| 4 | Barrels and muzzle brakes | Round 1 built (2026-11-02): tapered barrels, static collars, slotted brakes, sleeve stencils; awaiting the owner's review |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Reopened (owner, 2026-11-02): the bustle's whole rear face; round 13 (the rear face: decals for the flat 3D details, one per vent the art shows; steel hatch, feed tube and grille box) "pretty mid" (owner); round 14 took off the panel's ticks and 5 and every decal in the side recesses; round 15 (owner: "Chunky 3D parts" in the recesses; the hoses redone to drape) rejected: "everything you did is just worse in every way"; round 16 (recesses plain again; hoses fitted to the art and hung as stiff rods) accepted ("ok that looks good enough"); round 17 (the side recesses' vent, sensor group and louvre traced off the full art; the frames taken off and the recesses cut in with chamfered corners, as the art; then smaller bevels and one margin all round each recess) accepted ("Looks good enough for now", 2026-11-03) |
+| 4 | Barrels and muzzle brakes | Round 1 (2026-11-02): tapered barrels, static collars, slotted brakes, sleeve stencils; approved and committed (owner: "Yes, commit") |
 | 5 | Decal groups | not started |
 | 6 | Split into subpart scenes | not started |
 | 7 | LODs and build stages | not started |
@@ -224,11 +224,13 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
   - `gvk_finish.py`: the checkpoint 3 finish pass over every mesh under `mk_Az`. `finish()` swaps the `BO_*`
     placeholders for vanilla materials (`LIB`), gives every part box UVs at 0.495 UV/m, and adds a Bevel (30
     degree angle limit, 2 segments, hardened normals; 2 cm on the big parts in `BIG`, 8 mm on the rest) and a
-    Weighted Normal modifier. `rear_frames(g, bo)` builds `RearFrames`. Rerun both after `build(g, P)`, which
-    puts the placeholders back. Objects tagged `decal` are skipped.
+    Weighted Normal modifier. Rerun it after `build(g, P)`, which puts the placeholders back. Objects tagged
+    `decal` are skipped. `gvk_helpers.boolean()` switches these modifiers off while it cuts (round 17: before
+    that, every rebuild's cuts baked them into the mesh).
   - `gvk_ghdetail.py`: checkpoint 3 surface detail (`build(g)`): `Face` plane frames for the roof, sides,
     skirts and bustle; `gunhouse_shape` (top side chamfer once per mesh, then flush silver and patch
-    materials), `chin_stripe`, `roof`, `sides` (with `louvre`), `panels`, `polyline` (mitred seams), `drum`
+    materials), `chin_stripe`, `roof`, `sides` (with `louvre`), `panels`, `rear_face` (the rear face's decals,
+    laid from `REAR`), `polyline` (mitred seams), `drum`
     (strip decals wrapped one flat quad per facet by `band()`), `bustle`, and `rivet_edges(name, keep=..., edge=...)` for bolt rows round any part's faces. Layout constants (`SILVER`, `PATCH`, `ROOF_PLATES`, `SIDE_SEAM`) are measured
     from the top view. It reuses the plinth's atlas helpers (`piece`, `strip`, `text_polys`). Objects are named
     `GH_*`.
@@ -243,8 +245,8 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
                             BaseDisc, BaseDiscRim, FeedTrunk, mk_Az (h 2.85) -> subpart_MissileTurretBase1
   mk_Az > BearingRing, RollerPosts, Gunhouse, Chin, Bustle, MidSupport, TrunnionBearings, Periscope,
           PeriscopeLens, SensorDome, SensorDomeCap, SensorDomeFlange, RoofVent, SideBox_L/R, SideBoxSensor_L/R, RearAccessPanel,
-          RearPanelHinge, RearPanelButton, RearHatch, RearHatchArrow, RearFeedTube, RearVent_L, RearButtons,
-          RearLouvres, RearGrille, RearGrilleHandles, RearPipes, RearHoseFittings, mk_El
+          RearPanelHinge, RearHatch, RearHatchArrow, RearFeedTube, RearGrille, RearGrilleHandles, RearPipes,
+          RearHoseFittings, RearRecessParts, RearRecessBacks, RearLens, RearButton, RearLights, RearBlades, mk_El
     mk_El (0, 2.2, 5.75) -> subpart_MissileTurretBarrels
       > Drum, DrumBands, Cone_L/R, ConeRims, Ridge_L/R, Lamp_L/R, LampShroud_L/R, mk_camera,
         mk_muzzle_projectile_1/2, mk_Barrel_1/2 > Barrel, Collar, Brake
@@ -258,8 +260,8 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
 | Embrasure | between the cheeks, \|x\| < 3.2; floor just under the chin's top (h 4.43). Brow: the cheek slope runs on over the guns as one armour plate 0.15 thick (the rear section's armour), from the roof edge 0.2 m down the slope (to about a 1.49, h 6.69), its lip square to the slope. Internal armour (dark): one sloped face, its normal tilted 30 degrees up, 0.33 m from the trunnion axis, from a 2.52 at the floor back to a 1.21 under the roof plate (h 6.70); the drum's lower back, about 30% of its depth, runs into it. No breech slots: the ridges and the recoiling barrels pass through the gunhouse armour (owner, round 8). No roof slots, no frame strips |
 | Chin | one dark block across the embrasure: its front follows the cheek slope and its underside the front undercut, both 0.4 m proud of the gunhouse (front to a 4.02), down to the gunhouse bottom (h 3.15); flat top back to the sloped internal armour, at h 4.7 outboard of \|x\| 2.75, chamfered down to h 4.45 at \|x\| 2.5 and flat at 4.45 under the barrels (lowered with the guns); back up to 4.7 between the barrels, \|x\| <= 0.9, chamfered down to 4.45 at \|x\| 1.15 (owner, plinth round 7) |
 | Rear section | the gunhouse's substructure: every face inset 0.15 m (top h 6.70, bottom h 3.30); a = -4.2 to -6.18 (block edge -6.25); sides parallel to the gunhouse sides (no plan taper, no side undercut); top-rear chamfer 0.2 m; a long undercut from h 5.0 on the rear face down to the bottom 1.5 m further forward |
-| Rear face | after the straight-on rear view. Large access panel, painted, centred, half-width 2.1: 0.18 m proud, down the rear face from h 6.29 (top corners chamfered 0.25), mitred at the knee (h 5.0), then along the undercut to 93% of its length; two gunmetal hinge knuckles (r 0.11) at x +-1.75 on its bottom edge. Painted rails 0.08 m proud on it: a bar x +-0.95, h 5.82 to 5.97, and two diagonals from (+-1.72, 6.02) down to (+-1.05, 5.43), 0.26 m wide; a small button x 1.45 to 1.78, h 5.08 to 5.42. Gunmetal hatch x +-0.63, h 4.39 to 5.6, 0.45 m proud with chamfered corners, hanging past the knee; door with a dark down arrow. Feed tube across under the hatch at h 4.61: left x 0.6 to 1.22 (r 0.22, collar r 0.25 at its end), right x -0.6 to -1.62 (r 0.24) with a tapered nozzle to -1.95. Recesses 6 cm deep in the rear section, from \|x\| 2.36 out to 0.18 m inside the side edge, their outer edges parallel to the leaning side edge, so each pair keeps one width across the knee; gaps 0.15 m each side of the knee: above it vent (bar grille, left) and buttons (two round lenses and a switch, right) up to h 6.25; in the undercut, hose bay (left) and louvres (right, eight slats) down to 0.15 m from the bottom. Grille box x +-1.35, h 3.28 to 3.95, from a = -5.63 into the undercut, five slats and a chrome grab handle at each end |
-| Hoses | two dark hoses side by side (r 0.085, smooth spline paths) from one fitting (r 0.2) in the hose bay at x 2.87, 28% down the undercut. They hang to about h 3.5, loop across under the panel and rise outboard of the grille box into the feed tube's left end |
+| Rear face | after the straight-on rear view. Large access panel, painted, centred, half-width 2.1: 0.18 m proud, down the rear face from h 6.29 (top corners chamfered 0.25), mitred at the knee (h 5.0), then along the undercut to 93% of its length; two gunmetal hinge knuckles (r 0.11) at x +-1.75 on its bottom edge. Its bar, ribs and button are decals (round 13). Steel hatch x +-0.63, h 4.39 to 5.6, 0.45 m proud with chamfered corners, hanging past the knee; a door 4 cm proud with 0.1 m round corners and a dark down arrow (3D). Steel feed tube across under the hatch at h 4.61, r 0.18, sitting 2 cm into the panel: left x 0.6 to 1.22 with a coupling ring (r 0.21) at 0.78 to 0.86 and a lip at its end; right x -0.6 to -1.36 with two rings (r 0.205) and a domed cap to -1.61. Recesses cut 6 cm into the rear section, no frames (round 17): each opening 0.2 m in from every edge of its face (the panel's side, the rear section's side edge, the face's top and the knee, or the knee and the undercut's bottom), the walls sloping out 3 cm from the floor, every floor corner chamfered 5 cm. Upper floors \|x\| 2.33 to 3.56 at h 5.23, to 3.18 at h 6.27: vent (left), lens, button and switch box (right). In the undercut: hose bay (left), louvre (right). Parts dark, backs black (see round 17). Steel grille box x +-1.35, h 3.28 to 3.95, from a = -5.63 into the undercut, three slatted bays (decals) and a steel U handle (r 0.045) round each side bay |
+| Hoses | two dark hoses (r 0.085), 3.2 m each, hung as stiff rods under their own weight (`hang()`, bending length 0.22 m; round 16). Each leaves its own steel collar (flange r 0.15, ring r 0.12, 10 cm proud of the slope) square to the undercut: the upper one at x 3.06, 0.64 m down the undercut, the lower one at x 3.16, 1.08 m down. They bend down, hang to h 3.47 and 3.30 (surfaces 3.21 lowest, above the gunhouse bottom) and rise into the feed tube's left end, the upper collar's hose on top. Steel bands (r 0.1) where the art draws them: one at the upper hose's low point, one across both on the rise |
 | Trunnion | axis (a 2.2, h 5.65; round 9: 5.75), on the cheek slope at axis height (1 cm behind it), so the drum's front stands 0.81 m proud of it; drum r 0.82, \|x\| up to 3.15 (5 cm from the cheeks), gunmetal; painted rings r 0.86 at both ends of each drum segment, mirrored about each barrel: \|x\| 0.65 to 0.79 (0.62 to 0.76 before checkpoint 3 round 12), 0.96 to 1.1, 2.7 to 2.84, 3.01 to 3.15; bearings (turn with the gunhouse) r 0.4 from \|x\| 3.16 into the cheeks to 3.34; middle support (turns with the gunhouse): painted octagon, circumradius 0.95, \|x\| up to 0.6, centred 0.1 m above the axis (h 5.75, where it was in round 9; top h 6.63), its front half moved 0.35 m forward (front face at a 3.43, a longer top). Its back runs straight down to the chin. Its vertical front runs from h 6.11 to 5.39, centred on the octagon; below it a 45 degree undercut (the top chamfer's angle, mirrored) runs back to a 2.47 on the chin top (h 4.43) |
 | Cones | x = +-1.9 (barrels 3.8 m apart); flat back at a = 2.94, set 8 cm into the drum's front: r 0.70 at the back edge, a short rounded shoulder to r 0.78 by a 3.12, then a straight taper to r 0.42 at a = 4.7; dark rim band near the back |
 | Mantlet ridges | side profile (a, h): (1.55, 6.15), (1.55, 6.85), (2.55, 6.85), (3.4, 6.45), cut off at a 3.27 just behind the lamp, so each ridge runs back over the drum from the cone; top level with the roof; the top back corner cut off at 45 degrees, 0.172 m each way (back face up to h 6.68, top from a 1.72; owner, checkpoint 3 round 12). The profile stayed put when the guns went down 0.1 m, so the ridges are 0.1 m taller than in round 9. Tapered section: half-width 0.15 at the top, widening straight down to 0.36 at the base, which follows the drum and cone surface; over its last 0.4 m the base narrows to the lamp shroud's width |
@@ -551,7 +553,8 @@ Signed off (owner, 2026-11-01): "Ok, next area".
 - **UVs:** every part had none; all now have box UVs at the plinth's 0.495 UV/m.
 - **Bevels:** modifiers, not applied yet; apply them at export (or before LODs).
 - **Rear frames:** a dark raised frame 8 cm wide and 3 cm proud round each of the four rear recesses (upper on
-  the rear face, lower on the undercut), both edges bevelled, as the rear art's framed dark panels.
+  the rear face, lower on the undercut), both edges bevelled, as the rear art's framed dark panels. Taken off in
+  round 17 (owner: the art's recesses are cut in, not framed).
 - Checks after the pass: unchanged from round 10 (overlaps only the allowed ones, superfire -6.25 degrees,
   sweep radius 7.30 m, highest point 7.6 m, lowest brake 3.71 m).
 - Renders: `g1_art`, `g1_back`, `g1_rear34`, elevation `g1_el-10`, `g1_el+0`, `g1_el+45`, superfire pair
@@ -1034,6 +1037,145 @@ dimples, now in se-dev-seut's `atlas-regions.md`.
   from the walls (`lip`). The scan now finds none (0.5 mm tolerance; the plinth was not scanned). Renders:
   `r12h_rear`, `r12h_rear_recess`. Checkpoint before it: `HurricaneTurret_before_rear_frames.blend`.
 
+### Round 13: the bustle's rear face (`rear_face()`)
+
+Owner: "the entire back side of the bustle needs a TON of work", and before this round: "i dislike the overuse of
+those vent decals already. Try to reduce the need for 3D features and replace them with decals when the depth
+isn't that critical. Try to make decals conform to the design rather than just slapping them on there." The
+round 12 rear had six copies of one slatted vent (`Atlas3_Darker` 24) at shapes the art doesn't show, and its
+small details as plain blocks. Plan proposed with contact sheets (`rear_controls`, `rear_vents`, `rear_marks`,
+`rear_more`, `rear_stretch`, `raised_bars`); owner: "Yes, build it".
+
+- **Vents:** one decal per vent the art shows, at the art's size and place. Upper left recess: the art's square
+  vent, 0.6 m, in the lower half (`Atlas1` 5, six vertical slots, on an `Atlas3_Darker` 35 bezel 0.7 mm under
+  it). Lower right recess: one framed louvre (`Atlas1` 3), 1.1 x 1.05 m, stretched 1.6x up the slope (it was
+  three stacked vents). Grille box: the art's three bays, `Atlas1` 3 each, stretched along the slats only
+  (centre 1.2 m, sides 0.44 m wide, 0.41 m tall).
+- **3D to decals:** the panel's bar and ribs (0.08 m proud) as `PanelingColorable` 17 and 29. These are raised;
+  every bar and pill on `Atlas3_Colorable` (12, 21, 23, 26, 27, 36) is recessed in its normal map, which a
+  first render showed. The square button as `ButtonsAtlas_Darker` 59. The right recess's lens, button and switch
+  as `Atlas3_Darker` 4 and `ButtonsAtlas_Darker` 52 and 57.
+- **Added from the art:** the recessed label strip above the bar (`Atlas3_Colorable` 21, turned, 1.9 x 0.2 m),
+  the 5 left of the hatch (`TextAtlasDark`, 0.2 m tall), two groups of tick marks (`TextAtlasDark` I, 7 to 14 cm),
+  the door's column of three slots (`Atlas3_Darker` 15). Not added: the feed tube's stencil and oblong marks
+  (decals break on the curve), the tiny marks above the left vent.
+- **3D kept where the art shows depth**, in steel (`MetalMilitary_Scratched`, as the brake sleeves): the hatch
+  (door corners now round), the feed tube (r 0.18 as the art, was 0.22 to 0.24; a coupling ring, two rings and a
+  domed cap for the cone nozzle), the grille box (its slat bars gone) with a U handle round each side bay, the
+  hose fitting and a band round each hose. The hatch arrow stays 3D and dark: no atlas has a dark filled
+  triangle (`Atlas2` has white and red ones).
+- Every decal is laid onto its face (the planes measured to 1 cm) with u = -x, so nothing reads mirrored from
+  behind; all are bolt keep-outs, so the panel's top bolt row stops at the label strip and ribs.
+- **Checks:** as checkpoint 4 (allowed overlaps only; superfire -6.25 degrees; sweep radius 7.29 m, bustle
+  corner; highest point 7.6 m; lowest brake 3.73 m).
+- **Renders:** `r16c_rear`, `r16c_rear34`, `r16c_rear34L`, `r16c_vs_art` (beside the art), close-ups `r16b_panel`,
+  `r16b_grille`, `r16b_recessL`, `r16b_recessR`. Checkpoint before it: `HurricaneTurret_before_rear_face.blend`.
+
+### Round 14: owner review of round 13
+
+Owner: "its pretty mid. some of the larger stuff you did on the yellow panel is ok, but the small vertical black
+stripes and text are lame. All of the stuff you put in the dark grey areas on the side are bad."
+
+- Taken off: the tick marks and the 5 on the panel; the vent, lens, button, switch and louvre decals in the side
+  recesses. The recesses are plain framed dark panels again, the hoses still in the lower left one.
+- Kept: the panel's bar, ribs, label strip and square button, the grille's three bays, the hatch door's three
+  slots, and the round 13 3D (steel hatch, feed tube, grille box and handles, hose bands).
+- Why the side decals failed, as read from the renders: the `ButtonsAtlas` pieces are console-scale buttons and
+  read as toy UI icons at 0.2 to 0.5 m; the vent and louvre are dark on the dark paint; all of them float small in
+  large empty panels. What the recesses get instead is the owner's call (decisions page).
+- Renders `r17_rear`, `r17_rear34`.
+
+### Round 15: chunky 3D parts in the side recesses, draped hoses
+
+Owner picked "Chunky 3D parts" for the recesses (decisions page), then: "you also need to redo the hoses so they
+drape more naturally".
+
+- **Parts** (`gvk_blockout.build()`, after the grille handles), each a steel block standing 8 to 10 cm proud of the
+  recess floor with a pocket in its front (`pocket_box()`), placed and sized from the art:
+  - Upper left: vent box 0.6 m square, seven dark vertical slats (`RearVent`, `RearVentSlats`).
+  - Upper right: a lens (`CameraLens`) in a thick turned bezel, a dark round button under it, a switch box with an
+    emissive light (`RearSensor`, `RearSensorLens`, `RearSensorButton`, `RearSwitchLight`).
+  - Lower right: louvre frame 1.1 x 1.45 m centred in the bay (about 3/4 of its height, as the art), eight steel
+    slats over a dark back (`RearLouvre`, `RearLouvreBlades`, `RearLouvreBack`). The first pass tilted the slats
+    with the outer edge lower; from any view above the slope they overlapped and read as a flat plate. The slats
+    are now level in the world, 3 cm thick and 5 cm deep, so the dark gaps show from behind.
+  - Lower left: the hose fitting, as before.
+- **Hoses** (`drape()`): each hose is a rope of 56 points hung under gravity between fixed ends (three points at
+  each end set the direction it leaves the fitting and enters the tube), 600 Verlet steps with length and bending
+  constraints, kept off the undercut, the panel and the bustle's bottom, and the two ropes pushed 0.19 m apart.
+  Tune with `P['hose']` (radius, lengths) and `drape()`'s `kb` (stiffness) and `gap`. They drop from the fitting,
+  sag to h 3.56 near the bay's bottom and rise into the tube, as the art; the band sits half way up the rise (the
+  art), no longer at the low point. Clearances: panel 19 mm, grille box and handles 0.54 m; the hoses touch only
+  the feed tube where they enter it.
+- **Checks:** as round 13.
+- **Renders:** `r18_rear`, `r18_rear34L`, `r18_hoses` (first pass), `r19_hoses`, `r19b_louvre`, `r19b_rear`.
+  Checkpoint before it: `HurricaneTurret_before_rear_3d.blend`.
+- **Owner:** "everything you did is just worse in every way". Read against `r17_rear`: round 14's hoses already
+  had the art's J (straight drop, flat run along the bay's bottom, tight bend into the tube); the drape traded it
+  for a loose U bowed out from the face. The 3D parts read as small generic boxes.
+
+### Round 16: recesses plain again, hoses fitted to the art
+
+Owner: "you still need to redo the hoses though, they don't stick out of the angled surface correctly, and they
+don't drape in a realistic way from the side view. You need to try harder at matching the concept art".
+
+- **Recesses:** round 15's parts are gone (`drop()`); all four are plain framed panels again, as round 14. Round 15
+  is kept in `HurricaneTurret_r15_rejected.blend`.
+- **What the art shows** (`art_hose_grid.png`, the rear art with a grid): two hoses, each from its own collar (a
+  wide flange, then a narrower ring); the second collar lower down the slope and a little outboard, half hidden
+  by the first hose. The hoses run as a pair: down, a round U to the bay's bottom edge, an S up into the tube's end,
+  the first hose inside the U and on top at the tube. Seams: one at the first hose's low point, one across both on
+  the rise. Round 15 had one big fitting with both hoses coming off its face, then a sharp elbow.
+- **Fit:** both centrelines traced off the art into model (x, h) (240 px/m, the panel edge and the tube axis as
+  anchors). `hose_tune.py` (scratchpad) solves the hoses and scores the rear view against them: lengths and
+  bending length searched; 0.22 m and 3.2 m each fit best, about 2.5 cm mean off the art. Stiffer hoses (0.4 m and
+  up) bulge the drop outboard and fit twice as badly.
+- **Physics** (`hang()`, replaces `drape()`): each hose is a rod of 5 cm segments clamped at both ends (the collar's
+  axis, square to the undercut, and the tube's axis), minimising bending plus weight with L-BFGS (6,000 steps,
+  converged); segment lengths, the hoses 2r apart, the undercut and panel and the gunhouse bottom are stiff
+  penalties. From the side each hose now leaves its collar square to the slope, bends down and hangs; the lower
+  collar's hose hangs further forward and both meet at the tube.
+- **Checks:** as round 13. The hoses touch only the feed tube (where they enter) and the collars sit in the bay
+  floor; swung a full turn in 3 degree steps the hoses and collars clear every plinth part.
+- **Renders:** `r22_rear`, `r22_hose_rear`, `r22_side`, `r22_34`, `r22_vs_art` (the art beside the model);
+  `r20_side15` shows round 15 from the side.
+- **Owner:** "ok that looks good enough".
+
+### Round 17: the side recesses' details, cut-in recesses
+
+Owner: "Try again for the other 3 panel's details". Mid-round: "you have 3D embossed frames around each of those 4
+side bustle detail areas, and the artwork does not frame them like that, they are just cut into the bustle, and have
+beveled corners".
+
+- **Measuring:** the cropped rear art (`art_back_L`, `art_back_R`) is stretched; every size here comes from the
+  full rear art on a grid (`g6_UL.png`, `g6_UR.png`, `g6_LR.png`), as fractions of each pocket. The art's upper
+  pockets are about 1.6 times taller for their width than the model's were, and narrower than the bays below.
+- **Recesses** (`pocket()` in `gvk_blockout`): cut straight in, no frames. `RearFrames` and
+  `gvk_finish.rear_frames()` are gone. First built with 0.1 m corner chamfers, 6 cm sloping walls and the upper two
+  0.3 m narrower (the art's pockets). Owner: "The bevels are too large. And the inset panels need to be more
+  equidistant from the side, top, bottom and edge in spacing". Now each opening sits `P['recess']['margin']` (0.2 m)
+  in from every edge of its face, the walls slope out 3 cm and the floor corners are chamfered 5 cm.
+- **Vent, upper left** (the art: 45% across, the bottom 47% of the pocket, a little wider than tall): 0.56 x 0.49 m,
+  a rounded rim 5.5 cm wide, six round bars (r 2 cm, 7.5 cm apart) over a black back.
+- **Sensor group, upper right** (all about half way across): a lens in a stepped bezel (r 0.14) 18% down, a domed
+  push button (r 0.1) 44% down, and a switch box 0.5 x 0.33 m centred 74% down, with an inset face, a pill light
+  and an LED placed as the art's (both lit, `Emissive`). Lens `CameraLens`, button `PaintedMetal_VeryDark`.
+- **Louvre, lower right** (the art: most of the bay): 1.13 x 1.51 m, 0.15 m in from the floor's top, bottom and
+  inner edges and from its outer edge at the bay's narrow top; a deep rim, ten blades 72 degrees below level in
+  `PaintedMetal_VeryDark` (`RearBlades`) over a black back.
+- **Normals bug, fixed:** `gvk_helpers.boolean()` cut through the evaluated mesh with `finish()`'s Bevel and
+  WeightedNormal still on, so every rebuild baked them in, with custom normals that each later cut smeared (light
+  streaks on the rear face once the frames no longer hid them). It now switches them off while cutting. The bustle's
+  base mesh went from 798 faces to 81; the finish pass still bevels it the same way at export.
+- **Triangles:** 12,000 for the new parts (recess parts 7,076, lens 1,088, button 896, lights 1,420, blades 1,080,
+  backs 440), most of it the Bevel modifier on round parts. A candidate for the LOD pass.
+- **Checks:** the elevation sweep, superfire (-6.25), lowest brake (3.73) and highest point (7.6) as before. Sweep
+  radius 7.303 m (was 7.29): the bustle's bottom rear corner, no longer rounded by the baked bevel, and the knee
+  seam decal that now runs to it beside the narrower upper recess.
+- **Renders:** `r29_rear`, `r29_rear_vs`, `r29_UL_vs`, `r29_UR_vs`, `r29_LR_vs` (the art beside the model),
+  `r29_34`; before the margins and smaller bevels, `r28_*`. Checkpoint before it: `HurricaneTurret_before_r17.blend`.
+- **Owner:** "Looks good enough for now" (2026-11-03).
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
@@ -1110,23 +1252,22 @@ is about 2.4 diameters long: sleeve 0.31, slotted body 0.49, cap 0.20 of its len
 
 ## Left for later checkpoints
 
-Owner, 2026-11-02, after round 12: "the turret has way more work left". Open areas, none started:
+Owner, 2026-11-02, after round 12: "the turret has way more work left". Open areas:
 
 - Checkpoint 2 (plinth), reopened: "the entire top side of the Plinth needs a TON of work" (today a bare painted
   deck with dark corner triangles round the turntable ring and its brackets). The underside has not been
   reviewed yet ("I havent even *looked* at the bottom side").
-- Checkpoint 3, open: "the entire back side of the bustle needs a TON of work". The rear art (`concept_art_back`)
-  has the yellow centre panel with raised bars, the boxed unit with a triangle mark, a pipe run into a canister,
-  the lower grille box with handles, framed side recesses (vent, round buttons, louvres) and small stencils; the
-  model has each of these as a plain block.
-- Checkpoint 4: round 1 built (above), with the sleeve stencils; the owner's review is open.
+- Checkpoint 3, the bustle's rear face: round 17 (above) accepted "for now"; not committed yet.
+- Checkpoint 4: round 1 approved and committed.
 - Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
   hatches, panel and weld lines, hazard marks, stencils.
 
 ## Next
 
-Checkpoint 4 round 1 is built with its sleeve stencils, not committed. Next: the owner reviews the barrels and
-brakes; then the bustle's rear face, the plinth's top and the plinth's underside, in the owner's order. Rebuild
+Checkpoint 3 round 17 (the bustle's rear face) is accepted for now, not committed. Next: commit it when the owner says;
+then
+the plinth's top and the plinth's underside. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`,
+`gvk_ghdetail.build(g)`, `finish()`. Rebuild
 the guns alone with `gvk_blockout.gun()` per side, then `finish()`. Rebuild the detail with
 `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change in `gvk_finish`, run `finish()` once
 first so the decals are laid onto the new bevels.
