@@ -14,9 +14,9 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 | # | Checkpoint | State |
 |---|---|---|
 | 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
-| 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built |
-| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built |
-| 4 | Barrels and muzzle brakes | not started |
+| 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built. Reopened (owner, 2026-11-02): the top side needs a lot more work; the underside not yet reviewed |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Still open (owner, 2026-11-02): the bustle's whole rear face |
+| 4 | Barrels and muzzle brakes | Round 1 built (2026-11-02): tapered barrels, static collars, slotted brakes, sleeve stencils; awaiting the owner's review |
 | 5 | Decal groups | not started |
 | 6 | Split into subpart scenes | not started |
 | 7 | LODs and build stages | not started |
@@ -178,7 +178,10 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
     armour), the lamp pockets in the cones and the rear recesses are cut. Change `P` and rerun `build(g, P)`.
     `cone_lamp()` builds one cone with its lamp and shroud; `cone_normals()` then bevels the cone in the mesh and
     sets its true normals, and tags it `own_normals` so `gvk_finish.finish()` adds no Bevel or WeightedNormal to it
-    (both modifiers replace custom normals).
+    (both modifiers replace custom normals). `gun()` builds one gun from the cone tip on (collar, barrel, brake)
+    with `revolve()` (an (a, r) profile turned round the gun's axis, each face tagged with its profile normal) and
+    `slot()` / `slot_fans()` (the brake's slots); `rev_normals()` sets the same kind of true normals from the tags
+    and tags the part `own_normals`.
   - `gvk_render.py`: `ortho_render(name, loc, rot, scale, res, ortho, lens)` renders through `CAM_Ortho`
     (orthographic, or perspective with `ortho=False`) with cavity, shadows and outlines, into the `renders`
     folder, and restores the camera and render settings.
@@ -261,7 +264,7 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
 | Cones | x = +-1.9 (barrels 3.8 m apart); flat back at a = 2.94, set 8 cm into the drum's front: r 0.70 at the back edge, a short rounded shoulder to r 0.78 by a 3.12, then a straight taper to r 0.42 at a = 4.7; dark rim band near the back |
 | Mantlet ridges | side profile (a, h): (1.55, 6.15), (1.55, 6.85), (2.55, 6.85), (3.4, 6.45), cut off at a 3.27 just behind the lamp, so each ridge runs back over the drum from the cone; top level with the roof; the top back corner cut off at 45 degrees, 0.172 m each way (back face up to h 6.68, top from a 1.72; owner, checkpoint 3 round 12). The profile stayed put when the guns went down 0.1 m, so the ridges are 0.1 m taller than in round 9. Tapered section: half-width 0.15 at the top, widening straight down to 0.36 at the base, which follows the drum and cone surface; over its last 0.4 m the base narrows to the lamp shroud's width |
 | Lamps | on each cone's top, 1.15 m ahead of the axis, axis at h 6.38 (`cone_lamp()`, `P['lamp']`): lens r 0.1 at a 3.32, 4.5 cm back in a round shroud of the cone's dark metal (r 0.14, bore 0.115) from a 3.19 to 3.38, its back 3 cm inside the ridge's nose. Its lower half sits in a recess of its own size in the cone; ahead of it the bore runs on as a round trough (r 0.117) that fades out where the cone falls away, about a 3.86 |
-| Barrels | r 0.25, from a 2.9 (1.8 m hidden in the cone) to the brake; collars r 0.34, a 4.7 to 5.0; brakes r 0.32, a 10.13 to 11.58 |
+| Barrels | checkpoint 4 (`gun()`, `P['barrel']`, `P['brake']`, `P['collar']`): r 0.30 from a 3.5 (1.2 m inside the cone) straight to a 6.75, tapering to r 0.265 at the brake; seam groove at a 5.9. Static collar on the cone tip r 0.305 to 0.37, a 4.66 to 4.82. Brakes r 0.31, a 10.08 to 11.58 |
 | Muzzles | (+-1.9, 11.58, 5.65); camera marker (0, 3.5, 6.55) |
 | Periscope | front-right of the roof: x -2.82 to -2.3, a 0 to 0.95; sloped front with a green lens |
 | Roof top | sensor dome on the rear section at (1.5, -5.08), as in the top view: chrome body r 0.6, 0.75 high, on a gunmetal flange r 0.78, 0.12 high; cap tapers to 0.7 r, top h 7.6. Slatted roof vent x -2.8 to -1.2, a -5.55 to -4.6 |
@@ -1031,6 +1034,56 @@ dimples, now in se-dev-seut's `atlas-regions.md`.
   from the walls (`lip`). The scan now finds none (0.5 mm tolerance; the plinth was not scanned). Renders:
   `r12h_rear`, `r12h_rear_recess`. Checkpoint before it: `HurricaneTurret_before_rear_frames.blend`.
 
+## Barrels and muzzle brakes (checkpoint 4)
+
+### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
+
+Owner: "I want the barrels to be a little bit larger diameter, and taper slightly. Remember we need to prep it for
+recoiling barrels too". Sizes measured on the art (`art_barrels`, `art_muzzles`, widths across the barrel at
+several points): the brake is about 12% wider than the barrel beside it and about the barrel's width at the cone;
+the barrel narrows about 10% from cone to brake (more in truth, as the brake end is nearer the viewer); the brake
+is about 2.4 diameters long: sleeve 0.31, slotted body 0.49, cap 0.20 of its length.
+
+- **Barrel** (`Barrel_L/R`, recoil part, `PaintedMetal_VeryDark`, 32 sides): r 0.30 (was 0.25), straight for
+  2.05 m past the cone tip, then tapering to r 0.265 at the brake. The straight length is the recoil: whatever
+  part of the barrel stands in the collar during the 2 m stroke is r 0.30, so no gap opens. A seam groove (2 cm,
+  4 mm deep) at a 5.9, where the art's right barrel shows one; a groove, so it passes into the collar without
+  clipping. The back end is 1.2 m inside the cone (a 3.5); at full recoil it is at a 1.5, still inside the drum
+  (the drum is 0.43 m above and below the axis there, the barrel 0.30). `design.md` says 2.3 m; that would put the
+  recoiled end 1.8 m behind the trunnion, outside the drum.
+- **Collar** (`Collar_L/R`, elevation part, so it does not recoil): the art's ring at the cone tip, r 0.37 outside,
+  5 mm clear of the barrel (r 0.305 inside), 12 cm proud of the cone with a 1 cm front chamfer, its back 4 cm in.
+- **Brake** (`Brake_L/R`, recoil part, one closed mesh, 48 sides): r 0.31, 1.5 m (design.md: 1.6 m and 0.9 m
+  across; the art's proportions win), front at the muzzle (a 11.58, unchanged).
+  - Sleeve, a 10.08 to 10.55, `MetalMilitary_Scratched`, 1.5 cm rear chamfer; a V-groove to the body.
+  - Body, a 10.57 to 11.29, `PaintedMetal_VeryDark`: three slots a side (the art; `design.md` said four), centred on
+    the sides (+-X), each 9 cm wide and round-ended, 80 degrees round the brake, 22 cm apart, cut through a 1.2 cm
+    wall chamfer into a closed chamber (r 0.19) lined with `BlackMetal`. Built, not cut with a boolean: the slot
+    outlines lie on the brake's rings, the faces between a slot's round end and the next columns are triangulated.
+  - Cap, a 11.31 to 11.58, r 0.30 behind a step groove, 2 cm front chamfer; the face steps 3 cm in at r 0.21 to a
+    bore of r 0.15, 25 cm deep (shallow, as the skill says), the step and bore in `BlackMetal`.
+- **Materials:** four body and sleeve pairs rendered on the brake (`r14_mat_sheet`): A `PaintedMetal_VeryDark` and
+  `MetalMilitary_Scratched` (kept), B `BlackMetal` and `Metal_Dull` (sleeve lighter, the body too black), C
+  `PaintedMetalScratched_VeryDark` (its large scratch blotches read as camouflage), D `PaintedMetal_Darker` and
+  `MetalMilitary`. Placeholders `BO_Brake`, `BO_Steel`, `BO_Bore` in `gvk_finish.LIB`.
+- **Normals:** every part is a profile turned round the gun's axis, so each face carries its profile normal and
+  `rev_normals()` sets true normals (round the axis on turned faces; along the stored wall normal in the slots;
+  halfway on the slot chamfers), sharp between faces whose normals differ. No Bevel or WeightedNormal modifier.
+- **Triangles:** 3,424 per brake, 380 per barrel, 480 per collar (the turning parts 35,551 in all).
+- **Checks:** unchanged from round 10 except the brakes: the elevation sweep reports only the allowed kinds (the
+  recoiled barrels now cross the internal armour inside the drum only); superfire -6.25 degrees; sweep radius
+  7.30 m; highest point 7.6 m; lowest brake underside at -10 degrees 3.73 m (was 3.71).
+- **Renders:** `r14_brake_34`, `r14_collar`, `r14_barrels_art`, `r14_recoil_side` (left barrel 2 m back).
+  Checkpoint before it: `HurricaneTurret_before_barrels.blend`.
+- **Decal candidates** (`r14_decals`): small stencils along the sleeve (`Atlas2` 41, 43, 44, 45, 49, 50), bolts on
+  the collar's front face (`Decals` 3, 11) or a ring on it (`Atlas3_Darker` 4, 10, `PanelingColorable` 31).
+- **Sleeve stencils** (owner: "Yes, place them"; `sleeve_marks()` and `SLEEVE` in `gvk_ghdetail`, objects
+  `GH_Dec_Atlas2_Barrel_1/2` on the recoil parts): `Atlas2` 44 (52, 8 cm tall) then 41 (MXS-2859-B, 4 cm), 3 cm
+  apart, centred on the sleeve, on the outboard side 15 degrees above level. One flat quad per sleeve facet (the
+  text spans two), 1.5 mm off it (measured). Never mirrored: the left gun reads front to back, the right back to
+  front, the 52 at the front on both. The collar stays plain. Renders `r15_sleeve_L`, `r15_sleeve_R`,
+  `r15_brake_34`.
+
 ## Checks run (round 10)
 
 - Elevation -10 to +45, 1 degree steps, with and without 2 m recoil. Overlaps, all allowed by the owner
@@ -1057,15 +1110,26 @@ dimples, now in se-dev-seut's `atlas-regions.md`.
 
 ## Left for later checkpoints
 
-- Checkpoint 3: nothing left from its list (rounds 11 and 12); open only for the owner's review.
-- Checkpoint 4: muzzle brake slots, bore recess.
+Owner, 2026-11-02, after round 12: "the turret has way more work left". Open areas, none started:
+
+- Checkpoint 2 (plinth), reopened: "the entire top side of the Plinth needs a TON of work" (today a bare painted
+  deck with dark corner triangles round the turntable ring and its brackets). The underside has not been
+  reviewed yet ("I havent even *looked* at the bottom side").
+- Checkpoint 3, open: "the entire back side of the bustle needs a TON of work". The rear art (`concept_art_back`)
+  has the yellow centre panel with raised bars, the boxed unit with a triangle mark, a pipe run into a canister,
+  the lower grille box with handles, framed side recesses (vent, round buttons, louvres) and small stencils; the
+  model has each of these as a plain block.
+- Checkpoint 4: round 1 built (above), with the sleeve stencils; the owner's review is open.
 - Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
   hatches, panel and weld lines, hazard marks, stencils.
 
 ## Next
 
-The owner reviews round 12 (the drum's three bands, the ridge backs, the lamps and the cut's shading). Rebuild the detail with `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change
-in `gvk_finish`, run `finish()` once first so the decals are laid onto the new bevels. After sign-off, checkpoint 4 (barrels and muzzle brakes).
+Checkpoint 4 round 1 is built with its sleeve stencils, not committed. Next: the owner reviews the barrels and
+brakes; then the bustle's rear face, the plinth's top and the plinth's underside, in the owner's order. Rebuild
+the guns alone with `gvk_blockout.gun()` per side, then `finish()`. Rebuild the detail with
+`gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change in `gvk_finish`, run `finish()` once
+first so the decals are laid onto the new bevels.
 An in-game model swap for testing is on hold (owner, 2026-11-02).
 
 After the detail pass is signed off (owner approved, 2026-11-02: "if it can help someone save time"): move the
