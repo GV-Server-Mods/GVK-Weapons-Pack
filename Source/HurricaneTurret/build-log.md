@@ -1,0 +1,975 @@
+# Hurricane Turret: build log
+
+Companion to `design.md`. Updated at every review checkpoint so a fresh session or a context compaction can pick
+up from this file and the saved `.blend`.
+
+**Owner rule (2026-11-01, blockout round 1):** stay close to the concept art even where `design.md` differs. The
+art is concept art, so its proportions need not be physically exact: match its look, and keep only the hard
+limits from the doc (block size, mount faces, conveyor ports, every name WeaponCore reads, the -10 to +45
+elevation range). The layout numbers in `design.md` are replaced by the ones below. Round 2 feedback relaxed the
+6.2 m sweep: the owner wants the rear section to reach the block's back edge.
+
+## Status
+
+| # | Checkpoint | State |
+|---|---|---|
+| 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
+| 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) built |
+| 4 | Barrels and muzzle brakes | not started |
+| 5 | Decal groups | not started |
+| 6 | Split into subpart scenes | not started |
+| 7 | LODs and build stages | not started |
+| 8 | Icon | not started |
+
+## Owner feedback
+
+- Round 1 (addressed in round 2): barrels too long; gunhouse too small and too tall; sides not sloped enough;
+  the sloped front armour under the guns missing; the chrome dome too small, on the wrong side, belongs on the
+  rear section.
+- Round 2 (addressed in round 3): front of the gunhouse should turn in a little; the angled skirts cut straight
+  down near the bottom; dome on the dark rear section; rear section less sloped on its top-rear and sides;
+  middle support on the trunnion missing; trunnion too big; chin armour too thin; rear section should overhang
+  to the block's back edge ("a lot of overhang"); bearing ring too large, gunhouse further back on it; a
+  parallel ridge on each mantlet cone with the lamp protruding from it, ridge tops level with or a little above
+  the roof (slope their backs, cut slots in the roof, or accept clipping at high elevation).
+- Round 3 (addressed in round 4): the front turn-in belongs near the front, where the front slope reaches the
+  roof; the chin is a sloped, dark metal plate; trunnion too low, raise it and move it forward; mantlet ridges
+  about 3 times too tall and thick; rear section: no full-height vertical edge halfway back on its sides, a
+  full-length undercut, and the same skirt edge 0.9 m up as the gunhouse. Skirts, base, rear sweep and dome
+  height are fine (if the sweep gets annoying, move the gunhouse forward a little). "Get significantly closer
+  to the artwork's dimensions before coming back."
+- During round 4:
+  - The rear section is the gunhouse's substructure without its armour plating, so it is smaller than the
+    gunhouse's outside by the visible armour thickness.
+  - The trunnion stands well proud of the front armour slope, which helps both depression and the ridges
+    clearing the roof.
+  - The cones end where they meet the trunnion, not inside it.
+- Round 4 (addressed in round 5), with new side and top views of the art:
+  - Follow the views for shape; they are AI generated, so their dimensions may be off.
+  - The guns can sit a little higher than the side view shows.
+  - Ignore the art's bearing ring: the azimuth pivot stays further forward.
+  - Remove the large roof bevel. Lean the side armour straight up to the roof edge, which gives the sides their
+    slope and makes the front face's outer edge widen as it goes down.
+  - The bustle's sides follow the rear three-quarter view, not the top view: its upper edges stay parallel to
+    the side armour face (no taper in plan).
+- Round 5 (addressed in round 6):
+  - The mantlet ridges are too tall: raise the trunnion and barrels so the ridges shrink by about 40%.
+  - The dome follows the art in size and position; it gets no collision mesh, so it cannot block the
+    superfiring twin.
+  - The trunnion is too wide and runs into the cheeks' front slope edges. The cones stop where they meet the
+    drum, so the drum's ends can move in.
+  - The sides lean a little more, so the gunhouse is wider at the bottom and the front face's outer edge
+    widens more as it goes down.
+  - The chin is one solid block: its front follows the cheek slope a little proud of it, with a flat top running
+    back under the guns (not two boxes on a shallow slope).
+  - Remove the yellow strips on the cheeks' inner front edges.
+  - The rear yellow panel becomes a big armoured hatch that runs down the rear face and along the undercut
+    behind the hoses, as if it pivots at the bottom. It was too wide and must be centred.
+- Round 6 (addressed in round 7):
+  - Ridge size is right; flare their bases.
+  - The drum runs right up to the cheeks with a small gap, then a smaller bearing goes into each cheek.
+  - The cones still wrapped into the drum. They must stop with a flat back where they meet it.
+  - The chin stands further proud, higher at its outer edges and cut down under the barrels.
+  - The rear panel is a large access panel, not a hatch, and was now too narrow. The hoses must look like
+    hoses, not straight pipes.
+- Round 7 (addressed in round 8), with a straight-on rear view of the art:
+  - Each ridge is narrowest at its top (same width as before) and widens all the way down to its base.
+  - The hoses look like hoses now but connect to the wrong parts; the rear panel, its details and the hoses
+    follow the rear view closely (it is not perfectly straight on).
+  - The chin is right, but its underside follows the front undercut instead of ending in a flat bottom with a
+    sharp angle.
+  - More painted rings on the drum, as in the art (some may become decals later).
+  - Fill the empty embrasure behind the trunnion with internal armour brought forward. The guns may rotate
+    through it, as if ammunition feeds through there into the gunhouse.
+- Round 8 (addressed in round 9):
+  - Parts may pass through the embrasure's back wall ("better than weird empty space"), and the ridges may pass
+    through the gunhouse armour. The back wall should take in about 30% of the drum's lower back, so the
+    trunnion looks connected to the inside.
+  - The cheek's front face runs on up and over the guns, as thick as the rear section's armour. Then (same
+    round): the brow is too thick (made shorter down the slope; the plate stays 0.15 thick).
+  - The cones are too rounded: straight cones at the front, as in the art.
+  - The lamps get a metal shroud and sit in a recess in the cones; then (same round) the recess bigger and
+    rounded, not square cuts.
+  - Remove the clashing shape under the lamps (the ridge base's leftover flanks).
+  - The side boxes looked stuck on. The first rebuild (upright blocks) looked "terrible"; the art has them as
+    triangular boxes.
+  - The rear recesses around the access panel follow the side edge's outer slope and keep one width across the
+    knee.
+  - Lengthen the depth of the trunnion's middle support (taken as front to back).
+- Round 9 (addressed in round 10), "almost ready for final details":
+  - Lower the trunnion and guns a little, and raise the ridges by the same amount so their tops stay put.
+  - The chin protrudes a little further.
+  - Then (same round): raise the middle support back up some, and give its front bottom an angled undercut at
+    the same angle as its upper chamfer, so it looks more symmetrical.
+- Lessons:
+  - The blockout is judged against the art's medium shapes too, not only the silhouette. Bring every shape the
+    art shows clearly into the blockout; leave only surface detail for later checkpoints (round 2).
+  - A camera fit confirms where things project, not what sits in front of what. In the front art the near
+    cheek's front face is hidden behind the trunnion's end housing; the thin grey band there is the cheek's
+    outer front edge, not the embrasure edge. Read the art's construction as well as its points (round 4).
+  - Straight-on top, front and side views of the concept art helped far more than camera fits on the
+    perspective views (owner, round 5). Ask for them at the start of a model.
+  - Check each fix in a close crop beside the same crop of the art before reporting it done. The round 6
+    cones still wrapped into the drum; a side-by-side crop showed it at once (round 6).
+  - Workbench studio light seen straight on flattens raised plates of the same colour (the rear rails vanished).
+    Render review views with cavity, shadows and outlines on (`gvk_render.py`) (round 8).
+  - Read a small part's shape from every art view before building it. The side box is a triangle on both its
+    front (front art) and its back (rear art); on the 20 degree leaning side, a wedge whose inner face lies on
+    the side and whose outer face runs down to meet it explains both views. Two rebuilds from one crop missed
+    this (round 9).
+
+## References
+
+- `concept_art.webp`: front three-quarter (from front-left above). Points picked on it are in `gvk_overlay.py`
+  (`IMG`).
+- `concept_art_rear.webp` (owner, 2026-11-01): rear three-quarter from rear-left above. Rear section dark, full
+  width, small top-rear chamfer, bottom flush with the gunhouse. Rear face: painted access panel with a raised
+  frame and diagonal ribs, a central hatch with an arrow plate, a vertical vent on its left, louvres at the right
+  edge, a lamp and button column at top right, pipes down to a box at the bottom, a handle bar. Chrome dome on
+  the roof at the rear-left; slatted roof vent on the dark top band at the rear-right; green-lens periscope
+  housing at the roof's front-right; a side box on each side just behind the cheek; louvre vents low at the rear
+  of each side.
+- The two arts disagree in places. The rear art ends the yellow gunhouse about 1 m further forward (and so shows
+  a longer dark rear section) than the front art; the model follows the front art there. The rear art's cheek
+  front edge is steeper than the front art's. Camera fits leave 11.0 px RMS (front, full model) and 14.4 px RMS
+  (rear) on the 1024 px images, so small local ratios and the owner's notes take priority over a global fit.
+- Side and top views (owner, 2026-11-01, AI generated, 1024 x 765, front to the left in both). Both are scaled to the accepted model size (width 8.48, length 9.8, height 3.7), not taken as exact:
+  - Side view `concept_art_side.png`: a = (580 - px) / 59.1, h = 3.15 + (494.7 - py) / 64.5.
+  - Top view `concept_art_top.webp` (+x at the bottom): a = 3.62 - (px - 433.5) / 48.6, x = (py - 374) / 48.6.
+  - They disagree with the front and top views in places. The side view puts the gun assembly about 0.8 m
+    further back and shows shorter barrels; the model keeps the top and front views there. It also shows the
+    ridge tops about 0.25 m below the roof and the skirt seam at 1.14 m; the model keeps the ridges level with
+    the roof and the skirt at 0.9 m (owner, round 3). The top view tapers the bustle in plan; the model follows
+    the rear view (owner, round 4). The model's guns sit higher than the side view shows (owner, rounds 4 and 5).
+- Rear view `concept_art_back.webp` (owner, 2026-11-01, AI generated, 1024 x 765, the block's left on the image
+  left), not quite straight on. The rear face details were measured on it and scaled to the model's face:
+  - x = 0 at px 550 (the panel's centre; the body's edges centre on px 532); about 86 px/m left of centre and
+    77 px/m right of it.
+  - Rear face top (h 6.5) at py 200, knee (h 5.0) at py 355, so 103 px/m vertically: the art's rear face is
+    taller for its width than the model's. Below the knee the undercut runs from py 355 to 495; details there
+    are placed by their fraction of it.
+
+## Files and setup
+
+- `.blend`: `Source/HurricaneTurret/HurricaneTurret.blend` (Blender 4.5.10, SEUT 1.2.1). Not committed until
+  the owner says. Checkpoints: `HurricaneTurret_before_art_rebuild.blend` (round 1),
+  `HurricaneTurret_before_round3.blend` (round 2), `HurricaneTurret_before_round4.blend` (round 3),
+  `HurricaneTurret_before_trunnion.blend` (round 4 before the trunnion move), `HurricaneTurret_round4.blend`
+  (round 4 as reviewed), `HurricaneTurret_round5.blend` (round 5 as reviewed), `HurricaneTurret_round7.blend`
+  (round 7 as reviewed), `HurricaneTurret_round9.blend` (round 9 as reviewed), `HurricaneTurret_round10.blend`
+  (the signed-off blockout), `HurricaneTurret_before_plinth.blend` (the blockout plinth, before the kitbash),
+  `HurricaneTurret_plinth_v1.blend` (the first, flat plinth), `HurricaneTurret_plinth_r2.blend` (round 2 with
+  four slabs per side and slim ribs), `HurricaneTurret_plinth_r3.blend` (two slabs in sockets),
+  `HurricaneTurret_plinth_r4.blend` (flat sides with both brace decal versions), `HurricaneTurret_plinth_r5.blend`
+  (the service face on all four sides), `HurricaneTurret_plinth_r6.blend` (round 6, before the concept-art sides), `HurricaneTurret_plinth_r7.blend`
+  (round 7 as reviewed), `HurricaneTurret_plinth_r8.blend` (round 8 as reviewed),
+  `HurricaneTurret_before_cp3.blend` (signed-off plinth, before the checkpoint 3 finish pass).
+- Scene `GVK_HurricaneTurret`: SEUT main scene, large grid, `bBox` 5 x 5 x 3. The file also holds Blender's
+  untouched default `Scene` (typed main scene by SEUT, no SubtypeId); leave it or ask before deleting.
+- Text blocks in the `.blend` (load each into a module: `g = types.ModuleType(name); exec(text, g.__dict__)`):
+  - `gvk_helpers.py`: block space (`W(x, a, h)`, Blender Z = h - 3.75, front -Y, the block's left +X), `put()`
+    (replace or create a part in place, parented with identity inverse, `part` tag, placeholder `BO_*`
+    material), `marker()`, `bm_prism_x`, `bm_loft`, `bm_cyl`, `bm_box`, `bm_tube_z`, `boolean()` (exact solver,
+    cutter in block space), `pose(az, el, recoil)` (keyword `el=`; the first argument is azimuth), `rest_pose()`.
+  - `gvk_blockout.py`: the parameter dict `P` and `build(g, P)`, which rebuilds every part except the plinth and
+    the feed trunk. Gunhouse and rear section are convex solids cut from plane lists (`bm_convex`, `side_planes`
+    with the turn-in, `inset` for the rear section), then the embrasure (with the brow and the sloped internal
+    armour), the lamp pockets in the cones and the rear recesses are cut. Change `P` and rerun `build(g, P)`.
+  - `gvk_render.py`: `ortho_render(name, loc, rot, scale, res, ortho, lens)` renders through `CAM_Ortho`
+    (orthographic, or perspective with `ortho=False`) with cavity, shadows and outlines, into the `renders`
+    folder, and restores the camera and render settings.
+  - `gvk_checks.py`: `elevation_sweep(g)` (BVH overlap over -10 to +45 with and without recoil, plus the closest
+    gap), `sweep_radius()`, `superfire(g)` (a copy of the elevation group 2.5 m up and 12.5 m back, lowered until
+    it touches; the dome is left out because it gets no collision mesh), `lowest_brake(g)`, `highest()`. `SKIP` lists intended overlaps (the drum through the middle support, and its lower back into the internal armour); the ridges and recoiled barrels through the gunhouse are allowed but still reported.
+  - `gvk_overlay.py`: `camera()`, `fit_camera(P)` (least-squares fit of `CAM_Art` to the picked front art points;
+    call `bpy.context.view_layer.update()` before projecting with it), `overlay(name, alpha)` (Workbench render
+    of the scene camera over `ART`: `alpha=None` draws magenta outlines, `alpha=1.0` paints the model over the
+    art). `OUT` is a session scratchpad `renders` folder; when it is gone, point `OUT` at a new folder and
+    regenerate `art_px.npy` and `rear_px.npy` from the two `.webp` files with `gvk_measure.load` (saved as
+    numpy arrays).
+  - `gvk_measure.py`: `load(path)` (image to an h x w x 4 array, rows top-down), `gridcrop(art, path, x0, y0,
+    x1, y1, s, step, label, marks)` (scaled crop with a labelled pixel grid, for picking points by eye), `save`.
+    Grid labels are art pixels; read positions from the labels, not from the crop's own pixels.
+  - `gvk_artcam.py`: the art camera model (`proj`, `ray`, `on_plane` back-projects a pixel onto x, a or h =
+    const, `sym_pair` solves a mirrored point pair, `fit_camera`, `lm`).
+  - `gvk_cams.py`: the fitted rear camera (`CAM_REAR`), a gunhouse-only front camera, and the rear art picks.
+    For the side and top views, render through `CAM_Ortho` (ortho scale 19) and map with the formulas in
+    References.
+  - `gvk_plinth.py`: the plinth kitbash. `build(src)` turns a SEUT import of `CargoContainerSmall` (in a
+    throwaway scene `src`) into the plinth: `stretch()` cuts each mesh through its straight middle and moves the
+    far side out, refitting the UVs of the faces that span the cut so the tiling texture keeps its scale; face
+    parts are routed to their side by their dominant axis and renamed `Pl_<Part>_<side>`. `inset_all(d)` pulls
+    everything in by `d`; `panels()` builds the bays, ribs and top and bottom plates (box UVs at 0.495 UV/m, the
+    container's own density). Rerunning `build()` needs a fresh import; `panels()` alone can be rerun. `beef(B)`
+    (round 2) rebuilds the back plates, surrounds, armour slabs, deck collar, gussets and deck vents from the dict `BEEF`;
+    change a value and rerun it. Rounds 5 and 6: `service_face(SERVICE, FLAT, STRUCT)` rebuilds every side
+    decal: the service faces from `SERVICE` (its `details` and `conduits` are per side) and the structural
+    sides from `STRUCT` (`struct_side()`). Helpers: `piece()` places any atlas piece by its catalogue id from
+    the skill's `atlas-regions.json`, `strip()` lays a tileable strip between two points, `slice9()` stretches a
+    plain piece without stretching its rim, `x_panel()` builds an X from triangle 42, and `put_decal()` puts a
+    layout on all four sides or per side. `sign_text()` re-letters the sign above each port.
+  - `gvk_shot.py`: `shot(name, eye, tgt, lens, res, color, ortho, hide)`, a Workbench render from any eye
+    point (perspective, or orthographic with `ortho`), hiding the named objects, restoring everything after.
+    `shot_eevee(name, eye, tgt, ..., paint)` renders in EEVEE with SEUT's paint preview (scene paint colour,
+    default the gunhouse yellow), a temporary sun and grey world: every paintable material, decals included,
+    takes the paint and shows its normal-map relief. Use it for decal reviews; Workbench shows decals grey and
+    flat. `cam="CAM_Art"` renders through that camera as it stands.
+  - `gvk_finish.py`: the checkpoint 3 finish pass over every mesh under `mk_Az`. `finish()` swaps the `BO_*`
+    placeholders for vanilla materials (`LIB`), gives every part box UVs at 0.495 UV/m, and adds a Bevel (30
+    degree angle limit, 2 segments, hardened normals; 2 cm on the big parts in `BIG`, 8 mm on the rest) and a
+    Weighted Normal modifier. `rear_frames(g, bo)` builds `RearFrames`. Rerun both after `build(g, P)`, which
+    puts the placeholders back. Objects tagged `decal` are skipped.
+  - `gvk_ghdetail.py`: checkpoint 3 surface detail (`build(g)`): `Face` plane frames for the roof, sides,
+    skirts and bustle; `gunhouse_shape` (top side chamfer once per mesh, then flush silver and patch
+    materials), `chin_stripe`, `roof`, `sides` (with `louvre`), `panels`, `polyline` (mitred seams), `drum`
+    (bolt rings), `bustle`, and `rivet_edges(name, keep=..., edge=...)` for bolt rows round any part's faces. Layout constants (`SILVER`, `PATCH`, `ROOF_PLATES`, `SIDE_SEAM`) are measured
+    from the top view. It reuses the plinth's atlas helpers (`piece`, `strip`, `text_polys`). Objects are named
+    `GH_*`.
+  - `fit_result`: an early unconstrained fit, for reference only.
+
+## Layout, round 10 (as built)
+
+(x, a, h): a = metres ahead of the azimuth axis, h above the mount face, +x = the block's left.
+
+```
+Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector_terminal_1..4 (see Plinth),
+                            BaseDisc, BaseDiscRim, FeedTrunk, mk_Az (h 2.85) -> subpart_MissileTurretBase1
+  mk_Az > BearingRing, RollerPosts, Gunhouse, Chin, Bustle, MidSupport, TrunnionBearings, Periscope,
+          PeriscopeLens, SensorDome, SensorDomeCap, SensorDomeFlange, RoofVent, SideBox_L/R, SideBoxSensor_L/R, RearAccessPanel,
+          RearPanelHinge, RearPanelButton, RearHatch, RearHatchArrow, RearFeedTube, RearVent_L, RearButtons,
+          RearLouvres, RearGrille, RearGrilleHandles, RearPipes, RearHoseFittings, mk_El
+    mk_El (0, 2.2, 5.75) -> subpart_MissileTurretBarrels
+      > Drum, DrumBands, Cone_L/R, ConeRims, Ridge_L/R, Lamp_L/R, LampShroud_L/R, mk_camera,
+        mk_muzzle_projectile_1/2, mk_Barrel_1/2 > Barrel, Collar, Brake
+```
+
+| Part | Value |
+|---|---|
+| Section | bottom h 3.15, roof h 6.85; vertical skirt band to h 4.05 (0.9 m) at half-width 4.4; sides lean 20.2 degrees straight to the roof edge (half-width 3.37, roof 0.77 of the full width); no roof chamfer |
+| Plan | sides straight from the rear to a crease at a = 1.38 (the roof front edge), then turn in 0.5 m by the front foot |
+| Front | roof front edge a = 1.38; cheek slope down to a = 3.62, h 3.6 (55 degrees), then undercut 0.42 m back to the bottom. The front face's outer edge widens as it goes down because the sides lean |
+| Embrasure | between the cheeks, \|x\| < 3.2; floor just under the chin's top (h 4.43). Brow: the cheek slope runs on over the guns as one armour plate 0.15 thick (the rear section's armour), from the roof edge 0.2 m down the slope (to about a 1.49, h 6.69), its lip square to the slope. Internal armour (dark): one sloped face, its normal tilted 30 degrees up, 0.33 m from the trunnion axis, from a 2.52 at the floor back to a 1.21 under the roof plate (h 6.70); the drum's lower back, about 30% of its depth, runs into it. No breech slots: the ridges and the recoiling barrels pass through the gunhouse armour (owner, round 8). No roof slots, no frame strips |
+| Chin | one dark block across the embrasure: its front follows the cheek slope and its underside the front undercut, both 0.4 m proud of the gunhouse (front to a 4.02), down to the gunhouse bottom (h 3.15); flat top back to the sloped internal armour, at h 4.7 outboard of \|x\| 2.75, chamfered down to h 4.45 at \|x\| 2.5 and flat at 4.45 under the barrels (lowered with the guns); back up to 4.7 between the barrels, \|x\| <= 0.9, chamfered down to 4.45 at \|x\| 1.15 (owner, plinth round 7) |
+| Rear section | the gunhouse's substructure: every face inset 0.15 m (top h 6.70, bottom h 3.30); a = -4.2 to -6.18 (block edge -6.25); sides parallel to the gunhouse sides (no plan taper, no side undercut); top-rear chamfer 0.2 m; a long undercut from h 5.0 on the rear face down to the bottom 1.5 m further forward |
+| Rear face | after the straight-on rear view. Large access panel, painted, centred, half-width 2.1: 0.18 m proud, down the rear face from h 6.29 (top corners chamfered 0.25), mitred at the knee (h 5.0), then along the undercut to 93% of its length; two gunmetal hinge knuckles (r 0.11) at x +-1.75 on its bottom edge. Painted rails 0.08 m proud on it: a bar x +-0.95, h 5.82 to 5.97, and two diagonals from (+-1.72, 6.02) down to (+-1.05, 5.43), 0.26 m wide; a small button x 1.45 to 1.78, h 5.08 to 5.42. Gunmetal hatch x +-0.63, h 4.39 to 5.6, 0.45 m proud with chamfered corners, hanging past the knee; door with a dark down arrow. Feed tube across under the hatch at h 4.61: left x 0.6 to 1.22 (r 0.22, collar r 0.25 at its end), right x -0.6 to -1.62 (r 0.24) with a tapered nozzle to -1.95. Recesses 6 cm deep in the rear section, from \|x\| 2.36 out to 0.18 m inside the side edge, their outer edges parallel to the leaning side edge, so each pair keeps one width across the knee; gaps 0.15 m each side of the knee: above it vent (bar grille, left) and buttons (two round lenses and a switch, right) up to h 6.25; in the undercut, hose bay (left) and louvres (right, eight slats) down to 0.15 m from the bottom. Grille box x +-1.35, h 3.28 to 3.95, from a = -5.63 into the undercut, five slats and a chrome grab handle at each end |
+| Hoses | two dark hoses side by side (r 0.085, smooth spline paths) from one fitting (r 0.2) in the hose bay at x 2.87, 28% down the undercut. They hang to about h 3.5, loop across under the panel and rise outboard of the grille box into the feed tube's left end |
+| Trunnion | axis (a 2.2, h 5.65; round 9: 5.75), on the cheek slope at axis height (1 cm behind it), so the drum's front stands 0.81 m proud of it; drum r 0.82, \|x\| up to 3.15 (5 cm from the cheeks), gunmetal; painted rings r 0.86 at both ends of each drum segment: \|x\| 0.62 to 0.76, 0.96 to 1.1, 2.7 to 2.84, 3.01 to 3.15; bearings (turn with the gunhouse) r 0.4 from \|x\| 3.16 into the cheeks to 3.34; middle support (turns with the gunhouse): painted octagon, circumradius 0.95, \|x\| up to 0.6, centred 0.1 m above the axis (h 5.75, where it was in round 9; top h 6.63), its front half moved 0.35 m forward (front face at a 3.43, a longer top). Its back runs straight down to the chin. Its vertical front runs from h 6.11 to 5.39, centred on the octagon; below it a 45 degree undercut (the top chamfer's angle, mirrored) runs back to a 2.47 on the chin top (h 4.43) |
+| Cones | x = +-1.9 (barrels 3.8 m apart); flat back at a = 2.94, set 8 cm into the drum's front: r 0.70 at the back edge, a short rounded shoulder to r 0.78 by a 3.12, then a straight taper to r 0.42 at a = 4.7; dark rim band near the back |
+| Mantlet ridges | side profile (a, h): (1.55, 6.15), (1.55, 6.85), (2.55, 6.85), (3.4, 6.45), cut off at a 3.27 just behind the lamp, so each ridge runs back over the drum from the cone; top level with the roof. The profile stayed put when the guns went down 0.1 m, so the ridges are 0.1 m taller than in round 9. Tapered section: half-width 0.15 at the top, widening straight down to 0.36 at the base, which follows the drum and cone surface; over its last 0.4 m the base narrows to the lamp shroud's width |
+| Lamps | on each cone's top, 1.15 m ahead of the axis: lens r 0.1 at a 3.47, h 6.38, in a gunmetal shroud (r 0.14, 0.22 long) with a half-ring visor over its top. Each sits in a round pocket in the cone (r 0.2, 0.2 deep) that runs forward as a round trough tapering to r 0.06 over 0.65 m |
+| Barrels | r 0.25, from a 2.9 (1.8 m hidden in the cone) to the brake; collars r 0.34, a 4.7 to 5.0; brakes r 0.32, a 10.13 to 11.58 |
+| Muzzles | (+-1.9, 11.58, 5.65); camera marker (0, 3.5, 6.55) |
+| Periscope | front-right of the roof: x -2.82 to -2.3, a 0 to 0.95; sloped front with a green lens |
+| Roof top | sensor dome on the rear section at (1.5, -5.08), as in the top view: chrome body r 0.6, 0.75 high, on a gunmetal flange r 0.78, 0.12 high; cap tapers to 0.7 r, top h 7.6. Slatted roof vent x -2.8 to -1.2, a -5.55 to -4.6 |
+| Side boxes | a triangular wedge on each side, a 1.73 to 2.18, h 4.95 to 5.65, its front 3 cm behind the cheek's front edge at its top. Inner face flat on the leaning side; level top standing 0.42 m out from the side; the outer face runs down to meet the side at the bottom (3 cm toe), so both ends are triangles, as in both arts. Top edges chamfered (outer 0.06, front and back 0.05), 2 cm bevels; a gunmetal triangular sensor plate, inset 6 cm, on the front and back |
+| Base | bearing ring r 2.3 to 2.7 (h 2.85 to 3.17, turns) with 8 roller posts at r 3.55; base disc r 4.6 (h 2.42 to 2.78, lowered onto the plinth's top plate in checkpoint 2); rim r 4.1 to 4.55 (to h 2.85); feed trunk (r 1.0) unchanged; plinth: see Plinth below |
+
+How the numbers were found: points picked on the arts (labelled grid crops), back-projected with the fitted
+cameras where the geometry is known (a known x or h plane), and checked as paired art and model renders from the
+fitted cameras. In round 5 the side and top views were measured directly with the mappings in References and
+checked as outline overlays from `CAM_Ortho`. The front art fit is 10.4 px RMS (round 5: 8.95); the wider
+bottom and higher guns are the owner's calls, so the fit to the perspective art is no longer the target.
+
+## Plinth (checkpoint 2, as built)
+
+- **Source:** vanilla `CargoContainerSmall` (large grid), not the doc's `CargoContainerLarge`. The large
+  container is a 7.5 m cube with chamfered corners and its features spread over the whole height, so it cannot
+  be squashed to one 2.5 m cell without distorting every part. The small container is natively 2.5 m tall,
+  which is also what the owner's Griffin base uses. Its LODs and build stages (`CargoContainerSmall_LOD1/2`,
+  `CargoContainerSmallConstruction_1..3`) would follow the same route in checkpoint 7.
+- **Shape:** the container's frame cage stretched from 2.5 m to 12.41 m square (+-6.207), native 2.5 m height
+  (h 0.007 to 2.493). Everything is pulled 3.6 cm inside the block so the keypads end flush at 6.25.
+- **Reused vanilla parts** (linked SEUT library materials, UVs refitted where stretched): the frame cage; 8
+  corner pieces (`Pl_Corner_*`); the 4 vertical corner rods; the 4 front and back edge beams, plus rotated
+  copies for the left and right edges (`Pl_Edge_*`); a conveyor port frame and port on each side and the
+  bottom (`Pl_PortFrame_*`, `Pl_Port_*`); a keypad frame and keypad beside each side port; a sign and sign text
+  on each side.
+- **Dropped:** the top port, keypad and sign (the turret stands there), the bottom keypad, sign and text, and
+  the container's two horizontal pipes.
+- **Built new** (`PaintedMetal_Colorable`, box UVs at the container's 0.495 UV/m): `Pl_Bays`, flat bay plates
+  set 0.05 m thick into each side (n 6.114, h 0.2 to 2.3, two plates per side either side of the port);
+  `Pl_Ribs`, cell ribs at x or y = +-1.25 and +-3.75, trapezoid section (0.18 wide at the front, 0.30 at the
+  back), bevelled and smooth shaded; `Pl_TopPlate` (top h 2.42, under the base disc); `Pl_BottomPlate` (h 0.08
+  to 0.13) with a +-0.97 hole round the bottom port.
+- **Detectors:** conveyor 1 front, 2 back, 3 left, 4 right, 5 bottom (h 0.12), each linked to its `Pl_Port_*`;
+  terminal 1 to 4 front, back, left, right, linked to `Pl_Keypad_*`. All sit at the vanilla container's size.
+- **Checks:** nothing outside the block (widest: the keypad frames at 6.25). The bottom port's rim sits 1.3 cm
+  below the mount face, as on the vanilla container; left as is. Each conveyor detector's half-size (0.675) is
+  only just under the port mesh's (0.68): check the highlight in the interaction step. 488 faces in the cage,
+  13,348 in the whole fixed group (including the blockout base disc, rim and trunk).
+- **Renders:** the Griffin screenshot's low three-quarter angle beside the Griffin, the right side straight on,
+  a port close-up, and a textured three-quarter view.
+- **Owner feedback on the first pass:** "It looks extremely boring right now ... make it more beefy and
+  interesting", then "Use your imagination" (owner, 2026-11-01). The flat bays and slim ribs above were replaced
+  in round 2.
+
+### Round 2: "beefy" (`beef()`)
+
+Owner feedback during round 2 (owner, 2026-11-01):
+- First version (four sloped slabs per side in deep dark bays, square dark buttresses with paintable clamp
+  bands): the sloped side panels are liked; the poly count is a concern; the buttresses with bands looked "too
+  out of theme".
+- Second version (the buttresses replaced by slim painted ribs in the cage band's style, bands dropped): the
+  vertical braces still look out of place. "Maybe do 2 sloped panels per side, and make the braces conform
+  around them more. Look more integrated." Both versions are in `HurricaneTurret_plinth_r2.blend` (the second).
+
+- Third version (two big sloped slabs per side, each in an octagonal socket in a painted side plate): "Oh that's
+  worse. Do something totally different with the sides, surprise me." Kept as `HurricaneTurret_plinth_r3.blend`.
+- Fourth version (a bastion: sides leaning in 15 degrees over a dark toe, ports in vertical casemates; then the
+  same with a full-width top band and a dark overhang): rejected, "Nope nope nope". Not saved; the builder is
+  `bastion()` in `gvk_plinth.py`.
+- **Hard requirement** (owner, 2026-11-01): the plinth's top edge must seal against neighbouring blocks, so a deck
+  built round the turret is level and gapless. The top outline stays at the block boundary and the deck at the
+  cell top (h 2.5).
+
+Third version as built, per side (u along the face, n out from the centre, h above the mount face):
+- **Surround** (`Pl_Surround`, paintable, socket walls `PaintedMetal_Darker`): one face plate per half side at
+  the vanilla panel depth (n 6.114), from u 0.97 (3 cm under the port frame) to the corner post, h 0.245 to
+  2.255. It has an octagonal socket (u 1.25 to 5.67, h 0.38 to 2.12, corners clipped 0.32) with a 4 cm 45 degree
+  lip and dark walls back to n 5.72. No vertical ribs: the plate between the socket and the port frame or corner
+  post is the frame.
+- **Armour slabs** (`Pl_Armour`, paintable): two per side, one in each socket with an 8 cm gap all round:
+  4.26 m wide, 1.58 m tall (u 1.33 to 5.59, h 0.46 to 2.04). The face leans back 10 degrees, 9 cm proud of the
+  surround at the bottom (n 6.20) and 21 cm behind it at the top (n 5.90); clipped corners and a 6 cm chamfer.
+  These carry the X panel decals in checkpoint 5 (two per slab keeps the doc's 16).
+- **Back plate** (`Pl_Bays`, `PaintedMetal_Darker`): a dark plate at n 5.65 to 5.70 behind each half side,
+  seen only through the gaps.
+
+Top deck:
+- **Collar** (`Pl_Collar`, `PaintedMetal_Darker`): a 64-sided ring (as the base disc) round the base disc,
+  r 4.55 to 5.25, h 2.42 to 2.64, outer edge chamfered 45 degrees, so the base steps up deck, collar, disc,
+  rim, bearing ring.
+- **Gussets** (`Pl_Gussets`, dark): twelve brackets, three per quarter (on each axis and 22.5 degrees either
+  side), from r 4.95 to 5.8, 0.16 thick, top sloping from h 2.70 down to 2.47; not bevelled.
+- **Deck vents** (`Pl_DeckVents`, dark): a triangular housing in each corner, legs 2.55 m (x and y 2.6 to
+  5.15), h 2.42 to 2.70, its side facing the turret sloped. Its top takes the corner vent decal in checkpoint 5.
+
+Triangles (LOD0, whole fixed group): first pass 13.3k faces; round 2 with buttresses and bands 20,886
+triangles, with slim ribs 15,318, now 14,870. The vanilla parts are most of it: 5 ports and their frames
+7,610, 4 keypads 1,528, 4 signs and texts 1,416. New parts: surrounds 512, slabs 352 (44 each), back plates
+96, collar 640, gussets 144, deck vents 128. The buttresses and bands had cost 5,184. The turret's moving
+parts are 12,370 at the blockout stage.
+
+Checks: nothing past the block's sides (widest still the keypad frames at 6.25; slabs 6.19). The only overlaps
+are parts sitting on or tucked behind each other (surround edges behind the cage band and port frames, collar
+on the top plate and disc). Everything new stays below h 2.70, well under the gunhouse (h 3.15) and the lowest muzzle
+brake at -10 (h 3.71). Renders were taken with the vanilla textures and with the paintable parts shown in the
+gunhouse yellow, as a painted block would look in game.
+
+### Round 4: flat sides with brace decals (`flat_sides()`, `brace_decals()`)
+
+Owner (2026-11-01): "Go to something simpler, use big decals to give the panels interesting shapes like
+patterned angular braces." The file was reverted to the saved third version (the bastion was never saved), then:
+- **Sides:** the vanilla container frame, edges, corners and rods as in the first pass (top edge at the block
+  boundary, so a deck seals against it). `Pl_Bays`: one flat paintable plate per half side at the vanilla panel
+  depth (n 6.064 to 6.114, u 0.97 to 5.964, h 0.20 to 2.30). No ribs, slabs or surrounds.
+- **Decals** (`Atlas3_Colorable`, takes the block's paint, relief from the normal map): every triangle is a copy
+  of the debossed X-panel triangle 42 (outline UVs), only rotated, never mirrored. 1.5 mm off the plate
+  (n 6.1155). Two versions built for the owner to pick from; the other gets deleted:
+  - `Pl_Decal_X`: two X panels per half side (16 in all, as in `design.md`), 1.8 m square, centred at u +-2.22
+    and +-4.72, h 1.25; the triangles are spread so the X ridges are 8 cm wide. Hidden in the file for now.
+  - `Pl_Decal_Lattice`: a two-row lattice per half side, like a girder's web: four columns of triangles tip to
+    tip and base to base, 8 cm ridges, h 0.38 to 2.12, u from 0.15 inside each end; diamonds at the corner ends.
+- Triangles: 1,024 per decal version (64 triangles of an 18-point outline); the plinth with one version is
+  15,030. The deck collar, gussets and corner vents from round 2 are unchanged (deck at h 2.42 inside the cage).
+- In the renders the decals show their grey colour map; in game they take the paint like the plate, so the
+  pattern reads by its relief, as on the Griffin. Not checked in game.
+
+Owner (2026-11-01): "it's ok. They look too geometric though ... it needs to be clean and supportive and
+industrial, some vents and mechanical panels around it can be fun if they are nicely integrated, some access
+panel visuals and maybe electronics. Overall major designs should be symmetrical with asymmetric smaller
+details that fit in around it." Both brace decal objects were deleted (kept in `HurricaneTurret_plinth_r4.blend`).
+
+### Round 5: a service face (`service_face()`, `sign_text()`)
+
+Same flat sides and frame as round 4; only the decals changed. Every side gets the same layout (turned copies),
+symmetric about the port, positions in (u, h) on a side (+u is the keypad side, h above the mount face):
+- **Main features**, mirrored about the port and sharing the port opening's bottom and top lines (h 0.57 to
+  1.93), so the side reads as one row:
+  - access hatch `Atlas3_Colorable` 31 (hinged at the top, kick plate below), u 1.22 to 2.11;
+  - louvre intake `Atlas1Colorable` 3, u 3.11 to 5.55, 2.44 m wide, 0.40 m in from the corner post. Two
+    sides' intakes frame each corner.
+- **Small details** in the 1 m gap between hatch and intake, different on each half:
+  - keypad side: a control panel `ButtonsAtlas_Colorable` 1 (three rotary switches, green lamps) with its top on
+    the band's line, two sockets 54 and 55 below it, and a cable duct (`PanelingColorable` 52, 0.10 m wide) from
+    the panel down behind the bottom beam; `Atlas2` 13 HIGH VOLTAGE on that side's hatch, 2.2 mm up;
+  - other side: `Atlas2` 17 CAUTION MOVING PARTS (0.70 m) and the `Atlas2` 22 TYPE A data plate (0.70 m).
+- Mirrored places reuse the same UVs, moved, never mirrored. Every decal is 1.5 mm off the plate (ray cast) and
+  nothing stands within 0.3 m in front of any of them.
+- **Sign above each port:** the kitbashed container's sign still read "1x1x1 CARGO CONTAINER" (its TextAtlas
+  letters only show in EEVEE). Re-lettered in the vanilla glyph cells as "5x5x3" over "HURRICANE 480MM".
+- Triangles: the decals are 240, the sign text 152 (as before); the plinth is 14,094.
+- Renders in EEVEE with SEUT's paint preview (`shot_eevee`), the first round that shows the decals painted and
+  with relief. Not checked in game.
+
+Owner (2026-11-01): "its ok. too repetitive though in the way you have the signage the same on all 4 sides.
+keep what you have for the front and back, but vary the little signage decals more. Keep the two vents and two
+large access panels on the front and back. On the sides I want something more structural, maybe like how the
+side of the griffin has a flat square deboss next to the X deboss, then mirror that on both sides of the
+conveyor port, then same on right and left sides." (with a Griffin screenshot of a flat square deboss beside an
+X deboss.)
+
+### Round 6: two service faces and two structural sides
+
+- **Front and back** keep the round 5 intakes and hatches. Their small details now differ:
+  - front: as round 5 (control panel, sockets and duct on the keypad half, HIGH VOLTAGE on that hatch; CAUTION
+    MOVING PARTS and the TYPE A plate on the other half);
+  - back: an EMERGENCY STOP (`ButtonsAtlas_Colorable` 58, 0.34 m) over the "Remote Operated System" label
+    (`Atlas2` 14) on the keypad half; WARNING HIGH PRESSURE (`Atlas2` 18) on the other half's hatch, RESTRICTED
+    AREA (`Atlas2` 23) and the serial stencil `Atlas2` 41 in that half's gap.
+- **Left and right** (`STRUCT`): per half a flat square deboss next to an X deboss, mirrored about the port, the
+  X towards the corner. Both are 1.76 m squares centred at h 1.25, 0.24 m apart, 0.60 m from the port frame and
+  from the corner post.
+  - The X: four copies of triangle 42 with 8 cm ridges (`x_panel`, as in round 4).
+  - The flat square: no atlas has one. The vanilla large container models its panels as geometry (its
+    materials hold no Atlas3), and Atlas1 and Atlas3 have no plain square recess. Atlas3 9 (listed as "small
+    plain rectangle") is a plain debossed rounded rectangle in the same style as the X triangles; `slice9()`
+    stretches it into the square, with the rim drawn 2x the X's scale so its bevel matches the triangles'.
+    Neighbouring slices share their UV borders, so no seam shows.
+- No signs on the left and right sides.
+- Checks: every decal 1.5 mm off the plate (labels on hatches 0.7 mm over the hatch decal), nothing within 0.3 m
+  in front of any. Decals 520 triangles, sign text 152; the plinth is 14,374. Not checked in game.
+
+### Round 7: the concept art's sides (`concept_face()`, `CONCEPT`)
+
+Owner feedback on round 6 (owner, 2026-11-01): "im still not satisfied. lets go for this concept art (just the
+sides). mirror them for the nonpictured sides"; then "I'm ok with you using some 3D shapes to make some of those
+panels" and "maintain the conveyor access ports on all 4 sides". The art (`8.webp`) shows the front and the left
+side; the front layout goes on F, the side layout on L; B and R are those layouts with every position mirrored
+(u -> -u), each piece rebuilt at its new place so no texture is mirrored. Ports, keypads and signs unchanged.
+
+- **Raised plates** (3D, `Pl_Cpt_PaintedMetal_Colorable`): chamfered (8 mm) plates 0.05 m proud of the bay
+  (face n 6.16), filling the bay with about 5 cm dark seams; sub-plates a further 2 cm out (n 6.18). `Pl_Bays`
+  is now `PaintedMetal_Darker`, so the seams between plates read dark, as in the art. Each plate has
+  `PanelingColorable` 6 bolts 9 cm in from its corners (clear of the corner posts' caps, which reach u 5.82)
+  and a yellow stripe (`Atlas4_Yellow` 3, 6 cm) along its top. The stripe is fixed yellow: on yellow paint it
+  shows only as its dark centre line.
+- **Front** (art front): one plate per half.
+  - Left half: a window (`Atlas3_Colorable` 38 9-sliced to 2.2 x 1.25 m) with "PL55" (TextAtlas, no hyphen
+    glyph) at its upper outer corner; a small dark screen (`ButtonsAtlas_Colorable` 56) over a small louvre
+    (`Atlas1Colorable` 3); a plain tall sub-plate by the port.
+  - Right half: the art's mechanism slot (`Atlas3_Colorable` 3), a slide switch (`ButtonsAtlas_Colorable` 42)
+    with a 3D rod and slider below it (`Pl_Cpt_PaintedMetal_Darker`), and the second PL55 window.
+- **Left side** (art side): per half a slot plate by the port, its lower half a dark slot (38 9-sliced to
+  2.95 x 0.55 m) with a 3D pipe (r 0.037) along it, a dark end cap at the outer end and a painted box with a
+  round connector (`ButtonsAtlas_Colorable` 54) at the port end; above it a sub-plate with a small dark label
+  display ("H09" on one half, "H10" on the other). Outboard of the slot plates: the hatch plate (`Atlas3_Colorable`
+  31) on one half and the small-window plate (`Atlas3_Colorable` 41) on the other, as in the art.
+- **Chin** (owner, same round, not in the art): the chin rises back to its outer height (h 4.7) between the
+  barrels, top |x| <= 0.9 chamfered down to h 4.45 at |x| 1.15 (`chin_mid` in `gvk_blockout.py`; added to the
+  live chin with a union). The cones' inner edge is at |x| 1.12 at axis height and the drum's bottom stays
+  0.15 m above the raised top, so no elevation can clash.
+- Checks: every decal 1.5 mm off its face (text 0.7 mm over its display), nothing within 0.3 m in front of any
+  except by design (the pipes over the slot decals, the text over the displays). Decals 472 triangles, 3D plates
+  and parts 840, sign text 152; the plinth is 15,318. Nothing beyond n 6.235 (block face 6.25). Not checked in
+  game. Renders `p13_*` (EEVEE, SEUT paint preview; `p13_grey` with grey paint for the art's look).
+
+### Round 8: one panel scheme with 45 degree corners (`concept_face(PANELS)`, `half()`, `opanel()`)
+
+Owner feedback on round 7 (owner, 2026-11-01): "its a start, needs better integration though ... they look mostly
+just tossed together". The cargo access did not fit in; fasteners should be metallic; square corners were cut off
+by angled features "where they should follow them"; the pitch black dark-centre decal looks bad overused or very
+large ("obviously not a deep vent"), worse with text floating on it; the stripes along the plate tops read as
+V-grooves that go nowhere. "If all of the panels had angled corners that matched what the cargo access surround
+has, then panel lines that follow around the entire perimeter of each panel that would look more intentional."
+The left and right panel style was preferred over the front and back.
+
+- **One scheme on every half side**, mirrored about each port: an outer plate (u 4.45 to 5.89), and by the port an
+  upper plate (h 1.16 to 2.17) and a lower plate (h 0.33 to 0.96), u 1.05 to 4.40, with a 0.2 m channel between
+  them; a sub-plate (u 1.50 to 3.95, h 1.37 to 1.96, 2 cm further out) on the upper plate. All 3D, 5 cm proud,
+  front edges bevelled 8 mm.
+- **Corners:** every plate has 45 degree corners, 0.2 m (sub-plates 0.12), like the port surround's 0.21 m. The
+  outer plates' corners sit parallel inside the frame's angled border at the corner posts (its inner chamfer is
+  about 0.15 m).
+- **Panel lines:** a V-groove (`PanelingColorable` 51, 2.8 cm) all round each plate, 7 cm in from its edge (4 cm
+  on sub-plates), mitred at every corner (`loop_line()`).
+- **Fasteners:** unpainted metal hex socket bolts (`Decals` 11, 5 cm) on each plate's four corner chamfers,
+  between the edge and the panel line.
+- **Channel:** the dark bay shows through it (lit dark paint, not black); a dark pipe (r 0.06) runs along it
+  between two dark clamp blocks.
+- **Lower plates:** two louvre intakes each (`Atlas1Colorable` 3, 0.36 m tall), on every side.
+- **Details per face** (after the art, small and centred on their plates):
+  - front, keypad half: the art's mechanism slot (`Atlas3_Colorable` 3) on the outer plate; screen, slide switch
+    and round socket (`ButtonsAtlas_Colorable` 56, 42, 54) on the sub-plate;
+  - front, other half: CAUTION MOVING PARTS (`Atlas2` 17) on the outer plate; the "Remote Operated System"
+    label (`Atlas2` 14) on the sub-plate;
+  - left: the art's hatch (`Atlas3_Colorable` 31) on one outer plate, its small window (`Atlas3_Colorable` 41)
+    on the other; plain sub-plates;
+  - back and right: front and left mirrored, as in round 7.
+- **Removed:** the large windows and slots (`Atlas3_Colorable` 38), all TextAtlas labels on the panels, the yellow
+  stripes, the slot pipe box and the front's 3D rod and slider. The vanilla sign over each port stays.
+- Checks: every decal 1.5 mm off its face, nothing within 0.3 m in front of any. Decals 832 triangles, 3D plates,
+  pipes and clamps 2,592; the plinth is 17,430 (round 7: 15,318). Nothing beyond 6.204 (block face 6.25). Not
+  checked in game. Renders `q1_*`.
+
+### Round 9: the art's layout, built the round 8 way (`concept_face(ART)`, `art_front()`, `art_side()`, `win()`)
+
+Owner feedback on round 8 (owner, 2026-11-01): "not a huge fan, can you keep trying to make it look more like the
+concept art?" Round 9 goes back to the art's layout (round 7) and keeps round 8's fixes: 45 degree corners on
+every plate and frame, panel lines all round each plate, metal bolts on corner chamfers, no large black decals,
+no stripes.
+
+- **Front** (art front): one big plate per half (u 1.05 to 5.89), as the art's two segments either side of the
+  hatch. Each has a PL55 window at its outer end (2.1 x 1.24 m) with a dark stencil "PL55" (`TextAtlasDark`)
+  above its outer top corner.
+  - Windows are 3D: a painted frame 7 cm wide and 3 cm proud, both edges bevelled, metal bolts on its corner
+    chamfers; inside it a dark back (`PaintedMetal_Darker`) and 2 cm in front of that a pane of `GlassOutside`
+    (vanilla dirty window glass, GLASS technique). In game the glass should read as tinted glass over a dark
+    interior; the Blender preview shows only its grey dirt texture. Not checked in game.
+  - Window half: small screen (`ButtonsAtlas_Colorable` 56) over a small louvre (`Atlas1Colorable` 3), and a
+    tall sub-plate by the port.
+  - Other half: the art's mechanism, a framed dark slot with a clamped vertical pipe; and its lever, a box with
+    a rod down to a foot and a slider on it (all 3D).
+- **Left side** (art side), per half: an outer plate (the hatch, `Atlas3_Colorable` 31, on one half; a small 3D
+  window with glass on the other); by the port an upper plate with a dark stencil label ("H09", "H10") at its
+  lower outer corner, a channel under it with a dark pipe from a clamp at the port end to a painted box with a
+  round connector (`ButtonsAtlas_Colorable` 54) at the outer end, and a plain strip plate under the channel
+  (0.1 m corners, so its panel line does not fold).
+- **Back and right:** front and left mirrored.
+- Checks: every decal 1.5 mm off its face, nothing within 0.3 m in front of any. Decals 572 triangles, 3D parts
+  3,416; the plinth is 17,994. Nothing beyond 6.24 (block face 6.25). Not checked in game. Renders `r9_*`
+  (`r9_grey` with grey paint, closest to the art).
+
+Signed off (owner, 2026-11-01): "Ok, next area".
+
+## Gunhouse and elevation group (checkpoint 3)
+
+### Round 1: finish pass and rear frames (`gvk_finish.py`)
+
+- **Chin:** raised in the middle between the barrels (owner): top at h 4.7 for |x| up to 0.9, chamfered down to
+  h 4.45 at |x| 1.15. Clear of the cones and drum at every elevation. `P['chin_mid'] = (0.9, 1.15)`.
+- **Materials:** `BO_Paint` to `PaintedMetal_Colorable`, `BO_Dark` to `PaintedMetal_Darker`, `BO_GunMetal` to
+  `PaintedMetal_VeryDark`, `BO_Chrome` to `Chrome`, `BO_Lamp` to `Emissive`, `BO_Lens` to `CameraLens`. The
+  cone lamps render dark in Blender; in game they need an `EmissiveColorPreset` in the SBC.
+- **UVs:** every part had none; all now have box UVs at the plinth's 0.495 UV/m.
+- **Bevels:** modifiers, not applied yet; apply them at export (or before LODs).
+- **Rear frames:** a dark raised frame 8 cm wide and 3 cm proud round each of the four rear recesses (upper on
+  the rear face, lower on the undercut), both edges bevelled, as the rear art's framed dark panels.
+- Checks after the pass: unchanged from round 10 (overlaps only the allowed ones, superfire -6.25 degrees,
+  sweep radius 7.30 m, highest point 7.6 m, lowest brake 3.71 m).
+- Renders: `g1_art`, `g1_back`, `g1_rear34`, elevation `g1_el-10`, `g1_el+0`, `g1_el+45`, superfire pair
+  `g1_stack`, `g1_stack34`. Barrel brakes show as `Chrome` until checkpoint 4.
+
+### Round 2: the art's surface detail (`gvk_ghdetail.py`)
+
+Owner on round 1 (2026-11-01): "did you do anything worth noting? Keep going". Round 2 brings in the art's
+surface detail; everything is built by `build(g)` from world coordinates at the rest pose.
+
+- **Silver band** (`GH_BrowBand`, `Metal_Dull`, bare metal): the art's silver band, 3 cm thick, over the roof
+  from the front edge back to y 0.1 (the periscope sits on it), bent down over the brow to the embrasure's top
+  edge, and carried down each side's front plate (back to the first side seam), its top filling the corner
+  under the roof band. Bolt rows along its edges. It is not painted, so player paint does not reach it.
+- **Roof plates:** V-groove panel line (`PanelingColorable` 51) all round the roof behind the band (45 degree
+  corners), two long seams at x +-1.12 and a cross seam at y 2.15, butting onto the perimeter line. Bolt rows
+  either side of each seam and along the roof edges.
+- **Side plates:** panel line round each side behind the silver plate, one vertical seam, bolt rows along it
+  and the top edge; dark stencil "HC 480" (`TextAtlasDark`) on the left side only.
+- **Skirt louvres** (`GH_Louvre`, `GH_LouvreBack`): the art's low rear side vent, 3D, 1.0 x 0.5 m, a painted
+  frame 4 cm proud with five painted slats over a dark back. Bolt row along the skirt top.
+- **Bolt rings** (`GH_Dec_Decals_El`): 20 bolts round each of the eight drum bands, 13 round each cone rim (none
+  under the ridge), and two rings on each cone (14 and 12).
+- **Bolt rows round faces** (`rivet_edges`): middle support (not its drum ends), chin, the front turn-in
+  faces, and the rear access panel. Bustle: a row under its rear top edge and along its roof and side top
+  edges; a dark panel line (`PanelingDarker` 51) round the upper part of each bustle side.
+- All bolts are `Decals` 11 (unpainted metal), turned at random, 1.5 mm off their faces.
+- `gvk_finish.py` now skips objects tagged `decal` (box UVs would wipe their atlas UVs).
+- Not done: the bigger mantlet hoods (the owner set the ridge size in rounds 3 to 7); rear lights (the rear
+  and back art show no lights beside the hatch beyond the round lenses already built on the right recess).
+- Checks: the elevation sweep reports only the allowed kinds (ridges through the gunhouse armour and now the
+  band and its bolts, recoiled barrels); drum band bolts pass into the embrasure back wall where the drum does
+  (by design, as `SKIP`'s drum entry). Superfire -6.25 degrees, unchanged; highest point 7.6 m (dome cap).
+- Renders: `g2_art`, `g2_corner`, `g2_side`, `g2_front`, `g2_back`, `g2_rear34`, `g2_el-10`, `g2_el+45`.
+  Checkpoint before this round: `HurricaneTurret_cp3_r1.blend`.
+
+### Round 3: the art's layout, flush silver panels
+
+Owner on round 2 (2026-11-01): the silver should look like a panel separated by panel seam decals, not a bolted
+on plate; it should go all the way down; no silver on the brow; the other seams should follow the concept art
+("making up your own design" costs more and needs more intervention). The silver is bare metal on purpose: SE
+gives a block one paint colour, so a second colour has to be an unpaintable material.
+
+- Layout read from the top view (roof 270 px deep, 320 px wide) and checked against the front and rear views:
+  - **Silver** (`Metal_Dull`): flush on the gunhouse's own faces, from the roof's front edge back to y 0.8 (39%
+    of the roof) across the full width, and down both sides and skirts to the bottom. `paint_split()` cuts the
+    roof, side and skirt faces at y 0.8 (and the roof at the patch sides) and assigns the materials; the front
+    turn-ins and the brow stay painted, as in the art.
+  - **Dark patch** (`PaintedMetal_Darker`) on the silver behind the left gun, x 0.75 to 1.85, full silver depth.
+  - **Roof seams:** silver to yellow edge to edge; the patch's two sides; the yellow plates' outline inset 0.25 m
+    (0.35 m at the rear); one front to back seam at x 0.42; a diagonal in the right-hand (-X) plate from the
+    front seam junction to the outline at y 3.4. Square corners, as drawn.
+  - **Side seams:** at the silver's edge and at 71% of the side's length, both down through the skirt.
+  - **Rivets** where the art has them: roof front edge, behind the silver, round the outline, either side of
+    the front to back seam; side front edge, either side of the 71% seam, along the skirt line, sparse along
+    the top edge. Small dark stencil "HURRICANE 480MM" on the silver behind the periscope (the art's text).
+- Removed: the raised band and its brow part, the invented roof and side seams, the "HC 480" side stencil, the
+  bustle side panel lines. Kept: louvres, drum and cone bolt rings, bolt rows on the chin, middle support,
+  turn-ins and rear access panel, bustle rivets.
+- Seams stop 2.5 cm short of each bevelled edge (decals stay on flat faces), so a seam crossing the roof to side
+  edge has a small gap at the bevel.
+- Checks: overlaps only of the allowed kinds; superfire -6.25 degrees; highest point 7.6 m (dome cap).
+- Renders: `g3_art`, `g3_top`, `g3_rearart` (through the fitted rear art camera from `gvk_cams.CAM_REAR`),
+  `g3_corner`, `g3_el+45`; side by side with the art: `cmp3_art`, `cmp3_top`, `cmp3_rear`. Checkpoint before
+  this round: `HurricaneTurret_cp3_r2.blend`.
+- Lesson (round 3): copy the art's layout first and invent nothing. Measure the panel layout and colour areas from the top
+  view, then check them in the perspective views side by side, before the first render goes to the owner.
+
+### Round 4: owner fixes and panel decals
+
+Owner on round 3 (2026-11-01): seam on the silver panel's front side; chamfered corners on the other seams; the
+side seam's dog-leg (in the art) was missing; a paintable stripe across the front of the chin; decals on the
+flat surfaces so they read as panels; a small bevel on the gunhouse's top side edges.
+
+- **Top side edges:** a 7 cm chamfer, one segment, cut into the gunhouse mesh (`gunhouse_shape()`, once per
+  mesh). The silver runs over the chamfer; the roof is now 3.30 m half-width, the side face 2.91 m up the slope.
+- **Seams:** along the silver's front edge on the roof (6 cm in from the brow edge) and down each side's front
+  edge through the skirt; over the chamfer where the silver ends. The yellow roof outline has 45 degree corners
+  (0.2 m), mitred (`polyline()`). The side seam at 71% now follows the art's dog-leg: straight down from the
+  top to 1.94 m up the slope, 45 degrees forward by 0.25 m to 1.49 m, then straight down through the skirt;
+  rivets on its rear side as drawn.
+- **Chin stripe:** a flush band of the player's paint across the chin's sloped front, h 4.0 to 4.2 (z 0.25 to
+  0.45), between two dark seams (`PanelingDarker` 51). The chin's bolt rows skip the stripe's cut edges.
+- **Panel decals:**
+  - Roof: square access hatch (`Atlas3_Colorable` 30, 1.1 m) on the +X plate; dimple plate (13) behind the
+    diagonal on the -X plate.
+  - Sides: hinged panel (31, 1.3 m) on the middle plate; banded panel with four screws (34, 1.1 m) on the rear
+    plate; recessed bar (36, 1.2 m) on the middle skirt. CAUTION MOVING PARTS sign (`Atlas2` 17) on the left
+    silver panel only.
+  - Bustle sides: access hatch (`Atlas3_Darker` 31) on the left, slotted panel (32) on the right.
+  - Middle support front: square hatch (30, 0.55 m).
+- Checks: overlaps only of the allowed kinds; superfire -6.25 degrees; highest point 7.6 m.
+- Renders: `g4_art`, `g4_side`, `g4_chin`, `g4_top`, `g4_rear34`, `g4_el+45`. Checkpoint before this round:
+  `HurricaneTurret_cp3_r3.blend`.
+- If `build(g, P)` rebuilds the gunhouse or chin, rerun `gvk_ghdetail.build(g)`: the chamfer and paint cuts are
+  redone on the new meshes.
+
+### Round 5: chin stripe, seam joins and wraps, fastener plan
+
+Owner on round 4 (2026-11-01): the chin stripe belongs on the leading edge; far too many bolts on the chin; bolts
+are random in size and spacing, so plan them; seams break where they wrap round edges; seams must join with
+cut angles (the skill's T-join rule); some seam UVs are reversed.
+
+- **Chin stripe** on the nose: z -0.15 (the leading edge) to 0.05, one dark seam on its upper edge (the nose is
+  a hard edge). `chin_stripe()` dissolves earlier stripe cuts first, so it is safe to rerun. The chin's bolts
+  went from rings round every face (203) to two rows on the plate above the stripe (30), 0.45 m apart, 9 cm in.
+- **One seam builder, `path()`**, for every seam:
+  - Wraps: seams run to the exact edge and on over the chamfer; the silver's front seam got its missing chamfer
+    piece, and the 71% side seam now runs over the chamfer to the roof outline. Seams given a surface
+    (`surf=`) are laid on the bevelled mesh (BVH nearest point, 1 cm steps over the last 4 cm, 1.5 mm lift), so
+    they follow the 2 cm bevels without gaps. Checked: every vertex within 3 cm of its surface; the roof and
+    chamfer pieces line up to 0.5 mm.
+  - T-joins: the stem's sides stop on the cross seam's near edge and a tip runs to the centre lines' crossing,
+    at any angle: outline front ends, patch sides, long seam, the diagonal (both ends, one into the corner of
+    two seams) and the side seam into the outline. Lifted 1 mm more so the tip draws over the cross seam.
+  - Groove direction: piece 51 is lopsided (normal map tilts over 11 px on one side, 16 px on the other), so a
+    strip laid backwards shows a jog. Every strip now has its wide side to the rear, or +X for seams running
+    front to back; the roof outline keeps it on the inside all the way round. Checked from the UVs.
+- **Bolt clearance**: no bolt within 1 cm of a seam's groove (three sat on seams on the roof).
+- Rules added to se-dev-seut (`SKILL.md`, `atlas-regions.md` "Groove direction" and "Seams over edges and
+  bevels", the T-join rule at any angle, `design-detailing.md` "One fastener plan"); not committed.
+- Renders: `g5_chin`, `g5_wrap_front`, `g5_wrap_silver`, `g5_bevel_close`, `g5_tjoins` (eight T-joins from
+  above), `g5_top`. Checkpoint before this round: `HurricaneTurret_cp3_r4.blend`.
+
+**Fastener plan (proposed, not built).** Measured from the side, top and front art. Bolt decals now: 376 on the
+gunhouse, 238 on the elevation group.
+
+| Rule | Plan | Now |
+|---|---|---|
+| Head | `Decals` 11, 6 cm (art 6 to 8 cm), random angle; 4.5 cm only on the drum bands and cone rings | 4 to 5 cm, mixed |
+| Inset | 0.15 m from the seam centre or plate edge (art 0.15 to 0.18 m) | 0.07 to 0.16 m |
+| Pitch | 0.45 m where the art draws a row; about 0.3 m round rings | 0.3 to 0.8 m |
+| Clearance | 1 cm clear of seams (done), panel decals and edges; one bolt per shared corner | seams only |
+
+| Part | Plan (art) | Now |
+|---|---|---|
+| Roof yellow plates | one bolt at each plate corner (top art) | rows every 0.8 m |
+| Silver front edge, roof and sides | one row (top and side art) | a row |
+| Silver rear seam | none, except a short row along the dark patch's rear edge (top art) | a row behind it |
+| Side dog-leg | singles on its rear side: each plate's top and bottom, one mid-height on the upper plate (side art) | rows at 0.45 m |
+| Side top edge, skirt line | top corners of each plate only (side art) | two long rows |
+| Front turn-ins beside the guns | one row on the edge shared with the silver side (front art) | rows round every edge (82) |
+| Chin | one row along the top edge (the front art shows almost none) | two rows (30) |
+| Middle support front | corner bolts (front art) | rows round its faces (44) |
+| Rear access panel, bustle | one perimeter row per outer face (top art) | rows on inner faces too (71 + 37) |
+| Drum bands, cone rings | 16 per band, cones at 0.3 m round | 20, 16, 14, 12 |
+
+About 300 bolt decals in all.
+
+### Round 6: front seam on the edge, decal swaps, edge band candidates
+
+Owner on round 5 (2026-11-02): the silver's front seam must sit on the silver's edge, not inside it; the bustle's
+left side repeats the hinged panel from the side plate; the hatch on the middle support's front looks stupid;
+panels like the middle support's faces want edge decals so they read as separate plates (find candidates).
+
+- **Silver front seam on the edge**: centred on the front edge (y -1.38) on the roof, chamfers, sides and skirts,
+  one half on each face (`path(split=True)`: a centre row of vertices on the edge), laid on the 55 degree
+  roof-to-brow bevel. The silver starts exactly there on every face (checked from the mesh).
+- **Bustle left side**: `Atlas3_Darker` 33 (panel with two inset blocks) in place of 31, which the side plate
+  uses; the right side keeps 32.
+- **Middle support**: front hatch removed, and its 44 edge bolts too (they would cross any edge band; the
+  fastener plan gives it corner bolts).
+- **Edge band candidates** (`edge_candidates.png`: every tileable strip on Decals A_01, Atlas4 and Atlas1, lit on
+  the yellow paint; `edge_mockups.png`: six of them as a mitred border inside the bevel on the support's faces,
+  `gvk_edgemock.py`):
+  - A01 58, plate edge with a one-sided bevel, 3.4 cm (`PanelingColorable`): reads as separate plates, cleanest.
+  - A01 61, thin strip plus bevelled seam, 7 cm: a framed plate.
+  - A01 59, riveted band: adds rings of rivet dots, against the fastener plan.
+  - Atlas4 4 and 2: their colour maps are not neutral (greenish stain, cream band) on yellow paint.
+  - Atlas4 3: the dark centre draws as a black outline.
+
+Owner on the candidates: none is quite it, but they could work with a painted panel inside a darker frame; likes
+the riveted band, but the same framing has to go on other areas to tie it together; any other strips?
+
+- **Other sheets checked**: every decal sheet in SEUT's library is in the atlas catalog. The other atlases are
+  opaque (MESH technique): `Prototech_Atlas` (ornamental gold bands, wrong style), `TextureAtlas` (flat colour
+  swatches), `Doodads` (bolted straps, fixed length, not tileable). No new strips there.
+- **Dark variants** (`edge_candidates_dark.png`, real colour maps): `PanelingDarker` (the A_02 colour on the
+  A_01 layout) and `Atlas4_Darker` / `Atlas4_VeryDark`. The riveted bands 59 and 60 are two thin strips and a
+  rivet row with the paint showing between them. Atlas4's colour maps are not uniformly dark (band 4 is
+  near white).
+- **Mockups on the middle support** (`edge_mockups_dark.png`): `Atlas4_VeryDark` 2 (dark band with bolt holes,
+  9 cm) gives a painted panel in a dark frame; `PanelingDarker` 59 and 60 are the riveted band in dark;
+  `PanelingDarker` 61 and 52 are thin dark lines and a plain dark band; `Atlas4_Darker` 6 (square blocks) is busy.
+- **Tie-together mock** (`edge_tie_together.png`): `Atlas4_VeryDark` 2 and `PanelingDarker` 59 each on the
+  support, the chin's upper plate and the four yellow front faces beside the guns (bolt rows there dropped for
+  the mock; the frame's holes or rivets stand in for them). Both read as one family on the yellow faces; on the
+  dark chin plate both nearly vanish. `gvk_edgemock.frame_poly()` frames any flat convex face.
+
+### Round 7: seams and welds along soft folds
+
+Owner on the mockups (2026-11-02): none of them; follow the edges with the same seams used elsewhere, and try the
+weld bead on the dark grey areas. Not every edge: one with a good bevel needs no seam. Then, on the first build:
+no seam on the 20 degree skirt-line fold either, only on sharper edges. The weld line looks good.
+
+- **Which edges** (`EDGE_SEAMS`, `edge_seams()`): convex folds of 30 to 60 degrees, at least 0.5 m long,
+  between faces at least 0.4 m wide. Below 30 degrees the fold is too gentle to need one (owner); from 60 degrees
+  up the 2 cm bevel shows; a face narrower than 0.4 m is a chamfer, which is a bevel itself. Hidden edges are
+  left out (checked by ray casts from outside).
+- **Yellow, the V-groove** (`PanelingColorable` 51): the middle support's five visible 45 degree folds.
+- **Dark grey, the weld bead** (`WELD`: `PanelingDarker` 55, 5 cm): the chin's top edge (55 degrees) and the
+  bustle's rear fold (41 degrees). U runs back and forth over the piece (`pingpong`), as its ends do not tile.
+- **How a seam sits on an edge**: centred on the edge, in the plane halfway between the two faces, with five
+  rows of vertices across, so `onto()` lays it on the bevel without a flat quad cutting into the curve. Each
+  half stops on its own face's edge at the seam's ends (`path()` `end0` / `end1`: a cut line may name the side it
+  cuts), so the end follows a skewed corner.
+- **Bolts**: two rows meeting at a corner placed two bolts a few cm apart (the turn-ins' corners). `bolt()` now
+  skips a bolt within 8 cm of one already placed: 539 bolts in all, the turn-ins' corner pairs gone.
+- Tried and dropped (owner): a V-groove along the side's skirt line and the turn-ins (a 20 degree fold, no
+  bevel), T-joined into every seam crossing it, and a weld on the bustle sides' 20 degree fold.
+
+### Round 8: decals for 3D details, fasteners on joints, hefty seams, vertical edges
+
+Owner on round 7 (2026-11-02): a seam on the rear panel and the slopes on top of the chin are 3D, and the vents on
+the gunhouse's rear sides are 3D louvres; all should be decals. Then: build the fastener plan; widen every seam so
+the armour plates feel hefty, to match big fasteners; fasteners must hold two things together, not sit at random;
+more seams and welds on edges, especially vertical ones; no fastener on a corner, 0.1 m clear ("0.3 m is pretty
+far").
+
+- **3D to decals:**
+  - The rear access panel is one merged solid, so its 3D seam is gone.
+  - The chin's raised pads are merged into the chin. Blockout coordinates rounded to the mm left a 0.23 mm gap, so
+    `weld_shells` now merges within 1 mm. The chin weld has vertex stations at each pad edge and 3 cm either side,
+    so it no longer dips under the pad corners.
+  - Louvres to decals (`vent_candidates.png`): `Atlas1Colorable` 3 (the plinth's louvre) on the yellow skirts,
+    `Atlas3_Darker` 24 (slatted vent) on the dark rear vents.
+- **Fastener rules** (`FAST`, `row()`, `place_bolts()`):
+  - Bolts only in rows along a joint, 0.15 m in from it, 0.45 m apart (0.3 m round rings).
+  - Each row stops 0.25 m short of its joint's ends (inset plus 0.1 m, owner), so no bolt sits on a corner.
+  - Bolts are placed after every seam and panel decal. A bolt is left out within 1 cm of a seam (at that seam's
+    width), a panel decal or another bolt, or where a part covers it (`_blocked`: rays from 30 cm out).
+  - Head: `Decals` 11 at 7 cm. The head fills about 87% of the piece (a 6 cm quad measured 5.2 cm in a render), so
+    7 cm shows the plan's 6 cm head; 5.2 cm on drum bands and cone rings shows 4.5 cm.
+  - On a part given `surf`, one ray moves the bolt onto the evaluated surface (`ray_onto`), then its corners are
+    laid on the facets (`onto`). A flat quad left two corners up to 6 mm off the faceted bands; now every bolt
+    sits 1.5 mm off. Checked: no quad stretched more than 3%; ten fold up to 10 degrees over a facet ridge.
+- **Which joints** (the round 5 plan, rows in place of its corner bolts), 342 bolts (162 gunhouse, 180 elevation):
+  - roof: the silver's front edge, the patch's rear edge, the long seam (on the +X plate), the diagonal (rear plate);
+  - sides: the silver's front fold (side and skirt), the dog-leg's rear side (both segments and the skirt);
+  - front turn-ins: one row on the edge shared with the silver side; chin: one row under the weld;
+  - bustle lid: one row round its top; rear access panel: one row round its outer face;
+  - drum bands 16 each; cone rims and rings at 0.3 m, none under the ridge.
+- **Seams 4.5 cm** (`SEAM`, was 2.8 cm) everywhere on the gunhouse and elevation group.
+- **Vertical edges** (`CORNERS`): the edge seam on convex vertical edges of 60 to 106 degrees, at least 0.5 m long,
+  between faces at least 0.1 m wide (round 7's rule stops at 60 degrees).
+  - Gunhouse: the cheeks' leading edges (80 degrees) and top outer edges (69), the embrasure edges (90), the rear
+    vertical corners (90). Middle support: its eight vertical edges above 0.7 m.
+  - Bustle: its rear outline (rear corners, lower corners, underside fold, 90 to 103 degrees) gets the weld bead.
+- **Bustle to gunhouse** (design: welded): a weld bead in the inside corner all round the joint (`fillet()`, a
+  45 degree strip across the corner), along the bustle top and down both sides.
+- **Decal gap check** (nearest surface from every decal vertex): every bolt 1.5 mm. Seams and welds 1.5 mm, except
+  a few end vertices, none visible in close renders:
+  - the fillets' outer ends, up to 11 mm where the strip runs past a bevelled corner;
+  - the patch side seams' tips under the silver's front seam, 7.8 mm (one vertex each);
+  - slivers of about 1 cm2 at the roof's front corners (0.4 and 4 mm) and at the embrasure seams' bottom ends
+    on the chin (0.2 mm).
+- Renders: `r8d_front`, `r8d_rear`, `r8d_side`, `r8c_roof`, `r8c_rear`, `r8c_front`, `r8c_fillet`,
+  `r8c_patchtip`, `r8d_cone`. Checkpoints: `HurricaneTurret_cp3_r7.blend` (before the merges),
+  `HurricaneTurret_cp3_r8.blend` (before the fasteners).
+- se-dev-seut `atlas-regions.md`: Atlas1 piece 3 is the louvre, not a plain plate (label fixed; not committed).
+
+**Black weld edges (owner question):** the weld piece's colour map fades to black where its alpha mask fades out.
+Blender draws SEUT's decal materials with dithered alpha, so that fringe shows as a ragged black outline. The game
+clips decal cutout materials at half alpha (`clip(alphamask - 0.5)`, `Shaders\Geometry\Materials\Standard\Pixel.hlsl`),
+so in game the edge is crisp and dark grey (`weld_edge_compare.png`).
+
+### Round 9: owner markup, joined welds, bolts on both sides of seams
+
+Owner on round 8 (2026-11-02): more fasteners along most panel edges, on both sides of the seam; no weld between
+yellow and dark grey; more areas should get seams and welds (owner marks them on views); some welds break at
+sharp turns. Markup: red for V-grooves, green for welds. On the first bolt pass: the new front fasteners broke the
+spacing rules; too bunched up and random.
+
+- Removed the bustle-to-gunhouse fillet welds (yellow to dark grey). Every other weld runs dark to dark.
+- Markup sheets (painted parts in mid blue so yellow and green marks show; plinth, barrels and brakes hidden):
+  `mk_1_front` to `mk_4_rear` (orthographic), `mk_5_top`, `mk_6_front34`, `mk_7_rear34`, `mk_8_guns`. The marks
+  were matched to mesh edges by drawing the picked edges over the marked images (`overlay_pick.py`).
+- **Marked lines** (`CHIN_SEAMS`, `CHIN_WELDS`, `BUSTLE_WELDS`, `chin_lines()`, mirrored in X):
+  - Chin, dark V-grooves: the nose, the stripe's top edge and its ends.
+  - Chin, weld beads: under the nose (the fold, its ends, the bottom's sides); the front plate's sides, up and over
+    the pad tops to the cheek; where the pads stand on the front plate (z 0.7, a new cut in `chin_stripe()`); the
+    pads' top, slope and foot edges; the floor's rear edge on the embrasure slope. The centre pad's rear edges are
+    not marked (hidden in the views) and are welded like the side pads'. Two marked edges that run partly under
+    another part get a strip on their exposed part only.
+  - Gunhouse: a V-groove on the cheeks' nose beside the chin. MidSupport: V-grooves on its top's sides.
+  - Bustle, weld beads: the lid's sides (from the gunhouse's back), its fold onto the rear chamfer, the chamfer's
+    ends and its fold onto the rear face.
+- **No breaks at sharp turns** (`nets()`, `_strip()`): every seam and weld on a part is built from that part's mesh
+  edges, so strips meeting at a vertex know each other. A strip lies in the plane halfway between its two faces.
+  At a vertex each half mitres into the next strip on its face, butts one running on in line, or stops along its
+  face's next edge when nothing meets it. Where the chin's back lies on the embrasure slope, the strip borrows the
+  slope as its second face: a fillet bead across the joint. Checked in close renders: the pad corners, the four-way
+  joint at the pad foot, the floor's rear fillet, the nose (a seam meets two welds), the underside, the bustle lid
+  corners, the MidSupport top and the cheek nose.
+- **Bolts on both sides of every V-groove** (`seam_rows()`, `lay_rows()`); none beside welds (a welded joint is not
+  bolted).
+  - First pass, 475 on the gunhouse: rows per seam segment. 215 pairs of bolts were under 0.3 m apart. Each
+    segment started its own pitch, a short joint got two bolts as close as 5 cm, and rows of neighbouring seams met
+    at plate corners 0.14 m apart (worst on the MidSupport's small faces and round the chin's nose).
+  - Now every row (seam rows, plate-edge rows, the chin's top row) is a request, laid together by `lay_rows()`:
+    - Rows in line on one plane merge into one row with one pitch.
+    - Longest first. A row runs only where its plate is flat and clear of other seams (one crossing it is a corner,
+      0.25 m by the end rule; one beside it, 0.9 inset), panel decals, parts covering it and bolts already laid.
+    - No two bolts of different rows closer than `FAST['gap']`, 0.3 m (two insets), measured over the surface: the
+      straight distance across a fold is shorter by cos(half the fold angle). The pair across one seam is exempt.
+    - Each clear stretch of at least 0.3 m gets bolts evenly, about the pitch apart; a shorter one gets none.
+    - A row takes the stations of the row across its seam, or of a parallel row within 1 m, so bolts pair up over
+      the joint and line up across plates (the chin's two plate rows, the MidSupport's faces).
+  - `place_bolts()` applies the same gap to the ring bolts: the cone rim lost the bolts 0.14 to 0.22 m from the
+    drum bands' bolts, and its pattern is now mirrored left to right (it was not).
+  - Result: 389 bolts on the gunhouse, 172 on the elevation group, no two under the gap. Left and right differ only
+    where the art does (roof patch and diagonal, side panels).
+- **Decal gap check**: every bolt corner 1.5 mm off its face; one corner (transparent part of the quad) 0.8 mm
+  under the bustle's edge. Hidden seam and weld ends: the pad top's rear weld ends in the cheek's inside-corner
+  bevel, the cheek inner-edge seam's bottom inside the chin, the cheek nose seam's end against the chin's side.
+- Renders: `r9m_front34`, `r9m_rear34`, `r9m_front`, `r9m_chin`, `r9m_cheek`, `r9m_roof`, `r9m_side`, `r9m_bustle`;
+  join close-ups `r9j_*`. Checkpoint before this round: `HurricaneTurret_cp3_r9.blend`.
+- se-dev-seut `design-detailing.md`: "Rows, not scattered bolts" (not committed).
+
+### Round 10: chin plate, welds round the chin, cheek bolts, silver seams, round welded corners
+
+Owner on round 9 (2026-11-02): bolts on the gunhouse's back cut off by the bustle; a few more bolts on the cheeks;
+the chin's yellow stripe as a thin bolted-on plate in a paintable worn texture; welds on round the dark chin, the
+plate a few cm clear of them; no panel bolts near welds. During the round: the skirt-fold bolts on the cheeks "look
+stupid" (bolts belong by the front edges near the bottom, following the seams, and by the silver stripe); the hazard
+stripe on the plate "is bad", keep the plain yellow plate; the silver stripe's seams unpainted; the chin welds need
+a little bevel, on the corner and on the weld decal both, and the bustle's too. Then: the bolt row along the top of
+the bustle, the V seams at the gunhouse's rear corners and the fold seam on the bustle's back hatch panel can go
+(that part should look mostly like one yellow panel); the long welds should run the same way along each straight,
+with no breaks where they mirror or turn.
+
+- **Back of the gunhouse**: `_blocked()` also casts 8 rays out over the face from the bolt's centre to 1 cm past
+  its rim, so a wall standing on the face (the bustle's side) blocks it. No bolts left on the back; the bustle
+  lid's row runs along the gunhouse edge only. The same check dropped one drum bolt each side (85/85).
+- **No panel bolts near a weld**: a row keeps `FAST['weld']`, 0.3 m, from a weld bead unless it is `by_weld` (a
+  part bolted on over a welded one). This cleared most of the chin's dark grey bolts.
+- **Chin plate** (`CHIN_PLATE`, `chin_plate()`): `GH_ChinPlate`, 2 cm thick, `PaintedMetal_Colorable`, on the
+  chin's sloped front from 5 cm above the nose (clear of the nose weld) to the old stripe's top, x +-3.15 (clear of
+  the side welds); one row of 14 bolts down its middle. Tried and rejected: the `Atlas1Colorable` hazard stripe
+  over it.
+- **Paint vs skins** (`ArmorModifiers.sbc`, 28 skins). Paintable, not skinnable: `PaintedMetalColorableGlossy`,
+  `Atlas4_Colorable`, `FabricColorable`, `EmissiveColorable`, `SolarPanel_colorable`. Skinnable: every
+  `PaintedMetal*` and `PaintedMetalScratched*`, `Atlas1Colorable`, `Atlas3_*`, `PanelingColorable`, `Decals`. No
+  vanilla worn or hazard texture is both paintable and skin-proof.
+- **Welds round the chin** (`CHIN_WELDS`): new beads along the nose and up the front plate's sides; the chin's
+  V-grooves (`CHIN_SEAMS`) are gone.
+- **Round welded corners**: the chin's and the bustle's bevels are 2.5 cm in 4 steps (`gvk_finish.SOFT`; was 2 cm
+  in 2), each step under the 30 degree smoothing. A rounder corner alone changed nothing visible: the bead was still drawn as flat
+  facets. Now weld beads laid over edges have 8 rows across (was 4), and every decal laid onto a bevelled surface
+  is joined and shaded smooth, so a bead wraps the round with no crease (`r10j_weld_compare`).
+- **Cheek bolts**: rows follow seams only; the skirt-fold rows are removed. A row too short for a 0.3 m stretch
+  (the cheek's tip below the skirt fold, 0.55 to 0.7 m) gets one bolt after the long rows: across the seam from
+  its partner's, else at the pitch of the long row it continues over a fold (to within 10 cm of the fold, which is
+  no corner), else at its middle, moved as little as clears the gap. Elsewhere this added the dog-leg jog's pair
+  and two bolts on each side of the middle support's front.
+- **Gap tolerance**: `lay_rows()` allows 5 mm under the gap (`place_bolts()` allows 1 cm). The silver stripe's
+  lower front bolts on -X missed it by 0.2 mm while +X passed.
+- **Silver stripe seams** (`SILVER['seam']`): every V-groove bounding the silver (roof front and rear, chamfers,
+  sides, skirts) and the roof patch's sides use `PanelingDarker`, the same groove in fixed dark grey. The side seam
+  over the top and the yellow seams stay `PanelingColorable`.
+- **Back cleared**: the bustle lid has no bolt row (`bustle()` removed; the lid is welded). The gunhouse's vertical
+  corner seams skip the rear corners (`c.y < REAR_Y - 0.1`), which also drops the bolt rows on the side panels'
+  rear edges. The rear access panel's fold seam is gone, so the back reads as one yellow panel inside its
+  perimeter bolts.
+- **One-way welds**: the bead ran U back and forth over the piece (`pingpong`), so it mirrored every 1.4 m. The
+  piece's ends are capped (texels 0 and 2047 are a crease, and its colour fades dark from texel 2020), so a plain
+  repeat shows a dark joint. Now `bead` repeats texels 62 to 1931 (`WELD_TILE`, the pair whose columns join as
+  smoothly as neighbours do), one tile per 1.26 m. Every bead, fillets too, runs along its edge's canonical
+  direction (`ucanon`), so beads on one line run on in step and the same way. The rows at a tile joint are cut
+  square across the strip, so a mitred end's corners stay in their own tile: every bead texel lies between 17 and
+  1976.
+- Result: 311 bolts on the gunhouse (336 before the back was cleared), 170 on the elevation group, none under the
+  gap; mirrored left to right below the roof (three pairs off by up to 5 cm). Every gunhouse bolt corner 1.5 mm
+  off its face. Renders: `r10i_cheek`, `r10i_cheekL`, `r10i_tip`, `r10i_roof`, `r10i_chin`, `r10j_front34`,
+  `r10j_chinend`, `r10j_weld_compare`, `r10k_bustlecorner`, `r10k_rear34`, `r10l2_reartop`, `r10l2_back`,
+  `r10n_weld_tile_front`, `r10n_weld_tile_top` (a tile joint, at x 1.26), `r10n_chin34`, `r10n_bustle34`.
+  Checkpoint before this round: `HurricaneTurret_cp3_r10.blend`.
+
+## Checks run (round 10)
+
+- Elevation -10 to +45, 1 degree steps, with and without 2 m recoil. Overlaps, all allowed by the owner
+  (round 8): each ridge passes through the gunhouse armour from +1 to +45 degrees, and the recoiled barrels
+  from -10 to +45; the drum's lower back runs into the internal armour by design (`SKIP`). No other overlap
+  with the gunhouse, chin, rear section, middle support, bearings, plinth, disc or trunk. Drum rings to the
+  lengthened middle support 2 cm; the chin, lowered with the guns, still sits 10.6 cm under the drum rings at
+  every angle, recoiled or not.
+- Mantlet ridges: top at h 6.85 at rest, level with the roof; no roof slots.
+- Muzzle brake underside at -10: 3.71 m above the mount face (round 9: 3.81).
+- Superfire (twin 2.5 m up and 12.5 m behind): the twin's muzzle brakes touch this gunhouse roof at -6.25
+  degrees (round 9: -6.75, round 5: -5.0; doc target about -4). The dome is left out of this check (no collision mesh).
+- Azimuth sweep radius: 7.30 m (rear section corners), 1.05 m beyond the block's side faces while turning. The
+  owner accepted this in round 3.
+- Highest point: dome cap at 7.6 m, 0.1 m above the block's 7.5 m top.
+
+## Changes from the art
+
+- The dome sits on the dark rear section where the top view puts it (owner, round 5).
+- The gun assembly's position and the barrel length follow the top and front views (see References).
+- The ridges stay level with the roof and the skirt seam at 0.9 m (owner, earlier rounds).
+- The bustle has no plan taper (owner, round 4); the art's bearing ring is ignored (owner, round 4).
+- Barrel spacing stays 3.8 m.
+
+## Left for later checkpoints
+
+- Checkpoint 3 (still open): the art's bigger dark hood on each mantlet ridge (kept small after the round 3
+  note), rivet rows and ring detail on the drum and end housings, the roof front brow band, the rear lights
+  beside the hatch. Done in round 1: frames round the rear recesses, bevels.
+- Checkpoint 4: muzzle brake slots, bore recess.
+- Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
+  hatches, panel and weld lines, hazard marks, stencils.
+
+## Next
+
+The owner reviews round 10 (chin plate, welds round the chin and their round corners, cheek bolts, unpainted
+silver seams, the cleared back, one-way welds). Rebuild the detail with `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change
+in `gvk_finish`, run `finish()` once first so the decals are laid onto the new bevels. After sign-off, checkpoint 4 (barrels and muzzle brakes).
+An in-game model swap for testing is on hold (owner, 2026-11-02).
+
+After the detail pass is signed off (owner approved, 2026-11-02: "if it can help someone save time"): move the
+generic decal code from `gvk_ghdetail.py` into one standalone module in the se-dev-seut repo's `scripts\` folder.
+It holds the seam strip (mitres, T-join tips, the groove direction rule, `surf` / `split` / `bead`, end
+cuts), `onto()` laying decals on the bevelled mesh, `edge_seams()` and bolt rows that keep clear of seams and of
+each other. No GVK or turret names: the caller passes the parent object, the collection and the atlas lookup
+(today `put()` hardcodes "Gunhouse", `mk_Az` and `mk_El`). Edge-following is opt-in with a caller-supplied edge
+filter; offer the owner's rule as the example default (seam soft folds only: skip folds a good bevel already
+shows and gentle folds below about 30 degrees, as round 7). Add a short recipe in
+`references/bpy-recipes.md` pointing at the module. Commit only when the owner says.
