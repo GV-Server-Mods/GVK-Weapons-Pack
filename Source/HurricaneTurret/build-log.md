@@ -15,7 +15,7 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 |---|---|---|
 | 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
 | 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built |
-| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) built |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built |
 | 4 | Barrels and muzzle brakes | not started |
 | 5 | Decal groups | not started |
 | 6 | Split into subpart scenes | not started |
@@ -176,6 +176,9 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
     the feed trunk. Gunhouse and rear section are convex solids cut from plane lists (`bm_convex`, `side_planes`
     with the turn-in, `inset` for the rear section), then the embrasure (with the brow and the sloped internal
     armour), the lamp pockets in the cones and the rear recesses are cut. Change `P` and rerun `build(g, P)`.
+    `cone_lamp()` builds one cone with its lamp and shroud; `cone_normals()` then bevels the cone in the mesh and
+    sets its true normals, and tags it `own_normals` so `gvk_finish.finish()` adds no Bevel or WeightedNormal to it
+    (both modifiers replace custom normals).
   - `gvk_render.py`: `ortho_render(name, loc, rot, scale, res, ortho, lens)` renders through `CAM_Ortho`
     (orthographic, or perspective with `ortho=False`) with cavity, shadows and outlines, into the `renders`
     folder, and restores the camera and render settings.
@@ -223,7 +226,7 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
   - `gvk_ghdetail.py`: checkpoint 3 surface detail (`build(g)`): `Face` plane frames for the roof, sides,
     skirts and bustle; `gunhouse_shape` (top side chamfer once per mesh, then flush silver and patch
     materials), `chin_stripe`, `roof`, `sides` (with `louvre`), `panels`, `polyline` (mitred seams), `drum`
-    (bolt rings), `bustle`, and `rivet_edges(name, keep=..., edge=...)` for bolt rows round any part's faces. Layout constants (`SILVER`, `PATCH`, `ROOF_PLATES`, `SIDE_SEAM`) are measured
+    (strip decals wrapped one flat quad per facet by `band()`), `bustle`, and `rivet_edges(name, keep=..., edge=...)` for bolt rows round any part's faces. Layout constants (`SILVER`, `PATCH`, `ROOF_PLATES`, `SIDE_SEAM`) are measured
     from the top view. It reuses the plinth's atlas helpers (`piece`, `strip`, `text_polys`). Objects are named
     `GH_*`.
   - `fit_result`: an early unconstrained fit, for reference only.
@@ -254,10 +257,10 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
 | Rear section | the gunhouse's substructure: every face inset 0.15 m (top h 6.70, bottom h 3.30); a = -4.2 to -6.18 (block edge -6.25); sides parallel to the gunhouse sides (no plan taper, no side undercut); top-rear chamfer 0.2 m; a long undercut from h 5.0 on the rear face down to the bottom 1.5 m further forward |
 | Rear face | after the straight-on rear view. Large access panel, painted, centred, half-width 2.1: 0.18 m proud, down the rear face from h 6.29 (top corners chamfered 0.25), mitred at the knee (h 5.0), then along the undercut to 93% of its length; two gunmetal hinge knuckles (r 0.11) at x +-1.75 on its bottom edge. Painted rails 0.08 m proud on it: a bar x +-0.95, h 5.82 to 5.97, and two diagonals from (+-1.72, 6.02) down to (+-1.05, 5.43), 0.26 m wide; a small button x 1.45 to 1.78, h 5.08 to 5.42. Gunmetal hatch x +-0.63, h 4.39 to 5.6, 0.45 m proud with chamfered corners, hanging past the knee; door with a dark down arrow. Feed tube across under the hatch at h 4.61: left x 0.6 to 1.22 (r 0.22, collar r 0.25 at its end), right x -0.6 to -1.62 (r 0.24) with a tapered nozzle to -1.95. Recesses 6 cm deep in the rear section, from \|x\| 2.36 out to 0.18 m inside the side edge, their outer edges parallel to the leaning side edge, so each pair keeps one width across the knee; gaps 0.15 m each side of the knee: above it vent (bar grille, left) and buttons (two round lenses and a switch, right) up to h 6.25; in the undercut, hose bay (left) and louvres (right, eight slats) down to 0.15 m from the bottom. Grille box x +-1.35, h 3.28 to 3.95, from a = -5.63 into the undercut, five slats and a chrome grab handle at each end |
 | Hoses | two dark hoses side by side (r 0.085, smooth spline paths) from one fitting (r 0.2) in the hose bay at x 2.87, 28% down the undercut. They hang to about h 3.5, loop across under the panel and rise outboard of the grille box into the feed tube's left end |
-| Trunnion | axis (a 2.2, h 5.65; round 9: 5.75), on the cheek slope at axis height (1 cm behind it), so the drum's front stands 0.81 m proud of it; drum r 0.82, \|x\| up to 3.15 (5 cm from the cheeks), gunmetal; painted rings r 0.86 at both ends of each drum segment: \|x\| 0.62 to 0.76, 0.96 to 1.1, 2.7 to 2.84, 3.01 to 3.15; bearings (turn with the gunhouse) r 0.4 from \|x\| 3.16 into the cheeks to 3.34; middle support (turns with the gunhouse): painted octagon, circumradius 0.95, \|x\| up to 0.6, centred 0.1 m above the axis (h 5.75, where it was in round 9; top h 6.63), its front half moved 0.35 m forward (front face at a 3.43, a longer top). Its back runs straight down to the chin. Its vertical front runs from h 6.11 to 5.39, centred on the octagon; below it a 45 degree undercut (the top chamfer's angle, mirrored) runs back to a 2.47 on the chin top (h 4.43) |
+| Trunnion | axis (a 2.2, h 5.65; round 9: 5.75), on the cheek slope at axis height (1 cm behind it), so the drum's front stands 0.81 m proud of it; drum r 0.82, \|x\| up to 3.15 (5 cm from the cheeks), gunmetal; painted rings r 0.86 at both ends of each drum segment, mirrored about each barrel: \|x\| 0.65 to 0.79 (0.62 to 0.76 before checkpoint 3 round 12), 0.96 to 1.1, 2.7 to 2.84, 3.01 to 3.15; bearings (turn with the gunhouse) r 0.4 from \|x\| 3.16 into the cheeks to 3.34; middle support (turns with the gunhouse): painted octagon, circumradius 0.95, \|x\| up to 0.6, centred 0.1 m above the axis (h 5.75, where it was in round 9; top h 6.63), its front half moved 0.35 m forward (front face at a 3.43, a longer top). Its back runs straight down to the chin. Its vertical front runs from h 6.11 to 5.39, centred on the octagon; below it a 45 degree undercut (the top chamfer's angle, mirrored) runs back to a 2.47 on the chin top (h 4.43) |
 | Cones | x = +-1.9 (barrels 3.8 m apart); flat back at a = 2.94, set 8 cm into the drum's front: r 0.70 at the back edge, a short rounded shoulder to r 0.78 by a 3.12, then a straight taper to r 0.42 at a = 4.7; dark rim band near the back |
-| Mantlet ridges | side profile (a, h): (1.55, 6.15), (1.55, 6.85), (2.55, 6.85), (3.4, 6.45), cut off at a 3.27 just behind the lamp, so each ridge runs back over the drum from the cone; top level with the roof. The profile stayed put when the guns went down 0.1 m, so the ridges are 0.1 m taller than in round 9. Tapered section: half-width 0.15 at the top, widening straight down to 0.36 at the base, which follows the drum and cone surface; over its last 0.4 m the base narrows to the lamp shroud's width |
-| Lamps | on each cone's top, 1.15 m ahead of the axis: lens r 0.1 at a 3.47, h 6.38, in a gunmetal shroud (r 0.14, 0.22 long) with a half-ring visor over its top. Each sits in a round pocket in the cone (r 0.2, 0.2 deep) that runs forward as a round trough tapering to r 0.06 over 0.65 m |
+| Mantlet ridges | side profile (a, h): (1.55, 6.15), (1.55, 6.85), (2.55, 6.85), (3.4, 6.45), cut off at a 3.27 just behind the lamp, so each ridge runs back over the drum from the cone; top level with the roof; the top back corner cut off at 45 degrees, 0.172 m each way (back face up to h 6.68, top from a 1.72; owner, checkpoint 3 round 12). The profile stayed put when the guns went down 0.1 m, so the ridges are 0.1 m taller than in round 9. Tapered section: half-width 0.15 at the top, widening straight down to 0.36 at the base, which follows the drum and cone surface; over its last 0.4 m the base narrows to the lamp shroud's width |
+| Lamps | on each cone's top, 1.15 m ahead of the axis, axis at h 6.38 (`cone_lamp()`, `P['lamp']`): lens r 0.1 at a 3.32, 4.5 cm back in a round shroud of the cone's dark metal (r 0.14, bore 0.115) from a 3.19 to 3.38, its back 3 cm inside the ridge's nose. Its lower half sits in a recess of its own size in the cone; ahead of it the bore runs on as a round trough (r 0.117) that fades out where the cone falls away, about a 3.86 |
 | Barrels | r 0.25, from a 2.9 (1.8 m hidden in the cone) to the brake; collars r 0.34, a 4.7 to 5.0; brakes r 0.32, a 10.13 to 11.58 |
 | Muzzles | (+-1.9, 11.58, 5.65); camera marker (0, 3.5, 6.55) |
 | Periscope | front-right of the roof: x -2.82 to -2.3, a 0 to 0.95; sloped front with a green lens |
@@ -924,6 +927,110 @@ with no breaks where they mirror or turn.
   `r10n_weld_tile_front`, `r10n_weld_tile_top` (a tile joint, at x 1.26), `r10n_chin34`, `r10n_bustle34`.
   Checkpoint before this round: `HurricaneTurret_cp3_r10.blend`.
 
+### Round 11: drum detail, checkpoint 3 close-out
+
+Owner on round 10 (2026-11-02): "ok for now"; yes to bolts back down the side panels' rear edges; then finish
+checkpoint 3.
+
+- **Sides' rear edges**: `rivet_edges("Gunhouse")` on the side faces' edges at `REAR_Y`, 0.15 m in: 8 bolts a
+  side, down the leaning side and the skirt, in line with the dog-leg seam's rows.
+- **Drum, read from a full-size crop of the front art** (`art_drum_end`, `art_drum_mid`): the thin yellow rings
+  carry no bolts; the rivets are on the dark drum beside them. Now (`DRUM`, `drum()`): the 16-bolt rings on the
+  yellow bands are gone; a row of 16 rivets on the drum just outboard of each inner ring pair (|x| 1.16) and one
+  round the middle of the wide band between each outer pair (|x| 2.925); that band split into 8 plates by
+  `PanelingDarker` V-groove joints, ring wall to ring wall, the rivets halfway between joints. The cone and the
+  internal armour hide some: 13 and 15 rivets show a side. With the ring bolts gone, 8 bolts the gap rule had
+  kept off the middle support's rows came back (its end faces, beside the inner rings).
+- **The rest of the old checkpoint 3 list** was already settled: the mantlet hoods stay at the ridge size the
+  owner set in rounds 3 to 7; the raised brow band was removed in round 3 ("no silver on the brow"); the rear
+  and back art show no lights beside the hatch beyond the round lenses on the right recess (round 2).
+- Result: 335 bolts on the gunhouse, 118 on the elevation group (59 a side), none under the gap; no bolt or seam
+  misses its surface. Renders: `r10o_rearedge`, `r10o_rearedgeR`, `r11b_art_drum` (through the fitted art
+  camera, beside `art_drum_crop`), `r11b_drum_end`, `r11b_drum_mid`.
+
+### Round 12: strip decals on the drum and cones
+
+Owner on round 11 (2026-11-02): bolts kept clear of welds is a style preference; the drum bolts differ on the two
+sides of each barrel, and many bend over the folds of the faceted surface under them; strip decals suit most of
+the drum. Then, from the strip candidates (`drum_strip_candidates`): `PanelingDarker` 59 (B) for the gaps, and a
+mix of other bands, including `Atlas4` 6, "kinda like gears". B (59) has raised rivets and C (60) recessed
+dimples, now in se-dev-seut's `atlas-regions.md`.
+
+- **The drum's bolts are gone**, and so are the plate joints across the outer band (they would cross the rivet
+  band) and every cone bolt ring.
+- **`band()`** wraps a strip round a faceted solid of revolution as one flat quad per facet, each 1.5 mm off its
+  facet and joined to its neighbours (vertices on the folds, shaded smooth), the piece's U scaled so one rivet,
+  block or hole sits in the middle of each facet; the quad is split where the piece repeats. The band runs on
+  under any part that covers it; a facet is left out only when all nine test points on it, in every span on
+  both sides, are covered (a short ray in meets another part first) or inside another solid (the gunhouse
+  armour, the cone's flat back). One mask serves both sides and both spans, so the bands match left to right
+  and about each barrel.
+- **Inner ring moved 3 cm out** (0.62 to 0.76 becomes 0.65 to 0.79, `DrumBands` and `gvk_blockout` `bands`), so
+  both gaps are 0.17 m and the rings mirror about each barrel (x 1.9).
+- **First pass** (renders `r12_*`): besides B, a row of `PanelingDarker` 50 rivets beside the inner pair,
+  `Atlas4_Darker` 6 round each cone's rim (`ConeRims`; the ridge and the drum rings broke it into pieces) and
+  `Atlas4_Darker` 2 round each cone's taper; facets with any covered point were left out. Owner: no rivet row;
+  the gear band on the rims "looks cut and incomplete" and does not belong there, so put it all the way round
+  where the rivet row was; no bolt-hole band on the cones.
+- **Drum** (48 facets), as first built (swapped below): B (`PanelingDarker` 59), 0.165 m wide, in both gaps between the ring pairs (40
+  of 48 facets; the rest are inside the armour); the gear band (`Atlas4_VeryDark` 6, matching the drum's very
+  dark paint), 7.2 cm wide (one block per facet at the piece's own shape), 5 mm outboard of the inner pair and
+  mirrored 5 mm inboard of the outer pair, running on under each cone's base (37 of 48 facets). The cones and
+  their rims are plain.
+- Checks: every band vertex 1.50 mm off the drum; band vertices match their mirror left to right and about each
+  barrel to 0.000 mm; UVs inside the pieces. Gunhouse bolts unchanged at 335; no bolt decals on the elevation
+  group. Renders: `r12b_end`, `r12b_mid`, `r12b_top`, `r12b_elm10`, `r12b_el45`. Checkpoint before this round:
+  `HurricaneTurret_cp3_r11.blend`.
+- **Ridge backs** (owner, marked on a screenshot: "cut the backs of these ridges a little"): the top back corner
+  of each mantlet ridge cut off at 45 degrees over the ridge's first two sections, 0.172 m along the top and down
+  the back face (the four top vertices of those sections lowered in the blend; `ridge_cut` in `gvk_blockout`
+  builds the same). The new shape lies inside the old one, so the elevation checks still hold. Renders:
+  `r12c_ridge_back`, `r12c_ridges_owner`, `r12c_ridge_side`. Checkpoint before it:
+  `HurricaneTurret_before_ridge_cut.blend`.
+- **Strips swapped** (owner on `r12c_ridges_owner`: "swapped the gear strip with the rivet strip. make the gear
+  strip larger to fit the gap fully"): the gear band (`Atlas4_VeryDark` 6) fills each gap between the ring pairs,
+  0.168 m wide (1 mm clear of each ring), one block per two facets (40 of 48 facets); B (`PanelingDarker` 59)
+  runs beside the rings, 8.6 cm wide with two rivets per facet, 5 mm outboard of the inner pair and mirrored
+  inboard of the outer pair (35 of 48 facets). Renders: `r12d_mid`, `r12d_ridges_owner`.
+- **Lamps rebuilt** (owner: thin faces; the shroud too deep and over the top half only; the recess "too large as
+  if the lamp were way larger"; "The shroud around the lamp should integrate and continue the cylinder recess in
+  the cones"): `cone_lamp()` in `gvk_blockout`, sizes in the layout's Lamps row. The shroud is a full round tube
+  of the cone's metal (`PaintedMetal_Darker`, was gunmetal with a half-ring visor) whose lower half fills a
+  recess its own size, and the trough ahead has the shroud's bore. One stepped cutter: the old two cutters shared
+  a plane and left six zero-area faces; now the smallest cone edge is 9 mm. The shroud's outside sits 2 mm into
+  the cone and its bore 2 mm inside the trough, so no faces coincide. The ridge's nose moved back 5 cm to a 3.22,
+  where the ridge stands 1.8 cm over the shroud (the old nose shared a plane with the pocket's back). Renders:
+  `r12e_lamp_34`, `r12e_lamp_front`, `r12e_lamp_top`, `r12e_lamp_side`, `r12e_ridges_owner`, `r12e_mid`.
+  Checkpoint before it: `HurricaneTurret_before_lamp.blend`.
+- Checks after both: the elevation sweep reports only the allowed kinds (ridges and recoiled barrels through the
+  gunhouse) and the drum bands running on under the gunhouse armour, which they do by design (decal quads, no
+  collision). Closest approach: `Ridge_L` to the gunhouse, 2.9 mm at +20 degrees.
+- **Cut shading** (owner: "still some funky surface issues happening around that cone cutout"): the boolean
+  leaves uneven pieces on the 32-sided cone, and WeightedNormal snapped each vertex to its largest face, so the
+  cut shaded in streaks. Now `cone_normals()` gives every corner on the cone the cone's true normal round its axis
+  and every corner in the trough the trough's true normal round the lamp's axis, with a sharp edge along the cut's
+  lip. The cone's 8 mm bevels are built into the mesh (the lip stays crisp), since the Bevel modifier drops custom
+  normals (tested: with or without harden normals). Renders: `r12f_cut_a2`, `r12f_cut_b2`. Checkpoint before it:
+  `HurricaneTurret_before_cone_normals.blend`.
+- **Ring and side bands** (owner: "put the rivet bands but paintable on the yellow raised bands on the barrels (8
+  bands total), then use the atlas 4 very dark 5 band where you had the rivet band (but larger of course)"):
+  `PanelingColorable` 59, in paint, 9.0 cm wide and centred on each of the eight rings (r 0.86, two rivets a
+  facet, 39 of 48 facets); `Atlas4_VeryDark` 5 (rims round a field of small holes), 18.4 cm wide where the rivet
+  band was, 5 mm beside the inner pair and mirrored beside the outer pair, five repeats round the drum (35 of 48
+  facets). Its colour map renders as light perforated metal, not dark. Every band is mirrored left to right and
+  about each barrel. Renders: `r12f_ridges_owner`, `r12f_mid`, `r12f_outer`.
+- **Drum ends** (owner: "what the heck is happening here on the ends of the drums? some z-fighting"): each ring
+  was a closed cylinder, and the outer ring's end disc lay in the drum's end face (x 3.15), so the yellow disc and
+  the dark one fought. `drum_rings()` in `gvk_blockout` now builds each ring as an outer wall and two end faces,
+  open on the inside where the drum fills it, its vertices on the drum's angles; the drum's end shows dark inside
+  a yellow rim. Renders: `r12g_drum_end`, `r12g_drum_end_R`. Checkpoint before it:
+  `HurricaneTurret_before_drum_rings.blend`.
+- **Shared planes, whole turret** (owner: "Yes, fix them"): a scan of every part under `mk_Az` for faces of two
+  parts facing the same way in one plane and overlapping found one more case: `RearFrames` lined the rear
+  recesses in the recess walls' own planes (14 faces). `frame_ring()` in `gvk_finish` now sets the lining 2 mm in
+  from the walls (`lip`). The scan now finds none (0.5 mm tolerance; the plinth was not scanned). Renders:
+  `r12h_rear`, `r12h_rear_recess`. Checkpoint before it: `HurricaneTurret_before_rear_frames.blend`.
+
 ## Checks run (round 10)
 
 - Elevation -10 to +45, 1 degree steps, with and without 2 m recoil. Overlaps, all allowed by the owner
@@ -950,17 +1057,14 @@ with no breaks where they mirror or turn.
 
 ## Left for later checkpoints
 
-- Checkpoint 3 (still open): the art's bigger dark hood on each mantlet ridge (kept small after the round 3
-  note), rivet rows and ring detail on the drum and end housings, the roof front brow band, the rear lights
-  beside the hatch. Done in round 1: frames round the rear recesses, bevels.
+- Checkpoint 3: nothing left from its list (rounds 11 and 12); open only for the owner's review.
 - Checkpoint 4: muzzle brake slots, bore recess.
 - Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
   hatches, panel and weld lines, hazard marks, stencils.
 
 ## Next
 
-The owner reviews round 10 (chin plate, welds round the chin and their round corners, cheek bolts, unpainted
-silver seams, the cleared back, one-way welds). Rebuild the detail with `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change
+The owner reviews round 12 (the drum's three bands, the ridge backs, the lamps and the cut's shading). Rebuild the detail with `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change
 in `gvk_finish`, run `finish()` once first so the decals are laid onto the new bevels. After sign-off, checkpoint 4 (barrels and muzzle brakes).
 An in-game model swap for testing is on hold (owner, 2026-11-02).
 
