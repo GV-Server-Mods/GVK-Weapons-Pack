@@ -15,7 +15,7 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 |---|---|---|
 | 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
 | 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built. Reopened (owner, 2026-11-02): the top side needs a lot more work; the underside not yet reviewed. Round 10 (2026-11-03, owner's pick "Service deck"): the disc rebuilt to the art, raised 45 degree plates and hatches on a dark deck, small details per corner, underside decals; reviewed: seams too wide, side plates should follow the ring, the junction box "out of place, not interesting". Round 11 (5 cm seams, side plates on the ring, a feed line with valves into the disc in place of the junction box) reviewed: the channel widened. Round 12 (a plate screw plan, the feed box as pressure equipment with gauges in bezel housings and red handwheels, an electrical line with a cabinet and conduits on the opposite side) reviewed: one gauge too many, the cabinet's controls belong inside, the bearing ring too plain. Round 13 (both boxes trimmed; a bolt circle, bolted pads, a hazard band, a gear band on the bearing ring and the art's slotted posts) reviewed: the posts unwanted, the well floor plain. Round 14 (posts gone; the floor broken up, owner's pick of two mockups) reviewed: welds, not V-seams, on the floor. Round 15 (weld beads on the floor, handwheels smoothed, mesh floor grates picked from four mockups) reviewed: the deck's plate plan wanted on the sides. Round 16 (the sides on the deck's corners, spacing, seam inset and screws) reviewed: the underside on the same plan, more panels, asymmetric, with forward marks. Round 17 (the underside) reviewed: the corners' dark style round the ports, braces underneath. Round 18 (frames round the ports, straps underneath) reviewed: "i like where this is going", but the corners' yellow trim round the new beams, every cavity framed evenly. Round 19 (yellow bands, rim lip and fills round every frame) reviewed: "overall looks great", but the underside's repeated grey segments show, and the bays' 45 degree plate gaps should be 5 cm. Round 20 (long bars between dark arms underneath, 5 cm plate corners, bars `PaintedMetal_Darker`) reviewed: "not quite feeling it", chrome bars, `PaintedMetal_Darker` round the bottom port, its surround's corners integrated better. Round 21 built; then the side port frames and the bottom edge's arms switched to `PaintedMetal_Darker` ("Yes, switch them"), then thin dark seams round them and on the side gussets, waiting for review |
-| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Reopened (owner, 2026-11-02): the bustle's whole rear face; round 13 (the rear face: decals for the flat 3D details, one per vent the art shows; steel hatch, feed tube and grille box) "pretty mid" (owner); round 14 took off the panel's ticks and 5 and every decal in the side recesses; round 15 (owner: "Chunky 3D parts" in the recesses; the hoses redone to drape) rejected: "everything you did is just worse in every way"; round 16 (recesses plain again; hoses fitted to the art and hung as stiff rods) accepted ("ok that looks good enough"); round 17 (the side recesses' vent, sensor group and louvre traced off the full art; the frames taken off and the recesses cut in with chamfered corners, as the art; then smaller bevels and one margin all round each recess) accepted ("Looks good enough for now", 2026-11-03); round 18 (big round rivets in place of every bolt head) built, waiting for review |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Reopened (owner, 2026-11-02): the bustle's whole rear face; round 13 (the rear face: decals for the flat 3D details, one per vent the art shows; steel hatch, feed tube and grille box) "pretty mid" (owner); round 14 took off the panel's ticks and 5 and every decal in the side recesses; round 15 (owner: "Chunky 3D parts" in the recesses; the hoses redone to drape) rejected: "everything you did is just worse in every way"; round 16 (recesses plain again; hoses fitted to the art and hung as stiff rods) accepted ("ok that looks good enough"); round 17 (the side recesses' vent, sensor group and louvre traced off the full art; the frames taken off and the recesses cut in with chamfered corners, as the art; then smaller bevels and one margin all round each recess) accepted ("Looks good enough for now", 2026-11-03); round 18 (big round rivets in place of every bolt head) built and committed; round 19 (roof bits: sensor dome, periscope, laser-warning sensors on the side boxes) rejected ("looks like a 2-year old made those"), reworked as 19b to 19d (dome profile from the owner's notes, recessed plates, decals for the vents and foot slots, a level periscope, no sensor cables), waiting for review |
 | 4 | Barrels and muzzle brakes | Round 1 (2026-11-02): tapered barrels, static collars, slotted brakes, sleeve stencils; approved and committed (owner: "Yes, commit") |
 | 5 | Decal groups | not started |
 | 6 | Split into subpart scenes | not started |
@@ -233,6 +233,9 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
     `Decals.add()` lays any atlas layout on a plane frame (`level()` for level faces, `frame()` for any face), turned,
     never mirrored; the underside is laid out in (x, -y) for the same reason. Objects are `Pl_Disc`, `Pl_Deck*`,
     `Pl_DeckDec_<material>` and `Pl_UnderDec_<material>`.
+  - `gvk_roof.py` (gunhouse round 19): `build()` rebuilds the sensor dome, the periscope and the side boxes'
+    laser-warning sensors from `CORNERS`, `POCKET`, `WIN`, `BACK`, `VENT`, `NOTCH`, `SEAM`, `PERI` and `LWS`, with their vanilla
+    materials, box UVs and modifiers. Run it after any blockout rebuild and `finish()`.
   - `gvk_ports.py` (plinth round 18): `build()` makes the dark frames round the four side ports (`Pl_PortBraces`)
     and the straps round the bottom port (`Pl_UnderBraces`) in the corner pieces' `Doodads` "+" style, and cuts
     the edge beams back under the frames' caps. The beams always start from the untouched copies `kb_Edge_*`
@@ -273,7 +276,9 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector_terminal_1..4 (see Plinth),
                             BaseDisc, BaseDiscRim, FeedTrunk, mk_Az (h 2.85) -> subpart_MissileTurretBase1
   mk_Az > BearingRing, RollerPosts, Gunhouse, Chin, Bustle, MidSupport, TrunnionBearings, Periscope,
-          PeriscopeLens, SensorDome, SensorDomeCap, SensorDomeFlange, RoofVent, SideBox_L/R, SideBoxSensor_L/R, RearAccessPanel,
+          PeriscopeLens, SensorDome, SensorDomeFlange, SensorDomeWindow, SensorDomeLens, RoofVent, SideBox_L/R,
+          SideBoxSensor_L/R, SideBoxGlass_L/R, SideBoxDec_Atlas3_Darker_L/R, SensorDomeDec_Atlas3_Chrome,
+          SensorDomeDec_Atlas3_Darker, SensorDomeDec_PanelingDarker, RearAccessPanel,
           RearPanelHinge, RearHatch, RearHatchArrow, RearFeedTube, RearGrille, RearGrilleHandles, RearPipes,
           RearHoseFittings, RearRecessParts, RearRecessBacks, RearLens, RearButton, RearLights, RearBlades, mk_El
     mk_El (0, 2.2, 5.75) -> subpart_MissileTurretBarrels
@@ -297,9 +302,9 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
 | Lamps | on each cone's top, 1.15 m ahead of the axis, axis at h 6.38 (`cone_lamp()`, `P['lamp']`): lens r 0.1 at a 3.32, 4.5 cm back in a round shroud of the cone's dark metal (r 0.14, bore 0.115) from a 3.19 to 3.38, its back 3 cm inside the ridge's nose. Its lower half sits in a recess of its own size in the cone; ahead of it the bore runs on as a round trough (r 0.117) that fades out where the cone falls away, about a 3.86 |
 | Barrels | checkpoint 4 (`gun()`, `P['barrel']`, `P['brake']`, `P['collar']`): r 0.30 from a 3.5 (1.2 m inside the cone) straight to a 6.75, tapering to r 0.265 at the brake; seam groove at a 5.9. Static collar on the cone tip r 0.305 to 0.37, a 4.66 to 4.82. Brakes r 0.31, a 10.08 to 11.58 |
 | Muzzles | (+-1.9, 11.58, 5.65); camera marker (0, 3.5, 6.55) |
-| Periscope | front-right of the roof: x -2.82 to -2.3, a 0 to 0.95; sloped front with a green lens |
-| Roof top | sensor dome on the rear section at (1.5, -5.08), as in the top view: chrome body r 0.6, 0.75 high, on a gunmetal flange r 0.78, 0.12 high; cap tapers to 0.7 r, top h 7.6. Slatted roof vent x -2.8 to -1.2, a -5.55 to -4.6 |
-| Side boxes | a triangular wedge on each side, a 1.73 to 2.18, h 4.95 to 5.65, its front 3 cm behind the cheek's front edge at its top. Inner face flat on the leaning side; level top standing 0.42 m out from the side; the outer face runs down to meet the side at the bottom (3 cm toe), so both ends are triangles, as in both arts. Top edges chamfered (outer 0.06, front and back 0.05), 2 cm bevels; a gunmetal triangular sensor plate, inset 6 cm, on the front and back |
+| Periscope | front-right of the roof, x -2.56 centre, a -0.15 to 0.95 (round 19c, `gvk_roof.py`): a level chrome half-round pod looking forward, 0.40 wide and 0.30 above the roof at the nose, the top falling 2 cm to a 0.27, then a tail over 0.42 m that narrows to a rounded point in plan (a half ellipse, round 19g) while its height eases down to the roof (a cosine); a dark D face set 3.5 cm back in a 2.5 cm rim, leaning back 8 degrees, with an `Emissive` lens in a chrome bezel |
+| Roof top | sensor dome on the rear section at (1.5, -5.08) (round 19e, `gvk_roof.py`, to the owner's notes): chrome, turned from one profile: an upright foot wall r 0.655 to h +0.13, a straight shoulder (0.105 in over 0.13 up) to the body r 0.55, the body to h +0.75, then the same slope in to a flat top r 0.445 at h 7.58; the four corners rounded 1.5 cm each way. Two recesses of one size cut into the body, 0.34 wide from h +0.285 to +0.725, `PaintedMetal_Darker` inside: the forward one with a dark plate, a chrome bezel and a `CameraLens` lens, the rear one with an `Atlas3_Darker` hatch decal. Decals: 4 dark vent slots facing outboard and pairs of slot pills round the foot (`Atlas3_Chrome`), thin `PanelingDarker` seams: a ring on each bevelled edge below the top flat (round 19f; the concave shoulder-to-body one 19g) and a rounded outline round the vents (19g). Dark flange r 0.70. Slatted roof vent x -2.8 to -1.2, a -5.55 to -4.6 |
+| Side boxes | a triangular wedge on each side, a 1.73 to 2.18, h 4.95 to 5.65, its front 3 cm behind the cheek's front edge at its top. Inner face flat on the leaning side; level top standing 0.42 m out from the side; the outer face runs down to meet the side at the bottom (3 cm toe), so both ends are triangles, as in both arts. Top edges chamfered (outer 0.06, front and back 0.05), 2 cm bevels. Round 19 makes them laser-warning sensors: on the front end only (round 19e) a triangular pocket (inset 6 cm, 4.5 cm deep, `BlackMetal`) under `GlassOutside` glass, a round `CameraLens` eye in a dark bezel at the pocket's incentre, a small brow (hood) above it; a dark status slot decal (`Atlas3_Darker`) low on the outer face (round 19's cable dropped in 19b) |
 | Base | bearing ring r 2.3 to 2.7 (h 2.79 to 3.17, turns) with 8 roller posts at r 3.55, both standing in the base disc's dark well; base disc and plinth: see Plinth below (round 10 rebuilt the disc and dropped the rim and the hidden feed trunk) |
 
 How the numbers were found: points picked on the arts (labelled grid crops), back-projected with the fitted
@@ -1584,6 +1589,79 @@ the quad's corners (sz x 0.71 + 5 mm) instead of the rim: those two drop, nothin
 on the azimuth part). Elevation sweep as round 10, nothing new. Renders `fx_gh_before`, `fx_gh_after`,
 `fx_gh_after_rear`.
 
+### Round 19: roof bits (`gvk_roof.py`)
+
+Owner (2026-11-03): "need to work on the small bits on top of the turret, the radar dome, parascope, and the side
+triangles"; the side boxes needed a purpose: laser-warning sensors (owner's pick); dome and periscope "Yes, build
+them". `gvk_roof.build()` rebuilds only these parts, with vanilla materials, box UVs and `finish()`'s modifiers
+set in the script. Checkpoint `HurricaneTurret_before_roof_bits.blend`.
+- First pass, rejected (owner, 2026-11-03): "it looks like a 2-year old made those". The dome was a concave bell
+  with a groove and cap band ("minion wearing a top hat"), its window and rear plate stuck on the outside where
+  the art recesses them; the periscope's face leaned back 22 degrees on a long slope ("pointing up at the sky");
+  the sensors had a dangling cable.
+- 19b: the art read enlarged (`art_big.py`): plates recessed into the body, the periscope levelled, the cables
+  removed. Owner: "you used too many 3D cuts where you should have used decals".
+- 19c, the dome to the owner's notes ("vertical walls with a sloped shoulder", the top "more rounded like a radome
+  with a small flat on top"): see the Roof top row. Only the window and rear plate are cut (exact boolean, pocket
+  faces `BlackMetal`; dark inner plate, chrome bezel and lens all below the surface). The vent slots (`Atlas3` 20,
+  "tall dark slot") and the foot slots (`Atlas3` 15, "small dark slot pill") are `Atlas3_Chrome` decals.
+  `wrap()` lays a piece on the lathe's upright facets, split at each facet edge so every quad is flat (the skill's
+  narrow columns): a 48-sided body is flat enough for small decals. `sharp_ring()` marks the top flat's edge sharp,
+  or the 10 degree fold smooths away. `SensorDomeCap` is gone.
+- 19d (owner): "the bottom looks good, dont need that extra ridge at the top of the shoulder, and I don't like how
+  chrome dome it looks now, lets make the top match the size and slope of the shoulder". The ring band is gone and
+  the radome top is the shoulder's slope turned over to a flat top (`SLOPE`); the body is taller, so the recesses
+  and vents moved up to its middle. Dome shell 638 triangles.
+- 19e (owner): "i want the front and back inset features to have a larger space ... same size front and back. the
+  back doesn't need whatever you put there, just use a hatch or access panel decal in there. I want the shoulders
+  and top to have a slight small bevel, then use a thin dark panel seam at the bottom edge of both slopes". Both
+  recesses are now one `POCKET` (0.34 wide, h +0.29 to +0.70, floor 0.49 out, pocket faces `PaintedMetal_Darker`);
+  the front keeps a dark plate, a chrome bezel and a larger `CameraLens` lens (r 0.075); the back holds only an
+  `Atlas3_Darker` hatch decal (`Atlas3` 31, "panel with hinge notch", 0.35 tall) on the recess floor. The four
+  profile corners are 3-segment arcs 1.5 cm either side (`bevelled()`, `BEV`). A 2 cm `PanelingDarker` seam ring
+  (piece 51, `seam_ring()`) runs just above the bevel at the foot of each slope: one quad per facet, each corner
+  pushed out along its two facets' mean normal, `v0` on the lower edge on both rings. Owner, same round: "the back
+  of the periscope needs a more gradual curve. The back sides of the laser detector boxes don't need a 2nd set of
+  opticals, and you can replace that little grey oval on the bottom of the laser detectors with a decal of the
+  same shape". The periscope's top now ends at a 0.30 and its tail eases down over 0.45 m (a cosine, about 40% of
+  the pod as in the art) to meet the roof at about 44 degrees; same footprint. The side boxes keep their front
+  optics only (`ENDS`); the status slot is an `Atlas3_Darker` decal of `Atlas3` 20 ("tall dark slot") laid along
+  the box, 0.16 x 0.036. Checks: every decal 1.5 mm off its surface at centre and corners, no flat UVs, the hatch
+  and seam faces clear from 0.3 m; dome top h 7.58. Triangles: dome shell 1,798 (the bevel arcs), window 184, lens
+  124, seams 192, periscope 540 + 124, each side box 104 + sensor 184 + glass 8. Renders `r22f_*`, boards
+  `r22f_board_dome.png` and `r22f_peri_lws_sheet.png`. Script backup before 19e: `gvk_roof_r19d.py`.
+- 19f (owner): "those seam decals wrapped around the radome, I want them down a little lower so they are directly on
+  the edges". Each seam is now centred on its corner's bevel (`seam_band()`): rows at the band's edges and at
+  every profile vertex between, so each quad lies flat on one facet, each corner pushed out along the mean normal
+  of its facets. Gaps 1.50 to 1.53 mm, no flat UVs; seams 576 triangles. Renders `r22g_*`, board
+  `r22g_dome_seams.png`. Script backup before 19f: `gvk_roof_r19e.py`. Then (owner): "can you make those seams
+  about 50% thinner?": `SEAM` width 2 cm to 1 cm (the U scale follows the width). Gaps 1.50 to 1.54 mm, no flat
+  UVs. Board `r22h_dome_seams.png`.
+- 19g (owner, with a marked render): "you made those rounded rectangle cuts taller like I asked but not tall enough.
+  I want another seam that follows the upper shoulder concave edge, and another that surrounds the 4 vertical
+  vents". `POCKET` now fills the flat body, h +0.285 to +0.725 (0.44 tall), about 1 cm clear of each bevel; taller
+  still would cut into the bevels and seams. Front lens up to v 0.55, rear hatch 0.37 tall. `SEAM` adds the concave
+  corner (shoulder to body). `outline_band()` lays a 1 cm seam round the vents as a rounded rectangle (0.27 x 0.26,
+  corner r 0.028) flat on the facets, with a row at each facet edge it crosses and `v0` outside all round. Owner,
+  same round: "make the back of the periscope more natural, you did some ugly squished thing on the back like I
+  stepped on a can of coke" (a top view with a rounded tip sketched): the tail narrows as a half ellipse in plan to a
+  point while its height still eases down as a cosine, over 0.42 m from a 0.27. Gaps 1.50 to 1.54 mm, no flat UVs,
+  no seam face blocked from 0.3 m. Triangles: seams 932, periscope 630. Boards `r22i_board_dome.png`,
+  `r22i_board_peri.png`. Script backup before 19g: `gvk_roof_r19f.py`.
+- Periscope: lofted D sections; the face's recess walls and cap are `PaintedMetal_VeryDark`. The lens is
+  `Emissive`, so the game sets its colour (the art's green is not guaranteed).
+- Laser-warning sensors: the box keeps its wedge shape; the pockets are cut after the box is built, and the
+  brows added after the cut (the exact solver needs one closed shell). Glass is `GlassOutside` (a vanilla
+  transparent material, so it needs no definition of ours), 1.2 cm behind the pocket's mouth.
+- `bo.merge()` loses material indices (a mesh round trip without slots clamps them to 0); `gvk_roof.merge()` and
+  `put()` keep them, `put()` by setting the slots before `to_mesh`.
+- Checks (19c): no existing decal face is covered by a new part (ray from 0.3 m out); the dome decals sit 1.5 mm
+  off the shell at every centre and corner; two foot-slot quads facing forward are blocked from 0.3 m by the step
+  up to the main roof, still visible from above; no zero-area UV faces; dome top h 7.582. Triangles: dome 1,592
+  (2,598 in round 19), flange 380, recess plates and bezels 336, lenses and strips 240, 14 decal quads, periscope
+  450 + 124, each side box 128 + sensor 412 + glass 16.
+- Renders `r22d_*`, boards `r22b_board.png` (round 19) and `r22d_board.png` (19c), art beside the model.
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
@@ -1675,11 +1753,11 @@ Owner, 2026-11-02, after round 12: "the turret has way more work left". Open are
 
 ## Next
 
-Plinth rounds 10 to 18 (the service deck, the bearing ring, the well floor, the sides' screws, the underside, the
-port frames) and gunhouse round 18 (rivets) are built, not committed. Next: the owner's review of plinth round 18,
-then commit when the owner says. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`, `gvk_ghdetail.build(g)`,
+Plinth rounds 10 to 21 and gunhouse round 18 are committed (3b9a413, 2026-11-03), and gunhouse round 19 (roof bits,
+`gvk_roof.py`, through 19g) after it (owner, 2026-11-03: "Commit it"). Next: the owner's next notes on the model. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`, `gvk_ghdetail.build(g)`,
 `finish()`, then `gvk_plinth.concept_face(ART)` for the sides, `gvk_deck.build()` for the disc and deck, and
-`gvk_ports.build()` for the port frames and underside straps. Rebuild
+`gvk_ports.build()` for the port frames and underside straps, and last `gvk_roof.build()` (the blockout still
+builds the old roof bits, and `finish()` would reset the roof parts' bevels). Rebuild
 the guns alone with `gvk_blockout.gun()` per side, then `finish()`. Rebuild the detail with
 `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change in `gvk_finish`, run `finish()` once
 first so the decals are laid onto the new bevels.

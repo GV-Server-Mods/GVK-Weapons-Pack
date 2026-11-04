@@ -80,9 +80,9 @@ be iterated on silhouette renders before any detail.
 | Muzzle brakes | 5.20 axis | 11.9 to 13.5 | recoil part | 0.62 m across, 1.5 m long (the art: about 12% wider than the barrel beside it): a worn steel sleeve, a dark body with 3 round-ended slots per side cut as geometry into a black-lined chamber (silhouette, and decals break on curved faces), a dark cap with a stepped, shallow black bore, no rifling. Stencils on the sleeve's outer side. At -10 degrees their undersides sit 2.6 m above the mount face, clear of a one-block wall in front |
 | Muzzle dummies | 5.20 | 13.5 | elevation | Barrel tips at rest, +Y along the barrel (0.8 m further than the old muzzles, 7.25 m past the front face) |
 | Camera dummy | about 6.30 | about 1.9 | elevation | Centred between the cones on top of the drum, looking forward |
-| Periscope | 6.80 to 7.10 | about 1.6 | azimuth | Roof front-left, centre x = +2.3 (outside the barrel lanes), small housing with an `Emissive` lens |
-| Sensor dome | 6.80 to 7.20 | about -4.0 | azimuth | Roof rear-right, centre x = -2.6 (outside the barrel lanes), chrome cylinder with a dome cap and a dark glass lens |
-| Side sensor boxes | about 5.0 | about 2.0 | azimuth | Small dark angled box on each side cheek, symmetric |
+| Periscope | 6.83 to 7.15 | -0.15 to 0.95 | azimuth | Roof front-right as the art, centre x = -2.56 (outside the barrel lanes): a level chrome half-round pod looking forward, a long tail easing down to the roof and rounding to a point in plan; a dark recessed D face with an `Emissive` lens |
+| Sensor dome | 6.70 to 7.58 | -5.78 to -4.38 | azimuth | Roof rear-left as the art, centre x = +1.5: chrome; an upright foot wall and a straight sloped shoulder, a tall body, the same slope in to a flat top, small bevels on the corners; two recesses of one size, the forward one with a lens, the rear one with a hatch decal; vent and foot slots, thin seams on the three lower edges and an outline round the vents as decals. No collision |
+| Side sensor boxes | 4.95 to 5.65 | 1.73 to 2.18 | azimuth | Dark wedge on each side just behind the cheek: laser-warning sensors, a glazed round eye at the front under a small brow, a status slot decal |
 
 Sweep limits for the azimuth part: nothing farther than 6.2 m from the axis, so the gunhouse never leaves
 the block's footprint.
@@ -99,8 +99,9 @@ Target: a second Hurricane one block (2.5 m) higher and directly behind fires fo
   at 0 degrees.
 - This turret's collision top is the roof (6.8 m), so the twin's scope ray clears it down to about -4 degrees.
 - The barrel lanes are x = +-1.5 m, each 0.62 m wide at the brakes. Nothing in them rises above the roof, and
-  the roof gear sits outside them (periscope at x = +2.3, sensor dome at x = -2.6) and below 7.2 m, so the
-  twin's barrels never touch this turret when both face forward.
+  the periscope sits outside them (x = -2.56) and below 7.2 m. The sensor dome follows the art into the left
+  lane (x = +1.5, top 7.58 m); it has no collision mesh, and the guns now sit higher than first planned
+  (`build-log.md`), so the twin's barrels pass over it when both face forward.
 - The old model's axis was 5.5 m with a taller top; compare the two in game with a stacked pair.
 
 ## Plinth: a widened vanilla large cargo container
@@ -200,9 +201,9 @@ recoil animation's `(0, 0, 2)` still moves them backward.
 | Rear hatch, feed tube, grille box and its handles, hose collars and bands | `MetalMilitary_Scratched` (the rear art's bare steel) | no |
 | Rear hoses, hatch arrow, the side recesses' vent, bezels, switch box and louvre rim | `PaintedMetal_Darker` | no |
 | Side recesses: louvre blades, push button | `PaintedMetal_VeryDark`; vent and louvre backs `BlackMetal`; sensor lens `CameraLens`; switch box pill light and LED `Emissive` | no |
-| Sensor dome | `Chrome` or a dull metal, chosen in the build | no |
+| Sensor dome, periscope housing | `Chrome`; dome recesses `PaintedMetal_Darker`, the forward one with a `PaintedMetal_VeryDark` plate and a `Chrome` bezel; dome vent and foot slots `Atlas3_Chrome` decals, rear hatch and side sensor status slots `Atlas3_Darker` decals, dome slope seams `PanelingDarker` decals; dome flange, periscope face `PaintedMetal_VeryDark` | no |
 | Lamps, periscope lens | `Emissive` (real geometry, state colours) | no |
-| Sensor dome lens | glass from the catalog | no |
+| Sensor dome lenses, side sensor eyes | `CameraLens`; side sensor pockets `BlackMetal`, eye bezels `PaintedMetal_VeryDark`, glass `GlassOutside` (vanilla, transparent) | no |
 
 The art's silver worn patches are not modelled. Edge wear, if any, only on bevels of small machinery; none on
 the gunhouse or plinth outline unless the owner asks.
