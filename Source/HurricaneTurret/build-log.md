@@ -337,7 +337,9 @@ bottom and higher guns are the owner's calls, so the fit to the perspective art 
 - **Detectors:** conveyor 1 front, 2 back, 3 left, 4 right, 5 bottom (h 0.12), each linked to its `Pl_Port_*`;
   terminal 1 to 4 front, back, left, right, linked to `Pl_Keypad_*`. All sit at the vanilla container's size.
 - **Checks:** nothing outside the block (widest: the keypad frames at 6.25). The bottom port's rim sits 1.3 cm
-  below the mount face, as on the vanilla container; left as is. Each conveyor detector's half-size (0.675) is
+  below the mount face, as on the vanilla container; left as is, then moved up 1.3 cm (owner, 2026-11-03) so
+  its rim sits flush at the mount face: no overlap with `Pl_PortFrame_D`'s bottom faces (port to 0.55,
+  frame from 0.718), its detector unchanged and still covering it. Each conveyor detector's half-size (0.675) is
   only just under the port mesh's (0.68): check the highlight in the interaction step. 488 faces in the cage,
   13,348 in the whole fixed group (including the blockout base disc, rim and trunk).
 - **Renders:** the Griffin screenshot's low three-quarter angle beside the Griffin, the right side straight on,
@@ -1711,6 +1713,32 @@ set in the script. Checkpoint `HurricaneTurret_before_roof_bits.blend`.
   lip strips carry the turn, as a bevel would. No geometry changed. Checkpoint
   `HurricaneTurret_before_r20e_braces.blend`; renders `r20e_port_braces.png` (before), `r20e_port_braces_after.png`,
   `r20e_port_arm_after.png`. No decal lies within 3 cm of the rebuilt ridges (`r20e_rim_ridge_*`).
+- **Rebuild test** (owner, 2026-11-03: "a full script rebuild to compare just as a test"): every script rerun on a
+  copy of the .blend in a background Blender, then each object compared with the saved one (faces, vertices,
+  materials, modifiers, sharp edges, UVs). 177 of 183 matched. Found and fixed:
+  - The bustle's zero-area faces come from its recess pocket booleans, after `bm_convex`'s cleanup, so the fix had
+    been made only in the .blend; `gvk_blockout.build()` now dissolves them after the cuts (rebuilt bustle equals the
+    saved one).
+  - The in-place cleanup had moved the bustle's bevelled surface under its seam decals, which were not laid again:
+    1,004 of 1,337 points of `GH_Dec_PanelingDarker_Az` sat more than 3 mm off it, up to 14 mm (renders
+    `bustle_side_saved.png`, `bustle_side_relaid.png`). Laid again: none.
+  - Laying the gunhouse decals again without rebuilding the roof afterwards put bevels back on the roof parts and on
+    `BR_Dec_Atlas4_VeryDark` (the order in Next says why), and the decal pass moved two decal sets by up to 1.5 mm
+    from run to run while the previous run's decals were still in the scene.
+  - With the old decals removed first, the seam tips on the gunhouse's silver edge (y -1.4) and side bottom edges
+    still moved by up to 1.5 mm between Blender sessions: the chamfer bevel in `gunhouse_shape()` makes the same
+    faces in a different order each session, and the strips follow the face order. It now sorts the faces by
+    position before saving the mesh; the cut lists in `_bisect()`, `weld_shells()` and `gvk_ports.py` keep their
+    order too. That changed the gunhouse's bolts once (same count, turned or moved up to 5.7 cm) and the two seam
+    sets by up to 1.5 mm.
+  - Dropped: 16 drum-band decal pieces from an older run, inside the gunhouse at every elevation (-10 to 45).
+  Now the text block `gvk_rebuild.py` holds the full rebuild in one order (`run()`). A rebuild of the saved file
+  matches it in all 183 objects, in six background sessions with different hash seeds. Decal gaps
+  (every decal point against the nearest non-decal surface): the remaining flags were there before this pass and
+  are unchanged by it: `GH_Dec_PanelingDarker_Az` 12 points over 3 mm (up to 7.6), `Pl_Dec_Decals_0775` 32 (up
+  to 5.1), `Pl_DeckDec_Atlas3_Darker` 4 (up to 6.7), `Pl_UnderDec_TextAtlasDark` 6 (up to 3.2); and points under
+  0.5 mm on seam strips (`Pl_UnderDec_Seams_PanelingDarker` 128, `Pl_DeckDec_Decals` 48, `GH_Dec_PanelingDarker_Az`
+  24, `GH_Dec_PanelingColorable_El` 32, `GH_Dec_PanelingColorable_Az` 11). Not checked one by one.
 
 ## Barrels and muzzle brakes (checkpoint 4)
 
@@ -1818,14 +1846,24 @@ Owner, 2026-11-02, after round 12: "the turret has way more work left". Open are
 ## Next
 
 Plinth rounds 10 to 21 and gunhouse round 18 are committed (3b9a413, 2026-11-03), and gunhouse round 19 (roof bits,
-`gvk_roof.py`, through 19g) after it (owner, 2026-11-03: "Commit it"). Next: the owner's next notes on the model. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`, `gvk_ghdetail.build(g)`,
-`finish()`, then `gvk_plinth.concept_face(ART)` for the sides, `gvk_deck.build()` for the disc and deck, and
-`gvk_ports.build()` for the port frames and underside straps, and last `gvk_roof.build()` (the blockout still
-builds the old roof bits, and `finish()` would reset the roof parts' bevels). Rebuild
-the guns alone with `gvk_blockout.gun()` per side, then `finish()`. Rebuild the detail with
-`gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change in `gvk_finish`, run `finish()` once
-first so the decals are laid onto the new bevels.
-An in-game model swap for testing is on hold (owner, 2026-11-02).
+`gvk_roof.py`, through 19g) after it (owner, 2026-11-03: "Commit it"), and round 20 (6b67c9d). Next: the owner's
+next notes on the model. Rebuild everything with `bpy.data.texts["gvk_rebuild.py"].as_module().run()` (about 7 s;
+the order and why are in its comment). Any partial rebuild ends with `gvk_roof.build()`, because `finish()` resets
+the roof parts' bevels; when in doubt, run the full one. Every fix goes into the scripts, never only into the
+.blend. At each sign-off, save, then run se-dev-seut's `scripts/rebuild_check.py` with
+`gvk_rebuild.py:run GVK_HurricaneTurret`: it rebuilds a copy in a background Blender and must report every object
+identical.
+An in-game swap of the real Hurricane's model is on hold (owner, 2026-11-02). Instead, round 20 is exported as a
+look-only preview (owner, 2026-11-03: inspect in game before signing off the detail): the one-scene model,
+guns level, exported with `export_sbc_type = 'none'` into the local test mod
+`%APPDATA%\SpaceEngineers\Mods\GVK_HurricanePreview` (never uploaded). Its hand-written SBC makes it a
+`CargoContainer` (`GVK_HurricanePreview`, "Hurricane preview (look only)", category "GVK Preview"), so the
+conveyor and terminal detectors have a block type that uses them; size and mount points copy
+`ARYXHurricaneCannon`. No collision, LODs or build stages; 118,744 triangles, 29 materials, `.mwm` 8.4 MB, I007.
+Warnings: W006 for the `mk_*` markers (not game dummies), W002 on `Pl_PortTrim` (16 of 768 corners at UV 0,0 on
+tiling paint) and `Pl_DeckDec_Atlas2` (65 strip quads that all map 0,0 to 0.25,0.05 on purpose): both
+harmless. In game, check each port's highlight up to its rim (the detectors are 5 mm short, see Plinth). The scene's export settings now point at
+the preview mod; re-export after a fix, then "Reload models" in game. Not yet loaded in game.
 
 After the detail pass is signed off (owner approved, 2026-11-02: "if it can help someone save time"): move the
 generic decal code from `gvk_ghdetail.py` into one standalone module in the se-dev-seut repo's `scripts\` folder.
