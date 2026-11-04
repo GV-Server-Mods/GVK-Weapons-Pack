@@ -1662,6 +1662,56 @@ set in the script. Checkpoint `HurricaneTurret_before_roof_bits.blend`.
   450 + 124, each side box 128 + sensor 412 + glass 16.
 - Renders `r22d_*`, boards `r22b_board.png` (round 19) and `r22d_board.png` (19c), art beside the model.
 
+### Round 20: shading fixes
+
+- Owner (2026-11-03, marked viewport shot): "There is a strange shadow or lighting issue happening right here on
+  both guns", on the side of each gun's ridge (`Ridge_L`/`Ridge_R`) by its nose. A first try only lowered the
+  bevel limit; owner: "you haven't fixed it at all, its still right there!". The cause was the shape: the ridge is
+  lofted from 21 sections with a fixed top and base width, while the base height follows the drum and cone, so the
+  side twisted (up to 10 cm off flat), and where the base drops 22 cm into the gap between drum and cone it flipped
+  30 degrees between two strips. A second try gave each section one side slope (body flat, max lean 7.8 degrees);
+  owner: "it's better but that entire face has some strange shading happening still", then "I think you have some
+  weird shapes underneath that is causing it to bend to meet those". Right: the base still followed the drum, the
+  gap before the cone and the cone, and the narrowing nose twisted over five strips.
+- Fix (owner: "Much better"): `ridge_mesh()` in `gvk_blockout` builds each ridge from five sections on its
+  profile's corners, every face flat. The sides keep one slope (`ridge_base`, `ridge_h`) down to a flat base at
+  `h_ax + ridge_floor` (0.30), under the drum and cone everywhere (the drum's top is 0.35 at the cone's back), so
+  nothing underneath bends them. The nose narrows by a vertical facet on each lower front corner, `ridge_taper`
+  0.45 m per metre, from the nose's top corners back over the cone into the drum: the nose's front face stays the
+  top's 0.3 m width over the lamp shroud, and the facet's crease clears the cone's shoulder by 3.5 cm. Side facets:
+  back cut, body, front and nose facet, with crisp bevelled creases (`ANGLE` 9 in `gvk_finish`). 22 faces before
+  modifiers, 296 triangles per ridge (740 before). Large faces' corner normals match their faces exactly.
+- The meshes were rebuilt in place from `ridge_mesh()` (UVs from `box_uv`); not yet run through a full rebuild.
+  Elevation sweep: each ridge now touches `Gunhouse` from -7 degrees (was +1); every new contact is the buried base
+  inside the drum. Checkpoints `HurricaneTurret_before_r20_ridge.blend`, `HurricaneTurret_before_r20c_ridge.blend`;
+  renders `r20c_owner_view_after.png`, `r20c_ridgeR_mirror.png`, `r20c_nose_side_after.png`,
+  `r20c_nose_front_after.png`, `r20c_guns.png`.
+- The same check on every part (faces over 0.01 m² whose corner normals lean more than 8 degrees off the face) also
+  flagged `Gunhouse`, `Bustle`, `RearAccessPanel`, `MidSupport`, `RearHatch`, `RearGrille` and both `SideBox`es.
+  Owner: "Check those too". Leaving out faces narrower than 4 cm (bevel strips and the side boxes' modelled
+  rounds, which shade smooth by design), only two parts had a real fault:
+  - `Gunhouse`: the skirt meets the sloped upper side at a 20 degree fold, and the cheek facets fold 12 and 20
+    degrees. Under the 30 degree bevel limit and not sharp, so each side shaded as one curved gradient (corner
+    normals up to 24 degrees off on the 2 to 3 m² faces) and the skirt fold barely showed. Panel-line decals run
+    along those folds, and a 2 cm bevel would cut 2 to 4 mm under them, so the folds are split instead:
+    `gvk_finish` `SHARP = {"Gunhouse": 10, "Bustle": 10}` marks edges over 10 degrees sharp, no bevel.
+  - `Bustle`: the same 20 degree skirt fold (same fix), and 26 zero-area faces left by `bm_convex`'s
+    near-coincident cuts, one of which threw a neighbour's normals 54 degrees off. Dissolved in place (80 faces
+    to 54); `bm_convex` now runs `dissolve_degenerate` (1e-4 m) after its cuts.
+  - Now no face wider than 4 cm on either part leans more than 1 degree. Checkpoint
+    `HurricaneTurret_before_r20d_folds.blend`; renders `r20d_gh_side_before.png` / `_after`,
+    `r20d_gh_cheek_after.png`, `r20d_bustle_side_after.png`, `r20d_bustle_corner_after.png`.
+- Not changed: `RearLights` also holds 4 zero-area faces (not flagged in shading).
+- The same check over the whole scene (the first pass covered only `mk_Az`'s children): round parts show only their
+  facet steps (5.6 degrees on 64 sides). One more real fault: `Pl_PortBraces` (plinth, no modifiers, smooth
+  shaded) smeared on the arms either side of each side port, corner normals up to 19 degrees off on 0.08 m² faces,
+  because the 1.8 cm lip strips fold 24 degrees off the wide faces and plain smoothing averaged the two. Owner: "Fix
+  them". `gvk_ports.weighted()` gives it a WeightedNormal modifier (face area, weight 100, keep sharp), called from
+  `build()`: the wide faces shade flat (within 3.5 degrees, a gentle 3.4 degree fold between two wide faces) and the
+  lip strips carry the turn, as a bevel would. No geometry changed. Checkpoint
+  `HurricaneTurret_before_r20e_braces.blend`; renders `r20e_port_braces.png` (before), `r20e_port_braces_after.png`,
+  `r20e_port_arm_after.png`. No decal lies within 3 cm of the rebuilt ridges (`r20e_rim_ridge_*`).
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
@@ -1750,6 +1800,20 @@ Owner, 2026-11-02, after round 12: "the turret has way more work left". Open are
 - Checkpoint 4: round 1 approved and committed.
 - Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
   hatches, panel and weld lines, hazard marks, stencils.
+- Checkpoint 7, hidden faces (owner asked, 2026-11-03). Measured that day: triangles whose centre lies inside
+  another closed part of the same moving group, fixed 1,516 of 29,294, azimuth 11,423 of 54,032, elevation 2,786
+  of 12,336, each barrel 62 of 3,804 (about 15,800 of 103,000; decals add 15,500 more). Largest:
+  `RearRecessParts` 1,777, `RearPipes` 1,411, `RearHoseFittings` 982, `RearGrilleHandles` 805, `BearingRing` 640,
+  each cone about 590. Plan: one scripted pass at export, after the modifiers are applied, cutting only within a
+  group (a face hidden at rest can show between groups at another elevation or azimuth), every corner inside, with
+  a report. The Bevel modifier on small round parts costs more (`RearRecessParts` 2,084 to 7,076,
+  `RearGrilleHandles` 2,296 to 5,948, `DrumBands` 2,304 to 5,376), as do the missing LODs.
+- Poly reduction (measured 2026-11-03, decal vertices within 6 mm of each part). No decals on: `RearPipes` 12,818,
+  `RearRecessParts` 7,076, `RearGrilleHandles` 5,948, `RearHoseFittings` 3,732, `Pl_PortBraces` 2,464,
+  `RearFeedTube` 2,132, `Pl_Disc` 1,644 (about 35,800, a third of the model): reducible any time. Carrying decals,
+  so any reduction comes before the decal pass and re-lays their decals: `DrumBands` 5,376 (1,296 decal vertices),
+  `Bustle` 3,094 from 190 by its 4-segment weld rounds (874), `SensorDome` 2,470 (1,924), `BearingRing` 1,536
+  (272), the plinth's `Pl_Cpt_PaintedMetal_Colorable` 1,824 (2,616).
 
 ## Next
 
