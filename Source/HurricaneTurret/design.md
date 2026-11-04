@@ -66,9 +66,8 @@ be iterated on silhouette renders before any detail.
 | Part | Height (m) | Ahead (m) | Moves with | Notes |
 |---|---|---|---|---|
 | Plinth | 0.00 to 2.50 | -6.25 to 6.25 | fixed | Widened cargo container, see Plinth below |
-| Base disc | 2.50 to 2.85 | | fixed | 10.5 m across, raised rim ring; azimuth pivot on its centre at 2.85 |
-| Feed trunk | 2.85 to 3.20 | | fixed | Central armoured column inside the bearing ring, visible in the gap under the gunhouse (ammo path) |
-| Bearing ring | 2.85 to 3.20 | | azimuth | 7.0 m across, dark, with roller posts (the art's dark ring under the gunhouse) |
+| Base disc | 2.42 to 2.85 | | fixed | 9.2 m across, painted, as the art: a flange with a chamfered edge, then a raised step ring round a dark well; keystone pads with a bolt each on the flange; azimuth pivot on its centre at 2.85 |
+| Bearing ring | 2.79 to 3.17 | | azimuth | 5.4 m across, dark, standing in the disc's well (the art's dark ring under the gunhouse). It hides the centre, so there is no feed trunk. The drum's gear band round its face. No posts (owner: the art's brackets under the gunhouse dropped) |
 | Gunhouse | 3.20 to 6.80 | -4.6 to 2.6 | azimuth | 7.0 m wide; sides lean in a little toward the roof; flat roof; side cheeks run forward past the embrasure with angled front edges |
 | Rear bustle | 3.40 to 6.60 | -5.8 to -4.6 | azimuth | Dark, angled faces (the art's mark 1), rear face about 4 m wide; farthest corner 6.1 m from the axis |
 | Embrasure | 4.10 to 6.80 | 1.0 to 2.6 | azimuth | Opening between the cheeks, 5.4 m wide, cut back into the roof's front edge so the gun shields clear at +45; dark sill below |
@@ -106,8 +105,6 @@ Target: a second Hurricane one block (2.5 m) higher and directly behind fires fo
 
 ## Plinth: a widened vanilla large cargo container
 
-## Plinth: a widened vanilla large cargo container
-
 Same idea as the Griffin base: the vanilla large cargo container's look, stretched to 5 x 5 x 1 cells.
 
 - **Kitbash source**: `<ModSDK>\OriginalContent\Models\Cubes\large\CargoContainerLarge.FBX` (the vanilla
@@ -132,8 +129,38 @@ Same idea as the Griffin base: the vanilla large cargo container's look, stretch
   detectors on moving subparts, so the gunhouse, drum and barrels carry none.
 - **Bays**: the four bays per side are flat paintable faces, each carrying one debossed X panel (Decals). All 16
   X panels are the same size; the bay that holds a keypad centres its panel in the space left.
-- **Top face**: frame border, the base disc in the middle, and the four corners outside the disc for vent
-  plate decals.
+- **Top face** (a service deck, owner's pick, 2026-11-03): frame border, the base disc in the middle, a dark deck
+  with raised painted plates in the sides' style (45 degree corners, a panel line all round, metal bolts, 5 cm
+  seams): one in each corner, cut along the disc, with an access hatch, and one along each side, its inner edge
+  following the disc. Two lines run into the disc in channels splitting the side plates (as the pipe channels on
+  the sides), one pressure and one electrical, never mixed (owner): on the right a pressure box with gauges in
+  bezel housings, two pipes with red handwheel valves and a clamp; on the left an electrical cabinet (closed lid,
+  only an emergency stop outside) and three conduits with coupling rings into a gland plate, no valves. A power
+  socket and a data plate on two corners, and a CAUTION MOVING PARTS sign at the front.
+- **Underside** (round 17, owner: more panels, asymmetric, forward marks): the deck's raised plates (3 cm) on a dark
+  bottom plate, inside the 8 cm the bottom plate sits above the cell face, so the mount face stays flat. A keel
+  plate either side of the port, each side split its own way, a sub-plate, louvre intakes, an access panel and a
+  data plate; three chevrons and a FRONT stencil on the front keel plate point forward.
+- **Port frames** (round 18, owner): the corner pieces' dark `Doodads` "+" style built round every port. On each
+  side an H: two uprights hugging the port surround and caps on the top and bottom beams, about 4 m long, in the
+  beam's own profile with the corners' chevron ends; the beams are cut back under them. Underneath, a # of straps
+  round the bottom port, run out to the edge beams. Every plate stops 5 cm off them.
+  Round 19 (owner: the yellow trim inside the dark corners round the new beams, every cavity framed evenly): each
+  upright is a dark core with yellow bands that mitre into the caps at 45 degrees, and the corners' yellow rim lip
+  runs round every side bay, turning 45 degrees at the caps and following the port surround's chamfer on the port
+  side. The underside straps and crossings get the same bands, with yellow fills in their corners and where they
+  meet the bottom edge.
+  Round 20 (owner: the underside's repeated grey segments too obvious): each underside strap is a dark arm out from
+  each junction to the caps' length, with their chevron end, and one long plain bar between the arms
+  (`PaintedMetal_Darker`, the owner's pick of five). The plates' 45 degree corners leave the same
+  5 cm as their straight sides.
+  Round 21 (owner): the bars are the edge beams' `Chrome`. Every arm, cap, strap and crossing is plain
+  `PaintedMetal_Darker` (the cut and laid "+" looked bad where straps met caps), with its 45 degree gussets built
+  in; the "+" stays on the vanilla corners only. Yellow fills in the port's corners follow the surround's 45 degree
+  corners, 4 cm off them. A thin dark panel line decal (`PanelingDarker`, 1.5 cm) runs wherever dark or chrome
+  meets yellow, or chrome meets dark, with no crease between them: along the bands beside the underside's arms and
+  bars, across each bar's end, and along every gusset; round the side ports it runs along every dark edge (the
+  bands there slope back only 3.5 degrees), mitred at each turn.
 - **Faces stay inside the cell**: the side faces sit about 5 cm inside the block boundary, so vanilla parts
   that stand proud (port frames, keypads) end flush with it. These faces are mount faces.
 
@@ -141,7 +168,7 @@ Same idea as the Griffin base: the vanilla large cargo container's look, stretch
 
 | Scene | SEUT type | Holds | Children |
 |---|---|---|---|
-| `GVK_HurricaneTurret` | main | plinth, disc, feed trunk, ports, keypads, collision, BS1-3 | `subpart_MissileTurretBase1` at the disc centre (2.85 m) |
+| `GVK_HurricaneTurret` | main | plinth, disc, ports, keypads, collision, BS1-3 | `subpart_MissileTurretBase1` at the disc centre (2.85 m) |
 | `GVK_HurricaneTurret_Az` | subpart | bearing ring, gunhouse, bustle, roof gear, side boxes | `subpart_MissileTurretBarrels` on the trunnion axis |
 | `GVK_HurricaneTurret_El` | subpart | drum, cones, gun shields, lamps, `camera`, `muzzle_projectile_1/2` | `subpart_salvo_barrel_1` (x = +1.5, left) and `_2` (x = -1.5, right) at the cone tips |
 | `GVK_HurricaneTurret_Barrel` | subpart | one barrel and muzzle brake, origin where it leaves the cone | none; linked by both recoil empties |
@@ -162,9 +189,12 @@ recoil animation's `(0, 0, 2)` still moves them backward.
 |---|---|---|
 | Gunhouse shell, roof, cheeks | `PaintedMetal_Colorable` | yes |
 | Plinth frame and bays | as imported from the vanilla container (`PaintedMetal_Colorable`), bays `PaintedMetal_Colorable` | yes |
+| Port frames and underside straps | `PaintedMetal_Darker` (arms, caps, crossings, the bottom port's square); underside bars `Chrome`; bands, fills and rim lip `PaintedMetal_Colorable` | the bands, fills and rim lip |
 | Ports and keypads | as imported (`PaintedMetal_Yellow`, `Metal_Dull`, `Conveyor`, `PaintedMetal_Darker`, `Terminal`) | no |
-| Drum bands, base disc rim ring | `PaintedMetal_Colorable`, framed by dark trim | yes |
-| Bustle, cones, gun shields, sill, side boxes, bearing ring, disc body | `PaintedMetal_Darker` | no |
+| Drum bands, base disc, deck plates and hatches | `PaintedMetal_Colorable` (drum bands framed by dark trim) | yes |
+| Bustle, cones, gun shields, sill, side boxes, bearing ring, the disc's well, deck floor, pressure box, pipes, valves and clamp, electrical cabinet, conduits, strap and gland plate, socket pad | `PaintedMetal_Darker` | no |
+| Valve handwheels | `ClangCola`, UVs packed into its plain red patch (`PaintedMetal_Red` is DLC) | no |
+| Gauge housings, conduit coupling rings | `Metal_Dull` | no |
 | Barrels, collars | `PaintedMetal_VeryDark` | no |
 | Muzzle brakes | body and cap `PaintedMetal_VeryDark`, sleeve `MetalMilitary_Scratched`, slot chamber and bore `BlackMetal` | no |
 | Rear hatch, feed tube, grille box and its handles, hose collars and bands | `MetalMilitary_Scratched` (the rear art's bare steel) | no |
@@ -189,7 +219,7 @@ Large features:
 |---|---|---|
 | Plinth side bays (16) | X panel: four copies of the debossed `Atlas3_Colorable` triangle (42), turned 90 degrees apart | About 1.5 m square, one per bay, all the same size |
 | Rear bustle face | The rear art's features, sized to it: `Atlas1` 3 louvres in the grille box's three bays; on the access panel `PanelingColorable` 17 bar and 29 ribs (raised), `Atlas3_Colorable` 21 label strip (recessed), `ButtonsAtlas_Darker` 59 button; `Atlas3_Darker` 15 slots on the hatch door. The side recesses are cut in without frames, with small chamfered corners (as the art), each 0.2 m in from every edge of its face, and hold 3D parts traced off the full art: a barred vent (upper left); a lens, push button and switch box (upper right); a bladed louvre (lower right). Their decals (round 13) and round 15's generic 3D boxes were rejected | See the build log, checkpoint 3 rounds 13 to 17 |
-| Plinth top corners (4) | `Atlas3_Darker` triangular corner plate with diagonal slots (29), as vents | Legs about 2.5 m, clear of the disc |
+| Plinth deck | `PanelingColorable` 51 panel lines round every plate and hatch and between the disc's pads; `Decals` 7 hex screws (3.5 cm) between each plate's edge and its panel line, one on every corner and evenly about 0.3 m apart (the sides' plates the same, round 16); `Decals` 4 hex nuts on the disc (a 64-nut bolt circle on the step ring, four on each pad's corners) and `Atlas2` 66 hazard stripes round the step's wall; on the well's dark floor `PanelingDarker` 55 weld beads (a ring, and 8 radials from the hub to the wall), 48 hex nuts at the bearing ring's foot, 8 `Atlas3_Darker` 22 mesh floor grates (0.36 m) and an `Atlas3_Darker` 10 hub cut to its circle; on the hatches `Atlas3_Colorable` 7 hinges and 18 grips, `TextAtlasDark` stencils H01 to H04; `ButtonsAtlas_Colorable` 54, `Atlas2` 22 and 17 on the corner details. Pressure box: `Atlas2` 18 WARNING HIGH PRESSURE, 66 hazard band, 54 triangle, 41 serial, `Atlas3_Darker` hinges and latch, `Decals` 39 dials cut round inside housings, one over each pipe. Electrical cabinet: `Atlas3_Darker` hinges and latch, `Atlas2` 29 ENERGY SOURCE on the lid, `ButtonsAtlas_Darker` 58 emergency stop (the only control outside), `Decals` 37 DANGER HIGH VOLTAGE | See the build log, plinth rounds 10 to 16 |
 | Roof rear-left | `Atlas3_Colorable` slatted vent | The art's roof grille, about 1.4 x 0.4 m |
 | Gunhouse sides, lower rear | `Atlas3_Colorable` louvre vents | Both sides (symmetric trim) |
 | Bustle, one angled face | `Atlas3_Darker` access hatch | Asymmetric |
@@ -200,10 +230,10 @@ Small features:
 |---|---|---|
 | Gunhouse painted panels | V-groove panel lines | See Panel lines and weld lines |
 | Big mechanical joints | weld lines | See Panel lines and weld lines |
-| Plate and seam edges | bolt decals at random angles | Only where a plate clamps something (the art's rivet rows) |
+| Plate and seam edges | `Decals` 10 round rivets (9 cm) at random angles on the gunhouse (owner: big rivets, not bolt heads) | Only where a plate clamps something (the art's rivet rows) |
 | Embrasure edges, top of the disc rim | `Atlas2` hazard marks, about 0.4 m | Where things move |
 | By one or two side ports | `Atlas2` warning sign | Asymmetric |
-| Plinth underside | `TextAtlas` unit stencil | Underneath, not on a front face |
+| Plinth underside | `TextAtlasDark` stencils FRONT and 5x5x3, `Atlas2` 83 chevrons pointing forward, `Atlas2` 22 data plate, `Atlas3_Colorable` 31 access panel, `Atlas1Colorable` 3 louvres; panel lines and screws as the deck | Underneath, not on a front face; reads upright from below with the front at the top |
 | Gunhouse, one side | short `TextAtlas` label | Asymmetric |
 
 ### Panel lines and weld lines
@@ -243,9 +273,11 @@ two structural parts are joined for good, bolts where a plate clamps something.
 | Bustle to gunhouse (around the joint), cheeks to side walls (along the joint) | azimuth |
 | Side sensor boxes, periscope housing and sensor dome to their faces (around the footprint) | azimuth |
 | Bearing ring roller posts to ring | azimuth |
-| Feed trunk to disc (ring), disc rim ring to disc | fixed |
+| Base disc to deck (ring) | fixed |
 
-The kitbashed plinth keeps the vanilla container's clean look: no welds or seams added there.
+The plinth gets panel lines and one plate screw plan round its plates (deck round 10, sides round 16, underside
+round 17); its only welds
+are on the well floor (round 15).
 
 Geometry kept, and why: the gunhouse, bustle, drum, cones, shields, barrels and muzzle brakes (silhouette),
 sensor dome, periscope and side boxes (silhouette from a distance), lamps and lenses (glow needs real
@@ -256,7 +288,7 @@ geometry), and the kitbashed frame, ports and keypads (vanilla parts).
 Turret subparts get no physics, so all shapes go in the main scene, built in block space:
 
 1. Plinth: a box, 12.5 x 12.5 x 2.5 m.
-2. Disc: cylinder, 10.5 m across, 2.5 to 2.85 m.
+2. Disc: cylinder, 9.2 m across, 2.5 to 2.85 m.
 3. Gunhouse: one cylinder on the azimuth axis, 4.5 m radius, 2.85 to 6.8 m. It covers the gunhouse at every
    angle about equally, between its sides (3.5 m) and its bustle (6.1 m). Its top stays at the roof and the roof
    gear gets no collision, so a superfiring twin's line of sight passes over (see Superfiring).
@@ -271,7 +303,7 @@ every shape at every elevation.
   vanilla `CargoContainerLarge_LOD1..3` parts, lengthened the same way as the frame.
 - Dedicated build stages BS1 to BS3 at 0.33 / 0.66 / 1.00 in the main scene. Every stage shows the whole
   outline including the gunhouse, drum, cones and barrels in their rest pose, with the load path from plinth
-  to gunhouse (bearing ring, feed trunk). The plinth part of each stage can start from the vanilla
+  to gunhouse (disc, bearing ring). The plinth part of each stage can start from the vanilla
   `CargoContainerLargeConstruction_1..3` frames, lengthened the same way.
 
 ## Review checkpoints

@@ -14,8 +14,8 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
 | # | Checkpoint | State |
 |---|---|---|
 | 1 | Blockout | Rounds 1 to 3 rejected (proportions, medium shapes, dimensions). Rounds 4 to 7 reviewed (round 5 from the owner's side and top views, round 8's rear face from a straight-on rear view); round 9 reviewed ("almost ready for final details"); round 10 signed off (owner, 2026-11-01) |
-| 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built. Reopened (owner, 2026-11-02): the top side needs a lot more work; the underside not yet reviewed |
-| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Reopened (owner, 2026-11-02): the bustle's whole rear face; round 13 (the rear face: decals for the flat 3D details, one per vent the art shows; steel hatch, feed tube and grille box) "pretty mid" (owner); round 14 took off the panel's ticks and 5 and every decal in the side recesses; round 15 (owner: "Chunky 3D parts" in the recesses; the hoses redone to drape) rejected: "everything you did is just worse in every way"; round 16 (recesses plain again; hoses fitted to the art and hung as stiff rods) accepted ("ok that looks good enough"); round 17 (the side recesses' vent, sensor group and louvre traced off the full art; the frames taken off and the recesses cut in with chamfered corners, as the art; then smaller bevels and one margin all round each recess) accepted ("Looks good enough for now", 2026-11-03) |
+| 2 | Plinth kitbash | built from `CargoContainerSmall` (not the doc's large container, see Plinth below). First pass "extremely boring" (owner); four side treatments in round 2 rejected; round 4's brace decals "ok" but "too geometric"; round 5's service face "ok" but its signs too repetitive; round 6 "still not satisfied"; round 7 (the concept art's sides) "a start" but "tossed together"; round 8 (one panel scheme) "not a huge fan"; round 9: the art's layout again with 45 degree corners, perimeter panel lines, metal bolts, 3D glass windows and a piped channel; chin raised between the barrels; signed off ("Ok, next area", owner, 2026-11-01). Deck collar, gussets and corner vents built. Reopened (owner, 2026-11-02): the top side needs a lot more work; the underside not yet reviewed. Round 10 (2026-11-03, owner's pick "Service deck"): the disc rebuilt to the art, raised 45 degree plates and hatches on a dark deck, small details per corner, underside decals; reviewed: seams too wide, side plates should follow the ring, the junction box "out of place, not interesting". Round 11 (5 cm seams, side plates on the ring, a feed line with valves into the disc in place of the junction box) reviewed: the channel widened. Round 12 (a plate screw plan, the feed box as pressure equipment with gauges in bezel housings and red handwheels, an electrical line with a cabinet and conduits on the opposite side) reviewed: one gauge too many, the cabinet's controls belong inside, the bearing ring too plain. Round 13 (both boxes trimmed; a bolt circle, bolted pads, a hazard band, a gear band on the bearing ring and the art's slotted posts) reviewed: the posts unwanted, the well floor plain. Round 14 (posts gone; the floor broken up, owner's pick of two mockups) reviewed: welds, not V-seams, on the floor. Round 15 (weld beads on the floor, handwheels smoothed, mesh floor grates picked from four mockups) reviewed: the deck's plate plan wanted on the sides. Round 16 (the sides on the deck's corners, spacing, seam inset and screws) reviewed: the underside on the same plan, more panels, asymmetric, with forward marks. Round 17 (the underside) reviewed: the corners' dark style round the ports, braces underneath. Round 18 (frames round the ports, straps underneath) reviewed: "i like where this is going", but the corners' yellow trim round the new beams, every cavity framed evenly. Round 19 (yellow bands, rim lip and fills round every frame) reviewed: "overall looks great", but the underside's repeated grey segments show, and the bays' 45 degree plate gaps should be 5 cm. Round 20 (long bars between dark arms underneath, 5 cm plate corners, bars `PaintedMetal_Darker`) reviewed: "not quite feeling it", chrome bars, `PaintedMetal_Darker` round the bottom port, its surround's corners integrated better. Round 21 built; then the side port frames and the bottom edge's arms switched to `PaintedMetal_Darker` ("Yes, switch them"), then thin dark seams round them and on the side gussets, waiting for review |
+| 3 | Gunhouse and elevation group | round 1 (finish pass, rear frames); round 2 (raised silver band, invented seams) rejected; round 3 (the art's layout, flush silver) corrected; round 4 (chamfer, dog-leg, chin stripe, panel decals) corrected; round 5 (seam wraps and joins, chin stripe on the nose) built, fastener plan proposed; round 6 (front seam on the edge, decal swaps) built, edge band candidates mocked up and dropped; round 7 (seams and welds on soft folds) built; round 8 (3D details to decals, the fastener plan on joints, 4.5 cm seams, vertical edge seams and welds) built; round 9 (marked seams and welds, joins, bolt rows on both sides of seams) built; round 10 (bolted chin plate, welds round the chin with round corners, cheek bolts, unpainted silver seams) "ok for now" (owner, 2026-11-02); round 11 (drum rivets and plate joints as the art, bolts down the sides' rear edges) built; its drum bolts rejected (uneven about the barrels, bent over facet folds); round 12 (strip decals laid one quad per facet: the gear band fills the ring gaps, painted rivet bands on the eight rings, a wide perforated band beside each ring pair; ridge backs cut; lamps rebuilt as one bore through shroud and cone, with true normals on the cut) built. Reopened (owner, 2026-11-02): the bustle's whole rear face; round 13 (the rear face: decals for the flat 3D details, one per vent the art shows; steel hatch, feed tube and grille box) "pretty mid" (owner); round 14 took off the panel's ticks and 5 and every decal in the side recesses; round 15 (owner: "Chunky 3D parts" in the recesses; the hoses redone to drape) rejected: "everything you did is just worse in every way"; round 16 (recesses plain again; hoses fitted to the art and hung as stiff rods) accepted ("ok that looks good enough"); round 17 (the side recesses' vent, sensor group and louvre traced off the full art; the frames taken off and the recesses cut in with chamfered corners, as the art; then smaller bevels and one margin all round each recess) accepted ("Looks good enough for now", 2026-11-03); round 18 (big round rivets in place of every bolt head) built, waiting for review |
 | 4 | Barrels and muzzle brakes | Round 1 (2026-11-02): tapered barrels, static collars, slotted brakes, sleeve stencils; approved and committed (owner: "Yes, commit") |
 | 5 | Decal groups | not started |
 | 6 | Split into subpart scenes | not started |
@@ -164,7 +164,17 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
   `HurricaneTurret_plinth_r4.blend` (flat sides with both brace decal versions), `HurricaneTurret_plinth_r5.blend`
   (the service face on all four sides), `HurricaneTurret_plinth_r6.blend` (round 6, before the concept-art sides), `HurricaneTurret_plinth_r7.blend`
   (round 7 as reviewed), `HurricaneTurret_plinth_r8.blend` (round 8 as reviewed),
-  `HurricaneTurret_before_cp3.blend` (signed-off plinth, before the checkpoint 3 finish pass).
+  `HurricaneTurret_before_cp3.blend` (signed-off plinth, before the checkpoint 3 finish pass),
+  `HurricaneTurret_before_deck.blend` (before plinth round 10, the service deck),
+  `HurricaneTurret_before_deck_r11.blend` (plinth round 10 as reviewed), `HurricaneTurret_before_fasteners.blend`
+  (plinth round 11 with the wider channel, before the rivets and screws), `HurricaneTurret_before_power.blend`
+  (rivets, screws and the first equipment box, before the electrical line), `HurricaneTurret_before_ring.blend`
+  (plinth round 12 as reviewed), `HurricaneTurret_before_floor.blend` (plinth round 13 as reviewed, with the
+  roller posts), `HurricaneTurret_before_welds.blend` (plinth round 14 as reviewed, V-seams on the floor),
+  `HurricaneTurret_before_sides.blend` (plinth round 15 with the cross caps, sides with corner bolts),
+  `HurricaneTurret_before_under.blend` (plinth round 16, the underside's two panel lines and corner pads),
+  `HurricaneTurret_before_ports.blend` (plinth round 17, before the port frames and underside straps),
+  `HurricaneTurret_before_trim.blend` (plinth round 18, before the yellow trim round the frames).
 - Scene `GVK_HurricaneTurret`: SEUT main scene, large grid, `bBox` 5 x 5 x 3. The file also holds Blender's
   untouched default `Scene` (typed main scene by SEUT, no SubtypeId); leave it or ask before deleting.
 - Text blocks in the `.blend` (load each into a module: `g = types.ModuleType(name); exec(text, g.__dict__)`):
@@ -172,8 +182,8 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
     (replace or create a part in place, parented with identity inverse, `part` tag, placeholder `BO_*`
     material), `marker()`, `bm_prism_x`, `bm_loft`, `bm_cyl`, `bm_box`, `bm_tube_z`, `boolean()` (exact solver,
     cutter in block space), `pose(az, el, recoil)` (keyword `el=`; the first argument is azimuth), `rest_pose()`.
-  - `gvk_blockout.py`: the parameter dict `P` and `build(g, P)`, which rebuilds every part except the plinth and
-    the feed trunk. Gunhouse and rear section are convex solids cut from plane lists (`bm_convex`, `side_planes`
+  - `gvk_blockout.py`: the parameter dict `P` and `build(g, P)`, which rebuilds every part except the plinth (the
+    base disc included, see `gvk_deck.py`). Gunhouse and rear section are convex solids cut from plane lists (`bm_convex`, `side_planes`
     with the turn-in, `inset` for the rear section), then the embrasure (with the brow and the sloped internal
     armour), the lamp pockets in the cones and the rear recesses are cut. Change `P` and rerun `build(g, P)`.
     `cone_lamp()` builds one cone with its lamp and shroud; `cone_normals()` then bevels the cone in the mesh and
@@ -215,6 +225,25 @@ elevation range). The layout numbers in `design.md` are replaced by the ones bel
     the skill's `atlas-regions.json`, `strip()` lays a tileable strip between two points, `slice9()` stretches a
     plain piece without stretching its rim, `x_panel()` builds an X from triangle 42, and `put_decal()` puts a
     layout on all four sides or per side. `sign_text()` re-letters the sign above each port.
+  - `gvk_deck.py` (plinth rounds 10 and 11): `build()` rebuilds the base disc, the deck plates, hatches, the feed
+    line and corner details and every top and underside decal from `DISC`, `DECK` and `UNDER`, deleting the round 2
+    deck parts, the old disc and round 10's junction box if they are still there; `DECK['feed']['style']` is
+    `"channel"` or `"plate"`; it needs `gvk_plinth.py` (atlas helpers, `SEAM`, `BOLT`). Change a value and
+    rerun it on its own. Corner layouts are drawn for the left-back corner and turned a quarter at a time.
+    `Decals.add()` lays any atlas layout on a plane frame (`level()` for level faces, `frame()` for any face), turned,
+    never mirrored; the underside is laid out in (x, -y) for the same reason. Objects are `Pl_Disc`, `Pl_Deck*`,
+    `Pl_DeckDec_<material>` and `Pl_UnderDec_<material>`.
+  - `gvk_ports.py` (plinth round 18): `build()` makes the dark frames round the four side ports (`Pl_PortBraces`)
+    and the straps round the bottom port (`Pl_UnderBraces`) in the corner pieces' `Doodads` "+" style, and cuts
+    the edge beams back under the frames' caps. The beams always start from the untouched copies `kb_Edge_*`
+    (meshes kept with a fake user), so rerunning it is safe; if the beams are ever rebuilt, delete the `kb_Edge_*`
+    meshes first so it copies the new ones. Change `PORT`, `UNDER`, `CAP` or `BEAM` and rerun it on its own.
+    Round 19: it also builds the rim lip round each side bay (`Pl_PortTrim`) and cuts the vanilla rim in the
+    `Plinth` mesh where the new parts take over (`rim_cut()`, `under_lip_cut()`), always from the untouched copy
+    `kb_Plinth`; the same rule applies if the plinth's root mesh is ever rebuilt. Round 20: the underside bars'
+    material is `BAR['mat']`; change it and rerun. Round 21: every arm, cap and crossing is `DARK`, box mapped,
+    with built gussets; the "+" texture is no longer used here. The frames' seam decals (`beam_seams()`,
+    `port_seams()`) are `FRAME_SEAM`.
   - `gvk_shot.py`: `shot(name, eye, tgt, lens, res, color, ortho, hide)`, a Workbench render from any eye
     point (perspective, or orthographic with `ortho`), hiding the named objects, restoring everything after.
     `shot_eevee(name, eye, tgt, ..., paint)` renders in EEVEE with SEUT's paint preview (scene paint colour,
@@ -271,7 +300,7 @@ Plinth (fixed, top-level) > Pl_* kitbash parts, detector_conveyor_1..5, detector
 | Periscope | front-right of the roof: x -2.82 to -2.3, a 0 to 0.95; sloped front with a green lens |
 | Roof top | sensor dome on the rear section at (1.5, -5.08), as in the top view: chrome body r 0.6, 0.75 high, on a gunmetal flange r 0.78, 0.12 high; cap tapers to 0.7 r, top h 7.6. Slatted roof vent x -2.8 to -1.2, a -5.55 to -4.6 |
 | Side boxes | a triangular wedge on each side, a 1.73 to 2.18, h 4.95 to 5.65, its front 3 cm behind the cheek's front edge at its top. Inner face flat on the leaning side; level top standing 0.42 m out from the side; the outer face runs down to meet the side at the bottom (3 cm toe), so both ends are triangles, as in both arts. Top edges chamfered (outer 0.06, front and back 0.05), 2 cm bevels; a gunmetal triangular sensor plate, inset 6 cm, on the front and back |
-| Base | bearing ring r 2.3 to 2.7 (h 2.85 to 3.17, turns) with 8 roller posts at r 3.55; base disc r 4.6 (h 2.42 to 2.78, lowered onto the plinth's top plate in checkpoint 2); rim r 4.1 to 4.55 (to h 2.85); feed trunk (r 1.0) unchanged; plinth: see Plinth below |
+| Base | bearing ring r 2.3 to 2.7 (h 2.79 to 3.17, turns) with 8 roller posts at r 3.55, both standing in the base disc's dark well; base disc and plinth: see Plinth below (round 10 rebuilt the disc and dropped the rim and the hidden feed trunk) |
 
 How the numbers were found: points picked on the arts (labelled grid crops), back-projected with the fitted
 cameras where the geometry is known (a known x or h plane), and checked as paired art and model renders from the
@@ -344,7 +373,7 @@ Third version as built, per side (u along the face, n out from the centre, h abo
 - **Back plate** (`Pl_Bays`, `PaintedMetal_Darker`): a dark plate at n 5.65 to 5.70 behind each half side,
   seen only through the gaps.
 
-Top deck:
+Top deck (all three removed in round 10):
 - **Collar** (`Pl_Collar`, `PaintedMetal_Darker`): a 64-sided ring (as the base disc) round the base disc,
   r 4.55 to 5.25, h 2.42 to 2.64, outer edge chamfered 45 degrees, so the base steps up deck, collar, disc,
   rim, bearing ring.
@@ -540,6 +569,376 @@ no stripes.
   (`r9_grey` with grey paint, closest to the art).
 
 Signed off (owner, 2026-11-01): "Ok, next area".
+
+### Round 10: the service deck and the disc after the art (`gvk_deck.py`)
+
+Owner (2026-11-02): "the entire top side of the Plinth needs a TON of work". Proposed with the art's disc, the
+Griffin's top and a decal sheet; three corner options (Griffin match, Service deck, Drive deck). Owner's pick
+(2026-11-03): Service deck. Built from the left-back corner's layout, turned a quarter at a time, in the sides'
+language (45 degree corners, panel lines all round, metal bolts on the corner chamfers):
+- **Disc** (`Pl_Disc`, painted, after the art): flange r 4.6 from the deck (h 2.42) to 2.58, a 10 cm chamfer to
+  its top at h 2.68; a step ring r 3.78 to 4.02 up to h 2.85, both edges chamfered 5 cm; inside it a dark well
+  (`PaintedMetal_Darker`, floor h 2.78) holding the bearing ring and the 8 roller posts, as the art's dark ring
+  with posts under the gunhouse. 12 keystone pads on the flange (one on each axis), r 4.07 to 4.45, 0.52 to 0.60 m
+  wide, 2.5 cm proud, a metal bolt each; radial V-groove seams halfway between them. Replaces the dark disc and its
+  painted rim; the round 2 collar and gussets and the dark corner vents are gone (none is in the art).
+- **Deck floor** (`Pl_TopPlate`) dark, as behind the side plates: tried painted and dark side by side, the dark
+  one makes the plates read.
+- **Plates** (`Pl_DeckPlates`, painted, 3 cm proud, 8 mm top chamfer, 0.2 m corners): a corner plate in each
+  corner from 3.0 to 5.75 on both axes, its inner corner cut along x + y = 6.9 (28 cm off the disc); a side plate
+  between each pair (x within 2.8, 4.85 to 5.75 out). Panel line 7 cm in, bolts on every 45 degree edge (two on
+  each corner plate's long cut).
+- **Hatches** (`Pl_DeckHatches`): one per corner plate, 1.3 m square (3.65 to 4.95), 0.15 m corners, 2 cm proud,
+  a seam line round it 3 cm out on the plate, bolts on its corners. Hinge knuckles (`Atlas3_Colorable` 7) on the
+  edge toward the block's side, a recessed grip (`Atlas3_Colorable` 18) on the inner edge, dark stencils H01 to
+  H04 (front corners read from the front, back corners from the back; H01 right-front, H02 left-front).
+- **Corner details**, beside each hinge: right-front a dark junction box (0.46 x 0.7 m, 0.14 to 0.24 m tall, top
+  sloping toward the hatch) with the three-toggle switch panel (`ButtonsAtlas_Colorable` 1) on its slope;
+  left-back a power socket (`ButtonsAtlas_Colorable` 54) on a dark 4 cm pad; right-back a TYPE A data plate
+  (`Atlas2` 22); left-front nothing. CAUTION MOVING PARTS (`Atlas2` 17, 0.72 m) on the front side plate.
+- **Underside** (decals only; it is a mount face): a panel line round the bottom plate (5.75 half size, 0.4 m
+  corners) and one round the port (1.55, 0.25), bolts on their corner chamfers, and a pad plate
+  (`Atlas3_Colorable` 30, 0.7 m) at each corner. Laid out in (x, -y) so nothing is mirrored seen from below.
+- Fixes on the way: the side sensor boxes reused the name `hb` for their height, so the bearing ring and the
+  roller posts had been built from h 0.7 to 2.85, hidden inside the plinth; they reach the gunhouse again.
+  `Pl_Disc` lost its dark faces at first because `materials.clear()` resets the faces' material indices;
+  `gvk_deck.put_mesh()` sets them back.
+- Checks: a full azimuth turn in 5 degree steps hits nothing on the deck; the bearing ring clears the well floor
+  by 1 cm and the posts the step ring by 5 cm. Everything on the deck stays below h 2.70 (gunhouse bottom 3.15,
+  lowest hose 3.30). Elevation sweep, sweep radius 7.304, superfire -6.25, lowest brake 3.729 and highest point
+  7.6 unchanged. Triangles: new parts 2,780 (disc 1,644, decals 456); the fixed group is 18,974. Not checked in
+  game. Renders `r10_*` and the board `plinth_r10_board.png`.
+
+### Round 11: tight seams, side plates on the ring, a feed line for the junction box
+
+Owner on round 10 (2026-11-03): "Those top panels need to meet a little closer the same way as the sides do. The 4
+long rectangle panels should conform around the ring more. The junction box looks out of place, not interesting at
+all."
+- **Seams 5 cm**, as on the sides: corner plates from 3.0 to 5.88 (5 cm in from the beams' bevel at 5.93; the outer
+  corner 0.17 m, 5 cm off the corner pieces' diagonal), side plates to x 2.95. The plates stop 5 cm off the disc
+  (r 4.65): the corner plates' inner cut moved to x + y = 4.65 x sqrt 2, touching that circle.
+- **Side plates follow the ring**: inner edge on the disc's own 64 facets at r 4.65, so the seam to the disc runs
+  parallel all round; outer corners 0.2 m. Where a plate's straight end meets the ring the corner is about 50
+  degrees and stays sharp (a short cut there made the panel line fold over itself).
+- **Feed line** replaces the junction box (right side, centred, radial): a painted connector box at the beams
+  (0.52 x 0.48 m, 15 cm above the plates, panel line and corner bolts), two dark pipes (r 6 cm) on the dark floor
+  in a 0.62 m channel that splits the right side plate (its two halves get 0.1 m cuts at the ring), a gate valve on
+  each pipe with a painted handwheel, a dark bolted clamp (0.48 m wide), and a flange on each pipe at the disc's
+  rim. The channel is the sides' pipe-channel language. Also built laid on the plate (`style="plate"`); owner's pick
+  (2026-11-03): the channel, "needs a little more space between the plates, right now they are colliding". The
+  first channel was 0.4 m with the box and clamp lying over the plates' edges; now everything sits inside it, the
+  box 5 cm and the clamp 7 cm off the plates (renders `r11b_feed`, `r11b_feed_top`). The right-front corner is
+  plain now.
+- Checks (after the wider channel): a full azimuth turn in 5 degree steps hits nothing on the deck; the feed box
+  clears the gunhouse by 0.50 m. Highest feed part h 2.65. Elevation sweep, sweep radius 7.304, superfire -6.25, lowest brake 3.729 and
+  highest point 7.6 unchanged. Triangles: feed 1,000; the fixed group is 20,276. Not checked in game. Renders
+  `r11_*` and the board `plinth_r11_board.png`.
+
+### Round 12: a screw plan, a pressure side and an electrical side
+
+Owner on round 11 (2026-11-03): the plate fasteners "need a more intentional plan ... between the panel seams and
+the edge of the plates ... a little smaller and a different style than whats used on the main armor"; the valve
+wheels "a worn red"; the box "shouldn't just look like a thicker panel ... decals all around it". Then: "we can't
+have 'high pressure' on the same little feature as 'energy source' ... Make one side of the turret look like
+pressure tubes, and the other side look like electrical panel and conduit (without valve knobs)", and the gauge
+"needs to be trimmed into a circle and integrated inside a feature".
+- **Plate screws** (`DECK['fast']`, `perimeter_dots()`): `Decals` 7, the plain hex socket (the gunhouse now has
+  round rivets), 3.5 cm, on a ring 3.2 cm in from each plate's edge, between the edge and its panel line. One on
+  every corner (corners closer than 0.35 m merge into one), then evenly about 0.30 m apart between corners. Hatches:
+  a screw on each corner only. The plinth's sides and the underside keep their old bolts (`Decals` 11).
+- **Pressure side** (right, `feed()`, `equip()`): the box is dark (`PaintedMetal_Darker`), its top at h 2.70.
+  Decals, pressure only: the lid's seam, two hinges and a latch, WARNING HIGH PRESSURE on top (read from outside);
+  a hazard band on the back; a warning triangle and the serial on the side toward the back. Gauges (`gauge()`): the
+  `Decals` 39 dial cut to its circle (`GAUGE`, a 24-sided decal) recessed 1.2 cm in a `Metal_Dull` housing with a
+  chamfered bezel lip, one large (dial r 7.5 cm) on the side toward the front and a small one (r 4 cm) over each
+  pipe. Handwheels in a plain red patch of `ClangCola` (`RED`; non-DLC; `PaintedMetal_Red` is DLC and
+  `WarningSigns1`'s red rendered glossy).
+- **Electrical side** (left, `power()`, `panel()`, `DECK['power']`): the left side plate split by the same 0.62 m
+  channel. A dark cabinet (0.52 x 0.54 m, sharper 3 cm corners, top h 2.70): a door seam with two hinges, a keyed
+  breaker panel (`ButtonsAtlas` 2) and ENERGY SOURCE on top; a light over each conduit (green, green, red); an
+  EMERGENCY STOP and a rocker switch on the side toward the back; two slide switches and a 6-pin connector on the
+  other; DANGER HIGH VOLTAGE on the back. Three conduits (r 3 cm) with bright `Metal_Dull` coupling rings about
+  every 0.3 m, through a screwed strap, into a screwed gland plate on the disc's rim. No valves.
+- **Checks:** a full azimuth turn in 5 degree steps hits nothing on the deck; both boxes clear the gunhouse by 0.45 m
+  (135 and 315 degrees). Sweep radius 7.304, highest 7.6, lowest brake 3.729, superfire -6.25 unchanged.
+  Triangles: gauges 786, electrical line 768; the fixed group is 22,672. Not checked in game. Renders `p12_*`,
+  `fx_*` and the board `plinth_r12_board.png`.
+
+### Round 13: the bearing ring, both boxes trimmed
+
+Owner on round 12 (2026-11-03): "pressure box doesn't need the 3rd gage on the side. electrical box has too many
+random buttons on the sides. if it is a box with a lid then maybe the buttons should be hidden inside? Only maybe an
+emergency stop button on the outside or something. The bearing ring needs more attention, it looks very plain and
+those tiny random fasteners around it look dumb."
+- **Pressure box:** the big side gauge is gone; a gauge over each pipe stays.
+- **Electrical cabinet:** a closed lid with two hinges, a latch and ENERGY SOURCE; the breaker keys, lights,
+  rocker, slide switches and connector are gone (inside, by the owner's reading). One EMERGENCY STOP on the side
+  toward the front; DANGER HIGH VOLTAGE on the back.
+- **Disc** (the art's layout kept: pads, radial seams, the raised step ring): one fastener, `Decals` 4 hex nuts, in
+  regular patterns in place of the pads' single 5 cm bolt. A bolt circle of 64 nuts (8 cm, one a facet) round the
+  step ring's top at r 3.90; four nuts (7 cm, 7.5 cm in) on each pad's corners. The pads stand 4 cm proud (was
+  2.5). `Atlas2` 66 hazard stripes round the step's 12 cm outer wall, one piece a facet, 7.9 cm tall: the line where
+  the turret turns (design.md's hazard marks at the disc rim).
+- **Bearing ring** (azimuth part, `bearing()`, objects `BR_Dec_*` under `mk_Az`): the drum's gear band
+  (`Atlas4_VeryDark` 6) all round its outer face, one quad a facet at the drum's spacing (a block every second facet,
+  0.36 m tall on the 0.38 m face); the art's slotted posts: `Atlas3_Darker` 32 (panel with a centre slot, 0.28 m) on
+  each roller post's outer face.
+- **Checks:** a full azimuth turn in 5 degree steps hits nothing on the deck or disc (roller posts to the well floor
+  1 cm, as round 10). Elevation sweep pairs as round 10; sweep radius 7.304, highest 7.6, lowest brake 3.729,
+  superfire -6.25 unchanged. Triangles: fixed 22,702, azimuth 34,594 (bearing decals 152). Not checked in game.
+  Renders `p13_*` and the board `plinth_r13_board.png`.
+
+### Round 14: no roller posts, the well floor broken up
+
+Owner on round 13 (2026-11-03): "I'm not a big fan of those posts underneath the turret ... That big grey disc there
+needs some more details. Not sure if one of the circular metal decals would look ok if it were scaled up to cover the
+entire thing, or maybe just some other details in there to break it up a bit." Two mockups (`floor_options_board.png`):
+A, the `Atlas3_Darker` 4 round disc stretched over the whole 7.5 m floor (soft, its grime blotchy at that scale); B,
+the floor broken up. Owner's pick: "B, and drop posts".
+- **Posts:** gone (`gvk_blockout`: `RollerPosts` and `P['posts']` removed); the gunhouse sits on the gear-banded
+  bearing ring alone. Their slot panels went with them.
+- **Floor** (`floor()`, `FLOOR`, all decals at h 2.78): a `PanelingDarker` 51 ring seam at r 3.3 and 8 radial seams
+  from r 2.75 to 3.74 (22.5 degrees off the axes); 48 hex nuts (`Decals` 4, 7 cm) at r 2.86, the bearing ring's
+  foot; 8 round covers (`Atlas3_Darker` 17, 0.4 m, cut to their circle) at r 3.55 on the axes and diagonals; an
+  `Atlas3_Darker` 10 ring disc hub (2.2 m) in the middle. With the turret on, only the ring outside the bearing ring
+  shows, through the 37 cm gap under the gunhouse (low views, and under the chin at standing height); the hub shows
+  only without the turret (likely while the block is being built, not checked in game).
+- **Checks:** a full azimuth turn hits nothing; elevation sweep pairs as round 10; sweep radius 7.304, highest 7.6,
+  lowest brake 3.729, superfire -6.25 unchanged. Triangles: fixed 23,164, azimuth 34,482. Not checked in game.
+  Renders `p14_*` and the board `plinth_r14_board.png`.
+
+### Round 15: welds on the floor
+
+Owner on round 14 (2026-11-03): "Do welded lines on that gray disc instead of V panel decals".
+- **Welds** (`weld()`, `WELD`): the gunhouse's bead, `PanelingDarker` 55, 5 cm wide, its repeat window (texels 62 to
+  1931) laid one way along each weld and cut where it starts over. The ring at r 3.3 runs all round, its repeats
+  stretched to a whole number (16) so it closes on itself, and sits 1 mm higher than the radials. The 8 radials now
+  run as plate joins from the hub's edge (r 1.1, the bead's capped end) to the well's wall (r 3.775), each in two
+  pieces that end on the ring's centre line under it, as the gunhouse's T-joins. The radials used to stop at
+  r 2.75 and 3.74; the part inside the bearing ring shows only without the turret.
+- **Handwheels** (owner: "the red pipe handles need some shade smoothing"): `Pl_FeedWheels` now smooths at 65 degrees
+  (`put_mesh(..., angle=65)`). The rim's 6-sided tube turns 60 degrees from face to face, so the default 30 degrees
+  left it faceted; the spokes' 90 degree edges stay sharp. Board `wheels_board.png`.
+- **Floor covers** (owner: "those gigantic Philips head screw caps look silly"): four mockups on
+  `cover_options_board.png`: A round drain grilles (`Atlas3_Darker` 2, 0.3 m), B lift-out plates with two slots
+  (`Atlas3_Darker` 30, 0.32 m), C mesh floor grates (`Atlas3_Darker` 22, 0.36 m), D none. Owner's pick: "I like
+  your option C: mesh floor grates", built with round 16. `FLOOR['covers']` takes a fifth item (round: cut to the
+  circle; square: the piece as it is) or None.
+- **Checks:** a full azimuth turn hits nothing; elevation sweep pairs as round 10; sweep radius 7.304, highest 7.6,
+  lowest brake 3.729, superfire -6.25 unchanged. Triangles: fixed 23,212, azimuth 34,482. Not checked in game.
+  Renders `p15_*` and the board `plinth_r15_board.png`.
+
+### Round 16: the deck's plate plan on the sides
+
+Owner (2026-11-03): "the bolt pattern and seam theme you put on the top panels need to be applied on the plinth side
+panels now, this goes for corner angles, panel spacing, seam spacing, fastener diamter and spacing".
+- **One screw plan** (`gvk_plinth`: `SCREW`, `ring_dots()`; `gvk_deck` now reads both from there): `Decals` 7 hex
+  sockets, 3.5 cm, 3.2 cm in from the plate's edge, one on every corner (a 45 degree chamfer's two ends share one)
+  and evenly about 0.3 m apart between. Every side plate (`opanel()`) takes it in place of the 5 cm `Decals` 11
+  bolts on its corner chamfers only; the window frames' corner bolts are the same screw. The deck is unchanged
+  (545 `Decals` faces before and after).
+- **Seams:** the panel line sits 7 cm in on every plate, as on the deck (smaller plates used to pull it in).
+- **Corners:** 0.2 m on every plate, as on the deck; the side's low plate under the pipe channel (0.35 m tall, too low
+  for two 0.2 m corners) takes 0.15 m, the deck hatches' corner. The window frames keep theirs.
+- **Spacing:** the plates now stop exactly 5 cm off the frame's bevel (top h 2.165, bottom 0.335, outer edge
+  u 5.885; were 4.5 cm) and 5 cm off the port frames, and stay 5 cm apart.
+- Left as it was: the frame's corner caps with their dome bolts, and the underside (still `BOLT`, `Decals` 11).
+- **Checks:** every side decal sits 1.5 mm off its face, none hidden; a full azimuth turn hits nothing; sweep radius
+  7.304, highest 7.6. Triangles: fixed 23,892, azimuth 34,482. Not checked in game. Renders `p16_*` and the board
+  `plinth_r16_board.png`.
+
+### Round 17: the underside
+
+Owner on round 16 (2026-11-03): "Yes underside too, but also make it look like some more panels, and make it
+asymmetrical. Also have some clear indicators on which way is forward".
+- **Plates** (`underside()`, `UNDER`): the deck's raised plates, 3 cm, 0.2 m corners, panel line 7 cm in, the
+  `SCREW` plan, on the bottom plate now dark (`PaintedMetal_Darker`, as the deck). The bottom plate sits 8 cm above
+  the cell face, so the plates stay inside the cell (lowest h 0.03; the vanilla port's own lip still reaches
+  -0.013) and the mount face stays flat. Before: two panel lines (round the plate and the port), corner bolts and
+  four `Atlas3_Colorable` 30 corner pads, all flat decals.
+- **Layout** (seen from below, front up): a keel plate ahead of the port and one behind it, 2 m wide; on the right
+  side (x < 0) three plates split at 2.2 and -1.9 from the front; on the left three split at 3.6 and -0.6, the back
+  one split again lengthwise. 5 cm off the port frame and the frame's bevel, 5 cm apart. A 2.3 x 2 m sub-plate
+  (2 cm more) on the right-back plate; two `Atlas1Colorable` 3 louvre intakes on the left-back-outer plate; an
+  `Atlas3_Colorable` 31 access panel with stencil H05 on the left-middle plate; an `Atlas2` 22 TYPE A data plate
+  (1.3 m) on the right-front plate.
+- **Forward:** three `Atlas2` 83 black and white chevrons (0.7 m) down the front keel plate, turned to point at
+  the front, and a FRONT stencil (`TextAtlasDark`, 0.28 m) ahead of them; the unit stencil 5x5x3 on the aft keel
+  plate. Both read upright from below with the front at the top.
+- `slab()` now chamfers the bottom edge of a plate that hangs down; `turn()` turns decal pieces in their plane.
+  `gvk_plinth.BOLT` (the old `Decals` 11 bolt) is gone: nothing uses it now.
+- **Checks:** every underside decal sits 1.5 mm off its plate, none hidden. Triangles: fixed 25,458 (underside
+  1,622), azimuth 34,482. Not checked in game. Renders `p17_*` and the board `plinth_r17_board.png`.
+
+### Round 18: frames round the ports, straps underneath
+
+Owner (2026-11-03): "you know those dark grey corners on the plinth? I want to use that exact same style built
+around the conveyor ports on all 4 sides ... I want to do some similar braces on the bottom. the panels need to be
+adjusted to accomodate." The markup showed an H round the front port: uprights hugging the port surround and
+flanges across the top and bottom beams, wider than the port. Script `gvk_ports.py`.
+- **The style:** the corner pieces are the vanilla container's dark `Doodads` "+" texture (a cross of 0.25 m
+  arms with two bolts per arm, 45 degree gussets at the centre, paintable light grey round it). The new parts are
+  real geometry mapped onto that same "+" at its true scale, so arms, bolts, gussets and scuffs match the corners.
+  The "+" centre's white scuff is replaced by a plain patch wherever a junction would show it.
+- **Side frames** (`Pl_PortBraces`, all four sides): two uprights 0.25 m wide at u +-1.125 hugging the port
+  surround, front face at n 6.209 (just ahead of the frame's band), h 0.14 to 2.36. Top and bottom caps take the
+  edge beam's own profile, about 4 m long, centred on the port, with chevron ends like the corner pieces; the cap
+  tops stay at the beam's heights (highest h 2.4994), so nothing grows. Long arms carry bolts at the texture's
+  pitch, re-spaced (`PITCH` 0.58 m) so each run ends on a whole window.
+- **Edge beams** (`Pl_Edge_*`): cut back under the caps at u +-1.975 and sunk 2 mm into their own profile there, so
+  caps and beams never share a face (no z-fighting). The grey beam still runs between the cap and the corner piece.
+  (The cut never took effect until round 19; see there.)
+- **Underside** (`Pl_UnderBraces`): straps 0.25 m wide and 7 cm deep (h 0.012 to 0.084) at +-1.125 round the
+  bottom port, each run out to the edge beams with a capped end, and a cross piece with gussets where two meet:
+  a # round the port.
+- **Panels:** every side plate stops 5 cm off the uprights (front plates from u 1.30, the side plates' inner
+  edge 1.30 too), with the pipe, slot and clamp plates moved to match. Underneath, the keel plates are 1.9 m wide
+  (x +-0.95) and every plate stops 5 cm off a strap; the access hatch H05 moved to (3.45, 2.42).
+- **Checks:** every side and underside decal sits 1.5 mm off its face, none hidden; the braces touch only the
+  parts they are built into (bays, beams, port frames, bottom plate). Gunhouse clearance over the caps 0.65 m;
+  sweep radius 7.304. Triangles: fixed 29,538 (port frames 2,464, underside straps 1,164), azimuth 34,482. LODs
+  and collision not updated (all of it stays inside the old outline). Not checked in game. Renders `p18_*` and
+  the board `plinth_r18_board.png`.
+
+### Round 19: yellow trim round the frames
+
+Owner on round 18 (2026-11-03): "i like where this is going, but we also need to incorporate that yellow trim
+inside the dark grey corners to surround the new edge beams you added, this will full frame out the panel
+backgrounds, with even thicknesses on all sides of the panel background cavity". A not-to-scale markup of the T
+under the cap: the dark/yellow line turning 45 degrees from the cap down the upright, and the rim lip turning 45
+degrees and running down both sides of it, the port side too.
+- **Uprights** (`member()`): a dark 0.25 m core with a yellow band each side out to 0.227 m (the cap's own band
+  width), sloping back as the cap's front strip does, so band and strip meet in a 45 degree mitre. The "+"
+  texture's gussets fall in the band, which draws the markup's 45 degree line. Their lips roll back 7 mm, as the
+  caps' do. Centres moved out to u +-1.268 so the bands clear the port surround (a 3 mm slit).
+- **Rim lip** (`Pl_PortTrim`, `PaintedMetal_Colorable`): the vanilla rim's profile swept round every side bay,
+  up the upright's bay side and, on the port side, along the port surround's chamfer, turning 45 degrees at each
+  cap. Its edge sits 3.8 cm inside the band edge (u 1.533), as the vanilla rim sits inside the caps. The vanilla
+  rim in the `Plinth` mesh is cut on the same mitre lines (`rim_cut()`), so the new rims carry on from it.
+- **Corner fills** (`fill()`): yellow triangles where each band meets a cap, with the caps' roll-back and wall
+  on their 45 degree edge.
+- **Underside:** straps at +-1.268 too, their bands bevelled; each crossing is the banded "+" (plain centre);
+  yellow fills in the crossings' corners (0.23 m out along both bands, not in the port's quarter) and where a
+  strap meets the bottom edge's cap (0.27 m out). The bottom edge's vanilla lip stood 4.4 mm proud of those edge
+  fills; it is cut back to their walls and capped (`under_lip_cut()`).
+- **Even cavities:** every plate stops about 5 cm inside the frames on all sides: side plates from u 1.585
+  (tall plate 1.885 to 2.55, its slot, pipe, clamps and lever box moved with it; on the side faces the plates run
+  1.585 to 4.45 and 4.50 to 5.879, pipe 1.765 to 3.95). Underneath, keel plates x +-0.99, the others from 1.545,
+  chevrons at 2.15, 3.1 and 4.05. The 45 degree corners of each bay leave about 7.6 cm, the plates' 0.2 m corners.
+- **Edge beams:** round 18's cut back under the caps never took (`beams()` deleted vertices, and the beam's long
+  faces have none there); it now deletes the faces, so the beams stop at u +-(the upright's centre + `BEAM['cut']`).
+- **Checks:** all 1,258 side and underside decal faces sit 1.5 mm off their plates, none hidden; the new parts
+  touch only what they are built into (bays, beams, port frames, bottom plate, the rim); nothing comes within
+  0.73 m of the azimuth group; sweep radius 7.304. Triangles: fixed 30,706 (port frames 2,848, rim lip 384,
+  underside straps 1,348, `Plinth` 980). LODs and collision not updated (all inside the old outline). Not checked
+  in game. Renders `r19_*` and the board `plinth_r19_board.png`.
+
+### Round 20: long bars underneath, 5 cm plate corners
+
+Owner on round 19 (2026-11-03): "overall looks great. critique is that the underside whre you had to pattern the
+grey sections a lot don't look so nice, very obvious shadow and line patterns. Perhaps those long silver bars that
+are on the outer edges might be adapted to make those long bars". Then: the bars "should still end before reaching
+the edge or center conveyor the same length as they do on the outer edges"; "isn't there a similar dark grey texture
+that looks kinda like those corner textures?"; and yes to shrinking the bays' 45 degree plate corners so those gaps
+are 5 cm too. Checkpoint `HurricaneTurret_before_bars.blend`.
+- **Underside straps** (`under_run()`, in place of round 18's repeated arm stretches): each run is a dark `Doodads`
+  arm out from each junction (a crossing or the bottom edge) to the caps' own length with their chevron end
+  (`REACH`: 0.909 m at the fold, 0.996 m at the strip edges), and one plain bar between the two arms, sunk 2 mm
+  into the arms' face as the beams sink under the caps (`BEAM['sink']`). The bar is `BAR['mat']`,
+  `PaintedMetal_Darker` at the plinth's 0.495 UV per metre: of five candidates (`plinth_r20_bars.png`: Chrome,
+  `PaintedMetalScratched_Darker`, `PaintedMetalScratched_VeryDark`, `PaintedMetal_Darker`, `PaintedMetal_VeryDark`)
+  the closest to the arms' grey; the scratched ones are blotchy, VeryDark darker than the arms. Owner's pick: D,
+  `PaintedMetal_Darker` (2026-11-03).
+- **Bands and fills underneath** are `PaintedMetal_Colorable` with box UVs at 0.495, as the plates (material 2 of
+  `Pl_UnderBraces`), so the "+" texture's smudges no longer repeat along them.
+- **Crossings:** the x arm's row through each crossing is one stretch of plain right arm between its bolt pairs, so
+  the "+" centre's white scuff never shows, and the mirrored cells are split on the arm's axis. Round 19's
+  crossings had 16 faces with both edges on one V, which streaked the centre.
+- **Plate corners:** the side bays' corner plates and the underside's block-corner plates have 45 degree corners
+  of `FC` 0.164 m (was 0.2), so the gap across the bay's 45 degree corner (the vanilla rim's 0.1941 m legs) is
+  5.2 cm, as on the straight sides. `octo()` takes a size per corner; `corners()` in `gvk_plinth.py`,
+  `UNDER['corner']` in `gvk_deck.py`.
+- **Lip caps:** `under_lip_cut()` drops end caps with no area (where the vanilla lip is one sheet, split at a
+  seam), which would export as degenerate triangles; no gap shows there.
+- **Checks:** all 1,258 side and underside decal faces sit 1.5 mm off their plates, none hidden; `Pl_UnderBraces`
+  touches only what it is built into (`Plinth`, bottom plate, port braces); no zero-area or zero-UV faces in the
+  new parts or `Plinth`; nothing within 0.73 m of the azimuth group. Triangles: fixed 30,638 (underside straps
+  1,316, `Plinth` 944). LODs and collision not updated (all inside the old outline). Not checked in game. Renders
+  `r20_*` and the board `plinth_r20_board.png`.
+
+### Round 21: chrome bars, a dark square round the bottom port
+
+Owner on round 20 (2026-11-03): "im like not quite feeling it. I want chrome beams in between the bottom panels, and
+then use PaintedMetal_VeryDark around that bottom center conveyor port rather than the typical conveyor corner with
+the scratches"; then, with a markup of the port surround's four 45 degree corners, "integrate the corners around the
+conveyor face surround better"; then "oops I told you VeryDark, I meant Darker". Checkpoint
+`HurricaneTurret_before_chrome.blend`.
+- **Bars:** `BAR` is the edge beams' `Chrome` at their UV (0.3615 per metre), as round 20's first build.
+- **Round the bottom port** (`DARK`, `PaintedMetal_Darker`, box UVs at 0.495): the four crossings, the square of
+  straps between them (one dark strap end to end, no bar) and each crossing's outward arms to the caps' length with
+  their chevron end. The arms where the straps meet the bottom edge stay `Doodads`, as the caps they run into.
+  Each crossing is now arms in `DARK` with a 45 degree gusset between each two arms (legs 9.5 cm), the "+"'s shape,
+  and its bands paint; the "+" texture is no longer used underneath except at the edges.
+- **Port corners:** each crossing's quarter towards the port gets a yellow fill like its other three, its 45 degree
+  edge parallel to the surround's corner (the vanilla frame's 0.21 m legs, `SURR['leg']`) and 4.1 cm off it, as
+  far as the bands are off the surround's sides. Round 20 left a square band corner there, about 20 cm off the
+  surround's corner.
+- **Checks:** `Pl_UnderBraces` has no zero-area or zero-UV faces and touches only what it is built into (`Plinth`,
+  bottom plate, port braces); nearest point to the port surround 3.5 cm. Triangles: `Pl_UnderBraces` 1,232 (was
+  1,316), so the fixed part is 30,554. Decals and plates were not changed. Not checked in game. Renders `r21_*`.
+- **Beam seams** (owner: "a seam decal is all that is missing around those silver and grey beams"): the plates'
+  panel line (`SEAM`, `PanelingColorable` 51, 2.8 cm) on the bands right beside the chrome bars and the dark
+  square, from where each bar leaves the edge's arm, mitred round the crossings' gussets: a loop inside the port
+  square and a chain round each of the eight bays outside it (`beam_seams()`, `chain()` in `gvk_ports.py`; object
+  `Pl_UnderDec_Seams_PanelingColorable`). Renders `r21s_*`.
+- **Seam ends** (owner: "I want them to transition cleanly to the side darker grey edges"): they stopped at each
+  chrome bar's end, 0.7 m short of the edge. Each now runs on down the edge's arm, turns 45 degrees at the edge
+  caps' lip along the gusset where the arm meets the cap's sloping yellow band, and ends on the crease where the
+  cap's dark strip starts, so the edge's own crease carries the line on. The part on the cap's band is cut at the
+  lip and laid on the band's slope. It first followed the "+" texture's printed gusset (|X| + |Y| = 0.374, renders
+  `r21e_*`); since the switch below it follows the built one. 72 faces, each 1.5 mm off its surface
+  (`Pl_UnderBraces` or `Pl_PortBraces`), none hidden, none with zero UV area.
+- **Side seams stay geometry** (owner asked whether the sides' corner and beam seams should be decals to save
+  triangles; "Keep them", 2026-11-03): the vanilla corners' and edge beams' crease (the band sloping back from the
+  arm) and rolled lip, copied by the port caps and side straps, cost about 1,200 triangles in all (vanilla corners
+  704 and beams 400 whole; about 900 of `Pl_PortBraces`' 2,848). Flattening them would save about 4% of the fixed
+  part, would mean rebuilding the vanilla pieces, and would lose the lip's highlight. Cut triangles in the LODs
+  first.
+- **Side frames and edge arms in `DARK`** (owner, marking the bottom edge's corners: "those corners transition
+  badly. I wonder if its worth just using that Darker gray texture also around the side conveyor access ports";
+  then "Yes, switch them", 2026-11-03; checkpoint `HurricaneTurret_before_darker_frames.blend`): the caps over and
+  under each side port, the straps up each side, their fills and the underside arms at the bottom edge are now
+  `PaintedMetal_Darker` and paint, all box mapped at 0.495, so an arm runs on from strap to cap with no texture
+  seam. Where an arm meets a cap's band, the band cell on both sides of the mitre is split corner to corner
+  (`gusset()`): dark at the arm's crease corner, paint beyond, legs 10.2 cm: the crossings' 45 degree cut. The
+  "+" texture is left on the vanilla corners only; its helpers (`tex`, `plain`, `pitch`, `arm`, `GUSSET`) are
+  gone. On the sides the dark-to-yellow lines along the straps and caps are the kept creases; only the gussets are
+  flat (seams below).
+- **Checks:** `Pl_PortBraces` 2,464 triangles (was 2,848), `Pl_UnderBraces` unchanged at 1,232. Neither has
+  zero-area or zero-UV faces. `Pl_UnderBraces` touches only `Plinth`, the bottom plate and the port braces;
+  `Pl_PortBraces` also the edge beams sunk under its caps, the bays, the rim lip and `Plinth`. Not checked in
+  game. Renders `r21f_*`, board `plinth_r21f_board.png`.
+- **Dark, thin seams** (owner: "would dark seams work better instead of paintable seams along those darker edges
+  and silver beams? The yellow inside the seams kind throws me off. Also I think they should be thinner, and also
+  be applied between the silver and darker grey"; then "you need these seams on side centers around the
+  conveyors too where you have grey to yellow but don't have a 3D edge"): the frames' seams are now their own
+  `FRAME_SEAM`, `PanelingDarker` 51 at 1.5 cm (the lid's and door's seam, a fixed dark colour); the plates keep
+  the paintable `SEAM` at 2.8 cm. New lines: across each chrome bar's end along the arm's chevron, laid on the
+  bar (16), and along every side gusset from the cap's crease to the strap's (eight round each side port, 32),
+  cut at the gusset's 45 degree mitre and laid on whichever band is in front (`port_seams()`). Objects
+  `Pl_UnderDec_Seams_PanelingDarker` (120 faces, 224 triangles; replaces `..._PanelingColorable`) and
+  `Pl_PortDec_Seams_PanelingDarker` (64 faces, 128 triangles). Every face is 1.5 mm off its surface, none hidden,
+  none with zero UV area; probed 1 mm in from each corner, every corner is 1.5 mm off too (corners lying on a
+  bar's 2 mm step read as touching it). Not checked in game. Renders `r21g_*`, board `plinth_r21g_board.png`.
+- **Side seams on every dark edge** (owner, marking the straps' and caps' edges beside the gussets: "you missed
+  some edges ... Ensure you follow the skill for mitred seam joints"): the sides' bands slope back only 3.5
+  degrees, so their creases read as flat too. `port_seams()` now lays one line along every dark-to-yellow edge,
+  mitred at each turn (the skill's averaged-tangent mitre; no T-joins): a loop round each port, up each strap,
+  along each cap and across the gussets, and on each bay side a chain from the top cap's end down the strap to the
+  bottom cap's end. The chains' ends lie on the caps' chevron ends, a face edge, so they are cut along it with no
+  pointed cap. 104 faces, 208 triangles, every face and every corner 1.5 mm off, none hidden, none with zero UV
+  area. Blender had closed (no crash log); reopened from the last save, nothing lost. Renders `r21h_*`, board
+  `plinth_r21h_board.png`.
 
 ## Gunhouse and elevation group (checkpoint 3)
 
@@ -1176,6 +1575,15 @@ beveled corners".
   `r29_34`; before the margins and smaller bevels, `r28_*`. Checkpoint before it: `HurricaneTurret_before_r17.blend`.
 - **Owner:** "Looks good enough for now" (2026-11-03).
 
+### Round 18: big rivets
+
+Owner (2026-11-03): "replace all of the fasteners on the gunhouse with big rivet style decals rather than bolt
+heads". `BOLT` is now `Decals` 10 (a plain round dome) at 9 cm; the plan (`FAST`, rows, rings, keep-outs) is
+unchanged. The bigger quads poked two mid-support rivets' corners into the drum, so `_blocked()` now checks out to
+the quad's corners (sz x 0.71 + 5 mm) instead of the rim: those two drop, nothing else does (333 to 331 decal faces
+on the azimuth part). Elevation sweep as round 10, nothing new. Renders `fx_gh_before`, `fx_gh_after`,
+`fx_gh_after_rear`.
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
@@ -1249,25 +1657,29 @@ is about 2.4 diameters long: sleeve 0.31, slotted body 0.49, cap 0.20 of its len
 - The ridges stay level with the roof and the skirt seam at 0.9 m (owner, earlier rounds).
 - The bustle has no plan taper (owner, round 4); the art's bearing ring is ignored (owner, round 4).
 - Barrel spacing stays 3.8 m.
+- No dark brackets under the gunhouse (owner, plinth round 14): it sits on the bearing ring alone.
 
 ## Left for later checkpoints
 
 Owner, 2026-11-02, after round 12: "the turret has way more work left". Open areas:
 
-- Checkpoint 2 (plinth), reopened: "the entire top side of the Plinth needs a TON of work" (today a bare painted
-  deck with dark corner triangles round the turntable ring and its brackets). The underside has not been
-  reviewed yet ("I havent even *looked* at the bottom side").
-- Checkpoint 3, the bustle's rear face: round 17 (above) accepted "for now"; not committed yet.
+- Checkpoint 2 (plinth), reopened: "the entire top side of the Plinth needs a TON of work". Round 10 (the service
+  deck, the disc after the art, underside decals) and round 11 (tight seams, plates on the ring, the feed line)
+  reviewed; round 12 (screw plan, pressure side, electrical side) and round 13 (the bearing ring, both boxes trimmed)
+  reviewed; round 14 (no posts, the floor broken up) is built and waiting for the owner's review. Open: whether the plinth's sides and underside take the new
+  screw plan.
+- Checkpoint 3, the bustle's rear face: round 17 accepted "for now" and committed (fe62170).
 - Checkpoint 4: round 1 approved and committed.
 - Checkpoint 5 (decals): silver paint bands and X panels on the roof and sides, louvre vents low on the sides,
   hatches, panel and weld lines, hazard marks, stencils.
 
 ## Next
 
-Checkpoint 3 round 17 (the bustle's rear face) is accepted for now, not committed. Next: commit it when the owner says;
-then
-the plinth's top and the plinth's underside. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`,
-`gvk_ghdetail.build(g)`, `finish()`. Rebuild
+Plinth rounds 10 to 18 (the service deck, the bearing ring, the well floor, the sides' screws, the underside, the
+port frames) and gunhouse round 18 (rivets) are built, not committed. Next: the owner's review of plinth round 18,
+then commit when the owner says. Rebuild everything with `gvk_blockout.build(g, P)`, `finish()`, `gvk_ghdetail.build(g)`,
+`finish()`, then `gvk_plinth.concept_face(ART)` for the sides, `gvk_deck.build()` for the disc and deck, and
+`gvk_ports.build()` for the port frames and underside straps. Rebuild
 the guns alone with `gvk_blockout.gun()` per side, then `finish()`. Rebuild the detail with
 `gvk_ghdetail.build(g)` then `gvk_finish.finish()`; after a bevel change in `gvk_finish`, run `finish()` once
 first so the decals are laid onto the new bevels.
