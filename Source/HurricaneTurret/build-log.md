@@ -1740,6 +1740,113 @@ set in the script. Checkpoint `HurricaneTurret_before_roof_bits.blend`.
   0.5 mm on seam strips (`Pl_UnderDec_Seams_PanelingDarker` 128, `Pl_DeckDec_Decals` 48, `GH_Dec_PanelingDarker_Az`
   24, `GH_Dec_PanelingColorable_El` 32, `GH_Dec_PanelingColorable_Az` 11). Not checked one by one.
 
+### Round 21: painted rivets
+
+Owner, 2026-11-03: "all of the giant rivets on the gunhouse and front chin plate to be color matched except the ones
+on the silver armor stripe".
+- A bolt now takes the material of the face under it (`_surface_mat()`, one ray down past any decal): on a
+  paintable face it is `BOLT_PAINT`, `PanelingColorable` 10, the same rivet and UVs (`Decals` and
+  `PanelingColorable` share the `Decals_Atlas_A_01` layout; under the `A_01` add map the rivet is 100% paintable,
+  under `Decals`' `A_02` add map 0%). Elsewhere it stays `Decals` 10, unpainted metal.
+- Of 331 gunhouse bolts, 260 now take paint: 173 on the gunhouse's painted roof and sides, 53 on `MidSupport`, 20
+  on `RearAccessPanel`, 14 on `GH_ChinPlate`. 71 stay unpainted: 60 on the silver (`Metal_Dull`) and 11 on the dark
+  patch inside it (`PaintedMetal_Darker`, not paintable). The painted bolts join `GH_Dec_PanelingColorable_Az`;
+  `GH_Dec_Decals_Az` keeps the 71. Plinth bolts unchanged.
+- Checks: same places, turns and count as before (only the material moved); every bolt 1.5 mm off its face; a
+  rebuild of the saved file matches it in all 183 objects (two seeds). Paint map renders (Workbench, painted decals
+  red, unpainted blue): `paint_map\bolts_paint_{roof,chin,rear,side}.png` in the session scratchpad. Preview
+  re-exported, I007. Not seen in game: how close the painted rivet comes to the paint of the plate under it.
+
+### Round 22: plinth backing, window glass, rivet brightness
+
+Owner, in game, 2026-11-03: the painted rivets are "too bright"; the glass is "SUPER dark and reflective" (the
+laser detector boxes hide what is inside them); daylight shows through the plinth's outer edges up close.
+- **Daylight.** The kitbashed frame, edge beams and corner pieces are open shells (the vanilla container's walls
+  hid their insides) and the game draws no back faces. New `Pl_Liner` (`gvk_plinth.liner()`, in `rebuild.run()`),
+  `PaintedMetal_Darker`, 40 faces, all facing out: a wall at 5.9 m from the centre from z -3.73 to -1.38 (inside
+  the ports at 5.927), facing in as well below the bottom plate; rings out to 6.18 m at z -3.73 (facing down),
+  -3.57 (up) and -1.43 (down); a fin each way behind each corner rod. Test: 29 views (16 at eye height, 12 up close
+  looking up the sides, 1 from below), Workbench against a magenta sky, back faces culled and shown. Holes went
+  from 13-16k pixels per close view to 0 in all 29; renders with the liner in red show it only in the slits.
+- **Glass.** `GlassOutside` reflects 0.7; `WindowRectangularOutside` (the window blocks' outer glass) has the same
+  settings at 0.1. `SideBoxGlass_L/R` (`gvk_roof`) and the plinth windows (`gvk_plinth.win`, now
+  `Pl_Cpt_WindowRectangularOutside`) use it, each pane mapped 0..1 (`gvk_finish.pane_uv()`, long side along V), as
+  its texture is a dirt rim round a clear middle.
+- **Rivets.** Paint keeps the colour map's brightness (painted value = colour map value + half the paint's
+  value offset). `PanelingColorable` 10 has the lightest colour map of the 11 paintable bolt heads, 0.40 above
+  `PaintedMetalColorable_cm` (linear); the others are 0.11-0.39 above; `Atlas3_Colorable` 16 (tab with a hex bolt)
+  is 0.05 below; `ButtonsAtlas_Colorable` buttons take no paint. Contact sheet:
+  `rivets\rivets_sheet.png` in the session scratchpad. The owner chose a new decal ("You do it") over 3D domes
+  or bolt head 7: the model's first own texture.
+  - `make_rivet_textures.py` (beside this log; `blender -b --factory-startup --python make_rivet_textures.py`)
+    cuts a 64 px window round piece 10 from the four `Decals_Atlas_A_01` TIFs and writes
+    `Textures\Cubes\Large\GVK_RivetColorable_{cm,ng,add,alphamask}.tif`. The colour map is scaled in linear to
+    the plate's average value (0.658 to 0.259), metalness to the plate's (0.366 to 0.401), and gloss offset to the
+    plate's (0.107 to 0.446; a multiply clipped the scratches). The dome sits at 0.0944-0.9072 of the window.
+  - Material `GVK_RivetColorable` (`gvk_plinth.LOCAL`, `local_mat()`): a local copy of `PanelingColorable`
+    (SEUT's nodes, `DECAL_CUTOUT`) with those TIFs; `decal_mat()` and `region()` know it. `BOLT_PAINT` is now
+    `("GVK_RivetColorable", 1)`; the 260 painted rivets moved to `GH_Dec_GVK_RivetColorable_Az`, none left on
+    `PanelingColorable`. Painted preview: the new rivet at the plate's shade, the old one far lighter.
+  - At export SEUT converts the TIFs (I002) to `<mod>\Textures\Cubes\Large\GVK_RivetColorable_*.dds`, 64 px with
+    7 mips: colour and paint maps BC7 sRGB, normal map and alpha mask BC7 linear (vanilla: the same, but BC4 for the
+    alpha mask). The model's material points at `Textures\Cubes\Large\GVK_RivetColorable_cm.dds` and so on.
+    When the turret ships in GVK_Weapons, those four DDS files go to `Content\Textures\Cubes\Large`.
+  - In game the brightness was right, but the rivet read "too metal" and "too scratched" for paint (owner,
+    2026-11-03). The plate is flat (metalness 0.40 everywhere, value 0.25-0.27, gloss mostly 0.42-0.48); the dome's
+    scratches ran down to metalness 0.15 and value 0.08 and up to gloss 0.78. The script now averages every map
+    round the dome's centre (shape, rim and edge kept, scratches gone), sets metalness and gloss to the plate's
+    medians, then blends back `WEAR` = 0.3 of the scratches in colour, gloss, relief and shading. Fully clean was
+    "a little too clean"; metalness stays flat, so no bare-metal glints. Lit previews at wear 0, 0.15, 0.3, 0.5 and
+    1: `rivets\wear_strip_labelled.png` in the session scratchpad. Re-exported (I002, I007); only the textures
+    changed, so "Reload textures" in game.
+  - In game, wear 0.3 was liked, but at the plate's metalness and gloss the rivets were still "too
+    glossy/shiny/metal" for paint (owner, 2026-11-03): a flat plate shows its shine at one angle, a dome always
+    faces the light somewhere, and metalness tints the shine with the paint colour. New dials `METAL` 0.10 and
+    `GLOSS` 0.30 (plate 0.40 and 0.455); the scratches add up to 0.1 gloss.
+  - Owner, after an in-game look: "drop gloss down to 0.2". `GLOSS` 0.20 (scratches to 0.30). Re-exported; not
+    yet seen in game.
+  - The 11 rivets on the dark patch stay the bare-metal `Decals` rivet (owner, 2026-11-03: "Keep bare metal").
+    The patch (`PaintedMetal_Darker`) has no `_add` map, so it never takes paint; the paintable rivet there would
+    take the player's colour, not the patch's grey. No vanilla dark rivet exists (`PanelingDarker`'s dome is as
+    light, value 0.63 vs the patch's 0.12, and more metallic). No change to the model.
+- Checks: rebuild of the saved file matches it in all 185 objects under two seeds; preview re-exported (I007),
+  its model holds `WindowRectangularOutside`, no `GlassOutside`, and `GVK_RivetColorable`. Not seen in game yet.
+  "Reload models" should show it all: the renderer loads new texture paths on first use (`MyFileTextureManager`).
+
+### Round 23: drum end caps, worn-steel vents
+
+- **Trunnion drum ends** (owner, 2026-11-03: "not sure I like that smaller cylinder sticking into the cheeks"): the
+  bearing boss (`TrunnionBearings`, r 0.4 m from each drum end into the cheek) is gone, and each drum end carries a
+  painted cap decal, `Atlas3_Colorable` piece 4 (round disc with a centre hole and rings), 1.3 m across on the
+  1.64 m end, cut to its 48-sided circle (`round_piece`, as the deck's hub). Picked from a contact sheet of five
+  round Atlas3 pieces, dark or painted: "bearing cap B painted". `gvk_blockout.py` drops the boss;
+  `gvk_ghdetail.py` `drum_caps()` adds the caps on the elevating part. The drum end sits about 5 cm off the cheek
+  wall; its top and rear are open.
+- **Bustle rear vent and louvre** in the rear hatch's worn steel (`MetalMilitary_Scratched`; owner, 2026-11-03,
+  marked on a screenshot): the upper-left vent's rim and bars and the lower-right louvre's rim (new object
+  `RearVentSteel`) and its blades (`RearBlades`). Their black backs stay `BlackMetal`; the sensor column's bezels
+  stay `PaintedMetal_Darker`.
+- **Weld corners and beads** (owner, 2026-11-03, two screenshots: the chin's welded corners "aren't beveled AT ALL",
+  a hard edge behind the weld and down its middle; on the bustle, bead jaggedness clipping through the surface):
+  - The chin's bevel had collapsed to nothing at every welded edge: `use_clamp_overlap` shrinks a bevel to fit the
+    shortest neighbouring edge. `gvk_finish.py` now turns clamping off for the soft-bevel parts (Chin, Bustle);
+    with it off, no flipped or self-intersecting faces. Their bevel goes from 4 to 6 steps (0.025 m): a bead row
+    crossing a 4-step fold dipped about 1.1 mm into it. Chin 507 to 983 faces, Bustle 1,506 to 2,916.
+  - Bead dips: a long bead face spans its bevel in a straight line, so where the bevel bends along the weld (corner
+    patches where bevels meet, the mitred ends) it sank to 0.06 mm off the bustle and z-fought. `path()` now adds
+    steps along a bead wherever a face edge laid on the surface would dip more than 0.25 mm between its ends
+    (`_bend()`, sampled every cm); every row gets the same steps, so a strip stays in one piece. A mitred end face
+    blends into its tip across its steps, so it can take steps too. A split after laying (bmesh subdivide)
+    was tried first and dropped: partly split faces become many-sided polygons that fold once laid.
+  - `onto()` lifts a point off both faces of a concave groove (a bead at a pad's foot sat 0.2 mm off the other face).
+  - Result, all 47 bead islands: no bead face lower than 0.7 mm over the chin or bustle (the 1.5 mm lift less
+    the remaining dip); fillet beads on the gunhouse at least 0.53 mm (unchanged; they lie on the planes). No folds
+    except 7 slivers 0.04 mm wide at two pad-foot corners. The side pads' rear beads end 7 mm inside the gunhouse
+    cheek, out of sight. Darker decal sheet 4,427 to 6,916 faces; model 126,608 triangles.
+- Checks: rebuild of the saved file matches it in all 186 objects under two seeds (after the weld fix too);
+  preview re-exported (I007), and its `.mwm` holds the new decal triangles. Not seen in game yet; the model
+  changed, so "Reload models".
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
