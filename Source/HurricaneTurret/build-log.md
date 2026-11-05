@@ -1847,6 +1847,216 @@ laser detector boxes hide what is inside them); daylight shows through the plint
   preview re-exported (I007), and its `.mwm` holds the new decal triangles. Not seen in game yet; the model
   changed, so "Reload models".
 
+### Round 24: plinth beam ends, skinnable corner paint
+
+- **Z-fighting where the chrome edge beams run under the port caps** (owner, 2026-11-04, screenshot, all four
+  sides): each beam ran 6 to 15 cm under its cap only 2 mm below it (`BEAM['sink']`), and the sink, a plain shift,
+  left the beam's lower lip 2 mm proud of the cap's. `beams()` in `gvk_ports.py` still cuts at `BEAM['cut']`, then
+  moves each end vertex out to its cap's own end at that point of the profile (`cap_end()`, between the cap's
+  stations as its faces run) plus 2 mm (`BEAM['tuck']`), under the cap's sunk end lip. Ray check at 1 mm steps:
+  the overlap is now a 1 to 3 mm sliver inside the lip's bevel, where the two cross at an angle.
+- **Corner paint that skins skip** (owner, 2026-11-04, screenshot: the outer edges looked "paintable" and the rest
+  "skinnable"): the preview block in the test world wears `Battered_Armor` (paint HSV 0.058, 0.2, 0.25). Skins swap
+  textures by material name; Battered covers `PaintedMetal_Colorable` but not `Doodads`, the vanilla airtight
+  corners' material, so the corners kept plain paint beside the battered port caps. New `corners()` rebuilds the 8
+  `Pl_Corner_*` from kept copies (`kb_Corner_*`): each triangle is cut along the strap "+" outline in its UVs
+  (`STRAP`: arm edges and ends, 45 degree gussets, measured from the `Doodads_add` colour mask), and each piece
+  votes on the mask: the strap keeps `Doodads` and its UVs, the paint becomes `PaintedMetal_Colorable`, box mapped
+  at 0.495 UV a metre like the caps' bands. The corners' custom normals are carried across the cuts; no new open
+  edges. Per corner 88 to 242 faces (0.74 m2 strap, 0.56 m2 paint); model 129,072 triangles.
+- Checks: rebuild of the saved file matches it in all 186 objects under two seeds; preview re-exported (I007), and
+  the `.mwm`'s triangles per material match Blender (Doodads 2,264, PaintedMetal_Colorable 18,746). Not seen in
+  game yet: "Reload models".
+
+### Round 25: small raised parts to decals
+
+Owner, 2026-11-04, from the numbered overview and the two lettered option sheets: "1 A, 6 D with a V-groove seam
+around it", the chin plate (9) "leave that one a 3D shape", "10 A, 11 B", the feed gauges (13) kept 3D, "19 D".
+
+- **Rear hatch arrow (1A):** the 4 cm dark prism (`RearHatchArrow`) is dropped; `rear_face()` lays Atlas2 piece 7
+  (white triangle) turned to point down on the door, 0.40 x 0.22 m at h 5.29 (`REAR['arrow']`).
+- **Bustle lid vent (6D):** the 7 cm box (`RoofVent`) is dropped; `panels()` lays two Decals 30 grilles, 0.78 x
+  0.79 m, side by side where it stood (`ROOF_VENT`), in a dark V-groove (PanelingDarker 51, as on the silver) with
+  45 degree corners, 7 cm out from the grilles, without bolt rows.
+- **Deck hatches (10A):** flush. The 2 cm plates (`Pl_DeckHatches`) are gone; the seam round each hatch, its hinges,
+  grip, corner screws and stencil now lie on the deck plate.
+- **Deck socket (11B):** the 4 cm pad (`Pl_DeckSocket`) is gone; an Atlas3_Darker 10 ring disc, 0.40 m, sits 0.7 mm
+  up under the 4-pin connector at 1.5 mm.
+- **Bearing-ring plates (19D):** the 12 raised keystones and their 48 nuts are gone from `disc()`; each is now
+  Atlas3_Colorable piece 34 (banded panel with its own 4 screws), turned with its length across, 0.31 x 0.56 m, on
+  the flange at r 4.26 (`DISC['pads']`).
+- Checks: every new decal sits 1.5 mm off its face (ray cast); rebuild of the saved file matches it in all 182
+  objects under two seeds; preview re-exported (I007), and the `.mwm`'s triangles per material match Blender
+  (Decals 3,148, Atlas3_Colorable 164, PanelingDarker 15,006, PaintedMetal_Darker 40,344); model 128,394
+  triangles. Checkpoint `HurricaneTurret_before_r25_decals.blend`. Not seen in game yet.
+
+### Round 26: feed tube, rear recess decals, grille handles
+
+- **Feed tube through the hatch box** (owner, 2026-11-04, in game: the tube "should continue through the box"): its
+  two halves ended at x 0.6, which showed under the box's lower chamfers (they narrow it to 0.49 at the tube's
+  bottom). `RearFeedTube` is now one tube from -1.36 to 1.22; rays show it only in those two corners.
+- **Rear recess sensor column to decals** (owner's picks 2D, 4D, 5B from sheet C; the owner's list kept 3, 4, 8,
+  12, 14, 15 and 13 in 3D and meant the rest as decals, which round 25 misread): the button and its ring, the lens
+  and its bezel, and the switch box (`RearButton`, `RearLens`, `RearRecessParts`) are dropped. `rear_face()` lays
+  ButtonsAtlas_Darker 19 (big round button, 0.15 m) and 65 (large socket, 0.24 x 0.26 m) and Atlas3_Darker 40
+  (plate with two holes, turned, 0.5 x 0.33 m) on the recess floor (`REAR['recess']`, centres measured from the old
+  parts). The pill light and LED stay 3D, lowered onto the floor, 1 and 1.4 cm proud as they stood on the box.
+- **Grille box handles** (owner, in game: "really ugly and bent"): they were a 12-sided tube along a Catmull-Rom
+  spline through eight points, bevelled, weighted-normal shaded and box mapped, so the legs bowed and the bar read
+  as flat facets with streaky texture. New `handle_u()`: straight runs joined by true arcs (8 cm at the bottom
+  corners, 6 cm where the legs turn into the face), 24 sides, smooth, its own UVs along and round the bar
+  (`own_uv`, which `finish()` now honours; `own_normals` skips the bevel). The ends now turn in at h 3.85, clear of
+  the box's top edge.
+- Checks: decals 1.5 mm off the floor; rebuild of the saved file matches it in all 179 objects under two seeds;
+  preview re-exported (I007), and the `.mwm`'s triangles per material match Blender (ButtonsAtlas_Darker 8,
+  Atlas3_Darker 94, MetalMilitary_Scratched 15,420, PaintedMetal_Darker 35,900); model 120,828 triangles.
+  Checkpoint `HurricaneTurret_before_r26_tube.blend`. Not seen in game yet. Waiting: the owner's pick for the side
+  bays' vent decal (sheet D: they repeat the centre bay's louvre).
+
+### Round 27: brake slot ends, through bore, silver handles, side-bay grilles
+
+- **Brake slot ends** (owner, 2026-11-04, in game: "weird cuts" at the top of each slot): `slot_fans()` triangulated
+  each fan polygon before Blender had its normal, so `triangulate()` projected it wrongly and filled the slot's round
+  end. Every slot was cut square at its straight span, with a stray chamfer strip across the top and the arc
+  outline left on the surface. It now calls `normal_update()` first. Ray casts at the slot centre are open to
+  37 degrees and meet the chamfer at 39, where the round end is.
+- **Bore** (owner: "a black wall too close to the end of the muzzle brake"): the bore's back wall was 0.25 m in.
+  The bore (0.15 m radius) now runs through the slot chamber and the brake's back. It continues 2 m into the
+  barrel, 5 mm narrower so no walls coincide, and the barrel's bore end is BlackMetal. A ray down the axis now
+  stops 3.45 m in. `brake['face']` loses its depth value and `barrel['bore']` is new.
+- **Grille handles silver** (owner): `BO_Silver`, which maps to Metal_Dull, the gunhouse's silver.
+- **Side bays** (owner's pick A from sheet D): Atlas3_Darker 22, the mesh grille in a frame, in the two bays inside
+  the handles (`REAR['side_bay']`). The centre bay keeps the louvre.
+- Checks: the rebuild matched the saved file in all 179 objects under two seeds. The preview was re-exported, and
+  the `.mwm`'s triangles per material match Blender (BlackMetal 4,258, Metal_Dull 8,642, Atlas3_Darker 98,
+  PaintedMetal_VeryDark 8,169, MetalMilitary_Scratched 10,432). The model is 121,484 triangles. Checkpoint:
+  `HurricaneTurret_before_r27_brake.blend`. Not seen in game yet.
+
+### Round 28: sensor dome window to decals
+
+Item 7 of the round-25 overview, which the owner's list meant as a decal (owner's picks from sheet E, 2026-11-04:
+"7a C", "7b ... C, but can you crop the outer perimeter just a little so the edge is the darkest/blackest point").
+
+- The 3D plate (1.2 cm) and chrome bezel (1 cm) in the dome's front recess (`SensorDomeWindow`) are gone. On the
+  recess floor now (`WIN` in `gvk_roof.py`):
+  - an Atlas3_Darker 5 plate (dot and notched slot), 0.257 x 0.39 m (first as an underlay 0.7 mm up; see
+    Layering below);
+  - an Atlas3_Chrome 10 ring (concentric rings) at 0.22 m piece size, 1.5 mm up.
+- **The ring's crop:** the ring is a 48-sided disc cut at the bottom of its outer groove, 0.4675 of the piece's
+  width from its centre (0.103 m radius). A radial profile of the lit texture puts the darkest line there, so the
+  lighter lip outside it is gone.
+- **No 3D lens** (owner: "a 3d part there seems against what I'm trying to go for"; `SensorDomeLens` dropped). The
+  ring decal is opaque to its centre, but its own centre (a small notched disc) "looks bad like that". The owner
+  asked for "some sort of black button decal over the center ... just dont waste 3d shapes on it". Options sheet F
+  (7c) is sent; waiting on the pick.
+- **Glass over the recess** (owner: "a glass screen in front of this that follows the curve of the dome"):
+  `SensorDomeGlass`, WindowRectangularOutside as on the side boxes.
+  - It is a cylinder patch at r 0.545, 5 mm under the dome's surface, built as 32 vertical strips. Its outline is the
+    pocket's plus 4 mm, so the edge sits inside the walls beyond the 8 mm edge bevel at that depth.
+  - Its normals face out. `put()`'s recalc turned the open sheet inward, so it is flipped after.
+  - Rays along the opening's edge, from 1 mm inside to 3 mm outside it, all hit glass or dome: no gap.
+- **Layering** (owner, in game: "its not layering well": the ring showed as wedges over the plate, the plate's own
+  dot and circle on the rest):
+  - The game code explains the height part. Model decals have a depth test but no depth write, and the depth pass
+    skips them (`MyGBufferRenderPass.InitPartForDecal`, `MyDepthRenderPass`). So the 0.8 mm between plate and
+    ring decided nothing.
+  - Why it broke into wedges, rather than one decal covering the other, is not settled. The ring was one 48-sided
+    face whose triangulation happens in export.
+  - Now nothing overlaps, and nothing is a large n-gon. The ring is a fan of 52 triangles. The plate is 52 quads
+    round it, from the ring's edge out to its own along rays that include its corners. Both are 1.5 mm up, with
+    areas 0.033 and 0.067 m², which add up to the plate's full area.
+  - The deck power socket from round 25 had the same stack: a disc 0.7 mm up under the connector at 1.5 mm. It is
+    now laid side by side: the connector cut round at its opaque edge (0.49 of its 0.26 m), and the disc with the
+    same hole (`disc_piece()` in `gvk_deck.py`).
+- Checks:
+  - ray casts put the plate and ring 1.5 mm off the floor;
+  - the rebuild matched the saved file in all 178 objects under two seeds;
+  - the preview was re-exported, and the `.mwm`'s triangles per material match Blender (Atlas3_Darker 296,
+    Atlas3_Chrome 80, ButtonsAtlas_Colorable 60, WindowRectangularOutside 344);
+  - the model is 120,832 triangles.
+
+  Checkpoint: `HurricaneTurret_before_r28_domewin.blend`. Not seen in game yet.
+
+### Round 29: decals snapped to the game's vertex grid
+
+Owner, in game, on the round-28 window: "it looks good from a distance, but it does this weird broken glass sort of
+look when I get *really* close" (thin dark wedges from the ring's centre, out through the plate to its corners).
+
+- **Cause** (game code, then checked against the exported `.mwm`): SE stores each vertex as half floats times
+  floor(max |x|, |y|, |z|) (`VRage.Import.PositionPacker`, read as HalfVector4 by `MyModelImporter`). The window
+  sits 4.6 m from the block centre, so its vertices land on a 3.9 mm grid along the dome's normal. The floor and the
+  decals round separately: the 1.5 mm gap came out from -1.5 to +4.3 mm, and every triangle that went behind the
+  floor failed the depth test. A simulation of the packing matched every window vertex in the `.mwm` exactly.
+- That is also what broke the ring into wedges in round 28, not the stacking. Decals still write no depth, so the
+  side-by-side layout stays.
+- **Model-wide:** 5,550 of the model's 24,330 decal triangles were under 0.3 mm after rounding, 2,390 at or behind
+  their surface. Among them were most of the underside text (919 of 976), the plinth sign text (all 152), the port
+  seams (all 208) and large parts of the gunhouse seams.
+- **Fix:** `gvk_quant.py` (the skill's `scripts/decal_snap.py`) runs last in `gvk_rebuild.run()`.
+  - It moves every decal vertex to the nearest point the game stores exactly, at least 0.6 mm in front of the
+    rounded surface under it, ray-cast against the exported meshes with their bevel modifiers applied.
+  - It keeps each corner's built normal as a custom split normal, since the move tilts small faces.
+  - Vertices on a whole metre are skipped, since 6.0 exported as 5.9999999 and took the next scale.
+- **After:** 166 decal triangles stay under 0.3 mm (78 at or behind the surface), all small pieces on the gunhouse's
+  25 mm bevels and in the deck's sockets, where the rounding warps the solid parts too.
+  - The window clears its floor by at least 0.63 mm everywhere. Its normals equal the design normal.
+  - Its vertices shift sideways at most 1.4 mm, against 1.25 mm from the game's own rounding. So a slight wobble
+    in the ring's edge and faint radial lines in its chrome show either way at 4.6 m out.
+  - Decals now sit 0.6 mm up to one grid step off their faces, up to 5.9 mm at 6 m out.
+- **When the turret is split into subparts,** the snap must run on each subpart's own coordinates (smaller, so a
+  finer grid), not the block's.
+- Checks:
+  - two rebuilds in a row are identical (positions and normals);
+  - the rebuild matched the saved file in all 178 objects under two seeds;
+  - the preview was re-exported, and every snapped decal vertex is in the `.mwm` exactly, except one unsnapped
+    rivet corner at exactly 5.0 m, 0.49 mm off, which the game rounds the same as before;
+  - triangles per material are unchanged (Atlas3_Darker 296, Atlas3_Chrome 80, ButtonsAtlas_Colorable 60,
+    WindowRectangularOutside 344, PanelingDarker 15,006, Decals 3,148), with 120,832 in total;
+  - the `.mwm` has 127,793 vertices, against 125,201 before, probably because the snapped decal faces are no
+    longer coplanar and more of their vertices split on export.
+
+  Checkpoint: `HurricaneTurret_before_r29_quant.blend`. Not seen in game yet.
+
+### Round 30: a button over the window ring's centre
+
+Owner's pick from sheet F (7c), 2026-11-04: "A plain button" (ButtonsAtlas_Darker 52, plain round push button).
+
+- `SensorDomeDec_ButtonsAtlas_Darker`: the button as a fan of 52 triangles at the ring's centre, at the sheet's
+  0.095 m piece size. It is cut at 0.47 of the piece (0.0447 m radius): the radial profile has it solid to 0.46,
+  half faded at 0.48.
+- The ring is now a band of 52 quads from the button's edge (0.0447 m) to its own (0.103 m), with its texture mapped
+  on the same radii, so nothing overlaps. `WIN['button']` in `gvk_roof.py`.
+- Checks:
+  - after the snap, every window decal clears the rounded floor by at least 0.63 mm (plate 0.63, ring 0.65, button
+    0.66);
+  - two rebuilds in a row are identical, and the rebuild matched the saved file in all 179 objects under two seeds;
+  - the preview was re-exported, and every window decal vertex is in the `.mwm` exactly;
+  - triangles per material match Blender (Atlas3_Chrome 132, ButtonsAtlas_Darker 60, Atlas3_Darker 296,
+    WindowRectangularOutside 344), with 120,936 in total.
+- Blender's preview draws the button's cap light grey. On the sheet, built from the game's textures, it is dark.
+
+  Checkpoint: `HurricaneTurret_before_r30_button.blend`. Not seen in game yet.
+
+### Round 31: the window faces straight ahead
+
+Owner, 2026-11-04: "the dome viewer is angled looking off to the gun's left side some, can you make it look straight
+forward?" It sat at phi -80, 10 degrees round from the guns' line (-Y) toward +X, the gun's left.
+
+- `WIN` phi -80 to -90 in `gvk_roof.py`: the window's normal is now (0, -1, 0), and it sits over the base's two slots.
+- The window now faces along an axis, so the floor under it lies on a grid line and the snap lifts its decals one
+  full step clear: button 3.9 mm off the rounded floor, ring 0.9 to 3.9 mm, plate (with the back hatch, same object)
+  3.9 to 4.9 mm (at -80: 0.63 to 0.66 mm). Small enough to stay unseen from normal distances; check it at grazing angles in game.
+- `SensorDome` gains 16 triangles (2,470 to 2,486): its angle-limited Bevel picks up more edges round the turned
+  pocket. Base meshes unchanged.
+- Checks:
+  - two rebuilds in a row are identical, and the rebuild matched the saved file in all 180 objects under two
+    seeds (the extra object against round 30 is `tmp_cam`, a review camera, not exported);
+  - the preview was re-exported, and every window decal vertex is in the `.mwm` exactly;
+  - triangles per material are unchanged (Atlas3_Chrome 132, ButtonsAtlas_Darker 60, Atlas3_Darker 296,
+    WindowRectangularOutside 344), with 120,952 in total.
+
+  Checkpoint: `HurricaneTurret_before_r31_winfwd.blend`. Not seen in game yet.
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
