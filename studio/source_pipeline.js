@@ -632,6 +632,11 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, cur) {
     : [];
   const isFixed = type === 'Fixed' || (hw.RotateRate <= 0 && hw.ElevateRate <= 0);
   const pdProjectiles = !isFixed && threats.includes('Projectiles');
+  // Barrel spin (CoreSystems.cs BarrelsAv): HasBarrelRotation needs RotateBarrelAxis and a muzzle part, or no subparts at all
+  const other = inlineRef(hp.Other, defs) || inlineRef(def.Other, defs) || {};
+  const partSet = (v) => !!v && v !== 'None';
+  const noSubParts = !partSet(mp.MuzzlePartId) && !partSet(mp.AzimuthPartId) && !partSet(mp.ElevationPartId);
+  const rotateBarrelAxis = other.RotateBarrelAxis || 0;
   return {
     id,
     defName: w.defName, mountIndex: idx,
@@ -650,6 +655,12 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, cur) {
     delayUntilFire: loading.DelayUntilFire || 0,
     trajectilesPerBarrel: loading.TrajectilesPerBarrel || 1,
     maxTargetDistance: tgt.MaxTargetDistance || 0,
+    shootBlanks: tgt.ShootBlanks === true,
+    rotateBarrelAxis,
+    barrelSpinRate: loading.BarrelSpinRate || 0,
+    deterministicSpin: loading.DeterministicSpin === true,
+    muzzleCount: ((def.Assignments || {}).Muzzles || []).length || 1,
+    barrelSpin: rotateBarrelAxis !== 0 && (noSubParts || partSet(mp.MuzzlePartId)),
     validControlModes: controlModes.length ? controlModes : ['Automatic', 'Manual', 'Painter'],
     deviateShotAngle: hp.DeviateShotAngle || 0,
     aimingTolerance: (hp.AimingTolerance !== undefined ? hp.AimingTolerance : (tgt.AimingTolerance !== undefined ? tgt.AimingTolerance : 0)),

@@ -365,7 +365,7 @@ const WORKBENCH_FIELD_HELP = {
   tAccelPerSec: "Acceleration in meters per second². Projectile starts on tick 0 at its parent's (weapon/other projectile) travel velocity.",
   tMaxTrajectory: "Max distance the projectile or beam can travel.",
   tMaxLifeTime: "0 is disabled, measured in game ticks (6 = 100ms, 60 = 1s). Time must EXCEED this value to trigger expiry. Please have a value for this — it stops Bad things.",
-  tSpeedVariance: "Subtracts a random value from DesiredSpeed. Be warned: you can make your projectile go backwards.",
+  tSpeedVariance: "Random(Start, End): WeaponCore adds a value between Start and End to DesiredSpeed on each shot. This field sets End; negative values slow the round, and below -DesiredSpeed it flies backwards.",
   tRangeVariance: "Subtracts a random value from MaxTrajectory.",
   tDeaccelTime: "EWAR & mines only — time to spend slowing down to a stop at end of trajectory. 0 is instant stop.",
   tTargetLossDegree: "Degrees the target may leave the forward aim cone before the projectile loses lock.",
@@ -1945,7 +1945,9 @@ function getFireCycleParams(weapon, ammo, live) {
     degradeRof: chk(wDegradeWithHeat, w.degradeRof),
     heatThresholdStart: deg.heatThresholdStart, heatThresholdEnd: deg.heatThresholdEnd,
     rofAt0Heat: deg.rofAt0Heat, rofAt100Heat: deg.rofAt100Heat,
-    allowOverheatShooting: !!w.allowOverheatShooting, heatSinkRateOverheatMult: w.heatSinkRateOverheatMult || 0
+    allowOverheatShooting: !!w.allowOverheatShooting, heatSinkRateOverheatMult: w.heatSinkRateOverheatMult || 0,
+    barrelSpin: !!w.barrelSpin,
+    spinStepTicks: w.barrelSpin ? WcMath.barrelSpinStepTicks({ rof, barrelSpinRate: w.barrelSpinRate, deterministicSpin: w.deterministicSpin, muzzleCount: w.muzzleCount }) : 0
   };
 }
 
@@ -1966,7 +1968,8 @@ function computeFireCycle(p) {
     heatPerShot: p.heatPerShot, maxHeat: p.maxHeat, heatSinkRate: p.heatSinkRate, cooldown: p.cooldown,
     degradeRof: p.degradeRof, heatThresholdStart: p.heatThresholdStart, heatThresholdEnd: p.heatThresholdEnd,
     rofAt0Heat: p.rofAt0Heat, rofAt100Heat: p.rofAt100Heat,
-    allowOverheatShooting: p.allowOverheatShooting, heatSinkRateOverheatMult: p.heatSinkRateOverheatMult
+    allowOverheatShooting: p.allowOverheatShooting, heatSinkRateOverheatMult: p.heatSinkRateOverheatMult,
+    barrelSpin: p.barrelSpin, spinStepTicks: p.spinStepTicks
   });
   const traj = Math.max(1, p.trajPerBarrel || 1);
   const totalRounds = Math.max(1, p.magSize || 1) * Math.max(1, p.mags || 1);
@@ -1974,8 +1977,12 @@ function computeFireCycle(p) {
   const roundsPerSec = sim.roundsPerSec;
   const totalCycleSec = roundsPerSec > 0 ? totalRounds / roundsPerSec : Infinity;
   const cycleTicks = totalCycleSec * 60;
-  // Phases of one load: DelayUntilFire spool, firing, then everything else (reload, burst tail, heat stalls)
-  const spoolTicks = sim.reloadable && sim.spoolTicks >= (p.delayUntilFire || 0) ? (p.delayUntilFire || 0) : 0;
+  // Phases of one load: DelayUntilFire spool plus barrel spin-up, firing, then everything else (reload, burst tail, heat stalls)
+  const spoolTicks = (sim.reloadable && sim.spoolTicks >= (p.delayUntilFire || 0) ? (p.delayUntilFire || 0) : 0)
+    + (sim.reloadable ? sim.spinTicks : 0);
+  // WC fires every (uint)(3600 / RoF) ticks (0 means every tick); burst RPM counts every barrel and trajectile
+  const ticksPerShot = Math.max(1, sim.ticksPerShot);
+  const burstRpmPerBarrel = 3600 / ticksPerShot;
   const fireTicks = sim.reloadable ? Math.min(sim.fireTicks, Math.max(0, cycleTicks - spoolTicks)) : cycleTicks;
   const out = {
     totalRounds,
@@ -1988,6 +1995,10 @@ function computeFireCycle(p) {
     totalCycleSec,
     roundsPerSec,
     effectiveRps: roundsPerSec * traj,
+    ticksPerShot,
+    burstRpmPerBarrel,
+    burstRpm: burstRpmPerBarrel * Math.max(1, p.barrels || 1) * traj,
+    spinTicks: sim.spinTicks,
     heatLimited: sim.heatLimited,
     stallShare: sim.stallShare
   };
@@ -2014,6 +2025,10 @@ function getEngagementRange(weapon, ammo, live) {
     const blast = num(fragAmmo && fragAmmo.trajectory && fragAmmo.trajectory.maxTrajectory);
     const label = frag ? `Blast reach · ${frag.fragments || 0} fragments, ${frag.degrees || 0}° spread` : 'Blast reach';
     return { range: blast, source: 'blast', gated: false, guided: false, targeting, reach: blast, label, blast: true };
+  }
+  // ShootBlanks weapons (radars, designators) spawn no projectiles (WeaponShoot.cs), so only targeting range counts
+  if (weapon && weapon.shootBlanks && targeting > 0) {
+    return { range: targeting, source: 'targeting', gated: true, guided: false, targeting, reach, label: 'Targeting Range (no projectiles)' };
   }
   const guidance = (ammo && ammo.trajectory && ammo.trajectory.guidance) || 'None';
   const guided = guidance !== 'None';
@@ -3865,14 +3880,15 @@ function computeSustainedDps() {
   return {
     rof: fp.rof, barrels: fp.barrels, magSize: fp.magSize, magsToLoad: fp.mags, totalRounds, sustainedDps, effectiveRps,
     totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, loadedDamage, alphaDamage, dmgDetails,
-    heatLimited: cyc.heatLimited, stallShare: cyc.stallShare, fireParams: fp
+    heatLimited: cyc.heatLimited, stallShare: cyc.stallShare, fireParams: fp,
+    burstRpm: cyc.burstRpm, burstRpmPerBarrel: cyc.burstRpmPerBarrel, ticksPerShot: cyc.ticksPerShot
   };
 }
 
 function updateCombatTelemetry() {
   if (!activeWeapon || !activeAmmo) return;
 
-  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, loadedDamage, alphaDamage, dmgDetails, fireParams, stallShare } = computeSustainedDps();
+  const { rof, barrels, magSize, magsToLoad, totalRounds, sustainedDps, effectiveRps, totalCycleSec, fireDurationSec, reloadSec, spoolSec, bursts, magazineDamage, loadedDamage, alphaDamage, dmgDetails, fireParams, stallShare, burstRpm, burstRpmPerBarrel, ticksPerShot } = computeSustainedDps();
   const muzzleSpeed = parseFloat(tDesiredSpeed?.value) || 0;
   const isDetonation = isDetonationWeapon(activeWeapon);
   const isBeam = !isDetonation && (isBeamWeapon(activeWeapon, activeAmmo) || muzzleSpeed >= 10000 || muzzleSpeed <= 0);
@@ -4004,7 +4020,9 @@ function updateCombatTelemetry() {
   } else {
     if (lblSustainedRpm) lblSustainedRpm.textContent = "SUSTAINED RPM";
     outShotsPerSec.innerHTML = `${sustainedRpm.toLocaleString()} <span style="font-size: 14px; font-weight: 400;">RPM</span>`;
-    outCycleTime.textContent = `Burst: ${Math.round(rof).toLocaleString()} RPM (${effectiveRps.toFixed(1)} sps sustained)`;
+    const perBarrel = burstRpm > burstRpmPerBarrel + 0.5 ? ` · ${Math.round(burstRpmPerBarrel).toLocaleString()}/barrel` : '';
+    outCycleTime.textContent = `Burst: ${Math.round(burstRpm).toLocaleString()} RPM${perBarrel} (${effectiveRps.toFixed(1)} sps sustained)`;
+    outCycleTime.title = `WeaponCore fires every whole tick: (uint)(3600 / ${Math.round(rof)} RoF) = ${ticksPerShot} tick${ticksPerShot === 1 ? '' : 's'} per shot`;
   }
 
   // Update Target Damage & Multiplier Matrix
@@ -4293,7 +4311,11 @@ function updateCombatTelemetry() {
   }
   if (outFlightDelay1km) {
     const flightDist = maxEngagementRange;
-    const flightTime = muzzleSpeed > 0 ? (flightDist / muzzleSpeed).toFixed(2) : '0.00';
+    const accel = parseFloat(tAccelPerSec?.value) || 0;
+    const flightTime = WcMath.flightTime(flightDist, muzzleSpeed, accel).toFixed(2);
+    outFlightDelay1km.title = accel > 0 && muzzleSpeed > 0
+      ? `Accelerates at ${accel.toLocaleString()} m/s² to ${Math.round(muzzleSpeed).toLocaleString()} m/s over ${(muzzleSpeed / accel).toFixed(1)} s; straight line, stationary shooter`
+      : 'Straight line at muzzle speed, stationary shooter';
     outFlightDelay1km.textContent = isDetonation
       ? 'Fragments burst from the block'
       : isBeam
@@ -4401,11 +4423,17 @@ function updateCombatTelemetry() {
   const outTriggerLatency = document.getElementById('outTriggerLatency');
   const outTriggerLatencyDetail = document.getElementById('outTriggerLatencyDetail');
   if (outTriggerLatency) {
-    const delayTicks = activeWeapon.delayUntilFire || 0;
+    // DelayUntilFire, plus 9 barrel spin-up steps from cold (WeaponController.SpinBarrel): 9 ticks, or 8k+1 with k ticks per step
+    const k = fireParams.spinStepTicks || 0;
+    const spinTicks = fireParams.barrelSpin ? (k > 0 ? 8 * k + 1 : 9) : 0;
+    const delayTicks = (fireParams.delayUntilFire || 0) + spinTicks;
     if (delayTicks > 0) {
       const delaySec = (delayTicks / 60).toFixed(2);
       outTriggerLatency.innerHTML = `${delaySec} <span class="unit-sub">s</span>`;
-      if (outTriggerLatencyDetail) outTriggerLatencyDetail.textContent = `Capacitor Spool (${delayTicks} ticks)`;
+      if (outTriggerLatencyDetail) {
+        outTriggerLatencyDetail.textContent = spinTicks > 0 && delayTicks === spinTicks ? `Barrel spin-up (${spinTicks} ticks)`
+          : spinTicks > 0 ? `Capacitor Spool + barrel spin-up (${delayTicks} ticks)` : `Capacitor Spool (${delayTicks} ticks)`;
+      }
     } else {
       outTriggerLatency.innerHTML = `Instant <span class="unit-sub">(0s)</span>`;
       if (outTriggerLatencyDetail) outTriggerLatencyDetail.textContent = 'Zero Trigger Latency';
@@ -4478,7 +4506,7 @@ function updateCombatTelemetry() {
   const maxHeat = fireParams.maxHeat;
   const sinkRate = fireParams.heatSinkRate;
   const heatK = WcMath.heatConstants(fireParams);
-  const heatPerSec = (rof / 60) * barrels * heatShot;
+  const heatPerSec = (60 / ticksPerShot) * barrels * heatShot;
   const hasHeat = maxHeat > 0 && heatShot > 0;
 
   // Consumption metrics (scaled by battery multiplier)
@@ -4486,7 +4514,11 @@ function updateCombatTelemetry() {
   const ammoMagCapacity = magSize;
   const roundsPerMin = effectiveRps * 60 * bMult;
   const magsPerMin = ammoMagCapacity > 0 ? (roundsPerMin / ammoMagCapacity) : 0;
-  const kgUraniumPerMin = scaledOperationalPwrNum / 60;
+  const avgPwrNum = getAverageChargeDrawMw(activeWeapon, liveAmmo,
+    { rateOfFire: rof, barrelsPerShot: barrels, trajectilesPerBarrel: trajPB, idlePower: idlePwr }, totalCycleSec * 60) * bMult;
+  const uRatio = URANIUM_KG_PER_MWH[(activeWeapon.grid || activeWeapon.gridSize) === 'Small' ? 'Small' : 'Large'];
+  const kgUraniumPerMin = avgPwrNum * uRatio / 60;
+  const uraniumTitle = `Average draw ${avgPwrNum.toFixed(2)} MW (charges only while reloading) on ${uRatio === 1 ? 'a vanilla reactor (Ratio 1)' : 'a GVK Large Reactor (Ratio 0.75)'}`;
   // The input holds the working-tree value (curated binding), so edits and "Use suggested" show up here
   const invVol = parseFloat(wInventorySize?.value) || (activeWeapon && activeWeapon.inventorySize) || 0.9;
 
@@ -4503,8 +4535,8 @@ function updateCombatTelemetry() {
   let consumptionHtml = '';
   if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
     const uStr = kgUraniumPerMin >= 1.0 ? `${kgUraniumPerMin.toFixed(2)} kg` : `${(kgUraniumPerMin * 1000).toFixed(0)}g`;
-    consumptionHtml = `⚡ ${uStr} Uranium / min`;
-    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW Operational Draw`;
+    consumptionHtml = `<span title="${uraniumTitle}">⚡ ${uStr} Uranium / min</span>`;
+    if (outAmmoDrawSub) outAmmoDrawSub.textContent = `${operationalPwr} MW peak · ${avgPwrNum.toFixed(2)} MW avg`;
     if (outMagProfile) outMagProfile.textContent = ammoMagCapacity > 0 ? `${ammoMagCapacity} rds / mag · ${invVol} m³ cargo` : `Continuous · ${invVol} m³ cargo`;
     if (outMagReload) outMagReload.textContent = `${magsToLoad * bMult} mag buffer`;
   } else {
@@ -4565,7 +4597,8 @@ function updateCombatTelemetry() {
       outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME (Throttled)`;
       heatProgressBar.style.width = `${dutyCycle}%`;
       heatProgressBar.style.background = 'linear-gradient(90deg, var(--green-accent), var(--amber-primary), var(--red-accent))';
-      outTimeToOverheat.innerHTML = `<span title="Thermal Choke: Fires at full ${Math.round(rof)} RPM for ${burstSec.toFixed(1)}s, then throttles to ${equilRpm} RPM to bleed heat">Burst: ${burstSec.toFixed(1)}s @ ${Math.round(rof)} RPM · Throttles to ${equilRpm} RPM</span>`;
+      const fullRpm = Math.round(burstRpmPerBarrel);
+      outTimeToOverheat.innerHTML = `<span title="Thermal Choke: Fires at full ${fullRpm} RPM for ${burstSec.toFixed(1)}s, then throttles to ${equilRpm} RPM to bleed heat">Burst: ${burstSec.toFixed(1)}s @ ${fullRpm} RPM · Throttles to ${equilRpm} RPM</span>`;
     } else {
       outHeatDutyRatio.textContent = `${dutyCycle}% UPTIME`;
       heatProgressBar.style.width = `${dutyCycle}%`;
@@ -5028,6 +5061,24 @@ function getWeaponPowerDraw(weapon, ammo, fieldEdits) {
   const e = getWcEnergy(w, ammo || {});
   return { idle, operational: idle + (e.mustCharge ? e.desiredPower : 0), mustCharge: e.mustCharge };
 }
+
+/// <summary>
+/// Average draw over one fire cycle: IdlePower, plus the charge draw only while a reload charges
+/// (WeaponReload.cs: ChargeReload runs from StartReload; SessionCharging.cs stops drawing once charged).
+/// Non-reloadable energy weapons never charge.
+/// </summary>
+function getAverageChargeDrawMw(weapon, ammo, fieldEdits, cycleTicks) {
+  const w = Object.assign({}, weapon || {}, fieldEdits || {});
+  const idle = Math.max(parseFloat(w.idlePower) || 0, 0.001);
+  if (isDetonationWeapon(weapon)) return idle;
+  const e = getWcEnergy(w, ammo || {});
+  if (!e.mustCharge || !e.reloadable || !isFinite(e.chargeTicks) || !(cycleTicks > 0)) return idle;
+  return idle + e.desiredPower * Math.min(1, e.chargeTicks / cycleTicks);
+}
+
+// Uranium per MWh: kg/s = MW / 3600 * Ratio / ingot mass 1 (MyReactorDefinition, MyReactor consumption scales with output).
+// GVK Large Reactors run at Ratio 0.75 (GVK_Settings CubeBlocks_Energy.sbc); small-grid reactors are vanilla (1).
+const URANIUM_KG_PER_MWH = { Large: 0.75, Small: 1 };
 
 function calculateWeaponMetrics(weapon, forcedAmmoKey) {
   if (!weapon) return { sustainedDps: 0, effectiveDps: 0, magazineDamage: 0, effectiveMagazineDamage: 0, range: 1600, velocity: 1000, tracking: 10, integrity: 10000, power: 0, ups: 0, isBeam: false };

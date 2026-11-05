@@ -12,6 +12,7 @@ const suites = [
   ['Curation', 'tests/test_curation.js'],
   ['Weld times', 'tests/test_build_time.js'],
   ['WeaponCore parity', 'tests/test_wc_parity.js'],
+  ['Cadence', 'tests/test_cadence.js'],
   ['Studio smoke', 'tests/test_studio_smoke.js'],
   ['EWAR / PD', 'tests/test_ewar_pd.js'],
   ['Max Range card', 'tests/test_max_range_card.js'],

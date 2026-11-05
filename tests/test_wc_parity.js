@@ -83,6 +83,31 @@ console.log('\n[A] Fire cycle tick traces');
   // Cooldown clamps to 0.95 (WeaponSystem.Heat) and DegradeRof falls back to WC defaults
   const hc = W.heatConstants({ degradeRof: true, cooldown: 2, heatThresholdStart: 0, rofAt100Heat: 0 });
   check('Heat constants: Cooldown clamp 0.95, DegradeRof defaults 0.8 / 0.4 / 1 / 0.25', hc.coolDown === 0.95 && hc.heatThresholdStart === 0.8 && hc.heatThresholdEnd === 0.4 && hc.rofAt0Heat === 1 && hc.rofAt100Heat === 0.25, hc);
+
+  // Barrel spin (WeaponShoot.cs notSpun, WeaponController.SpinBarrel): 9 spin-up steps before the first shot; a reload
+  // longer than 60 ticks spins down, so 1500 RPM, 4 x 30 rounds, ReloadTime 192 costs 9 ticks per reload (431 -> 440).
+  const g0 = W.simulateFire({ rof: 1500, magSize: 30, mags: 4, reloadTicks: 192, trace: 3 });
+  const g1 = W.simulateFire({ rof: 1500, magSize: 30, mags: 4, reloadTicks: 192, barrelSpin: true, trace: 125 });
+  check('No barrel spin: Gatling trace unchanged (1, 3, 5)', eq(g0.trace, [1, 3, 5]), g0.trace);
+  check('Barrel spin: first shot after 9 spin-up steps (10, 12, 14)', eq(g1.trace.slice(0, 3), [10, 12, 14]), g1.trace.slice(0, 3));
+  check('Barrel spin: after a 192-tick reload, 9 more spin-up ticks (shot 121 at 450)', g1.trace[119] === 248 && g1.trace[120] === 450, g1.trace.slice(118, 122));
+  check('Barrel spin: cycle 440 ticks, 9 spin ticks per reload', near(g1.roundsPerSec, 120 * 60 / 440, 1e-9) && g1.spinTicks === 9, { rps: g1.roundsPerSec, spin: g1.spinTicks });
+  const g3 = W.simulateFire({ rof: 1500, magSize: 30, mags: 4, reloadTicks: 192, barrelSpin: true, spinStepTicks: 3, trace: 1 });
+  check('Barrel spin with 3 ticks per step: first shot at tick 26', g3.trace[0] === 26, g3.trace);
+  check('Spin step ticks: 1500 RPM -> 0; 300 RPM -> 3; DeterministicSpin 300 RPM -> 1',
+    W.barrelSpinStepTicks({ rof: 1500, muzzleCount: 6 }) === 0 && W.barrelSpinStepTicks({ rof: 300, muzzleCount: 1 }) === 3
+    && W.barrelSpinStepTicks({ rof: 300, deterministicSpin: true, muzzleCount: 1 }) === 1);
+
+  // Weapons with no reload and no heat stall: rate is measured between fire events (no extra fencepost shot)
+  const f1 = W.simulateFire({ rof: 5, magSize: 1, energy: true });
+  const f2 = W.simulateFire({ rof: 600, barrels: 2, magSize: 1, energy: true });
+  check('No-boundary weapons: 5 RPM radar fires exactly 5 per minute; 600 RPM x 2 barrels = 20/s',
+    near(f1.roundsPerSec * 60, 5, 1e-9) && near(f2.roundsPerSec, 20, 1e-9), { f1: f1.roundsPerSec * 60, f2: f2.roundsPerSec });
+
+  // Flight time: accelerate from 0 at AccelPerSec up to DesiredSpeed (Projectile.cs / Projectiles.cs)
+  check('Flight time: 2,300 m at 450 m/s, 300 m/s² = 5.86 s; 3,000 m at 200, 50 = 17.0 s; no accel = d / V; short hop never reaches cruise',
+    near(W.flightTime(2300, 450, 300), 5.8611, 1e-4) && near(W.flightTime(3000, 200, 50), 17, 1e-9)
+    && W.flightTime(1000, 1000, 0) === 1 && near(W.flightTime(300, 200, 50), 3.4641, 1e-4));
 }
 
 // ============================================================================
@@ -252,7 +277,8 @@ const parsed = SP.parseAll(cs);
         reloadTime: L.ReloadTime || 0, magsToLoad: L.MagsToLoad || 0, shotsInBurst: L.ShotsInBurst || 0, delayAfterBurst: L.DelayAfterBurst || 0,
         delayUntilFire: L.DelayUntilFire || 0, heatPerShot: L.HeatPerShot || 0, maxHeat: L.MaxHeat || 0, cooldown: L.Cooldown || 0,
         heatSinkRate: L.HeatSinkRate || 0, degradeRof: L.DegradeRof === true, fireFull: L.FireFull === true,
-        allowOverheatShooting: L.AllowOverheatShooting === true
+        allowOverheatShooting: L.AllowOverheatShooting === true,
+        barrelSpinRate: L.BarrelSpinRate || 0, deterministicSpin: L.DeterministicSpin === true
       };
       for (const [k, v] of Object.entries(want)) if (e[k] !== v) wbad.push(`${sub}.${k}: ${e[k]} != ${v}`);
       if (JSON.stringify(e.allAmmos) !== JSON.stringify(w.assignedAmmos)) wbad.push(`${sub}.allAmmos`);
@@ -287,8 +313,9 @@ const studio = loadStudio();
       if (!a) continue;
       const fp = getFireCycleParams(w, a, false);
       const cyc = computeFireCycle(fp);
-      const cap = Math.max(1, Math.floor(fp.rof)) / 60 * fp.barrels;
-      if (cyc.roundsPerSec > Math.max(cap, 60 * fp.barrels) + 1e-9) out.rateOver.push(w.subtypeId);
+      // WC fires every (uint)(3600 / RoF) ticks, at most once per tick
+      const cap = 60 / cyc.ticksPerShot * fp.barrels;
+      if (cyc.roundsPerSec > cap + 1e-9) out.rateOver.push(w.subtypeId);
       const m = calculateWeaponMetrics(w);
       if (![m.sustainedDps, m.effectiveDps, m.magazineDamage, m.power].every(Number.isFinite)) out.nonFinite.push(w.subtypeId);
     }

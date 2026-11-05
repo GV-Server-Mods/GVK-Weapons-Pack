@@ -130,12 +130,28 @@ function simulateFire(p) {
   let shotsFired = 0, ticksUntilShoot = 0, isShooting = false, preFired = false, shootTime = 0, lastShootTick = 0;
   let heat = 0, overheated = false, countdown = 0, heatNext = -1, pendingShoot = false;
   let rounds = 0, stallTicks = 0, prevShot = -1;
+  const warm = ticks * 0.25;
+  // First and last fire event after warm-up, for weapons with no cycle boundary (no reload, no overheat stall)
+  let evT0 = -1, evR0 = 0, evT1 = -1, evR1 = 0;
+  // Barrel spin (WeaponController.SpinBarrel): the barrels need 9 spin-up steps before the first shot after an
+  // idle of 60+ ticks; each step waits spinK ticks. notSpun ticks are counted in the measured window.
+  const spin = !!p.barrelSpin, spinK = Math.max(0, int(p.spinStepTicks));
+  let barrelRate = 0, barrelSpinning = false, spinUpTick = 0, spinTicks = 0;
+  function spinBarrel(t, down) {
+    if (spinUpTick <= t && down) { spinUpTick = t + spinK; barrelRate--; }
+    if (barrelRate < 0) { barrelRate = 0; barrelSpinning = false; } else barrelSpinning = true;
+    if (!down && barrelRate < 9) {
+      if (spinUpTick <= t) { barrelRate++; spinUpTick = t + spinK; }
+      return false;
+    }
+    return true;
+  }
   const traceMax = int(p.trace);
   const trace = traceMax > 0 ? [] : null; // optional: tick of each round fired (tests)
   // Cycle boundaries: a load becoming ready (or, for non-reloadable weapons, an overheat clearing)
   const bounds = [];
 
-  function boundary(t) { bounds.push({ t, rounds, first: -1, lastBefore: prevShot }); }
+  function boundary(t) { bounds.push({ t, rounds, first: -1, lastBefore: prevShot, spin: spinTicks }); }
   function reloaded(t) {
     ammo = load;
     if (!shotReload) shotsFired = 0;
@@ -193,6 +209,8 @@ function simulateFire(p) {
     if (!pendingShoot) {
       if (isShooting || preFired) stopShooting();
       stallTicks++;
+      // SessionUpdate: spin down only while not shooting for 60+ ticks
+      if (spin && barrelSpinning) spinBarrel(t, t - lastShootTick >= 60);
     }
 
     // Charger: energy / hybrid charge passes
@@ -207,10 +225,14 @@ function simulateFire(p) {
     if (pendingShoot) {
       if (ticksUntilShoot++ < D) { preFired = true; continue; }
       preFired = false;
-      if (t < shootTime) continue;
+      // WeaponShoot.cs: `notSpun = HasBarrelRotation && !SpinBarrel()` returns before firing
+      const notSpun = spin && !spinBarrel(t, false);
+      if (notSpun) spinTicks++;
+      if (notSpun || t < shootTime) continue;
       shootTime = t + tps;
       lastShootTick = t;
       isShooting = true;
+      if (t >= warm) { if (evT0 < 0) { evT0 = t; evR0 = rounds; } evT1 = t; evR1 = rounds; }
       for (let i = 0; i < B; i++) {
         if (reloadable) { if (ammo === 0) break; ammo--; }
         rounds++;
@@ -244,12 +266,14 @@ function simulateFire(p) {
 
   // Steady state: whole cycles between the first boundary past the warm-up and the last boundary
   let rate, cycles = 0, b0 = -1;
-  const warm = ticks * 0.25;
   for (let i = 0; i < bounds.length; i++) if (bounds[i].t >= warm) { b0 = i; break; }
   const b1 = bounds.length - 1;
   if (b0 >= 0 && b1 > b0) {
     rate = (bounds[b1].rounds - bounds[b0].rounds) / (bounds[b1].t - bounds[b0].t);
     cycles = b1 - b0;
+  } else if (evT1 > evT0) {
+    // Rounds from the first measured fire event up to (not including) the last, over their spacing
+    rate = (evR1 - evR0) / (evT1 - evT0);
   } else {
     rate = rounds / ticks;
   }
@@ -268,7 +292,7 @@ function simulateFire(p) {
   }
   return {
     roundsPerSec, reloadable, burstMode, shotReload, mustCharge, events, load, trace,
-    ticksPerShot: tpsBase, spoolTicks, fireTicks, gapTicks,
+    ticksPerShot: tpsBase, spoolTicks, fireTicks, gapTicks, spinTicks: cycles > 0 ? (bounds[b1].spin - bounds[b0].spin) / cycles : 0,
     heatLimited: hasHeat && stallTicks > 0 && !reloadable, stallShare: stallTicks / ticks, simTicks: ticks
   };
 }
@@ -437,7 +461,33 @@ function isHitscan(ammo) {
   return num(traj.desiredSpeed) >= 10000;
 }
 
-const WcMath = { TICKS_PER_SEC, GRID_SIZE_M, energy, heatConstants, simulateFire, aoeRings, aoeDamage, weaponPattern, blockDamageScale, penetration, pdHitsToKill, isHitscan };
+/// <summary>
+/// Ticks between barrel spin-up steps (WeaponState.cs: _ticksBeforeSpinUp = (uint)interval / 10).
+/// Spin rate falls back to RateOfFire, capped at 3599 (CoreSystems BarrelsAv); interval = 3600 / rate,
+/// times 1/barrels (DeterministicSpin) or PI/barrels.
+/// </summary>
+function barrelSpinStepTicks(p) {
+  const rof = num(p.rof), bsrIn = num(p.barrelSpinRate);
+  const nb = Math.max(1, int(p.muzzleCount, 1));
+  const bsr = bsrIn > 0 ? Math.min(bsrIn, 3599) : (rof < 3699 ? Math.max(1, rof) : 3599);
+  const interval = f32(3600 / bsr) * (p.deterministicSpin ? 1 / nb : f32(Math.PI) / nb);
+  return Math.floor(Math.floor(interval) / 10);
+}
+
+/// <summary>
+/// Straight-line flight time to distM for a round that starts at 0 and accelerates at accelPerSec up to
+/// desiredSpeed (Projectile.cs Start: DeltaVelocityPerTick, Projectiles.cs: capped at MaxSpeed). No accel = d / V.
+/// Stationary shooter, no gravity or drag.
+/// </summary>
+function flightTime(distM, desiredSpeed, accelPerSec) {
+  const d = Math.max(0, num(distM)), v = num(desiredSpeed), a = num(accelPerSec);
+  if (!(v > 0)) return 0;
+  if (!(a > 0)) return d / v;
+  const rampDist = v * v / (2 * a);
+  return d <= rampDist ? Math.sqrt(2 * d / a) : d / v + v / (2 * a);
+}
+
+const WcMath = { TICKS_PER_SEC, GRID_SIZE_M, energy, heatConstants, simulateFire, barrelSpinStepTicks, flightTime, aoeRings, aoeDamage, weaponPattern, blockDamageScale, penetration, pdHitsToKill, isHitscan };
 if (typeof module !== 'undefined' && module.exports) module.exports = WcMath;
 root.WcMath = WcMath;
 if (typeof window !== 'undefined' && window !== root) window.WcMath = WcMath;
