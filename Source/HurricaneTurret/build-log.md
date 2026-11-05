@@ -2057,6 +2057,47 @@ forward?" It sat at phi -80, 10 degrees round from the guns' line (-Y) toward +X
 
   Checkpoint: `HurricaneTurret_before_r31_winfwd.blend`. Not seen in game yet.
 
+### Round 32: the plinth pocket edges
+
+Owner, in game, 2026-11-04: "the plinth needs another look around the panel gaps, I can see inside the edges
+somewhat".
+
+- **Cause.** The kitbashed frame (`Plinth`) is an open shell facing out. Round each side pocket (bottom, corner post
+  side, top) its rim is open under the inner lip: the vanilla container's wall closed it, and the stretched frame has
+  no wall there. Round 22's liner closes the view straight through, but at a grazing angle the eye goes in under the
+  lip, behind the rim, and meets faces the game does not draw. The same happens along the deck's edge, through the
+  5 cm slot between the top plate and the top edge's inner lip.
+- **Measured** with a ray scan (`seethrough.py` in the session scratchpad): rays from 72 eyes round the sides (1.5
+  and 4 m out, three along, three heights) and 12 above and below the plinth, about 4.7 million in all; a ray counts
+  when the first face it meets faces away and nothing drawn sits in the same place. With the game's vertex rounding
+  applied (`rounded=True`), the frame took 44,484 such rays, most into the corner posts and about 4,900 into the top
+  edges from across the deck.
+- **First try, dropped:** a dark flipped copy of the whole frame (`Pl_FrameBacks`, 944 triangles). The scan went to
+  zero, but in game the owner saw no change: "I'm really struggling to see any improvement here. can you just add a
+  simple face around each panel pocket edge?", with a mockup of one face from the pocket floor's edge out to the rim.
+  The copy only painted the hollow dark; it was still a hollow.
+- **Fix:** `Pl_PocketWalls` (`gvk_plinth.pocket_walls()`, `PaintedMetal_Colorable`, box UVs like the other plinth
+  parts), 88 faces, 176 triangles:
+  - every open edge of the rim's inner lip (6.181 m out) is swept straight back to 6.110 m, inside the bay plate,
+    facing into the pocket, as the strap rims already were (`gvk_ports.rim()`): 72 faces along the bottoms, post
+    sides and tops. Edges within 1 m of a side's middle sit inside the port frames and are left out;
+  - along the deck's edge, the top edge's open inner edge (z -1.2832) drops to the top plate (z -1.335), facing the
+    deck: 16 faces;
+  - each face's outer edge is the lip's own edge, vertex for vertex, so the game rounds both alike and no crack opens;
+  - it copies the frame after `gvk_ports.build()` recuts it, so `rebuild.run()` calls it right after.
+- **After** (rounded scan): 1,026 rays left, none into a pocket: 960 along one port seam decal's edge with the port
+  brace right behind, 38 at the bottom chamfer's inner corner that land on the liner's underside 1 to 2 cm behind,
+  and grazing slivers on the corner caps' ends.
+- Checks:
+  - two rebuilds in a row match (UVs to within 1e-6), and the rebuild check matched the saved file in all 180
+    objects under two seeds;
+  - the preview was re-exported (warnings unchanged);
+  - triangles per material match Blender (`PaintedMetal_Darker` 35,914, `PaintedMetal_Colorable` 18,506), with
+    121,128 in total.
+
+  Checkpoints: `HurricaneTurret_before_r32_backs.blend` (before round 32), `HurricaneTurret_before_r32b_walls.blend`
+  (with the dropped copy). Seen in game, owner, 2026-11-04: "that looks way better now".
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
