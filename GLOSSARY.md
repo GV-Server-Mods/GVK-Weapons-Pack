@@ -236,7 +236,7 @@ How much ammo a weapon block holds. WeaponCore: `HardPoint.HardWare.InventorySiz
 The extra room in a weapon's Inventory Size so it can reload without running dry.
 
 **Suggested Inventory Size**:
-The Inventory Size the studio computes for a weapon from its magazine volume and the Reload Buffer.
+The Inventory Size the studio computes for a weapon from its magazine volume and the Reload Buffer, divided by WeaponCore's conveyor fill: conveyors load a weapon only to 75% of its Inventory Size (WeaponCore: `Loading.InventoryFillAmount`).
 
 **Mags Carried**:
 How many magazines fit in a player inventory or a small cargo container.

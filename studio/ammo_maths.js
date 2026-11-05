@@ -253,7 +253,26 @@ function amWeaponParams(g) {
     shotsInBurst: amTreeNum(t, L.concat('ShotsInBurst'), w.shotsInBurst || 0),
     delayAfterBurst: amTreeNum(t, L.concat('DelayAfterBurst'), w.delayAfterBurst || 0),
     inventorySize: amTreeNum(t, ['HardPoint', 'HardWare', 'InventorySize'], 0),
+    fillAmount: amFillAmount(t),
+    worldInvMult: amWorldInvMult(t),
   };
+}
+/// <summary>Share of InventorySize WC's conveyor pull fills to: Loading.InventoryFillAmount, else 0.75 (CoreSystems.cs:298).</summary>
+function amFillAmount(tree) {
+  const v = amTreeNum(tree, ['HardPoint', 'Loading', 'InventoryFillAmount'], 0);
+  return v > 0 ? v : 0.75;
+}
+/// <summary>BlocksInventorySizeMultiplier enters WC's fill target only with UseWorldInventoryVolumeMultiplier (CoreSystems.cs:297).</summary>
+function amWorldInvMult(tree) {
+  const on = tree && typeof wcGet === 'function' && wcGet(tree, ['HardPoint', 'Loading', 'UseWorldInventoryVolumeMultiplier']) === true;
+  return on ? (balanceMatrix.blocksInvMult || 1) : 1;
+}
+/// <summary>InventorySize so WC's conveyor fill holds buffer × MagsToLoad magazines: need ÷ (fill × world multiplier), rounded up to 10 L.</summary>
+function amInvSizing(volL, buffer, N, fill, worldMult) {
+  const fillShare = (fill || 0.75) * (worldMult || 1);
+  const needL = volL * buffer * N;
+  const minL = needL / fillShare;
+  return { needL, minL, suggested: amRoundUp10(minL) / 1000, fillShare };
 }
 
 // ==========================================================================
@@ -393,26 +412,26 @@ function amWeaponRows(r, env) {
     }));
     const sps = cyc.totalCycleSec > 0 ? cyc.totalRounds / cyc.totalCycleSec : 0;
     const lps = r.vol / r.shots * sps;
-    const minL = r.vol * env.bufferReloads * N;
-    const suggestedInv = amRoundUp10(minL) / 1000;
+    const { needL, minL, suggested: suggestedInv, fillShare } = amInvSizing(r.vol, env.bufferReloads, N, p.fillAmount, p.worldInvMult);
     const liveL = p.inventorySize * 1000;
     const magsPerMin = sps * 60 / r.shots;
     const subs = g.weapons.map((w) => w.subtypeId).filter(Boolean);
     return {
       defName: g.defName, weapons: g.weapons, name: g.weapons[0].name || g.defName, subtypes: subs,
       params: p, magsToLoad: N, sps, lps, kgps: r.mass / r.shots * sps, dps: sps * r.dmgPerHit,
-      minMags: env.bufferReloads * N, minL, suggestedInv, liveInv: p.inventorySize,
-      magsHeld: r.vol > 0 ? Math.floor(liveL / r.vol + 1e-9) : 0,
+      minMags: env.bufferReloads * N, needL, minL, suggestedInv, liveInv: p.inventorySize, fill: p.fillAmount,
+      // Magazines WC's conveyor pull loads: whole mags up to the fill share (WeaponReload.cs:233, same epsilon)
+      magsHeld: r.vol > 0 ? Math.floor(fillShare * liveL / r.vol + 1e-4) : 0,
       short: liveL + 1e-6 < minL,
       // Live inventory above the suggestion: "Apply" would shrink it
       overPct: suggestedInv > 0 && liveL > suggestedInv * 1000 + 1e-6 ? (liveL / (suggestedInv * 1000) - 1) * 100 : 0,
       playerSec: lps > 0 ? env.playerInvL / lps : Infinity,
-      depleteSec: lps > 0 ? suggestedInv * 1000 / lps : Infinity,
-      depleteLiveSec: lps > 0 ? liveL / lps : Infinity,
+      depleteSec: lps > 0 ? fillShare * suggestedInv * 1000 / lps : Infinity,
+      depleteLiveSec: lps > 0 ? fillShare * liveL / lps : Infinity,
       cargoSec: r.cargo.map((c) => (lps > 0 ? c.liters / lps : Infinity)),
       magsPerMin, scPerMin: magsPerMin * r.serverPrice,
       ingotPerMin: r.prereqs.map((q) => ({ subtypeId: q.subtypeId, perMin: q.amount * magsPerMin })),
-      formula: `ROUNDUP(${amFmt(r.vol)} L × ${env.bufferReloads} × ${N} MagsToLoad, −1) ÷ 1000 = ${suggestedInv} kL`,
+      formula: `ROUNDUP(${amFmt(r.vol)} L × ${env.bufferReloads} × ${N} MagsToLoad ÷ ${fillShare} fill, −1) ÷ 1000 = ${suggestedInv} kL`,
     };
   });
 }
@@ -420,17 +439,19 @@ function amWeaponRows(r, env) {
 function amCompute(mag, opts) { return computeAmmoMaths(mag, amLeversFor(mag), amEnv(), opts); }
 
 /// <summary>Suggested WC InventorySize (kL) for a weapon loading magSubtype with the given MagsToLoad.</summary>
-function suggestedInventorySize(magSubtype, magsToLoad) {
+/// defName (optional) reads that def's InventoryFillAmount; without it WC's default 0.75 applies.
+function suggestedInventorySize(magSubtype, magsToLoad, defName) {
   const mag = amMag(magSubtype);
   if (!mag) return null;
   const r = amCompute(mag, { weapons: false });
   const N = Math.max(1, magsToLoad || 1);
   const buf = balanceMatrix.bufferReloads;
-  const minL = r.vol * buf * N;
-  const suggested = amRoundUp10(minL) / 1000;
+  const tree = defName ? amWeaponTree(defName) : null;
+  const fill = amFillAmount(tree);
+  const { needL, minL, suggested, fillShare } = amInvSizing(r.vol, buf, N, fill, amWorldInvMult(tree));
   return {
-    mag, vol: r.vol, sbcVol: mag.volume, minL, suggested, buffer: buf, magsToLoad: N,
-    formula: `ROUNDUP(${amFmt(r.vol)} L × ${buf} × ${N} MagsToLoad, −1) ÷ 1000 = ${suggested} kL`,
+    mag, vol: r.vol, sbcVol: mag.volume, needL, minL, suggested, buffer: buf, magsToLoad: N, fill, fillShare,
+    formula: `ROUNDUP(${amFmt(r.vol)} L × ${buf} × ${N} MagsToLoad ÷ ${fillShare} fill, −1) ÷ 1000 = ${suggested} kL`,
   };
 }
 
@@ -952,14 +973,14 @@ function amRenderWeapons(r, env) {
   const t = $am('amWeaponsTable');
   const note = $am('amWeaponsNote');
   if (note) {
-    note.textContent = `Suggested InventorySize = ROUNDUP(Vol × ${env.bufferReloads} × MagsToLoad, −1) ÷ 1000 kL, per WeaponDefinition (WC HardPoint.HardWare.InventorySize).`;
+    note.textContent = `Suggested InventorySize = ROUNDUP(Vol × ${env.bufferReloads} × MagsToLoad ÷ 0.75, −1) ÷ 1000 kL, per WeaponDefinition (WC HardPoint.HardWare.InventorySize). Conveyors fill a weapon to 75% of its InventorySize (WC InventoryFillAmount), so mags held and fire times count that share; a hand-filled gun holds more.`;
   }
   if (!t) return;
   const pinned = amPinned(r);
   const rows = r.weapons.slice().sort((a, b) => a.name.localeCompare(b.name));
   const tp = amThroughput;
   const head = '<thead><tr><th>Weapon</th><th>MagsToLoad</th><th>Rounds/s</th><th>DPS</th>'
-    + `<th>Suggested Inv.</th><th>Live Inv. (WC)</th><th title="Continuous fire from a full live inventory">Live Inv. Lasts</th>`
+    + `<th>Suggested Inv.</th><th>Live Inv. (WC)</th><th title="Continuous fire from WC's conveyor fill (75% of InventorySize)">Live Inv. Lasts</th>`
     + (tp ? `<th>L/s</th><th title="${env.bufferReloads} × MagsToLoad">Min Mags</th><th>Mags/min</th><th>SC/min</th>`
       + r.cargo.map((c) => `<th>${c.key === 'small' ? 'Small' : 'Large'} Cargo <span class="am-muted">1 gun</span></th>`).join('') : '')
     + '<th></th></tr></thead>';
@@ -974,7 +995,7 @@ function amRenderWeapons(r, env) {
       <td>${w === pinned ? '📌 ' : ''}${amEsc(w.name)}${subs}</td>
       <td>${w.magsToLoad}</td><td>${amFmt(w.sps, 3)}</td><td>${amFmt(w.dps)}</td>
       <td class="am-formula" title="${amEsc(w.formula)}"><strong>${amNum(w.suggestedInv)} kL</strong></td>
-      <td class="${w.short ? 'am-short' : ''}" title="Holds ${w.magsHeld} mags">${amNum(w.liveInv)} kL <span class="am-muted">(${w.magsHeld} mags)</span> ${status}</td>
+      <td class="${w.short ? 'am-short' : ''}" title="Conveyors load ${w.magsHeld} mags (${Math.round(w.fill * 100)}% fill)">${amNum(w.liveInv)} kL <span class="am-muted">(${w.magsHeld} mags)</span> ${status}</td>
       <td title="At the suggested size: ${amTime(w.depleteSec)}">${amTime(w.depleteLiveSec)}</td>
       ${tp ? `<td>${amFmt(w.lps, 2)}</td><td>${amFmt(w.minMags, 1)}</td><td>${amFmt(w.magsPerMin, 2)}</td><td title="${amEsc(ingots)}">${amFmt(w.scPerMin)}</td>`
         + w.cargoSec.map((s) => `<td>${amTime(s)}</td>`).join('') : ''}
@@ -1327,18 +1348,19 @@ function amCheckWorkbench(warnings) {
     return;
   }
   const N = Math.max(1, parseInt(($am('wMagsToLoad') || {}).value, 10) || 1);
-  const s = suggestedInventorySize(sub, N);
   const defName = activeWeapon && activeWeapon.defName;
+  const s = suggestedInventorySize(sub, N, defName);
   if (auto) auto.checked = !!(defName && amAutoInv[defName]);
   if (defName && amAutoInv[defName] && s.suggested > 0 && Math.abs((parseFloat(inp.value) || 0) - s.suggested) > 1e-9) {
     amApplyInventorySize(s.suggested, true);
   }
   const cur = parseFloat(inp.value) || 0;
   const short = s.minL > 0 && cur * 1000 + 1e-6 < s.minL;
-  const reloads = s.vol > 0 ? cur * 1000 / s.vol / N : 0;
+  // Reloads WC's conveyor fill holds (fill share of InventorySize)
+  const reloads = s.vol > 0 ? cur * 1000 * s.fillShare / s.vol / N : 0;
   inp.classList.toggle('input-below-min', short);
   inp.title = (inp.dataset.helpTitle || '') + (short
-    ? `\n\n⚠ Below the ${s.buffer} × MagsToLoad reload buffer: holds ${reloads.toFixed(2)} reloads (min ${s.suggested} kL).` : '');
+    ? `\n\n⚠ Below the ${s.buffer} × MagsToLoad reload buffer ÷ ${s.fillShare} WC fill: conveyors load ${reloads.toFixed(2)} reloads (min ${s.suggested} kL).` : '');
   if (box) {
     box.style.display = '';
     box.classList.toggle('am-inv-short', short);
@@ -1348,10 +1370,10 @@ function amCheckWorkbench(warnings) {
     const volNote = Math.abs(s.vol - s.sbcVol) > 1e-9 ? ` · Ammo Maths mag ${amFmt(s.vol)} L (SBC ${amFmt(s.sbcVol)} L)` : '';
     hint.textContent = short
       ? `⚠ Holds ${reloads.toFixed(2)} of ${s.buffer} × ${N} reloads — min ${amNum(s.suggested)} kL${volNote}`
-      : `Suggested: ${amNum(s.suggested)} kL (${s.buffer} × ${N} mags × ${amFmt(s.vol)} L)${volNote}`;
+      : `Suggested: ${amNum(s.suggested)} kL (${s.buffer} × ${N} mags × ${amFmt(s.vol)} L ÷ ${s.fillShare} WC fill)${volNote}`;
   }
   if (short) {
-    warnings.push(`InventorySize ${cur} kL is below the ${s.buffer} × MagsToLoad buffer (${amNum(s.suggested)} kL) for ${mag.displayName}.`);
+    warnings.push(`InventorySize ${cur} kL is below the ${s.buffer} × MagsToLoad buffer ÷ ${s.fillShare} WC fill (${amNum(s.suggested)} kL) for ${mag.displayName}.`);
   }
   const r = amCompute(mag, { weapons: false });
   const d = r.driftPct;
@@ -1668,7 +1690,7 @@ function setupLogisticsEvents() {
   // Workbench InventorySize link
   amOn('btnUseSuggestedInv', 'click', () => {
     const sub = activeAmmo && activeAmmo.ammoMagazine;
-    const s = sub ? suggestedInventorySize(sub, parseInt(($am('wMagsToLoad') || {}).value, 10) || 1) : null;
+    const s = sub ? suggestedInventorySize(sub, parseInt(($am('wMagsToLoad') || {}).value, 10) || 1, activeWeapon && activeWeapon.defName) : null;
     if (s && s.suggested > 0) amApplyInventorySize(s.suggested);
   });
   amOn('chkAutoInvSize', 'change', (e) => {

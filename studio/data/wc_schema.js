@@ -6,8 +6,8 @@ window.GVK_WC_SCHEMA = {
   "version": "v0.75",
   "structureHash": "54257dc9a37e",
   "fileSize": 84595,
-  "totalEnums": 39,
-  "totalStructs": 88,
+  "totalEnums": 41,
+  "totalStructs": 100,
   "upstream": {
     "repo": "Ash-LikeSnow/WeaponCore",
     "branch": "master",

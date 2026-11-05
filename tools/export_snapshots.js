@@ -69,19 +69,23 @@ writeCrlf(path.join(outDir, 'magazines_blueprints_data.js'), magsJs);
 // WeaponCore schema signature: the Studio diffs this against upstream CoreDefinitions.cs on page load
 const structText = fs.readFileSync(path.join('CoreParts', 'script', 'Structure.cs'), 'utf8').replace(/^﻿/, '').replace(/\r/g, '');
 const wcSig = SP.extractWcSchema(structText);
+const wcTypes = SP.extractWcTypes(structText);
+const wcQualified = SP.normalizeWcTypes(wcTypes);
 const prevSchemaText = fs.existsSync(path.join(outDir, 'wc_schema.js')) ? fs.readFileSync(path.join(outDir, 'wc_schema.js'), 'utf8') : '';
 const prevVersion = (prevSchemaText.match(/"version":\s*"([^"]+)"/) || [])[1] || 'v0.75';
 const wcSchema = {
   version: prevVersion,
   structureHash: crypto.createHash('sha1').update(structText).digest('hex').slice(0, 12),
   fileSize: structText.length,
-  totalEnums: Object.keys(wcSig.enums).length,
-  totalStructs: Object.keys(wcSig.structs).length,
+  // Counted by qualified name, as the upstream check compares them (diffWcTypes)
+  totalEnums: Object.keys(wcQualified.enums).length,
+  totalStructs: Object.keys(wcQualified.structs).length,
   upstream: { repo: 'Ash-LikeSnow/WeaponCore', branch: 'master', path: 'Data/Scripts/CoreSystems/Definitions/CoreDefinitions.cs' },
+  // Short-name maps: enum member lists by type name (Workbench dropdowns)
   enums: wcSig.enums,
   structs: wcSig.structs,
-  // Qualified type tree + CoreParts field comments drive the Studio's full-field editor and C# serializer
-  types: SP.extractWcTypes(structText),
+  // Qualified type tree: the upstream check, the full-field editor and the C# serializer
+  types: wcTypes,
   help: SP.extractFieldHelp(cs),
 };
 writeCrlf(path.join(outDir, 'wc_schema.js'), HEADER + 'window.GVK_WC_SCHEMA = ' + JSON.stringify(wcSchema, null, 2) + ';\n');

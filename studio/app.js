@@ -2948,8 +2948,11 @@ function checkWcSchemaIntegrity() {
     fetch(rawUrl, { cache: 'no-store' }).then(res => res.ok ? res.text() : Promise.reject(new Error(res.status))),
     fetch(commitsUrl).then(res => res.ok ? res.json() : null).catch(() => null)
   ]).then(([text, commits]) => {
-    const upstream = window.SourcePipeline.extractWcSchema(text);
-    const diffs = window.SourcePipeline.diffWcSchema(schema, upstream);
+    // Compare by qualified name: short names merge same-named nested structs (HardwareDef, HardPointDef...)
+    const SP = window.SourcePipeline;
+    const diffs = schema.types && SP.diffWcTypes
+      ? SP.diffWcTypes(schema.types, SP.extractWcTypes(text))
+      : SP.diffWcSchema(schema, SP.extractWcSchema(text));
     const iso = commits && commits[0] && commits[0].commit && commits[0].commit.committer && commits[0].commit.committer.date;
     const d = iso ? new Date(iso) : null;
     const date = d && !isNaN(d.getTime())

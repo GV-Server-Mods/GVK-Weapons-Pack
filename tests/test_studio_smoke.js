@@ -353,6 +353,19 @@ check('Bundled wc_schema.js matches Structure.cs (re-run export_snapshots.js aft
 check('Schema diff flags added WC fields', SP.diffWcSchema(
   { enums: {}, structs: { TargetingDef: {} } }, { enums: {}, structs: { TargetingDef: { ValidControlModes: 'ControlModes[]' } } }
 ).includes('+ TargetingDef.ValidControlModes : ControlModes[]'));
+// Upstream check compares qualified names (diffWcTypes); local keys carry the Structure. wrapper, upstream's do not
+const liveTypes = SP.extractWcTypes(fs.readFileSync(path.join(root, 'CoreParts', 'script', 'Structure.cs'), 'utf8'));
+check('Qualified schema: bundled types match Structure.cs; 100 structs, 41 enums',
+  SP.diffWcTypes(bundledSchema.types, liveTypes).length === 0 && bundledSchema.totalStructs === 100 && bundledSchema.totalEnums === 41,
+  [bundledSchema.totalStructs, bundledSchema.totalEnums]);
+const qLocal = { enums: {}, structs: { 'Structure.WeaponDefinition': {}, 'Structure.WeaponDefinition.HardPointDef.HardwareDef': { RotateRate: 'float' },
+  'Structure.SupportDefinition.HardPointDef.HardwareDef': { InventorySize: 'float' } } };
+const qUp = { enums: {}, structs: { WeaponDefinition: {}, 'WeaponDefinition.HardPointDef.HardwareDef': { RotateRate: 'float' },
+  'SupportDefinition.HardPointDef.HardwareDef': { InventorySize: 'float', RotateRate: 'float' } } };
+check('Qualified schema diff sees a field added to one of two same-named structs (short names cannot)',
+  JSON.stringify(SP.diffWcTypes(qLocal, qUp)) === JSON.stringify(['+ SupportDefinition.HardPointDef.HardwareDef.RotateRate : float']), SP.diffWcTypes(qLocal, qUp));
+check('Qualified schema diff ignores the Structure. wrapper prefix',
+  SP.diffWcTypes({ enums: {}, structs: { 'Structure.WeaponDefinition': { A: 'int' } } }, { enums: {}, structs: { WeaponDefinition: { A: 'int' } } }).length === 0);
 const wcFieldSrc = `namespace Scripts { partial class Parts {
  private AmmoDef CutAmmo => new AmmoDef { AmmoRound = "CutAmmo", BaseDamage = 1000f, BaseDamageCutoff = 200f,
    DamageScales = new DamageScaleDef { ArmorForCutoff = new ArmorDef { Armor = -1f, Heavy = 0.5f, Light = 2f }, GridSizeForCutoff = new GridSizeDef { Large = 1.5f } } };
@@ -458,7 +471,19 @@ studio.run(`
         recipe: r.prereqs.map((p) => p.subtypeId + ':' + p.amount).join(' '), drift: r.driftPct, weapons: r.weapons };
     };
     const gat = pick('NATO_25x184mm'), hc = pick('Ballistics_HeavyCannon'), rail = pick('SmallRailgunAmmo');
-    const gatRows = gat.weapons.map((w) => ({ def: w.defName, n: w.magsToLoad, inv: w.suggestedInv, short: w.short }));
+    const gatRows = gat.weapons.map((w) => ({ def: w.defName, n: w.magsToLoad, inv: w.suggestedInv, short: w.short, live: w.liveInv,
+      held: w.magsHeld, over: Math.round(w.overPct * 10) / 10 }));
+    // WC conveyor fill: InventoryFillAmount (default 0.75) of InventorySize
+    const torpRow = amCompute(amMag('Missiles_Torpedo')).weapons.find((w) => w.defName === 'Torpedo_Crusader_Large');
+    const torp = torpRow && { inv: torpRow.suggestedInv, live: torpRow.liveInv, over: Math.round(torpRow.overPct), held: torpRow.magsHeld, short: torpRow.short };
+    const sg14 = suggestedInventorySize('NATO_25x184mm', 14);
+    const fillTree = JSON.parse(JSON.stringify(amWeaponTree('LargeGatlingTurret')));
+    // Loading is a shared helper reference; an inline copy holding only the fill is enough for the sizing
+    fillTree.HardPoint.Loading = { InventoryFillAmount: 0.95 };
+    wcWorking.weapon.LargeGatlingTurret = fillTree;
+    const fill95 = suggestedInventorySize('NATO_25x184mm', 4, 'LargeGatlingTurret').suggested;
+    delete wcWorking.weapon.LargeGatlingTurret;
+    const shortCount = amTrackedMags().reduce((n, m) => n + amCompute(m).weapons.filter((w) => w.short).length, 0);
 
     // Workbench: Avenger (MagsToLoad 14, InventorySize 0.9) is below 2.2 x 14 x 30 L = 924 L
     const av = weaponsDb.find((w) => w.subtypeId === 'GVK_AvengerGatlingTurret');
@@ -484,7 +509,7 @@ studio.run(`
     const restored = amCompute(gatMag, { weapons: false }).vol;
 
     updateAmmoLogistics();
-    __amReport({ gat, hc, rail, gatRows, shortWarning, sugg: sugg.suggested, cs, noWarnAfterUse: !warnings2.some((w) => /below the 2.2/.test(w)),
+    __amReport({ gat, hc, rail, gatRows, torp, sg14: { s: sg14.suggested, need: sg14.needL, min: sg14.minL, fill: sg14.fill }, fill95, shortCount, shortWarning, sugg: sugg.suggested, cs, noWarnAfterUse: !warnings2.some((w) => /below the 2.2/.test(w)),
       seekedVol: seeked.vol, bpXml, magXml, changed, restored,
       overviewRows: (document.getElementById('amOverviewTable').innerHTML.match(/data-mag=/g) || []).length,
       tracked: amTrackedMags().length,
@@ -503,11 +528,18 @@ check('Ammo Maths: Railgun = SBC (130 L, 1300 kg, 38 s, 30000 / 90000 SC, 3.1 RU
   !!am.rail && eq([am.rail.vol, am.rail.mass, am.rail.craft, am.rail.price, am.rail.adj, am.rail.rus], [130, 1300, 38, 30000, 90000, 3.1])
   && Math.abs(am.rail.drift) < 0.01);
 const gl = (am.gatRows || []).find((w) => w.def === 'LargeGatlingTurret'), ga = (am.gatRows || []).find((w) => w.def === 'GVK_AvengerGatlingTurret');
-check('Suggested InventorySize is per weapon: Gatling N=4 -> 0.27 kL, Avenger N=14 -> 0.93 kL (short at 0.9)',
-  !!gl && !!ga && gl.n === 4 && gl.inv === 0.27 && !gl.short && ga.n === 14 && ga.inv === 0.93 && ga.short);
+check('Suggested InventorySize is per weapon, ÷ 0.75 WC fill: Gatling N=4 -> 0.36 kL, Avenger N=14 -> 1.24 kL (short at 0.9)',
+  !!gl && !!ga && gl.n === 4 && gl.inv === 0.36 && !gl.short && ga.n === 14 && ga.inv === 1.24 && ga.short, am.gatRows);
+const sgg = (am.gatRows || []).find((w) => w.def === 'SmallGatlingGun');
+check('Small Gatling Gun: 0.3 kL live is short of 0.36; conveyors load 7 mags', !!sgg && sgg.inv === 0.36 && sgg.live === 0.3 && sgg.short && sgg.over === 0 && sgg.held === 7, sgg);
+check('Gatling Turret: 0.6 kL live is 66.7% over; conveyors load 15 mags', !!gl && gl.over === 66.7 && gl.held === 15, gl);
+check('Torpedo (1,500 L, N=1): suggested 4.4 kL, live 5.5 kL is 25% over, 2 mags', eq(am.torp, { inv: 4.4, live: 5.5, over: 25, held: 2, short: false }), am.torp);
+check('suggestedInventorySize: need 924 L, min 1,232 L, 1.24 kL at fill 0.75', eq(am.sg14, { s: 1.24, need: 924, min: 1232, fill: 0.75 }), am.sg14);
+check('A def with InventoryFillAmount 0.95 sizes to that fill (0.28 kL)', am.fill95 === 0.28, am.fill95);
+check('15 player weapons are short of the conveyor-fill buffer', am.shortCount === 15, am.shortCount);
 check('Workbench flags InventorySize below the 2.2 x MagsToLoad buffer as a lint warning', am.shortWarning === true);
 check('"Use suggested" writes InventorySize into the exported C# and clears the warning',
-  am.sugg === 0.93 && /InventorySize = 0\.93f/.test(am.cs || '') && am.noWarnAfterUse);
+  am.sugg === 1.24 && /InventorySize = 1\.24f/.test(am.cs || '') && am.noWarnAfterUse);
 check('Size × 1.6667 on the Gatling gives Vol 50 L', am.seekedVol === 50);
 check('Blueprint export patches the SBC block (prereqs + craft time), magazine export patches Volume (Size × leaves Mass alone)',
   /<SubtypeId>001_NATO_25x184mmMagazine<\/SubtypeId>/.test(am.bpXml || '') && /<BaseProductionTimeInSeconds>13</.test(am.bpXml || '')

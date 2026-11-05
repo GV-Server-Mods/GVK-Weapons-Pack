@@ -895,6 +895,30 @@ function diffWcSchema(local, upstream) {
   return out;
 }
 
+// Qualified-name prefix in front of WeaponDefinition: 'Structure.' in the mod's Structure.cs, '' upstream.
+function wcTypesRootPrefix(types) {
+  const keys = Object.keys((types && types.structs) || {}).filter((k) => k === 'WeaponDefinition' || k.endsWith('.WeaponDefinition'));
+  keys.sort((a, b) => a.length - b.length);
+  return keys.length ? keys[0].slice(0, keys[0].length - 'WeaponDefinition'.length) : '';
+}
+
+// {enums, structs} keyed by qualified name with the root prefix stripped (drops the empty wrapper class).
+function normalizeWcTypes(types) {
+  const prefix = wcTypesRootPrefix(types);
+  const pick = (map) => {
+    const out = {};
+    for (const [k, v] of Object.entries(map || {})) if (k.startsWith(prefix) && k.length > prefix.length) out[k.slice(prefix.length)] = v;
+    return out;
+  };
+  return { enums: pick(types && types.enums), structs: pick(types && types.structs) };
+}
+
+// diffWcSchema on qualified names (both from extractWcTypes), so same-named nested structs such as
+// WeaponDefinition.HardPointDef.HardwareDef and SupportDefinition.HardPointDef.HardwareDef are compared apart.
+function diffWcTypes(localTypes, upstreamTypes) {
+  return diffWcSchema(normalizeWcTypes(localTypes), normalizeWcTypes(upstreamTypes));
+}
+
 // ---------- Typed WC schema (qualified struct/enum tree) for the full-field editor + serializer ----------
 // structs: { 'Structure.WeaponDefinition.AmmoDef': { Field: 'DeclaredType', ... } }, enums: { qualified: [members] }.
 function extractWcTypes(src) {
@@ -1077,7 +1101,7 @@ function extractFieldHelp(sources) {
 const SourcePipeline = {
   extractWcTypes, resolveWcType, wcRootType, wcFieldType, wcElemType, treeGet, treeSet, isHelperRef,
   serializeWcDef, csInline, extractFieldHelp, inlineHelpers, collectWcDefs,
-  extractWcSchema, diffWcSchema,
+  extractWcSchema, diffWcSchema, diffWcTypes, normalizeWcTypes,
   stripComments, braceMatch, exprParser, extractDefs, evalGetter, resolveTree, parseAll,
   parseXml, parseMagazines, parseBlueprints, parseCubeBlocks, ammoShape, weaponEntry, magazineEntries, buildStudioData, validateLiveData,
 };
