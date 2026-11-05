@@ -27,7 +27,7 @@
 				<Component Subtype="Explosives" Count="325"/>
 				<Component Subtype="SteelPlate" Count="8"/>
 			</Components>
-			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<BuildTimeSeconds>24</BuildTimeSeconds>
 			<CriticalComponent Subtype="Explosives" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WarheadConstruction_1.mwm"/>
@@ -140,7 +140,7 @@
 				<Component Subtype="Explosives" Count="325"/>
 				<Component Subtype="SteelPlate" Count="8"/>
 			</Components>
-			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<BuildTimeSeconds>24</BuildTimeSeconds>
 			<CriticalComponent Subtype="Explosives" Index="0"/>
 			<EdgeType>Light</EdgeType>
 			<InventoryMaxVolume>1</InventoryMaxVolume>
@@ -262,7 +262,7 @@
 			<BlockPairName>Warhead</BlockPairName>
 			<ActionSound>WepLrgWarheadExpl</ActionSound>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>30</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<ExplosionRadius>22.4415</ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
@@ -308,7 +308,7 @@
 			<BlockPairName>Warhead</BlockPairName>
 			<ActionSound>WepLrgWarheadExpl</ActionSound>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<ExplosionRadius> 4.4883 </ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
@@ -362,7 +362,7 @@
 			<MirroringZ>YHalfY</MirroringZ>
 			<ActionSound>WepLrgWarheadExpl</ActionSound>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<ExplosionRadius> 4.4883 </ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>
@@ -418,7 +418,7 @@
 			<MirroringY>XHalfY</MirroringY>
 			<ActionSound>WepLrgWarheadExpl</ActionSound>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>10</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<ExplosionRadius> 4.4883 </ExplosionRadius>
 			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
 			<EmissiveColorPreset>Timer</EmissiveColorPreset>

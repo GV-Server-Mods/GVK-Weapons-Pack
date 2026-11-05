@@ -27,7 +27,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
@@ -107,7 +107,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -196,7 +196,7 @@
 				<Component Subtype="Construction" Count="150"/>
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<PCU>2</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -282,7 +282,7 @@
 				<Component Subtype="Construction" Count="260"/>
 				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>39</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -448,7 +448,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -542,7 +542,7 @@
 				<Component Subtype="Construction" Count="150"/>
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
@@ -694,7 +694,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
 				<MountPoint Side="Front" StartX="0.0" StartY="0.0" EndX="3.0" EndY="1.0"/>
@@ -776,7 +776,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -867,7 +867,7 @@
 				<Component Subtype="Construction" Count="150"/>
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<PCU>2</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -955,7 +955,7 @@
 				<Component Subtype="Construction" Count="260"/>
 				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>39</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -1127,7 +1127,7 @@
 				<Component Subtype="Construction" Count="540"/>
 				<Component Subtype="SteelPlate" Count="210"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -1223,7 +1223,7 @@
 				<Component Subtype="Construction" Count="150"/>
 				<Component Subtype="SteelPlate" Count="54"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>

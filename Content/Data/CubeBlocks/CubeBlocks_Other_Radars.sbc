@@ -50,7 +50,7 @@
 				</DynamicMode>
 			</VoxelPlacement>
 			<EdgeType>Light</EdgeType>
-			<BuildTimeSeconds>40</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<WeaponDefinitionId Subtype="Others_Radar"/>
 			<InventoryMaxVolume>0.384</InventoryMaxVolume>
@@ -115,7 +115,7 @@
 			<BlockPairName>Other_Radar</BlockPairName>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
-			<BuildTimeSeconds>15</BuildTimeSeconds>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
 			<EdgeType>Light</EdgeType>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>1</InventoryMaxVolume>
@@ -172,7 +172,7 @@
             <MirroringZ>Y</MirroringZ>
             <EdgeType>Light</EdgeType>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-            <BuildTimeSeconds>16</BuildTimeSeconds>
+            <BuildTimeSeconds>5</BuildTimeSeconds>
             <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
             <DamagedSound>ParticleElectrical</DamagedSound>
             <DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
@@ -219,7 +219,7 @@
             <BlockPairName>SmallBlockCompactRadioAntennaReskin_WCRadar</BlockPairName>
             <EdgeType>Light</EdgeType>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-            <BuildTimeSeconds>16</BuildTimeSeconds>
+            <BuildTimeSeconds>5</BuildTimeSeconds>
             <MirroringY>Z</MirroringY>
             <MirroringZ>Y</MirroringZ>
             <DamageEffectName>Damage_Electrical_Damaged_Antenna</DamageEffectName>

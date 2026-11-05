@@ -132,7 +132,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/ARYXCycloneCannon.png",
     "subtypeId": "ARYXCycloneCannon",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": "AryxCycloneAnims",
     "assignedAmmos": [
@@ -293,7 +293,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/ARYXCycloneCannon_NPC.png",
     "subtypeId": "ARYXCycloneCannon_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": "AryxCycloneAnims",
     "assignedAmmos": [
@@ -454,7 +454,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/GVK_CycloneCannonTurret.png",
     "subtypeId": "GVK_CycloneCannonTurret",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -615,7 +615,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/GVK_CycloneCannonTurret_NPC.png",
     "subtypeId": "GVK_CycloneCannonTurret_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -776,7 +776,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Cannon_Turret.png",
     "subtypeId": "LargeCalibreTurret",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -937,7 +937,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Cannon_Turret_NPC.png",
     "subtypeId": "LargeCalibreTurret_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -1092,7 +1092,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Cannon_Gun.png",
     "subtypeId": "LargeBlockLargeCalibreGun",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 45,
+    "buildTimeSeconds": 46,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -1247,7 +1247,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Cannon_Turret.png",
     "subtypeId": "OKI122mmVT",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 35,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -1402,7 +1402,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Cannon_Turret_NPC.png",
     "subtypeId": "OKI122mmVT_NPC",
     "ammoName": "LargeCalibreAmmo",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 35,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -1712,7 +1712,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Cannon_Gun_NPC.png",
     "subtypeId": "LargeBlockLargeCalibreGun_NPC",
     "ammoName": "Ballistics_Cannon_NPC",
-    "buildTimeSeconds": 45,
+    "buildTimeSeconds": 46,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -2014,7 +2014,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Turret.png",
     "subtypeId": "LargeAutoCannonTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 34,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -2161,7 +2161,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Turret_NPC.png",
     "subtypeId": "LargeAutoCannonTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 34,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -2308,7 +2308,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Khopesh_Turret.png",
     "subtypeId": "KhopeshTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 6,
     "assignedAnimation": "KhopeshTurret_Recoil",
     "assignedAmmos": [
@@ -2455,7 +2455,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Khopesh_Turret_NPC.png",
     "subtypeId": "KhopeshTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 6,
     "assignedAnimation": "KhopeshTurret_Recoil",
     "assignedAmmos": [
@@ -2602,7 +2602,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Chaingun_Turret.png",
     "subtypeId": "AutoCannonTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 27,
+    "buildTimeSeconds": 28,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -2749,7 +2749,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Chaingun_Turret_NPC.png",
     "subtypeId": "AutoCannonTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 27,
+    "buildTimeSeconds": 28,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3190,7 +3190,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Thrasher_Turret.png",
     "subtypeId": "ARYXHeavyFlakTurret",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3337,7 +3337,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Chaingun_Thrasher_Turret_NPC.png",
     "subtypeId": "ARYXHeavyFlakTurret_NPC",
     "ammoName": "AutocannonClip",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3490,7 +3490,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Flak_Turret.png",
     "subtypeId": "LargeBlockMediumCalibreTurret",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 102,
+    "buildTimeSeconds": 104,
     "pcu": 6,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3646,7 +3646,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Flak_Turret_NPC.png",
     "subtypeId": "LargeBlockMediumCalibreTurret_NPC",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 102,
+    "buildTimeSeconds": 104,
     "pcu": 6,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3802,7 +3802,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Flak_Turret.png",
     "subtypeId": "SmallBlockMediumCalibreTurret",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 39,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -3958,7 +3958,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Flak_Turret_NPC.png",
     "subtypeId": "SmallBlockMediumCalibreTurret_NPC",
     "ammoName": "Ballistics_Flak",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 39,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -4420,7 +4420,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Gatling_Turret.png",
     "subtypeId": "SentinelTurret",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -4567,7 +4567,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Gatling_Turret_NPC.png",
     "subtypeId": "SentinelTurret_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -4714,7 +4714,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeGatlingTurret.png",
     "subtypeId": "LargeGatlingTurret",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -4861,7 +4861,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeGatlingTurret_NPC.png",
     "subtypeId": "LargeGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5008,7 +5008,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeGatlingTurretReskin.png",
     "subtypeId": "LargeGatlingTurretReskin",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 225,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5155,7 +5155,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeGatlingTurretReskin_NPC.png",
     "subtypeId": "LargeGatlingTurretReskin_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 225,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5302,7 +5302,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Gatling_Turret.png",
     "subtypeId": "SmallGatlingTurret",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5449,7 +5449,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Gatling_Turret_NPC.png",
     "subtypeId": "SmallGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5596,7 +5596,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallGatlingTurretReskin.png",
     "subtypeId": "SmallGatlingTurretReskin",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 225,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -5743,7 +5743,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallGatlingTurretReskin_NPC.png",
     "subtypeId": "SmallGatlingTurretReskin_NPC",
     "ammoName": "NATO_25x184mm",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 225,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -6772,7 +6772,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "GVK_AvengerGatlingTurret",
     "ammoName": "NATO_25x184mm_Dual",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 6,
     "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
     "assignedAmmos": [
@@ -6920,7 +6920,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Gatling_Avenger_Turret_NPC.png",
     "subtypeId": "GVK_AvengerGatlingTurret_NPC",
     "ammoName": "NATO_25x184mm_Dual",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 142,
     "pcu": 6,
     "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
     "assignedAmmos": [
@@ -7080,7 +7080,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret.png",
     "subtypeId": "ARYXHurricaneCannon",
     "ammoName": "Ballistics_HeavyCannon",
-    "buildTimeSeconds": 332,
+    "buildTimeSeconds": 346,
     "pcu": 12,
     "assignedAnimation": "AryxHurricaneAnims",
     "assignedAmmos": [
@@ -7239,7 +7239,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Cannon_Hurricane_Turret_NPC.png",
     "subtypeId": "ARYXHurricaneCannon_NPC",
     "ammoName": "Ballistics_HeavyCannon",
-    "buildTimeSeconds": 332,
+    "buildTimeSeconds": 346,
     "pcu": 12,
     "assignedAnimation": "AryxHurricaneAnims",
     "assignedAmmos": [
@@ -7398,7 +7398,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Cannon_Odin_Turret.png",
     "subtypeId": "odin",
     "ammoName": "Ballistics_HeavyCannon_Odin",
-    "buildTimeSeconds": 60,
+    "buildTimeSeconds": 347,
     "pcu": 16,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -7557,7 +7557,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Cannon_Odin_Turret_NPC.png",
     "subtypeId": "odin_NPC",
     "ammoName": "Ballistics_HeavyCannon_Odin",
-    "buildTimeSeconds": 60,
+    "buildTimeSeconds": 347,
     "pcu": 16,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -7716,7 +7716,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/HarbingerTurret_NPC.png",
     "subtypeId": "HarbingerTurret_NPC",
     "ammoName": "HeavyRailgunAmmo",
-    "buildTimeSeconds": 150,
+    "buildTimeSeconds": 165,
     "pcu": 10,
     "assignedAnimation": "Harbinger_Emissive",
     "assignedAmmos": [
@@ -7863,7 +7863,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Interior_Turret.png",
     "subtypeId": "LargeInteriorTurret",
     "ammoName": "Ballistics_Interior",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 34,
     "pcu": 1,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -8010,7 +8010,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Interior_Turret_NPC.png",
     "subtypeId": "LargeInteriorTurret_NPC",
     "ammoName": "Ballistics_Interior",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 34,
     "pcu": 1,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -8169,7 +8169,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__MAC_Gun.png",
     "subtypeId": "LargeRailgun",
     "ammoName": "LargeRailgunSabot",
-    "buildTimeSeconds": 94,
+    "buildTimeSeconds": 103,
     "pcu": 12,
     "assignedAnimation": "LargeRailgunAnimation",
     "assignedAmmos": [
@@ -8328,7 +8328,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__MAC_Gun_NPC.png",
     "subtypeId": "LargeRailgun_NPC",
     "ammoName": "LargeRailgunSabot_NPC",
-    "buildTimeSeconds": 94,
+    "buildTimeSeconds": 103,
     "pcu": 12,
     "assignedAnimation": "LargeRailgunAnimation",
     "assignedAmmos": [
@@ -8438,7 +8438,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechFrame",
-        "count": 12,
+        "count": 10,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -8488,7 +8488,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Railgun_Turret.png",
     "subtypeId": "ARYXRailgunTurret",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 150,
+    "buildTimeSeconds": 165,
     "pcu": 12,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
@@ -8597,7 +8597,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechFrame",
-        "count": 12,
+        "count": 10,
         "deconstructSubtype": "PrototechFrameScrap",
         "deconstructType": "Ore"
       },
@@ -8647,7 +8647,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Railgun_Turret_NPC.png",
     "subtypeId": "ARYXRailgunTurret_NPC",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 150,
+    "buildTimeSeconds": 165,
     "pcu": 12,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
@@ -8800,7 +8800,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Railgun_Gun.png",
     "subtypeId": "ARYXRailgun",
     "ammoName": "SmallRailgunAmmo",
-    "buildTimeSeconds": 49,
+    "buildTimeSeconds": 55,
     "pcu": 8,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
@@ -8903,7 +8903,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechFrame",
-        "count": 5,
+        "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -8953,7 +8953,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Railgun_Gun.png",
     "subtypeId": "SmallRailgun",
     "ammoName": "SmallRailgunAmmo_Ares",
-    "buildTimeSeconds": 6,
+    "buildTimeSeconds": 7,
     "pcu": 6,
     "assignedAnimation": "SmallRailgunAnimation",
     "assignedAmmos": [
@@ -9056,7 +9056,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechFrame",
-        "count": 5,
+        "count": 6,
         "deconstructSubtype": "PrototechFrameScrap",
         "deconstructType": "Ore"
       },
@@ -9106,7 +9106,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Railgun_Gun_NPC.png",
     "subtypeId": "SmallRailgun_NPC",
     "ammoName": "SmallRailgunAmmo_Ares",
-    "buildTimeSeconds": 6,
+    "buildTimeSeconds": 7,
     "pcu": 6,
     "assignedAnimation": "SmallRailgunAnimation",
     "assignedAmmos": [
@@ -9259,7 +9259,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Railgun_Gun_NPC.png",
     "subtypeId": "ARYXRailgun_NPC",
     "ammoName": "SmallRailgunAmmo_NPC",
-    "buildTimeSeconds": 49,
+    "buildTimeSeconds": 55,
     "pcu": 8,
     "assignedAnimation": "AryxRailgunAnims",
     "assignedAmmos": [
@@ -9977,7 +9977,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__PD_Laser.png",
     "subtypeId": "MA_PDT",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10130,7 +10130,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__PD_Laser.png",
     "subtypeId": "MA_PDT_sm",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 9,
+    "buildTimeSeconds": 10,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10283,7 +10283,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__PD_Laser_NPC.png",
     "subtypeId": "MA_PDT_NPC",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10436,7 +10436,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__PD_Laser_NPC.png",
     "subtypeId": "MA_PDT_sm_NPC",
     "ammoName": "Lasers_AMS",
-    "buildTimeSeconds": 9,
+    "buildTimeSeconds": 10,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10589,7 +10589,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Laser_Turret.png",
     "subtypeId": "MA_T2PDX",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 62,
+    "buildTimeSeconds": 70,
     "pcu": 6,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10742,7 +10742,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Laser_Turret_NPC.png",
     "subtypeId": "MA_T2PDX_NPC",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 62,
+    "buildTimeSeconds": 70,
     "pcu": 6,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -10895,7 +10895,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Laser_Gimbal.png",
     "subtypeId": "MA_Fixed_T2",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 43,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -11048,7 +11048,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Heavy_Laser_Gimbal_NPC.png",
     "subtypeId": "MA_Fixed_T2_NPC",
     "ammoName": "Lasers_Laser_Large",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 43,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -11201,7 +11201,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Spartan_Heavy_Laser_Turret.png",
     "subtypeId": "ARYXSpartanTurret",
     "ammoName": "Lasers_Laser_Dual",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 155,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -11354,7 +11354,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Spartan_Heavy_Laser_Turret_NPC.png",
     "subtypeId": "ARYXSpartanTurret_NPC",
     "ammoName": "Lasers_Laser_Dual",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 155,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -11813,7 +11813,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Light_Laser_Turret.png",
     "subtypeId": "ReceptorTurret",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -11966,7 +11966,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Light_Laser_Turret_NPC.png",
     "subtypeId": "ReceptorTurret_NPC",
     "ammoName": "Lasers_Laser_Light_SG",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -12119,7 +12119,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Light_Laser_Turret.png",
     "subtypeId": "MA_PDX",
     "ammoName": "Lasers_Laser_Light_LG",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -12272,7 +12272,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Light_Laser_Turret_NPC.png",
     "subtypeId": "MA_PDX_NPC",
     "ammoName": "Lasers_Laser_Light_LG",
-    "buildTimeSeconds": 33,
+    "buildTimeSeconds": 38,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -12431,7 +12431,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Loki_Plasma_Turret.png",
     "subtypeId": "lokiCannon1",
     "ammoName": "Lasers_Plasma",
-    "buildTimeSeconds": 332,
+    "buildTimeSeconds": 375,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -12590,7 +12590,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Loki_Plasma_Turret_NPC.png",
     "subtypeId": "lokiCannon1_NPC",
     "ammoName": "Lasers_Plasma",
-    "buildTimeSeconds": 332,
+    "buildTimeSeconds": 375,
     "pcu": 12,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -12749,7 +12749,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Tuukka_Missile_Turret.png",
     "subtypeId": "missileBattery01",
     "ammoName": "Missiles_HeavyMissile",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 144,
     "pcu": 10,
     "assignedAnimation": "missileBattery01anim",
     "assignedAmmos": [
@@ -12908,7 +12908,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Tuukka_Missile_Turret_NPC.png",
     "subtypeId": "missileBattery01_NPC",
     "ammoName": "Missiles_HeavyMissile",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 144,
     "pcu": 10,
     "assignedAnimation": "missileBattery01anim",
     "assignedAmmos": [
@@ -13067,7 +13067,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Missile_Turret.png",
     "subtypeId": "GVK_GriffinMissileTurret",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 144,
     "pcu": 9,
     "assignedAnimation": "Missiles_LightMissile_Animation",
     "assignedAmmos": [
@@ -13226,7 +13226,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Missile_Turret_NPC.png",
     "subtypeId": "GVK_GriffinMissileTurret_NPC",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 138,
+    "buildTimeSeconds": 144,
     "pcu": 8,
     "assignedAnimation": "Missiles_LightMissile_Animation",
     "assignedAmmos": [
@@ -13385,7 +13385,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Missile_Launcher.png",
     "subtypeId": "GVK_GriffinMissileLauncher",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 80,
     "pcu": 0,
     "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
     "assignedAmmos": [
@@ -13544,7 +13544,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Missile_Launcher_NPC.png",
     "subtypeId": "GVK_GriffinMissileLauncher_NPC",
     "ammoName": "Missiles_Missile",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 80,
     "pcu": 0,
     "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
     "assignedAmmos": [
@@ -14144,7 +14144,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Rocket_Turret.png",
     "subtypeId": "ARYXHydraTurret",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 4,
     "assignedAnimation": "AryxHydraAnims",
     "assignedAmmos": [
@@ -14291,7 +14291,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Rocket_Turret_NPC.png",
     "subtypeId": "ARYXHydraTurret_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 4,
     "assignedAnimation": "AryxHydraAnims",
     "assignedAmmos": [
@@ -14438,7 +14438,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeMissileTurret.png",
     "subtypeId": "LargeMissileTurret",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -14585,7 +14585,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeMissileTurret_NPC.png",
     "subtypeId": "LargeMissileTurret_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -14732,7 +14732,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeMissileTurretReskin.png",
     "subtypeId": "LargeMissileTurretReskin",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 275,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -14879,7 +14879,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeMissileTurretReskin_NPC.png",
     "subtypeId": "LargeMissileTurretReskin_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 78,
+    "buildTimeSeconds": 81,
     "pcu": 275,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15026,7 +15026,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Rocket_Turret.png",
     "subtypeId": "SmallMissileTurret",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15173,7 +15173,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Rocket_Turret_NPC.png",
     "subtypeId": "SmallMissileTurret_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15320,7 +15320,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallMissileTurretReskin.png",
     "subtypeId": "SmallMissileTurretReskin",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 100,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15467,7 +15467,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallMissileTurretReskin_NPC.png",
     "subtypeId": "SmallMissileTurretReskin_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 21,
+    "buildTimeSeconds": 22,
     "pcu": 100,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15614,7 +15614,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Rocket_Launcher.png",
     "subtypeId": "LargeMissileLauncher",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 39,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -15761,7 +15761,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Rocket_Launcher_NPC.png",
     "subtypeId": "LargeMissileLauncher_NPC",
     "ammoName": "Missiles_Rocket",
-    "buildTimeSeconds": 37,
+    "buildTimeSeconds": 39,
     "pcu": 3,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -16764,7 +16764,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechPanel",
-        "count": 12,
+        "count": 14,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -16814,7 +16814,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__SRBM_Turret.png",
     "subtypeId": "ARYXMissileBattery",
     "ammoName": "Missiles_Siege",
-    "buildTimeSeconds": 533,
+    "buildTimeSeconds": 549,
     "pcu": 12,
     "assignedAnimation": "AryxMissileBatteryAnims",
     "assignedAmmos": [
@@ -16924,7 +16924,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "PrototechPanel",
-        "count": 12,
+        "count": 14,
         "deconstructSubtype": "PrototechPanelScrap",
         "deconstructType": "Ore"
       },
@@ -16974,7 +16974,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__SRBM_Turret_NPC.png",
     "subtypeId": "ARYXMissileBattery_NPC",
     "ammoName": "Missiles_Siege",
-    "buildTimeSeconds": 533,
+    "buildTimeSeconds": 549,
     "pcu": 12,
     "assignedAnimation": "AryxMissileBatteryAnims",
     "assignedAmmos": [
@@ -17134,7 +17134,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Torpedo_Launcher.png",
     "subtypeId": "Missile_Torpedo_Large",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 49,
+    "buildTimeSeconds": 53,
     "pcu": 10,
     "assignedAnimation": "Crusader_Fire",
     "assignedAmmos": [
@@ -17294,7 +17294,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Torpedo_Launcher_NPC.png",
     "subtypeId": "Missile_Torpedo_Large_NPC",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 49,
+    "buildTimeSeconds": 53,
     "pcu": 10,
     "assignedAnimation": "Crusader_Fire",
     "assignedAmmos": [
@@ -17454,7 +17454,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Torpedo_Launcher.png",
     "subtypeId": "Missile_Torpedo_Small",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 34,
+    "buildTimeSeconds": 35,
     "pcu": 8,
     "assignedAnimation": "Crusader_Fire_Small",
     "assignedAmmos": [
@@ -17614,7 +17614,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/S__Torpedo_Launcher_NPC.png",
     "subtypeId": "Missile_Torpedo_Small_NPC",
     "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 34,
+    "buildTimeSeconds": 35,
     "pcu": 8,
     "assignedAnimation": "Crusader_Fire_Small",
     "assignedAmmos": [
@@ -17774,7 +17774,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Drone_Bay.png",
     "subtypeId": "ARYX_Small_Sidekick_Hangar",
     "ammoName": "Others_Drone_Offense_Advanced",
-    "buildTimeSeconds": 66,
+    "buildTimeSeconds": 68,
     "pcu": 8,
     "assignedAnimation": "AryxSmallHangarAnimations",
     "assignedAmmos": [
@@ -17936,7 +17936,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Drone_Bay_NPC.png",
     "subtypeId": "ARYX_Small_Sidekick_Hangar_NPC",
     "ammoName": "Others_Drone_Offense_Advanced",
-    "buildTimeSeconds": 66,
+    "buildTimeSeconds": 68,
     "pcu": 8,
     "assignedAnimation": "AryxSmallHangarAnimations",
     "assignedAmmos": [
@@ -18080,7 +18080,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeFlareLauncher.png",
     "subtypeId": "LargeFlareLauncher",
     "ammoName": "FlareWC_Smart",
-    "buildTimeSeconds": 30,
+    "buildTimeSeconds": 24,
     "pcu": 4,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18235,7 +18235,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallFlareLauncher.png",
     "subtypeId": "SmallFlareLauncher",
     "ammoName": "FlareWC_Smart",
-    "buildTimeSeconds": 10,
+    "buildTimeSeconds": 5,
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18384,7 +18384,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/OKIDesignator.png",
     "subtypeId": "OKIDesignator",
     "ammoName": "designatorBeam1",
-    "buildTimeSeconds": 40,
+    "buildTimeSeconds": 5,
     "pcu": 1,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18519,7 +18519,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/ARYXSmallRadar.png",
     "subtypeId": "ARYXSmallRadar",
     "ammoName": "designatorBeam1",
-    "buildTimeSeconds": 15,
+    "buildTimeSeconds": 5,
     "pcu": 50,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18654,7 +18654,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallBlockRadioAntenna_WCRadar.png",
     "subtypeId": "SmallBlockRadioAntenna_WCRadar",
     "ammoName": "designatorBeam1",
-    "buildTimeSeconds": 16,
+    "buildTimeSeconds": 5,
     "pcu": 1,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18795,7 +18795,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/SmallBlockCompactRadioAntennaReskin_WCRadar.png",
     "subtypeId": "SmallBlockCompactRadioAntennaReskin_WCRadar",
     "ammoName": "designatorBeam1",
-    "buildTimeSeconds": 16,
+    "buildTimeSeconds": 5,
     "pcu": 1,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -18936,7 +18936,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/L__Warhead.png",
     "subtypeId": "LargeWarhead",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
-    "buildTimeSeconds": 30,
+    "buildTimeSeconds": 24,
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -19079,7 +19079,7 @@ const BUNDLED_WEAPONS_DATA = [
     "icon": "icons/LargeExplosiveBarrel.png",
     "subtypeId": "LargeExplosiveBarrel",
     "ammoName": "Other_Warheads_RegularWarhead_LG_Ammo",
-    "buildTimeSeconds": 30,
+    "buildTimeSeconds": 24,
     "pcu": 0,
     "assignedAnimation": null,
     "assignedAmmos": [

@@ -27,7 +27,7 @@
 				<Component Subtype="MetalGrid" Count="420"/>
 				<Component Subtype="SteelPlate" Count="420"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -85,7 +85,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -174,7 +174,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -265,7 +265,7 @@
 				<Component Subtype="MetalGrid" Count="63"/>
 				<Component Subtype="SteelPlate" Count="63"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<PCU>2</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -564,7 +564,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -657,7 +657,7 @@
 				<Component Subtype="MetalGrid" Count="63"/>
 				<Component Subtype="SteelPlate" Count="63"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>
@@ -748,7 +748,7 @@
 				<Component Subtype="MetalGrid" Count="420"/>
 				<Component Subtype="SteelPlate" Count="420"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -808,7 +808,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -899,7 +899,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -992,7 +992,7 @@
 				<Component Subtype="MetalGrid" Count="63"/>
 				<Component Subtype="SteelPlate" Count="63"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<PCU>2</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -1299,7 +1299,7 @@
 				<Component Subtype="MetalGrid" Count="240"/>
 				<Component Subtype="SteelPlate" Count="240"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>81</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="1" StartY="1" EndX="2" EndY="2"/>
@@ -1394,7 +1394,7 @@
 				<Component Subtype="MetalGrid" Count="63"/>
 				<Component Subtype="SteelPlate" Count="63"/>
 			</Components>
-			<BuildTimeSeconds>21</BuildTimeSeconds>
+			<BuildTimeSeconds>22</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
 				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="5" EndY="5" Default="true"/>

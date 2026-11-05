@@ -29,7 +29,7 @@
 				<Component Subtype="Computer" Count="190"/>
 				<Component Subtype="SteelPlate" Count="380"/>
 			</Components>
-			<BuildTimeSeconds>94</BuildTimeSeconds>
+			<BuildTimeSeconds>103</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -103,7 +103,7 @@
 				<Component Subtype="Computer" Count="190"/>
 				<Component Subtype="SteelPlate" Count="380"/>
 			</Components>
-			<BuildTimeSeconds>94</BuildTimeSeconds>
+			<BuildTimeSeconds>103</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -197,7 +197,7 @@
 			<MirroringY>Z</MirroringY>
             <MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-            <BuildTimeSeconds>120</BuildTimeSeconds>
+            <BuildTimeSeconds>149</BuildTimeSeconds>
             <OverlayTexture>Textures\GUI\Screens\turret_overlay.dds</OverlayTexture>
             <EnabledTargetingOptions>SmallShips LargeShips Stations Enemies</EnabledTargetingOptions>
             <HiddenTargetingOptions>Friends Asteroids Missiles</HiddenTargetingOptions>
@@ -280,7 +280,7 @@
 			<Center x="0" y="1" z="6"/>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
-			<BuildTimeSeconds>100</BuildTimeSeconds>
+			<BuildTimeSeconds>73</BuildTimeSeconds>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="LargeRailgun"/>
 			<ResourceSinkGroup>DefenseAdative</ResourceSinkGroup>

@@ -31,7 +31,7 @@
 				<Component Subtype="MetalGrid" Count="76"/>
 				<Component Subtype="SteelPlate" Count="2000"/>
 			</Components>
-			<BuildTimeSeconds>332</BuildTimeSeconds>
+			<BuildTimeSeconds>375</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -116,7 +116,7 @@
 				<Component Subtype="MetalGrid" Count="76"/>
 				<Component Subtype="SteelPlate" Count="2000"/>
 			</Components>
-			<BuildTimeSeconds>332</BuildTimeSeconds>
+			<BuildTimeSeconds>375</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

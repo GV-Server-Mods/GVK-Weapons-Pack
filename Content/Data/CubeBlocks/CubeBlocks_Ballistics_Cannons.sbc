@@ -29,7 +29,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -83,7 +83,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -156,7 +156,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -255,7 +255,7 @@
 				<Component Subtype="MetalGrid" Count="47"/>
 				<Component Subtype="SteelPlate" Count="120"/>
 			</Components>
-			<BuildTimeSeconds>45</BuildTimeSeconds>
+			<BuildTimeSeconds>46</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -326,7 +326,7 @@
 				<Component Subtype="MetalGrid" Count="35"/>
 				<Component Subtype="SteelPlate" Count="86"/>
 			</Components>
-			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<BuildTimeSeconds>35</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -443,7 +443,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -504,7 +504,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -584,7 +584,7 @@
 				<Component Subtype="MetalGrid" Count="150"/>
 				<Component Subtype="SteelPlate" Count="360"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -685,7 +685,7 @@
 				<Component Subtype="MetalGrid" Count="47"/>
 				<Component Subtype="SteelPlate" Count="120"/>
 			</Components>
-			<BuildTimeSeconds>45</BuildTimeSeconds>
+			<BuildTimeSeconds>46</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -758,7 +758,7 @@
 				<Component Subtype="MetalGrid" Count="35"/>
 				<Component Subtype="SteelPlate" Count="86"/>
 			</Components>
-			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<BuildTimeSeconds>35</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

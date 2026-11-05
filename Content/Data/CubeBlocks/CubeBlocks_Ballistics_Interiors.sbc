@@ -29,7 +29,7 @@
 				<Component Subtype="Construction" Count="97"/>
 				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<BuildTimeSeconds>34</BuildTimeSeconds>
 			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -118,7 +118,7 @@
 				<Component Subtype="Construction" Count="97"/>
 				<Component Subtype="SteelPlate" Count="97"/>
 			</Components>
-			<BuildTimeSeconds>33</BuildTimeSeconds>
+			<BuildTimeSeconds>34</BuildTimeSeconds>
 			<PCU>1</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

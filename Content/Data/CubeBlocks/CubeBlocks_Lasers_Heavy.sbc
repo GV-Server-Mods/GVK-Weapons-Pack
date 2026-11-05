@@ -28,7 +28,7 @@
 				<Component Subtype="MetalGrid" Count="32"/>
 				<Component Subtype="SteelPlate" Count="820"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>155</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -90,7 +90,7 @@
 				<Component Subtype="MetalGrid" Count="15"/>
 				<Component Subtype="SteelPlate" Count="370"/>
 			</Components>
-			<BuildTimeSeconds>62</BuildTimeSeconds>
+			<BuildTimeSeconds>70</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -175,7 +175,7 @@
 				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="SteelPlate" Count="230"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>43</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
@@ -238,7 +238,7 @@
 				<Component Subtype="MetalGrid" Count="32"/>
 				<Component Subtype="SteelPlate" Count="820"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>155</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -302,7 +302,7 @@
 				<Component Subtype="MetalGrid" Count="15"/>
 				<Component Subtype="SteelPlate" Count="370"/>
 			</Components>
-			<BuildTimeSeconds>62</BuildTimeSeconds>
+			<BuildTimeSeconds>70</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<CriticalComponent Subtype="Computer" Index="0"/>
@@ -389,7 +389,7 @@
 				<Component Subtype="MetalGrid" Count="9"/>
 				<Component Subtype="SteelPlate" Count="230"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>43</BuildTimeSeconds>
 			<PCU>4</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>

@@ -20,7 +20,7 @@
 			<Components>
 				<Component Subtype="SteelPlate" Count="550"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
-				<Component Subtype="PrototechPanel" Count="12"/>
+				<Component Subtype="PrototechPanel" Count="14"/>
 				<Component Subtype="MetalGrid" Count="220"/>
 				<Component Subtype="LargeTube" Count="110"/>
 				<Component Subtype="Motor" Count="1100"/>
@@ -29,7 +29,7 @@
 				<Component Subtype="Construction" Count="2200"/>
 				<Component Subtype="SteelPlate" Count="2200"/>
 			</Components>
-			<BuildTimeSeconds>533</BuildTimeSeconds>
+			<BuildTimeSeconds>549</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
@@ -81,7 +81,7 @@
                         <SubtypeId>PrototechCircuitryScrap</SubtypeId>
                     </DeconstructId>
                 </Component>
-				<Component Subtype="PrototechPanel" Count="12">
+				<Component Subtype="PrototechPanel" Count="14">
 					<DeconstructId>
                         <TypeId>Ore</TypeId>
                         <SubtypeId>PrototechPanelScrap</SubtypeId>
@@ -95,7 +95,7 @@
 				<Component Subtype="Construction" Count="2200"/>
 				<Component Subtype="SteelPlate" Count="2200"/>
 			</Components>
-			<BuildTimeSeconds>533</BuildTimeSeconds>
+			<BuildTimeSeconds>549</BuildTimeSeconds>
 			<PCU>12</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>

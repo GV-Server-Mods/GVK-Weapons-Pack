@@ -29,7 +29,7 @@
 				<Component Subtype="Construction" Count="570"/>
 				<Component Subtype="SteelPlate" Count="570"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>144</BuildTimeSeconds>
 			<PCU>9</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
@@ -103,7 +103,7 @@
 				<Component Subtype="Construction" Count="320"/>
 				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>80</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>
@@ -226,7 +226,7 @@
 				<Component Subtype="Construction" Count="570"/>
 				<Component Subtype="SteelPlate" Count="570"/>
 			</Components>
-			<BuildTimeSeconds>138</BuildTimeSeconds>
+			<BuildTimeSeconds>144</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Index="0" Subtype="Computer"/>
 			<MountPoints>
@@ -307,7 +307,7 @@
 				<Component Subtype="Construction" Count="320"/>
 				<Component Subtype="SteelPlate" Count="320"/>
 			</Components>
-			<BuildTimeSeconds>78</BuildTimeSeconds>
+			<BuildTimeSeconds>80</BuildTimeSeconds>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<BuildProgressModels>
 				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\HWK_FixedMissileLauncher_BS1.mwm"/>

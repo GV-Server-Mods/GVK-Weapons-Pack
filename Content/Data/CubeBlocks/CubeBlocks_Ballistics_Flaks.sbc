@@ -31,7 +31,7 @@
 				<Component Subtype="MetalGrid" Count="120"/>
 				<Component Subtype="SteelPlate" Count="390"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
+			<BuildTimeSeconds>104</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -127,7 +127,7 @@
 				<Component Subtype="MetalGrid" Count="43"/>
 				<Component Subtype="SteelPlate" Count="150"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>39</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -280,7 +280,7 @@
 				<Component Subtype="MetalGrid" Count="120"/>
 				<Component Subtype="SteelPlate" Count="390"/>
 			</Components>
-			<BuildTimeSeconds>102</BuildTimeSeconds>
+			<BuildTimeSeconds>104</BuildTimeSeconds>
 			<PCU>6</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -379,7 +379,7 @@
 				<Component Subtype="MetalGrid" Count="43"/>
 				<Component Subtype="SteelPlate" Count="150"/>
 			</Components>
-			<BuildTimeSeconds>37</BuildTimeSeconds>
+			<BuildTimeSeconds>39</BuildTimeSeconds>
 			<PCU>3</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
