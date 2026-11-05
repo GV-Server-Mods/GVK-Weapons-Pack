@@ -2322,6 +2322,9 @@ function getDamageToDestroy(w) {
   return Math.round(integrity / mod);
 }
 
+// Weapons that carry Prototech but cost no UPs, by design (owner, 2026-11-05)
+const GVK_UP_EXEMPT = new Set(['LargeInteriorTurret', 'Missiles_Rockets_SGReloadableLauncher']);
+
 /// <summary>ShipCore group key for a weapon block: exact "TypeId/SubtypeId" (an empty SubtypeId stays empty), or null.</summary>
 function shipCoreKey(w) {
   if (!w || !w.blockTypeId) return null;
@@ -5972,10 +5975,12 @@ function runWeaponCoreLinter() {
     warnings.push("Turret or guided weapon targets over 2 km: 1 [Tech] Data Core (PrototechCircuitry) component layer is required in <Components>.");
   }
 
-  // GVK Server Rules: UPs come from the ShipCore UP Weapons group (GVK_ShipCoreFramework)
-  if (activeWeapon && !isNpcWeapon(activeWeapon) && !isDetonationWeapon(activeWeapon) && activeWeapon.blockTypeId) {
+  // GVK Server Rules: UPs come from the ShipCore UP Weapons group (GVK_ShipCoreFramework); a weapon's
+  // Prototech count matches its UPs, except the blocks the owner exempted (2026-11-05)
+  if (activeWeapon && !isNpcWeapon(activeWeapon) && !isDetonationWeapon(activeWeapon) && activeWeapon.blockTypeId
+    && !GVK_UP_EXEMPT.has(activeWeapon.subtypeId)) {
     if (!activeWeapon.upListed) {
-      warnings.push(`${shipCoreKey(activeWeapon)} is not in the ShipCore UP Weapons group, so it costs no UPs.`);
+      if (techInfo.upCost > 0) warnings.push(`${shipCoreKey(activeWeapon)} has ${techInfo.upCost} Prototech but is not in the ShipCore UP Weapons group, so it costs no UPs.`);
     } else if (techInfo.upCost !== activeWeapon.upCost) {
       warnings.push(`ShipCore charges ${activeWeapon.upCost} UPs, but the block has ${techInfo.upCost} tech components (excluding the Data Core).`);
     }

@@ -33,6 +33,9 @@ const r = studio.run(`(() => {
   out.relics = weaponsDb.filter((w) => w.isRelic).map((w) => w.subtypeId).sort();
   out.unlisted = weaponsDb.filter((w) => !w.upListed && !isNpcWeapon(w) && !isDetonationWeapon(w) && w.blockTypeId).map((w) => w.subtypeId).sort();
   out.matched = Object.keys(SHIPCORE_GROUPS.upWeapons).filter((k) => weaponsDb.some((w) => shipCoreKey(w) === k)).length;
+  // Prototech without UPs: only the two weapons the owner exempted
+  out.exempt = [...GVK_UP_EXEMPT].sort();
+  out.techNoUps = weaponsDb.filter((w) => !isNpcWeapon(w) && !w.upListed && getTechSummary(w.components).upCost > 0).map((w) => w.subtypeId).sort();
   selectWeapon(Wp('odin').id);
   out.badge = document.getElementById('badgeUps').textContent;
   out.pillar = [document.getElementById('outPillarUps').textContent, document.getElementById('outPillarUpsDetail').textContent];
@@ -57,6 +60,7 @@ check('The 11 player Relic Weapons', eq(r.relics, ['ARYXHurricaneCannon', 'ARYXM
 check('Player weapons missing from UP Weapons: Interior Turret, SG reloadable rocket launcher, and the sensors',
   eq(r.unlisted, ['ARYXSmallRadar', 'LargeInteriorTurret', 'Missiles_Rockets_SGReloadableLauncher', 'OKIDesignator',
     'SmallBlockCompactRadioAntennaReskin_WCRadar', 'SmallBlockRadioAntenna_WCRadar']), r.unlisted);
+check('Prototech without UPs only on the exempt Interior Turret and SG reloadable launcher', eq(r.techNoUps, r.exempt), [r.techNoUps, r.exempt]);
 check('Telemetry badge shows ShipCore UPs and the Relic badge', /UPs: 14/.test(r.badge) && r.relicShown !== 'none', [r.badge, r.relicShown]);
 check('UP pillar: Odin 14 UPs, Relic Weapon Slot', /^14/.test(r.pillar[0].trim()) && r.pillar[1] === 'ShipCore · Relic Weapon Slot', r.pillar);
 check('Unlisted weapon badge says 0 UPs, not in ShipCore', /UPs: 0/.test(r.badgeUnlisted) && /not in ShipCore/.test(r.badgeUnlisted), r.badgeUnlisted);
