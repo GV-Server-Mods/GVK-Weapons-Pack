@@ -151,7 +151,7 @@ const overrideLines = codeFiles.flatMap((f) => fs.readFileSync(f, 'utf8').split(
 check('No studio code, export script, test or CI check calls studio data or edits "overrides"', overrideLines.length === 0,
   overrideLines.slice(0, 8).map((x) => `${x.f}:${x.i}: ${x.l.trim().slice(0, 80)}`));
 check('The studio still loads the Curation data', /<script src="data\/curation\.js"><\/script>/.test(html)
-  && /window\.STUDIO_CURATION/.test(fs.readFileSync(studioFile('source_live.js'), 'utf8')));
+  && /typeof STUDIO_CURATION !== 'undefined' \? STUDIO_CURATION/.test(fs.readFileSync(studioFile('source_live.js'), 'utf8')));
 check('Design doc calls the hand-maintained data Curation', !/studio_overrides/.test(doc) && /curation\.js/.test(doc));
 
 done('Glossary checks');

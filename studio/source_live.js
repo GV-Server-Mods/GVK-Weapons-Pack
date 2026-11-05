@@ -169,7 +169,8 @@ function showExportBtn() {
 }
 
 async function buildFrom(csSources, sbc) {
-  const curation = window.STUDIO_CURATION || {};
+  // curation.js declares a top-level const, which is a global binding but never a window property.
+  const curation = typeof STUDIO_CURATION !== 'undefined' ? STUDIO_CURATION : {};
   const data = window.SourcePipeline.buildStudioData(csSources, sbc, curation);
   return data;
 }

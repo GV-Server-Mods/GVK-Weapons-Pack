@@ -7,6 +7,7 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const suites = [
   ['Source pipeline', 'tests/test_source_pipeline.js'],
+  ['Live curation', 'tests/test_live_curation.js'],
   ['WeaponCore parity', 'tests/test_wc_parity.js'],
   ['Studio smoke', 'tests/test_studio_smoke.js'],
   ['EWAR / PD', 'tests/test_ewar_pd.js'],
