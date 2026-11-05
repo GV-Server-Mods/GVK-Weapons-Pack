@@ -710,7 +710,6 @@ let activeWeapon = null;
 let activeAmmo = null;
 let benchmarkWeapon = null;
 let benchmarkAmmoKey = null;
-let modDirectoryHandle = null;
 
 // Server Balance Matrix Multipliers (with defaults)
 const DEFAULT_BALANCE_MATRIX = {
@@ -1100,14 +1099,10 @@ const codeModal = document.getElementById('codeModal');
 const btnCloseModal = document.getElementById('btnCloseModal');
 const btnOpenCodeWorkbench = document.getElementById('btnOpenCodeWorkbench');
 const btnCopyCode = document.getElementById('btnCopyCode');
-const btnDownloadFile = document.getElementById('btnDownloadFile');
-const btnSaveToDisk = document.getElementById('btnSaveToDisk');
-const saveStatusHint = document.getElementById('saveStatusHint');
 
 const btnShareUrl = document.getElementById('btnShareUrl');
 const btnNewMinimalWeapon = document.getElementById('btnNewMinimalWeapon');
 const btnNewMinimalAmmo = document.getElementById('btnNewMinimalAmmo');
-const btnLinkLocal = document.getElementById('btnLinkLocal');
 
 // Toast Function
 function showToast(msg) {
@@ -1165,6 +1160,21 @@ if (window.matchMedia) {
   });
 }
 
+// The hosted site is a player tool: the Definition Workbench (an editor) only opens in a local copy.
+const STUDIO_HOSTED = !!(window.STUDIO_BUILD && window.STUDIO_BUILD.hosted);
+
+/// <summary>Shows which commit the weapon data was built from (stamped by the deploy in data/build_info.js).</summary>
+function showDataChip() {
+  const chip = document.getElementById('gvk-data-chip');
+  if (!chip) return;
+  const b = window.STUDIO_BUILD || {};
+  const sha = String(b.commit || '').slice(0, 7);
+  chip.textContent = sha ? `📦 DATA @ ${sha}${b.date ? ' · ' + b.date : ''}` : '📦 DATA · local copy';
+  chip.title = sha
+    ? `Weapon data built from GVK-Weapons-Pack commit ${sha} when the site deployed.`
+    : 'Weapon data from the Snapshot in this copy (regenerate with node tools/export_snapshots.js).';
+}
+
 async function initStudio() {
   // Load databases
   if (typeof BUNDLED_WEAPONS_DATA !== 'undefined') weaponsDb = JSON.parse(JSON.stringify(BUNDLED_WEAPONS_DATA));
@@ -1188,44 +1198,10 @@ async function initStudio() {
   if (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined') magazinesBlueprintsDb = JSON.parse(JSON.stringify(MAGAZINES_BLUEPRINTS_DATA));
   setWcDefs(null); // bundled def trees; replaced below when the live pipeline succeeds
 
-  // Fetch live JSON if served via HTTP
-  try {
-    const wRes = await fetch('data/weapons_db.json');
-    if (wRes.ok) weaponsDb = await wRes.json();
-    const aRes = await fetch('data/ammos_db.json');
-    if (aRes.ok) ammosDb = await aRes.json();
-    const cRes = await fetch('data/components_db.json');
-    if (cRes.ok) componentsDb = await cRes.json();
-  } catch (e) {
-    console.log("Running in static/local mode, using bundled datasets.");
-  }
-
-  // Live-source pipeline: parse the repo's C#/SBC on the fly (hosted mirror or linked mod folder).
-  // On success this REPLACES the bundled datasets; on failure we keep them and show a banner.
-  try {
-    if (window.GVKLiveSource) {
-      const live = await window.GVKLiveSource.init({
-        onReapply: (data) => {
-          weaponsDb = data.weapons;
-          ammosDb = data.ammos;
-          magazinesBlueprintsDb = data.magazines;
-          setWcDefs(data.wcDefs);
-          activeWeapon = null;
-          activeAmmo = null;
-          refreshAfterDataLoad();
-        },
-      });
-      if (live && live.data) {
-        weaponsDb = live.data.weapons;
-        ammosDb = live.data.ammos;
-        magazinesBlueprintsDb = live.data.magazines;
-        setWcDefs(live.data.wcDefs);
-      }
-    }
-  } catch (e) {
-    console.warn('Live source pipeline failed; using bundled datasets.', e);
-    if (window.GVKLiveSource) window.GVKLiveSource.showBanner('Pipeline init failed: ' + (e && e.message || e));
-  }
+  // The bundled datasets are the weapon data: the deploy rebuilds them from the Mod Source with
+  // Curation (tools/export_snapshots.js), so the hosted page needs no loading step of its own.
+  if (STUDIO_HOSTED) document.body.classList.add('studio-hosted');
+  showDataChip();
 
   refreshAfterDataLoad();
 
@@ -1298,6 +1274,7 @@ function refreshAfterDataLoad() {
 // WORKSPACE & NAVIGATION LOGIC
 // ==========================================================================
 function switchWorkspace(targetWsId) {
+  if (STUDIO_HOSTED && targetWsId === 'ws-workbench') targetWsId = 'ws-telemetry';
   wsTabs.forEach(t => {
     t.classList.toggle('active', t.getAttribute('data-ws') === targetWsId);
   });
@@ -6415,15 +6392,6 @@ function setupModalEvents() {
   if (btnHudExport) {
     btnHudExport.addEventListener('click', openCodeModal);
   }
-  const btnExportSnapshots = document.getElementById('btnExportSnapshots');
-  if (btnExportSnapshots && !btnExportSnapshots._clickBound) {
-    btnExportSnapshots.addEventListener('click', () => {
-      if (window.GVKLiveSource && typeof window.GVKLiveSource.exportSnapshots === 'function') {
-        window.GVKLiveSource.exportSnapshots();
-      }
-    });
-    btnExportSnapshots._clickBound = true;
-  }
   if (btnCloseModal) {
     btnCloseModal.addEventListener('click', () => {
       codeModal.style.display = 'none';
@@ -6482,24 +6450,6 @@ function setupModalEvents() {
       updateCombatTelemetry();
       updateAmmoLogistics();
       showToast("↺ Balance Matrix reset to its Shipped values.");
-    });
-  }
-
-  // Link Mod Directory
-  if (btnLinkLocal) {
-    btnLinkLocal.addEventListener('click', async () => {
-      try {
-        if ('showDirectoryPicker' in window) {
-          modDirectoryHandle = await window.showDirectoryPicker();
-          saveStatusHint.textContent = `Connected to local mod directory: ${modDirectoryHandle.name}`;
-          btnSaveToDisk.disabled = false;
-          showToast(`📁 Connected to local folder: ${modDirectoryHandle.name}!`);
-        } else {
-          showToast("⚠️ Directory picker not supported by this browser.");
-        }
-      } catch (err) {
-        console.warn("Folder picker cancelled or failed:", err);
-      }
     });
   }
 }

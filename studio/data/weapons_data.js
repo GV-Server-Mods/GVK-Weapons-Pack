@@ -156,7 +156,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* Tsunami Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -478,7 +478,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* Cyclone Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -800,7 +800,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* 155mm Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -1116,7 +1116,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* 155mm Cannon",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -1271,7 +1271,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* 155mm Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Powerful assault gun mounted on an armored small grid turret chassis. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -1581,7 +1581,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Cannon* 155mm Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\r\n\t\t\t\t[Uses 155mm AP]",
+    "description": "Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers. Designed by Okim-Chipstix-Ash Federation.\n\t\t\t\t[Uses 155mm AP]",
     "criticalComponent": "Computer",
     "size": {
       "x": 2,
@@ -2036,7 +2036,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Autocannon* 30mm Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
+    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -2330,7 +2330,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Autocannon* Khopesh Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
+    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -2624,7 +2624,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Autocannon* 30mm Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
+    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -2918,7 +2918,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Autocannon* 30mm Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
+    "description": "Small caliber medium rate of fire weapon that helps small craft punch above their weight class.\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -3212,7 +3212,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Autocannon* Thrasher Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.\r\n\t\t\t\t[Uses 30mm API]",
+    "description": "The Thrasher is a dual barreled variant of the Khopesh, with a high rate of fire weapon that helps small craft punch well above their weight class.\n\t\t\t\t[Uses 30mm API]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -3515,7 +3515,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Flak* 100mm Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\r\n\t\t\t\t[Uses 100mm PROX]",
+    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -3827,7 +3827,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Flak* 100mm Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\r\n\t\t\t\t[Uses 100mm PROX]",
+    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
     "criticalComponent": "Computer",
     "size": {
       "x": 7,
@@ -4139,7 +4139,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Flak* 100mm Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\r\n\t\t\t\t[Uses 100mm PROX]",
+    "description": "Fires proximity-fused explosive shrapnel but with a minimum arm time. Effective as anti-strike and anti-missile screen.\n\t\t\t\t[Uses 100mm PROX]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -4442,7 +4442,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* Sentinel Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -4736,7 +4736,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* CIWS Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -5030,7 +5030,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* CIWS Turret (Contact)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -5324,7 +5324,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* CIWS Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -5618,7 +5618,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* CIWS Turret (Contact)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -5912,7 +5912,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* 25mm Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Hard-mounted six-barrel multi-role rotary cannon.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Hard-mounted six-barrel multi-role rotary cannon.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -6059,7 +6059,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* 25mm Gun (Warfare)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Hard-mounted 3-barrel multi-role rotary cannon.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Hard-mounted 3-barrel multi-role rotary cannon.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -6500,7 +6500,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* 25mm Gimbal",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "Gimbaled six-barrel multi-role rotary cannon, with +/- 15 degree auto aiming.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -6795,7 +6795,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* Avenger Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.\r\n\t\t\t\t[Uses 25mm KE]",
+    "description": "When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -7102,7 +7102,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Cannon* Hurricane Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\r\n\t\t\t\t[Uses 480mm HE]",
+    "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\n\t\t\t\t[Uses 480mm HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -7261,7 +7261,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*NPC-H.Cannon* Hurricane Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\r\n\t\t\t\t[3000m Auto Range]\r\n\t\t\t\t[Uses 480mm HE x2]",
+    "description": "The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.\n\t\t\t\t[3000m Auto Range]\n\t\t\t\t[Uses 480mm HE x2]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -7420,7 +7420,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Cannon* Odin Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\r\n\t\t\t\t[Uses 480mm HE]",
+    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[Uses 480mm HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 7,
@@ -7579,7 +7579,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*NPC-H.Cannon* Odin Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\r\n\t\t\t\t[4000m Auto Range]\r\n\t\t\t\t[Uses 480mm HE x4]",
+    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[4000m Auto Range]\n\t\t\t\t[Uses 480mm HE x4]",
     "criticalComponent": "Computer",
     "size": {
       "x": 7,
@@ -7885,7 +7885,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Interior* Anti-personnel Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.\r\n\t\t\t\t[Uses 5.56mm KE]",
+    "description": "The anti-personnel turret is excellent for interior or exterior defense against attackers on-foot, but not much else.\n\t\t\t\t[Uses 5.56mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -8191,7 +8191,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*MAC* 200mm Coilgun",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Damge falls off after 1km.\r\n\t\t\t\t[Uses 200mm DU + Energy]",
+    "description": "The Magnetic Accelerator Cannon fires a massive depleted uranium ferromagnetic round that provides unmatched speed, range, and damage. Damge falls off after 1km.\n\t\t\t\t[Uses 200mm DU + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -8510,7 +8510,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Railgun* Apollo Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 45 degree elevation range. Designed by ARYX Weapon Enterprises.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
+    "description": "A turreted version of the Artemis railgun, excells at long range, but very poor at short range. 45 degree elevation range. Designed by ARYX Weapon Enterprises.\n\t\t\t\t[Uses 50mm FeW + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -8822,7 +8822,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Railgun* Artemis Gun",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Artemis railgun is a high velelocity kinetic round with incredible penetration capabilities. Designed by ARYX Weapon Enterprises.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
+    "description": "The Artemis railgun is a high velelocity kinetic round with incredible penetration capabilities. Designed by ARYX Weapon Enterprises.\n\t\t\t\t[Uses 50mm FeW + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -8975,7 +8975,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Railgun* Ares Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.\r\n\t\t\t\t[Uses 50mm FeW + Energy]",
+    "description": "The Ares railgun is the little sibling of the Apollo and Artemis. Its reduced size means lower projectile speed and damage.\n\t\t\t\t[Uses 50mm FeW + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -9999,7 +9999,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*AMS* PD-COIL Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -10152,7 +10152,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*AMS* PD-COIL Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A low yield anti-missile Chemical Oxygen Iodine Laser (COIL) turret. Only targets projectiles. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -10611,7 +10611,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Laser* XFEL-H Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A general purpose X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 2,
@@ -10917,7 +10917,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Laser* XFEL-H Gimbal",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.\r\n\t\t\t\t[Uses Energy]",
+    "description": "An X-ray Free-Electron Laser (XFEL) on a gimbal mount (+/- 15 degrees). Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -11223,7 +11223,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Laser* Spartan Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.\r\n\t\t\t\t[Uses Energy]",
+    "description": "The Spartan is a dual emitter variant of the X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AWE.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -11529,7 +11529,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Laser* XFEL-L Gun",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) on a fixed mount. Designed by Akiad Engineering.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -11835,7 +11835,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Laser* XFEL-L Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by Akiad Engineering.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -12141,7 +12141,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Laser* XFEL-L Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\r\n\t\t\t\t[Uses Energy]",
+    "description": "A miniaturized X-ray Free-Electron Laser (XFEL) turret with slow but pinpoint accuracy. Designed by AutoMcD Manufacturing.\n\t\t\t\t[Uses Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -12453,7 +12453,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Plasma* LOKI Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The LOKI fires a 3-round burst of plasma that melts armor but is less effective against non-armor. Designed by L.Y.N.X.\r\n\t\t\t\t[Uses Plasma Charge + Energy]",
+    "description": "The LOKI fires a 3-round burst of plasma that melts armor but is less effective against non-armor. Designed by L.Y.N.X.\n\t\t\t\t[Uses Plasma Charge + Energy]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -12771,7 +12771,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Missile* Tuukka Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.\r\n\t\t\t\t[Uses Tuuka HE]",
+    "description": "The Tuukka is a launch rocket system for attacking armored targets using a top attack flight profile. Designed by L.Y.N.X.\n\t\t\t\t[Uses Tuuka HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -13089,7 +13089,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Missile* Griffin Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.\r\n\t\t\t\t[Uses Griffin HE]",
+    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by Consty.\n\t\t\t\t[Uses Griffin HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -13407,7 +13407,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Missile* Griffin Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.\r\n\t\t\t\t[Uses Griffin HE]",
+    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses. Designed by MXA-UNSC.\n\t\t\t\t[Uses Griffin HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -13719,7 +13719,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*L.Missile* Griffin Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses.\r\n\t\t\t\t[Uses Griffin HE]",
+    "description": "The Griffin is a light homing missile, effective at evading gatling point defenses.\n\t\t\t\t[Uses Griffin HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -14166,7 +14166,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Turret XL",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -14460,7 +14460,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -14754,7 +14754,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Turret (Contact)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -15048,7 +15048,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Turret",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -15342,7 +15342,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Turret (Contact)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -15636,7 +15636,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -15930,7 +15930,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra Pod",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -16077,7 +16077,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra launcher (Warfare)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -16524,7 +16524,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Rocket* Hydra launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.\r\n\t\t\t\t[Uses Hydra HE]",
+    "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.\n\t\t\t\t[Uses Hydra HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -16837,7 +16837,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*SRBM* Longsword Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.\r\n\t\t\t\t[Uses Longswoard MIRV]",
+    "description": "Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.\n\t\t\t\t[Uses Longswoard MIRV]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,
@@ -17157,7 +17157,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Torpedo* Crusader Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\r\n\t\t\t\t[Uses Crusader Torps]",
+    "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\n\t\t\t\t[Uses Crusader Torps]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -17477,7 +17477,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Torpedo* Crusader Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\r\n\t\t\t\t[Uses Crusader Torps]",
+    "description": "This fire-and-forget torpedo can deliver a powerful turret scrambling warhead, with an explosion so large it can be seen from low orbit. Designed by Akiad Development.\n\t\t\t\t[Uses Crusader Torps]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -17799,7 +17799,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Drone* Falcon Drone Bay",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.\r\n\t\t\t\tOFFENSE = 3 minute flight time. \r\n\t\t\t\tDEFENSE = 5 minute flight time.\r\n\t\t\t\t[Uses FALCON Drones]",
+    "description": "A compact hangar bay capable of launching Aryx-brand drones. Drones cannot be recalled, and cannot travel more than 3km away from the launcher grid.\n\t\t\t\tOFFENSE = 3 minute flight time. \n\t\t\t\tDEFENSE = 5 minute flight time.\n\t\t\t\t[Uses FALCON Drones]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
@@ -18116,7 +18116,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Flare* Flare/Fireworks Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\r\n\t\t\t\t[700m Effective Radius]\r\n\t\t\t\t[Uses Decoy Flare]",
+    "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\n\t\t\t\t[700m Effective Radius]\n\t\t\t\t[Uses Decoy Flare]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -18271,7 +18271,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Flare* Flare/Fireworks Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\r\n\t\t\t\t[700m Effective Radius]\r\n\t\t\t\t[Uses Decoy Flare]",
+    "description": "Flare launcher that distracts incoming projectiles. Also used to launch fireworks.\n\t\t\t\t[700m Effective Radius]\n\t\t\t\t[Uses Decoy Flare]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -18406,7 +18406,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Sensor* Large Radar",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.\r\n\t\t\t\t[5km Range]",
+    "description": "The LRSR long-range detection system that emits an alert sound and points towards incoming threats. Designed by L.Y.N.X Industries.\n\t\t\t\t[5km Range]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -18541,7 +18541,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Sensor* Small Radar",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A long-range sensor system that detects incoming threats. Designed by AWE.\r\n\t\t\t\t[5km Range]",
+    "description": "A long-range sensor system that detects incoming threats. Designed by AWE.\n\t\t\t\t[5km Range]",
     "criticalComponent": "Computer",
     "size": {
       "x": 2,
@@ -18676,7 +18676,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Sensor* Compact Radar",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A long-range sensor system that detects incoming threats.\r\n\t\t\t\t[5km Range]",
+    "description": "A long-range sensor system that detects incoming threats.\n\t\t\t\t[5km Range]",
     "criticalComponent": "RadioCommunication",
     "size": {
       "x": 1,
@@ -18817,7 +18817,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Sensor* Parabolic Radar",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "A long-range sensor system that detects incoming threats.\r\n\t\t\t\t[5km Range]",
+    "description": "A long-range sensor system that detects incoming threats.\n\t\t\t\t[5km Range]",
     "criticalComponent": "RadioCommunication",
     "size": {
       "x": 3,
@@ -18960,7 +18960,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "Warhead (WC)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "WeaponCore Enabled Warhead.\r\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
+    "description": "WeaponCore Enabled Warhead.\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -19103,7 +19103,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "Explosive Barrel (WC)",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "WeaponCore Enabled Explosive Barrel.\r\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
+    "description": "WeaponCore Enabled Explosive Barrel.\n\t\t\t\tStandard Explosion: 20 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -19246,7 +19246,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "Small Warhead (WC)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "WeaponCore Enabled Warhead.\r\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
+    "description": "WeaponCore Enabled Warhead.\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 1,
@@ -19389,7 +19389,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "Explosive Barrel (WC)",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "WeaponCore Enabled Explosive barrel.\r\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
+    "description": "WeaponCore Enabled Explosive barrel.\n\t\t\t\tStandard Explosion: 5 Meters, Linear dropoff.",
     "criticalComponent": "Explosives",
     "size": {
       "x": 2,

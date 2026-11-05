@@ -20,7 +20,7 @@
         <h1>WEAPON <span>STUDIO</span></h1>
         <div class="header-status">
           <span id="wcSchemaBadge" class="badge badge-cyan header-chip" role="button" tabindex="0" title="WeaponCore Schema Integrity Guard - Click to inspect">🛡️ WC v3.0 (Core v0.75) | Synced</span>
-          <span id="gvk-live-chip" class="badge badge-green header-chip" role="button" tabindex="0" title="Data source. Click: hosted=reload / snapshot=link mod folder.">🟢 LIVE (Connecting...)</span>
+          <span id="gvk-data-chip" class="badge badge-green header-chip" title="Weapon data source">📦 DATA</span>
           <span id="repoStatus" class="header-repo">GV-Server-Mods/GVK-Weapons-Pack</span>
         </div>
       </div>
@@ -31,7 +31,7 @@
       <button class="ws-tab active" data-ws="ws-telemetry" title="Combat Telemetry">
         <span class="ws-tab-icon" aria-hidden="true">⚔️</span><span class="ws-tab-long">Combat Telemetry</span><span class="ws-tab-short">Telemetry</span>
       </button>
-      <button class="ws-tab" data-ws="ws-workbench" title="Definition Workbench">
+      <button class="ws-tab wb-only" data-ws="ws-workbench" title="Definition Workbench">
         <span class="ws-tab-icon" aria-hidden="true">🔧</span><span class="ws-tab-long">Definition Workbench</span><span class="ws-tab-short">Workbench</span>
       </button>
       <button class="ws-tab" data-ws="ws-logistics" title="Ammo Logistics &amp; Blueprints">
@@ -767,10 +767,6 @@
           <div class="scope-action-group" aria-label="Create">
             <button id="btnNewMinimalWeapon" class="btn btn-sm" title="Create a minimal working turret per the WeaponCore wiki">+ New Weapon</button>
             <button id="btnNewMinimalAmmo" class="btn btn-sm" title="Create a minimal working tracer or frag ammo">+ New Ammo</button>
-          </div>
-          <div class="scope-action-group" aria-label="Mod folder">
-            <button id="btnLinkLocal" class="btn btn-cyan btn-sm" title="Connect to your local GVK_Weapons mod folder to save directly to disk">📁 Link Mod Folder</button>
-            <button id="btnExportSnapshots" class="btn btn-sm" title="Download the parsed Live data as the Snapshot datasets (drops 5 files into your Downloads folder)">⬇ Export Snapshots</button>
           </div>
         </div>
       </div>
@@ -2224,8 +2220,9 @@
           </div>
         </details>
 
-        <!-- Live CubeBlocks SBC XML Exporter Panel -->
-        <section class="wb-output" data-wb-section="Generated SBC">
+        <!-- CubeBlocks SBC export: hidden until it is rebuilt to patch the shipped block XML
+             (owner, 2026-11-05). It builds blocks from scratch and drops their TypeId, model and build stages. -->
+        <section class="wb-output" data-wb-section="Generated SBC" hidden>
           <div class="wb-output-header">
             <span class="wc-title"><span class="wc-num">⚡</span><span class="wc-name">Generated SBC</span><code class="wc-def">CubeBlocks_*.sbc</code></span>
             <div class="wb-inline-actions">
@@ -2463,7 +2460,7 @@
       </div>
     </div>
     <!-- Definition Workbench: effect of edits vs Shipped, lint status, export -->
-    <div class="hud-group" data-hud="ws-workbench">
+    <div class="hud-group wb-only" data-hud="ws-workbench">
       <div class="hud-left">
         <span class="hud-title" id="hudWbName">—</span>
         <span class="hud-stat">Sustained DPS: <strong id="hudWbDps">0</strong></span>
@@ -2504,7 +2501,7 @@
       <div class="tab-group" style="padding: 6px 12px;">
         <button class="tab-btn active" data-codetab="code-weapon-cs">C# WeaponDef</button>
         <button class="tab-btn" data-codetab="code-ammo-cs">C# AmmoDef</button>
-        <button class="tab-btn" data-codetab="code-cubeblocks-sbc">SBC CubeBlocks</button>
+        <button class="tab-btn" data-codetab="code-cubeblocks-sbc" hidden>SBC CubeBlocks</button>
         <button class="tab-btn" data-codetab="code-blueprints-sbc">SBC Blueprints</button>
       </div>
 
@@ -2516,13 +2513,11 @@
       </div>
 
       <div style="padding: 12px 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-        <span id="saveStatusHint" style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">
-          Link local mod folder to enable direct file saving.
+        <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">
+          Copy the code into the matching file in your copy of the mod.
         </span>
         <div style="display: flex; gap: 8px;">
           <button id="btnCopyCode" class="btn">📋 Copy Code</button>
-          <button id="btnDownloadFile" class="btn">💾 Download File</button>
-          <button id="btnSaveToDisk" class="btn btn-primary">⚡ Save to Mod Folder</button>
         </div>
       </div>
     </div>
@@ -2542,9 +2537,8 @@
   <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
   <script src="data/economy_values.js"></script>
-  <script src="data/curation.js"></script>
+  <script src="data/build_info.js"></script>
   <script src="source_pipeline.js"></script>
-  <script src="source_live.js"></script>
   <script src="wc_math.js"></script>
   <script src="app.js"></script>
   <script src="ammo_maths.js"></script>

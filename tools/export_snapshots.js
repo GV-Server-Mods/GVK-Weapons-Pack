@@ -1,5 +1,6 @@
 // Regenerate the bundled fallback datasets from the live mod source via the same pipeline the browser uses.
-// Run: node tools/export_snapshots.js
+// Run: node tools/export_snapshots.js           regenerate
+//      node tools/export_snapshots.js --check   exit 1 if the bundled data differs from the Mod Source
 // Writes studio/data/weapons_data.js, weapons_db.json, ammos_data.js, ammos_db.json, magazines_blueprints_data.js,
 // wc_defs_data.js (lossless def trees), and wc_schema.js (Structure.cs signature + typed schema).
 const fs = require('fs');
@@ -7,8 +8,21 @@ const path = require('path');
 const crypto = require('crypto');
 const SP = require('../studio/source_pipeline.js');
 
+const ROOT = path.join(__dirname, '..');
+process.chdir(ROOT);
+const CHECK = process.argv.includes('--check');
+const stale = [];
+const norm = (s) => s.replace(/\r\n/g, '\n');
+
 // Working copy is CRLF (core.autocrlf=true); write generated files the same way.
+// With --check, compare instead of writing (line endings ignored).
 function writeCrlf(file, text) {
+  if (CHECK) {
+    const cur = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+    if (norm(cur) === norm(text)) console.log('  PASS  ' + file + ' matches the Mod Source');
+    else stale.push(file);
+    return;
+  }
   fs.writeFileSync(file, text.replace(/\r\n/g, '\n').replace(/\n/g, '\r\n'));
 }
 
@@ -75,6 +89,13 @@ writeCrlf(path.join(outDir, 'wc_schema.js'), HEADER + 'window.GVK_WC_SCHEMA = ' 
 // Lossless def trees (ammos, weapons, shared helpers) for full-field editing and export
 writeCrlf(path.join(outDir, 'wc_defs_data.js'), HEADER + 'const BUNDLED_WC_DEFS = ' + JSON.stringify(d.wcDefs) + ';\n');
 
+if (CHECK) {
+  if (stale.length) {
+    console.error('  FAIL  stale Snapshot: ' + stale.join(', ') + ' (run node tools/export_snapshots.js and commit)');
+    process.exit(1);
+  }
+  process.exit(0);
+}
 console.log('Wrote snapshots:');
 console.log('  weapons     :', d.weapons.length, 'entries');
 console.log('  ammos       :', Object.keys(d.ammos).length, 'entries');

@@ -24,7 +24,7 @@
   };
 
   const activeScope = () => scopes.find((s) => s.classList.contains('active')) || scopes[0];
-  const sectionsOf = (scope) => Array.from(scope.querySelectorAll(':scope > .wc-accordion, :scope > [data-wb-section]'));
+  const sectionsOf = (scope) => Array.from(scope.querySelectorAll(':scope > .wc-accordion:not([hidden]), :scope > [data-wb-section]:not([hidden])'));
   const sectionName = (sec) => {
     const n = sec.querySelector('.wc-name');
     return n ? n.textContent.trim() : (sec.getAttribute('data-wb-section') || 'Section');

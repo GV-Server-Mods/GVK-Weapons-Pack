@@ -77,9 +77,10 @@ const htmlOutsideLogistics = html.slice(0, html.indexOf('id="ws-logistics"'))
 const wbOld = found([...seen].join('\n') + htmlOutsideLogistics, OLD_WORKBENCH);
 check('Workbench text, tooltips and footer show none of the retired terms', wbOld.length === 0, wbOld);
 check('Workbench uses AoE Depth and Shipped', /AoE Depth/.test(htmlSection('ws-workbench', 'ws-logistics')) && /Shipped/.test(html));
-const liveSrc = fs.readFileSync(studioFile('source_live.js'), 'utf8');
-const liveOld = found(liveSrc.split(/\r?\n/).filter((l) => /setChip\(|showBanner\(/.test(l)).join('\n'), OLD_WORKBENCH.concat([/bundled/i]));
-check('Data-source chip reads SNAPSHOT and its messages never say bundled', liveOld.length === 0 && /'🔴 SNAPSHOT/.test(liveSrc), liveOld);
+const appSrc = fs.readFileSync(studioFile('app.js'), 'utf8');
+const chipSrc = appSrc.slice(appSrc.indexOf('function showDataChip'), appSrc.indexOf('async function initStudio'));
+const chipOld = found(chipSrc, OLD_WORKBENCH.concat([/bundled/i]));
+check('Data chip names the commit or the Snapshot and never says bundled', chipOld.length === 0 && /Snapshot/.test(chipSrc), chipOld);
 const SP = require('../studio/source_pipeline.js');
 const coreParts = {};
 for (const f of fs.readdirSync(path.join(root, 'CoreParts'))) if (f.endsWith('.cs') && !/Animation/.test(f)) coreParts[f] = fs.readFileSync(path.join(root, 'CoreParts', f), 'utf8');
@@ -150,8 +151,8 @@ const overrideLines = codeFiles.flatMap((f) => fs.readFileSync(f, 'utf8').split(
   .filter((x) => /override/i.test(x.l) && !WC_OVERRIDE.test(x.l)));
 check('No studio code, export script, test or CI check calls studio data or edits "overrides"', overrideLines.length === 0,
   overrideLines.slice(0, 8).map((x) => `${x.f}:${x.i}: ${x.l.trim().slice(0, 80)}`));
-check('The studio still loads the Curation data', /<script src="data\/curation\.js"><\/script>/.test(html)
-  && /typeof STUDIO_CURATION !== 'undefined' \? STUDIO_CURATION/.test(fs.readFileSync(studioFile('source_live.js'), 'utf8')));
+check('The Snapshot export builds the data with the Curation data',
+  /studio\/data\/curation\.js/.test(fs.readFileSync(path.join(root, 'tools/export_snapshots.js'), 'utf8')));
 check('Design doc calls the hand-maintained data Curation', !/studio_overrides/.test(doc) && /curation\.js/.test(doc));
 
 done('Glossary checks');

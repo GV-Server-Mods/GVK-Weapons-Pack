@@ -220,6 +220,13 @@ studio.run(`
     })(),
     railDps: calculateWeaponMetrics(weaponsDb.find(w => w.subtypeId === 'ARYXRailgunTurret')).sustainedDps,
     railShotDmg: (() => { const w = weaponsDb.find(x => x.subtypeId === 'ARYXRailgunTurret'); return getAmmoDamageDetailed(ammosDb[getSelectableAmmos(w)[0] || w.ammoName]).total; })(),
+    railCycle: (() => {
+      const w = weaponsDb.find(x => x.subtypeId === 'ARYXRailgunTurret');
+      const p = getFireCycleParams(w, ammosDb[getSelectableAmmos(w)[0] || w.ammoName], false);
+      const c = computeFireCycle(p);
+      return { D: p.delayUntilFire, wait: Math.max(p.reloadTicks, (p.energy || p.hybrid) ? p.chargeTicks : 0),
+        single: p.magSize * p.mags <= p.barrels, ticks: Math.round(c.totalCycleSec * 60), spool: Math.round(c.spoolSec * 60) };
+    })(),
     burstCycle: computeFireCycle({ rof: 480, barrels: 1, trajPerBarrel: 1, magSize: 18, mags: 1, reloadTicks: 410, shotsInBurst: 9, delayAfterBurst: 380, energy: false }),
     shotDelayCycle: computeFireCycle({ rof: 480, barrels: 1, trajPerBarrel: 1, magSize: 4, mags: 1, reloadTicks: 100, shotsInBurst: 9, delayAfterBurst: 380, energy: false }),
     derivedEnergyMag: getShotsPerMag({ reloadTime: 120, rateOfFire: 60, barrelsPerShot: 2, trajectilesPerBarrel: 1 }, { ammoMagazine: 'Energy', energyMagazineSize: 0, energyCost: 0.5, baseDamage: 1000 }),
@@ -288,9 +295,21 @@ check('Footer has telemetry, workbench and logistics groups',
   ['ws-telemetry', 'ws-workbench', 'ws-logistics'].every(ws => hudHtml.includes(`data-hud="${ws}"`)));
 check('Export Code & SBC lives in the Workbench footer group',
   hudHtml.indexOf('id="btnHudExport"') > hudHtml.indexOf('data-hud="ws-workbench"') && hudHtml.indexOf('id="btnHudExport"') < hudHtml.indexOf('data-hud="ws-logistics"'));
-const wbHtml = htmlSource.slice(htmlSource.indexOf('id="ws-workbench"'), htmlSource.indexOf('id="ws-logistics"'));
-check('Export Snapshots moved into the Workbench tab', wbHtml.includes('id="btnExportSnapshots"') && !hudHtml.includes('btnExportSnapshots'));
-check('ARYX Railgun cycle includes DelayUntilFire spool (120 + 1 + 600 ticks = 721)', lcReport.railDps === Math.round(lcReport.railShotDmg * 60 / 721));
+check('No folder buttons or in-browser loader: the page shows the Snapshot built at deploy',
+  !htmlSource.includes('btnExportSnapshots') && !htmlSource.includes('btnLinkLocal') && !htmlSource.includes('source_live.js')
+  && htmlSource.includes('<script src="data/build_info.js"></script>'));
+check('Hosted site hides the Workbench tab and footer group (wb-only)',
+  /<button[^>]*\bwb-only\b[^>]*data-ws="ws-workbench"/.test(htmlSource) && /hud-group wb-only" data-hud="ws-workbench"/.test(htmlSource));
+check('SBC CubeBlocks export is hidden (tab and Generated SBC section)',
+  /<button[^>]*data-codetab="code-cubeblocks-sbc"[^>]*\bhidden\b/.test(htmlSource)
+  && /<section[^>]*data-wb-section="Generated SBC"[^>]*\bhidden\b/.test(htmlSource));
+{
+  // WC replays DelayUntilFire after each reload; the reload starts the tick after the shot, and a hybrid round
+  // also waits for its charge (WeaponShoot.cs DelayToFire, WeaponReload.cs ReloadEndTick).
+  const rc = lcReport.railCycle || {}, railExp = rc.D + 1 + rc.wait;
+  check(`ARYX Railgun cycle = DelayUntilFire + 1 + reload/charge (${rc.D} + 1 + ${rc.wait} = ${railExp} ticks)`,
+    rc.single && rc.ticks === railExp && rc.spool === rc.D && lcReport.railDps === Math.round(lcReport.railShotDmg * 60 / railExp), rc);
+}
 check('Burst mode: 2x9 shots, 380-tick burst gap, reload starts after the final shot (903 ticks)',
   Math.round(lcReport.burstCycle.totalCycleSec * 60) === 903 && lcReport.burstCycle.bursts === 2);
 check('Shot-delay mode: ShotsFired carries across 4-rd mags, so every 9th shot waits 380 ticks (2,436 ticks per 9 mags)',
@@ -318,10 +337,10 @@ check('NPC weapon SBC XML outputs <DeconstructId> for tech components',
   lcReport.npcSbcXml.includes('<DeconstructId>') && lcReport.npcSbcXml.includes('<TypeId>Ore</TypeId>') && lcReport.npcSbcXml.includes('Scrap</SubtypeId>'));
 check('Player weapon SBC XML does not output <DeconstructId>', !lcReport.playerSbcXml.includes('<DeconstructId>'));
 
-// Commit date format check (mm.dd.yyyy)
-const sourceLiveContent = fs.readFileSync(path.join(root, 'studio', 'source_live.js'), 'utf8');
-const dateRegexMatch = sourceLiveContent.includes("d.getUTCFullYear()") && sourceLiveContent.includes("${mm}.${dd}.${yyyy}");
-check('source_live.js formats commit date as mm.dd.yyyy', dateRegexMatch);
+// The deploy stamps the commit and its date (mm.dd.yyyy) into data/build_info.js
+const deployYml = fs.readFileSync(path.join(root, '.github', 'workflows', 'deploy-studio.yml'), 'utf8');
+check('Deploy rebuilds the data and stamps hosted: true with an mm.dd.yyyy commit date',
+  deployYml.includes('node tools/export_snapshots.js') && deployYml.includes("--date=format:'%m.%d.%Y'") && deployYml.includes('hosted: true'));
 
 // WeaponCore schema guard + new WC definition fields
 const SP = require(path.join(root, 'studio', 'source_pipeline.js'));
@@ -508,15 +527,18 @@ studio.run(`
     const er = (sub) => { const w = weaponsDb.find((x) => x.subtypeId === sub); return getEngagementRange(w, ammosDb[w.ammoName], false); };
     const fixedUnguided = weaponsDb.find((w) => w.type === 'Fixed' && ammosDb[w.ammoName]
       && ammosDb[w.ammoName].trajectory.guidance === 'None' && ammosDb[w.ammoName].trajectory.maxTrajectory > 0);
+    const td = (sub) => weaponsDb.find((x) => x.subtypeId === sub).maxTargetDistance;
     __erReport({ drone: er('ARYX_Small_Sidekick_Hangar'), torpedo: er('Missile_Torpedo_Large'),
+      droneW: td('ARYX_Small_Sidekick_Hangar'), torpW: td('Missile_Torpedo_Large'),
       fixed: getEngagementRange(fixedUnguided, ammosDb[fixedUnguided.ammoName], false),
       fixedReach: ammosDb[fixedUnguided.ammoName].trajectory.maxTrajectory });
   })();
 `);
 const er = erReport || {};
-check('Drone Bay range = its 2,500 m targeting range, not the 30 km drone trajectory',
-  !!er.drone && er.drone.range === 2500 && er.drone.source === 'targeting');
-check('Guided fixed launchers are gated by targeting range (Torpedo 3,000 m < 3,500 m reach)', !!er.torpedo && er.torpedo.range === 3000);
+check(`Drone Bay range = its ${(er.droneW || 0).toLocaleString()} m targeting range, not the ${er.drone ? er.drone.reach.toLocaleString() : '?'} m drone trajectory`,
+  !!er.drone && er.drone.range === er.droneW && er.drone.source === 'targeting' && er.drone.reach > er.droneW, er.drone);
+check(`Guided fixed launchers are gated by targeting range (Torpedo ${(er.torpW || 0).toLocaleString()} m < ${er.torpedo ? er.torpedo.reach.toLocaleString() : '?'} m reach)`,
+  !!er.torpedo && er.torpedo.range === er.torpW && er.torpW < er.torpedo.reach, er.torpedo);
 check('Manually aimed fixed guns with unguided rounds use the reach of the round', !!er.fixed && er.fixed.range === er.fixedReach && !er.fixed.gated);
 
 done('Studio smoke');

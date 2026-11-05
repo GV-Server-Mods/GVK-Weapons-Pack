@@ -338,7 +338,8 @@ function parseXml(src) {
 }
 function xmlKids(node, tag) { return node ? node.children.filter((c) => c.tag === tag) : []; }
 function xmlKid(node, tag) { return node ? node.children.find((c) => c.tag === tag) : null; }
-function xmlText(node) { return node ? (node.text || '').trim() : ''; }
+// Line breaks become \n, so a CRLF (Windows) and an LF (CI) checkout build identical data.
+function xmlText(node) { return node ? (node.text || '').replace(/\r\n?/g, '\n').trim() : ''; }
 function xmlNum(node) { const t = xmlText(node); return t ? parseFloat(t) || 0 : 0; }
 function subId(defNode) { return xmlText(xmlKid(xmlKid(defNode, 'Id'), 'SubtypeId')); }
 

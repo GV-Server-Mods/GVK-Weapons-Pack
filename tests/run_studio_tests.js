@@ -5,9 +5,11 @@ const { spawnSync } = require('child_process');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
+// [label, script, optional args]
 const suites = [
   ['Source pipeline', 'tests/test_source_pipeline.js'],
-  ['Live curation', 'tests/test_live_curation.js'],
+  ['Snapshot fresh', 'tools/export_snapshots.js', ['--check']],
+  ['Curation', 'tests/test_curation.js'],
   ['Weld times', 'tests/test_build_time.js'],
   ['WeaponCore parity', 'tests/test_wc_parity.js'],
   ['Studio smoke', 'tests/test_studio_smoke.js'],
@@ -22,8 +24,8 @@ const suites = [
 ];
 
 let failed = 0;
-for (const [label, file] of suites) {
-  const r = spawnSync(process.execPath, [file], { cwd: root, encoding: 'utf8' });
+for (const [label, file, args] of suites) {
+  const r = spawnSync(process.execPath, [file, ...(args || [])], { cwd: root, encoding: 'utf8' });
   const out = (r.stdout || '') + (r.stderr || '');
   const passes = (out.match(/^\s*PASS\b/gm) || []).length;
   const fails = out.match(/^\s*FAIL\b.*$/gm) || [];

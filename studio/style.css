@@ -5350,3 +5350,9 @@ a.am-bm-link { color: var(--amber-primary); text-decoration: underline dotted; t
 /* Balance Matrix link target */
 @keyframes amFlash { 0%, 100% { box-shadow: none; } 30% { box-shadow: 0 0 0 3px var(--amber-glow); } }
 .am-flash { animation: amFlash 0.8s ease-in-out 2; }
+
+/* Hosted site: the Definition Workbench and the links into it only show in a local copy (owner, 2026-11-05) */
+.studio-hosted .wb-only,
+.studio-hosted [data-am-edit-damage],
+.studio-hosted [data-am-action="apply"] { display: none !important; }
+.wb-output[hidden], .tab-btn[hidden] { display: none; }
