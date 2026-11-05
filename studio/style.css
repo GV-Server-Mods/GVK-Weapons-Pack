@@ -5356,3 +5356,7 @@ a.am-bm-link { color: var(--amber-primary); text-decoration: underline dotted; t
 .studio-hosted [data-am-edit-damage],
 .studio-hosted [data-am-action="apply"] { display: none !important; }
 .wb-output[hidden], .tab-btn[hidden] { display: none; }
+
+/* TARGET size buttons sit on their own row; dimmed when the round has no proximity fragments */
+.target-size-group { margin-top: 6px; width: fit-content; }
+.target-size-group.is-idle { opacity: 0.45; }

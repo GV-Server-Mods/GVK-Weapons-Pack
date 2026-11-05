@@ -407,15 +407,16 @@ function weaponPattern(ammo, resolve) {
 /// <summary>
 /// SessionDamageMgr.DamageGrid per-block damageScale for a target block (grid size + armor class), including the
 /// small-vs-large debuff (0.25x when a large-grid shooter hits a small grid and both Grids scales are unset).
+/// The debuff only scales direct damage (baseScale); area damage (aoeScaledDmg) skips it, so isArea = true omits it.
 /// target = { grid: 'Large'|'Small', armor: 'heavy'|'light'|'nonArmor' }; shooterGrid = 'Large'|'Small'|undefined.
 /// </summary>
-function blockDamageScale(ammo, target, shooterGrid) {
+function blockDamageScale(ammo, target, shooterGrid, isArea) {
   const ds = (ammo && ammo.damageScales) || {};
   const v = (x) => (x === undefined || x === null) ? -1 : num(x, -1);
   const gL = v(ds.gridLarge), gS = v(ds.gridSmall);
   const large = target.grid !== 'Small';
   let scale = 1;
-  if (shooterGrid === 'Large' && !large && gL < 0 && gS < 0) scale *= 0.25;
+  if (!isArea && shooterGrid === 'Large' && !large && gL < 0 && gS < 0) scale *= 0.25;
   if (ammo && ammo.noGridOrArmorScaling) return scale;
   if (large && gL >= 0) scale *= gL;
   else if (!large && gS >= 0) scale *= gS;
@@ -487,7 +488,30 @@ function flightTime(distM, desiredSpeed, accelPerSec) {
   return d <= rampDist ? Math.sqrt(2 * d / a) : d / v + v / (2 * a);
 }
 
-const WcMath = { TICKS_PER_SEC, GRID_SIZE_M, energy, heatConstants, simulateFire, barrelSpinStepTicks, flightTime, aoeRings, aoeDamage, weaponPattern, blockDamageScale, penetration, pdHitsToKill, isHitscan };
+/// <summary>
+/// Expected share of proximity fragments that hit a target of targetDiameter (m), released distance (m) from its
+/// centre. ProjectileTypes.cs: each fragment leaves at Radial + uniform(0, Degrees/2) off the aim line; Projectile.cs
+/// Start: it travels along normalize(parent velocity + dir x speed) (parent velocity dropped with DropVelocity).
+/// A fragment hits when its travel direction is within asin(r / distance) of the target centre.
+/// </summary>
+function fragmentHitFraction(p) {
+  const deg = Math.min(360, Math.max(0, num(p.degrees)));
+  const half = deg / 2 * Math.PI / 180;
+  const R = Math.max(0, num(p.radial)) * Math.PI / 180;
+  const r = num(p.targetDiameter) / 2, d = num(p.distance);
+  if (p.reverse) return 0;
+  if (!(r > 0)) return 0;
+  if (d <= r) return 1;
+  const phi = Math.asin(r / d);
+  const s = num(p.childAccelPerSec) > 0 ? num(p.childAccelPerSec) / TICKS_PER_SEC : num(p.childSpeed);
+  const k = p.dropVelocity || !(s > 0) ? 0 : num(p.parentSpeed) / s;
+  const ks = k * Math.sin(phi);
+  const thetaMax = ks >= 1 ? Math.PI : phi + Math.asin(ks);
+  if (half === 0) return R <= thetaMax ? 1 : 0;
+  return Math.min(1, Math.max(0, (thetaMax - R) / half));
+}
+
+const WcMath = { TICKS_PER_SEC, GRID_SIZE_M, energy, heatConstants, simulateFire, barrelSpinStepTicks, flightTime, fragmentHitFraction, aoeRings, aoeDamage, weaponPattern, blockDamageScale, penetration, pdHitsToKill, isHitscan };
 if (typeof module !== 'undefined' && module.exports) module.exports = WcMath;
 root.WcMath = WcMath;
 if (typeof window !== 'undefined' && window !== root) window.WcMath = WcMath;

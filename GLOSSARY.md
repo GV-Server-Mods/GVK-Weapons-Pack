@@ -135,19 +135,28 @@ One of several repeated Fragment releases from a round in flight. WeaponCore: `T
 _Avoid_: burst, fragment burst
 
 **Burst RPM**:
-The fire rate within a single Burst.
+The fire rate within a single Burst, counting every barrel. WeaponCore fires on whole ticks, so it is 3600 / (ticks per shot) per barrel.
 
 **Sustained**:
 Averaged over the whole fire-and-reload cycle, as in Sustained DPS and Sustained RPM.
 _Avoid_: effective (for reload-inclusive rates)
 
+**Reference Target**:
+The block the Studio's headline numbers are measured against: a large-grid Heavy Armor block.
+
 **Effective DPS**:
-Sustained DPS after the highest Armor Multiplier the round has.
+Sustained DPS against the Reference Target. The block the round hits hardest is shown beside it as Best.
 _Avoid_: Effective RPM (use Sustained RPM)
 
 **Magazine Damage**:
-The total damage one full magazine delivers.
+The damage one full magazine delivers in its opening volley, against the Reference Target.
 _Avoid_: alpha volley
+
+**Target Size**:
+The size of the target the Studio assumes for proximity Fragments: Rover 3 m, Ship 15 m (default) or Large ship 30 m.
+
+**Hit Fraction**:
+The expected share of a proximity Fragment cone that hits a target of the chosen Target Size. The Studio also shows the maximum, when every Fragment hits.
 
 **Relic Ammo**:
 Ammo whose recipe needs RUs.

@@ -797,6 +797,8 @@ const badgeRecoil = document.getElementById('badgeRecoil');
 
 // Shipbuilder State
 let currentBatteryMultiplier = 1;
+// Target size (m) for proximity fragment hit odds: Rover 3, Ship 15, Large Ship 30; 0 = every fragment hits
+let currentTargetSize = 15;
 let currentFilterGrid = 'all';
 let currentFilterType = 'all';
 let currentFilterClass = 'all';
@@ -1477,7 +1479,7 @@ function getWeaponTypePrefix(w) {
 }
 
 function initBatteryMultiplier() {
-  const btns = document.querySelectorAll('.battery-btn');
+  const btns = document.querySelectorAll('.battery-btn[data-mult]');
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       btns.forEach(b => b.classList.remove('active'));
@@ -1487,6 +1489,24 @@ function initBatteryMultiplier() {
       updateCombatTelemetry();
     });
   });
+  const sizeBtns = document.querySelectorAll('.battery-btn[data-size]');
+  sizeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentTargetSize = parseFloat(btn.dataset.size) || 15;
+      updateCombatTelemetry();
+      if (typeof updateComparisonRadar === 'function') updateComparisonRadar();
+    });
+  });
+}
+
+/// <summary>Dims the TARGET size buttons when the active round has no proximity fragments (the size changes nothing).</summary>
+function updateTargetSizeGroup(dmgDetails) {
+  const g = document.getElementById('targetSizeGroup');
+  if (!g) return;
+  const matters = !!dmgDetails && dmgDetails.fragMax > 0 && dmgDetails.fragHit < 0.999;
+  g.classList.toggle('is-idle', !matters);
 }
 
 function initTelemetryDeckTabs() {
@@ -3905,15 +3925,18 @@ function updateCombatTelemetry() {
   const perHit = dmgDetails.perBlockBase;
   const capNote = dmgDetails.cutoff > 0 ? `capped ${Math.round(perHit).toLocaleString()}/hit` : '';
   const topProfile = getEffectiveProfile(dmgDetails, activeWeapon);
+  updateTargetSizeGroup(dmgDetails);
 
+  // Matrix rows: large-grid blocks. hp / shot is the lifetime payload; Mag Damage is the opening volley, like the hero card
+  const magProjectiles = getMagazineProjectiles(fireParams);
   const heavyDmg = topProfile.perClass.heavy;
-  const heavyMagDmg = Math.round(heavyDmg * magSize);
+  const heavyMagDmg = Math.round(topProfile.perClassInstant.heavy * magProjectiles);
 
   const lightDmg = topProfile.perClass.light;
-  const lightMagDmg = Math.round(lightDmg * magSize);
+  const lightMagDmg = Math.round(topProfile.perClassInstant.light * magProjectiles);
 
   const nonArmorDmg = topProfile.perClass.nonArmor;
-  const nonArmorMagDmg = Math.round(nonArmorDmg * magSize);
+  const nonArmorMagDmg = Math.round(topProfile.perClassInstant.nonArmor * magProjectiles);
 
   // Blast stats: he = real explosive, screen = anti-projectile burst (no block damage), ewar = WC effect
   let blastKind = 'none';
@@ -3943,31 +3966,40 @@ function updateCombatTelemetry() {
 
   // Update Hero Metrics (scaled by currentBatteryMultiplier)
   const bMult = currentBatteryMultiplier || 1;
+  const iMult = topProfile.instantMult;
   const baseEffectiveDps = Math.round(sustainedDps * topProfile.mult);
   const scaledEffectiveDps = baseEffectiveDps * bMult;
-  const baseEffectiveMagDmg = Math.round(magazineDamage * topProfile.mult);
+  const baseEffectiveMagDmg = Math.round(magazineDamage * iMult);
   const scaledEffectiveMagDmg = baseEffectiveMagDmg * bMult;
-  const scaledEffectiveAlpha = Math.round(alphaDamage * topProfile.mult) * bMult;
+  const scaledEffectiveAlpha = Math.round(alphaDamage * iMult) * bMult;
   const scaledSustainedDps = Math.round(sustainedDps * bMult);
-  const multTag = (topProfile.allEqual && topProfile.mult === 1.0) ? '' : ` (×${topProfile.mult})`;
+  const multTag = topProfile.mult === 1.0 ? '' : ` (×${topProfile.mult})`;
   const batteryTag = bMult > 1 ? ` (${bMult}x Array · ${baseEffectiveDps.toLocaleString()}/gun)` : '';
   const batteryMagTag = bMult > 1 ? ` (${bMult}x Array · ${baseEffectiveMagDmg.toLocaleString()} hp/gun)` : '';
+  // Best block for this payload, when it beats the Reference Target
+  const best = topProfile.best;
+  const bestDpsTag = topProfile.bestDiffers ? ` · Best: ${(Math.round(sustainedDps * best.mult) * bMult).toLocaleString()} DPS vs ${best.label}` : '';
+  const bestMagTag = topProfile.bestDiffers ? ` · Best: ${(Math.round(magazineDamage * best.mult) * bMult).toLocaleString()} hp vs ${best.label}` : '';
+  // Proximity fragments: the hero uses expected hits on the chosen target size; the maximum moves to the subline
+  const fragShare = dmgDetails.fragMax > 0 && dmgDetails.fragHit < 0.999;
+  const maxDpsTag = fragShare && dmgDetails.total > 0
+    ? ` · Max if every fragment hits: ${(Math.round(sustainedDps * dmgDetails.totalMax / dmgDetails.total * topProfile.mult) * bMult).toLocaleString()} DPS` : '';
+  const maxMagTag = fragShare && dmgDetails.instantTotal > 0
+    ? ` · Max: ${(Math.round(magazineDamage * dmgDetails.instantTotalMax / dmgDetails.instantTotal * iMult) * bMult).toLocaleString()} hp` : '';
+  const refUpper = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
 
   outSustainedDps.innerHTML = `${scaledEffectiveDps.toLocaleString()} <span class="unit-sub">hp/s</span>`;
   if (teleDpsType) {
-    teleDpsType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
+    teleDpsType.textContent = refUpper;
+    teleDpsType.title = 'Headline target: a large-grid Heavy Armor block';
   }
   if (outEffectiveDps) {
-    if (scaledEffectiveDps === scaledSustainedDps) {
-      outEffectiveDps.innerHTML = `<strong>Effective against ${topProfile.label}</strong>${batteryTag}`;
-    } else {
-      const effPrefix = `Effective against ${topProfile.label}${multTag}`;
-      outEffectiveDps.innerHTML = `<strong>${effPrefix}</strong> · Base: ${scaledSustainedDps.toLocaleString()} DPS${batteryTag}`;
-    }
+    const base = scaledEffectiveDps === scaledSustainedDps ? '' : ` · Base: ${scaledSustainedDps.toLocaleString()} DPS`;
+    outEffectiveDps.innerHTML = `<strong>Effective against ${topProfile.label}${multTag}</strong>${base}${batteryTag}${bestDpsTag}${maxDpsTag}`;
   }
   outMagDamage.innerHTML = `${scaledEffectiveMagDmg.toLocaleString()} <span class="unit-sub">hp</span>`;
   if (teleMagType) {
-    teleMagType.textContent = `VS ${topProfile.label.toUpperCase()}${bMult > 1 ? ` (${bMult}X)` : ''}`;
+    teleMagType.textContent = refUpper;
   }
   const teleMagUnit = document.getElementById('teleMagUnit');
   if (teleMagUnit) teleMagUnit.textContent = bMult > 1 ? `(${bMult} GUNS)` : '';
@@ -3975,15 +4007,15 @@ function updateCombatTelemetry() {
     const magRounds = Math.round(totalRounds / Math.max(1, magsToLoad));
     // One magazine is the headline; a weapon that loads several also shows the loaded total
     const loadTag = magsToLoad > 1
-      ? `× ${magsToLoad} loaded = ${(Math.round(loadedDamage * topProfile.mult) * bMult).toLocaleString()} hp`
+      ? `× ${magsToLoad} loaded = ${(Math.round(loadedDamage * iMult) * bMult).toLocaleString()} hp`
       : `${magRounds > 1 ? `${magRounds} rds` : '1 rd'} / mag`;
     const scaledBaseMagDmg = Math.round(magazineDamage * bMult);
     // Alpha is one trigger pull; it differs from Magazine Damage whenever a magazine holds more than one Burst
     const alphaTag = `Alpha: ${scaledEffectiveAlpha.toLocaleString()} hp`;
     if (scaledEffectiveMagDmg === scaledBaseMagDmg) {
-      outMagDamageSub.textContent = `${alphaTag} · ${loadTag}${batteryMagTag}`;
+      outMagDamageSub.textContent = `${alphaTag} · ${loadTag}${batteryMagTag}${bestMagTag}${maxMagTag}`;
     } else {
-      outMagDamageSub.textContent = `Base: ${scaledBaseMagDmg.toLocaleString()} hp${batteryMagTag} · ${alphaTag} · ${loadTag}`;
+      outMagDamageSub.textContent = `Base: ${scaledBaseMagDmg.toLocaleString()} hp${batteryMagTag} · ${alphaTag} · ${loadTag}${bestMagTag}${maxMagTag}`;
     }
   }
 
@@ -4814,7 +4846,7 @@ function isAntiProjectileArea(ammo, area) {
 }
 
 function emptyDamage() {
-  return { base: 0, bbh: 0, eol: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false, antiProjectile: false, parts: [], pattern: null };
+  return { base: 0, bbh: 0, eol: 0, aoe: 0, frag: 0, fragInstant: 0, total: 0, instantTotal: 0, fragMax: 0, totalMax: 0, instantTotalMax: 0, fragHit: 1, deliverySec: 0, cutoff: 0, perBlockBase: 0, penBlocks: 1, ewar: false, antiProjectile: false, parts: [], pattern: null };
 }
 
 /// <summary>
@@ -4836,19 +4868,20 @@ function getAmmoDamageDetailed(ammo, depth = 0, weapon = null, opts = null) {
     if (pat.active) {
       const out = emptyDamage();
       const k = pat.members.length ? pat.count / pat.members.length : 0;
-      const sub = { noPattern: true, targetGrid: opts && opts.targetGrid };
+      const sub = { noPattern: true, targetGrid: opts && opts.targetGrid, targetSize: opts && opts.targetSize };
       const parentD = getAmmoDamageDetailed(ammo, depth, weapon, sub);
       for (const m of pat.members) {
         if (!m) continue;
         const d = m === ammo ? parentD : getAmmoDamageDetailed(m, depth, weapon, sub);
-        for (const f of ['base', 'bbh', 'eol', 'aoe', 'frag', 'fragInstant', 'total', 'instantTotal']) out[f] += d[f] * k;
+        for (const f of ['base', 'bbh', 'eol', 'aoe', 'frag', 'fragInstant', 'total', 'instantTotal', 'fragMax', 'totalMax', 'instantTotalMax']) out[f] += d[f] * k;
         out.deliverySec = Math.max(out.deliverySec, d.deliverySec);
-        for (const p of d.parts) out.parts.push({ ammo: p.ammo, total: p.total * k, instant: p.instant * k });
+        for (const p of d.parts) out.parts.push({ ammo: p.ammo, kind: p.kind, total: p.total * k, instant: p.instant * k });
       }
+      out.fragHit = out.fragMax > 0 ? out.frag / out.fragMax : 1;
       out.cutoff = parentD.cutoff; out.perBlockBase = parentD.perBlockBase; out.penBlocks = parentD.penBlocks; out.ewar = parentD.ewar;
       out.antiProjectile = parentD.antiProjectile;
       out.pattern = { count: pat.count, members: pat.members.map((m) => (m ? (m.terminalName || m.name) : null)) };
-      out.source = { ammo, weapon, targetGrid: (opts && opts.targetGrid) || 'Large' };
+      out.source = { ammo, weapon, targetGrid: (opts && opts.targetGrid) || 'Large', targetSize: parentD.source.targetSize };
       return out;
     }
   }
@@ -4882,85 +4915,138 @@ function getAmmoDamageDetailed(ammo, depth = 0, weapon = null, opts = null) {
     if (ae && ae.areaEffect) legacy = parseFloat(ae.damage) || 0;
   }
   const aoe = bbh + eol + legacy;
+  // Target size (m) for proximity fragments; 0 = every fragment hits (the maximum)
+  const targetSize = opts && opts.targetSize !== undefined && opts.targetSize !== null ? opts.targetSize : currentTargetSize;
 
-  let fragTotal = 0, fragInstant = 0, deliverySec = 0;
-  const parts = [{ ammo, total: base + aoe, instant: base + aoe }];
+  let fragTotal = 0, fragInstant = 0, fragMax = 0, fragInstantMax = 0, deliverySec = 0;
+  let sched = null;
+  if (timed) sched = getTimedSpawnSchedule(ammo);
+  // A loitering carrier (drones) delivers its own impact and area damage when it dies, after the opening volley
+  const carrierLoiters = !!sched && sched.deliverySec > 1;
+  const parentInstant = carrierLoiters ? 0 : 1;
+  // Direct and area damage are separate parts: WC's small-vs-large debuff only scales the direct part
+  const parts = [];
+  if (base > 0) parts.push({ ammo, kind: 'direct', total: base, instant: base * parentInstant });
+  if (aoe > 0) parts.push({ ammo, kind: 'area', total: aoe, instant: aoe * parentInstant });
+  let carrierCut = null;
   if (frag && children.length) {
     const cnt = parseInt(frag.fragments) || 0;
     const share = 1 / children.length;
     let spawns = 1, firstVolley = 1;
-    if (timed) {
-      const sched = getTimedSpawnSchedule(ammo);
+    if (sched) {
       spawns = sched.spawns;
       deliverySec = sched.deliverySec;
       // Loitering spawners: only the first group lands in the opening volley
       firstVolley = deliverySec <= 1.0 ? spawns : sched.firstVolley;
     }
     for (const child of children) {
-      const cd = getAmmoDamageDetailed(child, depth + 1, weapon, { noPattern: true, targetGrid });
+      const cd = getAmmoDamageDetailed(child, depth + 1, weapon, { noPattern: true, targetGrid, targetSize });
+      // Proximity fragments: expected share that hits a target of targetSize (WcMath.fragmentHitFraction).
+      // The carrier triggers on average half a tick of travel inside Proximity. Loitering drones aim by DroneNav, not Proximity.
+      let h = 1;
+      if (sched && timed.proximity > 0 && !carrierLoiters && targetSize > 0) {
+        const ct = child.trajectory || {}, pt = ammo.trajectory || {};
+        h = WcMath.fragmentHitFraction({
+          degrees: frag.degrees, radial: frag.radial, reverse: frag.reverse, dropVelocity: frag.dropVelocity,
+          parentSpeed: pt.desiredSpeed || 0, childSpeed: ct.desiredSpeed || 0, childAccelPerSec: ct.accelPerSec || 0,
+          distance: timed.proximity - (pt.desiredSpeed || 0) / 120, targetDiameter: targetSize
+        });
+      }
       const nTotal = spawns * cnt * share, nInstant = firstVolley * cnt * share;
-      fragTotal += nTotal * cd.total;
-      fragInstant += nInstant * cd.total;
+      fragTotal += nTotal * cd.total * h;
+      fragInstant += nInstant * cd.total * h;
+      fragMax += nTotal * cd.totalMax;
+      fragInstantMax += nInstant * cd.totalMax;
       deliverySec = Math.max(deliverySec, cd.deliverySec);
-      for (const p of cd.parts) parts.push({ ammo: p.ammo, total: p.total * nTotal, instant: p.total * nInstant });
+      for (const p of cd.parts) parts.push({ ammo: p.ammo, kind: p.kind, total: p.total * nTotal * h, instant: p.total * nInstant * h });
+      if (!carrierCut && cd.cutoff > 0) carrierCut = cd;
     }
   }
+  const own = base + aoe, ownInstant = own * parentInstant;
+  // A ParentDies carrier deals no impact of its own: its fragments' penetration is what lands
+  const penSrc = isCarrier && carrierCut ? carrierCut : null;
 
   return {
     base, bbh, eol, aoe,
     frag: fragTotal,
     fragInstant,
-    total: base + aoe + fragTotal,
-    instantTotal: base + aoe + fragInstant,
+    total: own + fragTotal,
+    instantTotal: ownInstant + fragInstant,
+    fragMax,
+    totalMax: own + fragMax,
+    instantTotalMax: ownInstant + fragInstantMax,
+    fragHit: fragMax > 0 ? fragTotal / fragMax : 1,
     deliverySec,
-    cutoff,
-    perBlockBase: pen.perBlock,
-    penBlocks: pen.blocks,
+    cutoff: penSrc ? penSrc.cutoff : cutoff,
+    perBlockBase: penSrc ? penSrc.perBlockBase : pen.perBlock,
+    penBlocks: penSrc ? penSrc.penBlocks : pen.blocks,
     ewar: isEwar,
     antiProjectile,
     parts,
     pattern: null,
-    source: { ammo, weapon, targetGrid }
+    source: { ammo, weapon, targetGrid, targetSize }
   };
 }
 
 const TARGET_ARMOR_LABELS = { heavy: 'Heavy Armor', light: 'Light Armor', nonArmor: 'Systems' };
+// Headline numbers (hero DPS, magazine, radar, 1v1) are against this block: large-grid Heavy Armor
+const REF_TARGET = { grid: 'Large', armor: 'heavy', label: 'Heavy Armor' };
 /// <summary>
-/// Best-case target for a payload: each part takes its own ammo's per-block damageScale (WC SessionDamageMgr:
-/// Grids, Armor/Heavy/Light/NonArmor, NoGridOrArmorScaling, small-vs-large debuff) against large and small grids.
-/// mult = best effective payload / paper payload. perClass = best effective payload per armor class.
+/// Effective payload per target block: each part takes its own ammo's per-block damageScale (WC SessionDamageMgr:
+/// Grids, Armor/Heavy/Light/NonArmor, NoGridOrArmorScaling, small-vs-large debuff on direct damage only) against
+/// large and small grids. mult / instantMult = Reference Target payload / paper payload (lifetime / opening volley).
+/// perClass = large-grid payload per armor class; best = the block this payload hits hardest.
 /// </summary>
 function getEffectiveProfile(dmg, weapon) {
   const shooterGrid = weapon && (weapon.grid || weapon.gridSize);
   const total = dmg && dmg.total > 0 ? dmg.total : 0;
+  const instantTotal = dmg && dmg.instantTotal > 0 ? dmg.instantTotal : 0;
   const parts = (dmg && dmg.parts) || [];
   // Area effects reach more blocks on a small grid, so each target grid gets its own payload
   const src = dmg && dmg.source;
   const partsFor = (grid) => {
     if (!src || !src.ammo || src.targetGrid === grid) return parts;
-    return getAmmoDamageDetailed(src.ammo, 0, src.weapon, { targetGrid: grid }).parts;
+    return getAmmoDamageDetailed(src.ammo, 0, src.weapon, { targetGrid: grid, targetSize: src.targetSize }).parts;
   };
   const gridParts = { Large: partsFor('Large'), Small: partsFor('Small') };
-  const perClass = {}, perClassGrid = {};
-  for (const armor of ['heavy', 'light', 'nonArmor']) {
-    perClass[armor] = 0; perClassGrid[armor] = [];
-    for (const grid of ['Large', 'Small']) {
-      const eff = gridParts[grid].reduce((s, p) => s + p.total * WcMath.blockDamageScale(p.ammo, { grid, armor }, shooterGrid), 0);
-      if (eff > perClass[armor] + 1e-9) { perClass[armor] = eff; perClassGrid[armor] = [grid]; }
-      else if (Math.abs(eff - perClass[armor]) <= 1e-9) perClassGrid[armor].push(grid);
+  const byTarget = { Large: {}, Small: {} }, byTargetInstant = { Large: {}, Small: {} };
+  for (const grid of ['Large', 'Small']) {
+    for (const armor of ['heavy', 'light', 'nonArmor']) {
+      let eff = 0, inst = 0;
+      for (const p of gridParts[grid]) {
+        const sc = WcMath.blockDamageScale(p.ammo, { grid, armor }, shooterGrid, p.kind === 'area');
+        eff += p.total * sc; inst += p.instant * sc;
+      }
+      byTarget[grid][armor] = eff; byTargetInstant[grid][armor] = inst;
     }
   }
-  const best = Math.max(perClass.heavy, perClass.light, perClass.nonArmor);
-  const winners = ['heavy', 'light', 'nonArmor'].filter((k) => Math.abs(perClass[k] - best) <= 1e-9 * Math.max(1, best));
+  // Best case over all six blocks (shown as a subline)
+  const perBest = {}, perBestGrid = {};
+  for (const armor of ['heavy', 'light', 'nonArmor']) {
+    perBest[armor] = 0; perBestGrid[armor] = [];
+    for (const grid of ['Large', 'Small']) {
+      const eff = byTarget[grid][armor];
+      if (eff > perBest[armor] + 1e-9) { perBest[armor] = eff; perBestGrid[armor] = [grid]; }
+      else if (Math.abs(eff - perBest[armor]) <= 1e-9) perBestGrid[armor].push(grid);
+    }
+  }
+  const bestVal = Math.max(perBest.heavy, perBest.light, perBest.nonArmor);
+  const winners = ['heavy', 'light', 'nonArmor'].filter((k) => Math.abs(perBest[k] - bestVal) <= 1e-9 * Math.max(1, bestVal));
   const allEqual = winners.length === 3;
-  const grids = winners.reduce((g, k) => g.filter((x) => perClassGrid[k].includes(x)), ['Large', 'Small']);
-  // Large grids are the default reference; call out payloads that only peak against small grids
+  const grids = winners.reduce((g, k) => g.filter((x) => perBestGrid[k].includes(x)), ['Large', 'Small']);
   const gridTag = grids.length === 1 && grids[0] === 'Small' ? ' (Small Grid)' : '';
-  const label = (allEqual ? 'All Blocks' : winners.map((k) => TARGET_ARMOR_LABELS[k]).join(' & ')) + (best > 0 ? gridTag : '');
-  const mult = total > 0 ? Math.round((best / total) * 1e6) / 1e6 : 0;
+  const bestLabel = (allEqual ? 'All Blocks' : winners.map((k) => TARGET_ARMOR_LABELS[k]).join(' & ')) + (bestVal > 0 ? gridTag : '');
+  const round6 = (x) => Math.round(x * 1e6) / 1e6;
+  const ref = byTarget[REF_TARGET.grid][REF_TARGET.armor];
+  const refInstant = byTargetInstant[REF_TARGET.grid][REF_TARGET.armor];
+  const mult = total > 0 ? round6(ref / total) : 0;
+  const bestMult = total > 0 ? round6(bestVal / total) : 0;
   return {
-    label, mult, allEqual, perClass,
-    isHeavy: winners.includes('heavy'), isLight: winners.includes('light'), isNonArmor: winners.includes('nonArmor')
+    label: REF_TARGET.label, mult,
+    instantMult: instantTotal > 0 ? round6(refInstant / instantTotal) : mult,
+    perClass: byTarget.Large, perClassInstant: byTargetInstant.Large, byTarget, byTargetInstant,
+    best: { label: bestLabel, mult: bestMult, allEqual, isHeavy: winners.includes('heavy'), isLight: winners.includes('light'), isNonArmor: winners.includes('nonArmor') },
+    bestDiffers: bestMult > mult * 1.005
   };
 }
 
@@ -5118,7 +5204,7 @@ function calculateWeaponMetrics(weapon, forcedAmmoKey) {
 
   const profile = getEffectiveProfile(dmgDetails, weapon);
   const effectiveDps = Math.round(sustainedDps * profile.mult);
-  const effectiveMagazineDamage = Math.round(magazineDamage * profile.mult);
+  const effectiveMagazineDamage = Math.round(magazineDamage * profile.instantMult);
   return { sustainedDps, effectiveDps, magazineDamage, effectiveMagazineDamage, range, velocity, tracking, integrity, power, ups, isBeam, profile };
 }
 
@@ -5160,10 +5246,9 @@ function getWeaponSpecialtyBadge(weapon, ammo) {
   if (!ammo) return 'Standard Payload';
   if (isDetonationWeapon(weapon)) return '💥 Fragment Burst';
   if (ammo.ewar && ammo.ewar.enable) return `🧿 ${ewarTypeLabel(ammo.ewar.type)}`;
-  if (ammo.baseDamageCutoff > 0) {
-    const penBlocks = Math.round(ammo.baseDamageCutoff / (weapon.gridSize === 'Small' || weapon.grid === 'Small' ? 500 : 2500));
-    return `🪡 Overpen (${penBlocks || 1} blk)`;
-  }
+  // Same block count as the matrix chip (WcMath.penetration; a carrier uses its fragment's cutoff)
+  const pen = getAmmoDamageDetailed(ammo, 0, weapon);
+  if (pen.cutoff > 0) return `🪡 Overpen (${pen.penBlocks} blk)`;
   const aoe = ammo.areaOfDamage || {};
   if ((aoe.radius > 0 && aoe.damage > 0) || (aoe.endOfLife && aoe.endOfLife.radius > 0 && aoe.endOfLife.damage > 0)) {
     const r = (aoe.radius || (aoe.endOfLife && aoe.endOfLife.radius) || 0).toFixed(0);

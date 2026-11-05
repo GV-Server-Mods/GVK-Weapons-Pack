@@ -123,7 +123,9 @@ function amDefaultAmmoKey(mag) {
   if (keys.includes(mag.subtypeId)) return mag.subtypeId;
   return keys.find((k) => !/_NPC$/i.test(k)) || keys[0] || '';
 }
-function amMagDamage(ammo, capacity) { return ammo ? getAmmoDamageDetailed(ammo).total * (capacity || 1) : 0; }
+// Ammo pricing and dmg/hit use the payload when every fragment hits, not the Telemetry target-size estimate
+const AM_MAX_HITS = { targetSize: 0 };
+function amMagDamage(ammo, capacity) { return ammo ? getAmmoDamageDetailed(ammo, 0, null, AM_MAX_HITS).total * (capacity || 1) : 0; }
 
 function amValueDefaults() { return (typeof window !== 'undefined' && window.GVK_ECONOMY_VALUES_DEFAULT) || {}; }
 function amValue(sub) {
@@ -266,7 +268,7 @@ function computeAmmoMaths(mag, L, env, opts) {
   const f = {};
   const ammo = ammosDb[L.ammoKey] || null;
   const shots = mag.capacity || 1;
-  const dmgPerHit = ammo ? getAmmoDamageDetailed(ammo).total : 0;
+  const dmgPerHit = ammo ? getAmmoDamageDetailed(ammo, 0, null, AM_MAX_HITS).total : 0;
   const magDmg = dmgPerHit * shots;
   f.magDmg = `${amFmt(dmgPerHit)} dmg/hit × ${shots} rounds = ${amFmt(magDmg)} dmg`;
 
@@ -536,7 +538,7 @@ function amSyncLeverInputs() {
   if (ammoSel) {
     const keys = amMagAmmoKeys(mag.subtypeId);
     ammoSel.innerHTML = keys.length
-      ? keys.map((k) => `<option value="${amEsc(k)}">${amEsc(k)} — ${amFmt(getAmmoDamageDetailed(ammosDb[k]).total)} dmg/hit</option>`).join('')
+      ? keys.map((k) => `<option value="${amEsc(k)}">${amEsc(k)} — ${amFmt(getAmmoDamageDetailed(ammosDb[k], 0, null, AM_MAX_HITS).total)} dmg/hit</option>`).join('')
       : '<option value="">(no AmmoDef loads this magazine)</option>';
     ammoSel.value = L.ammoKey;
   }
@@ -787,7 +789,7 @@ function amRenderBasis(r) {
   if (!box) return;
   const env = amEnv(), bm = balanceMatrix;
   const key = r.levers.ammoKey;
-  const d = r.ammo ? getAmmoDamageDetailed(r.ammo) : null;
+  const d = r.ammo ? getAmmoDamageDetailed(r.ammo, 0, null, AM_MAX_HITS) : null;
   const parts = d ? [['base', d.base], ['area', d.aoe], ['end-of-life', d.eol], ['fragments', d.frag], ['block HP bonus', d.bbh]]
     .filter(([, v]) => v > 0).map(([k, v]) => `${amFmt(v)} ${k}`).join(' + ')
     + (d.antiProjectile ? ' (anti-missile blast not counted: HealthHitModifier with 1 hp or less per block)' : '') : '';
