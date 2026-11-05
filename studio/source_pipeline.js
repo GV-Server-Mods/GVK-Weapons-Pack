@@ -403,6 +403,8 @@ function parseCubeBlocks(xmlText2) {
     const subIdVal = subId(d) || typeIdVal;
     const blockData = {
       subtypeId: subIdVal,
+      // As written in the SBC: '' for an empty SubtypeId (ShipCore matches it exactly)
+      rawSubtypeId: subId(d) || '',
       typeId: typeIdVal,
       xsiType: d.attrs['xsi:type'] || '',
       displayName: xmlText(xmlKid(d, 'DisplayName')),
@@ -702,6 +704,9 @@ function weaponEntry(w, sub, idx, block, magByKey, defs, ammos, cur) {
     components: block ? block.components : [],
     icon: cur.icon || ('icons/' + sub + '.png'),
     subtypeId: sub,
+    // The block's SBC Id, without MyObjectBuilder_: the key ShipCore groups match on
+    blockTypeId: block ? String(block.typeId || '').replace(/^MyObjectBuilder_/i, '') : null,
+    blockSubtypeId: block ? (block.rawSubtypeId !== undefined ? block.rawSubtypeId : block.subtypeId) : null,
     ammoName: usable[0] || null,
     buildTimeSeconds: block ? block.buildTimeSeconds : 0,
     pcu: block ? block.pcu : 0,

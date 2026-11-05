@@ -256,7 +256,7 @@
             <span class="selector-label">Active Weapon</span>
             <span id="weaponMetaSubtitle" class="weapon-meta-subtitle">[Large Grid · Turret]</span>
           </div>
-          <div style="display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: nowrap;">
+          <div class="weapon-select-row" style="display: flex; gap: 8px; align-items: center; margin-top: 4px;">
             <select id="weaponSelect" class="weapon-dropdown"></select>
             <button id="btnResetDefaults" class="btn btn-sm" title="Reset this weapon back to its Shipped values">↺ Reset</button>
             <div class="battery-multiplier-group" style="flex-shrink: 0;" title="Scale combat telemetry for multiple guns (e.g. 2x, 4x, 8x broadside array)">
@@ -403,6 +403,7 @@
                   <div class="target-stat-sub" id="tmBlastDepth" style="display:none;"></div>
                 </div>
               </div>
+              <div class="target-matrix-note" id="tmGvkBlockNote" title="GVK_ArmorBalance.cs (GVK-Settings) scales damage to these blocks on top of the matrix">GVK: weapons and thrusters take half, gyros double, batteries 1.25×. Systems shows 1×.</div>
             </div>
 
           </div>
@@ -424,7 +425,7 @@
               <div>
                 <span class="metric-label">MAX RANGE</span>
                 <div class="metric-big-val cyan" id="outMaxRange">0 <span class="unit-sub">m</span></div>
-                <div class="hero-micro-visual" id="pillarRangeRadar" title="Targeting Reach vs 8km Artillery Horizon"></div>
+                <div class="hero-micro-visual" id="pillarRangeRadar" title="Engagement range"></div>
                 <div class="metric-sub-detail" id="outMaxRangeSource">Targeting Range</div>
               </div>
               <div style="text-align: right;">
@@ -509,7 +510,7 @@
 
             <div class="pillar-metric-row">
               <div>
-                <span class="metric-label">TOTAL INTEGRITY</span>
+                <span class="metric-label" title="Block integrity ÷ the weapon's DurabilityMod: weapon blocks take half damage on GVK">DAMAGE TO DESTROY THIS BLOCK</span>
                 <div class="metric-val" id="outEffectiveIntegrity">0</div>
                 <div class="metric-sub-detail" id="outBuildTime">Welding: 0s</div>
               </div>
@@ -2543,6 +2544,7 @@
   <script src="data/animations_data.js"></script>
   <script src="data/components_data.js"></script>
   <script src="data/economy_values.js"></script>
+  <script src="data/shipcore_groups.js"></script>
   <script src="data/build_info.js"></script>
   <script src="source_pipeline.js"></script>
   <script src="wc_math.js"></script>

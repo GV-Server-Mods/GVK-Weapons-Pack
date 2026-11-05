@@ -86,7 +86,7 @@ graph TD
   - `[ 🛡️ Large Grid ]` / `[ 🏎️ Small Grid ]`.
   - `[ ⚔️ NPC Variant ]`: Flags non-player enemy armaments (e.g. Harbinger Cruiser, Gaalsien Raiders).
   - `[ 📡 Point Defense ]`: Flags Turrets whose WeaponCore `TargetingDef.Threats` includes `Projectiles` (Flak turrets, Gatling turrets including the Avenger, AMS lasers, light laser turrets). Point Defense needs a Turret, so Fixed weapons never carry it. Gimbals count as Fixed by GVK definition (`GLOSSARY.md`), even the 25mm Gatling Gimbal, which is built on a turret base and will still fire at missiles inside its ±15° cone in game. These engage smart munitions in flight; `IgnoreDumbProjectiles` makes them smart-only hunters.
-  - `[ 🥊 Brawler ]`: the weapon's **Role**, judged from the weapon and its loaded ammo by `getAutomatedWeaponRole()` (`WEAPON_ROLES` in `app.js`): Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery or Demolition Charge. The 1v1 quick compare shows the same Role for both weapons.
+  - `[ 🥊 Brawler ]`: the weapon's **Role**, judged from the weapon and its loaded ammo by `getAutomatedWeaponRole()` (`WEAPON_ROLES` in `app.js`): Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery, Demolition Charge or Support. The 1v1 quick compare shows the same Role for both weapons.
 
 #### 2. Loaded Munition Selector Bar (`.telemetry-ammo-bar`)
 - Positioned directly beneath the active weapon banner and **permanently visible across all weapons** (single-ammo and multi-ammo alike).
@@ -179,7 +179,7 @@ Positioned directly beneath the 7 hero cards to explain sustained fire rate and 
   3. **Targeting Range**: engagement range from `getEngagementRange()` in `app.js`, the single resolver every range readout uses (pillar card, footer, radar, role tags). Turrets and guided munitions (any `Guidance` other than `None`, e.g. Smart missiles, torpedoes and drones) are gated by the block's `MaxTargetDistance`. Manually aimed fixed guns with unguided rounds use the round's `MaxTrajectory`. Either way, the range never exceeds the round's reach.
   4. **Muzzle Velocity** (Projectile flight speed)
   5. **Tracking Rate** (Azimuth & Elevation traverse agility in deg/s)
-  6. **Block Integrity** (Cube block durability)
+  6. **Integrity**: damage to destroy the block, its integrity ÷ the weapon's `DurabilityMod` (WeaponCore's default when unset: 0.25 large, 0.05 small). The Telemetry box and the 1v1 table show the same number.
   7. **Power Draw** (Operational power draw in MW — idle + sustained firing energy)
 - **1v1 Benchmark Comparison**:
   - Active weapon in **Amber/Orange** (`#f59e0b`).

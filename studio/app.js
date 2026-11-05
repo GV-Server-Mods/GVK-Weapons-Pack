@@ -1243,6 +1243,7 @@ function stripHandheldData() {
 
 function refreshAfterDataLoad() {
   stripHandheldData();
+  applyShipCoreGroups();
   // Populate Dropdowns
   checkWcSchemaIntegrity();
   populateWeaponDropdowns();
@@ -1387,17 +1388,32 @@ function setupNavigationEvents() {
   if (btnShareUrl) {
     btnShareUrl.addEventListener('click', () => {
       if (!activeWeapon) return;
-      const url = new URL(window.location.href);
-      url.searchParams.set('gun', activeWeapon.subtypeId);
-      if (benchmarkWeapon) url.searchParams.set('vs', benchmarkWeapon.subtypeId);
-      if (activeAmmo) url.searchParams.set('ammo', activeAmmo.ammoRound);
-      navigator.clipboard.writeText(url.toString()).then(() => {
+      const url = buildShareUrl();
+      navigator.clipboard.writeText(url).then(() => {
         showToast("🔗 Weapon comparison link copied to clipboard!");
       }).catch(() => {
-        showToast(url.toString());
+        showToast(url);
       });
     });
   }
+}
+
+/// <summary>Share link: gun and vs by SubtypeId, ammo and vsAmmo by ammo key (the ammosDb key, not the round name).</summary>
+function buildShareUrl() {
+  const url = new URL(window.location.href);
+  url.searchParams.set('gun', activeWeapon.subtypeId);
+  if (benchmarkWeapon) url.searchParams.set('vs', benchmarkWeapon.subtypeId); else url.searchParams.delete('vs');
+  if (activeAmmo) url.searchParams.set('ammo', activeAmmo.name); else url.searchParams.delete('ammo');
+  if (benchmarkWeapon && benchmarkAmmoKey) url.searchParams.set('vsAmmo', benchmarkAmmoKey); else url.searchParams.delete('vsAmmo');
+  return url.toString();
+}
+
+/// <summary>Ammo from a link: the ammo key, or (older links) its round or terminal name, among the rounds the gun can load.</summary>
+function resolveAmmoParam(p, weapon) {
+  if (!p || !weapon) return null;
+  const keys = getSelectableAmmos(weapon);
+  if (keys.includes(p) && ammosDb[p]) return p;
+  return keys.find((k) => ammosDb[k] && (ammosDb[k].ammoRound === p || ammosDb[k].terminalName === p)) || null;
 }
 
 function parseUrlParams() {
@@ -1405,22 +1421,20 @@ function parseUrlParams() {
   const gunParam = params.get('gun');
   const vsParam = params.get('vs');
   const ammoParam = params.get('ammo');
+  const vsAmmoParam = params.get('vsAmmo');
   const wsParam = params.get('ws');
 
   if (gunParam) {
     const found = weaponsDb.find(w => w.subtypeId === gunParam || w.id === gunParam);
     if (found) selectWeapon(found.id);
   }
+  // After the gun: selectWeapon picks its own benchmark
   if (vsParam) {
     const foundBench = weaponsDb.find(w => (w.subtypeId === vsParam || w.id === vsParam) && !isNpcWeapon(w));
-    if (foundBench) {
-      benchmarkWeapon = foundBench;
-      if (compareSelect) compareSelect.value = foundBench.id;
-    }
+    if (foundBench) setBenchmarkWeapon(foundBench.id, resolveAmmoParam(vsAmmoParam, foundBench));
   }
-  if (ammoParam && ammosDb[ammoParam]) {
-    activeAmmo = ammosDb[ammoParam];
-  }
+  const ammoKey = resolveAmmoParam(ammoParam, activeWeapon);
+  if (ammoKey) selectAmmo(ammoKey);
   if (wsParam && document.getElementById(wsParam)) {
     switchWorkspace(wsParam);
   }
@@ -1441,6 +1455,31 @@ function isHandheldWeapon(w) {
 function getAmmoSbcDisplayName(ammoKey) {
   const a = (ammosDb && ammosDb[ammoKey]) || {};
   return a.terminalName || a.ammoRound || ammoKey;
+}
+
+/// <summary>
+/// Player-facing ammo name: a curated name; else the terminal name when it reads as words ("155 AP");
+/// else the magazine's name without its *TYPE* prefix and xN count ("Crusader Disruptor");
+/// else "<weapon type> Energy" for energy rounds. Never a raw def id like Lasers_Laser_Large.
+/// </summary>
+function getAmmoDisplayName(ammo, weapon) {
+  if (!ammo) return 'Standard';
+  const cur = typeof STUDIO_CURATION !== 'undefined' && STUDIO_CURATION.ammos && STUDIO_CURATION.ammos[ammo.name];
+  if (cur && cur.displayName) return cur.displayName;
+  const term = ammo.terminalName || '';
+  if (/\s/.test(term)) return term;
+  const mags = (typeof magazinesBlueprintsDb !== 'undefined' && magazinesBlueprintsDb && magazinesBlueprintsDb.length) ? magazinesBlueprintsDb
+    : (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' ? MAGAZINES_BLUEPRINTS_DATA : []);
+  const mag = ammo.ammoMagazine && ammo.ammoMagazine !== 'Energy' ? mags.find((m) => m.subtypeId === ammo.ammoMagazine) : null;
+  if (mag && mag.displayName && !/^zz|^DisplayName_/.test(mag.displayName)) {
+    const n = mag.displayName.replace(/^\*[^*]+\*\s*/, '').replace(/\s+x\d+$/i, '').trim();
+    if (n) return n;
+  }
+  if (isEnergyAmmo(ammo)) {
+    const t = weapon ? getWeaponTypePrefix(weapon) : '';
+    return t ? `${t} Energy` : 'Energy';
+  }
+  return term || ammo.ammoRound || ammo.name || 'Standard';
 }
 
 function filterMatchesWeapon(w) {
@@ -1684,14 +1723,10 @@ function populateWeaponDropdowns() {
     weaponSelect.value = activeWeapon.id;
   }
 
-  // Compare dropdown (always includes all player guns of matching grid)
-  playerGuns.forEach(w => {
-    const opt = document.createElement('option');
-    opt.value = w.id;
-    const grid = w.gridSize || w.grid || 'Large';
-    opt.textContent = `${w.displayName || w.name} [${grid}]`;
-    compareSelect.appendChild(opt);
-  });
+  // Compare dropdown: every player gun (not filtered), rebuilt whole so repeated calls never duplicate it
+  const escOpt = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  compareSelect.innerHTML = '<option value="">Select benchmark weapon to compare...</option>'
+    + playerGuns.map((w) => `<option value="${escOpt(w.id)}">${escOpt(`${w.displayName || w.name} [${w.gridSize || w.grid || 'Large'}]`)}</option>`).join('');
 
   if (benchmarkWeapon) {
     compareSelect.value = benchmarkWeapon.id;
@@ -1741,46 +1776,7 @@ function populateWeaponDropdowns() {
   }
 
   if (compareSelect && !compareSelect._changeBound) {
-    compareSelect.addEventListener('change', (e) => {
-      const val = e.target.value;
-      benchmarkWeapon = val ? weaponsDb.find(w => w.id === val) : null;
-      if (benchmarkWeapon) {
-        if (compBenchIcon) {
-          compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
-          compBenchIcon.style.display = 'inline-block';
-          compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
-        }
-        
-        const bAmmos = getSelectableAmmos(benchmarkWeapon);
-        benchmarkAmmoKey = bAmmos[0] || benchmarkWeapon.ammoName;
-
-        if (compareAmmoSelect) {
-          if (bAmmos.length > 1) {
-            compareAmmoSelect.innerHTML = bAmmos.map(k => {
-              const label = getAmmoSbcDisplayName(k);
-              return `<option value="${k}">${label}</option>`;
-            }).join('');
-            compareAmmoSelect.value = benchmarkAmmoKey;
-            compareAmmoSelect.style.display = 'inline-block';
-          } else {
-            compareAmmoSelect.style.display = 'none';
-          }
-        }
-
-        if (compBenchAmmoIcon) {
-          const bAmmo = ammosDb[benchmarkAmmoKey];
-          compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
-          compBenchAmmoIcon.style.display = 'inline-block';
-          compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
-        }
-      } else {
-        benchmarkAmmoKey = null;
-        if (compBenchIcon) compBenchIcon.style.display = 'none';
-        if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
-        if (compareAmmoSelect) compareAmmoSelect.style.display = 'none';
-      }
-      updateComparisonRadar();
-    });
+    compareSelect.addEventListener('change', (e) => setBenchmarkWeapon(e.target.value));
     compareSelect._changeBound = true;
   }
 
@@ -1790,12 +1786,51 @@ function populateWeaponDropdowns() {
       if (compBenchAmmoIcon) {
         const bAmmo = ammosDb[benchmarkAmmoKey];
         compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
-        compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+        compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${getAmmoDisplayName(bAmmo, benchmarkWeapon)}` : 'Benchmark Ammo';
       }
       updateComparisonRadar();
     });
     compareAmmoSelect._changeBound = true;
   }
+}
+
+/// <summary>
+/// Sets the 1v1 benchmark weapon (and optionally its ammo), syncs the compare selects and icons, and redraws the radar.
+/// Used by the compare dropdown and by share links.
+/// </summary>
+function setBenchmarkWeapon(id, ammoKey) {
+  benchmarkWeapon = id ? weaponsDb.find((w) => w.id === id) || null : null;
+  if (compareSelect) compareSelect.value = benchmarkWeapon ? benchmarkWeapon.id : '';
+  if (benchmarkWeapon) {
+    if (compBenchIcon) {
+      compBenchIcon.src = getWeaponIconUrl(benchmarkWeapon);
+      compBenchIcon.style.display = 'inline-block';
+      compBenchIcon.title = benchmarkWeapon.displayName || benchmarkWeapon.name;
+    }
+    const bAmmos = getSelectableAmmos(benchmarkWeapon);
+    benchmarkAmmoKey = ammoKey && bAmmos.includes(ammoKey) ? ammoKey : (bAmmos[0] || benchmarkWeapon.ammoName);
+    if (compareAmmoSelect) {
+      if (bAmmos.length > 1) {
+        compareAmmoSelect.innerHTML = bAmmos.map((k) => `<option value="${k}">${getAmmoSbcDisplayName(k)}</option>`).join('');
+        compareAmmoSelect.value = benchmarkAmmoKey;
+        compareAmmoSelect.style.display = 'inline-block';
+      } else {
+        compareAmmoSelect.style.display = 'none';
+      }
+    }
+    if (compBenchAmmoIcon) {
+      const bAmmo = ammosDb[benchmarkAmmoKey];
+      compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
+      compBenchAmmoIcon.style.display = 'inline-block';
+      compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${getAmmoDisplayName(bAmmo, benchmarkWeapon)}` : 'Benchmark Ammo';
+    }
+  } else {
+    benchmarkAmmoKey = null;
+    if (compBenchIcon) compBenchIcon.style.display = 'none';
+    if (compBenchAmmoIcon) compBenchAmmoIcon.style.display = 'none';
+    if (compareAmmoSelect) compareAmmoSelect.style.display = 'none';
+  }
+  updateComparisonRadar();
 }
 
 function populateAmmoDropdowns() {
@@ -2102,7 +2137,7 @@ function updateTelemetryAmmoBadge() {
     typeDesc = `High Explosive Blast (${eol.radius || 0}m)`;
   } else if (frag && frag.fragments > 1) {
     typeDesc = `Proximity Shrapnel (${frag.fragments} Frags)`;
-  } else if (frag && frag.fragments === 1) {
+  } else if (frag && frag.fragments === 1 && frag.ammoRound) {
     // Classified from WC fields: loitering TimedSpawns / DroneAdvanced guidance, or a stage whose own payload is negligible
     const child = resolveAmmoRound(frag.ammoRound, activeWeapon);
     const ts = frag.timedSpawns && frag.timedSpawns.enable ? frag.timedSpawns : null;
@@ -2268,6 +2303,64 @@ function getTechSummary(components) {
   return { totalQty, techQtyExcludingDataCore, upCost, summaryStr, techLayers, hasDataCore };
 }
 
+/// <summary>Block integrity: the sum of its components' integrity (as SE computes MaxIntegrity).</summary>
+function getBlockIntegrity(w) {
+  if (!w || !w.components || !w.components.length) return 0;
+  return w.components.reduce((sum, c) => {
+    const meta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { integrity: 100 };
+    return sum + (meta.integrity || 0) * (parseInt(c.count) || 0);
+  }, 0);
+}
+
+/// <summary>Damage needed to destroy the weapon block: integrity ÷ its GeneralDamageMultiplier, which WC sets from
+/// DurabilityMod, or 0.25 large / 0.05 small when unset (SessionInit.cs:588).</summary>
+function getDamageToDestroy(w) {
+  const integrity = getBlockIntegrity(w);
+  if (!integrity) return 0;
+  const grid = (w.gridSize || w.grid || 'Large');
+  const mod = w.durabilityMod > 0 ? w.durabilityMod : (grid === 'Small' ? 0.05 : 0.25);
+  return Math.round(integrity / mod);
+}
+
+/// <summary>ShipCore group key for a weapon block: exact "TypeId/SubtypeId" (an empty SubtypeId stays empty), or null.</summary>
+function shipCoreKey(w) {
+  if (!w || !w.blockTypeId) return null;
+  return w.blockTypeId + '/' + (w.blockSubtypeId || '');
+}
+
+/// <summary>UPs from ShipCore's "UP Weapons" group (studio/data/shipcore_groups.js), or null if the block is not listed (no UP cost in game).</summary>
+function getWeaponUps(w) {
+  const groups = typeof SHIPCORE_GROUPS !== 'undefined' ? SHIPCORE_GROUPS : null;
+  const key = shipCoreKey(w);
+  if (!groups || !key || !Object.prototype.hasOwnProperty.call(groups.upWeapons, key)) return null;
+  return groups.upWeapons[key];
+}
+
+/// <summary>True when the block is in ShipCore's "H Relic Weapons" group, so it takes a Relic Weapon Slot.</summary>
+function isRelicWeapon(w) {
+  const groups = typeof SHIPCORE_GROUPS !== 'undefined' ? SHIPCORE_GROUPS : null;
+  const key = shipCoreKey(w);
+  return !!(groups && key && groups.relicWeapons.indexOf(key) >= 0);
+}
+
+/// <summary>Sets upCost, upListed and isRelic on every weapon from the ShipCore groups (the server's own config).</summary>
+function applyShipCoreGroups() {
+  for (const w of weaponsDb) {
+    const ups = getWeaponUps(w);
+    w.upListed = ups !== null;
+    w.upCost = ups === null ? 0 : ups;
+    w.isRelic = isRelicWeapon(w);
+  }
+}
+
+/// <summary>UP badge text: the ShipCore UPs, times the battery multiplier.</summary>
+function formatUpsBadge(w, mult) {
+  const base = (w && w.upCost) || 0;
+  const total = base * (mult || 1);
+  const note = mult > 1 ? ` (${mult}x ${base})` : '';
+  return `⚡ UPs: <strong>${total}</strong>${note}${w && !w.upListed ? ' <span class="muted">(not in ShipCore)</span>' : ''}`;
+}
+
 /// <summary>
 /// Calculates total dry mass (kg and metric tons) of a weapon block from its component recipe.
 /// </summary>
@@ -2292,7 +2385,8 @@ const WEAPON_ROLES = [
   { id: 'beam', label: 'Beam', icon: '⚡', desc: 'Continuous or pulsed energy projection' },
   { id: 'homing', label: 'Homing Ordnance', icon: '🚀', desc: 'Homing missiles, torpedoes & loitering drones' },
   { id: 'artillery', label: 'Standoff Artillery', icon: '🔭', desc: 'Long-range bombardment & siege' },
-  { id: 'demolition', label: 'Demolition Charge', icon: '💣', desc: 'Single-use detonation; no sustained fire' }
+  { id: 'demolition', label: 'Demolition Charge', icon: '💣', desc: 'Single-use detonation; no sustained fire' },
+  { id: 'support', label: 'Support', icon: '🛰️', desc: 'EWAR, decoys & sensors: no block damage' }
 ];
 const roleById = (id) => WEAPON_ROLES.find((r) => r.id === id);
 
@@ -2307,7 +2401,13 @@ function getAutomatedWeaponRole(weapon, ammo) {
   if (!isFixedMount && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD')))) {
     return roleById('pd');
   }
-  const isHoming = ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None' && isSteeringAmmo(ammo);
+  // EWAR, decoys and sensors: no block damage (after PD, which also deals none to blocks)
+  if (ammo) {
+    const d = getAmmoDamageDetailed(ammo, 0, weapon, { targetSize: 0 });
+    const eff = getEffectiveProfile(d, weapon).best.mult * d.total;
+    if ((ammo.ewar && ammo.ewar.enable) || eff <= AOE_ANTI_PROJECTILE_MAX) return roleById('support');
+  }
+  const isHoming =ammo?.trajectory?.guidance && ammo.trajectory.guidance !== 'None' && isSteeringAmmo(ammo);
   const isLoiter = ammo?.fragment?.timedSpawns?.enable && (ammo.fragment.timedSpawns.maxSpawns > 1);
   if (isHoming || isLoiter) return roleById('homing');
   if (isAirBurstAmmo(ammo)) return roleById('areaDenial');
@@ -2344,6 +2444,45 @@ function getMunitionTerrainClearance(ammo) {
 /// Extracts the firing arc and depression. A Turret under 350° of azimuth is a limited-arc Turret; a Fixed weapon
 /// that can steer within a narrower cone is a Gimbal (GLOSSARY.md).
 /// </summary>
+/// <summary>
+/// GVK Data Core rule (GLOSSARY): a weapon whose targeting reaches over 2,000 m, on a turret or with a guided round,
+/// needs one [Tech] Data Core. state: 'fitted', 'missing', 'extra' (fitted, not required) or 'none'.
+/// maxTargetDistance, when given, replaces the weapon's (Workbench edits).
+/// </summary>
+function getDataCoreStatus(w, maxTargetDistance) {
+  if (!w) return { required: false, fitted: false, state: 'none' };
+  const reach = maxTargetDistance !== undefined ? maxTargetDistance : (w.maxTargetDistance || 0);
+  const gated = getSelectableAmmos(w).some((k) => ammosDb[k] && getEngagementRange(w, ammosDb[k], false).gated);
+  const required = gated && reach > 2000;
+  const fitted = getTechSummary(w.components).hasDataCore;
+  return { required, fitted, state: fitted ? (required ? 'fitted' : 'extra') : (required ? 'missing' : 'none') };
+}
+
+function renderDataCoreBadges(st) {
+  const html = st.state === 'missing' ? '⚠ <strong>Data Core required, missing</strong>'
+    : st.state === 'extra' ? '🔬 <strong>Data Core fitted</strong> (not required)'
+    : '🔬 <strong>Data Core fitted</strong>';
+  const title = st.state === 'missing' ? 'This weapon targets over 2 km on a turret or guided round, so GVK requires a [Tech] Data Core in its recipe'
+    : 'A [Tech] Data Core is in this weapon\'s recipe';
+  for (const el of [badgeDataCore, document.getElementById('scopeBadgeDataCore'), document.getElementById('bomBadgeDataCore')]) {
+    if (!el) continue;
+    el.innerHTML = html;
+    el.title = title;
+    el.style.display = st.state === 'none' ? 'none' : 'inline-flex';
+    el.classList.toggle('badge-red', st.state === 'missing');
+  }
+}
+
+/// <summary>
+/// 'turret', 'gimbal' or 'fixed'. A Fixed weapon with a RotateRate but no subparts is still fixed
+/// (CoreSystems: NoSubParts -> TurretType.Fixed), e.g. the MAC.
+/// </summary>
+function getMountKind(w) {
+  if (!w) return 'fixed';
+  if (w.type === 'Turret') return 'turret';
+  return getWeaponArcSummary(w).isGimbal ? 'gimbal' : 'fixed';
+}
+
 function getWeaponArcSummary(weapon) {
   const minAz = weapon && weapon.minAzimuth !== undefined ? weapon.minAzimuth : -180;
   const maxAz = weapon && weapon.maxAzimuth !== undefined ? weapon.maxAzimuth : 180;
@@ -2520,7 +2659,7 @@ function updateUniversalBanner() {
     }
     if (compActiveAmmoIcon) {
       compActiveAmmoIcon.src = ammoIconUrl;
-      compActiveAmmoIcon.title = `Munition: ${curAmmo.terminalName || curAmmo.ammoRound || 'Standard'}`;
+      compActiveAmmoIcon.title = `Munition: ${getAmmoDisplayName(curAmmo, activeWeapon)}`;
     }
     if (scopeAmmoIcon) {
       scopeAmmoIcon.src = ammoIconUrl;
@@ -2543,9 +2682,11 @@ function updateUniversalBanner() {
   const currentUps = baseUps * currentBatteryMultiplier;
   const upsHtml = `⚡ <strong>${currentUps} UPs</strong>${currentBatteryMultiplier > 1 ? ` (${currentBatteryMultiplier}x ${baseUps} UPs)` : ''}`;
   const techHtml = `Tech: <strong>${techInfo.summaryStr}</strong>`;
-  // Tech component count and UP cost are always the same quantity, so the pillar badge merges them into one.
-  const techUpsHtml = `⚡ Tech / UPs: <strong>${currentUps}</strong>${currentBatteryMultiplier > 1 ? ` (${currentBatteryMultiplier}x ${baseUps})` : ''}`;
-  if (badgeUps) badgeUps.innerHTML = techUpsHtml;
+  // UPs come from ShipCore's UP Weapons group, not the tech component count
+  if (badgeUps) {
+    badgeUps.innerHTML = formatUpsBadge(activeWeapon, currentBatteryMultiplier);
+    badgeUps.title = activeWeapon.upListed ? 'UP cost from the server ShipCore config (UP Weapons group)' : 'Not in the ShipCore UP Weapons group: costs no UPs';
+  }
   const scopeBadgeUps = document.getElementById('scopeBadgeUps');
   const scopeBadgeTech = document.getElementById('scopeBadgeTech');
   if (scopeBadgeUps) scopeBadgeUps.innerHTML = upsHtml;
@@ -2605,22 +2746,8 @@ function updateUniversalBanner() {
     }
   }
 
-  // Data Core rule: a smart or turret weapon reaching past 2000 m needs one [Tech] Data Core
-  const hasDataCore = techInfo.hasDataCore || ((activeWeapon.type === 'Turret' || activeWeapon.guided) && (activeWeapon.maxTargetDistance > 2000));
-  if (badgeDataCore) {
-    badgeDataCore.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
-    badgeDataCore.style.display = hasDataCore ? 'inline-flex' : 'none';
-  }
-  const scopeBadgeDataCore = document.getElementById('scopeBadgeDataCore');
-  if (scopeBadgeDataCore) {
-    scopeBadgeDataCore.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
-    scopeBadgeDataCore.style.display = hasDataCore ? 'inline-flex' : 'none';
-  }
-  const bomBadgeDataCore = document.getElementById('bomBadgeDataCore');
-  if (bomBadgeDataCore) {
-    bomBadgeDataCore.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
-    bomBadgeDataCore.style.display = hasDataCore ? 'inline-flex' : 'none';
-  }
+  // Data Core rule: a turret or guided weapon targeting over 2,000 m needs one [Tech] Data Core
+  renderDataCoreBadges(getDataCoreStatus(activeWeapon));
 
   // Relic Weapon badge: the weapon takes a Relic Weapon Slot
   if (badgeRelic) {
@@ -2666,10 +2793,14 @@ let hudTelLast = null;
 function updateHudTelemetry(v) {
   if (!v || !activeWeapon || !hudTelName) return;
   hudTelLast = v;
-  const ammoName = activeAmmo ? (activeAmmo.terminalName || activeAmmo.ammoRound) : '';
+  const ammoName = activeAmmo ? getAmmoDisplayName(activeAmmo, activeWeapon) : '';
   hudTelName.textContent = `${activeWeapon.displayName || activeWeapon.name}${ammoName ? ` · ${ammoName}` : ''}${v.bMult > 1 ? ` · ×${v.bMult}` : ''}`;
-  if (hudTelDps) hudTelDps.textContent = isDetonationWeapon(activeWeapon) ? 'n/a (single use)' : v.scaledEffectiveDps.toLocaleString();
-  if (hudTelDpsProfile) hudTelDpsProfile.textContent = `vs ${v.profileLabel}`;
+  if (hudTelDps) {
+    hudTelDps.textContent = isDetonationWeapon(activeWeapon) ? 'n/a (single use)'
+      : v.pdRate != null ? `${(Math.round(v.pdRate * 10) / 10).toLocaleString()} PD hp/s`
+      : v.noBlockDamage ? 'No block damage' : v.scaledEffectiveDps.toLocaleString();
+  }
+  if (hudTelDpsProfile) hudTelDpsProfile.textContent = v.pdRate != null ? 'vs munitions' : v.noBlockDamage ? '' : `vs ${v.profileLabel}`;
   if (hudTelAlpha) hudTelAlpha.textContent = `${v.scaledEffectiveAlpha.toLocaleString()} hp`;
   const eng = getEngagementRange(activeWeapon, activeAmmo, true);
   if (hudTelRange) {
@@ -3407,22 +3538,17 @@ function renderSbcComponentsTable() {
   const techInfo = getTechSummary(activeWeapon.components);
   if (sbcTechSummary) sbcTechSummary.textContent = techInfo.summaryStr;
   if (sbcHasDataCore) sbcHasDataCore.checked = techInfo.hasDataCore;
-  if (sbcUpCostVal) sbcUpCostVal.textContent = `${techInfo.upCost} UPs`;
-  if (sbcUpCost) sbcUpCost.value = techInfo.upCost;
+  // UPs are ShipCore's (applyShipCoreGroups); the tech count is shown beside them, never written over them
+  const scUps = activeWeapon.upCost || 0;
+  if (sbcUpCostVal) sbcUpCostVal.textContent = activeWeapon.upListed ? `${scUps} UPs (ShipCore)` : '0 UPs (not in ShipCore)';
+  if (sbcUpCost) sbcUpCost.value = scUps;
 
   activeWeapon.techCount = techInfo.totalQty;
-  activeWeapon.upCost = techInfo.upCost;
-  activeWeapon.pcu = techInfo.upCost;
   activeWeapon.techComponent = techInfo.techLayers.length > 0 ? techInfo.techLayers[0].name : '';
   activeWeapon.hasDataCore = techInfo.hasDataCore;
 
-  if (badgeUps) {
-    badgeUps.innerHTML = `⚡ Tech / UPs: <strong>${techInfo.upCost}</strong>`;
-  }
-  if (badgeDataCore) {
-    badgeDataCore.innerHTML = `🔬 <strong>[Tech] Data Core</strong>`;
-    badgeDataCore.style.display = techInfo.hasDataCore ? 'inline-flex' : 'none';
-  }
+  if (badgeUps) badgeUps.innerHTML = formatUpsBadge(activeWeapon, currentBatteryMultiplier);
+  renderDataCoreBadges(getDataCoreStatus(activeWeapon));
 
   // Update Linter Check
   runWeaponCoreLinter();
@@ -3473,7 +3599,7 @@ function renderDpsCompositionStrip(dmgDetails, isBeam) {
 /// <summary>
 /// Renders the weapon's native salvo architecture cells (does not scale with battery multipliers).
 /// </summary>
-function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
+function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation, cycle = {}) {
   if (!pillarAlphaSalvo) return;
   const rounds = Math.max(1, parseInt(totalRounds, 10) || 1);
   let mode = 'BURST';
@@ -3485,7 +3611,11 @@ function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
     cells = '<div class="salvo-cell active" title="Fires once when the block detonates"></div>';
   } else if (isBeam) {
     labelClass = 'beam';
-    if (rounds === 1) {
+    if (rounds === 1 && cycle.reloadSec > 0) {
+      // One beam shot per reload (e.g. the MAC): not continuous
+      mode = 'SINGLE BEAM SHOT';
+      cells = '<div class="salvo-cell active beam" title="One beam shot, then a reload"></div>';
+    } else if (rounds === 1) {
       mode = 'CONTINUOUS BEAM';
       cells = '<div class="salvo-cell beam-cont" title="Continuous optical lance emitter"></div>';
     } else {
@@ -3505,6 +3635,12 @@ function renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation) {
         cells += `<div class="salvo-cell active plasma" title="Superheated magnetic plasma charge"></div>`;
       }
     }
+  } else if (rounds === 1 && cycle.guided) {
+    mode = 'SINGLE MISSILE';
+    cells = '<div class="salvo-cell active slug" title="One guided missile per reload"></div>';
+  } else if (rounds === 1 && cycle.aoeDominant) {
+    mode = 'HE SHELL';
+    cells = '<div class="salvo-cell active slug" title="One high-explosive shell per reload"></div>';
   } else if (rounds === 1) {
     mode = 'HEAVY SLUG';
     cells = '<div class="salvo-cell active slug" title="Single-shot heavy kinetic slug"></div>';
@@ -3571,7 +3707,7 @@ function renderRangeVisual(rangeNum, isTrackingWeapon, isBlast) {
     const fillPath = `M 4 24 L ${xBottomEnd} 24 A ${rFill.toFixed(1)} ${rFill.toFixed(1)} 0 0 0 ${xFillEnd} ${yFillEnd} Z`;
 
     pillarRangeRadar.innerHTML = `
-      <div class="radar-fan-wrap" title="Tracking Radar: ${Math.round(range).toLocaleString()}m against 4,000m turret horizon">
+      <div class="radar-fan-wrap" title="Targeting range: ${Math.round(range).toLocaleString()} m">
         <svg class="radar-fan-svg" viewBox="0 0 84 28">
           <!-- Radar Sweep Baseline & 20-deg Top Ray -->
           <path class="radar-fan-bg" d="M 4 24 L 68 24 M 4 24 L 64.1 2.1" />
@@ -3583,7 +3719,7 @@ function renderRangeVisual(rangeNum, isTrackingWeapon, isBlast) {
           <!-- Dynamic Weapon Range Arc Fill -->
           <path class="radar-fan-fill" d="${fillPath}" />
         </svg>
-        <span class="radar-fan-label">RADAR</span>
+        <span class="radar-fan-label">TARGETING</span>
       </div>
     `;
   } else {
@@ -4010,20 +4146,50 @@ function updateCombatTelemetry() {
       ? `× ${magsToLoad} loaded = ${(Math.round(loadedDamage * iMult) * bMult).toLocaleString()} hp`
       : `${magRounds > 1 ? `${magRounds} rds` : '1 rd'} / mag`;
     const scaledBaseMagDmg = Math.round(magazineDamage * bMult);
-    // Alpha is one trigger pull; it differs from Magazine Damage whenever a magazine holds more than one Burst
+    // Alpha is one trigger pull; it differs from Magazine Damage whenever a magazine holds more than one Burst.
+    // Line 1 is on the headline basis (Reference Target); line 2 is the paper payload (×1), only when they differ.
     const alphaTag = `Alpha: ${scaledEffectiveAlpha.toLocaleString()} hp`;
-    if (scaledEffectiveMagDmg === scaledBaseMagDmg) {
-      outMagDamageSub.textContent = `${alphaTag} · ${loadTag}${batteryMagTag}${bestMagTag}${maxMagTag}`;
-    } else {
-      outMagDamageSub.textContent = `Base: ${scaledBaseMagDmg.toLocaleString()} hp${batteryMagTag} · ${alphaTag} · ${loadTag}${bestMagTag}${maxMagTag}`;
+    const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const line1 = `${alphaTag} · ${loadTag}${batteryMagTag}${bestMagTag}${maxMagTag}`;
+    let line2 = '';
+    if (scaledEffectiveMagDmg !== scaledBaseMagDmg) {
+      const paperAlpha = Math.round(alphaDamage * bMult), paperLoaded = Math.round(loadedDamage * bMult);
+      line2 = `Base (×1): ${scaledBaseMagDmg.toLocaleString()} hp/mag · Alpha ${paperAlpha.toLocaleString()}${magsToLoad > 1 ? ` · × ${magsToLoad} loaded = ${paperLoaded.toLocaleString()}` : ''}`;
     }
+    outMagDamageSub.innerHTML = `<span class="metric-sub-eff">${esc(line1)}</span>${line2 ? `<br><span class="metric-sub-base">${esc(line2)}</span>` : ''}`;
+  }
+
+  // No block damage on any block (Grids x0, sensors, decoys): say so instead of "0 hp/s against All Blocks".
+  // A PD weapon shows its anti-munition rate: each hit removes HealthHitModifier (or 1) health (SessionDamageMgr.DamageProjectile).
+  const blockDamage = (topProfile.best.mult || 0) * (dmgDetails.total || 0);
+  const canPd = Boolean(activeWeapon.pdProjectiles || (activeWeapon.helpers?.targeting && activeWeapon.helpers.targeting.includes('PD')));
+  let pdRate = null;
+  if (blockDamage <= 0 && !isDetonation) {
+    if (canPd) {
+      const hhm = ds.healthHitModifier > 0 ? ds.healthHitModifier : 1;
+      pdRate = effectiveRps * hhm * bMult;
+      outSustainedDps.innerHTML = `${(Math.round(pdRate * 10) / 10).toLocaleString()} <span class="unit-sub">PD hp/s</span>`;
+      if (teleDpsType) teleDpsType.textContent = 'VS MUNITIONS (PD)';
+      if (outEffectiveDps) outEffectiveDps.innerHTML = `<strong>Point defense only</strong> · ${hhm} PD hp per hit · ${describePdKills(activeAmmo, 'hits')}`;
+    } else {
+      outSustainedDps.innerHTML = `0 <span class="unit-sub">hp/s</span>`;
+      if (teleDpsType) teleDpsType.textContent = 'NO BLOCK DAMAGE';
+      if (outEffectiveDps) outEffectiveDps.innerHTML = '<strong>No block damage</strong>';
+    }
+    outMagDamage.innerHTML = '—';
+    if (teleMagType) teleMagType.textContent = 'NO BLOCK DAMAGE';
+    if (outMagDamageSub) outMagDamageSub.textContent = 'No block damage (Grids ×0)';
   }
 
   // Render Pillar 1 Hero Micro-Visuals
   renderDpsCompositionStrip(dmgDetails, isBeam);
   // Charged bolt: HybridRound whose area payload outweighs its kinetic core
   const isPlasma = Boolean(activeAmmo.hybridRound) && dmgDetails.aoe > dmgDetails.base;
-  renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation);
+  renderAlphaSalvoCluster(totalRounds, isBeam, isPlasma, isDetonation, {
+    reloadSec,
+    guided: !!(activeAmmo.trajectory && activeAmmo.trajectory.guidance && activeAmmo.trajectory.guidance !== 'None'),
+    aoeDominant: dmgDetails.aoe > 0 && dmgDetails.aoe >= dmgDetails.base
+  });
 
   // Damage Per Shot & Payload Breakdown
   const shotTotalDmg = Math.round(dmgDetails.total * bMult);
@@ -4213,7 +4379,12 @@ function updateCombatTelemetry() {
     } else if (isDirectIntercept) {
       tmBlastSub.textContent = describePdKills(activeAmmo, 'hits') || `${hhm} PD HP subtracted per hit`;
     } else {
-      tmBlastSub.textContent = dmgDetails.total <= 0 ? 'No Damage Payload (sensor / utility round)' : 'Direct Kinetic Penetration Only';
+      const fragA = activeAmmo.fragment && activeAmmo.fragment.enable && activeAmmo.fragment.ammoRound ? activeAmmo.fragment : null;
+      const fragChild = fragA ? resolveAmmoRound(fragA.ammoRound, activeWeapon) : null;
+      const fragPer = fragChild ? getAmmoDamageDetailed(fragChild, 1, activeWeapon, { targetSize: 0 }).total : 0;
+      tmBlastSub.textContent = dmgDetails.total <= 0 ? 'No Damage Payload (sensor / utility round)'
+        : dmgDetails.frag > 0 && fragA ? `No area blast · ${fragA.fragments || 0} fragments × ${Math.round(fragPer).toLocaleString()} hp`
+        : (!activeAmmo.ammoMagazine || activeAmmo.ammoMagazine === 'Energy' || isBeam) ? 'Direct energy hit · no area blast' : 'Direct kinetic hit · no area blast';
     }
   }
 
@@ -4245,7 +4416,7 @@ function updateCombatTelemetry() {
   const elRad = parseFloat(wElevateRate.value) || 0;
   const rotDegSec = (rotRad * 60 * 180 / Math.PI).toFixed(1);
   const elDegSec = (elRad * 60 * 180 / Math.PI).toFixed(1);
-  const isFixedMount = rotRad <= 0 && elRad <= 0;
+  const isFixedMount = getMountKind(activeWeapon) === 'fixed';
   const arcInfo = getWeaponArcSummary(activeWeapon);
 
   if (outTraverseDeg) {
@@ -4399,14 +4570,14 @@ function updateCombatTelemetry() {
   }
 
   if (outAimingTolerance) {
-    if (!isTrackingWeapon && !activeWeapon.rotateRate) {
+    if (getMountKind(activeWeapon) === 'fixed') {
       outAimingTolerance.innerHTML = `Fixed`;
     } else {
       outAimingTolerance.innerHTML = `${aimTol.toFixed(1)}&deg;`;
     }
   }
   if (outAimingToleranceDetail) {
-    if (!isTrackingWeapon && !activeWeapon.rotateRate) {
+    if (getMountKind(activeWeapon) === 'fixed') {
       outAimingToleranceDetail.textContent = 'Fixed (boresight only)';
     } else if (addTolToTrack) {
       outAimingToleranceDetail.textContent = `Tracks to cone edge (±${aimTol.toFixed(1)}°)`;
@@ -4474,9 +4645,11 @@ function updateCombatTelemetry() {
 
   // Structural & Power (Pillar 3 Logistics, Battery Scaled)
   const durMod = parseFloat(wDurabilityMod.value) || 0.5;
-  const effIntegrity = activeWeapon.effectiveIntegrity || 150000;
+  const effIntegrity = getDamageToDestroy(activeWeapon) || activeWeapon.effectiveIntegrity || 0;
   outEffectiveIntegrity.innerHTML = `${Math.round(effIntegrity).toLocaleString()} <span class="unit-sub">hp</span>`;
-  outBuildTime.textContent = `Welding: ${Math.round(effIntegrity / balanceMatrix.buildTimeDividend)}s`;
+  // Weld time is the block's SBC BuildTimeSeconds (set by tools/apply_build_time.js: MAX(5, ROUND(integrity / 750)))
+  const weldS = activeWeapon.buildTimeSeconds || 0;
+  outBuildTime.textContent = weldS ? `Welding: ${formatTime(weldS)} · integrity ${getBlockIntegrity(activeWeapon).toLocaleString()} hp` : 'Welding: —';
 
   const techInfo = getTechSummary(activeWeapon.components);
   const baseUps = (activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : techInfo.upCost;
@@ -4487,7 +4660,10 @@ function updateCombatTelemetry() {
   const outPillarUps = document.getElementById('outPillarUps');
   if (outPillarUps) outPillarUps.innerHTML = `${currentUps} <span class="unit-sub">UPs</span>`;
   const outPillarUpsDetail = document.getElementById('outPillarUpsDetail');
-  if (outPillarUpsDetail) outPillarUpsDetail.textContent = bMult > 1 ? `${bMult}x Array (${baseUps}/gun)` : 'Ship Core Allocation';
+  if (outPillarUpsDetail) {
+    const scNote = activeWeapon.upListed ? (activeWeapon.isRelic ? 'ShipCore · Relic Weapon Slot' : 'ShipCore UP Weapons') : 'Not in ShipCore: no UP cost';
+    outPillarUpsDetail.textContent = bMult > 1 ? `${bMult}x Array (${baseUps}/gun) · ${scNote}` : scNote;
+  }
 
   // Cubeblock Dimensions & Volume (Pillar 3 Hero Stat)
   const sz = activeWeapon.size || { x: 1, y: 1, z: 1 };
@@ -4562,7 +4738,10 @@ function updateCombatTelemetry() {
   const magVolM3 = (magMeta.volume || 30) / 1000;
   const m3PerMin = magsPerMin * magVolM3;
   const m3PerMinStr = m3PerMin >= 0.01 ? `${m3PerMin.toFixed(2)} m³/min` : `${(m3PerMin * 1000).toFixed(1)} L/min`;
-  const minOfFire = m3PerMin > 0 ? (invVol / m3PerMin).toFixed(1) : '∞';
+  // Per gun (each gun has its own inventory): whole magazines that fit, fired at the sustained rate
+  const magsHeld = magVolM3 > 0 ? Math.floor(invVol / magVolM3 + 1e-9) : 0;
+  const fireSec = effectiveRps > 0 ? magsHeld * ammoMagCapacity / effectiveRps : Infinity;
+  const minOfFire = isFinite(fireSec) ? formatTime(fireSec) : '∞';
 
   let consumptionHtml = '';
   if (isEnergyAmmo || (!activeAmmo.ammoMagazine && scaledOperationalPwrNum > 5)) {
@@ -4582,7 +4761,7 @@ function updateCombatTelemetry() {
       outMagProfile.innerHTML = `${ammoMagCapacity} rds/mag · ${m3PerMinStr}`;
     }
     if (outMagReload) {
-      outMagReload.textContent = `${invVol} m³ cargo (${minOfFire}m continuous fire)`;
+      outMagReload.textContent = `${invVol} m³ cargo (${minOfFire} continuous fire)`;
     }
   }
 
@@ -4600,8 +4779,10 @@ function updateCombatTelemetry() {
       break;
     }
   }
-  if (!reachedCrit || funcHp <= 0) funcHp = effIntegrity * 0.7;
-  const funcRatio = effIntegrity > 0 ? Math.round((funcHp / effIntegrity) * 100) : 70;
+  // Both in block integrity (before the damage multiplier), so the ratio is the block's own critical point
+  const rawIntegrity = getBlockIntegrity(activeWeapon);
+  if (!reachedCrit || funcHp <= 0) funcHp = rawIntegrity * 0.7;
+  const funcRatio = rawIntegrity > 0 ? Math.round((funcHp / rawIntegrity) * 100) : 70;
 
   const outFunctionalIntegrity = document.getElementById('outFunctionalIntegrity');
   if (outFunctionalIntegrity) {
@@ -4728,7 +4909,8 @@ function updateCombatTelemetry() {
     hudCycle = 'Single use';
   }
 
-  updateHudTelemetry({ scaledEffectiveDps, baseEffectiveDps, scaledEffectiveAlpha, profileLabel: topProfile.label, bMult, cycle: hudCycle });
+  updateHudTelemetry({ scaledEffectiveDps, baseEffectiveDps, scaledEffectiveAlpha, profileLabel: topProfile.label, bMult, cycle: hudCycle,
+    pdRate, noBlockDamage: blockDamage <= 0 && !isDetonation });
 
   // Render BOM Table
   renderBomTable(effIntegrity, durMod);
@@ -5184,20 +5366,12 @@ function calculateWeaponMetrics(weapon, forcedAmmoKey) {
   const rawVel = (a.trajectory && a.trajectory.desiredSpeed !== undefined) ? a.trajectory.desiredSpeed : (weapon.desiredSpeed || 1000);
   const isBeam = isBeamWeapon(weapon, a);
   const velocity = isBeam ? 0 : rawVel;
-  const tracking = weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
+  const tracking = getMountKind(weapon) !== 'fixed' && weapon.rotateRate ? (weapon.rotateRate * 60 * 180 / Math.PI) : 0;
 
   const power = getWeaponPowerDraw(weapon, a).operational;
 
-  let integrity = 0;
-  if (weapon.components && weapon.components.length > 0) {
-    integrity = weapon.components.reduce((sum, c) => {
-      const cMeta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { integrity: 100 };
-      return sum + (cMeta.integrity || 0) * (c.count || 0);
-    }, 0);
-  }
-  if (!integrity && weapon.effectiveIntegrity) {
-    integrity = weapon.effectiveIntegrity;
-  }
+  // Damage to destroy the block (integrity ÷ damage multiplier), the number the Telemetry box shows
+  const integrity = getDamageToDestroy(weapon) || weapon.effectiveIntegrity || 0;
 
   const techInfo = getTechSummary(weapon.components);
   const ups = (weapon.upCost !== undefined && weapon.upCost !== null) ? weapon.upCost : techInfo.upCost;
@@ -5243,21 +5417,45 @@ function getModMaxMetrics() {
 }
 
 function getWeaponSpecialtyBadge(weapon, ammo) {
+  return getPayloadSpecialty(weapon, ammo);
+}
+
+/// <summary>
+/// What a round is for, from its WC payload: detonation, EWAR, no block damage (PD only / sensor), anti-missile screen,
+/// drones, fragments, blast, overpen (same block count as the matrix chip), else Kinetic / Energy with the block it
+/// hits hardest and that multiplier.
+/// </summary>
+function getPayloadSpecialty(weapon, ammo, depth = 0) {
   if (!ammo) return 'Standard Payload';
   if (isDetonationWeapon(weapon)) return '💥 Fragment Burst';
   if (ammo.ewar && ammo.ewar.enable) return `🧿 ${ewarTypeLabel(ammo.ewar.type)}`;
-  // Same block count as the matrix chip (WcMath.penetration; a carrier uses its fragment's cutoff)
-  const pen = getAmmoDamageDetailed(ammo, 0, weapon);
-  if (pen.cutoff > 0) return `🪡 Overpen (${pen.penBlocks} blk)`;
-  const aoe = ammo.areaOfDamage || {};
-  if ((aoe.radius > 0 && aoe.damage > 0) || (aoe.endOfLife && aoe.endOfLife.radius > 0 && aoe.endOfLife.damage > 0)) {
-    const r = (aoe.radius || (aoe.endOfLife && aoe.endOfLife.radius) || 0).toFixed(0);
-    return `💥 Blast (${r}m)`;
+  const dmg = getAmmoDamageDetailed(ammo, 0, weapon, { targetSize: 0 });
+  const prof = getEffectiveProfile(dmg, weapon);
+  const canPd = Boolean(weapon && (weapon.pdProjectiles || (weapon.helpers?.targeting && weapon.helpers.targeting.includes('PD'))));
+  if (prof.best.mult * dmg.total <= 0) return canPd ? '🎯 Point Defense Only' : (dmg.total <= 0 ? '📡 Sensor / Utility' : 'No Block Damage');
+  const aod = ammo.areaOfDamage || {};
+  const area = (aod.endOfLife && aod.endOfLife.enable) ? aod.endOfLife : ((aod.byBlockHit && aod.byBlockHit.enable) ? aod.byBlockHit : null);
+  if (dmg.antiProjectile && area && area.radius >= 10) return `🎯 Anti-Missile Screen (${Math.round(area.radius)}m)`;
+  const frag = ammo.fragment && ammo.fragment.enable && ammo.fragment.ammoRound ? ammo.fragment : null;
+  const own = dmg.base + dmg.aoe;
+  if (frag && dmg.frag > own) {
+    const child = resolveAmmoRound(frag.ammoRound, weapon);
+    const ts = frag.timedSpawns && frag.timedSpawns.enable ? frag.timedSpawns : null;
+    const childGuidance = child && child.trajectory ? child.trajectory.guidance : 'None';
+    if ((ts && (ts.maxSpawns || 0) > 1) || childGuidance === 'DroneAdvanced') return '🤖 Drone Deployment';
+    if ((frag.fragments || 0) > 1) return `🧨 Fragments (${frag.fragments}×)`;
+    if (child && depth < 4) return getPayloadSpecialty(weapon, child, depth + 1);
   }
-  const ds = ammo.damageScales || {};
-  if (ds.shields > 1.2 || ds.shield > 1.2) return '⚡ Shield Stripper';
-  if (ds.armor && ds.armor.heavy > 1.2) return '🛡️ Anti-Heavy';
-  return 'Direct Kinetic AP';
+  if (dmg.aoe > 0 && dmg.aoe >= dmg.base && area) return `💥 Blast (${Math.round(area.radius || 0)}m)`;
+  if (dmg.cutoff > 0) return `🪡 Overpen (${dmg.penBlocks} blk)`;
+  const kind = isEnergyAmmo(ammo) || isBeamWeapon(weapon, ammo) ? '⚡ Energy' : '🔩 Kinetic';
+  const b = prof.best;
+  const armorTag = b.allEqual ? '' : (b.isHeavy && b.isLight && !b.isNonArmor) ? ' · Anti-Armor'
+    : (b.isHeavy && !b.isLight && !b.isNonArmor) ? ' · Anti-Heavy'
+    : (b.isNonArmor && !b.isHeavy && !b.isLight) ? ' · Anti-Systems'
+    : (b.isLight && !b.isHeavy && !b.isNonArmor) ? ' · Anti-Light' : '';
+  const multTag = Math.abs(b.mult - 1) > 1e-6 ? ` ×${Math.round(b.mult * 100) / 100}` : '';
+  return `${kind}${armorTag}${multTag}`;
 }
 
 /// <summary>
@@ -5282,8 +5480,8 @@ function updateRadarQuickCompare() {
 
   const aIsBeam = isBeamWeapon(activeWeapon, activeAmmo);
   const bIsBeam = benchAmmo ? isBeamWeapon(benchmarkWeapon, benchAmmo) : false;
-  const activeMunition = aIsBeam ? `⚡ ${activeAmmo?.terminalName || activeAmmo?.ammoRound || 'Hitscan Beam'}` : (activeAmmo ? (activeAmmo.terminalName || activeAmmo.ammoRound || 'Standard') : 'Standard');
-  const benchMunition = bIsBeam ? `⚡ ${benchAmmo?.terminalName || benchAmmo?.ammoRound || 'Hitscan Beam'}` : (benchAmmo ? (benchAmmo.terminalName || benchAmmo.ammoRound || 'Standard') : 'Standard');
+  const activeMunition = aIsBeam ? `⚡ ${activeAmmo ? getAmmoDisplayName(activeAmmo, activeWeapon) : 'Hitscan Beam'}` : (activeAmmo ? getAmmoDisplayName(activeAmmo, activeWeapon) : 'Standard');
+  const benchMunition = bIsBeam ? `⚡ ${benchAmmo ? getAmmoDisplayName(benchAmmo, benchmarkWeapon) : 'Hitscan Beam'}` : (benchAmmo ? getAmmoDisplayName(benchAmmo, benchmarkWeapon) : 'Standard');
   setPair('qcAmmoTypeActive', 'qcAmmoTypeBench', activeMunition, benchMunition);
 
   const activeSpec = getWeaponSpecialtyBadge(activeWeapon, activeAmmo);
@@ -5389,25 +5587,23 @@ function updateComparisonRadar() {
   }
 
   // Calculate Normalized Stats for Active Weapon
-  const activeDps = parseFloat(outSustainedDps ? outSustainedDps.textContent.replace(/,/g, '') : 0) || 0;
-  const activeMagDmg = parseFloat(outMagDamage ? outMagDamage.textContent.replace(/,/g, '') : 0) || 0;
-  
+  // Per gun, same basis as the benchmark (calculateWeaponMetrics): never read back the hero text, which carries the GUN ARRAY
+  let activeDps = 0, activeMagDmg = 0;
+  if (activeWeapon && activeAmmo) {
+    const s = computeSustainedDps();
+    const prof = getEffectiveProfile(s.dmgDetails, activeWeapon);
+    activeDps = Math.round(s.sustainedDps * prof.mult);
+    activeMagDmg = Math.round(s.magazineDamage * prof.instantMult);
+  }
+
   const activeRange = activeWeapon ? getEngagementRange(activeWeapon, activeAmmo, true).range : 1600;
   const activeVel = (tDesiredSpeed && parseFloat(tDesiredSpeed.value)) || 1000;
-  // Same basis as calculateWeaponMetrics (RotateRate); the traverse readout says "Fixed Mount" on fixed guns
-  const activeTrack = ((wRotateRate && parseFloat(wRotateRate.value)) || 0) * 60 * 180 / Math.PI;
-  const activePower = (outPowerMw && parseFloat(outPowerMw.textContent)) || 0;
+  // Same basis as calculateWeaponMetrics: fixed mounts do not track, whatever their RotateRate
+  const activeTrack = getMountKind(activeWeapon) === 'fixed' ? 0 : ((wRotateRate && parseFloat(wRotateRate.value)) || 0) * 60 * 180 / Math.PI;
+  const activePower = ((outPowerMw && parseFloat(outPowerMw.textContent)) || 0) / (currentBatteryMultiplier || 1);
   
-  let activeIntegrity = 0;
-  if (activeWeapon && activeWeapon.components && activeWeapon.components.length > 0) {
-    activeIntegrity = activeWeapon.components.reduce((sum, c) => {
-      const cMeta = componentsDb[c.name] || GVK_TECH_COMPONENTS[c.name] || { integrity: 100 };
-      return sum + (cMeta.integrity || 0) * (c.count || 0);
-    }, 0);
-  }
-  if (!activeIntegrity && activeWeapon && activeWeapon.effectiveIntegrity) {
-    activeIntegrity = activeWeapon.effectiveIntegrity;
-  }
+  // Same number as the Telemetry box: damage to destroy the block
+  const activeIntegrity = getDamageToDestroy(activeWeapon) || (activeWeapon && activeWeapon.effectiveIntegrity) || 0;
 
   const activeTechInfo = getTechSummary(activeWeapon ? activeWeapon.components : []);
   const activeUps = (activeWeapon && activeWeapon.upCost !== undefined && activeWeapon.upCost !== null) ? activeWeapon.upCost : activeTechInfo.upCost;
@@ -5431,7 +5627,7 @@ function updateComparisonRadar() {
   // Active Weapon Name in Orange & Description below it
   if (legendActiveName && activeWeapon) {
     const aAmmoObj = activeAmmo;
-    const ammoSuffix = aAmmoObj ? ` [${aAmmoObj.terminalName || aAmmoObj.ammoRound}]` : '';
+    const ammoSuffix = aAmmoObj ? ` [${getAmmoDisplayName(aAmmoObj, activeWeapon)}]` : '';
     legendActiveName.textContent = `${activeWeapon.displayName || activeWeapon.name}${ammoSuffix}`;
   }
   if (legendActiveDesc && activeWeapon) {
@@ -5449,12 +5645,12 @@ function updateComparisonRadar() {
       const bAmmo = ammosDb[benchmarkAmmoKey];
       compBenchAmmoIcon.src = getAmmoIconUrl(bAmmo);
       compBenchAmmoIcon.style.display = 'inline-block';
-      compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${bAmmo.terminalName || bAmmo.ammoRound}` : 'Benchmark Ammo';
+      compBenchAmmoIcon.title = bAmmo ? `Benchmark Munition: ${getAmmoDisplayName(bAmmo, benchmarkWeapon)}` : 'Benchmark Ammo';
     }
     
     if (legendBenchName) {
       const bAmmoObj = benchmarkAmmoKey ? ammosDb[benchmarkAmmoKey] : null;
-      const bAmmoSuffix = bAmmoObj ? ` [${bAmmoObj.terminalName || bAmmoObj.ammoRound}]` : '';
+      const bAmmoSuffix = bAmmoObj ? ` [${getAmmoDisplayName(bAmmoObj, benchmarkWeapon)}]` : '';
       legendBenchName.textContent = `${benchmarkWeapon.displayName || benchmarkWeapon.name}${bAmmoSuffix}`;
     }
     if (legendBenchDesc) {
@@ -5533,7 +5729,7 @@ function renderCompareTable(aDps, aEffDps, aMagDmg, aRange, aVel, aTrack, aInteg
             : null
     },
     { name: 'Tracking Rate', a: aTrack, b: bTrack, unit: '°/s', aStr: `${aTrack.toFixed(1)} °/s`, bStr: `${bTrack.toFixed(1)} °/s` },
-    { name: 'Block Integrity', a: aInteg, b: bInteg, unit: 'hp', aStr: `${Math.round(aInteg).toLocaleString()} hp`, bStr: `${Math.round(bInteg).toLocaleString()} hp` }
+    { name: 'Damage to Destroy Block', a: aInteg, b: bInteg, unit: 'hp', aStr: `${Math.round(aInteg).toLocaleString()} hp`, bStr: `${Math.round(bInteg).toLocaleString()} hp` }
   ];
 
   if (aDet || bDet) {
@@ -5769,8 +5965,17 @@ function runWeaponCoreLinter() {
 
   // GVK Server Rules: Range Gate (>2km)
   const techInfo = getTechSummary(activeWeapon ? activeWeapon.components : null);
-  if (maxRange > 2000 && !techInfo.hasDataCore && !activeWeapon.isRelic) {
-    warnings.push("Smart/turret range exceeds 2km: 1 [Tech] Data Core (PrototechCircuitry) component layer is required in <Components>.");
+  if (activeWeapon && getDataCoreStatus(activeWeapon, maxRange).state === 'missing') {
+    warnings.push("Turret or guided weapon targets over 2 km: 1 [Tech] Data Core (PrototechCircuitry) component layer is required in <Components>.");
+  }
+
+  // GVK Server Rules: UPs come from the ShipCore UP Weapons group (GVK_ShipCoreFramework)
+  if (activeWeapon && !isNpcWeapon(activeWeapon) && !isDetonationWeapon(activeWeapon) && activeWeapon.blockTypeId) {
+    if (!activeWeapon.upListed) {
+      warnings.push(`${shipCoreKey(activeWeapon)} is not in the ShipCore UP Weapons group, so it costs no UPs.`);
+    } else if (techInfo.upCost !== activeWeapon.upCost) {
+      warnings.push(`ShipCore charges ${activeWeapon.upCost} UPs, but the block has ${techInfo.upCost} tech components (excluding the Data Core).`);
+    }
   }
 
   // Component Layers Check
@@ -6267,7 +6472,8 @@ function generateSbcCubeBlocks() {
   const mirrorZ = (sbcMirroringZ && sbcMirroringZ.value.trim()) || sbc.mirroringZ || 'Y';
 
   const bTime = activeWeapon.buildTimeSeconds || (sbcBuildTime && sbcBuildTime.value) || sbc.buildTimeSeconds || 60;
-  const pcu = (activeWeapon.upCost !== undefined ? activeWeapon.upCost : (sbcUpCost && sbcUpCost.value)) || sbc.pcu || 0;
+  // PCU is the block's own SBC value; UPs are a ShipCore budget, not PCU
+  const pcu = activeWeapon.pcu || sbc.pcu || 0;
 
   const resGroup = (sbcResourceSinkGroup && sbcResourceSinkGroup.value.trim()) || sbc.resourceSinkGroup || 'Defense';
   const overlay = (sbcOverlayTexture && sbcOverlayTexture.value.trim()) || sbc.overlayTexture || 'Textures\\GUI\\Screens\\camera_overlay.dds';

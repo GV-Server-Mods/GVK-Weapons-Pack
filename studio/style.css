@@ -3711,6 +3711,13 @@ input.control-input.is-wc-default {
   line-height: 1.3;
 }
 
+.target-matrix-note {
+  margin-top: 8px;
+  font-size: 10.5px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
 [data-theme="light"] .target-stat-box {
   background: #f8fafc;
   border-color: #cbd5e1;
@@ -5360,3 +5367,22 @@ a.am-bm-link { color: var(--amber-primary); text-decoration: underline dotted; t
 /* TARGET size buttons sit on their own row; dimmed when the round has no proximity fragments */
 .target-size-group { margin-top: 6px; width: fit-content; }
 .target-size-group.is-idle { opacity: 0.45; }
+
+/* Phone widths: the weapon row wraps (the GUN ARRAY group stays whole), and the radar and compare table shrink */
+@media (max-width: 900px) {
+  .radar-quickcompare { min-width: 0; }
+}
+@media (max-width: 768px) {
+  .selector-left { min-width: 0; }
+  .selector-left > div:last-child { min-width: 0; flex: 1 1 auto; }
+  .weapon-select-row { flex-wrap: wrap; }
+  .battery-multiplier-group { margin-left: 0; }
+}
+@media (max-width: 480px) {
+  #radarCanvas { max-width: 100%; height: auto; }
+  .radar-container > div { min-width: 0; max-width: 100%; }
+  .pillar-metric-row { flex-wrap: wrap; }
+  .compare-table { font-size: 11px; }
+  .compare-table th, .compare-table td { padding: 4px; }
+  .target-size-group { flex-wrap: wrap; white-space: normal; max-width: 100%; }
+}

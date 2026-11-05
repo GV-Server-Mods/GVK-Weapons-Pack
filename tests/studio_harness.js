@@ -80,14 +80,16 @@ function loadStudio(opts) {
     Option: function Option(text, value) { this.text = text; this.value = value; }
   };
   vm.createContext(sandbox);
-  const files = ['source_pipeline.js', 'wc_math.js', 'data/wc_schema.js', 'data/wc_defs_data.js', 'data/economy_values.js',
+  const files = ['source_pipeline.js', 'wc_math.js', 'data/wc_schema.js', 'data/wc_defs_data.js', 'data/economy_values.js', 'data/shipcore_groups.js',
+    'data/components_data.js',
     'data/magazines_blueprints_data.js', 'app.js', 'ammo_maths.js', 'wc_editor.js'];
   vm.runInContext(files.map((f) => fs.readFileSync(studioFile(f), 'utf8')).join('\n;\n') + '\n;\nsetWcDefs(null);\n', sandbox, { filename: 'studio.js' });
   if (opts.data !== false) {
     sandbox.__w = readData('data/weapons_db.json');
     sandbox.__a = readData('data/ammos_db.json');
     sandbox.__m = readData('data/magazines_blueprints_data.js');
-    vm.runInContext('weaponsDb = __w; ammosDb = __a; magazinesBlueprintsDb = __m; refreshAfterDataLoad();', sandbox);
+    // In the page components_data.js sets window.COMPONENTS_DATA, a global; the harness window is a plain object
+    vm.runInContext('weaponsDb = __w; ammosDb = __a; magazinesBlueprintsDb = __m; componentsDb = { ...(window.COMPONENTS_DATA || {}) }; refreshAfterDataLoad();', sandbox);
   }
   return {
     sandbox,

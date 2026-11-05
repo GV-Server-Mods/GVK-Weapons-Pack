@@ -82,7 +82,7 @@ check('Role filter set to Point Defense shows only Point Defense weapons', rf.pd
 check('Role filter lists the Roles with an All option', /All Roles/.test(rf.options) && /Point Defense/.test(rf.options) && /Homing Ordnance/.test(rf.options), rf.options);
 
 // --- Roles (GLOSSARY.md names) ---
-const GLOSSARY_ROLES = ['Point Defense', 'Brawler', 'Armor Breaker', 'Area Denial', 'Beam', 'Homing Ordnance', 'Standoff Artillery', 'Demolition Charge'];
+const GLOSSARY_ROLES = ['Point Defense', 'Brawler', 'Armor Breaker', 'Area Denial', 'Beam', 'Homing Ordnance', 'Standoff Artillery', 'Demolition Charge', 'Support'];
 const roles = studio.run(`(() => {
   const seen = new Set();
   weaponsDb.forEach((w) => getSelectableAmmos(w).concat([null]).forEach((k) => seen.add(getAutomatedWeaponRole(w, k && ammosDb[k]).label)));

@@ -46,7 +46,7 @@ _Avoid_: coilgun, PD laser
 A weapon with no physical block; it exists only as a WeaponCore definition that other weapons or scripts fire through. WeaponCore: `HardwareType.Phantom`.
 
 **Role**:
-The combat job a weapon fills, judged from its stats: Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery or Demolition Charge.
+The combat job a weapon fills, judged from its stats: Point Defense, Brawler, Armor Breaker, Area Denial, Beam, Homing Ordnance, Standoff Artillery, Demolition Charge or Support (EWAR, decoys and sensors that deal no block damage).
 _Avoid_: munition role, price role, Kinetic Brawler, Directed Energy, Area Denial / Flak, Guided Ordnance
 
 **NPC weapon**:
@@ -57,11 +57,11 @@ The `[Tech] Data Core` component every weapon with a range over 2 km must includ
 _Avoid_: circuitry, Prototech Circuitry
 
 **Relic Weapon**:
-A weapon that takes a Relic Weapon Slot in its grid's Utility Point budget.
+A weapon that takes a Relic Weapon Slot in its grid's Utility Point budget: a block in the ShipCore `H Relic Weapons` group.
 _Avoid_: relic (for weapons classified only by their blueprint or ammo)
 
 **UP cost**:
-The Utility Points (UPs) a weapon draws from its grid class's budget. The UP system itself is defined in the `se-dev-kharak` skill.
+The Utility Points (UPs) a weapon draws from its grid class's budget: its `CountWeight` in the ShipCore `UP Weapons` group (GVK_ShipCoreFramework `ShipCoreConfig_Groups.xml`). A weapon not in that group costs no UPs. The UP system itself is defined in the `se-dev-kharak` skill.
 _Avoid_: upgrade module slots, PCU
 
 **Detonation**:
