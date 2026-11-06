@@ -2264,7 +2264,8 @@ then "rounded weld cap looks good too if it follows the weld flow".
   - the preview was re-exported (warnings unchanged); triangles 108,390, and the mwm matches Blender
     (`PanelingDarker` 14,962).
 
-  Checkpoint: `HurricaneTurret_before_r37_joints.blend`. Not seen in game yet.
+  Checkpoint: `HurricaneTurret_before_r37_joints.blend`. Seen in game, owner, 2026-11-05: "Looks good" (rounds
+  33 to 37 as they stand here).
 
 ## Barrels and muzzle brakes (checkpoint 4)
 
