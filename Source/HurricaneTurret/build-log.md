@@ -2098,6 +2098,174 @@ somewhat".
   Checkpoints: `HurricaneTurret_before_r32_backs.blend` (before round 32), `HurricaneTurret_before_r32b_walls.blend`
   (with the dropped copy). Seen in game, owner, 2026-11-04: "that looks way better now".
 
+### Round 33: Keen's style, balanced with the Kharak look
+
+Owner, 2026-11-05: "I want to do a review against the keen style guide for the skill before we go too far", then
+"the turret isnt fully compliant with the keen style guide, its because it is meant to match the Deserts of Kharak
+style. I want to find a good balance between the two".
+
+- **How it was measured.** The survey script behind se-dev-seut's `references/keen-style.md` (`survey_block.py`, the
+  same measurements as the 60 vanilla models) was run on a copy of the saved .blend, its FBX import swapped for the
+  Main collection with modifiers applied, then its `compare.py`. A ray test (162 directions per sample point) split
+  the visible surface from the hidden one: only 740 of 2,440 m² is visible from outside, so material and decal shares
+  below are on the visible surface. Scripts and output: the session scratchpad's `keen\` folder (temporary).
+- **Already matches Keen** (newer style, large grid; Keen's median in brackets):
+  - convex hard edges bevelled 95.5% (90%);
+  - visible materials: Colorable 58% (56%), Darker 22% (26%), VeryDark 4.9% (2.2%, range to 7.6), Yellow 1.1% (1.1%);
+  - decals 8.7% of the visible surface (6.1%, range 4.1-8.4), Darker dressed as densely as paint (9.0 and 9.6% of
+    each; Keen: Darker at least as much), decal variants follow the host, 73% of decals mirrored (59%);
+  - hex-socket screws 35 mm about 8 heads apart (round heads 43 mm, 6 heads); brake stencils 20-23 mm (20-35);
+  - stock 1.36 m port frames with the 1.17 m shutter.
+- **Kharak look, kept on purpose:** the art's silhouette and sloped armour; the silver band in `Metal_Dull` (4.4% of
+  the visible surface; Keen keeps Metal_Dull to small hardware, about 0.3%); 29 mm Paneling seams on the painted
+  plates (Keen's newer blocks: 16 mm Atlas4 lines; the widths were set in plinth round 11 and gunhouse round 8);
+  45 degree plate corners (Keen turns line corners in 22.5 degree steps); 90 mm rivets on the silver band and big
+  paintable rivets on the armour (Keen about 20 mm); 70-82 mm hex nuts round the bearing ring; plinth windows (1.1%
+  glass, Keen about 0.1%); a keypad on each side (Keen's newer blocks about 2); UVs at 0.495 a metre (Keen 0.40; the
+  skill's range 0.4-0.5, and the kitbashed container's own density).
+- **Away from Keen, with no art behind it:**
+  - signs 2 to 6 times Keen's size: CAUTION MOVING PARTS 720 x 513 (deck) and 550 x 389 (gunhouse), DANGER HIGH
+    VOLTAGE 300, WARNING HIGH PRESSURE 260, ENERGY SOURCE 240, the red triangle 112, the rear hatch's white triangle
+    400 x 220, the TYPE A barcode label 1.30 m (deck and underside). Keen: text plates 100-145 mm, about 150 (up to
+    225) on blocks of 2 x 2 cells and up; pictogram triangles 55-80; pointer marks 2-3 times larger on 3-cell blocks;
+  - no AMMUNITION sign (Atlas2 #52), which Keen puts on its gun turrets as their own-hazard sign;
+  - small bevels in 2 segments: 8 mm on 21 parts and 4 mm on 3 (Keen: one flat 45 degree facet under 12 mm on 99% of
+    edges); larger rounds are 2 segments (gunhouse 20 mm) or 6 (bustle and chin welds) where Keen uses 3;
+  - cylinders with more sides than Keen gives their size: brakes and collars 48 on 0.62-0.74 m (Keen 24, range to
+    32; the barrels are 32), grille handles 24 on a 90 mm tube (8-16), the rear panel hinge 24 on 0.22 m (16), deck
+    gauges 24 (16);
+  - few of Keen's small kit pieces (Atlas3 dishes, dimples, slot pills, hex-bolt tabs) in corners and along recess
+    edges, and half the visible big faces carry no decal (Keen about a third). The plainest: the chin's front and top
+    (9 m²), the rear access panel (8.9 m²), the mid support (5 m²), the bustle's underside (4.9 m²);
+  - the bearing ring's yellow-and-black hazard band (Atlas2 #66, 64 pieces): Keen uses that piece once (jump drive)
+    and the grey-and-black Atlas1 #10 band elsewhere;
+  - "5x5x3 / HURRICANE 480MM" plates in 94 mm letters on all four plinth sides (Keen's newer blocks never letter the
+    block name; classic ones do, 71-83 mm). The roof's stencil is the art's;
+  - underside forward marks: three 0.94 m chevrons and a 278 mm FRONT (Keen's chevrons 53-77 mm); stencil IDs on the
+    deck and plinth 90-121 mm (Keen 40-85 mm).
+- Renders: `keen_review_sheet.png` in the session scratchpad.
+
+Owner's picks, 2026-11-05: "yes, agreed, except remove the CAUTION MOVING PARTS sign on the gunhouse". Built:
+
+- **Signs at Keen's sizes for a block this big** (the top of his range):
+  - the gunhouse's CAUTION MOVING PARTS sign is gone (owner);
+  - text plates 225 mm wide: the deck's CAUTION MOVING PARTS (was 720), WARNING HIGH PRESSURE (260), ENERGY SOURCE
+    (240), DANGER HIGH VOLTAGE (300, raised 25 mm to stay centred on the power box);
+  - the feed box's red triangle 80 mm (112); the rear hatch's white arrow 115 x 63 mm (400 x 220);
+  - the TYPE A barcode label 450 mm (1.30 m), on the deck and the underside;
+  - new: an AMMUNITION sign (`Atlas2` #52, 225 mm) on the bustle's rear face, right of the hatch (`gvk_ghdetail`,
+    `REAR['ammo']`).
+- **Small bevels:** any bevel under 12 mm is now one flat 45 degree face (`gvk_finish` and `gvk_roof`), so the 8 mm
+  and 4 mm edges match Keen. The 20 mm and larger rounds keep their segments.
+- **Fewer cylinder sides:** barrel collars 48 to 32, grille handles 24 to 12, the rear panel hinge 24 to 16, the
+  deck gauges 24 to 16. The muzzle brakes stay at 48: their slots are cut on the 48-side grid (8 slots, each 4
+  sides wide and 2 apart), so fewer sides would reshape the slots signed off in the barrel rounds.
+- **Keen's small kit pieces, tried on the chin only** (`gvk_ghdetail.chin_kit()`, all `Atlas3_Darker`, mirrored): a
+  128 mm slot with knobs (#3) in each outer top corner with a 42 mm dimple (#14) inboard, a 140 mm dark slot (#20)
+  above the riveted plate on each side, and a 329 mm trapezoid bar (#36) under the centre pad. If the owner likes
+  it, the same goes on the other plain faces (rear access panel, mid support, bustle underside).
+- **Kharak marks kept, made smaller:** the underside chevrons halved (the row now starts at 3.1 m instead of 2.15 m,
+  so it stays together); stencil IDs on the deck and underside hatches and the plinth's art labels 85 mm (120 and
+  110). Kept as they were: the yellow hazard band, the HURRICANE 480MM plates, FRONT, 5x5x3.
+- Triangles: 121,128 to 108,394 (mostly the single-face bevels and the collars).
+- Checks:
+  - two rebuilds in a row match, and the rebuild check matched the saved file in all 180 objects under two seeds;
+  - decal gaps no worse: 145 decal triangles under 0.3 mm (166 before), 72 at or behind their surface (78); the chin
+    pieces sit at least 1.0 mm off, the rear signs 5.9 mm (one rounding step at 6 m out, as accepted in round 29);
+  - the preview was re-exported (warnings unchanged), and the triangles per material match Blender in all 30
+    materials (`PaintedMetal_Darker` 34,186, `PaintedMetal_Colorable` 16,906).
+- To judge in game: the 115 mm arrow and the AMMUNITION sign are small on a 6.5 m face (that is Keen's scale);
+  the underside TYPE A label kept its old spot and may look lost on its plate.
+
+  Checkpoint: `HurricaneTurret_before_r33_keen.blend` (before the build). Not seen in game yet.
+
+### Round 34: the chin's kit pieces, placed clear
+
+Owner, 2026-11-05: "The chin is bad, you put multiple decals that run through other shapes or decals".
+
+- **Cause.** Round 33 placed each piece by its centre and width; the height comes from the atlas piece's aspect.
+  The corner slots (#3, 128 mm wide) are 0.40 m tall and ran up through the pads' foot weld; the dark slots (#20,
+  140 mm) are 0.62 m tall and ran down under the bolted-on chin plate to the nose, behind the barrels (x 1.6 to
+  2.2). Round 33's docstring said "0.1 m clear of the welds"; nothing checked it.
+- **Fix** (`gvk_ghdetail`):
+  - `CHIN_FREE`, the chin front's clear area in face metres: v 0.27 to 0.98 (above the plate's top at 0.235,
+    under the foot weld at 1.008), |x| up to 3.13 (inside the side welds at 3.18), and off |x| 1.45 to 2.35, the
+    band each barrel covers from the front at every elevation. `chin_kit()` checks every piece's corners against
+    it and stops the build if one is outside;
+  - the corner slots moved down (centre 0.75, now 0.55 to 0.95); the dark slots moved inboard of the barrels to
+    x ±1.25 (0.33 to 0.95), so they flank the centre bar. The dimples and the bar were already clear.
+- Checks:
+  - the rebuild check matched the saved file in all 180 objects under two seeds;
+  - the chin pieces sit at least 1.0 mm off the face; decal gap totals unchanged;
+  - the preview was re-exported (warnings unchanged); triangles unchanged at 108,394 (`Atlas3_Darker` 310).
+
+  Checkpoint: `HurricaneTurret_before_r34_chin.blend`. Not seen in game yet.
+
+### Round 35: no kit pieces on the chin
+
+Owner, 2026-11-05: "the chin is supposed to be a big thick chunk of armor able to take huge caliber hits, having
+those decals that look like holes run against that style".
+
+- Removed `chin_kit()` and its pieces from `gvk_ghdetail` (the corner slots, dimples, dark slots and the bar). The
+  chin's front is back to round 32: dark paint, the bolted-on riveted plate along the nose, and the welds.
+- Whether kit pieces go on any other plain face (rear access panel, mid support, bustle underside) is the owner's
+  call; none are planned.
+- Checks:
+  - the rebuild check matched the saved file in all 180 objects under two seeds;
+  - decal gap totals unchanged apart from the removed pieces; nothing of `Atlas3_Darker` is left on the chin's front;
+  - the preview was re-exported (warnings unchanged); triangles 108,378 (`Atlas3_Darker` 296), the mwm matches.
+
+  Checkpoint: `HurricaneTurret_before_r35_chin.blend`. Not seen in game yet.
+
+### Round 36: welded plate joints on the chin
+
+Owner, 2026-11-05: "offer some decal designs that DO work on a thick chunk of armor that isn't swiss cheese".
+
+- **Options shown**, mocked up on the chin with temporary decals (not in the builder): A, welded plate joints; B,
+  bolted add-on plates (seam outlines and hex nuts on washers); C, welded repair patches; D, lifting lugs (Atlas3
+  #16) and a plate stencil. Pieces tried and left out because they read as pockets or holes: Atlas3's plain
+  rectangle (#9) and strip (#21) and the rivet grid (#46). Bare-metal scrapes (Decals #12, #26) were also left
+  out: they looked like stuck-on white sticks. The owner picked A.
+- **Built** (`gvk_ghdetail`): `CHIN_JOINT = 1.30`. `chin_front()` cuts the chin's front at x ±1.30, 0.3 m inboard of
+  the barrels, and `CHIN_WELDS` lays a weld bead (the chin's own, `PanelingDarker` #55, 50 mm) along each cut. Each
+  bead starts 3 mm under the bolted plate's top and runs up into the pads' foot weld, where `nets()` mitres the
+  lower half of the foot weld into it, a T. The chin reads as three heavy plates welded edge to edge.
+- **Side effect, a fix:** the nose weld under the bolted plate was lopsided in round 35, with 382 small pieces
+  round x -2.5 on the left and 8 on the right. The new cuts give the nose edge matching vertices on both sides, so
+  it now builds the same both ways (72 and 140 pieces each side). Rendered: continuous on both sides. Decal
+  triangles 24,418 to 24,302; those with no surface under them 2,152 to 1,980.
+- Checks:
+  - only `Chin` (1,976 to 2,032 triangles, the cuts) and `GH_Dec_PanelingDarker_Az` (13,418 to 13,302) changed;
+  - the rebuild check matched the saved file in all 180 objects under two seeds;
+  - decals at or behind their surface 72 to 68, under 0.3 mm 145 to 141;
+  - the preview was re-exported (warnings unchanged); triangles 108,318, and the mwm matches Blender
+    (`PanelingDarker` 14,890, `PaintedMetal_Darker` 34,242).
+
+  Checkpoint: `HurricaneTurret_before_r36_joints.blend`. Not seen in game yet.
+
+### Round 37: the plate-joint welds, nose to pad weld
+
+Owner, 2026-11-05: "the welds need to go all the way down to the chins edge and miter with the other welded edge",
+then "rounded weld cap looks good too if it follows the weld flow".
+
+- Each joint weld now starts at the nose edge (`CHIN_WELDS`: `(CHIN_JOINT, -4.02, -0.15)` to the pads' foot weld),
+  passing under the bolted plate. Its line covers the whole cut, so `nets()` mitres both ends. At the nose, its V
+  tip fits a V notch cut into the nose weld's front half, and the half on the under-nose face runs straight on. At
+  the pad weld, the foot weld's lower half is notched the same way. The pieces lie side by side, with no overlap.
+- **The weld flow:** piece #55's ripples curve back towards U 0, the start of the bead. The joint beads run up
+  (U rising from the nose, as every bead's `ucanon` sets it), so at the nose the tip reads as a rounded end cap
+  curving the same way as its ripples. At the pad weld the tip points up and its ripples bend into the point.
+  Close-ups: `r37_TT.png` in the session scratchpad.
+- Checks:
+  - only `GH_Dec_PanelingDarker_Az` changed (13,302 to 13,374 triangles); the rebuild check matched the saved file
+    in all 180 objects under two seeds;
+  - decal gaps: 141 under 0.3 mm and 68 at or behind their surface, unchanged; no surface 1,980 to 1,991, the
+    beads' pieces round the nose bevel;
+  - the preview was re-exported (warnings unchanged); triangles 108,390, and the mwm matches Blender
+    (`PanelingDarker` 14,962).
+
+  Checkpoint: `HurricaneTurret_before_r37_joints.blend`. Not seen in game yet.
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
