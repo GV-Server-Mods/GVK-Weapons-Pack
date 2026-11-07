@@ -32,6 +32,7 @@
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>SmallMissileLauncher/LargeFlareLauncher</string>
 				<string>ConveyorSorter/LargeWarhead</string>
+				<string>Conveyor/GVK_HeavyTurretMount_3x3x1</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">
@@ -64,6 +65,7 @@
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>SmallMissileLauncher/LargeFlareLauncher</string>
 				<string>ConveyorSorter/LargeWarhead</string>
+				<string>Conveyor/GVK_HeavyTurretMount_3x3x1</string>
 			</ItemIds>
 		</Category>
 		<!-- Vanilla tabs - ItemIds merge into the vanilla category -->
@@ -114,6 +116,7 @@
 				<string>SmallMissileLauncher/LargeFlareLauncher</string>
 				<string>ConveyorSorter/LargeWarhead</string>
 				<string>ConveyorSorter/LargeExplosiveBarrel</string>
+				<string>Conveyor/GVK_HeavyTurretMount_3x3x1</string>
 			</ItemIds>
 		</Category>
 		<Category xsi:type="MyObjectBuilder_GuiBlockCategoryDefinition">

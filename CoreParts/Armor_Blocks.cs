@@ -15,6 +15,7 @@ namespace Scripts {
                 "MA_Buster_Camera",
                 "MA_Buster_Passage",
                 "MA_Buster_Passage_Crossing",
+                "GVK_HeavyTurretMount_3x3x1",
             },
             EnergeticResistance = 1.00f, //Resistance to Energy damage. 0.5f = 200% damage, 2f = 50% damage
             KineticResistance = 1.00f, //Resistance to Kinetic damage. Leave these as 1 for no effect
