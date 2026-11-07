@@ -15,17 +15,16 @@
             <ModelOffset x="0" y="0" z="0" />
             <Model>Models\Cubes\large\GVK_HeavyTurretMount_3x3x1.mwm</Model>
             <Components>
-                <Component Subtype="SteelPlate" Count="500" />
-                <Component Subtype="Construction" Count="300" />
+                <!-- 9x MA_Buster_Conveyor (MA Buster Blocks, Workshop 2449073590), same order -->
+                <Component Subtype="Construction" Count="180" />
+                <Component Subtype="SmallTube" Count="180" />
+                <Component Subtype="Motor" Count="54" />
+                <Component Subtype="Construction" Count="90" />
+                <Component Subtype="InteriorPlate" Count="90" />
                 <Component Subtype="MetalGrid" Count="450" />
-                <Component Subtype="SmallTube" Count="160" />
-                <Component Subtype="LargeTube" Count="90" />
-                <Component Subtype="Motor" Count="60" />
-                <Component Subtype="Construction" Count="260" />
-                <Component Subtype="InteriorPlate" Count="200" />
-                <Component Subtype="SteelPlate" Count="550" />
+                <Component Subtype="SteelPlate" Count="1125" />
             </Components>
-            <CriticalComponent Subtype="Construction" Index="1" />
+            <CriticalComponent Subtype="Motor" Index="0" />
             <MountPoints>
                 <MountPoint Side="Bottom" StartX="0" StartY="0" EndX="3" EndY="3" Default="true" />
                 <MountPoint Side="Top" StartX="0" StartY="0" EndX="3" EndY="3" />
@@ -43,7 +42,7 @@
             <MirroringY>Z</MirroringY>
             <MirroringZ>Y</MirroringZ>
             <EdgeType>Heavy</EdgeType>
-            <BuildTimeSeconds>198</BuildTimeSeconds>
+            <BuildTimeSeconds>187</BuildTimeSeconds>
             <DisassembleRatio>2.5</DisassembleRatio>
             <GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
             <PCU>10</PCU>
