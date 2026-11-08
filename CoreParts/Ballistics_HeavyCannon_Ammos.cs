@@ -43,6 +43,7 @@ namespace Scripts
         {
             AmmoMagazine = "Ballistics_HeavyCannon", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Ballistics_HeavyCannon", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            TerminalName = "480mm APHE", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 10000f, // Direct damage; one steel plate is worth 100.
             Mass = 2000f, // In kilograms; how much force the impact will apply to the target.
             BackKickForce = 1500000f, // Recoil. This is applied to the Parent Grid.

@@ -39,6 +39,7 @@ namespace Scripts
         {
             AmmoMagazine = "UltimateAutomaticRifleGun_Mag_30rd", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "RifleTrace", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            TerminalName = "7.62mm FMJ", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 40, // Direct damage; one steel plate is worth 100.
             Mass = 0.25f, // In kilograms; how much force the impact will apply to the target.
             Health = 0, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.

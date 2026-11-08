@@ -1458,7 +1458,8 @@ function getAmmoSbcDisplayName(ammoKey) {
 }
 
 /// <summary>
-/// Player-facing ammo name: a curated name; else the terminal name when it reads as words ("155 AP");
+/// Player-facing ammo name: a curated name; else the terminal name unless it is a raw id (an underscore or
+/// run-together CamelCase like SmallRailgunAmmo; "155 AP", "Designator" and "50mm FeW" pass);
 /// else the magazine's name without its *TYPE* prefix and xN count ("Crusader Disruptor");
 /// else "<weapon type> Energy" for energy rounds. Never a raw def id like Lasers_Laser_Large.
 /// </summary>
@@ -1467,7 +1468,7 @@ function getAmmoDisplayName(ammo, weapon) {
   const cur = typeof STUDIO_CURATION !== 'undefined' && STUDIO_CURATION.ammos && STUDIO_CURATION.ammos[ammo.name];
   if (cur && cur.displayName) return cur.displayName;
   const term = ammo.terminalName || '';
-  if (/\s/.test(term)) return term;
+  if (term && !/_|[a-z][A-Z][a-z]/.test(term)) return term;
   const mags = (typeof magazinesBlueprintsDb !== 'undefined' && magazinesBlueprintsDb && magazinesBlueprintsDb.length) ? magazinesBlueprintsDb
     : (typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' ? MAGAZINES_BLUEPRINTS_DATA : []);
   const mag = ammo.ammoMagazine && ammo.ammoMagazine !== 'Energy' ? mags.find((m) => m.subtypeId === ammo.ammoMagazine) : null;

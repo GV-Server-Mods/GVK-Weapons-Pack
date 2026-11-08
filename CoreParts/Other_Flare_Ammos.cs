@@ -44,6 +44,7 @@ namespace Scripts
         {
 			AmmoMagazine = "FireworksBoxRainbow",
 			AmmoRound = "FireworkRandom",
+			TerminalName = "Fireworks (Random)", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
 			BaseDamage = 1f,
 			Mass = 20f, // in kilograms
 			Health = 1, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
@@ -198,6 +199,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkRainbow";
+                ammo.TerminalName = "Fireworks (Rainbow)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Rainbow";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";
@@ -212,6 +214,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkGreen";
+                ammo.TerminalName = "Fireworks (Green)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Green";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";
@@ -226,6 +229,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkRed";
+                ammo.TerminalName = "Fireworks (Red)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Red";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";
@@ -240,6 +244,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkPink";
+                ammo.TerminalName = "Fireworks (Pink)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Pink";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";
@@ -254,6 +259,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkYellow";
+                ammo.TerminalName = "Fireworks (Yellow)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Yellow";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";
@@ -268,6 +274,7 @@ namespace Scripts
             {
                 var ammo = FireworkBaseWC;
                 ammo.AmmoRound = "FireworkBlue";
+                ammo.TerminalName = "Fireworks (Blue)";
 				ammo.Pattern.Mode = Never;
                 ammo.AreaOfDamage.EndOfLife.CustomParticle = "Explosion_Firework_Blue";
 				ammo.AmmoAudio.ShotSound = "MD_FireworkLaunch";

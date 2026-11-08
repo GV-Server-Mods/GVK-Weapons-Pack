@@ -44,6 +44,7 @@ namespace Scripts
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
             AmmoRound = "Lasers_Laser_Large", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            TerminalName = "XFEL-H Beam", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = false, // Use both a physical ammo magazine and energy per shot.
             EnergyCost = 0.78f, // Scaler for energy per shot (EnergyCost * BaseDamage * (RateOfFire / 3600) * BarrelsPerShot * TrajectilesPerBarrel). Uses EffectStrength instead of BaseDamage if EWAR.
             BaseDamage = 150f, // Direct damage; one steel plate is worth 100.
@@ -143,6 +144,7 @@ namespace Scripts
             {
                 var laser = Lasers_Laser_Large;
                 laser.AmmoRound = "Lasers_Laser_Dual";
+                laser.TerminalName = "Spartan Beam";
 				laser.EnergyMagazineSize = 480; // WC spends 1 per barrel: 2 barrels x 240 shots
 				//laser.Beams.VirtualBeams = true; //broken in WC
                 //laser.Beams.ConvergeBeams = true; //broken in WC

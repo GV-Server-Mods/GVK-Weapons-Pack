@@ -109,7 +109,7 @@ check('Cargo: continuous fire per gun (ARYX 23 s, MAC 6m 0s, small Gatling 18 s;
   && r.cargoSg === '0.3 m³ cargo (18s continuous fire)' && r.cargoAryx4 === r.cargoAryx, [r.cargoAryx, r.mac.cargo, r.cargoSg, r.cargoAryx4]);
 check('Range chip: turret TARGETING, fixed gun BORESIGHT', trim(r.rangeCannon) === 'TARGETING' && trim(r.rangeGun) === 'BORESIGHT', [trim(r.rangeCannon), trim(r.rangeGun)]);
 check('Readable ammo names in the compare card and legend',
-  r.names[0] === '⚡ H.Laser Energy' && r.names[1] === '*H.Laser* XFEL-H Turret [H.Laser Energy]' && /\[Crusader Disruptor\]$/.test(r.legendTorp) && /\[Proximity Flak\]$/.test(r.legendFlak),
+  r.names[0] === '⚡ XFEL-H Beam' && r.names[1] === '*H.Laser* XFEL-H Turret [XFEL-H Beam]' && /\[Crusader Torpedo\]$/.test(r.legendTorp) && /\[Proximity Flak\]$/.test(r.legendFlak),
   [r.names, r.legendTorp, r.legendFlak]);
 check('No raw ammo ids in the compare card or legend', r.rawNames.length === 0, r.rawNames.slice(0, 5));
 check('Support role: flares and sensors; PD, Odin and Loki unchanged', eq(r.roles, {

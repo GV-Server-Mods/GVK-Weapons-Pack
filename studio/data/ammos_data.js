@@ -673,7 +673,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Chaingun_Ammos.cs",
     "ammoMagazine": "AutocannonClip",
     "ammoRound": "AutocannonClip",
-    "terminalName": "AutocannonClip",
+    "terminalName": "30mm API",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -839,7 +839,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Chaingun_Ammos.cs",
     "ammoMagazine": "AutocannonClip",
     "ammoRound": "AutocannonClip_Drone",
-    "terminalName": "AutocannonClip_Drone",
+    "terminalName": "30mm API",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -2001,7 +2001,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_HeavyCannon_Ammos.cs",
     "ammoMagazine": "Ballistics_HeavyCannon",
     "ammoRound": "Ballistics_HeavyCannon",
-    "terminalName": "Ballistics_HeavyCannon",
+    "terminalName": "480mm APHE",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -2167,7 +2167,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_HeavyCannon_Ammos.cs",
     "ammoMagazine": "Ballistics_HeavyCannon",
     "ammoRound": "Ballistics_HeavyCannon_Odin",
-    "terminalName": "Ballistics_HeavyCannon_Odin",
+    "terminalName": "480mm APHE",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -2499,7 +2499,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Interior_Ammos.cs",
     "ammoMagazine": "NATO_5p56x45mm",
     "ammoRound": "Ballistics_Interior",
-    "terminalName": "Ballistics_Interior",
+    "terminalName": "5.56mm KE",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -3163,7 +3163,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Railgun_Ammo.cs",
     "ammoMagazine": "SmallRailgunAmmo",
     "ammoRound": "SmallRailgunAmmo",
-    "terminalName": "SmallRailgunAmmo",
+    "terminalName": "50mm FeW",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -3329,7 +3329,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Railgun_Ammo.cs",
     "ammoMagazine": "SmallRailgunAmmo",
     "ammoRound": "SmallRailgunAmmo",
-    "terminalName": "SmallRailgunAmmo",
+    "terminalName": "50mm FeW",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -3495,7 +3495,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Railgun_Ammo.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "SmallRailgunAmmo_NPC_Fragment1",
-    "terminalName": "SmallRailgunAmmo_NPC_Fragment1",
+    "terminalName": "50mm FeW",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -3661,7 +3661,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Ballistics_Railgun_Ammo.cs",
     "ammoMagazine": "SmallRailgunAmmo",
     "ammoRound": "SmallRailgunAmmo",
-    "terminalName": "SmallRailgunAmmo",
+    "terminalName": "50mm FeW",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -4675,7 +4675,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Handhelds_Rifles_Ammos.cs",
     "ammoMagazine": "UltimateAutomaticRifleGun_Mag_30rd",
     "ammoRound": "RifleTrace",
-    "terminalName": "RifleTrace",
+    "terminalName": "7.62mm FMJ",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -4841,7 +4841,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_AMS_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Lasers_AMS",
-    "terminalName": "Lasers_AMS",
+    "terminalName": "PD-COIL Beam",
     "isBeam": true,
     "beams": {
       "enable": true,
@@ -5007,7 +5007,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_Heavy_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Lasers_Laser_Large",
-    "terminalName": "Lasers_Laser_Large",
+    "terminalName": "XFEL-H Beam",
     "isBeam": true,
     "beams": {
       "enable": true,
@@ -5173,7 +5173,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_Heavy_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Lasers_Laser_Dual",
-    "terminalName": "Lasers_Laser_Dual",
+    "terminalName": "Spartan Beam",
     "isBeam": true,
     "beams": {
       "enable": true,
@@ -5339,7 +5339,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_Light_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Lasers_Laser_Light_LG",
-    "terminalName": "Lasers_Laser_Light_LG",
+    "terminalName": "XFEL-L Beam",
     "isBeam": true,
     "beams": {
       "enable": true,
@@ -5505,7 +5505,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_Light_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "Lasers_Laser_Light_SG",
-    "terminalName": "Lasers_Laser_Light_SG",
+    "terminalName": "XFEL-L Beam",
     "isBeam": true,
     "beams": {
       "enable": true,
@@ -5671,7 +5671,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Lasers_Plasma_Ammos.cs",
     "ammoMagazine": "Lasers_Plasma",
     "ammoRound": "Lasers_Plasma",
-    "terminalName": "Lasers_Plasma",
+    "terminalName": "Plasma Charge",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -5837,7 +5837,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Missiles_HeavyMissile_Ammos.cs",
     "ammoMagazine": "Missiles_HeavyMissile",
     "ammoRound": "Missiles_HeavyMissile",
-    "terminalName": "Missiles_HeavyMissile",
+    "terminalName": "Tuukka HE",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -6169,7 +6169,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Missiles_Rocket_Ammos.cs",
     "ammoMagazine": "Missile200mm",
     "ammoRound": "Missiles_Rocket",
-    "terminalName": "Missiles_Rocket",
+    "terminalName": "Hydra HE",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -6335,7 +6335,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Missiles_Siege_Ammos.cs",
     "ammoMagazine": "Missiles_Siege",
     "ammoRound": "Missiles_Siege",
-    "terminalName": "Missiles_Siege",
+    "terminalName": "Longsword MIRV",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -6667,7 +6667,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Missiles_Torpedo_Ammos.cs",
     "ammoMagazine": "Missiles_Torpedo",
     "ammoRound": "Missiles_Torpedo",
-    "terminalName": "Missiles_Torpedo",
+    "terminalName": "Crusader Torpedo",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -7497,7 +7497,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkRandom",
-    "terminalName": "FireworkRandom",
+    "terminalName": "Fireworks (Random)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -7670,7 +7670,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkRainbow",
-    "terminalName": "FireworkRainbow",
+    "terminalName": "Fireworks (Rainbow)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -7843,7 +7843,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkGreen",
-    "terminalName": "FireworkGreen",
+    "terminalName": "Fireworks (Green)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -8016,7 +8016,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkRed",
-    "terminalName": "FireworkRed",
+    "terminalName": "Fireworks (Red)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -8189,7 +8189,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkPink",
-    "terminalName": "FireworkPink",
+    "terminalName": "Fireworks (Pink)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -8362,7 +8362,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkYellow",
-    "terminalName": "FireworkYellow",
+    "terminalName": "Fireworks (Yellow)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -8535,7 +8535,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Flare_Ammos.cs",
     "ammoMagazine": "FireworksBoxRainbow",
     "ammoRound": "FireworkBlue",
-    "terminalName": "FireworkBlue",
+    "terminalName": "Fireworks (Blue)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -9040,7 +9040,7 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Other_Radar_Ammos.cs",
     "ammoMagazine": "Energy",
     "ammoRound": "designatorBeam",
-    "terminalName": "designatorBeam",
+    "terminalName": "Designator",
     "isBeam": true,
     "beams": {
       "enable": false,

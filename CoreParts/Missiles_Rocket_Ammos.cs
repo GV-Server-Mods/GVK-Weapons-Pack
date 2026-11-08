@@ -43,6 +43,7 @@ namespace Scripts
         {
 			AmmoMagazine = "Missile200mm",
 			AmmoRound = "Missiles_Rocket",
+			TerminalName = "Hydra HE", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
 			BaseDamage = 1f,
 			Mass = 200f, // in kilograms
 			Health = 1, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.

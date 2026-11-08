@@ -43,6 +43,7 @@ namespace Scripts
         {
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
+            TerminalName = "50mm FeW", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = true, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.1202255639f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
@@ -161,6 +162,7 @@ namespace Scripts
         {
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
+            TerminalName = "50mm FeW", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = true, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.1202255639f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 66500f, //slightly more than 4 heavy armor cubes
@@ -345,6 +347,7 @@ namespace Scripts
         {
             AmmoMagazine = "SmallRailgunAmmo",
             AmmoRound = "SmallRailgunAmmo",
+            TerminalName = "50mm FeW", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = true, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.05413533835f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel
             BaseDamage = 33250f, //slightly more than 4 heavy armor cubes

@@ -43,6 +43,7 @@ namespace Scripts
         {
             AmmoMagazine = "Energy",
             AmmoRound = "Lasers_AMS",
+            TerminalName = "PD-COIL Beam", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             EnergyCost = 0.3f, //Eyeball this because spreadsheet uses BaseDamage but this only does HealthHitModifier damage
             BaseDamage = 100f,
             HardPointUsable = true,

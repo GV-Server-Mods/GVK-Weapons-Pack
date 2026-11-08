@@ -43,6 +43,7 @@ namespace Scripts
         {
             AmmoMagazine = "Energy",
             AmmoRound = "Lasers_Laser_Light_LG",
+            TerminalName = "XFEL-L Beam", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             HybridRound = false, //AmmoMagazine based weapon with energy cost
             EnergyCost = 0.6f, //(((EnergyCost * DefaultDamage) * ShotsPerSecond) * BarrelsPerShot) * ShotsPerBarrel    (15 * 0.05 * 3600/60/60 = 0.75MW per tick)
             BaseDamage = 75,
