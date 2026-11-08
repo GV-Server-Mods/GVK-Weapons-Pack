@@ -1114,7 +1114,7 @@ const BUNDLED_AMMOS_DATA = {
     },
     "trajectory": {
       "desiredSpeed": 900,
-      "maxTrajectory": 2000,
+      "maxTrajectory": 2200,
       "maxLifeTime": 900,
       "accelPerSec": 0,
       "speedVariance": 0,
@@ -1446,7 +1446,7 @@ const BUNDLED_AMMOS_DATA = {
     },
     "trajectory": {
       "desiredSpeed": 900,
-      "maxTrajectory": 2000,
+      "maxTrajectory": 2200,
       "maxLifeTime": 900,
       "accelPerSec": 0,
       "speedVariance": 0,

@@ -137,7 +137,7 @@ namespace Scripts
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 900, // voxel phasing if you go above 5100
-                MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
+                MaxTrajectory = 2200f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: -0f, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
                 Smarts = new SmartsDef
@@ -354,7 +354,7 @@ namespace Scripts
                 TargetLossTime = 0, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 MaxLifeTime = 900, // 0 is disabled, Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..). time begins at 0 and time must EXCEED this value to trigger "time > maxValue". Please have a value for this, It stops Bad things.
                 DesiredSpeed = 900, // voxel phasing if you go above 5100
-                MaxTrajectory = 2000f, // Max Distance the projectile or beam can Travel.
+                MaxTrajectory = 2200f, // Max Distance the projectile or beam can Travel.
                 SpeedVariance = Random(start: -0f, end: 0), // subtracts value from DesiredSpeed
                 RangeVariance = Random(start: 0f, end: 0f), // subtracts value from MaxTrajectory
             },
