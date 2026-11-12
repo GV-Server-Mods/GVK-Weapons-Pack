@@ -259,4 +259,5 @@ distances, the build stage rules and the SBC changes; these steps apply them to 
     variant. Then the preview block and the `GVK_HurricanePreview` mod go. Done 2026-11-11 on the server (owner:
     "hurricane is tested in server and is amazing"), no faults reported.
 12. **Commit** GVK_Weapons on the owner's word after the test: the .blend, `design.md`, `build-log.md` and `tools/`;
-    the `_before_*` checkpoints stay out of git.
+    the `_before_*` checkpoints stay out of git. Done 2026-11-11 (commit cb7c387); `.gitignore` now skips
+    `*_before_*.blend`.
