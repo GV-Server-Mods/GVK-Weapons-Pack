@@ -804,3 +804,6 @@ model going forward" (design.md, Open).
 
 - The owner tested the new Hurricane on the server: "hurricane is tested in server and is amazing" (owner,
   2026-11-11). No faults reported. The preview block and the local `GVK_HurricanePreview` mod can go (step 11).
+- On the owner's yes the `GVK_HurricanePreview` folder went to the Recycle Bin (2026-11-11), and its entry left
+  the `GV Kharak S11 NPC Dev` world's mod list (`Sandbox_config.sbc` and `Sandbox.sbc`; no preview blocks were
+  placed in that world).

@@ -11,7 +11,7 @@ new: the vanilla 5x5x1 Structural Platform Conveyor (`Structural_5_platformConve
 |---|---|
 | Scene | `GVK_HurricaneTurret` and its four subpart scenes (Subparts, below) in `HurricanePlatform.blend` (a copy of `HurricaneTurret.blend`); `GVK_HurricanePlatform` until the split |
 | Size | 5 x 5 x 3 large cells, the same as the Hurricane. The base is the bottom cell (z -3.75 to -1.25). |
-| Preview block | `CargoContainer/GVK_HurricanePlatformPreview` in the local `GVK_HurricanePreview` mod, look only, with the one-scene model from before the split |
+| Preview block | `CargoContainer/GVK_HurricanePlatformPreview` in the local `GVK_HurricanePreview` mod, look only, with the one-scene model from before the split; removed 2026-11-11 after the server test |
 | Model | `Models\GVK_HurricaneTurret\GVK_HurricaneTurret.mwm` and its subparts, exported 2026-11-10 with LODs (40 / 120 / 300 m), build stages, collision and icon; both Hurricane blocks use it; tested on the server 2026-11-11 (owner) |
 
 ## Base (`Platform`)
