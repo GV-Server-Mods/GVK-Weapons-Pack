@@ -8,15 +8,15 @@
 				<SubtypeId>ARYXHurricaneCannon</SubtypeId>
 			</Id>
 			<DisplayName>*H.Cannon* Hurricane Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
-			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
+			<Icon>Textures\GUI\Icons\GVK_HurricaneTurret.png</Icon>
+			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range.
 				[Uses 480mm HE]
 			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="3" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
+			<Model>Models\GVK_HurricaneTurret\GVK_HurricaneTurret.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
@@ -40,10 +40,17 @@
 				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.50" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS2.mwm"/>
+				<Model BuildPercentUpperBound="0.33" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>AryxHurricaneCannon</BlockPairName>
+			<MinElevationDegrees>-10</MinElevationDegrees>
+			<MaxElevationDegrees>45</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<AiEnabled>false</AiEnabled>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>
@@ -148,15 +155,15 @@
 				<SubtypeId>ARYXHurricaneCannon_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-H.Cannon* Hurricane Turret</DisplayName>
-			<Icon>Textures\GUI\Icons\AryxHurricaneCannon.dds</Icon>
-			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range. Manufactured by AWE.
+			<Icon>Textures\GUI\Icons\GVK_HurricaneTurret.png</Icon>
+			<Description>The Hurricane is a turreted, double barrel ballistic siege turret capable of dealing massive damage to targets from long-range.
 				[3000m Auto Range]
 				[Uses 480mm HE x2]</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="5" y="3" z="5"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\AWE_HeavyCannon\ARYX_HurricaneCannonBase.mwm</Model>
+			<Model>Models\GVK_HurricaneTurret\GVK_HurricaneTurret.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="1100"/>
 				<Component Subtype="PrototechCircuitry" Count="1">
@@ -190,10 +197,17 @@
 				<MountPoint Side="Bottom" StartX="0.00" StartY="0.00" EndX="5.00" EndY="5.00"/>
 			</MountPoints>
 			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.50" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.00" File="Models\AWE_HeavyCannon\XL_HalfBlock_BS2.mwm"/>
+				<Model BuildPercentUpperBound="0.33" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\GVK_HurricaneTurret\GVK_HurricaneTurret_BS3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>AryxHurricaneCannon_NPC</BlockPairName>
+			<MinElevationDegrees>-10</MinElevationDegrees>
+			<MaxElevationDegrees>45</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<AiEnabled>false</AiEnabled>
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<GeneralDamageMultiplier>0.5</GeneralDamageMultiplier>

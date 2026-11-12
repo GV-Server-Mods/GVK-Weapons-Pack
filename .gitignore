@@ -40,3 +40,5 @@ scratch/
 
 # Blender backups
 *.blend1
+# Checkpoints saved before risky model edits (local only)
+*_before_*.blend

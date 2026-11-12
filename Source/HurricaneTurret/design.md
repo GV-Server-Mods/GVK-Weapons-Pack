@@ -189,6 +189,7 @@ recoil animation's `(0, 0, 2)` still moves them backward.
 | Part | Material | Paint |
 |---|---|---|
 | Gunhouse shell, roof, cheeks | `PaintedMetal_Colorable` | yes |
+| Embrasure behind the drums (internal armour, brow underside and lip, cheek inner walls) | `BlackMetal`, as the bores: a deep shadowed recess (owner, 2026-11-09; was `PaintedMetal_Darker`) | no |
 | Plinth frame and bays | as imported from the vanilla container (`PaintedMetal_Colorable`), bays `PaintedMetal_Colorable` | yes |
 | Port frames and underside straps | `PaintedMetal_Darker` (arms, caps, crossings, the bottom port's square); underside bars `Chrome`; bands, fills and rim lip `PaintedMetal_Colorable` | the bands, fills and rim lip |
 | Ports and keypads | as imported (`PaintedMetal_Yellow`, `Metal_Dull`, `Conveyor`, `PaintedMetal_Darker`, `Terminal`) | no |

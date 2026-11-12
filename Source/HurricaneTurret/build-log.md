@@ -2267,6 +2267,67 @@ then "rounded weld cap looks good too if it follows the weld flow".
   Checkpoint: `HurricaneTurret_before_r37_joints.blend`. Seen in game, owner, 2026-11-05: "Looks good" (rounds
   33 to 37 as they stand here).
 
+### Round 38: the embrasure in black
+
+Owner, 2026-11-09: change "the darker metal texture of the easement backing behind the trunnion drums to a very
+dark or maybe even black metal texture"; picked `BlackMetal`, on this model and the platform version.
+
+- `gvk_blockout.build()`: the Gunhouse's second slot is now `M['bore']` (`BlackMetal`, as the brake bores) instead
+  of `M['dark']`. It holds the 7 embrasure faces: internal armour, brow underside and lip, cheek inner walls.
+  The roof's dark patch (`PATCH` in `gvk_ghdetail.gunhouse_shape()`) stays `PaintedMetal_Darker`: `_mat_index`
+  now adds a slot for it instead of reusing that one.
+- The weld beads where the chin pads meet the embrasure's back slope (`CHIN_WELDS`, `PanelingDarker`) stay. They
+  are decals over the black now.
+- Checks:
+  - Gunhouse geometry identical; 7 faces on `BlackMetal`, 1 on `PaintedMetal_Darker`.
+  - Four other objects differ from the saved file: `GH_Dec_Atlas2_Barrel_1/2` (4 of 16 vertices, up to 9.8 mm, one
+    grid step at 10.4 m out), `Pl_DeckDec_Atlas2` (4 of 284, 0.6 mm) and `Pl_UnderDec_Atlas2` (the three
+    chevrons, 2.2 cm narrower, new UVs). None is from this change: the build reads `atlas-regions.json` from the
+    skill, whose Atlas2 boxes were re-cut on 2026-11-08 (se-dev-seut 29fab94: pieces 41, 83, 84 and others).
+  - Preview re-exported, warnings unchanged; dummies as before.
+
+  Render `cradle check` (tmp camera, front right, above). Not seen in game yet.
+
+### Round 39: Keen's panel line
+
+Owner, 2026-11-09: "Ensure the main panel lines we are using is the same decal that keen uses on their blocks (other
+than the weld lines)"; on both models. No vanilla model uses Paneling piece 51 as a seam; newer vanilla blocks use
+Atlas4 piece 3 in the variant of the paint under it (se-dev-seut `keen-style.md`, "Panel lines").
+
+- Every V-groove panel line is now Atlas4 piece 3, `Atlas4_Colorable` on paint and `Atlas4_Darker` on the darker
+  paint and the silver. Same strips, widths, mitres, tips and bolt rows; only the piece and material change:
+  - `gvk_ghdetail`: `SEAM` and `SILVER['seam']`.
+  - `gvk_plinth`: `SEAM`, and `ATLAS` knows `Atlas4_Darker`.
+  - `gvk_deck`: `loop()`'s default, the disc strip, the pressure box lid and the cabinet door.
+  - `gvk_roof`: the dome's `SEAM` (its object is now `SensorDomeDec_Atlas4_Darker`).
+  - `gvk_ports`: `FRAME_SEAM`.
+- The weld beads (Paneling 55) and the other Paneling pieces stay.
+- Decal objects renamed with their material, for example `GH_Dec_Atlas4_Colorable_Az` and
+  `GH_Dec_Atlas4_Darker_Az`. `SensorDomeDec_PanelingDarker` and `Pl_PortDec_Seams_PanelingDarker` were deleted by
+  hand, because a rebuild makes the new names and leaves the old objects behind.
+- In UV terms, V now spans piece 3's box (0.4834 to 0.5166) and U runs 2.441 times faster, as the strip code scales
+  U by the box's height per metre. Checked face by face on the deck's seams: the geometry is unchanged.
+- Checks:
+  - `rebuild_check.py` before the live rebuild: only the seam objects differ or are new; the other 170 objects are
+    identical. On the saved file afterwards: all 183 objects identical.
+  - Gunhouse renders: the lines draw as Keen's thin groove with a dark centre line.
+  - Preview re-exported, warnings unchanged.
+  - Checkpoint `HurricaneTurret_before_atlas4seams.blend`.
+- Not seen in game yet. The platform base is now the Hurricane's model going forward (owner, 2026-11-09), so this
+  model's own plinth lines matter only while it stays as the comparison preview.
+
+### After round 39: custom rivet atlas removed, preview dropped
+
+The platform version swapped this gunhouse's 90 mm GVK paintable rivets for Keen's sunken head (Atlas3 14) at 65 mm
+(`Source/HurricanePlatform/tools/rivet_heads.py`). Then the owner: "we can get rid of the custom atlas since we
+won't use that any more", and chose to drop this model's preview rather than swap its rivets too (owner, 2026-11-09).
+
+- Deleted: `make_rivet_textures.py` and `Textures\Cubes\Large\GVK_RivetColorable_*.tif`; in the preview mod the
+  `GVK_RivetColorable_*.dds`, `GVK_HurricaneTurret.mwm`, and the `GVK_HurricanePreview` block and its category entry.
+  The preview mod holds only `GVK_HurricanePlatformPreview`.
+- `HurricaneTurret.blend` still has `gvk_plinth.LOCAL`'s `GVK_RivetColorable` material, whose images now point at
+  missing files. Swap the rivets before this scene is built or exported again.
+
 ## Barrels and muzzle brakes (checkpoint 4)
 
 ### Round 1: the art's barrels and brakes, ready for recoil (`gun()`)
