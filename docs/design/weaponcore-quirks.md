@@ -2,7 +2,7 @@
 title: WeaponCore ModAPI discoveries and engine quirks
 covers:
   - CoreParts/*.cs
-checked: 2026-11-07
+checked: 2026-11-11
 ---
 
 # WeaponCore ModAPI discoveries and engine quirks
