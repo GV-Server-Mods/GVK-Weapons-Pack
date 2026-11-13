@@ -75,7 +75,7 @@
   - SEUT exported all 7 .mwm files with 0 Error(s), 0 Warning(s) (I007).
   - Verified binary tokens: highlight: NOT FOUND, Conveyor_Yellow: FOUND.
   - Re-rendered icon (.dds 22,020 B and .png 11,311 B) with s.renderToggle = 'on'.
-  - Re-rendered 4 orthographic verification views , since deleted (2026-11-13).
+  - Re-rendered 4 orthographic verification views (since deleted, 2026-11-13).
   - Deployed to %APPDATA%\SpaceEngineers\Mods\GVK_Weapons via dotnet build -c Release (0 Warning(s), 0 Error(s)).
 
 
