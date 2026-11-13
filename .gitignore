@@ -42,3 +42,5 @@ scratch/
 *.blend1
 # Checkpoints saved before risky model edits (local only)
 *_before_*.blend
+# Blender verification renders (local only)
+Source/*/renders/
