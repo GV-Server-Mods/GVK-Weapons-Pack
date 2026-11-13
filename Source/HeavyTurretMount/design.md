@@ -32,7 +32,7 @@ Both `Z = +1.250 m` and `Z = -1.250 m` share the exact same profile mirrored acr
 
 1. **Central Octagonal Turret Deck (`T0-A`, `PaintedMetal_Colorable`, `|Z| = 1.250 m`)**:
    - Square `|X| ≤ 3.250, |Y| ≤ 3.250` with `45°` corner cuts `|X| + |Y| ≤ 5.650`, plus 8 joint clamps across the perimeter channel.
-   - **Joint clamps** (owner's pick over deck-plate tongues, 2026-11-07; mockups in `renders/step_tabs/`). They replace Gemini's floating step-tabs (`|u| ∈ [1.450, 1.850]` reaching `|v| = 3.330`). Each is centred on vanilla's rim joint (`|u| = 1.492 ± 0.200`) and spans the channel from the deck plate (`|v| = 3.242`) to the rim's inner edge (`3.4405`), top flush with the deck, with 8 mm chamfered ends. Vanilla's joint line runs across it, with a rim bolt each side 110 mm from the line. Built by `tools/step_tabs.py` (`apply("clamp", ...)`). Vanilla's joint line is two half-groove wedges that taper to nothing at `|v|` 3.04, so it faded out past the deck plate's outline seam (owner, 2026-11-07). It now runs at full width and ends in a pointed T-join on that seam's centre line (`point_joint_line`).
+   - **Joint clamps** (owner's pick over deck-plate tongues, 2026-11-07). They replace Gemini's floating step-tabs (`|u| ∈ [1.450, 1.850]` reaching `|v| = 3.330`). Each is centred on vanilla's rim joint (`|u| = 1.492 ± 0.200`) and spans the channel from the deck plate (`|v| = 3.242`) to the rim's inner edge (`3.4405`), top flush with the deck, with 8 mm chamfered ends. Vanilla's joint line runs across it, with a rim bolt each side 110 mm from the line. Built by `tools/step_tabs.py` (`apply("clamp", ...)`). Vanilla's joint line is two half-groove wedges that taper to nothing at `|v|` 3.04, so it faded out past the deck plate's outline seam (owner, 2026-11-07). It now runs at full width and ends in a pointed T-join on that seam's centre line (`point_joint_line`).
 2. **Outer Corner Armor Pads (`T0-B`, `PaintedMetal_Colorable`, `|Z| = 1.250 m`) & Clamping Strips (`T0-C`)**:
    - Corner pads at `|X|, |Y| ∈ [2.600, 3.720]` (`|X| + |Y| ≥ 5.800`) and edge clamping strips along `|v| ∈ [3.430, 3.720]` with `30 mm` outer bevel to `3.750 m`.
 3. **Recessed Perimeter Step Channel (`T1`, `PaintedMetal_Colorable`, `|Z| = 1.215 m`) & Corner Shear-Lug Pockets (`T2`, `PaintedMetal_Darker`, `|Z| = 1.215 m`)**:
@@ -42,7 +42,7 @@ Both `Z = +1.250 m` and `Z = -1.250 m` share the exact same profile mirrored acr
 
 ### 3.2 Side Faces: Option A, reinforced vanilla Structural Platform truss (owner, 2026-11-07)
 
-This replaces Gemini's side design, kept below as history. The owner picked it from `renders/layouts.png`.
+This replaces Gemini's side design, kept below as history. The owner picked it from a set of layout mockups.
 
 **Style.** The sides follow the vanilla `Structural_5_platform`, chosen on purpose for a vanilla look, but read as more reinforced, since the block is meant for turrets. Kitbash Keen's parts and change only what is listed here.
 
@@ -77,7 +77,7 @@ This replaces Gemini's side design, kept below as history. The owner picked it f
 
 **Installed.** `tools/install_sides.py` puts `SideA` into the model (2026-11-07): in `Body` and each `Decals_<material>` object it keeps only the deck faces (every vertex within 3.4405 m of the centre in X and Y, and `|z|` ≥ 1.12) and adds the side faces of that object's materials, keeping custom normals. Gemini's 24 rim-top decals went with the old sides; vanilla's rim decals came in with the new ones. Checked after the merge: no holes from above, below or the side eyes (the grazing slot above aside); the model reaches 3.752 m (decals 3.757 m), the same 2 mm and 7 mm overhang vanilla has past its 6.25 m. Gemini's deck lip stopped at 3.44 m, 0.5 mm short of the rim's inner edge, which left a see-through slit round both decks. `install_sides.close_rim_slit()` moves the lip onto the rim edge (72 vertices, 2026-11-07). Afterwards a 2 cm ray grid from above and below hit everywhere.
 
-**Bay-wall decals.** `tools/build_bay_decals.py` copies vanilla's bay-wall decals onto the mount. The owner picked (2026-11-07) vanilla's panel line and tabs, without the doubler line (option 3 minus option 1 in `renders/decals/board.png`):
+**Bay-wall decals.** `tools/build_bay_decals.py` copies vanilla's bay-wall decals onto the mount. The owner picked (2026-11-07) vanilla's panel line and tabs, without the doubler line (option 3 minus option 1 of the decal mockups):
 - the panel line (`Atlas4_Colorable`, on the wall 1 mm out) dips to z 0.45-0.475 across the middle as vanilla's does, and its ends rise into the doubler's shadow at |x| 2.75-2.95
 - tabs (`Atlas3_Colorable`) hang from the doubler at bay midpoints: top at x = 0, bottom at x = ±1.75
 
@@ -102,7 +102,7 @@ Each side face (`u ∈ [-3.75, +3.75]`, `z ∈ [-1.25, +1.25]`, inset depth `d �
 
 ### 3.3 Deck layout, seams and durability decals (owner, 2026-11-07)
 
-The owner found the deck cluttered ("shotgun blasted") and picked layout A from `renders/deck/` (A clean over C, which added a bolt circle round the seat):
+The owner found the deck cluttered ("shotgun blasted") and picked layout A from the deck mockups (A clean over C, which added a bolt circle round the seat):
 - **Dropped**: Gemini's 8 quadrant hatch panels, 4 arm hatches and 4 small corner vents, on each deck (`durability_decals.DROP`).
 - **Kept**: the seat's trapezoid bars and pointer arrows, the channel vents, and vanilla's rim bolts.
 - **Tie-downs**: 8 clamp bars per deck (`Atlas3_Colorable` piece 18, 280 × 218 mm). Two per side, square to the edges, in line with the seat's sides (`|u|` 0.95) and halfway from the seat to the block edge (`|v|` 2.35). They use the deck's paint, so they read as raised cleats (the dark version read as vents).
