@@ -369,7 +369,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Hydra launcher (Warfare)</DisplayName>
+			<DisplayName>*Rocket* Hydra Pod (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[Uses Hydra HE]
@@ -614,7 +614,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>Missiles_Rockets_SGReloadableLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Hydra launcher</DisplayName>
+			<DisplayName>*Rocket* Hydra Launcher</DisplayName>
 			<BlockPairName>Missiles_Rockets_SGReloadableLauncher</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.
@@ -989,7 +989,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra launcher</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Pod</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\missile_launcher_small.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1044,7 +1044,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra launcher (Warfare)</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Pod (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1295,7 +1295,7 @@
 				<TypeId>SmallMissileLauncherReload</TypeId>
 				<SubtypeId>Missiles_Rockets_SGReloadableLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra launcher</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Launcher</DisplayName>
 			<BlockPairName>Missiles_Rockets_SGReloadableLauncher_NPC</BlockPairName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketLauncherReload.dds</Icon>
 			<CubeSize>Small</CubeSize>

@@ -5,7 +5,7 @@ const SHIPCORE_GROUPS = {
   "source": {
     "repo": "GV-Server-Mods/GVK-ShipCoreFramework",
     "file": "Content/Data/ShipCoreConfig_Groups.xml",
-    "commit": "b89a1ef473fa0c698f4ba1b4696659080ee2e1cc"
+    "commit": "c6458e3b85a0529f8d4fa5597f681a8e413dfa93"
   },
   "upWeapons": {
     "LargeMissileTurret/GVK_AvengerGatlingTurret": 6,
@@ -45,6 +45,7 @@ const SHIPCORE_GROUPS = {
     "ConveyorSorter/GVK_GriffinMissileTurret": 8,
     "ConveyorSorter/GVK_GriffinMissileLauncher": 6,
     "SmallMissileLauncherReload/SmallRocketLauncherReload": 2,
+    "SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher": 2,
     "ConveyorSorter/missileBattery01": 10,
     "ConveyorSorter/Missile_Torpedo_Large": 10,
     "ConveyorSorter/Missile_Torpedo_Small": 8,
@@ -69,9 +70,7 @@ const SHIPCORE_GROUPS = {
     "LargeMissileTurret/ARYXHurricaneCannon",
     "LargeMissileTurret/ARYXRailgunTurret",
     "ConveyorSorter/ARYXRailgun",
-    "SmallMissileLauncherReload/SmallRailgun",
     "ConveyorSorter/SmallRailgun",
-    "SmallMissileLauncherReload/LargeRailgun",
     "ConveyorSorter/LargeRailgun",
     "ConveyorSorter/Missile_Torpedo_Large",
     "ConveyorSorter/Missile_Torpedo_Small",

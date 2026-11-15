@@ -402,7 +402,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallGriffinLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-L.Missile* Griffin launcher (Warfare)</DisplayName>
+			<DisplayName>*NPC-L.Missile* Griffin Launcher (Warfare)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>

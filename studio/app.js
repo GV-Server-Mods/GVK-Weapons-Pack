@@ -2323,8 +2323,8 @@ function getDamageToDestroy(w) {
   return Math.round(integrity / mod);
 }
 
-// Weapons that carry Prototech but cost no UPs, by design (owner, 2026-11-05)
-const GVK_UP_EXEMPT = new Set(['LargeInteriorTurret', 'Missiles_Rockets_SGReloadableLauncher']);
+// Weapons that carry Prototech but cost no UPs: the Interior Turret counts under ShipCore's H Interior Turrets cap instead
+const GVK_UP_EXEMPT = new Set(['LargeInteriorTurret']);
 
 /// <summary>ShipCore group key for a weapon block: exact "TypeId/SubtypeId" (an empty SubtypeId stays empty), or null.</summary>
 function shipCoreKey(w) {
@@ -5977,7 +5977,7 @@ function runWeaponCoreLinter() {
   }
 
   // GVK Server Rules: UPs come from the ShipCore UP Weapons group (GVK_ShipCoreFramework); a weapon's
-  // Prototech count matches its UPs, except the blocks the owner exempted (2026-11-05)
+  // Prototech count matches its UPs, except the blocks in GVK_UP_EXEMPT
   if (activeWeapon && !isNpcWeapon(activeWeapon) && !isDetonationWeapon(activeWeapon) && activeWeapon.blockTypeId
     && !GVK_UP_EXEMPT.has(activeWeapon.subtypeId)) {
     if (!activeWeapon.upListed) {

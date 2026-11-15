@@ -14768,7 +14768,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-L.Missile* Griffin launcher (Warfare)",
+    "displayName": "*NPC-L.Missile* Griffin Launcher (Warfare)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -16938,7 +16938,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*Rocket* Hydra launcher (Warfare)",
+    "displayName": "*Rocket* Hydra Pod (Warfare)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
@@ -17093,7 +17093,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra launcher",
+    "displayName": "*NPC-Rocket* Hydra Pod",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -17248,7 +17248,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra launcher (Warfare)",
+    "displayName": "*NPC-Rocket* Hydra Pod (Warfare)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -17409,7 +17409,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*Rocket* Hydra launcher",
+    "displayName": "*Rocket* Hydra Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy, with auto-reload.\n\t\t\t\t[Uses Hydra HE]",
@@ -17570,7 +17570,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra launcher",
+    "displayName": "*NPC-Rocket* Hydra Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
