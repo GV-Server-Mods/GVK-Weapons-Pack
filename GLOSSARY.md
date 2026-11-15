@@ -1,6 +1,6 @@
 # GVK Weapons
 
-The weapon, ammo and balance language of the GV: Deserts of Kharak weapons pack, and of the Weapon Studio that models it. Each word has one meaning across the game and the studio. Server-wide concepts (zones, grid classes, factions, sieges) live in the `se-dev-kharak` skill.
+The weapon, ammo and balance language of the GV: Deserts of Kharak weapons pack, and of the Weapon Studio that models it. Each word has one meaning across the game and the studio. Server-wide concepts (zones, grid classes, factions, sieges) live in the `se-dev-kharak` skill, and their in-game names in the [GVK Player Wiki glossary](https://gv-server-mods.github.io/GVK-Settings/glossary/).
 
 ## Weapons
 

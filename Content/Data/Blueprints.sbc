@@ -598,7 +598,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>Position0090_AdvancedHandHeldLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*Sidearm* Archer Rocket Launcher</DisplayName>
+			<DisplayName>*Sidearm* Griffin Rocket Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\WeaponRocketLauncher_Precise.dds</Icon>
 			<Prerequisites>
 				<Item Amount="30" TypeId="Ingot" SubtypeId="Iron"/>
