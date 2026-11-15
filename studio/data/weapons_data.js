@@ -7812,7 +7812,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*H.Cannon* Odin Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[Uses 480mm HE]",
+    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per Fortress core. Developed by L.Y.N.X.\n\t\t\t\t[Uses 480mm HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 7,
@@ -7979,7 +7979,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*NPC-H.Cannon* Odin Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per faction. Developed by L.Y.N.X.\n\t\t\t\t[4000m Auto Range]\n\t\t\t\t[Uses 480mm HE x4]",
+    "description": "The Odin is a turreted, quad barrel ballistic siege weapon for base defence, static only, one per Fortress core. Developed by L.Y.N.X.\n\t\t\t\t[4000m Auto Range]\n\t\t\t\t[Uses 480mm HE x4]",
     "criticalComponent": "Computer",
     "size": {
       "x": 7,
@@ -10001,7 +10001,7 @@ const BUNDLED_WEAPONS_DATA = [
     "maxActiveProjectiles": 0,
     "delayUntilFire": 0,
     "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 0,
+    "maxTargetDistance": 2500,
     "shootBlanks": false,
     "rotateBarrelAxis": 0,
     "barrelSpinRate": 0,

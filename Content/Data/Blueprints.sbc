@@ -21,7 +21,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>003_AutocannonClip</SubtypeId>
 			</Id>
-			<DisplayName>*Chaingun* 30mm API x6</DisplayName>
+			<DisplayName>*Autocannon* 30mm API x6</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\AutoCanonShellBox.dds</Icon>
 			<Prerequisites>
 				<Item Amount="6.6" TypeId="Ingot" SubtypeId="Magnesium"/>
@@ -52,7 +52,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>004_MediumCalibreAmmo</SubtypeId>
 			</Id>
-			<DisplayName>*Flak* 100mm HE x1</DisplayName>
+			<DisplayName>*Flak* 100mm PROX x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\MediumCalibreShell.dds</Icon>
 			<Prerequisites>
 				<Item Amount="4.7" TypeId="Ingot" SubtypeId="Magnesium"/>
@@ -207,7 +207,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>013_Missiles_Siege</SubtypeId>
 			</Id>
-			<DisplayName>*SRBM* Longsword MRV x1</DisplayName>
+			<DisplayName>*SRBM* Longsword MIRV x1</DisplayName>
 			<Icon>Textures\GUI\Icons\AWESabreMissile.dds</Icon>
 			<Prerequisites>
 				<Item Amount="10.6" TypeId="Ingot" SubtypeId="GVK_RUs"/>
@@ -467,7 +467,7 @@
 				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>017_FireworksBoxRainbow</SubtypeId>
 			</Id>
-			<DisplayName>*Flare* Fireworks Box x8</DisplayName>
+			<DisplayName>*Flare* Fireworks Box x30</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Prerequisites>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron"/>

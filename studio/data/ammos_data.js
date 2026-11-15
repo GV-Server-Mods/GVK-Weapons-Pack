@@ -4279,7 +4279,7 @@ const BUNDLED_AMMOS_DATA = {
       "rangeVariance": 0,
       "guidance": "Smart",
       "steers": true,
-      "desiredElevation": 0
+      "desiredElevation": 500
     },
     "damageScales": {
       "shield": {
