@@ -81,6 +81,7 @@
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="010_Missiles_Missile"/>  
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="011_Missiles_HeavyMissile"/>  
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="012_Missiles_Torpedo"/>
+		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="012_Torpedo_Heavy"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="013_Missiles_Siege"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="014_Lasers_Plasma"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="015_Others_Drone_Falcon"/>

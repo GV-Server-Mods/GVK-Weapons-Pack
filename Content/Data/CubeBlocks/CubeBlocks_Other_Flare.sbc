@@ -43,8 +43,8 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\FlareLauncherConstruction_3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>FlareLauncher</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
 			<Center x="0" y="0" z="0"/>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="LargeFlareLauncher"/>
@@ -56,6 +56,69 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeInsetFlareLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*Flare* Inset Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeInsetFlareLauncher.dds</Icon>
+			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
+				[700m Effective Radius]
+				[Uses Decoy Flare]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\Inset_FlareLauncher.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="25" />
+				<Component Subtype="PrototechPanel" Count="4"/>
+                <Component Subtype="LargeTube" Count="5" />
+                <Component Subtype="Motor" Count="50" />
+                <Component Subtype="Computer" Count="50" />
+                <Component Subtype="Construction" Count="100" />
+                <Component Subtype="SteelPlate" Count="100" />
+            </Components>
+			<BuildTimeSeconds>24</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.2" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0.9" EndX="0.8" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0" EndX="0.8" EndY="0.1"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1.0" EndY="1.0" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>InsetFlareLauncher</BlockPairName>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.032</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<IsAirTight>true</IsAirTight>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -99,8 +162,8 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\FlareLauncherConstruction_2.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>FlareLauncher</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
 			<Center x="0" y="0" z="0"/>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="SmallFlareLauncher"/>
@@ -112,6 +175,68 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallInsetFlareLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*Flare* Inset Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\SmallInsetFlareLauncher.dds</Icon>
+			<Description>Flare launcher that distracts incoming projectiles. Also used to launch fireworks.
+				[700m Effective Radius]
+				[Uses Decoy Flare]
+			</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\Inset_FlareLauncher.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="2" />
+				<Component Subtype="PrototechPanel" Count="2"/>
+                <Component Subtype="LargeTube" Count="2" />
+                <Component Subtype="Motor" Count="5" />
+                <Component Subtype="Computer" Count="5" />
+                <Component Subtype="Construction" Count="10" />
+                <Component Subtype="SteelPlate" Count="10" />
+            </Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.2" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0.9" EndX="0.8" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0" EndX="0.8" EndY="0.1"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1.0" EndY="1.0" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\Inset_FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\Inset_FlareLauncherConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>InsetFlareLauncher</BlockPairName>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.006</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<IsAirTight>true</IsAirTight>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -158,8 +283,8 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\FlareLauncherConstruction_3.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>FlareLauncher_NPC</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
 			<Center x="0" y="0" z="0"/>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="LargeFlareLauncher"/>
@@ -171,6 +296,70 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeInsetFlareLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Flare* Inset Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeInsetFlareLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\Inset_FlareLauncher.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="25" />
+				<Component Subtype="PrototechPanel" Count="4">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+                <Component Subtype="LargeTube" Count="5" />
+                <Component Subtype="Motor" Count="50" />
+                <Component Subtype="Computer" Count="50" />
+                <Component Subtype="Construction" Count="100" />
+                <Component Subtype="SteelPlate" Count="100" />
+            </Components>
+			<BuildTimeSeconds>24</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.2" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0.9" EndX="0.8" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0" EndX="0.8" EndY="0.1"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1.0" EndY="1.0" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\Inset_FlareLauncherConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>InsetFlareLauncher_NPC</BlockPairName>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.032</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<IsAirTight>true</IsAirTight>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -215,8 +404,8 @@
 				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\FlareLauncherConstruction_2.mwm"/>
 			</BuildProgressModels>
 			<BlockPairName>FlareLauncher_NPC</BlockPairName>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
 			<Center x="0" y="0" z="0"/>
 			<EdgeType>Light</EdgeType>
 			<WeaponDefinitionId Subtype="SmallFlareLauncher"/>
@@ -228,6 +417,69 @@
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
 			<TargetingGroups>
             </TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallInsetFlareLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Flare* Inset Flare/Fireworks Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\SmallInsetFlareLauncher.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\Inset_FlareLauncher.mwm</Model>
+            <Components>
+                <Component Subtype="SteelPlate" Count="2" />
+				<Component Subtype="PrototechPanel" Count="2">
+					<DeconstructId>
+                        <TypeId>Ore</TypeId>
+                        <SubtypeId>PrototechPanelScrap</SubtypeId>
+                    </DeconstructId>
+                </Component>
+                <Component Subtype="LargeTube" Count="2" />
+                <Component Subtype="Motor" Count="5" />
+                <Component Subtype="Computer" Count="5" />
+                <Component Subtype="Construction" Count="10" />
+                <Component Subtype="SteelPlate" Count="10" />
+            </Components>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<PCU>2</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="0.2" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0.9" EndX="0.8" EndY="1.0"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="0" EndX="0.8" EndY="0.1"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1.0" EndY="1.0" Default="true"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.0" EndY="1.0"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\Inset_FlareLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\Inset_FlareLauncherConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>InsetFlareLauncher_NPC</BlockPairName>
+			<MirroringX>Z</MirroringX>
+			<MirroringZ>X</MirroringZ>
+			<Center x="0" y="0" z="0"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallFlareLauncher"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.006</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+            </TargetingGroups>
+			<IsAirTight>true</IsAirTight>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

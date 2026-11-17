@@ -4,8 +4,8 @@
 
 window.GVK_WC_SCHEMA = {
   "version": "v0.75",
-  "structureHash": "54257dc9a37e",
-  "fileSize": 84595,
+  "structureHash": "044b9a7e7cd7",
+  "fileSize": 84736,
   "totalEnums": 41,
   "totalStructs": 100,
   "upstream": {
@@ -669,7 +669,9 @@ window.GVK_WC_SCHEMA = {
       "UseWorldInventoryVolumeMultiplier": "bool",
       "AllowOverheatShooting": "bool",
       "DegradeRofSettings": "DegradeSettingsDef",
-      "HeatSinkRateOverheatMult": "float"
+      "HeatSinkRateOverheatMult": "float",
+      "AllowAnyAmmmo": "bool",
+      "AllowAnyAmmmoDefault": "bool"
     },
     "DegradeSettingsDef": {
       "HeatThresholdStart": "float",
@@ -1581,7 +1583,9 @@ window.GVK_WC_SCHEMA = {
         "UseWorldInventoryVolumeMultiplier": "bool",
         "AllowOverheatShooting": "bool",
         "DegradeRofSettings": "DegradeSettingsDef",
-        "HeatSinkRateOverheatMult": "float"
+        "HeatSinkRateOverheatMult": "float",
+        "AllowAnyAmmmo": "bool",
+        "AllowAnyAmmmoDefault": "bool"
       },
       "Structure.WeaponDefinition.HardPointDef.LoadingDef.DegradeSettingsDef": {
         "HeatThresholdStart": "float",

@@ -780,6 +780,79 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Missiles_Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Crusader Disruptor x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\CrusaderMissile.png</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_Torpedo\"/>\n\t\t</Blueprint>"
   },
   {
+    "subtypeId": "Torpedo_Heavy",
+    "blueprintSubtype": "012_Torpedo_Heavy",
+    "displayName": "*Torpedo* Heavy Torpedo",
+    "category": "Missiles, Rockets & Torpedoes",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds",
+    "localIcon": "icons/ammo_Torpedo_Heavy.png",
+    "capacity": 1,
+    "volume": 1500,
+    "mass": 2250,
+    "productionTime": 354,
+    "roleMultiplier": 1.25,
+    "sizeMult": 1.2011,
+    "massMult": 0.15,
+    "craftMult": 1.2178,
+    "usesRUs": true,
+    "baseComp": [
+      {
+        "subtype": "Magnesium",
+        "weight": 4
+      },
+      {
+        "subtype": "Iron",
+        "weight": 40
+      },
+      {
+        "subtype": "Platinum",
+        "weight": 0.1
+      },
+      {
+        "subtype": "Silicon",
+        "weight": 4
+      },
+      {
+        "subtype": "Gold",
+        "weight": 0.3
+      }
+    ],
+    "prerequisites": [
+      {
+        "amount": 96.1,
+        "typeId": "Ingot",
+        "subtypeId": "GVK_RUs"
+      },
+      {
+        "amount": 1276.8,
+        "typeId": "Ingot",
+        "subtypeId": "Magnesium"
+      },
+      {
+        "amount": 12768.1,
+        "typeId": "Ingot",
+        "subtypeId": "Iron"
+      },
+      {
+        "amount": 31.9,
+        "typeId": "Ingot",
+        "subtypeId": "Platinum"
+      },
+      {
+        "amount": 1276.8,
+        "typeId": "Ingot",
+        "subtypeId": "Silicon"
+      },
+      {
+        "amount": 95.9,
+        "typeId": "Ingot",
+        "subtypeId": "Gold"
+      }
+    ],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Heavy Torpedo</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>2250</Mass>\n\t\t\t<Volume>1500</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Heavy.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo_Heavy\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>100</R>\n\t\t\t\t<G>31</G>\n\t\t\t\t<B>31</B>\n\t\t\t\t<A>255</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Heavy Torpedo x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Torpedo_Heavy\"/>\n\t\t</Blueprint>"
+  },
+  {
     "subtypeId": "Missiles_Siege",
     "blueprintSubtype": "013_Missiles_Siege",
     "displayName": "*SRBM* Longsword MIRV",

@@ -97,7 +97,19 @@ namespace Scripts
 			}
 		}
 
-        WeaponDefinition LargeBlockArtilleryTurret => new WeaponDefinition 
+		// Warfare 3 Type II reskin: its own clone, so the Cyclone clones above don't inherit its mounts
+		WeaponDefinition LargeBlockArtilleryTurretType2
+		{
+			get
+			{
+				var weapon = LargeBlockArtilleryTurret;
+				weapon.Assignments.MountPoints[0].SubtypeId = "LargeCalibreTurretType2";
+				weapon.Assignments.MountPoints[1].SubtypeId = "LargeCalibreTurretType2_NPC";
+				return weapon;
+			}
+		}
+
+        WeaponDefinition LargeBlockArtilleryTurret => new WeaponDefinition
 		{
             Assignments = new ModelAssignmentsDef
             {
@@ -215,7 +227,17 @@ namespace Scripts
                         DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
                         IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
                     },
-                    /*new MountPointDef 
+                    new MountPointDef
+					{
+                        SubtypeId = "LargeBlockLargeCalibreGunType2", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                    /*new MountPointDef
 					{
                         SubtypeId = "LargeBlockLargeCalibreGun_NPC", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
@@ -370,6 +392,7 @@ namespace Scripts
             {
                 var weapon = LargeBlockArtillery;
                 weapon.Assignments.MountPoints[0].SubtypeId = "LargeBlockLargeCalibreGun_NPC";
+                weapon.Assignments.MountPoints[1].SubtypeId = "LargeBlockLargeCalibreGunType2_NPC";
                 weapon.Ammos = new[]
                 {
                     Ballistics_Cannon_NPC,

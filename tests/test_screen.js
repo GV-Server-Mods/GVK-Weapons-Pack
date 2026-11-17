@@ -77,7 +77,7 @@ const r = studio.run(`(() => {
 })()`);
 
 const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-check('Compare list: 66 player weapons plus the placeholder, every rebuild', eq(r.compareOpts, [67, 67, 67]) && r.filterable === 66, r.compareOpts);
+check('Compare list: 77 player weapons plus the placeholder, every rebuild', eq(r.compareOpts, [78, 78, 78]) && r.filterable === 77, r.compareOpts);
 check('Compare list selection is the benchmark (XFEL-H for the default Avenger)', r.bench[0] === r.bench[1] && r.bench[0] === 'L__Heavy_Laser_Turret', r.bench);
 check('Specialty badges', eq(r.badges, {
   L__Cannon_Turret: '🔩 Kinetic · Anti-Heavy ×3', L__Flak_Turret: '🎯 Anti-Missile Screen (101m)', L__Heavy_Laser_Turret: '⚡ Energy · Anti-Systems',
@@ -117,9 +117,10 @@ check('Support role: flares and sensors; PD, Odin and Loki unchanged', eq(r.role
   S__SmallBlockRadioAntenna_WCRadar: 'support', S__SmallBlockCompactRadioAntennaReskin_WCRadar: 'support',
   L__PD_Laser: 'pd', L__Heavy_Cannon_Odin_Turret: 'breaker', L__Loki_Plasma_Turret: 'artillery'
 }) && r.roleLabels.length === 9 && r.roleLabels[8] === 'Support', [r.roles, r.roleLabels]);
-check('Data Core fitted on the 14 weapons over 2 km', eq(r.dc.fitted, ['L__ARYXCycloneCannon', 'L__GVK_CycloneCannonTurret', 'L__Cannon_Turret',
+check('Data Core fitted on the 17 weapons over 2 km', eq(r.dc.fitted, ['L__ARYXCycloneCannon', 'L__GVK_CycloneCannonTurret', 'L__LargeCalibreTurretType2', 'L__Cannon_Turret',
   'L__Heavy_Cannon_Hurricane_Turret', 'L__Heavy_Cannon_Odin_Turret', 'L__Railgun_Turret', 'L__Loki_Plasma_Turret', 'L__Tuukka_Missile_Turret', 'L__Missile_Turret',
-  'L__Missile_Launcher', 'L__SRBM_Turret', 'L__Torpedo_Launcher', 'S__Torpedo_Launcher', 'L__Drone_Bay']) && !r.dc.extra, r.dc);
+  'L__Missile_Launcher', 'L__SRBM_Turret', 'L__Torpedo_Launcher', 'S__Torpedo_Launcher', 'L__LargeBlockTorpedoLauncher', 'S__SmallBlockTorpedoLauncher',
+  'L__Drone_Bay']) && !r.dc.extra, r.dc);
 check('Data Core missing on the OKI Designator and the three radars (targeting over 2 km, no Data Core)',
   eq(r.dc.missing, ['L__OKIDesignator', 'S__ARYXSmallRadar', 'S__SmallBlockRadioAntenna_WCRadar', 'S__SmallBlockCompactRadioAntennaReskin_WCRadar']), r.dc.missing);
 check('Data Core boundary: exactly 2,000 m and fixed unguided guns need none', r.dcEdge.every((s) => s === 'none'), r.dcEdge);

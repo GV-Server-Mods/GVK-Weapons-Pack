@@ -133,6 +133,164 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeBlockTorpedoLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*Torpedo* Torpedo Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeBlockTorpedoLauncher.dds</Icon>
+			<Description>This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.
+				[Uses Heavy Torpedo]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\TorpedoLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="51"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="10"/>
+				<Component Subtype="MetalGrid" Count="21"/>
+				<Component Subtype="LargeTube" Count="11"/>
+				<Component Subtype="Motor" Count="110"/>
+				<Component Subtype="InteriorPlate" Count="13"/>
+				<Component Subtype="Computer" Count="210"/>
+				<Component Subtype="Construction" Count="210"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>53</BuildTimeSeconds>
+			<PCU>10</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="2.7" EndX="1" EndY="3"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="0.2"/>
+				<MountPoint Side="Front" StartX="0" StartY="1.5" EndX="1" EndY="2"/>
+				<MountPoint Side="Front" StartX="0" StartY="0.2" EndX="0.2" EndY="1.5"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0.2" EndX="1" EndY="1.5"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="2" Enabled="false"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="2" Default="true"/>
+				<MountPoint Side="Left" StartX="0" StartY="1" EndX="3.0" EndY="2"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="1.1" StartY="0.6" EndX="2.3" EndY="1"/>
+				<MountPoint Side="Left" StartX="2.3" StartY="0" EndX="3" EndY="1"/>
+				<MountPoint Side="Right" StartX="0" StartY="1" EndX="3.0" EndY="2"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="0.7" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.7" StartY="0.6" EndX="1.9" EndY="1"/>
+				<MountPoint Side="Right" StartX="1.9" StartY="0" EndX="3" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\TorpedoLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\TorpedoLauncherConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\TorpedoLauncherConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>TorpedoLauncher</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<Center x="0" y="0" z="2"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeTorpedoLauncher"/>
+			<LaserPointerEnabled>false</LaserPointerEnabled>
+			<TargetingSubsystemEnabled>true</TargetingSubsystemEnabled>
+			<TargetLockRequirementEnabled>true</TargetLockRequirementEnabled>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>1.4</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>-1</Y>
+				<Z>-0.6</Z>
+			</DamageEffectOffset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallBlockTorpedoLauncher</SubtypeId>
+			</Id>
+			<DisplayName>*Torpedo* Torpedo Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\TorpedoLauncher_SGrid.dds</Icon>
+			<Description>This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.
+				[Uses Heavy Torpedo]
+			</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="2" y="2" z="10"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\TorpedoLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="35"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechPanel" Count="8"/>
+				<Component Subtype="MetalGrid" Count="14"/>
+				<Component Subtype="LargeTube" Count="7"/>
+				<Component Subtype="Motor" Count="70"/>
+				<Component Subtype="InteriorPlate" Count="9"/>
+				<Component Subtype="Computer" Count="140"/>
+				<Component Subtype="Construction" Count="140"/>
+				<Component Subtype="SteelPlate" Count="140"/>
+			</Components>
+			<BuildTimeSeconds>35</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="0.2" EndX="2" EndY="10"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="2.5" EndX="2" EndY="9.8"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="1" EndX="0.2" EndY="2.5"/>
+				<MountPoint Side="Bottom" StartX="1.8" StartY="1" EndX="2" EndY="2.5"/>
+				<MountPoint Side="Front" StartX="0" StartY="1" EndX="0.2" EndY="2"/>
+				<MountPoint Side="Front" StartX="1.8" StartY="1" EndX="2" EndY="2"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="1.8" EndX="1.8" EndY="2"/>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.1" EndX="1.9" EndY="1.9"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="2" EndY="2" Enabled="false"/>
+				<MountPoint Side="Left" StartX="1" StartY="0" EndX="9.8" EndY="2"/>
+				<MountPoint Side="Left" StartX="0" StartY="1" EndX="1" EndY="2"/>
+				<MountPoint Side="Left" StartX="0.5" StartY="0.5" EndX="1" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.2" StartY="0" EndX="9" EndY="2"/>
+				<MountPoint Side="Right" StartX="9" StartY="1" EndX="10" EndY="2"/>
+				<MountPoint Side="Right" StartX="9" StartY="0.5" EndX="9.5" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\TorpedoLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\TorpedoLauncherConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>TorpedoLauncher</BlockPairName>
+			<MirroringX>OffsetX</MirroringX>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>YThenOffsetXOdd</MirroringZ>
+			<Center x="0" y="0" z="3"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallTorpedoLauncher"/>
+			<LaserPointerEnabled>false</LaserPointerEnabled>
+			<TargetingSubsystemEnabled>true</TargetingSubsystemEnabled>
+			<TargetLockRequirementEnabled>true</TargetLockRequirementEnabled>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.35</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>-1.5</Z>
+			</DamageEffectOffset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<!-- NPC Weapons -->
 		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
@@ -276,6 +434,178 @@
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeBlockTorpedoLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Torpedo* Torpedo Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeBlockTorpedoLauncher.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="2" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\TorpedoLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="51"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechCircuitryScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="PrototechPanel" Count="10">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechPanelScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="21"/>
+				<Component Subtype="LargeTube" Count="11"/>
+				<Component Subtype="Motor" Count="110"/>
+				<Component Subtype="InteriorPlate" Count="13"/>
+				<Component Subtype="Computer" Count="210"/>
+				<Component Subtype="Construction" Count="210"/>
+				<Component Subtype="SteelPlate" Count="210"/>
+			</Components>
+			<BuildTimeSeconds>53</BuildTimeSeconds>
+			<PCU>10</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="0" EndX="1" EndY="3"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="0" EndX="1" EndY="1"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="2.7" EndX="1" EndY="3"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="0.2"/>
+				<MountPoint Side="Front" StartX="0" StartY="1.5" EndX="1" EndY="2"/>
+				<MountPoint Side="Front" StartX="0" StartY="0.2" EndX="0.2" EndY="1.5"/>
+				<MountPoint Side="Front" StartX="0.8" StartY="0.2" EndX="1" EndY="1.5"/>
+				<MountPoint Side="Front" StartX="0" StartY="0" EndX="1" EndY="2" Enabled="false"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="2" Default="true"/>
+				<MountPoint Side="Left" StartX="0" StartY="1" EndX="3.0" EndY="2"/>
+				<MountPoint Side="Left" StartX="0" StartY="0" EndX="1.1" EndY="1"/>
+				<MountPoint Side="Left" StartX="1.1" StartY="0.6" EndX="2.3" EndY="1"/>
+				<MountPoint Side="Left" StartX="2.3" StartY="0" EndX="3" EndY="1"/>
+				<MountPoint Side="Right" StartX="0" StartY="1" EndX="3.0" EndY="2"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="0.7" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.7" StartY="0.6" EndX="1.9" EndY="1"/>
+				<MountPoint Side="Right" StartX="1.9" StartY="0" EndX="3" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\TorpedoLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\TorpedoLauncherConstruction_2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\TorpedoLauncherConstruction_3.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>TorpedoLauncher_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<Center x="0" y="0" z="2"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeTorpedoLauncher"/>
+			<LaserPointerEnabled>false</LaserPointerEnabled>
+			<TargetingSubsystemEnabled>true</TargetingSubsystemEnabled>
+			<TargetLockRequirementEnabled>true</TargetLockRequirementEnabled>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>1.4</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>-1</Y>
+				<Z>-0.6</Z>
+			</DamageEffectOffset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>SmallBlockTorpedoLauncher_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-Torpedo* Torpedo Launcher</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\TorpedoLauncher_SGrid.dds</Icon>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="2" y="2" z="10"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\TorpedoLauncher.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="35"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechCircuitryScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="PrototechPanel" Count="8">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechPanelScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="MetalGrid" Count="14"/>
+				<Component Subtype="LargeTube" Count="7"/>
+				<Component Subtype="Motor" Count="70"/>
+				<Component Subtype="InteriorPlate" Count="9"/>
+				<Component Subtype="Computer" Count="140"/>
+				<Component Subtype="Construction" Count="140"/>
+				<Component Subtype="SteelPlate" Count="140"/>
+			</Components>
+			<BuildTimeSeconds>35</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Top" StartX="0" StartY="0.2" EndX="2" EndY="10"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="2.5" EndX="2" EndY="9.8"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="1" EndX="0.2" EndY="2.5"/>
+				<MountPoint Side="Bottom" StartX="1.8" StartY="1" EndX="2" EndY="2.5"/>
+				<MountPoint Side="Front" StartX="0" StartY="1" EndX="0.2" EndY="2"/>
+				<MountPoint Side="Front" StartX="1.8" StartY="1" EndX="2" EndY="2"/>
+				<MountPoint Side="Front" StartX="0.2" StartY="1.8" EndX="1.8" EndY="2"/>
+				<MountPoint Side="Back" StartX="0.1" StartY="0.1" EndX="1.9" EndY="1.9"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="2" EndY="2" Enabled="false"/>
+				<MountPoint Side="Left" StartX="1" StartY="0" EndX="9.8" EndY="2"/>
+				<MountPoint Side="Left" StartX="0" StartY="1" EndX="1" EndY="2"/>
+				<MountPoint Side="Left" StartX="0.5" StartY="0.5" EndX="1" EndY="1"/>
+				<MountPoint Side="Right" StartX="0.2" StartY="0" EndX="9" EndY="2"/>
+				<MountPoint Side="Right" StartX="9" StartY="1" EndX="10" EndY="2"/>
+				<MountPoint Side="Right" StartX="9" StartY="0.5" EndX="9.5" EndY="1"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\TorpedoLauncherConstruction_1.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\TorpedoLauncherConstruction_2.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>TorpedoLauncher_NPC</BlockPairName>
+			<MirroringX>OffsetX</MirroringX>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>YThenOffsetXOdd</MirroringZ>
+			<Center x="0" y="0" z="3"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="SmallTorpedoLauncher"/>
+			<LaserPointerEnabled>false</LaserPointerEnabled>
+			<TargetingSubsystemEnabled>true</TargetingSubsystemEnabled>
+			<TargetLockRequirementEnabled>true</TargetLockRequirementEnabled>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.35</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>-1.5</Z>
+			</DamageEffectOffset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

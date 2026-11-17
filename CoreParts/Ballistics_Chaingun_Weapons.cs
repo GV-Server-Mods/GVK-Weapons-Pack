@@ -317,6 +317,40 @@ namespace Scripts
             },
         };
 
+		// Type II uses Keen's model and subpart names; the Type I runs GVK's converted model (Content/Models AutocannonTurret_Base.mwm)
+		WeaponDefinition AutoCannonTurretType2
+		{
+			get
+			{
+				var weapon = AutoCannonTurret;
+				weapon.Assignments.MountPoints = new[]
+				{
+					new MountPointDef
+					{
+						SubtypeId = "AutoCannonTurretType2",
+						SpinPartId = "None",
+						MuzzlePartId = "AutocannonTurret_Barrel",
+						AzimuthPartId = "AutocannonTurret_Base1",
+						ElevationPartId = "AutocannonTurret_Barrel",
+						DurabilityMod = 0.5f,
+						IconName = "",
+					},
+					new MountPointDef
+					{
+						SubtypeId = "AutoCannonTurretType2_NPC",
+						SpinPartId = "None",
+						MuzzlePartId = "AutocannonTurret_Barrel",
+						AzimuthPartId = "AutocannonTurret_Base1",
+						ElevationPartId = "AutocannonTurret_Barrel",
+						DurabilityMod = 0.5f,
+						IconName = "",
+					},
+				};
+				weapon.Assignments.Muzzles = new[] { "muzzle_projectile" };
+				return weapon;
+			}
+		}
+
         WeaponDefinition SmallBlockAutocannon => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
@@ -335,7 +369,27 @@ namespace Scripts
                     },
                     new MountPointDef 
 					{
+                        SubtypeId = "SmallBlockAutocannonType2", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                    new MountPointDef 
+					{
                         SubtypeId = "SmallBlockAutocannon_NPC", // Block Subtypeid. Your Cubeblocks contain this information
+                        SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
+                        MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
+                        AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.
+                        ElevationPartId = "None",// Your Elevating Subpart, that bit that moves up.
+                        DurabilityMod = 0.5f, // GeneralDamageMultiplier, 0.25f = 25% damage taken.
+                        IconName = "" // Overlay for block inventory slots, like reactors, refineries, etc.
+                    },
+                    new MountPointDef 
+					{
+                        SubtypeId = "SmallBlockAutocannonType2_NPC", // Block Subtypeid. Your Cubeblocks contain this information
                         SpinPartId = "None", // For weapons with a spinning barrel such as Gatling Guns. Subpart_Boomsticks must be written as Boomsticks.
                         MuzzlePartId = "None", // The subpart where your muzzle empties are located. This is often the elevation subpart. Subpart_Boomsticks must be written as Boomsticks.
                         AzimuthPartId = "None", // Your Rotating Subpart, the bit that moves sideways.

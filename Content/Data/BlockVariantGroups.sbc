@@ -26,7 +26,9 @@
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="KhopeshTurret"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeAutoCannonTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="AutoCannonTurret"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="AutoCannonTurretType2"/>
 				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannon"/>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannonType2"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
@@ -38,8 +40,10 @@
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXCycloneCannon"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_CycloneCannonTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurretType2"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKI122mmVT"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGun"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGunType2"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="OKI122mmSGfixed"/>
 			</Blocks>
 		</BlockVariantGroup>
@@ -59,8 +63,11 @@
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeBlockMediumCalibreTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeBlockMediumCalibreTurretType2"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallBlockMediumCalibreTurret"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallBlockMediumCalibreTurretType2"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallBlockMediumCalibreGun"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallBlockMediumCalibreGunType2"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
@@ -136,6 +143,8 @@
 			<Blocks>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockTorpedoLauncher"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallBlockTorpedoLauncher"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>
@@ -212,7 +221,9 @@
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeFlareLauncher"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeInsetFlareLauncher"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallFlareLauncher"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallInsetFlareLauncher"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<BlockVariantGroup>

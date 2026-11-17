@@ -19,8 +19,8 @@ const unit = buildData(parseShipCoreGroups(xml));
 check('Parser: empty SubtypeId stays empty, MyObjectBuilder_ stripped, comments skipped',
   JSON.stringify(unit) === JSON.stringify({ upWeapons: { 'LargeGatlingTurret/': 3, 'ConveyorSorter/X': 8 }, relicWeapons: ['ConveyorSorter/X'] }), unit);
 
-check('Data: 57 UP Weapons entries, 11 relic entries',
-  Object.keys(SC.upWeapons).length === 57 && SC.relicWeapons.length === 11, [Object.keys(SC.upWeapons).length, SC.relicWeapons.length]);
+check('Data: 68 UP Weapons entries, 13 relic entries',
+  Object.keys(SC.upWeapons).length === 68 && SC.relicWeapons.length === 13, [Object.keys(SC.upWeapons).length, SC.relicWeapons.length]);
 check('Data: source names the ShipCore repo and a commit', SC.source.repo === 'GV-Server-Mods/GVK-ShipCoreFramework' && /^[0-9a-f]{40}$/.test(SC.source.commit), SC.source);
 
 const studio = loadStudio();
@@ -54,9 +54,9 @@ check('ARYX Railgun 10, SRBM 14, MAC 12, Torpedo 10: all Relic',
   [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.Missile_Torpedo_Large].map((x) => x.ups + (x.relic ? 'R' : '')).join() === '10R,14R,12R,10R',
   [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.Missile_Torpedo_Large]);
 check('NPC copies are not listed: NPC MAC 0 UPs, not Relic', eq(r.LargeRailgun_NPC, { ups: 0, listed: false, relic: false, key: 'ConveyorSorter/LargeRailgun_NPC' }), r.LargeRailgun_NPC);
-check('All 57 UP Weapons entries match a Studio weapon', r.matched === 57, r.matched);
-check('The 11 player Relic Weapons', eq(r.relics, ['ARYXHurricaneCannon', 'ARYXMissileBattery', 'ARYXRailgun', 'ARYXRailgunTurret', 'ARYX_Small_Sidekick_Hangar',
-  'LargeRailgun', 'Missile_Torpedo_Large', 'Missile_Torpedo_Small', 'SmallRailgun', 'lokiCannon1', 'odin']), r.relics);
+check('All 68 UP Weapons entries match a Studio weapon', r.matched === 68, r.matched);
+check('The 13 player Relic Weapons', eq(r.relics, ['ARYXHurricaneCannon', 'ARYXMissileBattery', 'ARYXRailgun', 'ARYXRailgunTurret', 'ARYX_Small_Sidekick_Hangar',
+  'LargeBlockTorpedoLauncher', 'LargeRailgun', 'Missile_Torpedo_Large', 'Missile_Torpedo_Small', 'SmallBlockTorpedoLauncher', 'SmallRailgun', 'lokiCannon1', 'odin']), r.relics);
 check('Player weapons missing from UP Weapons: Interior Turret and the sensors',
   eq(r.unlisted, ['ARYXSmallRadar', 'LargeInteriorTurret', 'OKIDesignator',
     'SmallBlockCompactRadioAntennaReskin_WCRadar', 'SmallBlockRadioAntenna_WCRadar']), r.unlisted);

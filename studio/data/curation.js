@@ -31,15 +31,30 @@ const STUDIO_CURATION = {
       "name": "(L) Cannon Turret",
       "icon": "icons/L__Cannon_Turret.png"
     },
+    "LargeCalibreTurretType2": {
+      "id": "L__LargeCalibreTurretType2",
+      "name": "(L) Cannon Turret Type II",
+      "icon": "icons/LargeCalibreTurretType2.png"
+    },
     "LargeCalibreTurret_NPC": {
       "id": "L__Cannon_Turret_NPC",
       "name": "(L) Cannon Turret [NPC]",
       "icon": "icons/L__Cannon_Turret_NPC.png"
     },
+    "LargeCalibreTurretType2_NPC": {
+      "id": "L__LargeCalibreTurretType2_NPC",
+      "name": "(L) Cannon Turret Type II [NPC]",
+      "icon": "icons/LargeCalibreTurretType2_NPC.png"
+    },
     "LargeBlockLargeCalibreGun": {
       "id": "L__Cannon_Gun",
       "name": "(L) Cannon Gun",
       "icon": "icons/L__Cannon_Gun.png"
+    },
+    "LargeBlockLargeCalibreGunType2": {
+      "id": "L__LargeBlockLargeCalibreGunType2",
+      "name": "(L) Cannon Gun Type II",
+      "icon": "icons/LargeBlockLargeCalibreGunType2.png"
     },
     "OKI122mmVT": {
       "id": "S__Cannon_Turret",
@@ -60,6 +75,11 @@ const STUDIO_CURATION = {
       "id": "L__Cannon_Gun_NPC",
       "name": "(L) Cannon Gun [NPC]",
       "icon": "icons/L__Cannon_Gun_NPC.png"
+    },
+    "LargeBlockLargeCalibreGunType2_NPC": {
+      "id": "L__LargeBlockLargeCalibreGunType2_NPC",
+      "name": "(L) Cannon Gun Type II [NPC]",
+      "icon": "icons/LargeBlockLargeCalibreGunType2_NPC.png"
     },
     "OKI122mmSGfixed_NPC": {
       "id": "S__Cannon_Gun_NPC",
@@ -91,20 +111,40 @@ const STUDIO_CURATION = {
       "name": "(S) Chaingun Turret",
       "icon": "icons/S__Chaingun_Turret.png"
     },
+    "AutoCannonTurretType2": {
+      "id": "S__AutoCannonTurretType2",
+      "name": "(S) Chaingun Turret Type II",
+      "icon": "icons/AutoCannonTurretType2.png"
+    },
     "AutoCannonTurret_NPC": {
       "id": "S__Chaingun_Turret_NPC",
       "name": "(S) Chaingun Turret [NPC]",
       "icon": "icons/S__Chaingun_Turret_NPC.png"
+    },
+    "AutoCannonTurretType2_NPC": {
+      "id": "S__AutoCannonTurretType2_NPC",
+      "name": "(S) Chaingun Turret Type II [NPC]",
+      "icon": "icons/AutoCannonTurretType2_NPC.png"
     },
     "SmallBlockAutocannon": {
       "id": "S__Chaingun_Gun",
       "name": "(S) Chaingun Gun",
       "icon": "icons/S__Chaingun_Gun.png"
     },
+    "SmallBlockAutocannonType2": {
+      "id": "S__SmallBlockAutocannonType2",
+      "name": "(S) Chaingun Gun Type II",
+      "icon": "icons/SmallBlockAutocannonType2.png"
+    },
     "SmallBlockAutocannon_NPC": {
       "id": "S__Chaingun_Gun_NPC",
       "name": "(S) Chaingun Gun [NPC]",
       "icon": "icons/S__Chaingun_Gun_NPC.png"
+    },
+    "SmallBlockAutocannonType2_NPC": {
+      "id": "S__SmallBlockAutocannonType2_NPC",
+      "name": "(S) Chaingun Gun Type II [NPC]",
+      "icon": "icons/SmallBlockAutocannonType2_NPC.png"
     },
     "ARYXHeavyFlakTurret": {
       "id": "L__Chaingun_Thrasher_Turret",
@@ -121,30 +161,60 @@ const STUDIO_CURATION = {
       "name": "(L) Flak Turret",
       "icon": "icons/L__Flak_Turret.png"
     },
+    "LargeBlockMediumCalibreTurretType2": {
+      "id": "L__LargeBlockMediumCalibreTurretType2",
+      "name": "(L) Flak Turret Type II",
+      "icon": "icons/LargeBlockMediumCalibreTurretType2.png"
+    },
     "LargeBlockMediumCalibreTurret_NPC": {
       "id": "L__Flak_Turret_NPC",
       "name": "(L) Flak Turret [NPC]",
       "icon": "icons/L__Flak_Turret_NPC.png"
+    },
+    "LargeBlockMediumCalibreTurretType2_NPC": {
+      "id": "L__LargeBlockMediumCalibreTurretType2_NPC",
+      "name": "(L) Flak Turret Type II [NPC]",
+      "icon": "icons/LargeBlockMediumCalibreTurretType2_NPC.png"
     },
     "SmallBlockMediumCalibreTurret": {
       "id": "S__Flak_Turret",
       "name": "(S) Flak Turret",
       "icon": "icons/S__Flak_Turret.png"
     },
+    "SmallBlockMediumCalibreTurretType2": {
+      "id": "S__SmallBlockMediumCalibreTurretType2",
+      "name": "(S) Flak Turret Type II",
+      "icon": "icons/SmallBlockMediumCalibreTurretType2.png"
+    },
     "SmallBlockMediumCalibreTurret_NPC": {
       "id": "S__Flak_Turret_NPC",
       "name": "(S) Flak Turret [NPC]",
       "icon": "icons/S__Flak_Turret_NPC.png"
+    },
+    "SmallBlockMediumCalibreTurretType2_NPC": {
+      "id": "S__SmallBlockMediumCalibreTurretType2_NPC",
+      "name": "(S) Flak Turret Type II [NPC]",
+      "icon": "icons/SmallBlockMediumCalibreTurretType2_NPC.png"
     },
     "SmallBlockMediumCalibreGun": {
       "id": "S__Flak_Gun",
       "name": "(S) Flak Gun",
       "icon": "icons/S__Flak_Gun.png"
     },
+    "SmallBlockMediumCalibreGunType2": {
+      "id": "S__SmallBlockMediumCalibreGunType2",
+      "name": "(S) Flak Gun Type II",
+      "icon": "icons/SmallBlockMediumCalibreGunType2.png"
+    },
     "SmallBlockMediumCalibreGun_NPC": {
       "id": "S__Flak_Gun_NPC",
       "name": "(S) Flak Gun [NPC]",
       "icon": "icons/S__Flak_Gun_NPC.png"
+    },
+    "SmallBlockMediumCalibreGunType2_NPC": {
+      "id": "S__SmallBlockMediumCalibreGunType2_NPC",
+      "name": "(S) Flak Gun Type II [NPC]",
+      "icon": "icons/SmallBlockMediumCalibreGunType2_NPC.png"
     },
     "SentinelTurret": {
       "id": "L__Gatling_Turret",
@@ -596,6 +666,26 @@ const STUDIO_CURATION = {
       "name": "(S) Torpedo Launcher [NPC]",
       "icon": "icons/S__Torpedo_Launcher_NPC.png"
     },
+    "LargeBlockTorpedoLauncher": {
+      "id": "L__LargeBlockTorpedoLauncher",
+      "name": "(L) Keen Torpedo Launcher",
+      "icon": "icons/LargeBlockTorpedoLauncher.png"
+    },
+    "LargeBlockTorpedoLauncher_NPC": {
+      "id": "L__LargeBlockTorpedoLauncher_NPC",
+      "name": "(L) Keen Torpedo Launcher [NPC]",
+      "icon": "icons/LargeBlockTorpedoLauncher_NPC.png"
+    },
+    "SmallBlockTorpedoLauncher": {
+      "id": "S__SmallBlockTorpedoLauncher",
+      "name": "(S) Keen Torpedo Launcher",
+      "icon": "icons/SmallBlockTorpedoLauncher.png"
+    },
+    "SmallBlockTorpedoLauncher_NPC": {
+      "id": "S__SmallBlockTorpedoLauncher_NPC",
+      "name": "(S) Keen Torpedo Launcher [NPC]",
+      "icon": "icons/SmallBlockTorpedoLauncher_NPC.png"
+    },
     "ARYX_Small_Sidekick_Hangar": {
       "id": "L__Drone_Bay",
       "name": "(L) Drone Bay",
@@ -611,20 +701,40 @@ const STUDIO_CURATION = {
       "name": "(L) Flare Launcher",
       "icon": "icons/LargeFlareLauncher.png"
     },
+    "LargeInsetFlareLauncher": {
+      "id": "L__LargeInsetFlareLauncher",
+      "name": "(L) Inset Flare Launcher",
+      "icon": "icons/LargeInsetFlareLauncher.png"
+    },
     "LargeFlareLauncher_NPC": {
       "id": "L__LargeFlareLauncher_NPC",
       "name": "(L) Flare Launcher",
       "icon": "icons/LargeFlareLauncher_NPC.png"
+    },
+    "LargeInsetFlareLauncher_NPC": {
+      "id": "L__LargeInsetFlareLauncher_NPC",
+      "name": "(L) Inset Flare Launcher",
+      "icon": "icons/LargeInsetFlareLauncher_NPC.png"
     },
     "SmallFlareLauncher": {
       "id": "S__SmallFlareLauncher",
       "name": "(S) Flare Launcher",
       "icon": "icons/SmallFlareLauncher.png"
     },
+    "SmallInsetFlareLauncher": {
+      "id": "S__SmallInsetFlareLauncher",
+      "name": "(S) Inset Flare Launcher",
+      "icon": "icons/SmallInsetFlareLauncher.png"
+    },
     "SmallFlareLauncher_NPC": {
       "id": "S__SmallFlareLauncher_NPC",
       "name": "(S) Flare Launcher",
       "icon": "icons/SmallFlareLauncher_NPC.png"
+    },
+    "SmallInsetFlareLauncher_NPC": {
+      "id": "S__SmallInsetFlareLauncher_NPC",
+      "name": "(S) Inset Flare Launcher",
+      "icon": "icons/SmallInsetFlareLauncher_NPC.png"
     },
     "OKIDesignator": {
       "id": "L__OKIDesignator",
@@ -981,6 +1091,37 @@ const STUDIO_CURATION = {
     "Missiles_Torpedo": {
       "category": "Missiles, Rockets & Torpedoes",
       "localIcon": "icons/ammo_Missiles_Torpedo.png",
+      "roleMultiplier": 1.25,
+      "sizeMult": 1.2011,
+      "massMult": 0.15,
+      "craftMult": 1.2178,
+      "usesRUs": true,
+      "baseComp": [
+        {
+          "subtype": "Magnesium",
+          "weight": 4
+        },
+        {
+          "subtype": "Iron",
+          "weight": 40
+        },
+        {
+          "subtype": "Platinum",
+          "weight": 0.1
+        },
+        {
+          "subtype": "Silicon",
+          "weight": 4
+        },
+        {
+          "subtype": "Gold",
+          "weight": 0.3
+        }
+      ]
+    },
+    "Torpedo_Heavy": {
+      "category": "Missiles, Rockets & Torpedoes",
+      "localIcon": "icons/ammo_Torpedo_Heavy.png",
       "roleMultiplier": 1.25,
       "sizeMult": 1.2011,
       "massMult": 0.15,

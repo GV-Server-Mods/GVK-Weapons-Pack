@@ -323,6 +323,108 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition Enabled="false">
+			<Id>
+				<TypeId>Warhead</TypeId>
+				<SubtypeId>LargeWarheadType2</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Block_WarheadType2</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeWarheadType2.dds</Icon>
+			<Description>Description_Warhead</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\WarheadReskinLarge.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="10"/>
+				<Component Subtype="Girder" Count="24"/>
+				<Component Subtype="Construction" Count="12"/>
+				<Component Subtype="SmallTube" Count="12"/>
+				<Component Subtype="Computer" Count="2"/>
+				<Component Subtype="Explosives" Count="5"/>
+				<Component Subtype="SteelPlate" Count="10"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Front" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8"/>
+				<MountPoint Side="Back" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8"/>
+				<MountPoint Side="Right" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8"/>
+				<MountPoint Side="Left" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8"/>
+				<MountPoint Side="Bottom" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" Default="true"/>
+				<MountPoint Side="Top" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\WarheadReskinLarge_Construction_01.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\WarheadReskinLarge_Construction_02.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\WarheadReskinLarge_Construction_03.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>WarheadType2</BlockPairName>
+			<ActionSound>WepLrgWarheadExpl</ActionSound>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<ExplosionRadius>22.4415</ExplosionRadius>
+			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
+			<EmissiveColorPreset>Timer</EmissiveColorPreset>
+			<DestroyEffect/>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>2</PCU>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<IsAirTight>true</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DLC>Warfare3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition Enabled="false">
+			<Id>
+				<TypeId>Warhead</TypeId>
+				<SubtypeId>SmallWarheadType2</SubtypeId>
+			</Id>
+			<DisplayName>DisplayName_Block_WarheadType2</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\SmallWarheadType2.dds</Icon>
+			<Description>Description_Warhead</Description>
+			<CubeSize>Small</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="1"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Small\warheadReskinSmall.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="1"/>
+				<Component Subtype="Girder" Count="1"/>
+				<Component Subtype="Construction" Count="1"/>
+				<Component Subtype="SmallTube" Count="2"/>
+				<Component Subtype="Computer" Count="1"/>
+				<Component Subtype="Explosives" Count="2"/>
+				<Component Subtype="SteelPlate" Count="3"/>
+			</Components>
+			<CriticalComponent Subtype="Explosives" Index="0"/>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.50" File="Models\Cubes\Small\WarheadReskinSmall_Construction_01.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Small\WarheadReskinSmall_Construction_02.mwm"/>
+			</BuildProgressModels>
+			<BlockPairName>WarheadType2</BlockPairName>
+			<ActionSound>WepLrgWarheadExpl</ActionSound>
+			<EdgeType>Light</EdgeType>
+			<BuildTimeSeconds>5</BuildTimeSeconds>
+			<ExplosionRadius> 4.4883 </ExplosionRadius>
+			<WarheadExplosionDamage>15000</WarheadExplosionDamage>
+			<EmissiveColorPreset>Timer</EmissiveColorPreset>
+			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<PCU>2</PCU>
+			<IsAirTight>true</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<IsAirTight>true</IsAirTight>
+			<DLC>Warfare3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WarheadDefinition" Enabled="false">
 			<Id>
 				<TypeId>Warhead</TypeId>

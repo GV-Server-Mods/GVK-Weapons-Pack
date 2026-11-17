@@ -88,10 +88,13 @@
 				<string>LargeMissileTurret/ARYXCycloneCannon</string>
 				<string>LargeMissileTurret/GVK_CycloneCannonTurret</string>
 				<string>LargeMissileTurret/LargeCalibreTurret</string>
+				<string>LargeMissileTurret/LargeCalibreTurretType2</string>
 				<string>SmallMissileLauncher/LargeBlockLargeCalibreGun</string>
+				<string>SmallMissileLauncher/LargeBlockLargeCalibreGunType2</string>
 				<string>LargeMissileTurret/ARYXHurricaneCannon</string>
 				<string>LargeMissileTurret/odin</string>
 				<string>LargeMissileTurret/LargeBlockMediumCalibreTurret</string>
+				<string>LargeMissileTurret/LargeBlockMediumCalibreTurretType2</string>
 				<string>LargeMissileTurret/ARYXRailgunTurret</string>
 				<string>ConveyorSorter/ARYXRailgun</string>
 				<string>ConveyorSorter/LargeRailgun</string>
@@ -104,6 +107,7 @@
 				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
 				<string>ConveyorSorter/missileBattery01</string>
 				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>SmallMissileLauncher/LargeBlockTorpedoLauncher</string>
 				<string>ConveyorSorter/ARYXMissileBattery</string>
 				<string>LargeMissileTurret/ARYXSpartanTurret</string>
 				<string>ConveyorSorter/MA_T2PDX</string>
@@ -114,6 +118,7 @@
 				<string>LargeMissileTurret/OKIDesignator</string>
 				<string>ConveyorSorter/ARYX_Small_Sidekick_Hangar</string>
 				<string>SmallMissileLauncher/LargeFlareLauncher</string>
+				<string>SmallMissileLauncher/LargeInsetFlareLauncher</string>
 				<string>ConveyorSorter/LargeWarhead</string>
 				<string>ConveyorSorter/LargeExplosiveBarrel</string>
 				<string>Conveyor/GVK_HeavyTurretMount_3x3x1</string>
@@ -134,11 +139,15 @@
 				<string>SmallGatlingGun/SmallGatlingGunWarfare2</string>
 				<string>LargeGatlingTurret/SmallGatlingGun_Gimbal</string>
 				<string>LargeMissileTurret/AutoCannonTurret</string>
+				<string>LargeGatlingTurret/AutoCannonTurretType2</string>
 				<string>SmallGatlingGun/SmallBlockAutocannon</string>
+				<string>SmallGatlingGun/SmallBlockAutocannonType2</string>
 				<string>LargeMissileTurret/OKI122mmVT</string>
 				<string>SmallMissileLauncher/OKI122mmSGfixed</string>
 				<string>LargeMissileTurret/SmallBlockMediumCalibreTurret</string>
+				<string>LargeMissileTurret/SmallBlockMediumCalibreTurretType2</string>
 				<string>SmallMissileLauncherReload/SmallBlockMediumCalibreGun</string>
+				<string>SmallMissileLauncherReload/SmallBlockMediumCalibreGunType2</string>
 				<string>ConveyorSorter/SmallRailgun</string>
 				<string>LargeMissileTurret/SmallMissileTurret</string>
 				<string>LargeMissileTurret/SmallMissileTurretReskin</string>
@@ -147,6 +156,7 @@
 				<string>SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher</string>
 				<string>SmallMissileLauncherReload/SmallRocketLauncherReload</string>
 				<string>ConveyorSorter/Missile_Torpedo_Small</string>
+				<string>SmallMissileLauncher/SmallBlockTorpedoLauncher</string>
 				<string>LargeMissileTurret/ReceptorTurret</string>
 				<string>ConveyorSorter/ReceptorCoilGun</string>
 				<string>LargeMissileTurret/MA_PDT_sm</string>
@@ -154,6 +164,7 @@
 				<string>ConveyorSorter/SmallBlockRadioAntenna_WCRadar</string>
 				<string>ConveyorSorter/SmallBlockCompactRadioAntennaReskin_WCRadar</string>
 				<string>SmallMissileLauncher/SmallFlareLauncher</string>
+				<string>SmallMissileLauncher/SmallInsetFlareLauncher</string>
 				<string>ConveyorSorter/SmallWarhead</string>
 				<string>ConveyorSorter/SmallExplosiveBarrel</string>
 			</ItemIds>

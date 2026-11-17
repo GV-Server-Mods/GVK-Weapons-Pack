@@ -351,6 +351,20 @@ namespace Scripts
             },
         };
 
+        private AmmoDef Torpedo_Heavy
+        {
+            get
+            {
+                var torp = Missiles_Torpedo;
+                torp.AmmoMagazine = "Torpedo_Heavy";
+                torp.AmmoRound = "Torpedo_Heavy";
+                torp.TerminalName = "Heavy Torpedo";
+                // No leading backslash: WeaponCore loads Keen's model from the game content.
+                torp.AmmoGraphics.ModelName = "Models\\Weapons\\Torpedo_Heavy.mwm";
+                return torp;
+            }
+        }
+
         /*private AmmoDef Missiles_Torpedo_NPC
         {
             get

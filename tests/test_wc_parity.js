@@ -387,9 +387,9 @@ console.log('\n[G] Scalability lint');
   for (const [k, a] of Object.entries(data.a)) { add(k); add(a.ammoRound); add(a.ammoMagazine); words(a.terminalName); }
   ['laser', 'plasma', 'railgun', 'coilgun', 'flak', 'gatling', 'torpedo', 'missile', 'rocket', 'drone', 'radar', 'designator', 'sensor', 'flare', 'sabot', 'cannon', 'warhead', 'falcon', 'tuukka', 'longsword'].forEach(add);
   // Engine vocabulary that legitimately appears in code: SE block TypeIds, default icon/sound names, WC enum members
-  // (Heavy/Light armor classes, Fragment pattern mode, ...) and UI theme names
+  // (Heavy/Light armor classes, Fragment pattern mode, ...), UI theme names and filter keys ('type', also in "Type II" names)
   const allow = new Set(['smallgatlinggun', 'smallmissilelauncher', 'interiorturret', 'md_largegatlingloopfire', 'wepturretgatlingrotate', 'wepshipgatlingnoammo',
-    'icons/l__gatling_avenger_turret.png', 'energy', 'none', 'large', 'small', 'fixed', 'turret', 'heavy', 'light', 'nonarmor', 'dark']);
+    'icons/l__gatling_avenger_turret.png', 'energy', 'none', 'large', 'small', 'fixed', 'turret', 'heavy', 'light', 'nonarmor', 'dark', 'type']);
   const schemaSrc = fs.readFileSync(path.join(root, 'studio/data/wc_schema.js'), 'utf8');
   const schema = JSON.parse(schemaSrc.slice(schemaSrc.indexOf('{'), schemaSrc.lastIndexOf('}') + 1));
   for (const members of Object.values(schema.enums || {})) for (const m of (Array.isArray(members) ? members : Object.keys(members))) allow.add(String(m).toLowerCase());

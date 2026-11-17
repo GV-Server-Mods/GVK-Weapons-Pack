@@ -284,5 +284,51 @@ namespace Scripts {
 
         WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC");
         WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC");
+
+        // Inset launchers (Warfare 3): flare launcher stats on Keen's inset model, whose muzzles differ (WeaponCore Flares.cs)
+        WeaponDefinition LargeInsetFlareWC
+        {
+            get
+            {
+                var weapon = LargeFlareWC;
+                weapon.Assignments.MountPoints[0].SubtypeId = "LargeInsetFlareLauncher";
+                weapon.Assignments.Muzzles = new[] {
+                    "muzzle_missile_001",
+                    "muzzle_missile_002",
+                    "muzzle_missile_003",
+                    "muzzle_missile_004",
+                    "muzzle_missile_005",
+                    "muzzle_missile_006",
+                    "muzzle_missile_007",
+                    "muzzle_missile_008",
+                    "muzzle_missile_009",
+                    "muzzle_missile_010",
+                    "muzzle_missile_011",
+                    "muzzle_missile_012",
+                };
+                weapon.Assignments.Scope = "muzzle_missile_008";
+                return weapon;
+            }
+        }
+        WeaponDefinition SmallInsetFlareWC
+        {
+            get
+            {
+                var weapon = SmallFlareWC;
+                weapon.Assignments.MountPoints[0].SubtypeId = "SmallInsetFlareLauncher";
+                weapon.Assignments.Muzzles = new[] {
+                    "muzzle_missile_001",
+                    "muzzle_missile_002",
+                    "muzzle_missile_003",
+                    "muzzle_missile_004",
+                    "muzzle_missile_005",
+                    "muzzle_missile_006",
+                };
+                weapon.Assignments.Scope = "muzzle_missile_003";
+                return weapon;
+            }
+        }
+        WeaponDefinition LargeInsetFlareWC_NPC => Other_Flare_NPC(LargeInsetFlareWC, "LargeInsetFlareLauncher_NPC");
+        WeaponDefinition SmallInsetFlareWC_NPC => Other_Flare_NPC(SmallInsetFlareWC, "SmallInsetFlareLauncher_NPC");
     }
 }

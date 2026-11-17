@@ -229,6 +229,107 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>LargeCalibreTurretType2</SubtypeId>
+			</Id>
+			<DisplayName>*L.Cannon* 155mm Turret (Type II)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\ArtilleryTurret.dds</Icon>
+			<Description>Large caliber anti-capital ship cannon in turret mount. Effective against heavy armor frigates and cruisers.
+				[Uses 155mm AP]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\ArtilleryTurret.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1"/>
+				<Component Subtype="PrototechFrame" Count="8"/>
+				<Component Subtype="Construction" Count="220"/>
+				<Component Subtype="SmallTube" Count="86"/>
+				<Component Subtype="LargeTube" Count="150"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="71"/>
+				<Component Subtype="MetalGrid" Count="150"/>
+				<Component Subtype="SteelPlate" Count="360"/>
+			</Components>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.5" StartY="0.5" EndX="2.5" EndY="2.5"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ArtilleryTurret_Constructions1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ArtilleryTurret_Constructions2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ArtilleryTurret_Constructions3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>LargeCalibreTurretType2</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
+			<EnabledTargetingOptions>LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Players Asteroids Missiles Friends</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.6</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-15</MinElevationDegrees>
+			<MaxElevationDegrees>60</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>800</MaxRangeMeters>
+			<RotationSpeed>0.0002</RotationSpeed>
+			<ElevationSpeed>0.0002 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>2</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>-2</ForwardCameraOffset>
+			<AimingOffset>
+				<X>0</X>
+				<Y>-2</Y>
+				<Z>0</Z>
+			</AimingOffset>
+			<AiEnabled>false</AiEnabled>
+			<DLC>Warfare3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncher</TypeId>
@@ -296,6 +397,79 @@
 				<Y>0</Y>
 				<Z>4</Z>
 			</DamageEffectOffset>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeBlockLargeCalibreGunType2</SubtypeId>
+			</Id>
+			<DisplayName>*L.Cannon* 155mm Cannon (Type II)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeBlockLargeCalibreGunType2.dds</Icon>
+			<Description>Large caliber anti-capital ship cannon in fixed mount. Effective against heavy armor frigates and cruisers.
+				[Uses 155mm AP]
+			</Description>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\ArtilleryCannon.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="PrototechFrame" Count="4"/>
+				<Component Subtype="Construction" Count="70"/>
+				<Component Subtype="SmallTube" Count="28"/>
+				<Component Subtype="LargeTube" Count="47"/>
+				<Component Subtype="Motor" Count="42"/>
+				<Component Subtype="Computer" Count="24"/>
+				<Component Subtype="MetalGrid" Count="47"/>
+				<Component Subtype="SteelPlate" Count="120"/>
+			</Components>
+			<BuildTimeSeconds>46</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Left" StartX="3" StartY="0" EndX="4" EndY="0.9"/>
+				<MountPoint Side="Left" StartX="2.6" StartY="0.3" EndX="3" EndY="0.7"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="0.9"/>
+				<MountPoint Side="Right" StartX="1" StartY="0.3" EndX="1.4" EndY="0.7"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="0.9" Default="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\ArtilleryCannon_Constructions1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\ArtilleryCannon_Constructions2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\ArtilleryCannon_Constructions3.mwm"/>
+			</BuildProgressModels>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BlockPairName>LargeCalibreGunType2</BlockPairName>
+			<Center x="0" y="0" z="3"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeCalibreGun"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.3</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DestroyEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>4</Z>
+			</DestroyEffectOffset>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>4</Z>
+			</DamageEffectOffset>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -657,6 +831,114 @@
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
+		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+			<Id>
+				<TypeId>LargeMissileTurret</TypeId>
+				<SubtypeId>LargeCalibreTurretType2_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Cannon* 155mm Turret (Type II)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\ArtilleryTurret.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<PlaceDecals>false</PlaceDecals>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="3" y="3" z="3"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\ArtilleryTurret.mwm</Model>
+			<UseModelIntersection>true</UseModelIntersection>
+			<Components>
+				<Component Subtype="SteelPlate" Count="430"/>
+				<Component Subtype="PrototechCircuitry" Count="1">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechCircuitryScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="PrototechFrame" Count="8">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechFrameScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Construction" Count="220"/>
+				<Component Subtype="SmallTube" Count="86"/>
+				<Component Subtype="LargeTube" Count="150"/>
+				<Component Subtype="Motor" Count="130"/>
+				<Component Subtype="Computer" Count="71"/>
+				<Component Subtype="MetalGrid" Count="150"/>
+				<Component Subtype="SteelPlate" Count="360"/>
+			</Components>
+			<BuildTimeSeconds>142</BuildTimeSeconds>
+			<PCU>8</PCU>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Bottom" StartX="0.5" StartY="0.5" EndX="2.5" EndY="2.5"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\ArtilleryTurret_Constructions1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\ArtilleryTurret_Constructions2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\ArtilleryTurret_Constructions3.mwm"/>
+			</BuildProgressModels>
+			<VoxelPlacement>
+				<!--Possible settings Both,InVoxel,OutsideVoxel,Volumetric. If volumetric set than MaxAllowed and MinAllowed will be used.-->
+				<StaticMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0</MinAllowed>
+				</StaticMode>
+				<DynamicMode>
+					<PlacementMode>OutsideVoxel</PlacementMode>
+					<MaxAllowed>0.2</MaxAllowed>
+					<MinAllowed>0.01</MinAllowed>
+				</DynamicMode>
+			</VoxelPlacement>
+			<BlockPairName>LargeCalibreTurretType2_NPC</BlockPairName>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<EdgeType>Light</EdgeType>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<WeaponDefinitionId Subtype="LargeCalibreTurret"/>
+			<EnabledTargetingOptions>LargeShips Stations Enemies</EnabledTargetingOptions>
+			<HiddenTargetingOptions>Players Asteroids Missiles Friends</HiddenTargetingOptions>
+			<InventoryMaxVolume>0.6</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<MinElevationDegrees>-15</MinElevationDegrees>
+			<MaxElevationDegrees>60</MaxElevationDegrees>
+			<MinAzimuthDegrees>-180</MinAzimuthDegrees>
+			<MaxAzimuthDegrees>180</MaxAzimuthDegrees>
+			<IdleRotation>true</IdleRotation>
+			<MaxRangeMeters>800</MaxRangeMeters>
+			<RotationSpeed>0.0002</RotationSpeed>
+			<ElevationSpeed>0.0002 </ElevationSpeed>
+			<EmissiveColorPreset>Default</EmissiveColorPreset>
+			<MinFov>0.1</MinFov>
+			<MaxFov>1.04719755</MaxFov>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<AmmoPullAmountPerTick>2</AmmoPullAmountPerTick>
+			<InventoryFillFactorMin>.25</InventoryFillFactorMin>
+			<InventoryFillFactorMax>.5</InventoryFillFactorMax>
+			<TieredUpdateTimes>
+				<unsignedInt>10</unsignedInt>
+				<unsignedInt>0</unsignedInt>
+			</TieredUpdateTimes>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<UpCameraOffset>1.0</UpCameraOffset>
+			<ForwardCameraOffset>-2</ForwardCameraOffset>
+			<AimingOffset>
+				<X>0</X>
+				<Y>-2</Y>
+				<Z>0</Z>
+			</AimingOffset>
+			<AiEnabled>false</AiEnabled>
+			<DLC>Warfare3</DLC>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncher</TypeId>
@@ -726,6 +1008,81 @@
 				<Y>0</Y>
 				<Z>4</Z>
 			</DamageEffectOffset>
+			<GuiVisible>false</GuiVisible>
+			<Public>true</Public>
+		</Definition>
+		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
+			<Id>
+				<TypeId>SmallMissileLauncher</TypeId>
+				<SubtypeId>LargeBlockLargeCalibreGunType2_NPC</SubtypeId>
+			</Id>
+			<DisplayName>*NPC-L.Cannon* 155mm Cannon (Type II)</DisplayName>
+			<Icon>Textures\GUI\Icons\Cubes\LargeBlockLargeCalibreGunType2.dds</Icon>
+			<CubeSize>Large</CubeSize>
+			<BlockTopology>TriangleMesh</BlockTopology>
+			<Size x="1" y="1" z="4"/>
+			<ModelOffset x="0" y="0" z="0"/>
+			<Model>Models\Cubes\Large\ArtilleryCannon.mwm</Model>
+			<Components>
+				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="PrototechFrame" Count="4">
+					<DeconstructId>
+						<TypeId>Ore</TypeId>
+						<SubtypeId>PrototechFrameScrap</SubtypeId>
+					</DeconstructId>
+				</Component>
+				<Component Subtype="Construction" Count="70"/>
+				<Component Subtype="SmallTube" Count="28"/>
+				<Component Subtype="LargeTube" Count="47"/>
+				<Component Subtype="Motor" Count="42"/>
+				<Component Subtype="Computer" Count="24"/>
+				<Component Subtype="MetalGrid" Count="47"/>
+				<Component Subtype="SteelPlate" Count="120"/>
+			</Components>
+			<BuildTimeSeconds>46</BuildTimeSeconds>
+			<PCU>4</PCU>
+			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
+			<CriticalComponent Subtype="Computer" Index="0"/>
+			<MountPoints>
+				<MountPoint Side="Left" StartX="3" StartY="0" EndX="4" EndY="0.9"/>
+				<MountPoint Side="Left" StartX="2.6" StartY="0.3" EndX="3" EndY="0.7"/>
+				<MountPoint Side="Right" StartX="0" StartY="0" EndX="1" EndY="0.9"/>
+				<MountPoint Side="Right" StartX="1" StartY="0.3" EndX="1.4" EndY="0.7"/>
+				<MountPoint Side="Bottom" StartX="0" StartY="3" EndX="1" EndY="4"/>
+				<MountPoint Side="Back" StartX="0" StartY="0" EndX="1" EndY="0.9" Default="true"/>
+			</MountPoints>
+			<BuildProgressModels>
+				<Model BuildPercentUpperBound="0.33" File="Models\Cubes\large\ArtilleryCannon_Constructions1.mwm"/>
+				<Model BuildPercentUpperBound="0.66" File="Models\Cubes\large\ArtilleryCannon_Constructions2.mwm"/>
+				<Model BuildPercentUpperBound="1.00" File="Models\Cubes\large\ArtilleryCannon_Constructions3.mwm"/>
+			</BuildProgressModels>
+			<MirroringY>Z</MirroringY>
+			<MirroringZ>Y</MirroringZ>
+			<BlockPairName>LargeCalibreGunType2_NPC</BlockPairName>
+			<Center x="0" y="0" z="3"/>
+			<EdgeType>Light</EdgeType>
+			<WeaponDefinitionId Subtype="LargeCalibreGun"/>
+			<ResourceSinkGroup>Defense</ResourceSinkGroup>
+			<InventoryMaxVolume>0.3</InventoryMaxVolume>
+			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
+			<DamagedSound>ParticleWeapExpl</DamagedSound>
+			<DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
+			<TargetingGroups>
+				<string>Weapons</string>
+			</TargetingGroups>
+			<DestroyEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>4</Z>
+			</DestroyEffectOffset>
+			<DamageEffectOffset>
+				<X>0</X>
+				<Y>0</Y>
+				<Z>4</Z>
+			</DamageEffectOffset>
+			<DLC>Warfare3</DLC>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
