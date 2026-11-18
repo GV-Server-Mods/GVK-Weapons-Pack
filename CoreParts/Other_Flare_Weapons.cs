@@ -104,10 +104,10 @@ namespace Scripts {
                     RateOfFire = 240, // Set this to 3600 for beam weapons. This is how fast your gun fires per minute.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    ReloadTime = 1200, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    MagsToLoad = 4, // Number of physical magazines to consume on reload.
-                    ShotsInBurst = 0, // Use this if you don't want the weapon to fire an entire physical magazine in one go. Should not be more than your magazine capacity.
-                    DelayAfterBurst = 0, // How long to spend "reloading" after each burst. Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                    ReloadTime = 0, // Instant box swap; DelayAfterBurst paces the flares.
+                    MagsToLoad = 1, // One 30-flare box at a time.
+                    ShotsInBurst = 16, // Bursts of 16, then DelayAfterBurst: the pacing of the old 4 x Decoy Flare x4 reload (owner, 2026-11-17).
+                    DelayAfterBurst = 1200, // 20 s, the old reload time.
                     FireFull = false, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
                 },
                 Audio = new HardPointAudioDef
@@ -141,7 +141,7 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                FlareWC_Smart, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
+                FlareBoxWC, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
             },
         };
         WeaponDefinition SmallFlareWC => new WeaponDefinition
@@ -198,8 +198,10 @@ namespace Scripts {
                     RateOfFire = 140, // Set this to 3600 for beam weapons. This is how fast your gun fires per minute.
                     BarrelsPerShot = 1, // How many muzzles will fire a projectile per fire event.
                     TrajectilesPerBarrel = 1, // Number of projectiles per muzzle per fire event.
-                    ReloadTime = 600, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                    MagsToLoad = 2, // Number of physical magazines to consume on reload.
+                    ReloadTime = 0, // Instant box swap; DelayAfterBurst paces the flares.
+                    MagsToLoad = 1, // One 30-flare box at a time.
+                    ShotsInBurst = 8, // Bursts of 8, then DelayAfterBurst: the pacing of the old 2 x Decoy Flare x4 reload (owner, 2026-11-17).
+                    DelayAfterBurst = 600, // 10 s, the old reload time.
                     FireFull = true, // Whether the weapon should fire the full magazine (or the full burst instead if ShotsInBurst > 0), even if the target is lost or the player stops firing prematurely.
                 },
                 Audio = new HardPointAudioDef
@@ -233,13 +235,13 @@ namespace Scripts {
                 },
             },
             Ammos = new[] {
-                FlareWC_Smart, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
+                FlareBoxWC, FireworkBaseWC, FireworkRainbowWC, FireworkBlueWC, FireworkGreenWC, FireworkRedWC, FireworkPinkWC, FireworkYellowWC, 
             },
         };
 
         // Flare launchers fire on their own: WeaponCore targets smart projectiles locked onto this grid
         // (DisableSupportingPD in Other_Flare_Hardpoint_Ui) and, on Auto, ignores MES fire commands.
-        // Fixed weapons only auto-fire Smart ammo, hence FlareWC_Smart.
+        // Fixed weapons only auto-fire Smart ammo, hence the Smart flare rounds (FlareBoxWC, FlareWC_Smart).
         // LockedSmartOnly stays false: it is inverted in WeaponCore's AcquireProjectile (GVK-Settings#696).
         private TargetingDef Other_Flare_Targeting => new TargetingDef
         {
@@ -263,10 +265,14 @@ namespace Scripts {
             StopTrackingSpeed = 2000,
         };
 
-        // Fires like the player launcher (rate, magazine, reload), but stops as soon as the missile is gone.
-        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId)
+        // Fires like the player launcher (rate, reload), but from FlareClip without bursts, and stops as soon as the missile is gone.
+        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId, int magsToLoad, int reloadTime)
         {
             weapon.Assignments.MountPoints[0].SubtypeId = subtypeId;
+            weapon.HardPoint.Loading.MagsToLoad = magsToLoad;
+            weapon.HardPoint.Loading.ReloadTime = reloadTime;
+            weapon.HardPoint.Loading.ShotsInBurst = 0;
+            weapon.HardPoint.Loading.DelayAfterBurst = 0;
             // Unique name: MES looks definitions up by PartName and takes the first match, so a shared
             // name made it restock the player launcher's ammo (fireworks) instead of FlareClips.
             weapon.HardPoint.PartName = "NPC Flare Launcher";
@@ -282,8 +288,8 @@ namespace Scripts {
             return weapon;
         }
 
-        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC");
-        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC");
+        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC", 4, 1200);
+        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC", 2, 600);
 
         // Inset launchers (Warfare 3): flare launcher stats on Keen's inset model, whose muzzles differ (WeaponCore Flares.cs)
         WeaponDefinition LargeInsetFlareWC
@@ -328,7 +334,7 @@ namespace Scripts {
                 return weapon;
             }
         }
-        WeaponDefinition LargeInsetFlareWC_NPC => Other_Flare_NPC(LargeInsetFlareWC, "LargeInsetFlareLauncher_NPC");
-        WeaponDefinition SmallInsetFlareWC_NPC => Other_Flare_NPC(SmallInsetFlareWC, "SmallInsetFlareLauncher_NPC");
+        WeaponDefinition LargeInsetFlareWC_NPC => Other_Flare_NPC(LargeInsetFlareWC, "LargeInsetFlareLauncher_NPC", 4, 1200);
+        WeaponDefinition SmallInsetFlareWC_NPC => Other_Flare_NPC(SmallInsetFlareWC, "SmallInsetFlareLauncher_NPC", 2, 600);
     }
 }

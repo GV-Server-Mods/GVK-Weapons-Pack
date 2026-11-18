@@ -42,7 +42,7 @@ namespace Scripts
 		
         private AmmoDef FireworkBaseWC => new AmmoDef
         {
-			AmmoMagazine = "FireworksBoxRainbow",
+			AmmoMagazine = "FlareBox",
 			AmmoRound = "FireworkRandom",
 			TerminalName = "Fireworks (Random)", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
 			BaseDamage = 1f,
@@ -478,6 +478,19 @@ namespace Scripts
                     KeepAliveAfterTargetLoss = true,
                     IgnoreAntiSmarts = true,
                 };
+                return ammo;
+            }
+        }
+
+        // Player launchers fire it from Keen's Countermeasure Flares box (FlareBox); NPC launchers keep FlareWC_Smart on FlareClip.
+        private AmmoDef FlareBoxWC
+        {
+            get
+            {
+                var ammo = FlareWC_Smart;
+                ammo.AmmoMagazine = "FlareBox";
+                ammo.AmmoRound = "Box Flare";
+                ammo.TerminalName = "Flares";
                 return ammo;
             }
         }

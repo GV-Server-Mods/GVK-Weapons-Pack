@@ -1264,8 +1264,13 @@ const STUDIO_CURATION = {
       "roleMultiplier": 1
     },
     "FireworksBoxRainbow": {
-      "category": "Countermeasures & Decoys",
+      "category": "",
       "localIcon": "icons/ammo_FireworksBoxRainbow.png",
+      "roleMultiplier": 1
+    },
+    "FlareBox": {
+      "category": "Countermeasures & Decoys",
+      "localIcon": "icons/ammo_FlareBox.png",
       "roleMultiplier": 1
     },
     "ElitePistolMagazine": {

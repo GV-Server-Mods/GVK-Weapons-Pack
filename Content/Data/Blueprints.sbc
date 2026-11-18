@@ -483,15 +483,15 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>017_FireworksBoxRainbow</SubtypeId>
+				<SubtypeId>017_FlareBox</SubtypeId>
 			</Id>
-			<DisplayName>*Flare* Fireworks Box x30</DisplayName>
-			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
+			<DisplayName>*Flare* Countermeasure Flares x30</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\FlareBox.dds</Icon>
 			<Prerequisites>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Iron"/>
 				<Item Amount="0.5" TypeId="Ingot" SubtypeId="Magnesium"/>
 			</Prerequisites>
-			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="FireworksBoxRainbow"/>
+			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="FlareBox"/>
 			<BaseProductionTimeInSeconds>8</BaseProductionTimeInSeconds>
 		</Blueprint>
 		<!--<Blueprint Enabled="false">

@@ -1220,11 +1220,32 @@ const MAGAZINES_BLUEPRINTS_DATA = [
   },
   {
     "subtypeId": "FireworksBoxRainbow",
-    "blueprintSubtype": "017_FireworksBoxRainbow",
-    "displayName": "*Flare* Fireworks Box x30",
-    "category": "Countermeasures & Decoys",
+    "blueprintSubtype": null,
+    "displayName": "zz*Do Not Use*zzFireworksBoxRainbow",
+    "category": "",
     "icon": "Textures\\GUI\\Icons\\ammo\\FireworksBox.dds",
     "localIcon": "icons/ammo_FireworksBoxRainbow.png",
+    "capacity": 8,
+    "volume": 6,
+    "mass": 10,
+    "productionTime": 0,
+    "roleMultiplier": 1,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxRainbow</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxRainbow.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkRainbow\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
+  },
+  {
+    "subtypeId": "FlareBox",
+    "blueprintSubtype": "017_FlareBox",
+    "displayName": "*Flare* Countermeasure Flares x30",
+    "category": "Countermeasures & Decoys",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\FlareBox.dds",
+    "localIcon": "icons/ammo_FlareBox.png",
     "capacity": 30,
     "volume": 60,
     "mass": 10,
@@ -1247,8 +1268,8 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "subtypeId": "Magnesium"
       }
     ],
-    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Fireworks Box x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>60</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxRainbow.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>30</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkRainbow\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
-    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>017_FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Fireworks Box x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t</Prerequisites>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"FireworksBoxRainbow\"/>\n\t\t\t<BaseProductionTimeInSeconds>8</BaseProductionTimeInSeconds>\n\t\t</Blueprint>"
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FlareBox</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Countermeasure Flares x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\FlareBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.2</X>\n\t\t\t\t<Y>0.15</Y>\n\t\t\t\t<Z>0.15</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>60</Volume>\n\t\t\t<Model>Models\\Items\\FlareAmmoBox.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>30</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Flare\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>017_FlareBox</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Flare* Countermeasure Flares x30</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\FlareBox.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.5\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t</Prerequisites>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"FlareBox\"/>\n\t\t\t<BaseProductionTimeInSeconds>8</BaseProductionTimeInSeconds>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "ElitePistolMagazine",

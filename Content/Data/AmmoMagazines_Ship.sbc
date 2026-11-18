@@ -533,7 +533,7 @@
 				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>FireworksBoxRainbow</SubtypeId>
 			</Id>
-			<DisplayName>*Flare* Fireworks Box x30</DisplayName>
+			<DisplayName>zz*Do Not Use*zzFireworksBoxRainbow</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\FireworksBox.dds</Icon>
 			<Size>
 				<X>0.25</X>
@@ -541,11 +541,33 @@
 				<Z>0.2</Z>
 			</Size>
 			<Mass>10</Mass>
-			<Volume>60</Volume>
+			<Volume>6</Volume>
 			<Model>Models\Weapons\FireworksBoxRainbow.mwm</Model>
 			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>30</Capacity>
+			<Capacity>8</Capacity>
 			<AmmoDefinitionId Subtype="FireworkRainbow"/>
+			<MinimalPricePerUnit>1</MinimalPricePerUnit>
+			<CanPlayerOrder>true</CanPlayerOrder>
+			<Health>99999999</Health>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>FlareBox</SubtypeId>
+			</Id>
+			<DisplayName>*Flare* Countermeasure Flares x30</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\FlareBox.dds</Icon>
+			<Size>
+				<X>0.2</X>
+				<Y>0.15</Y>
+				<Z>0.15</Z>
+			</Size>
+			<Mass>10</Mass>
+			<Volume>60</Volume>
+			<Model>Models\Items\FlareAmmoBox.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>30</Capacity>
+			<AmmoDefinitionId Subtype="Flare"/>
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>

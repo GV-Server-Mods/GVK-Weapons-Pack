@@ -60,7 +60,7 @@
 		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="001_NATO_25x184mmMagazine"/>
 		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="002_NATO_5p56x45mmMagazine"/>
 		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="003_AutocannonClip"/>
-		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="017_FireworksBoxRainbow"/>
+		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="017_FlareBox"/>
 		<Entry Class="GVKBasicAmmo" BlueprintSubtypeId="016_FlareGunMagazine"/>
 		<!-- Large Assemblers -->	
 		<Entry Class="GVKEliteHandheldWeapons" BlueprintSubtypeId="Position0030_EliteAutoPistol"/>
@@ -85,7 +85,7 @@
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="014_Lasers_Plasma"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="015_Others_Drone_Falcon"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="016_FlareGunMagazine"/>
-		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="017_FireworksBoxRainbow"/>
+		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="017_FlareBox"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="ElitePistolMagazine"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="UltimateAutomaticRifleGun_Mag_30rd"/>
 		<!-- LARGE BLOCK WEAPONS, Don't need to add Vanillas here -->
