@@ -74,7 +74,7 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\Inset_FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\large\LG_InsetFlareLauncherConveyor.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="25" />
 				<Component Subtype="PrototechPanel" Count="4"/>
@@ -193,7 +193,7 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\Inset_FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\small\SG_InsetFlareLauncherConveyor.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="2" />
 				<Component Subtype="PrototechPanel" Count="2"/>
@@ -310,7 +310,7 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Large\Inset_FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\large\LG_InsetFlareLauncherConveyor.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="25" />
 				<Component Subtype="PrototechPanel" Count="4">
@@ -431,7 +431,7 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="1" y="1" z="1"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\Small\Inset_FlareLauncher.mwm</Model>
+			<Model>Models\Cubes\small\SG_InsetFlareLauncherConveyor.mwm</Model>
             <Components>
                 <Component Subtype="SteelPlate" Count="2" />
 				<Component Subtype="PrototechPanel" Count="2">
