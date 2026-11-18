@@ -19,8 +19,8 @@ const unit = buildData(parseShipCoreGroups(xml));
 check('Parser: empty SubtypeId stays empty, MyObjectBuilder_ stripped, comments skipped',
   JSON.stringify(unit) === JSON.stringify({ upWeapons: { 'LargeGatlingTurret/': 3, 'ConveyorSorter/X': 8 }, relicWeapons: ['ConveyorSorter/X'] }), unit);
 
-check('Data: 68 UP Weapons entries, 13 relic entries',
-  Object.keys(SC.upWeapons).length === 68 && SC.relicWeapons.length === 13, [Object.keys(SC.upWeapons).length, SC.relicWeapons.length]);
+check('Data: 66 UP Weapons entries, 11 relic entries',
+  Object.keys(SC.upWeapons).length === 66 && SC.relicWeapons.length === 11, [Object.keys(SC.upWeapons).length, SC.relicWeapons.length]);
 check('Data: source names the ShipCore repo and a commit', SC.source.repo === 'GV-Server-Mods/GVK-ShipCoreFramework' && /^[0-9a-f]{40}$/.test(SC.source.commit), SC.source);
 
 const studio = loadStudio();
@@ -29,7 +29,7 @@ const r = studio.run(`(() => {
   const pick = (sub) => { const w = Wp(sub); return w ? { ups: w.upCost, listed: w.upListed, relic: w.isRelic, key: shipCoreKey(w) } : null; };
   const out = {};
   for (const s of ['GVK_CycloneCannonTurret', 'odin', 'LargeGatlingTurret', 'ARYXRailgunTurret', 'ARYXMissileBattery', 'LargeRailgun',
-    'LargeRailgun_NPC', 'LargeInteriorTurret', 'SmallGatlingGun', 'Missile_Torpedo_Large']) out[s] = pick(s);
+    'LargeRailgun_NPC', 'LargeInteriorTurret', 'SmallGatlingGun', 'LargeBlockTorpedoLauncher']) out[s] = pick(s);
   out.relics = weaponsDb.filter((w) => w.isRelic).map((w) => w.subtypeId).sort();
   out.unlisted = weaponsDb.filter((w) => !w.upListed && !isNpcWeapon(w) && !isDetonationWeapon(w) && w.blockTypeId).map((w) => w.subtypeId).sort();
   out.matched = Object.keys(SHIPCORE_GROUPS.upWeapons).filter((k) => weaponsDb.some((w) => shipCoreKey(w) === k)).length;
@@ -51,12 +51,12 @@ check('Cyclone 155 8 UPs; Odin 14 UPs and Relic', eq(r.GVK_CycloneCannonTurret, 
 check('Empty-SubtypeId vanilla blocks match: Gatling Turret 3, Gatling Gun 1',
   eq(r.LargeGatlingTurret, { ups: 3, listed: true, relic: false, key: 'LargeGatlingTurret/' }) && r.SmallGatlingGun.ups === 1, [r.LargeGatlingTurret, r.SmallGatlingGun]);
 check('ARYX Railgun 10, SRBM 14, MAC 12, Torpedo 10: all Relic',
-  [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.Missile_Torpedo_Large].map((x) => x.ups + (x.relic ? 'R' : '')).join() === '10R,14R,12R,10R',
-  [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.Missile_Torpedo_Large]);
+  [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.LargeBlockTorpedoLauncher].map((x) => x.ups + (x.relic ? 'R' : '')).join() === '10R,14R,12R,10R',
+  [r.ARYXRailgunTurret, r.ARYXMissileBattery, r.LargeRailgun, r.LargeBlockTorpedoLauncher]);
 check('NPC copies are not listed: NPC MAC 0 UPs, not Relic', eq(r.LargeRailgun_NPC, { ups: 0, listed: false, relic: false, key: 'ConveyorSorter/LargeRailgun_NPC' }), r.LargeRailgun_NPC);
-check('All 68 UP Weapons entries match a Studio weapon', r.matched === 68, r.matched);
-check('The 13 player Relic Weapons', eq(r.relics, ['ARYXHurricaneCannon', 'ARYXMissileBattery', 'ARYXRailgun', 'ARYXRailgunTurret', 'ARYX_Small_Sidekick_Hangar',
-  'LargeBlockTorpedoLauncher', 'LargeRailgun', 'Missile_Torpedo_Large', 'Missile_Torpedo_Small', 'SmallBlockTorpedoLauncher', 'SmallRailgun', 'lokiCannon1', 'odin']), r.relics);
+check('All 66 UP Weapons entries match a Studio weapon', r.matched === 66, r.matched);
+check('The 11 player Relic Weapons', eq(r.relics, ['ARYXHurricaneCannon', 'ARYXMissileBattery', 'ARYXRailgun', 'ARYXRailgunTurret', 'ARYX_Small_Sidekick_Hangar',
+  'LargeBlockTorpedoLauncher', 'LargeRailgun', 'SmallBlockTorpedoLauncher', 'SmallRailgun', 'lokiCannon1', 'odin']), r.relics);
 check('Player weapons missing from UP Weapons: Interior Turret and the sensors',
   eq(r.unlisted, ['ARYXSmallRadar', 'LargeInteriorTurret', 'OKIDesignator',
     'SmallBlockCompactRadioAntennaReskin_WCRadar', 'SmallBlockRadioAntenna_WCRadar']), r.unlisted);

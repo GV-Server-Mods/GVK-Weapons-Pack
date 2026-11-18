@@ -646,20 +646,10 @@ const STUDIO_CURATION = {
       "name": "(L) SRBM Turret [NPC]",
       "icon": "icons/L__SRBM_Turret_NPC.png"
     },
-    "Missile_Torpedo_Large": {
-      "id": "L__Torpedo_Launcher",
-      "name": "(L) Torpedo Launcher",
-      "icon": "icons/L__Torpedo_Launcher.png"
-    },
     "Missile_Torpedo_Large_NPC": {
       "id": "L__Torpedo_Launcher_NPC",
       "name": "(L) Torpedo Launcher [NPC]",
       "icon": "icons/L__Torpedo_Launcher_NPC.png"
-    },
-    "Missile_Torpedo_Small": {
-      "id": "S__Torpedo_Launcher",
-      "name": "(S) Torpedo Launcher",
-      "icon": "icons/S__Torpedo_Launcher.png"
     },
     "Missile_Torpedo_Small_NPC": {
       "id": "S__Torpedo_Launcher_NPC",

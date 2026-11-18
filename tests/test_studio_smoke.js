@@ -474,7 +474,7 @@ studio.run(`
     const gatRows = gat.weapons.map((w) => ({ def: w.defName, n: w.magsToLoad, inv: w.suggestedInv, short: w.short, live: w.liveInv,
       held: w.magsHeld, over: Math.round(w.overPct * 10) / 10 }));
     // WC conveyor fill: InventoryFillAmount (default 0.75) of InventorySize
-    const torpRow = amCompute(amMag('Missiles_Torpedo')).weapons.find((w) => w.defName === 'Torpedo_Crusader_Large');
+    const torpRow = amCompute(amMag('Torpedo_Heavy')).weapons.find((w) => w.defName === 'LargeTorpedoLauncher');
     const torp = torpRow && { inv: torpRow.suggestedInv, live: torpRow.liveInv, over: Math.round(torpRow.overPct), held: torpRow.magsHeld, short: torpRow.short };
     const sg14 = suggestedInventorySize('NATO_25x184mm', 14);
     const fillTree = JSON.parse(JSON.stringify(amWeaponTree('LargeGatlingTurret')));
@@ -560,8 +560,8 @@ studio.run(`
     const fixedUnguided = weaponsDb.find((w) => w.type === 'Fixed' && ammosDb[w.ammoName]
       && ammosDb[w.ammoName].trajectory.guidance === 'None' && ammosDb[w.ammoName].trajectory.maxTrajectory > 0);
     const td = (sub) => weaponsDb.find((x) => x.subtypeId === sub).maxTargetDistance;
-    __erReport({ drone: er('ARYX_Small_Sidekick_Hangar'), torpedo: er('Missile_Torpedo_Large'),
-      droneW: td('ARYX_Small_Sidekick_Hangar'), torpW: td('Missile_Torpedo_Large'),
+    __erReport({ drone: er('ARYX_Small_Sidekick_Hangar'), torpedo: er('LargeBlockTorpedoLauncher'),
+      droneW: td('ARYX_Small_Sidekick_Hangar'), torpW: td('LargeBlockTorpedoLauncher'),
       fixed: getEngagementRange(fixedUnguided, ammosDb[fixedUnguided.ammoName], false),
       fixedReach: ammosDb[fixedUnguided.ammoName].trajectory.maxTrajectory });
   })();

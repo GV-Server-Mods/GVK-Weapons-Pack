@@ -24,7 +24,7 @@ const r = studio.run(`(() => {
   const badge = (id, k) => getWeaponSpecialtyBadge(Wid(id), ammosDb[k || getSelectableAmmos(Wid(id))[0]]);
   out.badges = {};
   for (const [id, k] of [['L__Cannon_Turret', 'LargeCalibreAmmo'], ['L__Flak_Turret', 'Ballistics_Flak'], ['L__Heavy_Laser_Turret'], ['L__SRBM_Turret'],
-    ['L__MAC_Gun'], ['L__Railgun_Turret'], ['L__Torpedo_Launcher'], ['L__Drone_Bay'], ['L__PD_Laser'], ['L__OKIDesignator'], ['L__Chaingun_Turret']]) out.badges[id] = badge(id, k);
+    ['L__MAC_Gun'], ['L__Railgun_Turret'], ['L__LargeBlockTorpedoLauncher'], ['L__Drone_Bay'], ['L__PD_Laser'], ['L__OKIDesignator'], ['L__Chaingun_Turret']]) out.badges[id] = badge(id, k);
   out.droneBadges = getSelectableAmmos(Wid('L__Drone_Bay')).map((k) => badge('L__Drone_Bay', k));
   out.badBadges = [];
   for (const w of getFilterableWeapons()) for (const k of getSelectableAmmos(w)) {
@@ -33,7 +33,7 @@ const r = studio.run(`(() => {
   }
   // Salvo labels and blast lines
   out.salvo = {};
-  for (const [id, k] of [['L__MAC_Gun'], ['L__Torpedo_Launcher'], ['S__Cannon_Gun', 'LargeCalibreAmmo'], ['L__ARYXCycloneCannon', 'LargeCalibreAmmoHE'], ['L__PD_Laser'], ['L__Heavy_Laser_Turret']]) {
+  for (const [id, k] of [['L__MAC_Gun'], ['L__LargeBlockTorpedoLauncher'], ['S__Cannon_Gun', 'LargeCalibreAmmo'], ['L__ARYXCycloneCannon', 'LargeCalibreAmmoHE'], ['L__PD_Laser'], ['L__Heavy_Laser_Turret']]) {
     sw(id, k); out.salvo[id] = t('pillarAlphaSalvo');
   }
   sw('L__Heavy_Laser_Turret'); out.blastHL = t('tmBlastSub');
@@ -58,7 +58,7 @@ const r = studio.run(`(() => {
   sw('S__Gatling_Gun'); out.cargoSg = t('outMagReload');
   // Readable ammo names in the compare card and radar legend
   sw('L__PD_Laser'); setBenchmarkWeapon('L__Heavy_Laser_Turret'); out.names = [t('qcAmmoTypeBench'), t('legendBenchName')];
-  setBenchmarkWeapon('L__Torpedo_Launcher'); out.legendTorp = t('legendBenchName');
+  setBenchmarkWeapon('L__LargeBlockTorpedoLauncher'); out.legendTorp = t('legendBenchName');
   setBenchmarkWeapon('L__Flak_Turret', 'Ballistics_Flak'); out.legendFlak = t('legendBenchName');
   out.rawNames = [];
   for (const w of getFilterableWeapons()) { setBenchmarkWeapon(w.id); for (const id of ['qcAmmoTypeBench', 'legendBenchName']) if (/\\b[A-Z][a-z]+_[A-Za-z_]+\\b/.test(t(id) || '')) out.rawNames.push(w.id + ':' + t(id)); }
@@ -77,17 +77,17 @@ const r = studio.run(`(() => {
 })()`);
 
 const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-check('Compare list: 77 player weapons plus the placeholder, every rebuild', eq(r.compareOpts, [78, 78, 78]) && r.filterable === 77, r.compareOpts);
+check('Compare list: 75 player weapons plus the placeholder, every rebuild', eq(r.compareOpts, [76, 76, 76]) && r.filterable === 75, r.compareOpts);
 check('Compare list selection is the benchmark (XFEL-H for the default Avenger)', r.bench[0] === r.bench[1] && r.bench[0] === 'L__Heavy_Laser_Turret', r.bench);
 check('Specialty badges', eq(r.badges, {
   L__Cannon_Turret: '🔩 Kinetic · Anti-Heavy ×3', L__Flak_Turret: '🎯 Anti-Missile Screen (101m)', L__Heavy_Laser_Turret: '⚡ Energy · Anti-Systems',
-  L__SRBM_Turret: '🧨 Fragments (10×)', L__MAC_Gun: '🪡 Overpen (100 blk)', L__Railgun_Turret: '🪡 Overpen (9 blk)', L__Torpedo_Launcher: '💥 Blast (25m)',
+  L__SRBM_Turret: '🧨 Fragments (10×)', L__MAC_Gun: '🪡 Overpen (100 blk)', L__Railgun_Turret: '🪡 Overpen (9 blk)', L__LargeBlockTorpedoLauncher: '💥 Blast (25m)',
   L__Drone_Bay: '🤖 Drone Deployment', L__PD_Laser: '🎯 Point Defense Only', L__OKIDesignator: '📡 Sensor / Utility', L__Chaingun_Turret: '🔩 Kinetic · Anti-Armor ×1.5'
 }), r.badges);
 check('Drone bay: every ammo is Drone Deployment', r.droneBadges.length > 1 && r.droneBadges.every((b) => b === '🤖 Drone Deployment'), r.droneBadges);
 check('No badge says "Direct Kinetic AP" or "Shield"', r.badBadges.length === 0, r.badBadges);
 check('Salvo labels', eq(Object.fromEntries(Object.entries(r.salvo).map(([k, v]) => [k, trim(v)])), {
-  L__MAC_Gun: 'SINGLE BEAM SHOT', L__Torpedo_Launcher: 'SINGLE MISSILE', S__Cannon_Gun: 'HEAVY SLUG', L__ARYXCycloneCannon: 'HE SHELL',
+  L__MAC_Gun: 'SINGLE BEAM SHOT', L__LargeBlockTorpedoLauncher: 'SINGLE MISSILE', S__Cannon_Gun: 'HEAVY SLUG', L__ARYXCycloneCannon: 'HE SHELL',
   L__PD_Laser: 'CONTINUOUS BEAM', L__Heavy_Laser_Turret: 'CAPACITOR BURST'
 }), r.salvo);
 check('Blast lines: XFEL-H has no area blast; SRBM lists its fragments',
@@ -109,7 +109,7 @@ check('Cargo: continuous fire per gun (ARYX 23 s, MAC 6m 0s, small Gatling 18 s;
   && r.cargoSg === '0.3 m³ cargo (18s continuous fire)' && r.cargoAryx4 === r.cargoAryx, [r.cargoAryx, r.mac.cargo, r.cargoSg, r.cargoAryx4]);
 check('Range chip: turret TARGETING, fixed gun BORESIGHT', trim(r.rangeCannon) === 'TARGETING' && trim(r.rangeGun) === 'BORESIGHT', [trim(r.rangeCannon), trim(r.rangeGun)]);
 check('Readable ammo names in the compare card and legend',
-  r.names[0] === '⚡ XFEL-H Beam' && r.names[1] === '*H.Laser* XFEL-H Turret [XFEL-H Beam]' && /\[Crusader Torpedo\]$/.test(r.legendTorp) && /\[Proximity Flak\]$/.test(r.legendFlak),
+  r.names[0] === '⚡ XFEL-H Beam' && r.names[1] === '*H.Laser* XFEL-H Turret [XFEL-H Beam]' && /\[Heavy Torpedo\]$/.test(r.legendTorp) && /\[Proximity Flak\]$/.test(r.legendFlak),
   [r.names, r.legendTorp, r.legendFlak]);
 check('No raw ammo ids in the compare card or legend', r.rawNames.length === 0, r.rawNames.slice(0, 5));
 check('Support role: flares and sensors; PD, Odin and Loki unchanged', eq(r.roles, {
@@ -117,9 +117,9 @@ check('Support role: flares and sensors; PD, Odin and Loki unchanged', eq(r.role
   S__SmallBlockRadioAntenna_WCRadar: 'support', S__SmallBlockCompactRadioAntennaReskin_WCRadar: 'support',
   L__PD_Laser: 'pd', L__Heavy_Cannon_Odin_Turret: 'breaker', L__Loki_Plasma_Turret: 'artillery'
 }) && r.roleLabels.length === 9 && r.roleLabels[8] === 'Support', [r.roles, r.roleLabels]);
-check('Data Core fitted on the 17 weapons over 2 km', eq(r.dc.fitted, ['L__ARYXCycloneCannon', 'L__GVK_CycloneCannonTurret', 'L__LargeCalibreTurretType2', 'L__Cannon_Turret',
+check('Data Core fitted on the 15 weapons over 2 km', eq(r.dc.fitted, ['L__ARYXCycloneCannon', 'L__GVK_CycloneCannonTurret', 'L__LargeCalibreTurretType2', 'L__Cannon_Turret',
   'L__Heavy_Cannon_Hurricane_Turret', 'L__Heavy_Cannon_Odin_Turret', 'L__Railgun_Turret', 'L__Loki_Plasma_Turret', 'L__Tuukka_Missile_Turret', 'L__Missile_Turret',
-  'L__Missile_Launcher', 'L__SRBM_Turret', 'L__Torpedo_Launcher', 'S__Torpedo_Launcher', 'L__LargeBlockTorpedoLauncher', 'S__SmallBlockTorpedoLauncher',
+  'L__Missile_Launcher', 'L__SRBM_Turret', 'L__LargeBlockTorpedoLauncher', 'S__SmallBlockTorpedoLauncher',
   'L__Drone_Bay']) && !r.dc.extra, r.dc);
 check('Data Core missing on the OKI Designator and the three radars (targeting over 2 km, no Data Core)',
   eq(r.dc.missing, ['L__OKIDesignator', 'S__ARYXSmallRadar', 'S__SmallBlockRadioAntenna_WCRadar', 'S__SmallBlockCompactRadioAntennaReskin_WCRadar']), r.dc.missing);

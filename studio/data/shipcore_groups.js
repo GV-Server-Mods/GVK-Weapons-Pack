@@ -5,7 +5,7 @@ const SHIPCORE_GROUPS = {
   "source": {
     "repo": "GV-Server-Mods/GVK-ShipCoreFramework",
     "file": "Content/Data/ShipCoreConfig_Groups.xml",
-    "commit": "c6458e3b85a0529f8d4fa5597f681a8e413dfa93"
+    "commit": "f3fef147cc0fb81fe77b354b3b37403a2496cd96"
   },
   "upWeapons": {
     "LargeMissileTurret/GVK_AvengerGatlingTurret": 6,
@@ -54,9 +54,7 @@ const SHIPCORE_GROUPS = {
     "SmallMissileLauncherReload/SmallRocketLauncherReload": 2,
     "SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher": 2,
     "ConveyorSorter/missileBattery01": 10,
-    "ConveyorSorter/Missile_Torpedo_Large": 10,
     "SmallMissileLauncher/LargeBlockTorpedoLauncher": 10,
-    "ConveyorSorter/Missile_Torpedo_Small": 8,
     "SmallMissileLauncher/SmallBlockTorpedoLauncher": 8,
     "ConveyorSorter/ARYX_Small_Sidekick_Hangar": 8,
     "LargeMissileTurret/ARYXSpartanTurret": 12,
@@ -83,9 +81,7 @@ const SHIPCORE_GROUPS = {
     "ConveyorSorter/ARYXRailgun",
     "ConveyorSorter/SmallRailgun",
     "ConveyorSorter/LargeRailgun",
-    "ConveyorSorter/Missile_Torpedo_Large",
     "SmallMissileLauncher/LargeBlockTorpedoLauncher",
-    "ConveyorSorter/Missile_Torpedo_Small",
     "SmallMissileLauncher/SmallBlockTorpedoLauncher",
     "ConveyorSorter/ARYX_Small_Sidekick_Hangar",
     "LargeMissileTurret/lokiCannon1",

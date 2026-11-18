@@ -137,12 +137,9 @@
 		</BlockVariantGroup>
 		<BlockVariantGroup>
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="GVK_Missiles_Torpedoes"/>
-			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
 			<DisplayName>Torpedoes</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large"/>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockTorpedoLauncher"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallBlockTorpedoLauncher"/>
 			</Blocks>

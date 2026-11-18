@@ -36,7 +36,7 @@ const r = studio.run(`(() => {
   const out = {};
   // AoE vs small grid at max hits (fragment model off)
   out.flakHeSmall = at(0, () => prof('LargeBlockMediumCalibreTurret', 'Ballistics_Flak_HE').byTarget.Small.heavy);
-  out.torpSmall = at(0, () => prof('Missile_Torpedo_Large', 'Missiles_Torpedo').byTarget.Small.heavy);
+  out.torpSmall = at(0, () => prof('LargeBlockTorpedoLauncher', 'Torpedo_Heavy').byTarget.Small.heavy);
   out.flakHeSmallSg = at(0, () => prof('SmallBlockMediumCalibreTurret', 'Ballistics_Flak_HE').byTarget.Small.heavy);
   out.he155Small = at(0, () => prof('LargeCalibreTurret', 'LargeCalibreAmmoHE').byTarget.Small.heavy);
   // Overpen badge = matrix chip

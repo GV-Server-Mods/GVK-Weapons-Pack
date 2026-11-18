@@ -98,9 +98,13 @@ function amMagazines() {
   return typeof MAGAZINES_BLUEPRINTS_DATA !== 'undefined' ? MAGAZINES_BLUEPRINTS_DATA : [];
 }
 function amMag(sub) { return amMagazines().find((m) => m.subtypeId === sub) || null; }
-/// <summary>Ship magazines the sheet balances (handheld and countermeasure mags are listed but not tracked).</summary>
+/// <summary>
+/// Ship magazines the sheet balances. Handheld and countermeasure mags are listed but not tracked, and so is a
+/// magazine no player weapon loads (an NPC-only round), since its footprint comes from the player weapons.
+/// </summary>
 function amIsTracked(mag) {
-  return !!(mag && (mag.sizeMult || (mag.category && !/Handheld|Countermeasure|Decoy/i.test(mag.category))));
+  return !!(mag && (mag.sizeMult || (mag.category && !/Handheld|Countermeasure|Decoy/i.test(mag.category)))
+    && amMagAmmoKeys(mag.subtypeId).length);
 }
 function amTrackedMags() { return amMagazines().filter(amIsTracked); }
 /// <summary>

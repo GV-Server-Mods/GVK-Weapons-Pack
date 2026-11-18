@@ -80,7 +80,6 @@
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="009_Missile200mm"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="010_Missiles_Missile"/>  
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="011_Missiles_HeavyMissile"/>  
-		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="012_Missiles_Torpedo"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="012_Torpedo_Heavy"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="013_Missiles_Siege"/>
 		<Entry Class="GVKEliteAmmo" BlueprintSubtypeId="014_Lasers_Plasma"/>
@@ -96,7 +95,6 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_T2PDX"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/GVK_GriffinMissileLauncher"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Large"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYX_Small_Sidekick_Hangar"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/MA_Fixed_T2"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/ARYXMissileBattery"/>
@@ -125,7 +123,6 @@
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/MA_PDT_sm"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/ReceptorCoilGun"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="LargeMissileTurret/ReceptorTurret"/>
-		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/Missile_Torpedo_Small"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockRadioAntenna_WCRadar"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="ConveyorSorter/SmallBlockCompactRadioAntennaReskin_WCRadar"/>
 		<Entry Class="SmallBlocks" BlueprintSubtypeId="SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher"/>

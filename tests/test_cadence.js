@@ -32,7 +32,7 @@ const r = studio.run(`(() => {
     uiAvenger: ui('GVK_AvengerGatlingTurret'),
     uiGatling: ui('LargeGatlingTurret'),
     uiGriffin: ui('GVK_GriffinMissileTurret'),
-    uiTorpedo: ui('Missile_Torpedo_Large'),
+    uiTorpedo: ui('LargeBlockTorpedoLauncher'),
     uiXfel: ui('MA_T2PDX'),
     uiSpartan: ui('ARYXSpartanTurret')
   };

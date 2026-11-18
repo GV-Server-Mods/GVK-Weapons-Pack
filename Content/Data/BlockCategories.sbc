@@ -22,7 +22,7 @@
 				<string>LargeMissileTurret/(null)</string>
 				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
 				<string>ConveyorSorter/missileBattery01</string>
-				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>SmallMissileLauncher/LargeBlockTorpedoLauncher</string>
 				<string>ConveyorSorter/ARYXMissileBattery</string>
 				<string>LargeMissileTurret/ARYXSpartanTurret</string>
 				<string>LargeMissileTurret/MA_PDX</string>
@@ -55,7 +55,7 @@
 				<string>LargeMissileTurret/(null)</string>
 				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
 				<string>ConveyorSorter/missileBattery01</string>
-				<string>ConveyorSorter/Missile_Torpedo_Large</string>
+				<string>SmallMissileLauncher/LargeBlockTorpedoLauncher</string>
 				<string>ConveyorSorter/ARYXMissileBattery</string>
 				<string>LargeMissileTurret/ARYXSpartanTurret</string>
 				<string>LargeMissileTurret/MA_PDX</string>
@@ -106,7 +106,6 @@
 				<string>ConveyorSorter/GVK_GriffinMissileTurret</string>
 				<string>ConveyorSorter/GVK_GriffinMissileLauncher</string>
 				<string>ConveyorSorter/missileBattery01</string>
-				<string>ConveyorSorter/Missile_Torpedo_Large</string>
 				<string>SmallMissileLauncher/LargeBlockTorpedoLauncher</string>
 				<string>ConveyorSorter/ARYXMissileBattery</string>
 				<string>LargeMissileTurret/ARYXSpartanTurret</string>
@@ -155,7 +154,6 @@
 				<string>SmallMissileLauncher/SmallMissileLauncherWarfare2</string>
 				<string>SmallMissileLauncherReload/Missiles_Rockets_SGReloadableLauncher</string>
 				<string>SmallMissileLauncherReload/SmallRocketLauncherReload</string>
-				<string>ConveyorSorter/Missile_Torpedo_Small</string>
 				<string>SmallMissileLauncher/SmallBlockTorpedoLauncher</string>
 				<string>LargeMissileTurret/ReceptorTurret</string>
 				<string>ConveyorSorter/ReceptorCoilGun</string>
