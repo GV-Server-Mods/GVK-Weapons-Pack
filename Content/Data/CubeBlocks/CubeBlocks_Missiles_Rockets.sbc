@@ -369,7 +369,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Hydra Pod (Warfare)</DisplayName>
+			<DisplayName>*Rocket* Hydra Pod (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[Uses Hydra HE]
@@ -426,7 +426,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeMissileTurretReskin</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
+			<DisplayName>*Rocket* Hydra Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[Uses Hydra HE]
@@ -520,7 +520,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallMissileTurretReskin</SubtypeId>
 			</Id>
-			<DisplayName>*Rocket* Hydra Turret (Contact)</DisplayName>
+			<DisplayName>*Rocket* Hydra Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
 			<Description>Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.
 				[Uses Hydra HE]
@@ -1044,7 +1044,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallMissileLauncherWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra Pod (Warfare)</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Pod (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketlauncherReskin.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1103,7 +1103,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>LargeMissileTurretReskin_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinLarge.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
@@ -1199,7 +1199,7 @@
 				<TypeId>LargeMissileTurret</TypeId>
 				<SubtypeId>SmallMissileTurretReskin_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Rocket* Hydra Turret (Contact)</DisplayName>
+			<DisplayName>*NPC-Rocket* Hydra Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\RocketTurretReskinSmall.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>

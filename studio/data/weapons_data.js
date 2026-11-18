@@ -7558,7 +7558,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics"
     },
-    "displayName": "*Gatling* CIWS Turret (Contact)",
+    "displayName": "*Gatling* CIWS Turret (Type II)",
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.\n\t\t\t\t[Uses 25mm KE]",
@@ -7713,7 +7713,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics"
     },
-    "displayName": "*NPC-Gatling* CIWS Turret (Contact)",
+    "displayName": "*NPC-Gatling* CIWS Turret (Type II)",
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "",
@@ -8178,7 +8178,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
     },
-    "displayName": "*Gatling* CIWS Turret (Contact)",
+    "displayName": "*Gatling* CIWS Turret (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.\n\t\t\t\t[Uses 25mm KE]",
@@ -8333,7 +8333,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
     },
-    "displayName": "*NPC-Gatling* CIWS Turret (Contact)",
+    "displayName": "*NPC-Gatling* CIWS Turret (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -8643,7 +8643,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
     },
-    "displayName": "*Gatling* 25mm Gun (Warfare)",
+    "displayName": "*Gatling* 25mm Gun (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Hard-mounted 3-barrel multi-role rotary cannon.\n\t\t\t\t[Uses 25mm KE]",
@@ -8953,7 +8953,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Ballistics_Gatlings_Hardpoint_Other",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Small"
     },
-    "displayName": "*NPC-Gatling* 25mm Gun (Warfare)",
+    "displayName": "*NPC-Gatling* 25mm Gun (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -17035,7 +17035,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-L.Missile* Griffin Launcher (Warfare)",
+    "displayName": "*NPC-L.Missile* Griffin Launcher (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -17810,7 +17810,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "displayName": "*Rocket* Hydra Turret (Contact)",
+    "displayName": "*Rocket* Hydra Turret (Type II)",
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
@@ -17965,7 +17965,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra Turret (Contact)",
+    "displayName": "*NPC-Rocket* Hydra Turret (Type II)",
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "",
@@ -18430,7 +18430,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "displayName": "*Rocket* Hydra Turret (Contact)",
+    "displayName": "*Rocket* Hydra Turret (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
@@ -18585,7 +18585,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra Turret (Contact)",
+    "displayName": "*NPC-Rocket* Hydra Turret (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",
@@ -19205,7 +19205,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*Rocket* Hydra Pod (Warfare)",
+    "displayName": "*Rocket* Hydra Pod (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "Single stage self-propelled dumbfire rocket, with high acceleration but poor accuracy.\n\t\t\t\t[Uses Hydra HE]",
@@ -19515,7 +19515,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Rocket* Hydra Pod (Warfare)",
+    "displayName": "*NPC-Rocket* Hydra Pod (Type II)",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",

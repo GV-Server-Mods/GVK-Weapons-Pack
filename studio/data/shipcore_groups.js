@@ -5,7 +5,7 @@ const SHIPCORE_GROUPS = {
   "source": {
     "repo": "GV-Server-Mods/GVK-ShipCoreFramework",
     "file": "Content/Data/ShipCoreConfig_Groups.xml",
-    "commit": "f3fef147cc0fb81fe77b354b3b37403a2496cd96"
+    "commit": "014896ce59bfb3f10f2a53b5149cd91d2798e0b1"
   },
   "upWeapons": {
     "LargeMissileTurret/GVK_AvengerGatlingTurret": 6,

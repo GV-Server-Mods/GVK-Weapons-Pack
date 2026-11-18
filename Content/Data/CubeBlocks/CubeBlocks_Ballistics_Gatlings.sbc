@@ -392,7 +392,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGunWarfare2</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* 25mm Gun (Warfare)</DisplayName>
+			<DisplayName>*Gatling* 25mm Gun (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<Description>Hard-mounted 3-barrel multi-role rotary cannon.
 				[Uses 25mm KE]
@@ -542,7 +542,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeGatlingTurretReskin</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* CIWS Turret (Contact)</DisplayName>
+			<DisplayName>*Gatling* CIWS Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinLarge.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles. Extended range and Rate of fire over the basic variant.
 				[Uses 25mm KE]
@@ -635,7 +635,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingTurretReskin</SubtypeId>
 			</Id>
-			<DisplayName>*Gatling* CIWS Turret (Contact)</DisplayName>
+			<DisplayName>*Gatling* CIWS Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinSmall.dds</Icon>
 			<Description>Close-in weapon system for defense against small vehicles, ships, personnel, and anti-ship missiles.
 				[Uses 25mm KE]
@@ -1121,7 +1121,7 @@
 				<TypeId>SmallGatlingGun</TypeId>
 				<SubtypeId>SmallGatlingGunWarfare2_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Gatling* 25mm Gun (Warfare)</DisplayName>
+			<DisplayName>*NPC-Gatling* 25mm Gun (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\gatlingGunReskin.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -1275,7 +1275,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>LargeGatlingTurretReskin_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Gatling* CIWS Turret (Contact)</DisplayName>
+			<DisplayName>*NPC-Gatling* CIWS Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinLarge.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
@@ -1370,7 +1370,7 @@
 				<TypeId>LargeGatlingTurret</TypeId>
 				<SubtypeId>SmallGatlingTurretReskin_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Gatling* CIWS Turret (Contact)</DisplayName>
+			<DisplayName>*NPC-Gatling* CIWS Turret (Type II)</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\GatlingTurretReskinSmall.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<PlaceDecals>false</PlaceDecals>
