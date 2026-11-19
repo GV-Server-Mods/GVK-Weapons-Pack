@@ -20008,7 +20008,7 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*SRBM* Longsword Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.\n\t\t\t\t[Uses Longswoard MIRV]",
+    "description": "Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per Fortress core, min target distance 500m. Developed by AWE.\n\t\t\t\t[Uses Longswoard MIRV]",
     "criticalComponent": "Computer",
     "size": {
       "x": 5,

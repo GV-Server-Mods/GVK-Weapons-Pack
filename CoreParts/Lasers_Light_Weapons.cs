@@ -36,6 +36,9 @@ namespace Scripts
 			TopTargets = 1, // 0 = unlimited, max number of top targets to randomize between.
 			TopBlocks = 0, // 0 = unlimited, max number of blocks to randomize between
 			StopTrackingSpeed = 1000, // do not track target threats traveling faster than this speed
+			AllowSwitchTargetPriority = true, // Closest / random target toggle, as on the other PD turrets.
+			AllowFireDistribution = true, // Fire Distribution toggle for point defense.
+			AdvancedFireDistribution = true, // Angle Cost slider for Fire Distribution.
 		};
 
 		private LoadingDef Lasers_Laser_Loading_Small => new LoadingDef {
