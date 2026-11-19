@@ -9,7 +9,7 @@
 			</Id>
 			<DisplayName>*SRBM* Longsword Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\AryxMissileBattery.dds</Icon>
-			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per faction, min target distsance 500m. Developed by AWE.
+			<Description>Short Range Ballistic Missile Battery siege weapon for base defence, static only, one per Fortress core, min target distance 500m. Developed by AWE.
 				[Uses Longswoard MIRV]
 			</Description>
 			<CubeSize>Large</CubeSize>
