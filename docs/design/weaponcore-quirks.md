@@ -2,7 +2,7 @@
 title: WeaponCore ModAPI discoveries and engine quirks
 covers:
   - CoreParts/*.cs
-checked: 2026-11-17
+checked: 2026-11-19
 ---
 
 # WeaponCore ModAPI discoveries and engine quirks
@@ -15,3 +15,5 @@ checked: 2026-11-17
 | **RNG Target Shuffling (`TopTargets`)** | `TopTargets > 0` enables `GetDeck` chunk randomization (`AiSupport.cs:230`), causing weapons to randomly target further hostiles. Setting `TopTargets = 0` disables shuffling for strict closest-first targeting. |
 | **`NoTargetApproach` Leash Trips** | When `NoTargetApproach = true`, `ProcessApproach` runs on Frame 1 with `TargetPos == Zero`, causing `DistanceToTarget` to immediately trip against $(0,0,0)$. Setting `NoTargetApproach = false` delays approach execution until a real target is acquired. |
 | **Direct vs Lead Pointing** | `PointType = Lead` calculates full relative velocity lead intercept in `TrajectoryEstimation`. `PointType = Direct` aims straight at the entity center with 0 lead. |
+| **Burst Count Resets on Reload** | A reload sets `ShotsFired` back to 0 (`WeaponReload.cs`). With `ReloadTime = 0` and `ShotsInBurst > 0`, a magazine that empties mid-burst swaps instantly and the next magazine fires a full burst straight on, so up to one burst plus the rest of the old magazine leaves without a `DelayAfterBurst` pause. The flare launchers rely on this (`Other_Flare_Weapons.cs`). |
+| **Fire Direction Comes From the Muzzle Dummy** | WeaponCore fires along the muzzle dummy's Forward (`Dummies.cs`), so a dummy turned in the model fires sideways whatever the definition says. Check dummy orientation after any model import or re-export. |
