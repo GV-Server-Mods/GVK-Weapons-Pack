@@ -235,6 +235,85 @@
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallExplosiveBarrel"/>
 			</Blocks>
 		</BlockVariantGroup>
+		<!-- NPC-only copies stay Public for the MES weapon randomizer; one group keeps them to one Home icon -->
+		<BlockVariantGroup>
+			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="GVK_NPC_Weapons"/>
+			<DisplayName>NPC Weapons</DisplayName>
+			<Description/>
+			<Blocks>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeGatlingTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_AvengerGatlingTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeGatlingTurretReskin_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurretReskin_NPC"/>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallGatlingGunWarfare2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingGun_Gimbal_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXHeavyFlakTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="KhopeshTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeAutoCannonTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="AutoCannonTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="AutoCannonTurretType2_NPC"/>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannon_NPC"/>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallBlockAutocannonType2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXCycloneCannon_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_CycloneCannonTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeCalibreTurretType2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="OKI122mmVT_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGun_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockLargeCalibreGunType2_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="OKI122mmSGfixed_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXHurricaneCannon_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="odin_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeBlockMediumCalibreTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeBlockMediumCalibreTurretType2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallBlockMediumCalibreTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallBlockMediumCalibreTurretType2_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallBlockMediumCalibreGun_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallBlockMediumCalibreGunType2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXRailgunTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXRailgun_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="SmallRailgun_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="LargeRailgun_NPC"/>
+				<Block Type="MyObjectBuilder_InteriorTurret" Subtype="LargeInteriorTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXHydraTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurret_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeMissileTurretReskin_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SmallMissileTurretReskin_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallMissileLauncherWarfare2_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="Missiles_Rockets_SGReloadableLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="GVK_GriffinMissileTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="GVK_GriffinMissileLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncherReload" Subtype="SmallRocketLauncherReload_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="missileBattery01_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeBlockTorpedoLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallBlockTorpedoLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYXMissileBattery_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ARYXSpartanTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_T2PDX_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="MA_Fixed_T2_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDX_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="ReceptorTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ReceptorCoilGun_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="lokiCannon1_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDT_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="MA_PDT_sm_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="ARYX_Small_Sidekick_Hangar_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeFlareLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeInsetFlareLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallFlareLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallInsetFlareLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallGatlingGun" Subtype="SmallGatlingGun_NPC"/>
+				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="LargeMissileTurret_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallMissileLauncher_NPC"/>
+				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallGriffinLauncherWarfare2_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="HarbingerTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small_NPC"/>
+			</Blocks>
+		</BlockVariantGroup>
 		<!-- Vanilla weapon groups disabled: every vanilla weapon is regrouped by GVK class above -->
 		<BlockVariantGroup Enabled="false">
 			<Id Type="MyObjectBuilder_BlockVariantGroup" Subtype="ShipWeaponStaticGroup"/>
