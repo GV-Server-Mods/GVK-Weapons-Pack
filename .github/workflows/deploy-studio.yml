@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -47,4 +47,14 @@ jobs:
         with:
           path: _site
 
-      - uses: actions/deploy-pages@v5
+  # Deploy runs as its own job: in the same job, deploy-pages looked up the artifact a split second after
+  # upload and GitHub sometimes listed 0 artifacts ("No artifacts named github-pages were found").
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

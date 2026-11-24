@@ -471,8 +471,9 @@ On every push to `main` (or a manual run), GitHub Actions:
    magazine, or any syntax errors are detected.
 2. **Build weapon data**: `node tools/export_snapshots.js` regenerates the Snapshot from the commit.
 3. **Stamp build**: writes `studio/data/build_info.js` with the commit SHA and date.
-4. **Pages Deployment**: stages `studio/` into `_site/` and deploys it with `actions/upload-pages-artifact@v5`
-   and `actions/deploy-pages@v5`.
+4. **Pages Deployment**: stages `studio/` into `_site/` and uploads it with `actions/upload-pages-artifact@v5`;
+   a separate `deploy` job then publishes it with `actions/deploy-pages@v5`. Keep them in separate jobs: in
+   one job the deploy step sometimes found 0 artifacts right after the upload and failed.
 
 A balance change is: edit C# / SBC → push to main → ~1-2 min → the hosted Studio shows the new balance,
 commit SHA and date.
