@@ -2,7 +2,8 @@
 title: WeaponCore ModAPI discoveries and engine quirks
 covers:
   - CoreParts/*.cs
-checked: 2026-11-19
+  - VisualAmmo/*.cs
+checked: 2026-11-26
 ---
 
 # WeaponCore ModAPI discoveries and engine quirks
@@ -16,4 +17,6 @@ checked: 2026-11-19
 | **`NoTargetApproach` Leash Trips** | When `NoTargetApproach = true`, `ProcessApproach` runs on Frame 1 with `TargetPos == Zero`, causing `DistanceToTarget` to immediately trip against $(0,0,0)$. Setting `NoTargetApproach = false` delays approach execution until a real target is acquired. |
 | **Direct vs Lead Pointing** | `PointType = Lead` calculates full relative velocity lead intercept in `TrajectoryEstimation`. `PointType = Direct` aims straight at the entity center with 0 lead. |
 | **Burst Count Resets on Reload** | A reload sets `ShotsFired` back to 0 (`WeaponReload.cs`). With `ReloadTime = 0` and `ShotsInBurst > 0`, a magazine that empties mid-burst swaps instantly and the next magazine fires a full burst straight on, so up to one burst plus the rest of the old magazine leaves without a `DelayAfterBurst` pause. The flare launchers rely on this (`Other_Flare_Weapons.cs`). |
+| **Keen's Visual Ammo Stays Empty** | Keen's `VisualAmmoComponent` (the Torpedo Launcher's tube model) reads Keen's own gun, which WeaponCore never loads. A vanilla weapon definition with only the `Energy` magazine keeps Keen's gun from eating real ammo but leaves the tube empty. `VisualAmmo/TorpedoVisualAmmo.cs` copies WeaponCore's ready-to-fire state into Keen's gun as rounds of the display-only `GVK_TorpedoVisual` magazine. |
+| **Fixed Weapon Terminal Shows Only Keen's Basics** | Seen on the flare and torpedo launchers and in the past on most fixed weapons (owner, 2026-11-26): only On/Off, Name and the Show-in toggles appear, and a world reload brings the WeaponCore controls back. Almost every WeaponCore control appears only once its setup is finished (`TerminalHelpers.cs`, `PlatformState.Ready`), and WeaponCore hides Keen's own controls on its weapons (`Session.AlterControls`). Cause not found in code. |
 | **Fire Direction Comes From the Muzzle Dummy** | WeaponCore fires along the muzzle dummy's Forward (`Dummies.cs`), so a dummy turned in the model fires sideways whatever the definition says. Check dummy orientation after any model import or re-export. |

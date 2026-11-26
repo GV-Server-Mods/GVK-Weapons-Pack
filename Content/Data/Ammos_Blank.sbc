@@ -21,5 +21,28 @@
         <ProjectileTrailProbability>0</ProjectileTrailProbability>
       </ProjectileProperties>
     </Ammo>
+    <!-- Never fired: only gives Keen's VisualAmmoComponent a model for the Torpedo Launcher tube (VisualAmmo/TorpedoVisualAmmo.cs). -->
+    <Ammo xsi:type="MyObjectBuilder_MissileAmmoDefinition">
+      <Id>
+        <TypeId>AmmoDefinition</TypeId>
+        <SubtypeId>GVK_TorpedoVisual</SubtypeId>
+      </Id>
+      <BasicProperties>
+        <DesiredSpeed>0</DesiredSpeed>
+        <SpeedVariance>0</SpeedVariance>
+        <MaxTrajectory>0</MaxTrajectory>
+        <IsExplosive>false</IsExplosive>
+        <BackkickForce>0</BackkickForce>
+        <ExplosiveDamageMultiplier>0</ExplosiveDamageMultiplier>
+      </BasicProperties>
+      <MissileProperties>
+        <MissileMass>0</MissileMass>
+        <MissileExplosionRadius>0</MissileExplosionRadius>
+        <MissileModelName>Models\Weapons\Torpedo_Heavy.mwm</MissileModelName>
+        <MissileAcceleration>0</MissileAcceleration>
+        <MissileInitialSpeed>0</MissileInitialSpeed>
+        <MissileExplosionDamage>0</MissileExplosionDamage>
+      </MissileProperties>
+    </Ammo>
   </Ammos>
 </Definitions>

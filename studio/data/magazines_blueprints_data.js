@@ -853,6 +853,27 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Heavy Torpedo x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Torpedo_Heavy\"/>\n\t\t</Blueprint>"
   },
   {
+    "subtypeId": "GVK_TorpedoVisual",
+    "blueprintSubtype": null,
+    "displayName": "Torpedo (display only)",
+    "category": "",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds",
+    "localIcon": null,
+    "capacity": 1,
+    "volume": 1,
+    "mass": 1,
+    "productionTime": 0,
+    "roleMultiplier": 1,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>GVK_TorpedoVisual</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>Torpedo (display only)</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>1</Mass>\n\t\t\t<Volume>1</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Heavy.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"GVK_TorpedoVisual\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<Public>false</Public>\n\t\t</AmmoMagazine>",
+    "bpXml": null
+  },
+  {
     "subtypeId": "Missiles_Siege",
     "blueprintSubtype": "013_Missiles_Siege",
     "displayName": "*SRBM* Longsword MIRV",

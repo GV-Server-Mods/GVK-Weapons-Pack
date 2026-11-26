@@ -327,6 +327,29 @@
 				<A>255</A>
 			</DefaultColor>
 		</AmmoMagazine>
+		<!-- Display only: Keen's gun on the Torpedo Launcher lists this so its tube model can show (VisualAmmo/TorpedoVisualAmmo.cs). No blueprint, never in an inventory. -->
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>GVK_TorpedoVisual</SubtypeId>
+			</Id>
+			<DisplayName>Torpedo (display only)</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\Torpedo_Heavy.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>1</Mass>
+			<Volume>1</Volume>
+			<Model>Models\Weapons\Torpedo_Heavy.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="GVK_TorpedoVisual"/>
+			<MinimalPricePerUnit>1</MinimalPricePerUnit>
+			<CanPlayerOrder>false</CanPlayerOrder>
+			<Public>false</Public>
+		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>

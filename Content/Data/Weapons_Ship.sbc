@@ -306,9 +306,10 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>LargeTorpedoLauncher</SubtypeId>
 			</Id>
-			<ProjectileAmmoData/>
+			<!-- Display-only magazine no inventory holds, so Keen's gun never pulls a real torpedo; VisualAmmo/TorpedoVisualAmmo.cs loads it to draw the torpedo in the tube. -->
+			<MissileAmmoData RateOfFire="6" ShotsInBurst="1"/>
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Energy"/>
+				<AmmoMagazine Subtype="GVK_TorpedoVisual"/>
 			</AmmoMagazines>
 		</Weapon>
 		<Weapon>
@@ -316,9 +317,9 @@
 				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>SmallTorpedoLauncher</SubtypeId>
 			</Id>
-			<ProjectileAmmoData/>
+			<MissileAmmoData RateOfFire="6" ShotsInBurst="1"/>
 			<AmmoMagazines>
-				<AmmoMagazine Subtype="Energy"/>
+				<AmmoMagazine Subtype="GVK_TorpedoVisual"/>
 			</AmmoMagazines>
 		</Weapon>
 		<Weapon>
