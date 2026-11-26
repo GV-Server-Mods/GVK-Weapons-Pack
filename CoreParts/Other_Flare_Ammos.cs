@@ -482,7 +482,7 @@ namespace Scripts
             }
         }
 
-        // Player launchers fire it from Keen's Countermeasure Flares box (FlareBox); NPC launchers keep FlareWC_Smart on FlareClip.
+        // Player and NPC launchers fire it from Keen's Countermeasure Flares box (FlareBox); NPC launchers also take FlareClip (FlareWC_Smart).
         private AmmoDef FlareBoxWC
         {
             get

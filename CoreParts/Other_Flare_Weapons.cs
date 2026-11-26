@@ -265,14 +265,11 @@ namespace Scripts {
             StopTrackingSpeed = 2000,
         };
 
-        // Fires like the player launcher (rate, reload), but from FlareClip without bursts, and stops as soon as the missile is gone.
-        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId, int magsToLoad, int reloadTime)
+        // Fires like the player launcher (box, bursts, pauses), but only decoy flares, and stops as soon as the missile is gone.
+        // FlareBox first, so MES restocks boxes; FlareClip stays loadable for prefabs still stocked with it (owner, 2026-11-26).
+        private WeaponDefinition Other_Flare_NPC(WeaponDefinition weapon, string subtypeId)
         {
             weapon.Assignments.MountPoints[0].SubtypeId = subtypeId;
-            weapon.HardPoint.Loading.MagsToLoad = magsToLoad;
-            weapon.HardPoint.Loading.ReloadTime = reloadTime;
-            weapon.HardPoint.Loading.ShotsInBurst = 0;
-            weapon.HardPoint.Loading.DelayAfterBurst = 0;
             // Unique name: MES looks definitions up by PartName and takes the first match, so a shared
             // name made it restock the player launcher's ammo (fireworks) instead of FlareClips.
             weapon.HardPoint.PartName = "NPC Flare Launcher";
@@ -283,13 +280,13 @@ namespace Scripts {
             weapon.HardPoint.Ai = Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking;
             weapon.HardPoint.Loading.FireFull = false;
             weapon.Ammos = new[] {
-                FlareWC_Smart,
+                FlareBoxWC, FlareWC_Smart,
             };
             return weapon;
         }
 
-        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC", 4, 1200);
-        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC", 2, 600);
+        WeaponDefinition LargeFlareWC_NPC => Other_Flare_NPC(LargeFlareWC, "LargeFlareLauncher_NPC");
+        WeaponDefinition SmallFlareWC_NPC => Other_Flare_NPC(SmallFlareWC, "SmallFlareLauncher_NPC");
 
         // Inset launchers (Warfare 3): flare launcher stats on Keen's inset model, whose muzzles differ (WeaponCore Flares.cs)
         WeaponDefinition LargeInsetFlareWC
@@ -334,7 +331,7 @@ namespace Scripts {
                 return weapon;
             }
         }
-        WeaponDefinition LargeInsetFlareWC_NPC => Other_Flare_NPC(LargeInsetFlareWC, "LargeInsetFlareLauncher_NPC", 4, 1200);
-        WeaponDefinition SmallInsetFlareWC_NPC => Other_Flare_NPC(SmallInsetFlareWC, "SmallInsetFlareLauncher_NPC", 2, 600);
+        WeaponDefinition LargeInsetFlareWC_NPC => Other_Flare_NPC(LargeInsetFlareWC, "LargeInsetFlareLauncher_NPC");
+        WeaponDefinition SmallInsetFlareWC_NPC => Other_Flare_NPC(SmallInsetFlareWC, "SmallInsetFlareLauncher_NPC");
     }
 }
