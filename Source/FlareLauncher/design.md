@@ -14,12 +14,17 @@
 | Port part | Keen's stock large port, 1.36 m frame, from large `CargoContainerSmall.FBX` | Keen's stock small port, 340 mm frame, from small-grid `CargoContainerSmall.FBX` |
 | Line type | large (`detector_conveyor_001`), as on the old model | small (`detector_conveyor_small_001`), as on the old model's back |
 | Dummy | copied from the donor port, `highlight` set to the port's mesh section | same |
-| Everything else | Keen's geometry, muzzles, barrels and `detector_inventory` unchanged (every dummy checked against Keen's `.mwm`) | same |
+| Everything else | Keen's geometry, muzzles, barrels and `detector_inventory` unchanged (every dummy checked against Keen's `.mwm`) | same, except the barrel highlight (below) |
 
 - **Front connection removed:** the old models also had a hidden conveyor line on the front, from a renamed inventory detector (`detector_conveyor_005`, a large line even on the small model). The new models connect through the back port only.
 - **Port cut:** an exact boolean the size of the port's outline cuts the back plate. The cut's wall faces were then deleted, since they had no UVs and sit hidden behind the port.
 - **Normals after the cut:** the Exact boolean welded every vertex of each mesh it cut, which threw Keen's normals off across the whole model (owner, 2026-11-21: odd trapezoids of light at the corners and smoothed bevels). Each cut mesh was rebuilt from the `_before_cut` checkpoint with se-dev-seut's `restore_cut_normals.py`, and the export checked with `mwm_normals_vs_vanilla.py`: no vertex more than 5 degrees off Keen's. Checked in game (owner, 2026-11-21: "looks good in game"). Run both again after any new cut.
 - **Highlights:** the game outlines named mesh sections only: objects named `*_section*` (`ConveyorPort_section_1`, `ConveyorPortSmall_section_1`). Every LOD that has the port uses the same section name, and its detector points at the mesh in its own LOD.
+- **Small launcher barrel highlight (2026-11-26, hub #825):** Keen's model lit up the whole block when you aimed at it, which made it hard to paint. The small launcher now gets the same fix Keen gave the inset launcher in hotfix 1.211.019, although Keen left this model alone. `detector_inventory` is a box over the barrel mouths (Blender location 0, 0.0925, 0; scale 0.5, 0.075, 0.45), and it highlights `Barrels_section_01`, in LOD0 and LOD1.
+  - The game draws the outline through the body, and Keen's barrels run 30 cm back into it, so the first try showed long spikes across the block. Each barrel mesh is now cut in two. Only the part outside the body stays in `Barrels_section_01`. The rest moved to `Barrels_inner` / `Barrels_inner_LOD1`, which look the same and have no highlight.
+  - The middle column is cut at the front plate (world y -0.070). The side columns enter a rounded body edge and are open on their outer sides down to the side panel, so they are cut flat where the side panel starts (y -0.019).
+  - A stepped cut that followed the rounded edge left a ragged outline (owner: "looks like a hack job"). The flat cut was approved in game (owner, 2026-11-26: "Looks good").
+  - The uncut meshes are kept in the blend as `*_before_barrelcut`. Normals match Keen's except at the new vertices on the two cut lines.
 - **LODs:** Keen's `_LOD1..3` with the port added to LOD1 and LOD2, from the cargo container's own LOD1 port. LOD3 has none, as Keen's cargo LODs drop it. Distances are Keen's: large 8 / 25 / 45 m, small 5 / 15 / 35 m.
 - **Build stages:** Keen's construction models, unchanged in the SBC. The game reads conveyor lines from the main model only (`MyConveyorLine.GetBlockLinePositions` uses `BlockDefinition.Model`).
 - **Collision:** Keen's own `.hkt` (the SEUT collision collection points at it).
