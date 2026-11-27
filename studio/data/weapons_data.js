@@ -20593,7 +20593,7 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 51,
+        "count": 55,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -20611,7 +20611,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "MetalGrid",
-        "count": 21,
+        "count": 22,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -20629,25 +20629,25 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "InteriorPlate",
-        "count": 13,
+        "count": 14,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -20761,7 +20761,7 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 51,
+        "count": 55,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -20779,7 +20779,7 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "MetalGrid",
-        "count": 21,
+        "count": 22,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -20797,25 +20797,25 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "InteriorPlate",
-        "count": 13,
+        "count": 14,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 210,
+        "count": 220,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -20929,7 +20929,7 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 35,
+        "count": 13,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -20947,43 +20947,43 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "MetalGrid",
-        "count": 14,
+        "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 7,
+        "count": 3,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 70,
+        "count": 26,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 9,
+        "count": 4,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -20993,7 +20993,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "SmallBlockTorpedoLauncher",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 35,
+    "buildTimeSeconds": 12,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -21097,7 +21097,7 @@ const BUNDLED_WEAPONS_DATA = [
     "components": [
       {
         "name": "SteelPlate",
-        "count": 35,
+        "count": 13,
         "deconstructSubtype": null,
         "deconstructType": null
       },
@@ -21115,43 +21115,43 @@ const BUNDLED_WEAPONS_DATA = [
       },
       {
         "name": "MetalGrid",
-        "count": 14,
+        "count": 6,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "LargeTube",
-        "count": 7,
+        "count": 3,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Motor",
-        "count": 70,
+        "count": 26,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "InteriorPlate",
-        "count": 9,
+        "count": 4,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Computer",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "Construction",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       },
       {
         "name": "SteelPlate",
-        "count": 140,
+        "count": 51,
         "deconstructSubtype": null,
         "deconstructType": null
       }
@@ -21161,7 +21161,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "SmallBlockTorpedoLauncher_NPC",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 35,
+    "buildTimeSeconds": 12,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [

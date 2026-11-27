@@ -18,16 +18,16 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\TorpedoLauncher.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="51"/>
+				<Component Subtype="SteelPlate" Count="55"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
 				<Component Subtype="PrototechPanel" Count="10"/>
-				<Component Subtype="MetalGrid" Count="21"/>
+				<Component Subtype="MetalGrid" Count="22"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
-				<Component Subtype="InteriorPlate" Count="13"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SteelPlate" Count="210"/>
+				<Component Subtype="InteriorPlate" Count="14"/>
+				<Component Subtype="Computer" Count="220"/>
+				<Component Subtype="Construction" Count="220"/>
+				<Component Subtype="SteelPlate" Count="220"/>
 			</Components>
 			<BuildTimeSeconds>53</BuildTimeSeconds>
 			<PCU>10</PCU>
@@ -98,18 +98,18 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\TorpedoLauncher.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="35"/>
+				<Component Subtype="SteelPlate" Count="13"/>
 				<Component Subtype="PrototechCircuitry" Count="1"/>
 				<Component Subtype="PrototechPanel" Count="8"/>
-				<Component Subtype="MetalGrid" Count="14"/>
-				<Component Subtype="LargeTube" Count="7"/>
-				<Component Subtype="Motor" Count="70"/>
-				<Component Subtype="InteriorPlate" Count="9"/>
-				<Component Subtype="Computer" Count="140"/>
-				<Component Subtype="Construction" Count="140"/>
-				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="MetalGrid" Count="6"/>
+				<Component Subtype="LargeTube" Count="3"/>
+				<Component Subtype="Motor" Count="26"/>
+				<Component Subtype="InteriorPlate" Count="4"/>
+				<Component Subtype="Computer" Count="51"/>
+				<Component Subtype="Construction" Count="51"/>
+				<Component Subtype="SteelPlate" Count="51"/>
 			</Components>
-			<BuildTimeSeconds>35</BuildTimeSeconds>
+			<BuildTimeSeconds>12</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -319,7 +319,7 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Large\TorpedoLauncher.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="51"/>
+				<Component Subtype="SteelPlate" Count="55"/>
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -332,13 +332,13 @@
 						<SubtypeId>PrototechPanelScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
-				<Component Subtype="MetalGrid" Count="21"/>
+				<Component Subtype="MetalGrid" Count="22"/>
 				<Component Subtype="LargeTube" Count="11"/>
 				<Component Subtype="Motor" Count="110"/>
-				<Component Subtype="InteriorPlate" Count="13"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SteelPlate" Count="210"/>
+				<Component Subtype="InteriorPlate" Count="14"/>
+				<Component Subtype="Computer" Count="220"/>
+				<Component Subtype="Construction" Count="220"/>
+				<Component Subtype="SteelPlate" Count="220"/>
 			</Components>
 			<BuildTimeSeconds>53</BuildTimeSeconds>
 			<PCU>10</PCU>
@@ -406,7 +406,7 @@
 			<ModelOffset x="0" y="0" z="0"/>
 			<Model>Models\Cubes\Small\TorpedoLauncher.mwm</Model>
 			<Components>
-				<Component Subtype="SteelPlate" Count="35"/>
+				<Component Subtype="SteelPlate" Count="13"/>
 				<Component Subtype="PrototechCircuitry" Count="1">
 					<DeconstructId>
 						<TypeId>Ore</TypeId>
@@ -419,15 +419,15 @@
 						<SubtypeId>PrototechPanelScrap</SubtypeId>
 					</DeconstructId>
 				</Component>
-				<Component Subtype="MetalGrid" Count="14"/>
-				<Component Subtype="LargeTube" Count="7"/>
-				<Component Subtype="Motor" Count="70"/>
-				<Component Subtype="InteriorPlate" Count="9"/>
-				<Component Subtype="Computer" Count="140"/>
-				<Component Subtype="Construction" Count="140"/>
-				<Component Subtype="SteelPlate" Count="140"/>
+				<Component Subtype="MetalGrid" Count="6"/>
+				<Component Subtype="LargeTube" Count="3"/>
+				<Component Subtype="Motor" Count="26"/>
+				<Component Subtype="InteriorPlate" Count="4"/>
+				<Component Subtype="Computer" Count="51"/>
+				<Component Subtype="Construction" Count="51"/>
+				<Component Subtype="SteelPlate" Count="51"/>
 			</Components>
-			<BuildTimeSeconds>35</BuildTimeSeconds>
+			<BuildTimeSeconds>12</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
