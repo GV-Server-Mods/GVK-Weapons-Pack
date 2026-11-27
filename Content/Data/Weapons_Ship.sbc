@@ -54,16 +54,6 @@
 		<Weapon>
 			<Id>
 				<TypeId>WeaponDefinition</TypeId>
-				<SubtypeId>Missiles_Torpedo</SubtypeId>
-			</Id>
-			<ProjectileAmmoData/>
-			<AmmoMagazines>
-				<AmmoMagazine Subtype="Energy"/>
-			</AmmoMagazines>
-		</Weapon>
-		<Weapon>
-			<Id>
-				<TypeId>WeaponDefinition</TypeId>
 				<SubtypeId>Missiles_Siege</SubtypeId>
 			</Id>
 			<ProjectileAmmoData/>

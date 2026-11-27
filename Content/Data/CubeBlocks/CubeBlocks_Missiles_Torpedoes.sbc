@@ -7,10 +7,10 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeBlockTorpedoLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Torpedo Launcher</DisplayName>
+			<DisplayName>*Torpedo* Harpoon Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\LargeBlockTorpedoLauncher.dds</Icon>
 			<Description>This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.
-				[Uses Heavy Torpedo]
+				[Uses Harpoon HE]
 			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -29,7 +29,7 @@
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SteelPlate" Count="220"/>
 			</Components>
-			<BuildTimeSeconds>53</BuildTimeSeconds>
+			<BuildTimeSeconds>55</BuildTimeSeconds>
 			<PCU>10</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -87,10 +87,10 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallBlockTorpedoLauncher</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Torpedo Launcher</DisplayName>
+			<DisplayName>*Torpedo* Harpoon Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\TorpedoLauncher_SGrid.dds</Icon>
 			<Description>This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.
-				[Uses Heavy Torpedo]
+				[Uses Harpoon HE]
 			</Description>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -109,7 +109,7 @@
 				<Component Subtype="Construction" Count="51"/>
 				<Component Subtype="SteelPlate" Count="51"/>
 			</Components>
-			<BuildTimeSeconds>12</BuildTimeSeconds>
+			<BuildTimeSeconds>13</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -161,157 +161,12 @@
 			<Public>true</Public>
 		</Definition>
 		<!-- NPC Weapons -->
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>Missile_Torpedo_Large_NPC</SubtypeId>
-			</Id>
-			<DisplayName>*NPC-Torpedo* Crusader Launcher</DisplayName>
-			<Icon>Textures\GUI\Icons\CrusaderTubeLG.png</Icon>
-			<CubeSize>Large</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="1" y="1" z="5"/>
-			<ModelOffset x="0" y="0" z="1.25"/>
-			<Center x="0" y="0" z="4"/>
-			<Model>Models\Akiad\Small\CrusaderTubeLG.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="51"/>
-				<Component Subtype="PrototechCircuitry" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="PrototechPanel" Count="10">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>PrototechPanelScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="MetalGrid" Count="21"/>
-				<Component Subtype="LargeTube" Count="11"/>
-				<Component Subtype="Motor" Count="110"/>
-				<Component Subtype="InteriorPlate" Count="13"/>
-				<Component Subtype="Computer" Count="210"/>
-				<Component Subtype="Construction" Count="210"/>
-				<Component Subtype="SteelPlate" Count="210"/>
-			</Components>
-			<BuildTimeSeconds>53</BuildTimeSeconds>
-			<PCU>10</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Back" StartX="0.0" StartY="0.0" EndX="1" EndY="1" Default="true"/>
-				<MountPoint Side="Left" StartX="1" StartY="0.0" EndX="5" EndY="1" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Right" StartX="0.0" StartY="0.0" EndX="4" EndY="1" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Top" StartX="0.0" StartY="0.0" EndX="1" EndY="4" PressurizedWhenOpen="true"/>
-				<MountPoint Side="Bottom" StartX="0" StartY="1" EndX="1" EndY="5" PressurizedWhenOpen="true"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\CrusaderTubeLG_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\CrusaderTubeLG_BS2.mwm"/>
-			</BuildProgressModels>
-			<StaticMode>
-				<PlacementMode>OutsideVoxel</PlacementMode>
-				<MaxAllowed>0.2</MaxAllowed>
-				<MinAllowed>0</MinAllowed>
-			</StaticMode>
-			<DynamicMode>
-				<PlacementMode>OutsideVoxel</PlacementMode>
-				<MaxAllowed>0.2</MaxAllowed>
-				<MinAllowed>0.01</MinAllowed>
-			</DynamicMode>
-			<WeaponDefinitionId Subtype="Missiles_Torpedo"/>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<AiEnabled>false</AiEnabled>
-			<BlockPairName>Missile_Torpedo_NPC</BlockPairName>
-			<NavigationDefinition>Default</NavigationDefinition>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>3000</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
-		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
-			<Id>
-				<TypeId>ConveyorSorter</TypeId>
-				<SubtypeId>Missile_Torpedo_Small_NPC</SubtypeId>
-			</Id>
-			<DisplayName>*NPC-Torpedo* Crusader Launcher</DisplayName>
-			<Icon>Textures\GUI\Icons\CrusaderLauncherOpenStatic.png</Icon>
-			<CubeSize>Small</CubeSize>
-			<BlockTopology>TriangleMesh</BlockTopology>
-			<Size x="3" y="3" z="15"/>
-			<ModelOffset x="0" y="0" z="0.75"/>
-			<Center x="1" y="0" z="12"/>
-			<Model>Models\Akiad\Small\CrusaderLauncherOpenStatic.mwm</Model>
-			<Components>
-				<Component Subtype="SteelPlate" Count="35"/>
-				<Component Subtype="PrototechCircuitry" Count="1">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>PrototechCircuitryScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="PrototechPanel" Count="8">
-					<DeconstructId>
-                        <TypeId>Ore</TypeId>
-                        <SubtypeId>PrototechPanelScrap</SubtypeId>
-                    </DeconstructId>
-                </Component>
-				<Component Subtype="MetalGrid" Count="14"/>
-				<Component Subtype="LargeTube" Count="7"/>
-				<Component Subtype="Motor" Count="70"/>
-				<Component Subtype="InteriorPlate" Count="9"/>
-				<Component Subtype="Computer" Count="140"/>
-				<Component Subtype="Construction" Count="140"/>
-				<Component Subtype="SteelPlate" Count="140"/>
-			</Components>
-			<BuildTimeSeconds>35</BuildTimeSeconds>
-			<PCU>8</PCU>
-			<CriticalComponent Subtype="Computer" Index="0"/>
-			<MountPoints>
-				<MountPoint Side="Bottom" StartX="1.0" StartY="11" EndX="2.0" EndY="12" Default="true"/>
-				<MountPoint Side="Bottom" StartX="1.0" StartY="13" EndX="2.0" EndY="14"/>
-			</MountPoints>
-			<BuildProgressModels>
-				<Model BuildPercentUpperBound="0.5" File="Models\Akiad\Small\CrusaderLauncherOpenStatic_BS1.mwm"/>
-				<Model BuildPercentUpperBound="1.0" File="Models\Akiad\Small\CrusaderLauncherOpenStatic_BS2.mwm"/>
-			</BuildProgressModels>
-			<StaticMode>
-				<PlacementMode>OutsideVoxel</PlacementMode>
-				<MaxAllowed>0.2</MaxAllowed>
-				<MinAllowed>0</MinAllowed>
-			</StaticMode>
-			<DynamicMode>
-				<PlacementMode>OutsideVoxel</PlacementMode>
-				<MaxAllowed>0.2</MaxAllowed>
-				<MinAllowed>0.01</MinAllowed>
-			</DynamicMode>
-			<MirroringY>Z</MirroringY>
-			<MirroringZ>Y</MirroringZ>
-			<AiEnabled>false</AiEnabled>
-			<WeaponDefinitionId Subtype="Missiles_Torpedo"/>
-			<BlockPairName>Missile_Torpedo_NPC</BlockPairName>
-			<NavigationDefinition>Default</NavigationDefinition>
-			<ResourceSinkGroup>Defense</ResourceSinkGroup>
-			<InventoryMaxVolume>3000</InventoryMaxVolume>
-			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
-			<DamagedSound>ParticleWeapExpl</DamagedSound>
-			<DestroyEffect>BlockDestroyedExplosion</DestroyEffect>
-			<DestroySound>WepSmallWarheadExpl</DestroySound>
-			<GuiVisible>false</GuiVisible>
-			<Public>true</Public>
-		</Definition>
 		<Definition xsi:type="MyObjectBuilder_WeaponBlockDefinition">
 			<Id>
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>LargeBlockTorpedoLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Torpedo* Torpedo Launcher</DisplayName>
+			<DisplayName>*NPC-Torpedo* Harpoon Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\LargeBlockTorpedoLauncher.dds</Icon>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -340,7 +195,7 @@
 				<Component Subtype="Construction" Count="220"/>
 				<Component Subtype="SteelPlate" Count="220"/>
 			</Components>
-			<BuildTimeSeconds>53</BuildTimeSeconds>
+			<BuildTimeSeconds>55</BuildTimeSeconds>
 			<PCU>10</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>
@@ -398,7 +253,7 @@
 				<TypeId>SmallMissileLauncher</TypeId>
 				<SubtypeId>SmallBlockTorpedoLauncher_NPC</SubtypeId>
 			</Id>
-			<DisplayName>*NPC-Torpedo* Torpedo Launcher</DisplayName>
+			<DisplayName>*NPC-Torpedo* Harpoon Launcher</DisplayName>
 			<Icon>Textures\GUI\Icons\Cubes\TorpedoLauncher_SGrid.dds</Icon>
 			<CubeSize>Small</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
@@ -427,7 +282,7 @@
 				<Component Subtype="Construction" Count="51"/>
 				<Component Subtype="SteelPlate" Count="51"/>
 			</Components>
-			<BuildTimeSeconds>12</BuildTimeSeconds>
+			<BuildTimeSeconds>13</BuildTimeSeconds>
 			<PCU>8</PCU>
 			<CriticalComponent Subtype="Computer" Index="0"/>
 			<MountPoints>

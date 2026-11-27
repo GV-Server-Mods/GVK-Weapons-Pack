@@ -39,11 +39,11 @@ namespace Scripts
 { // Don't edit above this line
     partial class Parts
     {
-        private AmmoDef Missiles_Torpedo => new AmmoDef // Your ID, for slotting into the Weapon CS
+        private AmmoDef Torpedo_Heavy => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
-            AmmoMagazine = "Missiles_Torpedo", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
-            AmmoRound = "Missiles_Torpedo", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
-            TerminalName = "Crusader Torpedo", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
+            AmmoMagazine = "Torpedo_Heavy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.
+            AmmoRound = "Torpedo_Heavy", // Name of ammo in terminal, should be different for each ammo type used by the same weapon. Is used by Shrapnel.
+            TerminalName = "Harpoon HE", // Optional terminal name for this ammo type, used when picking ammo/cycling consumables.  Safe to have duplicates across different ammo defs.
             BaseDamage = 100f, // Direct damage; one steel plate is worth 100.
             Mass = 200f, // In kilograms; how much force the impact will apply to the target.
             Health = 150, // How much damage the projectile can take from other projectiles (base of 1 per hit) before dying; 0 disables this and makes the projectile untargetable.
@@ -282,7 +282,7 @@ namespace Scripts
 			},
             AmmoGraphics = new GraphicDef 
 			{
-                ModelName = "\\Models\\Akiad\\Small\\CrusaderMissile.mwm",
+                ModelName = "Models\\Weapons\\Torpedo_Heavy.mwm", // No leading backslash: WeaponCore loads Keen's model from the game content.
                 VisualProbability = 1f, // %
                 ShieldHitDraw = false,
                 Particles = new AmmoParticleDef
@@ -351,31 +351,6 @@ namespace Scripts
             },
         };
 
-        private AmmoDef Torpedo_Heavy
-        {
-            get
-            {
-                var torp = Missiles_Torpedo;
-                torp.AmmoMagazine = "Torpedo_Heavy";
-                torp.AmmoRound = "Torpedo_Heavy";
-                torp.TerminalName = "Heavy Torpedo";
-                // No leading backslash: WeaponCore loads Keen's model from the game content.
-                torp.AmmoGraphics.ModelName = "Models\\Weapons\\Torpedo_Heavy.mwm";
-                return torp;
-            }
-        }
-
-        /*private AmmoDef Missiles_Torpedo_NPC
-        {
-            get
-            {
-                var torp = Missiles_Torpedo;
-                torp.AmmoRound = "Missiles_Torpedo_NPC";
-                torp.Trajectory.Smarts.OverideTarget = true;
-                return torp;
-            }
-        }*/
-		
         private AmmoDef Missiles_Torpedo_Fragment => new AmmoDef // Your ID, for slotting into the Weapon CS
         {
             AmmoMagazine = "Energy", // SubtypeId of physical ammo magazine. Use "Energy" for weapons without physical ammo.

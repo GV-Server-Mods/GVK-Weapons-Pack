@@ -40,8 +40,6 @@ namespace Scripts
 							SmallBlockAssaultCannonTurret,
 							LargeBlockRailgun,
 							SmallRocketLauncherReload,
-							Torpedo_Crusader_Large,
-							Torpedo_Crusader_Small,
 							LargeTorpedoLauncher,
 							SmallTorpedoLauncher,
 							MA_PDT,

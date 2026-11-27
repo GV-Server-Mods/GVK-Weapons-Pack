@@ -310,8 +310,6 @@
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallMissileLauncher_NPC"/>
 				<Block Type="MyObjectBuilder_SmallMissileLauncher" Subtype="SmallGriffinLauncherWarfare2_NPC"/>
 				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="HarbingerTurret_NPC"/>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Large_NPC"/>
-				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="Missile_Torpedo_Small_NPC"/>
 			</Blocks>
 		</BlockVariantGroup>
 		<!-- Vanilla weapon groups disabled: every vanilla weapon is regrouped by GVK class above -->

@@ -156,8 +156,8 @@ if (bMag) {
 // Ammo parity vs bundled for the plain def; for the Odin clone assert the CORRECTED values
 // (bundled data was the corrupt version: phantom mag, mass 1, npcSafe false, range 1500).
 const bundledAmmos = loadBundledJs('ammos_data.js');
-// These two exist only as COMMENTED-OUT defs in CoreParts (Missiles_LightMissile_Ammo.cs:219,
-// Missiles_Torpedo_Ammos.cs:352) — the old bundled data wrongly catalogued them as live.
+// Neither is a live def in CoreParts (Missiles_Missile_NPC is commented out in Missiles_LightMissile_Ammo.cs;
+// Missiles_Torpedo_NPC was removed with the Crusader) — the old bundled data wrongly catalogued them as live.
 const deadInSource = ['Missiles_Missile_NPC', 'Missiles_Torpedo_NPC'];
 function pick(a) {
   return a && JSON.stringify([a.ammoMagazine, a.baseDamage, a.mass, a.backKickForce, a.npcSafe,

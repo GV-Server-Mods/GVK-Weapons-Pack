@@ -1460,7 +1460,7 @@ function getAmmoSbcDisplayName(ammoKey) {
 /// <summary>
 /// Player-facing ammo name: a curated name; else the terminal name unless it is a raw id (an underscore or
 /// run-together CamelCase like SmallRailgunAmmo; "155 AP", "Designator" and "50mm FeW" pass);
-/// else the magazine's name without its *TYPE* prefix and xN count ("Crusader Disruptor");
+/// else the magazine's name without its *TYPE* prefix and xN count ("Harpoon HE");
 /// else "<weapon type> Energy" for energy rounds. Never a raw def id like Lasers_Laser_Large.
 /// </summary>
 function getAmmoDisplayName(ammo, weapon) {

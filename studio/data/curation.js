@@ -646,34 +646,24 @@ const STUDIO_CURATION = {
       "name": "(L) SRBM Turret [NPC]",
       "icon": "icons/L__SRBM_Turret_NPC.png"
     },
-    "Missile_Torpedo_Large_NPC": {
-      "id": "L__Torpedo_Launcher_NPC",
-      "name": "(L) Torpedo Launcher [NPC]",
-      "icon": "icons/L__Torpedo_Launcher_NPC.png"
-    },
-    "Missile_Torpedo_Small_NPC": {
-      "id": "S__Torpedo_Launcher_NPC",
-      "name": "(S) Torpedo Launcher [NPC]",
-      "icon": "icons/S__Torpedo_Launcher_NPC.png"
-    },
     "LargeBlockTorpedoLauncher": {
       "id": "L__LargeBlockTorpedoLauncher",
-      "name": "(L) Keen Torpedo Launcher",
+      "name": "(L) Harpoon Launcher",
       "icon": "icons/LargeBlockTorpedoLauncher.png"
     },
     "LargeBlockTorpedoLauncher_NPC": {
       "id": "L__LargeBlockTorpedoLauncher_NPC",
-      "name": "(L) Keen Torpedo Launcher [NPC]",
+      "name": "(L) Harpoon Launcher [NPC]",
       "icon": "icons/LargeBlockTorpedoLauncher_NPC.png"
     },
     "SmallBlockTorpedoLauncher": {
       "id": "S__SmallBlockTorpedoLauncher",
-      "name": "(S) Keen Torpedo Launcher",
+      "name": "(S) Harpoon Launcher",
       "icon": "icons/SmallBlockTorpedoLauncher.png"
     },
     "SmallBlockTorpedoLauncher_NPC": {
       "id": "S__SmallBlockTorpedoLauncher_NPC",
-      "name": "(S) Keen Torpedo Launcher [NPC]",
+      "name": "(S) Harpoon Launcher [NPC]",
       "icon": "icons/SmallBlockTorpedoLauncher_NPC.png"
     },
     "ARYX_Small_Sidekick_Hangar": {
@@ -1055,37 +1045,6 @@ const STUDIO_CURATION = {
       "massMult": 1.9999,
       "craftMult": 2.0919,
       "usesRUs": false,
-      "baseComp": [
-        {
-          "subtype": "Magnesium",
-          "weight": 4
-        },
-        {
-          "subtype": "Iron",
-          "weight": 40
-        },
-        {
-          "subtype": "Platinum",
-          "weight": 0.1
-        },
-        {
-          "subtype": "Silicon",
-          "weight": 4
-        },
-        {
-          "subtype": "Gold",
-          "weight": 0.3
-        }
-      ]
-    },
-    "Missiles_Torpedo": {
-      "category": "Missiles, Rockets & Torpedoes",
-      "localIcon": "icons/ammo_Missiles_Torpedo.png",
-      "roleMultiplier": 1.25,
-      "sizeMult": 1.2011,
-      "massMult": 0.15,
-      "craftMult": 1.2178,
-      "usesRUs": true,
       "baseComp": [
         {
           "subtype": "Magnesium",

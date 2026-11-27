@@ -20185,348 +20185,12 @@ const BUNDLED_WEAPONS_DATA = [
     }
   },
   {
-    "id": "L__Torpedo_Launcher_NPC",
-    "defName": "Torpedo_Crusader_Large",
-    "mountIndex": 0,
-    "pdProjectiles": false,
-    "pdSmartOnly": false,
-    "name": "(L) Torpedo Launcher [NPC]",
-    "grid": "Large",
-    "type": "Fixed",
-    "isHandheld": false,
-    "rateOfFire": 60,
-    "shotsInBurst": 0,
-    "barrelsPerShot": 1,
-    "delayAfterBurst": 0,
-    "reloadTime": 3300,
-    "magsToLoad": 1,
-    "maxActiveProjectiles": 1,
-    "delayUntilFire": 0,
-    "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "shootBlanks": false,
-    "rotateBarrelAxis": 0,
-    "barrelSpinRate": 0,
-    "deterministicSpin": false,
-    "muzzleCount": 1,
-    "barrelSpin": false,
-    "validControlModes": [
-      "Automatic",
-      "Manual",
-      "Painter"
-    ],
-    "deviateShotAngle": 0.1,
-    "aimingTolerance": 180,
-    "addToleranceToTracking": true,
-    "rotateRate": 0,
-    "elevateRate": 0,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
-    "heatPerShot": 0,
-    "maxHeat": 0,
-    "cooldown": 0,
-    "heatSinkRate": 0,
-    "degradeRof": false,
-    "degradeRofSettings": {
-      "heatThresholdStart": 0,
-      "heatThresholdEnd": 0,
-      "rofAt0Heat": 0,
-      "rofAt100Heat": 0
-    },
-    "allowOverheatShooting": false,
-    "heatSinkRateOverheatMult": 0,
-    "fireFull": false,
-    "energyCost": 0,
-    "magazineSize": 1,
-    "baseDamage": 100,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 200,
-    "detRadius": 25,
-    "detDamage": 1500000,
-    "fragments": 1,
-    "fragmentDegrees": 0,
-    "shrapnelBaseDmg": 0,
-    "shrapnelDetRadius": 0,
-    "shrapnelDetDmg": 0,
-    "chanceToHit": 1,
-    "durabilityMod": 0.5,
-    "idlePower": 0.001,
-    "criticalReaction": false,
-    "components": [
-      {
-        "name": "SteelPlate",
-        "count": 51,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "PrototechCircuitry",
-        "count": 1,
-        "deconstructSubtype": "PrototechCircuitryScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "PrototechPanel",
-        "count": 10,
-        "deconstructSubtype": "PrototechPanelScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "MetalGrid",
-        "count": 21,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "LargeTube",
-        "count": 11,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Motor",
-        "count": 110,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "InteriorPlate",
-        "count": 13,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Computer",
-        "count": 210,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Construction",
-        "count": 210,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "SteelPlate",
-        "count": 210,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      }
-    ],
-    "icon": "icons/L__Torpedo_Launcher_NPC.png",
-    "subtypeId": "Missile_Torpedo_Large_NPC",
-    "blockTypeId": "ConveyorSorter",
-    "blockSubtypeId": "Missile_Torpedo_Large_NPC",
-    "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 53,
-    "pcu": 10,
-    "assignedAnimation": "Crusader_Fire",
-    "assignedAmmos": [
-      "Missiles_Torpedo"
-    ],
-    "allAmmos": [
-      "Missiles_Torpedo",
-      "Missiles_Torpedo_Fragment"
-    ],
-    "helpers": {
-      "targeting": null,
-      "hardware": null,
-      "loading": null,
-      "ui": "Common_Weapons_Hardpoint_Ui_GuidanceOnly",
-      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
-      "audio": null,
-      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
-      "graphics": null
-    },
-    "displayName": "*NPC-Torpedo* Crusader Launcher",
-    "gridSize": "Large",
-    "cubeSize": "Large",
-    "description": "",
-    "criticalComponent": "Computer",
-    "size": {
-      "x": 1,
-      "y": 1,
-      "z": 5
-    }
-  },
-  {
-    "id": "S__Torpedo_Launcher_NPC",
-    "defName": "Torpedo_Crusader_Small",
-    "mountIndex": 0,
-    "pdProjectiles": false,
-    "pdSmartOnly": false,
-    "name": "(S) Torpedo Launcher [NPC]",
-    "grid": "Small",
-    "type": "Fixed",
-    "isHandheld": false,
-    "rateOfFire": 60,
-    "shotsInBurst": 0,
-    "barrelsPerShot": 1,
-    "delayAfterBurst": 0,
-    "reloadTime": 3300,
-    "magsToLoad": 1,
-    "maxActiveProjectiles": 1,
-    "delayUntilFire": 0,
-    "trajectilesPerBarrel": 1,
-    "maxTargetDistance": 3000,
-    "shootBlanks": false,
-    "rotateBarrelAxis": 0,
-    "barrelSpinRate": 0,
-    "deterministicSpin": false,
-    "muzzleCount": 1,
-    "barrelSpin": false,
-    "validControlModes": [
-      "Automatic",
-      "Manual",
-      "Painter"
-    ],
-    "deviateShotAngle": 0,
-    "aimingTolerance": 180,
-    "addToleranceToTracking": true,
-    "rotateRate": 0,
-    "elevateRate": 0,
-    "minAzimuth": -180,
-    "maxAzimuth": 180,
-    "minElevation": -15,
-    "maxElevation": 45,
-    "heatPerShot": 0,
-    "maxHeat": 0,
-    "cooldown": 0,
-    "heatSinkRate": 0,
-    "degradeRof": false,
-    "degradeRofSettings": {
-      "heatThresholdStart": 0,
-      "heatThresholdEnd": 0,
-      "rofAt0Heat": 0,
-      "rofAt100Heat": 0
-    },
-    "allowOverheatShooting": false,
-    "heatSinkRateOverheatMult": 0,
-    "fireFull": false,
-    "energyCost": 0,
-    "magazineSize": 1,
-    "baseDamage": 100,
-    "maxTrajectory": 3500,
-    "desiredSpeed": 200,
-    "detRadius": 25,
-    "detDamage": 1500000,
-    "fragments": 1,
-    "fragmentDegrees": 0,
-    "shrapnelBaseDmg": 0,
-    "shrapnelDetRadius": 0,
-    "shrapnelDetDmg": 0,
-    "chanceToHit": 1,
-    "durabilityMod": 0.5,
-    "idlePower": 0.001,
-    "criticalReaction": false,
-    "components": [
-      {
-        "name": "SteelPlate",
-        "count": 35,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "PrototechCircuitry",
-        "count": 1,
-        "deconstructSubtype": "PrototechCircuitryScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "PrototechPanel",
-        "count": 8,
-        "deconstructSubtype": "PrototechPanelScrap",
-        "deconstructType": "Ore"
-      },
-      {
-        "name": "MetalGrid",
-        "count": 14,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "LargeTube",
-        "count": 7,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Motor",
-        "count": 70,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "InteriorPlate",
-        "count": 9,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Computer",
-        "count": 140,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "Construction",
-        "count": 140,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      },
-      {
-        "name": "SteelPlate",
-        "count": 140,
-        "deconstructSubtype": null,
-        "deconstructType": null
-      }
-    ],
-    "icon": "icons/S__Torpedo_Launcher_NPC.png",
-    "subtypeId": "Missile_Torpedo_Small_NPC",
-    "blockTypeId": "ConveyorSorter",
-    "blockSubtypeId": "Missile_Torpedo_Small_NPC",
-    "ammoName": "Missiles_Torpedo",
-    "buildTimeSeconds": 35,
-    "pcu": 8,
-    "assignedAnimation": "Crusader_Fire_Small",
-    "assignedAmmos": [
-      "Missiles_Torpedo"
-    ],
-    "allAmmos": [
-      "Missiles_Torpedo",
-      "Missiles_Torpedo_Fragment"
-    ],
-    "helpers": {
-      "targeting": null,
-      "hardware": null,
-      "loading": null,
-      "ui": "Common_Weapons_Hardpoint_Ui_GuidanceOnly",
-      "ai": "Common_Weapons_Hardpoint_Ai_BasicFixed_Tracking",
-      "audio": null,
-      "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
-      "graphics": null
-    },
-    "displayName": "*NPC-Torpedo* Crusader Launcher",
-    "gridSize": "Small",
-    "cubeSize": "Small",
-    "description": "",
-    "criticalComponent": "Computer",
-    "size": {
-      "x": 3,
-      "y": 3,
-      "z": 15
-    }
-  },
-  {
     "id": "L__LargeBlockTorpedoLauncher",
     "defName": "LargeTorpedoLauncher",
     "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
-    "name": "(L) Keen Torpedo Launcher",
+    "name": "(L) Harpoon Launcher",
     "grid": "Large",
     "type": "Fixed",
     "isHandheld": false,
@@ -20657,7 +20321,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "LargeBlockTorpedoLauncher",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 53,
+    "buildTimeSeconds": 55,
     "pcu": 10,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -20677,10 +20341,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*Torpedo* Torpedo Launcher",
+    "displayName": "*Torpedo* Harpoon Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.\n\t\t\t\t[Uses Heavy Torpedo]",
+    "description": "This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.\n\t\t\t\t[Uses Harpoon HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 1,
@@ -20694,7 +20358,7 @@ const BUNDLED_WEAPONS_DATA = [
     "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
-    "name": "(L) Keen Torpedo Launcher [NPC]",
+    "name": "(L) Harpoon Launcher [NPC]",
     "grid": "Large",
     "type": "Fixed",
     "isHandheld": false,
@@ -20825,7 +20489,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "LargeBlockTorpedoLauncher_NPC",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 53,
+    "buildTimeSeconds": 55,
     "pcu": 10,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -20845,7 +20509,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Torpedo* Torpedo Launcher",
+    "displayName": "*NPC-Torpedo* Harpoon Launcher",
     "gridSize": "Large",
     "cubeSize": "Large",
     "description": "",
@@ -20862,7 +20526,7 @@ const BUNDLED_WEAPONS_DATA = [
     "mountIndex": 0,
     "pdProjectiles": false,
     "pdSmartOnly": false,
-    "name": "(S) Keen Torpedo Launcher",
+    "name": "(S) Harpoon Launcher",
     "grid": "Small",
     "type": "Fixed",
     "isHandheld": false,
@@ -20993,7 +20657,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "SmallBlockTorpedoLauncher",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 12,
+    "buildTimeSeconds": 13,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -21013,10 +20677,10 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*Torpedo* Torpedo Launcher",
+    "displayName": "*Torpedo* Harpoon Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
-    "description": "This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.\n\t\t\t\t[Uses Heavy Torpedo]",
+    "description": "This fire-and-forget launcher delivers a heavy torpedo with an explosion so large it can be seen from low orbit.\n\t\t\t\t[Uses Harpoon HE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 2,
@@ -21030,7 +20694,7 @@ const BUNDLED_WEAPONS_DATA = [
     "mountIndex": 1,
     "pdProjectiles": false,
     "pdSmartOnly": false,
-    "name": "(S) Keen Torpedo Launcher [NPC]",
+    "name": "(S) Harpoon Launcher [NPC]",
     "grid": "Small",
     "type": "Fixed",
     "isHandheld": false,
@@ -21161,7 +20825,7 @@ const BUNDLED_WEAPONS_DATA = [
     "blockTypeId": "SmallMissileLauncher",
     "blockSubtypeId": "SmallBlockTorpedoLauncher_NPC",
     "ammoName": "Torpedo_Heavy",
-    "buildTimeSeconds": 12,
+    "buildTimeSeconds": 13,
     "pcu": 8,
     "assignedAnimation": null,
     "assignedAmmos": [
@@ -21181,7 +20845,7 @@ const BUNDLED_WEAPONS_DATA = [
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionOrLosCheck",
       "graphics": null
     },
-    "displayName": "*NPC-Torpedo* Torpedo Launcher",
+    "displayName": "*NPC-Torpedo* Harpoon Launcher",
     "gridSize": "Small",
     "cubeSize": "Small",
     "description": "",

@@ -278,32 +278,9 @@
 		<AmmoMagazine>
 			<Id>
 				<TypeId>AmmoMagazine</TypeId>
-				<SubtypeId>Missiles_Torpedo</SubtypeId>
-			</Id>
-			<DisplayName>*Torpedo* Crusader Disruptor</DisplayName>
-			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
-			<Size>
-				<X>1</X>
-				<Y>5.0</Y>
-				<Z>1</Z>
-			</Size>
-			<Mass>2250</Mass>
-			<Volume>1500</Volume>
-			<Model>Models\Akiad\Small\CrusaderMissile.mwm</Model>
-			<PhysicalMaterial>Ammo</PhysicalMaterial>
-			<Capacity>1</Capacity>
-			<AmmoDefinitionId Subtype="Blank"/>
-			<MinimalPricePerUnit>1</MinimalPricePerUnit>
-			<CanPlayerOrder>true</CanPlayerOrder>
-			<Health>99999999</Health>
-			<DepositAllEnabled>true</DepositAllEnabled>
-		</AmmoMagazine>
-		<AmmoMagazine>
-			<Id>
-				<TypeId>AmmoMagazine</TypeId>
 				<SubtypeId>Torpedo_Heavy</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Heavy Torpedo</DisplayName>
+			<DisplayName>*Torpedo* Harpoon HE</DisplayName>
 			<Icon>Textures\GUI\Icons\Ammo\Torpedo_Heavy.dds</Icon>
 			<Size>
 				<X>1.2</X>
@@ -572,6 +549,88 @@
 			<MinimalPricePerUnit>1</MinimalPricePerUnit>
 			<CanPlayerOrder>true</CanPlayerOrder>
 			<Health>99999999</Health>
+		</AmmoMagazine>
+		<!-- Keen's other torpedoes, hidden until each is balanced (hub GVK-Settings#753). Their blueprints sit only in Keen's EliteConsumables class, which no GVK assembler has. -->
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Torpedo</SubtypeId>
+			</Id>
+			<DisplayName>zz*Do Not Use*zzTorpedo</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\Torpedo.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>800</Mass>
+			<Volume>350</Volume>
+			<Model>Models\Weapons\Torpedo_Standard.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Torpedo"/>
+			<CanPlayerOrder>false</CanPlayerOrder>
+			<CanPlayerOffer>false</CanPlayerOffer>
+			<DefaultColor>
+				<R>140</R>
+				<G>105</G>
+				<B>6</B>
+				<A>1</A>
+			</DefaultColor>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Torpedo_Seeking</SubtypeId>
+			</Id>
+			<DisplayName>zz*Do Not Use*zzTorpedo_Seeking</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\Torpedo_Seeking.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>675</Mass>
+			<Volume>350</Volume>
+			<Model>Models\Weapons\Torpedo_Seeking.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Torpedo_Seeking"/>
+			<CanPlayerOrder>false</CanPlayerOrder>
+			<CanPlayerOffer>false</CanPlayerOffer>
+			<DefaultColor>
+				<R>59</R>
+				<G>85</G>
+				<B>111</B>
+				<A>255</A>
+			</DefaultColor>
+		</AmmoMagazine>
+		<AmmoMagazine>
+			<Id>
+				<TypeId>AmmoMagazine</TypeId>
+				<SubtypeId>Torpedo_Piercing</SubtypeId>
+			</Id>
+			<DisplayName>zz*Do Not Use*zzTorpedo_Piercing</DisplayName>
+			<Icon>Textures\GUI\Icons\Ammo\Torpedo_Piercing.dds</Icon>
+			<Size>
+				<X>1.2</X>
+				<Y>0.2</Y>
+				<Z>0.2</Z>
+			</Size>
+			<Mass>1000</Mass>
+			<Volume>350</Volume>
+			<Model>Models\Weapons\Torpedo_Piercing.mwm</Model>
+			<PhysicalMaterial>Ammo</PhysicalMaterial>
+			<Capacity>1</Capacity>
+			<AmmoDefinitionId Subtype="Torpedo_Piercing"/>
+			<CanPlayerOrder>false</CanPlayerOrder>
+			<CanPlayerOffer>false</CanPlayerOffer>
+			<DefaultColor>
+				<R>76</R>
+				<G>100</G>
+				<B>76</B>
+				<A>1</A>
+			</DefaultColor>
 		</AmmoMagazine>
 		<AmmoMagazine>
 			<Id>

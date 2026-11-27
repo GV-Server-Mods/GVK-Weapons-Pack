@@ -43,13 +43,12 @@ const wrongName = named.filter((k) => {
 check('Curated weapon names reach the Snapshot', named.length > 0 && wrongName.length === 0, wrongName.slice(0, 10));
 
 const categorised = mags.filter((m) => m.category);
-check('Magazines carry their curated categories (20 in 6 categories)',
-  categorised.length === 20 && new Set(categorised.map((m) => m.category)).size === 6, categorised.length);
+check('Magazines carry their curated categories (19 in 6 categories)',
+  categorised.length === 19 && new Set(categorised.map((m) => m.category)).size === 6, categorised.length);
 const tiers = mags.filter((m) => m.roleMultiplier && m.roleMultiplier !== 1);
-const torpedo = mags.find((m) => m.subtypeId === 'Missiles_Torpedo');
 const heavyTorpedo = mags.find((m) => m.subtypeId === 'Torpedo_Heavy');
-check('Price tiers (roleMultiplier) reach 11 magazines; Torpedo and Heavy Torpedo 1.25',
-  tiers.length === 11 && torpedo && torpedo.roleMultiplier === 1.25 && heavyTorpedo && heavyTorpedo.roleMultiplier === 1.25,
+check('Price tiers (roleMultiplier) reach 10 magazines; Harpoon HE (Torpedo_Heavy) 1.25',
+  tiers.length === 10 && heavyTorpedo && heavyTorpedo.roleMultiplier === 1.25,
   tiers.map((m) => m.subtypeId));
 
 process.exit(failed ? 1 : 0);

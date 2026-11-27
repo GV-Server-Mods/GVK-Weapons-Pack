@@ -707,82 +707,9 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>011_Missiles_HeavyMissile</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*H.Missile* Tuukka HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Items\\mediumMissile01_model.png</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"27.5\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"275.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"0.7\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"27.5\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"2.1\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>86</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_HeavyMissile\"/>\n\t\t</Blueprint>"
   },
   {
-    "subtypeId": "Missiles_Torpedo",
-    "blueprintSubtype": "012_Missiles_Torpedo",
-    "displayName": "*Torpedo* Crusader Disruptor",
-    "category": "Missiles, Rockets & Torpedoes",
-    "icon": "Textures\\GUI\\Icons\\CrusaderMissile.png",
-    "localIcon": "icons/ammo_Missiles_Torpedo.png",
-    "capacity": 1,
-    "volume": 1500,
-    "mass": 2250,
-    "productionTime": 354,
-    "roleMultiplier": 1.25,
-    "sizeMult": 1.2011,
-    "massMult": 0.15,
-    "craftMult": 1.2178,
-    "usesRUs": true,
-    "baseComp": [
-      {
-        "subtype": "Magnesium",
-        "weight": 4
-      },
-      {
-        "subtype": "Iron",
-        "weight": 40
-      },
-      {
-        "subtype": "Platinum",
-        "weight": 0.1
-      },
-      {
-        "subtype": "Silicon",
-        "weight": 4
-      },
-      {
-        "subtype": "Gold",
-        "weight": 0.3
-      }
-    ],
-    "prerequisites": [
-      {
-        "amount": 96.1,
-        "typeId": "Ingot",
-        "subtypeId": "GVK_RUs"
-      },
-      {
-        "amount": 1276.8,
-        "typeId": "Ingot",
-        "subtypeId": "Magnesium"
-      },
-      {
-        "amount": 12768.1,
-        "typeId": "Ingot",
-        "subtypeId": "Iron"
-      },
-      {
-        "amount": 31.9,
-        "typeId": "Ingot",
-        "subtypeId": "Platinum"
-      },
-      {
-        "amount": 1276.8,
-        "typeId": "Ingot",
-        "subtypeId": "Silicon"
-      },
-      {
-        "amount": 95.9,
-        "typeId": "Ingot",
-        "subtypeId": "Gold"
-      }
-    ],
-    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Missiles_Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Crusader Disruptor</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\CrusaderMissile.png</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1</X>\n\t\t\t\t<Y>5.0</Y>\n\t\t\t\t<Z>1</Z>\n\t\t\t</Size>\n\t\t\t<Mass>2250</Mass>\n\t\t\t<Volume>1500</Volume>\n\t\t\t<Model>Models\\Akiad\\Small\\CrusaderMissile.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Blank\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t</AmmoMagazine>",
-    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Missiles_Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Crusader Disruptor x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\CrusaderMissile.png</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Missiles_Torpedo\"/>\n\t\t</Blueprint>"
-  },
-  {
     "subtypeId": "Torpedo_Heavy",
     "blueprintSubtype": "012_Torpedo_Heavy",
-    "displayName": "*Torpedo* Heavy Torpedo",
+    "displayName": "*Torpedo* Harpoon HE",
     "category": "Missiles, Rockets & Torpedoes",
     "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds",
     "localIcon": "icons/ammo_Torpedo_Heavy.png",
@@ -849,8 +776,8 @@ const MAGAZINES_BLUEPRINTS_DATA = [
         "subtypeId": "Gold"
       }
     ],
-    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Heavy Torpedo</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>2250</Mass>\n\t\t\t<Volume>1500</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Heavy.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo_Heavy\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>100</R>\n\t\t\t\t<G>31</G>\n\t\t\t\t<B>31</B>\n\t\t\t\t<A>255</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
-    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Heavy Torpedo x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Torpedo_Heavy\"/>\n\t\t</Blueprint>"
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Harpoon HE</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>2250</Mass>\n\t\t\t<Volume>1500</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Heavy.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo_Heavy\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t\t<DepositAllEnabled>true</DepositAllEnabled>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>100</R>\n\t\t\t\t<G>31</G>\n\t\t\t\t<B>31</B>\n\t\t\t\t<A>255</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
+    "bpXml": "<Blueprint>\n\t\t\t<Id>\n\t\t\t\t<TypeId>BlueprintDefinition</TypeId>\n\t\t\t\t<SubtypeId>012_Torpedo_Heavy</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>*Torpedo* Harpoon HE x1</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\Torpedo_Heavy.dds</Icon>\n\t\t\t<Prerequisites>\n\t\t\t\t<Item Amount=\"96.1\" TypeId=\"Ingot\" SubtypeId=\"GVK_RUs\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Magnesium\"/>\n\t\t\t\t<Item Amount=\"12768.1\" TypeId=\"Ingot\" SubtypeId=\"Iron\"/>\n\t\t\t\t<Item Amount=\"31.9\" TypeId=\"Ingot\" SubtypeId=\"Platinum\"/>\n\t\t\t\t<Item Amount=\"1276.8\" TypeId=\"Ingot\" SubtypeId=\"Silicon\"/>\n\t\t\t\t<Item Amount=\"95.9\" TypeId=\"Ingot\" SubtypeId=\"Gold\"/>\n\t\t\t</Prerequisites>\n\t\t\t<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>\n\t\t\t<Result Amount=\"1\" TypeId=\"AmmoMagazine\" SubtypeId=\"Torpedo_Heavy\"/>\n\t\t</Blueprint>"
   },
   {
     "subtypeId": "GVK_TorpedoVisual",
@@ -1258,6 +1185,69 @@ const MAGAZINES_BLUEPRINTS_DATA = [
     "baseComp": null,
     "prerequisites": [],
     "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>FireworksBoxRainbow</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzFireworksBoxRainbow</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\ammo\\FireworksBox.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>0.25</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>10</Mass>\n\t\t\t<Volume>6</Volume>\n\t\t\t<Model>Models\\Weapons\\FireworksBoxRainbow.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>8</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"FireworkRainbow\"/>\n\t\t\t<MinimalPricePerUnit>1</MinimalPricePerUnit>\n\t\t\t<CanPlayerOrder>true</CanPlayerOrder>\n\t\t\t<Health>99999999</Health>\n\t\t</AmmoMagazine>",
+    "bpXml": null
+  },
+  {
+    "subtypeId": "Torpedo",
+    "blueprintSubtype": null,
+    "displayName": "zz*Do Not Use*zzTorpedo",
+    "category": "",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo.dds",
+    "localIcon": null,
+    "capacity": 1,
+    "volume": 350,
+    "mass": 800,
+    "productionTime": 0,
+    "roleMultiplier": 1,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzTorpedo</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>800</Mass>\n\t\t\t<Volume>350</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Standard.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo\"/>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<CanPlayerOffer>false</CanPlayerOffer>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>140</R>\n\t\t\t\t<G>105</G>\n\t\t\t\t<B>6</B>\n\t\t\t\t<A>1</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
+    "bpXml": null
+  },
+  {
+    "subtypeId": "Torpedo_Seeking",
+    "blueprintSubtype": null,
+    "displayName": "zz*Do Not Use*zzTorpedo_Seeking",
+    "category": "",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo_Seeking.dds",
+    "localIcon": null,
+    "capacity": 1,
+    "volume": 350,
+    "mass": 675,
+    "productionTime": 0,
+    "roleMultiplier": 1,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo_Seeking</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzTorpedo_Seeking</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Seeking.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>675</Mass>\n\t\t\t<Volume>350</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Seeking.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo_Seeking\"/>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<CanPlayerOffer>false</CanPlayerOffer>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>59</R>\n\t\t\t\t<G>85</G>\n\t\t\t\t<B>111</B>\n\t\t\t\t<A>255</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
+    "bpXml": null
+  },
+  {
+    "subtypeId": "Torpedo_Piercing",
+    "blueprintSubtype": null,
+    "displayName": "zz*Do Not Use*zzTorpedo_Piercing",
+    "category": "",
+    "icon": "Textures\\GUI\\Icons\\Ammo\\Torpedo_Piercing.dds",
+    "localIcon": null,
+    "capacity": 1,
+    "volume": 350,
+    "mass": 1000,
+    "productionTime": 0,
+    "roleMultiplier": 1,
+    "sizeMult": null,
+    "massMult": null,
+    "craftMult": null,
+    "usesRUs": null,
+    "baseComp": null,
+    "prerequisites": [],
+    "sbcXml": "<AmmoMagazine>\n\t\t\t<Id>\n\t\t\t\t<TypeId>AmmoMagazine</TypeId>\n\t\t\t\t<SubtypeId>Torpedo_Piercing</SubtypeId>\n\t\t\t</Id>\n\t\t\t<DisplayName>zz*Do Not Use*zzTorpedo_Piercing</DisplayName>\n\t\t\t<Icon>Textures\\GUI\\Icons\\Ammo\\Torpedo_Piercing.dds</Icon>\n\t\t\t<Size>\n\t\t\t\t<X>1.2</X>\n\t\t\t\t<Y>0.2</Y>\n\t\t\t\t<Z>0.2</Z>\n\t\t\t</Size>\n\t\t\t<Mass>1000</Mass>\n\t\t\t<Volume>350</Volume>\n\t\t\t<Model>Models\\Weapons\\Torpedo_Piercing.mwm</Model>\n\t\t\t<PhysicalMaterial>Ammo</PhysicalMaterial>\n\t\t\t<Capacity>1</Capacity>\n\t\t\t<AmmoDefinitionId Subtype=\"Torpedo_Piercing\"/>\n\t\t\t<CanPlayerOrder>false</CanPlayerOrder>\n\t\t\t<CanPlayerOffer>false</CanPlayerOffer>\n\t\t\t<DefaultColor>\n\t\t\t\t<R>76</R>\n\t\t\t\t<G>100</G>\n\t\t\t\t<B>76</B>\n\t\t\t\t<A>1</A>\n\t\t\t</DefaultColor>\n\t\t</AmmoMagazine>",
     "bpXml": null
   },
   {

@@ -187,27 +187,9 @@
 		<Blueprint>
 			<Id>
 				<TypeId>BlueprintDefinition</TypeId>
-				<SubtypeId>012_Missiles_Torpedo</SubtypeId>
-			</Id>
-			<DisplayName>*Torpedo* Crusader Disruptor x1</DisplayName>
-			<Icon>Textures\GUI\Icons\CrusaderMissile.png</Icon>
-			<Prerequisites>
-				<Item Amount="96.1" TypeId="Ingot" SubtypeId="GVK_RUs"/>
-				<Item Amount="1276.8" TypeId="Ingot" SubtypeId="Magnesium"/>
-				<Item Amount="12768.1" TypeId="Ingot" SubtypeId="Iron"/>
-				<Item Amount="31.9" TypeId="Ingot" SubtypeId="Platinum"/>
-				<Item Amount="1276.8" TypeId="Ingot" SubtypeId="Silicon"/>
-				<Item Amount="95.9" TypeId="Ingot" SubtypeId="Gold"/>
-			</Prerequisites>
-			<BaseProductionTimeInSeconds>354</BaseProductionTimeInSeconds>
-			<Result Amount="1" TypeId="AmmoMagazine" SubtypeId="Missiles_Torpedo"/>
-		</Blueprint>
-		<Blueprint>
-			<Id>
-				<TypeId>BlueprintDefinition</TypeId>
 				<SubtypeId>012_Torpedo_Heavy</SubtypeId>
 			</Id>
-			<DisplayName>*Torpedo* Heavy Torpedo x1</DisplayName>
+			<DisplayName>*Torpedo* Harpoon HE x1</DisplayName>
 			<Icon>Textures\GUI\Icons\ammo\Torpedo_Heavy.dds</Icon>
 			<Prerequisites>
 				<Item Amount="96.1" TypeId="Ingot" SubtypeId="GVK_RUs"/>
