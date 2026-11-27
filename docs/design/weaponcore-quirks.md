@@ -3,8 +3,7 @@ title: WeaponCore ModAPI discoveries and engine quirks
 covers:
   - CoreParts/*.cs
   - VisualAmmo/*.cs
-  - WeaponCoreFixes/*.cs
-checked: 2026-11-26
+checked: 2026-11-27
 ---
 
 # WeaponCore ModAPI discoveries and engine quirks
@@ -19,5 +18,5 @@ checked: 2026-11-26
 | **Direct vs Lead Pointing** | `PointType = Lead` calculates full relative velocity lead intercept in `TrajectoryEstimation`. `PointType = Direct` aims straight at the entity center with 0 lead. |
 | **Burst Count Resets on Reload** | A reload sets `ShotsFired` back to 0 (`WeaponReload.cs`). With `ReloadTime = 0` and `ShotsInBurst > 0`, a magazine that empties mid-burst swaps instantly and the next magazine fires a full burst straight on, so up to one burst plus the rest of the old magazine leaves without a `DelayAfterBurst` pause. The flare launchers rely on this (`Other_Flare_Weapons.cs`). |
 | **Keen's Visual Ammo Stays Empty** | Keen's `VisualAmmoComponent` (the Torpedo Launcher's tube model) reads Keen's own gun, which WeaponCore never loads. A vanilla weapon definition with only the `Energy` magazine keeps Keen's gun from eating real ammo but leaves the tube empty. `VisualAmmo/TorpedoVisualAmmo.cs` copies WeaponCore's ready-to-fire state into Keen's gun as rounds of the display-only `GVK_TorpedoVisual` magazine. |
-| **Fixed Weapon Terminal Shows Only Keen's Basics** | A WeaponCore bug, reproduced 2026-11-26. When the first block of Keen's `SmallMissileLauncherReload` class in a session (in GVK the small-grid Flak 100mm Gun, Griffin Launcher and Hydra Launcher) appears after WeaponCore has set up its `SmallMissileLauncher` controls, every WeaponCore weapon of class `SmallMissileLauncher` (torpedo, flare, artillery, assault cannon and rocket launchers) shows only On/Off, Name and the Show-in toggles until a world reload. Keen's list for a child block class shares its parent's control objects (`MyTerminalControlFactory.InitializeControls`), and `Session.AlterControls<IMySmallMissileLauncherReload>` then hides WeaponCore's own shared controls along with Keen's. The hotbar Shoot action still works. Upstream fix, tested locally 2026-11-26: skip `session.CustomControls` in `AlterControls` (hub GVK-Settings#814). Until WeaponCore ships it, `WeaponCoreFixes/ReloadTerminalFix.cs` removes the shared WeaponCore controls from the Reload class's list when its first block appears; delete it once WeaponCore has the fix (tracked in hub GVK-Settings#827). |
+| **Fixed Weapon Terminal Shows Only Keen's Basics** | Prior to WeaponCore's 2026-11-27 Workshop update (`BDCarrillo/WeaponCore` `98e3bf7`), the first `SmallMissileLauncherReload` block of a session caused `Session.AlterControls` to hide WeaponCore's shared controls on `SmallMissileLauncher` blocks until a world reload (`session.CustomControls` is now skipped in `AlterControls`; hub GVK-Settings#814, #827). |
 | **Fire Direction Comes From the Muzzle Dummy** | WeaponCore fires along the muzzle dummy's Forward (`Dummies.cs`), so a dummy turned in the model fires sideways whatever the definition says. Check dummy orientation after any model import or re-export. |
