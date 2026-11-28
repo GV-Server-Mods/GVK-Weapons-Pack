@@ -96,5 +96,93 @@ namespace Scripts
                 #endregion
             }
         };
+
+        private AnimationDef GVK_AvengerTest_Anim_L => new AnimationDef
+        {
+            AnimationSets = new[]
+            {
+                new PartAnimationSetDef()
+                {
+                    SubpartId = Names("Barrels_L"),
+                    BarrelId = "muzzle_missile_1",
+                    StartupFireDelay = 0,
+                    AnimationDelays = Delays(FiringDelay : 0, ReloadingDelay: 0, OverheatedDelay: 0, TrackingDelay: 0, LockedDelay: 0, OnDelay: 0, OffDelay: 0, BurstReloadDelay: 0, OutOfAmmoDelay: 0, PreFireDelay: 0),
+                    Reverse = Events(),
+                    Loop = Events(Firing),
+                    TriggerOnce = Events(PreFire,Firing,StopFiring),
+                    EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
+                    {
+                        [Firing] = new[]
+                        {
+                            new RelMove
+                            {
+                                CenterEmpty = "",
+                                TicksToMove = 4,
+                                MovementType = Linear,
+                                LinearPoints = new XYZ[0],
+                                Rotation = Transformation(0, 0, 120),
+                                RotAroundCenter = Transformation(0, 0, 0),
+                            },
+                        },
+                        [StopFiring] = new[]
+                        {
+                            new RelMove
+                            {
+                                CenterEmpty = "",
+                                TicksToMove = 240,
+                                MovementType = ExpoDecay,
+                                LinearPoints = new XYZ[0],
+                                Rotation = Transformation(0, 0, 800f),
+                                RotAroundCenter = Transformation(0, 0, 0),
+                            },
+                        },
+                    }
+                },
+            }
+        };
+
+        private AnimationDef GVK_AvengerTest_Anim_R => new AnimationDef
+        {
+            AnimationSets = new[]
+            {
+                new PartAnimationSetDef()
+                {
+                    SubpartId = Names("Barrels_R"),
+                    BarrelId = "muzzle_missile_2",
+                    StartupFireDelay = 0,
+                    AnimationDelays = Delays(FiringDelay : 0, ReloadingDelay: 0, OverheatedDelay: 0, TrackingDelay: 0, LockedDelay: 0, OnDelay: 0, OffDelay: 0, BurstReloadDelay: 0, OutOfAmmoDelay: 0, PreFireDelay: 0),
+                    Reverse = Events(),
+                    Loop = Events(Firing),
+                    TriggerOnce = Events(PreFire,Firing,StopFiring),
+                    EventMoveSets = new Dictionary<PartAnimationSetDef.EventTriggers, RelMove[]>
+                    {
+                        [Firing] = new[]
+                        {
+                            new RelMove
+                            {
+                                CenterEmpty = "",
+                                TicksToMove = 60,
+                                MovementType = Linear,
+                                LinearPoints = new XYZ[0],
+                                Rotation = Transformation(0, 0, -1500),
+                                RotAroundCenter = Transformation(0, 0, 0),
+                            },
+                        },
+                        [StopFiring] = new[]
+                        {
+                            new RelMove
+                            {
+                                CenterEmpty = "",
+                                TicksToMove = 240,
+                                MovementType = ExpoDecay,
+                                LinearPoints = new XYZ[0],
+                                Rotation = Transformation(0, 0, -800f),
+                                RotAroundCenter = Transformation(0, 0, 0),
+                            },
+                        },
+                    }
+                },
+            }
+        };
     }
 }

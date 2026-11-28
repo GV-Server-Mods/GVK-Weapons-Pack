@@ -6,7 +6,7 @@
 			<DisplayName>Gatlings</DisplayName>
 			<Description/>
 			<Blocks>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_AvengerGatlingTurret"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="GVK_AvengerGatlingTurret"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype=""/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret"/>
@@ -242,7 +242,7 @@
 			<Description/>
 			<Blocks>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeGatlingTurret_NPC"/>
-				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="GVK_AvengerGatlingTurret_NPC"/>
+				<Block Type="MyObjectBuilder_ConveyorSorter" Subtype="GVK_AvengerGatlingTurret_NPC"/>
 				<Block Type="MyObjectBuilder_LargeMissileTurret" Subtype="SentinelTurret_NPC"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="SmallGatlingTurret_NPC"/>
 				<Block Type="MyObjectBuilder_LargeGatlingTurret" Subtype="LargeGatlingTurretReskin_NPC"/>

@@ -785,13 +785,55 @@ function buildStudioData(csSources, sbc, curation) {
   const magazines = magazineEntries(magSbc, blueprints, curation);
   const magByKey = {};
   for (const m of magazines) magByKey[m.subtypeId] = m;
-  const weapons = [];
+  const rawWeapons = [];
   for (const w of parsed.weapons) {
     const subs = w.subtypeIds.length ? w.subtypeIds : [null];
     subs.forEach((sub, idx) => {
       const cur = (curation.weapons || {})[sub] || {};
-      weapons.push(weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, cur));
+      const entry = weaponEntry(w, sub, idx, sub ? blocks[sub] : null, magByKey, parsed.defs, ammos, cur);
+      const hp = inlineRef(w.def.HardPoint, parsed.defs) || {};
+      const hw = inlineRef(hp.HardWare, parsed.defs) || inlineRef(w.def.HardWare, parsed.defs) || {};
+      const ai = inlineRef(hp.Ai, parsed.defs) || inlineRef(w.def.Ai, parsed.defs) || {};
+      entry._suppressFire = ai.SuppressFire === true;
+      entry._invSize = hw.InventorySize || 0;
+      rawWeapons.push(entry);
     });
+  }
+  // Multi-part blocks (e.g. a SuppressFire=true center aimer plus independent Left/Right barrels) export
+  // one combined block entry for telemetry/ShipCore instead of duplicate rows at half or zero DPS.
+  const weapons = [];
+  const bySub = new Map();
+  for (const e of rawWeapons) {
+    if (!e.subtypeId) { weapons.push(e); continue; }
+    if (!bySub.has(e.subtypeId)) bySub.set(e.subtypeId, []);
+    bySub.get(e.subtypeId).push(e);
+  }
+  for (const group of bySub.values()) {
+    const shooters = group.filter((e) => !e._suppressFire);
+    if (group.length === 1 || shooters.length === 0) {
+      for (const e of group) { delete e._suppressFire; delete e._invSize; weapons.push(e); }
+      continue;
+    }
+    const base = shooters[0];
+    base.multiPart = true;
+    let totalInv = base._invSize || 0;
+    for (let i = 1; i < shooters.length; i++) {
+      const extra = shooters[i];
+      base.barrelsPerShot = (base.barrelsPerShot || 1) + (extra.barrelsPerShot || 1);
+      base.muzzleCount = (base.muzzleCount || 1) + (extra.muzzleCount || 1);
+      base.magsToLoad = (base.magsToLoad || 0) + (extra.magsToLoad || 0);
+      totalInv += extra._invSize || 0;
+    }
+    base.inventorySize = +totalInv.toFixed(4);
+    const aimer = group.find((e) => e._suppressFire);
+    if (aimer) {
+      if (aimer.rotateRate > base.rotateRate) base.rotateRate = aimer.rotateRate;
+      base.minElevation = Math.max(base.minElevation, aimer.minElevation);
+      base.maxElevation = Math.min(base.maxElevation, aimer.maxElevation);
+    }
+    delete base._suppressFire;
+    delete base._invSize;
+    weapons.push(base);
   }
   const unresolved = [];
   for (const name of Object.keys(ammos)) {

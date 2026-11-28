@@ -3087,6 +3087,15 @@ function populateWeaponWorkbench() {
   selectAnimationDef.value = activeWeapon.assignedAnimation || '';
   currentAnimBadge.textContent = activeWeapon.assignedAnimation || 'None';
   wcSyncCurated('weapon');
+  if (activeWeapon.multiPart && (typeof wcWorking === 'undefined' || !wcWorking.weapon[activeWeapon.defName] || JSON.stringify(wcWorking.weapon[activeWeapon.defName]) === JSON.stringify(wcSourceTree('weapon')))) {
+    wBarrelsPerShot.value = activeWeapon.barrelsPerShot || 1;
+    wMagsToLoad.value = activeWeapon.magsToLoad || 1;
+    wRotateRate.value = activeWeapon.rotateRate || 0;
+    wElevateRate.value = activeWeapon.elevateRate || 0;
+    wMinElevation.value = activeWeapon.minElevation !== undefined ? activeWeapon.minElevation : -15;
+    wMaxElevation.value = activeWeapon.maxElevation !== undefined ? activeWeapon.maxElevation : 80;
+    wInventorySize.value = activeWeapon.inventorySize || 0.9;
+  }
   renderWcFieldEditor('weapon');
 }
 

@@ -112,8 +112,8 @@ const fragAmmo = built.ammos['NATO_25x184mm_Dual_Fragment'];
 check('NATO_25x184mm_Dual_Fragment hardPointUsable is false', fragAmmo && fragAmmo.hardPointUsable === false, fragAmmo && fragAmmo.hardPointUsable);
 
 const bAvenger = built.weapons.find((w) => w.subtypeId === 'GVK_AvengerGatlingTurret');
-check('Avenger excludes non-usable fragment round from assignedAmmos',
-  bAvenger && JSON.stringify(bAvenger.assignedAmmos) === '["NATO_25x184mm_Dual"]',
+check('Avenger resolves to NATO_25x184mm',
+  bAvenger && JSON.stringify(bAvenger.assignedAmmos) === '["NATO_25x184mm"]',
   bAvenger && JSON.stringify(bAvenger.assignedAmmos));
 
 const bKhopesh = built.weapons.find((w) => w.subtypeId === 'KhopeshTurret');

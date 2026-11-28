@@ -43,9 +43,10 @@ namespace Scripts
         {
             AmmoMagazine = "Missiles_Missile",
             AmmoRound = "Griffin HE",
+            TerminalName = "Griffin HE (Drunk)",
             BaseDamage = 1f,
             Mass = 200f, // in kilograms
-            Health = 1f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
+            Health = 1.25f, // 0 = disabled, otherwise how much damage it can take from other trajectiles before dying.
             BackKickForce = 50f,
             HardPointUsable = true, // set to false if this is a shrapnel ammoType and you don't want the turret to be able to select it directly.
             NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
@@ -121,7 +122,7 @@ namespace Scripts
 				Smarts = new SmartsDef
                 {
                     SteeringLimit = 0, // 0 means no limit, value is in degrees, good starting is 150.  This enable advanced smart "control", cost of 3 on a scale of 1-5, 0 being basic smart.
-                    Inaccuracy = 5f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
+                    Inaccuracy = 15f, // 0 is perfect, hit accuracy will be a random num of meters between 0 and this value.
                     Aggressiveness = 3f, // controls how responsive tracking is, recommended value 3-5.
                     MaxLateralThrust = 0.5, // controls how sharp the projectile may turn, this is the cheaper but less realistic version of SteeringLimit, cost of 2 on a scale of 1-5, 0 being basic smart.
                     NavAcceleration = 0, // helps influence how the projectile steers, 0 defaults to 1/2 Aggressiveness value or 0 if its 0, a value less than 0 disables this feature. 
@@ -135,9 +136,9 @@ namespace Scripts
                     NoTargetExpire = false, // Expire without ever having a target at TargetLossTime
                     Roam = false, // Roam current area after target loss
                     KeepAliveAfterTargetLoss = true, // Whether to stop early death of projectile on target loss
-                    OffsetRatio = 0.5f, // The ratio to offset the random direction (0 to 1) 
-                    OffsetTime = 30, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
-                    OffsetMinRange = 700, // The range from target at which offsets are no longer active
+                    OffsetRatio = 0.75f, // The ratio to offset the random direction (0 to 1) 
+                    OffsetTime = 20, // how often to offset degree, measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..)
+                    OffsetMinRange = 350, // The range from target at which offsets are no longer active
                     FocusOnly = false, // only target the constructs Ai's focus target. Don't use with OverideTarget.
                     FocusEviction = false, // If FocusOnly and this to true will force smarts to lose target when there is no focus target
                     ScanRange = 2000, // 0 disables projectile screening, the max range that this projectile will be seen at by defending grids (adds this projectile to defenders lookup database). 
@@ -216,6 +217,25 @@ namespace Scripts
                 HitPlayShield = true,
             },			
         };
+
+        private AmmoDef Missiles_Missile_Straight
+        {
+            get
+            {
+                var missile = Missiles_Missile;
+                missile.AmmoRound = "Griffin HE Straight";
+                missile.TerminalName = "Griffin HE (Straight)";
+                missile.Health = 1f;
+                missile.Trajectory.AccelPerSec = 225f;
+                missile.Trajectory.Smarts.Inaccuracy = 2f;
+                missile.Trajectory.Smarts.Aggressiveness = 4f;
+                missile.Trajectory.Smarts.MaxLateralThrust = 1.0;
+                missile.Trajectory.Smarts.OffsetRatio = 0f;
+                missile.Trajectory.Smarts.OffsetTime = 0;
+                missile.Trajectory.Smarts.OffsetMinRange = 0;
+                return missile;
+            }
+        }
 
         /*private AmmoDef Missiles_Missile_NPC
         {

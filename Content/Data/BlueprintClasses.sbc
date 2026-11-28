@@ -102,7 +102,7 @@
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/lokiCannon1"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXSpartanTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHurricaneCannon"/>
-		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/GVK_AvengerGatlingTurret"/>
+		<Entry Class="LargeBlocks" BlueprintSubtypeId="ConveyorSorter/GVK_AvengerGatlingTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/ARYXHeavyFlakTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeMissileTurret/KhopeshTurret"/>
 		<Entry Class="LargeBlocks" BlueprintSubtypeId="LargeGatlingTurret/LargeAutoCannonTurret"/>

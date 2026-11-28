@@ -101,7 +101,7 @@ check('Flak expected hits: 15 m 4,724, 30 m 9,473, 3 m 944, every fragment 13,06
 check('Small-grid flak 15 m 3,092 DPS', r.flakSg === 3092, r.flakSg);
 check('Longsword SRBM expected hits: 15 m 11,006, 30 m 22,041, every fragment 37,763; magazine 49,551',
   r.srbm.join() === [11006, 22041, 37763].join() && r.srbmMag === 49551, { srbm: r.srbm, mag: r.srbmMag });
-check('Avenger (one narrow fragment): 3,987 at 15 and 30 m, 2,701 vs a 3 m rover', r.avenger.join() === [3987, 3987, 2701].join(), r.avenger);
+check('Avenger (NATO 25mm): 3,987 DPS across 15 m, 30 m, and 3 m targets', r.avenger.join() === [3987, 3987, 3987].join(), r.avenger);
 check('Hero labels name Heavy Armor and show the best block', r.uiXfel.type === 'VS HEAVY ARMOR' && /Best: 4,491 DPS vs Systems/.test(r.uiXfel.eff), r.uiXfel);
 check('Flak hero subline shows the every-fragment maximum; the TARGET buttons are live',
   /Max if every fragment hits: [\d,]+ DPS/.test(r.uiFlak.eff) && !r.uiFlak.idle, r.uiFlak);

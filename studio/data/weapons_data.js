@@ -9276,7 +9276,7 @@ const BUNDLED_WEAPONS_DATA = [
   },
   {
     "id": "L__Gatling_Avenger_Turret",
-    "defName": "GVK_AvengerGatlingTurret",
+    "defName": "GVK_AvengerGatlingTurret_L",
     "mountIndex": 0,
     "pdProjectiles": true,
     "pdSmartOnly": false,
@@ -9305,11 +9305,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Manual",
       "Painter"
     ],
-    "deviateShotAngle": 0.15,
-    "aimingTolerance": 3,
+    "deviateShotAngle": 0.1,
+    "aimingTolerance": 10,
     "addToleranceToTracking": false,
-    "rotateRate": 0.015,
-    "elevateRate": 0.015,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
@@ -9335,9 +9335,9 @@ const BUNDLED_WEAPONS_DATA = [
     "desiredSpeed": 1000,
     "detRadius": 0,
     "detDamage": 0,
-    "fragments": 1,
-    "fragmentDegrees": 0.15,
-    "shrapnelBaseDmg": 100,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0,
     "shrapnelDetRadius": 0,
     "shrapnelDetDmg": 0,
     "chanceToHit": 1,
@@ -9396,25 +9396,24 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "icon": "icons/L__Gatling_Avenger_Turret.png",
     "subtypeId": "GVK_AvengerGatlingTurret",
-    "blockTypeId": "LargeMissileTurret",
+    "blockTypeId": "ConveyorSorter",
     "blockSubtypeId": "GVK_AvengerGatlingTurret",
-    "ammoName": "NATO_25x184mm_Dual",
+    "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 142,
     "pcu": 6,
-    "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
+    "assignedAnimation": "GVK_AvengerTest_Anim_L",
     "assignedAmmos": [
-      "NATO_25x184mm_Dual"
+      "NATO_25x184mm"
     ],
     "allAmmos": [
-      "NATO_25x184mm_Dual",
-      "NATO_25x184mm_Dual_Fragment"
+      "NATO_25x184mm"
     ],
     "helpers": {
-      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "targeting": "Ballistics_Gatlings_Targeting_Avenger",
       "hardware": null,
       "loading": null,
       "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
-      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "ai": "Ballistics_Gatlings_Hardpoint_Ai_SecondaryTurret",
       "audio": null,
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Vulcan"
@@ -9422,17 +9421,19 @@ const BUNDLED_WEAPONS_DATA = [
     "displayName": "*Gatling* Avenger Turret",
     "gridSize": "Large",
     "cubeSize": "Large",
-    "description": "When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.\n\t\t\t\t[Uses 25mm KE]",
+    "description": "When you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.\n\t\t\t\t[Uses 25mm KE]",
     "criticalComponent": "Computer",
     "size": {
       "x": 3,
       "y": 3,
       "z": 3
-    }
+    },
+    "multiPart": true,
+    "inventorySize": 0.9
   },
   {
     "id": "L__Gatling_Avenger_Turret_NPC",
-    "defName": "GVK_AvengerGatlingTurret",
+    "defName": "GVK_AvengerGatlingTurret_L",
     "mountIndex": 1,
     "pdProjectiles": true,
     "pdSmartOnly": false,
@@ -9461,11 +9462,11 @@ const BUNDLED_WEAPONS_DATA = [
       "Manual",
       "Painter"
     ],
-    "deviateShotAngle": 0.15,
-    "aimingTolerance": 3,
+    "deviateShotAngle": 0.1,
+    "aimingTolerance": 10,
     "addToleranceToTracking": false,
-    "rotateRate": 0.015,
-    "elevateRate": 0.015,
+    "rotateRate": 0.03,
+    "elevateRate": 0.03,
     "minAzimuth": -180,
     "maxAzimuth": 180,
     "minElevation": -15,
@@ -9491,9 +9492,9 @@ const BUNDLED_WEAPONS_DATA = [
     "desiredSpeed": 1000,
     "detRadius": 0,
     "detDamage": 0,
-    "fragments": 1,
-    "fragmentDegrees": 0.15,
-    "shrapnelBaseDmg": 100,
+    "fragments": 0,
+    "fragmentDegrees": 0,
+    "shrapnelBaseDmg": 0,
     "shrapnelDetRadius": 0,
     "shrapnelDetDmg": 0,
     "chanceToHit": 1,
@@ -9552,25 +9553,24 @@ const BUNDLED_WEAPONS_DATA = [
     ],
     "icon": "icons/L__Gatling_Avenger_Turret_NPC.png",
     "subtypeId": "GVK_AvengerGatlingTurret_NPC",
-    "blockTypeId": "LargeMissileTurret",
+    "blockTypeId": "ConveyorSorter",
     "blockSubtypeId": "GVK_AvengerGatlingTurret_NPC",
-    "ammoName": "NATO_25x184mm_Dual",
+    "ammoName": "NATO_25x184mm",
     "buildTimeSeconds": 142,
     "pcu": 6,
-    "assignedAnimation": "GVK_AvengerGatlingTurretAnimations",
+    "assignedAnimation": "GVK_AvengerTest_Anim_L",
     "assignedAmmos": [
-      "NATO_25x184mm_Dual"
+      "NATO_25x184mm"
     ],
     "allAmmos": [
-      "NATO_25x184mm_Dual",
-      "NATO_25x184mm_Dual_Fragment"
+      "NATO_25x184mm"
     ],
     "helpers": {
-      "targeting": "Ballistics_Gatlings_Targeting_Long",
+      "targeting": "Ballistics_Gatlings_Targeting_Avenger",
       "hardware": null,
       "loading": null,
       "ui": "Common_Weapons_Hardpoint_Ui_FullDisable",
-      "ai": "Common_Weapons_Hardpoint_Ai_BasicTurret",
+      "ai": "Ballistics_Gatlings_Hardpoint_Ai_SecondaryTurret",
       "audio": null,
       "other": "Common_Weapons_Hardpoint_Other_NoRestrictionRadius",
       "graphics": "Ballistics_Gatlings_Hardpoint_Graphics_Vulcan"
@@ -9584,7 +9584,9 @@ const BUNDLED_WEAPONS_DATA = [
       "x": 3,
       "y": 3,
       "z": 3
-    }
+    },
+    "multiPart": true,
+    "inventorySize": 0.9
   },
   {
     "id": "L__Heavy_Cannon_Hurricane_Turret",
@@ -16042,10 +16044,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 9,
     "assignedAnimation": "Missiles_LightMissile_Animation",
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
@@ -16209,10 +16213,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 8,
     "assignedAnimation": "Missiles_LightMissile_Animation",
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
@@ -16376,10 +16382,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
@@ -16543,10 +16551,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 0,
     "assignedAnimation": "GVK_GriffinMissileLauncher_Animation",
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Large",
@@ -16704,10 +16714,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Small",
@@ -16865,10 +16877,12 @@ const BUNDLED_WEAPONS_DATA = [
     "pcu": 2,
     "assignedAnimation": null,
     "assignedAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "allAmmos": [
-      "Missiles_Missile"
+      "Missiles_Missile",
+      "Missiles_Missile_Straight"
     ],
     "helpers": {
       "targeting": "Missiles_Missile_Targeting_Small",

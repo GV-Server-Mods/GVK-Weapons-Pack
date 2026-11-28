@@ -39,13 +39,14 @@ const r = studio.run(`(() => {
     singleWithBlast: isAirBurstAmmo(fx({ fragment: { enable: true, fragments: 1, timedSpawns: { enable: true, proximity: 1700 } },
       areaOfDamage: { endOfLife: { enable: true, radius: 12 } } }))
   };
+  r.dualTag = ammosDb.NATO_25x184mm_Dual ? tagOf(weaponsDb[0], ammosDb.NATO_25x184mm_Dual) : null;
   return r;
 })()`);
 
 const row = (k) => r.rows.find((x) => x.k === k) || {};
 const nonSteer = r.rows.filter((x) => x.steers === false);
 const steer = r.rows.filter((x) => x.steers !== false);
-check('Guided rounds found in the data (both steering and non-steering)', steer.length >= 4 && nonSteer.length >= 3, [steer.length, nonSteer.length]);
+check('Guided rounds found in the data (both steering and non-steering)', steer.length >= 4 && nonSteer.length >= 2, [steer.length, nonSteer.length]);
 check('No non-steering Smart round reads HOMING', nonSteer.every((x) => x.tag !== 'HOMING'), nonSteer.map((x) => x.k + ':' + x.tag));
 check('No non-steering, non-loitering round gets the Homing Ordnance role', nonSteer.filter((x) => !x.loiter).every((x) => x.role !== 'homing'),
   nonSteer.map((x) => x.k + ':' + x.role));
@@ -54,7 +55,7 @@ check('Every steering Smart round reads HOMING or DRONE with the Homing Ordnance
 check('Flak PROX reads AIR BURST', row('Ballistics_Flak').tag === 'AIR BURST' && row('Ballistics_Flak').airBurst, row('Ballistics_Flak'));
 check('Fixed flak gun firing Flak PROX is Area Denial', r.flakGunRole === 'Area Denial', r.flakGunRole);
 check('25mm Dual and NPC cannon proximity-split rounds read BALLISTIC again',
-  row('NATO_25x184mm_Dual').tag === 'BALLISTIC' && row('Ballistics_Cannon_NPC').tag === 'BALLISTIC', [row('NATO_25x184mm_Dual').tag, row('Ballistics_Cannon_NPC').tag]);
+  r.dualTag === 'BALLISTIC' && row('Ballistics_Cannon_NPC').tag === 'BALLISTIC', [r.dualTag, row('Ballistics_Cannon_NPC').tag]);
 check('Single-fragment proximity splits without a blast are never AIR BURST',
   nonSteer.filter((x) => x.prox && x.k !== 'Ballistics_Flak').every((x) => !x.airBurst && x.tag !== 'AIR BURST'), nonSteer.map((x) => x.k + ':' + x.tag));
 

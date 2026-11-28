@@ -92,9 +92,9 @@ check('Salvo labels', eq(Object.fromEntries(Object.entries(r.salvo).map(([k, v])
 }), r.salvo);
 check('Blast lines: XFEL-H has no area blast; SRBM lists its fragments',
   r.blastHL === 'Direct energy hit · no area blast' && r.blastSrbm === 'No area blast · 10 fragments × 17,001 hp', [r.blastHL, r.blastSrbm]);
-check('PD-only hero: 2 PD hp/s, VS MUNITIONS, hits per missile; ×4 battery 8 PD hp/s',
-  r.pd.sus === '2 PD hp/s' && r.pd.type === 'VS MUNITIONS (PD)' && /1 PD hp per hit/.test(r.pd.eff) && /200 hits per Offense Falcon V2/.test(r.pd.eff)
-  && !/All Blocks \(×0\)/.test(r.pd.eff) && r.pd4 === '8 PD hp/s', [r.pd, r.pd4]);
+check('PD-only hero: 2.5 PD hp/s, VS MUNITIONS, hits per missile; ×4 battery 10 PD hp/s',
+  r.pd.sus === '2.5 PD hp/s' && r.pd.type === 'VS MUNITIONS (PD)' && /1\.25 PD hp per hit/.test(r.pd.eff) && /160 hits per Offense Falcon V2/.test(r.pd.eff)
+  && !/All Blocks \(×0\)/.test(r.pd.eff) && r.pd4 === '10 PD hp/s', [r.pd, r.pd4]);
 check('PD turret with block damage keeps the normal hero (Gatling 1,636 hp/s)', r.pdCtl.sus === '1,636 hp/s' && /Effective against Heavy Armor/.test(r.pdCtl.eff), r.pdCtl);
 check('MAC is a fixed mount: no traverse, boresight only, tracking 0',
   eq([r.mac.trav, r.mac.az, r.mac.tol, r.mac.tolD, r.mac.track], ['Fixed Mount', 'Fires Along Block Facing', 'Fixed', 'Fixed (boresight only)', 0]), r.mac);

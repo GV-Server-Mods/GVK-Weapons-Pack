@@ -259,9 +259,9 @@ studio.run(`
 `);
 
 check('Default weapon dropdown matches activeWeapon (no desync)', lcReport.defaultWeaponId === lcReport.defaultSelectVal);
-check('Default weapon has primary ammo NATO_25x184mm_Dual', lcReport.defaultAmmoRound === 'NATO_25x184mm_Dual');
-check('Avenger has only 1 selectable ammo (no NATO 25mm [Energy] fragment)',
-  lcReport.avengerSelectableCount === 1 && lcReport.avengerSelectableFirst === 'NATO_25x184mm_Dual');
+check('Default weapon has primary ammo NATO_25x184mm', lcReport.defaultAmmoRound === 'NATO_25x184mm');
+check('Avenger has only 1 selectable ammo (NATO 25mm)',
+  lcReport.avengerSelectableCount === 1 && lcReport.avengerSelectableFirst === 'NATO_25x184mm');
 check('Avenger has non-zero effective DPS', lcReport.avengerEffectiveDps > 0);
 check('Avenger has non-zero magazine damage', lcReport.avengerAlpha > 0);
 check('Tsunami selects LargeCalibreAmmo (155 AP)', lcReport.tsuAmmoRound === 'LargeCalibreAmmo');
@@ -527,9 +527,9 @@ check('Ammo Maths: Heavy Cannon = SBC (400 L, 4000 kg, 150 s, 44000 / 132000 SC,
 check('Ammo Maths: Railgun = SBC (130 L, 1300 kg, 38 s, 30000 / 90000 SC, 3.1 RUs, 0% drift)',
   !!am.rail && eq([am.rail.vol, am.rail.mass, am.rail.craft, am.rail.price, am.rail.adj, am.rail.rus], [130, 1300, 38, 30000, 90000, 3.1])
   && Math.abs(am.rail.drift) < 0.01);
-const gl = (am.gatRows || []).find((w) => w.def === 'LargeGatlingTurret'), ga = (am.gatRows || []).find((w) => w.def === 'GVK_AvengerGatlingTurret');
-check('Suggested InventorySize is per weapon, ÷ 0.75 WC fill: Gatling N=4 -> 0.36 kL, Avenger N=14 -> 1.24 kL (short at 0.9)',
-  !!gl && !!ga && gl.n === 4 && gl.inv === 0.36 && !gl.short && ga.n === 14 && ga.inv === 1.24 && ga.short, am.gatRows);
+const gl = (am.gatRows || []).find((w) => w.def === 'LargeGatlingTurret'), ga = (am.gatRows || []).find((w) => w.def === 'GVK_AvengerGatlingTurret_L');
+check('Suggested InventorySize is per weapon, ÷ 0.75 WC fill: Gatling N=4 -> 0.36 kL, Avenger L N=7 -> 0.62 kL (short at 0.45)',
+  !!gl && !!ga && gl.n === 4 && gl.inv === 0.36 && !gl.short && ga.n === 7 && ga.inv === 0.62 && ga.short, am.gatRows);
 const sgg = (am.gatRows || []).find((w) => w.def === 'SmallGatlingGun');
 check('Small Gatling Gun: 0.3 kL live is short of 0.36; conveyors load 7 mags', !!sgg && sgg.inv === 0.36 && sgg.live === 0.3 && sgg.short && sgg.over === 0 && sgg.held === 7, sgg);
 check('Gatling Turret: 0.6 kL live is 66.7% over; conveyors load 15 mags', !!gl && gl.over === 66.7 && gl.held === 15, gl);

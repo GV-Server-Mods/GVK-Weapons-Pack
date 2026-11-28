@@ -61,7 +61,7 @@ namespace Scripts
             DamageScales = new DamageScaleDef 
 			{
                 DamageVoxels = false, // Whether to damage voxels.
-                HealthHitModifier = 3, 
+                HealthHitModifier = 1.2, 
                 Characters = 0.2f,
                 // For the following modifier values: -1 = disabled (higher performance), 0 = no damage, 0.01f = 1% damage, 2 = 200% damage.
                 Grids = new GridSizeDef
@@ -236,6 +236,21 @@ namespace Scripts
                 ammo.AmmoRound = "NATO_25x184mm_Dual_Fragment";
 				ammo.AmmoMagazine = "Energy";
 				ammo.HardPointUsable = false;
+                return ammo;
+            }
+        }
+
+		private AmmoDef NATO_25x184mm_CenterAim
+        {
+            get
+            {
+                var ammo = NATO_25x184mm;
+                ammo.AmmoRound = "NATO_25x184mm_CenterAim";
+                ammo.BaseDamage = 0.001f;
+                ammo.BackKickForce = 0f;
+                ammo.AmmoGraphics.VisualProbability = 0f;
+                ammo.AmmoGraphics.Lines.Tracer.Enable = false;
+                ammo.AmmoAudio.HitSound = "";
                 return ammo;
             }
         }

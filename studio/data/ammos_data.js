@@ -1628,7 +1628,7 @@ const BUNDLED_AMMOS_DATA = {
       "heavyArmor": -1,
       "nonArmor": -1,
       "characters": 0.2,
-      "healthHitModifier": 3,
+      "healthHitModifier": 1.2,
       "maxIntegrity": 0,
       "falloffDistance": 0,
       "falloffMinMult": 0,
@@ -1794,7 +1794,7 @@ const BUNDLED_AMMOS_DATA = {
       "heavyArmor": -1,
       "nonArmor": -1,
       "characters": 0.2,
-      "healthHitModifier": 3,
+      "healthHitModifier": 1.2,
       "maxIntegrity": 0,
       "falloffDistance": 0,
       "falloffMinMult": 0,
@@ -1960,7 +1960,7 @@ const BUNDLED_AMMOS_DATA = {
       "heavyArmor": -1,
       "nonArmor": -1,
       "characters": 0.2,
-      "healthHitModifier": 3,
+      "healthHitModifier": 1.2,
       "maxIntegrity": 0,
       "falloffDistance": 0,
       "falloffMinMult": 0,
@@ -1984,6 +1984,172 @@ const BUNDLED_AMMOS_DATA = {
       "visualProbability": 0.7,
       "tracer": {
         "enable": true,
+        "length": 30,
+        "width": 0.07,
+        "color": {
+          "r": 15,
+          "g": 6,
+          "b": 4.5,
+          "a": 1
+        }
+      }
+    }
+  },
+  "NATO_25x184mm_CenterAim": {
+    "name": "NATO_25x184mm_CenterAim",
+    "base_name": null,
+    "file": "Ballistics_Gatling_Ammos.cs",
+    "ammoMagazine": "NATO_25x184mm",
+    "ammoRound": "NATO_25x184mm_CenterAim",
+    "terminalName": "NATO 25mm",
+    "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
+    "baseDamage": 0.001,
+    "baseDamageCutoff": 0,
+    "mass": 1,
+    "health": 0,
+    "backKickForce": 0,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0,
+    "heatPerShot": 0,
+    "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
+    "shape": "LineShape",
+    "diameter": -1,
+    "objectsHit": {
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0,
+      "reverse": false,
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
+    },
+    "areaOfDamage": {
+      "enable": false,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
+      "endOfLife": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0,
+        "radius": 0
+      }
+    },
+    "trajectory": {
+      "desiredSpeed": 1000,
+      "maxTrajectory": 1700,
+      "maxLifeTime": 3600,
+      "accelPerSec": 0,
+      "speedVariance": 0,
+      "rangeVariance": 0,
+      "guidance": "None",
+      "steers": false,
+      "desiredElevation": 0
+    },
+    "damageScales": {
+      "shield": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": 0.2,
+      "healthHitModifier": 1.2,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
+      "damageType": "Kinetic",
+      "gridLarge": 1,
+      "gridSmall": 1,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "",
+      "hitSound": "",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1,
+      "tracer": {
+        "enable": false,
         "length": 30,
         "width": 0.07,
         "color": {
@@ -4966,7 +5132,7 @@ const BUNDLED_AMMOS_DATA = {
       "heavyArmor": 0,
       "nonArmor": 0,
       "characters": 1,
-      "healthHitModifier": 1,
+      "healthHitModifier": 1.25,
       "maxIntegrity": 0,
       "falloffDistance": 0,
       "falloffMinMult": 0,
@@ -6003,7 +6169,173 @@ const BUNDLED_AMMOS_DATA = {
     "file": "Missiles_LightMissile_Ammo.cs",
     "ammoMagazine": "Missiles_Missile",
     "ammoRound": "Griffin HE",
-    "terminalName": "Griffin HE",
+    "terminalName": "Griffin HE (Drunk)",
+    "isBeam": false,
+    "beams": {
+      "enable": false,
+      "virtualBeams": false
+    },
+    "baseDamage": 1,
+    "baseDamageCutoff": 0,
+    "mass": 200,
+    "health": 1.25,
+    "backKickForce": 50,
+    "hardPointUsable": true,
+    "npcSafe": true,
+    "noGridOrArmorScaling": false,
+    "hybridRound": false,
+    "energyCost": 0,
+    "energyMagazineSize": 0,
+    "decayPerShot": 0,
+    "heatPerShot": 0,
+    "heatModifier": 1,
+    "allowNegativeHeatModifier": false,
+    "heatNeededToFire": 0,
+    "shape": "LineShape",
+    "diameter": -1,
+    "objectsHit": {
+      "maxObjectsHit": 0,
+      "countBlocks": false,
+      "skipBlocksForAOE": false
+    },
+    "ewar": {
+      "enable": false,
+      "type": "AntiSmart",
+      "mode": "Effect",
+      "strength": 0,
+      "radius": 0,
+      "duration": 0,
+      "maxStacks": 0,
+      "stackDuration": false,
+      "deplete": false
+    },
+    "pattern": {
+      "enable": false,
+      "mode": "Never",
+      "patterns": [],
+      "triggerChance": 1,
+      "random": false,
+      "randomMin": 0,
+      "randomMax": 0,
+      "skipParent": false,
+      "patternSteps": 0
+    },
+    "fragment": {
+      "enable": false,
+      "ammoRound": "",
+      "fragments": 0,
+      "degrees": 0,
+      "reverse": false,
+      "dropVelocity": false,
+      "ignoreArming": false,
+      "radial": 0,
+      "offset": 0,
+      "maxChildren": 0,
+      "armWhenHit": false,
+      "timedSpawns": {
+        "enable": false,
+        "startTime": 0,
+        "interval": 0,
+        "maxSpawns": 0,
+        "proximity": 0,
+        "parentDies": false,
+        "pointAtTarget": false,
+        "pointType": "Direct",
+        "directAimCone": 0,
+        "groupSize": 0,
+        "groupDelay": 0
+      }
+    },
+    "areaOfDamage": {
+      "enable": true,
+      "byBlockHit": {
+        "enable": false,
+        "damage": 0,
+        "radius": 0,
+        "depth": 0,
+        "maxAbsorb": 0,
+        "falloff": "Legacy",
+        "shape": "Round",
+        "minArmingTime": 0,
+        "armOnlyOnHit": false
+      },
+      "endOfLife": {
+        "enable": true,
+        "damage": 12000,
+        "radius": 4,
+        "depth": 4,
+        "maxAbsorb": 0,
+        "falloff": "Pooled",
+        "shape": "Diamond",
+        "minArmingTime": 30,
+        "armOnlyOnHit": true
+      },
+      "areaEffect": {
+        "areaEffect": false,
+        "damage": 0,
+        "radius": 0
+      }
+    },
+    "trajectory": {
+      "desiredSpeed": 450,
+      "maxTrajectory": 2800,
+      "maxLifeTime": 1200,
+      "accelPerSec": 300,
+      "speedVariance": 0,
+      "rangeVariance": 0,
+      "guidance": "Smart",
+      "steers": true,
+      "desiredElevation": 0
+    },
+    "damageScales": {
+      "shield": 0,
+      "armorArmor": -1,
+      "lightArmor": -1,
+      "heavyArmor": -1,
+      "nonArmor": -1,
+      "characters": -1,
+      "healthHitModifier": 0.5,
+      "maxIntegrity": 0,
+      "falloffDistance": 0,
+      "falloffMinMult": 0,
+      "damageType": "Kinetic",
+      "gridLarge": -1,
+      "gridSmall": 0.75,
+      "cutoffArmorArmor": -1,
+      "cutoffLightArmor": -1,
+      "cutoffHeavyArmor": -1,
+      "cutoffNonArmor": -1,
+      "cutoffGridLarge": -1,
+      "cutoffGridSmall": -1
+    },
+    "approachesRef": null,
+    "audio": {
+      "travelSound": "MXA_Archer_Travel",
+      "hitSound": "HWR_SmallExplosion",
+      "shieldHitSound": ""
+    },
+    "graphics": {
+      "visualProbability": 1,
+      "tracer": {
+        "enable": true,
+        "length": 10,
+        "width": 0.3,
+        "color": {
+          "r": 30,
+          "g": 6,
+          "b": 1.5,
+          "a": 1
+        }
+      }
+    }
+  },
+  "Missiles_Missile_Straight": {
+    "name": "Missiles_Missile_Straight",
+    "base_name": null,
+    "file": "Missiles_LightMissile_Ammo.cs",
+    "ammoMagazine": "Missiles_Missile",
+    "ammoRound": "Griffin HE Straight",
+    "terminalName": "Griffin HE (Straight)",
     "isBeam": false,
     "beams": {
       "enable": false,
@@ -6114,7 +6446,7 @@ const BUNDLED_AMMOS_DATA = {
       "desiredSpeed": 450,
       "maxTrajectory": 2800,
       "maxLifeTime": 1200,
-      "accelPerSec": 300,
+      "accelPerSec": 225,
       "speedVariance": 0,
       "rangeVariance": 0,
       "guidance": "Smart",

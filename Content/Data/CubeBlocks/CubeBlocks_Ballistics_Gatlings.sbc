@@ -2,21 +2,21 @@
 <Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CubeBlocks>
 		<!-- Player Weapons -->
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
-				<TypeId>LargeMissileTurret</TypeId>
+				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_AvengerGatlingTurret</SubtypeId>
 			</Id>
 			<DisplayName>*Gatling* Avenger Turret</DisplayName>
 			<Icon>Textures\GUI\Icons\HWK_TwinPointDefense.dds</Icon>
-			<Description>When one you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
+			<Description>When you have ammo to spare and one CIWS isn't enough, you use the Avenger. Made by Consty Designs.
 				[Uses 25mm KE]
 			</Description>
 			<CubeSize>Large</CubeSize>
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\large\HWK_TwinPointDefense.mwm</Model>
+			<Model>Models\Cubes\Large\GVK_AvengerTest.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
 				<Component Subtype="PrototechMachinery" Count="6"/>
@@ -46,17 +46,17 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
-			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.144</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>
@@ -726,9 +726,9 @@
 			<DLC>Contact</DLC>
 		</Definition>
 		<!-- NPC Weapons -->
-		<Definition xsi:type="MyObjectBuilder_LargeTurretBaseDefinition">
+		<Definition xsi:type="MyObjectBuilder_ConveyorSorterDefinition">
 			<Id>
-				<TypeId>LargeMissileTurret</TypeId>
+				<TypeId>ConveyorSorter</TypeId>
 				<SubtypeId>GVK_AvengerGatlingTurret_NPC</SubtypeId>
 			</Id>
 			<DisplayName>*NPC-Gatling* Avenger Turret</DisplayName>
@@ -737,7 +737,7 @@
 			<BlockTopology>TriangleMesh</BlockTopology>
 			<Size x="3" y="3" z="3"/>
 			<ModelOffset x="0" y="0" z="0"/>
-			<Model>Models\Cubes\large\HWK_TwinPointDefense.mwm</Model>
+			<Model>Models\Cubes\Large\GVK_AvengerTest.mwm</Model>
 			<Components>
 				<Component Subtype="SteelPlate" Count="140"/>
 				<Component Subtype="PrototechMachinery" Count="6"/>
@@ -767,17 +767,17 @@
 			<MirroringY>Z</MirroringY>
 			<MirroringZ>Y</MirroringZ>
 			<EdgeType>Light</EdgeType>
-			<WeaponDefinitionId Subtype="LargeGatlingTurret"/>
-			<OverlayTexture>Textures\GUI\Screens\camera_overlay.dds</OverlayTexture>
 			<ResourceSinkGroup>Defense</ResourceSinkGroup>
 			<InventoryMaxVolume>0.144</InventoryMaxVolume>
 			<DamageEffectName>Damage_WeapExpl_Damaged</DamageEffectName>
 			<DamagedSound>ParticleWeapExpl</DamagedSound>
 			<DestroyEffect>BlockDestroyedExplosion_Small</DestroyEffect>
 			<DestroySound>WepSmallWarheadExpl</DestroySound>
+			<IsAirTight>false</IsAirTight>
 			<TargetingGroups>
 				<string>Weapons</string>
 			</TargetingGroups>
+			<AiEnabled>false</AiEnabled>
 			<GuiVisible>false</GuiVisible>
 			<Public>true</Public>
 		</Definition>

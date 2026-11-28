@@ -228,7 +228,7 @@ namespace Scripts
                 DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 10, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
@@ -379,7 +379,7 @@ namespace Scripts
                 DeviateShotAngle = 0.15f,
                 AimingTolerance = 30f, // 0 - 180 firing angle
                 AimLeadingPrediction = Advanced, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 20, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
+                DelayCeaseFire = 10, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
                 NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
                 Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
@@ -552,100 +552,330 @@ namespace Scripts
             },
         };
 		
-        WeaponDefinition GVK_AvengerGatlingTurret => new WeaponDefinition
+        private TargetingDef Ballistics_Gatlings_Targeting_Avenger = new TargetingDef
+        {
+            Threats = new[]
+            {
+                Projectiles, Characters, Grids,
+            },
+            SubSystems = new[]
+            {
+                Offense, Jumping, Utility, Power, Thrust, Production,
+            },
+            ClosestFirst = true,
+            IgnoreDumbProjectiles = true,
+            LockedSmartOnly = false,
+            MinimumDiameter = 0,
+            MaximumDiameter = 0,
+            MaxTargetDistance = 1600,
+            MinTargetDistance = 0,
+            TopTargets = 4,
+            CycleTargets = 0,
+            TopBlocks = 8,
+            CycleBlocks = 0,
+            StopTrackingSpeed = 1000,
+            AllowSwitchTargetPriority = true,
+            AllowFireDistribution = true,
+            AdvancedFireDistribution = true,
+        };
+
+        private AiDef Ballistics_Gatlings_Hardpoint_Ai_AvengerAim = new AiDef
+        {
+            TrackTargets = true,
+            TurretAttached = true,
+            TurretController = true,
+            PrimaryTracking = true,
+            LockOnFocus = false,
+            SuppressFire = true,
+            OverrideLeads = false,
+            DefaultLeadGroup = 1,
+            TargetGridCenter = false,
+            PainterUseMaxTargeting = true,
+            UseLimitlessPDSolver = false,
+        };
+
+        private AiDef Ballistics_Gatlings_Hardpoint_Ai_SecondaryTurret = new AiDef
+        {
+            TrackTargets = false,
+            TurretAttached = true,
+            TurretController = true,
+            PrimaryTracking = false,
+            LockOnFocus = false,
+            SuppressFire = false,
+            OverrideLeads = false,
+            DefaultLeadGroup = 1,
+            TargetGridCenter = false,
+            PainterUseMaxTargeting = true,
+            UseLimitlessPDSolver = false,
+        };
+
+        WeaponDefinition GVK_AvengerGatlingTurret_Aim => new WeaponDefinition
         {
             Assignments = new ModelAssignmentsDef
             {
-                MountPoints = new[] 
-				{
-                    new MountPointDef 
-					{
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
                         SubtypeId = "GVK_AvengerGatlingTurret",
-                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,	 
-					},
-                    new MountPointDef 
-					{
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevCenter",
+                        AzimuthPartId = "AvengerAzimuth",
+                        ElevationPartId = "AvengerElevCenter",
+                        DurabilityMod = 0.5f,
+                    },
+                    new MountPointDef
+                    {
                         SubtypeId = "GVK_AvengerGatlingTurret_NPC",
-                        SpinPartId = "", //For weapons with a spinning barrel such as Gatling Guns
-                        MuzzlePartId = "MissileTurretBarrels",
-                        AzimuthPartId = "MissileTurretBase1",
-                        ElevationPartId = "MissileTurretBarrels",
-                        DurabilityMod = 0.5f,	 
-					},
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevCenter",
+                        AzimuthPartId = "AvengerAzimuth",
+                        ElevationPartId = "AvengerElevCenter",
+                        DurabilityMod = 0.5f,
+                    },
                 },
                 Muzzles = new[] {
-                    "muzzle_missile_1",
-                    "muzzle_missile_2",
+                    "muzzle_center",
                 },
                 Ejector = "",
-				Scope = "scope",
-				//Camera = "dummy_camera",
+                Scope = "scope_center",
             },
-            Targeting = Ballistics_Gatlings_Targeting_Long,
+            Targeting = Ballistics_Gatlings_Targeting_Avenger,
             HardPoint = new HardPointDef
             {
-                PartName = "Avenger Turret", // name of weapon in terminal
-                DeviateShotAngle = 0.15f, // Inaccuracy in degrees
-                AimingTolerance = 3f, // 0 - 180 firing angle
-                AimLeadingPrediction = Off, // Off, Basic, Accurate, Advanced
-                DelayCeaseFire = 0, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-                NpcSafe = true, // This is you tell npc moders that your ammo was designed with them in mind, if they tell you otherwise set this to false.
+                PartName = "Avenger Aim",
+                DeviateShotAngle = 0f,
+                AimingTolerance = 2f,
+                AimLeadingPrediction = Advanced,
+                DelayCeaseFire = 0,
+                NpcSafe = true,
                 Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
-                Ai = Common_Weapons_Hardpoint_Ai_BasicTurret,
+                Ai = Ballistics_Gatlings_Hardpoint_Ai_AvengerAim,
                 HardWare = new HardwareDef
                 {
-                    RotateRate = 0.015f,
-                    ElevateRate = 0.015f,
+                    RotateRate = 0.03f,
+                    ElevateRate = 0.03f,
                     MinAzimuth = -180,
                     MaxAzimuth = 180,
                     MinElevation = -15,
                     MaxElevation = 80,
-                    HomeAzimuth = 0, // Default resting rotation angle
-                    HomeElevation = 0, // Default resting elevation
-                    InventorySize = 0.9f,
-                    //Offset = Vector(x: 0, y: 0, z: 0),
-                    Type = BlockWeapon, // BlockWeapon, HandWeapon, Phantom 
+                    HomeAzimuth = 0,
+                    HomeElevation = 0,
+                    InventorySize = 0.45f,
+                    Type = BlockWeapon,
+                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 1,
+                    BarrelSpinRate = 0,
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1,
+                    SkipBarrels = 0,
+                    FireFull = false,
+                    ReloadTime = 1,
+                    MagsToLoad = 1,
+                    DelayUntilFire = 0,
+                    SpinFree = false,
+                },
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "",
+                    FiringSound = "",
+                    FiringSoundPerShot = false,
+                    ReloadSound = "",
+                    NoAmmoSound = "",
+                    HardPointRotationSound = "WepTurretGatlingRotate",
+                    BarrelRotationSound = "",
+                    FireSoundEndDelay = 0,
+                    FireSoundNoBurst = false,
+                },
+                Graphics = new HardPointParticleDef(),
+            },
+            Ammos = new[]
+            {
+                NATO_25x184mm_CenterAim,
+            },
+        };
+
+        WeaponDefinition GVK_AvengerGatlingTurret_L => new WeaponDefinition
+        {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "GVK_AvengerGatlingTurret",
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevL",
+                        AzimuthPartId = "AvengerShroudAzL",
+                        ElevationPartId = "AvengerElevL",
+                        DurabilityMod = 0.5f,
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "GVK_AvengerGatlingTurret_NPC",
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevL",
+                        AzimuthPartId = "AvengerShroudAzL",
+                        ElevationPartId = "AvengerElevL",
+                        DurabilityMod = 0.5f,
+                    },
+                },
+                Muzzles = new[] {
+                    "muzzle_missile_1",
+                },
+                Ejector = "",
+                Scope = "scope_L",
+            },
+            Targeting = Ballistics_Gatlings_Targeting_Avenger,
+            HardPoint = new HardPointDef
+            {
+                PartName = "Avenger Left",
+                DeviateShotAngle = 0.10f,
+                AimingTolerance = 10f,
+                AimLeadingPrediction = Advanced,
+                DelayCeaseFire = 10,
+                NpcSafe = true,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Ballistics_Gatlings_Hardpoint_Ai_SecondaryTurret,
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.008f,
+                    ElevateRate = 0.03f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -20,
+                    MaxElevation = 85,
+                    HomeAzimuth = 0,
+                    HomeElevation = 0,
+                    InventorySize = 0.45f,
+                    Type = BlockWeapon,
                 },
                 Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
                 Loading = new LoadingDef
                 {
                     RateOfFire = 1000,
-                    BarrelSpinRate = 0, // visual only, 0 disables and uses RateOfFire
-                    BarrelsPerShot = 2,
-                    TrajectilesPerBarrel = 1, // Number of Trajectiles per barrel per fire event.
+                    BarrelSpinRate = 0,
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1,
                     SkipBarrels = 0,
-					FireFull = false,
-                    ReloadTime = 4, // Measured in game ticks (6 = 100ms, 60 = 1 seconds, etc..).
-					MagsToLoad = 14, // Number of physical magazines to consume on reload.
-					DelayUntilFire = 0,
-                    SpinFree = false, // Spin while not firing
+                    FireFull = false,
+                    ReloadTime = 4,
+                    MagsToLoad = 7,
+                    DelayUntilFire = 0,
+                    SpinFree = false,
                 },
                 Audio = new HardPointAudioDef
                 {
                     PreFiringSound = "",
-                    FiringSound = "MD_LargeGatlingLoopFire", // WepShipGatlingShot
+                    FiringSound = "MD_LargeGatlingLoopFire",
                     FiringSoundPerShot = false,
                     ReloadSound = "",
                     NoAmmoSound = "WepShipGatlingNoAmmo",
-                    HardPointRotationSound = "WepTurretGatlingRotate",
+                    HardPointRotationSound = "",
                     BarrelRotationSound = "MD_GatlingBarrelLoop",
-                    FireSoundEndDelay = 0, // Measured in game ticks(6 = 100ms, 60 = 1 seconds, etc..).
+                    FireSoundEndDelay = 0,
                     FireSoundNoBurst = false,
                 },
-                
-				Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Vulcan,
+                Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Vulcan,
             },
-            Ammos = new[] 
-			{
-                NATO_25x184mm_Dual,
-				NATO_25x184mm_Dual_Fragment,
+            Ammos = new[]
+            {
+                NATO_25x184mm,
             },
-            Animations = GVK_AvengerGatlingTurretAnimations,
-            // Don't edit below this line
+            Animations = GVK_AvengerTest_Anim_L,
+        };
+
+        WeaponDefinition GVK_AvengerGatlingTurret_R => new WeaponDefinition
+        {
+            Assignments = new ModelAssignmentsDef
+            {
+                MountPoints = new[]
+                {
+                    new MountPointDef
+                    {
+                        SubtypeId = "GVK_AvengerGatlingTurret",
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevR",
+                        AzimuthPartId = "AvengerShroudAzR",
+                        ElevationPartId = "AvengerElevR",
+                        DurabilityMod = 0.5f,
+                    },
+                    new MountPointDef
+                    {
+                        SubtypeId = "GVK_AvengerGatlingTurret_NPC",
+                        SpinPartId = "",
+                        MuzzlePartId = "AvengerElevR",
+                        AzimuthPartId = "AvengerShroudAzR",
+                        ElevationPartId = "AvengerElevR",
+                        DurabilityMod = 0.5f,
+                    },
+                },
+                Muzzles = new[] {
+                    "muzzle_missile_2",
+                },
+                Ejector = "",
+                Scope = "scope_R",
+            },
+            Targeting = Ballistics_Gatlings_Targeting_Avenger,
+            HardPoint = new HardPointDef
+            {
+                PartName = "Avenger Right",
+                DeviateShotAngle = 0.10f,
+                AimingTolerance = 10f,
+                AimLeadingPrediction = Advanced,
+                DelayCeaseFire = 10,
+                NpcSafe = true,
+                Ui = Common_Weapons_Hardpoint_Ui_FullDisable,
+                Ai = Ballistics_Gatlings_Hardpoint_Ai_SecondaryTurret,
+                HardWare = new HardwareDef
+                {
+                    RotateRate = 0.008f,
+                    ElevateRate = 0.03f,
+                    MinAzimuth = -180,
+                    MaxAzimuth = 180,
+                    MinElevation = -20,
+                    MaxElevation = 85,
+                    HomeAzimuth = 0,
+                    HomeElevation = 0,
+                    InventorySize = 0.45f,
+                    Type = BlockWeapon,
+                },
+                Other = Common_Weapons_Hardpoint_Other_NoRestrictionRadius,
+                Loading = new LoadingDef
+                {
+                    RateOfFire = 1000,
+                    BarrelSpinRate = 0,
+                    BarrelsPerShot = 1,
+                    TrajectilesPerBarrel = 1,
+                    SkipBarrels = 0,
+                    FireFull = false,
+                    ReloadTime = 4,
+                    MagsToLoad = 7,
+                    DelayUntilFire = 0,
+                    SpinFree = false,
+                },
+                Audio = new HardPointAudioDef
+                {
+                    PreFiringSound = "",
+                    FiringSound = "MD_LargeGatlingLoopFire",
+                    FiringSoundPerShot = false,
+                    ReloadSound = "",
+                    NoAmmoSound = "WepShipGatlingNoAmmo",
+                    HardPointRotationSound = "",
+                    BarrelRotationSound = "MD_GatlingBarrelLoop",
+                    FireSoundEndDelay = 0,
+                    FireSoundNoBurst = false,
+                },
+                Graphics = Ballistics_Gatlings_Hardpoint_Graphics_Vulcan,
+            },
+            Ammos = new[]
+            {
+                NATO_25x184mm,
+            },
+            Animations = GVK_AvengerTest_Anim_R,
         };
     }
 }

@@ -122,6 +122,7 @@ const m = studio.run(`(() => {
   updateRadarQuickCompare();
   const fixedVsTurret = { dep: text('qcDepressionActive'), mount: text('qcMountActive'), track: trackRow() };
   selectWeapon(turret.id);
+  setBenchmarkWeapon(turret.id);
   updateCombatTelemetry();
   updateComparisonRadar();
   const self = trackRow();

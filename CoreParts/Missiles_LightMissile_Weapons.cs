@@ -245,6 +245,7 @@ namespace Scripts
             Ammos = new[] 
 			{
                 Missiles_Missile,
+                Missiles_Missile_Straight,
             },
             Animations = Missiles_LightMissile_Animation,
         };
@@ -346,6 +347,7 @@ namespace Scripts
             Ammos = new[] 
 			{
 				Missiles_Missile,
+				Missiles_Missile_Straight,
             },
             Animations = GVK_GriffinMissileLauncher_Animation,
         };
@@ -407,6 +409,7 @@ namespace Scripts
 			Ammos = new[] 
 			{
 				Missiles_Missile,
+				Missiles_Missile_Straight,
             },
         };
 
