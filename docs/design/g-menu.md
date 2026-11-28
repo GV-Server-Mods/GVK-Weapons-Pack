@@ -4,7 +4,7 @@ covers:
   - Content/Data/BlockVariantGroups.sbc
   - Content/Data/BlockCategories.sbc
   - Content/Data/BlockPositions.sbc
-checked: 2026-11-22
+checked: 2026-11-28
 ---
 
 # G menu layout
